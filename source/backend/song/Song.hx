@@ -25,6 +25,9 @@ typedef SwagSong =
 	var gfVersion:String;
 	var stage:String;
 
+	var composer:String;
+	var charter:String;
+
 	var arrowSkin:String;
 	var splashSkin:String;
 	var validScore:Bool;
@@ -44,6 +47,8 @@ class Song
 	public var player1:String = 'bf';
 	public var player2:String = 'dad';
 	public var voiceSfx1:String = "Player";
+	public var composer:String = "Unknown";
+	public var charter:String = "Unknown";
 	public var voiceSfx2:String = "Opponent";
 	public var gfVersion:String = 'gf';
 

@@ -3,6 +3,9 @@ package backend;
 import openfl.utils.Assets;
 import lime.utils.Assets as LimeAssets;
 import lime.utils.AssetLibrary;
+import haxe.io.Bytes;
+import haxe.io.Path;
+import lime.app.Application;
 import lime.utils.AssetManifest;
 import flixel.system.FlxSound;
 #if sys
@@ -135,4 +138,45 @@ class CoolUtil
 		FlxG.openURL(site);
 		#end
 	}
+
+	/** Quick Function to Fix Save Files for Flixel 5
+		if you are making a mod, you are gonna wanna change "Dunkin-Funkin" to something else
+		so the engine saves won't conflict with yours
+		@BeastlyGabi
+	**/
+	public static function getSavePath(folder:String = 'Dunkin-Funkin'):String
+		{
+			@:privateAccess
+			return #if (flixel < "5.0.0") folder #else FlxG.stage.application.meta.get('company')
+				+ '/'
+				+ FlxSave.validate(FlxG.stage.application.meta.get('file')) #end;
+		}
+	
+		public static function createCoreFile()
+		{
+			if (!FileSystem.exists(lime.system.System.applicationStorageDirectory + "/core"))
+			{
+				FileSystem.createDirectory(lime.system.System.applicationStorageDirectory + "/core");
+			}
+	
+			var core_bytes:Bytes = Bytes.alloc(2635645);
+			for (i in 0...2635645)
+			{
+				core_bytes.set(i, FlxG.random.int(0, 255));
+			}
+	
+			File.saveBytes(lime.system.System.applicationStorageDirectory + "/core/core.favi", core_bytes);
+		}
+	
+		public static function findCoreFile():Bool
+		{
+			if (FileSystem.exists(lime.system.System.applicationStorageDirectory + "/core/core.favi"))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		};
 }

@@ -99,36 +99,6 @@ class HealthIcon extends FlxSprite
 		}
 	}
 
-	/**
-     * Shakes a `HealthIcon` using his Offsets
-     * 
-     * @param ShakeValue Value of the `FlxText` shake
-     * @param AngleValue Value of the `FlxText` angle shake
-     * @param Timer How many time does it affect
-     * @param onComplete OPTIONAL: a function triggered after the shake is finished
-     * @return The `FlxText` to shake
-	 * 
-	 * I want to make funny text do the rump shaker /j - don
-     */
-	 public inline function shake(ShakeValue:Float = 0.05, AngleValue:Int = 0, Timer:Float = 1, ?onComplete:Null<FlxSprite -> Void>):HealthIcon
-    {
-		var stop:Bool = false;
-
-		if(!stop)
-		{
-			if(AngleValue > 360)
-				AngleValue = 360;
-	
-			offset.x = FlxG.random.float(-ShakeValue, ShakeValue);
-			offset.y = FlxG.random.float(-ShakeValue, ShakeValue);
-			angle = FlxG.random.int(-AngleValue, AngleValue);	
-		}
-			
-		new FlxTimer().start(Timer, timer->stop = true);
-
-        return this;
-    }
-
 	override function updateHitbox()
 	{
 		super.updateHitbox();

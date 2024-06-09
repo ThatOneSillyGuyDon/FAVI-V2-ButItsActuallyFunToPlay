@@ -17,8 +17,11 @@
  // just in case
  import unused.*;
 
+ import gamejolt.*;
+
  // import objects, menus and backend support
 import backend.*;
+import backend.windows.*;
 import backend.menu.*;
 import backend.song.*;
 import backend.data.*;
@@ -38,6 +41,7 @@ import substates.*;
 import states.*;
 import states.editors.*;
 import states.options.*;
+import states.menus.freeplay.*;
 import states.menus.*;
 
 // import specific menus and objects to prevent compile errors
@@ -63,6 +67,7 @@ import shaders.OverlayShader;
 import shaders.BlendModeEffect;
 import shaders.WiggleEffect;
 import shaders.WiggleEffect.WiggleEffectType;
+import shaders.Shaders;
 
 // stuff that won't let you compile unless they're being used
 #if VIDEOS_ALLOWED
