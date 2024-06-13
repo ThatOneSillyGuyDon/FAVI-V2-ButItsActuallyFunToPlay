@@ -16,7 +16,6 @@
 
  // just in case
  import unused.*;
-
  import gamejolt.*;
 
  // import objects, menus and backend support
@@ -49,10 +48,12 @@ import states.menus.*;
 import backend.discord.Discord;
 #end
 import states.editors.ChartingState;
+import backend.windows.CppAPI;
 import gameObjects.Achievements;
 import gameObjects.Character;
 import gameObjects.ui.dialogue.DialogueBoxPsych;
 import gameObjects.ui.menu.MenuCharacter;
+import backend.TypedefUtilities;
 import backend.song.Conductor;
 import backend.data.StageData;
 import backend.data.WeekData;

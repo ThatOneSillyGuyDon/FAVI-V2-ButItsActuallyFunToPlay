@@ -11,11 +11,12 @@ import openfl.display.BlendMode;
 import openfl.display.StageQuality;
 import openfl.filters.BitmapFilter;
 import openfl.utils.Assets as OpenFlAssets;
-import flixel.group.FlxSpriteGroup;
 import flixel.input.keyboard.FlxKey;
 import openfl.events.KeyboardEvent;
 import flixel.animation.FlxAnimationController;
 import animateatlas.AtlasFrameMaker;
+import gamejolt.GameJolt.GameJoltAPI;
+import lime.app.Application;
 
 #if !flash 
 import openfl.filters.ShaderFilter;
@@ -27,6 +28,13 @@ import sys.io.File;
 #end
 
 using StringTools;
+
+enum FlashType
+{
+	BG_FLASH;
+	BG_DARK;
+	CAM_FLASH_FANCY;
+}
 
 class PlayState extends MusicBeatState
 {
@@ -104,9 +112,9 @@ class PlayState extends MusicBeatState
 	public var bf_vocals:FlxSound;
 	public var opp_vocals:FlxSound;
 
-	public var dad:Character = null;
-	public var gf:Character = null;
-	public var boyfriend:Boyfriend = null;
+	public static var dad:Character = null;
+	public static var gf:Character = null;
+	public static var boyfriend:Boyfriend = null;
 
 	public var notes:FlxTypedGroup<Note>;
 	public var unspawnNotes:Array<Note> = [];
@@ -131,7 +139,7 @@ class PlayState extends MusicBeatState
 	private var curSong:String = "";
 
 	public var gfSpeed:Int = 1;
-	public var health:Float = 1;
+	public static var health:Float = 1;
 	public var combo:Int = 0;
 
 	private var healthBarBG:AttachedSprite;
@@ -166,12 +174,13 @@ class PlayState extends MusicBeatState
 
 	public var iconP1:HealthIcon;
 	public var iconP2:HealthIcon;
-	public var camHUD:FlxCamera;
-	public var camGame:FlxCamera;
-	public var camOther:FlxCamera;
-	public var camVideo:FlxCamera;
-	public var camNotes:FlxCamera;
-	public var cameraSpeed:Float = 1;
+	public static var camHUD:FlxCamera;
+	public static var camGame:FlxCamera;
+	public static var camOther:FlxCamera;
+	public static var camVideo:FlxCamera;
+	public static var camNotes:FlxCamera;
+	public static var camBars:FlxCamera;
+	public static var cameraSpeed:Float = 1;
 
 	var dialogue:Array<String> = ['blah blah blah', 'coolswag'];
 	var dialogueJson:DialogueFile = null;
@@ -233,7 +242,7 @@ class PlayState extends MusicBeatState
 	public static var seenCutscene:Bool = false;
 	public static var deathCounter:Int = 0;
 
-	public var defaultCamZoom:Float = 1.05;
+	public static var defaultCamZoom:Float = 1.05;
 
 	// how big to stretch the pixel art assets
 	public static var daPixelZoom:Float = 6;
@@ -249,9 +258,11 @@ class PlayState extends MusicBeatState
 
 	#if desktop
 	// Discord RPC variables
-	var storyDifficultyText:String = "";
-	var detailsText:String = "";
-	var detailsPausedText:String = "";
+	public static var songDetails:String = "";
+	public static var detailsText:String = "";
+	public static var detailsPausedText:String = "";
+	public static var iconRPC:String = "";
+	public static var storyDifficultyText:String = "";
 	#end
 
 	//Achievement shit
@@ -282,6 +293,81 @@ class PlayState extends MusicBeatState
 	// stores the last combo score objects in an array
 	public static var lastScore:Array<FlxSprite> = [];
 
+	//FUNKIN.AVI V2
+	public static var healthDrain:Float = 0;
+	public var smoothyHealth:Float = 1; // IF YOU READ THIS ITS ONLY FOR MERCY !!
+	public static var thing:Int;
+
+	public var canaddshaders = ClientPrefs.shaders;
+
+	public var cinematicBars:Map<String, FlxSprite> = ["top" => null, "bottom" => null];
+
+	public var scratch:FlxSprite; // Peter Griffin: This reminds me of the time I met the Scratch cat
+	public var scratchButLessVisible:FlxSprite;
+
+	var lyricsIcon:HealthIcon;
+	var lyrics:FlxTypeText;
+	var lyricsTween:FlxTween;
+	var iconTween:FlxTween;
+
+	public var crashLives:FlxText;
+	public var crashLivesIcon:FlxSprite;
+
+	public var crashLivesCounter:Int = 0;
+
+	var heartTween:FlxTween;
+	var malfunctionTxt:FlxTween;
+
+	public var waltScreenThing:FlxSprite; // idk, this is needed too for some reason
+	public var inkFormWarning:FlxText;
+	public var spaceBarCounter:FlxText;
+	public var limitThing:Int = 0; // Default Value
+
+	var stageBGFlash:FlxSprite;
+	var BGFlashTween:FlxTween;
+
+	var blendFlash:FlxSprite;
+	var flashTween:FlxTween;
+
+	public var camHudMoves:Bool = false;
+	public var fade:FlxSprite;
+
+	public static var grayScale:FlxRuntimeShader = new FlxRuntimeShader(Shaders.grayScale, null, 120);
+	public static var andromeda:FlxRuntimeShader = new FlxRuntimeShader(Shaders.andromedaVCR, null, 140);
+	public static var chromZoomShader:FlxRuntimeShader = new FlxRuntimeShader(Shaders.aberration, null, 150);
+	public static var chromNormalShader:FlxRuntimeShader = new FlxRuntimeShader(Shaders.aberrationDefault, null, 150);
+	public static var blurShader:FlxRuntimeShader = new FlxRuntimeShader(Shaders.tiltShift, null, 120);
+	public static var blurShaderHUD:FlxRuntimeShader = new FlxRuntimeShader(Shaders.tiltShift, null, 120);
+	public static var bloomEffect:FlxRuntimeShader = new FlxRuntimeShader(Shaders.bloom_alt, null, 120);
+	public static var dramaticCamMovement:FlxRuntimeShader = new FlxRuntimeShader(Shaders.cameraMovement, null, 150);
+	public static var monitorFilter:FlxRuntimeShader = new FlxRuntimeShader(Shaders.monitorFilter, null, 140);
+	public static var staticEffect:FlxRuntimeShader = new FlxRuntimeShader(Shaders.tvStatic, null, 120);
+	public static var delusionalShift:FlxRuntimeShader = new FlxRuntimeShader(Shaders.delusionalShift, null, 120);
+	public static var redVignette:FlxRuntimeShader = new FlxRuntimeShader(Shaders.redFromAngryBirds, null, 120);
+	public static var waltStatic:FlxRuntimeShader = new FlxRuntimeShader(Shaders.vhsFilter, null, 130);
+	public static var heatWaveEffect:FlxRuntimeShader = new FlxRuntimeShader(Shaders.heatWave, null, 120);
+
+	public var chromEffect:Float = 0.0001;
+	public var blurEffect:Float = 0.0;
+	public var blurHUD:Float = 0.0;
+	public var staticModifer:Float = 0.0;
+	public var effectRed:Float = 0.0;
+
+	public var shaderAnim:Float = 0;
+
+	public var blurTween:FlxTween;
+	public var chromTween:FlxTween;
+	public var blurHUDTween:FlxTween;
+	public var staticTween:FlxTween;
+	public var vignetteTween:FlxTween;
+	public var offsetTwn:FlxTween;
+
+	public var globalGradient:FlxSprite;
+	public static var pauseCountEnabled:Bool = false;
+
+	public var dodged:Bool;
+	public var shootin:Bool;
+
 	override public function create()
 	{
 		//trace('Playback Rate: ' + playbackRate);
@@ -292,7 +378,7 @@ class PlayState extends MusicBeatState
 
 		debugKeysChart = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_1'));
 		debugKeysCharacter = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_2'));
-		PauseSubState.songName = null; //Reset to default
+		PauseSubState.songName.text = ""; //Reset to default
 		playbackRate = ClientPrefs.getGameplaySetting('songspeed', 1);
 
 		keysArray = [
@@ -1319,11 +1405,7 @@ class PlayState extends MusicBeatState
 		precacheList.set('missnote2', 'sound');
 		precacheList.set('missnote3', 'sound');
 
-		if (PauseSubState.songName != null) {
-			precacheList.set(PauseSubState.songName, 'music');
-		} else if(ClientPrefs.pauseMusic != 'None') {
-			precacheList.set(Paths.formatToSongPath(ClientPrefs.pauseMusic), 'music');
-		}
+		precacheList.set(Paths.formatToSongPath('finkinAVI/calmlyWinds'), 'music');
 
 		precacheList.set('alphabet', 'image');
 	
@@ -2598,7 +2680,7 @@ class PlayState extends MusicBeatState
 				switch(event.value1.toLowerCase()) {
 					case 'gf' | 'girlfriend' | '1':
 						charType = 2;
-					case 'dad' | 'opponent' | '0':
+					case 'dad' | '0':
 						charType = 1;
 					default:
 						charType = Std.parseInt(event.value1);
@@ -3367,7 +3449,460 @@ class PlayState extends MusicBeatState
 		setOnLuas('cameraY', camFollowPos.y);
 		setOnLuas('botPlay', cpuControlled);
 		callOnLuas('onUpdatePost', [elapsed]);
+
+		// the COOLER cam pos thing or whatever
+		// x, y, angle
+		var camOffset = [0.0, 0.0, 0];
+
+		var char = cameraOnDad ? dad : boyfriend;
+
+		if (char.animation.curAnim != null && !isCameraOnForcedPos) 
+		{
+			switch (char.animation.curAnim.name.substring(4))
+			{
+				case 'UP' | 'UP-alt' | 'UPmiss':
+					camOffset[1] -= 40;
+
+				case 'RIGHT' | 'RIGHT-alt' | 'RIGHTmiss':
+					camOffset[0] += 40;
+					if (!SONG.song.endsWith('Legacy')) camOffset[2] += 1.3;
+
+				case 'LEFT' | 'LEFT-alt' | 'LEFTmiss':
+					camOffset[0] -= 40;
+					if (!SONG.song.endsWith('Legacy')) camOffset[2] -= 1.3;
+
+				case 'DOWN' | 'DOWN-alt' | 'DOWNmiss':
+					camOffset[1] += 40;
+			}
+		}
+
+		if(!inCutscene) {
+			var lerpVal:Float = CoolUtil.boundTo(elapsed * 2.4 * cameraSpeed, 0, 1);
+			camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x + camOffset[0], lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y + camOffset[1], lerpVal));
+			camGame.angle = FlxMath.lerp(camGame.angle, 0 + camOffset[2], CoolUtil.boundTo(CoolUtil.boundTo(elapsed * 2.4 / 0.4, 0, 1) * cameraSpeed , 0, 1));
+		}
+
+		CamUtils.updateCamera(camGame, elapsed);
+		CamUtils.updateCamera(camHUD, elapsed);
+		CamUtils.updateCamera(camNotes, elapsed);
+		CamUtils.updateCamera(camOther, elapsed);
+	
+		// yk i sometimes ask why we put sum stuff there n shit
+		uhhTurnBackNormalOrSmth = function () {
+			for (goofyAhhUIS in [camHUD, camNotes])
+				{
+					goofyAhhUIS.x += 80;
+					goofyAhhUIS.y = FlxMath.lerp(0, goofyAhhUIS.y, CoolUtil.boundTo(elapsed * 2.4, 0, 1));
+				}
+				FlxTween.tween(PlayState, {health: 2}, 1);
+		}
 	}
+
+	var cameraOnDad = false;
+
+	public var uhhTurnBackNormalOrSmth:Void->Void;
+	// stuff that isn't on PlayStateUtils cus the game hates me
+
+	/**
+	 * # Malfunction Life System Checker
+	 * 
+	 * Self explanitory, don't you think?
+	 * 
+	 * Checks on your lives in Malfunction and is used by the Error Notes
+	 * It will make sure to close your game if it goes below 0
+	 * 
+	 * @author DEMOLITIONDON96
+	 */
+	 public function updateMalfunctionLives()
+		{
+			crashLivesCounter -= 1;
+	
+			if (malfunctionTxt != null)
+				malfunctionTxt.cancel();
+	
+			if (heartTween != null)
+				heartTween.cancel();
+	
+			malfunctionTxt = FlxTween.tween(crashLives, {alpha: 1}, 0.6, {
+				ease: FlxEase.sineOut,
+				onComplete: function(twn:FlxTween)
+				{
+					malfunctionTxt = FlxTween.tween(crashLives, {alpha: 0.3}, 2, {
+						ease: FlxEase.quartInOut,
+						startDelay: 5,
+						onComplete: function(twn:FlxTween)
+						{
+							malfunctionTxt = null;
+						}
+					});
+				}
+			});
+	
+			heartTween = FlxTween.tween(crashLivesIcon, {alpha: 1}, 0.6, {
+				ease: FlxEase.sineOut,
+				onComplete: function(twn:FlxTween)
+				{
+					heartTween = FlxTween.tween(crashLivesIcon, {alpha: 0.3}, 2, {
+						ease: FlxEase.quartInOut,
+						startDelay: 5,
+						onComplete: function(twn:FlxTween)
+						{
+							heartTween = null;
+						}
+					});
+				}
+			});
+	
+			// to be honest we can just use shake
+			//                                - jason
+	
+			FlxTween.tween(crashLives, {x: 620}, 0.01);
+			FlxTween.tween(crashLivesIcon, {x: 570}, 0.01);
+			FlxTween.tween(crashLives, {x: 585}, 0.01, {startDelay: 0.1});
+			FlxTween.tween(crashLivesIcon, {x: 535}, 0.01, {startDelay: 0.1});
+			FlxTween.tween(crashLives, {x: 610}, 0.01, {startDelay: 0.2});
+			FlxTween.tween(crashLivesIcon, {x: 560}, 0.01, {startDelay: 0.2});
+			FlxTween.tween(crashLives, {x: 595}, 0.01, {startDelay: 0.3});
+			FlxTween.tween(crashLivesIcon, {x: 545}, 0.01, {startDelay: 0.3});
+			FlxTween.tween(crashLives, {x: 600}, 0.01, {startDelay: 0.4});
+			FlxTween.tween(crashLivesIcon, {x: 550}, 0.01, {startDelay: 0.4});
+	
+			crashLivesIcon.animation.play("OMFG IT GLITCHES");
+	
+			new FlxTimer().start(0.25, function(tmr:FlxTimer)
+			{
+				crashLivesIcon.animation.play('idle');
+			});
+	
+			if (crashLivesCounter == -1)
+			{
+				finishSong();
+				trace('0 lives left, closing game...');
+				FlxG.sound.play(Paths.sound('funkinAVI/wiiCrash'), 1);
+	
+				if (FlxG.random.bool(10))
+					Application.current.window.alert("You Suck LMAO", 'Note About Your Skill:'); // 10% of probability
+				else
+					Application.current.window.alert("Message: if(note.noteType = 'Error Note') {trace('0 lives left, closing game...')}",
+						'Error On Funkin.avi.exe!:');
+	
+				Sys.exit(0);
+			}
+		}
+	
+		/**
+		 * # **The Cycled Sins Gimmick**
+		 *
+		 * As you can see, it's different than how it was before, it can actually be
+		 * used now without the need of a fucking event or some shit, so, have fun lol
+		 *
+		 * @param reactionTime - Amount of time you have to react before he shoots you
+		 * @param damageAmount - how much health it'll remove if you fail to dodge
+		 *  @param doubleBarrel - if Relapse Mouse shoots twice instead of once
+		 *
+		 * @author DEMOLITIONDON96
+		 */
+		public function relapseGimmick(reactionTime:Float = 2, damageAmount:Float = 0.4, ?doubleBarrel:Bool = false)
+		{
+			dodged = false;
+			shootin = true;
+			FlxG.sound.play(Paths.sound('funkinAVI/relapseMechs/Reload'), 0.4);
+			//updateSectionCamera('dad', false);
+			// holyShitMOVEBITCH.alpha = 1;
+			// holyShitMOVEBITCH.y = -420;
+			defaultCamZoom = 1.5;
+			dad.playAnim("reload", true);
+			dad.specialAnim = true;
+			/*new FlxTimer().start(reactionTime - 0.6, function(tmr:FlxTimer)
+				{
+					FlxTween.tween(holyShitMOVEBITCH, {alpha: 0, y: -400}, 0.3, {ease: FlxEase.quadInOut});
+			});*/
+	
+			new FlxTimer().start(reactionTime, function(tmr:FlxTimer)
+			{
+				FlxG.sound.play(Paths.sound('funkinAVI/relapseMechs/Shoot'), 0.4);
+				dad.playAnim("attack", true);
+				dad.specialAnim = true;
+				//checkCamPosition();
+				new FlxTimer().start(0.1, function(tmr:FlxTimer)
+				{
+					if (!dodged)
+					{
+						FlxG.camera.shake(0.05, 0.05);
+						PlayState.health -= damageAmount;
+						trace("lmfao you got shot depsite the fact this is nerfed");
+						if (!FlxG.stage.window.title.contains(' - lmfao you got shot depsite the fact this is nerfed'))
+						{
+							FlxG.stage.window.title += ' - lmfao you got shot depsite the fact this is nerfed'; // troll
+							new FlxTimer().start(5, _ -> PlayStateUtils.instance.loadWindowTitleData());
+						}
+						if (doubleBarrel)
+						{
+							defaultCamZoom = 1.25;
+							new FlxTimer().start(0.275, function(tmr:FlxTimer)
+							{
+								FlxG.sound.play(Paths.sound('funkinAVI/relapseMechs/Shoot'), 0.4);
+								dad.playAnim("attack", true);
+								dad.specialAnim = true;
+								//checkCamPosition();
+								if (!dodged)
+								{
+									FlxG.camera.shake(0.05, 0.05);
+									PlayState.health -= damageAmount / 2;
+									trace("lmfao you got shot depsite the fact this is nerfed");
+									if (!FlxG.stage.window.title.contains(' - lmfao you got shot depsite the fact this is nerfed'))
+									{
+										FlxG.stage.window.title += " - bet you didn't expect him to shoot twice this time around lol"; // troll
+										new FlxTimer().start(5, _ -> PlayStateUtils.instance.loadWindowTitleData());
+									}
+									dodged = false;
+									shootin = false;
+									defaultCamZoom = 0.6;
+								}
+								else
+								{
+									boyfriend.playAnim('dodge');
+									dodged = false;
+									shootin = false;
+									health += 0.05;
+									defaultCamZoom = 0.6;
+								}
+							});
+						}
+						else
+						{
+							dodged = false;
+							shootin = false;
+							defaultCamZoom = 0.6;
+						}
+					}
+					else
+					{
+						if (doubleBarrel)
+						{
+							defaultCamZoom = 1.25;
+							dodged = false;
+							health += 0.05;
+							new FlxTimer().start(0.275, function(tmr:FlxTimer)
+							{
+								FlxG.sound.play(Paths.sound('funkinAVI/relapseMechs/Shoot'), 0.4);
+								dad.playAnim("attack", true);
+								dad.specialAnim = true;
+								//checkCamPosition();
+								if (!dodged)
+								{
+									FlxG.camera.shake(0.05, 0.05);
+									PlayState.health -= damageAmount / 2;
+									trace("lmfao you got shot depsite the fact this is nerfed");
+									if (!FlxG.stage.window.title.contains(' - lmfao you got shot depsite the fact this is nerfed'))
+									{
+										FlxG.stage.window.title += " - bet you didn't expect him to shoot twice this time around lol"; // troll
+										new FlxTimer().start(5, _ -> PlayStateUtils.instance.loadWindowTitleData());
+									}
+									dodged = false;
+									shootin = false;
+									defaultCamZoom = 0.6;
+								}
+								else
+								{
+									boyfriend.playAnim('dodge');
+									dodged = false;
+									shootin = false;
+									health += 0.05;
+									defaultCamZoom = 0.6;
+								}
+							});
+						}
+						else
+						{
+							boyfriend.playAnim('dodge');
+							dodged = false;
+							shootin = false;
+							health += 0.05;
+							defaultCamZoom = 0.6;
+						}
+					}
+				});
+			});
+		}
+	
+		/**
+		 * Manages the `lyrics` of the song in-game
+		 * @param icon Lyrics icon as string
+		 * @param text The lyrics text
+		 * @param font Lyric font
+		 * @param size Lyric size
+		 * @param duration Delay time to disappear
+		 * @param tweenType Tween ease (as string)
+		 * @param textDelay Text delay. The amount of seconds to type the next word
+		 * 
+		 * @author DEMOLITIONDON96 Ft. Jason
+		 */
+		public function manageLyrics(icon:String = 'bf', text:String = 'swaggers', font:String = 'vcr', size:Int = 15, duration:Float = 5,
+				tweenType:String = 'linear', textDelay:Float = 0.03)
+		{
+			if (!lyricsIcon.visible)
+			{
+				lyricsIcon.visible = true;
+				lyricsIcon.alpha = 0;
+			}
+	
+			lyrics.font = Paths.font(font);
+			lyrics.resetText(text);
+			lyrics.start(textDelay); // currently placeholder time !!
+	
+			if (lyricsTween != null)
+				lyricsTween.cancel();
+	
+			if (iconTween != null)
+				iconTween.cancel();
+	
+			iconTween = FlxTween.tween(lyricsIcon, {
+				'scale.x': 1,
+				'scale.y': 1,
+				alpha: 1
+			}, 0.5, {
+				ease: PlayStateUtils.returnTweenEase(tweenType),
+				onComplete: function(twn:FlxTween)
+				{
+					iconTween = FlxTween.tween(lyricsIcon, {alpha: 0, 'scale.x': 0, 'scale.y': 0}, 0.25, {
+						startDelay: duration,
+						ease: PlayStateUtils.returnTweenEase(tweenType),
+						onComplete: function(twn:FlxTween)
+						{
+							iconTween = null;
+						}
+					});
+				}
+			});
+	
+			lyricsTween = FlxTween.tween(lyrics, {
+				size: size,
+				alpha: 1
+			}, 0.5, {
+				ease: PlayStateUtils.returnTweenEase(tweenType),
+				onComplete: function(twn:FlxTween)
+				{
+					lyricsTween = FlxTween.tween(lyrics, {alpha: 0, size: 0}, 0.25, {
+						startDelay: duration,
+						ease: PlayStateUtils.returnTweenEase(tweenType),
+						onComplete: function(twn:FlxTween)
+						{
+							lyricsTween = null;
+						}
+					});
+				}
+			});
+		}
+	
+		/**
+		 * # Stage Background Flash Function
+		 *
+		 * Basically the BG Flash used in Isolated but it's now hardcoded and can be used globally now.
+		 * The reasoning for this is cause I'm NOT gonna go and duplicate the flash assets from the episode 1
+		 * stage onto other stages I want to use it at, too much work!
+		 *
+		 * @param flashType - Defines how you want the BG flash handler to behave
+		 * @param settings - A structure with the flashing options.
+		 *
+		 * @author DEMOLITIONDON96 ft. Jason
+		 */
+		public function camFlashSystem(flashType:FlashType, settings:FlashingSettings)
+		{
+			// null checkes
+			if (settings.colors == null) settings.colors = [255, 255, 255];
+			if (settings.timer == null) settings.timer = 3;
+			if (settings.ease == null) settings.ease = FlxEase.linear;
+			if (settings.alpha == null) settings.alpha = .5;
+	
+			// due to the fact that some silly 19 year old guy called demo overuses the shit
+			// out of the zooms this has to exist in cases of emergency   - jason the silly !!
+			// stageBGFlash.setPosition(-FlxG.width * FlxG.camera.zoom, -FlxG.height * FlxG.camera.zoom);
+	
+			if (ClientPrefs.flashing && stageBGFlash != null)
+			{
+				switch (flashType)
+				{
+					case BG_FLASH:
+						if (settings.alpha > 1 || settings.alpha < 0) // prevents a crash from making a dumb mistake
+							stageBGFlash.alpha = 0.5;
+						else
+							stageBGFlash.alpha = settings.alpha;
+	
+						if (settings.timer <= 0) // another check to prevent a crash
+							settings.timer = 1;
+	
+						if (settings.colors[0] == 0 && settings.colors[1] == 0 && settings.colors[2] == 0) // blend check cause it makes it look cool
+							stageBGFlash.blend = NORMAL;
+						else
+							stageBGFlash.blend = ADD;
+	
+						stageBGFlash.color = FlxColor.fromRGB(settings.colors[0], settings.colors[1], settings.colors[2], 255);
+	
+						if (BGFlashTween != null) // makes it so it won't look wonky, visually
+							BGFlashTween.cancel();
+	
+						BGFlashTween = FlxTween.tween(stageBGFlash, {alpha: 0}, settings.timer, {
+							ease: settings.ease,
+							onComplete: function(twn:FlxTween)
+							{
+								BGFlashTween = null;
+							}
+						});
+	
+					case BG_DARK:
+						if (stageBGFlash != null)
+						{
+							if (BGFlashTween != null)
+								BGFlashTween.cancel();
+	
+							if (stageBGFlash.blend != NORMAL)
+								stageBGFlash.blend = NORMAL;
+	
+							if (settings.timer <= 0)
+								settings.timer = 1;
+	
+							stageBGFlash.color = FlxColor.BLACK; // hardcoded to be black
+	
+							BGFlashTween = FlxTween.tween(stageBGFlash, {alpha: settings.alpha}, settings.timer, {
+								ease: settings.ease,
+								onComplete: function(twn:FlxTween)
+								{
+									BGFlashTween = null;
+								}
+							});
+						}
+					
+					case CAM_FLASH_FANCY:
+						if (blendFlash != null)
+						{
+							if (settings.alpha > 1 || settings.alpha < 0) // prevents a crash from making a dumb mistake
+								blendFlash.alpha = 0.5;
+							else
+								blendFlash.alpha = settings.alpha;
+		
+							if (settings.timer <= 0) // another check to prevent a crash
+								settings.timer = 1;
+		
+							if (settings.colors[0] == 0 && settings.colors[1] == 0 && settings.colors[2] == 0) // turn it to white, cause I can
+								blendFlash.color = FlxColor.WHITE;
+	
+							if (flashTween != null)
+								flashTween.cancel();
+	
+							blendFlash.color = FlxColor.fromRGB(settings.colors[0], settings.colors[1], settings.colors[2], 255);
+	
+							flashTween = FlxTween.tween(blendFlash, {alpha: 0}, settings.timer, {
+								ease: settings.ease,
+								onComplete: function(twn:FlxTween)
+								{
+									flashTween = null;
+								}
+							});
+						}
+				}
+			}
+		}
 
 	function openPauseMenu()
 	{
@@ -3757,7 +4292,7 @@ class PlayState extends MusicBeatState
 				switch(value1.toLowerCase().trim()) {
 					case 'gf' | 'girlfriend':
 						charType = 2;
-					case 'dad' | 'opponent':
+					case 'dad':
 						charType = 1;
 					default:
 						charType = Std.parseInt(value1);
@@ -3909,6 +4444,7 @@ class PlayState extends MusicBeatState
 	{
 		if(isDad)
 		{
+			cameraOnDad = true;
 			camFollow.set(dad.getMidpoint().x + 150, dad.getMidpoint().y - 100);
 			camFollow.x += dad.cameraPosition[0] + opponentCameraOffset[0];
 			camFollow.y += dad.cameraPosition[1] + opponentCameraOffset[1];
@@ -3916,6 +4452,7 @@ class PlayState extends MusicBeatState
 		}
 		else
 		{
+			cameraOnDad = false;
 			camFollow.set(boyfriend.getMidpoint().x - 100, boyfriend.getMidpoint().y - 100);
 			camFollow.x -= boyfriend.cameraPosition[0] - boyfriendCameraOffset[0];
 			camFollow.y += boyfriend.cameraPosition[1] + boyfriendCameraOffset[1];
@@ -5209,6 +5746,7 @@ class PlayState extends MusicBeatState
 			{
 				FlxG.camera.zoom += 0.015 * camZoomingMult;
 				camHUD.zoom += 0.03 * camZoomingMult;
+				camNotes.zoom += 0.01 * camZoomingMult;
 			}
 
 			if (SONG.notes[curSection].changeBPM)

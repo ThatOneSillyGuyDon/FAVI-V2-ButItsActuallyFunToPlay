@@ -1,15 +1,6 @@
 package states.menus;
 
 import haxe.Json;
-import base.dependency.Discord;
-import base.song.Conductor;
-import flixel.FlxG;
-import flixel.FlxSprite;
-import flixel.addons.display.FlxBackdrop;
-import flixel.addons.display.FlxGridOverlay;
-import flixel.text.FlxText;
-import flixel.tweens.*;
-import flixel.util.FlxColor;
 import openfl.filters.ShaderFilter;
 import sys.io.File;
 /** Credit shit or smth !!
@@ -51,11 +42,9 @@ class CreditsMenu extends MusicBeatState
 	{
 		FlxG.stage.window.title = "Funkin.avi - Credits";
 
-		path = 'menus/Funkin_avi/credits';
-
-		#if DISCORD_RPC
-		Discord.changePresence('BROWSING THE CREDITS', 'Credits Menu', 'icon', 'book');
-		#end
+		path = 'Funkin_avi/credits';
+		
+		DiscordClient.changePresence('BROWSING THE CREDITS', 'Credits Menu', 'icon', 'book');
 
 		FlxG.sound.playMusic(Paths.music('funkinAVI/credits'));
 
@@ -110,13 +99,13 @@ class CreditsMenu extends MusicBeatState
 
 		cool_1980_shader = new FlxRuntimeShader(Shaders.filter1990, null, 140);
 
-		if (!Init.trueSettings.get('Disable Screen Shaders'))
+		if (ClientPrefs.shaders)
 			FlxG.camera.setFilters([
 				new ShaderFilter(cool_1980_shader),
 				new ShaderFilter(new FlxRuntimeShader(Shaders.monitorFilter, null, 140))
 			]);
 
-		if (!Init.trueSettings.get('Low Quality'))
+		if (!ClientPrefs.lowQuality)
 		{
 			var scratchStuff:FlxSprite = new FlxSprite();
 			scratchStuff.frames = Paths.getSparrowAtlas('filters/scratchShit');
@@ -148,25 +137,23 @@ class CreditsMenu extends MusicBeatState
 
 		shaderTime = Conductor.songPosition / 1000;
 
-		if (!Init.trueSettings.get('Disable Screen Shaders'))
+		if (ClientPrefs.shaders)
 		{
 			cool_1980_shader.setFloat('iTime', shaderTime);
 		}
 
-		EngineTools.cameraBumpingZooms(FlxG.camera, 1, null, elapsed);
-
-		if (Controls.justPressed("ui_up"))
+		if (controls.UI_UP_P)
 		{
 			changeSelection(-1);
 		}
-		else if (Controls.justPressed("ui_down"))
+		else if (controls.UI_DOWN_P)
 		{
 			changeSelection(1);
 		}
 
-		if (Controls.justPressed("back"))
+		if (controls.BACK)
 		{
-			Main.switchState(this, new MainMenu());
+			MusicBeatState.switchState(new MainMenu());
 			Conductor.changeBPM(50); // changes back to titlescreen bpm
 			FlxG.sound.playMusic(Paths.music('freakyMenu'), 1); // resets music back to menu music
 			FlxG.sound.music.fadeIn();
@@ -176,8 +163,6 @@ class CreditsMenu extends MusicBeatState
 	override function destroy()
 	{
 		super.destroy();
-
-		EngineTools.resetMenuMusic();
 	}
 
 	function jsonStuff()
@@ -206,7 +191,7 @@ class CreditsMenu extends MusicBeatState
 		creditIconSprite.setGraphicSize(Std.int(creditIconSprite.width * creditArray[curSelected][6]));
 		creditIconSprite.setPosition(creditArray[curSelected][4], creditArray[curSelected][5]);
 
-		FlxG.sound.play(Paths.sound('base/menus/scrollMenu'), 0.6);
+		FlxG.sound.play(Paths.sound('scrollMenu'), 0.6);
 
 		reloadText(creditArray[curSelected][7]);
 

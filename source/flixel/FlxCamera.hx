@@ -1561,7 +1561,7 @@ class FlxCamera extends FlxBasic
 	 */
 	public function flash(Color:FlxColor = FlxColor.WHITE, Duration:Float = 1, ?OnComplete:Void->Void, Force:Bool = false):Void
 	{
-		if (ClientPrefs.flashing || (!Force && (_fxFlashAlpha > 0.0)))
+		if (!ClientPrefs.flashing || (!Force && (_fxFlashAlpha > 0.0)))
 			return;
 
 		_fxFlashColor = Color;
@@ -1636,7 +1636,7 @@ class FlxCamera extends FlxBasic
 	/**
 	 * Sets the filter array to be applied to the camera.
 	 */
-	 @:deprecated('setFilters is deprecated. Use the filters array instead.')
+	 //@:deprecated('setFilters is deprecated. Use the filters array instead.')
 	public function setFilters(filters:Array<BitmapFilter>):Void
 	{
 		this.filters = filters;

@@ -1,7 +1,6 @@
 package backend.windows;
 
 //taken from Wednesday Infidelity cus lunar allowed it lmao !! (https://twitter.com/lunarcleint/status/1573550933530681344)
-#if OnWindows
 class CppAPI
 {
 	#if cpp
@@ -35,4 +34,3 @@ class CppAPI
     }
 	#end
 }
-#end

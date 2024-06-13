@@ -195,6 +195,8 @@ class ChartingState extends MusicBeatState
 				player2: 'dad',
 				voiceSfx1: 'Player',
 				voiceSfx2: 'Opponent',
+				composer: 'Unknown',
+				charter: 'Unknown',
 				gfVersion: 'gf',
 				speed: 1,
 				stage: 'stage',

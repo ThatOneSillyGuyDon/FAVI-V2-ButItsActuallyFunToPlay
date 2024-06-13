@@ -292,6 +292,8 @@ class ModchartEditorState extends MusicBeatState
 				voiceSfx1: 'Player',
 				voiceSfx2: 'Opponent',
 				gfVersion: 'gf',
+                composer: 'Unknown',
+                charter: 'Unknown',
 				speed: 1,
 				stage: 'stage',
 				validScore: false

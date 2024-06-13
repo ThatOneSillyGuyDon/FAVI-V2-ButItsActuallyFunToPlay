@@ -13,8 +13,6 @@ import openfl.filters.BitmapFilter;
 import openfl.utils.Assets as OpenFlAssets;
 import openfl.filters.ShaderFilter;
 
-using StringTools;
-
 class FreeplayCategories extends MusicBeatState {
 
 	//var unfinishedText:FlxText;
@@ -62,7 +60,7 @@ class FreeplayCategories extends MusicBeatState {
 	    		freeplayCats = ['episodes', 'extras', 'legacy'];
     		//}
 
-        BG = new FlxSprite().loadGraphic(Paths.image('menus/Funkin_avi/freeplay/category/freeplayBG'));
+        BG = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/freeplay/category/freeplayBG'));
 		BG.screenCenter();
 		add(BG);
 
@@ -73,11 +71,11 @@ class FreeplayCategories extends MusicBeatState {
 		FlxTween.tween(backdrop, {alpha: 1}, 0.5, {ease: FlxEase.quadOut});
 		add(backdrop);
 
-		textInk = new FlxSprite().loadGraphic(Paths.image('menus/Funkin_avi/freeplay/category/textBoxes'));
+		textInk = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/freeplay/category/textBoxes'));
 		textInk.screenCenter();
 		add(textInk);
 
-		welcome = new FlxSprite().loadGraphic(Paths.image('menus/Funkin_avi/freeplay/category/freeplayTxt'));
+		welcome = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/freeplay/category/freeplayTxt'));
 		welcome.screenCenter();
 		add(welcome);
 
@@ -94,7 +92,7 @@ class FreeplayCategories extends MusicBeatState {
 
 		#if desktop
 		// Updating Discord Rich Presence
-		Discord.changePresence("PICKING CATEGORY", "Freeplay: Category Menu", 'icon', 'disc-player');
+		DiscordClient.changePresence("PICKING CATEGORY", "Freeplay: Category Menu", 'icon', 'disc-player');
 		#end
 
 		Application.current.window.title = "Funkin.avi - Freeplay: Category Menu";
@@ -106,7 +104,7 @@ class FreeplayCategories extends MusicBeatState {
 		for (i in 0...freeplayCats.length)
 		{
 			var offset:Float = 108 - (Math.max(freeplayCats.length, 4) - 4) * 80;
-			var catsBanners:FlxSprite = new FlxSprite(0, 150).loadGraphic(Paths.image("menus/Funkin_avi/freeplay/category/menuOptions/" + freeplayCats[i]));
+			var catsBanners:FlxSprite = new FlxSprite(0, 150).loadGraphic(Paths.image("Funkin_avi/freeplay/category/menuOptions/" + freeplayCats[i]));
 			catsBanners.scale.set(0.6, 0.6);
 			catsBanners.ID = i;
 			grpCats.add(catsBanners);
@@ -130,7 +128,7 @@ class FreeplayCategories extends MusicBeatState {
 
 		grpCats.members[2].flipX = true; // man
 
-		if(!Init.trueSettings.get('Low Quality')) {
+		if(!ClientPrefs.lowQuality) {
 			var scratchStuff:FlxSprite = new FlxSprite();
 			scratchStuff.frames = Paths.getSparrowAtlas('filters/scratchShit');
 			scratchStuff.animation.addByPrefix('idle', 'scratch thing 1', 24, true);
@@ -162,10 +160,10 @@ class FreeplayCategories extends MusicBeatState {
 
     override public function update(elapsed:Float){
 
-		var up = Controls.pressed('ui_left');
-		var down = Controls.pressed('ui_right');
-		var up_p = Controls.justPressed('ui_left');
-		var down_p = Controls.justPressed("ui_right");
+		var up = controls.UI_LEFT;
+		var down = controls.UI_RIGHT;
+		var up_p = controls.UI_LEFT_P;
+		var down_p = controls.UI_RIGHT_P;
 		var controlArray:Array<Bool> = [up, down, up_p, down_p];
 
 		arrowFlash.setFloat('progress', flashThing);
@@ -197,7 +195,7 @@ class FreeplayCategories extends MusicBeatState {
 						if (curSelected >= 2)
 							curSelected = -1; // WHY IS IT -1??!??!?!??!!??!?!
 
-						FlxG.sound.play(Paths.sound('base/menus/scrollMenu'));
+						FlxG.sound.play(Paths.sound('scrollMenu'));
 					}
 
 					curSelected = FlxMath.wrap(Math.floor(curSelected) + changeValue, 0, freeplayCats.length - 1);
@@ -211,15 +209,15 @@ class FreeplayCategories extends MusicBeatState {
 			counterControl = 0;
 		}
 		
-		if ((Controls.getPressEvent("back"))) {
-			Main.switchState(this, new states.menus.MainMenu());
+		if (controls.BACK) {
+			MusicBeatState.switchState(new MainMenu());
 		}
 
 
-        if ((Controls.getPressEvent("accept"))){
+        if (controls.ACCEPT){
 			FlxG.mouse.visible = false;
-            	states.menus.freeplay.FreeplaySongs.freeplayMenuList = curSelected;
-		Main.switchState(this, new states.menus.freeplay.FreeplaySongs());
+            	FreeplaySongs.freeplayMenuList = curSelected;
+				MusicBeatState.switchState(new FreeplaySongs());
         }
 
 		if (curSelected != lastCurSelected)
@@ -245,7 +243,7 @@ class FreeplayCategories extends MusicBeatState {
 				{
 					FlxG.mouse.visible = false;
 					FreeplaySongs.freeplayMenuList = curSelected;
-					Main.switchState(this, new FreeplaySongs());
+					MusicBeatState.switchState(new FreeplaySongs());
 				}
 			}
 
@@ -256,7 +254,7 @@ class FreeplayCategories extends MusicBeatState {
 		{
 			if (selection != curSelected)
 			{
-				FlxG.sound.play(Paths.sound('base/menus/scrollMenu'));
+				FlxG.sound.play(Paths.sound('scrollMenu'));
 			}
 	
 			if (curSelected < 0)
@@ -292,7 +290,7 @@ class FreeplayCategories extends MusicBeatState {
 
 		grpCats.forEach(function(spr:FlxSprite)
 		{
-			if (!Init.trueSettings.get('Disable Screen Shaders')) spr.shader = null;
+			if (ClientPrefs.shaders) spr.shader = null;
 			unselectTween = FlxTween.tween(
 				spr, 
 				{
@@ -310,7 +308,7 @@ class FreeplayCategories extends MusicBeatState {
 				});
 		});
 
-		if (!Init.trueSettings.get('Disable Screen Shaders')) grpCats.members[Math.floor(curSelected)].shader = arrowFlash;
+		if (ClientPrefs.shaders) grpCats.members[Math.floor(curSelected)].shader = arrowFlash;
 		selectTween = FlxTween.tween(
 		grpCats.members[Math.floor(curSelected)], 
 		{

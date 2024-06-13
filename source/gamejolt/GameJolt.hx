@@ -446,7 +446,7 @@ class GameJoltLogin extends MusicBeatState
             FlxG.save.flush();
             FlxG.sound.play(Paths.sound('base/menus/confirmMenu'), 0.7, false, null, true, function(){
                 FlxG.save.flush();
-                Main.switchState(this, new MainMenu());
+                MusicBeatState.switchState(new MainMenu());
             });
         });
 
@@ -527,7 +527,7 @@ class GameJoltLogin extends MusicBeatState
         {
             FlxG.save.flush();
             FlxG.mouse.visible = false;
-            Main.switchState(this, new MainMenu());       
+            MusicBeatState.switchState(new MainMenu());       
         }
 
         super.update(elapsed);

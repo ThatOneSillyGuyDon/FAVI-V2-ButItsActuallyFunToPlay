@@ -234,9 +234,7 @@ class MainMenu extends MusicBeatState
 		transIn = FlxTransitionableState.defaultTransIn;
 		transOut = FlxTransitionableState.defaultTransOut;
 
-		#if DISCORD_RPC
-		Discord.changePresence('MENU SCREEN', 'Main Menu', 'icon', 'mouse');
-		#end
+		DiscordClient.changePresence('MENU SCREEN', 'Main Menu', 'icon', 'mouse');
 
 		// uh
 		persistentUpdate = persistentDraw = true;
@@ -440,12 +438,6 @@ class MainMenu extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
-		var up = controls.UI_UP;
-		var down = controls.UI_DOWN;
-		var up_p = controls.UI_UP_P;
-		var down_p = controls.UI_DOWN_P;
-		var controlArray:Array<Bool> = [up, down, up_p, down_p];
-
 		if (!CoolUtil.findCoreFile())
 		{
 			new FlxTimer().start(1.0, function(tmr:FlxTimer)
@@ -561,56 +553,38 @@ class MainMenu extends MusicBeatState
 				FlxG.sound.muteKeys = [FlxKey.ZERO, FlxKey.NUMPADZERO];
 		}
 
-		if ((controlArray.contains(true)) && (!selectedSomethin))
+		var changeValue:Int = 0;
+
+		if (!selectedSomethin)
 		{
-			for (i in 0...controlArray.length)
+			if ((controls.UI_UP_P))
 			{
-				// here we check which keys are pressed
-				if (controlArray[i] == true)
-				{
-					/*
-						i > 1 is single pressá
-						up is 2, down is 3
-					 */
-
-					var changeValue:Int = 0;
-
-					if (i > 1)
-					{
-						if (i == 2)
-							changeValue -= 1;
-						else if (i == 3)
-							changeValue += 1;
-
-						FlxG.sound.play(Paths.sound('base/menus/scrollMenu'));
-					}
-
-					curSelected = FlxMath.wrap(Math.floor(curSelected) + changeValue, 0, optionShit.length - 1);
-				}
-				//
+				FlxG.sound.play(Paths.sound('scrollMenu'));
+				changeValue -= 1;
 			}
+
+			if ((controls.UI_DOWN_P))
+			{
+				FlxG.sound.play(Paths.sound('scrollMenu'));
+				changeValue += 1;
+			}
+
+			if ((controls.BACK))
+			{
+				selectedSomethin = true;
+				FlxG.sound.play(Paths.sound('base/menus/cancelMenu'));
+				MusicBeatState.switchState(new TitleState());
+			}
+
+			if ((controls.ACCEPT))
+				enterSelection();
+	
 		}
-		else
-		{
-			// reset variables
-			counterControl = 0;
-		}
+		
+		curSelected = FlxMath.wrap(Math.floor(curSelected) + changeValue, 0, optionShit.length - 1);
 
 		if (ClientPrefs.shaders)
 			darkFilter.setFloat('iTime', elapsed);
-
-		if ((controls.BACK) && (!selectedSomethin))
-		{
-			//
-			selectedSomethin = true;
-			FlxG.sound.play(Paths.sound('base/menus/cancelMenu'));
-			Main.switchState(this, new TitleState());
-		}
-
-		if ((controls.ACCEPT) && (!selectedSomethin))
-		
-			enterSelection();
-		}
 
 		// It actually makes sense since some pepole doesn't know we moved to a new engine or just think we ported the psych editor lol
 		/*if (FlxG.keys.justPressed.SEVEN)

@@ -301,13 +301,13 @@ class FreeplaySongs extends MusicBeatState
 		for (i in 0...songs.length)
 		{
 			var songText2:FlxText = new FlxText(0, 0, 470, CoolUtil.swapSpaceDash(songs[i].name));
-			var songText:Alphabet = new Alphabet(0, (70 * i) + 30, CoolUtil.swapSpaceDash(songs[i].name), true, false);
+			var songText:Alphabet = new Alphabet(0, (70 * i) + 30, CoolUtil.swapSpaceDash(songs[i].name), true);
 			var icon:HealthIcon = new HealthIcon(songs[i].character);
 
 			if (freeplayMenuList == 2)
 			{
-				songText.isMenuItemCenter = true;
-				songText.xAdd = -80;
+				songText.isMenuItem = true;
+				songText.alignment = CENTERED;
 
 				icon.sprTracker = songText;
 			}
@@ -402,7 +402,7 @@ class FreeplaySongs extends MusicBeatState
 			GameData.saveShit();
 		}
 
-		if(!Init.trueSettings.get('Low Quality'))
+		if(!ClientPrefs.lowQuality)
 		{
 			var scratchStuff:FlxSprite = new FlxSprite();
 			scratchStuff.frames = Paths.getSparrowAtlas('filters/scratchShit');
@@ -422,7 +422,7 @@ class FreeplaySongs extends MusicBeatState
 			grain.scale.y = 1.1;
 			add(grain);
 
-			if (freeplayMenuList != 2 && !Init.trueSettings.get('Low Quality'))
+			if (freeplayMenuList != 2)
 			{
 				gradient = new FlxSprite().loadGraphic(Paths.image('UI/gimmicks/gradient'));
 				gradient.screenCenter();
@@ -453,23 +453,12 @@ class FreeplaySongs extends MusicBeatState
 					if (!existingSongs.contains(i.toLowerCase()))
 					{
 						var icon:String = 'gf';
-						var chartExists:Bool = FileSystem.exists(Paths.songJson(i, i));
-						if (chartExists)
-						{
-							var castSong:SwagSong = Song.loadFromJson(i, i);
-							icon = (castSong != null) ? castSong.player2 : 'gf';
-							addSong(CoolUtil.spaceToDash(castSong.song), 1, icon, FlxColor.WHITE, 'NOT FOUND', 'UNKNOWN', FlxColor.WHITE);
-						}
+						var castSong:SwagSong = Song.loadFromJson(i, i);
+						icon = (castSong != null) ? castSong.player2 : 'gf';
+						addSong(CoolUtil.spaceToDash(castSong.song), 1, icon, FlxColor.WHITE, 'NOT FOUND', 'UNKNOWN', FlxColor.WHITE);
 					}
 				}
 			}
-	}
-
-	function checkProgression(week:String):Bool
-	{
-		// here we check if the target week is locked;
-		var weekProgress = Main.weeksMap.get(week);
-		return weekProgress.startsLocked;
 	}
 
 	public function addSong(songName:String, weekNum:Int, songCharacter:String, songColor:FlxColor, composer:String, rankID:String, rankColor:FlxColor)
@@ -502,14 +491,12 @@ class FreeplaySongs extends MusicBeatState
 		if (FlxG.sound.music != null && FlxG.sound.music.playing && !closedState && freeplayMenuList != 2)
 			Conductor.songPosition = FlxG.sound.music.time;
 
-		EngineTools.cameraBumpingZooms(FlxG.camera, 1, null, elapsed);
-
 		if (musicNotes != null)
 			{
 				musicNotes.y = -110 + Math.sin(Conductor.songPosition/850)*((FlxG.height * 0.015));
 			}
 
-		if (!Init.trueSettings.get('Disable Screen Shaders')) // bye bye lag
+		if (ClientPrefs.shaders) // bye bye lag
 		{
 			switch (freeplayMenuList)
 			{
@@ -535,7 +522,7 @@ class FreeplaySongs extends MusicBeatState
 			}
 		}
 
-		if(songs[curSelected].name != "don't-cross!" && freeplayMenuList == 1 && grpSongs.members[6] != null && grpSongs.members[6].exists)
+		if(songs[curSelected].name != "Don't Cross!" && freeplayMenuList == 1 && grpSongs.members[6] != null && grpSongs.members[6].exists)
 			{
 				grpSongs.members[6].shake(11, 10, 0.1);
 				iconArray[6].shake(4, 30, 0.1);
@@ -544,14 +531,13 @@ class FreeplaySongs extends MusicBeatState
 		if (bg != null && mainColor != null)
 			FlxTween.color(bg, 0.35, bg.color, mainColor);
 
-		var lerpVal = Main.framerateAdjust(0.1);
-		lerpScore = Math.floor(FlxMath.lerp(lerpScore, intendedScore, lerpVal));
+		lerpScore = Math.floor(FlxMath.lerp(lerpScore, intendedScore, CoolUtil.boundTo(elapsed * 24, 0, 1)));
 
 		if (Math.abs(lerpScore - intendedScore) <= 10)
 			lerpScore = intendedScore;
  
-		var upP = Controls.getPressEvent((freeplayMenuList == 2 ? "ui_up" : "ui_left"));
-		var downP = Controls.getPressEvent((freeplayMenuList == 2 ? "ui_down" : "ui_right"));
+		var upP = freeplayMenuList == 2 ? controls.UI_UP_P : controls.UI_LEFT_P;
+		var downP = freeplayMenuList == 2 ? controls.UI_DOWN_P : controls.UI_RIGHT_P;
 		var accepted = controls.ACCEPT;
 
 		if (upP)
@@ -566,31 +552,28 @@ class FreeplaySongs extends MusicBeatState
 				changeSongPlaying();
 			}
 
-		if (Controls.getPressEvent("back"))
+		if (controls.BACK)
 		{
 			if (!FlxG.keys.pressed.SHIFT)
 			{
-				FlxG.sound.play(Paths.sound('base/menus/cancelMenu'));
+				FlxG.sound.play(Paths.sound('cancelMenu'));
 				FlxG.sound.music.stop();
 			}
 			threadActive = false;
 			FlxG.sound.playMusic(Paths.music('freakyMenu'), 1);
-			Main.switchState(this, new FreeplayCategories());
+			MusicBeatState.switchState(new FreeplayCategories());
 		}
 
 		if (accepted)
 		{
-			var song = songs[curSelected].name.toLowerCase();
-
-			var poop:String = ScoreUtils.formatSong(song, CoolUtil.difficulties.indexOf(existingDifficulties[curSelected][curDifficulty]));
+			var song:String = Paths.formatToSongPath(songs[curSelected].name);
+			var poop:String = Highscore.formatSong(song, curDifficulty);
 
 			PlayState.SONG = Song.loadFromJson(poop, song);
-
-			PlayState.gameplayMode = FREEPLAY;
-			PlayState.storyDifficulty = curDifficulty;
 			PlayState.storyWeek = songs[curSelected].week;
 
-			CoolUtil.difficultyString = existingDifficulties[curSelected][curDifficulty];
+			PlayState.isStoryMode = false;
+			PlayState.storyDifficulty = curDifficulty;
 
 			threadActive = false;
 
@@ -602,7 +585,7 @@ class FreeplaySongs extends MusicBeatState
 					FlxG.sound.music.stop();
 
 				PlayState.SONG.validScore = false;
-				Main.switchState(this, new states.editors.OriginalChartingState());
+				LoadingState.loadAndSwitchState(new ChartingState());
 			}
 			else
 			{
@@ -613,7 +596,7 @@ class FreeplaySongs extends MusicBeatState
 					if (FlxG.sound.music != null)
 						FlxG.sound.music.stop();
 
-					Main.switchState(this, new PlayState());
+					LoadingState.loadAndSwitchState(new PlayState());
 				});
 			}
 		}
@@ -666,7 +649,7 @@ class FreeplaySongs extends MusicBeatState
 		if (curDifficulty > existingDifficulties[curSelected].length - 1)
 			curDifficulty = 0;
 
-		intendedScore = ScoreUtils.getScore(songs[curSelected].name, curDifficulty);
+		intendedScore = Highscore.getScore(songs[curSelected].name, curDifficulty);
 
 		
 		difficultyRank = songs[curSelected].difficultyRank;
@@ -685,12 +668,12 @@ class FreeplaySongs extends MusicBeatState
 	{
 		FlxG.sound.play(Paths.sound('base/menus/scrollMenu'), 0.4);
 
-		if(!Init.trueSettings.get('Disable Flashing Lights'))
+		if(ClientPrefs.flashing)
 			FlxG.camera.flash(FlxColor.BLACK, 0.1);
 		
 		curSelected = FlxMath.wrap(curSelected + change, 0, songs.length - 1);
 
-		intendedScore = ScoreUtils.getScore(songs[curSelected].name, curDifficulty);
+		intendedScore = Highscore.getScore(songs[curSelected].name, curDifficulty);
 		
 		var songName:String = CoolUtil.dashToSpace(songs[curSelected].name);
 		var composerName:String = songs[curSelected].composer;
@@ -717,7 +700,7 @@ class FreeplaySongs extends MusicBeatState
 
 		// set up color stuffs
 		mainColor = songs[curSelected].color;
-		PauseSubstate.colorSetup = songs[curSelected].color;
+		PauseSubState.colorSetup = songs[curSelected].color;
 
 		// song switching stuffs
 		var bullShit:Int = 0;
@@ -779,7 +762,7 @@ class FreeplaySongs extends MusicBeatState
 		changeSongPlaying();
 		updateDiscord();
 
-		if (!Init.trueSettings.get('Disable Screen Shaders')) // to prevent lag
+		if (ClientPrefs.shaders) // to prevent lag
 		{
 			// ah yes, formatting made by vsc itself - jason
 			if (freeplayMenuList != 2)
@@ -787,7 +770,7 @@ class FreeplaySongs extends MusicBeatState
 				switch (songs[curSelected].name.toLowerCase())
 				{
 					case 'bless':
-						if(!Init.trueSettings.get('Low Quality')) {
+						if(!ClientPrefs.lowQuality) {
 							FlxG.camera.setFilters(
 								[
 									new ShaderFilter(getBlessed), 
@@ -795,7 +778,7 @@ class FreeplaySongs extends MusicBeatState
 						}
 
 					case 'malfunction':
-						if(!Init.trueSettings.get('Low Quality')) {
+						if(!ClientPrefs.lowQuality) {
 							FlxG.camera.setFilters(
 								[
 									new ShaderFilter(glitchyStuff), 
@@ -805,7 +788,7 @@ class FreeplaySongs extends MusicBeatState
 						FlxG.camera.shake(0.01, 0.001);
 
 					case "don't-cross!":
-						if(!Init.trueSettings.get('Low Quality')) {
+						if(!ClientPrefs.lowQuality) {
 							FlxG.camera.setFilters(
 								[
 									new ShaderFilter(chromAberration),
@@ -813,11 +796,11 @@ class FreeplaySongs extends MusicBeatState
 								]);
 						}
 
-						if(Init.trueSettings.get('Screen Shake'))
+						if(ClientPrefs.shaking)
 						FlxG.camera.shake(0.015, FlxMath.MAX_VALUE_FLOAT);
 
 					case 'scrapped':
-						if(!Init.trueSettings.get('Low Quality')) {
+						if(!ClientPrefs.lowQuality) {
 							FlxG.camera.setFilters(
 								[
 									new ShaderFilter(smilesShader),
@@ -827,7 +810,7 @@ class FreeplaySongs extends MusicBeatState
 						FlxG.camera.shake(0.01, 0.001);
 
 					case 'cycled-sins':
-						if(!Init.trueSettings.get('Low Quality')) {
+						if(!ClientPrefs.lowQuality) {
 							FlxG.camera.setFilters(
 								[
 									new ShaderFilter(chromAberration),
@@ -839,11 +822,11 @@ class FreeplaySongs extends MusicBeatState
 						add(bg);
 
 					case 'twisted-grins' | 'resentment' | 'mortiferum-risus':
-						if(!Init.trueSettings.get('Low Quality'))
+						if(!ClientPrefs.lowQuality)
 							FlxG.camera.setFilters([new ShaderFilter(smilesShader)]);
 
 					case 'mercy' | 'affliction':
-						if(!Init.trueSettings.get('Low Quality')) {
+						if(!ClientPrefs.lowQuality) {
 						FlxG.camera.setFilters(
 							[
 								new ShaderFilter(mercyShader),
@@ -854,7 +837,7 @@ class FreeplaySongs extends MusicBeatState
 					case 'birthday':
 						if (freeplayMenuList == 3)
 						{
-							if (!Init.trueSettings.get('Low Quality'))
+							if (!ClientPrefs.lowQuality)
 							{
 								FlxG.camera.setFilters(
 								[
@@ -872,7 +855,7 @@ class FreeplaySongs extends MusicBeatState
 						add(bg);
 					
 					case 'devilish-deal' | 'delusional':
-						if(!Init.trueSettings.get('Low Quality'))
+						if(!ClientPrefs.lowQuality)
 							FlxG.camera.setFilters([new ShaderFilter(chromAberration)]);
 						FlxG.camera.shake(0.01, 0.001);
 

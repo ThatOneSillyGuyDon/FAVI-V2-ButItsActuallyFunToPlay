@@ -26,6 +26,13 @@ class CoolUtil
 
 	public static var difficulties:Array<String> = [];
 
+	public function new()
+	{
+			staticAccess = this;
+	}
+	
+	public static var staticAccess:CoolUtil;
+
 	inline public static function quantize(f:Float, snap:Float){
 		// changed so this actually works lol
 		var m:Float = Math.fround(f * snap);
@@ -58,6 +65,15 @@ class CoolUtil
 		return Math.max(min, Math.min(max, value));
 	}
 
+	inline public static function dashToSpace(string:String):String
+		return string.replace("-", " ");
+
+	inline public static function spaceToDash(string:String):String
+		return string.replace(" ", "-");
+
+	inline public static function swapSpaceDash(string:String):String
+		return StringTools.contains(string, '-') ? dashToSpace(string) : spaceToDash(string);
+
 	public static function coolTextFile(path:String):Array<String>
 	{
 		var daList:Array<String> = [];
@@ -74,6 +90,25 @@ class CoolUtil
 
 		return daList;
 	}
+
+	public static function returnAssetsLibrary(library:String, ?subDir:String = 'assets/images'):Array<String>
+		{
+			var libraryArray:Array<String> = [];
+	
+			return try
+			{
+				for (folder in FileSystem.readDirectory('$subDir/$library'))
+					if (!folder.contains('.'))
+						libraryArray.push(folder);
+				libraryArray;
+			}
+			catch (e)
+			{
+				trace('$subDir/$library is returning null');
+				[];
+			}
+		}
+		
 	public static function listFromString(string:String):Array<String>
 	{
 		var daList:Array<String> = [];

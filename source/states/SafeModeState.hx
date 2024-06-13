@@ -1,12 +1,6 @@
 package states;
 
-import base.Overlay;
-import flixel.FlxG;
-import flixel.FlxSprite;
 import flixel.input.keyboard.FlxKey;
-import flixel.text.FlxText;
-import flixel.util.FlxTimer;
-import states.MusicBeatState;
 
 class SafeModeState extends MusicBeatState
 {
@@ -26,7 +20,6 @@ class SafeModeState extends MusicBeatState
 
 	override function create()
 	{
-		Overlay.updateDisplayInfo(false, false);
 		lines.resize(40);
 
 		for (i in 0...40)

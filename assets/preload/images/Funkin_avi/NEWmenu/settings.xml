@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="settings.png">
+<SubTexture name="settings Idle0000" x="0" y="253" width="1099" height="200" frameX="-186" frameY="-32" frameWidth="1440" frameHeight="268" />
+<SubTexture name="settings Confirm0000" x="0" y="253" width="1099" height="200" frameX="-186" frameY="-32" frameWidth="1440" frameHeight="268" />
+<SubTexture name="settings Confirm0001" x="0" y="0" width="1260" height="253" frameX="-28" frameY="-33" frameWidth="1316" frameHeight="367" />
+<SubTexture name="settings Confirm0002" x="0" y="253" width="1099" height="200" frameX="-186" frameY="-32" frameWidth="1440" frameHeight="268" />
+<SubTexture name="settings Confirm0003" x="0" y="0" width="1260" height="253" frameX="-28" frameY="-33" frameWidth="1316" frameHeight="367" />
+<SubTexture name="settings Confirm0004" x="0" y="253" width="1099" height="200" frameX="-186" frameY="-32" frameWidth="1440" frameHeight="268" />
+<SubTexture name="settings Confirm0005" x="0" y="0" width="1260" height="253" frameX="-28" frameY="-33" frameWidth="1316" frameHeight="367" />
+<SubTexture name="settings Confirm0006" x="0" y="253" width="1099" height="200" frameX="-186" frameY="-32" frameWidth="1440" frameHeight="268" />
+<SubTexture name="settings Confirm0007" x="0" y="0" width="1260" height="253" frameX="-28" frameY="-33" frameWidth="1316" frameHeight="367" />
+</TextureAtlas>
