@@ -68,7 +68,7 @@ class StoryMenu extends MusicBeatState
 
 		DiscordClient.changePresence('CHOOSING A WEEK', 'Campaign Story Menu');
 
-		spoopy = new FlxSprite().loadGraphic(Paths.image('menus/Funkin_avi/storymenu/spoopy'));
+		spoopy = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/storymenu/spoopy'));
 		spoopy.scrollFactor.set(0, 0);
 		spoopy.setGraphicSize(Std.int(spoopy.width * 1.05));
 		spoopy.updateHitbox();
@@ -77,7 +77,7 @@ class StoryMenu extends MusicBeatState
 		spoopy.antialiasing = true;
 		add(spoopy);
 
-		book = new FlxSprite().loadGraphic(Paths.image('menus/Funkin_avi/storymenu/lethimbook'));
+		book = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/storymenu/lethimbook'));
 		book.scrollFactor.set(0, 0);
 		book.setGraphicSize(Std.int(book.width * 1.1));
 		book.updateHitbox();
@@ -88,7 +88,7 @@ class StoryMenu extends MusicBeatState
 		if (ClientPrefs.shaders) book.shader = blur;
 		add(book);
 
-		ispy = new FlxSprite().loadGraphic(Paths.image('menus/Funkin_avi/storymenu/i_spy'));
+		ispy = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/storymenu/i_spy'));
 		ispy.scrollFactor.set(0, 0);
 		ispy.updateHitbox();
 		ispy.screenCenter();
@@ -102,7 +102,7 @@ class StoryMenu extends MusicBeatState
 
 		for (i in 0...bookImage.length)
 		{
-			var image:FlxSprite = new FlxSprite(100, 0).loadGraphic(Paths.image('menus/Funkin_avi/storymenu/bookPics/' + bookImage[i]));
+			var image:FlxSprite = new FlxSprite(100, 0).loadGraphic(Paths.image('Funkin_avi/storymenu/bookPics/' + bookImage[i]));
 			image.ID = i;
 			image.angle = FlxG.random.float(-15, 18);
 			image.alpha = 0.0001;
@@ -123,7 +123,7 @@ class StoryMenu extends MusicBeatState
 		rankText.size = scoreText.size;
 		rankText.screenCenter(X);
 
-		var ui_tex = Paths.getSparrowAtlas('menus/base/storymenu/campaign_menu_UI_assets');
+		var ui_tex = Paths.getSparrowAtlas('campaign_menu_UI_assets');
 		var yellowBG:FlxSprite = new FlxSprite(0, 56).makeGraphic(FlxG.width, 400, 0xFFF9CF51);
 
 		grpWeekText = new FlxTypedGroup<MenuItem>();
@@ -142,11 +142,11 @@ class StoryMenu extends MusicBeatState
 			{
 				var weekFile:WeekData = WeekData.weeksLoaded.get(WeekData.weeksList[i]);
 				var isLocked:Bool = weekIsLocked(WeekData.weeksList[i]);
-				if(!weekFile.hiddenUntilUnlocked)
+				if(!isLocked || !weekFile.hiddenUntilUnlocked)
 				{
 					loadedWeeks.push(weekFile);
 					WeekData.setDirectoryFromWeek(weekFile);
-					var weekThing:MenuItem = new MenuItem(0, bgSprite.y + 396, WeekData.weeksList[i]);
+					var weekThing:MenuItem = new MenuItem(0, yellowBG.y + yellowBG.height + 10, WeekData.weeksList[i]);
 					weekThing.y += ((weekThing.height + 20) * num);
 					weekThing.targetY = num;
 					grpWeekText.add(weekThing);
@@ -171,13 +171,6 @@ class StoryMenu extends MusicBeatState
 			}
 
 		WeekData.setDirectoryFromWeek(loadedWeeks[0]);
-		var charArray:Array<String> = loadedWeeks[0].weekCharacters;
-		for (char in 0...3)
-		{
-			var weekCharacterThing:MenuCharacter = new MenuCharacter((FlxG.width * 0.25) * (1 + char) - 150, charArray[char]);
-			weekCharacterThing.y += 70;
-			grpWeekCharacters.add(weekCharacterThing);
-		}
 
 		difficultySelectors = new FlxGroup();
 
@@ -382,7 +375,7 @@ class StoryMenu extends MusicBeatState
 	
 				PlayState.storyDifficulty = curDifficulty;
 	
-				PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + diffic, PlayState.storyPlaylist[0].toLowerCase());
+				PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + "-hard", PlayState.storyPlaylist[0].toLowerCase());
 				PlayState.campaignScore = 0;
 				PlayState.campaignMisses = 0;
 				new FlxTimer().start(1, function(tmr:FlxTimer)

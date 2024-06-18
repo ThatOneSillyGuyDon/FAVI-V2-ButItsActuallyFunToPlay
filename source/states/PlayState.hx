@@ -376,9 +376,11 @@ class PlayState extends MusicBeatState
 		// for lua
 		instance = this;
 
+		//PlayStateUtils.instance.loadWindowTitleData(isStoryMode, chartingMode);
+
 		debugKeysChart = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_1'));
 		debugKeysCharacter = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_2'));
-		PauseSubState.songName.text = ""; //Reset to default
+		//PauseSubState.songName.text = ""; //Reset to default
 		playbackRate = ClientPrefs.getGameplaySetting('songspeed', 1);
 
 		keysArray = [
@@ -3634,7 +3636,7 @@ class PlayState extends MusicBeatState
 						if (!FlxG.stage.window.title.contains(' - lmfao you got shot depsite the fact this is nerfed'))
 						{
 							FlxG.stage.window.title += ' - lmfao you got shot depsite the fact this is nerfed'; // troll
-							new FlxTimer().start(5, _ -> PlayStateUtils.instance.loadWindowTitleData());
+							new FlxTimer().start(5, _ -> PlayStateUtils.instance.loadWindowTitleData(isStoryMode, chartingMode));
 						}
 						if (doubleBarrel)
 						{
@@ -3653,7 +3655,7 @@ class PlayState extends MusicBeatState
 									if (!FlxG.stage.window.title.contains(' - lmfao you got shot depsite the fact this is nerfed'))
 									{
 										FlxG.stage.window.title += " - bet you didn't expect him to shoot twice this time around lol"; // troll
-										new FlxTimer().start(5, _ -> PlayStateUtils.instance.loadWindowTitleData());
+										new FlxTimer().start(5, _ -> PlayStateUtils.instance.loadWindowTitleData(isStoryMode, chartingMode));
 									}
 									dodged = false;
 									shootin = false;
@@ -3697,7 +3699,7 @@ class PlayState extends MusicBeatState
 									if (!FlxG.stage.window.title.contains(' - lmfao you got shot depsite the fact this is nerfed'))
 									{
 										FlxG.stage.window.title += " - bet you didn't expect him to shoot twice this time around lol"; // troll
-										new FlxTimer().start(5, _ -> PlayStateUtils.instance.loadWindowTitleData());
+										new FlxTimer().start(5, _ -> PlayStateUtils.instance.loadWindowTitleData(isStoryMode, chartingMode));
 									}
 									dodged = false;
 									shootin = false;

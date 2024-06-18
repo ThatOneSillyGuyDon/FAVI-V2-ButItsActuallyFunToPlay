@@ -3151,10 +3151,10 @@ class PlayStateUtils// extending the class itself incase crashes
             FlxTween.tween(PlayState.camGame, {zoom: zoom}, time, {ease: returnTweenEase(ease), onComplete: e -> PlayState.defaultCamZoom = zoom});
         }
 
-    public function loadWindowTitleData()
-            {
-                
-                if (PlayState.isStoryMode)
+    public function loadWindowTitleData(isStory:Bool, isCharting:Bool)
+    {
+                if (isStory && !isCharting)
+				{
                     switch (PlayState.SONG.song)
                     {
                         case 'Devilish Deal' | 'Isolated' | 'Lunacy' | 'Delusional':
@@ -3165,15 +3165,20 @@ class PlayStateUtils// extending the class itself incase crashes
          	               Application.current.window.title = 'Funkin.avi - Episode W: ' + PlayState.SONG.song + " - Composed by: " + PlayState.SONG.composer + (PlayState.instance.paused ? ' {PAUSED}' : "");			
                         default:
                             Application.current.window.title = 'Funkin.avi - Episode ???: ' + PlayState.SONG.song + " - Composed by: " + PlayState.SONG.composer + (PlayState.instance.paused ? ' {PAUSED}' : "");
-                    }			
-				else if (PlayState.chartingMode)
+                    }	
+				}		
+				else if (isCharting)
+				{
 					if (PlayState.SONG.song == 'Malfunction')
 						Application.current.window.title = 'malsquare.hx - CHEATER MODE ACTIVATED: ' + PlayState.SONG.song + " - Composed by: I CAN SEE YOU CHEATING! - [!CHEATER DETECTED!]" + (PlayState.instance.paused ? ' {PAUSED}' : "");
 					else
 						Application.current.window.title = 'Funkin.avi - TESTING MODE: ' + PlayState.SONG.song + " - Composed by: " + PlayState.SONG.composer + (PlayState.instance.paused ? ' {PAUSED}' : "");
-				else
-                    Application.current.window.title = 'Funkin.avi - Freeplay: ' + PlayState.SONG.song + " - Composed by: " + PlayState.SONG.composer + (PlayState.instance.paused ? ' {PAUSED}' : "");					
-            }
+				}
+				else if (!isStory && !isCharting)
+				{
+                    Application.current.window.title = 'Funkin.avi - Freeplay: ' + PlayState.SONG.song + " - Composed by: " + PlayState.SONG.composer + (PlayState.instance.paused ? ' {PAUSED}' : "");
+				}
+    }
 
 	/**
 	 * ## Built-in Settings Fix

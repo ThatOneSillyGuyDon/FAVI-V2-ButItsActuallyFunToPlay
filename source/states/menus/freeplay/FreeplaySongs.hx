@@ -14,6 +14,7 @@ class FreeplaySongs extends MusicBeatState
 	static var curSelected:Int = 0;
 	var curSongPlaying:Int = -1;
 	var curDifficulty:Int = 1;
+	private static var lastDifficultyName:String = '';
 
 	var scoreText:FlxText;
 	var diffText:FlxText;
@@ -390,6 +391,11 @@ class FreeplaySongs extends MusicBeatState
 			FlxTween.tween(diffText, {alpha: 1}, 1.5, {ease: FlxEase.sineInOut, startDelay: 3});
 		}
 
+		if(lastDifficultyName == '')
+		{
+			lastDifficultyName = CoolUtil.defaultDifficulty;
+		}
+
 		changeSelection();
 		changeDiff();
 
@@ -569,7 +575,7 @@ class FreeplaySongs extends MusicBeatState
 			var song:String = Paths.formatToSongPath(songs[curSelected].name);
 			var poop:String = Highscore.formatSong(song, curDifficulty);
 
-			PlayState.SONG = Song.loadFromJson(poop, song);
+			PlayState.SONG = Song.loadFromJson(song + "-hard", song);
 			PlayState.storyWeek = songs[curSelected].week;
 
 			PlayState.isStoryMode = false;
@@ -640,14 +646,13 @@ class FreeplaySongs extends MusicBeatState
 	function changeDiff(change:Int = 0)
 	{
 		curDifficulty += change;
-		if (lastDifficulty != null && change != 0)
-			while (existingDifficulties[curSelected][curDifficulty] == lastDifficulty)
-				curDifficulty += change;
 
 		if (curDifficulty < 0)
-			curDifficulty = existingDifficulties[curSelected].length - 1;
-		if (curDifficulty > existingDifficulties[curSelected].length - 1)
+			curDifficulty = CoolUtil.difficulties.length-1;
+		if (curDifficulty >= CoolUtil.difficulties.length)
 			curDifficulty = 0;
+
+		lastDifficultyName = CoolUtil.difficulties[curDifficulty];
 
 		intendedScore = Highscore.getScore(songs[curSelected].name, curDifficulty);
 
@@ -671,7 +676,12 @@ class FreeplaySongs extends MusicBeatState
 		if(ClientPrefs.flashing)
 			FlxG.camera.flash(FlxColor.BLACK, 0.1);
 		
-		curSelected = FlxMath.wrap(curSelected + change, 0, songs.length - 1);
+		curSelected += change;
+
+		if (curSelected < 0)
+			curSelected = songs.length - 1;
+		if (curSelected >= songs.length)
+			curSelected = 0;
 
 		intendedScore = Highscore.getScore(songs[curSelected].name, curDifficulty);
 		
@@ -871,6 +881,46 @@ class FreeplaySongs extends MusicBeatState
 						add(bg);
 				}
 			}
+		}
+
+		CoolUtil.difficulties = CoolUtil.defaultDifficulties.copy();
+		var diffStr:String = WeekData.getCurrentWeek().difficulties;
+		if(diffStr != null) diffStr = diffStr.trim(); //Fuck you HTML5
+
+		if(diffStr != null && diffStr.length > 0)
+		{
+			var diffs:Array<String> = diffStr.split(',');
+			var i:Int = diffs.length - 1;
+			while (i > 0)
+			{
+				if(diffs[i] != null)
+				{
+					diffs[i] = diffs[i].trim();
+					if(diffs[i].length < 1) diffs.remove(diffs[i]);
+				}
+				--i;
+			}
+
+			if(diffs.length > 0 && diffs[0].length > 0)
+			{
+				CoolUtil.difficulties = diffs;
+			}
+		}
+		
+		if(CoolUtil.difficulties.contains(CoolUtil.defaultDifficulty))
+		{
+			curDifficulty = Math.round(Math.max(0, CoolUtil.defaultDifficulties.indexOf(CoolUtil.defaultDifficulty)));
+		}
+		else
+		{
+			curDifficulty = 0;
+		}
+
+		var newPos:Int = CoolUtil.difficulties.indexOf(lastDifficultyName);
+		//trace('Pos of ' + lastDifficultyName + ' is ' + newPos);
+		if(newPos > -1)
+		{
+			curDifficulty = newPos;
 		}
 
 		changeSongBPM();

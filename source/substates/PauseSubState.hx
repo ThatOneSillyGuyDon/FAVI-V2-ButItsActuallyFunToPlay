@@ -221,7 +221,7 @@ class PauseSubState extends MusicBeatSubstate
 		FlxTween.tween(songArtOutline, {x: songArtOutline.x - 110}, 0.8, {ease: FlxEase.quartOut});
 
 		changeSelection();
-		PlayStateUtils.instance.loadWindowTitleData();
+		//PlayStateUtils.instance.loadWindowTitleData(PlayState.isStoryMode, PlayState.chartingMode);
 		cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
 	}
 
@@ -387,7 +387,7 @@ class PauseSubState extends MusicBeatSubstate
 							{
 								close();
 								remove(disc);
-								PlayStateUtils.instance.loadWindowTitleData(); // resets the title bar to the PlayState info
+								//PlayStateUtils.instance.loadWindowTitleData(PlayState.isStoryMode, PlayState.chartingMode); // resets the title bar to the PlayState info
 							});
 						});
 					});
@@ -411,7 +411,7 @@ class PauseSubState extends MusicBeatSubstate
 			{
 				close();
 				remove(disc);
-				PlayStateUtils.instance.loadWindowTitleData(); // resets the title bar to the PlayState info
+				//PlayStateUtils.instance.loadWindowTitleData(PlayState.isStoryMode, PlayState.chartingMode); // resets the title bar to the PlayState info
 			});
 		}
 	}	
