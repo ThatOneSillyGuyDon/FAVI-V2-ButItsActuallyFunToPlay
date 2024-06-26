@@ -572,7 +572,8 @@ class MainMenu extends MusicBeatState
 			if ((controls.BACK))
 			{
 				selectedSomethin = true;
-				FlxG.sound.play(Paths.sound('base/menus/cancelMenu'));
+				//FlxG.sound.play(Paths.sound('base/menus/cancelMenu'));
+				FlxG.sound.play(Paths.sound('cancelMenu'));
 				MusicBeatState.switchState(new TitleState());
 			}
 
@@ -645,7 +646,8 @@ class MainMenu extends MusicBeatState
 	{
 		if (selection != curSelected)
 		{
-			FlxG.sound.play(Paths.sound('base/menus/scrollMenu'));
+			//FlxG.sound.play(Paths.sound('base/menus/scrollMenu'));
+			FlxG.sound.play(Paths.sound('scrollMenu'));
 		}
 
 		if (selection < 0)
@@ -690,7 +692,8 @@ class MainMenu extends MusicBeatState
 					}
 				}
 				selectedSomethin = true;
-				FlxG.sound.play(Paths.sound('base/menus/confirmMenu'));
+				//FlxG.sound.play(Paths.sound('base/menus/confirmMenu'));
+				FlxG.sound.play(Paths.sound('confirmMenu'));
 				FlxG.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
 				FlxTween.tween(camGame, {zoom: 6}, 2, {ease: FlxEase.cubeInOut, startDelay: 0.5});
 
@@ -721,7 +724,7 @@ class MainMenu extends MusicBeatState
 			}
 			else
 			{
-				FlxG.sound.play(Paths.sound('base/menus/cancelMenu'));
+				FlxG.sound.play(Paths.sound('cancelMenu'));
 				theBox.sendMessage('Freeplay is locked!', 'Complete Episode 1 to Unlock this menu.');
 			}
 		}
@@ -770,7 +773,7 @@ class MainMenu extends MusicBeatState
 						}
 					}
 					selectedSomethin = true;
-					FlxG.sound.play(Paths.sound('base/menus/confirmMenu'));
+					FlxG.sound.play(Paths.sound('confirmMenu'));
 					FlxTween.tween(camGame, {zoom: 6}, 2, {ease: FlxEase.cubeInOut, startDelay: 0.5});
 				}
 			});
