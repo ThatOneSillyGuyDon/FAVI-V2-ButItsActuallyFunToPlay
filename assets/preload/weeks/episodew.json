@@ -1,0 +1,33 @@
+{
+	"songs": [
+		{
+			"name": "Mercy",
+			"opponent": "dad",
+			"colors": [
+				129,
+				100,
+				223
+			]
+		},
+		{
+			"name": "Affliction",
+			"opponent": "dad",
+			"colors": [
+				129,
+				100,
+				223
+			]
+		}
+	],
+	"attachedImage": "episode2",
+	"storyName": "Boyfriend in: The Spotlight",
+	"characters": [
+		"dad",
+		"bf",
+		"gf"
+	],
+	"startsLocked": false,
+	"hideOnStory": false,
+	"hideOnFreeplay": false,
+	"hideUntilUnlocked": false
+}

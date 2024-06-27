@@ -1,0 +1,290 @@
+{
+	"events": [
+		[
+			"Multiply Scroll Speed",
+			48000,
+			[
+				[
+					"2",
+					"0.0001",
+					"linear"
+				]
+			]
+		],
+		[
+			"Multiply Scroll Speed",
+			48187.5,
+			[
+				[
+					"0.4",
+					"0.0001",
+					"linear"
+				]
+			]
+		],
+		[
+			"Multiply Scroll Speed",
+			48375,
+			[
+				[
+					"5",
+					"0.0001",
+					"linear"
+				]
+			]
+		],
+		[
+			"Multiply Scroll Speed",
+			48562.5,
+			[
+				[
+					"0.8",
+					"0.0001",
+					"linear"
+				]
+			]
+		],
+		[
+			"Multiply Scroll Speed",
+			48656.25,
+			[
+				[
+					"0.1",
+					"0.0001",
+					"linear"
+				]
+			]
+		],
+		[
+			"Multiply Scroll Speed",
+			48750,
+			[
+				[
+					"0.3",
+					"0.0001",
+					"linear"
+				]
+			]
+		],
+		[
+			"Multiply Scroll Speed",
+			49125,
+			[
+				[
+					"1.25",
+					"0.2",
+					"circOut"
+				]
+			]
+		],
+		[
+			"Multiply Scroll Speed",
+			57000,
+			[
+				[
+					"0.7",
+					"1",
+					"quartInOut"
+				]
+			]
+		],
+		[
+			"Multiply Scroll Speed",
+			58500,
+			[
+				[
+					"0.8",
+					"0.1",
+					"circOut"
+				]
+			]
+		],
+		[
+			"Multiply Scroll Speed",
+			59062.5,
+			[
+				[
+					"0.9",
+					"0.1",
+					"circOut"
+				]
+			]
+		],
+		[
+			"Multiply Scroll Speed",
+			59625,
+			[
+				[
+					"1",
+					"0.1",
+					"circOut"
+				]
+			]
+		],
+		[
+			"Multiply Scroll Speed",
+			60000,
+			[
+				[
+					"2",
+					"0.2",
+					"circOut"
+				]
+			]
+		],
+		[
+			"Multiply Scroll Speed",
+			109500,
+			[
+				[
+					"1",
+					"0.5",
+					"circOut"
+				]
+			]
+		],
+		[
+			"Multiply Scroll Speed",
+			115500,
+			[
+				[
+					"1.15",
+					"3.6",
+					"circOut"
+				]
+			]
+		],
+		[
+			"Multiply Scroll Speed",
+			139500,
+			[
+				[
+					"0.6",
+					"0.0001",
+					"linear"
+				]
+			]
+		],
+		[
+			"Multiply Scroll Speed",
+			139687.5,
+			[
+				[
+					"0.1",
+					"0.0001",
+					"linear"
+				]
+			]
+		],
+		[
+			"Multiply Scroll Speed",
+			139875,
+			[
+				[
+					"2",
+					"0.0001",
+					"linear"
+				]
+			]
+		],
+		[
+			"Multiply Scroll Speed",
+			140062.5,
+			[
+				[
+					"0.53",
+					"0.0001",
+					"linear"
+				]
+			]
+		],
+		[
+			"Multiply Scroll Speed",
+			140156.25,
+			[
+				[
+					"5",
+					"0.0001",
+					"linear"
+				]
+			]
+		],
+		[
+			"Multiply Scroll Speed",
+			140250,
+			[
+				[
+					"0.5",
+					"0.0001",
+					"linear"
+				]
+			]
+		],
+		[
+			"Multiply Scroll Speed",
+			140625,
+			[
+				[
+					"1.3",
+					"0.2",
+					"quadOut"
+				]
+			]
+		],
+		[
+			"Multiply Scroll Speed",
+			148500,
+			[
+				[
+					"0.8",
+					"1",
+					"sineInOut"
+				]
+			]
+		],
+		[
+			"Multiply Scroll Speed",
+			150000,
+			[
+				[
+					"0.9",
+					"0.3",
+					"quadOut"
+				]
+			]
+		],
+		[
+			"Multiply Scroll Speed",
+			150562.5,
+			[
+				[
+					"1",
+					"0.3",
+					"quadOut"
+				]
+			]
+		],
+		[
+			"Multiply Scroll Speed",
+			151125,
+			[
+				[
+					"1.1",
+					"0.3",
+					"quadOut"
+				]
+			]
+		],
+		[
+			"Multiply Scroll Speed",
+			151500,
+			[
+				[
+					"2",
+					"0.3",
+					"quadOut"
+				]
+			]
+		]
+	]
+}

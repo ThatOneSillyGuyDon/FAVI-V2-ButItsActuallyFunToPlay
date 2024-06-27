@@ -1,0 +1,42 @@
+{
+	"songs": [
+		{
+			"name": "Twisted-Grins",
+			"opponent": "mr-smiles",
+			"colors": [
+				129,
+				100,
+				223
+			]
+		},
+		{
+			"name": "Resentment",
+			"opponent": "mr-smiles",
+			"colors": [
+				129,
+				100,
+				223
+			]
+		},
+		{
+			"name": "Mortiferum-Risus",
+			"opponent": "mr-smiles",
+			"colors": [
+				129,
+				100,
+				223
+			]
+		}
+	],
+	"attachedImage": "episode1",
+	"storyName": "Boyfriend in: Sinister Smiles",
+	"characters": [
+		"dad",
+		"bf",
+		"gf"
+	],
+	"startsLocked": false,
+	"hideOnStory": false,
+	"hideOnFreeplay": false,
+	"hideUntilUnlocked": false
+}

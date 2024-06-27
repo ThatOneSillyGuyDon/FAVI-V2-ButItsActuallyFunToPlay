@@ -1,0 +1,114 @@
+{
+	"events": [
+		[
+			"Play Animation",
+			115662.65060241,
+			[
+				[
+					"ohfuckhesdoingthething",
+					"dad",
+					"4.5"
+				]
+			]
+		],
+		[
+			"Play Animation",
+			128674.698795181,
+			[
+				[
+					"laughing",
+					"dad",
+					"1"
+				]
+			]
+		],
+		[
+			"Play Animation",
+			128855.421686747,
+			[
+				[
+					"laughing",
+					"dad",
+					"1"
+				]
+			]
+		],
+		[
+			"Play Animation",
+			129036.144578313,
+			[
+				[
+					"laughing",
+					"dad",
+					"1"
+				]
+			]
+		],
+		[
+			"Play Animation",
+			129216.86746988,
+			[
+				[
+					"laughing",
+					"dad",
+					"1"
+				]
+			]
+		],
+		[
+			"Play Animation",
+			129397.590361446,
+			[
+				[
+					"laughing",
+					"dad",
+					"1"
+				]
+			]
+		],
+		[
+			"Play Animation",
+			129578.313253012,
+			[
+				[
+					"laughing",
+					"dad",
+					"1"
+				]
+			]
+		],
+		[
+			"Play Animation",
+			129759.036144578,
+			[
+				[
+					"laughing",
+					"dad",
+					"1"
+				]
+			]
+		],
+		[
+			"Play Animation",
+			129939.759036145,
+			[
+				[
+					"laughing",
+					"dad",
+					"1"
+				]
+			]
+		],
+		[
+			"Change Character",
+			67951.8072289157,
+			[
+				[
+					"dad",
+					"glitched-mickey-new-pixel",
+					"0.001"
+				]
+			]
+		]
+	]
+}

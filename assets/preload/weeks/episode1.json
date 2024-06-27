@@ -1,0 +1,51 @@
+{
+	"songs": [
+		{
+			"name": "Devilish-Deal",
+			"opponent": "mick-isolated-new",
+			"colors": [
+				129,
+				100,
+				223
+			]
+		},
+		{
+			"name": "Isolated",
+			"opponent": "mick-isolated-new",
+			"colors": [
+				129,
+				100,
+				223
+			]
+		},
+		{
+			"name": "Lunacy",
+			"opponent": "lunamick-new",
+			"colors": [
+				129,
+				100,
+				223
+			]
+		},
+		{
+			"name": "Delusional",
+			"opponent": "insanemick",
+			"colors": [
+				129,
+				100,
+				223
+			]
+		}
+	],
+	"attachedImage": "episode0",
+	"storyName": "Mickey Mouse in: Tormental Loop",
+	"characters": [
+		"",
+		"",
+		""
+	],
+	"startsLocked": false,
+	"hideOnStory": false,
+	"hideOnFreeplay": false,
+	"hideUntilUnlocked": false
+}
