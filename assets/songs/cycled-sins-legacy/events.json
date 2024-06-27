@@ -1,0 +1,15 @@
+{
+	"events": [
+		[
+			"Play Animation",
+			42333.3333333333,
+			[
+				[
+					"Transition",
+					"dad",
+					"6"
+				]
+			]
+		]
+	]
+}
