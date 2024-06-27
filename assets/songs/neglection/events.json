@@ -1,0 +1,103 @@
+{
+	"events": [
+		[
+			"Play Animation",
+			99096.7741935485,
+			[
+				[
+					"laugh",
+					"dad",
+					"5"
+				]
+			]
+		],
+		[
+			"Play Animation",
+			99483.8709677421,
+			[
+				[
+					"laugh",
+					"dad",
+					"5"
+				]
+			]
+		],
+		[
+			"Play Animation",
+			99774.1935483872,
+			[
+				[
+					"laugh",
+					"dad",
+					"5"
+				]
+			]
+		],
+		[
+			"Play Animation",
+			100451.612903226,
+			[
+				[
+					"laugh",
+					"dad",
+					"5"
+				]
+			]
+		],
+		[
+			"Play Animation",
+			100666.935483871,
+			[
+				[
+					"laugh",
+					"dad",
+					"5"
+				]
+			]
+		],
+		[
+			"Play Animation",
+			101032.258064516,
+			[
+				[
+					"laugh",
+					"dad",
+					"5"
+				]
+			]
+		],
+		[
+			"Play Animation",
+			101419.35483871,
+			[
+				[
+					"laugh",
+					"dad",
+					"5"
+				]
+			]
+		],
+		[
+			"Change Character",
+			100645.161290323,
+			[
+				[
+					"dad",
+					"pnmfirstpov",
+					"0.0001"
+				]
+			]
+		],
+		[
+			"Change Character",
+			128516.129032258,
+			[
+				[
+					"dad",
+					"pnm",
+					"0.0001"
+				]
+			]
+		]
+	]
+}
