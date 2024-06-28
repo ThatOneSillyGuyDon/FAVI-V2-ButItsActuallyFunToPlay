@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="Relapsed2.png"><SubTexture name="Relapsed2 Idle0000" x="285" y="0" width="280" height="410" frameX="-100" frameY="-45" frameWidth="460" frameHeight="490" />
+<SubTexture name="Relapsed2 Idle0001" x="845" y="0" width="280" height="405" frameX="-100" frameY="-50" frameWidth="460" frameHeight="490" />
+<SubTexture name="Relapsed2 Idle0002" x="895" y="830" width="280" height="400" frameX="-100" frameY="-55" frameWidth="460" frameHeight="490" />
+<SubTexture name="Relapsed2 Idle0003" x="1410" y="0" width="285" height="400" frameX="-100" frameY="-55" frameWidth="460" frameHeight="490" />
+<SubTexture name="Relapsed2 Idle0004" x="1125" y="0" width="285" height="405" frameX="-100" frameY="-50" frameWidth="460" frameHeight="490" />
+<SubTexture name="Relapsed2 Left0000" x="1125" y="405" width="280" height="405" frameX="-90" frameY="-50" frameWidth="460" frameHeight="490" />
+<SubTexture name="Relapsed2 Left0001" x="845" y="405" width="280" height="405" frameX="-95" frameY="-50" frameWidth="460" frameHeight="490" />
+<SubTexture name="Relapsed2 Down0000" x="1410" y="800" width="285" height="390" frameX="-100" frameY="-65" frameWidth="460" frameHeight="490" />
+<SubTexture name="Relapsed2 Down0001" x="1410" y="400" width="285" height="400" frameX="-100" frameY="-55" frameWidth="460" frameHeight="490" />
+<SubTexture name="Relapsed2 Up0000" x="0" y="0" width="285" height="420" frameX="-100" frameY="-35" frameWidth="460" frameHeight="490" />
+<SubTexture name="Relapsed2 Up0001" x="0" y="420" width="285" height="410" frameX="-100" frameY="-45" frameWidth="460" frameHeight="490" />
+<SubTexture name="Relapsed2 Right0000" x="0" y="830" width="290" height="405" frameX="-100" frameY="-50" frameWidth="460" frameHeight="490" />
+<SubTexture name="Relapsed2 Right0001" x="290" y="830" width="285" height="405" frameX="-100" frameY="-50" frameWidth="460" frameHeight="490" />
+<SubTexture name="Relapsed2 Attack0000" x="575" y="830" width="320" height="405" frameX="-100" frameY="-50" frameWidth="460" frameHeight="490" />
+<SubTexture name="Relapsed2 Attack0001" x="285" y="420" width="290" height="410" frameX="-100" frameY="-45" frameWidth="460" frameHeight="490" />
+<SubTexture name="Relapsed2 Attack0002" x="575" y="420" width="270" height="410" frameX="-100" frameY="-45" frameWidth="460" frameHeight="490" />
+<SubTexture name="Relapsed2 Attack0003" x="285" y="0" width="280" height="410" frameX="-100" frameY="-45" frameWidth="460" frameHeight="490" />
+<SubTexture name="Relapsed2 Reload0000" x="285" y="0" width="280" height="410" frameX="-100" frameY="-45" frameWidth="460" frameHeight="490" />
+<SubTexture name="Relapsed2 Reload0001" x="565" y="0" width="280" height="410" frameX="-100" frameY="-45" frameWidth="460" frameHeight="490" />
+<SubTexture name="Relapsed2 Reload0002" x="565" y="0" width="280" height="410" frameX="-100" frameY="-45" frameWidth="460" frameHeight="490" />
+<SubTexture name="Relapsed2 Reload0003" x="285" y="0" width="280" height="410" frameX="-100" frameY="-45" frameWidth="460" frameHeight="490" />
+<SubTexture name="Relapsed2 Reload0004" x="285" y="0" width="280" height="410" frameX="-100" frameY="-45" frameWidth="460" frameHeight="490" />
+</TextureAtlas>

@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				710,
+				320
+			],
+			"anim": "idle",
+			"fps": 9,
+			"name": "mickeyIsolateDrop idle",
+			"indices": []
+		},
+		{
+			"offsets": [
+				698,
+				317
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "mickeyIsolateDrop left"
+		},
+		{
+			"offsets": [
+				710,
+				322
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "mickeyIsolateDrop down"
+		},
+		{
+			"offsets": [
+				714,
+				322
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "singUP",
+			"indices": [],
+			"name": "mickeyIsolateDrop up"
+		},
+		{
+			"offsets": [
+				722,
+				320
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "mickeyIsolateDrop right"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/mickeyIsolateDrop",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "mickey",
+	"flip_x": false,
+	"healthbar_colors": [
+		216,
+		216,
+		216
+	],
+	"camera_position": [
+		-390,
+		0
+	],
+	"sing_duration": 6.1,
+	"scale": 0.6
+}

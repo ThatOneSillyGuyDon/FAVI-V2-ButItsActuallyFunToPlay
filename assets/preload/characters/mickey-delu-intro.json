@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				-110
+			],
+			"indices": [],
+			"fps": 18,
+			"anim": "idle",
+			"loop": false,
+			"name": "Mickey idle"
+		},
+		{
+			"offsets": [
+				38,
+				-111
+			],
+			"indices": [],
+			"fps": 19,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "Mickey note left"
+		},
+		{
+			"offsets": [
+				1,
+				-230
+			],
+			"indices": [],
+			"fps": 19,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "Mickey note down"
+		},
+		{
+			"offsets": [
+				30,
+				-10
+			],
+			"indices": [],
+			"fps": 19,
+			"anim": "singUP",
+			"loop": false,
+			"name": "Mickey note up"
+		},
+		{
+			"offsets": [
+				0,
+				-105
+			],
+			"indices": [],
+			"fps": 19,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "Mickey note right"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/Delu_intro_mickey",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "face",
+	"flip_x": false,
+	"healthbar_colors": [
+		161,
+		161,
+		161
+	],
+	"camera_position": [
+		-30,
+		100
+	],
+	"sing_duration": 6.1,
+	"scale": 1.1
+}

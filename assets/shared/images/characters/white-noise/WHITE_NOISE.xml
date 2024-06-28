@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="WHITE_NOISE.png">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="White_Down0000" x="50" y="50" width="434" height="588" frameX="-1" frameY="-10" frameWidth="435" frameHeight="598"/>
+	<SubTexture name="White_Down0001" x="534" y="50" width="426" height="591" frameX="0" frameY="-5" frameWidth="435" frameHeight="598"/>
+	<SubTexture name="White_Down0002" x="1010" y="50" width="398" height="597" frameX="-2" frameY="0" frameWidth="435" frameHeight="598"/>
+	<SubTexture name="White_Down0003" x="1458" y="50" width="411" height="597" frameX="-2" frameY="0" frameWidth="435" frameHeight="598"/>
+	<SubTexture name="White_Down0004" x="1919" y="50" width="418" height="596" frameX="-2" frameY="-1" frameWidth="435" frameHeight="598"/>
+	<SubTexture name="White_Down0005" x="1919" y="50" width="418" height="596" frameX="-2" frameY="-1" frameWidth="435" frameHeight="598"/>
+	<SubTexture name="White_Down0006" x="1919" y="50" width="418" height="596" frameX="-2" frameY="-1" frameWidth="435" frameHeight="598"/>
+	<SubTexture name="White_Idle0000" x="2387" y="50" width="380" height="608" frameX="0" frameY="-1" frameWidth="380" frameHeight="615"/>
+	<SubTexture name="White_Idle0001" x="2817" y="50" width="376" height="612" frameX="-2" frameY="0" frameWidth="380" frameHeight="615"/>
+	<SubTexture name="White_Idle0002" x="3243" y="50" width="371" height="610" frameX="-5" frameY="-5" frameWidth="380" frameHeight="615"/>
+	<SubTexture name="White_Idle0003" x="3664" y="50" width="373" height="612" frameX="-5" frameY="-3" frameWidth="380" frameHeight="615"/>
+	<SubTexture name="White_Idle0004" x="3664" y="50" width="373" height="612" frameX="-5" frameY="-3" frameWidth="380" frameHeight="615"/>
+	<SubTexture name="White_Idle0005" x="3664" y="50" width="373" height="612" frameX="-5" frameY="-3" frameWidth="380" frameHeight="615"/>
+	<SubTexture name="White_Idle0006" x="3664" y="50" width="373" height="612" frameX="-5" frameY="-3" frameWidth="380" frameHeight="615"/>
+	<SubTexture name="White_Left0000" x="50" y="712" width="381" height="616" frameX="-4" frameY="-5" frameWidth="387" frameHeight="621"/>
+	<SubTexture name="White_Left0001" x="481" y="712" width="387" height="620" frameX="0" frameY="0" frameWidth="387" frameHeight="621"/>
+	<SubTexture name="White_Left0002" x="918" y="712" width="382" height="621" frameX="-4" frameY="0" frameWidth="387" frameHeight="621"/>
+	<SubTexture name="White_Left0003" x="918" y="712" width="382" height="621" frameX="-4" frameY="0" frameWidth="387" frameHeight="621"/>
+	<SubTexture name="White_Left0004" x="918" y="712" width="382" height="621" frameX="-4" frameY="0" frameWidth="387" frameHeight="621"/>
+	<SubTexture name="White_Left0005" x="918" y="712" width="382" height="621" frameX="-4" frameY="0" frameWidth="387" frameHeight="621"/>
+	<SubTexture name="White_Left0006" x="918" y="712" width="382" height="621" frameX="-4" frameY="0" frameWidth="387" frameHeight="621"/>
+	<SubTexture name="White_Right0000" x="1350" y="712" width="556" height="615" frameX="0" frameY="-2" frameWidth="556" frameHeight="617"/>
+	<SubTexture name="White_Right0001" x="1956" y="712" width="546" height="613" frameX="-6" frameY="0" frameWidth="556" frameHeight="617"/>
+	<SubTexture name="White_Right0002" x="2552" y="712" width="548" height="613" frameX="-3" frameY="0" frameWidth="556" frameHeight="617"/>
+	<SubTexture name="White_Right0003" x="2552" y="712" width="548" height="613" frameX="-3" frameY="0" frameWidth="556" frameHeight="617"/>
+	<SubTexture name="White_Right0004" x="2552" y="712" width="548" height="613" frameX="-3" frameY="0" frameWidth="556" frameHeight="617"/>
+	<SubTexture name="White_Right0005" x="2552" y="712" width="548" height="613" frameX="-3" frameY="0" frameWidth="556" frameHeight="617"/>
+	<SubTexture name="White_Up0000" x="3150" y="712" width="421" height="672" frameX="0" frameY="0" frameWidth="424" frameHeight="672"/>
+	<SubTexture name="White_Up0001" x="3621" y="712" width="420" height="659" frameX="-3" frameY="-13" frameWidth="424" frameHeight="672"/>
+	<SubTexture name="White_Up0002" x="50" y="1434" width="419" height="655" frameX="-5" frameY="-16" frameWidth="424" frameHeight="672"/>
+	<SubTexture name="White_Up0003" x="50" y="1434" width="419" height="655" frameX="-5" frameY="-16" frameWidth="424" frameHeight="672"/>
+	<SubTexture name="White_Up0004" x="50" y="1434" width="419" height="655" frameX="-5" frameY="-16" frameWidth="424" frameHeight="672"/>
+	<SubTexture name="White_Up0005" x="50" y="1434" width="419" height="655" frameX="-5" frameY="-16" frameWidth="424" frameHeight="672"/>
+</TextureAtlas>

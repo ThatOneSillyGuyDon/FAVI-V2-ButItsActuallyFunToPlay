@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="mouse.png">
+<SubTexture name="mouse idle0000" x="3955" y="0" width="1126" height="515" frameX="-360" frameY="-559" frameWidth="1920" frameHeight="1080" />
+<SubTexture name="mouse idle0001" x="1004" y="2923" width="1058" height="553" frameX="-392" frameY="-522" frameWidth="1920" frameHeight="1080" />
+<SubTexture name="mouse idle0002" x="2961" y="0" width="994" height="584" frameX="-416" frameY="-490" frameWidth="1920" frameHeight="1080" />
+<SubTexture name="mouse idle0003" x="1951" y="2286" width="982" height="611" frameX="-431" frameY="-462" frameWidth="1920" frameHeight="1080" />
+<SubTexture name="mouse idle0004" x="0" y="2286" width="982" height="637" frameX="-439" frameY="-437" frameWidth="1920" frameHeight="1080" />
+<SubTexture name="mouse down0000" x="2062" y="2923" width="1027" height="547" frameX="-389" frameY="-527" frameWidth="1920" frameHeight="1080" />
+<SubTexture name="mouse down0001" x="0" y="2923" width="1004" height="581" frameX="-413" frameY="-493" frameWidth="1920" frameHeight="1080" />
+<SubTexture name="mouse down0002" x="982" y="2286" width="969" height="612" frameX="-439" frameY="-462" frameWidth="1920" frameHeight="1080" />
+<SubTexture name="mouse left0000" x="1952" y="0" width="1009" height="733" frameX="-348" frameY="-340" frameWidth="1920" frameHeight="1080" />
+<SubTexture name="mouse left0001" x="0" y="1576" width="1003" height="710" frameX="-360" frameY="-363" frameWidth="1920" frameHeight="1080" />
+<SubTexture name="mouse left0002" x="1003" y="1576" width="1000" height="687" frameX="-369" frameY="-386" frameWidth="1920" frameHeight="1080" />
+<SubTexture name="mouse right0000" x="0" y="838" width="976" height="738" frameX="-479" frameY="-337" frameWidth="1920" frameHeight="1080" />
+<SubTexture name="mouse right0001" x="976" y="838" width="955" height="700" frameX="-485" frameY="-376" frameWidth="1920" frameHeight="1080" />
+<SubTexture name="mouse right0002" x="2003" y="1576" width="930" height="670" frameX="-492" frameY="-407" frameWidth="1920" frameHeight="1080" />
+<SubTexture name="mouse up0000" x="0" y="0" width="976" height="838" frameX="-439" frameY="-233" frameWidth="1920" frameHeight="1080" />
+<SubTexture name="mouse up0001" x="976" y="0" width="976" height="772" frameX="-439" frameY="-300" frameWidth="1920" frameHeight="1080" />
+<SubTexture name="mouse up0002" x="1952" y="733" width="976" height="728" frameX="-439" frameY="-344" frameWidth="1920" frameHeight="1080" />
+</TextureAtlas>

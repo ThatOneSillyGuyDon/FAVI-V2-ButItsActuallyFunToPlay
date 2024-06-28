@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"loop": true,
+			"offsets": [
+				20,
+				-21
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "SmileIdle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				56,
+				13
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "SmileLeft",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				34,
+				215
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "SmileUp",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				35,
+				1
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "SmileDown",
+			"indices": []
+		},
+		{
+			"offsets": [
+				-144,
+				56
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "SmileRight"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/mrsmiles",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "mr-smiles",
+	"flip_x": false,
+	"healthbar_colors": [
+		50,
+		50,
+		50
+	],
+	"camera_position": [
+		0,
+		-60
+	],
+	"sing_duration": 5.49999999999999,
+	"scale": 1.2
+}

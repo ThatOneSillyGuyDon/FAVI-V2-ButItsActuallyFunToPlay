@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="mrsmiles.png">
+	<!-- Created with Adobe Animate version 21.0.0.35450 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="SmileDown0000" x="0" y="0" width="691" height="799"/>
+	<SubTexture name="SmileDown0001" x="0" y="0" width="691" height="799"/>
+	<SubTexture name="SmileDown0002" x="691" y="0" width="588" height="741" frameX="-49" frameY="-27" frameWidth="691" frameHeight="799"/>
+	<SubTexture name="SmileDown0003" x="691" y="0" width="588" height="741" frameX="-49" frameY="-27" frameWidth="691" frameHeight="799"/>
+	<SubTexture name="SmileDown0004" x="1279" y="0" width="550" height="716" frameX="-66" frameY="-34" frameWidth="691" frameHeight="799"/>
+	<SubTexture name="SmileDown0005" x="1279" y="0" width="550" height="716" frameX="-66" frameY="-34" frameWidth="691" frameHeight="799"/>
+	<SubTexture name="SmileDown0006" x="1829" y="0" width="549" height="718" frameX="-67" frameY="-30" frameWidth="691" frameHeight="799"/>
+	<SubTexture name="SmileDown0007" x="1829" y="0" width="549" height="718" frameX="-67" frameY="-30" frameWidth="691" frameHeight="799"/>
+	<SubTexture name="SmileDown0008" x="2378" y="0" width="548" height="714" frameX="-66" frameY="-36" frameWidth="691" frameHeight="799"/>
+	<SubTexture name="SmileDown0009" x="2378" y="0" width="548" height="714" frameX="-66" frameY="-36" frameWidth="691" frameHeight="799"/>
+	<SubTexture name="SmileDown0010" x="2378" y="0" width="548" height="714" frameX="-66" frameY="-36" frameWidth="691" frameHeight="799"/>
+	<SubTexture name="SmileDown0011" x="2378" y="0" width="548" height="714" frameX="-66" frameY="-36" frameWidth="691" frameHeight="799"/>
+	<SubTexture name="SmileDown0012" x="2378" y="0" width="548" height="714" frameX="-66" frameY="-36" frameWidth="691" frameHeight="799"/>
+	<SubTexture name="SmileDown0013" x="2378" y="0" width="548" height="714" frameX="-66" frameY="-36" frameWidth="691" frameHeight="799"/>
+	<SubTexture name="SmileIdle0000" x="2926" y="0" width="630" height="711"/>
+	<SubTexture name="SmileIdle0001" x="3556" y="0" width="630" height="711"/>
+	<SubTexture name="SmileIdle0002" x="4186" y="0" width="585" height="668" frameX="-30" frameY="-19" frameWidth="630" frameHeight="711"/>
+	<SubTexture name="SmileIdle0003" x="4771" y="0" width="585" height="668" frameX="-30" frameY="-19" frameWidth="630" frameHeight="711"/>
+	<SubTexture name="SmileIdle0004" x="5356" y="0" width="557" height="631" frameX="-54" frameY="-35" frameWidth="630" frameHeight="711"/>
+	<SubTexture name="SmileIdle0005" x="5913" y="0" width="557" height="631" frameX="-54" frameY="-35" frameWidth="630" frameHeight="711"/>
+	<SubTexture name="SmileIdle0006" x="6470" y="0" width="577" height="654" frameX="-47" frameY="-21" frameWidth="630" frameHeight="711"/>
+	<SubTexture name="SmileIdle0007" x="6470" y="0" width="577" height="654" frameX="-47" frameY="-21" frameWidth="630" frameHeight="711"/>
+	<SubTexture name="SmileIdle0008" x="7047" y="0" width="561" height="641" frameX="-52" frameY="-28" frameWidth="630" frameHeight="711"/>
+	<SubTexture name="SmileIdle0009" x="7608" y="0" width="561" height="641" frameX="-52" frameY="-28" frameWidth="630" frameHeight="711"/>
+	<SubTexture name="SmileIdle0010" x="0" y="799" width="552" height="627" frameX="-60" frameY="-37" frameWidth="630" frameHeight="711"/>
+	<SubTexture name="SmileIdle0011" x="552" y="799" width="552" height="627" frameX="-60" frameY="-37" frameWidth="630" frameHeight="711"/>
+	<SubTexture name="SmileIdle0012" x="1104" y="799" width="556" height="626" frameX="-57" frameY="-38" frameWidth="630" frameHeight="711"/>
+	<SubTexture name="SmileIdle0013" x="1104" y="799" width="556" height="626" frameX="-57" frameY="-38" frameWidth="630" frameHeight="711"/>
+	<SubTexture name="SmileIdle0014" x="1660" y="799" width="552" height="622" frameX="-61" frameY="-40" frameWidth="630" frameHeight="711"/>
+	<SubTexture name="SmileIdle0015" x="2212" y="799" width="552" height="622" frameX="-61" frameY="-40" frameWidth="630" frameHeight="711"/>
+	<SubTexture name="SmileIdle0016" x="2212" y="799" width="552" height="622" frameX="-61" frameY="-40" frameWidth="630" frameHeight="711"/>
+	<SubTexture name="SmileIdle0017" x="2764" y="799" width="552" height="622" frameX="-61" frameY="-40" frameWidth="630" frameHeight="711"/>
+	<SubTexture name="SmileIdle0018" x="2764" y="799" width="552" height="622" frameX="-61" frameY="-40" frameWidth="630" frameHeight="711"/>
+	<SubTexture name="SmileIdle0019" x="3316" y="799" width="552" height="622" frameX="-61" frameY="-40" frameWidth="630" frameHeight="711"/>
+	<SubTexture name="SmileIdle0020" x="3316" y="799" width="552" height="622" frameX="-61" frameY="-40" frameWidth="630" frameHeight="711"/>
+	<SubTexture name="SmileIdle0021" x="3868" y="799" width="552" height="622" frameX="-61" frameY="-40" frameWidth="630" frameHeight="711"/>
+	<SubTexture name="SmileIdle0022" x="3868" y="799" width="552" height="622" frameX="-61" frameY="-40" frameWidth="630" frameHeight="711"/>
+	<SubTexture name="SmileIdle0023" x="4420" y="799" width="552" height="622" frameX="-61" frameY="-40" frameWidth="630" frameHeight="711"/>
+	<SubTexture name="SmileIdle0024" x="4420" y="799" width="552" height="622" frameX="-61" frameY="-40" frameWidth="630" frameHeight="711"/>
+	<SubTexture name="SmileIdle0025" x="4972" y="799" width="552" height="622" frameX="-61" frameY="-40" frameWidth="630" frameHeight="711"/>
+	<SubTexture name="SmileIdle0026" x="5524" y="799" width="559" height="639" frameX="-54" frameY="-35" frameWidth="630" frameHeight="711"/>
+	<SubTexture name="SmileIdle0027" x="5524" y="799" width="559" height="639" frameX="-54" frameY="-35" frameWidth="630" frameHeight="711"/>
+	<SubTexture name="SmileLeft0000" x="6083" y="799" width="683" height="748"/>
+	<SubTexture name="SmileLeft0001" x="6083" y="799" width="683" height="748"/>
+	<SubTexture name="SmileLeft0002" x="6766" y="799" width="646" height="695" frameX="-13" frameY="-32" frameWidth="683" frameHeight="748"/>
+	<SubTexture name="SmileLeft0003" x="6766" y="799" width="646" height="695" frameX="-13" frameY="-32" frameWidth="683" frameHeight="748"/>
+	<SubTexture name="SmileLeft0004" x="7412" y="799" width="634" height="707" frameX="-10" frameY="-25" frameWidth="683" frameHeight="748"/>
+	<SubTexture name="SmileLeft0005" x="7412" y="799" width="634" height="707" frameX="-10" frameY="-25" frameWidth="683" frameHeight="748"/>
+	<SubTexture name="SmileLeft0006" x="0" y="1547" width="648" height="716" frameX="-5" frameY="-22" frameWidth="683" frameHeight="748"/>
+	<SubTexture name="SmileLeft0007" x="0" y="1547" width="648" height="716" frameX="-5" frameY="-22" frameWidth="683" frameHeight="748"/>
+	<SubTexture name="SmileLeft0008" x="648" y="1547" width="643" height="707" frameX="-3" frameY="-26" frameWidth="683" frameHeight="748"/>
+	<SubTexture name="SmileLeft0009" x="648" y="1547" width="643" height="707" frameX="-3" frameY="-26" frameWidth="683" frameHeight="748"/>
+	<SubTexture name="SmileLeft0010" x="1291" y="1547" width="641" height="705" frameX="-3" frameY="-27" frameWidth="683" frameHeight="748"/>
+	<SubTexture name="SmileLeft0011" x="1291" y="1547" width="641" height="705" frameX="-3" frameY="-27" frameWidth="683" frameHeight="748"/>
+	<SubTexture name="SmileLeft0012" x="1291" y="1547" width="641" height="705" frameX="-3" frameY="-27" frameWidth="683" frameHeight="748"/>
+	<SubTexture name="SmileLeft0013" x="1291" y="1547" width="641" height="705" frameX="-3" frameY="-27" frameWidth="683" frameHeight="748"/>
+	<SubTexture name="SmileLeft0014" x="1291" y="1547" width="641" height="705" frameX="-3" frameY="-27" frameWidth="683" frameHeight="748"/>
+	<SubTexture name="SmileRight0000" x="1932" y="1547" width="624" height="729" frameX="-18" frameY="-35" frameWidth="643" frameHeight="764"/>
+	<SubTexture name="SmileRight0001" x="1932" y="1547" width="624" height="729" frameX="-18" frameY="-35" frameWidth="643" frameHeight="764"/>
+	<SubTexture name="SmileRight0002" x="2556" y="1547" width="608" height="718" frameX="-24" frameY="-21" frameWidth="643" frameHeight="764"/>
+	<SubTexture name="SmileRight0003" x="2556" y="1547" width="608" height="718" frameX="-24" frameY="-21" frameWidth="643" frameHeight="764"/>
+	<SubTexture name="SmileRight0004" x="3164" y="1547" width="633" height="747" frameX="-6" frameY="-5" frameWidth="643" frameHeight="764"/>
+	<SubTexture name="SmileRight0005" x="3164" y="1547" width="633" height="747" frameX="-6" frameY="-5" frameWidth="643" frameHeight="764"/>
+	<SubTexture name="SmileRight0006" x="3797" y="1547" width="641" height="756" frameX="0" frameY="0" frameWidth="643" frameHeight="764"/>
+	<SubTexture name="SmileRight0007" x="3797" y="1547" width="641" height="756" frameX="0" frameY="0" frameWidth="643" frameHeight="764"/>
+	<SubTexture name="SmileRight0008" x="4438" y="1547" width="643" height="759" frameX="0" frameY="0" frameWidth="643" frameHeight="764"/>
+	<SubTexture name="SmileRight0009" x="4438" y="1547" width="643" height="759" frameX="0" frameY="0" frameWidth="643" frameHeight="764"/>
+	<SubTexture name="SmileRight0010" x="4438" y="1547" width="643" height="759" frameX="0" frameY="0" frameWidth="643" frameHeight="764"/>
+	<SubTexture name="SmileRight0011" x="4438" y="1547" width="643" height="759" frameX="0" frameY="0" frameWidth="643" frameHeight="764"/>
+	<SubTexture name="SmileRight0012" x="4438" y="1547" width="643" height="759" frameX="0" frameY="0" frameWidth="643" frameHeight="764"/>
+	<SubTexture name="SmileRight0013" x="4438" y="1547" width="643" height="759" frameX="0" frameY="0" frameWidth="643" frameHeight="764"/>
+	<SubTexture name="SmileUp0000" x="5081" y="1547" width="691" height="926"/>
+	<SubTexture name="SmileUp0001" x="5081" y="1547" width="691" height="926"/>
+	<SubTexture name="SmileUp0002" x="5772" y="1547" width="562" height="836" frameX="-48" frameY="-28" frameWidth="691" frameHeight="926"/>
+	<SubTexture name="SmileUp0003" x="5772" y="1547" width="562" height="836" frameX="-48" frameY="-28" frameWidth="691" frameHeight="926"/>
+	<SubTexture name="SmileUp0004" x="6334" y="1547" width="564" height="841" frameX="-46" frameY="-29" frameWidth="691" frameHeight="926"/>
+	<SubTexture name="SmileUp0005" x="6334" y="1547" width="564" height="841" frameX="-46" frameY="-29" frameWidth="691" frameHeight="926"/>
+	<SubTexture name="SmileUp0006" x="6898" y="1547" width="570" height="846" frameX="-43" frameY="-26" frameWidth="691" frameHeight="926"/>
+	<SubTexture name="SmileUp0007" x="6898" y="1547" width="570" height="846" frameX="-43" frameY="-26" frameWidth="691" frameHeight="926"/>
+	<SubTexture name="SmileUp0008" x="7468" y="1547" width="567" height="838" frameX="-45" frameY="-30" frameWidth="691" frameHeight="926"/>
+	<SubTexture name="SmileUp0009" x="7468" y="1547" width="567" height="838" frameX="-45" frameY="-30" frameWidth="691" frameHeight="926"/>
+	<SubTexture name="SmileUp0010" x="7468" y="1547" width="567" height="838" frameX="-45" frameY="-30" frameWidth="691" frameHeight="926"/>
+	<SubTexture name="SmileUp0011" x="7468" y="1547" width="567" height="838" frameX="-45" frameY="-30" frameWidth="691" frameHeight="926"/>
+	<SubTexture name="SmileUp0012" x="7468" y="1547" width="567" height="838" frameX="-45" frameY="-30" frameWidth="691" frameHeight="926"/>
+	<SubTexture name="SmileUp0013" x="7468" y="1547" width="567" height="838" frameX="-45" frameY="-30" frameWidth="691" frameHeight="926"/>
+</TextureAtlas>

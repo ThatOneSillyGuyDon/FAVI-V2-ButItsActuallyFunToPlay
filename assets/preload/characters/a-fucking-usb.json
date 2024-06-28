@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
+			"fps": 16,
+			"anim": "idle",
+			"loop": false,
+			"name": "usb idle"
+		},
+		{
+			"offsets": [
+				4,
+				0
+			],
+			"indices": [],
+			"fps": 16,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "usb left"
+		},
+		{
+			"offsets": [
+				-5,
+				2
+			],
+			"indices": [],
+			"fps": 16,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "usb down"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
+			"fps": 16,
+			"anim": "singUP",
+			"loop": false,
+			"name": "usb up"
+		},
+		{
+			"offsets": [
+				-8,
+				0
+			],
+			"indices": [],
+			"fps": 16,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "usb right"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/usbLmao",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "usb",
+	"flip_x": false,
+	"healthbar_colors": [
+		255,
+		135,
+		40
+	],
+	"camera_position": [
+		600,
+		400
+	],
+	"sing_duration": 6.1,
+	"scale": 0.4
+}

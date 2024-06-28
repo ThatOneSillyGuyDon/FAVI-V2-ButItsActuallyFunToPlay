@@ -1,0 +1,45 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-108,
+				217
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "danceLeft",
+			"loop": false,
+			"name": "bitch0"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "danceRight",
+			"loop": false,
+			"name": "bitch2"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/bfSmokin",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "face",
+	"flip_x": false,
+	"healthbar_colors": [
+		161,
+		161,
+		161
+	],
+	"camera_position": [
+		-100,
+		-300
+	],
+	"sing_duration": 6.1,
+	"scale": 1.1
+}

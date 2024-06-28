@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				80,
+				72
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				20,
+				100
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				220,
+				70
+			],
+			"anim": "idle",
+			"fps": 18,
+			"name": "idle",
+			"indices": []
+		},
+		{
+			"offsets": [
+				68,
+				46
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "left"
+		},
+		{
+			"offsets": [
+				38,
+				65
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "right"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/bfDemon",
+	"position": [
+		-260,
+		-110
+	],
+	"healthicon": "demon",
+	"flip_x": true,
+	"healthbar_colors": [
+		94,
+		94,
+		94
+	],
+	"camera_position": [
+		70,
+		230
+	],
+	"sing_duration": 6.1,
+	"scale": 0.6
+}

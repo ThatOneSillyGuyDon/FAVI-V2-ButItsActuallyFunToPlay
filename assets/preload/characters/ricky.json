@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle",
+			"loop": true,
+			"name": "ricky idle"
+		},
+		{
+			"offsets": [
+				60,
+				50
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "ricky left"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "ricky down"
+		},
+		{
+			"offsets": [
+				7,
+				20
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "ricky up"
+		},
+		{
+			"offsets": [
+				9,
+				5
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "ricky right"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/ricky_assets",
+	"position": [
+		-300,
+		70
+	],
+	"healthicon": "face",
+	"flip_x": false,
+	"healthbar_colors": [
+		61,
+		61,
+		61
+	],
+	"camera_position": [
+		210,
+		30
+	],
+	"sing_duration": 6.1,
+	"scale": 1
+}

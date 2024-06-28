@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				5,
+				0
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "HunterGoofy Left Arrow",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				-5
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "HunterGoofy Down Arrow",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				2,
+				5
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "HunterGoofy Up Arrow",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-5,
+				0
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "HunterGoofy Right Arrow",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "HunterGoofy Idle Bop",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/HunterGoofy",
+	"position": [
+		-200,
+		-90
+	],
+	"healthicon": "goofy",
+	"flip_x": false,
+	"healthbar_colors": [
+		211,
+		211,
+		211
+	],
+	"camera_position": [
+		-20,
+		90
+	],
+	"sing_duration": 6.1,
+	"scale": 0.8
+}

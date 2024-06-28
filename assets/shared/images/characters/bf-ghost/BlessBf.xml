@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="BlessBf.png">
+<SubTexture name="BlessBf down0000" x="4058" y="4009" width="985" height="805" frameX="-226" frameY="-780" frameWidth="1650" frameHeight="1650" />
+<SubTexture name="BlessBf down0001" x="872" y="3061" width="1002" height="868" frameX="-223" frameY="-776" frameWidth="1650" frameHeight="1650" />
+<SubTexture name="BlessBf down0002" x="3116" y="3061" width="992" height="854" frameX="-224" frameY="-784" frameWidth="1650" frameHeight="1650" />
+<SubTexture name="BlessBf down0003" x="4212" y="853" width="993" height="851" frameX="-224" frameY="-785" frameWidth="1650" frameHeight="1650" />
+<SubTexture name="BlessBf idle0000" x="2460" y="960" width="879" height="956" frameX="-300" frameY="-314" frameWidth="1650" frameHeight="1650" />
+<SubTexture name="BlessBf idle0001" x="0" y="3061" width="872" height="948" frameX="-317" frameY="-295" frameWidth="1650" frameHeight="1650" />
+<SubTexture name="BlessBf idle0002" x="3345" y="0" width="867" height="953" frameX="-329" frameY="-282" frameWidth="1650" frameHeight="1650" />
+<SubTexture name="BlessBf idle0003" x="1775" y="2101" width="887" height="957" frameX="-346" frameY="-277" frameWidth="1650" frameHeight="1650" />
+<SubTexture name="BlessBf idle0004" x="2460" y="0" width="885" height="960" frameX="-345" frameY="-306" frameWidth="1650" frameHeight="1650" />
+<SubTexture name="BlessBf idle0005" x="814" y="1059" width="882" height="963" frameX="-339" frameY="-333" frameWidth="1650" frameHeight="1650" />
+<SubTexture name="BlessBf idle0006" x="0" y="2101" width="888" height="960" frameX="-336" frameY="-344" frameWidth="1650" frameHeight="1650" />
+<SubTexture name="BlessBf idle0007" x="888" y="2101" width="887" height="960" frameX="-335" frameY="-347" frameWidth="1650" frameHeight="1650" />
+<SubTexture name="BlessBf left0000" x="1874" y="3061" width="1242" height="859" frameX="-105" frameY="-428" frameWidth="1650" frameHeight="1650" />
+<SubTexture name="BlessBf left0001" x="4212" y="0" width="1309" height="853" frameX="-35" frameY="-465" frameWidth="1650" frameHeight="1650" />
+<SubTexture name="BlessBf left0002" x="4212" y="1704" width="1281" height="846" frameX="-42" frameY="-462" frameWidth="1650" frameHeight="1650" />
+<SubTexture name="BlessBf left0003" x="4212" y="2550" width="1277" height="845" frameX="-44" frameY="-462" frameWidth="1650" frameHeight="1650" />
+<SubTexture name="BlessBf right0000" x="2038" y="4009" width="995" height="832" frameX="-620" frameY="-454" frameWidth="1650" frameHeight="1650" />
+<SubTexture name="BlessBf right0001" x="3033" y="4009" width="1025" height="813" frameX="-620" frameY="-486" frameWidth="1650" frameHeight="1650" />
+<SubTexture name="BlessBf right0002" x="0" y="4009" width="1020" height="835" frameX="-622" frameY="-475" frameWidth="1650" frameHeight="1650" />
+<SubTexture name="BlessBf right0003" x="1020" y="4009" width="1018" height="835" frameX="-624" frameY="-472" frameWidth="1650" frameHeight="1650" />
+<SubTexture name="BlessBf up0000" x="814" y="0" width="832" height="1056" frameX="-323" frameY="-27" frameWidth="1650" frameHeight="1650" />
+<SubTexture name="BlessBf up0001" x="0" y="0" width="814" height="1059" frameX="-342" frameY="-6" frameWidth="1650" frameHeight="1650" />
+<SubTexture name="BlessBf up0002" x="1646" y="0" width="814" height="1045" frameX="-340" frameY="-13" frameWidth="1650" frameHeight="1650" />
+<SubTexture name="BlessBf up0003" x="0" y="1059" width="814" height="1042" frameX="-338" frameY="-15" frameWidth="1650" frameHeight="1650" />
+</TextureAtlas>

@@ -1,0 +1,100 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle",
+			"loop": true,
+			"name": "square idle"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "square left"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "square down"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "square up"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "square right"
+		},
+		{
+			"offsets": [
+				230,
+				230
+			],
+			"indices": [],
+			"fps": 19,
+			"anim": "ohfuckhesdoingthething",
+			"loop": false,
+			"name": "square ohfucknotmynotes"
+		},
+		{
+			"offsets": [
+				230,
+				230
+			],
+			"indices": [],
+			"fps": 16,
+			"anim": "laughing",
+			"loop": false,
+			"name": "square laughing"
+		}
+	],
+	"no_antialiasing": true,
+	"image": "characters/glitchedMickeyNEWANIMS",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "face",
+	"flip_x": false,
+	"healthbar_colors": [
+		0,
+		0,
+		0
+	],
+	"camera_position": [
+		-100,
+		-250
+	],
+	"sing_duration": 6.1,
+	"scale": 2.3
+}
