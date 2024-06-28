@@ -1,51 +1,24 @@
 {
 	"songs": [
-		{
-			"name": "Devilish-Deal",
-			"opponent": "mick-isolated-new",
-			"colors": [
-				129,
-				100,
-				223
-			]
-		},
-		{
-			"name": "Isolated",
-			"opponent": "mick-isolated-new",
-			"colors": [
-				129,
-				100,
-				223
-			]
-		},
-		{
-			"name": "Lunacy",
-			"opponent": "lunamick-new",
-			"colors": [
-				129,
-				100,
-				223
-			]
-		},
-		{
-			"name": "Delusional",
-			"opponent": "insanemick",
-			"colors": [
-				129,
-				100,
-				223
-			]
-		}
+		["Devilish-Deal", "mick-isolated-new", [129, 100, 233]],
+		["Isolated", "mick-isolated-new", [129, 100, 233]],
+		["Lunacy", "lunamick-new", [129, 100, 233]],
+		["Delusional", "insanemick", [129, 100, 233]]
 	],
+
+	"weekCharacters": [
+		"",
+		"bf",
+		"gf"
+	],
+	"weekBackground": "stage",
+
 	"attachedImage": "episode0",
 	"storyName": "Mickey Mouse in: Tormental Loop",
-	"characters": [
-		"",
-		"",
-		""
-	],
-	"startsLocked": false,
-	"hideOnStory": false,
-	"hideOnFreeplay": false,
-	"hideUntilUnlocked": false
+	"weekBefore": "tutorial",
+	"weekName": "Tutorial",
+	"startUnlocked": true,
+
+	"hideStoryMode": false,
+	"hideFreeplay": false
 }

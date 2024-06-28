@@ -1,33 +1,22 @@
 {
 	"songs": [
-		{
-			"name": "Mercy",
-			"opponent": "dad",
-			"colors": [
-				129,
-				100,
-				223
-			]
-		},
-		{
-			"name": "Affliction",
-			"opponent": "dad",
-			"colors": [
-				129,
-				100,
-				223
-			]
-		}
+		["Mercy", "dad", [129, 100, 223]],
+		["Affliction", "dad", [129, 100, 223]]
 	],
-	"attachedImage": "episode2",
-	"storyName": "Boyfriend in: The Spotlight",
-	"characters": [
-		"dad",
+
+	"weekCharacters": [
+		"",
 		"bf",
 		"gf"
 	],
-	"startsLocked": false,
-	"hideOnStory": false,
-	"hideOnFreeplay": false,
-	"hideUntilUnlocked": false
+	"weekBackground": "stage",
+
+	"attachedImage": "episode2",
+	"storyName": "Boyfriend in: The Spotlight",
+	"weekBefore": "tutorial",
+	"weekName": "Tutorial",
+	"startUnlocked": true,
+
+	"hideStoryMode": false,
+	"hideFreeplay": false
 }
