@@ -1,9 +1,14 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
-				598, -54
+				598,
+				-54
 			],
+			"anim": "singLEFT",
+			"fps": 34,
+			"name": "Leftwalt",
 			"indices": [
 				0,
 				1,
@@ -24,27 +29,28 @@
 				16,
 				17,
 				18
-			],
-			"fps": 34,
-			"anim": "singLEFT",
-			"loop": false,
-			"name": "Leftwalt"
+			]
 		},
 		{
+			"loop": false,
 			"offsets": [
-				180, -195
+				180,
+				-195
 			],
-			"indices": [],
-			"fps": 30,
 			"anim": "singDOWN",
-			"loop": false,
-			"name": "Downwalt"
+			"fps": 30,
+			"name": "Downwalt",
+			"indices": []
 		},
 		{
+			"loop": true,
 			"offsets": [
 				0,
 				0
 			],
+			"anim": "idle",
+			"fps": 30,
+			"name": "idlewalt",
 			"indices": [
 				0,
 				1,
@@ -66,16 +72,17 @@
 				16,
 				16,
 				16
-			],
-			"fps": 30,
-			"anim": "idle",
-			"loop": true,
-			"name": "idlewalt"
+			]
 		},
 		{
+			"loop": false,
 			"offsets": [
-				48, 121
+				48,
+				121
 			],
+			"anim": "singUP",
+			"fps": 22,
+			"name": "Upwalt",
 			"indices": [
 				1,
 				2,
@@ -90,16 +97,17 @@
 				11,
 				12,
 				13
-			],
-			"fps": 22,
-			"anim": "singUP",
-			"loop": false,
-			"name": "Upwalt"
+			]
 		},
 		{
+			"loop": false,
 			"offsets": [
-				-191, 80
+				-191,
+				80
 			],
+			"anim": "singRIGHT",
+			"fps": 28,
+			"name": "Rightwalt",
 			"indices": [
 				1,
 				2,
@@ -119,15 +127,11 @@
 				16,
 				17,
 				18
-			],
-			"fps": 28,
-			"anim": "singRIGHT",
-			"loop": false,
-			"name": "Rightwalt"
+			]
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/Walt",
+	"image": "characters/walt-true/Walt",
 	"position": [
 		-800,
 		900

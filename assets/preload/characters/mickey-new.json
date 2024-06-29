@@ -1,63 +1,63 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				612,
 				640
 			],
-			"loop": false,
-			"fps": 10,
 			"anim": "idle",
-			"indices": [],
-			"name": "Mickey1 Idle"
+			"fps": 10,
+			"name": "Mickey1 Idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				600,
 				630
 			],
-			"loop": false,
-			"fps": 10,
 			"anim": "singUP",
-			"indices": [],
-			"name": "Mickey1 Up"
+			"fps": 10,
+			"name": "Mickey1 Up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				611,
 				641
 			],
-			"loop": false,
-			"fps": 10,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "Mickey1 Right"
+			"fps": 10,
+			"name": "Mickey1 Right",
+			"indices": []
 		},
 		{
+			"loop": true,
 			"offsets": [
 				600,
 				636
 			],
-			"loop": true,
-			"fps": 14,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "Mickey1 Left"
+			"fps": 14,
+			"name": "Mickey1 Left",
+			"indices": []
 		},
 		{
+			"loop": true,
 			"offsets": [
 				615,
 				640
 			],
-			"loop": true,
-			"fps": 14,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "Mickey1 Down"
+			"fps": 14,
+			"name": "Mickey1 Down",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/Mickey1NEW",
+	"image": "characters/mickey-new/Mickey1NEW",
 	"position": [
 		-100,
 		320

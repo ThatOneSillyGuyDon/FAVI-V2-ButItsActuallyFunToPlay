@@ -1,63 +1,63 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
 				590,
 				640
 			],
-			"anim": "idle",
+			"loop": false,
 			"fps": 24,
-			"name": "Mickey3 Idle",
-			"indices": []
+			"anim": "idle",
+			"indices": [],
+			"name": "Mickey3 Idle"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				560,
 				644
 			],
-			"anim": "singLEFT",
+			"loop": false,
 			"fps": 24,
-			"name": "Mickey3 Left",
-			"indices": []
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "Mickey3 Left"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				530,
 				630
 			],
-			"anim": "singUP",
+			"loop": false,
 			"fps": 24,
-			"name": "Mickey3 Up",
-			"indices": []
+			"anim": "singUP",
+			"indices": [],
+			"name": "Mickey3 Up"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				460,
 				642
 			],
-			"anim": "singDOWN",
+			"loop": false,
 			"fps": 24,
-			"name": "Mickey3 Down",
-			"indices": []
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "Mickey3 Down"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				470,
 				640
 			],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 24,
-			"name": "Mickey3 Right",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Mickey3 Right"
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/Mickey3",
+	"image": "characters/mickey-delusional-unused/Mickey3",
 	"position": [
 		-150,
 		120

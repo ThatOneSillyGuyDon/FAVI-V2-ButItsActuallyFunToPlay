@@ -1,63 +1,63 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				590,
 				640
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "idle",
-			"indices": [],
-			"name": "Mickeyphase2 Idle"
+			"fps": 24,
+			"name": "Mickeyphase2 Idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				570,
 				654
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "Mickeyphase2 Left"
+			"fps": 24,
+			"name": "Mickeyphase2 Left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				570,
 				630
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUP",
-			"indices": [],
-			"name": "Mickeyphase2 Up"
+			"fps": 24,
+			"name": "Mickeyphase2 Up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				590,
 				642
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "Mickeyphase2 Down"
+			"fps": 24,
+			"name": "Mickeyphase2 Down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				540,
 				640
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "Mickeyphase2 Right"
+			"fps": 24,
+			"name": "Mickeyphase2 Right",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/Mickeyphase2",
+	"image": "characters/mickey-lunacy-legacy/Mickeyphase2",
 	"position": [
 		0,
 		200

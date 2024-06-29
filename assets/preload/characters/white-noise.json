@@ -1,63 +1,63 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				47
 			],
-			"anim": "idle",
+			"loop": false,
 			"fps": 13,
-			"name": "White_Idle",
-			"indices": []
+			"anim": "idle",
+			"indices": [],
+			"name": "White_Idle"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				147,
 				48
 			],
-			"anim": "singLEFT",
+			"loop": false,
 			"fps": 24,
-			"name": "White_Left",
-			"indices": []
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "White_Left"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-20,
 				-30
 			],
-			"anim": "singDOWN",
+			"loop": false,
 			"fps": 24,
-			"name": "White_Down",
-			"indices": []
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "White_Down"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				135,
 				123
 			],
-			"anim": "singUP",
+			"loop": false,
 			"fps": 24,
-			"name": "White_Up",
-			"indices": []
+			"anim": "singUP",
+			"indices": [],
+			"name": "White_Up"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				70,
 				6
 			],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 24,
-			"name": "White_Right",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "White_Right"
 		}
 	],
 	"no_antialiasing": true,
-	"image": "characters/WHITE_NOISE",
+	"image": "characters/white-noise/WHITE_NOISE",
 	"position": [
 		70,
 		30

@@ -1,63 +1,63 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				-110
 			],
-			"indices": [],
-			"fps": 18,
 			"anim": "idle",
-			"loop": false,
-			"name": "Mickey idle"
+			"fps": 18,
+			"name": "Mickey idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				38,
 				-111
 			],
-			"indices": [],
-			"fps": 19,
 			"anim": "singLEFT",
-			"loop": false,
-			"name": "Mickey note left"
+			"fps": 19,
+			"name": "Mickey note left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				1,
 				-230
 			],
-			"indices": [],
-			"fps": 19,
 			"anim": "singDOWN",
-			"loop": false,
-			"name": "Mickey note down"
+			"fps": 19,
+			"name": "Mickey note down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				30,
 				-10
 			],
-			"indices": [],
-			"fps": 19,
 			"anim": "singUP",
-			"loop": false,
-			"name": "Mickey note up"
+			"fps": 19,
+			"name": "Mickey note up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				-105
 			],
-			"indices": [],
-			"fps": 19,
 			"anim": "singRIGHT",
-			"loop": false,
-			"name": "Mickey note right"
+			"fps": 19,
+			"name": "Mickey note right",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/Delu_intro_mickey",
+	"image": "characters/mickey-delu-intro/Delu_intro_mickey",
 	"position": [
 		0,
 		0

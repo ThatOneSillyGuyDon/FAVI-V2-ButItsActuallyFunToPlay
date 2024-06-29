@@ -1,63 +1,63 @@
 {
 	"animations": [
 		{
-			"loop": true,
 			"offsets": [
 				20,
 				-21
 			],
-			"anim": "idle",
+			"loop": true,
 			"fps": 24,
-			"name": "SmileIdle",
-			"indices": []
+			"anim": "idle",
+			"indices": [],
+			"name": "SmileIdle"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				56,
 				13
 			],
-			"anim": "singLEFT",
+			"loop": false,
 			"fps": 24,
-			"name": "SmileLeft",
-			"indices": []
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "SmileLeft"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				34,
 				215
 			],
-			"anim": "singUP",
+			"loop": false,
 			"fps": 24,
-			"name": "SmileUp",
-			"indices": []
+			"anim": "singUP",
+			"indices": [],
+			"name": "SmileUp"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				35,
 				1
 			],
-			"anim": "singDOWN",
+			"loop": false,
 			"fps": 24,
-			"name": "SmileDown",
-			"indices": []
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "SmileDown"
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-144,
 				56
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "SmileRight"
+			"fps": 24,
+			"name": "SmileRight",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/mrsmiles",
+	"image": "characters/mr-smiles/mrsmiles",
 	"position": [
 		0,
 		0

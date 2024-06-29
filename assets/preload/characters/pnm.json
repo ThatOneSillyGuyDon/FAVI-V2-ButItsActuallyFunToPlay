@@ -1,10 +1,14 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				40,
 				0
 			],
+			"anim": "singDOWN",
+			"fps": 10,
+			"name": "Down",
 			"indices": [
 				0,
 				2,
@@ -13,17 +17,17 @@
 				8,
 				10,
 				12
-			],
-			"fps": 10,
-			"anim": "singDOWN",
-			"loop": false,
-			"name": "Down"
+			]
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				11
 			],
+			"anim": "singLEFT",
+			"fps": 11,
+			"name": "Left",
 			"indices": [
 				0,
 				2,
@@ -32,17 +36,17 @@
 				8,
 				10,
 				12
-			],
-			"fps": 11,
-			"anim": "singLEFT",
-			"loop": false,
-			"name": "Left"
+			]
 		},
 		{
+			"loop": false,
 			"offsets": [
 				2,
 				0
 			],
+			"anim": "singRIGHT",
+			"fps": 10,
+			"name": "Right",
 			"indices": [
 				0,
 				2,
@@ -51,17 +55,17 @@
 				8,
 				10,
 				12
-			],
-			"fps": 10,
-			"anim": "singRIGHT",
-			"loop": false,
-			"name": "Right"
+			]
 		},
 		{
+			"loop": false,
 			"offsets": [
 				2,
 				130
 			],
+			"anim": "singUP",
+			"fps": 10,
+			"name": "Up",
 			"indices": [
 				0,
 				2,
@@ -70,17 +74,17 @@
 				8,
 				10,
 				12
-			],
-			"fps": 10,
-			"anim": "singUP",
-			"loop": false,
-			"name": "Up"
+			]
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"anim": "idle",
+			"fps": 9,
+			"name": "Idle",
 			"indices": [
 				0,
 				2,
@@ -94,17 +98,17 @@
 				18,
 				20,
 				22
-			],
-			"fps": 9,
-			"anim": "idle",
-			"loop": false,
-			"name": "Idle"
+			]
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"anim": "laugh",
+			"fps": 10,
+			"name": "Laugh",
 			"indices": [
 				0,
 				2,
@@ -113,15 +117,11 @@
 				8,
 				10,
 				12
-			],
-			"fps": 10,
-			"anim": "laugh",
-			"loop": false,
-			"name": "Laugh"
+			]
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/PnmUpdate",
+	"image": "characters/pnm/PnmUpdate",
 	"position": [
 		0,
 		0

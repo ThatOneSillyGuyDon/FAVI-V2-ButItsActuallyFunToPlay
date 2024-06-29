@@ -1,63 +1,63 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
 				590,
 				640
 			],
-			"anim": "idle",
+			"loop": false,
 			"fps": 24,
-			"name": "Mickeystoppedworking Idle",
-			"indices": []
+			"anim": "idle",
+			"indices": [],
+			"name": "Mickeystoppedworking Idle"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				580,
 				634
 			],
-			"anim": "singLEFT",
+			"loop": false,
 			"fps": 24,
-			"name": "Mickeystoppedworking Left",
-			"indices": []
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "Mickeystoppedworking Left"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				590,
 				630
 			],
-			"anim": "singUP",
+			"loop": false,
 			"fps": 24,
-			"name": "Mickeystoppedworking Up",
-			"indices": []
+			"anim": "singUP",
+			"indices": [],
+			"name": "Mickeystoppedworking Up"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				590,
 				642
 			],
-			"anim": "singDOWN",
+			"loop": false,
 			"fps": 24,
-			"name": "Mickeystoppedworking Down",
-			"indices": []
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "Mickeystoppedworking Down"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				600,
 				640
 			],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 24,
-			"name": "Mickeystoppedworking Right",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Mickeystoppedworking Right"
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/Mickeystoppedworking",
+	"image": "characters/mickey-hopeless-unused/Mickeystoppedworking",
 	"position": [
 		0,
 		120

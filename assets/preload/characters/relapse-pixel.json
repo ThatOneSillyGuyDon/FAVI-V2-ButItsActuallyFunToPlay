@@ -1,74 +1,74 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"loop": false,
-			"fps": 12,
 			"anim": "idle",
-			"indices": [],
-			"name": "Relapsed1 Idle"
+			"fps": 12,
+			"name": "Relapsed1 Idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"loop": false,
-			"fps": 16,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "Relapsed1 Left"
+			"fps": 16,
+			"name": "Relapsed1 Left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"loop": false,
-			"fps": 16,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "Relapsed1 Down"
+			"fps": 16,
+			"name": "Relapsed1 Down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"loop": false,
-			"fps": 16,
 			"anim": "singUP",
-			"indices": [],
-			"name": "Relapsed1 Up"
-		},
-		{
-			"offsets": [
-				0,
-				0
-			],
-			"loop": false,
 			"fps": 16,
-			"anim": "singRIGHT",
-			"indices": [],
-			"name": "Relapsed1 Right"
+			"name": "Relapsed1 Up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"anim": "singRIGHT",
+			"fps": 16,
+			"name": "Relapsed1 Right",
+			"indices": []
+		},
+		{
 			"loop": false,
-			"fps": 14,
+			"offsets": [
+				0,
+				0
+			],
 			"anim": "Transition",
-			"indices": [],
-			"name": "Relapsed1 Transformation"
+			"fps": 14,
+			"name": "Relapsed1 Transformation",
+			"indices": []
 		}
 	],
 	"no_antialiasing": true,
-	"image": "characters/Relapsed1",
+	"image": "characters/relapse-pixel/Relapsed1",
 	"position": [
 		-80,
 		180
