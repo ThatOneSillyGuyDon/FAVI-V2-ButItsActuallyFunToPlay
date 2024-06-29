@@ -1,107 +1,107 @@
 {
 	"animations": [
 		{
+			"loop": true,
 			"offsets": [
 				0,
 				-2
 			],
-			"indices": [],
-			"fps": 12,
 			"anim": "idle",
-			"loop": true,
-			"name": "idle"
+			"fps": 12,
+			"name": "idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				1
 			],
-			"indices": [],
-			"fps": 12,
 			"anim": "singLEFT",
-			"loop": false,
-			"name": "right"
+			"fps": 12,
+			"name": "right",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				4
 			],
-			"indices": [],
-			"fps": 12,
 			"anim": "singRIGHT",
-			"loop": false,
-			"name": "left"
+			"fps": 12,
+			"name": "left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 12,
 			"anim": "singRIGHTmiss",
-			"loop": false,
-			"name": "miss-left"
+			"fps": 12,
+			"name": "miss-left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 12,
 			"anim": "singUPmiss",
-			"loop": false,
-			"name": "miss-up"
+			"fps": 12,
+			"name": "miss-up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				-5
 			],
-			"indices": [],
-			"fps": 12,
 			"anim": "singUP",
-			"loop": false,
-			"name": "up"
+			"fps": 12,
+			"name": "up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 12,
 			"anim": "singDOWNmiss",
-			"loop": false,
-			"name": "miss-right"
+			"fps": 12,
+			"name": "miss-right",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 12,
 			"anim": "singDOWN",
-			"loop": false,
-			"name": "down"
+			"fps": 12,
+			"name": "down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 12,
 			"anim": "singLEFTmiss",
-			"loop": false,
-			"name": "miss-down"
+			"fps": 12,
+			"name": "miss-down",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/everett-birthday",
+	"image": "characters/everett-birthday/everett-birthday",
 	"position": [
 		0,
 		0

@@ -1,85 +1,85 @@
 {
 	"animations": [
 		{
-			"offsets": [
-				0,
-				0
-			],
-			"indices": [],
-			"fps": 24,
-			"anim": "idle",
 			"loop": true,
-			"name": "square idle"
+			"offsets": [
+				1,
+				0
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "square idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "singLEFT",
-			"loop": false,
-			"name": "square left"
+			"fps": 24,
+			"name": "square left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "singDOWN",
-			"loop": false,
-			"name": "square down"
+			"fps": 24,
+			"name": "square down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "singUP",
-			"loop": false,
-			"name": "square up"
+			"fps": 24,
+			"name": "square up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "singRIGHT",
-			"loop": false,
-			"name": "square right"
+			"fps": 24,
+			"name": "square right",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
-				230,
-				230
+				100,
+				100
 			],
-			"indices": [],
-			"fps": 19,
 			"anim": "ohfuckhesdoingthething",
-			"loop": false,
-			"name": "square ohfucknotmynotes"
+			"fps": 19,
+			"name": "square ohfucknotmynotes",
+			"indices": []
 		},
 		{
-			"offsets": [
-				230,
-				230
-			],
-			"indices": [],
-			"fps": 16,
-			"anim": "laughing",
 			"loop": false,
-			"name": "square laughing"
+			"offsets": [
+				100,
+				100
+			],
+			"anim": "laughing",
+			"fps": 16,
+			"name": "square laughing",
+			"indices": []
 		}
 	],
 	"no_antialiasing": true,
-	"image": "characters/glitchedMickeyNEWANIMS",
+	"image": "characters/glitched-mickey-new-pixel/glitchedMickeyNEWANIMS",
 	"position": [
 		0,
 		0

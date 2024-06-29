@@ -1,63 +1,63 @@
 {
 	"animations": [
 		{
-			"loop": false,
-			"offsets": [
-				80,
-				72
-			],
-			"anim": "singDOWN",
-			"fps": 24,
-			"name": "down",
-			"indices": []
-		},
-		{
-			"loop": false,
 			"offsets": [
 				20,
-				100
+				72
 			],
-			"anim": "singUP",
+			"loop": false,
 			"fps": 24,
-			"name": "up",
-			"indices": []
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down"
 		},
 		{
+			"offsets": [
+				-130,
+				130
+			],
 			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "up"
+		},
+		{
 			"offsets": [
 				220,
 				70
 			],
-			"anim": "idle",
+			"loop": false,
 			"fps": 18,
-			"name": "idle",
+			"anim": "idle",
+			"indices": [],
+			"name": "idle"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-2,
+				16
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "left",
 			"indices": []
 		},
 		{
-			"offsets": [
-				68,
-				46
-			],
-			"indices": [],
-			"fps": 24,
-			"anim": "singLEFT",
 			"loop": false,
-			"name": "left"
-		},
-		{
 			"offsets": [
-				38,
-				65
+				-82,
+				62
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "singRIGHT",
-			"loop": false,
-			"name": "right"
+			"fps": 24,
+			"name": "right",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/bfDemon",
+	"image": "characters/bf-demon-old/bfDemon",
 	"position": [
 		-260,
 		-110

@@ -2,50 +2,6 @@
 	"animations": [
 		{
 			"offsets": [
-				5,
-				0
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singLEFT",
-			"indices": [],
-			"name": "HunterGoofy Left Arrow"
-		},
-		{
-			"offsets": [
-				0,
-				-5
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singDOWN",
-			"indices": [],
-			"name": "HunterGoofy Down Arrow"
-		},
-		{
-			"offsets": [
-				2,
-				5
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singUP",
-			"indices": [],
-			"name": "HunterGoofy Up Arrow"
-		},
-		{
-			"offsets": [
-				-5,
-				0
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHT",
-			"indices": [],
-			"name": "HunterGoofy Right Arrow"
-		},
-		{
-			"offsets": [
 				0,
 				0
 			],
@@ -53,25 +9,69 @@
 			"fps": 24,
 			"anim": "idle",
 			"indices": [],
-			"name": "HunterGoofy Idle Bop"
+			"name": "Demon Idle dance"
+		},
+		{
+			"offsets": [
+				513,
+				-18
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "Demon note left"
+		},
+		{
+			"offsets": [
+				100,
+				-172
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "Demon note down"
+		},
+		{
+			"offsets": [
+				56,
+				148
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "Demon note up"
+		},
+		{
+			"offsets": [
+				-210,
+				0
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Demon note right"
 		}
 	],
-	"no_antialiasing": false,
-	"image": "characters/goofy/HunterGoofy",
+	"no_antialiasing": true,
+	"image": "characters/DELUSIONAL_IS_DONE/FINAL_FINAL_demon_bf",
 	"position": [
-		-200,
-		-90
+		10,
+		20
 	],
-	"healthicon": "goofy",
-	"flip_x": false,
+	"healthicon": "face",
+	"flip_x": true,
 	"healthbar_colors": [
-		211,
-		211,
-		211
+		161,
+		161,
+		161
 	],
 	"camera_position": [
-		40,
-		120
+		140,
+		160
 	],
 	"sing_duration": 6.1,
 	"scale": 0.8

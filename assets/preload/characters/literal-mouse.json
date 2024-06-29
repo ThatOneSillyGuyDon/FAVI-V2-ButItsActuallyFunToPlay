@@ -1,63 +1,63 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 13,
 			"anim": "idle",
-			"loop": false,
-			"name": "mouse idle"
+			"fps": 13,
+			"name": "mouse idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 13,
 			"anim": "singLEFT",
-			"loop": false,
-			"name": "mouse left"
+			"fps": 13,
+			"name": "mouse left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 13,
 			"anim": "singDOWN",
-			"loop": false,
-			"name": "mouse down"
+			"fps": 13,
+			"name": "mouse down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 13,
 			"anim": "singUP",
-			"loop": false,
-			"name": "mouse up"
+			"fps": 13,
+			"name": "mouse up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 13,
 			"anim": "singRIGHT",
-			"loop": false,
-			"name": "mouse right"
+			"fps": 13,
+			"name": "mouse right",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/mouse",
+	"image": "characters/literal-mouse/mouse",
 	"position": [
 		-550,
 		30

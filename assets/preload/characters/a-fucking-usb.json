@@ -1,63 +1,63 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 16,
 			"anim": "idle",
-			"loop": false,
-			"name": "usb idle"
+			"fps": 16,
+			"name": "usb idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				4,
 				0
 			],
-			"indices": [],
-			"fps": 16,
 			"anim": "singLEFT",
-			"loop": false,
-			"name": "usb left"
+			"fps": 16,
+			"name": "usb left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-5,
 				2
 			],
-			"indices": [],
-			"fps": 16,
 			"anim": "singDOWN",
-			"loop": false,
-			"name": "usb down"
+			"fps": 16,
+			"name": "usb down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 16,
 			"anim": "singUP",
-			"loop": false,
-			"name": "usb up"
+			"fps": 16,
+			"name": "usb up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-8,
 				0
 			],
-			"indices": [],
-			"fps": 16,
 			"anim": "singRIGHT",
-			"loop": false,
-			"name": "usb right"
+			"fps": 16,
+			"name": "usb right",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/usbLmao",
+	"image": "characters/a-fucking-usb/usbLmao",
 	"position": [
 		0,
 		0

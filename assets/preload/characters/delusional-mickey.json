@@ -1,68 +1,69 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				10,
 				-30
 			],
-			"loop": false,
-			"fps": 18,
 			"anim": "idle",
-			"indices": [],
-			"name": "Idle"
+			"fps": 18,
+			"name": "Idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				396,
 				-92
 			],
-			"loop": false,
-			"fps": 20,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "Left"
+			"fps": 20,
+			"name": "Left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				276,
 				-276
 			],
-			"loop": false,
-			"fps": 20,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "Down"
+			"fps": 20,
+			"name": "Down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				132,
 				203
 			],
-			"loop": false,
-			"fps": 20,
 			"anim": "singUP",
-			"indices": [],
-			"name": "Up"
+			"fps": 20,
+			"name": "Up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				459,
 				-122
 			],
-			"loop": false,
-			"fps": 20,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "Right"
+			"fps": 20,
+			"name": "Right",
+			"indices": []
 		},
 		{
+			"loop": true,
 			"offsets": [
 				10,
 				-30
 			],
-			"loop": true,
-			"fps": 18,
 			"anim": "idle-loop",
+			"fps": 18,
+			"name": "Idle",
 			"indices": [
 				15,
 				16,
@@ -77,14 +78,17 @@
 				25,
 				26,
 				27
-			],
-			"name": "Idle"
+			]
 		},
 		{
+			"loop": false,
 			"offsets": [
 				128,
 				401
 			],
+			"anim": "HOLY-SHIT-HE-SCREAMING",
+			"fps": 18,
+			"name": "Scream",
 			"indices": [
 				0,
 				1,
@@ -116,15 +120,11 @@
 				11,
 				12,
 				13
-			],
-			"fps": 18,
-			"anim": "HOLY-SHIT-HE-SCREAMING",
-			"loop": false,
-			"name": "Scream"
+			]
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/Delusional_mickey",
+	"image": "characters/delusional-mickey/Delusional_mickey",
 	"position": [
 		0,
 		0

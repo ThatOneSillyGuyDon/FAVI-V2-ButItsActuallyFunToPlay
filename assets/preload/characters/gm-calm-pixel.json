@@ -1,63 +1,63 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 11,
 			"anim": "idle",
-			"loop": false,
-			"name": "glitched-mickey-calm idle"
+			"fps": 11,
+			"name": "glitched-mickey-calm idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 19,
 			"anim": "singLEFT",
-			"loop": false,
-			"name": "glitched-mickey-calm left"
+			"fps": 19,
+			"name": "glitched-mickey-calm left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 18,
 			"anim": "singDOWN",
-			"loop": false,
-			"name": "glitched-mickey-calm down"
+			"fps": 18,
+			"name": "glitched-mickey-calm down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 20,
 			"anim": "singUP",
-			"loop": false,
-			"name": "glitched-mickey-calm up"
+			"fps": 20,
+			"name": "glitched-mickey-calm up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 20,
 			"anim": "singRIGHT",
-			"loop": false,
-			"name": "glitched-mickey-calm right"
+			"fps": 20,
+			"name": "glitched-mickey-calm right",
+			"indices": []
 		}
 	],
 	"no_antialiasing": true,
-	"image": "characters/glitched-mickey-calm",
+	"image": "characters/gm-calm-pixel/glitched-mickey-calm",
 	"position": [
 		0,
 		-60

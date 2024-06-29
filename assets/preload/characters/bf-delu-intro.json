@@ -1,65 +1,69 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 14,
 			"anim": "idle",
-			"loop": false,
-			"name": "Bf idle"
+			"fps": 14,
+			"name": "Bf idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				230,
 				7
 			],
-			"indices": [],
-			"fps": 12,
 			"anim": "singLEFT",
-			"loop": false,
-			"name": "Bf note left"
+			"fps": 12,
+			"name": "Bf note left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				11,
 				-73
 			],
-			"indices": [],
-			"fps": 12,
 			"anim": "singDOWN-alt",
-			"loop": false,
-			"name": "Bf note down demon"
+			"fps": 12,
+			"name": "Bf note down demon",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-8,
 				43
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "singUP-alt",
-			"loop": false,
-			"name": "Bf note up Demon"
+			"fps": 24,
+			"name": "Bf note up Demon",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				10
 			],
-			"indices": [],
-			"fps": 12,
 			"anim": "singRIGHT",
-			"loop": false,
-			"name": "Bf note right"
+			"fps": 12,
+			"name": "Bf note right",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				11,
 				-73
 			],
+			"anim": "singDOWN",
+			"fps": 12,
+			"name": "Bf note down",
 			"indices": [
 				0,
 				1,
@@ -75,17 +79,17 @@
 				11,
 				12,
 				13
-			],
-			"fps": 12,
-			"anim": "singDOWN",
-			"loop": false,
-			"name": "Bf note down"
+			]
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-8,
 				43
 			],
+			"anim": "singUP",
+			"fps": 12,
+			"name": "Bf note up",
 			"indices": [
 				0,
 				1,
@@ -101,15 +105,11 @@
 				11,
 				12,
 				13
-			],
-			"fps": 12,
-			"anim": "singUP",
-			"loop": false,
-			"name": "Bf note up"
+			]
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/bf-delu-intro",
+	"image": "characters/bf-delu-intro/bf-delu-intro",
 	"position": [
 		720,
 		500

@@ -1,63 +1,63 @@
 {
 	"animations": [
 		{
+			"loop": true,
 			"offsets": [
 				-170,
 				-379
 			],
-			"loop": true,
-			"fps": 24,
 			"anim": "idle",
-			"indices": [],
-			"name": "Blackness"
+			"fps": 24,
+			"name": "Blackness",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				608,
 				-166
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "BlackLeft"
+			"fps": 24,
+			"name": "BlackLeft",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-195,
 				-96
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUP",
-			"indices": [],
-			"name": "Blackup"
+			"fps": 24,
+			"name": "Blackup",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-84,
 				-622
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "BlackDown"
+			"fps": 24,
+			"name": "BlackDown",
+			"indices": []
 		},
 		{
-			"loop": false,
 			"offsets": [
-				-182,
-				-332
+				-174,
+				-340
 			],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 24,
-			"name": "RightBlack",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "RightBlack"
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/blackness",
+	"image": "characters/glitched-mickey-legacy-pixel/blackness",
 	"position": [
 		0,
 		0

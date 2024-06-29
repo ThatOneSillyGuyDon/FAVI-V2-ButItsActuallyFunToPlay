@@ -2,67 +2,67 @@
 	"animations": [
 		{
 			"offsets": [
-				-60,
-				120
+				0,
+				0
 			],
 			"loop": false,
-			"fps": 10,
+			"fps": 20,
 			"anim": "idle",
 			"indices": [],
-			"name": "Mickeycross Idle"
+			"name": "Mickey idle dance"
 		},
 		{
 			"offsets": [
-				-60,
-				120
+				234,
+				-32
 			],
 			"loop": false,
-			"fps": 12,
+			"fps": 20,
 			"anim": "singLEFT",
 			"indices": [],
-			"name": "Mickeycross Left"
+			"name": "Mickey left"
 		},
 		{
 			"offsets": [
-				-60,
-				120
+				-104,
+				-6
 			],
 			"loop": false,
-			"fps": 12,
-			"anim": "singDOWN",
-			"indices": [],
-			"name": "Mickeycross Down"
-		},
-		{
-			"offsets": [
-				-60,
-				120
-			],
-			"loop": false,
-			"fps": 12,
+			"fps": 20,
 			"anim": "singUP",
 			"indices": [],
-			"name": "Mickeycross Up"
+			"name": "Mickey up"
 		},
 		{
 			"offsets": [
-				-60,
-				120
+				110,
+				-414
 			],
 			"loop": false,
-			"fps": 12,
+			"fps": 20,
 			"anim": "singRIGHT",
 			"indices": [],
-			"name": "Mickeycross Right"
+			"name": "Mickey right"
+		},
+		{
+			"offsets": [
+				110,
+				-220
+			],
+			"loop": false,
+			"fps": 20,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "Mickey down"
 		}
 	],
-	"no_antialiasing": false,
-	"image": "characters/dctl-mickey/Mickeycross",
+	"no_antialiasing": true,
+	"image": "characters/DELUSIONAL_IS_DONE/NEW_DELU_MICKEY",
 	"position": [
-		-750,
-		-370
+		-440,
+		-280
 	],
-	"healthicon": "dctl-mickey",
+	"healthicon": "face",
 	"flip_x": false,
 	"healthbar_colors": [
 		161,
@@ -70,9 +70,9 @@
 		161
 	],
 	"camera_position": [
-		220,
-		280
+		150,
+		300
 	],
 	"sing_duration": 6.1,
-	"scale": 0.7
+	"scale": 1
 }

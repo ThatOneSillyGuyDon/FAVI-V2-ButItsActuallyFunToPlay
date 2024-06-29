@@ -1,63 +1,63 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
 				710,
 				320
 			],
-			"anim": "idle",
+			"loop": false,
 			"fps": 9,
-			"name": "mickeyIsolateDrop idle",
-			"indices": []
+			"anim": "idle",
+			"indices": [],
+			"name": "mickeyIsolateDrop idle"
 		},
 		{
+			"loop": false,
 			"offsets": [
 				698,
 				317
 			],
-			"loop": false,
-			"fps": 12,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "mickeyIsolateDrop left"
+			"fps": 12,
+			"name": "mickeyIsolateDrop left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				710,
 				322
 			],
-			"loop": false,
-			"fps": 12,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "mickeyIsolateDrop down"
+			"fps": 12,
+			"name": "mickeyIsolateDrop down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				714,
 				322
 			],
-			"loop": false,
-			"fps": 12,
 			"anim": "singUP",
-			"indices": [],
-			"name": "mickeyIsolateDrop up"
+			"fps": 12,
+			"name": "mickeyIsolateDrop up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				722,
 				320
 			],
-			"loop": false,
-			"fps": 12,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "mickeyIsolateDrop right"
+			"fps": 12,
+			"name": "mickeyIsolateDrop right",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/mickeyIsolateDrop",
+	"image": "characters/mickDrop/mickeyIsolateDrop",
 	"position": [
 		0,
 		0

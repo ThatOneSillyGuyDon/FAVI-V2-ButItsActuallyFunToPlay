@@ -1,10 +1,14 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"anim": "murder2-electric-boogaloo",
+			"fps": 20,
+			"name": "Jaw breaker",
 			"indices": [
 				0,
 				1,
@@ -132,15 +136,11 @@
 				137,
 				138,
 				139
-			],
-			"fps": 20,
-			"anim": "murder2-electric-boogaloo",
-			"loop": false,
-			"name": "Jaw breaker"
+			]
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/Jawbreaker",
+	"image": "characters/death-part-2/Jawbreaker",
 	"position": [
 		0,
 		0

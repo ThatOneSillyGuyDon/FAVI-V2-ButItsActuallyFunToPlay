@@ -1,63 +1,63 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "idle",
-			"loop": false,
-			"name": "BF idle"
-		},
-		{
-			"offsets": [
-				24,
-				0
-			],
-			"indices": [],
 			"fps": 24,
-			"anim": "singLEFT",
-			"loop": false,
-			"name": "BF note right"
+			"name": "BF idle",
+			"indices": []
 		},
 		{
-			"offsets": [
-				5,
-				-30
-			],
-			"indices": [],
-			"fps": 24,
-			"anim": "singDOWN",
 			"loop": false,
-			"name": "BF note down"
-		},
-		{
-			"offsets": [
-				-43,
-				40
-			],
-			"indices": [],
-			"fps": 24,
-			"anim": "singUP",
-			"loop": false,
-			"name": "BF note up"
-		},
-		{
 			"offsets": [
 				-50,
 				0
 			],
-			"indices": [],
+			"anim": "singLEFT",
 			"fps": 24,
-			"anim": "singRIGHT",
+			"name": "BF note right",
+			"indices": []
+		},
+		{
 			"loop": false,
-			"name": "BF note left"
+			"offsets": [
+				5,
+				-30
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "BF note down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-43,
+				40
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "BF note up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				20,
+				0
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "BF note left",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/BF_REMAKE",
+	"image": "characters/everett-modern/BF_REMAKE",
 	"position": [
 		0,
 		0

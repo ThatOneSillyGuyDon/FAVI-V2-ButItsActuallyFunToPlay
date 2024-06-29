@@ -1,30 +1,30 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				-108,
 				217
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "danceLeft",
-			"loop": false,
-			"name": "bitch0"
+			"fps": 24,
+			"name": "bitch0",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "danceRight",
-			"loop": false,
-			"name": "bitch2"
+			"fps": 24,
+			"name": "bitch2",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/bfSmokin",
+	"image": "characters/gf-smokin/bfSmokin",
 	"position": [
 		0,
 		0
