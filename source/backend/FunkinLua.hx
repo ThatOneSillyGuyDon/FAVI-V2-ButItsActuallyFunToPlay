@@ -429,6 +429,24 @@ class FunkinLua {
 			#end
 		});
 
+		Lua_helper.add_callback(lua, "setShaderSampler2D", function(obj:String, prop:String, bitmapdataPath:String) {
+			#if (!flash && MODS_ALLOWED && sys)
+			var shader:FlxRuntimeShader = getShader(obj);
+			if(shader == null) return;
+
+			// trace('bitmapdatapath: $bitmapdataPath');
+			var value = Paths.image(bitmapdataPath);
+			if(value != null && value.bitmap != null)
+			{
+				// trace('Found bitmapdata. Width: ${value.bitmap.width} Height: ${value.bitmap.height}');
+				shader.setSampler2D(prop, value.bitmap);
+			}
+			#else
+			luaTrace("setShaderSampler2D: Platform unsupported for Runtime Shaders!", false, false, FlxColor.RED);
+			#end
+		});
+
+
 		//
 		Lua_helper.add_callback(lua, "getRunningScripts", function(){
 			var runningScripts:Array<String> = [];
@@ -1348,13 +1366,13 @@ class FunkinLua {
 		});
 
 		Lua_helper.add_callback(lua, "setHealth", function(value:Float = 0) {
-			PlayState.health = value;
+			PlayState.instance.health = value;
 		});
 		Lua_helper.add_callback(lua, "addHealth", function(value:Float = 0) {
-			PlayState.health += value;
+			PlayState.instance.health += value;
 		});
 		Lua_helper.add_callback(lua, "getHealth", function() {
-			return PlayState.health;
+			return PlayState.instance.health;
 		});
 
 		Lua_helper.add_callback(lua, "getColorFromHex", function(color:String) {

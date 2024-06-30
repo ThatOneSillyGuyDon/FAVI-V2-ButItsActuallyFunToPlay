@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="rain.png">
+	<!-- Created with Adobe Animate version 21.0.7.42652 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Symbol 8 instance 10000" x="0" y="0" width="1719" height="966" frameX="-181" frameY="-84" frameWidth="2796" frameHeight="1403"/>
+	<SubTexture name="Symbol 8 instance 10001" x="1719" y="0" width="1981" height="956" frameX="-196" frameY="-142" frameWidth="2796" frameHeight="1403"/>
+	<SubTexture name="Symbol 8 instance 10002" x="3700" y="0" width="2351" height="1403" frameX="0" frameY="0" frameWidth="2796" frameHeight="1403"/>
+	<SubTexture name="Symbol 8 instance 10003" x="6051" y="0" width="2022" height="1001" frameX="-120" frameY="-182" frameWidth="2796" frameHeight="1403"/>
+	<SubTexture name="Symbol 8 instance 10004" x="0" y="1403" width="2277" height="1279" frameX="-58" frameY="-14" frameWidth="2796" frameHeight="1403"/>
+	<SubTexture name="Symbol 8 instance 10005" x="2277" y="1403" width="1955" height="919" frameX="-228" frameY="-182" frameWidth="2796" frameHeight="1403"/>
+	<SubTexture name="Symbol 8 instance 10006" x="4232" y="1403" width="2636" height="1226" frameX="-160" frameY="-31" frameWidth="2796" frameHeight="1403"/>
+	<SubTexture name="Symbol 8 instance 10007" x="0" y="2682" width="2351" height="1403" frameX="0" frameY="0" frameWidth="2796" frameHeight="1403"/>
+</TextureAtlas>

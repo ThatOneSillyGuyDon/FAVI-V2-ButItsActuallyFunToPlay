@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="balloons.png">
+<SubTexture name="balloons bounce0000" x="820" y="376" width="849" height="324" frameX="-212" frameY="-162" frameWidth="1280" frameHeight="720" />
+<SubTexture name="balloons bounce0001" x="0" y="701" width="837" height="319" frameX="-197" frameY="-168" frameWidth="1280" frameHeight="720" />
+<SubTexture name="balloons bounce0002" x="0" y="0" width="842" height="376" frameX="-198" frameY="-160" frameWidth="1280" frameHeight="720" />
+<SubTexture name="balloons bounce0003" x="842" y="0" width="859" height="327" frameX="-201" frameY="-160" frameWidth="1280" frameHeight="720" />
+<SubTexture name="balloons bounce0004" x="0" y="376" width="820" height="325" frameX="-208" frameY="-161" frameWidth="1280" frameHeight="720" />
+</TextureAtlas>

@@ -18,15 +18,14 @@ typedef SwagSong =
 	var needsVoices:Bool;
 	var speed:Float;
 
+	var composer:String;
+
 	var player1:String;
 	var player2:String;
 	var voiceSfx1:String;
 	var voiceSfx2:String;
 	var gfVersion:String;
 	var stage:String;
-
-	var composer:String;
-	var charter:String;
 
 	var arrowSkin:String;
 	var splashSkin:String;
@@ -43,12 +42,11 @@ class Song
 	public var arrowSkin:String;
 	public var splashSkin:String;
 	public var speed:Float = 1;
+	public var composer:String = "Unknown";
 	public var stage:String;
 	public var player1:String = 'bf';
 	public var player2:String = 'dad';
 	public var voiceSfx1:String = "Player";
-	public var composer:String = "Unknown";
-	public var charter:String = "Unknown";
 	public var voiceSfx2:String = "Opponent";
 	public var gfVersion:String = 'gf';
 

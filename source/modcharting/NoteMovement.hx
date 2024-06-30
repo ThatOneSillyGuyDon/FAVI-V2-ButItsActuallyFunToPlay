@@ -20,24 +20,23 @@ class NoteMovement
         defaultStrumY = []; 
         defaultScale = [];
         arrowSizes = [];
-        keyCount = #if (LEATHER || KADE) PlayState.strumLineNotes.length-PlayState.playerStrums.length #else game.strumLineNotes.length-game.playerStrums.length #end; //base game doesnt have opponent strums as group
-        playerKeyCount = #if (LEATHER || KADE) PlayState.playerStrums.length #else game.playerStrums.length #end;
+        keyCount = game.strumLineNotes.length-game.playerStrums.length; //base game doesnt have opponent strums as group
+        playerKeyCount = game.playerStrums.length;
 
-        for (i in #if (LEATHER || KADE) 0...PlayState.strumLineNotes.members.length #else 0...game.strumLineNotes.members.length #end)
+        for (i in 0...game.strumLineNotes.members.length)
         {
-            #if (LEATHER || KADE) 
-            var strum = PlayState.strumLineNotes.members[i];
-            #else 
             var strum = game.strumLineNotes.members[i];
-            #end
             defaultStrumX.push(strum.x);
             defaultStrumY.push(strum.y);
-            #if LEATHER
-            var localKeyCount = (i < keyCount ? keyCount : playerKeyCount);
-            var s = Std.parseFloat(game.ui_settings[0]) * (Std.parseFloat(game.ui_settings[2]) - (Std.parseFloat(game.mania_size[localKeyCount-1])));
-            #else 
             var s = 0.7;
-            #end
+            // SUPER shitty fix so the scales aren't wonky
+            switch (PlayState.SONG.song)
+            {
+                case "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Malfunction Legacy" | "Cycled Sins Legacy" | "Mercy Legacy" | "Delutrance" | "Birthday":
+                    s = 0.7;
+                default:
+                    s = 0.6;
+            }
             defaultScale.push(s);
             arrowSizes.push(160*s);
         }
@@ -61,12 +60,15 @@ class NoteMovement
             var strum = game.strumLineNotes.members[i];
             defaultStrumX.push(strum.x);
             defaultStrumY.push(strum.y);
-            #if LEATHER
-            var localKeyCount = (i < keyCount ? keyCount : playerKeyCount);
-            var s = Std.parseFloat(game.ui_settings[0]) * (Std.parseFloat(game.ui_settings[2]) - (Std.parseFloat(game.mania_size[localKeyCount-1])));
-            #else
             var s = 0.7;
-            #end
+             // SUPER shitty fix so the scales aren't wonky
+             switch (PlayState.SONG.song)
+             {
+                 case "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Malfunction Legacy" | "Cycled Sins Legacy" | "Mercy Legacy" | "Delutrance" | "Birthday":
+                     s = 0.7;
+                 default:
+                     s = 0.6;
+             }
             defaultScale.push(s);
             arrowSizes.push(160*s);
         }

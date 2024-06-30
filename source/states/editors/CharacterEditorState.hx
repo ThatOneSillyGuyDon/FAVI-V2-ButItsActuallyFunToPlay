@@ -40,6 +40,7 @@ class CharacterEditorState extends MusicBeatState
 
 	var UI_box:FlxUITabMenu;
 	var UI_characterbox:FlxUITabMenu;
+	var UI_iconBox:FlxUITabMenu;
 
 	private var camEditor:FlxCamera;
 	private var camHUD:FlxCamera;
@@ -153,6 +154,7 @@ class CharacterEditorState extends MusicBeatState
 		var tabs = [
 			{name: 'Character', label: 'Character'},
 			{name: 'Animations', label: 'Animations'},
+			{name: 'Icon Settings', label: 'Icon Settings'},
 		];
 		UI_characterbox = new FlxUITabMenu(null, tabs, true);
 		UI_characterbox.cameras = [camMenu];
@@ -161,6 +163,7 @@ class CharacterEditorState extends MusicBeatState
 		UI_characterbox.x = UI_box.x - 100;
 		UI_characterbox.y = UI_box.y + UI_box.height;
 		UI_characterbox.scrollFactor.set();
+
 		add(UI_characterbox);
 		add(UI_box);
 		add(changeBGbutton);
@@ -170,6 +173,7 @@ class CharacterEditorState extends MusicBeatState
 
 		addCharacterUI();
 		addAnimationsUI();
+		addIconUI();
 		UI_characterbox.selected_tab_id = 'Character';
 
 		FlxG.mouse.visible = true;
@@ -466,6 +470,38 @@ class CharacterEditorState extends MusicBeatState
 		UI_box.addGroup(tab_group);
 	}
 
+	var checkBop:FlxUICheckBox;
+	var checkShake:FlxUICheckBox;
+	var checkAnimation:FlxUICheckBox;
+
+	function addIconUI() {
+		var tab_group = new FlxUI(null, UI_box);
+		tab_group.name = "Icon Settings";
+
+		checkBop = new FlxUICheckBox(15, 30, null, null, "Can icon bounce?", 100);
+		checkBop.checked = char.boppingIcon;
+		checkBop.callback = function() {
+			char.boppingIcon = !char.boppingIcon;
+		}
+
+		checkShake = new FlxUICheckBox(15, checkBop.y + 20, null, null, "Can icon shake?", 100);
+		checkShake.checked = char.intenseIcon;
+		checkBop.callback = function() {
+			char.intenseIcon = !char.intenseIcon;
+		}
+
+		checkAnimation = new FlxUICheckBox(15, checkShake.y + 20, null, null, "Is icon animated?", 100);
+		checkAnimation.checked = char.animatedIcon;
+		checkBop.callback = function() {
+			char.animatedIcon = !char.animatedIcon;
+		}
+
+		tab_group.add(checkBop);
+		tab_group.add(checkShake);
+		tab_group.add(checkAnimation);
+		UI_characterbox.addGroup(tab_group);
+	}
+
 	var imageInputText:FlxUIInputText;
 	var healthIconInputText:FlxUIInputText;
 
@@ -733,7 +769,7 @@ class CharacterEditorState extends MusicBeatState
 	override function getEvent(id:String, sender:Dynamic, data:Dynamic, ?params:Array<Dynamic>) {
 		if(id == FlxUIInputText.CHANGE_EVENT && (sender is FlxUIInputText)) {
 			if(sender == healthIconInputText) {
-				leHealthIcon.changeIcon(healthIconInputText.text, false, false);
+				leHealthIcon.changeIcon(healthIconInputText.text, false, false, true);
 				char.healthIcon = healthIconInputText.text;
 				updatePresence();
 			}
@@ -957,11 +993,14 @@ class CharacterEditorState extends MusicBeatState
 			imageInputText.text = char.imageFile;
 			healthIconInputText.text = char.healthIcon;
 			singDurationStepper.value = char.singDuration;
+			checkBop.checked = char.boppingIcon;
+			checkShake.checked = char.intenseIcon;
+			checkAnimation.checked = char.animatedIcon;
 			scaleStepper.value = char.jsonScale;
 			flipXCheckBox.checked = char.originalFlipX;
 			noAntialiasingCheckBox.checked = char.noAntialiasing;
 			resetHealthBarColor();
-			leHealthIcon.changeIcon(healthIconInputText.text, false, false);
+			leHealthIcon.changeIcon(healthIconInputText.text, false, false, true);
 			positionXStepper.value = char.positionArray[0];
 			positionYStepper.value = char.positionArray[1];
 			positionCameraXStepper.value = char.cameraPosition[0];

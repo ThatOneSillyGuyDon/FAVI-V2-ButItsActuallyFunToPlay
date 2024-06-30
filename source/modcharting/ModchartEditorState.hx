@@ -287,13 +287,12 @@ class ModchartEditorState extends MusicBeatState
 				needsVoices: true,
 				arrowSkin: '',
 				splashSkin: 'noteSplashes',//idk it would crash if i didn't
+                composer: "Unknown",
 				player1: 'bf',
 				player2: 'dad',
 				voiceSfx1: 'Player',
 				voiceSfx2: 'Opponent',
 				gfVersion: 'gf',
-                composer: 'Unknown',
-                charter: 'Unknown',
 				speed: 1,
 				stage: 'stage',
 				validScore: false

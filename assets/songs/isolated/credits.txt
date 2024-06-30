@@ -1,4 +1,5 @@
-Art: Domingo
-Chart: DEMOLITIONDON96
-Code: Jason & DEMOLITIONDON96
+Isolated
+Artwork: Domingo
+Charting: DEMOLITIONDON96
+Programming: JustJasonLol & DEMOLITIONDON96
 Music: obscurity.

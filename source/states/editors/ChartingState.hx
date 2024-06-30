@@ -191,12 +191,11 @@ class ChartingState extends MusicBeatState
 				needsVoices: true,
 				arrowSkin: '',
 				splashSkin: 'noteSplashes',//idk it would crash if i didn't
+				composer: "Unknown",
 				player1: 'bf',
 				player2: 'dad',
 				voiceSfx1: 'Player',
 				voiceSfx2: 'Opponent',
-				composer: 'Unknown',
-				charter: 'Unknown',
 				gfVersion: 'gf',
 				speed: 1,
 				stage: 'stage',
@@ -2554,15 +2553,15 @@ class ChartingState extends MusicBeatState
 
 		if (_song.notes[curSec].mustHitSection)
 		{
-			leftIcon.changeIcon(healthIconP1, isAnimated, isIntense);
-			rightIcon.changeIcon(healthIconP2, isAnimated, isIntense);
-			if (_song.notes[curSec].gfSection) leftIcon.changeIcon('gf', false, false);
+			leftIcon.changeIcon(healthIconP1, isAnimated, isIntense, true);
+			rightIcon.changeIcon(healthIconP2, isAnimated, isIntense, true);
+			if (_song.notes[curSec].gfSection) leftIcon.changeIcon('gf', false, false, true);
 		}
 		else
 		{
-			leftIcon.changeIcon(healthIconP2, isAnimated, isIntense);
-			rightIcon.changeIcon(healthIconP1, isAnimated, isIntense);
-			if (_song.notes[curSec].gfSection) leftIcon.changeIcon('gf', false, false);
+			leftIcon.changeIcon(healthIconP2, isAnimated, isIntense, true);
+			rightIcon.changeIcon(healthIconP1, isAnimated, isIntense, true);
+			if (_song.notes[curSec].gfSection) leftIcon.changeIcon('gf', false, false, true);
 		}
 	}
 
