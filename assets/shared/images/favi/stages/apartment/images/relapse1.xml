@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="relapse1.png"><SubTexture name="Bg bg0000" x="0" y="0" width="459" height="239" frameX="0" frameY="0" frameWidth="459" frameHeight="239" />
+<SubTexture name="Bg bg0001" x="459" y="0" width="459" height="239" frameX="0" frameY="0" frameWidth="459" frameHeight="239" />
+<SubTexture name="Bg bg0002" x="0" y="0" width="459" height="239" frameX="0" frameY="0" frameWidth="459" frameHeight="239" />
+</TextureAtlas>

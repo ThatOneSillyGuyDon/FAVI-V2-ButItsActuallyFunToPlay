@@ -22,6 +22,8 @@ class StrumNote extends FlxSprite
 		return value;
 	}
 
+	var skin:String = "";
+
 	public function new(x:Float, y:Float, leData:Int, player:Int) {
 		colorSwap = new ColorSwap();
 		shader = colorSwap.shader;
@@ -30,7 +32,22 @@ class StrumNote extends FlxSprite
 		this.noteData = leData;
 		super(x, y);
 
-		var skin:String = 'NOTE_assets';
+		switch (PlayState.SONG.song)
+		{
+			case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted":
+				skin = "NOTE_assets-CARTOON";
+			case "Mercy":
+				skin = "NOTE_assets-MERCY";
+			case "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Malfunction Legacy" | "Cycled Sins Legacy" | "Mercy Legacy" | "Delutrance" | "Birthday" | "Malfunction":
+				skin = "NOTE_assets";
+			case "Cycled Sins":
+				skin = "NOTE_assets-SIN";
+			default:
+				skin = "NOTE_assets-DEFAULTSKIN";
+		}
+
+		trace("current skin is: " + skin);
+
 		if(PlayState.SONG.arrowSkin != null && PlayState.SONG.arrowSkin.length > 1) skin = PlayState.SONG.arrowSkin;
 		texture = skin; //Load texture and anims
 

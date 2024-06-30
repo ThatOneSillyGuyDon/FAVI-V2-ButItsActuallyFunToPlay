@@ -3,11 +3,9 @@ package backend;
 import openfl.utils.Assets;
 import lime.utils.Assets as LimeAssets;
 import lime.utils.AssetLibrary;
-import haxe.io.Bytes;
-import haxe.io.Path;
-import lime.app.Application;
 import lime.utils.AssetManifest;
 import flixel.system.FlxSound;
+import haxe.io.Bytes;
 #if sys
 import sys.io.File;
 import sys.FileSystem;
@@ -18,18 +16,13 @@ import openfl.utils.Assets;
 class CoolUtil
 {
 	public static var defaultDifficulties:Array<String> = [
+		'Easy',
+		'Normal',
 		'Hard'
 	];
-	public static var defaultDifficulty:String = 'Hard'; //The chart that has no suffix and starting difficulty on Freeplay/Story Mode
+	public static var defaultDifficulty:String = 'Normal'; //The chart that has no suffix and starting difficulty on Freeplay/Story Mode
 
 	public static var difficulties:Array<String> = [];
-
-	public function new()
-	{
-			staticAccess = this;
-	}
-	
-	public static var staticAccess:CoolUtil;
 
 	inline public static function quantize(f:Float, snap:Float){
 		// changed so this actually works lol
@@ -88,25 +81,6 @@ class CoolUtil
 
 		return daList;
 	}
-
-	public static function returnAssetsLibrary(library:String, ?subDir:String = 'assets/images'):Array<String>
-		{
-			var libraryArray:Array<String> = [];
-	
-			return try
-			{
-				for (folder in FileSystem.readDirectory('$subDir/$library'))
-					if (!folder.contains('.'))
-						libraryArray.push(folder);
-				libraryArray;
-			}
-			catch (e)
-			{
-				trace('$subDir/$library is returning null');
-				[];
-			}
-		}
-		
 	public static function listFromString(string:String):Array<String>
 	{
 		var daList:Array<String> = [];
@@ -211,5 +185,5 @@ class CoolUtil
 			{
 				return false;
 			}
-		};
+		}
 }

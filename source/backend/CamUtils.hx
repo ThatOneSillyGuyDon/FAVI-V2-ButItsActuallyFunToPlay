@@ -1,9 +1,5 @@
 package backend;
 
-import flixel.math.FlxMath;
-import flixel.FlxG;
-import flixel.FlxCamera;
-
 @:access(flixel.FlxCamera)
 class CamUtils 
 {
