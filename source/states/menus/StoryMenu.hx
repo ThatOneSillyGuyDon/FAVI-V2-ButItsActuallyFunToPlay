@@ -15,7 +15,8 @@ class StoryMenu extends MusicBeatState
 	static var lastDifficulty:String = '';
 
 	var weekCharacters:Array<Array<String>> = [];
-	var bookImage:Array<String> = ['depression'];
+	var bookImages:Array<String> = ['depression']; // For sum reason it dosent work brah, time to activate my secret mind - malyplus
+
 
 	var bgSprite:FlxSprite;
 	var txtWeekTitle:FlxText;
@@ -36,6 +37,9 @@ class StoryMenu extends MusicBeatState
 	var spoopy:FlxSprite;
 	var ispy:FlxSprite;
 	var gradient:FlxSprite;
+	
+	var booksimage:FlxSprite;
+	var weekshitcausepsychhatesme:FlxSprite;
 
 	var difficultySelectors:FlxGroup;
 	var sprDifficulty:FlxSprite;
@@ -100,7 +104,7 @@ class StoryMenu extends MusicBeatState
 		bookStuff = new FlxTypedGroup<FlxSprite>();
 		add(bookStuff);
 
-		for (i in 0...bookImage.length)
+		/*for (i in 0...bookImage.length)
 		{
 			var image:FlxSprite = new FlxSprite(100, 0).loadGraphic(Paths.image('Funkin_avi/storymenu/bookPics/' + bookImage[i]));
 			image.ID = i;
@@ -108,7 +112,17 @@ class StoryMenu extends MusicBeatState
 			image.alpha = 0.0001;
 			image.scale.set(0.45, 0.45);
 			bookStuff.add(image);
-		}
+		}*/
+
+
+		// I have a present simple for you
+
+		booksimage = new FlxSprite(100, 0);
+		booksimage.angle = FlxG.random.float(-15, 18);
+		booksimage.alpha = 0.0001;
+		booksimage.scale.set(0.45, 0.45);
+		add(booksimage); // Istg, i need to learn some day about the arrays ugh
+
 
 		scoreText = new FlxText(10, 10, 0, "SCORE: 49324858", 36);
 		scoreText.setFormat(Paths.font("vcr"), 32);
@@ -254,6 +268,17 @@ class StoryMenu extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
+		if (curWeek == 0) // idk with one works so erm fuck
+		{
+			booksimage.loadGraphic(Paths.image('Funkin_avi/storymenu/bookPics/depression'));
+			booksimage.alpha = 1;
+		}
+		else
+		{
+			booksimage.alpha = 0.0001; // fack you its going to disapear mode
+		}
+
+
 		lerpScore = Math.floor(FlxMath.lerp(lerpScore, intendedScore, CoolUtil.boundTo(elapsed * 30, 0, 1)));
 		if(Math.abs(intendedScore - lerpScore) < 10) lerpScore = intendedScore;
 
@@ -285,12 +310,14 @@ class StoryMenu extends MusicBeatState
 				{
 					changeWeek(-1);
 					FlxG.sound.play(Paths.sound('scrollMenu'));
+					booksimage.angle = FlxG.random.float(-15, 18);
 				}
 
 				if (rightP)
 				{
 					changeWeek(1);
 					FlxG.sound.play(Paths.sound('scrollMenu'));
+					booksimage.angle = FlxG.random.float(-15, 18); // yes
 				}
 
 				if(FlxG.mouse.wheel != 0)
@@ -449,6 +476,8 @@ class StoryMenu extends MusicBeatState
 		var storyName:String = WeekData.weeksLoaded.get(WeekData.weeksList[curWeek]).storyName;
 		txtWeekTitle.text = storyName.toUpperCase();
 		txtWeekTitle.x = FlxG.width - (txtWeekTitle.width + 10);
+
+
 
 		lime.app.Application.current.window.title = "Funkin.avi - Story Menu - " + storyName;
 
