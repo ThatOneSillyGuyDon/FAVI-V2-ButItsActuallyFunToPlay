@@ -1,63 +1,63 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
-				371,
-				370
+				-125,
+				-10
 			],
-			"anim": "idle",
+			"loop": false,
 			"fps": 12,
-			"name": "idle",
-			"indices": []
+			"anim": "idle",
+			"indices": [],
+			"name": "idle"
 		},
 		{
-			"loop": false,
 			"offsets": [
-				370,
-				371
+				-125,
+				-9
 			],
+			"loop": false,
+			"fps": 17,
 			"anim": "singLEFT",
+			"indices": [],
+			"name": "left"
+		},
+		{
+			"offsets": [
+				-126,
+				-9
+			],
+			"loop": false,
 			"fps": 17,
-			"name": "left",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				370,
-				370
-			],
-			"anim": "singDOWN",
-			"fps": 15,
-			"name": "down",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				380,
-				370
-			],
 			"anim": "singUP",
-			"fps": 17,
-			"name": "up",
-			"indices": []
+			"indices": [],
+			"name": "up"
 		},
 		{
 			"loop": false,
 			"offsets": [
-				380,
-				380
+				-126,
+				-9
 			],
 			"anim": "singRIGHT",
-			"fps": 16,
+			"fps": 20,
 			"name": "right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-123,
+				-10
+			],
+			"anim": "singDOWN",
+			"fps": 19,
+			"name": "down",
 			"indices": []
 		}
 	],
 	"no_antialiasing": true,
-	"image": "characters/malsquare-phase0-pixel/malware-phase0-pixel",
+	"image": "characters/malsquare-intro",
 	"position": [
 		0,
 		0
@@ -70,9 +70,9 @@
 		0
 	],
 	"camera_position": [
-		-500,
-		-300
+		-310,
+		-560
 	],
 	"sing_duration": 6.1,
-	"scale": 1.3
+	"scale": 5.99999999999999
 }

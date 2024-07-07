@@ -2,7 +2,7 @@
 	"animations": [
 		{
 			"offsets": [
-				0,
+				410,
 				0
 			],
 			"loop": false,
@@ -13,7 +13,7 @@
 		},
 		{
 			"offsets": [
-				234,
+				664,
 				-32
 			],
 			"loop": false,
@@ -24,7 +24,7 @@
 		},
 		{
 			"offsets": [
-				-104,
+				316,
 				-6
 			],
 			"loop": false,
@@ -35,7 +35,7 @@
 		},
 		{
 			"offsets": [
-				110,
+				490,
 				-414
 			],
 			"loop": false,
@@ -46,7 +46,7 @@
 		},
 		{
 			"offsets": [
-				110,
+				520,
 				-220
 			],
 			"loop": false,
@@ -54,12 +54,30 @@
 			"anim": "singDOWN",
 			"indices": [],
 			"name": "Mickey down"
+		},
+		{
+			"loop": true,
+			"offsets": [
+				410,
+				0
+			],
+			"anim": "idle-loop",
+			"fps": 20,
+			"name": "Mickey idle dance",
+			"indices": [
+				10,
+				11,
+				12,
+				13,
+				14,
+				15
+			]
 		}
 	],
 	"no_antialiasing": true,
 	"image": "characters/DELUSIONAL_IS_DONE/NEW_DELU_MICKEY",
 	"position": [
-		-440,
+		-450,
 		-280
 	],
 	"healthicon": "face",
@@ -70,8 +88,8 @@
 		161
 	],
 	"camera_position": [
-		150,
-		300
+		-360,
+		150
 	],
 	"sing_duration": 6.1,
 	"scale": 1

@@ -1,59 +1,59 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
-				-80,
-				50
+				90,
+				-50
 			],
-			"anim": "idle",
+			"loop": false,
 			"fps": 20,
-			"name": "Demon Idle dance",
-			"indices": []
+			"anim": "idle",
+			"indices": [],
+			"name": "Demon Idle dance"
 		},
 		{
-			"loop": false,
 			"offsets": [
-				265,
-				36
+				455,
+				-64
 			],
-			"anim": "singLEFT",
+			"loop": false,
 			"fps": 26,
-			"name": "Demon note left",
-			"indices": []
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "Demon note left"
 		},
 		{
-			"loop": false,
 			"offsets": [
-				-17,
-				-100
+				163,
+				-190
 			],
+			"loop": false,
+			"fps": 28,
 			"anim": "singDOWN",
-			"fps": 28,
-			"name": "Demon note down",
-			"indices": []
+			"indices": [],
+			"name": "Demon note down"
 		},
 		{
-			"loop": false,
 			"offsets": [
-				-10,
-				175
+				160,
+				67
 			],
+			"loop": false,
+			"fps": 28,
 			"anim": "singUP",
-			"fps": 28,
-			"name": "Demon note up",
-			"indices": []
+			"indices": [],
+			"name": "Demon note up"
 		},
 		{
-			"loop": false,
 			"offsets": [
-				-166,
-				48
+				14,
+				-52
 			],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 27,
-			"name": "Demon note right",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Demon note right"
 		}
 	],
 	"no_antialiasing": false,
@@ -70,8 +70,8 @@
 		0
 	],
 	"camera_position": [
-		0,
-		0
+		250,
+		90
 	],
 	"sing_duration": 6.1,
 	"scale": 0.8

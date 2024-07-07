@@ -1941,116 +1941,7 @@ class PlayState extends MusicBeatState
 				addBehindDad(evilTrail);
 		}
 
-		switch (curStage)
-		{
-			case 'abandonedStreet':
-				switch (dad.curCharacter)
-				{
-					case 'delusional-mickey':
-						dad.setPosition(-260, 120);
-					case 'mickey-delu-intro':
-						dad.setPosition(-210, 180);
-					case 'death-part-1':
-						dad.setPosition(-450, 100);
-					case 'death-part-2':
-						dad.setPosition(-430, 100);
-					default:
-						dad.setPosition(-870, -190);
-				}
-				switch (boyfriend.curCharacter)
-				{
-					case 'bf-demon': boyfriend.setPosition(550, 190);
-					case 'bf-delu-intro': boyfriend.setPosition(750, 350);
-					default: boyfriend.setPosition(275, 50);
-				}
-			case 'forestNew':
-				dad.setPosition(-320, 130);
-				boyfriend.setPosition(850, 0);
-			case 'forestOld':
-				dad.setPosition(0, 0);
-    			boyfriend.setPosition(900, -20);
-			case 'theLoop':
-				dad.setPosition(0, 0);
-				if (boyfriend.curCharacter == 'bf')
-				{
-					boyfriend.setPosition(1000, 130);
-				}else{
-					boyfriend.setPosition(500, -320);
-				}
-			case 'war':
-				dad.setPosition(-140, 30);
-   	 			boyfriend.setPosition(1450, 650);
-			case 'circus' | 'my name is caine and welcome to the amazing digital circus':
-				dad.setPosition(-990, -100);
-				boyfriend.setPosition(200, 100);
-				gf.setPosition(-300, -200);
-			case 'treasureIsland':
-				boyfriend.setPosition(1080, 310);
-				dad.setPosition(0, 190);
-			case 'clubhouse':
-				switch (dad.curCharacter)
-				{
-					case 'munpet':
-						dad.setPosition(-240, 0);
-					default:
-						dad.setPosition(-240, -260);
-				}
-				switch (boyfriend.curCharacter)
-				{
-					case 'xyloboy':
-						boyfriend.setPosition(650, -100);
-					default:
-						boyfriend.setPosition(650, -360);
-				}
-				gf.setPosition(280, -410);
-			case 'desktop':
-				boyfriend.setPosition(300, 400);
-				gf.setPosition(250, 600);
-				dad.setPosition(-1100, 350);
-			case 'forbiddenRealm':
-				if (dad.curCharacter == 'gm-calm-pixel')
-					dad.setPosition(-130, 50);
-				else
-					dad.setPosition(-100, 150);
-				
-				boyfriend.setPosition(1300, 600);
-			case 'trueGrinsOfSins':
-				boyfriend.setPosition(1300, 400);
-				dad.setPosition(0, 0);
-			case 'vaultRoom':
-				boyfriend.setPosition(960, 530);
-				if (dad.curCharacter == 'white-noise-new') dad.setPosition(-680, -520); else dad.setPosition(90, 60);
-			case 'waltRoom':
-				switch (dad.curCharacter)
-				{
-					case 'walt-true':
-						dad.setPosition(240, -200);
-					case 'walt-new':
-						dad.setPosition(220, -50);
-					default:
-						dad.setPosition(0, 0);
-				}
-				boyfriend.setPosition(330, 300);
-			case 'trance':
-				dad.setPosition(-861, -259);
-				boyfriend.setPosition(260, 0);
-			case 'apartment':
-				dad.setPosition(-1000, 270);
-    			boyfriend.setPosition(590, 250);
-			case 'smilesOffice':
-				boyfriend.setPosition(1000, 300);
-				dad.setPosition(200, 400);
-			case 'fuckingLine':
-				dad.setPosition(-400, -150);
-				boyfriend.setPosition(900, 300);
-			case 'alleyway' | 'ddStage':
-				boyfriend.setPosition(770, 450);
-				dad.setPosition(1660, 120);
-			default:
-				boyfriend.setPosition(770, 450);
-				dad.setPosition(100, 100);
-				gf.setPosition(300, 100);
-		}
+		resetCharPos();
 
 		
 		blendFlash = new FlxSprite().makeGraphic(1, 1, 0xFFFFFFFF);
@@ -2998,6 +2889,120 @@ class PlayState extends MusicBeatState
 		return false;
 	}
 	#end
+
+	function resetCharPos()
+	{
+		switch (curStage)
+		{
+			case 'abandonedStreet':
+				switch (dad.curCharacter)
+				{
+					case 'delusional-mickey':
+						dad.setPosition(-260, 120);
+					case 'mickey-delu-intro':
+						dad.setPosition(-210, 180);
+					case 'death-part-1':
+						dad.setPosition(-450, 100);
+					case 'death-part-2':
+						dad.setPosition(-430, 100);
+					default:
+						dad.setPosition(-870, -190);
+				}
+				switch (boyfriend.curCharacter)
+				{
+					case 'bf-demon': boyfriend.setPosition(550, 190);
+					case 'bf-delu-intro': boyfriend.setPosition(750, 350);
+					default: boyfriend.setPosition(275, 50);
+				}
+			case 'forestNew':
+				dad.setPosition(-320, 130);
+				boyfriend.setPosition(850, 0);
+			case 'forestOld':
+				dad.setPosition(0, 0);
+    			boyfriend.setPosition(900, -20);
+			case 'theLoop':
+				dad.setPosition(0, 0);
+				if (boyfriend.curCharacter == 'bf')
+				{
+					boyfriend.setPosition(1000, 130);
+				}else{
+					boyfriend.setPosition(500, -320);
+				}
+			case 'war':
+				dad.setPosition(-140, 30);
+   	 			boyfriend.setPosition(1450, 650);
+			case 'circus' | 'my name is caine and welcome to the amazing digital circus':
+				dad.setPosition(-990, -100);
+				boyfriend.setPosition(200, 100);
+				gf.setPosition(-300, -200);
+			case 'treasureIsland':
+				boyfriend.setPosition(1080, 310);
+				dad.setPosition(0, 190);
+			case 'clubhouse':
+				switch (dad.curCharacter)
+				{
+					case 'munpet':
+						dad.setPosition(-240, 0);
+					default:
+						dad.setPosition(-240, -260);
+				}
+				switch (boyfriend.curCharacter)
+				{
+					case 'xyloboy':
+						boyfriend.setPosition(650, -100);
+					default:
+						boyfriend.setPosition(650, -360);
+				}
+				gf.setPosition(280, -410);
+			case 'desktop':
+				boyfriend.setPosition(300, 400);
+				gf.setPosition(250, 600);
+				dad.setPosition(-1100, 350);
+			case 'forbiddenRealm':
+				if (dad.curCharacter == 'gm-calm-pixel')
+					dad.setPosition(-130, 50);
+				else
+					dad.setPosition(-100, 150);
+				
+				boyfriend.setPosition(1300, 600);
+			case 'trueGrinsOfSins':
+				boyfriend.setPosition(1300, 400);
+				dad.setPosition(0, 0);
+			case 'vaultRoom':
+				boyfriend.setPosition(960, 530);
+				if (dad.curCharacter == 'white-noise-new') dad.setPosition(-680, -520); else dad.setPosition(90, 60);
+			case 'waltRoom':
+				switch (dad.curCharacter)
+				{
+					case 'walt-true':
+						dad.setPosition(240, -200);
+					case 'walt-new':
+						dad.setPosition(220, -50);
+					default:
+						dad.setPosition(0, 0);
+				}
+				boyfriend.setPosition(330, 300);
+			case 'trance':
+				dad.setPosition(-861, -259);
+				boyfriend.setPosition(260, 0);
+			case 'apartment':
+				dad.setPosition(-1000, 270);
+    			boyfriend.setPosition(590, 250);
+			case 'smilesOffice':
+				boyfriend.setPosition(1000, 300);
+				dad.setPosition(200, 400);
+			case 'fuckingLine':
+				dad.setPosition(-400, -150);
+				boyfriend.setPosition(900, 300);
+			case 'alleyway' | 'ddStage':
+				boyfriend.setPosition(770, 450);
+				dad.setPosition(1660, 120);
+			default:
+				boyfriend.setPosition(770, 450);
+				dad.setPosition(100, 100);
+				gf.setPosition(300, 100);
+		}
+	}
 
 	function set_songSpeed(value:Float):Float
 	{
@@ -6168,20 +6173,20 @@ class PlayState extends MusicBeatState
 								addCharacterToList(value2, charType);
 							}
 
-							if (Assets.exists(Paths.getPreloadPath('characters/' + boyfriend.curCharacter + '.json')) && Assets.exists(Paths.voicesPlayer(PlayState.SONG.song, boyfriend.curCharacter, CoolUtil.difficulties[storyDifficulty])))
-								hasVocals = true;
+							//if (Assets.exists(Paths.getPreloadPath('characters/' + boyfriend.curCharacter + '.json')) && Assets.exists(Paths.voicesPlayer(PlayState.SONG.song, boyfriend.curCharacter, CoolUtil.difficulties[storyDifficulty])))
+								//hasVocals = true;
 
 							var lastAlpha:Float = boyfriend.alpha;
 							boyfriend.alpha = 0.00001;
 							boyfriend = boyfriendMap.get(value2);
 							boyfriend.alpha = lastAlpha;
 							iconP1.changeIcon(boyfriend.healthIcon, boyfriend.animatedIcon, boyfriend.intenseIcon, boyfriend.boppingIcon);
-							bf_vocals.destroy();
-							bf_vocals = null;
-							if (SONG.needsVoices)
-								bf_vocals = new FlxSound().loadEmbedded(Paths.voicesPlayer(PlayState.SONG.song, !hasVocals ? "Player" : boyfriend.curCharacter, CoolUtil.difficulties[storyDifficulty]));
-							else
-								bf_vocals = new FlxSound();
+							//bf_vocals.destroy();
+							//bf_vocals = null;
+							//if (SONG.needsVoices)
+								//bf_vocals = new FlxSound().loadEmbedded(Paths.voicesPlayer(PlayState.SONG.song, !hasVocals ? "Player" : boyfriend.curCharacter, CoolUtil.difficulties[storyDifficulty]));
+							//else
+								//bf_vocals = new FlxSound();
 						}
 						setOnLuas('boyfriendName', boyfriend.curCharacter);
 
@@ -6191,8 +6196,8 @@ class PlayState extends MusicBeatState
 								addCharacterToList(value2, charType);
 							}
 
-							if (Assets.exists(Paths.getPreloadPath('characters/' + dad.curCharacter + '.json')) && Assets.exists(Paths.voicesOpp(PlayState.SONG.song, dad.curCharacter, CoolUtil.difficulties[storyDifficulty])))
-								hasVocals = true;
+							//if (Assets.exists(Paths.getPreloadPath('characters/' + dad.curCharacter + '.json')) && Assets.exists(Paths.voicesOpp(PlayState.SONG.song, dad.curCharacter, CoolUtil.difficulties[storyDifficulty])))
+								//hasVocals = true;
 
 							var wasGf:Bool = dad.curCharacter.startsWith('gf');
 							var lastAlpha:Float = dad.alpha;
@@ -6207,12 +6212,12 @@ class PlayState extends MusicBeatState
 							}
 							dad.alpha = lastAlpha;
 							iconP2.changeIcon(dad.healthIcon, dad.animatedIcon, dad.intenseIcon, dad.boppingIcon);
-							opp_vocals.destroy();
-							opp_vocals = null;
-							if (SONG.needsVoices)
-								opp_vocals = new FlxSound().loadEmbedded(Paths.voicesOpp(PlayState.SONG.song, !hasVocals ? "Opponent" : dad.curCharacter, CoolUtil.difficulties[storyDifficulty]));
-							else
-								opp_vocals = new FlxSound();
+							//opp_vocals.destroy();
+							//opp_vocals = null;
+							//if (SONG.needsVoices)
+								//opp_vocals = new FlxSound().loadEmbedded(Paths.voicesOpp(PlayState.SONG.song, !hasVocals ? "Opponent" : dad.curCharacter, CoolUtil.difficulties[storyDifficulty]));
+							//else
+								//opp_vocals = new FlxSound();
 						}
 						setOnLuas('dadName', dad.curCharacter);
 
@@ -6237,6 +6242,7 @@ class PlayState extends MusicBeatState
 				reloadHealthBarColors();
 				resyncVocals();
 				if (hasVocals) hasVocals = false;
+				resetCharPos();
 
 			case 'BG Freaks Expression':
 				if(bgGirls != null) bgGirls.swapDanceType();
@@ -7753,6 +7759,13 @@ class PlayState extends MusicBeatState
 					case 262 | 294 | 326 | 358: 
 						PlayState.instance.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.35, ease: FlxEase.sineOut, timer: 0.6});
 						FlxG.camera.zoom += 0.21;
+				}
+			case "Birthday":
+				switch (curStep)
+				{
+					case 1407:
+						dad.scale.x = 0;
+						FlxTween.tween(PlayState.dad, {'scale.x': 1}, 0.3, {ease: FlxEase.quartOut});
 				}
 		}
 
@@ -9304,10 +9317,7 @@ class PlayState extends MusicBeatState
 							{
 								PlayState.instance.offsetTwn = null;
 							}});
-					case 351: FlxTween.tween(PlayState.dad, {'scale.x': 0}, 0.3, {ease: FlxEase.quartInOut, onComplete: function(twn:FlxTween)
-						{
-							FlxTween.tween(PlayState.dad, {'scale.x': 1}, 0.3, {ease: FlxEase.quartOut});
-						}});
+					case 351: FlxTween.tween(PlayState.dad, {'scale.x': 0}, 0.3, {ease: FlxEase.quartInOut});
 					case 416: FlxTween.tween(PlayState.boyfriend, {'scale.y': 0}, 0.5, {ease: FlxEase.quartInOut, onComplete: function(twn:FlxTween)
 						{
 							FlxTween.tween(PlayState.boyfriend, {'scale.y': 1}, 0.5, {ease: FlxEase.quartOut});

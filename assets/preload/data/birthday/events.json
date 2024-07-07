@@ -1,48 +1,46 @@
 {
-	"events": [
-		[
-			"Change Character",
-			117250,
+	"song": {
+		"events": [
 			[
+				117250,
 				[
-					"dad",
-					"munpet",
-					"0.0001"
+					[
+						"Change Character",
+						"dad",
+						"munpet"
+					]
 				]
-			]
-		],
-		[
-			"Change Character",
-			139083.333333333,
+			],
 			[
+				139083.333333333,
 				[
-					"bf",
-					"xyloboy",
-					"0.0001"
+					[
+						"Change Character",
+						"bf",
+						"xyloboy"
+					]
 				]
-			]
-		],
-		[
-			"Change Character",
-			159250,
+			],
 			[
+				159250,
 				[
-					"dad",
-					"muckney",
-					"0.0001"
+					[
+						"Change Character",
+						"dad",
+						"muckney"
+					]
 				]
-			]
-		],
-		[
-			"Change Character",
-			160833.333333333,
+			],
 			[
+				160833.333333333,
 				[
-					"bf",
-					"everett-birthday",
-					"0.0001"
+					[
+						"Change Character",
+						"bf",
+						"everett-birthday"
+					]
 				]
 			]
 		]
-	]
+	}
 }

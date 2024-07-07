@@ -1,109 +1,109 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"loop": false,
-			"fps": 17,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "FaviBf Left0"
+			"fps": 17,
+			"name": "FaviBf Left0",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"loop": false,
-			"fps": 17,
 			"anim": "idle",
-			"indices": [],
-			"name": "FaviBf Idle"
+			"fps": 17,
+			"name": "FaviBf Idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-2,
 				2
 			],
-			"loop": false,
-			"fps": 20,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "FaviBf Down0"
+			"fps": 20,
+			"name": "FaviBf Down0",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				20,
 				-4
 			],
-			"loop": false,
-			"fps": 18,
 			"anim": "singUP",
-			"indices": [],
-			"name": "FaviBf Up0"
+			"fps": 18,
+			"name": "FaviBf Up0",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				6,
 				-2
 			],
-			"loop": false,
-			"fps": 19,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "FaviBf Right0"
+			"fps": 19,
+			"name": "FaviBf Right0",
+			"indices": []
 		},
 		{
-			"loop": true,
 			"offsets": [
 				0,
 				0
 			],
+			"loop": true,
+			"fps": 80,
 			"anim": "singLEFTmiss",
-			"fps": 80,
-			"name": "FaviBf LeftMiss",
-			"indices": []
+			"indices": [],
+			"name": "FaviBf LeftMiss"
 		},
 		{
-			"loop": true,
 			"offsets": [
 				0,
 				0
 			],
+			"loop": true,
+			"fps": 80,
 			"anim": "singDOWNmiss",
-			"fps": 80,
-			"name": "FaviBf DownMiss",
-			"indices": []
+			"indices": [],
+			"name": "FaviBf DownMiss"
 		},
 		{
-			"loop": true,
 			"offsets": [
 				0,
 				0
 			],
-			"anim": "singUPmiss",
+			"loop": true,
 			"fps": 70,
-			"name": "FaviBf UpMiss",
-			"indices": []
+			"anim": "singUPmiss",
+			"indices": [],
+			"name": "FaviBf UpMiss"
 		},
 		{
-			"loop": true,
 			"offsets": [
 				0,
 				0
 			],
-			"anim": "singRIGHTmiss",
+			"loop": true,
 			"fps": 90,
-			"name": "FaviBf RightMiss",
-			"indices": []
+			"anim": "singRIGHTmiss",
+			"indices": [],
+			"name": "FaviBf RightMiss"
 		}
 	],
 	"no_antialiasing": false,
 	"image": "characters/bf-fake-new/FaviBf",
 	"position": [
-		-240,
+		-230,
 		-80
 	],
 	"healthicon": "bf-fake-new",
@@ -114,8 +114,8 @@
 		171
 	],
 	"camera_position": [
-		180,
-		230
+		-270,
+		270
 	],
 	"sing_duration": 6.1,
 	"scale": 0.6

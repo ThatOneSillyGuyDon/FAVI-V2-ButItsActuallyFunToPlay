@@ -1,68 +1,68 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
-				612,
-				640
+				94,
+				28
 			],
-			"indices": [],
-			"fps": 10,
 			"anim": "idle",
-			"loop": false,
-			"name": "idle"
+			"fps": 10,
+			"name": "idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
-				610,
-				640
+				95,
+				31
 			],
-			"indices": [],
-			"fps": 10,
 			"anim": "singUP",
-			"loop": false,
-			"name": "up"
-		},
-		{
-			"offsets": [
-				615,
-				640
-			],
-			"indices": [],
-			"fps": 14,
-			"anim": "singDOWN",
-			"loop": true,
-			"name": "down"
-		},
-		{
-			"offsets": [
-				611,
-				641
-			],
-			"indices": [],
 			"fps": 10,
-			"anim": "singRIGHT",
-			"loop": false,
-			"name": "right"
+			"name": "up",
+			"indices": []
 		},
 		{
-			"offsets": [
-				610,
-				636
-			],
-			"indices": [],
-			"fps": 14,
-			"anim": "singLEFT",
 			"loop": true,
-			"name": "left"
+			"offsets": [
+				95,
+				30
+			],
+			"anim": "singDOWN",
+			"fps": 14,
+			"name": "down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				94,
+				26
+			],
+			"anim": "singRIGHT",
+			"fps": 10,
+			"name": "right",
+			"indices": []
+		},
+		{
+			"loop": true,
+			"offsets": [
+				93,
+				30
+			],
+			"anim": "singLEFT",
+			"fps": 14,
+			"name": "left",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,
 	"image": "characters/mick-isolated-new/mick-isolated-new",
 	"position": [
-		-100,
-		320
+		320,
+		520
 	],
-	"healthicon": "f_avi/episode1/mickey",
+	"healthicon": "mickey",
 	"flip_x": false,
 	"healthbar_colors": [
 		161,
@@ -70,8 +70,8 @@
 		161
 	],
 	"camera_position": [
-		-195,
-		-320
+		315,
+		320
 	],
 	"sing_duration": 6.1,
 	"scale": 0.6
