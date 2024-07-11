@@ -452,6 +452,11 @@ class PlayState extends MusicBeatState
 	 public static var spriteShit:Array<String> = ['bigSmoke', 'smallSmoke', 'smallSmoke', 'bigSmoke'];
 	 public static var spriteShitForeground:Array<String> = ['bigSmoke', 'bigSmoke', 'smallSmoke', 'bigSmoke'];
 	 public static var pathway:String = 'favi/stages/' + curStage + '/images/';
+	  
+	// Mickey being delusional and minnie appearing Scene For Delusional aaaa
+	  public static var minnieBackground:FlxSprite; 
+	  public static var totallyanoriginalname:FlxSprite; // .. i have no idea what to say
+	   
 
 	//HUNTED FNF
 	var wobblyBG:FlxRuntimeShader;
@@ -1121,6 +1126,21 @@ class PlayState extends MusicBeatState
 						streetRuins.scale.set(2.5, 2.3);
 						streetRuins.scrollFactor.set(1, 1);
 						add(streetRuins);
+
+
+						// Bedroom Grah :fire: - MalyPlus
+						minnieBackground = new FlxSprite(-20, 200).loadGraphic(Paths.image(pathway + 'background'));
+						minnieBackground.scale.set(2,2);
+						minnieBackground.scrollFactor.set(1, 1);
+						minnieBackground.visible = true;
+						add(minnieBackground);
+
+						totallyanoriginalname = new FlxSprite(-20, 200).loadGraphic(Paths.image(pathway + 'shading'));
+						totallyanoriginalname.scale.set(2,2);
+						totallyanoriginalname.scrollFactor.set(1,1);
+						totallyanoriginalname.visible = true;
+						add(totallyanoriginalname);
+
 	
 						if (!lowQuality)
 						{
