@@ -1,59 +1,59 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
-				0,
+				950,
 				-110
 			],
-			"anim": "idle",
+			"loop": false,
 			"fps": 7,
-			"name": "BedroomMick idle",
-			"indices": []
+			"anim": "idle",
+			"indices": [],
+			"name": "BedroomMick idle"
 		},
 		{
-			"loop": false,
 			"offsets": [
-				0,
+				950,
 				-110
 			],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 6,
-			"name": "BedroomMick right",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "BedroomMick right"
 		},
 		{
-			"loop": false,
 			"offsets": [
-				2,
+				952,
 				-111
 			],
+			"loop": false,
+			"fps": 9,
 			"anim": "singLEFT",
-			"fps": 9,
-			"name": "BedroomMick left",
-			"indices": []
+			"indices": [],
+			"name": "BedroomMick left"
 		},
 		{
-			"loop": false,
 			"offsets": [
-				1,
+				951,
 				-110
 			],
+			"loop": false,
+			"fps": 9,
 			"anim": "singDOWN",
-			"fps": 9,
-			"name": "BedroomMick down",
-			"indices": []
+			"indices": [],
+			"name": "BedroomMick down"
 		},
 		{
-			"loop": false,
 			"offsets": [
-				-2,
+				958,
 				-110
 			],
-			"anim": "singUP",
+			"loop": false,
 			"fps": 9,
-			"name": "BedroomMick up",
-			"indices": []
+			"anim": "singUP",
+			"indices": [],
+			"name": "BedroomMick up"
 		}
 	],
 	"no_antialiasing": false,
@@ -70,7 +70,7 @@
 		216
 	],
 	"camera_position": [
-		-220,
+		640,
 		100
 	],
 	"sing_duration": 6.1,
