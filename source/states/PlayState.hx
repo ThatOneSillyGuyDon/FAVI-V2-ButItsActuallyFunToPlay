@@ -1959,6 +1959,9 @@ class PlayState extends MusicBeatState
 			case 'schoolEvil':
 				var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069); //nice
 				addBehindDad(evilTrail);
+			case "vaultRoom":
+				dad.alpha = 0.75;
+				dad.blend = ADD;
 		}
 
 		resetCharPos();
@@ -2292,6 +2295,14 @@ class PlayState extends MusicBeatState
 						scratch.cameras = [camOther];
 						add(scratch);
 				}
+			}
+
+			switch (curStage)
+			{
+				case "forestNew" | "desktop":
+					//do nothing, gf exists
+				default:
+					gf.visible = false;
 			}
 	
 			fade = new FlxSprite().makeGraphic(1, 1, 0x000000);
@@ -2760,7 +2771,7 @@ class PlayState extends MusicBeatState
 
 		switch (PlayState.SONG.song)
 		{
-			case 'Devilish Deal':
+			case 'Devilish Deal' | "Bless":
 				PlayState.camGame.alpha = 0.001;
 				PlayState.camHUD.alpha = 0.001;
 				PlayState.camNotes.alpha = 0.001; // 0.001 doesn't cause lag when setting alpha above 0 for some reason, yet it's still invisible
@@ -4704,6 +4715,15 @@ class PlayState extends MusicBeatState
 						heyTimer = 0;
 					}
 				}
+		}
+		
+		var wn_r:Float = 70;
+		var rotRateWn = curStep / 9.5;
+		var wn_toy = -640 + -Math.sin(rotRateWn * 2) * wn_r * 0.45;
+
+		if (dad.curCharacter == "white-noise-new")
+		{
+			dad.y += (wn_toy - dad.y) / 12;
 		}
 
 		if(!inCutscene) {
@@ -7787,6 +7807,119 @@ class PlayState extends MusicBeatState
 						dad.scale.x = 0;
 						FlxTween.tween(PlayState.dad, {'scale.x': 1}, 0.3, {ease: FlxEase.quartOut});
 				}
+			case "Bless":
+				switch (curStep)
+				{
+					case 1:
+						FlxTween.tween(camGame, {alpha: 1}, 5, {ease: FlxEase.expoOut});
+						for (light in [light, flair])
+						{
+							light.visible = false;
+							light.alpha -= 0.2;
+						}
+						var letsFight:VideoSprite = new VideoSprite(false);
+						letsFight.load(Paths.video("blessCountdown"), [VideoSprite.muted]);
+						letsFight.alpha = 0.00001;
+						letsFight.cameras = [camVideo];
+						letsFight.addCallback("onEnd", () -> camVideo.visible = false);
+						letsFight.play();
+						add(letsFight);
+					case 42:
+						for (hud in [camHUD, camNotes])
+							FlxTween.tween(hud, {alpha: 1}, 3);
+					case 84:
+						for (light in[light, flair])
+						{
+							light.visible = true;
+							FlxTween.tween(light, {alpha: light.alpha + 0.2}, 0.64, {ease: FlxEase.expoOut});
+						}
+					case 1115:
+						dad.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0);
+						boyfriend.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0);
+						playfieldRenderer.isInvertColors = true;
+						dad.alpha = 1;
+						dad.blend = NORMAL;
+						camBars.flash(FlxColor.BLACK, 2);
+						cinematicBarControls("add", 0.0001, 'linear', 0);
+						cinematicBarControls("moveboth", 0.0001, 'linear', 130);
+						for (invertAssets in [vaultI, chainsI, thingyI, chainsI, chainsI2, chainsI3, lightI, flairI])
+							invertAssets.visible = true;
+						for (normalAssets in [vault, chains, thingy, chains, chains2, chains3, light, flair])
+							normalAssets.visible = false;
+					case 1157 | 1199 | 1241 | 1283 | 1325 | 1367 | 1409 | 1452 | 1493 | 1535 | 1577 | 1620 | 1662 | 1703 | 1745:
+						camFlashSystem(BG_FLASH, {alpha: 0.45, timer: 1});
+					case 1828:
+						var letsFight:VideoSprite = new VideoSprite(false);
+						letsFight.load(Paths.video("blessCountdown"), [VideoSprite.muted]);
+						letsFight.cameras = [camVideo];
+						letsFight.addCallback("onEnd", () -> camVideo.visible = false);
+						letsFight.play();
+						add(letsFight);
+						camVideo.visible = true;
+					case 1829:
+						dad.setColorTransform(1, 1, 1, 1, 0, 0, 0, 0);
+						boyfriend.setColorTransform(1, 1, 1, 1, 0, 0, 0, 0);
+						playfieldRenderer.isInvertColors = false;
+						dad.blend = ADD;
+						dad.alpha = 0.75;
+						camGame.visible = true;
+						cinematicBarControls("moveboth", 5, 'circInOut', 0);
+						for (i in [camHUD, camNotes])
+							FlxTween.tween(i, {alpha: 1}, 3);
+						for (invertAssets in [vaultI, chainsI, thingyI, chainsI, chainsI2, chainsI3, lightI, flairI])
+							invertAssets.visible = false;
+						for (normalAssets in [vault, chains, thingy, chains, chains2, chains3, light, flair])
+							normalAssets.visible = true;
+					case 1835:
+						var counter:FlxSprite = new FlxSprite().loadGraphic(Paths.image("ready"));
+						counter.cameras = [camOther];
+						counter.scrollFactor.set();
+						counter.updateHitbox();
+						counter.screenCenter();
+						add(counter);
+						FlxTween.tween(counter, {alpha: 0}, Conductor.crochet / 1000, {
+							ease: FlxEase.cubeInOut,
+							onComplete: function(twn:FlxTween)
+							{
+								remove(counter);
+								counter.destroy();
+							}
+						});
+					case 1840:
+						var counter:FlxSprite = new FlxSprite().loadGraphic(Paths.image("set"));
+						counter.cameras = [camOther];
+						counter.scrollFactor.set();
+						counter.updateHitbox();
+						counter.screenCenter();
+						add(counter);
+						FlxTween.tween(counter, {alpha: 0}, Conductor.crochet / 1000, {
+							ease: FlxEase.cubeInOut,
+							onComplete: function(twn:FlxTween)
+							{
+								remove(counter);
+								counter.destroy();
+							}
+						});
+					case 1845:
+						var counter:FlxSprite = new FlxSprite().loadGraphic(Paths.image("go"));
+						counter.cameras = [camOther];
+						counter.scrollFactor.set();
+						counter.updateHitbox();
+						counter.screenCenter();
+						add(counter);
+						FlxTween.tween(counter, {alpha: 0}, Conductor.crochet / 1000, {
+							ease: FlxEase.cubeInOut,
+							onComplete: function(twn:FlxTween)
+							{
+								remove(counter);
+								counter.destroy();
+							}
+						});
+					case 1850:
+						camVideo.visible = false;
+						camGame.zoom += 0.15;
+						camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.45, timer: 0.25});
+				}
 		}
 
 		if (Math.abs(FlxG.sound.music.time - (Conductor.songPosition - Conductor.offset)) > (20 * playbackRate)
@@ -7815,6 +7948,14 @@ class PlayState extends MusicBeatState
 
 		switch (PlayState.SONG.song)
 		{
+			case "Bless":
+				switch (curBeat)
+				{
+					case 447:
+						camGame.visible = false;
+						for (i in [camHUD, camNotes])
+							FlxTween.tween(i, {alpha: 0}, 2);
+				}
 			case 'Isolated Legacy':
 				switch (curBeat)
 				{
@@ -10122,43 +10263,46 @@ class PlayState extends MusicBeatState
 						}
 					}
 			case 'vaultRoom':
-				if(curBeat == 544)
-					{
-						vault.visible = false;
-						chains.visible = false;
-						thingy.visible = false;
-						chains2.visible = false;
-						chains3.visible = false;
-						light.visible = false;
-						flair.visible = false;
-				
-						vaultI.visible = true;
-						chainsI.visible = true;
-						thingyI.visible = true;
-						chainsI2.visible = true;
-						chainsI3.visible = true;
-						lightI.visible = true;
-						flairI.visible = true;
-					}
-				
-					if(curBeat == 608)
-					{
-						vault.visible = true;
-						chains.visible = true;
-						thingy.visible = true;
-						chains2.visible = true;
-						chains3.visible = true;
-						light.visible = true;
-						flair.visible = true;
-				
-						vaultI.visible = false;
-						chainsI.visible = false;
-						thingyI.visible = false;
-						chainsI2.visible = false;
-						chainsI3.visible = false;
-						lightI.visible = false;
-						flairI.visible = false;
-					}
+				if (SONG.song == "Bless Legacy")
+				{
+					if(curBeat == 544)
+						{
+							vault.visible = false;
+							chains.visible = false;
+							thingy.visible = false;
+							chains2.visible = false;
+							chains3.visible = false;
+							light.visible = false;
+							flair.visible = false;
+					
+							vaultI.visible = true;
+							chainsI.visible = true;
+							thingyI.visible = true;
+							chainsI2.visible = true;
+							chainsI3.visible = true;
+							lightI.visible = true;
+							flairI.visible = true;
+						}
+					
+						if(curBeat == 608)
+						{
+							vault.visible = true;
+							chains.visible = true;
+							thingy.visible = true;
+							chains2.visible = true;
+							chains3.visible = true;
+							light.visible = true;
+							flair.visible = true;
+					
+							vaultI.visible = false;
+							chainsI.visible = false;
+							thingyI.visible = false;
+							chainsI2.visible = false;
+							chainsI3.visible = false;
+							lightI.visible = false;
+							flairI.visible = false;
+						}
+				}
 			case 'apartment':
 				if (PlayState.SONG.song == "Cycled Sins Legacy")
 					{

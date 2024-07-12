@@ -45,6 +45,7 @@ class NoteMovement
         #end
         totalKeyCount = keyCount + playerKeyCount;
     }
+
     public static function getDefaultStrumPosEditor(game:ModchartEditorState)
     {
         #if ((PSYCH || LEATHER) && !DISABLE_MODCHART_EDITOR)
