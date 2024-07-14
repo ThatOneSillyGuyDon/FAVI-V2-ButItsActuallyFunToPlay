@@ -1132,13 +1132,13 @@ class PlayState extends MusicBeatState
 						minnieBackground = new FlxSprite(-20, 200).loadGraphic(Paths.image(pathway + 'background'));
 						minnieBackground.scale.set(2,2);
 						minnieBackground.scrollFactor.set(1, 1);
-						minnieBackground.visible = true;
+						minnieBackground.visible = false;
 						add(minnieBackground);
 
 						totallyanoriginalname = new FlxSprite(-20, 200).loadGraphic(Paths.image(pathway + 'shading'));
 						totallyanoriginalname.scale.set(2,2);
 						totallyanoriginalname.scrollFactor.set(1,1);
-						totallyanoriginalname.visible = true;
+						totallyanoriginalname.visible = false;
 						add(totallyanoriginalname);
 
 	
@@ -9180,6 +9180,8 @@ class PlayState extends MusicBeatState
 						PlayState.camGame.visible = false;
 						PlayState.camHUD.visible = false;
 						PlayState.camNotes.visible = false;
+						atmosphereParticle.visible = false;
+						ashParticle.visible = false;
 					case 473:
 						if (PlayState.instance.canaddshaders)
 						{
@@ -9208,16 +9210,33 @@ class PlayState extends MusicBeatState
 						}
 						PlayState.instance.chromEffect = 0.00001;
 						PlayState.defaultCamZoom = 0.85;
+					case 478:
+						camFollow.x = 630;
+						camFollow.y = 750;
+						isCameraOnForcedPos = true;
+						defaultCamZoom = 0.5;
+						boyfriend.cameras = [camVideo];
+						boyfriend.x += 350;
+						boyfriend.alpha = 0.0001;
+						camVideo.visible = true;
 					case 480:
 						// no healthbar to add more onto the atmosphere of this section
 						PlayState.camGame.visible = true;
 						PlayState.camNotes.visible = true;
+					case 508:
+						FlxTween.tween(boyfriend, {alpha: 0.45}, 2.5, {ease: FlxEase.expoOut});
 					case 720:
 						FlxTween.tween(PlayState.camGame, {alpha: 0.0001}, 5, {ease: FlxEase.quartInOut});
 						FlxTween.tween(PlayState.camNotes, {alpha: 0.0001}, 5, {ease: FlxEase.quartInOut});
 					case 740:
+						isCameraOnForcedPos = false;
 						boundValue = 0.45;
 						drainValue = 0.032;
+						boyfriend.alpha = 1;
+						camFollow.x = 0;
+						camFollow.y = 0;
+						atmosphereParticle.visible = true;
+						ashParticle.visible = true;
 					case 744:
 						PlayState.camGame.alpha = 1;
 						PlayState.camHUD.visible = true;
@@ -10073,12 +10092,11 @@ class PlayState extends MusicBeatState
 												spr.alpha = 0;
 											});
 										rain.visible = false;
-										clouds.visible = true;
+										totallyanoriginalname.visible = true;
 										stageCurtains.visible = false;
 										stageFront.visible = false;
 									}
-									brightSky.visible = true;
-									streetDaytime.visible = true;
+									minnieBackground.visible = true;
 								}
 								if (curBeat == 740) // go back to the street in a even more decayed state
 								{
@@ -10097,13 +10115,12 @@ class PlayState extends MusicBeatState
 												spr.alpha = 0.74;
 											});
 										rain.visible = true;
-										clouds.visible = false;
+										totallyanoriginalname.visible = false;
 										stageCurtains.visible = true;
 									}
 									streetRuins.visible = true;
 									fakeLightOfHope.alpha = 0.5;
-									brightSky.visible = false;
-									streetDaytime.visible = false;
+									minnieBackground.visible = false;
 								}
 								if (curBeat == 744 || curBeat == 752 || curBeat == 760 || curBeat == 768 || curBeat == 772 || curBeat == 776 || curBeat == 784 || curBeat == 792 || curBeat == 800 || curBeat == 804 ||
 									curBeat == 808 || curBeat == 816 || curBeat == 824 || curBeat == 832 || curBeat == 836 || curBeat == 840 || curBeat == 848 || curBeat == 856 || curBeat == 864 || curBeat == 868 ||
