@@ -1,0 +1,12 @@
+{
+    "info": 
+	[
+		["Mickey Mouse (Isolated)", "isolatedMick", 20, 0, 0.35, "bla bla bla"],
+		["Everett? (Isolated)", "fakeBf", 170, 5, 0.35, "bla bla bla"],
+		["Mickey Mouse (Lunacy)", "lunaMick", 0, 20, 0.35, "bla bla bla"],
+		["Mickey Mouse (Delusional)", "deluMick", -40, -30, 0.39, "bla bla bla"],
+		["Goofy and Donald", "Goofy", 80, -30, 0.36, "bla bla bla"],
+		["Malsquare", "malsquare", 130, -100, 0.3, "bla bla bla"],
+		["Test", "malsquare", 130, -100, 0.3, "bla bla blahh"]
+	]
+}

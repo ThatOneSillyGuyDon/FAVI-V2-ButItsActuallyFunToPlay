@@ -1,5 +1,7 @@
 package states.menus.freeplay;
 
+//import backend.TypedefUtilities;
+
 import openfl.filters.BitmapFilter;
 import openfl.filters.ShaderFilter;
 import openfl.media.Sound;
@@ -710,7 +712,7 @@ class FreeplaySongs extends MusicBeatState
 
 		// set up color stuffs
 		mainColor = songs[curSelected].color;
-		PauseSubState.colorSetup = songs[curSelected].color;
+		//PauseSubState.colorSetup = songs[curSelected].color;
 
 		// song switching stuffs
 		var bullShit:Int = 0;
@@ -944,39 +946,39 @@ class FreeplaySongs extends MusicBeatState
 
 			case 'bless legacy':
 				Conductor.changeBPM(120);
-
+	
 			case 'delusional legacy':
 				Conductor.changeBPM(185);
-
+	
 			case 'affliction':
 				Conductor.changeBPM(150);
-
+	
 			case 'isolated beta' | 'isolated old':
 				Conductor.changeBPM(120);
-
+	
 			case 'isolated' | "don't cross!" | 'isolated legacy':
 				Conductor.changeBPM(165);
-
+	
 			case 'devilish deal': 
 				Conductor.changeBPM(90);
-
+	
 			case 'lunacy': 
 				Conductor.changeBPM(188);
-
+	
 			case 'delutrance':
 				Conductor.changeBPM(123);
-
+	
 			case 'malfunction': 
 				Conductor.changeBPM(166);
-
+	
 			case 'twisted grins':
 				Conductor.changeBPM(390);
-
+	
 			default:
 				Conductor.changeBPM(100);
 		}
 	}
-
+	
 	function changeSongPlaying()
 	{
 		if (songThread == null)
@@ -987,14 +989,14 @@ class FreeplaySongs extends MusicBeatState
 				{
 					if (!threadActive)
 						return;
-
+	
 					var index:Null<Int> = Thread.readMessage(false);
 					if (index != null)
 					{
 						if (index == curSelected && index != curSongPlaying)
 						{
 							var inst:Sound = Paths.inst(songs[curSelected].name);
-
+	
 							if (index == curSelected && threadActive)
 							{
 								mutex.acquire();
@@ -1010,7 +1012,7 @@ class FreeplaySongs extends MusicBeatState
 		}
 		songThread.sendMessage(curSelected);
 	}
-
+	
 	public static function getDiffRank()
 	{
 		switch (CoolUtil.spaceToDash(PlayState.SONG.song.toLowerCase()))
@@ -1025,7 +1027,7 @@ class FreeplaySongs extends MusicBeatState
 			default: difficultyRank = 'HARD';
 		}
 	}
-
+	
 	function updateDiscord()
 	{
 		var mySong:String = ' [Listening to: ${songs[curSelected].name}]';
@@ -1046,11 +1048,11 @@ class FreeplaySongs extends MusicBeatState
 			case 2:
 				{
 					Discord.changePresence('CHOOSING A SONG', 'Freeplay Menu (LEGACY)' + mySong, 'icon', 'disc-player');
-				}
+			}
 			case 3:
-				{
-					Discord.changePresence('???', 'Freeplay Menu (???)', 'icon', 'birthday-hat');
-				}
+			{
+				Discord.changePresence('???', 'Freeplay Menu (???)', 'icon', 'birthday-hat');
+			}
 		}
 		#end
 		#end

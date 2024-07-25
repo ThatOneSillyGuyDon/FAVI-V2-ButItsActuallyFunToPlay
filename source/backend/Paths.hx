@@ -134,6 +134,9 @@ class Paths
 		return getPreloadPath(file);
 	}
 
+	inline static public function songJson(song:String, secondSong:String, ?library:String)
+		return getPath('songs/${song.toLowerCase()}/${secondSong.toLowerCase()}.json', TEXT, library);
+
 	static public function getLibraryPath(file:String, library = "preload")
 	{
 		return if (library == "preload" || library == "default") getPreloadPath(file); else getLibraryPathForce(file, library);
