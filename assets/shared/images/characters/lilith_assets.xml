@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="lilith_assets.png">
+	<!-- Created with Adobe Animate version 22.0.0.93 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="gfidle0000" x="0" y="0" width="482" height="608" frameX="-3" frameY="-10" frameWidth="485" frameHeight="618"/>
+	<SubTexture name="gfidle0001" x="0" y="0" width="482" height="608" frameX="-3" frameY="-10" frameWidth="485" frameHeight="618"/>
+	<SubTexture name="gfidle0002" x="482" y="0" width="485" height="604" frameX="0" frameY="-14" frameWidth="485" frameHeight="618"/>
+	<SubTexture name="gfidle0003" x="482" y="0" width="485" height="604" frameX="0" frameY="-14" frameWidth="485" frameHeight="618"/>
+	<SubTexture name="gfidle0004" x="967" y="0" width="483" height="609" frameX="0" frameY="-9" frameWidth="485" frameHeight="618"/>
+	<SubTexture name="gfidle0005" x="967" y="0" width="483" height="609" frameX="0" frameY="-9" frameWidth="485" frameHeight="618"/>
+	<SubTexture name="gfidle0006" x="1450" y="0" width="480" height="616" frameX="-3" frameY="-2" frameWidth="485" frameHeight="618"/>
+	<SubTexture name="gfidle0007" x="1450" y="0" width="480" height="616" frameX="-3" frameY="-2" frameWidth="485" frameHeight="618"/>
+	<SubTexture name="gfidle0008" x="0" y="616" width="475" height="618" frameX="-8" frameY="0" frameWidth="485" frameHeight="618"/>
+	<SubTexture name="gfidle0009" x="0" y="616" width="475" height="618" frameX="-8" frameY="0" frameWidth="485" frameHeight="618"/>
+	<SubTexture name="gfidle0010" x="0" y="616" width="475" height="618" frameX="-8" frameY="0" frameWidth="485" frameHeight="618"/>
+	<SubTexture name="gfidle0011" x="0" y="616" width="475" height="618" frameX="-8" frameY="0" frameWidth="485" frameHeight="618"/>
+	<SubTexture name="gfidle0012" x="0" y="616" width="475" height="618" frameX="-8" frameY="0" frameWidth="485" frameHeight="618"/>
+	<SubTexture name="gfidle0013" x="0" y="616" width="475" height="618" frameX="-8" frameY="0" frameWidth="485" frameHeight="618"/>
+</TextureAtlas>

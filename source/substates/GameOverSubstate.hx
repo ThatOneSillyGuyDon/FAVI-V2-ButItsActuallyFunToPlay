@@ -182,6 +182,16 @@ class GameOverSubstate extends MusicBeatSubstate
 			{
 				FlxG.camera.fade(FlxColor.BLACK, 2, false, function()
 				{
+					var songName:Array<String> = ['Dont Cross', "Dont-Cross", "dont cross", "dont-cross"];
+
+					for (i in songName)
+						if (PlayState.SONG.song == i)
+						{
+							var songLowercase:String = "dont-cross";
+							var poop:String = "dont-cross-hard" + '${FlxG.random.int(1, 4)}'; //fuck fuck fuck fuck fuck fuck
+							PlayState.SONG = Song.loadFromJson(poop, songLowercase, true);
+						}
+						
 					MusicBeatState.resetState();
 				});
 			});

@@ -125,6 +125,14 @@ class Note extends FlxSprite
 
 		if(noteData > -1 && noteType != value) {
 			switch(value) {
+				case 'Error Note':
+					ignoreNote = mustPress;
+					reloadNote('ERROR');
+					noteSplashTexture = null;
+					colorSwap.hue = FlxG.random.int(0, 120);
+					colorSwap.saturation = 0;
+					colorSwap.brightness = 0;
+					lowPriority = true;
 				case 'Hurt Note':
 					ignoreNote = mustPress;
 					reloadNote('HURT');
@@ -297,7 +305,7 @@ class Note extends FlxSprite
 
 			if(isSustainNote) {
 				offsetX += lastNoteOffsetXForPixelAutoAdjusting;
-				lastNoteOffsetXForPixelAutoAdjusting = (width - 7) * (PlayState.daPixelZoom / 2);
+				lastNoteOffsetXForPixelAutoAdjusting = (width - (PlayState.SONG.song == "Cycled Sins" ? 9 : 7)) * (PlayState.daPixelZoom / 2);
 				offsetX -= lastNoteOffsetXForPixelAutoAdjusting;
 
 				/*if(animName != null && !animName.endsWith('end'))

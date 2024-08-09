@@ -397,6 +397,7 @@ class PlayState extends MusicBeatState
 	public static var redVignette:FlxRuntimeShader = new FlxRuntimeShader(Shaders.redFromAngryBirds, null, 120);
 	public static var waltStatic:FlxRuntimeShader = new FlxRuntimeShader(Shaders.vhsFilter, null, 130);
 	public static var heatWaveEffect:FlxRuntimeShader = new FlxRuntimeShader(Shaders.heatWave, null, 120);
+	public static var pixelizeUI:FlxRuntimeShader = new FlxRuntimeShader(Shaders.unregisteredHyperCam2Quality, null, 140);
 
 	public var chromEffect:Float = 0.0001;
 	public var blurEffect:Float = 0.0;
@@ -522,6 +523,7 @@ class PlayState extends MusicBeatState
 
 	override public function create()
 	{
+		pixelizeUI.setFloat('size', 5);
 		//trace('Playback Rate: ' + playbackRate);
 		Paths.clearStoredMemory();
 
@@ -667,6 +669,7 @@ class PlayState extends MusicBeatState
 		SONG.stage = curStage;
 
 		pathway = 'favi/stages/' + curStage + '/images/';
+		if (SONG.song == "Cycled Sins") daPixelZoom = 5;
 
 		var stageData:StageFile = StageData.getStageFile(curStage);
 		if(stageData == null) { //Stage couldn't be found, create a dummy stage for preventing a crash
@@ -1575,23 +1578,7 @@ class PlayState extends MusicBeatState
 					foreground.add(light);
 					foreground.add(flair);
 					foreground.add(thingy);
-	
-					vaultI = new FlxSprite(-200, -100).loadGraphic(Paths.image(pathway + 'vaultInvert'));
-					vaultI.scale.set(2.45, 2.3);
-					vaultI.visible = false;
-					add(vaultI);
-					chainsI = new FlxSprite(-225, -100).loadGraphic(Paths.image(pathway + 'chainsI1'));
-					chainsI.scale.set(2.5, 2.3);
-					chainsI.scrollFactor.set(1.2, 1.25);
-					chainsI.visible = false;
-					chainsI2 = new FlxSprite(-225, -100).loadGraphic(Paths.image(pathway + 'chainsI2'));
-					chainsI2.scale.set(2.5, 2.3);
-					chainsI2.scrollFactor.set(1.1, 1.2);
-					chainsI2.visible = false;
-					chainsI3 = new FlxSprite(-225, -100).loadGraphic(Paths.image(pathway + 'chainsI3'));
-					chainsI3.scale.set(2.5, 2.3);
-					chainsI3.scrollFactor.set(1, 1.15);
-					chainsI3.visible = false;
+
 					lightI = new FlxSprite(-200, -100).loadGraphic(Paths.image(pathway + 'lightInvert'));
 					lightI.blend = DIFFERENCE;
 					lightI.alpha = 0.37;
@@ -1604,16 +1591,9 @@ class PlayState extends MusicBeatState
 					flairI.scrollFactor.set(1.4, 1.25);
 					flairI.scale.set(2.5, 2.4);
 					flairI.visible = false;
-					thingyI = new FlxSprite(-200, -100).loadGraphic(Paths.image(pathway + 'brighter'));
-					thingyI.scale.set(2.45, 2.3);
-					thingyI.visible = false;
-	
-					foreground.add(chainsI3);
-					foreground.add(chainsI2);
-					foreground.add(chainsI);
+
 					foreground.add(lightI);
 					foreground.add(flairI);
-					foreground.add(thingyI);
 				case 'waltRoom':
 					//spawnGirlfriend = false;
 					
@@ -2234,7 +2214,7 @@ class PlayState extends MusicBeatState
 		watermarkTxt.screenCenter(X);
 		add(watermarkTxt);
 
-		songTxt = new FlxText(watermarkTxt.x, watermarkTxt.y + 30, 0, '$infoDisplay');
+		songTxt = new FlxText(watermarkTxt.x, watermarkTxt.y + 30, 0, (SONG.song == "Dont Cross" ? "Don't Cross!" : '$infoDisplay'));
 		songTxt.setFormat(Paths.font('DisneyFont.ttf'), 22, FlxColor.WHITE);
 		songTxt.setBorderStyle(OUTLINE, FlxColor.BLACK, 2);
 		songTxt.alpha = 0.6;
@@ -2299,7 +2279,7 @@ class PlayState extends MusicBeatState
 
 			switch (curStage)
 			{
-				case "forestNew" | "desktop":
+				case "forestNew" | "desktop" | "circus":
 					//do nothing, gf exists
 				default:
 					gf.visible = false;
@@ -2791,8 +2771,12 @@ class PlayState extends MusicBeatState
 
 			// Glitched Mickey will give you a big fat middle finger for disabling the mechanics lmao
 			case 'Malfunction Legacy':
+				add(crashLives);
+				add(crashLivesIcon);
 				PlayState.instance.crashLivesCounter += 30;
 			case 'Malfunction':
+				add(crashLives);
+				add(crashLivesIcon);
 				PlayState.camNotes.alpha = 0.001;
 				PlayState.camGame.alpha = 0.001;
 				PlayState.camHUD.alpha = 0.001;
@@ -2964,7 +2948,7 @@ class PlayState extends MusicBeatState
    	 			boyfriend.setPosition(1450, 650);
 			case 'circus' | 'my name is caine and welcome to the amazing digital circus':
 				dad.setPosition(-990, -100);
-				boyfriend.setPosition(200, 100);
+				boyfriend.setPosition(0,-360);
 				gf.setPosition(-300, -200);
 			case 'treasureIsland':
 				boyfriend.setPosition(1080, 310);
@@ -4586,6 +4570,8 @@ class PlayState extends MusicBeatState
 					PlayState.staticEffect.setFloat('iTime', PlayState.instance.shaderAnim);
 			}
 		}
+
+		detectSpace(cpuControlled);
 
 		switch (curStage)
 		{
@@ -6701,6 +6687,10 @@ class PlayState extends MusicBeatState
 		comboSpr.y += 60;
 		comboSpr.velocity.x += FlxG.random.int(1, 10) * playbackRate;
 
+		if (SONG.song == "Bless")
+			if (lightI.visible)
+				rating.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0);
+
 		insert(members.indexOf(strumLineNotes), rating);
 		
 		if (!ClientPrefs.comboStacking)
@@ -6782,6 +6772,10 @@ class PlayState extends MusicBeatState
 			numScore.velocity.y -= FlxG.random.int(140, 160) * playbackRate;
 			numScore.velocity.x = FlxG.random.float(-5, 5) * playbackRate;
 			numScore.visible = !ClientPrefs.hideHud;
+
+			if (SONG.song == "Bless")
+				if (lightI.visible)
+					rating.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0);
 
 			//if (combo >= 10 || combo == 0)
 			if(showComboNum)
@@ -7209,8 +7203,8 @@ class PlayState extends MusicBeatState
                                 ]);
                         }
                         
-                        PlayState.instance.chromEffect += 0.5;
-                        PlayState.instance.blurEffect += 5;
+                        PlayState.instance.chromEffect += 0.2;
+                        PlayState.instance.blurEffect += 2.5;
                         
                         if (PlayState.instance.chromTween != null)
                             PlayState.instance.chromTween.cancel();
@@ -7401,7 +7395,7 @@ class PlayState extends MusicBeatState
                     );
                 }
                 
-            case "Don't Cross!":
+            case "Dont Cross":
                 PlayState.boyfriend.x += 1.2;
                 PlayState.boyfriend.y -= 1.2;
                 PlayState.boyfriend.scale.x -= 0.0012;
@@ -7448,15 +7442,14 @@ class PlayState extends MusicBeatState
 					spawnNoteSplashOnNote(note);
 				}
 
-				if(!note.noMissAnimation)
-				{
-					switch(note.noteType) {
-						case 'Hurt Note': //Hurt note
-							if(boyfriend.animation.getByName('hurt') != null) {
-								boyfriend.playAnim('hurt', true);
-								boyfriend.specialAnim = true;
-							}
-					}
+				switch(note.noteType) {
+					case 'Hurt Note': //Hurt note
+						if(boyfriend.animation.getByName('hurt') != null) {
+							boyfriend.playAnim('hurt', true);
+							boyfriend.specialAnim = true;
+						}
+					case 'Error Note':
+						updateMalfunctionLives(); // now you can't say it's unfair
 				}
 
 				note.wasGoodHit = true;
@@ -7475,7 +7468,7 @@ class PlayState extends MusicBeatState
 				if(combo > 9999) combo = 9999;
 				popUpScore(note);
 			}
-			health += note.hitHealth * healthGain;
+			health += note.hitHealth * 0.55;
 
 			if(!note.noAnimation) {
 				var animToPlay:String = singAnimations[Std.int(Math.abs(note.noteData))];
@@ -7526,6 +7519,14 @@ class PlayState extends MusicBeatState
 			vocals.volume = 1;
 			bf_vocals.volume = 1;
 
+			if (SONG.song == "Dont Cross")
+			{
+				PlayState.boyfriend.x -= 1.4;
+				PlayState.boyfriend.y += 1.4;
+				PlayState.boyfriend.scale.x += 0.0014;
+				PlayState.boyfriend.scale.y += 0.0014;
+			}
+
 			var isSus:Bool = note.isSustainNote; //GET OUT OF MY HEAD, GET OUT OF MY HEAD, GET OUT OF MY HEAD
 			var leData:Int = Math.round(Math.abs(note.noteData));
 			var leType:String = note.noteType;
@@ -7571,6 +7572,13 @@ class PlayState extends MusicBeatState
 
 		var splash:NoteSplash = grpNoteSplashes.recycle(NoteSplash);
 		splash.setupNoteSplash(x, y, data, skin, hue, sat, brt);
+		if (lightI != null)
+			if (lightI.visible) 
+				splash.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0); 
+			else 
+				splash.setColorTransform(1, 1, 1, 1, 0, 0, 0, 0);
+		if (isPixelStage && ClientPrefs.shaders)
+			splash.shader = pixelizeUI;
 		grpNoteSplashes.add(splash);
 	}
 
@@ -7834,18 +7842,18 @@ class PlayState extends MusicBeatState
 							FlxTween.tween(light, {alpha: light.alpha + 0.2}, 0.64, {ease: FlxEase.expoOut});
 						}
 					case 1115:
-						dad.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0);
-						boyfriend.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0);
+						for (blessableObjects in [dad, boyfriend, vault, chains, thingy, chains, chains2, chains3, iconP1, iconP2, healthBar, healthBarBG, scoreTxt, fancyBarOverlay, watermarkTxt, songTxt])
+							blessableObjects.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0);
+						light.visible = false;
+						flair.visible = false;
+						lightI.visible = true;
+						flairI.visible = true;
 						playfieldRenderer.isInvertColors = true;
 						dad.alpha = 1;
 						dad.blend = NORMAL;
 						camBars.flash(FlxColor.BLACK, 2);
 						cinematicBarControls("add", 0.0001, 'linear', 0);
 						cinematicBarControls("moveboth", 0.0001, 'linear', 130);
-						for (invertAssets in [vaultI, chainsI, thingyI, chainsI, chainsI2, chainsI3, lightI, flairI])
-							invertAssets.visible = true;
-						for (normalAssets in [vault, chains, thingy, chains, chains2, chains3, light, flair])
-							normalAssets.visible = false;
 					case 1157 | 1199 | 1241 | 1283 | 1325 | 1367 | 1409 | 1452 | 1493 | 1535 | 1577 | 1620 | 1662 | 1703 | 1745:
 						camFlashSystem(BG_FLASH, {alpha: 0.45, timer: 1});
 					case 1828:
@@ -7857,8 +7865,12 @@ class PlayState extends MusicBeatState
 						add(letsFight);
 						camVideo.visible = true;
 					case 1829:
-						dad.setColorTransform(1, 1, 1, 1, 0, 0, 0, 0);
-						boyfriend.setColorTransform(1, 1, 1, 1, 0, 0, 0, 0);
+						for (blessableObjects in [dad, boyfriend, vault, chains, thingy, chains, chains2, chains3, iconP1, iconP2, healthBar, healthBarBG, scoreTxt, fancyBarOverlay, watermarkTxt, songTxt])
+							blessableObjects.setColorTransform(1, 1, 1, 1, 0, 0, 0, 0);
+						light.visible = true;
+						flair.visible = true;
+						lightI.visible = false;
+						flairI.visible = false;
 						playfieldRenderer.isInvertColors = false;
 						dad.blend = ADD;
 						dad.alpha = 0.75;
@@ -7866,10 +7878,6 @@ class PlayState extends MusicBeatState
 						cinematicBarControls("moveboth", 5, 'circInOut', 0);
 						for (i in [camHUD, camNotes])
 							FlxTween.tween(i, {alpha: 1}, 3);
-						for (invertAssets in [vaultI, chainsI, thingyI, chainsI, chainsI2, chainsI3, lightI, flairI])
-							invertAssets.visible = false;
-						for (normalAssets in [vault, chains, thingy, chains, chains2, chains3, light, flair])
-							normalAssets.visible = true;
 					case 1835:
 						var counter:FlxSprite = new FlxSprite().loadGraphic(Paths.image("ready"));
 						counter.cameras = [camOther];
@@ -9226,6 +9234,10 @@ class PlayState extends MusicBeatState
 					case 508:
 						FlxTween.tween(boyfriend, {alpha: 0.45}, 2.5, {ease: FlxEase.expoOut});
 					case 720:
+						FlxTween.tween(boyfriend, {alpha: 0.0001}, 5, {ease: FlxEase.quartInOut, onComplete: function(twn:FlxTween)
+						{
+							camVideo.visible = false;
+						}});
 						FlxTween.tween(PlayState.camGame, {alpha: 0.0001}, 5, {ease: FlxEase.quartInOut});
 						FlxTween.tween(PlayState.camNotes, {alpha: 0.0001}, 5, {ease: FlxEase.quartInOut});
 					case 740:
@@ -9936,7 +9948,7 @@ class PlayState extends MusicBeatState
 					//FlxTween.tween(PlayState.camNotes[0], {alpha: 1}, 2.5);
 					//if (!Init.trueSettings.get('Centered Notefield')) PlayState.bfStrums.forEach(strum -> FlxTween.tween(strum, {x: strum.x + 320}, 2.5, {ease: FlxEase.elasticInOut}));
 
-					PlayState.instance.uhhTurnBackNormalOrSmth();
+					//PlayState.instance.uhhTurnBackNormalOrSmth();
 				}
 
 				if (((curBeat >= 64 && curBeat < 128) && curBeat % 2 == 0) || (curBeat >= 128 && curBeat < 256))
@@ -10229,31 +10241,6 @@ class PlayState extends MusicBeatState
 							streetRuins.visible = true;
 						}
 					}*/
-			case 'forestNew':
-				if (ClientPrefs.shaders)
-					{
-						if (curBeat == 192)
-						{	
-							if(!lowQuality && goofyBG != null && treesFront != null)
-								{
-									goofyBG.shader = wobblyBG;
-									goofyStreet.shader = wobblyBG;
-									treesBack.shader = wobblyBG;
-									treesFront.shader = wobblyBG;
-								}
-						}
-					}
-					
-				if (curBeat == 256)
-					{
-						if(!lowQuality && treesFront != null && goofyBG != null)
-							{
-								goofyBG.shader = null;
-								goofyStreet.shader = null;
-								treesBack.shader = null;
-								treesFront.shader = null;
-							}
-					}
 			case 'treasureIsland':
 				if (curBeat == 256)
 					FlxTween.tween(mascotRoom, {alpha: 0}, 1.5);
@@ -10279,47 +10266,6 @@ class PlayState extends MusicBeatState
 							FlxTween.tween(fuckingsquares, {alpha: 1}, 1.5, {ease: FlxEase.sineOut});
 						}
 					}
-			case 'vaultRoom':
-				if (SONG.song == "Bless Legacy")
-				{
-					if(curBeat == 544)
-						{
-							vault.visible = false;
-							chains.visible = false;
-							thingy.visible = false;
-							chains2.visible = false;
-							chains3.visible = false;
-							light.visible = false;
-							flair.visible = false;
-					
-							vaultI.visible = true;
-							chainsI.visible = true;
-							thingyI.visible = true;
-							chainsI2.visible = true;
-							chainsI3.visible = true;
-							lightI.visible = true;
-							flairI.visible = true;
-						}
-					
-						if(curBeat == 608)
-						{
-							vault.visible = true;
-							chains.visible = true;
-							thingy.visible = true;
-							chains2.visible = true;
-							chains3.visible = true;
-							light.visible = true;
-							flair.visible = true;
-					
-							vaultI.visible = false;
-							chainsI.visible = false;
-							thingyI.visible = false;
-							chainsI2.visible = false;
-							chainsI3.visible = false;
-							lightI.visible = false;
-							flairI.visible = false;
-						}
-				}
 			case 'apartment':
 				if (PlayState.SONG.song == "Cycled Sins Legacy")
 					{

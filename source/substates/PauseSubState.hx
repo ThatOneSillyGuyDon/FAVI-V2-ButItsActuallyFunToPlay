@@ -67,7 +67,7 @@ class PauseSubState extends MusicBeatSubstate
 		add(bg);
 
 		var levelInfo:FlxText = new FlxText(20, 15, 0, "", 32);
-		levelInfo.text += PlayState.SONG.song;
+		levelInfo.text += PlayState.SONG.song == "Dont Cross" ? "Don't Cross!" : PlayState.SONG.song;
 		levelInfo.scrollFactor.set();
 		levelInfo.setFormat(Paths.font("vcr.ttf"), 32);
 		levelInfo.updateHitbox();
@@ -275,6 +275,16 @@ class PauseSubState extends MusicBeatSubstate
 		PlayState.instance.paused = true; // For lua
 		FlxG.sound.music.volume = 0;
 		PlayState.instance.vocals.volume = 0;
+
+		var songName:Array<String> = ['Dont Cross', "Dont-Cross", "dont cross", "dont-cross"];
+
+		for (i in songName)
+			if (PlayState.SONG.song == i)
+			{
+				var songLowercase:String = "dont-cross";
+				var poop:String = "dont-cross-hard" + '${FlxG.random.int(1, 4)}'; //fuck fuck fuck fuck fuck fuck
+				PlayState.SONG = Song.loadFromJson(poop, songLowercase, true);
+			}
 
 		if(noTrans)
 		{

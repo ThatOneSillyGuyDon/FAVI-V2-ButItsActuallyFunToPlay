@@ -8,6 +8,7 @@ import haxe.io.Path;
 import lime.app.Application;
 import lime.utils.AssetManifest;
 import flixel.system.FlxSound;
+import haxe.io.Bytes;
 #if sys
 import sys.io.File;
 import sys.FileSystem;

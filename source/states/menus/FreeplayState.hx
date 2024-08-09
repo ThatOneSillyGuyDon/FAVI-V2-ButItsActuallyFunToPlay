@@ -229,6 +229,10 @@ class FreeplayState extends MusicBeatState
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
 		}
 
+		var isDontCross:Bool = songs[curSelected].songName == "Don't Cross!";
+		if (isDontCross)
+			trace("CHART RANDOMIZER SONG DETECTED");
+
 		lerpScore = Math.floor(FlxMath.lerp(lerpScore, intendedScore, CoolUtil.boundTo(elapsed * 24, 0, 1)));
 		lerpRating = FlxMath.lerp(lerpRating, intendedRating, CoolUtil.boundTo(elapsed * 12, 0, 1));
 
@@ -362,7 +366,7 @@ class FreeplayState extends MusicBeatState
 		{
 			persistentUpdate = false;
 			var songLowercase:String = Paths.formatToSongPath(songs[curSelected].songName);
-			var poop:String = Highscore.formatSong(songLowercase, curDifficulty);
+			var poop:String = Highscore.formatSong(songLowercase, curDifficulty) + (isDontCross ? '${FlxG.random.int(1, 4)}' : ""); //fuck fuck fuck fuck fuck fuck
 			/*#if MODS_ALLOWED
 			if(!sys.FileSystem.exists(Paths.modsJson(songLowercase + '/' + poop)) && !sys.FileSystem.exists(Paths.json(songLowercase + '/' + poop))) {
 			#else
@@ -374,7 +378,7 @@ class FreeplayState extends MusicBeatState
 			}*/
 			trace(poop);
 
-			PlayState.SONG = Song.loadFromJson(poop, songLowercase);
+			PlayState.SONG = Song.loadFromJson(poop, songLowercase, isDontCross);
 			PlayState.isStoryMode = false;
 			PlayState.storyDifficulty = curDifficulty;
 

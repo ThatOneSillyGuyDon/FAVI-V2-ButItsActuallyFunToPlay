@@ -90,7 +90,7 @@ class Song
 		this.bpm = bpm;
 	}
 
-	public static function loadFromJson(jsonInput:String, ?folder:String):SwagSong
+	public static function loadFromJson(jsonInput:String, ?folder:String, ?isDontCross:Bool = false):SwagSong
 	{
 		var rawJson = null;
 		
@@ -109,6 +109,8 @@ class Song
 			#else
 			rawJson = Assets.getText(Paths.json(formattedFolder + '/' + formattedSong)).trim();
 			#end
+			if (isDontCross)
+				rawJson += FlxG.random.int(1, 3);
 		}
 
 		while (!rawJson.endsWith("}"))
