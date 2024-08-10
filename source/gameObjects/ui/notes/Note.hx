@@ -203,8 +203,11 @@ class Note extends FlxSprite
 
 		if (isSustainNote && prevNote != null)
 		{
-			alpha = 0.6;
-			multAlpha = 0.6;
+			if (PlayState.SONG.song != "Bless")
+			{
+				alpha = 0.6;
+				multAlpha = 0.6;
+			}
 			hitsoundDisabled = true;
 			if(ClientPrefs.downScroll) flipY = true;
 

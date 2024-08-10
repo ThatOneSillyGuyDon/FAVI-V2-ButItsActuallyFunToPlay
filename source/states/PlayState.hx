@@ -2773,14 +2773,16 @@ class PlayState extends MusicBeatState
 			case 'Malfunction Legacy':
 				add(crashLives);
 				add(crashLivesIcon);
-				PlayState.instance.crashLivesCounter += 30;
+				crashLivesCounter += 30;
+				crashLives.text = 'Lives: ${crashLivesCounter}';
 			case 'Malfunction':
 				add(crashLives);
 				add(crashLivesIcon);
 				PlayState.camNotes.alpha = 0.001;
 				PlayState.camGame.alpha = 0.001;
 				PlayState.camHUD.alpha = 0.001;
-				PlayState.instance.crashLivesCounter += 45;
+				crashLivesCounter += 25;
+				crashLives.text = 'Lives: ${crashLivesCounter}';
 			case 'Birthday':
 				PlayState.camNotes.alpha = 0.001;
 				PlayState.camBars.fade(FlxColor.BLACK, 0.0001);
@@ -5102,94 +5104,6 @@ class PlayState extends MusicBeatState
 	var cameraOnDad = false;
 
 	public var uhhTurnBackNormalOrSmth:Void->Void;
-	// stuff that isn't on PlayStateUtils cus the game hates me
-
-	/**
-	 * # Malfunction Life System Checker
-	 * 
-	 * Self explanitory, don't you think?
-	 * 
-	 * Checks on your lives in Malfunction and is used by the Error Notes
-	 * It will make sure to close your game if it goes below 0
-	 * 
-	 * @author DEMOLITIONDON96
-	 */
-	 public function updateMalfunctionLives()
-		{
-			crashLivesCounter -= 1;
-	
-			if (malfunctionTxt != null)
-				malfunctionTxt.cancel();
-	
-			if (heartTween != null)
-				heartTween.cancel();
-	
-			malfunctionTxt = FlxTween.tween(crashLives, {alpha: 1}, 0.6, {
-				ease: FlxEase.sineOut,
-				onComplete: function(twn:FlxTween)
-				{
-					malfunctionTxt = FlxTween.tween(crashLives, {alpha: 0.3}, 2, {
-						ease: FlxEase.quartInOut,
-						startDelay: 5,
-						onComplete: function(twn:FlxTween)
-						{
-							malfunctionTxt = null;
-						}
-					});
-				}
-			});
-	
-			heartTween = FlxTween.tween(crashLivesIcon, {alpha: 1}, 0.6, {
-				ease: FlxEase.sineOut,
-				onComplete: function(twn:FlxTween)
-				{
-					heartTween = FlxTween.tween(crashLivesIcon, {alpha: 0.3}, 2, {
-						ease: FlxEase.quartInOut,
-						startDelay: 5,
-						onComplete: function(twn:FlxTween)
-						{
-							heartTween = null;
-						}
-					});
-				}
-			});
-	
-			// to be honest we can just use shake
-			//                                - jason
-	
-			FlxTween.tween(crashLives, {x: 620}, 0.01);
-			FlxTween.tween(crashLivesIcon, {x: 570}, 0.01);
-			FlxTween.tween(crashLives, {x: 585}, 0.01, {startDelay: 0.1});
-			FlxTween.tween(crashLivesIcon, {x: 535}, 0.01, {startDelay: 0.1});
-			FlxTween.tween(crashLives, {x: 610}, 0.01, {startDelay: 0.2});
-			FlxTween.tween(crashLivesIcon, {x: 560}, 0.01, {startDelay: 0.2});
-			FlxTween.tween(crashLives, {x: 595}, 0.01, {startDelay: 0.3});
-			FlxTween.tween(crashLivesIcon, {x: 545}, 0.01, {startDelay: 0.3});
-			FlxTween.tween(crashLives, {x: 600}, 0.01, {startDelay: 0.4});
-			FlxTween.tween(crashLivesIcon, {x: 550}, 0.01, {startDelay: 0.4});
-	
-			crashLivesIcon.animation.play("OMFG IT GLITCHES");
-	
-			new FlxTimer().start(0.25, function(tmr:FlxTimer)
-			{
-				crashLivesIcon.animation.play('idle');
-			});
-	
-			if (crashLivesCounter == -1)
-			{
-				finishSong();
-				trace('0 lives left, closing game...');
-				FlxG.sound.play(Paths.sound('funkinAVI/wiiCrash'), 1);
-	
-				if (FlxG.random.bool(10))
-					Application.current.window.alert("You Suck LMAO", 'Note About Your Skill:'); // 10% of probability
-				else
-					Application.current.window.alert("Message: if(note.noteType = 'Error Note') {trace('0 lives left, closing game...')}",
-						'Error On Funkin.avi.exe!:');
-	
-				Sys.exit(0);
-			}
-		}
 	
 		/**
 		 * # **The Cycled Sins Gimmick**
@@ -6775,7 +6689,7 @@ class PlayState extends MusicBeatState
 
 			if (SONG.song == "Bless")
 				if (lightI.visible)
-					rating.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0);
+					numScore.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0);
 
 			//if (combo >= 10 || combo == 0)
 			if(showComboNum)
@@ -7436,6 +7350,85 @@ class PlayState extends MusicBeatState
 				FlxG.sound.play(Paths.sound('hitsound'), ClientPrefs.hitsoundVolume);
 			}
 
+			if (note.noteType == "Error Note")
+			{
+				crashLivesCounter -= 1;
+
+						crashLives.text = 'Lives: ${crashLivesCounter}';
+	
+						if (malfunctionTxt != null)
+							malfunctionTxt.cancel();
+				
+						if (heartTween != null)
+							heartTween.cancel();
+				
+						malfunctionTxt = FlxTween.tween(crashLives, {alpha: 1}, 0.6, {
+							ease: FlxEase.sineOut,
+							onComplete: function(twn:FlxTween)
+							{
+								malfunctionTxt = FlxTween.tween(crashLives, {alpha: 0.3}, 2, {
+									ease: FlxEase.quartInOut,
+									startDelay: 5,
+									onComplete: function(twn:FlxTween)
+									{
+										malfunctionTxt = null;
+									}
+								});
+							}
+						});
+				
+						heartTween = FlxTween.tween(crashLivesIcon, {alpha: 1}, 0.6, {
+							ease: FlxEase.sineOut,
+							onComplete: function(twn:FlxTween)
+							{
+								heartTween = FlxTween.tween(crashLivesIcon, {alpha: 0.3}, 2, {
+									ease: FlxEase.quartInOut,
+									startDelay: 5,
+									onComplete: function(twn:FlxTween)
+									{
+										heartTween = null;
+									}
+								});
+							}
+						});
+				
+						// to be honest we can just use shake
+						//                                - jason
+				
+						FlxTween.tween(crashLives, {x: 620}, 0.01);
+						FlxTween.tween(crashLivesIcon, {x: 570}, 0.01);
+						FlxTween.tween(crashLives, {x: 585}, 0.01, {startDelay: 0.1});
+						FlxTween.tween(crashLivesIcon, {x: 535}, 0.01, {startDelay: 0.1});
+						FlxTween.tween(crashLives, {x: 610}, 0.01, {startDelay: 0.2});
+						FlxTween.tween(crashLivesIcon, {x: 560}, 0.01, {startDelay: 0.2});
+						FlxTween.tween(crashLives, {x: 595}, 0.01, {startDelay: 0.3});
+						FlxTween.tween(crashLivesIcon, {x: 545}, 0.01, {startDelay: 0.3});
+						FlxTween.tween(crashLives, {x: 600}, 0.01, {startDelay: 0.4});
+						FlxTween.tween(crashLivesIcon, {x: 550}, 0.01, {startDelay: 0.4});
+				
+						crashLivesIcon.animation.play("OMFG IT GLITCHES");
+				
+						new FlxTimer().start(0.25, function(tmr:FlxTimer)
+						{
+							crashLivesIcon.animation.play('idle');
+						});
+				
+						if (crashLivesCounter == -1)
+						{
+							finishSong();
+							trace('0 lives left, closing game...');
+							FlxG.sound.play(Paths.sound('funkinAVI/wiiCrash'), 1);
+				
+							if (FlxG.random.bool(10))
+								Application.current.window.alert("You Suck LMAO\n\n\nmaybe actually be good at the game for once instead of killing yourself so many times bro.", 'Note About Your Skill:'); // 10% of probability
+							else
+								Application.current.window.alert("<Message Log>\n========================                                                                                        \n\nPlayState.hx (7504):\n   if(crashLivesCounter == -1)\n   {trace('0 lives left, closing game...')}\n\n\njust give up, you stand no chance against me, everett.",
+									'Error On Funkin.avi.exe!:');
+				
+							Sys.exit(0);
+						}
+			}
+
 			if(note.hitCausesMiss) {
 				noteMiss(note);
 				if(!note.noteSplashDisabled && !note.isSustainNote) {
@@ -7448,8 +7441,6 @@ class PlayState extends MusicBeatState
 							boyfriend.playAnim('hurt', true);
 							boyfriend.specialAnim = true;
 						}
-					case 'Error Note':
-						updateMalfunctionLives(); // now you can't say it's unfair
 				}
 
 				note.wasGoodHit = true;
@@ -7842,8 +7833,13 @@ class PlayState extends MusicBeatState
 							FlxTween.tween(light, {alpha: light.alpha + 0.2}, 0.64, {ease: FlxEase.expoOut});
 						}
 					case 1115:
-						for (blessableObjects in [dad, boyfriend, vault, chains, thingy, chains, chains2, chains3, iconP1, iconP2, healthBar, healthBarBG, scoreTxt, fancyBarOverlay, watermarkTxt, songTxt])
+						for (blessableObjects in [dad, boyfriend, vault, chains, thingy, chains, chains2, chains3, iconP1, iconP2, healthBar, healthBarBG, fancyBarOverlay])
 							blessableObjects.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0);
+						for (textShit in [songTxt, watermarkTxt, scoreTxt])
+						{
+							textShit.color = FlxColor.BLACK;
+							textShit.borderColor = FlxColor.WHITE;
+						}
 						light.visible = false;
 						flair.visible = false;
 						lightI.visible = true;
@@ -7865,8 +7861,13 @@ class PlayState extends MusicBeatState
 						add(letsFight);
 						camVideo.visible = true;
 					case 1829:
-						for (blessableObjects in [dad, boyfriend, vault, chains, thingy, chains, chains2, chains3, iconP1, iconP2, healthBar, healthBarBG, scoreTxt, fancyBarOverlay, watermarkTxt, songTxt])
+						for (blessableObjects in [dad, boyfriend, vault, chains, thingy, chains, chains2, chains3, iconP1, iconP2, healthBar, healthBarBG, fancyBarOverlay])
 							blessableObjects.setColorTransform(1, 1, 1, 1, 0, 0, 0, 0);
+						for (textShit in [songTxt, watermarkTxt, scoreTxt])
+						{
+							textShit.color = FlxColor.WHITE;
+							textShit.borderColor = FlxColor.BLACK;
+						}
 						light.visible = true;
 						flair.visible = true;
 						lightI.visible = false;

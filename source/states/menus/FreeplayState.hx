@@ -230,8 +230,6 @@ class FreeplayState extends MusicBeatState
 		}
 
 		var isDontCross:Bool = songs[curSelected].songName == "Don't Cross!";
-		if (isDontCross)
-			trace("CHART RANDOMIZER SONG DETECTED");
 
 		lerpScore = Math.floor(FlxMath.lerp(lerpScore, intendedScore, CoolUtil.boundTo(elapsed * 24, 0, 1)));
 		lerpRating = FlxMath.lerp(lerpRating, intendedRating, CoolUtil.boundTo(elapsed * 12, 0, 1));
