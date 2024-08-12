@@ -34,6 +34,8 @@ typedef SwagSong =
 
 class Song
 {
+	public static var chartFile:String;
+
 	public var song:String;
 	public var notes:Array<SwagSection>;
 	public var events:Array<Dynamic>;
@@ -92,6 +94,23 @@ class Song
 
 	public static function loadFromJson(jsonInput:String, ?folder:String, ?isDontCross:Bool = false):SwagSong
 	{
+		switch(folder)
+		{
+			/*case "isolated":
+				chartFile = Chart.isolated;
+			case "lunacy":
+				chartFile = Chart.lunacy;*/
+			case "delusional":
+				chartFile = Chart.delusional;
+			case "malfunction":
+				chartFile = Chart.malfunction;
+			//case "devilish-deal":
+				//chartFile = Chart.devilishDeal;
+			//case "hunted":
+				//chartFile = Chart.hunted;
+			default:
+				chartFile = null;
+		}
 		var rawJson = null;
 		
 		var formattedFolder:String = Paths.formatToSongPath(folder);
@@ -104,11 +123,18 @@ class Song
 		#end
 
 		if(rawJson == null) {
-			#if sys
-			rawJson = File.getContent(Paths.json(formattedFolder + '/' + formattedSong)).trim();
-			#else
-			rawJson = Assets.getText(Paths.json(formattedFolder + '/' + formattedSong)).trim();
-			#end
+			if(chartFile == null)
+			{	
+				#if sys
+				rawJson = File.getContent(Paths.json(formattedFolder + '/' + formattedSong)).trim();
+				#else
+				rawJson = Assets.getText(Paths.json(formattedFolder + '/' + formattedSong)).trim();
+				#end
+			}
+			else
+			{
+				rawJson = chartFile;
+			}
 			if (isDontCross)
 				rawJson += FlxG.random.int(1, 3);
 		}

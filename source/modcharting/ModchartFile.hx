@@ -20,7 +20,6 @@ typedef ModchartJson =
 
 class ModchartFile
 {
-
     //used for indexing
     public static final MOD_NAME = 0; //the modifier name
     public static final MOD_CLASS = 1; //the class/custom mod it uses
@@ -116,7 +115,16 @@ class ModchartFile
         }
         else 
         {
-            json = {modifiers: [], events: [], playfields: 1};
+            switch (PlayState.SONG.song)
+            {
+                case "Delusional":
+                    json = cast Json.parse(ClientPrefs.downScroll ? Modchart.deluluModchartD : Modchart.deluluModchartU);
+                case "Malfunction":
+                    json = cast Json.parse(ClientPrefs.downScroll ? Modchart.malfunctionModchartD : Modchart.malfunctionModchartU);
+                    //trace("Successfully loaded malfunction failsafe");
+                default:
+                    json = {modifiers: [], events: [], playfields: 1};
+            }
         }
         return json;
     }
