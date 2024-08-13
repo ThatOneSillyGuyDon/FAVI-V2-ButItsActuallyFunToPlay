@@ -7,6 +7,8 @@ import openfl.display.Sprite;
 import openfl.events.Event;
 import openfl.display.StageScaleMode;
 
+import gamejolt.GameJolt;
+
 //crash handler stuff
 #if CRASH_HANDLER
 import lime.app.Application;
@@ -30,6 +32,8 @@ class Main extends Sprite
 	var skipSplash:Bool = true; // Whether to skip the flixel splash screen that appears in release mode.
 	var startFullscreen:Bool = false; // Whether to start the game in fullscreen on desktop targets
 	public static var fpsVar:FPS;
+
+	public static var gjToastManager:GJToastManager;
 
 	// You can pretty much ignore everything from here on - your code should go in your states.
 
@@ -88,6 +92,9 @@ class Main extends Sprite
 			fpsVar.visible = ClientPrefs.showFPS;
 		}
 		#end
+
+		gjToastManager = new GJToastManager();
+		addChild(gjToastManager);
 
 		#if html5
 		FlxG.autoPause = false;

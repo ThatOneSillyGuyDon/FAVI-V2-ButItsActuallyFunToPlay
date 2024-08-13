@@ -25,7 +25,6 @@ import backend.menu.*;
 import backend.song.*;
 import backend.data.*;
 import backend.nSwitch.*;
-import backend.embeddedFiles.*;
 import gameObjects.*;
 import gameObjects.ui.*;
 import gameObjects.utils.*;
@@ -101,9 +100,6 @@ import flixel.tweens.*;
 import flixel.util.*;
 import flixel.graphics.*;
 import flixel.text.*;
-import flixel.graphics.tile.*;
-import flixel.graphics.frames.*;
-import flixel.graphics.atlas.*;
 
 using flixel.group.FlxGroup.FlxTypedGroup;
 using flixel.tweens.FlxTween.FlxTweenManager;
