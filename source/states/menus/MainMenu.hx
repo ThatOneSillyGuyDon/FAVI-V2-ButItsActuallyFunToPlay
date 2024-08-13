@@ -688,6 +688,8 @@ class MainMenu extends MusicBeatState
 
 		if (daChoice == 'freeplay')
 		{
+			MusicBeatState.switchState(new FreeplayCategories());
+
 			if (GameData.episode1FPLock == 'unlocked' || GameData.muckneyLock == 'beaten')
 			{
 				for (sillies in [arrow, menuItems.members[Math.floor(curSelected)]])
