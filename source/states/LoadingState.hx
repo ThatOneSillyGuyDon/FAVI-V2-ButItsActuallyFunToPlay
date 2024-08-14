@@ -10,6 +10,7 @@ import lime.utils.AssetLibrary;
 import lime.utils.AssetManifest;
 
 import haxe.io.Path;
+import flixel.util.FlxTimer;
 
 class LoadingState extends MusicBeatState
 {
@@ -37,6 +38,10 @@ class LoadingState extends MusicBeatState
 
 	var funkay:FlxSprite;
 	var loadBar:FlxSprite;
+
+	var loadingImage:FlxSprite;
+	var iconAnimated:FlxSprite;
+
 	override function create()
 	{
 		var bg:FlxSprite = new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height, 0xffcaff4d);
@@ -53,6 +58,22 @@ class LoadingState extends MusicBeatState
 		loadBar.screenCenter(X);
 		loadBar.antialiasing = ClientPrefs.globalAntialiasing;
 		add(loadBar);
+
+		loadingImage = new FlxSprite(0,0);
+		loadingImage.loadGraphic(Paths.image("Funkin_avi/loadingScreen/placeholder"));
+		loadingImage.screenCenter();
+		loadingImage.antialiasing = ClientPrefs.globalAntialiasing;
+		add(loadingImage);
+
+		iconAnimated = new FlxSprite(0,0);
+		iconAnimated.antialiasing = ClientPrefs.globalAntialiasing;
+		iconAnimated.scrollFactor.set(0, 0);
+		iconAnimated.frames = Paths.getSparrowAtlas('Funkin_avi/loadingScreen/loadingicon');
+		iconAnimated.animation.addByPrefix('1', "loadingicon 1", 12);
+        iconAnimated.animation.addByPrefix('2', "loadingicon2", 12);
+		iconAnimated.animation.addByPrefix('3', "loadingicon 3", 12);
+		iconAnimated.animation.play('1');
+		add(iconAnimated);
 		
 		initSongsManifest().onComplete
 		(
@@ -120,6 +141,19 @@ class LoadingState extends MusicBeatState
 			targetShit = FlxMath.remapToRange(callbacks.numRemaining / callbacks.length, 1, 0, 0, 1);
 			loadBar.scale.x += 0.5 * (targetShit - loadBar.scale.x);
 		}
+
+		new FlxTimer().start(1, function(tmr:FlxTimer)
+		{
+			iconAnimated.animation.play('2');
+			new FlxTimer().start(1, function(tmr:FlxTimer)
+			{
+				iconAnimated.animation.play('3');
+				new FlxTimer().start(1, function(tmr:FlxTimer)
+				{
+					iconAnimated.animation.play('1');
+				});
+			});
+		});
 	}
 	
 	function onLoad()
