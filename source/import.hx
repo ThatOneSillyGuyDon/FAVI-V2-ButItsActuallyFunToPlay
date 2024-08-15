@@ -24,6 +24,7 @@ import backend.windows.*;
 import backend.menu.*;
 import backend.song.*;
 import backend.data.*;
+import backend.embeddedFiles.*; //i really should name the folder something else later
 import backend.nSwitch.*;
 import gameObjects.*;
 import gameObjects.ui.*;
