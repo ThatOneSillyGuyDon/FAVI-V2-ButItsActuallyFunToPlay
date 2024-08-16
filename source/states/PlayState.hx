@@ -162,7 +162,7 @@ class PlayState extends MusicBeatState
 	private var curSong:String = "";
 
 	public var gfSpeed:Int = 1;
-	public var health:Float = 1;
+	public var healthThing:Float = 1;
 	public var combo:Int = 0;
 
 	private var healthBarBG:AttachedSprite;
@@ -530,7 +530,7 @@ class PlayState extends MusicBeatState
 		// for lua
 		instance = this;
 
-		if (curStage != "waltRoom") health = 0.5;
+		if (curStage != "waltRoom") healthThing = 0.5;
 
 		debugKeysChart = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_1'));
 		debugKeysCharacter = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_2'));
@@ -2097,9 +2097,9 @@ class PlayState extends MusicBeatState
 		add(fancyBarOverlay);
 
 		healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 5, (SONG.song == "Devilish Deal" ? LEFT_TO_RIGHT : RIGHT_TO_LEFT), Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 7), this,
-			'health', 0, 2);
+			'healthThing', 0, 2);
 		healthBar.scrollFactor.set();
-		healthBar.percent = health;
+		healthBar.percent = healthThing;
 		// healthBar
 		healthBar.visible = !ClientPrefs.hideHud;
 		healthBar.alpha = ClientPrefs.healthBarAlpha;
@@ -4436,7 +4436,7 @@ class PlayState extends MusicBeatState
 	override public function onFocus():Void
 	{
 		#if desktop
-		if (health > 0 && !paused)
+		if (healthThing > 0 && !paused)
 		{
 			if (Conductor.songPosition > 0.0)
 			{
@@ -4455,7 +4455,7 @@ class PlayState extends MusicBeatState
 	override public function onFocusLost():Void
 	{
 		#if desktop
-		if (health > 0 && !paused)
+		if (healthThing > 0 && !paused)
 		{
 			DiscordClient.changePresence(detailsPausedText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter());
 		}
@@ -4797,8 +4797,8 @@ class PlayState extends MusicBeatState
 		satanIcon.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(-healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * satanIcon.scale.x - 150) / 2 - iconOffset * 24;
 		satanIconPulse.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(-healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * satanIconPulse.scale.x - 150) / 2 - iconOffset * 24;
 
-		if (health > 2)
-			health = 2;
+		if (healthThing > 2)
+			healthThing = 2;
 
 		if (!boyfriend.animatedIcon)
 			if (iconP1.frames.frames.length >= 3 && healthBar.percent > 80)
@@ -4923,7 +4923,7 @@ class PlayState extends MusicBeatState
 		// RESET = Quick Game Over Screen
 		if (!ClientPrefs.noReset && controls.RESET && canReset && !inCutscene && startedCountdown && !endingSong)
 		{
-			health = 0;
+			healthThing = 0;
 			trace("RESET = True");
 		}
 		doDeathCheck();
@@ -5144,7 +5144,7 @@ class PlayState extends MusicBeatState
 					goofyAhhUIS.x += 80;
 					goofyAhhUIS.y = FlxMath.lerp(0, goofyAhhUIS.y, CoolUtil.boundTo(elapsed * 2.4, 0, 1));
 				}
-				FlxTween.tween(PlayState, {health: 2}, 1);
+				FlxTween.tween(PlayState, {healthThing: 2}, 1);
 		}
 
 		setOnLuas('cameraX', camFollowPos.x);
@@ -5196,7 +5196,7 @@ class PlayState extends MusicBeatState
 					if (!dodged)
 					{
 						FlxG.camera.shake(0.05, 0.05);
-						health -= damageAmount;
+						healthThing -= damageAmount;
 						trace("lmfao you got shot depsite the fact this is nerfed");
 						if (!FlxG.stage.window.title.contains(' - lmfao you got shot depsite the fact this is nerfed'))
 						{
@@ -5215,7 +5215,7 @@ class PlayState extends MusicBeatState
 								if (!dodged)
 								{
 									FlxG.camera.shake(0.05, 0.05);
-									health -= damageAmount / 2;
+									healthThing -= damageAmount / 2;
 									trace("lmfao you got shot depsite the fact this is nerfed");
 									if (!FlxG.stage.window.title.contains(' - lmfao you got shot depsite the fact this is nerfed'))
 									{
@@ -5231,7 +5231,7 @@ class PlayState extends MusicBeatState
 									boyfriend.playAnim('dodge');
 									dodged = false;
 									shootin = false;
-									health += 0.05;
+									healthThing += 0.05;
 									defaultCamZoom = 0.6;
 								}
 							});
@@ -5249,7 +5249,7 @@ class PlayState extends MusicBeatState
 						{
 							defaultCamZoom = 1.25;
 							dodged = false;
-							health += 0.05;
+							healthThing += 0.05;
 							new FlxTimer().start(0.275, function(tmr:FlxTimer)
 							{
 								FlxG.sound.play(Paths.sound('funkinAVI/relapseMechs/Shoot'), 0.4);
@@ -5259,7 +5259,7 @@ class PlayState extends MusicBeatState
 								if (!dodged)
 								{
 									FlxG.camera.shake(0.05, 0.05);
-									health -= damageAmount / 2;
+									healthThing -= damageAmount / 2;
 									trace("lmfao you got shot depsite the fact this is nerfed");
 									if (!FlxG.stage.window.title.contains(' - lmfao you got shot depsite the fact this is nerfed'))
 									{
@@ -5275,7 +5275,7 @@ class PlayState extends MusicBeatState
 									boyfriend.playAnim('dodge');
 									dodged = false;
 									shootin = false;
-									health += 0.05;
+									healthThing += 0.05;
 									defaultCamZoom = 0.6;
 								}
 							});
@@ -5285,7 +5285,7 @@ class PlayState extends MusicBeatState
 							boyfriend.playAnim('dodge');
 							dodged = false;
 							shootin = false;
-							health += 0.05;
+							healthThing += 0.05;
 							defaultCamZoom = 0.6;
 						}
 					}
@@ -5479,7 +5479,7 @@ class PlayState extends MusicBeatState
 	* @author Wither362
 	*/
 	public function tweenWaltScreen(percentage:Float, alpha:Float):Bool {
-		if (health <= percentage)
+		if (healthThing <= percentage)
 			FlxTween.tween(PlayState.instance.waltScreenThing, {alpha: alpha}, 0.15, {ease: FlxEase.sineInOut});
 		else
 			return true;
@@ -5727,7 +5727,7 @@ class PlayState extends MusicBeatState
 						case 'waltRoom':
 							if (PlayState.instance.limitThing > 0)
 							{
-								health += 1.25;
+								healthThing += 1.25;
 								PlayState.instance.limitThing -= 1;
 							}
 						
@@ -5749,9 +5749,9 @@ class PlayState extends MusicBeatState
 				switch (PlayState.curStage)
 				{
 					case 'waltRoom':
-						if (health < 0.3 && PlayState.instance.limitThing > 0)
+						if (healthThing < 0.3 && PlayState.instance.limitThing > 0)
 						{
-							health += 1.25;
+							healthThing += 1.25;
 							PlayState.instance.limitThing -= 1;
 						}
 						
@@ -5808,7 +5808,7 @@ class PlayState extends MusicBeatState
 
 	public var isDead:Bool = false; //Don't mess with this on Lua!!!
 	function doDeathCheck(?skipHealthCheck:Bool = false) {
-		if (((skipHealthCheck && instakillOnMiss) || health <= 0) && !practiceMode && !isDead)
+		if (((skipHealthCheck && instakillOnMiss) || healthThing <= 0) && !practiceMode && !isDead)
 		{
 			var ret:Dynamic = callOnLuas('onGameOver', [], false);
 			if(ret != FunkinLua.Function_Stop) {
@@ -6375,12 +6375,12 @@ class PlayState extends MusicBeatState
 		if(!startingSong) {
 			notes.forEach(function(daNote:Note) {
 				if(daNote.strumTime < songLength - Conductor.safeZoneOffset) {
-					health -= 0.05 * healthLoss;
+					healthThing -= 0.05 * healthLoss;
 				}
 			});
 			for (daNote in unspawnNotes) {
 				if(daNote.strumTime < songLength - Conductor.safeZoneOffset) {
-					health -= 0.05 * healthLoss;
+					healthThing -= 0.05 * healthLoss;
 				}
 			}
 
@@ -6995,8 +6995,9 @@ class PlayState extends MusicBeatState
 				note.destroy();
 			}
 		});
+		malfunctionComboCheck = 0;
 		combo = 0;
-		health -= daNote.missHealth * healthLoss;
+		healthThing -= daNote.missHealth * healthLoss;
 		
 		if(instakillOnMiss)
 		{
@@ -7036,7 +7037,7 @@ class PlayState extends MusicBeatState
 
 		if (!boyfriend.stunned)
 		{
-			health -= 0.05 * healthLoss;
+			healthThing -= 0.05 * healthLoss;
 			if(instakillOnMiss)
 			{
 				vocals.volume = 0;
@@ -7121,14 +7122,14 @@ class PlayState extends MusicBeatState
         {  
             case 'Lunacy' | 'Delusional':
                 if (ClientPrefs.mechanics)
-                     if (health > boundValue)
-                        health -= drainValue;
+                     if (healthThing > boundValue)
+                        healthThing -= drainValue;
                 
             case 'Laugh Track':
                 if (ClientPrefs.shaking)
                 {
-                    if (health > 0.4)
-                        health -= 0.01;
+                    if (healthThing > 0.4)
+                        healthThing -= 0.01;
 
 					PlayState.camNotes.angle = PlayState.camHUD.angle = FlxG.random.float(-1.5, 1.5);
 					FlxTween.tween(PlayState.camNotes, {angle: 0}, .025);
@@ -7141,8 +7142,8 @@ class PlayState extends MusicBeatState
             case 'Malfunction':
                 if (PlayState.dad.curCharacter == 'glitched-mickey-new-pixel')
                 {
-                    if (health > 0.05)
-                        health -= 0.01;
+                    if (healthThing > 0.05)
+                        healthThing -= 0.01;
                     if (ClientPrefs.shaking)
                     {
                         PlayState.camGame.shake(0.008, 0.07);
@@ -7215,8 +7216,8 @@ class PlayState extends MusicBeatState
                 }
                 else if (PlayState.dad.curCharacter == 'gm-tired-pixel')
                 {
-                    if (health > 0.36)
-                        health -= 0.01;
+                    if (healthThing > 0.36)
+                        healthThing -= 0.01;
                     if (ClientPrefs.shaking)
                     {
                         PlayState.camGame.shake(0.004, 0.07);
@@ -7289,8 +7290,8 @@ class PlayState extends MusicBeatState
                 }
                 
             case 'Malfunction Legacy': // the reason this gets a separate case is cause shader effects are gonna be different
-                if (health > 0.05)
-                       health -= 0.016;
+                if (healthThing > 0.05)
+                       healthThing -= 0.016;
                 if (ClientPrefs.shaking)
                 {
                     PlayState.camGame.shake(0.008, 0.07);
@@ -7368,8 +7369,8 @@ class PlayState extends MusicBeatState
 
                 if (ClientPrefs.mechanics)
                 {
-                    if(health > 0.05) // trol
-                        health -= 0.015;
+                    if(healthThing > 0.05) // trol
+                        healthThing -= 0.015;
                 }
         }
 
@@ -7389,6 +7390,8 @@ class PlayState extends MusicBeatState
 			note.destroy();
 		}
 	}
+	
+	var malfunctionComboCheck:Int = 0;
 
 	function goodNoteHit(note:Note):Void
 	{
@@ -7403,6 +7406,7 @@ class PlayState extends MusicBeatState
 
 			if (note.noteType == "Error Note")
 			{
+				healthThing += note.hitHealth * 2.3;
 				crashLivesCounter -= 1;
 
 						crashLives.text = 'Lives: ${crashLivesCounter}';
@@ -7506,11 +7510,20 @@ class PlayState extends MusicBeatState
 
 			if (!note.isSustainNote)
 			{
+				if (SONG.song == "Malfunction") malfunctionComboCheck += 1;
 				combo += 1;
+				if (malfunctionComboCheck == 100 && SONG.song == "Malfunction")
+				{
+					malfunctionComboCheck = 0;
+					crashLivesCounter += 1;
+					crashLives.text = 'Lives: ${crashLivesCounter}';
+					crashLivesIcon.y -= 20;
+					FlxTween.tween(crashLivesIcon, {y: crashLivesIcon.y + 20}, 0.3, {ease: FlxEase.sineOut});
+				}
 				if(combo > 9999) combo = 9999;
 				popUpScore(note);
 			}
-			health += note.hitHealth * 0.55;
+			healthThing += note.hitHealth * 0.55;
 
 			if(!note.noAnimation) {
 				var animToPlay:String = singAnimations[Std.int(Math.abs(note.noteData))];
@@ -8389,9 +8402,9 @@ class PlayState extends MusicBeatState
 						PlayState.camHUD.alpha = 1;
 						PlayState.camNotes.visible = true;
 						PlayState.camGame.flash(FlxColor.RED, 1.2);
-						FlxTween.tween(PlayState, {health: 0.1}, 1, {ease: FlxEase.sineInOut});
+						FlxTween.tween(PlayState, {healthThing: 0.1}, 1, {ease: FlxEase.sineInOut});
 					case 272:
-						FlxTween.tween(PlayState, {health: 0.1}, 20, {ease: FlxEase.quartInOut});
+						FlxTween.tween(PlayState, {healthThing: 0.1}, 20, {ease: FlxEase.quartInOut});
 						FlxTween.tween(PlayState.camHUD, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
 						FlxTween.tween(PlayState.camNotes, {alpha: 0}, 1, {ease: FlxEase.sineInOut, startDelay: 0.5});
 					case 332:
@@ -9210,7 +9223,7 @@ class PlayState extends MusicBeatState
 						PlayState.defaultCamZoom = 0.65;
 						FlxTween.tween(PlayState.camHUD, {alpha: 0.25}, 8, {ease: FlxEase.sineInOut});
 						FlxTween.tween(PlayState.camNotes, {alpha: 0.25}, 8, {ease: FlxEase.sineInOut});
-						FlxTween.tween(PlayState, {health: 0.01}, 20);
+						FlxTween.tween(PlayState, {healthThing: 0.01}, 20);
 						if (PlayState.instance.globalGradient != null)
 							FlxTween.tween(PlayState.instance.globalGradient, {alpha: 0.8}, 10);
 						FlxTween.tween(FlxG.camera, {zoom: 1.1}, 18, {startDelay: 2});
@@ -9822,19 +9835,19 @@ class PlayState extends MusicBeatState
 				if (ClientPrefs.mechanics)
 				{
 					if (curBeat >= 0 && curBeat <= 63)
-						health -= 0.02;
+						healthThing -= 0.02;
 					else if (curBeat >= 64 && curBeat <= 95)
-						health -= 0.2;
+						healthThing -= 0.2;
 					else if (curBeat >= 96 && curBeat <= 127)
-						health -= 0.06;
+						healthThing -= 0.06;
 					else if (curBeat >= 128 && curBeat <= 191)
-						health -= 0.16;
+						healthThing -= 0.16;
 					else if (curBeat >= 192 && curBeat <= 255)
-						health -= 0.1;
+						healthThing -= 0.1;
 					else if (curBeat >= 256 && curBeat <= 319)
-						health -= 0.18;
+						healthThing -= 0.18;
 					else if (curBeat >= 320)
-						health -= 0.01;
+						healthThing -= 0.01;
 				}
 
 			case 'Mercy':
@@ -9889,42 +9902,42 @@ class PlayState extends MusicBeatState
 				{
 					// Health Drain Shit
 					if (curBeat >= 0 && curBeat <= 63)
-						health -= 0.005;
+						healthThing -= 0.005;
 					else if (curBeat >= 64 && curBeat <= 79)
-						health -= 0.01;
+						healthThing -= 0.01;
 					else if (curBeat >= 80 && curBeat <= 87)
-						health -= 0.07;
+						healthThing -= 0.07;
 					else if (curBeat >= 88 && curBeat <= 95)
-						health -= 0.01;
+						healthThing -= 0.01;
 					else if (curBeat >= 96 && curBeat <= 127)
-						health -= 0.03;
+						healthThing -= 0.03;
 					else if (curBeat >= 128 && curBeat <= 159)
-						health -= 0.1;
+						healthThing -= 0.1;
 					else if (curBeat >= 160 && curBeat <= 191)
-						health -= 0.06;
+						healthThing -= 0.06;
 					else if (curBeat >= 192 && curBeat <= 207)
-						health -= 0.01;
+						healthThing -= 0.01;
 					else if (curBeat >= 208 && curBeat <= 239)
-						health -= 0.04;
+						healthThing -= 0.04;
 					else if (curBeat >= 240 && curBeat <= 255)
-						health -= 0.005;
+						healthThing -= 0.005;
 					else if (curBeat >= 256 && curBeat <= 291)
-						health -= 0.03;
+						healthThing -= 0.03;
 					else if (curBeat >= 292 && curBeat <= 307)
-						health -= 0.05;
+						healthThing -= 0.05;
 					else if (curBeat >= 308 && curBeat <= 339)
-						health -= 0.085;
+						healthThing -= 0.085;
 					else if (curBeat >= 340 && curBeat <= 371)
-						health -= 0.1;
+						healthThing -= 0.1;
 					else if (curBeat >= 372 && curBeat <= 387)
-						health -= 0.11;
+						healthThing -= 0.11;
 					else if (curBeat >= 388 && curBeat <= 403)
-						health -= 0.12;
+						healthThing -= 0.12;
 					else if (curBeat >= 404 && curBeat <= 451)
-						health -= 0.14;
+						healthThing -= 0.14;
 					else if (curBeat >= 452 && curBeat <= 467)
-						health -= 0.17;
-									}
+						healthThing -= 0.17;
+				}
 
 			case 'Cycled Sins':
 				if (ClientPrefs.mechanics)
