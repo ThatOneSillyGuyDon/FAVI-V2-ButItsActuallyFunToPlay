@@ -96,18 +96,22 @@ class Song
 	{
 		switch(folder)
 		{
-			/*case "isolated":
+			case "isolated":
 				chartFile = Chart.isolated;
-			case "lunacy":
-				chartFile = Chart.lunacy;*/
+			//case "lunacy":
+				//chartFile = Chart.lunacy;
 			case "delusional":
 				chartFile = Chart.delusional;
 			case "malfunction":
 				chartFile = Chart.malfunction;
-			//case "devilish-deal":
-				//chartFile = Chart.devilishDeal;
+			case "bless":
+				chartFile = Chart.bless;
+			case "devilish-deal":
+				chartFile = Chart.devilishDeal;
 			//case "hunted":
 				//chartFile = Chart.hunted;
+			case "war-dilemma":
+				chartFile = Chart.warDilemma;
 			default:
 				chartFile = null;
 		}

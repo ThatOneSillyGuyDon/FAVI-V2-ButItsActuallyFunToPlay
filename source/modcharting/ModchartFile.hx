@@ -117,11 +117,14 @@ class ModchartFile
         {
             switch (PlayState.SONG.song)
             {
+                case "Isolated":
+                    json = cast Json.parse(ClientPrefs.downScroll ? Modchart.isolateModchartD : Modchart.isolateModchartU);
                 case "Delusional":
                     json = cast Json.parse(ClientPrefs.downScroll ? Modchart.deluluModchartD : Modchart.deluluModchartU);
                 case "Malfunction":
                     json = cast Json.parse(ClientPrefs.downScroll ? Modchart.malfunctionModchartD : Modchart.malfunctionModchartU);
-                    //trace("Successfully loaded malfunction failsafe");
+                case "Devilish Deal":
+                    json = cast Json.parse(Modchart.devilishModchart);
                 default:
                     json = {modifiers: [], events: [], playfields: 1};
             }

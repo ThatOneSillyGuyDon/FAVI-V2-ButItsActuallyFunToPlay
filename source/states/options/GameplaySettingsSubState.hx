@@ -27,18 +27,11 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			false); //Default value
 		addOption(option);
 
-		var option:Option = new Option('Middlescroll',
-			'If checked, your notes get centered.',
-			'middleScroll',
+		var option:Option = new Option('Mechanics',
+			'Uncheck this if you\'re a pussy!\n(This will disable progress checks on specific songs).',
+			'mechanics',
 			'bool',
 			false);
-		addOption(option);
-
-		var option:Option = new Option('Opponent Notes',
-			'If unchecked, opponent notes get hidden.',
-			'opponentStrums',
-			'bool',
-			true);
 		addOption(option);
 
 		var option:Option = new Option('Ghost Tapping',
