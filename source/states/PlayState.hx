@@ -7406,7 +7406,7 @@ class PlayState extends MusicBeatState
 
 			if (note.noteType == "Error Note")
 			{
-				healthThing += note.hitHealth * 2.3;
+				healthThing += note.hitHealth * 3.8;
 				crashLivesCounter -= 1;
 
 						crashLives.text = 'Lives: ${crashLivesCounter}';
@@ -7515,7 +7515,10 @@ class PlayState extends MusicBeatState
 				if (malfunctionComboCheck == 100 && SONG.song == "Malfunction")
 				{
 					malfunctionComboCheck = 0;
-					crashLivesCounter += 1;
+					if (ratingPercent == 1)
+						crashLivesCounter += 3;
+					else
+						crashLivesCounter += 1;
 					crashLives.text = 'Lives: ${crashLivesCounter}';
 					crashLivesIcon.y -= 20;
 					FlxTween.tween(crashLivesIcon, {y: crashLivesIcon.y + 20}, 0.3, {ease: FlxEase.sineOut});
