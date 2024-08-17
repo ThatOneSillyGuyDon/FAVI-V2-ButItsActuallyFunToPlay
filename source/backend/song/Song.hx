@@ -98,8 +98,8 @@ class Song
 		{
 			case "isolated":
 				chartFile = Chart.isolated;
-			//case "lunacy":
-				//chartFile = Chart.lunacy;
+			case "lunacy":
+				chartFile = Chart.lunacy;
 			case "delusional":
 				chartFile = Chart.delusional;
 			case "malfunction":

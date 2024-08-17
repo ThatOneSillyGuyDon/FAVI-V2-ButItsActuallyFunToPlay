@@ -437,6 +437,7 @@ class PlayState extends MusicBeatState
 	 public static var atmosphereParticle:FlxEmitter;
 	 public static var ashParticle:FlxEmitter;
 	 public static var rain:FlxSprite;
+	 public static var heavyRain:FlxSprite;
 	 public static var tumbleWeed:FlxSprite;
 	 public static var streetDaytime:FlxSprite;
 	 public static var clouds:FlxSprite;
@@ -447,6 +448,7 @@ class PlayState extends MusicBeatState
 	 public static var fireThing2:FlxSprite; // what the fuck what the fuck what the fuck what the fuck what the fuck what the fuck
 	 public static var fireForeground:FlxSprite;
 	 public static var fireTweenHandler:FlxTween;
+	 public static var rainTween:FlxTween;
 	 public static var fireParticle:FlxEmitter;
 	 public static var smokeShit:FlxTypedGroup<FlxSprite>;
 	 public static var smokeFore:FlxTypedGroup<FlxSprite>;
@@ -491,6 +493,8 @@ class PlayState extends MusicBeatState
 	//NEGLECTION
 	var mascotRoom:FlxSprite;
 	var mascotRoomPOV:FlxSprite;
+
+	var death:VideoSprite;
 
 	//MALFUNCTION
 	var mickeyEmitter:FlxEmitter;
@@ -1277,6 +1281,13 @@ class PlayState extends MusicBeatState
 							rain.scale.set(2, 2);
 							rain.alpha = 0.0001;
 							rain.animation.play('drippin');
+
+							heavyRain = new FlxSprite(-550, -900);
+							heavyRain.frames = Paths.getSparrowAtlas(pathway + 'heavyRain');
+							heavyRain.animation.addByPrefix('god is pissing omg', 'Rain full', 30, true);
+							heavyRain.scale.set(2, 2);
+							heavyRain.alpha = 0.0001;
+							heavyRain.animation.play('god is pissing omg');
 	
 							if (PlayState.SONG.song == 'Delusion')
 							{
@@ -1784,9 +1795,11 @@ class PlayState extends MusicBeatState
 				add(atmosphereParticle);
 				add(ashParticle);
 				add(stageFront);
+				add(rain);
+				add(heavyRain);
 				if (SONG.song == "Delusional")
 				{
-					add(rain);
+					add(heavyRain);
 					add(smokeFore);
 					add(fireForeground);
 				}
@@ -2757,6 +2770,21 @@ class PlayState extends MusicBeatState
 				PlayState.camGame.alpha = 0.001;
 				PlayState.camHUD.alpha = 0.001;
 				PlayState.camNotes.alpha = 0.001; // 0.001 doesn't cause lag when setting alpha above 0 for some reason, yet it's still invisible
+
+			case "Delusional":
+				death = new VideoSprite(false);
+				death.visible = false;
+				//death.scale.set(0.36, 0.36);
+				//death.x -= 1300;
+				//death.y -= 790;
+				death.load(Paths.video("mickeyDeath"));
+				death.cameras = [camVideo];
+				death.play();
+				new FlxTimer().start(0.001, function(tmr:FlxTimer)
+				{
+					death.pause();
+				});
+				add(death);
 
 			case 'Isolated' | 'Lunacy' | 'Cycled Sins' | 'Delusion' | 'Laugh Track':
 				PlayState.camNotes.alpha = 0.001;
@@ -7516,6 +7544,8 @@ class PlayState extends MusicBeatState
 				{
 					malfunctionComboCheck = 0;
 					if (ratingPercent == 1)
+						crashLivesCounter += 5;
+					else if (ratingPercent >= 0.9)
 						crashLivesCounter += 3;
 					else
 						crashLivesCounter += 1;
@@ -9226,7 +9256,7 @@ class PlayState extends MusicBeatState
 						PlayState.defaultCamZoom = 0.65;
 						FlxTween.tween(PlayState.camHUD, {alpha: 0.25}, 8, {ease: FlxEase.sineInOut});
 						FlxTween.tween(PlayState.camNotes, {alpha: 0.25}, 8, {ease: FlxEase.sineInOut});
-						FlxTween.tween(PlayState, {healthThing: 0.01}, 20);
+						FlxTween.tween(this, {healthThing: 0.01}, 20);
 						if (PlayState.instance.globalGradient != null)
 							FlxTween.tween(PlayState.instance.globalGradient, {alpha: 0.8}, 10);
 						FlxTween.tween(FlxG.camera, {zoom: 1.1}, 18, {startDelay: 2});
@@ -9605,11 +9635,21 @@ class PlayState extends MusicBeatState
 					case 1040:
 						PlayState.instance.camFlashSystem(BG_DARK, {alpha: 0, timer: 1, ease: FlxEase.circOut});
 						PlayState.defaultCamZoom = 0.85;
+					case 1082:
+						FlxTween.tween(camGame, {zoom: 1.6}, 1, {ease: FlxEase.sineInOut});
+						camVideo.visible = true;
+						camVideo.fade(FlxColor.BLACK, 0.7);
 					case 1086:
+						camGame.visible = false;
 						FlxTween.tween(PlayState.camHUD, {alpha: 0}, 2);
 						FlxTween.tween(PlayState.camNotes, {alpha: 0}, 2);
-						FlxG.sound.play(Paths.sound('funkinAVI/Mickey_fuckin_dying'));
+						camVideo.zoom += 0.3;
+						camVideo.fade(FlxColor.BLACK, 0.2, true);
+						FlxTween.tween(camVideo, {zoom: 1}, 0.5, {ease: FlxEase.sineOut});
 						PlayState.instance.camFlashSystem(BG_DARK, {timer: 5});
+						death.setVideoTime(0);
+						death.resume();
+						death.visible = true;
 					case 1134:
 						PlayState.instance.camFlashSystem(BG_DARK, {alpha: 1, timer: 0.5, ease: FlxEase.sineOut});
 					case 1136:
@@ -9632,7 +9672,7 @@ class PlayState extends MusicBeatState
 								}
 							}
 					case 1144:
-						FlxTween.tween(PlayState.camGame, {alpha: 0}, 4);
+						FlxTween.tween(PlayState.camVideo, {alpha: 0}, 4);
 				}
 
 			if ((curBeat >= 216 && curBeat < 340) || (curBeat >= 344 && curBeat < 356) || (curBeat >= 360 && curBeat < 388) || 
@@ -10314,7 +10354,15 @@ class PlayState extends MusicBeatState
 									{
 										if (fireTweenHandler != null)
 											fireTweenHandler.cancel();
+										if (rainTween != null)
+											rainTween.cancel();
 						
+										if (rain != null)
+											rainTween = FlxTween.tween(rain, {alpha: 0.5}, 0.35, {ease: FlxEase.sineOut, onComplete: function(twn:FlxTween)
+											{
+												rainTween = null;
+											}});
+
 										fireTweenHandler = FlxTween.tween(fireThing, {alpha: 0.75, y: -250}, 0.35, {ease: FlxEase.sineOut, onComplete: function(twn:FlxTween)
 											{
 												fireTweenHandler = null;
@@ -10325,12 +10373,20 @@ class PlayState extends MusicBeatState
 									{
 										if (fireTweenHandler != null)
 											fireTweenHandler.cancel();
+										if (rainTween != null)
+											rainTween.cancel();
 						
 										fireTweenHandler = FlxTween.tween(fireThing, {alpha: 0.0001, y: -80}, 0.35, {ease: FlxEase.sineOut, onComplete: function(twn:FlxTween)
 											{
 												fireTweenHandler = null;
 											}
 										});
+
+										if (rain != null)
+											rainTween = FlxTween.tween(rain, {alpha: 0.0001}, 0.35, {ease: FlxEase.sineOut, onComplete: function(twn:FlxTween)
+												{
+													rainTween = null;
+												}});
 									}
 									if (curBeat == 416)
 									{
@@ -10345,6 +10401,7 @@ class PlayState extends MusicBeatState
 									}
 									if (curBeat == 480)
 									{
+										if (rain != null) rain.alpha = 1;
 										fireThing.alpha = 0.35;
 										fireThing.y = -120;
 									}
@@ -10358,6 +10415,10 @@ class PlayState extends MusicBeatState
 									}
 								}
 						case 'Delusional':
+							if (curBeat == 1)
+							{
+								if (rain != null) rain.alpha = 1;
+							}
 							if (curBeat == 64)
 								{
 									FlxTween.tween(fakeLightOfHope, {alpha: 0.001}, 1.7);
@@ -10365,8 +10426,9 @@ class PlayState extends MusicBeatState
 								}
 								if (curBeat == 176)
 								{
-									if (rain != null && !lowQuality)
-										rain.alpha = 1;
+									if (rain != null) rain.visible = false;
+									if (heavyRain != null && !lowQuality)
+										heavyRain.alpha = 0.65;
 								}
 								if (curBeat == 280)
 								{
@@ -10417,7 +10479,7 @@ class PlayState extends MusicBeatState
 											{
 												spr.alpha = 0;
 											});
-										rain.visible = false;
+										heavyRain.visible = false;
 										totallyanoriginalname.visible = true;
 										stageCurtains.visible = false;
 										stageFront.visible = false;
@@ -10440,7 +10502,7 @@ class PlayState extends MusicBeatState
 											{
 												spr.alpha = 0.74;
 											});
-										rain.visible = true;
+										heavyRain.visible = true;
 										totallyanoriginalname.visible = false;
 										stageCurtains.visible = true;
 									}
