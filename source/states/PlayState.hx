@@ -6659,7 +6659,7 @@ class PlayState extends MusicBeatState
 			pixelShitPart2 = '-pixel';
 		}
 
-		rating.loadGraphic(Paths.image(pixelShitPart1 + (((ratingPercent == 1 || cpuControlled) && !isPixelStage) ? "marvelous" : daRating.image) + pixelShitPart2));
+		rating.loadGraphic(Paths.image(pixelShitPart1 + (((ratingPercent == 1 || cpuControlled) && SONG.song != "Cycled Sins") ? "marvelous" : daRating.image) + pixelShitPart2));
 		rating.cameras = [camHUD];
 		rating.scale.set(0.4, 0.4);
 		rating.screenCenter();
@@ -6740,7 +6740,7 @@ class PlayState extends MusicBeatState
 		}
 		for (i in seperatedScore)
 		{
-			var numScore:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'num' + Std.int(i) + (((ratingPercent == 1 || cpuControlled) && !isPixelStage) ? '-gold' : '') + pixelShitPart2));
+			var numScore:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'num' + Std.int(i) + (((ratingPercent == 1 || cpuControlled) && SONG.song != "Cycled Sins") ? '-gold' : '') + pixelShitPart2));
 			numScore.cameras = [camHUD];
 			numScore.scale.set(0.22, 0.22);
 			numScore.screenCenter();
