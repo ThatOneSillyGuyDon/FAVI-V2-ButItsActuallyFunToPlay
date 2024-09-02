@@ -1,6 +1,6 @@
 package states;
 
-import gamejolt.GameJolt.GameJoltAPI;
+//import gamejolt.GameJolt.GameJoltAPI;
 import flixel.FlxSprite;
 import flixel.text.FlxText;
 import sys.io.File;
@@ -118,8 +118,8 @@ class ManIHateYouSoMuchYouMadeMuckneySad extends MusicBeatState
 
       Application.current.window.borderless = true;
 
-      if(!GameJoltAPI.checkTrophy(184288))
-         GameJoltAPI.getTrophy(184288);
+      //if(!GameJoltAPI.checkTrophy(184288))
+      //   GameJoltAPI.getTrophy(184288);
 
       
    }
