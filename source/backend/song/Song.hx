@@ -35,6 +35,7 @@ typedef SwagSong =
 class Song
 {
 	public static var chartFile:String;
+	public static var randomizer:Int;
 
 	public var song:String;
 	public var notes:Array<SwagSection>;
@@ -44,7 +45,7 @@ class Song
 	public var arrowSkin:String;
 	public var splashSkin:String;
 	public var speed:Float = 1;
-	public var composer:String = "Unknown";
+	public static var charter:String = "Unknown";
 	public var stage:String;
 	public var player1:String = 'bf';
 	public var player2:String = 'dad';
@@ -92,26 +93,44 @@ class Song
 		this.bpm = bpm;
 	}
 
-	public static function loadFromJson(jsonInput:String, ?folder:String, ?isDontCross:Bool = false):SwagSong
+	public static function loadFromJson(jsonInput:String, ?folder:String, ?crossRandomizer:Int):SwagSong
 	{
+		randomizer = crossRandomizer;
 		switch(folder)
 		{
-			case "isolated":
+			case "isolated": 
 				chartFile = Chart.isolated;
-			case "lunacy":
+			case "lunacy": 
 				chartFile = Chart.lunacy;
-			case "delusional":
+			case "delusional": 
 				chartFile = Chart.delusional;
-			case "malfunction":
+			case "malfunction": 
 				chartFile = Chart.malfunction;
-			case "bless":
+			case "bless": 
 				chartFile = Chart.bless;
-			case "devilish-deal":
+			case "devilish-deal": 
 				chartFile = Chart.devilishDeal;
-			//case "hunted":
-				//chartFile = Chart.hunted;
-			case "war-dilemma":
+			case "hunted":
+				chartFile = Chart.hunted;
+			case "war-dilemma": 
 				chartFile = Chart.warDilemma;
+			case "birthday": 
+				chartFile = Chart.birthday;
+			case "dont-cross":
+				if (jsonInput == "events")
+					chartFile = Event.dontCrossAnimatedShit;
+
+				if (!ClientPrefs.mechanics)
+					chartFile = Chart.dontCross4; // because no lmao
+				else
+					switch (randomizer)
+					{
+						case 1: chartFile = Chart.dontCross1;
+						case 2: chartFile = Chart.dontCross2;
+						case 3: chartFile = Chart.dontCross3;
+						case 4: chartFile = Chart.dontCross4;
+						case 5: chartFile = Chart.dontCross5;
+					}
 			default:
 				chartFile = null;
 		}
@@ -127,20 +146,18 @@ class Song
 		#end
 
 		if(rawJson == null) {
-			if(chartFile == null)
-			{	
-				#if sys
-				rawJson = File.getContent(Paths.json(formattedFolder + '/' + formattedSong)).trim();
-				#else
-				rawJson = Assets.getText(Paths.json(formattedFolder + '/' + formattedSong)).trim();
-				#end
+			if (chartFile == null)
+			{
+					#if sys
+					rawJson = File.getContent(Paths.json(formattedFolder + '/' + formattedSong)).trim();
+					#else
+					rawJson = Assets.getText(Paths.json(formattedFolder + '/' + formattedSong)).trim();
+					#end
 			}
 			else
 			{
 				rawJson = chartFile;
 			}
-			if (isDontCross)
-				rawJson += FlxG.random.int(1, 3);
 		}
 
 		while (!rawJson.endsWith("}"))
@@ -169,6 +186,25 @@ class Song
 		if(jsonInput != 'events') StageData.loadDirectory(songJson);
 		onLoadJson(songJson);
 		return songJson;
+	}
+
+	public static function getCharterCredits():String
+	{
+		switch (PlayState.SONG.song)
+		{
+			case "Devilish Deal" | "Lunacy" | "Hunted" | "War Dilemma": charter = "Purg";
+			case "Delusional": charter = "Dreupy";
+			case "Bless" | "Malfunction" | "Birthday": charter = "DEMOLITIONDON96";
+			case "Dont Cross":
+				switch (randomizer)
+				{
+					case 1 | 4 | 5: charter = "DEMOLITIONDON96";
+					case 2: charter = "Dreupy";
+					case 3: charter = "Purg";
+				}
+			default: charter = "Unknown";
+		}
+		return charter;
 	}
 
 	public static function parseJSONshit(rawJson:String):SwagSong

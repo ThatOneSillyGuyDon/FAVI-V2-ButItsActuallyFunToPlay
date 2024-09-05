@@ -1,59 +1,59 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				590,
 				640
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "idle",
-			"indices": [],
-			"name": "Mickeystoppedworking Idle"
+			"fps": 24,
+			"name": "Mickeystoppedworking Idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				580,
 				634
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "Mickeystoppedworking Left"
+			"fps": 24,
+			"name": "Mickeystoppedworking Left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				590,
 				630
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUP",
-			"indices": [],
-			"name": "Mickeystoppedworking Up"
+			"fps": 24,
+			"name": "Mickeystoppedworking Up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				590,
 				642
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "Mickeystoppedworking Down"
+			"fps": 24,
+			"name": "Mickeystoppedworking Down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				600,
 				640
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "Mickeystoppedworking Right"
+			"fps": 24,
+			"name": "Mickeystoppedworking Right",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,
@@ -62,12 +62,12 @@
 		0,
 		120
 	],
-	"healthicon": "mickey-hopeless-unused",
+	"healthicon": "bitch",
 	"flip_x": false,
 	"healthbar_colors": [
-		216,
-		216,
-		216
+		96,
+		96,
+		96
 	],
 	"camera_position": [
 		-290,

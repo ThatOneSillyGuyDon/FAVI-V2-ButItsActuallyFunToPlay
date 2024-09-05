@@ -216,8 +216,8 @@ class FreeplayCategories extends MusicBeatState {
 
         if (controls.ACCEPT){
 			FlxG.mouse.visible = false;
-            	FreeplaySongs.freeplayMenuList = curSelected;
-				MusicBeatState.switchState(new FreeplaySongs());
+            	FreeplayState.freeplayMenuList = curSelected;
+				MusicBeatState.switchState(new FreeplayState());
         }
 
 		if (curSelected != lastCurSelected)
@@ -242,8 +242,8 @@ class FreeplayCategories extends MusicBeatState {
 				if (FlxG.mouse.overlaps(grpCats.members[curSelected]))
 				{
 					FlxG.mouse.visible = false;
-					FreeplaySongs.freeplayMenuList = curSelected;
-					MusicBeatState.switchState(new FreeplaySongs());
+					FreeplayState.freeplayMenuList = curSelected;
+					MusicBeatState.switchState(new FreeplayState());
 				}
 			}
 

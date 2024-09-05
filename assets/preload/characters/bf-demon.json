@@ -2,8 +2,8 @@
 	"animations": [
 		{
 			"offsets": [
-				-170,
-				40
+				-420,
+				-120
 			],
 			"loop": false,
 			"fps": 20,
@@ -13,8 +13,8 @@
 		},
 		{
 			"offsets": [
-				195,
-				26
+				-55,
+				-134
 			],
 			"loop": false,
 			"fps": 26,
@@ -24,8 +24,8 @@
 		},
 		{
 			"offsets": [
-				-107,
-				-100
+				-357,
+				-260
 			],
 			"loop": false,
 			"fps": 28,
@@ -35,8 +35,8 @@
 		},
 		{
 			"offsets": [
-				-100,
-				157
+				-360,
+				-3
 			],
 			"loop": false,
 			"fps": 28,
@@ -46,8 +46,8 @@
 		},
 		{
 			"offsets": [
-				-226,
-				28
+				-486,
+				-132
 			],
 			"loop": false,
 			"fps": 27,
@@ -62,7 +62,7 @@
 		0,
 		0
 	],
-	"healthicon": "face",
+	"healthicon": "evildelu",
 	"flip_x": true,
 	"healthbar_colors": [
 		0,
@@ -70,8 +70,8 @@
 		0
 	],
 	"camera_position": [
-		-40,
-		0
+		-270,
+		150
 	],
 	"sing_duration": 6.1,
 	"scale": 0.8

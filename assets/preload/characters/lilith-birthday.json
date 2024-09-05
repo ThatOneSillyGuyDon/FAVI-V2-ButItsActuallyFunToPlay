@@ -1,15 +1,15 @@
 {
 	"animations": [
 		{
-			"loop": true,
 			"offsets": [
-				0,
+				120,
 				0
 			],
-			"anim": "idle",
+			"loop": true,
 			"fps": 12,
-			"name": "idle",
-			"indices": []
+			"anim": "idle",
+			"indices": [],
+			"name": "idle"
 		}
 	],
 	"no_antialiasing": false,

@@ -3,7 +3,7 @@
 		{
 			"loop": false,
 			"offsets": [
-				0,
+				100,
 				-110
 			],
 			"anim": "idle",
@@ -14,7 +14,7 @@
 		{
 			"loop": false,
 			"offsets": [
-				38,
+				138,
 				-111
 			],
 			"anim": "singLEFT",
@@ -25,7 +25,7 @@
 		{
 			"loop": false,
 			"offsets": [
-				1,
+				101,
 				-230
 			],
 			"anim": "singDOWN",
@@ -36,7 +36,7 @@
 		{
 			"loop": false,
 			"offsets": [
-				30,
+				130,
 				-10
 			],
 			"anim": "singUP",
@@ -47,7 +47,7 @@
 		{
 			"loop": false,
 			"offsets": [
-				0,
+				100,
 				-105
 			],
 			"anim": "singRIGHT",
@@ -62,12 +62,12 @@
 		0,
 		0
 	],
-	"healthicon": "face",
+	"healthicon": "lunaavier",
 	"flip_x": false,
 	"healthbar_colors": [
-		161,
-		161,
-		161
+		136,
+		136,
+		136
 	],
 	"camera_position": [
 		-30,

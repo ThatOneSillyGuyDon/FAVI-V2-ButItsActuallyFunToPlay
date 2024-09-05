@@ -118,13 +118,29 @@ class ModchartFile
             switch (PlayState.SONG.song)
             {
                 case "Isolated":
-                    json = cast Json.parse(ClientPrefs.downScroll ? Modchart.isolateModchartD : Modchart.isolateModchartU);
+                    if (ClientPrefs.mechanics) 
+                        json = cast Json.parse(ClientPrefs.downScroll ? Modchart.isolateModchartD : Modchart.isolateModchartU);
+                    else
+                        json = {modifiers: [], events: [], playfields: 1};
+                case "Lunacy":
+                    if (ClientPrefs.mechanics)
+                        json = cast Json.parse(Modchart.lunacyModchart);
+                    else
+                        json = {modifiers: [], events: [], playfields: 1};
                 case "Delusional":
-                    json = cast Json.parse(ClientPrefs.downScroll ? Modchart.deluluModchartD : Modchart.deluluModchartU);
+                    if (ClientPrefs.mechanics) 
+                        json = cast Json.parse(ClientPrefs.downScroll ? Modchart.deluluModchartD : Modchart.deluluModchartU);
+                    else
+                        json = {modifiers: [], events: [], playfields: 1};
                 case "Malfunction":
                     json = cast Json.parse(ClientPrefs.downScroll ? Modchart.malfunctionModchartD : Modchart.malfunctionModchartU);
                 case "Devilish Deal":
                     json = cast Json.parse(Modchart.devilishModchart);
+                case "War Dilemma":
+                    if (ClientPrefs.mechanics)
+                        json = cast Json.parse(ClientPrefs.downScroll ? Modchart.warModchartD : Modchart.warModchartU);
+                    else
+                        json = {modifiers: [], events: [], playfields: 1};
                 default:
                     json = {modifiers: [], events: [], playfields: 1};
             }

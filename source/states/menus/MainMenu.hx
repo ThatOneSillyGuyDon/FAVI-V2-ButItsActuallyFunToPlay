@@ -10,8 +10,6 @@ import flixel.effects.FlxFlicker;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.input.keyboard.FlxKey;
 import flixel.input.keyboard.FlxKeyboard;
-//import gamejolt.GameJolt.GameJoltAPI;
-//import gamejolt.GameJolt.GameJoltLogin;
 import haxe.io.Path;
 import openfl.net.SharedObject;
 import openfl.net.SharedObjectFlushStatus;
@@ -193,8 +191,6 @@ class MainMenu extends MusicBeatState
 		FlxG.stage.addEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
 
 		super.create();
-
-		//trace(GameJoltAPI.userLogin);
 
 		if (ClientPrefs.shaders)
 		{
@@ -426,10 +422,6 @@ class MainMenu extends MusicBeatState
 			FlxG.camera.shake(0.02, 5);
 
 			FlxG.sound.play(Paths.sound('funkinAVI/fnaf_jumpscare'), 0.7, false, null, true, () -> cantaloupe.destroy());
-
-			// adds a achievement
-			//if (!GameJoltAPI.checkTrophy(196692))
-			//	GameJoltAPI.getTrophy(196692);
 		}
 	}
 
@@ -725,7 +717,7 @@ class MainMenu extends MusicBeatState
 							switch (daChoice)
 							{
 								case 'freeplay':
-									MusicBeatState.switchState(new FreeplayState());
+									MusicBeatState.switchState(new FreeplayCategories());
 							}
 						});
 					}

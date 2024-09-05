@@ -1,59 +1,59 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"anim": "idle",
+			"loop": false,
 			"fps": 14,
-			"name": "Idle",
-			"indices": []
+			"anim": "idle",
+			"indices": [],
+			"name": "Idle"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				170,
 				20
 			],
-			"anim": "singLEFT",
+			"loop": false,
 			"fps": 13,
-			"name": "Left",
-			"indices": []
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "Left"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				80,
 				-120
 			],
-			"anim": "singDOWN",
+			"loop": false,
 			"fps": 14,
-			"name": "Down",
-			"indices": []
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "Down"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				10,
 				75
 			],
-			"anim": "singUP",
+			"loop": false,
 			"fps": 13,
-			"name": "Up",
-			"indices": []
+			"anim": "singUP",
+			"indices": [],
+			"name": "Up"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-200,
 				26
 			],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 14,
-			"name": "Right",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Right"
 		}
 	],
 	"no_antialiasing": false,
@@ -62,15 +62,15 @@
 		0,
 		0
 	],
-	"healthicon": "face",
+	"healthicon": "walt",
 	"flip_x": false,
 	"healthbar_colors": [
-		161,
-		161,
-		161
+		255,
+		237,
+		209
 	],
 	"camera_position": [
-		-115,
+		-165,
 		110
 	],
 	"sing_duration": 6.1,

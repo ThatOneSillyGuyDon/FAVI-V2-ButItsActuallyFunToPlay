@@ -2,8 +2,8 @@
 	"animations": [
 		{
 			"offsets": [
-				311,
-				279
+				51,
+				61
 			],
 			"loop": false,
 			"fps": 11,
@@ -13,8 +13,8 @@
 		},
 		{
 			"offsets": [
-				315,
-				278
+				55,
+				56
 			],
 			"loop": false,
 			"fps": 11,
@@ -24,8 +24,8 @@
 		},
 		{
 			"offsets": [
-				320,
-				278
+				60,
+				68
 			],
 			"loop": false,
 			"fps": 11,
@@ -35,8 +35,8 @@
 		},
 		{
 			"offsets": [
-				301,
-				275
+				35,
+				55
 			],
 			"loop": false,
 			"fps": 11,
@@ -46,8 +46,8 @@
 		},
 		{
 			"offsets": [
-				310,
-				277
+				70,
+				70
 			],
 			"loop": false,
 			"fps": 11,
@@ -62,7 +62,7 @@
 		-270,
 		-100
 	],
-	"healthicon": "icon",
+	"healthicon": "lunaavier",
 	"flip_x": false,
 	"healthbar_colors": [
 		121,
@@ -70,9 +70,9 @@
 		121
 	],
 	"camera_position": [
-		10,
-		10
+		420,
+		230
 	],
 	"sing_duration": 4,
-	"scale": 0.70000000000001
+	"scale": 0.65
 }

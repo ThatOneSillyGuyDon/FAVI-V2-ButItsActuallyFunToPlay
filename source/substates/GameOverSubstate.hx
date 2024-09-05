@@ -107,7 +107,7 @@ class GameOverSubstate extends MusicBeatSubstate
 
 			WeekData.loadTheFirstEnabledMod();
 			if (PlayState.isStoryMode)
-				MusicBeatState.switchState(new StoryMenuState());
+				MusicBeatState.switchState(new StoryMenu());
 			else
 				MusicBeatState.switchState(new FreeplayState());
 
@@ -189,7 +189,7 @@ class GameOverSubstate extends MusicBeatSubstate
 						{
 							var songLowercase:String = "dont-cross";
 							var poop:String = "dont-cross-hard" + '${FlxG.random.int(1, 4)}'; //fuck fuck fuck fuck fuck fuck
-							PlayState.SONG = Song.loadFromJson(poop, songLowercase, true);
+							PlayState.SONG = Song.loadFromJson(poop, songLowercase, FlxG.random.int(1, 5));
 						}
 						
 					MusicBeatState.resetState();

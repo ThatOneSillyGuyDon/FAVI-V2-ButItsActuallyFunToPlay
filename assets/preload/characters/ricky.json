@@ -1,59 +1,59 @@
 {
 	"animations": [
 		{
-			"loop": true,
 			"offsets": [
 				0,
 				0
 			],
-			"anim": "idle",
+			"loop": true,
 			"fps": 24,
-			"name": "ricky idle",
-			"indices": []
+			"anim": "idle",
+			"indices": [],
+			"name": "ricky idle"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				60,
 				50
 			],
-			"anim": "singLEFT",
+			"loop": false,
 			"fps": 24,
-			"name": "ricky left",
-			"indices": []
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "ricky left"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"anim": "singDOWN",
+			"loop": false,
 			"fps": 24,
-			"name": "ricky down",
-			"indices": []
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "ricky down"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				7,
 				20
 			],
-			"anim": "singUP",
+			"loop": false,
 			"fps": 24,
-			"name": "ricky up",
-			"indices": []
+			"anim": "singUP",
+			"indices": [],
+			"name": "ricky up"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				9,
 				5
 			],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 24,
-			"name": "ricky right",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "ricky right"
 		}
 	],
 	"no_antialiasing": false,
@@ -62,7 +62,7 @@
 		-300,
 		70
 	],
-	"healthicon": "face",
+	"healthicon": "ricky",
 	"flip_x": false,
 	"healthbar_colors": [
 		61,
