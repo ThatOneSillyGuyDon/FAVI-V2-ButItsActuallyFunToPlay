@@ -527,6 +527,7 @@ class PlayState extends MusicBeatState
 	var updateShader:Float = 0;
 
 	public static var windowName:String = "";
+	public static var lastWinName:String = "";
 
 	public var foreground:FlxTypedGroup<FlxBasic>;
 
@@ -679,53 +680,6 @@ class PlayState extends MusicBeatState
 
 		pathway = 'favi/stages/' + curStage + '/images/';
 		if (SONG.song == "Cycled Sins") daPixelZoom = 5;
-
-		var curEpisode:String;
-
-		var checkSongForGimmicks:Array<String> = [
-			"Isolated",
-			"Lunacy",
-			"Delusional",
-			"Hunted",
-			"Laugh Track",
-			"Dont Cross",
-			"Cycled Sins",
-			"Mercy",
-			"Cycled Sins Legacy",
-			"Mercy Legacy",
-			"War Dilemma"
-		];
-
-		var checkMechanics:Bool = false;
-		for (i in 0...checkSongForGimmicks.length)
-			if (SONG.song == checkSongForGimmicks[i])
-				checkMechanics = true;
-
-		switch (SONG.song)
-		{
-			case "Devilish Deal" | "Isolated" | "Lunacy" | "Delusional": curEpisode = "Episode 1";
-			default: curEpisode = "Episode ???";
-		}
-
-		windowName = "Funkin.avi - " + 
-		(isStoryMode ? curEpisode + " - " : "Freeplay - ") + 
-		PlayState.SONG.song + 
-		" (Composed by: " + FreeplayState.getArtistName() + 
-		") - Chart by: " + Song.getCharterCredits() + 
-		" [" + FreeplayState.getDiffRank() + "]" + 
-		(checkMechanics ? ' - Mechanics: ' + (ClientPrefs.mechanics ? "Enabled" : "Disabled") : ""); // shitty long ass name that credits literally every fucking thing
-
-		lime.app.Application.current.window.title = windowName;
-
-		new FlxTimer().start(5, function(tmr:FlxTimer)
-		{
-			windowName = "Funkin.avi - " + 
-			(isStoryMode ? curEpisode + " - " : "Freeplay - ") + 
-			PlayState.SONG.song + 
-			" [" + FreeplayState.getDiffRank() + "]"; // short version that displays after 5 seconds yayaya
-
-			lime.app.Application.current.window.title = windowName;
-		});
 
 		var stageData:StageFile = StageData.getStageFile(curStage);
 		if(stageData == null) { //Stage couldn't be found, create a dummy stage for preventing a crash
@@ -2414,6 +2368,53 @@ class PlayState extends MusicBeatState
 		doof.cameras = [camHUD];
 
 		startingSong = true;
+
+		var curEpisode:String;
+
+		var checkSongForGimmicks:Array<String> = [
+			"Isolated",
+			"Lunacy",
+			"Delusional",
+			"Hunted",
+			"Laugh Track",
+			"Dont Cross",
+			"Cycled Sins",
+			"Mercy",
+			"Cycled Sins Legacy",
+			"Mercy Legacy",
+			"War Dilemma"
+		];
+
+		var checkMechanics:Bool = false;
+		for (i in 0...checkSongForGimmicks.length)
+			if (SONG.song == checkSongForGimmicks[i])
+				checkMechanics = true;
+
+		switch (SONG.song)
+		{
+			case "Devilish Deal" | "Isolated" | "Lunacy" | "Delusional": curEpisode = "Episode 1";
+			default: curEpisode = "Episode ???";
+		}
+
+		windowName = "Funkin.avi - " + 
+		(isStoryMode ? curEpisode + " - " : "Freeplay - ") + 
+		(SONG.song == "Dont Cross" ? "Don't Cross!" : PlayState.SONG.song) + 
+		" (Composed by: " + FreeplayState.getArtistName() + 
+		") - Chart by: " + Song.getCharterCredits() + 
+		" [" + FreeplayState.getDiffRank() + "]" + 
+		(checkMechanics ? ' - Mechanics: ' + (ClientPrefs.mechanics ? "Enabled" : "Disabled") : ""); // shitty long ass name that credits literally every fucking thing
+
+		lime.app.Application.current.window.title = windowName;
+
+		new FlxTimer().start(5, function(tmr:FlxTimer)
+		{
+			windowName = "Funkin.avi - " + 
+			(isStoryMode ? curEpisode + " - " : "Freeplay - ") + 
+			(SONG.song == "Dont Cross" ? "Don't Cross!" : PlayState.SONG.song) + 
+			" [" + FreeplayState.getDiffRank() + "]"; // short version that displays after 5 seconds yayaya
+
+			lime.app.Application.current.window.title = windowName;
+		});
 		
 		#if LUA_ALLOWED
 		for (notetype in noteTypeMap.keys())
@@ -4143,13 +4144,12 @@ class PlayState extends MusicBeatState
 		var daBeats:Int = 0; // Not exactly representative of 'daBeats' lol, just how much it has looped
 
 		var songName:String = Paths.formatToSongPath(SONG.song);
-		var file:String = Paths.json(songName + '/events');
-		#if MODS_ALLOWED
-		if (FileSystem.exists(Paths.modsJson(songName + '/events')) || FileSystem.exists(file)) {
-		#else
-		if (OpenFlAssets.exists(file)) {
-		#end
-			var eventsData:Array<Dynamic> = Song.loadFromJson('events', songName).events;
+		var fuckYou:String = "dont-cross";
+		var file:String = Paths.json((SONG.song == "Dont Cross" ? fuckYou : songName) + '/events');
+
+		if (OpenFlAssets.exists(file) || SONG.song == "Dont Cross") {
+			trace('test');
+			var eventsData:Array<Dynamic> = Song.loadFromJson('events', (SONG.song == "Dont Cross" ? fuckYou : songName) ).events;
 			for (event in eventsData) //Event Notes
 			{
 				for (i in 0...event[1].length)

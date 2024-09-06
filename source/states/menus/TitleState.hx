@@ -251,7 +251,7 @@ class TitleState extends MusicBeatState
 		if (!initialized)
 		{
 			if(FlxG.sound.music == null) {
-				FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+				FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'), 0);
 
 				FlxG.sound.music.fadeIn(4, 0, 0.7);
 			}
@@ -403,7 +403,7 @@ class TitleState extends MusicBeatState
 			if(pressedEnter)
 			{
 				FlxG.camera.flash(FlxColor.WHITE, 1);
-				FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
+				FlxG.sound.play(Paths.sound('funkinAVI/menu/selectSfx'), 0.7);
 
 				transitioning = true;
 

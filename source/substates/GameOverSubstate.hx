@@ -41,7 +41,7 @@ class GameOverSubstate extends MusicBeatSubstate
 	public static function resetVariables() {
 		characterName = 'bf-dead';
 		deathSoundName = 'fnf_loss_sfx';
-		loopSoundName = 'gameOver';
+		loopSoundName = 'soaringHigh';
 		endSoundName = 'gameOverEnd';
 	}
 
@@ -111,7 +111,7 @@ class GameOverSubstate extends MusicBeatSubstate
 			else
 				MusicBeatState.switchState(new FreeplayState());
 
-			FlxG.sound.playMusic(Paths.music('freakyMenu'));
+			FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
 			PlayState.instance.callOnLuas('onGameOverConfirm', [false]);
 		}
 
@@ -167,7 +167,7 @@ class GameOverSubstate extends MusicBeatSubstate
 
 	function coolStartDeath(?volume:Float = 1):Void
 	{
-		FlxG.sound.playMusic(Paths.music(loopSoundName), volume);
+		FlxG.sound.playMusic(Paths.music("aviOST/gameOver/" + loopSoundName), volume);
 	}
 
 	function endBullshit():Void

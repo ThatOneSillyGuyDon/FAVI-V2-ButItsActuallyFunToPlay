@@ -195,7 +195,7 @@ class FreeplayCategories extends MusicBeatState {
 						if (curSelected >= 2)
 							curSelected = -1; // WHY IS IT -1??!??!?!??!!??!?!
 
-						FlxG.sound.play(Paths.sound('scrollMenu'));
+						FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
 					}
 
 					curSelected = FlxMath.wrap(Math.floor(curSelected) + changeValue, 0, freeplayCats.length - 1);
@@ -210,11 +210,13 @@ class FreeplayCategories extends MusicBeatState {
 		}
 		
 		if (controls.BACK) {
+			FlxG.sound.play(Paths.sound("cancelMenu"));
 			MusicBeatState.switchState(new MainMenu());
 		}
 
 
         if (controls.ACCEPT){
+			FlxG.sound.play(Paths.sound("funkinAVI/menu/selectSfx"));
 			FlxG.mouse.visible = false;
             	FreeplayState.freeplayMenuList = curSelected;
 				MusicBeatState.switchState(new FreeplayState());
@@ -254,7 +256,7 @@ class FreeplayCategories extends MusicBeatState {
 		{
 			if (selection != curSelected)
 			{
-				FlxG.sound.play(Paths.sound('scrollMenu'));
+				FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
 			}
 	
 			if (curSelected < 0)

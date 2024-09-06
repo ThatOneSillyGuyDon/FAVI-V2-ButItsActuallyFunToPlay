@@ -50,13 +50,18 @@ class PauseSubState extends MusicBeatSubstate
 		}
 		difficultyChoices.push('BACK');
 
+		var randomPauseSong:String = "";
+		var randomizer:Int = FlxG.random.int(1, 3);
+
+		switch (randomizer)
+		{
+			case 1: randomPauseSong = "calmlyWinds";
+			case 2: randomPauseSong = "soothingLight";
+			case 3: randomPauseSong = "simpleTunes";
+		}
 
 		pauseMusic = new FlxSound();
-		if(songName != null) {
-			pauseMusic.loadEmbedded(Paths.music(songName), true, true);
-		} else if (songName != 'None') {
-			pauseMusic.loadEmbedded(Paths.music(Paths.formatToSongPath(ClientPrefs.pauseMusic)), true, true);
-		}
+		pauseMusic.loadEmbedded(Paths.music("aviOST/pause/" + randomPauseSong), true, true);
 		pauseMusic.volume = 0;
 		pauseMusic.play(false, FlxG.random.int(0, Std.int(pauseMusic.length / 2)));
 
@@ -302,6 +307,8 @@ class PauseSubState extends MusicBeatSubstate
 	override function destroy()
 	{
 		pauseMusic.destroy();
+		pauseMusic.kill();
+		pauseMusic = null;
 
 		super.destroy();
 	}

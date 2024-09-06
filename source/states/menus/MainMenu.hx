@@ -230,7 +230,7 @@ class MainMenu extends MusicBeatState
 		transIn = FlxTransitionableState.defaultTransIn;
 		transOut = FlxTransitionableState.defaultTransOut;
 
-		DiscordClient.changePresence('MENU SCREEN', 'Main Menu', 'icon', 'mouse');
+		DiscordClient.changePresence('Funkin.avi', 'Main Menu', 'icon', 'mouse');
 
 		// uh
 		persistentUpdate = persistentDraw = true;
@@ -551,13 +551,13 @@ class MainMenu extends MusicBeatState
 		{
 			if ((controls.UI_UP_P))
 			{
-				FlxG.sound.play(Paths.sound('scrollMenu'));
+				FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
 				changeValue -= 1;
 			}
 
 			if ((controls.UI_DOWN_P))
 			{
-				FlxG.sound.play(Paths.sound('scrollMenu'));
+				FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
 				changeValue += 1;
 			}
 
@@ -646,7 +646,7 @@ class MainMenu extends MusicBeatState
 		if (selection != curSelected)
 		{
 			//FlxG.sound.play(Paths.sound('base/menus/scrollMenu'));
-			FlxG.sound.play(Paths.sound('scrollMenu'));
+			FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
 		}
 
 		if (selection < 0)
@@ -694,7 +694,7 @@ class MainMenu extends MusicBeatState
 				}
 				selectedSomethin = true;
 				//FlxG.sound.play(Paths.sound('base/menus/confirmMenu'));
-				FlxG.sound.play(Paths.sound('confirmMenu'));
+				FlxG.sound.play(Paths.sound('funkinAVI/menu/selectSfx'));
 				FlxG.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
 				FlxTween.tween(camGame, {zoom: 6}, 2, {ease: FlxEase.cubeInOut, startDelay: 0.5});
 
@@ -774,7 +774,7 @@ class MainMenu extends MusicBeatState
 						}
 					}
 					selectedSomethin = true;
-					FlxG.sound.play(Paths.sound('confirmMenu'));
+					FlxG.sound.play(Paths.sound('funkinAVI/menu/selectSfx'));
 					FlxTween.tween(camGame, {zoom: 6}, 2, {ease: FlxEase.cubeInOut, startDelay: 0.5});
 				}
 			});

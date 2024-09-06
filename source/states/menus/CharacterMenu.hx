@@ -127,7 +127,7 @@ class CharacterMenu extends MusicBeatState
 		if (curSelected >= charArray.length)
 			curSelected = 0;
 
-        FlxG.sound.play(Paths.sound('base/menus/scrollMenu'), 0.6);
+        FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'), 0.6);
         
         character.loadGraphic(Paths.image('characters/${charArray[curSelected][1]}', path));
         character.offset.set(charArray[curSelected][2], charArray[curSelected][3]);

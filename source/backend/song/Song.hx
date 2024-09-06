@@ -98,39 +98,47 @@ class Song
 		randomizer = crossRandomizer;
 		switch(folder)
 		{
-			case "isolated": 
-				chartFile = Chart.isolated;
-			case "lunacy": 
-				chartFile = Chart.lunacy;
-			case "delusional": 
-				chartFile = Chart.delusional;
-			case "malfunction": 
-				chartFile = Chart.malfunction;
-			case "bless": 
-				chartFile = Chart.bless;
-			case "devilish-deal": 
-				chartFile = Chart.devilishDeal;
-			case "hunted":
-				chartFile = Chart.hunted;
-			case "war-dilemma": 
-				chartFile = Chart.warDilemma;
-			case "birthday": 
-				chartFile = Chart.birthday;
+			case "isolated": chartFile = Chart.isolated;
+			case "isolated-beta": chartFile = Chart.isolatedBeta;
+			case "isolated-old": chartFile = Chart.isolatedOld;
+			case "isolated-legacy": chartFile = Chart.isolatedLegacy;
+			case "lunacy": chartFile = Chart.lunacy;
+			case "delusional": chartFile = Chart.delusional;
+			case "malfunction": chartFile = Chart.malfunction;
+			case "malfunction-legacy": chartFile = Chart.malfunctionLegacy;
+			case "bless": chartFile = Chart.bless;
+			case "devilish-deal": chartFile = Chart.devilishDeal;
+			case "hunted": chartFile = Chart.hunted;
+			case "hunted-legacy": chartFile = Chart.huntedLegacy;
+			case "war-dilemma": chartFile = Chart.warDilemma;
+			case "birthday": chartFile = Chart.birthday;
+			case "mercy": chartFile = Chart.mercy;
+			case "mercy-legacy": chartFile = Chart.mercyLegacy;
+			case "delutrance": chartFile = Chart.delutrance;
 			case "dont-cross":
-				if (jsonInput == "events")
-					chartFile = Event.dontCrossAnimatedShit;
-
 				if (!ClientPrefs.mechanics)
+				{
+					trace('lmao no, get fucked');
 					chartFile = Chart.dontCross4; // because no lmao
+				}
 				else
+				{
+					trace('random chart loaded!');
 					switch (randomizer)
 					{
 						case 1: chartFile = Chart.dontCross1;
 						case 2: chartFile = Chart.dontCross2;
 						case 3: chartFile = Chart.dontCross3;
 						case 4: chartFile = Chart.dontCross4;
-						case 5: chartFile = Chart.dontCross5;
+						case 5: chartFile = Chart.dontCross1;
 					}
+				}
+
+				if (jsonInput == 'events')
+				{
+					trace('got event!');
+					chartFile = Event.dontCrossAnimatedShit;
+				}
 			default:
 				chartFile = null;
 		}
@@ -148,11 +156,11 @@ class Song
 		if(rawJson == null) {
 			if (chartFile == null)
 			{
-					#if sys
-					rawJson = File.getContent(Paths.json(formattedFolder + '/' + formattedSong)).trim();
-					#else
-					rawJson = Assets.getText(Paths.json(formattedFolder + '/' + formattedSong)).trim();
-					#end
+				#if sys
+				rawJson = File.getContent(Paths.json(formattedFolder + '/' + formattedSong)).trim();
+				#else
+				rawJson = Assets.getText(Paths.json(formattedFolder + '/' + formattedSong)).trim();
+				#end
 			}
 			else
 			{
@@ -194,12 +202,12 @@ class Song
 		{
 			case "Devilish Deal" | "Lunacy" | "Hunted" | "War Dilemma": charter = "Purg";
 			case "Delusional": charter = "Dreupy";
-			case "Bless" | "Malfunction" | "Birthday": charter = "DEMOLITIONDON96";
+			case "Bless" | "Malfunction" | "Birthday" | "Delutrance" | "Mercy" | "Mercy Legacy" | "Isolated Old" | "Isolated Legacy" | "Isolated Beta" | "Malfunction Legacy": charter = "DEMOLITIONDON96";
 			case "Dont Cross":
 				switch (randomizer)
 				{
-					case 1 | 4 | 5: charter = "DEMOLITIONDON96";
-					case 2: charter = "Dreupy";
+					case 1 | 4: charter = "DEMOLITIONDON96";
+					case 2 | 5: charter = "Dreupy";
 					case 3: charter = "Purg";
 				}
 			default: charter = "Unknown";

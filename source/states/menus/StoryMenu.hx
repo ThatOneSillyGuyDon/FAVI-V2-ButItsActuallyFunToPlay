@@ -326,7 +326,7 @@ class StoryMenu extends MusicBeatState
 
 				if(FlxG.mouse.wheel != 0)
 				{
-					FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
+					FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'), 0.4);
 					changeWeek(-FlxG.mouse.wheel);
 					changeDifficulty();
 				}
@@ -392,7 +392,7 @@ class StoryMenu extends MusicBeatState
 			{
 				if (stopspamming == false)
 				{
-					FlxG.sound.play(Paths.sound('confirmMenu'));
+					FlxG.sound.play(Paths.sound('funkinAVI/menu/confirmEpisode'));
 					grpWeekText.members[curWeek].startFlashing();
 					stopspamming = true;
 				}
@@ -509,7 +509,7 @@ class StoryMenu extends MusicBeatState
 			bullShit++;
 		}
 
-		FlxG.sound.play(Paths.sound('scrollMenu'));
+		FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
 
 		changeDifficulty();
 		updateText();
