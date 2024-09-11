@@ -138,28 +138,41 @@ void mainImage()
     
     vec2 center = vec2(0.5,0.5*(iResolution.y/iResolution.x));
     
-    vec2 light1 = vec2(sin(iTime*1.2+50.0)*1.0 + cos(iTime*0.4+10.0)*0.6,sin(iTime*1.2+100.0)*0.8 + cos(iTime*0.2+20.0)*-0.2)*0.2+center;
-    vec3 lightColor1 = vec3(1.0, 0.3, 0.3);
+    vec2 light1 = vec2(sin(iTime*0.2+50.0)*1.0 + cos(iTime*0.4+10.0)*0.6,sin(iTime*1.2+100.0)*0.8 + cos(iTime*0.2+20.0)*-0.2)*0.2+center;
+    vec3 lightColor1 = vec3(0.6, 0.6, 1.0);
     
     vec2 light2 = vec2(sin(iTime+3.0)*-2.0,cos(iTime+7.0)*1.0)*0.2+center;
-    vec3 lightColor2 = vec3(0.3, 1.0, 0.3);
+    vec3 lightColor2 = vec3(0.8, 0.8, 1.0);
     
-    vec2 light3 = vec2(sin(iTime+3.0)*2.0,cos(iTime+14.0)*-1.0)*0.2+center;
-    vec3 lightColor3 = vec3(0.3, 0.3, 1.0);
+    vec2 light3 = vec2(sin(iTime+2.0)*2.0,cos(iTime+14.0)*-1.0)*0.22+center;
+    vec3 lightColor3 = vec3(0.7, 0.7, 1.0);
 
+    vec2 light4 = vec2(sin(iTime+3.0)*2.0,cos(iTime-20.0)*-1.0)*0.2+center;
+    vec3 lightColor4 = vec3(0.5, 0.5, 1.0);
     
-    float cloudIntensity1 = 0.7*(1.0-(2.5*distance(uv, light1)));
-    float lighIntensity1 = 1.0/(100.0*distance(uv,light1));
+    vec2 light5 = vec2(sin(iTime+4.0)*2.0,cos(iTime+30.0)*-1.0)*0.14+center;
+    vec3 lightColor5 = vec3(1.0, 1.0, 1.0);
+    
+    float cloudIntensity1 = 0.12*(1.0-(2.5*distance(uv, light1)));
+    float lighIntensity1 = 1.0/(350.0*distance(uv,light1));
 
-    float cloudIntensity2 = 0.7*(1.0-(2.5*distance(uv, light2)));
-    float lighIntensity2 = 1.0/(100.0*distance(uv,light2));
+    float cloudIntensity2 = 0.12*(1.0-(2.5*distance(uv, light2)));
+    float lighIntensity2 = 1.0/(300.0*distance(uv,light2));
     
-    float cloudIntensity3 = 0.7*(1.0-(2.5*distance(uv, light3)));
-    float lighIntensity3 = 1.0/(100.0*distance(uv,light3));
+    float cloudIntensity3 = 0.12*(1.0-(2.5*distance(uv, light3)));
+    float lighIntensity3 = 1.0/(250.0*distance(uv,light3));
+    
+    float cloudIntensity4 = 0.12*(1.0-(2.5*distance(uv, light4)));
+    float lighIntensity4 = 1.0/(380.0*distance(uv,light4));
+    
+    float cloudIntensity5 = 0.12*(1.0-(2.5*distance(uv, light5)));
+    float lighIntensity5 = 1.0/(400.0*distance(uv,light5));
     
     tex.rgb += vec3(cloudIntensity1*clouds(uv))*lightColor1 + lighIntensity1*lightColor1 +
                      vec3(cloudIntensity2*clouds(uv))*lightColor2 + lighIntensity2*lightColor2 +
-                     vec3(cloudIntensity3*clouds(uv))*lightColor3 + lighIntensity3*lightColor3;
+                     vec3(cloudIntensity3*clouds(uv))*lightColor3 + lighIntensity3*lightColor3 +
+                     vec3(cloudIntensity4*clouds(uv))*lightColor4 + lighIntensity4*lightColor4 +
+                     vec3(cloudIntensity5*clouds(uv))*lightColor5 + lighIntensity5*lightColor5;
     
     
     gl_FragColor = tex;
