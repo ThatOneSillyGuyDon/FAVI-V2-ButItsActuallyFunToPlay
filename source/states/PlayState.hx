@@ -27,14 +27,6 @@ import sys.FileSystem;
 import sys.io.File;
 #end
 
-
-import flixel.addons.display.FlxRuntimeShader; 
-import openfl.filters.ShaderFilter;
-import sys.io.File;
-
-
-using StringTools;
-
 enum FlashType
 {
 	BG_FLASH;
@@ -539,9 +531,8 @@ class PlayState extends MusicBeatState
 
 	// SHADER FOR BLESS ONLY CUZ IM DUMBASS - MalyPlus
 
-	var othershader:FlxRuntimeShader;
-	var shader:FlxRuntimeShader;
-	var elapsedTime:Float = 0;
+	var shader:FlxRuntimeShader = new FlxRuntimeShader(Shaders.blessBlur);
+	var othershader:FlxRuntimeShader = new FlxRuntimeShader(Shaders.blessLightsShit);
 
 	override public function create()
 	{
@@ -2621,6 +2612,17 @@ class PlayState extends MusicBeatState
 		{
 			switch (PlayState.SONG.song)
 			{
+				case 'Bless':
+					camGame.setFilters(
+						[
+							new ShaderFilter(shader),
+							new ShaderFilter(othershader)
+						]
+					);
+					new flixel.util.FlxTimer().start(1, function(tmr)
+						{
+							camGame.setFilters([/*that's right, nothing*/]);
+						});
 				case 'Malfunction':
 					if(!ClientPrefs.lowQuality)
 					{
@@ -2898,16 +2900,6 @@ class PlayState extends MusicBeatState
 				letsFight.addCallback("onEnd", () -> camVideo.visible = false);
 				letsFight.play();
 				add(letsFight);
-
-
-
-				// stolen from my own mod
-				var fragText = File.getContent('assets/shader/lightsrgb.frag');
-				shader = new FlxRuntimeShader(fragText);
-			
-				var fragggg = File.getContent('assets/shader/BlurThing.frag');		
-				othershader = new FlxRuntimeShader(fragggg);
-			
 				
 			default:
 				trace("no events");
@@ -4608,28 +4600,6 @@ class PlayState extends MusicBeatState
 
 	override public function update(elapsed:Float)
 	{
-
-		// just in case - MalyPlus
-		if (SONG.song == "bless" || SONG.song == "Bless" || SONG.song == "BLESS")
-		{
-				
-			if (ClientPrefs.shaders == true)
-			{
-				elapsedTime += elapsed;
-				shader.setFloat('iTime', elapsedTime);
-				othershader.setFloat('iTime', elapsedTime);
-			}
-			else
-			{
-								
-			}
-		}
-
-
-		/*if (FlxG.keys.justPressed.NINE)
-		{
-			iconP1.swapOldIcon();
-		}*/
 		callOnLuas('onUpdate', [elapsed]);
 
 		shaderAnim = Conductor.songPosition / 1000;
@@ -4637,6 +4607,10 @@ class PlayState extends MusicBeatState
 		{
 			switch (PlayState.SONG.song)
 			{
+				case "Bless":
+					shader.setFloat('iTime', shaderAnim);
+					othershader.setFloat('iTime', shaderAnim);
+
 				case 'Devilish Deal':
 					PlayState.chromZoomShader.setFloat('aberration', PlayState.instance.chromEffect);
 					PlayState.chromZoomShader.setFloat('effectTime', PlayState.instance.chromEffect);
