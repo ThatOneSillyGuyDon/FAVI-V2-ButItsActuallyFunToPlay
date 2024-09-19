@@ -1,68 +1,68 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				590,
 				640
 			],
-			"loop": false,
-			"fps": 5,
 			"anim": "idle",
-			"indices": [],
-			"name": "Mickey3 Idle"
+			"fps": 5,
+			"name": "Mickey3 Idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				560,
 				644
 			],
-			"loop": false,
-			"fps": 5,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "Mickey3 Left"
+			"fps": 5,
+			"name": "Mickey3 Left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				530,
 				630
 			],
-			"loop": false,
-			"fps": 5,
 			"anim": "singUP",
-			"indices": [],
-			"name": "Mickey3 Up"
+			"fps": 5,
+			"name": "Mickey3 Up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				460,
 				642
 			],
-			"loop": false,
-			"fps": 5,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "Mickey3 Down"
+			"fps": 5,
+			"name": "Mickey3 Down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				470,
 				640
 			],
-			"loop": false,
-			"fps": 5,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "Mickey3 Right"
+			"fps": 5,
+			"name": "Mickey3 Right",
+			"indices": []
 		}
 	],
-	"no_antialiasing": false,
+	"no_antialiasing": true,
 	"image": "characters/mick-trance/mickeykillyourself",
 	"position": [
 		-150,
 		120
 	],
-	"healthicon": "mickey-delusional-unused",
+	"healthicon": "delucrack",
 	"flip_x": false,
 	"healthbar_colors": [
 		216,

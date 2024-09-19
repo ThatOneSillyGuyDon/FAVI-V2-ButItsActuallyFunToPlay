@@ -10,8 +10,6 @@ import flixel.effects.FlxFlicker;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.input.keyboard.FlxKey;
 import flixel.input.keyboard.FlxKeyboard;
-//import gamejolt.GameJolt.GameJoltAPI;
-//import gamejolt.GameJolt.GameJoltLogin;
 import haxe.io.Path;
 import openfl.net.SharedObject;
 import openfl.net.SharedObjectFlushStatus;
@@ -194,8 +192,6 @@ class MainMenu extends MusicBeatState
 
 		super.create();
 
-		//trace(GameJoltAPI.userLogin);
-
 		if (ClientPrefs.shaders)
 		{
 			defaultShader = new FlxRuntimeShader(Shaders.grayScale, null, 140);
@@ -234,7 +230,7 @@ class MainMenu extends MusicBeatState
 		transIn = FlxTransitionableState.defaultTransIn;
 		transOut = FlxTransitionableState.defaultTransOut;
 
-		DiscordClient.changePresence('MENU SCREEN', 'Main Menu', 'icon', 'mouse');
+		DiscordClient.changePresence('Funkin.avi', 'Main Menu', 'icon', 'mouse');
 
 		// uh
 		persistentUpdate = persistentDraw = true;
@@ -426,10 +422,6 @@ class MainMenu extends MusicBeatState
 			FlxG.camera.shake(0.02, 5);
 
 			FlxG.sound.play(Paths.sound('funkinAVI/fnaf_jumpscare'), 0.7, false, null, true, () -> cantaloupe.destroy());
-
-			// adds a achievement
-			//if (!GameJoltAPI.checkTrophy(196692))
-			//	GameJoltAPI.getTrophy(196692);
 		}
 	}
 
@@ -559,13 +551,13 @@ class MainMenu extends MusicBeatState
 		{
 			if ((controls.UI_UP_P))
 			{
-				FlxG.sound.play(Paths.sound('scrollMenu'));
+				FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
 				changeValue -= 1;
 			}
 
 			if ((controls.UI_DOWN_P))
 			{
-				FlxG.sound.play(Paths.sound('scrollMenu'));
+				FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
 				changeValue += 1;
 			}
 
@@ -654,7 +646,7 @@ class MainMenu extends MusicBeatState
 		if (selection != curSelected)
 		{
 			//FlxG.sound.play(Paths.sound('base/menus/scrollMenu'));
-			FlxG.sound.play(Paths.sound('scrollMenu'));
+			FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
 		}
 
 		if (selection < 0)
@@ -702,7 +694,7 @@ class MainMenu extends MusicBeatState
 				}
 				selectedSomethin = true;
 				//FlxG.sound.play(Paths.sound('base/menus/confirmMenu'));
-				FlxG.sound.play(Paths.sound('confirmMenu'));
+				FlxG.sound.play(Paths.sound('funkinAVI/menu/selectSfx'));
 				FlxG.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
 				FlxTween.tween(camGame, {zoom: 6}, 2, {ease: FlxEase.cubeInOut, startDelay: 0.5});
 
@@ -725,7 +717,7 @@ class MainMenu extends MusicBeatState
 							switch (daChoice)
 							{
 								case 'freeplay':
-									MusicBeatState.switchState(new FreeplayState());
+									MusicBeatState.switchState(new FreeplayCategories());
 							}
 						});
 					}
@@ -782,7 +774,7 @@ class MainMenu extends MusicBeatState
 						}
 					}
 					selectedSomethin = true;
-					FlxG.sound.play(Paths.sound('confirmMenu'));
+					FlxG.sound.play(Paths.sound('funkinAVI/menu/selectSfx'));
 					FlxTween.tween(camGame, {zoom: 6}, 2, {ease: FlxEase.cubeInOut, startDelay: 0.5});
 				}
 			});

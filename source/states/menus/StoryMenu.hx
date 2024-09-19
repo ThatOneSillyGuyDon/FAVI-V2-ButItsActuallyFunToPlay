@@ -200,8 +200,12 @@ class StoryMenu extends MusicBeatState
 		sprDifficulty.antialiasing = true;
 		difficultySelectors.add(sprDifficulty);
 
-		if (lastDifficulty == '' || lastDifficulty == null)
+		CoolUtil.difficulties = CoolUtil.defaultDifficulties.copy();
+		if(lastDifficulty == '')
+		{
 			lastDifficulty = CoolUtil.defaultDifficulty;
+		}
+		curDifficulty = Math.round(Math.max(0, CoolUtil.defaultDifficulties.indexOf(lastDifficulty)));
 
 		rightArrow = new FlxSprite(leftArrow.x + 376, leftArrow.y);
 		rightArrow.frames = ui_tex;
@@ -306,7 +310,7 @@ class StoryMenu extends MusicBeatState
 		{
 			if (!selectedWeek && (leftArrow != null && rightArrow != null))
 			{
-				if (leftP)
+				/*if (leftP)
 				{
 					changeWeek(-1);
 					FlxG.sound.play(Paths.sound('scrollMenu'));
@@ -318,11 +322,11 @@ class StoryMenu extends MusicBeatState
 					changeWeek(1);
 					FlxG.sound.play(Paths.sound('scrollMenu'));
 					booksimage.angle = FlxG.random.float(-15, 18); // yes
-				}
+				}*/
 
 				if(FlxG.mouse.wheel != 0)
 				{
-					FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
+					FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'), 0.4);
 					changeWeek(-FlxG.mouse.wheel);
 					changeDifficulty();
 				}
@@ -388,7 +392,7 @@ class StoryMenu extends MusicBeatState
 			{
 				if (stopspamming == false)
 				{
-					FlxG.sound.play(Paths.sound('confirmMenu'));
+					FlxG.sound.play(Paths.sound('funkinAVI/menu/confirmEpisode'));
 					grpWeekText.members[curWeek].startFlashing();
 					stopspamming = true;
 				}
@@ -404,13 +408,15 @@ class StoryMenu extends MusicBeatState
 				PlayState.storyPlaylist = songArray;
 				PlayState.isStoryMode = true;
 				selectedWeek = true;
+
+				var songLowercase:String = Paths.formatToSongPath(PlayState.storyPlaylist[0]);
 	
 				var diffic = CoolUtil.getDifficultyFilePath(curDifficulty);
 				if(diffic == null) diffic = '';
 	
 				PlayState.storyDifficulty = curDifficulty;
 	
-				PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + "-hard", PlayState.storyPlaylist[0].toLowerCase());
+				PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + diffic, songLowercase);
 				PlayState.campaignScore = 0;
 				PlayState.campaignMisses = 0;
 				new FlxTimer().start(1, function(tmr:FlxTimer)
@@ -503,7 +509,7 @@ class StoryMenu extends MusicBeatState
 			bullShit++;
 		}
 
-		FlxG.sound.play(Paths.sound('scrollMenu'));
+		FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
 
 		changeDifficulty();
 		updateText();

@@ -46,7 +46,7 @@ class CreditsMenu extends MusicBeatState
 		
 		DiscordClient.changePresence('BROWSING THE CREDITS', 'Credits Menu', 'icon', 'book');
 
-		FlxG.sound.playMusic(Paths.music('funkinAVI/credits'));
+		FlxG.sound.playMusic(Paths.music('aviOST/curtainCall'));
 
 		Conductor.changeBPM(164);
 
@@ -155,7 +155,7 @@ class CreditsMenu extends MusicBeatState
 		{
 			MusicBeatState.switchState(new MainMenu());
 			Conductor.changeBPM(50); // changes back to titlescreen bpm
-			FlxG.sound.playMusic(Paths.music('freakyMenu'), 1); // resets music back to menu music
+			FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'), 1); // resets music back to menu music
 			FlxG.sound.music.fadeIn();
 		}
 	}
@@ -191,7 +191,7 @@ class CreditsMenu extends MusicBeatState
 		creditIconSprite.setGraphicSize(Std.int(creditIconSprite.width * creditArray[curSelected][6]));
 		creditIconSprite.setPosition(creditArray[curSelected][4], creditArray[curSelected][5]);
 
-		FlxG.sound.play(Paths.sound('scrollMenu'), 0.6);
+		FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'), 0.6);
 
 		reloadText(creditArray[curSelected][7]);
 

@@ -1,92 +1,92 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"loop": false,
+			"fps": 10,
 			"anim": "idle",
-			"fps": 10,
-			"name": "Bf Idle",
-			"indices": []
+			"indices": [],
+			"name": "Bf Idle"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"loop": false,
+			"fps": 11,
 			"anim": "singLEFT",
-			"fps": 11,
-			"name": "Bf Left",
-			"indices": []
+			"indices": [],
+			"name": "Bf Left"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"loop": false,
+			"fps": 11,
 			"anim": "singDOWN",
-			"fps": 11,
-			"name": "Bf Down",
-			"indices": []
+			"indices": [],
+			"name": "Bf Down"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"loop": false,
+			"fps": 11,
 			"anim": "singUP",
-			"fps": 11,
-			"name": "Bf Up",
-			"indices": []
+			"indices": [],
+			"name": "Bf Up"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"loop": false,
+			"fps": 11,
 			"anim": "singRIGHT",
-			"fps": 11,
-			"name": "Bf Right",
-			"indices": []
+			"indices": [],
+			"name": "Bf Right"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"loop": false,
+			"fps": 11,
 			"anim": "dodge",
-			"fps": 11,
-			"name": "Bf Dodge",
+			"indices": [],
+			"name": "Bf Dodge"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "firstDeath",
+			"fps": 10,
+			"name": "Bf Death",
 			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"loop": false,
-			"fps": 10,
-			"anim": "firstDeath",
-			"indices": [],
-			"name": "Bf Death"
-		},
-		{
-			"offsets": [
-				0,
-				0
-			],
-			"loop": false,
-			"fps": 11,
 			"anim": "deathConfirm",
-			"indices": [],
-			"name": "Bf Retry"
+			"fps": 11,
+			"name": "Bf Retry",
+			"indices": []
 		}
 	],
 	"no_antialiasing": true,
@@ -95,7 +95,7 @@
 		50,
 		180
 	],
-	"healthicon": "bf-relapsed-pixel",
+	"healthicon": "relapseeverett-pixel",
 	"flip_x": true,
 	"healthbar_colors": [
 		172,

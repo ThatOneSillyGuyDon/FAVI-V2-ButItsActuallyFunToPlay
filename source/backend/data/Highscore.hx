@@ -76,25 +76,31 @@ class Highscore
 	 */
 	static function setScore(song:String, score:Int):Void
 	{
+		var scores:FlxSave = new FlxSave();
+		scores.bind('scores', CoolUtil.getSavePath());
 		// Reminder that I don't need to format this song, it should come formatted!
 		songScores.set(song, score);
-		FlxG.save.data.songScores = songScores;
-		FlxG.save.flush();
+		scores.data.songScores = songScores;
+		scores.flush();
 	}
 	static function setWeekScore(week:String, score:Int):Void
 	{
+		var scores:FlxSave = new FlxSave();
+		scores.bind('scores', CoolUtil.getSavePath());
 		// Reminder that I don't need to format this song, it should come formatted!
 		weekScores.set(week, score);
-		FlxG.save.data.weekScores = weekScores;
-		FlxG.save.flush();
+		scores.data.weekScores = weekScores;
+		scores.flush();
 	}
 
 	static function setRating(song:String, rating:Float):Void
 	{
+		var scores:FlxSave = new FlxSave();
+		scores.bind('scores', CoolUtil.getSavePath());
 		// Reminder that I don't need to format this song, it should come formatted!
 		songRating.set(song, rating);
-		FlxG.save.data.songRating = songRating;
-		FlxG.save.flush();
+		scores.data.songRating = songRating;
+		scores.flush();
 	}
 
 	public static function formatSong(song:String, diff:Int):String
@@ -131,17 +137,20 @@ class Highscore
 
 	public static function load():Void
 	{
-		if (FlxG.save.data.weekScores != null)
+		var scores:FlxSave = new FlxSave();
+		scores.bind('scores', CoolUtil.getSavePath());
+
+		if (scores.data.weekScores != null)
 		{
-			weekScores = FlxG.save.data.weekScores;
+			weekScores = scores.data.weekScores;
 		}
-		if (FlxG.save.data.songScores != null)
+		if (scores.data.songScores != null)
 		{
-			songScores = FlxG.save.data.songScores;
+			songScores = scores.data.songScores;
 		}
-		if (FlxG.save.data.songRating != null)
+		if (scores.data.songRating != null)
 		{
-			songRating = FlxG.save.data.songRating;
+			songRating = scores.data.songRating;
 		}
 	}
 }

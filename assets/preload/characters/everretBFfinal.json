@@ -112,8 +112,8 @@
 		},
 		{
 			"offsets": [
-				0,
-				-21
+				-410,
+				-461
 			],
 			"loop": false,
 			"fps": 24,
@@ -123,8 +123,8 @@
 		},
 		{
 			"offsets": [
-				4,
-				77
+				-406,
+				-383
 			],
 			"loop": false,
 			"fps": 24,
@@ -135,19 +135,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				0,
-				30
-			],
-			"anim": "",
-			"fps": 24,
-			"name": "idlefi",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				-28,
-				33
+				-432,
+				-411
 			],
 			"anim": "singRIGHT",
 			"fps": 24,
@@ -157,8 +146,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				84,
-				6
+				-296,
+				-434
 			],
 			"anim": "singLEFT",
 			"fps": 24,
@@ -167,35 +156,33 @@
 		},
 		{
 			"offsets": [
-				0,
-				30
+				-400,
+				-420
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "idle",
-			"loop": false,
+			"indices": [],
 			"name": "idlefi"
 		}
 	],
-	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/everettBFfinal",
 	"position": [
 		0,
 		350
 	],
-	"healthicon": "bf",
+	"healthicon": "everett",
 	"flip_x": true,
 	"healthbar_colors": [
-		49,
-		176,
-		209
+		132,
+		132,
+		132
 	],
 	"camera_position": [
-		10,
-		0
+		-260,
+		410
 	],
 	"sing_duration": 4,
-	"scale": 1,
-	"_editor_isPlayer": true
+	"scale": 1
 }

@@ -301,9 +301,9 @@ class FreeplaySongs extends MusicBeatState
 
 		for (i in 0...songs.length)
 		{
-			var songText2:FlxText = new FlxText(0, 0, 470, CoolUtil.swapSpaceDash(songs[i].name));
-			var songText:Alphabet = new Alphabet(0, (70 * i) + 30, CoolUtil.swapSpaceDash(songs[i].name), true);
-			var icon:HealthIcon = new HealthIcon(songs[i].character);
+			var songText2:FlxText = new FlxText(0, 0, 470, CoolUtil.swapSpaceDash(songs[i].songName));
+			var songText:Alphabet = new Alphabet(0, (70 * i) + 30, CoolUtil.swapSpaceDash(songs[i].songName), true);
+			var icon:HealthIcon = new HealthIcon(songs[i].songCharacter);
 
 			if (freeplayMenuList == 2)
 			{
@@ -478,13 +478,13 @@ class FreeplaySongs extends MusicBeatState
 		if (coolDifficultyArray.length > 0)
 		{
 			songs.push({
-				name: songName,
+				songName: songName,
 				week: weekNum,
-				character: songCharacter,
+				songCharacter: songCharacter,
 				color: songColor,
 				composer: composer,
-				difficultyRank: rankID,
-				textColor: rankColor
+				rankName: rankID,
+				rankColor: rankColor
 			});
 			existingDifficulties.push(coolDifficultyArray);
 		}
@@ -528,7 +528,7 @@ class FreeplaySongs extends MusicBeatState
 			}
 		}
 
-		if(songs[curSelected].name != "Don't Cross!" && freeplayMenuList == 1 && grpSongs.members[6] != null && grpSongs.members[6].exists)
+		if(songs[curSelected].songName != "Don't Cross!" && freeplayMenuList == 1 && grpSongs.members[6] != null && grpSongs.members[6].exists)
 			{
 				grpSongs.members[6].shake(11, 10, 0.1);
 				iconArray[6].shake(4, 30, 0.1);
@@ -572,7 +572,7 @@ class FreeplaySongs extends MusicBeatState
 
 		if (accepted)
 		{
-			var song:String = Paths.formatToSongPath(songs[curSelected].name);
+			var song:String = Paths.formatToSongPath(songs[curSelected].songName);
 			var poop:String = Highscore.formatSong(song, curDifficulty);
 
 			PlayState.SONG = Song.loadFromJson(song + "-hard", song);
@@ -654,11 +654,11 @@ class FreeplaySongs extends MusicBeatState
 
 		lastDifficultyName = CoolUtil.difficulties[curDifficulty];
 
-		intendedScore = Highscore.getScore(songs[curSelected].name, curDifficulty);
+		intendedScore = Highscore.getScore(songs[curSelected].songName, curDifficulty);
 
 		
-		difficultyRank = songs[curSelected].difficultyRank;
-		diffText.color = songs[curSelected].textColor;
+		difficultyRank = songs[curSelected].rankName;
+		diffText.color = songs[curSelected].rankColor;
 				
 		if (freeplayMenuList == 2) diffText.text = 'RANK: ' + difficultyRank; else diffText.text = "Difficulty: " + difficultyRank;// display the text
 		lastDifficulty = existingDifficulties[curSelected][curDifficulty];
@@ -683,9 +683,9 @@ class FreeplaySongs extends MusicBeatState
 		if (curSelected >= songs.length)
 			curSelected = 0;
 
-		intendedScore = Highscore.getScore(songs[curSelected].name, curDifficulty);
+		intendedScore = Highscore.getScore(songs[curSelected].songName, curDifficulty);
 		
-		var songName:String = CoolUtil.dashToSpace(songs[curSelected].name);
+		var songName:String = CoolUtil.dashToSpace(songs[curSelected].songName);
 		var composerName:String = songs[curSelected].composer;
 		
 		switch (freeplayMenuList)
@@ -710,7 +710,7 @@ class FreeplaySongs extends MusicBeatState
 
 		// set up color stuffs
 		mainColor = songs[curSelected].color;
-		PauseSubState.colorSetup = songs[curSelected].color;
+		//PauseSubState.colorSetup = songs[curSelected].color;
 
 		// song switching stuffs
 		var bullShit:Int = 0;
@@ -725,10 +725,10 @@ class FreeplaySongs extends MusicBeatState
 
 					iconArray[curSelected].alpha = 1;
 
-					if(songs[curSelected].name == "Birthday")
+					if(songs[curSelected].songName == "Birthday")
 						iconArray[curSelected].animation.curAnim.curFrame = 1; // funi
 					//i swear to god theres too much .replace
-					else if(songs[curSelected].name.toLowerCase().replace(' ', '-').replace("'", '').replace('!', '') == "dont-cross")
+					else if(songs[curSelected].songName.toLowerCase().replace(' ', '-').replace("'", '').replace('!', '') == "dont-cross")
 						iconArray[curSelected].animation.curAnim.curFrame = 0;
 					else
 						iconArray[curSelected].animation.curAnim.curFrame = 2;
@@ -777,7 +777,7 @@ class FreeplaySongs extends MusicBeatState
 			// ah yes, formatting made by vsc itself - jason
 			if (freeplayMenuList != 2)
 			{
-				switch (songs[curSelected].name.toLowerCase())
+				switch (songs[curSelected].songName.toLowerCase())
 				{
 					case 'bless':
 						if(!ClientPrefs.lowQuality) {
@@ -928,7 +928,7 @@ class FreeplaySongs extends MusicBeatState
 
 	function changeSongBPM() 
 	{
-		switch (songs[curSelected].name.toLowerCase().replace('-', ' '))
+		switch (songs[curSelected].songName.toLowerCase().replace('-', ' '))
 		{
 			case 'cycled sins' | 'cycled sins legacy' | 'facade' | 'resentment' | 'scrapped':
 				Conductor.changeBPM(180);
@@ -993,7 +993,7 @@ class FreeplaySongs extends MusicBeatState
 					{
 						if (index == curSelected && index != curSongPlaying)
 						{
-							var inst:Sound = Paths.inst(songs[curSelected].name);
+							var inst:Sound = Paths.inst(songs[curSelected].songName);
 
 							if (index == curSelected && threadActive)
 							{
@@ -1028,7 +1028,7 @@ class FreeplaySongs extends MusicBeatState
 
 	function updateDiscord()
 	{
-		var mySong:String = ' [Listening to: ${songs[curSelected].name}]';
+		var mySong:String = ' [Listening to: ${songs[curSelected].songName}]';
 		#if DISCORD_RPC
 		#if DevBuild
 		Discord.changePresence('CHOOSING A SONG', 'Freeplay Menu [CLASSIFIED]', 'icon', 'disc-player');
@@ -1054,5 +1054,30 @@ class FreeplaySongs extends MusicBeatState
 		}
 		#end
 		#end
+	}
+}
+
+class SongMetadata
+{
+	public var songName:String = "";
+	public var week:Int = 0;
+	public var songCharacter:String = "";
+	public var color:Int = -7179779;
+	public var composer:String = "Unknown";
+	public var rankName:String = "";
+	public var rankColor:FlxColor = FlxColor.WHITE;
+	public var folder:String = "";
+
+	public function new(song:String, week:Int, songCharacter:String, color:Int, composer:String, rankName:String, rankColor:FlxColor)
+	{
+		this.songName = song;
+		this.week = week;
+		this.songCharacter = songCharacter;
+		this.color = color;
+		this.composer = composer;
+		this.rankName = rankName;
+		this.rankColor = rankColor;
+		this.folder = Paths.currentModDirectory;
+		if(this.folder == null) this.folder = '';
 	}
 }

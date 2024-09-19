@@ -1,59 +1,59 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
 				590,
 				640
 			],
-			"anim": "idle",
+			"loop": false,
 			"fps": 24,
-			"name": "Mickeyphase2 Idle",
-			"indices": []
+			"anim": "idle",
+			"indices": [],
+			"name": "Mickeyphase2 Idle"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				570,
 				654
 			],
-			"anim": "singLEFT",
+			"loop": false,
 			"fps": 24,
-			"name": "Mickeyphase2 Left",
-			"indices": []
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "Mickeyphase2 Left"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				570,
 				630
 			],
-			"anim": "singUP",
+			"loop": false,
 			"fps": 24,
-			"name": "Mickeyphase2 Up",
-			"indices": []
+			"anim": "singUP",
+			"indices": [],
+			"name": "Mickeyphase2 Up"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				590,
 				642
 			],
-			"anim": "singDOWN",
+			"loop": false,
 			"fps": 24,
-			"name": "Mickeyphase2 Down",
-			"indices": []
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "Mickeyphase2 Down"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				540,
 				640
 			],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 24,
-			"name": "Mickeyphase2 Right",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Mickeyphase2 Right"
 		}
 	],
 	"no_antialiasing": false,
@@ -62,12 +62,12 @@
 		0,
 		200
 	],
-	"healthicon": "mickey-lunacy-legacy",
+	"healthicon": "lunaold",
 	"flip_x": false,
 	"healthbar_colors": [
-		216,
-		216,
-		216
+		176,
+		176,
+		176
 	],
 	"camera_position": [
 		-290,

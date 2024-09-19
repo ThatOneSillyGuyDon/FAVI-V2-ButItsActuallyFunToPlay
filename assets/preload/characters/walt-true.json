@@ -136,16 +136,16 @@
 		-800,
 		900
 	],
-	"healthicon": "face",
+	"healthicon": "walt",
 	"flip_x": false,
 	"healthbar_colors": [
-		161,
-		161,
-		161
+		255,
+		237,
+		209
 	],
 	"camera_position": [
-		-230,
-		180
+		-280,
+		220
 	],
 	"sing_duration": 6.1,
 	"scale": 0.9

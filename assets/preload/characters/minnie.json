@@ -1,121 +1,121 @@
 {
 	"animations": [
 		{
-			"offsets": [
-				740,
-				-140
-			],
-			"indices": [],
-			"fps": 24,
-			"anim": "idle",
 			"loop": false,
-			"name": "idle"
+			"offsets": [
+				-99,
+				-730
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-71,
+				-685
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-84,
+				-694
+			],
+			"anim": "singDOWNmiss",
+			"fps": 24,
+			"name": "down_misses",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-109,
+				-703
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-96,
+				-671
+			],
+			"anim": "singUPmiss",
+			"fps": 24,
+			"name": "up_misses",
+			"indices": []
 		},
 		{
 			"offsets": [
-				815,
-				-164
+				-27,
+				-747
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singLEFT",
-			"loop": false,
-			"name": "right0"
-		},
-		{
-			"offsets": [
-				769,
-				-94
-			],
 			"indices": [],
-			"fps": 24,
-			"anim": "singUP",
-			"loop": false,
-			"name": "up0"
-		},
-		{
-			"offsets": [
-				728,
-				-96
-			],
-			"indices": [],
-			"fps": 24,
-			"anim": "singRIGHT",
-			"loop": false,
 			"name": "left0"
 		},
 		{
 			"offsets": [
-				748,
-				-97
+				-112,
+				-686
 			],
-			"indices": [],
-			"fps": 24,
-			"anim": "singRIGHTmiss",
 			"loop": false,
-			"name": "left_misses"
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right0"
 		},
 		{
 			"offsets": [
-				760,
-				-90
+				-92,
+				-687
 			],
-			"indices": [],
-			"fps": 24,
-			"anim": "singLEFTmiss",
 			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHTmiss",
+			"indices": [],
 			"name": "right_misses"
 		},
 		{
 			"offsets": [
-				756,
-				-104
+				-78,
+				-681
 			],
-			"indices": [],
-			"fps": 24,
-			"anim": "singDOWNmiss",
 			"loop": false,
-			"name": "down_misses"
-		},
-		{
-			"offsets": [
-				731,
-				-113
-			],
-			"indices": [],
 			"fps": 24,
-			"anim": "singDOWN",
-			"loop": false,
-			"name": "down0"
-		},
-		{
-			"offsets": [
-				744,
-				-81
-			],
+			"anim": "singLEFTmiss",
 			"indices": [],
-			"fps": 24,
-			"anim": "singUPmiss",
-			"loop": false,
-			"name": "up_misses"
+			"name": "left_misses"
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/MINNIE",
+	"image": "characters/minnie/MINNIE",
 	"position": [
 		0,
 		0
 	],
-	"healthicon": "face",
+	"healthicon": "minnie",
 	"flip_x": true,
 	"healthbar_colors": [
-		101,
-		101,
-		141
+		216,
+		216,
+		216
 	],
 	"camera_position": [
-		-400,
-		200
+		-390,
+		750
 	],
 	"sing_duration": 6.1,
 	"scale": 1

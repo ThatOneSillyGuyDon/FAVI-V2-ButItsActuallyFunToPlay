@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="DelusiMickEnd.png">
+<SubTexture name="DelusiMickEnd RightPose0000" x="5700" y="0" width="1376" height="1417" frameX="-414" frameY="-257" frameWidth="1898" frameHeight="1730" />
+<SubTexture name="DelusiMickEnd RightPose0001" x="0" y="4452" width="1378" height="1391" frameX="-450" frameY="-294" frameWidth="1898" frameHeight="1730" />
+<SubTexture name="DelusiMickEnd LeftPose0000" x="0" y="3009" width="1543" height="1443" frameX="-121" frameY="-286" frameWidth="1898" frameHeight="1730" />
+<SubTexture name="DelusiMickEnd DownPose0000" x="5700" y="2834" width="1300" height="1349" frameX="-359" frameY="-378" frameWidth="1898" frameHeight="1730" />
+<SubTexture name="DelusiMickEnd LeftPose0001" x="1543" y="3009" width="1689" height="1433" frameX="-98" frameY="-296" frameWidth="1898" frameHeight="1730" />
+<SubTexture name="DelusiMickEnd DownPose0001" x="1378" y="4452" width="1269" height="1292" frameX="-354" frameY="-435" frameWidth="1898" frameHeight="1730" />
+<SubTexture name="DelusiMickEnd UpPose0000" x="1454" y="0" width="1337" height="1536" frameX="-334" frameY="-177" frameWidth="1898" frameHeight="1730" />
+<SubTexture name="DelusiMickEnd UpPose0001" x="0" y="0" width="1454" height="1560" frameX="-345" frameY="-154" frameWidth="1898" frameHeight="1730" />
+<SubTexture name="DelusiMickEnd Idle0000" x="2791" y="0" width="1429" height="1449" frameX="-335" frameY="-280" frameWidth="1898" frameHeight="1730" />
+<SubTexture name="DelusiMickEnd Idle0001" x="0" y="1560" width="1430" height="1449" frameX="-335" frameY="-280" frameWidth="1898" frameHeight="1730" />
+<SubTexture name="DelusiMickEnd Idle0002" x="1430" y="1560" width="1452" height="1449" frameX="-335" frameY="-280" frameWidth="1898" frameHeight="1730" />
+<SubTexture name="DelusiMickEnd Idle0003" x="4220" y="0" width="1480" height="1447" frameX="-337" frameY="-282" frameWidth="1898" frameHeight="1730" />
+<SubTexture name="DelusiMickEnd Idle0004" x="4220" y="1447" width="1444" height="1442" frameX="-351" frameY="-287" frameWidth="1898" frameHeight="1730" />
+<SubTexture name="DelusiMickEnd Idle0005" x="3232" y="3009" width="1229" height="1419" frameX="-366" frameY="-310" frameWidth="1898" frameHeight="1730" />
+<SubTexture name="DelusiMickEnd Idle0006" x="2882" y="1560" width="1267" height="1426" frameX="-370" frameY="-303" frameWidth="1898" frameHeight="1730" />
+<SubTexture name="DelusiMickEnd Idle0007" x="5700" y="1417" width="1242" height="1417" frameX="-364" frameY="-312" frameWidth="1898" frameHeight="1730" />
+</TextureAtlas>

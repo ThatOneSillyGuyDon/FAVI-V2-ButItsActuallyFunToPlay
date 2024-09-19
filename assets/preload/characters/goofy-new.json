@@ -1,59 +1,59 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"anim": "idle",
+			"loop": false,
 			"fps": 24,
-			"name": "IdleHuntedGoofy",
-			"indices": []
+			"anim": "idle",
+			"indices": [],
+			"name": "IdleHuntedGoofy"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				93,
 				6
 			],
-			"anim": "singLEFT",
+			"loop": false,
 			"fps": 24,
-			"name": "LeftHuntedGoofy",
-			"indices": []
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "LeftHuntedGoofy"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				50,
 				0
 			],
-			"anim": "singDOWN",
+			"loop": false,
 			"fps": 24,
-			"name": "DownHuntedGoofy",
-			"indices": []
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "DownHuntedGoofy"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				20
 			],
-			"anim": "singUP",
+			"loop": false,
 			"fps": 24,
-			"name": "UpGoofyHunted",
-			"indices": []
+			"anim": "singUP",
+			"indices": [],
+			"name": "UpGoofyHunted"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-30,
 				-80
 			],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 24,
-			"name": "RightHuntedGoofy",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "RightHuntedGoofy"
 		}
 	],
 	"no_antialiasing": false,
@@ -62,7 +62,7 @@
 		120,
 		300
 	],
-	"healthicon": "face",
+	"healthicon": "goofy",
 	"flip_x": false,
 	"healthbar_colors": [
 		161,

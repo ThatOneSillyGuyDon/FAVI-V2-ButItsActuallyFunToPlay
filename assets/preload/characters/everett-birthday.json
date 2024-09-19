@@ -2,7 +2,7 @@
 	"animations": [
 		{
 			"offsets": [
-				0,
+				120,
 				-2
 			],
 			"loop": true,
@@ -13,7 +13,7 @@
 		},
 		{
 			"offsets": [
-				0,
+				120,
 				0
 			],
 			"loop": false,
@@ -24,7 +24,7 @@
 		},
 		{
 			"offsets": [
-				0,
+				120,
 				-5
 			],
 			"loop": false,
@@ -35,7 +35,7 @@
 		},
 		{
 			"offsets": [
-				0,
+				120,
 				0
 			],
 			"loop": false,
@@ -46,7 +46,7 @@
 		},
 		{
 			"offsets": [
-				0,
+				120,
 				0
 			],
 			"loop": false,
@@ -57,46 +57,46 @@
 		},
 		{
 			"offsets": [
-				0,
+				120,
 				1
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 12,
 			"anim": "singLEFT",
-			"loop": false,
+			"indices": [],
 			"name": "left"
 		},
 		{
 			"offsets": [
-				0,
+				120,
 				4
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 12,
 			"anim": "singRIGHT",
-			"loop": false,
+			"indices": [],
 			"name": "right"
 		},
 		{
 			"offsets": [
-				0,
+				120,
 				0
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 12,
 			"anim": "singRIGHTmiss",
-			"loop": false,
+			"indices": [],
 			"name": "miss-down"
 		},
 		{
 			"offsets": [
-				0,
+				120,
 				0
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 12,
 			"anim": "singDOWNmiss",
-			"loop": false,
+			"indices": [],
 			"name": "miss-right"
 		}
 	],
@@ -106,7 +106,7 @@
 		0,
 		0
 	],
-	"healthicon": "face",
+	"healthicon": "everettb",
 	"flip_x": false,
 	"healthbar_colors": [
 		221,
@@ -114,7 +114,7 @@
 		221
 	],
 	"camera_position": [
-		-130,
+		20,
 		400
 	],
 	"sing_duration": 6.1,

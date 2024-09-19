@@ -3,7 +3,7 @@
 		{
 			"loop": false,
 			"offsets": [
-				5,
+				125,
 				0
 			],
 			"anim": "idle",
@@ -14,7 +14,7 @@
 		{
 			"loop": false,
 			"offsets": [
-				0,
+				120,
 				0
 			],
 			"anim": "singLEFT",
@@ -25,7 +25,7 @@
 		{
 			"loop": false,
 			"offsets": [
-				0,
+				120,
 				0
 			],
 			"anim": "singUP",
@@ -36,7 +36,7 @@
 		{
 			"loop": false,
 			"offsets": [
-				0,
+				120,
 				0
 			],
 			"anim": "singRIGHT",
@@ -47,7 +47,7 @@
 		{
 			"loop": false,
 			"offsets": [
-				0,
+				120,
 				197
 			],
 			"anim": "singDOWN",
@@ -58,8 +58,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				0,
-				0
+				120,
+				60
 			],
 			"anim": "singUPmiss",
 			"fps": 24,
@@ -69,8 +69,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				0,
-				0
+				120,
+				60
 			],
 			"anim": "singDOWNmiss",
 			"fps": 24,
@@ -80,8 +80,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				0,
-				0
+				120,
+				60
 			],
 			"anim": "singLEFTmiss",
 			"fps": 24,
@@ -91,8 +91,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				0,
-				0
+				120,
+				60
 			],
 			"anim": "singRIGHTmiss",
 			"fps": 24,
@@ -100,13 +100,13 @@
 			"indices": []
 		}
 	],
-	"no_antialiasing": false,
+	"no_antialiasing": true,
 	"image": "characters/xyloboy/xyloboy-new",
 	"position": [
 		0,
 		350
 	],
-	"healthicon": "bf-pixel",
+	"healthicon": "everettb",
 	"flip_x": true,
 	"healthbar_colors": [
 		200,
@@ -114,9 +114,9 @@
 		200
 	],
 	"camera_position": [
-		-50,
-		-60
+		10,
+		140
 	],
 	"sing_duration": 4,
-	"scale": 1
+	"scale": 0.7
 }

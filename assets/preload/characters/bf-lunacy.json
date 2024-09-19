@@ -128,16 +128,16 @@
 		-240,
 		-80
 	],
-	"healthicon": "bf-fake-new",
+	"healthicon": "evilcy",
 	"flip_x": true,
 	"healthbar_colors": [
-		171,
-		171,
-		171
+		182,
+		182,
+		182
 	],
 	"camera_position": [
-		180,
-		230
+		-200,
+		290
 	],
 	"sing_duration": 6.1,
 	"scale": 0.6

@@ -1,0 +1,98 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [
+				6,
+				5,
+				4,
+				3,
+				2,
+				1,
+				0
+			],
+			"fps": 10,
+			"anim": "idle",
+			"loop": false,
+			"name": "DelusiMickEnd Idle"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [
+				1,
+				0
+			],
+			"fps": 10,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "DelusiMickEnd DownPose"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [
+				1,
+				0
+			],
+			"fps": 10,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "DelusiMickEnd LeftPose"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [
+				1,
+				0
+			],
+			"fps": 10,
+			"anim": "singUP",
+			"loop": false,
+			"name": "DelusiMickEnd UpPose"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [
+				1,
+				0
+			],
+			"fps": 10,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "DelusiMickEnd RightPose"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/DelusiMickEnd",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "deluavier",
+	"flip_x": false,
+	"healthbar_colors": [
+		161,
+		161,
+		161
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"sing_duration": 6.1,
+	"scale": 1.1
+}

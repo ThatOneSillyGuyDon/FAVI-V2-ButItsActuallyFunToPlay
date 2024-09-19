@@ -16,16 +16,14 @@
 
  // just in case
  import unused.*;
- //import gamejolt.*;
 
  // import objects, menus and backend support
 import backend.*;
-import backend.windows.*;
 import backend.menu.*;
 import backend.song.*;
 import backend.data.*;
-import backend.embeddedFiles.*; //i really should name the folder something else later
 import backend.nSwitch.*;
+import backend.embeddedFiles.*;
 import gameObjects.*;
 import gameObjects.ui.*;
 import gameObjects.utils.*;
@@ -41,20 +39,18 @@ import substates.*;
 import states.*;
 import states.editors.*;
 import states.options.*;
-import states.menus.freeplay.*;
 import states.menus.*;
+import states.menus.freeplay.*;
 
 // import specific menus and objects to prevent compile errors
 #if desktop
 import backend.discord.Discord;
 #end
 import states.editors.ChartingState;
-import backend.windows.CppAPI;
 import gameObjects.Achievements;
 import gameObjects.Character;
 import gameObjects.ui.dialogue.DialogueBoxPsych;
 import gameObjects.ui.menu.MenuCharacter;
-import backend.TypedefUtilities;
 import backend.song.Conductor;
 import backend.data.StageData;
 import backend.data.WeekData;
@@ -69,8 +65,8 @@ import shaders.OverlayShader;
 import shaders.BlendModeEffect;
 import shaders.WiggleEffect;
 import shaders.WiggleEffect.WiggleEffectType;
-import shaders.Shaders;
 
+import substates.PauseSubState.FAVIPauseSubState;
 // stuff that won't let you compile unless they're being used
 #if VIDEOS_ALLOWED
 using gameObjects.video.VideoSprite;
@@ -101,6 +97,9 @@ import flixel.tweens.*;
 import flixel.util.*;
 import flixel.graphics.*;
 import flixel.text.*;
+import flixel.graphics.tile.*;
+import flixel.graphics.frames.*;
+import flixel.graphics.atlas.*;
 
 using flixel.group.FlxGroup.FlxTypedGroup;
 using flixel.tweens.FlxTween.FlxTweenManager;

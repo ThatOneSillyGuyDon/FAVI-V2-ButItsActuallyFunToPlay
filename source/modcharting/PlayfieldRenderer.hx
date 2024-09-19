@@ -92,7 +92,7 @@ class PlayfieldRenderer extends FlxSprite //extending flxsprite just so i can ed
                 if (note.mesh != null) note.mesh.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0);
             });
         }
-        else
+        else if (PlayState.SONG.song == "Bless")
         {
             strumGroup.forEach(function(spr:StrumNote) {
                 spr.setColorTransform(1, 1, 1, 1, 0, 0, 0, 0);

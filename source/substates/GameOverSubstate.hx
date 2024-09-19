@@ -41,7 +41,7 @@ class GameOverSubstate extends MusicBeatSubstate
 	public static function resetVariables() {
 		characterName = 'bf-dead';
 		deathSoundName = 'fnf_loss_sfx';
-		loopSoundName = 'gameOver';
+		loopSoundName = 'soaringHigh';
 		endSoundName = 'gameOverEnd';
 	}
 
@@ -64,11 +64,22 @@ class GameOverSubstate extends MusicBeatSubstate
 		boyfriend = new Boyfriend(x, y, characterName);
 		boyfriend.x += boyfriend.positionArray[0];
 		boyfriend.y += boyfriend.positionArray[1];
+		boyfriend.visible = false;
 		add(boyfriend);
+
+		var deathImage:FlxSprite = new FlxSprite().loadGraphic(Paths.image("favi/ui/deathLmao"));
+		deathImage.screenCenter();
+		deathImage.scrollFactor.set(0, 0);
+		deathImage.alpha = 0.0001;
+		add(deathImage);
+
+		new flixel.util.FlxTimer().start(0.5, function(tmr)
+			{
+				FlxTween.tween(deathImage, {alpha: 1}, 3);
+			});
 
 		camFollow = new FlxPoint(boyfriend.getGraphicMidpoint().x, boyfriend.getGraphicMidpoint().y);
 
-		FlxG.sound.play(Paths.sound(deathSoundName));
 		Conductor.changeBPM(100);
 		// FlxG.camera.followLerp = 1;
 		// FlxG.camera.focusOn(FlxPoint.get(FlxG.width / 2, FlxG.height / 2));
@@ -107,11 +118,11 @@ class GameOverSubstate extends MusicBeatSubstate
 
 			WeekData.loadTheFirstEnabledMod();
 			if (PlayState.isStoryMode)
-				MusicBeatState.switchState(new StoryMenuState());
+				MusicBeatState.switchState(new StoryMenu());
 			else
 				MusicBeatState.switchState(new FreeplayState());
 
-			FlxG.sound.playMusic(Paths.music('freakyMenu'));
+			FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
 			PlayState.instance.callOnLuas('onGameOverConfirm', [false]);
 		}
 
@@ -167,7 +178,8 @@ class GameOverSubstate extends MusicBeatSubstate
 
 	function coolStartDeath(?volume:Float = 1):Void
 	{
-		FlxG.sound.playMusic(Paths.music(loopSoundName), volume);
+		FlxG.sound.playMusic(Paths.music("aviOST/gameOver/" + loopSoundName), volume);
+		FlxG.sound.music.fadeIn(2, 0, 1);
 	}
 
 	function endBullshit():Void
@@ -189,7 +201,7 @@ class GameOverSubstate extends MusicBeatSubstate
 						{
 							var songLowercase:String = "dont-cross";
 							var poop:String = "dont-cross-hard" + '${FlxG.random.int(1, 4)}'; //fuck fuck fuck fuck fuck fuck
-							PlayState.SONG = Song.loadFromJson(poop, songLowercase, true);
+							PlayState.SONG = Song.loadFromJson(poop, songLowercase, FlxG.random.int(1, 5));
 						}
 						
 					MusicBeatState.resetState();

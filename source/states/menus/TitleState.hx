@@ -1,6 +1,5 @@
 package states.menus;
 
-//import gamejolt.GameJolt.GameJoltAPI;
 #if desktop
 import sys.thread.Thread;
 #end
@@ -136,8 +135,6 @@ class TitleState extends MusicBeatState
 		"Whoopsie looks like i gave the suicidal mouse a gun",
 		"This is the window title 69, literally", //funi number
 		"What the dog doin?",
-		//"Be happy with the new GameJolt login system!", fuck no there is no more GameJolt Login system
-		"There is Pipe Bomb In your mail box :)", // - replaced with this lolz
 		"Check us out on Friday Night Bloxxin' on Roblox!",
 		"There's a Red Spy in the Base!!",
 		"fuckin.mp3 - jsjsjsdjdsjdsjadsjjads",
@@ -175,9 +172,6 @@ class TitleState extends MusicBeatState
 
 	override public function create():Void
 	{	
-		//GameJoltAPI.connect();
-		//GameJoltAPI.authDaUser(GameData.GJ_username, GameData.GJ_token);
-
 		Paths.clearStoredMemory();
 		Paths.clearUnusedMemory();
 
@@ -190,6 +184,7 @@ class TitleState extends MusicBeatState
 		PlayerSettings.init();
 		ClientPrefs.loadPrefs();
 		Highscore.load();
+		GameData.loadShit();
 		
 		CoolUtil.createCoreFile();
 		
@@ -256,7 +251,7 @@ class TitleState extends MusicBeatState
 		if (!initialized)
 		{
 			if(FlxG.sound.music == null) {
-				FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+				FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'), 0);
 
 				FlxG.sound.music.fadeIn(4, 0, 0.7);
 			}
@@ -408,7 +403,7 @@ class TitleState extends MusicBeatState
 			if(pressedEnter)
 			{
 				FlxG.camera.flash(FlxColor.WHITE, 1);
-				FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
+				FlxG.sound.play(Paths.sound('funkinAVI/menu/selectSfx'), 0.7);
 
 				transitioning = true;
 

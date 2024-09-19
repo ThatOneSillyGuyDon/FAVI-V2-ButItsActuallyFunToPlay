@@ -1,65 +1,65 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
-				0,
+				120,
 				0
 			],
-			"anim": "idle",
+			"loop": false,
 			"fps": 24,
-			"name": "idle",
-			"indices": []
+			"anim": "idle",
+			"indices": [],
+			"name": "idle"
 		},
 		{
-			"loop": false,
 			"offsets": [
-				0,
+				120,
 				0
 			],
-			"anim": "singLEFT",
+			"loop": false,
 			"fps": 24,
-			"name": "left",
+			"anim": "singLEFT",
 			"indices": [
 				4,
 				0,
 				1,
 				2,
 				3
-			]
+			],
+			"name": "left"
 		},
 		{
-			"loop": false,
 			"offsets": [
-				0,
+				120,
 				0
 			],
+			"loop": false,
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "down",
-			"indices": []
+			"indices": [],
+			"name": "down"
 		},
 		{
-			"loop": false,
 			"offsets": [
-				0,
+				120,
 				0
 			],
+			"loop": false,
+			"fps": 24,
 			"anim": "singUP",
-			"fps": 24,
-			"name": "up",
-			"indices": []
+			"indices": [],
+			"name": "up"
 		},
 		{
-			"loop": false,
 			"offsets": [
-				0,
+				120,
 				0
 			],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 24,
-			"name": "right",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right"
 		}
 	],
 	"no_antialiasing": false,
@@ -68,15 +68,15 @@
 		0,
 		0
 	],
-	"healthicon": "face",
+	"healthicon": "muckney",
 	"flip_x": false,
 	"healthbar_colors": [
-		161,
-		161,
-		161
+		141,
+		141,
+		141
 	],
 	"camera_position": [
-		0,
+		-120,
 		0
 	],
 	"sing_duration": 6.1,
