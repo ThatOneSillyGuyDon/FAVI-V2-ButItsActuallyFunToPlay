@@ -496,6 +496,7 @@ class PlayState extends MusicBeatState
 	// MID-SONG VIDEO SCENES
 	var death:VideoSprite;
 	var devilishGaming:VideoSprite;
+	var deluSing:VideoSprite;
 
 	//MALFUNCTION
 	var mickeyEmitter:FlxEmitter;
@@ -1737,12 +1738,36 @@ class PlayState extends MusicBeatState
 				case 'alleyway' | 'ddStage':
 					//spawnGirlfriend = false;   
 	
-					bg = new FlxSprite(-600, 130).loadGraphic(Paths.image(pathway + "dd-bg"));
-					bg.scale.set(0.75, 0.75);
+					bg = new FlxSprite(-600, 130).loadGraphic(Paths.image(pathway + "sky"));
+					bg.scale.set(0.84, 0.84);
+					bg.scrollFactor.set(0.8, 0.8);
 					add(bg);
-				
+
+					var buildings:FlxSprite = new FlxSprite(-600, 130).loadGraphic(Paths.image(pathway + "back-buildings"));
+					buildings.scale.set(0.84, 0.84);
+					buildings.scrollFactor.set(0.9, 0.9);
+					add(buildings);
+
+					var alley:FlxSprite = new FlxSprite(-600, 130).loadGraphic(Paths.image(pathway + "alley_and_bench"));
+					alley.scale.set(0.84, 0.84);
+					add(alley);
+
+					var rain:FlxSprite = new FlxSprite(-600, 130);
+					rain.frames = Paths.getSparrowAtlas(pathway + "Rain");
+					rain.animation.addByPrefix("crying bitch", "rain but the side", 30, true);
+					rain.scale.set(2.1, 2.1);
+					rain.scrollFactor.set(1.1, 1.1);
+					rain.animation.play("crying bitch");
+					foreground.add(rain);
+
+					var fgWall:FlxSprite = new FlxSprite(-600, 210).loadGraphic(Paths.image(pathway + "big-ass-wall"));
+					fgWall.scale.set(0.84, 0.84);
+					fgWall.scrollFactor.set(1.18, 1.18);
+					foreground.add(fgWall);
+
 					overlay = new FlxSprite(-640, 170).loadGraphic(Paths.image(pathway + "dd-overlay"));
-					overlay.scrollFactor.set(1.15, 1.15);
+					overlay.scale.set(2.25, 2.25);
+					overlay.scrollFactor.set(1.23, 1.23);
 					foreground.add(overlay);
 					
 					gradient = new FlxSprite().loadGraphic(Paths.image('favi/filters/gradient'));
@@ -2836,6 +2861,11 @@ class PlayState extends MusicBeatState
 				PlayState.camNotes.alpha = 0.001; // 0.001 doesn't cause lag when setting alpha above 0 for some reason, yet it's still invisible
 
 			case "Delusional":
+				deluSing = new VideoSprite(false);
+				deluSing.visible = false;
+				deluSing.load(Paths.video("deluLyrics"));
+				deluSing.cameras = [camVideo];
+				deluSing.play();
 				death = new VideoSprite(false);
 				death.visible = false;
 				//death.scale.set(0.36, 0.36);
@@ -2847,8 +2877,10 @@ class PlayState extends MusicBeatState
 				new FlxTimer().start(0.001, function(tmr:FlxTimer)
 				{
 					death.pause();
+					deluSing.pause();
 				});
 				add(death);
+				add(deluSing);
 
 			case 'Isolated' | 'Lunacy' | 'Cycled Sins' | 'Delusion' | 'Laugh Track':
 				PlayState.camNotes.alpha = 0.001;
@@ -4446,6 +4478,13 @@ class PlayState extends MusicBeatState
 	{
 		if (paused)
 		{
+			if (death != null && death.visible)
+				death.pause();
+			if (devilishGaming != null && devilishGaming.visible)
+				devilishGaming.pause();
+			if (deluSing != null && deluSing.visible)
+				deluSing.pause();
+
 			if (FlxG.sound.music != null)
 			{
 				FlxG.sound.music.pause();
@@ -4485,6 +4524,13 @@ class PlayState extends MusicBeatState
 	{
 		if (paused)
 		{
+			if (death != null && death.visible)
+				death.resume();
+			if (devilishGaming != null && devilishGaming.visible)
+				devilishGaming.resume();
+			if (deluSing != null && deluSing.visible)
+				deluSing.resume();
+
 			if (FlxG.sound.music != null && !startingSong)
 			{
 				resyncVocals();
@@ -4532,6 +4578,13 @@ class PlayState extends MusicBeatState
 
 	override public function onFocus():Void
 	{
+		if (death != null && death.visible)
+			death.resume();
+		if (devilishGaming != null && devilishGaming.visible)
+			devilishGaming.resume();
+		if (deluSing != null && deluSing.visible)
+			deluSing.resume();
+
 		#if desktop
 		if (healthThing > 0 && !paused)
 		{
@@ -4551,6 +4604,13 @@ class PlayState extends MusicBeatState
 
 	override public function onFocusLost():Void
 	{
+		if (death != null && death.visible)
+			death.pause();
+		if (devilishGaming != null && devilishGaming.visible)
+			devilishGaming.pause();
+		if (deluSing != null && deluSing.visible)
+			deluSing.pause();
+
 		#if desktop
 		if (healthThing > 0 && !paused)
 		{
@@ -5888,7 +5948,7 @@ class PlayState extends MusicBeatState
 			bf_vocals.pause();
 			opp_vocals.pause();
 		}
-		openSubState(new PauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
+		openSubState((PlayState.SONG.song.toLowerCase().endsWith('legacy') || PlayState.SONG.song == "Isolated Beta" || PlayState.SONG.song == "Isolated Old" ? new PauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y) : new FAVIPauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y)));
 		//}
 
 		#if desktop
@@ -8200,11 +8260,10 @@ class PlayState extends MusicBeatState
 					case 2881 | 2889 | 2897:
 						defaultCamZoom += 0.05;
 					case 2902:
-						if (ClientPrefs.shaders == true)
+						if (ClientPrefs.shaders)
 						{
 							// We make ur Laptop fry till the end of the song :fire: - MalyPlus
-							FlxG.camera.setFilters([new ShaderFilter(othershader)]);
-							FlxG.camera.setFilters([new ShaderFilter(shader)]);	
+							camGame.setFilters([new ShaderFilter(shader), new ShaderFilter(othershader)]);
 						}
 						defaultCamZoom = 0.95;
 				}
@@ -8592,7 +8651,7 @@ class PlayState extends MusicBeatState
 						PlayState.instance.manageLyrics('satandd', '...SPEAK...', 'betterSatanFont.ttf', 30, 0.7, 'sineInOut', 0.05);
 
 					case 28:
-						defaultCamZoom = 0.95;
+						defaultCamZoom = 0.55;
 						PlayState.instance.manageLyrics('satandd', '...What is on your mind?', 'betterSatanFont.ttf', 30, 2.5, 'sineInOut', 0.06);
 
 					case 30:
@@ -8661,7 +8720,7 @@ class PlayState extends MusicBeatState
 						}
 
 					case 64:
-						defaultCamZoom = 0.95;
+						defaultCamZoom = 0.55;
 						FlxTween.tween(PlayState.camHUD, {alpha: 1}, 1.2, {ease: FlxEase.quartInOut});
 						FlxTween.tween(PlayState.camNotes, {alpha: 1}, 1.2, {ease: FlxEase.quartInOut});
 
@@ -9516,9 +9575,14 @@ class PlayState extends MusicBeatState
 						PlayState.camBars.fade(FlxColor.BLACK, 2, true);
 					case 132: PlayState.defaultCamZoom = 1.3;
 					case 136:
-						PlayState.camBars.fade();
+						PlayState.camBars.fade(FlxColor.BLACK, 1, true);
 						for (daUIs in [PlayState.camHUD, PlayState.camNotes])
 							FlxTween.tween(daUIs, {alpha: 0}, 3);
+					case 140:
+						camVideo.visible = true;
+						deluSing.visible = true;
+						deluSing.setVideoTime(0);
+						deluSing.play();
 					// BF Starts Singing Some Lyrics
 					case 144:
 						PlayState.defaultCamZoom = 0.8;
@@ -9546,11 +9610,14 @@ class PlayState extends MusicBeatState
 						PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.25, timer: 0.35});
 					case 204: PlayState.defaultCamZoom = 1;
 					case 208:
+						deluSing.visible = false;
 						PlayState.camBars.fade(0x00000, .000001);
 						PlayState.defaultCamZoom = 1.3;
 
 					// Mickey Screams Like A Bitch
 					case 212:
+						camVideo.visible = false;
+						deluSing.destroy();
 						boundValue = 0.6;
 						drainValue = 0.025;
 						PlayState.instance.chromEffect = 0.3;
@@ -10914,7 +10981,7 @@ class PlayState extends MusicBeatState
 				if(curBeat == 112)
 					{
 						isCameraOnForcedPos = true;
-						FlxTween.tween(camFollow, {x: 200, y: 800}, 14, {ease: FlxEase.sineInOut});
+						FlxTween.tween(camFollow, {x: 1080, y: 1400}, 14, {ease: FlxEase.sineInOut});
 						FlxTween.tween(FlxG.camera, {zoom: 2}, 14, {ease: FlxEase.sineInOut});
 						FlxTween.tween(gradient, {alpha: 0.9}, 2);
 					}

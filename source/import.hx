@@ -66,6 +66,7 @@ import shaders.BlendModeEffect;
 import shaders.WiggleEffect;
 import shaders.WiggleEffect.WiggleEffectType;
 
+import substates.PauseSubState.FAVIPauseSubState;
 // stuff that won't let you compile unless they're being used
 #if VIDEOS_ALLOWED
 using gameObjects.video.VideoSprite;
