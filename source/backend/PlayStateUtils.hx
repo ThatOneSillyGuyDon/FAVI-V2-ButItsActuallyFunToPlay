@@ -3158,13 +3158,13 @@ class PlayStateUtils// extending the class itself incase crashes
                     switch (PlayState.SONG.song)
                     {
                         case 'Devilish Deal' | 'Isolated' | 'Lunacy' | 'Delusional':
-                            Application.current.window.title = 'Funkin.avi - Episode 1: ' + PlayState.SONG.song + " - Composed by: " + PlayState.SONG.composer + (PlayState.instance.paused ? ' {PAUSED}' : "");							
+                            Application.current.window.title = 'Funkin.AVI - Episode 1: ' + PlayState.SONG.song + " - Composed by: " + PlayState.SONG.composer + (PlayState.instance.paused ? ' {PAUSED}' : "");							
                         case 'Twisted Grins' | 'Resentment' | 'Mortiferum Risus':
-                            Application.current.window.title = 'Funkin.avi - Episode S: ' + PlayState.SONG.song + " - Composed by: " + PlayState.SONG.composer + (PlayState.instance.paused ? ' {PAUSED}' : "");					
+                            Application.current.window.title = 'Funkin.AVI - Episode S: ' + PlayState.SONG.song + " - Composed by: " + PlayState.SONG.composer + (PlayState.instance.paused ? ' {PAUSED}' : "");					
                         case 'Mercy' | 'Affliction':
-         	               Application.current.window.title = 'Funkin.avi - Episode W: ' + PlayState.SONG.song + " - Composed by: " + PlayState.SONG.composer + (PlayState.instance.paused ? ' {PAUSED}' : "");			
+         	               Application.current.window.title = 'Funkin.AVI - Episode W: ' + PlayState.SONG.song + " - Composed by: " + PlayState.SONG.composer + (PlayState.instance.paused ? ' {PAUSED}' : "");			
                         default:
-                            Application.current.window.title = 'Funkin.avi - Episode ???: ' + PlayState.SONG.song + " - Composed by: " + PlayState.SONG.composer + (PlayState.instance.paused ? ' {PAUSED}' : "");
+                            Application.current.window.title = 'Funkin.AVI - Episode ???: ' + PlayState.SONG.song + " - Composed by: " + PlayState.SONG.composer + (PlayState.instance.paused ? ' {PAUSED}' : "");
                     }	
 				}		
 				else if (isCharting)
@@ -3172,11 +3172,11 @@ class PlayStateUtils// extending the class itself incase crashes
 					if (PlayState.SONG.song == 'Malfunction')
 						Application.current.window.title = 'malsquare.hx - CHEATER MODE ACTIVATED: ' + PlayState.SONG.song + " - Composed by: I CAN SEE YOU CHEATING! - [!CHEATER DETECTED!]" + (PlayState.instance.paused ? ' {PAUSED}' : "");
 					else
-						Application.current.window.title = 'Funkin.avi - TESTING MODE: ' + PlayState.SONG.song + " - Composed by: " + PlayState.SONG.composer + (PlayState.instance.paused ? ' {PAUSED}' : "");
+						Application.current.window.title = 'Funkin.AVI - TESTING MODE: ' + PlayState.SONG.song + " - Composed by: " + PlayState.SONG.composer + (PlayState.instance.paused ? ' {PAUSED}' : "");
 				}
 				else if (!isStory && !isCharting)
 				{
-                    Application.current.window.title = 'Funkin.avi - Freeplay: ' + PlayState.SONG.song + " - Composed by: " + PlayState.SONG.composer + (PlayState.instance.paused ? ' {PAUSED}' : "");
+                    Application.current.window.title = 'Funkin.AVI - Freeplay: ' + PlayState.SONG.song + " - Composed by: " + PlayState.SONG.composer + (PlayState.instance.paused ? ' {PAUSED}' : "");
 				}
     }
 

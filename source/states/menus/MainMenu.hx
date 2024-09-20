@@ -145,7 +145,7 @@ class MainMenu extends MusicBeatState
 		"peak mouse experience.",
 		"Austin is the most horniest of the team lmao",
 		"This mod was stressful to make, the organization was a mess lmao",
-		"Funkin.avi - Funkin.avi - Funkin.avi - Funkin.avi - Funkin.avi - Funkin.avi - Funkin.avi - Funkin.avi - Funkin.avi - Funkin.avi - Funkin.avi",
+		"Funkin.AVI - Funkin.AVI - Funkin.AVI - Funkin.AVI - Funkin.AVI - Funkin.AVI - Funkin.AVI - Funkin.AVI - Funkin.AVI - Funkin.AVI - Funkin.avi",
 		"Just like Domingo is constantly remaking Mickey's sprites, Dreupy is the Domingo of Delusional Recharts.",
 		"Type \"HOWTODELUSIONAL\" for a special surprise :)",
 		"When did Funkin.avi start development?",
@@ -215,7 +215,7 @@ class MainMenu extends MusicBeatState
 			}
 		}
 
-		openfl.Lib.application.window.title = "Funkin.avi - " + windowShit[FlxG.random.int(0, windowShit.length - 1)];
+		openfl.Lib.application.window.title = "Funkin.AVI - " + windowShit[FlxG.random.int(0, windowShit.length - 1)];
 
 		// shutdowns the game
 		if (openfl.Lib.application.window.title.contains('10 Seconds before I shut your fucking game again >:('))

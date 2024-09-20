@@ -198,7 +198,7 @@ class TitleState extends MusicBeatState
 		// DEBUG BULLSHIT
 		super.create();
 
-		Application.current.window.title = 'Funkin.avi - ${windowArray[FlxG.random.int(0, windowArray.length-1)]}';
+		Application.current.window.title = 'Funkin.AVI - ${windowArray[FlxG.random.int(0, windowArray.length-1)]}';
 
 		defaultShader = new FlxRuntimeShader(Shaders.grayScale, null, 140);
 		defaultShader2 = new FlxRuntimeShader(Shaders.monitorFilter, null, 140);
@@ -547,56 +547,56 @@ class TitleState extends MusicBeatState
 	
 	function windowFixesAndEvents()
 		{
-			if(Application.current.window.title.contains("Funkin.avi - Hi, wanna see me glitch?"))
+			if(Application.current.window.title.contains("Funkin.AVI - Hi, wanna see me glitch?"))
 				{
 					new FlxTimer().start(3, function(tmr:FlxTimer)
 						{
-							Application.current.window.title = "Funkin.avi - I'm starting to glitch now, oooooo";
+							Application.current.window.title = "Funkin.AVI - I'm starting to glitch now, oooooo";
 							new FlxTimer().start(3, function(tmr:FlxTimer)
 							{
-								Application.current.window.title = "Funkin.avi - That's cool, ain't it?";
+								Application.current.window.title = "Funkin.AVI - That's cool, ain't it?";
 								new FlxTimer().start(1, function(tmr:FlxTimer)
 								{
-									Application.current.window.title = "Funkin.avi - Wait...";
+									Application.current.window.title = "Funkin.AVI - Wait...";
 									new FlxTimer().start(1, function(tmr:FlxTimer)
 									{
-										Application.current.window.title = "Funkin.avi - What's going on here?";
+										Application.current.window.title = "Funkin.AVI - What's going on here?";
 										new FlxTimer().start(1, function(tmr:FlxTimer)
 										{
-											Application.current.window.title = "Funkin.avi - Why am I still glitching?";
+											Application.current.window.title = "Funkin.AVI - Why am I still glitching?";
 											new FlxTimer().start(1, function(tmr:FlxTimer)
 											{
-												Application.current.window.title = "Funkin.avi - oh no...";
+												Application.current.window.title = "Funkin.AVI - oh no...";
 												new FlxTimer().start(1, function(tmr:FlxTimer)
 												{
-													Application.current.window.title = "Funkin.avi - oh god, oh fuck, PLAYER, PLEASE HELP ME!";
+													Application.current.window.title = "Funkin.AVI - oh god, oh fuck, PLAYER, PLEASE HELP ME!";
 													new FlxTimer().start(1, function(tmr:FlxTimer)
 													{
-														Application.current.window.title = "Funkin.avi - I BEG OF YOU";
+														Application.current.window.title = "Funkin.AVI - I BEG OF YOU";
 														new FlxTimer().start(1, function(tmr:FlxTimer)
 														{
-															Application.current.window.title = "Funkin.avi - JUST GO TO THE MAIN MENU ALREADY, I CAN'T STOP AAAAAAAAAAAAAAAAAAAAAAA";
+															Application.current.window.title = "Funkin.AVI - JUST GO TO THE MAIN MENU ALREADY, I CAN'T STOP AAAAAAAAAAAAAAAAAAAAAAA";
 															new FlxTimer().start(1, function(tmr:FlxTimer)
 															{
-																Application.current.window.title = "Funkin.avi - AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+																Application.current.window.title = "Funkin.AVI - AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
 																new FlxTimer().start(1, function(tmr:FlxTimer)
 																{
-																	Application.current.window.title = "Funkin.avi - WHAT ARE YOU WAITING FOR??????";
+																	Application.current.window.title = "Funkin.AVI - WHAT ARE YOU WAITING FOR??????";
 																	new FlxTimer().start(1, function(tmr:FlxTimer)
 																	{
-																		Application.current.window.title = "Funkin.avi - JUST GO ALREADY, JUST FUCKING PRESS ENTER";
+																		Application.current.window.title = "Funkin.AVI - JUST GO ALREADY, JUST FUCKING PRESS ENTER";
 																		new FlxTimer().start(1, function(tmr:FlxTimer)
 																		{
-																			Application.current.window.title = "Funkin.avi - OH GOD, THE GLITCH IS GETTING WORSE";
+																			Application.current.window.title = "Funkin.AVI - OH GOD, THE GLITCH IS GETTING WORSE";
 																			new FlxTimer().start(1, function(tmr:FlxTimer)
 																			{
-																				Application.current.window.title = "Funkin.avi - WHY DID I THINK THIS WAS A GOOD IDEA?";
+																				Application.current.window.title = "Funkin.AVI - WHY DID I THINK THIS WAS A GOOD IDEA?";
 																				new FlxTimer().start(1, function(tmr:FlxTimer)
 																				{
-																					Application.current.window.title = "Funkin.avi - OH THE MISERY EVERYBODY WANNA BE MY ENEMY MY ENEMY";
+																					Application.current.window.title = "Funkin.AVI - OH THE MISERY EVERYBODY WANNA BE MY ENEMY MY ENEMY";
 																					new FlxTimer().start(1, function(tmr:FlxTimer)
 																						{
-																							Application.current.window.title = "Funkin.avi - Hi, wanna see me glitch?";
+																							Application.current.window.title = "Funkin.AVI - Hi, wanna see me glitch?";
 																						});
 																				});
 																			});
@@ -614,25 +614,25 @@ class TitleState extends MusicBeatState
 							});
 						});
 				}
-				else if(Application.current.window.title.contains("Funkin.avi - I'm shutting down your game now, fuck you"))
+				else if(Application.current.window.title.contains("Funkin.AVI - I'm shutting down your game now, fuck you"))
 					{
 						new FlxTimer().start(1.5, function(tmr:FlxTimer){
 							System.exit(0);
 						});
 					}
-				else if(Application.current.window.title.contains("Funkin.avi - .edud ssarg emos hcuot og ot deen uoy ,das yrev tsuj ,yltsenoh ,das si thaT ?sdrawkcab txet siht fo lla gnidaer otni troffe hcum os gnittup enigamI - iva.niknuF"))
+				else if(Application.current.window.title.contains("Funkin.AVI - .edud ssarg emos hcuot og ot deen uoy ,das yrev tsuj ,yltsenoh ,das si thaT ?sdrawkcab txet siht fo lla gnidaer otni troffe hcum os gnittup enigamI - iva.niknuF"))
 					{
 						Application.current.window.title = ".edud ssarg emos hcuot og ot deen uoy ,das yrev tsuj ,yltsenoh ,das si thaT ?sdrawkcab txet siht fo lla gnidaer otni troffe hcum os gnittup enigamI - iva.niknuF";
 					}
-				else if(Application.current.window.title.contains("Funkin.avi - fuckin.mp3 - jsjsjsdjdsjdsjadsjjads"))
+				else if(Application.current.window.title.contains("Funkin.AVI - fuckin.mp3 - jsjsjsdjdsjdsjadsjjads"))
 					{
 						Application.current.window.title = "fuckin.mp3 - jsjsjsdjdsjdsjadsjjads";
 					}
-				else if(Application.current.window.title.contains('Funkin.avi - fuckin.mp3 - i juss shat meseff'))
+				else if(Application.current.window.title.contains('Funkin.AVI - fuckin.mp3 - i juss shat meseff'))
 					{
 						Application.current.window.title = "fuckin.mp3 - i juss shat meseff";
 					}
-				else if(Application.current.window.title.contains("Funkin.avi -  "))
+				else if(Application.current.window.title.contains("Funkin.AVI -  "))
 					{
 						Application.current.window.title = " ";
 					}

@@ -51,6 +51,8 @@ class OptionsState extends MusicBeatState
 		DiscordClient.changePresence("Options Menu", null);
 		#end
 
+		FlxG.stage.window.title = "Funkin.AVI - Settings";
+
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('$dogshitPath/background'));
 		bg.setGraphicSize(FlxG.width, FlxG.height);
 		bg.updateHitbox();

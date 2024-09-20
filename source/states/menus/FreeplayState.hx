@@ -83,7 +83,7 @@ class FreeplayState extends MusicBeatState
 		//Paths.clearStoredMemory();
 		//Paths.clearUnusedMemory();
 
-		lime.app.Application.current.window.title = "Funkin.avi - Freeplay: Setting Up Category...";
+		lime.app.Application.current.window.title = "Funkin.AVI - Freeplay: Setting Up Category...";
 
 		// Categories, Shaders, and Songlist Setup
 		switch (freeplayMenuList)
@@ -809,19 +809,19 @@ class FreeplayState extends MusicBeatState
 		{
 			case 0: 
 				{
-					lime.app.Application.current.window.title = "Funkin.avi - Freeplay: Episode Songs - " + songName + ' - Composed by: ' + songArtist;
+					lime.app.Application.current.window.title = "Funkin.AVI - Freeplay: Episode Songs - " + songName + ' - Composed by: ' + songArtist;
 				}
 			case 1:
 				{
-					lime.app.Application.current.window.title = "Funkin.avi - Freeplay: Extra Songs - " + songName + " - Composed by: " + songArtist;
+					lime.app.Application.current.window.title = "Funkin.AVI - Freeplay: Extra Songs - " + songName + " - Composed by: " + songArtist;
 				}
 			case 2:
 				{
-					lime.app.Application.current.window.title = "Funkin.avi - Freeplay: Legacy Songs - " + songName + " - Composed by: " + songArtist;
+					lime.app.Application.current.window.title = "Funkin.AVI - Freeplay: Legacy Songs - " + songName + " - Composed by: " + songArtist;
 				}
 			case 3:
 				{
-					lime.app.Application.current.window.title = "Funkin.avi - Freeplay: ??? - " + songName + " - Composed by: " + songArtist;
+					lime.app.Application.current.window.title = "Funkin.AVI - Freeplay: ??? - " + songName + " - Composed by: " + songArtist;
 				}
 		}
 			

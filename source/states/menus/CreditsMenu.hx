@@ -40,7 +40,7 @@ class CreditsMenu extends MusicBeatState
 
 	override function create()
 	{
-		FlxG.stage.window.title = "Funkin.avi - Credits";
+		FlxG.stage.window.title = "Funkin.AVI - Credits";
 
 		path = 'Funkin_avi/credits';
 		

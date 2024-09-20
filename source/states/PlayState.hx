@@ -2424,7 +2424,7 @@ class PlayState extends MusicBeatState
 			default: curEpisode = "Episode ???";
 		}
 
-		windowName = "Funkin.avi - " + 
+		windowName = "Funkin.AVI - " + 
 		(isStoryMode ? curEpisode + " - " : "Freeplay - ") + 
 		(SONG.song == "Dont Cross" ? "Don't Cross!" : PlayState.SONG.song) + 
 		" (Composed by: " + FreeplayState.getArtistName() + 
@@ -2436,7 +2436,7 @@ class PlayState extends MusicBeatState
 
 		new FlxTimer().start(5, function(tmr:FlxTimer)
 		{
-			windowName = "Funkin.avi - " + 
+			windowName = "Funkin.AVI - " + 
 			(isStoryMode ? curEpisode + " - " : "Freeplay - ") + 
 			(SONG.song == "Dont Cross" ? "Don't Cross!" : PlayState.SONG.song) + 
 			" [" + FreeplayState.getDiffRank() + "]"; // short version that displays after 5 seconds yayaya

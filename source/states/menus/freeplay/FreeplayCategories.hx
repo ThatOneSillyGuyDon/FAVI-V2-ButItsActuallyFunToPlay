@@ -95,7 +95,7 @@ class FreeplayCategories extends MusicBeatState {
 		DiscordClient.changePresence("PICKING CATEGORY", "Freeplay: Category Menu", 'icon', 'disc-player');
 		#end
 
-		Application.current.window.title = "Funkin.avi - Freeplay: Category Menu";
+		Application.current.window.title = "Funkin.AVI - Freeplay: Category Menu";
 
        		grpCats = new FlxTypedGroup<FlxSprite>();
 		add(grpCats);

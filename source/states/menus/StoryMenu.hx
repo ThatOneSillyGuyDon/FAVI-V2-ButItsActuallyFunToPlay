@@ -485,7 +485,7 @@ class StoryMenu extends MusicBeatState
 
 
 
-		lime.app.Application.current.window.title = "Funkin.avi - Story Menu - " + storyName;
+		lime.app.Application.current.window.title = "Funkin.AVI - Story Menu - " + storyName;
 
 		var bullShit:Int = 0;
 
