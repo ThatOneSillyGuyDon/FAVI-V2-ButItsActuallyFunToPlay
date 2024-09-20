@@ -51,6 +51,7 @@ class FreeplayState extends MusicBeatState
 
 	var camGame:FlxCamera; // Main camera
 	var camHUD:FlxCamera; // Shaders and stuff
+	var shitshitfuckfuck:FlxCamera;
 
 	var defaultCamZoom:Float = 1;
 	var camZoomTween:FlxTween;
@@ -77,6 +78,8 @@ class FreeplayState extends MusicBeatState
 	var intendedColor:Int;
 	var colorTween:FlxTween;
 	var crossRandom:Int = FlxG.random.int(1, 5);
+
+	var freeplayMusic:FlxSound;
 
 	override function create()
 	{
@@ -227,14 +230,17 @@ class FreeplayState extends MusicBeatState
 		}*/
 
 		camGame = new FlxCamera();
-		camHUD = new FlxCamera();
+		camHUD = shitshitfuckfuck = new FlxCamera();
 
 		camHUD.bgColor.alpha = 0;
 
 		FlxG.cameras.reset(camGame);
 		FlxG.cameras.add(camHUD, false);
+		FlxG.cameras.add(shitshitfuckfuck, false);
 
 		FlxG.cameras.setDefaultDrawTarget(camGame, true);
+
+		CustomFadeTransition.nextCamera = shitshitfuckfuck;
 
 		bg = new FlxSprite();
 		if (freeplayMenuList == 2)
@@ -390,6 +396,7 @@ class FreeplayState extends MusicBeatState
 			add(diffText);
 			add(scoreText);
 			add(freeplayCtrlTxt);
+			freeplayCtrlTxt.cameras = [camHUD];
 			FlxTween.tween(freeplayCtrlTxt, {alpha: 1}, 1.5, {ease: FlxEase.sineInOut, startDelay: 3});
 			FlxTween.tween(scoreText, {alpha: 1}, 1.5, {ease: FlxEase.sineInOut, startDelay: 3});
 			FlxTween.tween(diffText, {alpha: 1}, 1.5, {ease: FlxEase.sineInOut, startDelay: 3});
@@ -483,6 +490,14 @@ class FreeplayState extends MusicBeatState
 				grain.cameras = [camHUD];
 			}
 		super.create();
+
+		FlxG.sound.music.pause();
+		freeplayMusic = new FlxSound();
+		freeplayMusic.loadEmbedded(Paths.music('funkinAVI/seekingFreedom'), true);
+		FlxG.sound.list.add(freeplayMusic);
+		freeplayMusic.play(false, 15 * 1000);
+		freeplayMusic.volume = 0;
+		freeplayMusic.fadeIn(2, 0, .7);
 	}
 
 	override function closeSubState() {
@@ -530,6 +545,8 @@ class FreeplayState extends MusicBeatState
 		}
 
 		var isDontCross:Bool = songs[curSelected].songName == "Don't Cross!";
+
+		Conductor.songPosition = freeplayMusic != null ? freeplayMusic.time : 0;
 
 		if (musicNotes != null)
 			{
@@ -727,11 +744,11 @@ class FreeplayState extends MusicBeatState
 				colorTween.cancel();
 			}
 			
-			FlxTween.tween(FlxG.camera, {zoom: freeplayMenuList == 2 ? 1 : 2.5}, freeplayMenuList == 2 ? 0.0001 : 1.5, {ease: FlxEase.expoInOut});
 			new flixel.util.FlxTimer().start(freeplayMenuList == 2 ? 0.0001 : 0.7, function(e)
-			{
-				LoadingState.loadAndSwitchState(new PlayState());
-			});
+				{
+					LoadingState.loadAndSwitchState(new PlayState());
+				});
+	
 
 			FlxG.sound.music.volume = 0;
 					
@@ -762,6 +779,15 @@ class FreeplayState extends MusicBeatState
 		vocals = null;
 		bf_vocals = null;
 		opp_vocals = null;
+	}
+
+	override function destroy() {
+		freeplayMusic.destroy();
+		freeplayMusic.kill();
+		freeplayMusic = null;
+		FlxG.sound.music.play();
+
+		super.destroy();
 	}
 
 	function changeDiff(change:Int = 0)
