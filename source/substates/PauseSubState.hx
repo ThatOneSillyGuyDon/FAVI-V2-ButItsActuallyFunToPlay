@@ -404,6 +404,9 @@ class PauseSubState extends MusicBeatSubstate
 	}
 }
 
+/**
+ * WHY IS THIS ON A SEPARATED STATE ARE YOU BITCHES FUCKING HIGH HELLO ???????
+ */
 class FAVIPauseSubState extends MusicBeatSubstate
 {
 	public static var colorSetup:Null<FlxColor> = FlxColor.WHITE;

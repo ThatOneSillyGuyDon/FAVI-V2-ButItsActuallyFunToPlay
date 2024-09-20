@@ -8,39 +8,42 @@ import flixel.input.keyboard.FlxKey;
 class OptionsState extends MusicBeatState
 {
 	var options:Array<String> = [
-		'Note Colors',
-		'Controls',
-		'Adjust Delay and Combo',
-		'Graphics',
-		'Visuals and UI',
-		'Gameplay'
+		'Preferences',
+		'Controls'
 	];
-	private var grpOptions:FlxTypedGroup<Alphabet>;
 
 	private static var curSelected:Int = 0;
 	public static var menuBG:FlxSprite;
+	var dogshitPath:String = 'Funkin_avi/options';
 
 	function openSelectedSubstate(label:String)
 	{
 		switch (label)
 		{
-			case 'Note Colors':
+			case 'Preferences':
+				openSubState(new VisualsUISubState());
+			case 'Controls':
+				openSubState(new ControlsSubState());
+		/*	case 'Note Colors':
 				openSubState(new NotesSubState());
 			case 'Controls':
 				openSubState(new ControlsSubState());
 			case 'Graphics':
 				openSubState(new GraphicsSettingsSubState());
-			case 'Visuals and UI':
-				openSubState(new VisualsUISubState());
 			case 'Gameplay':
 				openSubState(new GameplaySettingsSubState());
 			case 'Adjust Delay and Combo':
-				LoadingState.loadAndSwitchState(new NoteOffsetState());
+				LoadingState.loadAndSwitchState(new NoteOffsetState());*/
 		}
 	}
 
-	var selectorLeft:Alphabet;
-	var selectorRight:Alphabet;
+	var selectorLeft:FlxSprite;
+	var selectorRight:FlxSprite;
+
+	var art:FlxSprite;
+	var optionText:FlxSprite;
+
+	var iForgot:FlxSprite;
 
 	override function create()
 	{
@@ -48,29 +51,54 @@ class OptionsState extends MusicBeatState
 		DiscordClient.changePresence("Options Menu", null);
 		#end
 
-		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
-		bg.color = 0xFFea71fd;
+		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('$dogshitPath/background'));
+		bg.setGraphicSize(FlxG.width, FlxG.height);
 		bg.updateHitbox();
-
 		bg.screenCenter();
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
 
-		grpOptions = new FlxTypedGroup<Alphabet>();
-		add(grpOptions);
+		art = new FlxSprite().loadGraphic(Paths.image('$dogshitPath/art_${options[curSelected].toLowerCase()}'));
+		art.scale.set(.7, .7);
+		art.updateHitbox();
+		art.screenCenter();
+		art.y += 100;
+		art.antialiasing = ClientPrefs.globalAntialiasing;
+		add(art);
 
-		for (i in 0...options.length)
-		{
-			var optionText:Alphabet = new Alphabet(0, 0, options[i], true);
-			optionText.screenCenter();
-			optionText.y += (100 * (i - (options.length / 2))) + 50;
-			grpOptions.add(optionText);
-		}
+		optionText = new FlxSprite(0, 0, Paths.image('$dogshitPath/icon_${options[curSelected].toLowerCase()}'));
+		optionText.screenCenter();
+		optionText.scale.set(.64, .64);
+		optionText.y -= 200;
+		optionText.antialiasing = ClientPrefs.globalAntialiasing;
+		add(optionText);
 
-		selectorLeft = new Alphabet(0, 0, '>', true);
+		selectorLeft = new FlxSprite(optionText.x - 20, 70).loadGraphic(Paths.image('$dogshitPath/arrow'));
+		//selectorLeft.y -= 50;
+		selectorLeft.scale.set(.6, .6);
+		selectorLeft.antialiasing = ClientPrefs.globalAntialiasing;
 		add(selectorLeft);
-		selectorRight = new Alphabet(0, 0, '<', true);
+
+		selectorRight = new FlxSprite(optionText.x + optionText.width - 190, 70).loadGraphic(Paths.image('$dogshitPath/arrow'));
+		//selectorRight.y -= 50;
+		selectorRight.scale.set(.6, .6);
+		selectorRight.antialiasing = ClientPrefs.globalAntialiasing;
+		selectorRight.flipX = true;
 		add(selectorRight);
+		
+		var graphic:FlxSprite = new FlxSprite().loadGraphic(Paths.image('$dogshitPath/IMG_1017'));
+		graphic.setGraphicSize(FlxG.width, FlxG.height);
+		graphic.updateHitbox();
+		graphic.screenCenter();
+		graphic.antialiasing = ClientPrefs.globalAntialiasing;
+		add(graphic);
+
+		var graphic:FlxSprite = new FlxSprite().loadGraphic(Paths.image('$dogshitPath/Untitled1595_20240710134131'));
+		graphic.setGraphicSize(FlxG.width, FlxG.height);
+		graphic.updateHitbox();
+		graphic.screenCenter();
+		graphic.antialiasing = ClientPrefs.globalAntialiasing;
+		add(graphic);
 
 		changeSelection();
 		ClientPrefs.saveSettings();
@@ -88,13 +116,18 @@ class OptionsState extends MusicBeatState
 	{
 		super.update(elapsed);
 
-		if (controls.UI_UP_P)
+		selectorLeft.scale.set(FlxMath.lerp(.6, selectorLeft.scale.x, FlxMath.bound(1 - (elapsed * 3), 0, 1)), FlxMath.lerp(.6, selectorLeft.scale.y, FlxMath.bound(1 - (elapsed * 3), 0, 1)));
+		selectorRight.scale.set(FlxMath.lerp(.6, selectorRight.scale.x, FlxMath.bound(1 - (elapsed * 3), 0, 1)), FlxMath.lerp(.6, selectorRight.scale.y, FlxMath.bound(1 - (elapsed * 3), 0, 1)));
+
+		if (controls.UI_LEFT_P)
 		{
 			changeSelection(-1);
+			selectorLeft.scale.set(.55, .55);
 		}
-		if (controls.UI_DOWN_P)
+		if (controls.UI_RIGHT_P)
 		{
 			changeSelection(1);
+			selectorRight.scale.set(.55, .55);
 		}
 
 		if (controls.BACK)
@@ -113,29 +146,23 @@ class OptionsState extends MusicBeatState
 
 	function changeSelection(change:Int = 0)
 	{
-		curSelected += change;
-		if (curSelected < 0)
-			curSelected = options.length - 1;
-		if (curSelected >= options.length)
-			curSelected = 0;
+		curSelected = FlxMath.wrap(curSelected + change, 0, options.length - 1);
 
-		var bullShit:Int = 0;
+		art.loadGraphic(Paths.image('$dogshitPath/art_${options[curSelected].toLowerCase()}'));
+		optionText.loadGraphic(Paths.image('$dogshitPath/icon_${options[curSelected].toLowerCase()}'));
 
-		for (item in grpOptions.members)
+		selectorLeft.x = optionText.x - 20;
+		selectorRight.x = optionText.x + optionText.width - 190;
+
+		switch (curSelected)
 		{
-			item.targetY = bullShit - curSelected;
-			bullShit++;
+			case 1:
+				art.setPosition(((FlxG.width - art.width) / 2) + 170, ((FlxG.height - art.height) / 2) + 170);
 
-			item.alpha = 0.6;
-			if (item.targetY == 0)
-			{
-				item.alpha = 1;
-				selectorLeft.x = item.x - 63;
-				selectorLeft.y = item.y;
-				selectorRight.x = item.x + item.width + 15;
-				selectorRight.y = item.y;
-			}
+			default:
+				art.setPosition(((FlxG.width - art.width) / 2) + 150, ((FlxG.height - art.height) / 2) + 200);
 		}
+
 		FlxG.sound.play(Paths.sound('scrollMenu'));
 	}
 }

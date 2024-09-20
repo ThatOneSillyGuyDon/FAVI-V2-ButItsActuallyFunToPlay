@@ -167,7 +167,8 @@ class TitleState extends MusicBeatState
 		"Lets Goku mcdonalds, Y'know what im saiyan?",
 		"Walter",
 		"T H E  'C O R E', D E S T R O Y  I T !",
-		"THE 'CORE' CONTAINS THE EVIL"
+		"THE 'CORE' CONTAINS THE EVIL",
+		"this has GOT to be a peppino scream moment" // there now be thankful
 	];
 
 	override public function create():Void

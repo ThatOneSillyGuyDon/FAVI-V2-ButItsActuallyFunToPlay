@@ -135,6 +135,8 @@ class CreditsMenu extends MusicBeatState
 	{
 		super.update(elapsed);
 
+		Conductor.songPosition = FlxG.sound.music.time;
+
 		shaderTime = Conductor.songPosition / 1000;
 
 		if (ClientPrefs.shaders)
@@ -194,8 +196,6 @@ class CreditsMenu extends MusicBeatState
 		FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'), 0.6);
 
 		reloadText(creditArray[curSelected][7]);
-
-		trace('huh: credits edition');
 	}
 
 	@:noCompletion
