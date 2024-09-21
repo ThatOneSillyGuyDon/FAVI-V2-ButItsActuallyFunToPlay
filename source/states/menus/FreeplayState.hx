@@ -1,5 +1,7 @@
 package states.menus;
 
+
+
 import flash.text.TextField;
 import flixel.addons.transition.FlxTransitionableState;
 import lime.utils.Assets;
@@ -313,14 +315,22 @@ class FreeplayState extends MusicBeatState
 		for (i in 0...songs.length)
 		{
 			var songText2:FlxText = new FlxText(0, 0, 470, songs[i].songName);
-			var songText:Alphabet = new Alphabet(0, (70 * i) + 30, songs[i].songName, true);
+			var songText:Alphabet = new Alphabet(100, (50 * i) + 30, songs[i].songName, true);
+			
 			var icon:HealthIcon = new HealthIcon(songs[i].songCharacter);
 
 			if (freeplayMenuList == 2)
 			{
 				songText.isMenuItem = true;
-				songText.alignment = CENTERED;
+
+				// I FORGOT THAT SCREENCENTER X EXITS LMFAO - malyplus
+				songText.screenCenter(X); 			
+				songText.changeX = false;
+				
+				//songText.alignment = CENTER; // fuck you haxeflixel your making me suffer ugh
+				
 				icon.sprTracker = songText;
+
 			}
 			else 
 			{

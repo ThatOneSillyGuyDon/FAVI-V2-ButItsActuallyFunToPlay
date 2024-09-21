@@ -155,7 +155,8 @@ class MainMenu extends MusicBeatState
 		"there is no message, go play some minecraft",
 		"THEY HIT THE FUCKING PENTAGON, SMILES",
 		"Want a break from the ads? If you tap now to take a short servey, you'll recieve 30 minutes of ad-free music.",
-		"I bet you're complaining that this isn't on Psych Engine right about now, silly kiddo"
+		"I bet you're complaining that this isn't on Psych Engine right about now, silly kiddo",
+		"Connection terminated. I'm sorry to interupt you Elizabeth, if you still even remember that name, but I'm afraid you've been misinformed." // yes.
 	];
 
 	var defaultShader:FlxRuntimeShader;
