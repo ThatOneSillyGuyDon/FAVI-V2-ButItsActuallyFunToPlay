@@ -199,7 +199,7 @@ class PlayState extends MusicBeatState
 	public static var camGame:FlxCamera;
 	public static var camOther:FlxCamera;
 	public static var camVideo:FlxCamera;
-	public static var camNotes:FlxCamera;
+	public static var camNotes:FlxCamera; // oh god, lazy dogshit
 	public static var cameraSpeed:Float = 1;
 
 	var dialogue:Array<String> = ['blah blah blah', 'coolswag'];
@@ -6221,6 +6221,7 @@ class PlayState extends MusicBeatState
 
 					FlxG.camera.zoom += camZoom;
 					camHUD.zoom += hudZoom;
+					camNotes.zoom += hudZoom; // don't abuse like a braindead!
 				}
 
 			case 'Trigger BG Ghouls':
@@ -8479,26 +8480,32 @@ class PlayState extends MusicBeatState
 						PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.75, timer: 0.5, ease: FlxEase.circOut});
 						FlxG.camera.zoom += 0.2;
 						PlayState.camHUD.zoom += 0.23;
+						PlayState.camNotes.zoom += 0.23;
 					case 99 | 107 | 115 | 123 | 131 | 139 | 147 | 155 | 227 | 235 | 243 | 251 | 259 | 267 | 275 | 283 | 291 | 299 | 307 | 315 | 323 | 331 | 339 | 347:
 						PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.3, timer: 0.5, ease: FlxEase.circOut});
 						FlxG.camera.zoom += 0.08;
 						PlayState.camHUD.zoom += 0.11;
+						PlayState.camNotes.zoom += 0.11;
 					case 101 | 109 | 117 | 125 | 133 | 141 | 149 | 157 | 229 | 237 | 245 | 253 | 261 | 269 | 277 | 285 | 293 | 301 | 309 | 317 | 325 | 333 | 341 | 349:
 						PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.4, timer: 0.5, ease: FlxEase.circOut});
 						FlxG.camera.zoom += 0.1;
 						PlayState.camHUD.zoom += 0.13;
+						PlayState.camNotes.zoom += 0.13;
 					case 102 | 110 | 118 | 126 | 134 | 142 | 150 | 230 | 238 | 246 | 254 | 262 | 270 | 278 | 286 | 294 | 302 | 310 | 318 | 326 | 334 | 342 | 350:
 						PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.55, timer: 0.5, ease: FlxEase.circOut});
 						FlxG.camera.zoom += 0.12;
 						PlayState.camHUD.zoom += 0.15;
+						PlayState.camNotes.zoom += 0.15;
 					case 104 | 112 | 120 | 128 | 136 | 144 | 152 | 232 | 240 | 248 | 256 | 264 | 272 | 280 | 288 | 296 | 304 | 312 | 320 | 328 | 336 | 344:
 						PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.3, timer: 0.5, ease: FlxEase.circOut});
 						FlxG.camera.zoom += 0.23;
 						PlayState.camHUD.zoom += 0.26;
+						PlayState.camNotes.zoom += 0.26;
 					case 158:
 						PlayState.instance.camFlashSystem(BG_DARK, {alpha: 0.85, timer: 1.2, ease: FlxEase.sineInOut});
 						FlxG.camera.zoom += 0.23;
 						PlayState.camHUD.zoom += 0.26;
+						PlayState.camNotes.zoom += 0.26;
 					case 192 | 200 | 208 | 216:
 						PlayState.defaultCamZoom += 0.1;
 					case 366 | 382:
@@ -8518,6 +8525,7 @@ class PlayState extends MusicBeatState
 					case 16 | 48: 
 						PlayState.defaultCamZoom = 0.9;
 						PlayState.camHUD.zoom += 0.2;
+						camNotes.zoom += .2;
 					case 20 | 44 | 60 | 132 | 142 | 164 | 174: PlayState.defaultCamZoom += 0.2;
 					case 24:
 						tweenCamera(0.7, 2, "quartInOut");
@@ -8528,6 +8536,7 @@ class PlayState extends MusicBeatState
 						if (ClientPrefs.flashing) PlayState.camGame.flash(FlxColor.WHITE, 1.5);
 						PlayState.camHUD.alpha = 1;
 						PlayState.camHUD.zoom += 0.2;
+						camNotes.zoom += .2;
 						PlayState.defaultCamZoom = 0.9;
 					case 68 | 76 | 176: PlayState.defaultCamZoom -= 0.1;
 					case 72 | 134 | 144: PlayState.defaultCamZoom -= 0.15;
@@ -8889,6 +8898,7 @@ class PlayState extends MusicBeatState
 					case 216 | 217 | 218 | 219:
 						PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.32, timer: 0.1, colors: [194, 194, 194]});
 						PlayState.camHUD.zoom += 0.04;
+						camNotes.zoom += .04;
 
 					case 128 | 256:
 						if (ClientPrefs.flashing)
@@ -10533,6 +10543,7 @@ class PlayState extends MusicBeatState
 			notes.sort(FlxSort.byY, ClientPrefs.downScroll ? FlxSort.ASCENDING : FlxSort.DESCENDING);
 		}
 
+		// why is this even a fucking thing ????????
 		if (boyfriend.boppingIcon) iconP1.scale.set(1.2, 1.2);
 		if (dad.boppingIcon) iconP2.scale.set(1.2, 1.2);
 
@@ -10960,6 +10971,7 @@ class PlayState extends MusicBeatState
 					{
 						camGame.zoom += 0.015;
 						camHUD.zoom += 0.04;
+						camNotes.zoom += 0.04;
 					}
 			case 'alleyway' | 'ddStage':
 				 // me when zoom gets higher or whatever -jason
@@ -10967,6 +10979,7 @@ class PlayState extends MusicBeatState
 					{
 						FlxG.camera.zoom += 0.025;
 						camHUD.zoom += 0.042;
+						camNotes.zoom += 0.042;
 						FlxTween.tween(gradient, {alpha: 0.3}, 2);
 					}
 		
@@ -10974,6 +10987,7 @@ class PlayState extends MusicBeatState
 					{
 						FlxG.camera.zoom += 0.04;
 						camHUD.zoom += 0.053;
+						camNotes.zoom += 0.053;
 						FlxTween.tween(gradient, {alpha: 0.6}, 2);
 					}
 		
@@ -10989,6 +11003,7 @@ class PlayState extends MusicBeatState
 				{
 					// not including camGame cus it bugs out
 					camHUD.zoom += 0.053;
+					camNotes.zoom += 0.053;
 				}
 			case 'tank':
 				if(!ClientPrefs.lowQuality) tankWatchtower.dance();
@@ -11063,6 +11078,7 @@ class PlayState extends MusicBeatState
 			{
 				FlxG.camera.zoom += 0.015 * camZoomingMult;
 				camHUD.zoom += 0.03 * camZoomingMult;
+				camNotes.zoom += .03 * camZoomingMult;
 			}
 
 			if (SONG.notes[curSection].changeBPM)
@@ -11104,6 +11120,7 @@ class PlayState extends MusicBeatState
 		return returnVal;
 	}
 
+	// prob use velocity.x someday for not time enough for that
 	function summonWeedMakerLmfao()
 		{
 			if (FlxG.random.bool(1))

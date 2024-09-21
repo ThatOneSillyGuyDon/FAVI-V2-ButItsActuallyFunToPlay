@@ -301,12 +301,12 @@ class FreeplayState extends MusicBeatState
 			bgslider.x -= 700;
 			bg.alpha = 0.0001;
 
-			FlxTween.tween(bg, {alpha: 1}, 1.5, {ease: FlxEase.sineInOut});
-			FlxTween.tween(disc, {x: disc.x - 700}, 2, {ease: FlxEase.sineInOut, startDelay: 1});
-			FlxTween.tween(arrows, {alpha: 1}, 2, {startDelay: 3});
-			FlxTween.tween(musicPlayer, {x: musicPlayer.x + 700}, 2.3, {ease: FlxEase.sineInOut, startDelay: 1});
-			FlxTween.tween(musicNotes, {x: musicNotes.x + 700}, 2.2, {ease: FlxEase.sineInOut, startDelay: 1});
-			FlxTween.tween(bgslider, {x: bgslider.x + 700}, 2, {ease: FlxEase.sineInOut, startDelay: 1});
+			FlxTween.tween(bg, {alpha: 1}, 1, {ease: FlxEase.expoOut});
+			FlxTween.tween(disc, {x: disc.x - 700}, 1, {ease: FlxEase.expoOut});
+			FlxTween.tween(arrows, {alpha: 1}, 1);
+			FlxTween.tween(musicPlayer, {x: musicPlayer.x + 700}, 1, {ease: FlxEase.expoOut});
+			FlxTween.tween(musicNotes, {x: musicNotes.x + 700}, 1, {ease: FlxEase.expoOut});
+			FlxTween.tween(bgslider, {x: bgslider.x + 700}, 1, {ease: FlxEase.expoOut});
 		}
 
 		grpSongs = new FlxTypedGroup<Alphabet>();
@@ -362,9 +362,9 @@ class FreeplayState extends MusicBeatState
 			// la 2.2 es hoy oiste RobTop
 			// but te terminan baneando
 			// ooooh mi FIRE IN THE HOLE
-			FlxTween.tween(icon, {x: icon.x - 700}, 2.2, {ease: FlxEase.sineInOut, startDelay: 1});
-			FlxTween.tween(songText2, {x: songText2.x - 700}, 2.2, {ease: FlxEase.sineInOut, startDelay: 1});
-			FlxTween.tween(songText2, {y: songText2.y + 300}, 1.5, {ease: FlxEase.sineInOut, startDelay: 3});
+			FlxTween.tween(icon, {x: icon.x - 700}, 1, {ease: FlxEase.expoOut});
+			FlxTween.tween(songText2, {x: songText2.x - 700}, 1, {ease: FlxEase.expoOut});
+			FlxTween.tween(songText2, {y: songText2.y + 300}, 1, {ease: FlxEase.expoOut});
 		}
 			
 		// Basically an exact replica of the Funkin.avi V1 Freeplay Menu lol
@@ -407,9 +407,9 @@ class FreeplayState extends MusicBeatState
 			add(scoreText);
 			add(freeplayCtrlTxt);
 			freeplayCtrlTxt.cameras = [camHUD];
-			FlxTween.tween(freeplayCtrlTxt, {alpha: 1}, 1.5, {ease: FlxEase.sineInOut, startDelay: 3});
-			FlxTween.tween(scoreText, {alpha: 1}, 1.5, {ease: FlxEase.sineInOut, startDelay: 3});
-			FlxTween.tween(diffText, {alpha: 1}, 1.5, {ease: FlxEase.sineInOut, startDelay: 3});
+			FlxTween.tween(freeplayCtrlTxt, {alpha: 1}, 1.5, {ease: FlxEase.sineInOut, startDelay: 1});
+			FlxTween.tween(scoreText, {alpha: 1}, 1.5, {ease: FlxEase.sineInOut, startDelay: 1});
+			FlxTween.tween(diffText, {alpha: 1}, 1.5, {ease: FlxEase.sineInOut, startDelay: 1});
 		}
 
 		if(curSelected >= songs.length) curSelected = 0;
