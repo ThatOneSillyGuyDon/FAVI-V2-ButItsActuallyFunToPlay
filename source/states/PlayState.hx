@@ -6611,7 +6611,7 @@ class PlayState extends MusicBeatState
 						GameData.saveShit();
 					}
 					WeekData.loadTheFirstEnabledMod();
-					FlxG.sound.playMusic(Paths.music('freakyMenu'));
+					FlxG.sound.playMusic(Paths.music('funkinAVI/menu/freakyMenu'));
 
 					cancelMusicFadeTween();
 					if(FlxTransitionableState.skipNextTransIn) {
@@ -6683,7 +6683,7 @@ class PlayState extends MusicBeatState
 					CustomFadeTransition.nextCamera = null;
 				}
 				MusicBeatState.switchState(new FreeplayState());
-				FlxG.sound.playMusic(Paths.music('freakyMenu'));
+				FlxG.sound.playMusic(Paths.music('funkinAVI/menu/seekingFreedom'));
 				changedDifficulty = false;
 			}
 			transitioning = true;
