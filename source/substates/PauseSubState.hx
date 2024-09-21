@@ -263,12 +263,14 @@ class PauseSubState extends MusicBeatSubstate
 
 					WeekData.loadTheFirstEnabledMod();
 					if(PlayState.isStoryMode) {
+						FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
 						MusicBeatState.switchState(new StoryMenu());
 					} else {
+						FlxG.sound.playMusic(Paths.music('funkinAVI/seekingFreedom'));
 						MusicBeatState.switchState(new FreeplayState());
 					}
 					PlayState.cancelMusicFadeTween();
-					FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
+
 					PlayState.changedDifficulty = false;
 					PlayState.chartingMode = false;
 			}
@@ -693,10 +695,11 @@ class FAVIPauseSubState extends MusicBeatSubstate
 												MusicBeatState.switchState(new states.menus.FreeplayState());
 											}
 										default:
+											
 											states.menus.FreeplayState.freeplayMenuList = (PlayState.SONG.song.toLowerCase().endsWith('legacy') || PlayState.SONG.song == "Isolated Beta" || PlayState.SONG.song == "Isolated Old") ? 2 : 1;
 											MusicBeatState.switchState(new states.menus.FreeplayState()); // yeah, there's no way I'm making a case for EVERY fucking song in that menu, too much work!
 									}
-									FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
+									FlxG.sound.playMusic(Paths.music('funkinAVI/seekingFreedom'));
 					}
 				}
 			}
