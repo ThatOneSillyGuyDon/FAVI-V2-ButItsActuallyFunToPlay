@@ -4012,8 +4012,7 @@ class PlayState extends MusicBeatState
 	{
 		scoreTxt.text = 'Score: ' + songScore
 		+ ' | Combo Breaks: ' + songMisses
-		+ ' | Rank: ' + ratingName
-		+ (ratingName != '?' ? '$ratingFC (${Highscore.floorDecimal(ratingPercent * 100, 2)}%)' : '?');
+		+ ' | Rank: ' + (ratingName != '?' ? '$ratingFC (${Highscore.floorDecimal(ratingPercent * 100, 2)}%)' : '?');
 
 		if(ClientPrefs.scoreZoom && !miss && !cpuControlled)
 		{
