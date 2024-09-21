@@ -34,9 +34,9 @@ class FreeplayCategories extends MusicBeatState {
 	var unselectTween:FlxTween;
 
 	var catDescString:Array<String> = [
-		"Story Mode Songs: After the hell seen in Story Mode, everything that was seen was giarted, You can replay the events right this way.",
-		"Extra Songs: Hell lurks in every shadow, in every breath. An uncomfortable sense of unease takes hold as you venture through Disney where fear is a constant companion.",
-		"Legacy Songs: A place where long forgotten memories emerge from the shadows, bringing the past and your spectators back."
+		"Story Mode Songs: After the hell seen in our little story, here you will be given power to replay the pain all over again.",
+		"Extra Songs: Danger lurks in every shadow, in every breath. An uncomfortable sense of unease takes hold as you venture through strange worlds where fear is a constant companion.",
+		"Legacy Songs: A place where long forgotten memories emerge from the shadows, reeling in the past and its viewers back"
 	];
 	
    	 override function create(){
@@ -80,7 +80,7 @@ class FreeplayCategories extends MusicBeatState {
 		add(welcome);
 
 		catDesc = new FlxTypeText(0, 640, 500, catDescString[curSelected]);
-		catDesc.setFormat(Paths.font("Oceanic_Cocktail_Demo"), 28, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
+		catDesc.setFormat(Paths.font("Oceanic_Cocktail_Demo.otf"), 28, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
 		catDesc.borderSize = 1.2;
 		catDesc.screenCenter(X);
 		add(catDesc);
@@ -95,7 +95,7 @@ class FreeplayCategories extends MusicBeatState {
 		DiscordClient.changePresence("PICKING CATEGORY", "Freeplay: Category Menu", 'icon', 'disc-player');
 		#end
 
-		Application.current.window.title = "Funkin.AVI - Freeplay: Category Menu";
+		Application.current.window.title = "Funkin.avi - Freeplay: Category Menu";
 
        		grpCats = new FlxTypedGroup<FlxSprite>();
 		add(grpCats);
@@ -130,7 +130,7 @@ class FreeplayCategories extends MusicBeatState {
 
 		if(!ClientPrefs.lowQuality) {
 			var scratchStuff:FlxSprite = new FlxSprite();
-			scratchStuff.frames = Paths.getSparrowAtlas('filters/scratchShit');
+			scratchStuff.frames = Paths.getSparrowAtlas('Funkin_avi/filters/scratchShit');
 			scratchStuff.animation.addByPrefix('idle', 'scratch thing 1', 24, true);
 			scratchStuff.animation.play('idle');
 			scratchStuff.screenCenter();
@@ -139,7 +139,7 @@ class FreeplayCategories extends MusicBeatState {
 			add(scratchStuff);
 
 			var grain:FlxSprite = new FlxSprite();
-			grain.frames = Paths.getSparrowAtlas('filters/Grainshit');
+			grain.frames = Paths.getSparrowAtlas('Funkin_avi/filters/Grainshit');
 			grain.animation.addByPrefix('idle', 'grains 1', 24, true);
 			grain.animation.play('idle');
 			grain.screenCenter();
@@ -212,6 +212,7 @@ class FreeplayCategories extends MusicBeatState {
 		if (controls.BACK) {
 			FlxG.sound.play(Paths.sound("cancelMenu"));
 			MusicBeatState.switchState(new MainMenu());
+			FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
 		}
 
 

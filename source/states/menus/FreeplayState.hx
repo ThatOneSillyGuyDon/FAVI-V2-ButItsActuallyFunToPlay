@@ -1,7 +1,5 @@
 package states.menus;
 
-
-
 import flash.text.TextField;
 import flixel.addons.transition.FlxTransitionableState;
 import lime.utils.Assets;
@@ -53,7 +51,6 @@ class FreeplayState extends MusicBeatState
 
 	var camGame:FlxCamera; // Main camera
 	var camHUD:FlxCamera; // Shaders and stuff
-	var shitshitfuckfuck:FlxCamera;
 
 	var defaultCamZoom:Float = 1;
 	var camZoomTween:FlxTween;
@@ -81,24 +78,19 @@ class FreeplayState extends MusicBeatState
 	var colorTween:FlxTween;
 	var crossRandom:Int = FlxG.random.int(1, 5);
 
-	var freeplayMusic:FlxSound;
-
 	override function create()
 	{
 		//Paths.clearStoredMemory();
 		//Paths.clearUnusedMemory();
 
-		lime.app.Application.current.window.title = "Funkin.AVI - Freeplay: Setting Up Category...";
+		lime.app.Application.current.window.title = "Funkin.avi - Freeplay: Setting Up Category...";
 
 		// Categories, Shaders, and Songlist Setup
 		switch (freeplayMenuList)
 		{
 			case 0: // Story Songs Menu
 				{
-					smilesShader = new FlxRuntimeShader(Shaders.tvStatic, null, 120);
 					defaultShader2 = new FlxRuntimeShader(Shaders.monitorFilter, null, 140);
-					mercyShader = new FlxRuntimeShader(Shaders.vhsFilter, null, 130);
-					mercyShader2 = new FlxRuntimeShader(Shaders.cameraMovement, null, 150);
 					chromAberration = new FlxRuntimeShader(Shaders.aberration, null, 150);
 					chromAberration.setFloat('aberration', 0.07);
 					chromAberration.setFloat('effectTime', 0.005);
@@ -232,17 +224,14 @@ class FreeplayState extends MusicBeatState
 		}*/
 
 		camGame = new FlxCamera();
-		camHUD = shitshitfuckfuck = new FlxCamera();
+		camHUD = new FlxCamera();
 
 		camHUD.bgColor.alpha = 0;
 
 		FlxG.cameras.reset(camGame);
 		FlxG.cameras.add(camHUD, false);
-		FlxG.cameras.add(shitshitfuckfuck, false);
 
 		FlxG.cameras.setDefaultDrawTarget(camGame, true);
-
-		CustomFadeTransition.nextCamera = shitshitfuckfuck;
 
 		bg = new FlxSprite();
 		if (freeplayMenuList == 2)
@@ -330,7 +319,6 @@ class FreeplayState extends MusicBeatState
 				//songText.alignment = CENTER; // fuck you haxeflixel your making me suffer ugh
 				
 				icon.sprTracker = songText;
-
 			}
 			else 
 			{
@@ -500,14 +488,6 @@ class FreeplayState extends MusicBeatState
 				grain.cameras = [camHUD];
 			}
 		super.create();
-
-		FlxG.sound.music.pause();
-		freeplayMusic = new FlxSound();
-		freeplayMusic.loadEmbedded(Paths.music('funkinAVI/seekingFreedom'), true);
-		FlxG.sound.list.add(freeplayMusic);
-		freeplayMusic.play(false, 15 * 1000);
-		freeplayMusic.volume = 0;
-		freeplayMusic.fadeIn(2, 0, .7);
 	}
 
 	override function closeSubState() {
@@ -554,9 +534,9 @@ class FreeplayState extends MusicBeatState
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
 		}
 
-		var isDontCross:Bool = songs[curSelected].songName == "Don't Cross!";
+		Conductor.songPosition = FlxG.sound.music.time;
 
-		Conductor.songPosition = freeplayMusic != null ? freeplayMusic.time : 0;
+		var isDontCross:Bool = songs[curSelected].songName == "Don't Cross!";
 
 		if (musicNotes != null)
 			{
@@ -565,31 +545,22 @@ class FreeplayState extends MusicBeatState
 
 		if (ClientPrefs.shaders) // bye bye lag
 		{
-			switch (freeplayMenuList)
+			if (freeplayMenuList == 1)
 			{
-				case 2 | 3:
-					{
-						//nothing
-					}
-				default:
-					{
 						shaderTime = Conductor.songPosition / 1000;
 
-						if (freeplayMenuList == 1)
-						{
-							glitchyStuff.setFloat('time', shaderTime);
-							glitchyStuff.setFloat('prob', shaderTime);
-						}
+						glitchyStuff.setFloat('time', shaderTime);
+						glitchyStuff.setFloat('prob', shaderTime);
+
 						mercyShader.setFloat('time', shaderTime);
 						mercyShader2.setFloat('time', shaderTime);
 
 						smilesShader.setFloat('iTime', shaderTime);
 						smilesShader.setFloat('uTime', shaderTime);
-					}
 			}
 		}
 
-		if(songs[curSelected].songName != "Don't Cross!" && freeplayMenuList == 1 && grpSongs.members[6] != null && grpSongs.members[6].exists)
+		if(songs[curSelected].songName != "Don't Cross!" && grpSongs.members[6] != null && grpSongs.members[6].exists)
 			{
 				grpSongs.members[3].shake(11, 10, 0.1);
 				iconArray[3].shake(4, 30, 0.1);
@@ -691,8 +662,11 @@ class FreeplayState extends MusicBeatState
 				destroyFreeplayVocals();
 				FlxG.sound.music.volume = 0;
 				Paths.currentModDirectory = songs[curSelected].folder;
-				var poop:String = Highscore.formatSong(songs[curSelected].songName.toLowerCase(), curDifficulty);
-				PlayState.SONG = Song.loadFromJson(poop, songs[curSelected].songName.toLowerCase());
+				var songLowercase:String = Paths.formatToSongPath(songs[curSelected].songName);
+				if (isDontCross) // I've been suffering trying to get the randomizer to work with hardcoded charts only to find out this piece of shit was causing the crash oh my FUCKING GOD I'M GONNA RIP MY FUCKING HEAD OFF!!!!! (don)
+					songLowercase = "dont-cross";
+				var poop:String = Highscore.formatSong(songLowercase, curDifficulty);
+				PlayState.SONG = Song.loadFromJson(poop, songLowercase);
 				if (PlayState.SONG.needsVoices)
 				{
 					vocals = new FlxSound().loadEmbedded(Paths.voices(PlayState.SONG.song));
@@ -754,11 +728,11 @@ class FreeplayState extends MusicBeatState
 				colorTween.cancel();
 			}
 			
+			FlxTween.tween(FlxG.camera, {zoom: freeplayMenuList == 2 ? 1 : 2.5}, freeplayMenuList == 2 ? 0.0001 : 1.5, {ease: FlxEase.expoInOut});
 			new flixel.util.FlxTimer().start(freeplayMenuList == 2 ? 0.0001 : 0.7, function(e)
-				{
-					LoadingState.loadAndSwitchState(new PlayState());
-				});
-	
+			{
+				LoadingState.loadAndSwitchState(new PlayState());
+			});
 
 			FlxG.sound.music.volume = 0;
 					
@@ -789,15 +763,6 @@ class FreeplayState extends MusicBeatState
 		vocals = null;
 		bf_vocals = null;
 		opp_vocals = null;
-	}
-
-	override function destroy() {
-		freeplayMusic.destroy();
-		freeplayMusic.kill();
-		freeplayMusic = null;
-		FlxG.sound.music.play();
-
-		super.destroy();
 	}
 
 	function changeDiff(change:Int = 0)
@@ -845,19 +810,19 @@ class FreeplayState extends MusicBeatState
 		{
 			case 0: 
 				{
-					lime.app.Application.current.window.title = "Funkin.AVI - Freeplay: Episode Songs - " + songName + ' - Composed by: ' + songArtist;
+					lime.app.Application.current.window.title = "Funkin.avi - Freeplay: Episode Songs - " + songName + ' - Composed by: ' + songArtist;
 				}
 			case 1:
 				{
-					lime.app.Application.current.window.title = "Funkin.AVI - Freeplay: Extra Songs - " + songName + " - Composed by: " + songArtist;
+					lime.app.Application.current.window.title = "Funkin.avi - Freeplay: Extra Songs - " + songName + " - Composed by: " + songArtist;
 				}
 			case 2:
 				{
-					lime.app.Application.current.window.title = "Funkin.AVI - Freeplay: Legacy Songs - " + songName + " - Composed by: " + songArtist;
+					lime.app.Application.current.window.title = "Funkin.avi - Freeplay: Legacy Songs - " + songName + " - Composed by: " + songArtist;
 				}
 			case 3:
 				{
-					lime.app.Application.current.window.title = "Funkin.AVI - Freeplay: ??? - " + songName + " - Composed by: " + songArtist;
+					lime.app.Application.current.window.title = "Funkin.avi - Freeplay: ??? - " + songName + " - Composed by: " + songArtist;
 				}
 		}
 			
@@ -948,6 +913,7 @@ class FreeplayState extends MusicBeatState
 					switch (CoolUtil.spaceToDash(songs[curSelected].songName.toLowerCase()))
 					{
 						case 'bless':
+							FlxG.camera.shake(0.01, 0.001);
 							if(!ClientPrefs.lowQuality) {
 								FlxG.camera.setFilters(
 									[

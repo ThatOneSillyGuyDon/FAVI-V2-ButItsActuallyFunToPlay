@@ -1,4 +1,3 @@
-#if !macro
 /**
  * ## This file acts as a global import of all the classes you want to utilize on everything in the code!
  * 
@@ -62,6 +61,7 @@ import modcharting.*;
 
 // import shaders
 import shaders.ColorSwap;
+import shaders.OverlayShader;
 import shaders.BlendModeEffect;
 import shaders.WiggleEffect;
 import shaders.WiggleEffect.WiggleEffectType;
@@ -108,4 +108,3 @@ using flixel.text.FlxText.FlxTextBorderStyle;
 using flixel.util.FlxSignal.FlxTypedSignal;
 
 using StringTools;
-#end

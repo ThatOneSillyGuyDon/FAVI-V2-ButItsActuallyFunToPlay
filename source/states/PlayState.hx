@@ -525,6 +525,8 @@ class PlayState extends MusicBeatState
 	//SHADER UPDATE SHIT
 	var updateShader:Float = 0;
 
+	var curEpisode:String;
+
 	public static var windowName:String = "";
 	public static var lastWinName:String = "";
 
@@ -1760,7 +1762,7 @@ class PlayState extends MusicBeatState
 					rain.animation.play("crying bitch");
 					foreground.add(rain);
 
-					var fgWall:FlxSprite = new FlxSprite(-600, 210).loadGraphic(Paths.image(pathway + "big-ass-wall"));
+					var fgWall:FlxSprite = new FlxSprite(-600, 290).loadGraphic(Paths.image(pathway + "big-ass-wall"));
 					fgWall.scale.set(0.84, 0.84);
 					fgWall.scrollFactor.set(1.18, 1.18);
 					foreground.add(fgWall);
@@ -1828,6 +1830,40 @@ class PlayState extends MusicBeatState
 		}
 
 		add(foreground);
+
+		var checkSongForGimmicks:Array<String> = [
+			"Isolated",
+			"Lunacy",
+			"Delusional",
+			"Hunted",
+			"Laugh Track",
+			"Dont Cross",
+			"Cycled Sins",
+			"Mercy",
+			"Cycled Sins Legacy",
+			"Mercy Legacy",
+			"War Dilemma"
+		];
+
+		var checkMechanics:Bool = false;
+		for (i in 0...checkSongForGimmicks.length)
+			if (SONG.song == checkSongForGimmicks[i])
+				checkMechanics = true;
+
+		switch (SONG.song)
+		{
+			case "Devilish Deal" | "Isolated" | "Lunacy" | "Delusional": curEpisode = "Episode 1";
+			default: curEpisode = "Episode ???";
+		}
+
+		windowName = "Funkin.avi - " + 
+		(isStoryMode ? curEpisode + " - " : "Freeplay - ") + 
+		(SONG.song == "Dont Cross" ? "Don't Cross!" : PlayState.SONG.song) + 
+		" (Composed by: " + FreeplayState.getArtistName() + 
+		") - Chart by: " + Song.getCharterCredits() + 
+		" [" + FreeplayState.getDiffRank() + "]" + 
+		(checkMechanics ? ' - Mechanics: ' + (ClientPrefs.mechanics ? "Enabled" : "Disabled") : ""); // shitty long ass name that credits literally every fucking thing
+
 
 		#if LUA_ALLOWED
 		luaDebugGroup = new FlxTypedGroup<DebugLuaText>();
@@ -2397,46 +2433,11 @@ class PlayState extends MusicBeatState
 
 		startingSong = true;
 
-		var curEpisode:String;
-
-		var checkSongForGimmicks:Array<String> = [
-			"Isolated",
-			"Lunacy",
-			"Delusional",
-			"Hunted",
-			"Laugh Track",
-			"Dont Cross",
-			"Cycled Sins",
-			"Mercy",
-			"Cycled Sins Legacy",
-			"Mercy Legacy",
-			"War Dilemma"
-		];
-
-		var checkMechanics:Bool = false;
-		for (i in 0...checkSongForGimmicks.length)
-			if (SONG.song == checkSongForGimmicks[i])
-				checkMechanics = true;
-
-		switch (SONG.song)
-		{
-			case "Devilish Deal" | "Isolated" | "Lunacy" | "Delusional": curEpisode = "Episode 1";
-			default: curEpisode = "Episode ???";
-		}
-
-		windowName = "Funkin.AVI - " + 
-		(isStoryMode ? curEpisode + " - " : "Freeplay - ") + 
-		(SONG.song == "Dont Cross" ? "Don't Cross!" : PlayState.SONG.song) + 
-		" (Composed by: " + FreeplayState.getArtistName() + 
-		") - Chart by: " + Song.getCharterCredits() + 
-		" [" + FreeplayState.getDiffRank() + "]" + 
-		(checkMechanics ? ' - Mechanics: ' + (ClientPrefs.mechanics ? "Enabled" : "Disabled") : ""); // shitty long ass name that credits literally every fucking thing
-
 		lime.app.Application.current.window.title = windowName;
 
 		new FlxTimer().start(5, function(tmr:FlxTimer)
 		{
-			windowName = "Funkin.AVI - " + 
+			windowName = "Funkin.avi - " + 
 			(isStoryMode ? curEpisode + " - " : "Freeplay - ") + 
 			(SONG.song == "Dont Cross" ? "Don't Cross!" : PlayState.SONG.song) + 
 			" [" + FreeplayState.getDiffRank() + "]"; // short version that displays after 5 seconds yayaya
@@ -6612,7 +6613,7 @@ class PlayState extends MusicBeatState
 						GameData.saveShit();
 					}
 					WeekData.loadTheFirstEnabledMod();
-					FlxG.sound.playMusic(Paths.music('funkinAVI/menu/freakyMenu'));
+					FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
 
 					cancelMusicFadeTween();
 					if(FlxTransitionableState.skipNextTransIn) {
@@ -6684,7 +6685,7 @@ class PlayState extends MusicBeatState
 					CustomFadeTransition.nextCamera = null;
 				}
 				MusicBeatState.switchState(new FreeplayState());
-				FlxG.sound.playMusic(Paths.music('funkinAVI/menu/seekingFreedom'));
+				FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
 				changedDifficulty = false;
 			}
 			transitioning = true;
@@ -8290,6 +8291,8 @@ class PlayState extends MusicBeatState
 	var lastBeatHit:Int = -1;
 	var canBopCam:Bool = false;
 
+	public static var useFakeDeluName:Bool = false;
+
 	override function beatHit()
 	{
 		super.beatHit();
@@ -9584,10 +9587,11 @@ class PlayState extends MusicBeatState
 						PlayState.camBars.fade(FlxColor.BLACK, 2, true);
 					case 132: PlayState.defaultCamZoom = 1.3;
 					case 136:
-						PlayState.camBars.fade(FlxColor.BLACK, 1, true);
+						PlayState.camBars.fade(FlxColor.BLACK, 0.6);
 						for (daUIs in [PlayState.camHUD, PlayState.camNotes])
 							FlxTween.tween(daUIs, {alpha: 0}, 3);
-					case 140:
+					case 138:
+						camVideo.fade(FlxColor.BLACK, 5, true);
 						camVideo.visible = true;
 						deluSing.visible = true;
 						deluSing.setVideoTime(0);
@@ -9626,7 +9630,6 @@ class PlayState extends MusicBeatState
 					// Mickey Screams Like A Bitch
 					case 212:
 						camVideo.visible = false;
-						deluSing.destroy();
 						boundValue = 0.6;
 						drainValue = 0.025;
 						PlayState.instance.chromEffect = 0.3;
@@ -9706,6 +9709,9 @@ class PlayState extends MusicBeatState
 						PlayState.defaultCamZoom = 0.8;
 						PlayState.instance.chromTween = FlxTween.tween(PlayState.instance, {chromEffect: 0.1}, 0.6, {ease: FlxEase.quadOut});
 					case 472:
+						useFakeDeluName = true;
+						windowName = "...";
+						lime.app.Application.current.window.title = windowName;
 						boundValue = 2;
 						drainValue = 0;
 						PlayState.camGame.visible = false;
@@ -9741,6 +9747,9 @@ class PlayState extends MusicBeatState
 						}
 						PlayState.instance.chromEffect = 0.00001;
 						PlayState.defaultCamZoom = 0.85;
+					case 476:
+						windowName = "Where am I...?";
+						lime.app.Application.current.window.title = windowName;
 					case 478:
 						camFollow.x = 630;
 						camFollow.y = 750;
@@ -9751,11 +9760,36 @@ class PlayState extends MusicBeatState
 						boyfriend.alpha = 0.0001;
 						camVideo.visible = true;
 					case 480:
+						windowName = "Funkin.avi - " + (isStoryMode ? curEpisode + " - " : "Freeplay - ") + "Regret [________]";
+						lime.app.Application.current.window.title = windowName;
 						// no healthbar to add more onto the atmosphere of this section
 						PlayState.camGame.visible = true;
 						PlayState.camNotes.visible = true;
+					case 484:
+						windowName = "Funkin.avi - " + (isStoryMode ? curEpisode + " - " : "Freeplay - ") + "Regret [P_______]";
+						lime.app.Application.current.window.title = windowName;
+					case 488:
+						windowName = "Funkin.avi - " + (isStoryMode ? curEpisode + " - " : "Freeplay - ") + "Regret [PE______]";
+						lime.app.Application.current.window.title = windowName;
+					case 492:
+						windowName = "Funkin.avi - " + (isStoryMode ? curEpisode + " - " : "Freeplay - ") + "Regret [PEA_____]";
+						lime.app.Application.current.window.title = windowName;
+					case 496:
+						windowName = "Funkin.avi - " + (isStoryMode ? curEpisode + " - " : "Freeplay - ") + "Regret [PEAC____]";
+						lime.app.Application.current.window.title = windowName;
+					case 500:
+						windowName = "Funkin.avi - " + (isStoryMode ? curEpisode + " - " : "Freeplay - ") + "Regret [PEACE___]";
+						lime.app.Application.current.window.title = windowName;
+					case 504:
+						windowName = "Funkin.avi - " + (isStoryMode ? curEpisode + " - " : "Freeplay - ") + "Regret [PEACEF__]";
+						lime.app.Application.current.window.title = windowName;
 					case 508:
+						windowName = "Funkin.avi - " + (isStoryMode ? curEpisode + " - " : "Freeplay - ") + "Regret [PEACEFU_]";
+						lime.app.Application.current.window.title = windowName;
 						FlxTween.tween(boyfriend, {alpha: 0.45}, 2.5, {ease: FlxEase.expoOut});
+					case 512:
+						windowName = "Funkin.avi - " + (isStoryMode ? curEpisode + " - " : "Freeplay - ") + "Regret [PEACEFUL]";
+						lime.app.Application.current.window.title = windowName;
 					case 720:
 						FlxTween.tween(boyfriend, {alpha: 0.0001}, 5, {ease: FlxEase.quartInOut, onComplete: function(twn:FlxTween)
 						{
@@ -9763,6 +9797,12 @@ class PlayState extends MusicBeatState
 						}});
 						FlxTween.tween(PlayState.camGame, {alpha: 0.0001}, 5, {ease: FlxEase.quartInOut});
 						FlxTween.tween(PlayState.camNotes, {alpha: 0.0001}, 5, {ease: FlxEase.quartInOut});
+					case 728:
+						windowName = "...";
+						lime.app.Application.current.window.title = windowName;
+					case 736:
+						windowName = "Welcome back.... Little mouse.";
+						lime.app.Application.current.window.title = windowName;
 					case 740:
 						isCameraOnForcedPos = false;
 						boundValue = 0.45;
@@ -9773,6 +9813,9 @@ class PlayState extends MusicBeatState
 						atmosphereParticle.visible = true;
 						ashParticle.visible = true;
 					case 744:
+						useFakeDeluName = false;
+						windowName = "Funkin.avi - " + (isStoryMode ? curEpisode + " - " : "Freeplay - ") + PlayState.SONG.song + " [" + FreeplayState.getDiffRank() + "]";
+						lime.app.Application.current.window.title = windowName;
 						PlayState.camGame.alpha = 1;
 						PlayState.camHUD.visible = true;
 						PlayState.defaultCamZoom = 0.9;

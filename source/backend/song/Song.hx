@@ -95,7 +95,6 @@ class Song
 
 	public static function loadFromJson(jsonInput:String, ?folder:String, ?crossRandomizer:Int):SwagSong
 	{
-		randomizer = crossRandomizer;
 		switch(folder)
 		{
 			case "isolated": chartFile = Chart.isolated;
@@ -114,6 +113,7 @@ class Song
 			case "birthday": chartFile = Chart.birthday;
 			case "mercy": chartFile = Chart.mercy;
 			case "mercy-legacy": chartFile = Chart.mercyLegacy;
+			case "laugh-track": chartFile = Chart.laughTrack;
 			case "delutrance": chartFile = Chart.delutrance;
 			case "dont-cross":
 				if (!ClientPrefs.mechanics)
@@ -123,6 +123,7 @@ class Song
 				}
 				else
 				{
+					randomizer = crossRandomizer;
 					trace('random chart loaded!');
 					switch (randomizer)
 					{

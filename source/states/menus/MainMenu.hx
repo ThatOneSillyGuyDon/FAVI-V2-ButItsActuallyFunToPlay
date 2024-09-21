@@ -145,7 +145,7 @@ class MainMenu extends MusicBeatState
 		"peak mouse experience.",
 		"Austin is the most horniest of the team lmao",
 		"This mod was stressful to make, the organization was a mess lmao",
-		"Funkin.AVI - Funkin.AVI - Funkin.AVI - Funkin.AVI - Funkin.AVI - Funkin.AVI - Funkin.AVI - Funkin.AVI - Funkin.AVI - Funkin.AVI - Funkin.avi",
+		"Funkin.avi - Funkin.avi - Funkin.avi - Funkin.avi - Funkin.avi - Funkin.avi - Funkin.avi - Funkin.avi - Funkin.avi - Funkin.avi - Funkin.avi",
 		"Just like Domingo is constantly remaking Mickey's sprites, Dreupy is the Domingo of Delusional Recharts.",
 		"Type \"HOWTODELUSIONAL\" for a special surprise :)",
 		"When did Funkin.avi start development?",
@@ -155,8 +155,7 @@ class MainMenu extends MusicBeatState
 		"there is no message, go play some minecraft",
 		"THEY HIT THE FUCKING PENTAGON, SMILES",
 		"Want a break from the ads? If you tap now to take a short servey, you'll recieve 30 minutes of ad-free music.",
-		"I bet you're complaining that this isn't on Psych Engine right about now, silly kiddo",
-		"Connection terminated. I'm sorry to interupt you Elizabeth, if you still even remember that name, but I'm afraid you've been misinformed." // yes.
+		"I bet you're complaining that this isn't on Psych Engine right about now, silly kiddo"
 	];
 
 	var defaultShader:FlxRuntimeShader;
@@ -216,7 +215,7 @@ class MainMenu extends MusicBeatState
 			}
 		}
 
-		openfl.Lib.application.window.title = "Funkin.AVI - " + windowShit[FlxG.random.int(0, windowShit.length - 1)];
+		openfl.Lib.application.window.title = "Funkin.avi - " + windowShit[FlxG.random.int(0, windowShit.length - 1)];
 
 		// shutdowns the game
 		if (openfl.Lib.application.window.title.contains('10 Seconds before I shut your fucking game again >:('))
@@ -305,7 +304,7 @@ class MainMenu extends MusicBeatState
 				arrow.shader = arrowFlash;*/
 			add(arrow);
 
-			gradient = new FlxSprite().loadGraphic(Paths.image('filters/gradient'));
+			gradient = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/filters/gradient'));
 			gradient.scrollFactor.set(0, 0);
 			gradient.setGraphicSize(Std.int(gradient.width * 0.75));
 			gradient.updateHitbox();
@@ -375,7 +374,7 @@ class MainMenu extends MusicBeatState
 
 		// from the base game lol
 		var versionShit:FlxText = new FlxText(5, FlxG.height * 0.01, 0, 'Funkin.avi v2.0.0', 24);
-		versionShit.setFormat(Paths.font("DisneyFont"), 30, 0xFFFFFFFF, LEFT, FlxTextBorderStyle.OUTLINE, 0xFF000000);
+		versionShit.setFormat(Paths.font("DisneyFont.ttf"), 30, 0xFFFFFFFF, LEFT, FlxTextBorderStyle.OUTLINE, 0xFF000000);
 		versionShit.scrollFactor.set();
 		versionShit.cameras = [camHUD];
 		add(versionShit);
@@ -391,7 +390,7 @@ class MainMenu extends MusicBeatState
 		if (!ClientPrefs.lowQuality)
 		{
 			var scratchStuff:FlxSprite = new FlxSprite();
-			scratchStuff.frames = Paths.getSparrowAtlas('filters/scratchShit');
+			scratchStuff.frames = Paths.getSparrowAtlas('Funkin_avi/filters/scratchShit');
 			scratchStuff.animation.addByPrefix('idle', 'scratch thing 1', 24, true);
 			scratchStuff.animation.play('idle');
 			scratchStuff.screenCenter();
@@ -401,7 +400,7 @@ class MainMenu extends MusicBeatState
 			add(scratchStuff);
 
 			var grain:FlxSprite = new FlxSprite();
-			grain.frames = Paths.getSparrowAtlas('filters/Grainshit');
+			grain.frames = Paths.getSparrowAtlas('Funkin_avi/filters/Grainshit');
 			grain.animation.addByPrefix('idle', 'grains 1', 24, true);
 			grain.animation.play('idle');
 			grain.screenCenter();
@@ -681,8 +680,6 @@ class MainMenu extends MusicBeatState
 
 		if (daChoice == 'freeplay')
 		{
-			MusicBeatState.switchState(new FreeplayCategories());
-
 			if (GameData.episode1FPLock == 'unlocked' || GameData.muckneyLock == 'beaten')
 			{
 				for (sillies in [arrow, menuItems.members[Math.floor(curSelected)]])
@@ -719,6 +716,7 @@ class MainMenu extends MusicBeatState
 							{
 								case 'freeplay':
 									MusicBeatState.switchState(new FreeplayCategories());
+									FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
 							}
 						});
 					}
