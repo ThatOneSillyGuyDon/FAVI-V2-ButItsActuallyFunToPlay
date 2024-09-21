@@ -118,11 +118,15 @@ class GameOverSubstate extends MusicBeatSubstate
 
 			WeekData.loadTheFirstEnabledMod();
 			if (PlayState.isStoryMode)
-				FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
+			{
 				MusicBeatState.switchState(new StoryMenu());
+				FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
+			}
 			else
-				FlxG.sound.playMusic(Paths.music('funkinAVI/seekingFreedom'));
+			{
 				MusicBeatState.switchState(new FreeplayState());
+				FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
+			}
 			PlayState.instance.callOnLuas('onGameOverConfirm', [false]);
 		}
 

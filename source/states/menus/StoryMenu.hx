@@ -230,7 +230,7 @@ class StoryMenu extends MusicBeatState
 		if(!ClientPrefs.lowQuality) 
 		{
 			var scratch:FlxSprite = new FlxSprite();
-			scratch.frames = Paths.getSparrowAtlas('filters/scratchShit');
+			scratch.frames = Paths.getSparrowAtlas('Funkin_avi/filters/scratchShit');
 			scratch.animation.addByPrefix('idle', 'scratch thing 1', 24, true);
 			scratch.animation.play('idle');
 			scratch.screenCenter();
@@ -239,7 +239,7 @@ class StoryMenu extends MusicBeatState
 			add(scratch);
 	
 			var grain:FlxSprite = new FlxSprite();
-			grain.frames = Paths.getSparrowAtlas('filters/Grainshit');
+			grain.frames = Paths.getSparrowAtlas('Funkin_avi/filters/Grainshit');
 			grain.animation.addByPrefix('idle', 'grains 1', 24, true);
 			grain.animation.play('idle');
 			grain.screenCenter();
@@ -248,7 +248,7 @@ class StoryMenu extends MusicBeatState
 			add(grain);
 		}
 
-		gradient = new FlxSprite().loadGraphic(Paths.image('filters/gradient'));
+		gradient = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/filters/gradient'));
 		gradient.scrollFactor.set(0, 0);
 		gradient.setGraphicSize(Std.int(gradient.width * 1));
 		gradient.updateHitbox();
@@ -485,7 +485,7 @@ class StoryMenu extends MusicBeatState
 
 
 
-		lime.app.Application.current.window.title = "Funkin.AVI - Story Menu - " + storyName;
+		lime.app.Application.current.window.title = "Funkin.avi - Story Menu - " + storyName;
 
 		var bullShit:Int = 0;
 

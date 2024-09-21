@@ -28,6 +28,7 @@ class CreditsMenu extends MusicBeatState
 	var box:FlxSprite;
 	var daStrip:FlxSprite;
 	var creditIconText:FlxSprite;
+	var teelSquares:FlxSprite;
 
 	var cool_1980_shader:FlxRuntimeShader;
 
@@ -40,7 +41,7 @@ class CreditsMenu extends MusicBeatState
 
 	override function create()
 	{
-		FlxG.stage.window.title = "Funkin.AVI - Credits";
+		FlxG.stage.window.title = "Funkin.avi - Credits";
 
 		path = 'Funkin_avi/credits';
 		
@@ -75,18 +76,24 @@ class CreditsMenu extends MusicBeatState
 		box.setGraphicSize(Std.int(box.width * 0.6));
 		add(box);
 
+		teelSquares = new FlxSprite().loadGraphic(Paths.image('$path/teelbeSpecial'));
+		teelSquares.screenCenter().x -= 80;
+		teelSquares.setGraphicSize(Std.int(box.width * 0.6));
+		teelSquares.visible = false;
+		add(teelSquares);
+
 		creditDescText = new FlxText(FlxG.width * 0.52, FlxG.height * 0.6, 500, creditArray[curSelected][3]);
-		creditDescText.setFormat(Paths.font('vcr'), 40, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
+		creditDescText.setFormat(Paths.font('disneyFreeplayFont.ttf'), 40, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
 		creditDescText.borderSize = 1.3;
 		add(creditDescText);
 
 		creditNameText = new FlxText(FlxG.width * 0.22, FlxG.height * 0.3, FlxG.width, creditArray[curSelected][0]);
-		creditNameText.setFormat(Paths.font('vcr'), 70, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
+		creditNameText.setFormat(Paths.font('Oceanic_Cocktail_Demo.otf'), 70, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
 		creditNameText.borderSize = 1.3;
 		add(creditNameText);
 
 		creditWorkText = new FlxText(FlxG.width * 0.52, FlxG.height * 0.41, 500, creditArray[curSelected][2]);
-		creditWorkText.setFormat(Paths.font('vcr'), 30, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
+		creditWorkText.setFormat(Paths.font('MagicOwlFont.otf'), 30, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
 		creditWorkText.borderSize = 1.3;
 		add(creditWorkText);
 
@@ -108,7 +115,7 @@ class CreditsMenu extends MusicBeatState
 		if (!ClientPrefs.lowQuality)
 		{
 			var scratchStuff:FlxSprite = new FlxSprite();
-			scratchStuff.frames = Paths.getSparrowAtlas('filters/scratchShit');
+			scratchStuff.frames = Paths.getSparrowAtlas('Funkin_avi/filters/scratchShit');
 			scratchStuff.animation.addByPrefix('idle', 'scratch thing 1', 24, true);
 			scratchStuff.animation.play('idle');
 			scratchStuff.screenCenter();
@@ -117,7 +124,7 @@ class CreditsMenu extends MusicBeatState
 			add(scratchStuff);
 
 			var grain:FlxSprite = new FlxSprite();
-			grain.frames = Paths.getSparrowAtlas('filters/Grainshit');
+			grain.frames = Paths.getSparrowAtlas('Funkin_avi/filters/Grainshit');
 			grain.animation.addByPrefix('idle', 'grains 1', 24, true);
 			grain.animation.play('idle');
 			grain.screenCenter();
@@ -135,9 +142,7 @@ class CreditsMenu extends MusicBeatState
 	{
 		super.update(elapsed);
 
-		Conductor.songPosition = FlxG.sound.music.time;
-
-		shaderTime = Conductor.songPosition / 1000;
+		shaderTime += elapsed;
 
 		if (ClientPrefs.shaders)
 		{
@@ -169,6 +174,7 @@ class CreditsMenu extends MusicBeatState
 
 	function jsonStuff()
 	{
+		//daJson = MiscShit.creditsMenu;
 		daJson = File.getContent(Paths.getPath('data/credits.json', TEXT, null));
 
 		if (daJson != null && daJson.length > 0) {
@@ -195,7 +201,14 @@ class CreditsMenu extends MusicBeatState
 
 		FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'), 0.6);
 
+		if (creditArray[curSelected][0].toLowerCase() == "teelbe")
+			teelSquares.visible = true;
+		else
+			teelSquares.visible = false;
+
 		reloadText(creditArray[curSelected][7]);
+
+		//trace('huh: credits edition');
 	}
 
 	@:noCompletion
@@ -221,6 +234,14 @@ class CreditsMenu extends MusicBeatState
 					creditDescText.y = FlxG.height * 0.2;
 					creditDescText.scale.set(0.6, 0.6);
 
+				case 'yama haki / toko':
+					creditNameText.y = FlxG.height * 0.02;
+					creditWorkText.y = FlxG.height * 0.11;
+					creditDescText.fieldWidth = 1080;
+					creditDescText.x = FlxG.width * 0.28;
+					creditDescText.y = FlxG.height * -0.12;
+					creditDescText.scale.set(0.5, 0.5);
+				
 				default:
 					creditNameText.y = FlxG.height * 0.1;
 					creditWorkText.y = FlxG.height * 0.21;
@@ -234,14 +255,15 @@ class CreditsMenu extends MusicBeatState
 		{ // reload reasons
 			switch (creditArray[curSelected][0].toLowerCase())
 			{
-				case 'hanacat':
+				case 'demolitiondon96':
 					creditDescText.fieldWidth = 500;
 					creditDescText.x = FlxG.width * 0.52;
-					creditDescText.y = FlxG.height * 0.46;
+					creditDescText.y = FlxG.height * 0.5;
 					creditDescText.scale.set(1, 1);
 					creditNameText.y = FlxG.height * 0.3;
 					creditWorkText.y = FlxG.height * 0.41;
 					creditDescText.scale.set(0.8, 0.8);
+
 				default:
 					creditDescText.fieldWidth = 500;
 					creditDescText.x = FlxG.width * 0.52;

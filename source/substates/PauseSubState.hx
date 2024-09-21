@@ -263,14 +263,13 @@ class PauseSubState extends MusicBeatSubstate
 
 					WeekData.loadTheFirstEnabledMod();
 					if(PlayState.isStoryMode) {
-						FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
 						MusicBeatState.switchState(new StoryMenu());
+						FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
 					} else {
-						FlxG.sound.playMusic(Paths.music('funkinAVI/seekingFreedom'));
 						MusicBeatState.switchState(new FreeplayState());
+						FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
 					}
 					PlayState.cancelMusicFadeTween();
-
 					PlayState.changedDifficulty = false;
 					PlayState.chartingMode = false;
 			}
@@ -406,9 +405,6 @@ class PauseSubState extends MusicBeatSubstate
 	}
 }
 
-/**
- * WHY IS THIS ON A SEPARATED STATE ARE YOU BITCHES FUCKING HIGH HELLO ???????
- */
 class FAVIPauseSubState extends MusicBeatSubstate
 {
 	public static var colorSetup:Null<FlxColor> = FlxColor.WHITE;
@@ -456,6 +452,8 @@ class FAVIPauseSubState extends MusicBeatSubstate
 	var array:Array<Dynamic>;
 	var data:PauseData;
 
+	var fuckingName:String;
+
 	public function new(x:Float, y:Float, ?itemStack:Array<String>)
 		{
 			super();
@@ -478,6 +476,8 @@ class FAVIPauseSubState extends MusicBeatSubstate
 				case 2: randomPauseSong = "soothingLight";
 				case 3: randomPauseSong = "simpleTunes";
 			}
+
+			fuckingName = (PlayState.useFakeDeluName ? "Regret" : PlayState.SONG.song);
 
 			pauseMusic = new FlxSound();
 			pauseMusic.loadEmbedded(Paths.music("aviOST/pause/" + randomPauseSong), true, true);
@@ -509,7 +509,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 			songArt = new FlxSprite(780, 110);
 			songArtOutline = new FlxSprite(songArt.x - 20, songArt.y - 20 /*POV: you're lazy to do the math yourself*/).makeGraphic(890, 890, FlxColor.WHITE);
 			disc = new FlxSprite(songArt.x, songArt.y - 12).loadGraphic(Paths.image('Funkin_avi/pause/disc'));
-			songName = new FlxText(FlxG.width * 0.78 + array[1], 10, 0, PlayState.SONG.song, 32);
+			songName = new FlxText(FlxG.width * 0.78 + array[1], 10, 0, (PlayState.SONG.song == "Dont Cross" ? "Don't Cross!" : (PlayState.useFakeDeluName ? "Regret" : PlayState.SONG.song)), 32);
 			daSelector = new FlxSprite().loadGraphic(Paths.image("Funkin_avi/pause/buttonSelector"));
 			countDown = new FlxText(0, 0, 0, "", 0);
 			satanTxt = new FlxText(0, 650, 0, "", 0);
@@ -670,6 +670,8 @@ class FAVIPauseSubState extends MusicBeatSubstate
 							MusicBeatState.switchState(new states.ManIHateYouSoMuchYouMadeMuckneySad()); // grah
 						case "escape":
 							remove(disc);
+							if (PlayState.useFakeDeluName)
+								PlayState.useFakeDeluName = false;
 							PlayState.seenCutscene = false;
 							PlayState.cancelMusicFadeTween();
 							PlayState.changedDifficulty = false;
@@ -677,11 +679,14 @@ class FAVIPauseSubState extends MusicBeatSubstate
 							PlayState.deathCounter = 0;
 	
 								if (PlayState.isStoryMode)
+								{
 									MusicBeatState.switchState(new StoryMenu());
+									FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
+								}
 								else
 									switch (CoolUtil.dashToSpace(PlayState.SONG.song))
 									{
-										case 'Devilish Deal' | 'Isolated' | 'Lunacy' | 'Delusional' | 'Twisted Grins' | 'Resentment' | 'Mortiferum Risus' | 'Mercy' | 'Affliction':
+										case 'Devilish Deal' | 'Isolated' | 'Lunacy' | 'Delusional':
 											states.menus.FreeplayState.freeplayMenuList = 0;
 											MusicBeatState.switchState(new states.menus.FreeplayState());
 										case 'Delutrance': // hahaha, you FOOL, you're obligated to play till you beat it!
@@ -693,13 +698,13 @@ class FAVIPauseSubState extends MusicBeatSubstate
 											{
 												states.menus.FreeplayState.freeplayMenuList = 1;
 												MusicBeatState.switchState(new states.menus.FreeplayState());
+												FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
 											}
 										default:
-											
 											states.menus.FreeplayState.freeplayMenuList = (PlayState.SONG.song.toLowerCase().endsWith('legacy') || PlayState.SONG.song == "Isolated Beta" || PlayState.SONG.song == "Isolated Old") ? 2 : 1;
 											MusicBeatState.switchState(new states.menus.FreeplayState()); // yeah, there's no way I'm making a case for EVERY fucking song in that menu, too much work!
+											FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
 									}
-									FlxG.sound.playMusic(Paths.music('funkinAVI/seekingFreedom'));
 					}
 				}
 			}
@@ -747,6 +752,8 @@ class FAVIPauseSubState extends MusicBeatSubstate
 
 		public static function restartSong(noTrans:Bool = false)
 			{
+				if (PlayState.useFakeDeluName)
+					PlayState.useFakeDeluName = false;
 				PlayState.instance.paused = true; // For lua
 				FlxG.sound.music.volume = 0;
 				PlayState.instance.vocals.volume = 0;
@@ -859,8 +866,31 @@ class FAVIPauseSubState extends MusicBeatSubstate
 	
 		function jsonStuff()
 		{
-			if (sys.FileSystem.exists('./assets/songs/${PlayState.SONG.song.toLowerCase()}/data.json'))
-				json = File.getContent(Paths.getPath('songs/${PlayState.SONG.song.toLowerCase()}/data.json', TEXT, null));
+			switch (fuckingName)
+			{
+				case "Devilish Deal": json = CreditsData.devilishDeal;
+				case "Isolated": json = CreditsData.isolated;
+				case "Lunacy": json = CreditsData.lunacy;
+				case "Delusional": json = CreditsData.delusional;
+				case "Regret": json = CreditsData.regret;
+				case "Hunted": json = CreditsData.hunted;
+				case "Laugh Track": json = CreditsData.laughTrack;
+				case "Bless": json = CreditsData.bless;
+				case "Dont Cross":
+					switch(Song.getCharterCredits())
+					{
+						case "DEMOLITIONDON96": json = CreditsData.dontCross3;
+						case "Dreupy": json = CreditsData.dontCross1;
+						case "Purg": json = CreditsData.dontCross2;
+					}
+				case "War Dilemma": json = CreditsData.warDilemma;
+				case "Twisted Grins": json = CreditsData.twistedGrins;
+				case "Mercy": json = CreditsData.mercy;
+				case "Cycled Sins": json = CreditsData.cycledSins;
+				case "Malfunction": json = CreditsData.malfunction;
+				case "Birthday": json = CreditsData.birthday;
+				case "Delutrance": json = CreditsData.delutrance;
+			}
 		
 			if (json != null && json.length > 0)
 				return cast Json.parse(json);

@@ -38,7 +38,7 @@ class CharacterMenu extends MusicBeatState
         theJson = thejofsons();
         charArray = theJson.info;
 
-        openfl.Lib.application.window.title = 'Funkin.AVI - Character Menu';
+        openfl.Lib.application.window.title = 'Funkin.avi - Character Menu';
 
         hud = cam = new FlxCamera();
         hud.bgColor.alpha = 0;
