@@ -1,4 +1,8 @@
-// Will work on it tommorow.
+// Will work on it tommorow. - malyplus
+
+// BRO FUCKING LIED TO US - MalyPlus
+
+
 package states.menus.freeplay;
 
 import flixel.addons.transition.FlxTransitionableState;
@@ -18,6 +22,8 @@ class RemakedFreeplayMenu extends MusicBeatState
 			curSelected = 0;
 		}
 	*/
+
+	
 
 	var storyMenuSongs:Array<Array<Dynamic>> = [
 		['Devilish Deal', 1, "minnie", FlxColor.fromRGB(65, 88, 94), 'obscurity', 'EASY', FlxColor.WHITE],
