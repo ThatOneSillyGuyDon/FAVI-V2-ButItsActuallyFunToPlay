@@ -142,6 +142,17 @@ class CreditsMenu extends MusicBeatState
 	{
 		super.update(elapsed);
 
+		// dont mind me adding this funny
+		// yes i used the numbers because why not
+		if (curSelected == 7)
+		{
+			FlxG.camera.shake(0.01);
+		}
+		else
+		{
+			
+		}
+
 		shaderTime += elapsed;
 
 		if (ClientPrefs.shaders)
@@ -241,6 +252,7 @@ class CreditsMenu extends MusicBeatState
 					creditDescText.x = FlxG.width * 0.28;
 					creditDescText.y = FlxG.height * -0.12;
 					creditDescText.scale.set(0.5, 0.5);
+
 				
 				default:
 					creditNameText.y = FlxG.height * 0.1;

@@ -597,7 +597,9 @@ class MainMenu extends MusicBeatState
 
 		if (FlxG.keys.justPressed.SEVEN)
 		{
-			CoolUtil.browserLoad('https://www.youtube.com/watch?v=qj0v0bJiZ18&ab_channel=Xploshi'); // yes.. (Please move it to other state in case it cant be here lol)
+			FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'), 0);
+			FlxG.switchState(new VideoShit());
+			//CoolUtil.browserLoad('https://www.youtube.com/watch?v=qj0v0bJiZ18&ab_channel=Xploshi'); // yes.. (Please move it to other state in case it cant be here lol)
 		}
 
 		if (FlxG.keys.justPressed.ONE)

@@ -464,6 +464,7 @@ class PlayState extends MusicBeatState
 	var wobblyBG:FlxRuntimeShader = new FlxRuntimeShader(Shaders.acidTrip, null, 120);
 	var treesFront:FlxSprite;
 	var goofyStreet:FlxSprite;
+	var otherBack:FlxSprite;
 	var treesBack:FlxSprite;
 	var goofyBG:FlxSprite;
 
@@ -1311,27 +1312,34 @@ class PlayState extends MusicBeatState
 	
 					if(!lowQuality)
 						{
-							goofyBG = new FlxSprite(-600, -650).loadGraphic(Paths.image(pathway + 'bg'));
+							goofyBG = new FlxSprite(-600, -450).loadGraphic(Paths.image(pathway + 'actualNew/Untitled547_20240922100546'));
 							goofyBG.scrollFactor.set(0.7, 0.7);
-							goofyBG.scale.set(1.2, 1.2);
+							//goofyBG.scale.set(1.2, 1.2);
 							goofyBG.screenCenter();
 							add(goofyBG);
 						}
 	
-					treesBack = new FlxSprite(-550, -650).loadGraphic(Paths.image(pathway + 'treesBack'));
-					treesBack.scale.set(1.3, 1.2);
+
+
+					otherBack = new FlxSprite(-600, -450).loadGraphic(Paths.image(pathway + 'actualNew/Untitled547_20240922100541'));
+					otherBack.scale.set(1.3, 1.2);
+					//otherBack.scrollFactor.set(1, 0.8);
+					add(otherBack);
+
+					treesBack = new FlxSprite(-600, -450).loadGraphic(Paths.image(pathway + 'actualNew/Untitled547_20240922100536'));
+					//treesBack.scale.set(1.3, 1.2);
 					treesBack.scrollFactor.set(1, 0.8);
 					add(treesBack);
 	
-					goofyStreet = new FlxSprite(-700, -950).loadGraphic(Paths.image(pathway + 'ground'));
-					goofyStreet.scale.set(2, 1.9);
+					goofyStreet = new FlxSprite(-600, -450).loadGraphic(Paths.image(pathway + 'actualNew/Untitled547_20240922100531'));
+					//goofyStreet.scale.set(2, 1.9);
 					goofyStreet.scrollFactor.set(1, 1);
 					add(goofyStreet);
 	
 					if(!lowQuality)
 						{
-							treesFront = new FlxSprite(-550, -650).loadGraphic(Paths.image(pathway + 'treesFront'));
-							treesFront.scale.set(1.5, 1.5);
+							treesFront = new FlxSprite(-600, -450).loadGraphic(Paths.image(pathway + 'actualNew/Untitled547_20240922100525'));
+							//treesFront.scale.set(1.5, 1.5);
 							treesFront.scrollFactor.set(1.2, 1.2);
 						}
 				case 'forestOld':
@@ -3076,8 +3084,9 @@ class PlayState extends MusicBeatState
 					default: boyfriend.setPosition(275, 50);
 				}
 			case 'forestNew':
-				dad.setPosition(-320, 130);
-				boyfriend.setPosition(850, 0);
+				dad.setPosition(-140, -50);
+				boyfriend.setPosition(480, -220);
+				gf.setPosition(170, -50);
 			case 'forestOld':
 				dad.setPosition(0, 0);
     			boyfriend.setPosition(900, -20);
@@ -10907,6 +10916,7 @@ class PlayState extends MusicBeatState
 									goofyBG.shader = wobblyBG;
 									goofyStreet.shader = wobblyBG;
 									treesBack.shader = wobblyBG;
+									otherBack.shader = wobblyBG;
 									treesFront.shader = wobblyBG;
 								}
 						}
@@ -10919,6 +10929,7 @@ class PlayState extends MusicBeatState
 								goofyBG.shader = null;
 								goofyStreet.shader = null;
 								treesBack.shader = null;
+								otherBack.shader = null;
 								treesFront.shader = null;
 							}
 					}

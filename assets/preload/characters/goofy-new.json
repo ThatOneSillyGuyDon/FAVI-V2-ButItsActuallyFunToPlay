@@ -1,6 +1,7 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
@@ -12,6 +13,7 @@
 			"name": "idle"
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				-15
@@ -23,6 +25,7 @@
 			"name": "left"
 		},
 		{
+			"loop": false,
 			"offsets": [
 				90,
 				-160
@@ -34,6 +37,7 @@
 			"name": "down"
 		},
 		{
+			"loop": false,
 			"offsets": [
 				130,
 				37
@@ -45,6 +49,7 @@
 			"name": "up"
 		},
 		{
+			"loop": false,
 			"offsets": [
 				211,
 				150
@@ -70,7 +75,7 @@
 		161
 	],
 	"camera_position": [
-		0,
+		220,
 		0
 	],
 	"sing_duration": 6.1,
