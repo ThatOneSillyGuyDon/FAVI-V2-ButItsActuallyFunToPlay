@@ -1819,7 +1819,7 @@ class PlayStateUtils// extending the class itself incase crashes
 						FlxTween.tween(PlayState.camHUD, {alpha: 1}, 1.5, {ease: FlxEase.circInOut});
 						FlxTween.tween(PlayState.camNotes, {alpha: 1}, 1.5, {ease: FlxEase.circInOut});
 					case 64 | 67 | 72 | 75 | 80 | 83 | 88 | 91: 
-						PlayState.instance.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.25, ease: FlxEase.sineOut, timer: 0.6});
+						//PlayState.instance.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.25, ease: FlxEase.sineOut, timer: 0.6});
 						FlxG.camera.zoom += 0.21;
 					case 96:
 						PlayState.instance.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.6, ease: FlxEase.sineOut, timer: 1});
@@ -2350,8 +2350,8 @@ class PlayStateUtils// extending the class itself incase crashes
 				switch (curStep)
 				{
 					case 262 | 294 | 326 | 358: 
-						PlayState.instance.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.35, ease: FlxEase.sineOut, timer: 0.6});
-						FlxG.camera.zoom += 0.21;
+						//PlayState.instance.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.35, ease: FlxEase.sineOut, timer: 0.6});
+						FlxG.camera.zoom += 0.015;
 				}
 		}
 	}

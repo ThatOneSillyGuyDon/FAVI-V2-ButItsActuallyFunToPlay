@@ -8076,8 +8076,8 @@ class PlayState extends MusicBeatState
 				switch (curStep)
 				{
 					case 262 | 294 | 326 | 358: 
-						PlayState.instance.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.35, ease: FlxEase.sineOut, timer: 0.6});
-						FlxG.camera.zoom += 0.21;
+						//PlayState.instance.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.35, ease: FlxEase.sineOut, timer: 0.6});
+						FlxG.camera.zoom += 0.015;
 				}
 			case "Birthday":
 				switch (curStep)
@@ -10066,9 +10066,10 @@ class PlayState extends MusicBeatState
 						tweenCamera(1, 1.5, 'circInOut');
 						FlxTween.tween(PlayState.camHUD, {alpha: 1}, 1.5, {ease: FlxEase.circInOut});
 						FlxTween.tween(PlayState.camNotes, {alpha: 1}, 1.5, {ease: FlxEase.circInOut});
+						cameraSpeed = 2;
 					case 64 | 67 | 72 | 75 | 80 | 83 | 88 | 91: 
-						PlayState.instance.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.25, ease: FlxEase.sineOut, timer: 0.6});
-						FlxG.camera.zoom += 0.21;
+						//PlayState.instance.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.25, ease: FlxEase.sineOut, timer: 0.6});
+						FlxG.camera.zoom += 0.015;
 					case 96:
 						PlayState.instance.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.6, ease: FlxEase.sineOut, timer: 1});
 						PlayState.cameraSpeed = 2.3;
@@ -10077,8 +10078,8 @@ class PlayState extends MusicBeatState
 
 				if (curBeat >= 96 && curBeat <= 192)
 				{
-					FlxG.camera.zoom += 0.18;
-					PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.15, ease: FlxEase.sineOut, timer: 0.35, colors: [255, 0, 0]});
+					FlxG.camera.zoom += 0.015;
+					//PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.15, ease: FlxEase.sineOut, timer: 0.35, colors: [255, 0, 0]});
 				}
 
 			case 'Birthday':
