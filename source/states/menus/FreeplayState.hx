@@ -80,6 +80,9 @@ class FreeplayState extends MusicBeatState
 
 	var freeplayMusic:FlxSound;
 
+	var songText2:FlxText;
+	var songText:Alphabet;
+
 	override function create()
 	{
 		//Paths.clearStoredMemory();
@@ -311,8 +314,8 @@ class FreeplayState extends MusicBeatState
 
 		for (i in 0...songs.length)
 		{
-			var songText2:FlxText = new FlxText(0, 0, 470, songs[i].songName);
-			var songText:Alphabet = new Alphabet(100, (50 * i) + 30, songs[i].songName, true);
+			songText2 = new FlxText(0, 0, 470, songs[i].songName);
+			songText = new Alphabet(100, (50 * i) + 30, songs[i].songName, true);
 			
 			var icon:HealthIcon = new HealthIcon(songs[i].songCharacter);
 
@@ -752,7 +755,22 @@ class FreeplayState extends MusicBeatState
 				colorTween.cancel();
 			}
 			
-			new flixel.util.FlxTimer().start(freeplayMenuList == 2 ? 0.0001 : 0.7, function(e)
+			FlxTween.tween(bg, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
+			FlxTween.tween(disc, {x: disc.x + 700}, 1, {ease: FlxEase.sineInOut});
+			FlxTween.tween(arrows, {alpha: 0}, 1);
+			FlxTween.tween(musicPlayer, {x: musicPlayer.x - 700}, 1, {ease: FlxEase.sineInOut});
+			FlxTween.tween(musicNotes, {x: musicNotes.x - 700}, 1, {ease: FlxEase.sineInOut});
+			FlxTween.tween(bgslider, {x: bgslider.x - 700}, 1, {ease: FlxEase.sineInOut});
+			for (i in 0...songs.length) FlxTween.tween(iconArray[i], {x: iconArray[i].x + 700}, 1, {ease: FlxEase.sineInOut});
+			FlxTween.tween(songText2, {x: songText2.x + 700}, 1, {ease: FlxEase.sineInOut});
+			FlxTween.tween(songText2, {y: songText2.y - 300}, 1, {ease: FlxEase.sineInOut});
+			FlxTween.tween(freeplayCtrlTxt, {alpha: 0}, 1.5, {ease: FlxEase.sineInOut});
+			FlxTween.tween(scoreText, {alpha: 0}, 1.5, {ease: FlxEase.sineInOut});
+			FlxTween.tween(diffText, {alpha: 0}, 1.5, {ease: FlxEase.sineInOut});
+			FlxTween.tween(songText2, {alpha: 0}, 1.5, {ease: FlxEase.sineInOut});
+			freeplayMusic.fadeOut();
+
+			new flixel.util.FlxTimer().start(freeplayMenuList == 2 ? 0.0001 : 1.5, function(e)
 			{
 				LoadingState.loadAndSwitchState(new PlayState());
 			});

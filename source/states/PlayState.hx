@@ -10159,9 +10159,9 @@ class PlayState extends MusicBeatState
 				}
 				if (curBeat >= 64 && curBeat <= 191 || curBeat >= 256 && curBeat <= 319)
 				{
-					FlxG.camera.zoom += 0.07;
-					PlayState.camHUD.zoom += 0.06;
-					PlayState.camNotes.zoom += 0.06;
+					FlxG.camera.zoom += 0.015;
+					PlayState.camHUD.zoom += 0.03;
+					PlayState.camNotes.zoom += 0.03;
 				}
 
 			case 'Mercy Legacy':
