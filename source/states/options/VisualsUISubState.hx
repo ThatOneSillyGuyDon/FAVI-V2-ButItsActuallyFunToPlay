@@ -40,6 +40,22 @@ class VisualsUISubState extends BaseOptionsMenu
 			true);
 		addOption(option);
 
+		var option:Option = new Option('Shaders', //Name
+		'If unchecked, disables shaders.\nIt\'s used for some visual effects, and also CPU intensive for weaker PCs.', //Description
+		'shaders', //Save data variable name
+		'bool', //Variable type
+		true); //Default value
+	addOption(option);
+
+	var option:Option = new Option('Anti-Aliasing',
+	'If unchecked, disables anti-aliasing, increases performance\nat the cost of sharper visuals.',
+	'globalAntialiasing',
+	'bool',
+	true);
+option.showBoyfriend = true;
+option.onChange = onChangeAntiAliasing; //Changing onChange is only needed if you want to make a special interaction after it changes the value
+addOption(option);
+
 		var option:Option = new Option('Camera Zooms',
 			"If unchecked, the camera won't zoom in on a beat hit.",
 			'camZooms',
@@ -93,4 +109,16 @@ class VisualsUISubState extends BaseOptionsMenu
 			Main.fpsVar.visible = ClientPrefs.showFPS;
 	}
 	#end
+
+	function onChangeAntiAliasing()
+		{
+			for (sprite in members)
+			{
+				var sprite:Dynamic = sprite; //Make it check for FlxSprite instead of FlxBasic
+				var sprite:FlxSprite = sprite; //Don't judge me ok
+				if(sprite != null && (sprite is FlxSprite) && !(sprite is FlxText)) {
+					sprite.antialiasing = ClientPrefs.globalAntialiasing;
+				}
+			}
+		}
 }

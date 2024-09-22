@@ -56,6 +56,7 @@ class CreditsMenu extends MusicBeatState
 
 		background = new FlxSprite().loadGraphic(Paths.image('$path/background'));
 		background.screenCenter();
+		background.antialiasing = ClientPrefs.globalAntialiasing;
 		add(background);
 
 		// thank you shadow mario fnf
@@ -64,42 +65,50 @@ class CreditsMenu extends MusicBeatState
 		backdrop.alpha = 0;
 		backdrop.setGraphicSize(Std.int(backdrop.width * 0.6));
 		FlxTween.tween(backdrop, {alpha: 1}, 0.5, {ease: FlxEase.quadOut});
+		backdrop.antialiasing = ClientPrefs.globalAntialiasing;
 		add(backdrop);
 
 		daStrip = new FlxSprite().loadGraphic(Paths.image('$path/filmstrip'));
 		daStrip.screenCenter();
 		daStrip.setGraphicSize(Std.int(daStrip.width * 0.8));
+		daStrip.antialiasing = ClientPrefs.globalAntialiasing;
 		add(daStrip);
 
 		box = new FlxSprite().loadGraphic(Paths.image('$path/box'));
 		box.screenCenter().x -= 80;
 		box.setGraphicSize(Std.int(box.width * 0.6));
+		box.antialiasing = ClientPrefs.globalAntialiasing;
 		add(box);
 
 		teelSquares = new FlxSprite().loadGraphic(Paths.image('$path/teelbeSpecial'));
 		teelSquares.screenCenter().x -= 80;
 		teelSquares.setGraphicSize(Std.int(box.width * 0.6));
-		teelSquares.visible = false;
+		teelSquares.alpha = 0;
+		teelSquares.antialiasing = ClientPrefs.globalAntialiasing;
 		add(teelSquares);
 
 		creditDescText = new FlxText(FlxG.width * 0.52, FlxG.height * 0.6, 500, creditArray[curSelected][3]);
 		creditDescText.setFormat(Paths.font('disneyFreeplayFont.ttf'), 40, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
 		creditDescText.borderSize = 1.3;
+		creditDescText.antialiasing = ClientPrefs.globalAntialiasing;
 		add(creditDescText);
 
 		creditNameText = new FlxText(FlxG.width * 0.22, FlxG.height * 0.3, FlxG.width, creditArray[curSelected][0]);
 		creditNameText.setFormat(Paths.font('Oceanic_Cocktail_Demo.otf'), 70, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
 		creditNameText.borderSize = 1.3;
+		creditNameText.antialiasing = ClientPrefs.globalAntialiasing;
 		add(creditNameText);
 
 		creditWorkText = new FlxText(FlxG.width * 0.52, FlxG.height * 0.41, 500, creditArray[curSelected][2]);
 		creditWorkText.setFormat(Paths.font('MagicOwlFont.otf'), 30, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
 		creditWorkText.borderSize = 1.3;
+		creditWorkText.antialiasing = ClientPrefs.globalAntialiasing;
 		add(creditWorkText);
 
 		creditIconSprite = new FlxSprite(creditArray[curSelected][4],
 			creditArray[curSelected][5]).loadGraphic(Paths.image('$path/icons/${creditArray[curSelected][1]}'));
 		creditIconSprite.setGraphicSize(Std.int(creditIconSprite.width * creditArray[curSelected][6]));
+		creditIconSprite.antialiasing = ClientPrefs.globalAntialiasing;
 		add(creditIconSprite);
 
 		super.create();
@@ -133,7 +142,7 @@ class CreditsMenu extends MusicBeatState
 			add(grain);
 		}
 
-		changeSelection(0);
+		changeSelection();
 	}
 
 	var shaderTime:Float = 0;
@@ -144,14 +153,15 @@ class CreditsMenu extends MusicBeatState
 
 		// dont mind me adding this funny
 		// yes i used the numbers because why not
-		if (curSelected == 8)
-			FlxG.camera.shake(0.01);
+		FlxG.camera.shake(curSelected == 8 ? 0.01 : 0);
 
-		shaderTime += elapsed;
+		teelSquares.alpha = FlxMath.lerp(creditArray[curSelected][0].toLowerCase() == "teelbe" ? FlxG.random.float(.2, 1) : 0, teelSquares.alpha, .85);
+
+		Conductor.songPosition = FlxG.sound.music.time;
 
 		if (ClientPrefs.shaders)
 		{
-			cool_1980_shader.setFloat('iTime', shaderTime);
+			cool_1980_shader.setFloat('iTime', Conductor.songPosition / 1000);
 		}
 
 		if (controls.UI_UP_P)
@@ -205,11 +215,6 @@ class CreditsMenu extends MusicBeatState
 		creditIconSprite.setPosition(creditArray[curSelected][4], creditArray[curSelected][5]);
 
 		FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'), 0.6);
-
-		if (creditArray[curSelected][0].toLowerCase() == "teelbe")
-			teelSquares.visible = true;
-		else
-			teelSquares.visible = false;
 
 		reloadText(creditArray[curSelected][7]);
 

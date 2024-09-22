@@ -279,10 +279,12 @@ class TitleState extends MusicBeatState
 		titleText = new FlxText(24, 600, 1200, "Click Anywhere Or Press Enter to Start", 96);
 		titleText.setFormat(Paths.font('MagicOwlFont.otf'), 60, FlxColor.fromRGB(255, 255, 255), CENTER, OUTLINE, FlxColor.BLACK);
 		titleText.borderSize = 1.5;
+		titleText.antialiasing = ClientPrefs.globalAntialiasing;
 		add(titleText);
 
 		var logo:FlxSprite = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/logo'));
 		logo.screenCenter();
+		logo.antialiasing = ClientPrefs.globalAntialiasing;
 		logo.antialiasing = true;
 
 		credGroup = new FlxGroup();

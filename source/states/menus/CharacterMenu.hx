@@ -1,7 +1,6 @@
 package states.menus;
 
 import flixel.tweens.FlxTween;
-import base.dependency.Discord;
 import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxCamera;
@@ -50,48 +49,57 @@ class CharacterMenu extends MusicBeatState
         var bg = new FlxSprite().loadGraphic(Paths.image('Background', path));
         bg.screenCenter();
         bg.setGraphicSize(Std.int(bg.width * .9));
+        bg.antialiasing = ClientPrefs.globalAntialiasing;
         add(bg);
 
         book1 = new FlxSprite().loadGraphic(Paths.image('Book (1)', path));
         book1.screenCenter().x -= 300;
         book1.setGraphicSize(Std.int(book1.width * .75));
+        book1.antialiasing = ClientPrefs.globalAntialiasing;
         add(book1);
 
         book2 = new FlxSprite().loadGraphic(Paths.image('Book (2)', path));
         book2.screenCenter().x += 400;
         book2.setGraphicSize(Std.int(book2.width * .75));
+        book2.antialiasing = ClientPrefs.globalAntialiasing;
         add(book2);
 
         character = new FlxSprite().loadGraphic(Paths.image('characters/isolatedMick', path));
         character.screenCenter().x -= 300;
         character.setGraphicSize(Std.int(character.width * .75));
         character.angle = 1;
+        character.antialiasing = ClientPrefs.globalAntialiasing;
         add(character);
         
         var omgIsThatRaiperStyleVFX = new FlxSprite().loadGraphic(Paths.image('Spot Light', path));
         omgIsThatRaiperStyleVFX.screenCenter();
         omgIsThatRaiperStyleVFX.setGraphicSize(Std.int(omgIsThatRaiperStyleVFX.width * .76));
+        omgIsThatRaiperStyleVFX.antialiasing = ClientPrefs.globalAntialiasing;
         add(omgIsThatRaiperStyleVFX);
 
         var omgIsThatRaiperStyleVFX = new FlxSprite().loadGraphic(Paths.image('Particles of Light', path));
         omgIsThatRaiperStyleVFX.screenCenter();
         omgIsThatRaiperStyleVFX.setGraphicSize(Std.int(omgIsThatRaiperStyleVFX.width * .76));
+        omgIsThatRaiperStyleVFX.antialiasing = ClientPrefs.globalAntialiasing;
         add(omgIsThatRaiperStyleVFX);
 
         ui = new FlxSprite().loadGraphic(Paths.image('UI', path));
         ui.screenCenter();
         ui.setGraphicSize(Std.int(ui.width * .76));
         ui.cameras = [hud];
+        ui.antialiasing = ClientPrefs.globalAntialiasing;
         add(ui);
 
         name = new FlxText(0, 10).setFormat(Paths.font('infoMenu'), 30, FlxColor.WHITE, LEFT, OUTLINE, FlxColor.BLACK);
         name.screenCenter(X).x -= 150;
         name.camera = hud;
+        name.antialiasing = ClientPrefs.globalAntialiasing;
         add(name);
 
         control = new FlxSprite(0, FlxG.height * .92).loadGraphic(Paths.image('_Help_ Buttons', path));
         control.screenCenter(X);
         control.camera = hud;
+        control.antialiasing = ClientPrefs.globalAntialiasing;
         add(control);
 
         super.create();
@@ -108,11 +116,11 @@ class CharacterMenu extends MusicBeatState
     override public function update(elapsed:Float) {
         super.update(elapsed);
 
-        if (Controls.getPressEvent('back')) Main.switchState(this, new MainMenu());
+        if (controls.BACK) MusicBeatState.switchState(new MainMenu());
 
-        if (Controls.getPressEvent("ui_left"))
+        if (controls.UI_LEFT_P)
 			changeSelection(-1);
-		if (Controls.getPressEvent("ui_right"))
+		if (controls.UI_RIGHT_P)
 			changeSelection(1);
 
         if (FlxG.keys.justPressed.F5) FlxG.resetState();

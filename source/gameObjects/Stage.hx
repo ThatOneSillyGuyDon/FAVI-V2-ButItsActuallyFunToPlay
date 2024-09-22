@@ -203,6 +203,7 @@ class Stage extends FlxTypedGroup<FlxBasic>
 				fireThing.animation.addByPrefix('burning', 'delusional-fire fire-idle', 16, true);
 				fireThing.scrollFactor.set(0.8, 0.8);
 				add(fireThing);
+				fireThing.antialiasing = ClientPrefs.globalAntialiasing;
 				fireThing.animation.play('burning');
 				
 				floor = new FlxSprite(-20, 200).loadGraphic(Paths.image('street', pathWay));
@@ -259,12 +260,14 @@ class Stage extends FlxTypedGroup<FlxBasic>
 					fireThing2.scrollFactor.set(0.8, 0.8);
 					fireThing2.blend = EngineTools.returnBlendMode('add');
 					add(fireThing2);
+					fireThing.antialiasing = ClientPrefs.globalAntialiasing;
 					fireThing2.animation.play('burning');
 
 					streetRuins = new FlxSprite(-20, 200).loadGraphic(Paths.image('streetDestroyed', pathWay));
 					streetRuins.antialiasing = true;
 					streetRuins.scale.set(2.5, 2.3);
 					streetRuins.scrollFactor.set(1, 1);
+					streetRuins.antialiasing = ClientPrefs.globalAntialiasing;
 					add(streetRuins);
 
 					if (!lowQuality)
@@ -282,6 +285,7 @@ class Stage extends FlxTypedGroup<FlxBasic>
 							smoke.alpha = 0.001;
 							smoke.blend = EngineTools.returnBlendMode('add');
 							smoke.animation.play('smoke');
+							smoke.antialiasing = ClientPrefs.globalAntialiasing;
 							switch (smoke.ID)
 							{
 								case 0: smoke.x -= 620;
@@ -305,6 +309,7 @@ class Stage extends FlxTypedGroup<FlxBasic>
 							smoke.alpha = 0.001;
 							smoke.blend = EngineTools.returnBlendMode('add');
 							smoke.animation.play('smoke');
+							smoke.antialiasing = ClientPrefs.globalAntialiasing;
 							switch (smoke.ID)
 							{
 								case 0: smoke.x -= 620;
@@ -324,6 +329,7 @@ class Stage extends FlxTypedGroup<FlxBasic>
 						fireForeground.blend = EngineTools.returnBlendMode('add');
 						foreground.add(fireForeground);
 						fireForeground.animation.play('burningShit');
+						fireForeground.antialiasing = ClientPrefs.globalAntialiasing;
 
 						/*fireParticle = new FlxEmitter(-2080.5, 2150.4);
 						fireParticle.launchMode = 'square';
@@ -404,6 +410,7 @@ class Stage extends FlxTypedGroup<FlxBasic>
 						rain.scale.set(2, 2);
 						rain.alpha = 0.0001;
 						foreground.add(rain);
+						rain.antialiasing = ClientPrefs.globalAntialiasing;
 						rain.animation.play('drippin');
 
 						if (PlayState.SONG.song == 'Delusion')
@@ -437,17 +444,20 @@ class Stage extends FlxTypedGroup<FlxBasic>
 						goofyBG.scrollFactor.set(0.7, 0.7);
 						goofyBG.scale.set(1.2, 1.2);
 						goofyBG.screenCenter();
+						goofyBG.antialiasing = ClientPrefs.globalAntialiasing;
 						add(goofyBG);
 					}
 
 				treesBack = new FlxSprite(-550, -650).loadGraphic(Paths.image('treesBack', 'data/stages/forestNew/images'));
 				treesBack.scale.set(1.3, 1.2);
 				treesBack.scrollFactor.set(1, 0.8);
+				treesBack.antialiasing = ClientPrefs.globalAntialiasing;
 				add(treesBack);
 
 				goofyStreet = new FlxSprite(-700, -950).loadGraphic(Paths.image('ground', 'data/stages/forestNew/images'));
 				goofyStreet.scale.set(2, 1.9);
 				goofyStreet.scrollFactor.set(1, 1);
+				goofyStreet.antialiasing = ClientPrefs.globalAntialiasing;
 				add(goofyStreet);
 
 				if(!lowQuality)
@@ -456,17 +466,20 @@ class Stage extends FlxTypedGroup<FlxBasic>
 						treesFront.scale.set(1.5, 1.5);
 						treesFront.scrollFactor.set(1.2, 1.2);
 						foreground.add(treesFront);
+						treesFront.antialiasing = ClientPrefs.globalAntialiasing;
 					}
 			case 'forestOld':
 				spawnGirlfriend = false;
 
 				var forest:FlxSprite = new FlxSprite(-180, -350).loadGraphic(Paths.image('forest', 'data/stages/forestOld'));
+				forest.antialiasing = ClientPrefs.globalAntialiasing;
 				add(forest);
 			case 'theLoop':
 				spawnGirlfriend = false;
 				PlayState.defaultCamZoom = 0.85;
 			
 				var street:FlxSprite = new FlxSprite(-500, -700).loadGraphic(Paths.image('Mickeybg', 'data/stages/theLoop/images'));
+				street.antialiasing = ClientPrefs.globalAntialiasing;
 				add(street);
 			
 				if(!lowQuality)
@@ -478,6 +491,7 @@ class Stage extends FlxTypedGroup<FlxBasic>
 						grainstuff.cameras = [PlayState.camHUD];
 						grainstuff.scale.set(3, 3);
 						grainstuff.screenCenter();
+						grainstuff.antialiasing = ClientPrefs.globalAntialiasing;
 						add(grainstuff);
 					}
 			case 'war':
@@ -486,32 +500,38 @@ class Stage extends FlxTypedGroup<FlxBasic>
 			
 				var sky = new FlxSprite(-1280 * PlayState.defaultCamZoom, -720 * PlayState.defaultCamZoom, Paths.image('sky', defaultPath));
 				sky.scrollFactor.set(.07, .05);
+				sky.antialiasing = ClientPrefs.globalAntialiasing;
 				add(sky);
 			
 				var sun = new FlxSprite(-1280 * PlayState.defaultCamZoom, -720 * PlayState.defaultCamZoom, Paths.image('sun', defaultPath));
 				sun.scrollFactor.set(.13, .09);
+				sun.antialiasing = ClientPrefs.globalAntialiasing;
 				add(sun);
 			
 				var bg = new FlxSprite(-1280 * PlayState.defaultCamZoom, -720 * PlayState.defaultCamZoom, Paths.image('bg', defaultPath));
 				bg.scrollFactor.set(.32, .27);
+				bg.antialiasing = ClientPrefs.globalAntialiasing;
 				add(bg);
 			
 				var semibg = new FlxSprite(-1280 * PlayState.defaultCamZoom, -720 * PlayState.defaultCamZoom, Paths.image('semibackground', defaultPath));
 				semibg.scrollFactor.set(.52, .48);
 				semibg.scale.set(1.23, 1.23);
 				semibg.updateHitbox();
+				semibg.antialiasing = ClientPrefs.globalAntialiasing;
 				add(semibg);
 			
 				var things = new FlxSprite(-1280 * PlayState.defaultCamZoom, -720 * PlayState.defaultCamZoom, Paths.image('things', defaultPath));
 				things.scrollFactor.set(.73, .64);
 				things.scale.set(1.25, 1.25);
 				things.updateHitbox();
+				things.antialiasing = ClientPrefs.globalAntialiasing;
 				add(things);
 			
 				var ground = new FlxSprite(-1280 * PlayState.defaultCamZoom, -720 * PlayState.defaultCamZoom, Paths.image('ground', defaultPath));
 				ground.scrollFactor.set(1, 1);
 				ground.scale.set(1.35, 1.35);
 				ground.updateHitbox();
+				ground.antialiasing = ClientPrefs.globalAntialiasing;
 				add(ground);
 			
 				spawnGirlfriend = false;
@@ -522,29 +542,35 @@ class Stage extends FlxTypedGroup<FlxBasic>
 				sky.scrollFactor.set(.05, .05);
 				sky.scale.set(.75, .75);
 				sky.updateHitbox();
+				sky.antialiasing = ClientPrefs.globalAntialiasing;
 				add(sky);
 			
 				var floor = new FlxSprite(-1280, -720, Paths.image('floor', defaultPath));
 				floor.scale.set(1.1, 1.1);
+				floor.antialiasing = ClientPrefs.globalAntialiasing;
 				add(floor);
 			
 				var tent = new FlxSprite(-1280, -720, Paths.image('tent', defaultPath));
+				tent.antialiasing = ClientPrefs.globalAntialiasing;
 				add(tent);
 				
 				var tentsfront = new FlxSprite(-1280 * 1.2, -720, Paths.image('tentsfront', defaultPath));
 				tentsfront.scrollFactor.set(1.25, 1.25);
 				tentsfront.scale.set(1.15, 1.15);
+				tentsfront.antialiasing = ClientPrefs.globalAntialiasing;
 				foreground.add(tentsfront);
 			case 'treasureIsland':
 				spawnGirlfriend = false;
 
 				mascotRoom = new FlxSprite(0, 0).loadGraphic(Paths.image("mascotRoom", "data/stages/treasureIsland/images"));
 				mascotRoom.scale.set(1.4, 1.4);
+				mascotRoom.antialiasing = ClientPrefs.globalAntialiasing;
 				add(mascotRoom);
 
 				mascotRoomPOV = new FlxSprite(-500, 0).loadGraphic(Paths.image("mascotRoomPOV", "data/stages/treasureIsland/images"));
 				mascotRoomPOV.scale.set(1.4, 1.4);
 				mascotRoomPOV.alpha = 0.0001;
+				mascotRoomPOV.antialiasing = ClientPrefs.globalAntialiasing;
 				add(mascotRoomPOV);
 			case 'clubhouse':
 				PlayState.defaultCamZoom = 1.25;
@@ -558,6 +584,7 @@ class Stage extends FlxTypedGroup<FlxBasic>
 				clubhouse.updateHitbox();
 				clubhouse.antialiasing = true;
 				clubhouse.scrollFactor.set(1, 1);
+				clubhouse.antialiasing = ClientPrefs.globalAntialiasing;
 				add(clubhouse);
 
 				var vignette:FlxSprite = new FlxSprite(-250, -140).loadGraphic(Paths.image('vignetteOverlay', 'data/stages/clubhouse/images'));
@@ -566,12 +593,14 @@ class Stage extends FlxTypedGroup<FlxBasic>
 				vignette.antialiasing = true;
 				vignette.scrollFactor.set();
 				vignette.active = false;
+				vignette.antialiasing = ClientPrefs.globalAntialiasing;
 				add(vignette);
 			case 'desktop':
 				PlayState.defaultCamZoom = 0.9;
 
 				var desktopThing:FlxSprite = new FlxSprite(-500, -100).loadGraphic(Paths.image('desktop', 'data/stages/desktop'));
 				desktopThing.scale.set(1.3, 1);
+				desktopThing.antialiasing = ClientPrefs.globalAntialiasing;
 				add(desktopThing);
 			case 'forbiddenRealm':
 				PlayState.defaultCamZoom = 0.8;
@@ -589,29 +618,32 @@ class Stage extends FlxTypedGroup<FlxBasic>
 				fuckingsquares.antialiasing = false;
 				fuckingsquares.scrollFactor.set(1, 1);
 				fuckingsquares.active = false;
+				fuckingsquares.antialiasing = ClientPrefs.globalAntialiasing;
 				add(fuckingsquares);
 
 				var greyParticles:FlxEmitter = new FlxEmitter(-2080.5, 650.4);
-					greyParticles.launchMode = SQUARE;
-					greyParticles.velocity.set(-50, -200, 50, -600, -90, 0, 90, -600);
-					greyParticles.scale.set(4, 4, 4, 4, 0, 0, 0, 0);
-					greyParticles.drag.set(0, 0, 0, 0, 5, 5, 10, 10);
-					greyParticles.width = 4787.45;
-					greyParticles.alpha.set(1, 1);
-					greyParticles.lifespan.set(1.9, 4.9);
-					greyParticles.loadParticles(Paths.image('greyParticle', 'data/stages/forbiddenRealm/images'), 500, 16, true);
-					greyParticles.start(false, FlxG.random.float(.0521, .1060), 1000000);
+				greyParticles.launchMode = SQUARE;
+				greyParticles.velocity.set(-50, -200, 50, -600, -90, 0, 90, -600);
+				greyParticles.scale.set(4, 4, 4, 4, 0, 0, 0, 0);
+				greyParticles.drag.set(0, 0, 0, 0, 5, 5, 10, 10);
+				greyParticles.width = 4787.45;
+				greyParticles.alpha.set(1, 1);
+				greyParticles.lifespan.set(1.9, 4.9);
+				greyParticles.loadParticles(Paths.image('greyParticle', 'data/stages/forbiddenRealm/images'), 500, 16, true);
+				greyParticles.start(false, FlxG.random.float(.0521, .1060), 1000000);
+				greyParticles.antialiasing = ClientPrefs.globalAntialiasing;
 
-					var blackParticles:FlxEmitter = new FlxEmitter(-2080.5, 912.4);
-					blackParticles.launchMode = SQUARE;
-					blackParticles.velocity.set(-70, -220, 70, -620, -110, 20, 110, -620);
-					blackParticles.scale.set(6, 6, 6, 6, 2, 2, 2, 2);
-					blackParticles.drag.set(2, 2, 2, 2, 7, 7, 12, 12);
-					blackParticles.width = 4787.45;
-					blackParticles.alpha.set(1, 1);
-					blackParticles.lifespan.set(1.9, 4.9);
-					blackParticles.loadParticles(Paths.image('particleBlack', 'data/stages/forbiddenRealm/images'), 500, 16, true);
-					blackParticles.start(false, FlxG.random.float(.0821, .1460), 1000000);
+				var blackParticles:FlxEmitter = new FlxEmitter(-2080.5, 912.4);
+				blackParticles.launchMode = SQUARE;
+				blackParticles.velocity.set(-70, -220, 70, -620, -110, 20, 110, -620);
+				blackParticles.scale.set(6, 6, 6, 6, 2, 2, 2, 2);
+				blackParticles.drag.set(2, 2, 2, 2, 7, 7, 12, 12);
+				blackParticles.width = 4787.45;
+				blackParticles.alpha.set(1, 1);
+				blackParticles.lifespan.set(1.9, 4.9);
+				blackParticles.loadParticles(Paths.image('particleBlack', 'data/stages/forbiddenRealm/images'), 500, 16, true);
+				blackParticles.start(false, FlxG.random.float(.0821, .1460), 1000000);
+				blackParticles.antialiasing = ClientPrefs.globalAntialiasing;
 				
 				mickeyEmitter = new FlxEmitter(-2099.8, 1620.4);
 				for (i in 0 ... 100)
@@ -622,6 +654,7 @@ class Stage extends FlxTypedGroup<FlxBasic>
 					mickeyParticle.animation.play('mickParticle idle');
 					mickeyParticle.exists = false;
 					mickeyParticle.animation.curAnim.curFrame = FlxG.random.int(0, 3);
+					mickeyParticle.antialiasing = ClientPrefs.globalAntialiasing;
 					mickeyEmitter.add(mickeyParticle);
 				}
 				mickeyEmitter.launchMode = SQUARE;
@@ -633,6 +666,7 @@ class Stage extends FlxTypedGroup<FlxBasic>
 				mickeyEmitter.lifespan.set(4, 4.5);
 				mickeyEmitter.start(false, FlxG.random.float(.125, .287), 100000);
 				mickeyEmitter.emitting = false;
+				mickeyEmitter.antialiasing = ClientPrefs.globalAntialiasing;
 				
 				whiteBG = new FlxSprite(-800, -200).makeGraphic(1, 1, 0xFFFFFFFF);
 				whiteBG.scale.set(FlxG.width, FlxG.height);
@@ -678,28 +712,41 @@ class Stage extends FlxTypedGroup<FlxBasic>
 
 				vault = new FlxSprite(-200, -100).loadGraphic(Paths.image('vault', 'data/stages/vaultRoom/images'));
 				vault.scale.set(2.45, 2.3);
+				vault.antialiasing = ClientPrefs.globalAntialiasing;
 				add(vault);
+
 				chains = new FlxSprite(-225, -100).loadGraphic(Paths.image('chains1', 'data/stages/vaultRoom/images'));
 				chains.scale.set(2.5, 2.3);
 				chains.scrollFactor.set(1.2, 1.25);
+				chains.antialiasing = ClientPrefs.globalAntialiasing;
+
 				chains2 = new FlxSprite(-225, -100).loadGraphic(Paths.image('chains2', 'data/stages/vaultRoom/images'));
 				chains2.scale.set(2.5, 2.3);
 				chains2.scrollFactor.set(1.1, 1.2);
+				chains2.antialiasing = ClientPrefs.globalAntialiasing;
+
 				chains3 = new FlxSprite(-225, -100).loadGraphic(Paths.image('chains3', 'data/stages/vaultRoom/images'));
 				chains3.scale.set(2.5, 2.3);
 				chains3.scrollFactor.set(1, 1.15);
+				chains3.antialiasing = ClientPrefs.globalAntialiasing;
+
 				light = new FlxSprite(-200, -100).loadGraphic(Paths.image('lightSource', 'data/stages/vaultRoom/images'));
 				light.blend = DIFFERENCE;
 				light.alpha = 0.37;
 				light.scrollFactor.set(0.95, 1);
 				light.scale.set(2.45, 2.3);
+				light.antialiasing = ClientPrefs.globalAntialiasing;
+
 				flair = new FlxSprite(-200, -100).loadGraphic(Paths.image('lightFlair', 'data/stages/vaultRoom/images'));
 				flair.blend = SCREEN;
 				flair.alpha = 0.6;
 				flair.scrollFactor.set(1.4, 1.25);
 				flair.scale.set(2.5, 2.4);
+				flair.antialiasing = ClientPrefs.globalAntialiasing;
+
 				thingy = new FlxSprite(-200, -100).loadGraphic(Paths.image('darkness', 'data/stages/vaultRoom/images'));
 				thingy.scale.set(2.45, 2.3);
+				thingy.antialiasing = ClientPrefs.globalAntialiasing;
 
 				foreground.add(chains3);
 				foreground.add(chains2);
@@ -712,33 +759,45 @@ class Stage extends FlxTypedGroup<FlxBasic>
 				vaultI.scale.set(2.45, 2.3);
 				vaultI.visible = false;
 				add(vaultI);
+
 				chainsI = new FlxSprite(-225, -100).loadGraphic(Paths.image('chainsI1', 'data/stages/vaultRoom/images'));
 				chainsI.scale.set(2.5, 2.3);
 				chainsI.scrollFactor.set(1.2, 1.25);
 				chainsI.visible = false;
+				chainsI.antialiasing = ClientPrefs.globalAntialiasing;
+
 				chainsI2 = new FlxSprite(-225, -100).loadGraphic(Paths.image('chainsI2', 'data/stages/vaultRoom/images'));
 				chainsI2.scale.set(2.5, 2.3);
 				chainsI2.scrollFactor.set(1.1, 1.2);
 				chainsI2.visible = false;
+				chainsI2.antialiasing = ClientPrefs.globalAntialiasing;
+
 				chainsI3 = new FlxSprite(-225, -100).loadGraphic(Paths.image('chainsI3', 'data/stages/vaultRoom/images'));
 				chainsI3.scale.set(2.5, 2.3);
 				chainsI3.scrollFactor.set(1, 1.15);
 				chainsI3.visible = false;
+				chainsI3.antialiasing = ClientPrefs.globalAntialiasing;
+
 				lightI = new FlxSprite(-200, -100).loadGraphic(Paths.image('lightInvert', 'data/stages/vaultRoom/images'));
 				lightI.blend = DIFFERENCE;
 				lightI.alpha = 0.37;
 				lightI.scrollFactor.set(0.95, 1);
 				lightI.scale.set(2.45, 2.3);
 				lightI.visible = false;
+				lightI.antialiasing = ClientPrefs.globalAntialiasing;
+
 				flairI = new FlxSprite(-200, -100).loadGraphic(Paths.image('flairInvert', 'data/stages/vaultRoom/images'));
 				flairI.blend = SCREEN;
 				flairI.alpha = 0.6;
 				flairI.scrollFactor.set(1.4, 1.25);
 				flairI.scale.set(2.5, 2.4);
 				flairI.visible = false;
+				flairI.antialiasing = ClientPrefs.globalAntialiasing;
+
 				thingyI = new FlxSprite(-200, -100).loadGraphic(Paths.image('brighter', 'data/stages/vaultRoom/images'));
 				thingyI.scale.set(2.45, 2.3);
 				thingyI.visible = false;
+				thingyI.antialiasing = ClientPrefs.globalAntialiasing;
 
 				foreground.add(chainsI3);
 				foreground.add(chainsI2);
@@ -777,6 +836,7 @@ class Stage extends FlxTypedGroup<FlxBasic>
 				greaterPiss.loadGraphic(Paths.image('inkWaltBG', 'data/stages/waltRoom/images'));
 				greaterPiss.scale.set(1.7, 1.7);
 				greaterPiss.alpha = 0;
+				greaterPiss.antialiasing = ClientPrefs.globalAntialiasing;
 				add(greaterPiss);
 
 				if(!lowQuality)
@@ -787,6 +847,7 @@ class Stage extends FlxTypedGroup<FlxBasic>
 						vignette.antialiasing = true;
 						vignette.scrollFactor.set();
 						vignette.active = false;
+						vignette.antialiasing = ClientPrefs.globalAntialiasing;
 						add(vignette);
 					}
 			case 'trance':
@@ -797,6 +858,7 @@ class Stage extends FlxTypedGroup<FlxBasic>
 				bg.frames = Paths.getSparrowAtlas('background', "data/stages/trance");
 				bg.animation.addByPrefix("lmao", "background lmao", 24, true);
 				bg.scale.set(5, 5);
+				bg.antialiasing = ClientPrefs.globalAntialiasing;
 				add(bg);
 				bg.animation.play("lmao");
 
@@ -817,12 +879,14 @@ class Stage extends FlxTypedGroup<FlxBasic>
 				bg1.scale.set(7, 7);
 				bg1.antialiasing = false;
 				bg1.animation.play('idle');
+				bg1.antialiasing = ClientPrefs.globalAntialiasing;
 				add(bg1);
 
 				bg2 = new FlxSprite(0, 50).loadGraphic(Paths.image('relapse2', 'data/stages/apartment/images'));
 				bg2.scale.set(7, 7);
 				bg2.antialiasing = false;
 				bg2.visible = false;
+				bg2.antialiasing = ClientPrefs.globalAntialiasing;
 				add(bg2);
 			case 'staticVoid':
 				spawnGirlfriend = false;
@@ -843,6 +907,7 @@ class Stage extends FlxTypedGroup<FlxBasic>
 				datTV.animation.play('idle');
 				datTV.scale.set(0.6, 0.6);
 				datTV.alpha = 0.001;
+				datTV.antialiasing = ClientPrefs.globalAntialiasing;
 				add(datTV);
 
 				if(!lowQuality)
@@ -885,16 +950,19 @@ class Stage extends FlxTypedGroup<FlxBasic>
 
 				var line:FlxSprite = new FlxSprite(-80, 0).loadGraphic(Paths.image('theLine', 'data/stages/fuckingLine'));
 				line.scale.set(1.3, 1.3);
+				line.antialiasing = ClientPrefs.globalAntialiasing;
 				add(line);
 			case 'alleyway' | 'ddStage':
 				spawnGirlfriend = false;   
 
 				bg = new FlxSprite(-600, 130).loadGraphic(Paths.image("dd-bg", "data/stages/ddStage/images"));
 				bg.scale.set(0.75, 0.75);
+				bg.antialiasing = ClientPrefs.globalAntialiasing;
 				add(bg);
 			
 				overlay = new FlxSprite(-640, 170).loadGraphic(Paths.image("dd-overlay", "data/stages/ddStage/images"));
 				overlay.scrollFactor.set(1.15, 1.15);
+				overlay.antialiasing = ClientPrefs.globalAntialiasing;
 				foreground.add(overlay);
 				
 				gradient = new FlxSprite().loadGraphic(Paths.image('UI/gimmicks/gradient'));
@@ -902,6 +970,7 @@ class Stage extends FlxTypedGroup<FlxBasic>
 				gradient.screenCenter();
 				gradient.scale.set(0.5, 0.5);
 				gradient.alpha = 0;
+				gradient.antialiasing = ClientPrefs.globalAntialiasing;
 				add(gradient);
 			default:
 				curStage = 'stage';
@@ -1554,6 +1623,7 @@ class Stage extends FlxTypedGroup<FlxBasic>
 				tumbleWeed.scale.set(0.6, 0.6);
 				FlxTween.tween(tumbleWeed, {angle: -360}, 0.5, {type: EngineTools.returnTweenType('looping')});
 				foreground.add(tumbleWeed);
+				tumbleWeed.antialiasing = ClientPrefs.globalAntialiasing;
 		
 				FlxTween.tween(tumbleWeed, {y: 825}, 0.1, {ease: EngineTools.returnTweenEase('sineInOut'), type: EngineTools.returnTweenType('pingpong')});
 		
@@ -1567,6 +1637,7 @@ class Stage extends FlxTypedGroup<FlxBasic>
 				tumbleWeed = new FlxSprite(1800, 600).loadGraphic(Paths.image('Tumble_' + FlxG.random.int(0,1), pathWay));
 				FlxTween.tween(tumbleWeed, {angle: -360}, 1.7, {type: EngineTools.returnTweenType('looping')});
 				foreground.add(tumbleWeed);
+				tumbleWeed.antialiasing = ClientPrefs.globalAntialiasing;
 		
 				FlxTween.tween(tumbleWeed, {y: 735}, 0.75, {ease: EngineTools.returnTweenEase('sineIn'), type: EngineTools.returnTweenType('pingpong')});
 		

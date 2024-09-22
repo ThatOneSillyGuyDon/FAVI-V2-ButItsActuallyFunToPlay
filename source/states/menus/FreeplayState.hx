@@ -247,24 +247,30 @@ class FreeplayState extends MusicBeatState
 		delutranceBg.animation.addByPrefix("lmao", "background lmao", 24, true);
 		delutranceBg.scale.set(5, 5);
 		delutranceBg.animation.play("lmao");
+		delutranceBg.antialiasing = ClientPrefs.globalAntialiasing;
 
 		if (freeplayMenuList != 2)
 		{
 			bgslider = new FlxSprite().loadGraphic(Paths.image(path + 'foreground-fp'));
+			bgslider.antialiasing = ClientPrefs.globalAntialiasing;
 			add(bgslider);
 
 			musicPlayer = new FlxSprite().loadGraphic(Paths.image(path + 'music-player'));
 			musicPlayer.blend = ADD;
+			musicPlayer.antialiasing = ClientPrefs.globalAntialiasing;
 			add(musicPlayer);
 
 			musicNotes = new FlxSprite().loadGraphic(Paths.image(path + 'music-notes'));
 			musicNotes.blend = ADD;
+			musicNotes.antialiasing = ClientPrefs.globalAntialiasing;
 			add(musicNotes);
 
 			arrows = new FlxSprite().loadGraphic(Paths.image(path + 'arrows'));
+			arrows.antialiasing = ClientPrefs.globalAntialiasing;
 			add(arrows);
 
 			disc = new FlxSprite().loadGraphic(Paths.image(path + 'disc'));
+			disc.antialiasing = ClientPrefs.globalAntialiasing;
 			add(disc);
 
 			bg.scale.set(0.78, 0.78);
@@ -332,11 +338,13 @@ class FreeplayState extends MusicBeatState
 				icon.x = 880;
 				icon.screenCenter(Y);
 				icon.setGraphicSize(Std.int(icon.width * 2.1));
+				icon.antialiasing = ClientPrefs.globalAntialiasing;
 				icon.x += 700;
 
 				songText2.x = icon.x - 130;
 				songText2.y = icon.y - 250;
 				songText2.alignment = CENTER;
+				songText2.antialiasing = ClientPrefs.globalAntialiasing;
 				songText2.y -= 300;
 			}
 			songText.targetY = i;
@@ -392,6 +400,9 @@ class FreeplayState extends MusicBeatState
 			freeplayCtrlTxt.setFormat(Paths.font('whiteDream.otf'), 20, FlxColor.WHITE, LEFT);
 			freeplayCtrlTxt.setBorderStyle(OUTLINE, FlxColor.BLACK, 8);
 			freeplayCtrlTxt.alpha = 0.0001;
+			freeplayCtrlTxt.antialiasing = ClientPrefs.globalAntialiasing;
+			diffText.antialiasing = ClientPrefs.globalAntialiasing;
+			scoreText.antialiasing = ClientPrefs.globalAntialiasing;
 			add(scoreBG);
 			add(diffText);
 			add(scoreText);
@@ -476,10 +487,13 @@ class FreeplayState extends MusicBeatState
 					gradient = new FlxSprite().loadGraphic(Paths.image('UI/gimmicks/gradient'));
 					gradient.screenCenter();
 					gradient.setGraphicSize(Std.int(gradient.width * 0.8));
+					gradient.alpha = .45;
+					gradient.antialiasing = ClientPrefs.globalAntialiasing;
 					add(gradient);
 	
 					coolFilter = new FlxSprite().loadGraphic(Paths.image(path + 'thing'));
 					coolFilter.screenCenter();
+					coolFilter.antialiasing = ClientPrefs.globalAntialiasing;
 					add(coolFilter);
 	
 					gradient.cameras = [camHUD];
