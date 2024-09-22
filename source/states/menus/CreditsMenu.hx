@@ -144,14 +144,8 @@ class CreditsMenu extends MusicBeatState
 
 		// dont mind me adding this funny
 		// yes i used the numbers because why not
-		if (curSelected == 7)
-		{
+		if (curSelected == 8)
 			FlxG.camera.shake(0.01);
-		}
-		else
-		{
-			
-		}
 
 		shaderTime += elapsed;
 
