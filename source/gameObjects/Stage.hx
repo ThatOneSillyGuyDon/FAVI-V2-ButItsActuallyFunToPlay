@@ -1043,7 +1043,7 @@ class Stage extends FlxTypedGroup<FlxBasic>
 					default: boyfriend.setPosition(275, 50);
 				}
 			case 'forestNew':
-				dad.setPosition(-320, 130);
+				dad.setPosition(-290, 90);
 				boyfriend.setPosition(850, 0);
 			case 'forestOld':
 				dad.setPosition(0, 0);

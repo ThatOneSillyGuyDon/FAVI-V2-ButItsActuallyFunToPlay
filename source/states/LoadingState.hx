@@ -49,7 +49,7 @@ class LoadingState extends MusicBeatState
 		loadingImage.loadGraphic(Paths.image("Funkin_avi/loadingScreen/placeholder"));
 		loadingImage.screenCenter();
 		loadingImage.antialiasing = ClientPrefs.globalAntialiasing;
-		add(loadingImage);
+		//add(loadingImage); for now
 
 		iconAnimated = new FlxSprite(0,0);
 		iconAnimated.antialiasing = ClientPrefs.globalAntialiasing;

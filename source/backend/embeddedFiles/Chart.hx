@@ -83960,8 +83960,8 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.05",
-						"0.08"
+						"0.015",
+						"0.03"
 					]
 				]
 			],
@@ -83970,8 +83970,8 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.1",
-						"0.1"
+						"0.015",
+						"0.03"
 					]
 				]
 			],
@@ -83980,7 +83980,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.05",
+						"0.015",
 						"0.08"
 					]
 				]
@@ -83990,8 +83990,8 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.1",
-						"0.1"
+						"0.015",
+						"0.03"
 					]
 				]
 			],
@@ -84000,7 +84000,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.05",
+						"0.015",
 						"0.08"
 					]
 				]
@@ -84010,8 +84010,8 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.1",
-						"0.1"
+						"0.015",
+						"0.03"
 					]
 				]
 			],
@@ -84030,8 +84030,8 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.1",
-						"0.1"
+						"0.015",
+						"0.03"
 					]
 				]
 			],
@@ -84696,7 +84696,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0",
-						"0.1"
+						"0.03"
 					]
 				]
 			],
@@ -84736,7 +84736,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0",
-						"0.1"
+						"0.03"
 					]
 				]
 			],
@@ -84776,7 +84776,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0",
-						"0.1"
+						"0.03"
 					]
 				]
 			],
@@ -84816,7 +84816,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0",
-						"0.1"
+						"0.03"
 					]
 				]
 			],
@@ -84856,7 +84856,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0",
-						"0.1"
+						"0.03"
 					]
 				]
 			],
@@ -84866,7 +84866,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0",
-						"0.1"
+						"0.03"
 					]
 				]
 			],
@@ -84886,7 +84886,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0",
-						"0.2"
+						"0.03"
 					]
 				]
 			],
@@ -84896,7 +84896,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0",
-						"0.1"
+						"0.03"
 					]
 				]
 			],
@@ -84936,7 +84936,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0",
-						"0.1"
+						"0.03"
 					]
 				]
 			],
@@ -84976,7 +84976,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0",
-						"0.1"
+						"0.03"
 					]
 				]
 			],
@@ -85016,7 +85016,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0",
-						"0.1"
+						"0.03"
 					]
 				]
 			],
@@ -85056,7 +85056,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0",
-						"0.1"
+						"0.03"
 					]
 				]
 			],
@@ -85066,7 +85066,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0",
-						"0.1"
+						"0.03"
 					]
 				]
 			],
@@ -85076,7 +85076,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0",
-						"0.1"
+						"0.03"
 					]
 				]
 			],
@@ -85085,8 +85085,8 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.08",
-						"0.1"
+						"0.015",
+						"0.03"
 					]
 				]
 			],
@@ -85105,7 +85105,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.1",
+						"0.015",
 						"0.05"
 					]
 				]
@@ -85115,8 +85115,8 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.1",
-						"0.17"
+						"0.015",
+						"0.03"
 					]
 				]
 			],
@@ -85145,8 +85145,8 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.1",
-						"0.14"
+						"0.015",
+						"0.03"
 					]
 				]
 			],
@@ -85166,7 +85166,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0.08",
-						"0.1"
+						"0.03"
 					]
 				]
 			],
@@ -85175,7 +85175,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.05",
+						"0.015",
 						"0.07"
 					]
 				]
@@ -85185,8 +85185,8 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.1",
-						"0.16"
+						"0.013",
+						"0.03"
 					]
 				]
 			],
@@ -85196,7 +85196,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0",
-						"0.2"
+						"0.02"
 					]
 				]
 			],
@@ -85206,7 +85206,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0.08",
-						"0.1"
+						"0.03"
 					]
 				]
 			],
@@ -85246,7 +85246,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0",
-						"0.1"
+						"0.03"
 					]
 				]
 			],
@@ -85256,7 +85256,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0",
-						"0.1"
+						"0.03"
 					]
 				]
 			],
@@ -85266,7 +85266,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0",
-						"0.1"
+						"0.03"
 					]
 				]
 			],
@@ -85275,7 +85275,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.1",
+						"0.03",
 						"0.2"
 					]
 				]
@@ -85295,7 +85295,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.1",
+						"0.03",
 						"0.05"
 					]
 				]
@@ -85335,8 +85335,8 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.3",
-						"0.4"
+						"0.015",
+						"0.03"
 					]
 				]
 			],
@@ -85356,7 +85356,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0.08",
-						"0.1"
+						"0.03"
 					]
 				]
 			],
@@ -85386,7 +85386,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0.05",
-						"0.1"
+						"0.03"
 					]
 				]
 			],
@@ -85396,7 +85396,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0.05",
-						"0.1"
+						"0.03"
 					]
 				]
 			],
@@ -85405,7 +85405,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.1",
+						"0.03",
 						"0.3"
 					]
 				]
@@ -85436,7 +85436,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0.05",
-						"0.1"
+						"0.03"
 					]
 				]
 			],
@@ -85446,7 +85446,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0.075",
-						"0.15"
+						"0.035"
 					]
 				]
 			],
@@ -85455,7 +85455,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.1",
+						"0.03",
 						"0.2"
 					]
 				]
@@ -85466,7 +85466,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0.08",
-						"0.1"
+						"0.03"
 					]
 				]
 			],
@@ -85485,7 +85485,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.1",
+						"0.03",
 						"0.05"
 					]
 				]
@@ -85495,8 +85495,8 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.1",
-						"0.17"
+						"0.03",
+						"0.037"
 					]
 				]
 			],
@@ -85525,8 +85525,8 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.1",
-						"0.14"
+						"0.03",
+						"0.034"
 					]
 				]
 			],
@@ -85546,7 +85546,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0.08",
-						"0.1"
+						"0.03"
 					]
 				]
 			],
@@ -85565,8 +85565,8 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.1",
-						"0.16"
+						"0.03",
+						"0.036"
 					]
 				]
 			],
@@ -85586,7 +85586,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0.08",
-						"0.1"
+						"0.03"
 					]
 				]
 			],
@@ -85626,7 +85626,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0",
-						"0.1"
+						"0.03"
 					]
 				]
 			],
@@ -85636,7 +85636,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0",
-						"0.1"
+						"0.03"
 					]
 				]
 			],
@@ -85646,7 +85646,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0",
-						"0.1"
+						"0.03"
 					]
 				]
 			],
@@ -85655,7 +85655,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.1",
+						"0.03",
 						"0.2"
 					]
 				]
@@ -85675,7 +85675,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.1",
+						"0.03",
 						"0.05"
 					]
 				]
@@ -85736,7 +85736,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0.08",
-						"0.1"
+						"0.03"
 					]
 				]
 			],
@@ -85766,7 +85766,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0.05",
-						"0.1"
+						"0.03"
 					]
 				]
 			],
@@ -85776,7 +85776,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0.05",
-						"0.1"
+						"0.03"
 					]
 				]
 			],
@@ -85785,7 +85785,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.1",
+						"0.03",
 						"0.3"
 					]
 				]
@@ -85816,7 +85816,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0.05",
-						"0.1"
+						"0.03"
 					]
 				]
 			],
@@ -85826,7 +85826,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0.075",
-						"0.15"
+						"0.035"
 					]
 				]
 			],
@@ -85835,7 +85835,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.1",
+						"0.03",
 						"0.2"
 					]
 				]
@@ -85860,7 +85860,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						"Add Camera Zoom",
-						"0.1",
+						"0.03",
 						"0.2"
 					]
 				]
@@ -85870,7 +85870,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.1",
+						"0.03",
 						"0.2"
 					]
 				]
@@ -85880,7 +85880,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.1",
+						"0.03",
 						"0.2"
 					]
 				]
@@ -85891,7 +85891,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0.05",
-						"0.1"
+						"0.03"
 					]
 				]
 			],
@@ -85900,7 +85900,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.1",
+						"0.03",
 						"0.2"
 					]
 				]
@@ -85910,7 +85910,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.1",
+						"0.03",
 						"0.2"
 					]
 				]
@@ -85920,7 +85920,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.1",
+						"0.03",
 						"0.2"
 					]
 				]
@@ -85930,7 +85930,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.1",
+						"0.03",
 						"0.2"
 					]
 				]
@@ -85941,7 +85941,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0.05",
-						"0.1"
+						"0.03"
 					]
 				]
 			],
@@ -85950,7 +85950,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.1",
+						"0.03",
 						"0.2"
 					]
 				]
@@ -85981,7 +85981,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0.05",
-						"0.1"
+						"0.03"
 					]
 				]
 			],
@@ -85991,7 +85991,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0.075",
-						"0.15"
+						"0.035"
 					]
 				]
 			],
@@ -86000,7 +86000,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.1",
+						"0.03",
 						"0.2"
 					]
 				]
@@ -86010,7 +86010,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.1",
+						"0.03",
 						"0.2"
 					]
 				]
@@ -86020,7 +86020,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.1",
+						"0.03",
 						"0.2"
 					]
 				]
@@ -86030,7 +86030,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.1",
+						"0.03",
 						"0.2"
 					]
 				]
@@ -86041,7 +86041,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0.05",
-						"0.1"
+						"0.03"
 					]
 				]
 			],
@@ -86050,7 +86050,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.1",
+						"0.03",
 						"0.2"
 					]
 				]
@@ -86060,7 +86060,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.1",
+						"0.03",
 						"0.2"
 					]
 				]
@@ -86070,7 +86070,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.1",
+						"0.03",
 						"0.2"
 					]
 				]
@@ -86080,7 +86080,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.1",
+						"0.03",
 						"0.2"
 					]
 				]
@@ -86091,7 +86091,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0.05",
-						"0.1"
+						"0.03"
 					]
 				]
 			],
@@ -86100,7 +86100,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.1",
+						"0.03",
 						"0.2"
 					]
 				]
@@ -86131,7 +86131,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0.05",
-						"0.1"
+						"0.03"
 					]
 				]
 			],
@@ -86141,7 +86141,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Add Camera Zoom",
 						"0.075",
-						"0.15"
+						"0.035"
 					]
 				]
 			],
@@ -86150,7 +86150,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Add Camera Zoom",
-						"0.1",
+						"0.03",
 						"0.2"
 					]
 				]

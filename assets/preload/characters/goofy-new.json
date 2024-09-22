@@ -6,66 +6,61 @@
 				0,
 				0
 			],
-			"indices": [],
 			"fps": 16,
 			"anim": "idle",
-			"loop": false,
+			"indices": [],
 			"name": "idle"
 		},
 		{
 			"loop": false,
 			"offsets": [
 				0,
-				-15
+				-12
 			],
-			"indices": [],
 			"fps": 16,
 			"anim": "singLEFT",
-			"loop": false,
+			"indices": [],
 			"name": "left"
 		},
 		{
 			"loop": false,
 			"offsets": [
-				90,
-				-160
+				60,
+				-110
 			],
-			"indices": [],
 			"fps": 16,
 			"anim": "singDOWN",
-			"loop": false,
+			"indices": [],
 			"name": "down"
 		},
 		{
 			"loop": false,
 			"offsets": [
-				130,
-				37
+				90,
+				27
 			],
-			"indices": [],
 			"fps": 16,
 			"anim": "singUP",
-			"loop": false,
+			"indices": [],
 			"name": "up"
 		},
 		{
 			"loop": false,
 			"offsets": [
-				211,
-				150
+				148,
+				122
 			],
-			"indices": [],
 			"fps": 16,
 			"anim": "singRIGHT",
-			"loop": false,
+			"indices": [],
 			"name": "right"
 		}
 	],
 	"no_antialiasing": false,
 	"image": "characters/goofy",
 	"position": [
-		120,
-		130
+		190,
+		-450
 	],
 	"healthicon": "goofy",
 	"flip_x": false,
@@ -75,9 +70,9 @@
 		161
 	],
 	"camera_position": [
-		220,
-		0
+		150,
+		110
 	],
 	"sing_duration": 6.1,
-	"scale": 1.1
+	"scale": 0.8
 }

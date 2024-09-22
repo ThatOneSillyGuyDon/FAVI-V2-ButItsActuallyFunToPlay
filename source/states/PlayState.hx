@@ -2985,6 +2985,8 @@ class PlayState extends MusicBeatState
 		Paths.clearUnusedMemory();
 		
 		CustomFadeTransition.nextCamera = camOther;
+
+		for(i in  0...unspawnNotes.length-1) if(unspawnNotes[i].isSustainNote) unspawnNotes[i].noAnimation = true;
 	}
 
 	#if (!flash && sys)
@@ -7578,6 +7580,10 @@ class PlayState extends MusicBeatState
 			notes.remove(note, true);
 			note.destroy();
 		}
+
+		if (note.isSustainNote){
+			dad.holdTimer = 0;
+		}
 	}
 	
 	var malfunctionComboCheck:Int = 0;
@@ -7786,6 +7792,10 @@ class PlayState extends MusicBeatState
 				note.kill();
 				notes.remove(note, true);
 				note.destroy();
+			}
+
+			if (note.isSustainNote){
+				boyfriend.holdTimer = 0;
 			}
 		}
 	}
