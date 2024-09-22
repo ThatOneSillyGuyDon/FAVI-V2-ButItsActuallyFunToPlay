@@ -493,7 +493,7 @@ class FreeplayState extends MusicBeatState
 
 		FlxG.sound.music.pause();
 		freeplayMusic = new FlxSound();
-		freeplayMusic.loadEmbedded(Paths.music('aviOST/seekingFreedom'), true);
+		freeplayMusic.loadEmbedded(Paths.music('funkinAVI/seekingFreedom'), true);
 		FlxG.sound.list.add(freeplayMusic);
 		freeplayMusic.play(false, 15 * 1000);
 		freeplayMusic.volume = 0;

@@ -718,7 +718,7 @@ class MainMenu extends MusicBeatState
 							{
 								case 'freeplay':
 									MusicBeatState.switchState(new FreeplayCategories());
-									FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
+									FlxG.sound.playMusic(Paths.music('funkinAVI/seekingFreedom'));
 							}
 						});
 					}

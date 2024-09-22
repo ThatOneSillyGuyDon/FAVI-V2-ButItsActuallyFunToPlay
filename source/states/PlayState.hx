@@ -6694,7 +6694,7 @@ class PlayState extends MusicBeatState
 					CustomFadeTransition.nextCamera = null;
 				}
 				MusicBeatState.switchState(new FreeplayState());
-				FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
+				FlxG.sound.playMusic(Paths.music('funkinAVI/seekingFreedom'));
 				changedDifficulty = false;
 			}
 			transitioning = true;
