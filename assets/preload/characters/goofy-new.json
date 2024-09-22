@@ -5,62 +5,62 @@
 				0,
 				0
 			],
-			"loop": false,
-			"fps": 24,
+			"indices": [],
+			"fps": 16,
 			"anim": "idle",
-			"indices": [],
-			"name": "IdleHuntedGoofy"
-		},
-		{
-			"offsets": [
-				93,
-				6
-			],
 			"loop": false,
-			"fps": 24,
-			"anim": "singLEFT",
-			"indices": [],
-			"name": "LeftHuntedGoofy"
-		},
-		{
-			"offsets": [
-				50,
-				0
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singDOWN",
-			"indices": [],
-			"name": "DownHuntedGoofy"
+			"name": "idle"
 		},
 		{
 			"offsets": [
 				0,
-				20
+				-15
 			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singUP",
 			"indices": [],
-			"name": "UpGoofyHunted"
+			"fps": 16,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "left"
 		},
 		{
 			"offsets": [
-				-30,
-				-80
+				90,
+				-160
 			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHT",
 			"indices": [],
-			"name": "RightHuntedGoofy"
+			"fps": 16,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "down"
+		},
+		{
+			"offsets": [
+				130,
+				37
+			],
+			"indices": [],
+			"fps": 16,
+			"anim": "singUP",
+			"loop": false,
+			"name": "up"
+		},
+		{
+			"offsets": [
+				211,
+				150
+			],
+			"indices": [],
+			"fps": 16,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "right"
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/goofy-new/hunted_goofy",
+	"image": "characters/goofy",
 	"position": [
 		120,
-		300
+		130
 	],
 	"healthicon": "goofy",
 	"flip_x": false,

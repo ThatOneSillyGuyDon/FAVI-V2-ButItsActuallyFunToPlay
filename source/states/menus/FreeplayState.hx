@@ -78,6 +78,8 @@ class FreeplayState extends MusicBeatState
 	var colorTween:FlxTween;
 	var crossRandom:Int = FlxG.random.int(1, 5);
 
+	var freeplayMusic:FlxSound;
+
 	override function create()
 	{
 		//Paths.clearStoredMemory();
@@ -488,6 +490,14 @@ class FreeplayState extends MusicBeatState
 				grain.cameras = [camHUD];
 			}
 		super.create();
+
+		FlxG.sound.music.pause();
+		freeplayMusic = new FlxSound();
+		freeplayMusic.loadEmbedded(Paths.music('aviOST/seekingFreedom'), true);
+		FlxG.sound.list.add(freeplayMusic);
+		freeplayMusic.play(false, 15 * 1000);
+		freeplayMusic.volume = 0;
+		freeplayMusic.fadeIn(2, 0, .7);
 	}
 
 	override function closeSubState() {
@@ -534,7 +544,7 @@ class FreeplayState extends MusicBeatState
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
 		}
 
-		Conductor.songPosition = FlxG.sound.music.time;
+		Conductor.songPosition = freeplayMusic != null ? freeplayMusic.time : 0;
 
 		var isDontCross:Bool = songs[curSelected].songName == "Don't Cross!";
 
@@ -728,7 +738,6 @@ class FreeplayState extends MusicBeatState
 				colorTween.cancel();
 			}
 			
-			FlxTween.tween(FlxG.camera, {zoom: freeplayMenuList == 2 ? 1 : 2.5}, freeplayMenuList == 2 ? 0.0001 : 1.5, {ease: FlxEase.expoInOut});
 			new flixel.util.FlxTimer().start(freeplayMenuList == 2 ? 0.0001 : 0.7, function(e)
 			{
 				LoadingState.loadAndSwitchState(new PlayState());
@@ -1079,6 +1088,14 @@ class FreeplayState extends MusicBeatState
 			diffText.x = scoreText.x - 20;
 			diffText.y = scoreText.y + 70;
 		}
+	}
+
+	override function destroy() {
+		freeplayMusic.destroy();
+		freeplayMusic.kill();
+		freeplayMusic = null;
+		FlxG.sound.music.play();
+		super.destroy();
 	}
 
 	public static function getDiffRank():String

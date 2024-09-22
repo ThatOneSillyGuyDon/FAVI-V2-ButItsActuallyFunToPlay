@@ -79,10 +79,11 @@ enum abstract CreditsData(String) from String to String {
 		"Art: AustinWProduction,\nTeelbe & TrellXD\n\nChart: Purg\n\nCode: DEMOLITIONDON96\n\nMusic: PualTheUnTruest\n\nVoice Actor: AustinWProductions", -68, -23
 	]
 }';
+	// cough cough health drain mechanic cough cough
     var mercy:String = '{
 	"settings":
 	[
-		"Art: JDrive\n\nChart: DEMOLITIONDON96\n\nCode: DEMOLITIONDON96\n\nMusic: Ophomix24", 26, 26
+		"Art: JDrive\n\nChart: DEMOLITIONDON96\n\nCode: Jason & DEMOLITIONDON96\n\nMusic: Ophomix24", 26, 26
 	]
 }';
     var cycledSins:String = '{
