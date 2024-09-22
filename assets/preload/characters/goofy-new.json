@@ -1,59 +1,59 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "idle",
-			"indices": [],
-			"name": "IdleHuntedGoofy"
+			"fps": 24,
+			"name": "IdleHuntedGoofy",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				93,
 				6
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "LeftHuntedGoofy"
+			"fps": 24,
+			"name": "LeftHuntedGoofy",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				50,
 				0
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "DownHuntedGoofy"
+			"fps": 24,
+			"name": "DownHuntedGoofy",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				20
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUP",
-			"indices": [],
-			"name": "UpGoofyHunted"
+			"fps": 24,
+			"name": "UpGoofyHunted",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-30,
 				-80
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "RightHuntedGoofy"
+			"fps": 24,
+			"name": "RightHuntedGoofy",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,
@@ -70,7 +70,7 @@
 		161
 	],
 	"camera_position": [
-		0,
+		220,
 		0
 	],
 	"sing_duration": 6.1,
