@@ -579,21 +579,7 @@ class MainMenu extends MusicBeatState
 		if (ClientPrefs.shaders)
 			darkFilter.setFloat('iTime', elapsed);
 
-		// It actually makes sense since some pepole doesn't know we moved to a new engine or just think we ported the psych editor lol
-		/*if (FlxG.keys.justPressed.SEVEN)
-		{
-			Main.switchState(this, new states.menus.PsychDebugTrollState());
-		}
-		else if (FlxG.keys.justPressed.EIGHT)
-		{
-			FlxG.switchState(new GameJoltLogin());
-		}
-		else if (FlxG.keys.justPressed.NINE)
-		{
-			FlxG.switchState(new states.menus.CharacterMenu());
-		}
-		else*/ 
-
+		for (i in 0...menuItems.length) menuItems.members[i].scale.set(FlxMath.lerp(.6, menuItems.members[i].scale.x, .95), FlxMath.lerp(.6, menuItems.members[i].scale.y, .95));
 
 		if (FlxG.keys.justPressed.SEVEN && !selectedSomethin)
 		{
@@ -758,6 +744,7 @@ class MainMenu extends MusicBeatState
 					if (!selectedSomethin)
 					{
 						FlxG.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
+						menuItems.members[curSelected].scale.set(.75, .75);
 						FlxFlicker.flicker(spr, 1, flashValue, false, false, function(flick:FlxFlicker)
 						{
 							switch (daChoice)
