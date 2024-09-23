@@ -83,8 +83,8 @@ class CreditsMenu extends MusicBeatState
 		teelSquares = new FlxSprite().loadGraphic(Paths.image('$path/teelbeSpecial'));
 		teelSquares.screenCenter().x -= 80;
 		teelSquares.setGraphicSize(Std.int(box.width * 0.6));
-		teelSquares.alpha = 0;
 		teelSquares.antialiasing = ClientPrefs.globalAntialiasing;
+		teelSquares.visible = false;
 		add(teelSquares);
 
 		creditDescText = new FlxText(FlxG.width * 0.52, FlxG.height * 0.6, 500, creditArray[curSelected][3]);
@@ -154,14 +154,13 @@ class CreditsMenu extends MusicBeatState
 		// dont mind me adding this funny
 		// yes i used the numbers because why not
 		FlxG.camera.shake(curSelected == 8 ? 0.01 : 0);
+		shaderTime += elapsed;
 
 		teelSquares.alpha = FlxMath.lerp(creditArray[curSelected][0].toLowerCase() == "teelbe" ? FlxG.random.float(.2, 1) : 0, teelSquares.alpha, .85);
 
-		Conductor.songPosition = FlxG.sound.music.time;
-
 		if (ClientPrefs.shaders)
 		{
-			cool_1980_shader.setFloat('iTime', Conductor.songPosition / 1000);
+			cool_1980_shader.setFloat('iTime', shaderTime);
 		}
 
 		if (controls.UI_UP_P)
@@ -252,7 +251,14 @@ class CreditsMenu extends MusicBeatState
 					creditDescText.y = FlxG.height * -0.12;
 					creditDescText.scale.set(0.5, 0.5);
 
-				
+				case 'purg':
+					creditNameText.y = FlxG.height * 0.06;
+					creditWorkText.y = FlxG.height * 0.15;
+					creditDescText.fieldWidth = 1000;
+					creditDescText.x = FlxG.width * 0.32;
+					creditDescText.y = FlxG.height * -0.02;
+					creditDescText.scale.set(0.6, 0.6);
+
 				default:
 					creditNameText.y = FlxG.height * 0.1;
 					creditWorkText.y = FlxG.height * 0.21;
@@ -266,7 +272,7 @@ class CreditsMenu extends MusicBeatState
 		{ // reload reasons
 			switch (creditArray[curSelected][0].toLowerCase())
 			{
-				case 'demolitiondon96':
+				case 'demolitiondon96' | 'jason':
 					creditDescText.fieldWidth = 500;
 					creditDescText.x = FlxG.width * 0.52;
 					creditDescText.y = FlxG.height * 0.5;

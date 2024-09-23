@@ -21,6 +21,32 @@ class LoadingState extends MusicBeatState
 	// I'd recommend doing it on both actually lol
 	
 	// TO DO: Make this easier
+
+	var funi:Array<String> = [
+		"Loading...",
+		"Getting the stuff...",
+		"Please wait...",
+		"Wait please...",
+		"Please hold...",
+		"Loading content...",
+		"Load...",
+		"Please load...",
+		"Can you wait...?",
+		"Getting the shits...",
+		"Grabbing da shits...",
+		"Generating world...",
+		"Hold your horses...",
+		"For fuck sakes, wait damnit...",
+		"Hold on, the game ain't going anywhere...",
+		"Bitch, please wait...",
+		"Just wait, please...",
+		"Please wait on the line...",
+		"Preparing some cool stuff...",
+		"So cool...",
+		"Loading some cool shit...",
+		"Human, i remeber your loading...",
+		"I am loading..."
+	];
 	
 	var target:FlxState;
 	var stopMusic = false;
@@ -45,6 +71,8 @@ class LoadingState extends MusicBeatState
 	override function create()
 	{
 
+		lime.app.Application.current.window.title = 'Funkin.avi - ${funi[FlxG.random.int(0, funi.length-1)]}';
+		
 		loadingImage = new FlxSprite(0,0);
 		loadingImage.loadGraphic(Paths.image("Funkin_avi/loadingScreen/placeholder"));
 		loadingImage.screenCenter();
