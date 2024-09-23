@@ -10714,7 +10714,7 @@ class PlayState extends MusicBeatState
 								{
 									if (rain != null) rain.visible = false;
 									if (heavyRain != null && !lowQuality)
-										heavyRain.alpha = 0.65;
+										heavyRain.alpha = 0.34;
 								}
 								if (curBeat == 280)
 								{
