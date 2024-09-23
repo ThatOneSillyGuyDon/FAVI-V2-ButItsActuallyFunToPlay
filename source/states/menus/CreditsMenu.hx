@@ -84,7 +84,7 @@ class CreditsMenu extends MusicBeatState
 		teelSquares.screenCenter().x -= 80;
 		teelSquares.setGraphicSize(Std.int(box.width * 0.6));
 		teelSquares.antialiasing = ClientPrefs.globalAntialiasing;
-		teelSquares.visible = false;
+		teelSquares.alpha = 0;
 		add(teelSquares);
 
 		creditDescText = new FlxText(FlxG.width * 0.52, FlxG.height * 0.6, 500, creditArray[curSelected][3]);
@@ -153,7 +153,7 @@ class CreditsMenu extends MusicBeatState
 
 		// dont mind me adding this funny
 		// yes i used the numbers because why not
-		FlxG.camera.shake(curSelected == 8 ? 0.01 : 0);
+		FlxG.camera.shake(creditArray[curSelected][0].toLowerCase() == "malyplus" ? 0.01 : 0);
 		shaderTime += elapsed;
 
 		teelSquares.alpha = FlxMath.lerp(creditArray[curSelected][0].toLowerCase() == "teelbe" ? FlxG.random.float(.2, 1) : 0, teelSquares.alpha, .85);
