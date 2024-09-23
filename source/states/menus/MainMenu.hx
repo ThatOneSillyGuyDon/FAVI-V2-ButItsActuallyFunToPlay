@@ -696,7 +696,7 @@ class MainMenu extends MusicBeatState
 				//FlxG.sound.play(Paths.sound('base/menus/confirmMenu'));
 				FlxG.sound.play(Paths.sound('funkinAVI/menu/selectSfx'));
 				FlxG.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
-				FlxTween.tween(camGame, {zoom: 6}, 2, {ease: FlxEase.cubeInOut, startDelay: 0.5});
+				//FlxTween.tween(camGame, {zoom: 6}, 2, {ease: FlxEase.cubeInOut, startDelay: 0.5});
 
 				menuItems.forEach(function(spr:FlxSprite)
 				{
@@ -776,7 +776,7 @@ class MainMenu extends MusicBeatState
 					}
 					selectedSomethin = true;
 					FlxG.sound.play(Paths.sound('funkinAVI/menu/selectSfx'));
-					FlxTween.tween(camGame, {zoom: 6}, 2, {ease: FlxEase.cubeInOut, startDelay: 0.5});
+					//FlxTween.tween(camGame, {zoom: 6}, 2, {ease: FlxEase.cubeInOut, startDelay: 0.5});
 				}
 			});
 		}
