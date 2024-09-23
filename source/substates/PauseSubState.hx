@@ -272,6 +272,7 @@ class PauseSubState extends MusicBeatSubstate
 					PlayState.cancelMusicFadeTween();
 					PlayState.changedDifficulty = false;
 					PlayState.chartingMode = false;
+					FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
 			}
 		}
 	}
@@ -491,11 +492,11 @@ class FAVIPauseSubState extends MusicBeatSubstate
 			if (data != null)
 			{
 				array = data.settings;
-				trace("Current Song: " + PlayState.SONG.song + " / Info Text: " + array[0] + " / Offsets : [" + array[1] + ", " + array[2] + "]");
+				//trace("Current Song: " + PlayState.SONG.song + " / Info Text: " + array[0] + " / Offsets : [" + array[1] + ", " + array[2] + "]");
 			}
 			else
 			{
-				trace("Current Song: " + PlayState.SONG.song + " / DATA FILE MISSING! - USING PLACEHOLDER VARIABLES!");
+				//trace("Current Song: " + PlayState.SONG.song + " / DATA FILE MISSING! - USING PLACEHOLDER VARIABLES!");
 				array = ["PLACEHOLDER\nCREDIT\nTEXT", 0, 0];
 			}
 	
@@ -705,6 +706,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 											MusicBeatState.switchState(new states.menus.FreeplayState()); // yeah, there's no way I'm making a case for EVERY fucking song in that menu, too much work!
 											FlxG.sound.playMusic(Paths.music('funkinAVI/seekingFreedom'));
 									}
+									FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
 					}
 				}
 			}

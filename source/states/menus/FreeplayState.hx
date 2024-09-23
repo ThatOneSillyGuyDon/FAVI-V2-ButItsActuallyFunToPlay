@@ -78,8 +78,6 @@ class FreeplayState extends MusicBeatState
 	var colorTween:FlxTween;
 	var crossRandom:Int = FlxG.random.int(1, 5);
 
-	var freeplayMusic:FlxSound;
-
 	var songText2:FlxText;
 	var songText:Alphabet;
 
@@ -135,7 +133,7 @@ class FreeplayState extends MusicBeatState
 						//addSong('Scrapped', 3, (GameData.scrappedLock != 'unlocked' && GameData.scrappedLock != 'beaten' ? 'mysteryfp' : 'rs'), FlxColor.fromRGB(0, 0, 0), 'FR3SHMoure', 'HARD', FlxColor.fromRGB(255, 187, 187));
 						addSong("Don't Cross!", 3, (GameData.crossinLock != 'unlocked' && GameData.crossinLock != 'beaten' ? 'mysteryfp' : 'cross'), FlxColor.fromRGB(255, 0, 0), 'PualTheUnTruest', 'GOOD LUCK', FlxColor.fromRGB(201, 0, 0));
 						addSong('War Dilemma', 3, (GameData.warLock != 'unlocked' && GameData.warLock != 'beaten' ? 'mysteryfp' : 'ethernalg'), FlxColor.fromRGB(204, 41, 103), 'Sayan Sama & obscurity', 'HARD', FlxColor.fromRGB(255, 187, 187));
-						addSong('Twisted Grins', 3, 'smile', FlxColor.fromRGB(54, 38, 38), 'ForFutherNotice', 'HARD', FlxColor.fromRGB(255, 187, 187));
+						addSong('Twisted Grins', 3, 'smile', FlxColor.fromRGB(54, 38, 38), 'PualTheUnTruest', 'HARD', FlxColor.fromRGB(255, 187, 187));
 						addSong('Mercy', 3, 'walt', FlxColor.fromRGB(176, 169, 116), 'Ophomix24', 'INSANE', FlxColor.fromRGB(255, 110, 110));
 						//addSong('Neglection', 3, (GameData.pnmLock != 'unlocked' && GameData.pnmLock != 'beaten' ? 'mysteryfp' : 'pnm'), FlxColor.fromRGB(117, 86, 27), 'AttackPan', 'NORMAL', FlxColor.fromRGB(255, 220, 220));
 						addSong('Cycled Sins', 3, (GameData.sinsLock != 'unlocked' && GameData.sinsLock != 'beaten' ? 'mysteryfp' : 'relapse-pixel'), FlxColor.fromRGB(105, 30, 30), 'JBlitz', 'HARD', FlxColor.fromRGB(255, 187, 187)); //messing with the saves for this later
@@ -315,7 +313,7 @@ class FreeplayState extends MusicBeatState
 		for (i in 0...songs.length)
 		{
 			songText2 = new FlxText(0, 0, 470, songs[i].songName);
-			songText = new Alphabet(100, (50 * i) + 30, songs[i].songName, true);
+			songText = new Alphabet(100, (43 * i) + 120, songs[i].songName, true);
 			
 			var icon:HealthIcon = new HealthIcon(songs[i].songCharacter);
 
@@ -507,14 +505,6 @@ class FreeplayState extends MusicBeatState
 				grain.cameras = [camHUD];
 			}
 		super.create();
-
-		FlxG.sound.music.pause();
-		freeplayMusic = new FlxSound();
-		freeplayMusic.loadEmbedded(Paths.music('funkinAVI/seekingFreedom'), true);
-		FlxG.sound.list.add(freeplayMusic);
-		freeplayMusic.play(false, 15 * 1000);
-		freeplayMusic.volume = 0;
-		freeplayMusic.fadeIn(2, 0, .7);
 	}
 
 	override function closeSubState() {
@@ -561,7 +551,7 @@ class FreeplayState extends MusicBeatState
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
 		}
 
-		Conductor.songPosition = freeplayMusic != null ? freeplayMusic.time : 0;
+		Conductor.songPosition = FlxG.sound.music.time;
 
 		var isDontCross:Bool = songs[curSelected].songName == "Don't Cross!";
 
@@ -587,7 +577,7 @@ class FreeplayState extends MusicBeatState
 			}
 		}
 
-		if(songs[curSelected].songName != "Don't Cross!" && grpSongs.members[6] != null && grpSongs.members[6].exists)
+		if(songs[curSelected].songName == "Don't Cross!" && grpSongs.members[6] != null && grpSongs.members[6].exists)
 			{
 				grpSongs.members[3].shake(11, 10, 0.1);
 				iconArray[3].shake(4, 30, 0.1);
@@ -673,6 +663,7 @@ class FreeplayState extends MusicBeatState
 			}
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 			MusicBeatState.switchState(new FreeplayCategories());
+			FlxG.mouse.visible = true;
 		}
 
 		if(ctrl)
@@ -754,21 +745,24 @@ class FreeplayState extends MusicBeatState
 			if(colorTween != null) {
 				colorTween.cancel();
 			}
-			
-			FlxTween.tween(bg, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
-			FlxTween.tween(disc, {x: disc.x + 700}, 1, {ease: FlxEase.sineInOut});
-			FlxTween.tween(arrows, {alpha: 0}, 1);
-			FlxTween.tween(musicPlayer, {x: musicPlayer.x - 700}, 1, {ease: FlxEase.sineInOut});
-			FlxTween.tween(musicNotes, {x: musicNotes.x - 700}, 1, {ease: FlxEase.sineInOut});
-			FlxTween.tween(bgslider, {x: bgslider.x - 700}, 1, {ease: FlxEase.sineInOut});
-			for (i in 0...songs.length) FlxTween.tween(iconArray[i], {x: iconArray[i].x + 700}, 1, {ease: FlxEase.sineInOut});
-			FlxTween.tween(songText2, {x: songText2.x + 700}, 1, {ease: FlxEase.sineInOut});
-			FlxTween.tween(songText2, {y: songText2.y - 300}, 1, {ease: FlxEase.sineInOut});
-			FlxTween.tween(freeplayCtrlTxt, {alpha: 0}, 1.5, {ease: FlxEase.sineInOut});
-			FlxTween.tween(scoreText, {alpha: 0}, 1.5, {ease: FlxEase.sineInOut});
-			FlxTween.tween(diffText, {alpha: 0}, 1.5, {ease: FlxEase.sineInOut});
-			FlxTween.tween(songText2, {alpha: 0}, 1.5, {ease: FlxEase.sineInOut});
-			freeplayMusic.fadeOut();
+
+			if (freeplayMenuList != 2)
+			{				
+				FlxTween.tween(bg, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
+				FlxTween.tween(disc, {x: disc.x + 700}, 1, {ease: FlxEase.sineInOut});
+				FlxTween.tween(arrows, {alpha: 0}, 1);
+				FlxTween.tween(musicPlayer, {x: musicPlayer.x - 700}, 1, {ease: FlxEase.sineInOut});
+				FlxTween.tween(musicNotes, {x: musicNotes.x - 700}, 1, {ease: FlxEase.sineInOut});
+				FlxTween.tween(bgslider, {x: bgslider.x - 700}, 1, {ease: FlxEase.sineInOut});
+				for (i in 0...songs.length) FlxTween.tween(iconArray[i], {x: iconArray[i].x + 700}, 1, {ease: FlxEase.sineInOut});
+				FlxTween.tween(songText2, {x: songText2.x + 700}, 1, {ease: FlxEase.sineInOut});
+				FlxTween.tween(songText2, {y: songText2.y - 300}, 1, {ease: FlxEase.sineInOut});
+				FlxTween.tween(freeplayCtrlTxt, {alpha: 0}, 1.5, {ease: FlxEase.sineInOut});
+				FlxTween.tween(scoreText, {alpha: 0}, 1.5, {ease: FlxEase.sineInOut});
+				FlxTween.tween(diffText, {alpha: 0}, 1.5, {ease: FlxEase.sineInOut});
+				FlxTween.tween(songText2, {alpha: 0}, 1.5, {ease: FlxEase.sineInOut});
+			}
+			FlxG.sound.music.fadeOut();
 
 			new flixel.util.FlxTimer().start(freeplayMenuList == 2 ? 0.0001 : 1.5, function(e)
 			{
@@ -1122,14 +1116,6 @@ class FreeplayState extends MusicBeatState
 		}
 	}
 
-	override function destroy() {
-		freeplayMusic.destroy();
-		freeplayMusic.kill();
-		freeplayMusic = null;
-		FlxG.sound.music.play();
-		super.destroy();
-	}
-
 	public static function getDiffRank():String
 		{
 			switch (CoolUtil.spaceToDash(PlayState.SONG.song.toLowerCase()))
@@ -1153,11 +1139,10 @@ class FreeplayState extends MusicBeatState
 				case "Devilish Deal" | "Isolated" | "Lunacy" | "Malfunction" | "Lunacy Legacy" | "Malfunction Legacy" | "Mercy Legacy": songArtist = "obscurity.";
 				case "Delusional" | "Birthday" | "Delusional Legacy": songArtist = "FR3SHMoure";
 				case "Hunted" | "Hunted Legacy" | "Cycled Sins" | "Cycled Sins Legacy": songArtist = "JBlitz";
-				case "Laugh Track" | "Dont Cross" | "Bless": songArtist = "PualTheUnTruest";
+				case "Laugh Track" | "Dont Cross" | "Bless" | "Twisted Grins": songArtist = "PualTheUnTruest";
 				case "Isolated Beta" | "Isolated Old": songArtist = "Toko";
 				case "Isolated Legacy": songArtist = "Toko & obscurity.";
 				case "War Dilemma": songArtist = "Sayan Sama & obscurity.";
-				case "Twisted Grins": songArtist = "ForFurtherNotice";
 				case "Mercy": songArtist = "Ophomix24";
 				case "Delutrance": songArtist = "RetroJogador";
 				default: songArtist = "Unknown";

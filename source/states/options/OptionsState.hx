@@ -9,7 +9,8 @@ class OptionsState extends MusicBeatState
 {
 	var options:Array<String> = [
 		'Preferences',
-		'Controls'
+		'Controls',
+		'Gameplay',
 	];
 
 	private static var curSelected:Int = 0;
@@ -24,6 +25,8 @@ class OptionsState extends MusicBeatState
 				openSubState(new VisualsUISubState());
 			case 'Controls':
 				openSubState(new ControlsSubState());
+			case 'Gameplay':
+				openSubState(new GameplaySettingsSubState());
 		/*	case 'Note Colors':
 				openSubState(new NotesSubState());
 			case 'Controls':
@@ -51,7 +54,7 @@ class OptionsState extends MusicBeatState
 		DiscordClient.changePresence("Options Menu", null);
 		#end
 
-		FlxG.stage.window.title = "Funkin.AVI - Settings";
+		FlxG.stage.window.title = "Funkin.avi - Settings";
 
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('$dogshitPath/background'));
 		bg.setGraphicSize(FlxG.width, FlxG.height);
@@ -102,6 +105,41 @@ class OptionsState extends MusicBeatState
 		graphic.antialiasing = ClientPrefs.globalAntialiasing;
 		add(graphic);
 
+		if (!ClientPrefs.lowQuality)
+		{
+			var gradient:FlxSprite = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/filters/gradient'));
+			gradient.scrollFactor.set(0, 0);
+			gradient.setGraphicSize(Std.int(gradient.width * 0.75));
+			gradient.updateHitbox();
+			gradient.screenCenter();
+			gradient.antialiasing = true;
+			add(gradient);
+
+			var scratchStuff:FlxSprite = new FlxSprite();
+			scratchStuff.frames = Paths.getSparrowAtlas('Funkin_avi/filters/scratchShit');
+			scratchStuff.animation.addByPrefix('idle', 'scratch thing 1', 24, true);
+			scratchStuff.animation.play('idle');
+			scratchStuff.screenCenter();
+			scratchStuff.scale.x = 1.1;
+			scratchStuff.scale.y = 1.1;
+			add(scratchStuff);
+
+			var grain:FlxSprite = new FlxSprite();
+			grain.frames = Paths.getSparrowAtlas('Funkin_avi/filters/Grainshit');
+			grain.animation.addByPrefix('idle', 'grains 1', 24, true);
+			grain.animation.play('idle');
+			grain.screenCenter();
+			grain.scale.x = 1.1;
+			grain.scale.y = 1.1;
+			add(grain);
+		}
+
+		curSelected = 0;
+
+		var wip:FlxText = new FlxText(0, FlxG.height * 0.95, 0, "This menu is NOT finished yet! Expect some obvious bugs!", 32);
+		wip.setFormat(Paths.font("disneyFreeplayFont.ttf"), 15, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
+		add(wip);
+
 		changeSelection();
 		ClientPrefs.saveSettings();
 
@@ -124,12 +162,30 @@ class OptionsState extends MusicBeatState
 		if (controls.UI_LEFT_P)
 		{
 			changeSelection(-1);
-			selectorLeft.scale.set(.55, .55);
+			selectorLeft.scale.set(.5, .5);
 		}
 		if (controls.UI_RIGHT_P)
 		{
 			changeSelection(1);
-			selectorRight.scale.set(.55, .55);
+			selectorRight.scale.set(.5, .5);
+		}
+
+		if (FlxG.mouse.justPressed)
+		{
+			if (FlxG.mouse.overlaps(selectorLeft))
+			{
+				changeSelection(-1);
+				selectorLeft.scale.set(.5, .5);
+			}
+			else if (FlxG.mouse.overlaps(selectorRight))
+			{
+				changeSelection(1);
+				selectorRight.scale.set(.5, .5);
+			}
+			else if (FlxG.mouse.overlaps(art))
+			{
+				openSelectedSubstate(options[curSelected]);
+			}
 		}
 
 		if (controls.BACK)

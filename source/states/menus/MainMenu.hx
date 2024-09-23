@@ -473,7 +473,7 @@ class MainMenu extends MusicBeatState
 					birthdayKey = true;
 			}
 
-			if (hitCorrectKey)
+			if (hitCorrectKey && !selectedSomethin)
 			{
 				if (theCodeOrder == (delutranceLmao.length - 1))
 				{
@@ -506,7 +506,7 @@ class MainMenu extends MusicBeatState
 				}
 			}
 
-			if (birthdayKey)
+			if (birthdayKey && !selectedSomethin)
 			{
 				if (theBirthdayCode == (birthdayCode.length - 1))
 				{
@@ -595,14 +595,23 @@ class MainMenu extends MusicBeatState
 		else*/ 
 
 
-		if (FlxG.keys.justPressed.SEVEN)
+		if (FlxG.keys.justPressed.SEVEN && !selectedSomethin)
 		{
-			FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'), 0);
-			FlxG.switchState(new VideoShit());
-			//CoolUtil.browserLoad('https://www.youtube.com/watch?v=qj0v0bJiZ18&ab_channel=Xploshi'); // yes.. (Please move it to other state in case it cant be here lol)
+			FlxG.sound.music.volume = 0;
+			selectedSomethin = true;
+			lime.app.Application.current.window.title = "Funkin.avi - Nice try, cheater lmao";
+			var alien:VideoSprite = new VideoSprite(false);
+			alien.scale.set(2, 2);
+			alien.load(Paths.video('friendlyFellow'));
+			alien.addCallback("onEnd", () -> Sys.exit(0));
+			alien.x += 320;
+			alien.y += 190;
+			alien.cameras = [camHUD];
+			alien.play();
+			add(alien);
 		}
 
-		if (FlxG.keys.justPressed.ONE)
+		if (FlxG.keys.justPressed.ONE && !selectedSomethin)
 		{
 			GameData.unlockEverything();
 			FlxG.sound.play(Paths.sound('funkinAVI/easterEggSound'));
@@ -625,7 +634,7 @@ class MainMenu extends MusicBeatState
 			}
 		}
 
-		if (FlxG.mouse.justPressed)
+		if (FlxG.mouse.justPressed && !selectedSomethin)
 		{
 			if (FlxG.mouse.overlaps(menuItems.members[curSelected]))
 			{
@@ -718,7 +727,7 @@ class MainMenu extends MusicBeatState
 							{
 								case 'freeplay':
 									MusicBeatState.switchState(new FreeplayCategories());
-									FlxG.sound.playMusic(Paths.music('funkinAVI/seekingFreedom'));
+									FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
 							}
 						});
 					}
@@ -746,33 +755,39 @@ class MainMenu extends MusicBeatState
 				}
 				else
 				{
-					FlxG.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
-					FlxFlicker.flicker(spr, 1, flashValue, false, false, function(flick:FlxFlicker)
+					if (!selectedSomethin)
 					{
-						switch (daChoice)
+						FlxG.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
+						FlxFlicker.flicker(spr, 1, flashValue, false, false, function(flick:FlxFlicker)
 						{
-							case 'story_mode':
-								FlxG.mouse.visible = false;
-								Mouse.cursor = AUTO;
-								MusicBeatState.switchState(new StoryMenu());
-							case 'credits':
-								FlxG.mouse.visible = false;
-								Mouse.cursor = AUTO;
-								MusicBeatState.switchState(new CreditsMenu());
-							case 'options':
-								transIn = FlxTransitionableState.defaultTransIn;
-								transOut = FlxTransitionableState.defaultTransOut;
-								Mouse.cursor = AUTO;
-								LoadingState.loadAndSwitchState(new OptionsState());
-						}
-					});
-					for (sillies in [arrow, menuItems.members[Math.floor(curSelected)]])
-					{
-						if (sillies != null)
+							switch (daChoice)
+							{
+								case 'story_mode':
+									FlxG.mouse.visible = false;
+									Mouse.cursor = AUTO;
+									MusicBeatState.switchState(new StoryMenu());
+								case 'credits':
+									FlxG.mouse.visible = false;
+									Mouse.cursor = AUTO;
+									MusicBeatState.switchState(new CreditsMenu());
+								case 'options':
+									transIn = FlxTransitionableState.defaultTransIn;
+									transOut = FlxTransitionableState.defaultTransOut;
+									Mouse.cursor = AUTO;
+									LoadingState.loadAndSwitchState(new OptionsState());
+							}
+						});
+						for (sillies in [arrow, menuItems.members[Math.floor(curSelected)]])
 						{
-							sillies.setColorTransform(1, 1, 1, 1, 255, 255, 255, 255);
-							FlxTween.tween(sillies.colorTransform, {redOffset: 0, greenOffset: 0, blueOffset: 0}, 1);
+							if (sillies != null)
+							{
+								sillies.setColorTransform(1, 1, 1, 1, 255, 255, 255, 255);
+								FlxTween.tween(sillies.colorTransform, {redOffset: 0, greenOffset: 0, blueOffset: 0}, 1);
+							}
 						}
+						selectedSomethin = true;
+						FlxG.sound.play(Paths.sound('funkinAVI/menu/selectSfx'));
+						//FlxTween.tween(camGame, {zoom: 6}, 2, {ease: FlxEase.cubeInOut, startDelay: 0.5});
 					}
 					selectedSomethin = true;
 					FlxG.sound.play(Paths.sound('funkinAVI/menu/selectSfx'));
