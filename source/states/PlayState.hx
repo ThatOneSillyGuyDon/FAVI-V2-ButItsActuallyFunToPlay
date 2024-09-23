@@ -10067,17 +10067,90 @@ class PlayState extends MusicBeatState
 						cameraSpeed = 2;
 					case 64 | 67 | 72 | 75 | 80 | 83 | 88 | 91: 
 						FlxG.camera.zoom += 0.015;
+						camHUD.zoom += 0.03;
+						camNotes.zoom += .03;
 						//PlayState.instance.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.25, ease: FlxEase.sineOut, timer: 0.6});
 					case 96:
 						PlayState.instance.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.6, ease: FlxEase.sineOut, timer: 1});
 						PlayState.cameraSpeed = 2.3;
 						PlayState.defaultCamZoom = .78;
+					case 152:
+						PlayState.defaultCamZoom = 1;
+						opponentCameraOffset[0] -= 50;
+						moveCamera(true);
+					case 156:
+						PlayState.defaultCamZoom = 1.2;
+						opponentCameraOffset[0] -= 50;
+						moveCamera(true);
+					case 160:
+						PlayState.defaultCamZoom = .78;
+						opponentCameraOffset[0] += 100;
+					case 184:
+						PlayState.defaultCamZoom = 1;
+						boyfriendCameraOffset[0] += 50;
+						moveCamera(false);
+					case 188:
+						PlayState.defaultCamZoom = 1.2;
+						boyfriendCameraOffset[0] += 50;
+						moveCamera(false);
+					case 192:
+						PlayState.defaultCamZoom = .78;
+						boyfriendCameraOffset[0] -= 100;
+						opponentCameraOffset[0] -= 70;
+						isCameraOnForcedPos = true;
+						FlxTween.tween(FlxG.camera, {zoom: 1.1}, 3.5, {startDelay: .9, ease: FlxEase.sineInOut, onComplete: a -> defaultCamZoom = 1.1});
+						FlxTween.tween(camFollow, {x: camFollow.x - 750}, 3.5, {startDelay: .9, ease: FlxEase.sineInOut, onComplete: s -> isCameraOnForcedPos = false});
+					case 256:
+						boyfriendCameraOffset[0] += 100;
+						opponentCameraOffset[0] += 70;
+						moveCamera(true);
+						// only time this actually works fine dear god
+						PlayState.instance.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.6, ease: FlxEase.sineOut, timer: 1});
+						PlayState.defaultCamZoom = .78;
+					case 384:
+						triggerEventNote('Change Scroll Speed', '0.7', '2');
+						PlayState.cameraSpeed = 1;
+					case 484:
+						triggerEventNote('Change Scroll Speed', '1.1', '2');
+						PlayState.cameraSpeed = 1.8;
+						PlayState.defaultCamZoom = 1;
+						boyfriendCameraOffset[0] += 50;
+						moveCamera(false);
+					case 488:
+						boyfriendCameraOffset[0] -= 50;
+						moveCamera(true);
+						PlayState.instance.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.6, ease: FlxEase.sineOut, timer: 1});
+						PlayState.defaultCamZoom = .78;
+						PlayState.cameraSpeed = 2.3;
+					case 616:
+						PlayState.defaultCamZoom = 1;
+						boyfriendCameraOffset[0] += 30;
+						moveCamera(false);
+					case 618:
+						PlayState.defaultCamZoom = 1.2;
+						boyfriendCameraOffset[0] += 30;
+						opponentCameraOffset[0] += 60;
+						PlayState.cameraSpeed = 1.6;
+						moveCamera(false);
+					case 684:
+						PlayState.defaultCamZoom = 1.35;
+						boyfriendCameraOffset[0] += 30;
+						moveCamera(false);
 				}
 
-				if (curBeat >= 96 && curBeat <= 192)
+				if ((curBeat >= 96 && curBeat <= 128) || (curBeat >= 256 && curBeat <= 384) || (curBeat >= 488 && curBeat <= 616))
 				{
 					FlxG.camera.zoom += 0.015;
+					camHUD.zoom += 0.03;
+					camNotes.zoom += .03;
 					//PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.15, ease: FlxEase.sineOut, timer: 0.35, colors: [255, 0, 0]});
+				}
+
+				if (curBeat >= 192 && curBeat <= 256 && curBeat % 2 == 0)
+				{
+					FlxG.camera.zoom += curBeat >= 209 ? .015 : 0;
+					camHUD.zoom += 0.03;
+					camNotes.zoom += .03;
 				}
 
 			case 'Birthday':
