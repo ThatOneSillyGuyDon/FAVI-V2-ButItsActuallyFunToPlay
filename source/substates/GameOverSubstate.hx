@@ -125,7 +125,7 @@ class GameOverSubstate extends MusicBeatSubstate
 			else
 			{
 				MusicBeatState.switchState(new FreeplayState());
-				FlxG.sound.playMusic(Paths.music('funkinAVI/seekingFreedom'));
+				FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
 			}
 			FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
 			PlayState.instance.callOnLuas('onGameOverConfirm', [false]);

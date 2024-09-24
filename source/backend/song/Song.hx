@@ -115,6 +115,7 @@ class Song
 			case "mercy-legacy": chartFile = Chart.mercyLegacy;
 			case "laugh-track": chartFile = Chart.laughTrack;
 			case "delutrance": chartFile = Chart.delutrance;
+			case "cycled-sins": chartFile = Chart.cycledSins;
 			case "dont-cross":
 				if (!ClientPrefs.mechanics)
 				{
@@ -201,9 +202,10 @@ class Song
 	{
 		switch (PlayState.SONG.song)
 		{
-			case "Devilish Deal" | "Lunacy" | "Hunted" | "War Dilemma": charter = "Purg";
-			case "Delusional": charter = "Dreupy";
-			case "Bless" | "Malfunction" | "Birthday" | "Delutrance" | "Mercy" | "Mercy Legacy" | "Isolated Old" | "Isolated Legacy" | "Isolated Beta" | "Malfunction Legacy": charter = "DEMOLITIONDON96";
+			case "Devilish Deal" | "Lunacy" | "Hunted" | "War Dilemma" | "Twisted Grins": charter = "Purg";
+			case "Delusional" | "Cycled Sins" | "Birthday": charter = "Dreupy";
+			case "Isolated": charter = "PhantomNexus";
+			case "Bless" | "Malfunction" | "Delutrance" | "Mercy" | "Mercy Legacy" | "Isolated Old" | "Isolated Legacy" | "Isolated Beta" | "Malfunction Legacy": charter = "DEMOLITIONDON96";
 			case "Dont Cross":
 				switch (randomizer)
 				{

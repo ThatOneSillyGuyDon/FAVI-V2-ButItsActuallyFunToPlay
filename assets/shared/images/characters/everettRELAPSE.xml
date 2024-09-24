@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="everettRELAPSE.png">
+<SubTexture name="missLeft0000" x="0" y="191" width="70" height="90" frameX="-36" frameY="-47" frameWidth="150" frameHeight="150" />
+<SubTexture name="missLeft0001" x="243" y="90" width="68" height="90" frameX="-40" frameY="-47" frameWidth="150" frameHeight="150" />
+<SubTexture name="missRight0000" x="70" y="191" width="62" height="90" frameX="-51" frameY="-47" frameWidth="150" frameHeight="150" />
+<SubTexture name="missRight0001" x="132" y="191" width="60" height="90" frameX="-51" frameY="-47" frameWidth="150" frameHeight="150" />
+<SubTexture name="missUp0000" x="0" y="99" width="59" height="92" frameX="-50" frameY="-45" frameWidth="150" frameHeight="150" />
+<SubTexture name="missUp0001" x="118" y="99" width="60" height="91" frameX="-49" frameY="-46" frameWidth="150" frameHeight="150" />
+<SubTexture name="missDown0000" x="380" y="0" width="62" height="85" frameX="-46" frameY="-52" frameWidth="150" frameHeight="150" />
+<SubTexture name="missDown0001" x="138" y="281" width="60" height="87" frameX="-48" frameY="-50" frameWidth="150" frameHeight="150" />
+<SubTexture name="idle0000" x="243" y="0" width="69" height="90" frameX="-40" frameY="-47" frameWidth="150" frameHeight="150" />
+<SubTexture name="idle0001" x="0" y="281" width="69" height="89" frameX="-40" frameY="-48" frameWidth="150" frameHeight="150" />
+<SubTexture name="idle0002" x="198" y="281" width="69" height="87" frameX="-39" frameY="-50" frameWidth="150" frameHeight="150" />
+<SubTexture name="idle0003" x="69" y="281" width="69" height="88" frameX="-39" frameY="-49" frameWidth="150" frameHeight="150" />
+<SubTexture name="left0000" x="192" y="191" width="70" height="90" frameX="-36" frameY="-47" frameWidth="150" frameHeight="150" />
+<SubTexture name="left0001" x="312" y="0" width="68" height="90" frameX="-40" frameY="-47" frameWidth="150" frameHeight="150" />
+<SubTexture name="right0000" x="312" y="90" width="62" height="90" frameX="-51" frameY="-47" frameWidth="150" frameHeight="150" />
+<SubTexture name="right0001" x="312" y="180" width="60" height="90" frameX="-51" frameY="-47" frameWidth="150" frameHeight="150" />
+<SubTexture name="up0000" x="59" y="99" width="59" height="92" frameX="-50" frameY="-45" frameWidth="150" frameHeight="150" />
+<SubTexture name="up0001" x="178" y="99" width="60" height="91" frameX="-49" frameY="-46" frameWidth="150" frameHeight="150" />
+<SubTexture name="down0000" x="380" y="85" width="62" height="85" frameX="-46" frameY="-52" frameWidth="150" frameHeight="150" />
+<SubTexture name="down0001" x="267" y="281" width="60" height="87" frameX="-48" frameY="-50" frameWidth="150" frameHeight="150" />
+<SubTexture name="dodge0000" x="162" y="0" width="81" height="97" frameX="-36" frameY="-40" frameWidth="150" frameHeight="150" />
+<SubTexture name="dodge0001" x="0" y="0" width="81" height="99" frameX="-36" frameY="-40" frameWidth="150" frameHeight="150" />
+<SubTexture name="dodge0002" x="81" y="0" width="81" height="99" frameX="-36" frameY="-40" frameWidth="150" frameHeight="150" />
+</TextureAtlas>
