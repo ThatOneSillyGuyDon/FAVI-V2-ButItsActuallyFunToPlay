@@ -203,9 +203,10 @@ class Song
 		switch (PlayState.SONG.song)
 		{
 			case "Devilish Deal" | "Lunacy" | "Hunted" | "War Dilemma" | "Twisted Grins": charter = "Purg";
-			case "Delusional" | "Cycled Sins" | "Birthday": charter = "Dreupy";
+			case "Delusional" | "Cycled Sins" | "Birthday" | "Cycled Sins Legacy": charter = "Dreupy";
 			case "Isolated": charter = "PhantomNexus";
-			case "Bless" | "Malfunction" | "Delutrance" | "Mercy" | "Mercy Legacy" | "Isolated Old" | "Isolated Legacy" | "Isolated Beta" | "Malfunction Legacy": charter = "DEMOLITIONDON96";
+			case "Lunacy Legacy": charter = "obscurity.";
+			case "Bless" | "Malfunction" | "Delutrance" | "Mercy" | "Mercy Legacy" | "Isolated Old" | "Isolated Legacy" | "Isolated Beta" | "Malfunction Legacy" | "Laugh Track" | "Delusional Legacy": charter = "DEMOLITIONDON96";
 			case "Dont Cross":
 				switch (randomizer)
 				{

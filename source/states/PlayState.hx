@@ -2748,6 +2748,11 @@ class PlayState extends MusicBeatState
 							new ShaderFilter(PlayState.blurShaderHUD),
 							new ShaderFilter(PlayState.andromeda)
 						]);
+						PlayState.camNotes.setFilters([
+							new ShaderFilter(PlayState.grayScale),
+							new ShaderFilter(PlayState.blurShaderHUD),
+							new ShaderFilter(PlayState.andromeda)
+						]);
 					}
 					else
 					{
@@ -3830,7 +3835,7 @@ class PlayState extends MusicBeatState
 			for (i in 0...opponentStrums.length) {
 				setOnLuas('defaultOpponentStrumX' + i, opponentStrums.members[i].x);
 				setOnLuas('defaultOpponentStrumY' + i, opponentStrums.members[i].y);
-				//if(ClientPrefs.middleScroll) opponentStrums.members[i].visible = false;
+				if(middlescroll) opponentStrums.members[i].visible = false;
 			}
 
 			startedCountdown = true;
@@ -10062,18 +10067,18 @@ class PlayState extends MusicBeatState
 				{
 					case 7:
 						PlayState.cameraSpeed = 50;
-						PlayState.instance.camFollow.x += 100;
+						//PlayState.instance.camFollow.x += 100;
 					case 8:
 						PlayState.camBars.fade(FlxColor.BLACK, 5, true);
-						FlxTween.tween(PlayState.instance.camFollow, {x: 0}, 3, {ease: FlxEase.circOut});
+						//FlxTween.tween(PlayState.instance.camFollow, {x: 0}, 3, {ease: FlxEase.circOut});
 					case 32:
 						PlayState.defaultCamZoom = 1.5;
-						new FlxTimer().start(0.001, function(tmr) // what a load of crap lol
-							{
-								PlayState.instance.camFollow.x -= 100;
-							});
-					case 33: 
-						FlxTween.tween(PlayState.instance.camFollow, {x: 0}, 3, {ease: FlxEase.circInOut});
+						//new FlxTimer().start(0.001, function(tmr) // what a load of crap lol
+							//{
+								//PlayState.instance.camFollow.x -= 100;
+							//});
+					//case 33: 
+						//FlxTween.tween(PlayState.instance.camFollow, {x: 0}, 3, {ease: FlxEase.circInOut});
 					case 56:
 						tweenCamera(1, 1.5, 'circInOut');
 						FlxTween.tween(PlayState.camHUD, {alpha: 1}, 1.5, {ease: FlxEase.circInOut});
@@ -10216,8 +10221,8 @@ class PlayState extends MusicBeatState
 						dadGroup.scale.x = 0.6;
 						FlxTween.tween(dadGroup, {'scale.x': 0}, 0.3, {ease: FlxEase.quartInOut});
 					case 416: 
-						boyfriendGroup.scale.x = 0.6;
-						boyfriendGroup.scale.y = 0.6;
+						boyfriendGroup.scale.x = 0.9;
+						boyfriendGroup.scale.y = 0.9;
 						FlxTween.tween(boyfriendGroup, {'scale.y': 0}, 0.5, {ease: FlxEase.quartInOut, onComplete: function(twn:FlxTween)
 						{
 							boyfriendGroup.scale.x = 0.7;
@@ -10231,8 +10236,8 @@ class PlayState extends MusicBeatState
 						}});
 					case 481: FlxTween.tween(boyfriendGroup, {'scale.x': 0}, 0.7, {ease: FlxEase.quartInOut, onComplete: function(twn:FlxTween)
 						{
-							boyfriendGroup.scale.y = 0.6;
-							FlxTween.tween(boyfriendGroup, {'scale.x': 0.6}, 0.7, {ease: FlxEase.quartOut});
+							boyfriendGroup.scale.y = 0.9;
+							FlxTween.tween(boyfriendGroup, {'scale.x': 0.9}, 0.7, {ease: FlxEase.quartOut});
 						}});
 					case 536 | 540 | 544: PlayState.defaultCamZoom += 0.18;
 					case 548: tweenCamera(0.8, 2, 'sineOut');

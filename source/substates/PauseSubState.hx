@@ -699,13 +699,12 @@ class FAVIPauseSubState extends MusicBeatSubstate
 											{
 												states.menus.FreeplayState.freeplayMenuList = 1;
 												MusicBeatState.switchState(new states.menus.FreeplayState());
-												FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
 											}
 										default:
 											states.menus.FreeplayState.freeplayMenuList = (PlayState.SONG.song.toLowerCase().endsWith('legacy') || PlayState.SONG.song == "Isolated Beta" || PlayState.SONG.song == "Isolated Old") ? 2 : 1;
 											MusicBeatState.switchState(new states.menus.FreeplayState()); // yeah, there's no way I'm making a case for EVERY fucking song in that menu, too much work!
-											FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
 									}
+									FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
 									FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
 					}
 				}

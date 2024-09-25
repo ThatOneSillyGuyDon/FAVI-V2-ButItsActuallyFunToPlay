@@ -34,7 +34,7 @@ class StrumNote extends FlxSprite
 
 		switch (PlayState.SONG.song)
 		{
-			case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted":
+			case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Laugh Track":
 				skin = "NOTE_assets-CARTOON";
 			case "Mercy":
 				skin = "NOTE_assets-MERCY";
