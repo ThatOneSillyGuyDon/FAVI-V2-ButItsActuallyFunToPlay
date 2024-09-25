@@ -34,7 +34,7 @@ enum abstract CreditsData(String) from String to String {
     var hunted:String = '{
 	"settings":
 	[
-		"Art: GreyDoodlez & rezeo\n\nChart: Purg\n\nCode: DEMOLITIONDON96\n\nMusic: JBlitz", 20, 16
+		"Art: GreyDoodlez & rezeo\n\nChart: Purg\n\nCode: DEMOLITIONDON96 & MalyPlus\n\nMusic: JBlitz", 20, 16
 	]
 }';
     var laughTrack:String = '{
@@ -67,6 +67,13 @@ enum abstract CreditsData(String) from String to String {
 		"Art: Domingo & Moe\n\nChart: DEMOLITIONDON96\n\nCode: DEMOLITIONDON96\n\nMusic: PualTheUnTruest\n\nVoice Actor: Molkey.xml", -55, 20
 	]
 }';
+	// In Case You'll add the dealthly chart
+	var dontCross4:String = '{
+		"settings":
+		[
+			"Art: Domingo & Moe\n\nChart: MalyPlus\n\nCode: DEMOLITIONDON96\n\nMusic: PualTheUnTruest\n\nVoice Actor: Molkey.xml", -55, 20
+		]
+	}';
     var warDilemma:String = '{
 	"settings":
 	[
