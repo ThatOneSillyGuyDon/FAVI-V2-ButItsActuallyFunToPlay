@@ -24763,10 +24763,11 @@ enum abstract Chart(String) from String to String {
     var devilishDeal:String = '{
 	"song": {
 		"player1": "minnie",
-		"gfVersion": "gf",
+		"player2": "satandd",
+		"events": [],
 		"notes": [
 			{
-				"sectionBeats": 4,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						0,
@@ -24775,85 +24776,85 @@ enum abstract Chart(String) from String to String {
 						"No Animation"
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionBeats": 4,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 150,
 				"changeBPM": false,
-				"bpm": 150
+				"mustHitSection": true
 			},
 			{
-				"sectionBeats": 4,
+				"typeOfSection": 0,
 				"sectionNotes": [],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionBeats": 4,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 150,
 				"changeBPM": false,
-				"bpm": 150
+				"mustHitSection": true
 			},
 			{
-				"sectionBeats": 4,
+				"typeOfSection": 0,
 				"sectionNotes": [],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionBeats": 4,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 90,
 				"changeBPM": false,
-				"bpm": 90
+				"mustHitSection": true
 			},
 			{
-				"sectionBeats": 4,
+				"typeOfSection": 0,
 				"sectionNotes": [],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionBeats": 4,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 90,
 				"changeBPM": false,
-				"bpm": 90
+				"mustHitSection": true
 			},
 			{
-				"sectionBeats": 4,
+				"typeOfSection": 0,
 				"sectionNotes": [],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionBeats": 4,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 90,
 				"changeBPM": false,
-				"bpm": 90
+				"mustHitSection": false
 			},
 			{
-				"sectionBeats": 4,
+				"typeOfSection": 0,
 				"sectionNotes": [],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionBeats": 4,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 90,
 				"changeBPM": false,
-				"bpm": 90
+				"mustHitSection": false
 			},
 			{
-				"sectionBeats": 4,
+				"typeOfSection": 0,
 				"sectionNotes": [],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionBeats": 4,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 90,
 				"changeBPM": false,
-				"bpm": 90
+				"mustHitSection": false
 			},
 			{
-				"sectionBeats": 4,
+				"typeOfSection": 0,
 				"sectionNotes": [],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionBeats": 4,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 90,
 				"changeBPM": false,
-				"bpm": 90
+				"mustHitSection": true
 			},
 			{
-				"sectionBeats": 4,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						21333.3333333333,
@@ -24866,24 +24867,19 @@ enum abstract Chart(String) from String to String {
 						833.333333333333
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionBeats": 4,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 90,
 				"changeBPM": false,
-				"bpm": 90
+				"mustHitSection": true
 			},
 			{
-				"sectionBeats": 4,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						25333.3333333333,
 						1,
-						0
-					],
-					[
-						25666.6666666667,
-						0,
 						0
 					],
 					[
@@ -24892,54 +24888,49 @@ enum abstract Chart(String) from String to String {
 						0
 					],
 					[
+						25666.6666666667,
+						2,
+						0
+					],
+					[
 						26333.3333333333,
-						3,
+						0,
 						0
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionBeats": 4,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 90,
 				"changeBPM": false,
-				"bpm": 90
+				"mustHitSection": true
 			},
 			{
-				"sectionBeats": 4,
+				"typeOfSection": 0,
 				"sectionNotes": [
-					[
-						27000,
-						2,
-						833.333333333333
-					],
 					[
 						26666.6666666667,
-						0,
+						1,
 						1166.66666666667
+					],
+					[
+						27000,
+						3,
+						833.333333333333
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionBeats": 4,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 90,
 				"changeBPM": false,
-				"bpm": 90
+				"mustHitSection": true
 			},
 			{
-				"sectionBeats": 4,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
-						29333.3333333333,
-						3,
-						0
-					],
-					[
 						30333.3333333333,
-						3,
-						0
-					],
-					[
-						30666.6666666667,
 						3,
 						0
 					],
@@ -24949,77 +24940,87 @@ enum abstract Chart(String) from String to String {
 						0
 					],
 					[
+						29333.3333333333,
+						0,
+						0
+					],
+					[
+						30666.6666666667,
+						0,
+						0
+					],
+					[
 						31333.3333333333,
 						1,
 						500
 					],
 					[
 						31666.6666666667,
-						2,
+						3,
 						166.666666666667
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionBeats": 4,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 90,
 				"changeBPM": false,
-				"bpm": 90
+				"mustHitSection": true
 			},
 			{
-				"sectionBeats": 4,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						32000,
-						0,
+						2,
 						1166.66666666667
 					],
 					[
 						32333.3333333333,
-						3,
+						0,
 						833.333333333333
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionBeats": 4,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 90,
 				"changeBPM": false,
-				"bpm": 90
+				"mustHitSection": true
 			},
 			{
-				"sectionBeats": 4,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						36000,
-						1,
+						3,
 						0
 					],
 					[
 						36333.3333333333,
-						0,
+						1,
 						0
 					],
 					[
 						36666.6666666667,
-						3,
+						0,
 						0
 					],
 					[
 						37000,
-						0,
+						1,
 						0
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionBeats": 4,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 90,
 				"changeBPM": false,
-				"bpm": 90
+				"mustHitSection": true
 			},
 			{
-				"sectionBeats": 4,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						37333.3333333333,
@@ -25032,15 +25033,15 @@ enum abstract Chart(String) from String to String {
 						833.333333333333
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionBeats": 4,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 90,
 				"changeBPM": false,
-				"bpm": 90
+				"mustHitSection": true
 			},
 			{
-				"sectionBeats": 4,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						40000,
@@ -25048,29 +25049,19 @@ enum abstract Chart(String) from String to String {
 						1166.66666666667
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionBeats": 4,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 90,
 				"changeBPM": false,
-				"bpm": 90
+				"mustHitSection": false
 			},
 			{
-				"sectionBeats": 4,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						43000,
 						2,
-						0
-					],
-					[
-						42666.6666666667,
-						0,
-						166.666666666667
-					],
-					[
-						43333.3333333333,
-						3,
 						0
 					],
 					[
@@ -25084,72 +25075,62 @@ enum abstract Chart(String) from String to String {
 						500
 					],
 					[
-						44666.6666666667,
+						42666.6666666667,
 						3,
+						166.666666666667
+					],
+					[
+						43333.3333333333,
+						0,
+						0
+					],
+					[
+						44666.6666666667,
+						0,
 						500
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionBeats": 4,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 90,
 				"changeBPM": false,
-				"bpm": 90
+				"mustHitSection": true
 			},
 			{
-				"sectionBeats": 4,
+				"typeOfSection": 0,
 				"sectionNotes": [
-					[
-						45333.3333333333,
-						0,
-						1166.66666666667
-					],
 					[
 						47333.3333333333,
 						1,
 						0
 					],
 					[
+						45333.3333333333,
+						3,
+						1166.66666666667
+					],
+					[
 						47000,
-						0,
+						3,
 						166.666666666667
 					],
 					[
 						47666.6666666667,
-						0,
-						0
+						3,
+						166.666666666667
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionBeats": 4,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 90,
 				"changeBPM": false,
-				"bpm": 90
+				"mustHitSection": true
 			},
 			{
-				"sectionBeats": 4,
+				"typeOfSection": 0,
 				"sectionNotes": [
-					[
-						48000,
-						3,
-						166.666666666667
-					],
-					[
-						48333.3333333333,
-						2,
-						0
-					],
-					[
-						48666.6666666667,
-						1,
-						166.666666666667
-					],
-					[
-						49000,
-						3,
-						0
-					],
 					[
 						49166.6666666667,
 						3,
@@ -25161,30 +25142,50 @@ enum abstract Chart(String) from String to String {
 						500
 					],
 					[
-						49666.6666666667,
+						48000,
+						2,
+						166.666666666667
+					],
+					[
+						48333.3333333333,
+						3,
+						0
+					],
+					[
+						48666.6666666667,
 						0,
 						166.666666666667
 					],
 					[
-						50000,
+						49000,
 						1,
+						0
+					],
+					[
+						49666.6666666667,
+						1,
+						166.666666666667
+					],
+					[
+						50000,
+						3,
 						500
 					],
 					[
 						50333.3333333333,
-						3,
+						0,
 						166.666666666667
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionBeats": 4,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 90,
 				"changeBPM": false,
-				"bpm": 90
+				"mustHitSection": true
 			},
 			{
-				"sectionBeats": 4,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						50666.6666666667,
@@ -25192,51 +25193,31 @@ enum abstract Chart(String) from String to String {
 						1833.33333333333
 					],
 					[
-						51333.3333333333,
-						1,
-						1166.66666666667
+						51500,
+						3,
+						1000
 					],
 					[
 						52666.6666666667,
-						3,
+						0,
 						166.666666666667
 					],
 					[
 						53000,
-						0,
+						2,
 						0
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionBeats": 4,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 90,
 				"changeBPM": false,
-				"bpm": 90
+				"mustHitSection": true
 			},
 			{
-				"sectionBeats": 4,
+				"typeOfSection": 0,
 				"sectionNotes": [
-					[
-						53666.6666666667,
-						1,
-						0
-					],
-					[
-						54000,
-						3,
-						166.666666666667
-					],
-					[
-						54333.3333333333,
-						1,
-						166.666666666667
-					],
-					[
-						54333.3333333333,
-						2,
-						0
-					],
 					[
 						54666.6666666667,
 						0,
@@ -25259,19 +25240,39 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						53333.3333333333,
-						0,
+						3,
 						166.666666666667
+					],
+					[
+						53666.6666666667,
+						0,
+						0
+					],
+					[
+						54000,
+						2,
+						166.666666666667
+					],
+					[
+						54333.3333333333,
+						1,
+						166.666666666667
+					],
+					[
+						54333.3333333333,
+						3,
+						0
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionBeats": 4,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 90,
 				"changeBPM": false,
-				"bpm": 90
+				"mustHitSection": true
 			},
 			{
-				"sectionBeats": 4,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						56333.3333333333,
@@ -25279,16 +25280,6 @@ enum abstract Chart(String) from String to String {
 						0
 					],
 					[
-						56000,
-						0,
-						166.666666666667
-					],
-					[
-						56666.6666666666,
-						3,
-						166.666666666667
-					],
-					[
 						57000,
 						1,
 						166.666666666667
@@ -25299,41 +25290,46 @@ enum abstract Chart(String) from String to String {
 						0
 					],
 					[
-						57333.3333333333,
-						0,
-						166.666666666667
-					],
-					[
 						57666.6666666666,
 						2,
 						0
 					],
 					[
-						58000,
+						56000,
+						2,
+						166.666666666667
+					],
+					[
+						56666.6666666666,
 						0,
+						166.666666666667
+					],
+					[
+						57333.3333333333,
+						0,
+						166.666666666667
+					],
+					[
+						58000,
+						3,
 						166.666666666667
 					],
 					[
 						58333.3333333333,
-						3,
+						0,
 						166.666666666667
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionBeats": 4,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 90,
 				"changeBPM": false,
-				"bpm": 90
+				"mustHitSection": true
 			},
 			{
-				"sectionBeats": 4,
+				"typeOfSection": 0,
 				"sectionNotes": [
-					[
-						58666.6666666666,
-						0,
-						166.666666666667
-					],
 					[
 						59000,
 						1,
@@ -25343,16 +25339,6 @@ enum abstract Chart(String) from String to String {
 						59166.6666666666,
 						1,
 						0
-					],
-					[
-						59333.3333333333,
-						0,
-						166.666666666667
-					],
-					[
-						59666.6666666666,
-						3,
-						166.666666666667
 					],
 					[
 						60000,
@@ -25373,23 +25359,33 @@ enum abstract Chart(String) from String to String {
 						61000,
 						2,
 						166.666666666667
-					]
-				],
-				"typeOfSection": 0,
-				"gfSection": false,
-				"altAnim": false,
-				"mustHitSection": true,
-				"changeBPM": false,
-				"bpm": 90
-			},
-			{
-				"sectionBeats": 4,
-				"sectionNotes": [
+					],
 					[
-						61333.3333333333,
-						0,
+						58666.6666666666,
+						2,
 						166.666666666667
 					],
+					[
+						59333.3333333333,
+						3,
+						166.666666666667
+					],
+					[
+						59666.6666666666,
+						0,
+						166.666666666667
+					]
+				],
+				"sectionBeats": 4,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 90,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
 					[
 						61666.6666666666,
 						1,
@@ -25399,11 +25395,6 @@ enum abstract Chart(String) from String to String {
 						61833.3333333333,
 						1,
 						0
-					],
-					[
-						62000,
-						3,
-						166.666666666667
 					],
 					[
 						62333.3333333333,
@@ -25429,55 +25420,30 @@ enum abstract Chart(String) from String to String {
 						63666.6666666666,
 						2,
 						166.666666666667
-					]
-				],
-				"typeOfSection": 0,
-				"gfSection": false,
-				"altAnim": false,
-				"mustHitSection": true,
-				"changeBPM": false,
-				"bpm": 90
-			},
-			{
-				"sectionBeats": 4,
-				"sectionNotes": [
+					],
 					[
-						64000,
+						61333.3333333333,
 						3,
-						0
+						166.666666666667
 					],
 					[
-						64166.6666666666,
-						3,
-						0
-					],
-					[
-						64333.3333333333,
-						1,
-						0
-					],
-					[
-						64500,
-						0,
-						0
-					],
-					[
-						64666.6666666666,
+						62000,
 						2,
 						166.666666666667
-					],
-					[
-						65000,
-						0,
-						166.666666666667
-					],
+					]
+				],
+				"sectionBeats": 4,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 90,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
 					[
 						65333.3333333333,
-						3,
-						0
-					],
-					[
-						65500,
 						3,
 						0
 					],
@@ -25502,59 +25468,69 @@ enum abstract Chart(String) from String to String {
 						0
 					],
 					[
-						66333.3333333333,
-						3,
-						166.666666666667
-					],
-					[
 						66000,
 						1,
 						166.666666666667
 					],
 					[
-						66166.6666666666,
+						64166.6666666666,
+						2,
+						0
+					],
+					[
+						64000,
+						0,
+						0
+					],
+					[
+						64333.3333333333,
+						0,
+						0
+					],
+					[
+						64500,
+						1,
+						0
+					],
+					[
+						64666.6666666666,
+						3,
+						166.666666666667
+					],
+					[
+						65000,
+						2,
+						166.666666666667
+					],
+					[
+						65500,
+						0,
+						0
+					],
+					[
+						66333.3333333333,
+						2,
+						166.666666666667
+					],
+					[
+						66000,
 						0,
 						0
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionBeats": 4,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 90,
 				"changeBPM": false,
-				"bpm": 90
+				"mustHitSection": true
 			},
 			{
-				"sectionBeats": 4,
+				"typeOfSection": 0,
 				"sectionNotes": [
-					[
-						67000,
-						2,
-						166.666666666667
-					],
-					[
-						67666.6666666666,
-						0,
-						166.666666666667
-					],
-					[
-						66666.6666666666,
-						3,
-						166.666666666667
-					],
 					[
 						67333.3333333333,
 						3,
-						166.666666666667
-					],
-					[
-						68000,
-						3,
-						166.666666666667
-					],
-					[
-						68333.3333333333,
-						2,
 						166.666666666667
 					],
 					[
@@ -25563,26 +25539,46 @@ enum abstract Chart(String) from String to String {
 						166.666666666667
 					],
 					[
-						69000,
+						66666.6666666666,
 						0,
+						166.666666666667
+					],
+					[
+						67000,
+						2,
+						166.666666666667
+					],
+					[
+						67666.6666666666,
+						2,
+						166.666666666667
+					],
+					[
+						68000,
+						0,
+						166.666666666667
+					],
+					[
+						68333.3333333333,
+						1,
+						166.666666666667
+					],
+					[
+						69000,
+						2,
 						166.666666666667
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionBeats": 4,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 90,
 				"changeBPM": false,
-				"bpm": 90
+				"mustHitSection": true
 			},
 			{
-				"sectionBeats": 4,
+				"typeOfSection": 0,
 				"sectionNotes": [
-					[
-						69333.3333333333,
-						1,
-						0
-					],
 					[
 						69500,
 						2,
@@ -25599,18 +25595,8 @@ enum abstract Chart(String) from String to String {
 						0
 					],
 					[
-						70000,
-						1,
-						166.666666666667
-					],
-					[
 						70333.3333333333,
 						3,
-						166.666666666667
-					],
-					[
-						70500,
-						1,
 						0
 					],
 					[
@@ -25619,18 +25605,8 @@ enum abstract Chart(String) from String to String {
 						0
 					],
 					[
-						70833.3333333333,
-						0,
-						0
-					],
-					[
 						71000,
 						2,
-						0
-					],
-					[
-						71166.6666666666,
-						3,
 						0
 					],
 					[
@@ -25639,34 +25615,54 @@ enum abstract Chart(String) from String to String {
 						0
 					],
 					[
-						71500,
+						71666.6666666666,
+						3,
+						166.666666666667
+					],
+					[
+						69333.3333333333,
 						0,
 						0
 					],
 					[
-						71666.6666666666,
-						3,
+						70000,
+						0,
 						166.666666666667
+					],
+					[
+						70333.3333333333,
+						1,
+						166.666666666667
+					],
+					[
+						71166.6666666666,
+						0,
+						0
+					],
+					[
+						70833.3333333333,
+						1,
+						0
+					],
+					[
+						71500,
+						2,
+						0
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionBeats": 4,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 90,
 				"changeBPM": false,
-				"bpm": 90
+				"mustHitSection": true
 			},
 			{
-				"sectionBeats": 4,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						72000,
 						2,
-						0
-					],
-					[
-						72166.6666666667,
-						0,
 						0
 					],
 					[
@@ -25675,38 +25671,13 @@ enum abstract Chart(String) from String to String {
 						0
 					],
 					[
-						72500,
-						0,
-						0
-					],
-					[
 						72666.6666666667,
-						1,
-						166.666666666667
-					],
-					[
-						73000,
-						0,
-						0
-					],
-					[
-						73333.3333333333,
 						1,
 						166.666666666667
 					],
 					[
 						73000,
 						2,
-						166.666666666667
-					],
-					[
-						72666.6666666667,
-						3,
-						0
-					],
-					[
-						73666.6666666667,
-						0,
 						166.666666666667
 					],
 					[
@@ -25715,69 +25686,44 @@ enum abstract Chart(String) from String to String {
 						166.666666666667
 					],
 					[
+						72166.6666666667,
+						0,
+						0
+					],
+					[
+						72500,
+						3,
+						0
+					],
+					[
+						73333.3333333333,
+						0,
+						166.666666666667
+					],
+					[
+						73666.6666666667,
+						2,
+						166.666666666667
+					],
+					[
 						74333.3333333333,
 						2,
 						166.666666666667
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionBeats": 4,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 90,
 				"changeBPM": false,
-				"bpm": 90
+				"mustHitSection": true
 			},
 			{
-				"sectionBeats": 4,
+				"typeOfSection": 0,
 				"sectionNotes": [
-					[
-						74666.6666666667,
-						3,
-						0
-					],
-					[
-						74833.3333333333,
-						2,
-						0
-					],
-					[
-						75000,
-						3,
-						0
-					],
-					[
-						75166.6666666667,
-						3,
-						0
-					],
-					[
-						75333.3333333333,
-						0,
-						0
-					],
 					[
 						75500,
 						2,
-						0
-					],
-					[
-						75833.3333333333,
-						0,
-						0
-					],
-					[
-						75666.6666666667,
-						1,
-						0
-					],
-					[
-						76000,
-						3,
-						0
-					],
-					[
-						76166.6666666667,
-						0,
 						0
 					],
 					[
@@ -25804,17 +25750,62 @@ enum abstract Chart(String) from String to String {
 						77000,
 						0,
 						166.666666666667
+					],
+					[
+						74666.6666666667,
+						0,
+						0
+					],
+					[
+						74833.3333333333,
+						3,
+						0
+					],
+					[
+						75000,
+						0,
+						0
+					],
+					[
+						75166.6666666667,
+						0,
+						0
+					],
+					[
+						75333.3333333333,
+						1,
+						0
+					],
+					[
+						75666.6666666667,
+						3,
+						0
+					],
+					[
+						75833.3333333333,
+						1,
+						0
+					],
+					[
+						76000,
+						0,
+						0
+					],
+					[
+						76166.6666666667,
+						3,
+						0
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionBeats": 4,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 90,
 				"changeBPM": false,
-				"bpm": 90
+				"mustHitSection": true
 			},
 			{
-				"sectionBeats": 4,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						77333.3333333333,
@@ -25892,15 +25883,15 @@ enum abstract Chart(String) from String to String {
 						166.666666666667
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionBeats": 4,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 90,
 				"changeBPM": false,
-				"bpm": 90
+				"mustHitSection": true
 			},
 			{
-				"sectionBeats": 4,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						80000,
@@ -25926,11 +25917,6 @@ enum abstract Chart(String) from String to String {
 						80833.3333333333,
 						2,
 						0
-					],
-					[
-						81000,
-						1,
-						166.666666666667
 					],
 					[
 						81333.3333333333,
@@ -25971,17 +25957,22 @@ enum abstract Chart(String) from String to String {
 						82500,
 						0,
 						0
+					],
+					[
+						81000,
+						0,
+						166.666666666667
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionBeats": 4,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 90,
 				"changeBPM": false,
-				"bpm": 90
+				"mustHitSection": true
 			},
 			{
-				"sectionBeats": 4,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						82666.6666666667,
@@ -26007,11 +25998,6 @@ enum abstract Chart(String) from String to String {
 						83500,
 						2,
 						0
-					],
-					[
-						83666.6666666667,
-						1,
-						166.666666666667
 					],
 					[
 						84000,
@@ -26052,85 +26038,95 @@ enum abstract Chart(String) from String to String {
 						85166.6666666667,
 						0,
 						0
+					],
+					[
+						83666.6666666667,
+						0,
+						166.666666666667
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionBeats": 4,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 90,
 				"changeBPM": false,
-				"bpm": 90
+				"mustHitSection": true
 			},
 			{
-				"sectionBeats": 4,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						85333.3333333333,
 						2,
 						1166.66666666667
-					],
-					[
-						85333.3333333333,
-						3,
-						166.666666666667
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionBeats": 4,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 90,
 				"changeBPM": false,
-				"bpm": 90
+				"mustHitSection": true
 			},
 			{
-				"sectionBeats": 4,
-				"sectionNotes": [],
 				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionNotes": [],
+				"sectionBeats": 4,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 90,
 				"changeBPM": false,
-				"bpm": 90
+				"mustHitSection": true
 			},
 			{
-				"sectionBeats": 4,
-				"sectionNotes": [],
 				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionNotes": [],
+				"sectionBeats": 4,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 90,
 				"changeBPM": false,
-				"bpm": 90
+				"mustHitSection": true
 			},
 			{
-				"sectionBeats": 4,
-				"sectionNotes": [],
 				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionNotes": [],
+				"sectionBeats": 4,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 90,
 				"changeBPM": false,
-				"bpm": 90
+				"mustHitSection": true
 			},
 			{
-				"sectionBeats": 4,
-				"sectionNotes": [],
 				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionNotes": [],
+				"sectionBeats": 4,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 90,
 				"changeBPM": false,
-				"bpm": 90
+				"mustHitSection": true
 			},
 			{
-				"sectionBeats": 4,
-				"sectionNotes": [],
 				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionNotes": [],
+				"sectionBeats": 4,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 90,
 				"changeBPM": false,
-				"bpm": 90
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"sectionBeats": 4,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 90,
+				"changeBPM": false,
+				"mustHitSection": true
 			},
 			{
 				"sectionBeats": 4,
@@ -26151,22 +26147,32 @@ enum abstract Chart(String) from String to String {
 				"sectionBeats": 4,
 				"changeBPM": false,
 				"mustHitSection": true
+			},
+			{
+				"gfSection": false,
+				"altAnim": false,
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"bpm": 90,
+				"sectionBeats": 4,
+				"changeBPM": false,
+				"mustHitSection": true
 			}
 		],
-		"events": [],
-		"player2": "satandd",
+		"gfVersion": "gf",
 		"splashSkin": "noteSplashes",
 		"song": "Devilish Deal",
-		"voiceSfx1": "Player",
-		"needsVoices": true,
-		"arrowSkin": "",
-		"stage": "ddStage",
 		"validScore": true,
-		"voiceSfx2": "Opponent",
+		"stage": "ddStage",
+		"arrowSkin": "",
+		"needsVoices": true,
+		"voiceSfx1": "Player",
+		"speed": 2.4,
 		"bpm": 90,
-		"speed": 2.5
+		"voiceSfx2": "Opponent"
 	}
 }';
+
     var hunted:String = '{
 	"song": {
 		"speed": 2.5,

@@ -61,6 +61,7 @@ class PlayState extends MusicBeatState
 {
 	public static var STRUM_X = 42;
 	public static var STRUM_X_MIDDLESCROLL = -278;
+	var middlescroll:Bool = false;
 
 	public static var ratingStuff:Array<Dynamic> = [
 		['You Suck!', 0.2], //From 0% to 19%
@@ -2049,7 +2050,9 @@ class PlayState extends MusicBeatState
 
 		Conductor.songPosition = -5000 / Conductor.songPosition;
 
-		strumLine = new FlxSprite(ClientPrefs.middleScroll ? STRUM_X_MIDDLESCROLL : STRUM_X, 50).makeGraphic(FlxG.width, 10);
+		middlescroll = SONG.song.toLowerCase() == 'cycled sins' || ClientPrefs.middleScroll;
+
+		strumLine = new FlxSprite(middlescroll ? STRUM_X_MIDDLESCROLL : STRUM_X, 50).makeGraphic(FlxG.width, 10);
 		if(ClientPrefs.downScroll) strumLine.y = FlxG.height - 150;
 		strumLine.scrollFactor.set();
 
@@ -2169,6 +2172,7 @@ class PlayState extends MusicBeatState
 			fancyBarOverlay.y -= 117;
 			fancyBarOverlay.flipY = true;
 		}
+		fancyBarOverlay.visible = SONG.song.toLowerCase() != 'cycled sins';
 		add(fancyBarOverlay);
 
 		healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 5, (SONG.song == "Devilish Deal" ? LEFT_TO_RIGHT : RIGHT_TO_LEFT), Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 7), this,
@@ -3959,7 +3963,7 @@ class PlayState extends MusicBeatState
 					{
 						note.copyAlpha = false;
 						note.alpha = note.multAlpha;
-						if(ClientPrefs.middleScroll && !note.mustPress) {
+						if(middlescroll && !note.mustPress) {
 							note.alpha *= 0.35;
 						}
 					}
@@ -4278,7 +4282,7 @@ class PlayState extends MusicBeatState
 						{
 							sustainNote.x += FlxG.width / 2; // general offset
 						}
-						else if(ClientPrefs.middleScroll)
+						else if(middlescroll)
 						{
 							sustainNote.x += 310;
 							if(daNoteData > 1) //Up and Right
@@ -4293,7 +4297,7 @@ class PlayState extends MusicBeatState
 				{
 					swagNote.x += FlxG.width / 2; // general offset
 				}
-				else if(ClientPrefs.middleScroll)
+				else if(middlescroll)
 				{
 					swagNote.x += 310;
 					if(daNoteData > 1) //Up and Right
@@ -4448,10 +4452,10 @@ class PlayState extends MusicBeatState
 			if (player < 1)
 			{
 				if(!ClientPrefs.opponentStrums) targetAlpha = 0;
-				else if(ClientPrefs.middleScroll) targetAlpha = 0.35;
+				else if(middlescroll) targetAlpha = 0.35;
 			}
 
-			var babyArrow:StrumNote = new StrumNote(ClientPrefs.middleScroll ? STRUM_X_MIDDLESCROLL : STRUM_X, strumLine.y, i, player);
+			var babyArrow:StrumNote = new StrumNote(middlescroll ? STRUM_X_MIDDLESCROLL : STRUM_X, strumLine.y, i, player);
 			babyArrow.downScroll = ClientPrefs.downScroll;
 			if (!isStoryMode && !skipArrowStartTween)
 			{
@@ -4470,7 +4474,7 @@ class PlayState extends MusicBeatState
 			}
 			else
 			{
-				if(ClientPrefs.middleScroll)
+				if(middlescroll)
 				{
 					babyArrow.x += 310;
 					if(i > 1) { //Up and Right
@@ -10360,6 +10364,8 @@ class PlayState extends MusicBeatState
 					{
 						// Intro Cam Shit
 						case 16: PlayState.camBars.fade(0x000000, 0.0001, true);
+						// because i dont know how to fucking use this goofy ass editor
+						opponentStrums.forEach(s -> {s.scale.set(.95, .95); s.alpha = .5;});
 						//case 32: tweenCamera(0.85, 5.5, 'quartInOut');
 						case 46:
 							//tweenCamera(0.6, 0.6, 'sineInOut');
