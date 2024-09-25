@@ -92,14 +92,14 @@ class OptionsState extends MusicBeatState
 		add(selectorRight);
 		
 		var graphic:FlxSprite = new FlxSprite().loadGraphic(Paths.image('$dogshitPath/IMG_1017'));
-		graphic.setGraphicSize(FlxG.width + 20, FlxG.height);
+		graphic.setGraphicSize(FlxG.width, FlxG.height);
 		graphic.updateHitbox();
 		graphic.screenCenter();
 		graphic.antialiasing = ClientPrefs.globalAntialiasing;
 		add(graphic);
 
 		var graphic:FlxSprite = new FlxSprite().loadGraphic(Paths.image('$dogshitPath/Untitled1595_20240710134131'));
-		graphic.setGraphicSize(FlxG.width + 20, FlxG.height);
+		graphic.setGraphicSize(FlxG.width, FlxG.height);
 		graphic.updateHitbox();
 		graphic.screenCenter();
 		graphic.antialiasing = ClientPrefs.globalAntialiasing;
@@ -113,6 +113,7 @@ class OptionsState extends MusicBeatState
 			gradient.updateHitbox();
 			gradient.screenCenter();
 			gradient.antialiasing = true;
+			gradient.scale.x += .1;
 			add(gradient);
 
 			var scratchStuff:FlxSprite = new FlxSprite();
