@@ -287,14 +287,14 @@ class MainMenu extends MusicBeatState
 		datBook.antialiasing = true;
 		add(datBook);
 
-		shittyUnoptimizedBookCopy = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/menu/book'));
+		/*shittyUnoptimizedBookCopy = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/menu/book'));
 		shittyUnoptimizedBookCopy.scrollFactor.set(0, 0);
 		shittyUnoptimizedBookCopy.setGraphicSize(Std.int(shittyUnoptimizedBookCopy.width * 0.68));
 		shittyUnoptimizedBookCopy.updateHitbox();
 		shittyUnoptimizedBookCopy.screenCenter().x += 285;
 		shittyUnoptimizedBookCopy.antialiasing = true;
 		shittyUnoptimizedBookCopy.setColorTransform(1, 1, 1, 1, 255, 255, 255, 255);
-		insert(members.indexOf(datBook) - 1, shittyUnoptimizedBookCopy);
+		insert(members.indexOf(datBook) - 1, shittyUnoptimizedBookCopy);*/
 
 		if (!ClientPrefs.lowQuality)
 		{
@@ -633,14 +633,14 @@ class MainMenu extends MusicBeatState
 		}
 
 		datBook.scale.set(FlxMath.lerp(evilAndFuckedUpBookScale, datBook.scale.x, .65), FlxMath.lerp(evilAndFuckedUpBookScale, datBook.scale.x, .65));
-		shittyUnoptimizedBookCopy.scale.set(FlxMath.lerp(evilAndFuckedUpBookScale + .02, shittyUnoptimizedBookCopy.scale.x, .65), FlxMath.lerp(evilAndFuckedUpBookScale, shittyUnoptimizedBookCopy.scale.x, .65));
-		shittyUnoptimizedBookCopy.alpha = FlxMath.lerp(FlxG.mouse.overlaps(datBook) ? .7 : 0, shittyUnoptimizedBookCopy.alpha, .65);
+		/*shittyUnoptimizedBookCopy.scale.set(FlxMath.lerp(evilAndFuckedUpBookScale + .02, shittyUnoptimizedBookCopy.scale.x, .65), FlxMath.lerp(evilAndFuckedUpBookScale, shittyUnoptimizedBookCopy.scale.x, .65));
+		shittyUnoptimizedBookCopy.alpha = FlxMath.lerp(FlxG.mouse.overlaps(datBook) ? .7 : 0, shittyUnoptimizedBookCopy.alpha, .65);*/
 		evilAndFuckedUpBookScale = FlxG.mouse.overlaps(datBook) ? .7 : .65; 
 		
 		if (FlxG.mouse.overlaps(datBook) && FlxG.mouse.justPressed)
 		{
 			datBook.scale.set(.8, .8);
-			shittyUnoptimizedBookCopy.scale.set(.75, .77);
+			//shittyUnoptimizedBookCopy.scale.set(.75, .77);
 
 			selectedSomethin = true;
 			FlxG.sound.play(Paths.sound('funkinAVI/menu/selectSfx'));

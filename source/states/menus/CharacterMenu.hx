@@ -95,7 +95,7 @@ class CharacterMenu extends MusicBeatState
         ui.antialiasing = ClientPrefs.globalAntialiasing;
         add(ui);
 
-        name = new FlxText(0, 10).setFormat(Paths.font('infoMenu.ttf'), 30, FlxColor.WHITE, LEFT, OUTLINE, FlxColor.BLACK);
+        name = new FlxText(0, 10).setFormat(Paths.font('infoMenu.ttf'), 30, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
         name.screenCenter(X).x -= 150;
         name.camera = hud;
         name.antialiasing = ClientPrefs.globalAntialiasing;
@@ -106,6 +106,11 @@ class CharacterMenu extends MusicBeatState
         control.camera = hud;
         control.antialiasing = ClientPrefs.globalAntialiasing;
         add(control);
+
+        descText = new FlxText(FlxG.width * .688, 115, 280).setFormat(Paths.font('Oceanic_Cocktail_Demo.otf'), 25, FlxColor.WHITE, LEFT, OUTLINE, FlxColor.BLACK);
+        descText.angle = -2;
+        descText.antialiasing = ClientPrefs.globalAntialiasing;
+        add(descText);
 
         super.create();
 
@@ -146,6 +151,7 @@ class CharacterMenu extends MusicBeatState
         character.offset.set(charArray[curSelected][2], charArray[curSelected][3]);
         character.setGraphicSize(Std.int(character.width * charArray[curSelected][4]));
         name.text = '< ${charArray[curSelected][0]} >';
+        descText.text = charArray[curSelected][5];
 
         #if DISCORD_RPC
         Discord.changePresence('CHARACTER MENU', 'Checking ${charArray[curSelected][0]}', 'icon', 'mouse');

@@ -1,5 +1,7 @@
 package states.menus;
 
+import flixel.text.FlxText.FlxTextFormat;
+import flixel.text.FlxText.FlxTextFormatMarkerPair;
 import haxe.Json;
 import openfl.filters.ShaderFilter;
 import sys.io.File;
@@ -38,6 +40,8 @@ class CreditsMenu extends MusicBeatState
 
 	var daJson:String = null;
 	var creditThing:CreditStuff;
+
+	var redTextMarker = new FlxTextFormatMarkerPair(new FlxTextFormat(FlxColor.RED, true, true), '^red^');
 
 	override function create()
 	{
@@ -208,6 +212,7 @@ class CreditsMenu extends MusicBeatState
 
 		creditNameText.text = creditArray[curSelected][0] != null ? creditArray[curSelected][0] : 'unknown';
 		creditDescText.text = creditArray[curSelected][3] != null ? creditArray[curSelected][3] : 'unknown';
+		creditDescText.applyMarkup(creditDescText.text, [redTextMarker]);
 		creditWorkText.text = creditArray[curSelected][2] != null ? creditArray[curSelected][2] : 'has not worked';
 		creditIconSprite.loadGraphic(Paths.image('$path/icons/${creditArray[curSelected][1]}'));
 		creditIconSprite.setGraphicSize(Std.int(creditIconSprite.width * creditArray[curSelected][6]));
