@@ -267,7 +267,7 @@ class Note extends FlxSprite
 			if(skin == null || skin.length < 1) {
 				switch (PlayState.SONG.song)
 				{
-					case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted":
+					case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Laugh Track":
 						skin = "NOTE_assets-CARTOON";
 					case "Mercy":
 						skin = "NOTE_assets-MERCY";

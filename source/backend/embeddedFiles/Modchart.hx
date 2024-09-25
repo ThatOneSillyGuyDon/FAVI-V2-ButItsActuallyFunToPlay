@@ -1,6 +1,118 @@
 package backend.embeddedFiles;
 
 enum abstract Modchart(String) from String to String {
+	var goofyIsDrunkLmfao:String = '{
+	"events": [
+		[
+			"ease",
+			[
+				184,
+				"5",
+				"backInOut",
+				"-330,moveLol,1,goofyNotes,2,drunkX:speed,20,drunkY:speed"
+			],
+			[
+				false,
+				1,
+				1
+			]
+		],
+		[
+			"ease",
+			[
+				192,
+				"1",
+				"cubeOut",
+				"-330,moveLol,2,drunkX,0.2,drunkY"
+			],
+			[
+				false,
+				1,
+				1
+			]
+		],
+		[
+			"ease",
+			[
+				256,
+				"5",
+				"cubeOut",
+				",moveLol,,drunkX,0,drunkY,,goofyNotes"
+			],
+			[
+				false,
+				1,
+				1
+			]
+		]
+	],
+	"modifiers": [
+		[
+			"moveLol",
+			"XModifier",
+			"",
+			-1,
+			-1
+		],
+		[
+			"goofyNotes",
+			"StealthModifier",
+			"Opponent",
+			-1,
+			-1
+		],
+		[
+			"drunkX",
+			"DrunkXModifier",
+			"Player",
+			-1,
+			-1
+		],
+		[
+			"drunkY",
+			"DrunkYModifier",
+			"Player",
+			-1,
+			-1
+		],
+		[
+			"tipX",
+			"TipsyXModifier",
+			"Player",
+			-1,
+			-1
+		]
+	],
+	"playfields": 1
+}';
+	var cycledShit:String = '{
+	"events": [
+		[
+			"ease",
+			[
+				0,
+				"0",
+				"cubeInOut",
+				"1,hide"
+			],
+			[
+				false,
+				1,
+				1
+			]
+		]
+	],
+	"modifiers": [
+		[
+			"hide",
+			"StealthModifier",
+			"Opponent",
+			-1,
+			-1
+		]
+	],
+	"playfields": 1
+}';
 	var warModchartU:String = '{
 	"modifiers": [
 		[

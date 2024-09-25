@@ -747,6 +747,8 @@ class MainMenu extends MusicBeatState
 					}
 					else
 					{
+						FlxG.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
+						menuItems.members[curSelected].scale.set(.75, .75);
 						FlxFlicker.flicker(spr, 1, flashValue, false, false, function(flick:FlxFlicker)
 						{
 							switch (daChoice)

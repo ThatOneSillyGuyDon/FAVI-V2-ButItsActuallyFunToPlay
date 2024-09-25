@@ -141,6 +141,13 @@ class ModchartFile
                         json = cast Json.parse(ClientPrefs.downScroll ? Modchart.warModchartD : Modchart.warModchartU);
                     else
                         json = {modifiers: [], events: [], playfields: 1};
+                case "Hunted":
+                    if (ClientPrefs.mechanics)
+                        json = cast Json.parse(Modchart.goofyIsDrunkLmfao);
+                    else
+                        json = {modifiers: [], events: [], playfields: 1};
+                case "Cycled Sins":
+                    json = cast Json.parse(Modchart.cycledShit);
                 default:
                     json = {modifiers: [], events: [], playfields: 1};
             }
