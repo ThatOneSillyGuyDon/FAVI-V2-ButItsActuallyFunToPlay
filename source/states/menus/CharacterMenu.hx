@@ -9,6 +9,9 @@ import haxe.Json;
 import flixel.text.FlxText;
 import flixel.FlxSprite;
 
+// prob gonna keep jsons and then hardcode it cus thats pretty smart
+typedef CharMenuThing = { info:Array<Dynamic> };
+
 // DEMOLITION IF YOU READ THIS DONT PUT ANY SHADER IT LOOKS PERFECT ALREADY RAHAHH
 class CharacterMenu extends MusicBeatState 
 {
@@ -28,7 +31,7 @@ class CharacterMenu extends MusicBeatState
 
     var curSelected:Int = 0;
 
-    var path = 'images/menus/Funkin_avi/information';
+    var path = 'Funkin_avi/information/';
 
     var hud:FlxCamera;
     var cam:FlxCamera;
@@ -46,57 +49,59 @@ class CharacterMenu extends MusicBeatState
         FlxG.cameras.add(hud, false);
         FlxG.cameras.setDefaultDrawTarget(cam, true);
 
-        var bg = new FlxSprite().loadGraphic(Paths.image('Background', path));
+        var bg = new FlxSprite().loadGraphic(Paths.image(path + 'Background'));
         bg.screenCenter();
         bg.setGraphicSize(Std.int(bg.width * .9));
         bg.antialiasing = ClientPrefs.globalAntialiasing;
         add(bg);
 
-        book1 = new FlxSprite().loadGraphic(Paths.image('Book (1)', path));
+        book1 = new FlxSprite().loadGraphic(Paths.image(path + 'Book (1)'));
         book1.screenCenter().x -= 300;
         book1.setGraphicSize(Std.int(book1.width * .75));
         book1.antialiasing = ClientPrefs.globalAntialiasing;
         add(book1);
 
-        book2 = new FlxSprite().loadGraphic(Paths.image('Book (2)', path));
+        book2 = new FlxSprite().loadGraphic(Paths.image(path + 'Book (2)'));
         book2.screenCenter().x += 400;
         book2.setGraphicSize(Std.int(book2.width * .75));
         book2.antialiasing = ClientPrefs.globalAntialiasing;
         add(book2);
 
-        character = new FlxSprite().loadGraphic(Paths.image('characters/isolatedMick', path));
+        character = new FlxSprite().loadGraphic(Paths.image(path + 'characters/isolatedMick'));
         character.screenCenter().x -= 300;
         character.setGraphicSize(Std.int(character.width * .75));
         character.angle = 1;
         character.antialiasing = ClientPrefs.globalAntialiasing;
         add(character);
         
-        var omgIsThatRaiperStyleVFX = new FlxSprite().loadGraphic(Paths.image('Spot Light', path));
-        omgIsThatRaiperStyleVFX.screenCenter();
-        omgIsThatRaiperStyleVFX.setGraphicSize(Std.int(omgIsThatRaiperStyleVFX.width * .76));
-        omgIsThatRaiperStyleVFX.antialiasing = ClientPrefs.globalAntialiasing;
-        add(omgIsThatRaiperStyleVFX);
+        var spotlight = new FlxSprite().loadGraphic(Paths.image(path + 'Spot Light'));
+        spotlight.screenCenter();
+        spotlight.setGraphicSize(Std.int(spotlight.width * .76));
+        spotlight.antialiasing = ClientPrefs.globalAntialiasing;
+        FlxTween.tween(spotlight, {alpha: .4}, 3, {type: 4});
+        add(spotlight);
 
-        var omgIsThatRaiperStyleVFX = new FlxSprite().loadGraphic(Paths.image('Particles of Light', path));
-        omgIsThatRaiperStyleVFX.screenCenter();
-        omgIsThatRaiperStyleVFX.setGraphicSize(Std.int(omgIsThatRaiperStyleVFX.width * .76));
-        omgIsThatRaiperStyleVFX.antialiasing = ClientPrefs.globalAntialiasing;
-        add(omgIsThatRaiperStyleVFX);
+        // todo: replace flxsprite with flxparticle
+        var particles = new FlxSprite().loadGraphic(Paths.image(path + 'Particles of Light'));
+        particles.screenCenter();
+        particles.setGraphicSize(Std.int(particles.width * .76));
+        particles.antialiasing = ClientPrefs.globalAntialiasing;
+        add(particles);
 
-        ui = new FlxSprite().loadGraphic(Paths.image('UI', path));
+        ui = new FlxSprite().loadGraphic(Paths.image(path + 'UI'));
         ui.screenCenter();
         ui.setGraphicSize(Std.int(ui.width * .76));
         ui.cameras = [hud];
         ui.antialiasing = ClientPrefs.globalAntialiasing;
         add(ui);
 
-        name = new FlxText(0, 10).setFormat(Paths.font('infoMenu'), 30, FlxColor.WHITE, LEFT, OUTLINE, FlxColor.BLACK);
+        name = new FlxText(0, 10).setFormat(Paths.font('infoMenu.ttf'), 30, FlxColor.WHITE, LEFT, OUTLINE, FlxColor.BLACK);
         name.screenCenter(X).x -= 150;
         name.camera = hud;
         name.antialiasing = ClientPrefs.globalAntialiasing;
         add(name);
 
-        control = new FlxSprite(0, FlxG.height * .92).loadGraphic(Paths.image('_Help_ Buttons', path));
+        control = new FlxSprite(0, FlxG.height * .92).loadGraphic(Paths.image(path + '_Help_ Buttons'));
         control.screenCenter(X);
         control.camera = hud;
         control.antialiasing = ClientPrefs.globalAntialiasing;
@@ -137,7 +142,7 @@ class CharacterMenu extends MusicBeatState
 
         FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'), 0.6);
         
-        character.loadGraphic(Paths.image('characters/${charArray[curSelected][1]}', path));
+        character.loadGraphic(Paths.image('characters/${charArray[curSelected][1]}'));
         character.offset.set(charArray[curSelected][2], charArray[curSelected][3]);
         character.setGraphicSize(Std.int(character.width * charArray[curSelected][4]));
         name.text = '< ${charArray[curSelected][0]} >';
@@ -149,7 +154,7 @@ class CharacterMenu extends MusicBeatState
 
     private function thejofsons() 
     {
-        jsonString = File.getContent(Paths.getPath('data/charMenu.json', TEXT, null));
+        jsonString = File.getContent(Paths.json('charMenu'));
 
         if (jsonString != null && jsonString.length > 0) {
             return cast Json.parse(jsonString);

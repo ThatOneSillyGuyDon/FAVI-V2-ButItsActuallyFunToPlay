@@ -61,6 +61,7 @@ class MainMenu extends MusicBeatState
 	var moreCoolDetails:FlxSprite;
 	var omgCamera:FlxSprite;
 	var datBook:FlxSprite;
+	var shittyUnoptimizedBookCopy:FlxSprite;
 
 	var gradient:FlxSprite;
 
@@ -163,6 +164,8 @@ class MainMenu extends MusicBeatState
 	var darkFilter:FlxRuntimeShader;
 
 	public var logContent:String;
+
+	var evilAndFuckedUpBookScale = 1.0;
 
 	public function new(?logContent:String)
 	{
@@ -278,11 +281,20 @@ class MainMenu extends MusicBeatState
 
 		datBook = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/menu/book'));
 		datBook.scrollFactor.set(0, 0);
-		datBook.setGraphicSize(Std.int(datBook.width * 0.75));
+		datBook.setGraphicSize(Std.int(datBook.width * 0.67));
 		datBook.updateHitbox();
-		datBook.screenCenter();
+		datBook.screenCenter().x += 280;
 		datBook.antialiasing = true;
 		add(datBook);
+
+		shittyUnoptimizedBookCopy = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/menu/book'));
+		shittyUnoptimizedBookCopy.scrollFactor.set(0, 0);
+		shittyUnoptimizedBookCopy.setGraphicSize(Std.int(shittyUnoptimizedBookCopy.width * 0.68));
+		shittyUnoptimizedBookCopy.updateHitbox();
+		shittyUnoptimizedBookCopy.screenCenter().x += 285;
+		shittyUnoptimizedBookCopy.antialiasing = true;
+		shittyUnoptimizedBookCopy.setColorTransform(1, 1, 1, 1, 255, 255, 255, 255);
+		insert(members.indexOf(datBook) - 1, shittyUnoptimizedBookCopy);
 
 		if (!ClientPrefs.lowQuality)
 		{
@@ -589,7 +601,7 @@ class MainMenu extends MusicBeatState
 			var alien:VideoSprite = new VideoSprite(false);
 			alien.scale.set(2, 2);
 			alien.load(Paths.video('friendlyFellow'));
-			alien.addCallback("onEnd", () -> Sys.exit(0));
+			//alien.addCallback("onEnd", () -> Sys.exit(0));
 			alien.x += 320;
 			alien.y += 190;
 			alien.cameras = [camHUD];
@@ -618,6 +630,34 @@ class MainMenu extends MusicBeatState
 					}
 				}
 			}
+		}
+
+		datBook.scale.set(FlxMath.lerp(evilAndFuckedUpBookScale, datBook.scale.x, .65), FlxMath.lerp(evilAndFuckedUpBookScale, datBook.scale.x, .65));
+		shittyUnoptimizedBookCopy.scale.set(FlxMath.lerp(evilAndFuckedUpBookScale + .02, shittyUnoptimizedBookCopy.scale.x, .65), FlxMath.lerp(evilAndFuckedUpBookScale, shittyUnoptimizedBookCopy.scale.x, .65));
+		shittyUnoptimizedBookCopy.alpha = FlxMath.lerp(FlxG.mouse.overlaps(datBook) ? .7 : 0, shittyUnoptimizedBookCopy.alpha, .65);
+		evilAndFuckedUpBookScale = FlxG.mouse.overlaps(datBook) ? .7 : .65; 
+		
+		if (FlxG.mouse.overlaps(datBook) && FlxG.mouse.justPressed)
+		{
+			datBook.scale.set(.8, .8);
+			shittyUnoptimizedBookCopy.scale.set(.75, .77);
+
+			selectedSomethin = true;
+			FlxG.sound.play(Paths.sound('funkinAVI/menu/selectSfx'));
+			FlxG.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
+
+			menuItems.forEach(function(spr:FlxSprite)
+			{
+				FlxTween.tween(spr, {x: -250, alpha: 0}, 0.4, {
+					ease: FlxEase.quadOut,
+					onComplete: function(twn:FlxTween)
+					{
+						spr.kill();
+					}
+				});
+			});
+
+			new FlxTimer().start(.6, s -> MusicBeatState.switchState(new states.menus.CharacterMenu()));
 		}
 
 		if (FlxG.mouse.justPressed && !selectedSomethin)
