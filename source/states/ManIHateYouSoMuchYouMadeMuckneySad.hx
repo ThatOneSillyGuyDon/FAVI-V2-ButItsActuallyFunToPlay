@@ -14,6 +14,10 @@ import flixel.FlxG;
 	import flixel.sound.FlxSound;
 #end
 
+
+/*why everyone forgot about this
+...... should I do the funnies here? - malyplus/*
+
 /**
  * why did you left his birthday
  */
