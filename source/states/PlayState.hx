@@ -1662,18 +1662,23 @@ class PlayState extends MusicBeatState
 				case 'apartment':
 					isPixelStage = true;
 					//spawnGirlfriend = false;
-					defaultCamZoom = 0.6;
+					defaultCamZoom = SONG.song == "Cycled Sins" ? 0.46 : 0.6;
 					cameraSpeed = 0.9;
 	
 					//Phase 2 shaders
 					glitchBG = new FlxRuntimeShader(Shaders.vignetteGlitch, null, 130);
 	
 					bg1 = new FlxSprite(0, 50);
-					bg1.frames = Paths.getSparrowAtlas(pathway + 'relapse1');
-					bg1.animation.addByPrefix('idle', 'Bg bg', 10, true);
+					if (SONG.song == "Cycled Sins Legacy") 
+					{
+						bg1.frames = Paths.getSparrowAtlas(pathway + 'relapse1');
+					 	bg1.animation.addByPrefix('idle', 'Bg bg', 10, true);
+					}
+					else
+						bg1.loadGraphic(Paths.image(pathway + 'relapseBG-nominnie'));
 					bg1.scale.set(7, 7);
 					bg1.antialiasing = false;
-					bg1.animation.play('idle');
+					if (SONG.song == "Cycled Sins Legacy") bg1.animation.play('idle');
 					add(bg1);
 	
 					bg2 = new FlxSprite(0, 50).loadGraphic(Paths.image(pathway + 'relapse2'));
@@ -2335,7 +2340,7 @@ class PlayState extends MusicBeatState
 			{
 				switch (curStage)
 				{
-					case 'stage' | 'desktop' | 'waltRoom' | 'apartment' | 'treasureIsland' | 'forbiddenRealm' | 'fuckingLine' | 'staticVoid' | 'vaultRoom':
+					case 'stage' | 'desktop' | 'waltRoom' | 'apartment' | 'treasureIsland' | 'forbiddenRealm' | 'fuckingLine' | 'staticVoid' | 'vaultRoom' | 'war':
 					// don't add scratch assets
 	
 					default:
@@ -2352,6 +2357,8 @@ class PlayState extends MusicBeatState
 			{
 				case "forestNew" | "desktop" | "circus" | 'clubhouse':
 					//do nothing, gf exists
+				case 'apartment':
+					if (SONG.song == "Cycled Sins Legacy") gf.visible = false;
 				default:
 					gf.visible = false;
 			}
@@ -5020,6 +5027,7 @@ class PlayState extends MusicBeatState
 			cancelMusicFadeTween();
 			
 			MusicBeatState.switchState(new CharacterEditorState(SONG.player2));
+			FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
 		}
 		
 		if (FlxG.keys.justPressed.NINE && !endingSong && !inCutscene) {
@@ -5027,6 +5035,7 @@ class PlayState extends MusicBeatState
 			paused = true;
 			cancelMusicFadeTween();
 			MusicBeatState.switchState(new modcharting.ModchartEditorState());
+			FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
 		}
 
 		if (startedCountdown)
@@ -5344,8 +5353,8 @@ class PlayState extends MusicBeatState
 			//updateSectionCamera('dad', false);
 			// holyShitMOVEBITCH.alpha = 1;
 			// holyShitMOVEBITCH.y = -420;
-			defaultCamZoom = 1.5;
-			dad.playAnim("reload", true);
+			//defaultCamZoom = 1.5;
+			if (SONG.song == "Cycled Sins Legacy") dad.playAnim("reload", true);
 			dad.specialAnim = true;
 			/*new FlxTimer().start(reactionTime - 0.6, function(tmr:FlxTimer)
 				{
@@ -5372,7 +5381,7 @@ class PlayState extends MusicBeatState
 						}
 						if (doubleBarrel)
 						{
-							defaultCamZoom = 1.25;
+							//defaultCamZoom = 1.25;
 							new FlxTimer().start(0.275, function(tmr:FlxTimer)
 							{
 								FlxG.sound.play(Paths.sound('funkinAVI/relapseMechs/Shoot'), 0.4);
@@ -5391,7 +5400,7 @@ class PlayState extends MusicBeatState
 									}
 									dodged = false;
 									shootin = false;
-									defaultCamZoom = 0.6;
+									//defaultCamZoom = 0.6;
 								}
 								else
 								{
@@ -5399,7 +5408,7 @@ class PlayState extends MusicBeatState
 									dodged = false;
 									shootin = false;
 									healthThing += 0.05;
-									defaultCamZoom = 0.6;
+									//defaultCamZoom = 0.6;
 								}
 							});
 						}
@@ -5407,14 +5416,14 @@ class PlayState extends MusicBeatState
 						{
 							dodged = false;
 							shootin = false;
-							defaultCamZoom = 0.6;
+							//defaultCamZoom = 0.6;
 						}
 					}
 					else
 					{
 						if (doubleBarrel)
 						{
-							defaultCamZoom = 1.25;
+							//defaultCamZoom = 1.25;
 							dodged = false;
 							healthThing += 0.05;
 							new FlxTimer().start(0.275, function(tmr:FlxTimer)
@@ -5435,7 +5444,7 @@ class PlayState extends MusicBeatState
 									}
 									dodged = false;
 									shootin = false;
-									defaultCamZoom = 0.6;
+									//defaultCamZoom = 0.6;
 								}
 								else
 								{
@@ -5443,7 +5452,7 @@ class PlayState extends MusicBeatState
 									dodged = false;
 									shootin = false;
 									healthThing += 0.05;
-									defaultCamZoom = 0.6;
+									//defaultCamZoom = 0.6;
 								}
 							});
 						}
@@ -5453,7 +5462,7 @@ class PlayState extends MusicBeatState
 							dodged = false;
 							shootin = false;
 							healthThing += 0.05;
-							defaultCamZoom = 0.6;
+							//defaultCamZoom = 0.6;
 						}
 					}
 				});
@@ -5967,6 +5976,7 @@ class PlayState extends MusicBeatState
 		cancelMusicFadeTween();
 		MusicBeatState.switchState(new ChartingState());
 		chartingMode = true;
+		FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
 
 		#if desktop
 		DiscordClient.changePresence("Chart Editor", null, null, true);
@@ -10350,15 +10360,17 @@ class PlayState extends MusicBeatState
 					{
 						// Intro Cam Shit
 						case 16: PlayState.camBars.fade(0x000000, 0.0001, true);
-						case 32: tweenCamera(0.85, 5.5, 'quartInOut');
+						//case 32: tweenCamera(0.85, 5.5, 'quartInOut');
 						case 46:
-							tweenCamera(0.6, 0.6, 'sineInOut');
+							//tweenCamera(0.6, 0.6, 'sineInOut');
 							FlxTween.tween(PlayState.camNotes, {alpha: 1}, 0.8, {ease: FlxEase.circInOut});
 							FlxTween.tween(PlayState.camHUD, {alpha: 1}, 0.8, {ease: FlxEase.circInOut});
 
 						// Phase 1 Section
 						case 174:
 							PlayState.instance.relapseGimmick(0.7, 0.3);
+						case 176:
+							camGame.fade(FlxColor.RED, 1, true);
 						case 180 | 182 | 196 | 198 | 212 | 254 | 286 | 303:
 							PlayState.instance.relapseGimmick(0.35, 0.15);
 						case 188 | 204:
@@ -10392,7 +10404,10 @@ class PlayState extends MusicBeatState
 						case 417: PlayState.instance.manageLyrics('relapsegun-pixel', '...your DEATH will be nothing...', 'calibri-regular.ttf', 30, 1.1, 'sineInOut');
 						case 420: PlayState.instance.manageLyrics('relapsegun-pixel', '...BUT CYCLED SINS!', 'calibri-regular.ttf', 30, 1.1, 'sineInOut');
 
+						case 429:
+							camGame.visible = false;
 						case 432:
+							camGame.visible = true;
 							FlxTween.tween(PlayState.camNotes, {alpha: 1}, 0.5, {ease: FlxEase.sineOut});
 							FlxTween.tween(PlayState.camHUD, {alpha: 1}, 0.5, {ease: FlxEase.sineOut});
 
@@ -10429,9 +10444,9 @@ class PlayState extends MusicBeatState
 					{
 						// Intro Cam Shit
 						case 16: PlayState.camGame.alpha = 1;
-						case 32: tweenCamera(0.85, 5.5, 'quartInOut');
+						//case 32: tweenCamera(0.85, 5.5, 'quartInOut');
 						case 46:
-							tweenCamera(0.6, 0.6, 'sineInOut');
+							//tweenCamera(0.6, 0.6, 'sineInOut');
 							FlxTween.tween(PlayState.camNotes, {alpha: 1}, 0.8, {ease: FlxEase.circInOut});
 							FlxTween.tween(PlayState.camHUD, {alpha: 1}, 0.8, {ease: FlxEase.circInOut});
 						case 366:
@@ -11196,7 +11211,7 @@ class PlayState extends MusicBeatState
 				moveCameraSection();
 			}
 
-			if (camZooming && FlxG.camera.zoom < 1.35 && ClientPrefs.camZooms)
+			if (camZooming && FlxG.camera.zoom < 1.35 && ClientPrefs.camZooms && SONG.song != "Cycled Sins") // me when recreating the actual relapse game visuals lmao
 			{
 				FlxG.camera.zoom += 0.015 * camZoomingMult;
 				camHUD.zoom += 0.03 * camZoomingMult;

@@ -89,7 +89,7 @@ enum abstract CreditsData(String) from String to String {
     var cycledSins:String = '{
 	"settings":
 	[
-		"Art: JDrive\n\nChart: DEMOLITIONDON96\n\nCode: DEMOLITIONDON96\n\nMusic: JBlitz\n\nVoice Actor: AustinWProductions", -38, -24
+		"Art: JDrive\n\nChart: Dreupy\n\nCode: DEMOLITIONDON96\n\nMusic: JBlitz\n\nVoice Actor: AustinWProductions", -38, -24
 	]
 }';
     var malfunction:String = '{
@@ -101,7 +101,7 @@ enum abstract CreditsData(String) from String to String {
     var birthday:String = '{
 	"settings":
 	[
-		"Art: Teelbe\n\nChart: DEMOLITIONDON96\n\nCode: DEMOLITIONDON96\n\nMusic: FR3SHMoure", 0, 28
+		"Art: Teelbe\n\nChart: Dreupy\n\nCode: DEMOLITIONDON96\n\nMusic: FR3SHMoure", 0, 28
 	]
 }';
     var delutrance:String = '{
