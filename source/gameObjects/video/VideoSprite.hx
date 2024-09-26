@@ -1,120 +1,179 @@
-package gameObjects.video;
+package objects;
 
+import flixel.addons.display.FlxPieDial;
+
+#if hxvlc
 import hxvlc.flixel.FlxVideoSprite;
-import haxe.Int64;
+#end
+import backend.Controls;
 
-//stolen from sonic legacy lmfao -don
+class VideoSprite extends FlxSpriteGroup {
+	#if VIDEOS_ALLOWED
+	public var finishCallback:Void->Void = null;
+	public var onSkip:Void->Void = null;
 
-//i wanted a few things -data
-//also srs moment fuck hxcodec its given me so many headaches. you was good in the past but we moved on bud!
-class VideoSprite extends FlxVideoSprite
-{
-    public static var heldVideos:Array<VideoSprite> = [];
+	final _timeToSkip:Float = 1;
+	public var holdingTime:Float = 0;
+	public var videoSprite:FlxVideoSprite;
+	public var skipSprite:FlxPieDial;
+	public var cover:FlxSprite;
+	public var canSkip(default, set):Bool = false;
 
-    //these are loading options that are just easier to understand lol
-    public static final looping:String = ':input-repeat=65535';
-    public static final muted:String = ':no-audio';
+	private var videoName:String;
 
-    public var onStartCallback:Void->Void = null;
-	public var onFormatCallback:Void->Void = null;
-	public var onEndCallback:Void->Void = null;
+	public var waiting:Bool = false;
+	public var didPlay:Bool = false;
 
-    public var destroyOnUse:Bool = false;
+    public var controls(get, never):Controls;
 
-    var _heldVideoPath:String = '';
+	inline function get_controls():Controls
+		return PlayerSettings.player1.controls;
 
-    public function new(destroyOnUse = true) {
-        super();
-        heldVideos.push(this);
+	public function new(videoName:String, isWaiting:Bool, canSkip:Bool = false, shouldLoop:Dynamic = false) {
+		super();
 
-        this.destroyOnUse = destroyOnUse;
-        if (destroyOnUse) bitmap.onEndReached.add(() -> destroy());
-    }
+		this.videoName = videoName;
+		scrollFactor.set();
+		cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
 
-    public override function load(location:String, ?options:Array<String>):Bool
-    {
-        var b:Bool = super.load(location,options);
-        if (!b) return b;
+		waiting = isWaiting;
+		if(!waiting)
+		{
+			cover = new FlxSprite().makeGraphic(1, 1, FlxColor.BLACK);
+			cover.scale.set(FlxG.width + 100, FlxG.height + 100);
+			cover.screenCenter();
+			cover.scrollFactor.set();
+			add(cover);
+		}
 
-        _heldVideoPath = location;
+		// initialize sprites
+		videoSprite = new FlxVideoSprite();
+		videoSprite.antialiasing = ClientPrefs.globalAntialiasing;
+		add(videoSprite);
+		if(canSkip) this.canSkip = true;
 
-        if (FlxG.autoPause) 
-        {
-            //we dont want these signals due to us using our own setup
-            if (FlxG.signals.focusGained.has(resume)) FlxG.signals.focusGained.remove(resume);
-            if (FlxG.signals.focusLost.has(pause)) FlxG.signals.focusLost.remove(pause);
+		// callbacks
+		if(!shouldLoop)
+		{
+			videoSprite.bitmap.onEndReached.add(function() {
+				if(alreadyDestroyed) return;
+	
+				trace('Video destroyed');
+				if(cover != null)
+				{
+					remove(cover);
+					cover.destroy();
+				}
+		
+				PlayState.instance.remove(this);
+				destroy();
+				alreadyDestroyed = true;
+			});
+		}
 
-            if (!FlxG.signals.focusGained.has(bitmap.resume)) FlxG.signals.focusGained.add(bitmap.resume);
-            if (!FlxG.signals.focusLost.has(bitmap.pause)) FlxG.signals.focusLost.add(bitmap.pause);
-        }
-        
-        return b;
-    }
+		videoSprite.bitmap.onFormatSetup.add(function()
+		{
+			/*
+			#if hxvlc
+			var wd:Int = videoSprite.bitmap.formatWidth;
+			var hg:Int = videoSprite.bitmap.formatHeight;
+			trace('Video Resolution: ${wd}x${hg}');
+			videoSprite.scale.set(FlxG.width / wd, FlxG.height / hg);
+			#end
+			*/
+			videoSprite.setGraphicSize(FlxG.width);
+			videoSprite.updateHitbox();
+			videoSprite.screenCenter();
+		});
 
-    public override function pause() {
+		// start video and adjust resolution to screen size
+		videoSprite.load(videoName, shouldLoop ? ['input-repeat=65545'] : null);
+	}
 
-        super.pause();
-        if (FlxG.autoPause) 
-        {
-            if (FlxG.signals.focusGained.has(bitmap.resume)) FlxG.signals.focusGained.remove(bitmap.resume);
-            if (FlxG.signals.focusLost.has(bitmap.pause)) FlxG.signals.focusLost.remove(bitmap.pause);
-        }
-    }
+	var alreadyDestroyed:Bool = false;
+	override function destroy()
+	{
+		if(alreadyDestroyed)
+		{
+			super.destroy();
+			return;
+		}
 
-    public override function resume() {
+		trace('Video destroyed');
+		if(cover != null)
+		{
+			remove(cover);
+			cover.destroy();
+		}
 
-        super.resume();
-        if (FlxG.autoPause) 
-        {
-            if (!FlxG.signals.focusGained.has(bitmap.resume)) FlxG.signals.focusGained.add(bitmap.resume);
-            if (!FlxG.signals.focusLost.has(bitmap.pause)) FlxG.signals.focusLost.add(bitmap.pause);
-        }
-    }
+		if(finishCallback != null)
+			finishCallback();
+		onSkip = null;
 
-    //maybe temp?
-    public function addCallback(vidCallBack:String,func:Void->Void) {
-        switch (vidCallBack) {
-            case 'onEnd':
-                if (func != null) bitmap.onEndReached.add(func);
-            case 'onStart':
-                if (func != null) bitmap.onOpening.add(func);
-            case 'onFormat':
-                if (func != null) bitmap.onFormatSetup.add(func);
-        }
-    }
+		PlayState.instance.remove(this);
+		super.destroy();
+	}
 
-    public override function destroy() {
+	override function update(elapsed:Float)
+	{
+		if(canSkip)
+		{
+			if(controls.ACCEPT)
+			{
+				holdingTime = Math.max(0, Math.min(_timeToSkip, holdingTime + elapsed));
+			}
+			else if (holdingTime > 0)
+			{
+				holdingTime = Math.max(0, FlxMath.lerp(holdingTime, -0.1, FlxMath.bound(elapsed * 3, 0, 1)));
+			}
+			updateSkipAlpha();
 
-        if (destroyOnUse && onEndCallback != null) onEndCallback(); 
-        
-        heldVideos.remove(this);
-        super.destroy();
-    }
+			if(holdingTime >= _timeToSkip)
+			{
+				if(onSkip != null) onSkip();
+				finishCallback = null;
+				videoSprite.bitmap.onEndReached.dispatch();
+				PlayState.instance.remove(this);
+				trace('Skipped video');
+				return;
+			}
+		}
+		super.update(elapsed);
+	}
 
-    public function restart(?options:Array<String>) 
-    {
-        load(_heldVideoPath, options == null ? [] : options);
-        play();
-    }
+	function set_canSkip(newValue:Bool)
+	{
+		canSkip = newValue;
+		if(canSkip)
+		{
+			if(skipSprite == null)
+			{
+				skipSprite = new FlxPieDial(0, 0, 40, FlxColor.WHITE, 40, true, 24);
+				skipSprite.replaceColor(FlxColor.BLACK, FlxColor.TRANSPARENT);
+				skipSprite.x = FlxG.width - (skipSprite.width + 80);
+				skipSprite.y = FlxG.height - (skipSprite.height + 72);
+				skipSprite.amount = 0;
+				add(skipSprite);
+			}
+		}
+		else if(skipSprite != null)
+		{
+			remove(skipSprite);
+			skipSprite.destroy();
+			skipSprite = null;
+		}
+		return canSkip;
+	}
 
-    public function setVideoTime(time:Int64)
-    {
-        if (bitmap != null) bitmap.time = time;
-    }
+	function updateSkipAlpha()
+	{
+		if(skipSprite == null) return;
 
-    public static function globalPause() {
-        for (i in heldVideos) i.pause();
-    }
+		skipSprite.amount = Math.min(1, Math.max(0, (holdingTime / _timeToSkip) * 1.025));
+		skipSprite.alpha = FlxMath.remapToRange(skipSprite.amount, 0.025, 1, 0, 1);
+	}
 
-    public static function globalResume() {
-        for (i in heldVideos) i.resume();
-    }
-
-}
-
-
-enum abstract VidCallbacks(String) to String from String {
-    public var ONEND:String = 'onEnd';
-    public var ONSTART:String = 'onStart';
-    public var ONFORMAT:String = 'onFormat';
+	public function resume() videoSprite?.resume();
+	public function pause() videoSprite?.pause();
+	#end
 }

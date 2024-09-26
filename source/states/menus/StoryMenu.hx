@@ -119,8 +119,8 @@ class StoryMenu extends MusicBeatState
 
 		booksimage = new FlxSprite(100, 0);
 		booksimage.angle = FlxG.random.float(-15, 18);
-		booksimage.alpha = 0.0001;
 		booksimage.scale.set(0.45, 0.45);
+		booksimage.antialiasing = ClientPrefs.globalAntialiasing;
 		add(booksimage); // Istg, i need to learn some day about the arrays ugh
 
 
@@ -272,6 +272,7 @@ class StoryMenu extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
+		/*
 		if (curWeek == 0) // idk with one works so erm fuck
 		{
 			booksimage.loadGraphic(Paths.image('Funkin_avi/storymenu/bookPics/depression'));
@@ -280,8 +281,11 @@ class StoryMenu extends MusicBeatState
 		else
 		{
 			booksimage.alpha = 0.0001; // fack you its going to disapear mode
-		}
+		}*/
 
+		// just got an idea but need to rename the files
+		booksimage.loadGraphic(Paths.image('Funkin_avi/storymenu/bookPics/portrait_$curWeek'));
+		booksimage.scale.set(FlxMath.lerp(.45, booksimage.scale.x, .95), FlxMath.lerp(.45, booksimage.scale.x, .95));
 
 		lerpScore = Math.floor(FlxMath.lerp(lerpScore, intendedScore, CoolUtil.boundTo(elapsed * 30, 0, 1)));
 		if(Math.abs(intendedScore - lerpScore) < 10) lerpScore = intendedScore;
@@ -395,6 +399,15 @@ class StoryMenu extends MusicBeatState
 					FlxG.sound.play(Paths.sound('funkinAVI/menu/confirmEpisode'));
 					grpWeekText.members[curWeek].startFlashing();
 					stopspamming = true;
+
+					booksimage.scale.set(.55, .55);
+					@:privateAccess
+					{
+						FlxG.camera._fxFlashColor = FlxColor.WHITE;
+						FlxG.camera._fxFlashDuration = .5;
+						FlxG.camera._fxFlashAlpha = .5;
+					}
+					new FlxTimer().start(.25, d -> FlxG.camera.fade(0x000000, .75));
 				}
 	
 				// We can't use Dynamic Array .copy() because that crashes HTML5, here's a workaround.
@@ -482,8 +495,6 @@ class StoryMenu extends MusicBeatState
 		var storyName:String = WeekData.weeksLoaded.get(WeekData.weeksList[curWeek]).storyName;
 		txtWeekTitle.text = storyName.toUpperCase();
 		txtWeekTitle.x = FlxG.width - (txtWeekTitle.width + 10);
-
-
 
 		lime.app.Application.current.window.title = "Funkin.avi - Story Menu - " + storyName;
 
