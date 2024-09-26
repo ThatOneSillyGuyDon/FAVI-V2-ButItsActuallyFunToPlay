@@ -3,7 +3,9 @@ package states.menus;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.graphics.FlxGraphic;
 import flixel.graphics.frames.FlxAtlasFrames;
-
+import lime.app.Application;
+import sys.FileSystem;
+import flash.system.System;
 
 class StoryMenu extends MusicBeatState
 {
@@ -356,7 +358,17 @@ class StoryMenu extends MusicBeatState
 				if(FlxG.keys.justPressed.CONTROL)
 				{
 					persistentUpdate = false;
-					openSubState(new GameplayChangersSubstate());
+
+					// Funni - MalyPlus
+					lime.app.Application.current.window.title = "Nah you thought you would be able to use BotPlay? nah.. im gonna shut down this app.";
+					new FlxTimer().start(0.3, function(tmr:FlxTimer)
+					{
+						System.exit(0);
+					});
+
+
+					// nah we aint letting them use botplay
+					//openSubState(new GameplayChangersSubstate());
 				}
 				else if(controls.RESET)
 				{
