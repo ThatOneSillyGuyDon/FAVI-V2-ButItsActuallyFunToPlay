@@ -3095,7 +3095,8 @@ class PlayState extends MusicBeatState
 					default: boyfriend.setPosition(275, 50);
 				}
 			case 'forestNew':
-				dad.setPosition(-140, -50);
+				// It was before perfect but then Jason had put the new spritesheet... im gonna explode :) - MalyPlus
+				dad.setPosition(-110, -135); // goofy ahh goofy offsets - malyplus
 				boyfriend.setPosition(480, -220);
 				gf.setPosition(170, -50);
 			case 'forestOld':
