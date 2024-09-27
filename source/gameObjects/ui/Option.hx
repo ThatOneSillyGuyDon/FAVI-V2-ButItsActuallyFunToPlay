@@ -29,6 +29,8 @@ class Option
 	public var displayFormat:String = '%v'; //How String/Float/Percent/Int values are shown, %v = Current value, %d = Default value
 	public var description:String = '';
 	public var name:String = 'Unknown';
+	public var video:String = '';
+	public var hasVideo:Bool = false;
 
 	public function new(name:String, description:String = '', variable:String, type:String = 'bool', defaultValue:Dynamic = 'null variable value', ?options:Array<String> = null)
 	{

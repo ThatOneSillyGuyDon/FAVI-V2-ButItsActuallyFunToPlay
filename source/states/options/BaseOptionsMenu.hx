@@ -1,5 +1,6 @@
 package states.options;
 
+import gameObjects.video.VideoFlxSprite;
 import flash.text.TextField;
 import lime.utils.Assets;
 import haxe.Json;
@@ -28,7 +29,15 @@ class BaseOptionsMenu extends MusicBeatSubstate
 
 	var dogshitPath:String = 'Funkin_avi/options';
 
-	public var videoExample:VideoSprite;
+	/**
+	 * NOTES:
+	 * 
+	 * - video should be on a scale of 0.6
+	 * - make a video (1280x720 ) for the rest of settings
+	 * - optional: make a box
+	 * - MUTED AUDIO NO AUDIO FDJDSJJÑKFD
+	 */
+	public var videoExample:VideoFlxSprite;
 	
 	public function new()
 	{
@@ -133,6 +142,14 @@ class BaseOptionsMenu extends MusicBeatSubstate
 			}
 			updateTextFrom(optionsArray[i]);
 		}
+
+		videoExample = new VideoFlxSprite(Paths.video('settings/${optionsArray[curSelected].video}'), true, false, true);
+		videoExample.instance = this;
+		videoExample.visible = false;
+		videoExample.screenCenter();
+		videoExample.scale.set(.65, .65);
+		videoExample.videoSprite.bitmap.volume = 0;
+		add(videoExample);
 
 		var graphic:FlxSprite = new FlxSprite().loadGraphic(Paths.image('$dogshitPath/IMG_1017'));
 		graphic.setGraphicSize(FlxG.width, FlxG.height);
@@ -376,8 +393,22 @@ class BaseOptionsMenu extends MusicBeatSubstate
 		{
 			boyfriend.visible = optionsArray[curSelected].showBoyfriend;
 		}
+
+		if(videoExample != null)
+		{
+			videoExample.visible = optionsArray[curSelected].hasVideo;
+			videoExample.videoSprite.load(Paths.video('settings/' + optionsArray[curSelected].video), ['input-repeat=65545']);
+			videoExample.videoSprite.play();
+		}
 		curOption = optionsArray[curSelected]; //shorter lol
 		FlxG.sound.play(Paths.sound('scrollMenu'));
+	}
+
+	override function closeSubState() {
+		super.closeSubState();
+
+		videoExample.videoSprite.stop();
+		videoExample = null;
 	}
 
 	public function reloadBoyfriend()

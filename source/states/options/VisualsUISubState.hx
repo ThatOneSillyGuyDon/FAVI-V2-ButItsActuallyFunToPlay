@@ -45,16 +45,21 @@ class VisualsUISubState extends BaseOptionsMenu
 		'shaders', //Save data variable name
 		'bool', //Variable type
 		true); //Default value
-	addOption(option);
+		option.hasVideo = true;
+		option.video = 'shaders_' + ClientPrefs.shaders;
+		option.onChange = () -> {
+			if (ClientPrefs.shaders) option.video = 'shaders_true';
+		}
+		addOption(option);
 
-	var option:Option = new Option('Anti-Aliasing',
-	'If unchecked, disables anti-aliasing, increases performance\nat the cost of sharper visuals.',
-	'globalAntialiasing',
-	'bool',
-	true);
-option.showBoyfriend = true;
-option.onChange = onChangeAntiAliasing; //Changing onChange is only needed if you want to make a special interaction after it changes the value
-addOption(option);
+		var option:Option = new Option('Anti-Aliasing',
+		'If unchecked, disables anti-aliasing, increases performance\nat the cost of sharper visuals.',
+		'globalAntialiasing',
+		'bool',
+		true);
+		option.showBoyfriend = true;
+		option.onChange = onChangeAntiAliasing; //Changing onChange is only needed if you want to make a special interaction after it changes the value
+		addOption(option);
 
 		var option:Option = new Option('Camera Zooms',
 			"If unchecked, the camera won't zoom in on a beat hit.",
