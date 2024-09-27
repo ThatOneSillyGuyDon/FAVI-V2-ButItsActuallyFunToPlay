@@ -1,63 +1,63 @@
 {
 	"animations": [
 		{
-			"offsets": [
-				0,
-				-19
-			],
 			"loop": false,
-			"anim": "singLEFT",
+			"offsets": [
+				-160,
+				-9
+			],
 			"fps": 24,
-			"name": "GF left note",
-			"indices": []
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "GF left note"
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				-20
 			],
-			"loop": false,
-			"anim": "singDOWN",
 			"fps": 24,
-			"name": "GF Down Note",
-			"indices": []
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "GF Down Note"
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				4
 			],
-			"loop": false,
-			"anim": "singUP",
 			"fps": 24,
-			"name": "GF Up Note",
-			"indices": []
+			"anim": "singUP",
+			"indices": [],
+			"name": "GF Up Note"
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				-20
 			],
-			"loop": false,
-			"anim": "singRIGHT",
 			"fps": 24,
-			"name": "GF Right Note",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "GF Right Note"
 		},
 		{
 			"offsets": [
-				-460,
-				-90
+				-170,
+				80
 			],
-			"loop": false,
-			"fps": 24,
-			"anim": "idle",
 			"indices": [],
-			"name": "gfidle"
+			"fps": 18,
+			"anim": "idle",
+			"loop": false,
+			"name": "lilith"
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/lilith_assets",
+	"image": "characters/Lilith",
 	"position": [
 		0,
 		0
@@ -74,5 +74,5 @@
 		0
 	],
 	"sing_duration": 4,
-	"scale": 0.8
+	"scale": 0.7
 }

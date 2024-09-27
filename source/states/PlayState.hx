@@ -548,8 +548,6 @@ class PlayState extends MusicBeatState
 		// for lua
 		instance = this;
 
-		if (curStage != "waltRoom") healthThing = 0.5;
-
 		debugKeysChart = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_1'));
 		debugKeysCharacter = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_2'));
 		PauseSubState.songName = null; //Reset to default
@@ -687,7 +685,10 @@ class PlayState extends MusicBeatState
 		SONG.stage = curStage;
 
 		pathway = 'favi/stages/' + curStage + '/images/';
-		if (SONG.song == "Cycled Sins") daPixelZoom = 5;
+		if (SONG.song == "Cycled Sins")
+			daPixelZoom = 5;
+		else
+			daPixelZoom = 6;
 
 		var stageData:StageFile = StageData.getStageFile(curStage);
 		if(stageData == null) { //Stage couldn't be found, create a dummy stage for preventing a crash
@@ -737,6 +738,8 @@ class PlayState extends MusicBeatState
 		gfGroup = new FlxSpriteGroup(GF_X, GF_Y);
 
 		foreground = new FlxTypedGroup<FlxBasic>();
+
+		if (curStage != "waltRoom") healthThing = 0.5;
 
 		switch (curStage)
 		{
@@ -1801,8 +1804,20 @@ class PlayState extends MusicBeatState
 				GameOverSubstate.characterName = 'bf-holding-gf-dead';
 		}
 
-		if(isPixelStage) {
-			introSoundsSuffix = '-pixel';
+		switch (PlayState.SONG.song)
+		{
+			case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Laugh Track" |  "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Birthday":
+				introSoundsSuffix = "-cartoon";
+			case "Cycled Sins Legacy" | "Cycled Sins":
+				introSoundsSuffix = "-sins";
+			case "Malfunction":
+				introSoundsSuffix = "-error";
+			case "Malfunction Legacy":
+				introSoundsSuffix = "-glitch";
+			default:
+				if(isPixelStage) {
+					introSoundsSuffix = '-pixel';
+				}
 		}
 
 		add(gfGroup); //Needed for blammed lights
@@ -3789,6 +3804,7 @@ class PlayState extends MusicBeatState
 	var finishTimer:FlxTimer = null;
 
 	// For being able to mess with the sprites on Lua
+	public var countdownIntro:FlxSprite;
 	public var countdownReady:FlxSprite;
 	public var countdownSet:FlxSprite;
 	public var countdownGo:FlxSprite;
@@ -3799,9 +3815,24 @@ class PlayState extends MusicBeatState
 		var introAssets:Map<String, Array<String>> = new Map<String, Array<String>>();
 		introAssets.set('default', ['ready', 'set', 'go']);
 		introAssets.set('pixel', ['pixelUI/ready-pixel', 'pixelUI/set-pixel', 'pixelUI/date-pixel']);
+		introAssets.set('cartoon', ['favi/countdown/prepare', 'favi/countdown/ready', 'favi/countdown/set', 'favi/countdown/go']);
+		introAssets.set('malfunction', ['favi/countdown/mal-prepare', 'favi/countdown/mal-ready', 'favi/countdown/mal-set', 'favi/countdown/mal-go']);
+		introAssets.set('sins', ['favi/countdown/relapse-prepare', 'favi/countdown/relapse-ready', 'favi/countdown/relapse-set', 'favi/countdown/relapse-go']);
 
 		var introAlts:Array<String> = introAssets.get('default');
-		if (isPixelStage) introAlts = introAssets.get('pixel');
+		switch (PlayState.SONG.song)
+		{
+			case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Laugh Track" |  "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Birthday":
+				introAlts = introAssets.get('cartoon');
+			case "Cycled Sins Legacy" | "Cycled Sins":
+				introAlts = introAssets.get('sins');
+			case "Malfunction" | "Malfunction Legacy":
+				introAlts = introAssets.get('malfunction');
+			default:
+				if(isPixelStage) {
+					introAlts = introAssets.get('pixel');
+				}
+		}
 		
 		for (asset in introAlts)
 			Paths.image(asset);
@@ -3877,12 +3908,27 @@ class PlayState extends MusicBeatState
 				var introAssets:Map<String, Array<String>> = new Map<String, Array<String>>();
 				introAssets.set('default', ['ready', 'set', 'go']);
 				introAssets.set('pixel', ['pixelUI/ready-pixel', 'pixelUI/set-pixel', 'pixelUI/date-pixel']);
+				introAssets.set('cartoon', ['favi/countdown/prepare', 'favi/countdown/ready', 'favi/countdown/set', 'favi/countdown/go']);
+				introAssets.set('malfunction', ['favi/countdown/mal-prepare', 'favi/countdown/mal-ready', 'favi/countdown/mal-set', 'favi/countdown/mal-go']);
+				introAssets.set('sins', ['favi/countdown/relapse-prepare', 'favi/countdown/relapse-ready', 'favi/countdown/relapse-set', 'favi/countdown/relapse-go']);
 
 				var introAlts:Array<String> = introAssets.get('default');
 				var antialias:Bool = ClientPrefs.globalAntialiasing;
-				if(isPixelStage) {
-					introAlts = introAssets.get('pixel');
-					antialias = false;
+				switch (PlayState.SONG.song)
+				{
+					case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Laugh Track" |  "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Birthday":
+						introAlts = introAssets.get('cartoon');
+					case "Cycled Sins Legacy" | "Cycled Sins":
+						introAlts = introAssets.get('sins');
+						antialias = false;
+					case "Malfunction" | "Malfunction Legacy":
+						introAlts = introAssets.get('malfunction');
+						antialias = false;
+					default:
+						if(isPixelStage) {
+							introAlts = introAssets.get('pixel');
+							antialias = false;
+						}
 				}
 
 				// head bopping for bg characters on Mall
@@ -3897,10 +3943,43 @@ class PlayState extends MusicBeatState
 				switch (swagCounter)
 				{
 					case 0:
+						
+								countdownIntro = new FlxSprite().loadGraphic(Paths.image(introAlts[0]));
+								countdownIntro.cameras = [camOther];
+								countdownIntro.scrollFactor.set();
+								countdownIntro.updateHitbox();
+
+								if (PlayState.isPixelStage)
+									countdownIntro.setGraphicSize(Std.int(countdownIntro.width * daPixelZoom));
+
+								countdownIntro.screenCenter();
+								countdownIntro.antialiasing = antialias;
+								switch (SONG.song)
+								{
+									case "War Dilemma" | "Dont Cross" | "Bless" | "Mercy" | "Mercy Legacy" | "Delutrance":
+										//nothing
+									default:
+										insert(members.indexOf(notes), countdownIntro);
+										FlxTween.tween(countdownIntro, {alpha: 0}, Conductor.crochet / 1000, {
+											ease: FlxEase.cubeInOut,
+											onComplete: function(twn:FlxTween)
+											{
+												remove(countdownIntro);
+												countdownIntro.destroy();
+											}
+										});
+								}
+
 						FlxG.sound.play(Paths.sound('intro3' + introSoundsSuffix), 0.6);
 					case 1:
-						countdownReady = new FlxSprite().loadGraphic(Paths.image(introAlts[0]));
-						countdownReady.cameras = [camHUD];
+						switch (SONG.song)
+						{
+							case "War Dilemma" | "Dont Cross" | "Bless" | "Mercy" | "Mercy Legacy" | "Delutrance":
+								countdownReady = new FlxSprite().loadGraphic(Paths.image(introAlts[0]));
+							default:
+								countdownReady = new FlxSprite().loadGraphic(Paths.image(introAlts[1]));
+						}
+						countdownReady.cameras = [camOther];
 						countdownReady.scrollFactor.set();
 						countdownReady.updateHitbox();
 
@@ -3920,8 +3999,15 @@ class PlayState extends MusicBeatState
 						});
 						FlxG.sound.play(Paths.sound('intro2' + introSoundsSuffix), 0.6);
 					case 2:
-						countdownSet = new FlxSprite().loadGraphic(Paths.image(introAlts[1]));
-						countdownSet.cameras = [camHUD];
+						switch (SONG.song)
+						{
+							case "War Dilemma" | "Dont Cross" | "Bless" | "Mercy" | "Mercy Legacy" | "Delutrance":
+								countdownSet = new FlxSprite().loadGraphic(Paths.image(introAlts[1]));
+							default:
+								countdownSet = new FlxSprite().loadGraphic(Paths.image(introAlts[2]));
+						}
+						
+						countdownSet.cameras = [camOther];
 						countdownSet.scrollFactor.set();
 
 						if (PlayState.isPixelStage)
@@ -3940,8 +4026,14 @@ class PlayState extends MusicBeatState
 						});
 						FlxG.sound.play(Paths.sound('intro1' + introSoundsSuffix), 0.6);
 					case 3:
-						countdownGo = new FlxSprite().loadGraphic(Paths.image(introAlts[2]));
-						countdownGo.cameras = [camHUD];
+						switch (SONG.song)
+						{
+							case "War Dilemma" | "Dont Cross" | "Bless" | "Mercy" | "Mercy Legacy" | "Delutrance":
+								countdownGo = new FlxSprite().loadGraphic(Paths.image(introAlts[2]));
+							default:
+								countdownGo = new FlxSprite().loadGraphic(Paths.image(introAlts[3]));
+						}
+						countdownGo.cameras = [camOther];
 						countdownGo.scrollFactor.set();
 
 						if (PlayState.isPixelStage)

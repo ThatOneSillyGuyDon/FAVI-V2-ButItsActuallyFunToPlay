@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Free texture packer v0.6.7 http://free-tex-packer.com
+-->
+<TextureAtlas imagePath="Lilith.png" width="1007" height="4098">
+  <SubTexture name="lilith0008.png" x="0" y="0"  width="508" height="684" frameX="-272" frameY="-195" frameWidth="960" frameHeight="960"/>
+  <SubTexture name="lilith00010.png" x="0" y="684"  width="507" height="684" frameX="-272" frameY="-195" frameWidth="960" frameHeight="960"/>
+  <SubTexture name="lilith00012.png" x="0" y="1368"  width="507" height="684" frameX="-272" frameY="-195" frameWidth="960" frameHeight="960"/>
+  <SubTexture name="lilith0006.png" x="0" y="2052"  width="499" height="683" frameX="-285" frameY="-196" frameWidth="960" frameHeight="960"/>
+  <SubTexture name="lilith0007.png" x="0" y="2735"  width="499" height="683" frameX="-285" frameY="-196" frameWidth="960" frameHeight="960"/>
+  <SubTexture name="lilith0001.png" x="0" y="3418"  width="512" height="680" frameX="-275" frameY="-199" frameWidth="960" frameHeight="960"/>
+  <SubTexture name="lilith0004.png" x="499" y="2052"  width="505" height="677" frameX="-284" frameY="-202" frameWidth="960" frameHeight="960"/>
+  <SubTexture name="lilith0002.png" x="499" y="2729"  width="508" height="673" frameX="-283" frameY="-206" frameWidth="960" frameHeight="960"/>
+  <SubTexture name="lilith00011.png" x="0" y="684"  width="507" height="684" frameX="-272" frameY="-195" frameWidth="960" frameHeight="960"/>
+  <SubTexture name="lilith0003.png" x="499" y="2729"  width="508" height="673" frameX="-283" frameY="-206" frameWidth="960" frameHeight="960"/>
+  <SubTexture name="lilith0005.png" x="499" y="2052"  width="505" height="677" frameX="-284" frameY="-202" frameWidth="960" frameHeight="960"/>
+  <SubTexture name="lilith0009.png" x="0" y="0"  width="508" height="684" frameX="-272" frameY="-195" frameWidth="960" frameHeight="960"/>
+</TextureAtlas>
