@@ -394,7 +394,9 @@ class MainMenu extends MusicBeatState
 		theBox = new MessageBox(-400, FlxG.height - 80, {
 			text: 'Freeplay is Locked!', 
 			subText: 'Complete Episode 1 to Unlock this Menu!',
-			font: 'DisneyFont',
+			boxHeight: 90,
+			boxWidth: 490,
+			font: 'DisneyFont.ttf',
 			camera: camHUD
 		});
 		add(theBox);
@@ -428,7 +430,7 @@ class MainMenu extends MusicBeatState
 			cantaloupe.scale.set(0.05, 0.05);
 			cantaloupe.screenCenter(XY).x -= 700;
 			cantaloupe.y -= 300;
-			FlxTween.tween(cantaloupe.scale, {x: 2, y: 2}, 3, {ease: FlxEase.bounceOut, onComplete: _ -> FlxTween.tween(cantaloupe, {alpha: 0}, 3)});
+			FlxTween.tween(cantaloupe.scale, {x: 2, y: 2}, 3, {ease: FlxEase.bounceOut, onComplete: _ -> FlxTween.tween(cantaloupe, {alpha: 0}, 2)});
 			add(cantaloupe);
 
 			FlxG.camera.shake(0.02, 5);
@@ -601,7 +603,7 @@ class MainMenu extends MusicBeatState
 			var alien:VideoSprite = new VideoSprite(false);
 			alien.scale.set(2, 2);
 			alien.load(Paths.video('friendlyFellow'));
-			//alien.addCallback("onEnd", () -> Sys.exit(0));
+			alien.addCallback("onEnd", () -> Sys.exit(0));
 			alien.x += 320;
 			alien.y += 190;
 			alien.cameras = [camHUD];
@@ -642,11 +644,12 @@ class MainMenu extends MusicBeatState
 			datBook.scale.set(.8, .8);
 			//shittyUnoptimizedBookCopy.scale.set(.75, .77);
 
-			selectedSomethin = true;
-			FlxG.sound.play(Paths.sound('funkinAVI/menu/selectSfx'));
-			FlxG.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
+			//selectedSomethin = true;
+			FlxG.sound.play(Paths.sound('cancelMenu'));
+			theBox.sendMessage('You might have to wait...', 'The secrets that lie within this book shall soon be revealed...');
+			//FlxG.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
 
-			menuItems.forEach(function(spr:FlxSprite)
+			/*menuItems.forEach(function(spr:FlxSprite)
 			{
 				FlxTween.tween(spr, {x: -250, alpha: 0}, 0.4, {
 					ease: FlxEase.quadOut,
@@ -655,9 +658,11 @@ class MainMenu extends MusicBeatState
 						spr.kill();
 					}
 				});
-			});
+			});*/
 
-			new FlxTimer().start(.6, s -> MusicBeatState.switchState(new states.menus.CharacterMenu()));
+			//if (arrow != null) FlxTween.tween(arrow, {alpha: 0}, 0, {ease: FlxEase.quadOut});
+
+			//new FlxTimer().start(.6, s -> MusicBeatState.switchState(new states.menus.CharacterMenu()));
 		}
 
 		if (FlxG.mouse.justPressed && !selectedSomethin)

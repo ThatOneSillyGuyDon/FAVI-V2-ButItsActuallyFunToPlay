@@ -685,6 +685,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 									FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
 								}
 								else
+								{
 									switch (CoolUtil.dashToSpace(PlayState.SONG.song))
 									{
 										case 'Devilish Deal' | 'Isolated' | 'Lunacy' | 'Delusional':
@@ -705,6 +706,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 											MusicBeatState.switchState(new states.menus.FreeplayState()); // yeah, there's no way I'm making a case for EVERY fucking song in that menu, too much work!
 									}
 									FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
+								}
 									FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
 					}
 				}
