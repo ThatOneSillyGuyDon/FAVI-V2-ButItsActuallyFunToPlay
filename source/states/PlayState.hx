@@ -155,6 +155,9 @@ class PlayState extends MusicBeatState
 	public var playerStrums:FlxTypedGroup<StrumNote>;
 	public var grpNoteSplashes:FlxTypedGroup<NoteSplash>;
 
+	public var grpSusNoteSplashes:FlxTypedGroup<SusNoteSplash>;
+	var sussplash:SusNoteSplash;
+
 	public var camZooming:Bool = false;
 	public var camZoomingMult:Float = 1;
 	public var camZoomingDecay:Float = 1;
@@ -162,6 +165,7 @@ class PlayState extends MusicBeatState
 
 	public var gfSpeed:Int = 1;
 	public var healthThing:Float = 1;
+	public var healthLerp:Float = 1;
 	public var combo:Int = 0;
 
 	private var healthBarBG:AttachedSprite;
@@ -626,6 +630,7 @@ class PlayState extends MusicBeatState
 		FlxG.cameras.add(camNotes, false);
 		FlxG.cameras.add(camOther, false);
 		grpNoteSplashes = new FlxTypedGroup<NoteSplash>();
+		grpSusNoteSplashes = new FlxTypedGroup<SusNoteSplash>();
 
 		FlxG.cameras.setDefaultDrawTarget(camGame, true);
 		CustomFadeTransition.nextCamera = camOther;
@@ -2106,6 +2111,10 @@ class PlayState extends MusicBeatState
 		grpNoteSplashes.add(splash);
 		splash.alpha = 0.0;
 
+		sussplash = new SusNoteSplash(100, 100);
+		grpSusNoteSplashes.add(sussplash);
+		sussplash.alpha = 0.0;
+
 		opponentStrums = new FlxTypedGroup<StrumNote>();
 		playerStrums = new FlxTypedGroup<StrumNote>();
 
@@ -2121,6 +2130,8 @@ class PlayState extends MusicBeatState
 		add(playfieldRenderer);
 
 		add(grpNoteSplashes);
+		add(grpSusNoteSplashes);
+
 
 		camFollow = new FlxPoint();
 		camFollowPos = new FlxObject(0, 0, 1, 1);
@@ -2176,7 +2187,7 @@ class PlayState extends MusicBeatState
 		add(fancyBarOverlay);
 
 		healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 5, (SONG.song == "Devilish Deal" ? LEFT_TO_RIGHT : RIGHT_TO_LEFT), Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 7), this,
-			'healthThing', 0, 2);
+			'healthLerp', 0, 2);
 		healthBar.scrollFactor.set();
 		healthBar.percent = healthThing;
 		// healthBar
@@ -2431,6 +2442,7 @@ class PlayState extends MusicBeatState
 
 		strumLineNotes.cameras = [camHUD];
 		grpNoteSplashes.cameras = [camNotes];
+		grpSusNoteSplashes.cameras = [camNotes];
 		notes.cameras = [camHUD];
 		healthBar.cameras = [camHUD];
 		healthBarBG.cameras = [camHUD];
@@ -3090,7 +3102,7 @@ class PlayState extends MusicBeatState
 					default: boyfriend.setPosition(275, 50);
 				}
 			case 'forestNew':
-				dad.setPosition(-140, -50);
+				dad.setPosition(-115, -150);
 				boyfriend.setPosition(480, -220);
 				gf.setPosition(170, -50);
 			case 'forestOld':
@@ -4673,9 +4685,16 @@ class PlayState extends MusicBeatState
 	var canPause:Bool = true;
 	var limoSpeed:Float = 0;
 
+	function updateHealthBar():Void
+		{
+			healthLerp = FlxMath.lerp(healthLerp, healthThing, .2 / (ClientPrefs.framerate / 60));
+		}
+
 	override public function update(elapsed:Float)
 	{
 		callOnLuas('onUpdate', [elapsed]);
+
+		updateHealthBar();
 
 		shaderAnim = Conductor.songPosition / 1000;
 		if (canaddshaders)
@@ -6454,6 +6473,55 @@ class PlayState extends MusicBeatState
 				} else {
 					FunkinLua.setVarInArray(this, value1, value2);
 				}
+			case 'Tween Camera Zoom':
+				var zoom:Float = Std.parseFloat(value1);
+				var time:Float = Std.parseFloat(value2);
+				if(Math.isNaN(time) || time <= 0) time = 0;
+	
+				if ((time) > 0) {
+					modchartTweens.set("TweenCamZoom", FlxTween.tween(FlxG.camera, {zoom: (zoom)}, (time), {
+						ease: FlxEase.quadInOut,
+						onComplete: function(twn:FlxTween)
+						{
+							defaultCamZoom = (zoom);
+						}
+					}));	
+				} else {
+					defaultCamZoom = (zoom);
+				}
+			case 'Tween Camera Pos':
+				var split = value1.split("%%");
+
+				var xxx:Float = 0;
+				var yyy:Float = 0;
+
+				if(split[0] != null) xxx = Std.parseFloat(split[0].trim());
+				if(split[1] != null) yyy = Std.parseFloat(split[1].trim());
+				if(Math.isNaN(xxx)) xxx = 0;
+				if(Math.isNaN(yyy)) yyy = 0;
+
+				var time:Float = Std.parseFloat(value2);
+
+				if(Math.isNaN(time) || time <= 0) time = 0;
+	
+				if ((time) > 0) {
+					modchartTweens.set("TweenCamX", FlxTween.tween(camFollow, {x: xxx}, (time), {
+						ease: FlxEase.quadInOut,
+						onComplete: function(twn:FlxTween)
+						{
+							camFollow.x = xxx;
+						}
+					}));	
+					modchartTweens.set("TweenCamY", FlxTween.tween(camFollow, {y: yyy}, (time), {
+						ease: FlxEase.quadInOut,
+						onComplete: function(twn:FlxTween)
+						{
+							camFollow.y = yyy;
+						}
+					}));
+				} else {
+					camFollow.x = (yyy);
+				}			
 		}
 		callOnLuas('onEvent', [eventName, value1, value2]);
 	}
@@ -7272,6 +7340,8 @@ class PlayState extends MusicBeatState
 		callOnLuas('noteMissPress', [direction]);
 	}
 
+	var visiblehold:Bool = false;
+
 	function opponentNoteHit(note:Note):Void
 	{
 		if (Paths.formatToSongPath(SONG.song) != 'tutorial')
@@ -7795,6 +7865,22 @@ class PlayState extends MusicBeatState
 			var leType:String = note.noteType;
 			callOnLuas('goodNoteHit', [notes.members.indexOf(note), leData, leType, isSus]);
 
+			if (isSus) {
+				if (isSus && note.animation.name.endsWith('end')) {
+					sussplash.playEnd();
+					visiblehold = false;
+				}
+				else {
+					if (!visiblehold) {
+						visiblehold = true;
+	
+						spawnSusNoteSplashOnNote(note);
+	
+						sussplash.playContinue();
+					}
+				}
+			}
+
 			if (!note.isSustainNote)
 			{
 				note.kill();
@@ -7806,6 +7892,20 @@ class PlayState extends MusicBeatState
 				boyfriend.holdTimer = 0;
 			}
 		}
+	}
+
+	public function spawnSusNoteSplashOnNote(note:Note) {
+		if(note != null) {
+			var strum:StrumNote = playerStrums.members[note.noteData];
+			if(strum != null)
+				spawnSusNoteSplash(strum.x, strum.y, note.noteData, note);
+		}
+	}
+
+	public function spawnSusNoteSplash(x:Float, y:Float, data:Int, ?note:Note = null) {
+		sussplash = grpSusNoteSplashes.recycle(SusNoteSplash);
+		sussplash.setupNoteSplash(x, y, data, note);
+		grpSusNoteSplashes.add(sussplash);
 	}
 
 	public function spawnNoteSplashOnNote(note:Note) {
