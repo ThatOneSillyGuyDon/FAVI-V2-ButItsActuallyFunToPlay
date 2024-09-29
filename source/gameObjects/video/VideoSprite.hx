@@ -1,7 +1,10 @@
 package gameObjects.video;
 
 import hxvlc.flixel.FlxVideoSprite;
+import flixel.FlxG;
 import haxe.Int64;
+import flixel.addons.display.FlxPieDial;
+import backend.Controls;
 
 //stolen from sonic legacy lmfao -don
 

@@ -14,6 +14,12 @@ import flixel.FlxG;
 	import flixel.sound.FlxSound;
 #end
 
+
+/*why everyone forgot about this
+...... should I do the funnies here? - malyplus/*
+
+// no i didn't forgot im just WAITING FOR THE ASSETS
+
 /**
  * why did you left his birthday
  */

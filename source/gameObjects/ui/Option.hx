@@ -5,7 +5,7 @@ import lime.utils.Assets;
 import flixel.input.keyboard.FlxKey;
 class Option
 {
-	private var child:Alphabet;
+	private var child:FlxTextAlphabet;
 	public var text(get, set):String;
 	public var onChange:Void->Void = null; //Pressed enter (on Bool type options) or pressed/held left/right (on other types)
 
@@ -29,6 +29,8 @@ class Option
 	public var displayFormat:String = '%v'; //How String/Float/Percent/Int values are shown, %v = Current value, %d = Default value
 	public var description:String = '';
 	public var name:String = 'Unknown';
+	public var video:String = '';
+	public var hasVideo:Bool = false;
 
 	public function new(name:String, description:String = '', variable:String, type:String = 'bool', defaultValue:Dynamic = 'null variable value', ?options:Array<String> = null)
 	{
@@ -96,7 +98,7 @@ class Option
 		Reflect.setProperty(ClientPrefs, variable, value);
 	}
 
-	public function setChild(child:Alphabet)
+	public function setChild(child:FlxTextAlphabet)
 	{
 		this.child = child;
 	}

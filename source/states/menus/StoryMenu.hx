@@ -3,7 +3,9 @@ package states.menus;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.graphics.FlxGraphic;
 import flixel.graphics.frames.FlxAtlasFrames;
-
+import lime.app.Application;
+import sys.FileSystem;
+import flash.system.System;
 
 class StoryMenu extends MusicBeatState
 {
@@ -39,7 +41,7 @@ class StoryMenu extends MusicBeatState
 	var gradient:FlxSprite;
 	
 	var booksimage:FlxSprite;
-	var weekshitcausepsychhatesme:FlxSprite;
+	var weekIcon:FlxSprite;
 
 	var difficultySelectors:FlxGroup;
 	var sprDifficulty:FlxSprite;
@@ -89,7 +91,6 @@ class StoryMenu extends MusicBeatState
 		book.scale.set(0.85, 0.85);
 		book.antialiasing = true;
 		book.alpha = 1;
-		if (ClientPrefs.shaders) book.shader = blur;
 		add(book);
 
 		ispy = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/storymenu/i_spy'));
@@ -98,7 +99,6 @@ class StoryMenu extends MusicBeatState
 		ispy.screenCenter();
 		ispy.scale.set(0.8, 0.8);
 		ispy.antialiasing = true;
-		if (ClientPrefs.shaders) ispy.shader = blur;
 		add(ispy);
 
 		bookStuff = new FlxTypedGroup<FlxSprite>();
@@ -119,21 +119,24 @@ class StoryMenu extends MusicBeatState
 
 		booksimage = new FlxSprite(100, 0);
 		booksimage.angle = FlxG.random.float(-15, 18);
-		booksimage.alpha = 0.0001;
 		booksimage.scale.set(0.45, 0.45);
+		booksimage.antialiasing = ClientPrefs.globalAntialiasing;
 		add(booksimage); // Istg, i need to learn some day about the arrays ugh
 
+		weekIcon = new FlxSprite(booksimage.x + 125, booksimage.y + 450);
+		weekIcon.antialiasing = ClientPrefs.globalAntialiasing;
+		add(weekIcon);
 
 		scoreText = new FlxText(10, 10, 0, "SCORE: 49324858", 36);
 		scoreText.setFormat(Paths.font("vcr"), 32);
 
 		txtWeekTitle = new FlxText(FlxG.width * 0.7, 10, 0, "", 32);
-		txtWeekTitle.setFormat(Paths.font("vcr"), 32, FlxColor.WHITE, RIGHT);
-		txtWeekTitle.alpha = 0.7;
+		txtWeekTitle.setFormat(Paths.font("disneyFreeplayFont.ttf"), 18, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		//txtWeekTitle.alpha = 0.7;
 
 		var rankText:FlxText = new FlxText(0, 10);
 		rankText.text = 'RANK: GREAT';
-		rankText.setFormat(Paths.font("DisneyFont"), 32);
+		rankText.setFormat(Paths.font("DisneyFont.ttf"), 32);
 		rankText.size = scoreText.size;
 		rankText.screenCenter(X);
 
@@ -218,7 +221,7 @@ class StoryMenu extends MusicBeatState
 		add(grpWeekCharacters);
 
 		txtTracklist = new FlxText(1070, 90, 0, "Tracks", 38);
-		txtTracklist.setFormat(Paths.font("DisneyFont"), 32, FlxColor.WHITE, RIGHT, OUTLINE, FlxColor.BLACK);
+		txtTracklist.setFormat(Paths.font("DisneyFont.ttf"), 32, FlxColor.WHITE, RIGHT, OUTLINE, FlxColor.BLACK);
 		txtTracklist.borderSize = 2;
 		add(txtTracklist);
 		// add(rankText);
@@ -272,6 +275,7 @@ class StoryMenu extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
+		/*
 		if (curWeek == 0) // idk with one works so erm fuck
 		{
 			booksimage.loadGraphic(Paths.image('Funkin_avi/storymenu/bookPics/depression'));
@@ -280,8 +284,13 @@ class StoryMenu extends MusicBeatState
 		else
 		{
 			booksimage.alpha = 0.0001; // fack you its going to disapear mode
-		}
+		}*/
 
+		// just got an idea but need to rename the files
+		booksimage.loadGraphic(Paths.image('Funkin_avi/storymenu/bookPics/portrait_$curWeek'));
+		booksimage.scale.set(FlxMath.lerp(.45, booksimage.scale.x, .95), FlxMath.lerp(.45, booksimage.scale.x, .95));
+
+		weekIcon.loadGraphic(Paths.image('Funkin_avi/storymenu/weeks/epi_$curWeek'));
 
 		lerpScore = Math.floor(FlxMath.lerp(lerpScore, intendedScore, CoolUtil.boundTo(elapsed * 30, 0, 1)));
 		if(Math.abs(intendedScore - lerpScore) < 10) lerpScore = intendedScore;
@@ -356,7 +365,17 @@ class StoryMenu extends MusicBeatState
 				if(FlxG.keys.justPressed.CONTROL)
 				{
 					persistentUpdate = false;
-					openSubState(new GameplayChangersSubstate());
+
+					// Funni - MalyPlus
+					lime.app.Application.current.window.title = "Nah you thought you would be able to use BotPlay? nah.. im gonna shut down this app.";
+					new FlxTimer().start(0.3, function(tmr:FlxTimer)
+					{
+						System.exit(0);
+					});
+
+
+					// nah we aint letting them use botplay
+					//openSubState(new GameplayChangersSubstate());
 				}
 				else if(controls.RESET)
 				{
@@ -395,6 +414,15 @@ class StoryMenu extends MusicBeatState
 					FlxG.sound.play(Paths.sound('funkinAVI/menu/confirmEpisode'));
 					grpWeekText.members[curWeek].startFlashing();
 					stopspamming = true;
+
+					booksimage.scale.set(.55, .55);
+					@:privateAccess
+					{
+						FlxG.camera._fxFlashColor = FlxColor.WHITE;
+						FlxG.camera._fxFlashDuration = .5;
+						FlxG.camera._fxFlashAlpha = .5;
+					}
+					new FlxTimer().start(.25, d -> FlxG.camera.fade(0x000000, .75));
 				}
 	
 				// We can't use Dynamic Array .copy() because that crashes HTML5, here's a workaround.
@@ -481,9 +509,7 @@ class StoryMenu extends MusicBeatState
 
 		var storyName:String = WeekData.weeksLoaded.get(WeekData.weeksList[curWeek]).storyName;
 		txtWeekTitle.text = storyName.toUpperCase();
-		txtWeekTitle.x = FlxG.width - (txtWeekTitle.width + 10);
-
-
+		txtWeekTitle.x = FlxG.width - (txtWeekTitle.width + 500);
 
 		lime.app.Application.current.window.title = "Funkin.avi - Story Menu - " + storyName;
 

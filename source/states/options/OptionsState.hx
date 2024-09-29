@@ -113,6 +113,7 @@ class OptionsState extends MusicBeatState
 			gradient.updateHitbox();
 			gradient.screenCenter();
 			gradient.antialiasing = true;
+			gradient.scale.x += .1;
 			add(gradient);
 
 			var scratchStuff:FlxSprite = new FlxSprite();
