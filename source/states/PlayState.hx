@@ -746,6 +746,8 @@ class PlayState extends MusicBeatState
 
 		foreground = new FlxTypedGroup<FlxBasic>();
 
+		lowQuality = ClientPrefs.lowQuality; //updates it now I think
+
 		if (curStage != "waltRoom") healthThing = 0.5;
 
 		switch (curStage)
@@ -1080,7 +1082,7 @@ class PlayState extends MusicBeatState
 					colorsOrSmthElse = new FlxSprite(-990, 1600).loadGraphic(Paths.image(pathway + 'randomColors'));
 					colorsOrSmthElse.setGraphicSize(Std.int(colorsOrSmthElse.width * 4));
 					colorsOrSmthElse.updateHitbox();
-					colorsOrSmthElse.antialiasing = true;
+					colorsOrSmthElse.antialiasing = ClientPrefs.globalAntialiasing;
 					colorsOrSmthElse.screenCenter();
 					colorsOrSmthElse.scale.set(3, 3);
 					colorsOrSmthElse.scrollFactor.set(0.9, 0.9);
@@ -1092,6 +1094,7 @@ class PlayState extends MusicBeatState
 						fireThing = new FlxSprite(0, -80);
 						fireThing.scale.set(5.85, 3);
 						fireThing.alpha = 0.0001;
+						fireThing.antialiasing = ClientPrefs.globalAntialiasing;
 						fireThing.frames = Paths.getSparrowAtlas(pathway + 'delusional-fire');
 						fireThing.animation.addByPrefix('burning', 'delusional-fire fire-idle', 16, true);
 						fireThing.scrollFactor.set(0.8, 0.8);
@@ -1100,7 +1103,7 @@ class PlayState extends MusicBeatState
 					}
 					
 					floor = new FlxSprite(-20, 200).loadGraphic(Paths.image(pathway + 'street'));
-					floor.antialiasing = true;
+					floor.antialiasing = ClientPrefs.globalAntialiasing;
 					floor.scale.set(2.5, 2.3);
 					floor.scrollFactor.set(1, 1);
 					floor.active = false;
@@ -1108,23 +1111,10 @@ class PlayState extends MusicBeatState
 	
 					if (PlayState.SONG.song == 'Delusional' || PlayState.SONG.song == 'Delusion')
 					{	
-						if (!lowQuality)
-						{
-							clouds = new FlxSprite(-990, 1600).loadGraphic(Paths.image(pathway + 'clouds'));
-							clouds.setGraphicSize(Std.int(clouds.width * 4));
-							clouds.updateHitbox();
-							clouds.antialiasing = true;
-							clouds.screenCenter();
-							clouds.scale.set(3, 3);
-							clouds.scrollFactor.set(1.1, 1.1);
-							add(clouds);
-							clouds.visible = false;
-						}
-	
 						fakeLightOfHope = new FlxSprite(-990, 1600).loadGraphic(Paths.image(pathway + 'falseHope'));
 						fakeLightOfHope.setGraphicSize(Std.int(fakeLightOfHope.width * 4));
 						fakeLightOfHope.updateHitbox();
-						fakeLightOfHope.antialiasing = true;
+						fakeLightOfHope.antialiasing = ClientPrefs.globalAntialiasing;
 						fakeLightOfHope.screenCenter();
 						fakeLightOfHope.scale.set(3, 3);
 						fakeLightOfHope.scrollFactor.set(0.9, 0.9);
@@ -1138,12 +1128,14 @@ class PlayState extends MusicBeatState
 							fireThing2.frames = Paths.getSparrowAtlas(pathway + 'delusional-fire');
 							fireThing2.animation.addByPrefix('burning', 'delusional-fire fire-idle', 16, true);
 							fireThing2.scrollFactor.set(0.8, 0.8);
+							fireThing2.antialiasing = ClientPrefs.globalAntialiasing;
 							fireThing2.blend = ADD;
 							add(fireThing2);
 							fireThing2.animation.play('burning');
 
 							lightning = new FlxSprite(-25, -175);
 							lightning.frames = Paths.getSparrowAtlas(pathway + "lightning");
+							lightning.antialiasing = ClientPrefs.globalAntialiasing;
 							lightning.animation.addByPrefix('boom', 'lightning1', 12);
 							lightning.animation.addByPrefix('boom2', 'lightning2', 12);
 							lightning.scale.set(2, 2);
@@ -1156,7 +1148,7 @@ class PlayState extends MusicBeatState
 						add(mickeySpirit);
 	
 						streetRuins = new FlxSprite(-20, 200).loadGraphic(Paths.image(pathway + 'streetDestroyed'));
-						streetRuins.antialiasing = true;
+						streetRuins.antialiasing = ClientPrefs.globalAntialiasing;
 						streetRuins.scale.set(2.5, 2.3);
 						streetRuins.scrollFactor.set(1, 1);
 						add(streetRuins);
@@ -1166,6 +1158,7 @@ class PlayState extends MusicBeatState
 						minnieBackground = new FlxSprite(-20, 200).loadGraphic(Paths.image(pathway + 'background'));
 						minnieBackground.scale.set(2,2);
 						minnieBackground.scrollFactor.set(1, 1);
+						minnieBackground.antialiasing = ClientPrefs.globalAntialiasing;
 						minnieBackground.visible = false;
 						add(minnieBackground);
 
@@ -1173,6 +1166,7 @@ class PlayState extends MusicBeatState
 						totallyanoriginalname.scale.set(2,2);
 						totallyanoriginalname.scrollFactor.set(1,1);
 						totallyanoriginalname.visible = false;
+						totallyanoriginalname.antialiasing = ClientPrefs.globalAntialiasing;
 						add(totallyanoriginalname);
 
 	
@@ -1190,6 +1184,7 @@ class PlayState extends MusicBeatState
 								smoke.scale.set(1.3, 1.35);
 								smoke.alpha = 0.001;
 								smoke.blend = ADD;
+								smoke.antialiasing = ClientPrefs.globalAntialiasing;
 								smoke.animation.play('smoke');
 								switch (smoke.ID)
 								{
@@ -1212,6 +1207,7 @@ class PlayState extends MusicBeatState
 								smoke.scale.set(1.6, 1.4);
 								smoke.alpha = 0.001;
 								smoke.blend = ADD;
+								smoke.antialiasing = ClientPrefs.globalAntialiasing;
 								smoke.animation.play('smoke');
 								switch (smoke.ID)
 								{
@@ -1229,6 +1225,7 @@ class PlayState extends MusicBeatState
 							lightningFore.animation.addByPrefix('boom2', 'lightning2', 12);
 							lightningFore.scale.set(2.45, 2.45);
 							lightningFore.scrollFactor.set(1.32, 1.32);
+							lightningFore.antialiasing = ClientPrefs.globalAntialiasing;
 							foreground.add(lightningFore);
 	
 							fireForeground = new FlxSprite(0, 550);
@@ -1237,6 +1234,7 @@ class PlayState extends MusicBeatState
 							fireForeground.frames = Paths.getSparrowAtlas(pathway + 'delusional-fire');
 							fireForeground.animation.addByPrefix('burningShit', 'delusional-fire fire-idle', 16, true);
 							fireForeground.scrollFactor.set(1.35, 1.18);
+							fireForeground.antialiasing = ClientPrefs.globalAntialiasing;
 							fireForeground.blend = ADD;
 							fireForeground.animation.play('burningShit');
 	
@@ -1262,7 +1260,7 @@ class PlayState extends MusicBeatState
 							stageCurtains.updateHitbox();
 							stageCurtains.screenCenter();
 							stageCurtains.scale.set(1.3,1.3);
-							stageCurtains.antialiasing = true;
+							stageCurtains.antialiasing = ClientPrefs.globalAntialiasing;
 							stageCurtains.cameras = [camOther];
 							stageCurtains.scrollFactor.set(1.3, 1.3);
 							add(stageCurtains);	
@@ -1285,6 +1283,7 @@ class PlayState extends MusicBeatState
 									blackParticle.frames = Paths.getSparrowAtlas(pathway + 'ashParticle');
 									blackParticle.animation.addByPrefix('idle', 'ashParticle idle', 5, true);
 									blackParticle.animation.play('idle');
+									blackParticle.antialiasing = ClientPrefs.globalAntialiasing;
 									blackParticle.exists = false;
 									//blackParticle.animation.curAnim.curFrame = FlxG.random.int(0, 9);
 									ashParticle.add(blackParticle);
@@ -1303,7 +1302,7 @@ class PlayState extends MusicBeatState
 							stageFront = new FlxSprite(-3000, 130).loadGraphic(Paths.image(pathway + 'cables'));
 							stageFront.scale.set(9, 2.1);
 							stageFront.updateHitbox();
-							stageFront.antialiasing = true;
+							stageFront.antialiasing = ClientPrefs.globalAntialiasing;
 							stageFront.scrollFactor.set(5, 2.6);
 							stageFront.active = false;
 							
@@ -1311,6 +1310,7 @@ class PlayState extends MusicBeatState
 							rain.frames = Paths.getSparrowAtlas(pathway + 'rain');
 							rain.animation.addByPrefix('drippin', 'Rain', 30, true);
 							rain.scale.set(2, 2);
+							rain.antialiasing = ClientPrefs.globalAntialiasing;
 							rain.alpha = 0.0001;
 							rain.animation.play('drippin');
 
@@ -1318,6 +1318,7 @@ class PlayState extends MusicBeatState
 							heavyRain.frames = Paths.getSparrowAtlas(pathway + 'heavyRain');
 							heavyRain.animation.addByPrefix('god is pissing omg', 'Rain full', 30, true);
 							heavyRain.scale.set(2, 2);
+							heavyRain.antialiasing = ClientPrefs.globalAntialiasing;
 							heavyRain.alpha = 0.0001;
 							heavyRain.animation.play('god is pissing omg');
 	
@@ -11050,7 +11051,7 @@ class PlayState extends MusicBeatState
 										});
 									}
 								}
-								if (curBeat == 312)
+								if (curBeat == 312 && !lowQuality)
 								{
 									FlxTween.tween(fireThing, {alpha: 1}, 1);
 									//smokeParticles.emitting = true;
