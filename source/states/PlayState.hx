@@ -155,6 +155,9 @@ class PlayState extends MusicBeatState
 	public var playerStrums:FlxTypedGroup<StrumNote>;
 	public var grpNoteSplashes:FlxTypedGroup<NoteSplash>;
 
+	public var grpSusNoteSplashes:FlxTypedGroup<SusNoteSplash>;
+	var sussplash:SusNoteSplash;
+
 	public var camZooming:Bool = false;
 	public var camZoomingMult:Float = 1;
 	public var camZoomingDecay:Float = 1;
@@ -162,6 +165,7 @@ class PlayState extends MusicBeatState
 
 	public var gfSpeed:Int = 1;
 	public var healthThing:Float = 1;
+	public var healthLerp:Float = 1;
 	public var combo:Int = 0;
 
 	private var healthBarBG:AttachedSprite;
@@ -438,6 +442,8 @@ class PlayState extends MusicBeatState
 	 public static var rain:FlxSprite;
 	 public static var heavyRain:FlxSprite;
 	 public static var tumbleWeed:FlxSprite;
+	 public static var lightning:FlxSprite;
+	 public static var lightningFore:FlxSprite;
 	 public static var streetDaytime:FlxSprite;
 	 public static var clouds:FlxSprite;
 	 public static var brightSky:FlxSprite;
@@ -624,6 +630,7 @@ class PlayState extends MusicBeatState
 		FlxG.cameras.add(camNotes, false);
 		FlxG.cameras.add(camOther, false);
 		grpNoteSplashes = new FlxTypedGroup<NoteSplash>();
+		grpSusNoteSplashes = new FlxTypedGroup<SusNoteSplash>();
 
 		FlxG.cameras.setDefaultDrawTarget(camGame, true);
 		CustomFadeTransition.nextCamera = camOther;
@@ -738,6 +745,8 @@ class PlayState extends MusicBeatState
 		gfGroup = new FlxSpriteGroup(GF_X, GF_Y);
 
 		foreground = new FlxTypedGroup<FlxBasic>();
+
+		lowQuality = ClientPrefs.lowQuality; //updates it now I think
 
 		if (curStage != "waltRoom") healthThing = 0.5;
 
@@ -1073,24 +1082,28 @@ class PlayState extends MusicBeatState
 					colorsOrSmthElse = new FlxSprite(-990, 1600).loadGraphic(Paths.image(pathway + 'randomColors'));
 					colorsOrSmthElse.setGraphicSize(Std.int(colorsOrSmthElse.width * 4));
 					colorsOrSmthElse.updateHitbox();
-					colorsOrSmthElse.antialiasing = true;
+					colorsOrSmthElse.antialiasing = ClientPrefs.globalAntialiasing;
 					colorsOrSmthElse.screenCenter();
 					colorsOrSmthElse.scale.set(3, 3);
 					colorsOrSmthElse.scrollFactor.set(0.9, 0.9);
 					colorsOrSmthElse.active = false;
 					add(colorsOrSmthElse);
 	
-					fireThing = new FlxSprite(0, -80);
-					fireThing.scale.set(5.85, 3);
-					fireThing.alpha = 0.0001;
-					fireThing.frames = Paths.getSparrowAtlas(pathway + 'delusional-fire');
-					fireThing.animation.addByPrefix('burning', 'delusional-fire fire-idle', 16, true);
-					fireThing.scrollFactor.set(0.8, 0.8);
-					add(fireThing);
-					fireThing.animation.play('burning');
+					if (!lowQuality)
+					{
+						fireThing = new FlxSprite(0, -80);
+						fireThing.scale.set(5.85, 3);
+						fireThing.alpha = 0.0001;
+						fireThing.antialiasing = ClientPrefs.globalAntialiasing;
+						fireThing.frames = Paths.getSparrowAtlas(pathway + 'delusional-fire');
+						fireThing.animation.addByPrefix('burning', 'delusional-fire fire-idle', 16, true);
+						fireThing.scrollFactor.set(0.8, 0.8);
+						add(fireThing);
+						fireThing.animation.play('burning');
+					}
 					
 					floor = new FlxSprite(-20, 200).loadGraphic(Paths.image(pathway + 'street'));
-					floor.antialiasing = true;
+					floor.antialiasing = ClientPrefs.globalAntialiasing;
 					floor.scale.set(2.5, 2.3);
 					floor.scrollFactor.set(1, 1);
 					floor.active = false;
@@ -1098,44 +1111,44 @@ class PlayState extends MusicBeatState
 	
 					if (PlayState.SONG.song == 'Delusional' || PlayState.SONG.song == 'Delusion')
 					{	
-						if (!lowQuality)
-						{
-							clouds = new FlxSprite(-990, 1600).loadGraphic(Paths.image(pathway + 'clouds'));
-							clouds.setGraphicSize(Std.int(clouds.width * 4));
-							clouds.updateHitbox();
-							clouds.antialiasing = true;
-							clouds.screenCenter();
-							clouds.scale.set(3, 3);
-							clouds.scrollFactor.set(1.1, 1.1);
-							add(clouds);
-							clouds.visible = false;
-						}
-	
 						fakeLightOfHope = new FlxSprite(-990, 1600).loadGraphic(Paths.image(pathway + 'falseHope'));
 						fakeLightOfHope.setGraphicSize(Std.int(fakeLightOfHope.width * 4));
 						fakeLightOfHope.updateHitbox();
-						fakeLightOfHope.antialiasing = true;
+						fakeLightOfHope.antialiasing = ClientPrefs.globalAntialiasing;
 						fakeLightOfHope.screenCenter();
 						fakeLightOfHope.scale.set(3, 3);
 						fakeLightOfHope.scrollFactor.set(0.9, 0.9);
 						add(fakeLightOfHope);
-	
-						fireThing2 = new FlxSprite(0, -80);
-						fireThing2.scale.set(5.85, 3);
-						fireThing2.alpha = 0.0001;
-						fireThing2.frames = Paths.getSparrowAtlas(pathway + 'delusional-fire');
-						fireThing2.animation.addByPrefix('burning', 'delusional-fire fire-idle', 16, true);
-						fireThing2.scrollFactor.set(0.8, 0.8);
-						fireThing2.blend = ADD;
-						add(fireThing2);
-						fireThing2.animation.play('burning');
+						
+						if (!lowQuality)
+						{
+							fireThing2 = new FlxSprite(0, -80);
+							fireThing2.scale.set(5.85, 3);
+							fireThing2.alpha = 0.0001;
+							fireThing2.frames = Paths.getSparrowAtlas(pathway + 'delusional-fire');
+							fireThing2.animation.addByPrefix('burning', 'delusional-fire fire-idle', 16, true);
+							fireThing2.scrollFactor.set(0.8, 0.8);
+							fireThing2.antialiasing = ClientPrefs.globalAntialiasing;
+							fireThing2.blend = ADD;
+							add(fireThing2);
+							fireThing2.animation.play('burning');
+
+							lightning = new FlxSprite(-25, -175);
+							lightning.frames = Paths.getSparrowAtlas(pathway + "lightning");
+							lightning.antialiasing = ClientPrefs.globalAntialiasing;
+							lightning.animation.addByPrefix('boom', 'lightning1', 12);
+							lightning.animation.addByPrefix('boom2', 'lightning2', 12);
+							lightning.scale.set(2, 2);
+							lightning.scrollFactor.set(0.8, 0.8);
+							add(lightning);
+						}
 
 						mickeySpirit = new Character(-200, -700, "avier-bg");
 						mickeySpirit.alpha = 0.0001;
 						add(mickeySpirit);
 	
 						streetRuins = new FlxSprite(-20, 200).loadGraphic(Paths.image(pathway + 'streetDestroyed'));
-						streetRuins.antialiasing = true;
+						streetRuins.antialiasing = ClientPrefs.globalAntialiasing;
 						streetRuins.scale.set(2.5, 2.3);
 						streetRuins.scrollFactor.set(1, 1);
 						add(streetRuins);
@@ -1145,6 +1158,7 @@ class PlayState extends MusicBeatState
 						minnieBackground = new FlxSprite(-20, 200).loadGraphic(Paths.image(pathway + 'background'));
 						minnieBackground.scale.set(2,2);
 						minnieBackground.scrollFactor.set(1, 1);
+						minnieBackground.antialiasing = ClientPrefs.globalAntialiasing;
 						minnieBackground.visible = false;
 						add(minnieBackground);
 
@@ -1152,6 +1166,7 @@ class PlayState extends MusicBeatState
 						totallyanoriginalname.scale.set(2,2);
 						totallyanoriginalname.scrollFactor.set(1,1);
 						totallyanoriginalname.visible = false;
+						totallyanoriginalname.antialiasing = ClientPrefs.globalAntialiasing;
 						add(totallyanoriginalname);
 
 	
@@ -1169,6 +1184,7 @@ class PlayState extends MusicBeatState
 								smoke.scale.set(1.3, 1.35);
 								smoke.alpha = 0.001;
 								smoke.blend = ADD;
+								smoke.antialiasing = ClientPrefs.globalAntialiasing;
 								smoke.animation.play('smoke');
 								switch (smoke.ID)
 								{
@@ -1191,6 +1207,7 @@ class PlayState extends MusicBeatState
 								smoke.scale.set(1.6, 1.4);
 								smoke.alpha = 0.001;
 								smoke.blend = ADD;
+								smoke.antialiasing = ClientPrefs.globalAntialiasing;
 								smoke.animation.play('smoke');
 								switch (smoke.ID)
 								{
@@ -1201,6 +1218,15 @@ class PlayState extends MusicBeatState
 								}
 								smokeFore.add(smoke);
 							}
+
+							lightningFore = new FlxSprite(-60, -90);
+							lightningFore.frames = Paths.getSparrowAtlas(pathway + "lightning");
+							lightningFore.animation.addByPrefix('boom', 'lightning1', 12);
+							lightningFore.animation.addByPrefix('boom2', 'lightning2', 12);
+							lightningFore.scale.set(2.45, 2.45);
+							lightningFore.scrollFactor.set(1.32, 1.32);
+							lightningFore.antialiasing = ClientPrefs.globalAntialiasing;
+							foreground.add(lightningFore);
 	
 							fireForeground = new FlxSprite(0, 550);
 							fireForeground.scale.set(7.8, 5);
@@ -1208,6 +1234,7 @@ class PlayState extends MusicBeatState
 							fireForeground.frames = Paths.getSparrowAtlas(pathway + 'delusional-fire');
 							fireForeground.animation.addByPrefix('burningShit', 'delusional-fire fire-idle', 16, true);
 							fireForeground.scrollFactor.set(1.35, 1.18);
+							fireForeground.antialiasing = ClientPrefs.globalAntialiasing;
 							fireForeground.blend = ADD;
 							fireForeground.animation.play('burningShit');
 	
@@ -1233,7 +1260,7 @@ class PlayState extends MusicBeatState
 							stageCurtains.updateHitbox();
 							stageCurtains.screenCenter();
 							stageCurtains.scale.set(1.3,1.3);
-							stageCurtains.antialiasing = true;
+							stageCurtains.antialiasing = ClientPrefs.globalAntialiasing;
 							stageCurtains.cameras = [camOther];
 							stageCurtains.scrollFactor.set(1.3, 1.3);
 							add(stageCurtains);	
@@ -1256,6 +1283,7 @@ class PlayState extends MusicBeatState
 									blackParticle.frames = Paths.getSparrowAtlas(pathway + 'ashParticle');
 									blackParticle.animation.addByPrefix('idle', 'ashParticle idle', 5, true);
 									blackParticle.animation.play('idle');
+									blackParticle.antialiasing = ClientPrefs.globalAntialiasing;
 									blackParticle.exists = false;
 									//blackParticle.animation.curAnim.curFrame = FlxG.random.int(0, 9);
 									ashParticle.add(blackParticle);
@@ -1274,7 +1302,7 @@ class PlayState extends MusicBeatState
 							stageFront = new FlxSprite(-3000, 130).loadGraphic(Paths.image(pathway + 'cables'));
 							stageFront.scale.set(9, 2.1);
 							stageFront.updateHitbox();
-							stageFront.antialiasing = true;
+							stageFront.antialiasing = ClientPrefs.globalAntialiasing;
 							stageFront.scrollFactor.set(5, 2.6);
 							stageFront.active = false;
 							
@@ -1282,6 +1310,7 @@ class PlayState extends MusicBeatState
 							rain.frames = Paths.getSparrowAtlas(pathway + 'rain');
 							rain.animation.addByPrefix('drippin', 'Rain', 30, true);
 							rain.scale.set(2, 2);
+							rain.antialiasing = ClientPrefs.globalAntialiasing;
 							rain.alpha = 0.0001;
 							rain.animation.play('drippin');
 
@@ -1289,6 +1318,7 @@ class PlayState extends MusicBeatState
 							heavyRain.frames = Paths.getSparrowAtlas(pathway + 'heavyRain');
 							heavyRain.animation.addByPrefix('god is pissing omg', 'Rain full', 30, true);
 							heavyRain.scale.set(2, 2);
+							heavyRain.antialiasing = ClientPrefs.globalAntialiasing;
 							heavyRain.alpha = 0.0001;
 							heavyRain.animation.play('god is pissing omg');
 	
@@ -2121,6 +2151,10 @@ class PlayState extends MusicBeatState
 		grpNoteSplashes.add(splash);
 		splash.alpha = 0.0;
 
+		sussplash = new SusNoteSplash(100, 100);
+		grpSusNoteSplashes.add(sussplash);
+		sussplash.alpha = 0.0;
+
 		opponentStrums = new FlxTypedGroup<StrumNote>();
 		playerStrums = new FlxTypedGroup<StrumNote>();
 
@@ -2136,6 +2170,8 @@ class PlayState extends MusicBeatState
 		add(playfieldRenderer);
 
 		add(grpNoteSplashes);
+		add(grpSusNoteSplashes);
+
 
 		camFollow = new FlxPoint();
 		camFollowPos = new FlxObject(0, 0, 1, 1);
@@ -2191,7 +2227,7 @@ class PlayState extends MusicBeatState
 		add(fancyBarOverlay);
 
 		healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 5, (SONG.song == "Devilish Deal" ? LEFT_TO_RIGHT : RIGHT_TO_LEFT), Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 7), this,
-			'healthThing', 0, 2);
+			'healthLerp', 0, 2);
 		healthBar.scrollFactor.set();
 		healthBar.percent = healthThing;
 		// healthBar
@@ -2446,6 +2482,7 @@ class PlayState extends MusicBeatState
 
 		strumLineNotes.cameras = [camHUD];
 		grpNoteSplashes.cameras = [camNotes];
+		grpSusNoteSplashes.cameras = [camNotes];
 		notes.cameras = [camHUD];
 		healthBar.cameras = [camHUD];
 		healthBarBG.cameras = [camHUD];
@@ -4691,11 +4728,11 @@ class PlayState extends MusicBeatState
 
 	override public function onFocus():Void
 	{
-		if (death != null && death.visible)
+		if (death != null && death.visible && !paused)
 			death.resume();
-		if (devilishGaming != null && devilishGaming.visible)
+		if (devilishGaming != null && devilishGaming.visible && !paused)
 			devilishGaming.resume();
-		if (deluSing != null && deluSing.visible)
+		if (deluSing != null && deluSing.visible && !paused)
 			deluSing.resume();
 
 		#if desktop
@@ -4717,11 +4754,11 @@ class PlayState extends MusicBeatState
 
 	override public function onFocusLost():Void
 	{
-		if (death != null && death.visible)
+		if (death != null && death.visible && !paused)
 			death.pause();
-		if (devilishGaming != null && devilishGaming.visible)
+		if (devilishGaming != null && devilishGaming.visible && !paused)
 			devilishGaming.pause();
-		if (deluSing != null && deluSing.visible)
+		if (deluSing != null && deluSing.visible && !paused)
 			deluSing.pause();
 
 		#if desktop
@@ -4771,9 +4808,16 @@ class PlayState extends MusicBeatState
 	var canPause:Bool = true;
 	var limoSpeed:Float = 0;
 
+	function updateHealthBar():Void
+		{
+			healthLerp = FlxMath.lerp(healthLerp, healthThing, .2 / (ClientPrefs.framerate / 60));
+		}
+
 	override public function update(elapsed:Float)
 	{
 		callOnLuas('onUpdate', [elapsed]);
+
+		updateHealthBar();
 
 		shaderAnim = Conductor.songPosition / 1000;
 		if (canaddshaders)
@@ -6552,6 +6596,55 @@ class PlayState extends MusicBeatState
 				} else {
 					FunkinLua.setVarInArray(this, value1, value2);
 				}
+			case 'Tween Camera Zoom':
+				var zoom:Float = Std.parseFloat(value1);
+				var time:Float = Std.parseFloat(value2);
+				if(Math.isNaN(time) || time <= 0) time = 0;
+	
+				if ((time) > 0) {
+					modchartTweens.set("TweenCamZoom", FlxTween.tween(FlxG.camera, {zoom: (zoom)}, (time), {
+						ease: FlxEase.quadInOut,
+						onComplete: function(twn:FlxTween)
+						{
+							defaultCamZoom = (zoom);
+						}
+					}));	
+				} else {
+					defaultCamZoom = (zoom);
+				}
+			case 'Tween Camera Pos':
+				var split = value1.split("%%");
+
+				var xxx:Float = 0;
+				var yyy:Float = 0;
+
+				if(split[0] != null) xxx = Std.parseFloat(split[0].trim());
+				if(split[1] != null) yyy = Std.parseFloat(split[1].trim());
+				if(Math.isNaN(xxx)) xxx = 0;
+				if(Math.isNaN(yyy)) yyy = 0;
+
+				var time:Float = Std.parseFloat(value2);
+
+				if(Math.isNaN(time) || time <= 0) time = 0;
+	
+				if ((time) > 0) {
+					modchartTweens.set("TweenCamX", FlxTween.tween(camFollow, {x: xxx}, (time), {
+						ease: FlxEase.quadInOut,
+						onComplete: function(twn:FlxTween)
+						{
+							camFollow.x = xxx;
+						}
+					}));	
+					modchartTweens.set("TweenCamY", FlxTween.tween(camFollow, {y: yyy}, (time), {
+						ease: FlxEase.quadInOut,
+						onComplete: function(twn:FlxTween)
+						{
+							camFollow.y = yyy;
+						}
+					}));
+				} else {
+					camFollow.x = (yyy);
+				}			
 		}
 		callOnLuas('onEvent', [eventName, value1, value2]);
 	}
@@ -7370,6 +7463,8 @@ class PlayState extends MusicBeatState
 		callOnLuas('noteMissPress', [direction]);
 	}
 
+	var visiblehold:Bool = false;
+
 	function opponentNoteHit(note:Note):Void
 	{
 		if (Paths.formatToSongPath(SONG.song) != 'tutorial')
@@ -7893,6 +7988,22 @@ class PlayState extends MusicBeatState
 			var leType:String = note.noteType;
 			callOnLuas('goodNoteHit', [notes.members.indexOf(note), leData, leType, isSus]);
 
+			if (isSus) {
+				if (isSus && note.animation.name.endsWith('end')) {
+					sussplash.playEnd();
+					visiblehold = false;
+				}
+				else {
+					if (!visiblehold) {
+						visiblehold = true;
+	
+						spawnSusNoteSplashOnNote(note);
+	
+						sussplash.playContinue();
+					}
+				}
+			}
+
 			if (!note.isSustainNote)
 			{
 				note.kill();
@@ -7904,6 +8015,20 @@ class PlayState extends MusicBeatState
 				boyfriend.holdTimer = 0;
 			}
 		}
+	}
+
+	public function spawnSusNoteSplashOnNote(note:Note) {
+		if(note != null) {
+			var strum:StrumNote = playerStrums.members[note.noteData];
+			if(strum != null)
+				spawnSusNoteSplash(strum.x, strum.y, note.noteData, note);
+		}
+	}
+
+	public function spawnSusNoteSplash(x:Float, y:Float, data:Int, ?note:Note = null) {
+		sussplash = grpSusNoteSplashes.recycle(SusNoteSplash);
+		sussplash.setupNoteSplash(x, y, data, note);
+		grpSusNoteSplashes.add(sussplash);
 	}
 
 	public function spawnNoteSplashOnNote(note:Note) {
@@ -10926,7 +11051,7 @@ class PlayState extends MusicBeatState
 										});
 									}
 								}
-								if (curBeat == 312)
+								if (curBeat == 312 && !lowQuality)
 								{
 									FlxTween.tween(fireThing, {alpha: 1}, 1);
 									//smokeParticles.emitting = true;
@@ -10949,7 +11074,7 @@ class PlayState extends MusicBeatState
 								{
 									colorsOrSmthElse.visible = false;
 									//smokeParticles.emitting = false;
-									fireThing.alpha = 0;
+									if (!lowQuality) fireThing.alpha = 0;
 									floor.visible = false;
 									if (!lowQuality)
 									{
@@ -10970,12 +11095,10 @@ class PlayState extends MusicBeatState
 								}
 								if (curBeat == 740) // go back to the street in a even more decayed state
 								{
-									fireThing2.alpha = 0.75;
 									//smokeParticles.emitting = true;
 									//fireParticles.emitting = true;
 									if (!lowQuality)
 									{
-										fireForeground.alpha = 0.6;
 										smokeShit.forEach(function(spr:FlxSprite)
 											{
 												spr.alpha = 0.7;
@@ -11005,7 +11128,7 @@ class PlayState extends MusicBeatState
 								if (curBeat == 872)
 								{
 									FlxTween.tween(fakeLightOfHope, {alpha: 1, color: FlxColor.RED}, 2, {ease: FlxEase.circInOut});
-									FlxTween.tween(fireThing2, {color: FlxColor.RED}, 2, {ease: FlxEase.circInOut});
+									if (!lowQuality) FlxTween.tween(fireThing2, {color: FlxColor.RED}, 2, {ease: FlxEase.circInOut});
 									FlxTween.tween(streetRuins, {color: FlxColor.RED}, 2, {ease: FlxEase.circInOut});
 									if (!lowQuality)
 									{
@@ -11023,12 +11146,14 @@ class PlayState extends MusicBeatState
 								}
 								if (curBeat == 880)
 								{
+									lightningStrike();
+									lightningStrikeFore();
 									FlxTween.tween(fakeLightOfHope, {color: FlxColor.WHITE}, 0.5, {ease: FlxEase.circOut});
-									FlxTween.tween(fireThing2, {color: FlxColor.fromRGB(252, 193, 141)}, 0.5, {ease: FlxEase.circOut});
+									if (!lowQuality) FlxTween.tween(fireThing2, {color: FlxColor.WHITE, alpha: 0.75}, 1.2, {ease: FlxEase.circOut});
 									FlxTween.tween(streetRuins, {color: FlxColor.WHITE}, 0.5, {ease: FlxEase.circOut});
 									if (!lowQuality)
 									{
-										FlxTween.tween(fireForeground, {color: FlxColor.fromRGB(255, 171, 138)}, 0.5, {ease: FlxEase.circOut});
+										FlxTween.tween(fireForeground, {color: FlxColor.WHITE, alpha: 0.6}, 2, {ease: FlxEase.circOut});
 										FlxTween.tween(rain, {color: FlxColor.fromRGB(252, 141, 141)}, 0.5, {ease: FlxEase.circOut});
 										smokeShit.forEach(function(spr:FlxSprite)
 										{
@@ -11043,11 +11168,10 @@ class PlayState extends MusicBeatState
 								if (curBeat == 1008)
 								{
 									FlxTween.tween(fakeLightOfHope, {alpha: 0}, 2);
-									FlxTween.tween(fireThing2, {alpha: 1}, 2);
+									if (!lowQuality) FlxTween.tween(fireThing2, {alpha: 1}, 2);
 								}
 								if (curBeat == 1136)
 								{
-									fireThing2.alpha = 0;
 									if (!lowQuality)
 										{
 											fireForeground.alpha = 0;
@@ -11059,6 +11183,7 @@ class PlayState extends MusicBeatState
 												{
 													spr.alpha = 0;
 												});
+											fireThing2.alpha = 0;
 											rain.visible = false;
 											clouds.visible = false;
 											stageCurtains.visible = true;
@@ -11067,9 +11192,9 @@ class PlayState extends MusicBeatState
 										fakeLightOfHope.alpha = 0;
 								}
 							}
-				if (!lowQuality)
+					if (!lowQuality)
 					{
-						if (FlxG.random.bool(3))
+						if (FlxG.random.bool(3) && tumbleWeed == null)
 						{
 							if (PlayState.SONG.song == 'Delusional')
 							{
@@ -11080,6 +11205,12 @@ class PlayState extends MusicBeatState
 							{
 								summonWeedMakerLmfao();
 							}
+						}
+
+						if (SONG.song == "Delusional" && curBeat > 880 && !lowQuality)
+						{
+							if (FlxG.random.bool(45)) lightningStrike();
+							if (FlxG.random.bool(36)) lightningStrikeFore();
 						}
 					}
 				
@@ -11376,6 +11507,7 @@ class PlayState extends MusicBeatState
 				FlxTween.tween(tumbleWeed, {x: -1200}, 2, {onComplete: function(twn:FlxTween)
 				{
 					tumbleWeed.kill();
+					tumbleWeed = null;
 				}});
 			}
 			else
@@ -11389,8 +11521,37 @@ class PlayState extends MusicBeatState
 				FlxTween.tween(tumbleWeed, {x: -1200}, 5.6, {onComplete: function(twn:FlxTween)
 				{
 					tumbleWeed.kill();
+					tumbleWeed = null;
 				}});
 			}
+		}
+
+	function lightningStrike()
+	{
+		lightning.alpha = 1;
+		if (FlxG.random.bool(50))
+		{
+			lightning.animation.play('boom');
+		}
+		else
+		{
+			lightning.animation.play('boom2');
+		}
+		new FlxTimer().start(1.5, function(tmr:FlxTimer) {lightning.alpha = 0;});
+	}
+
+	function lightningStrikeFore()
+		{
+			lightningFore.alpha = 1;
+			if (FlxG.random.bool(50))
+			{
+				lightningFore.animation.play('boom');
+			}
+			else
+			{
+				lightningFore.animation.play('boom2');
+			}
+			new FlxTimer().start(1.5, function(tmr:FlxTimer) {lightningFore.alpha = 0;});
 		}
 
 	public function setOnLuas(variable:String, arg:Dynamic) {

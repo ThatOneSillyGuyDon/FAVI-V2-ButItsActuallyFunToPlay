@@ -1415,10 +1415,10 @@ enum abstract Shaders(String) from String to String
 	    float time = iTime * 2.0;
 	    
 	    // Create large, incidental noise waves
-	    float noise = max(0.0, snoise(vec2(time, uv.y * 0.1)) - 0.3) * (1.0 / 0.7);
+	    float noise = max(0.0, snoise(vec2(time, uv.y * 0.1)) - 0.54) * (1.0 / 0.9); // apparently, this is the key to modifying the jittering bullshit
 	    
 	    // Offset by smaller, constant noise waves
-	    noise = noise + (snoise(vec2(time*10.0, uv.y * 2.4)) - 0.5) * 0.15;
+	    noise = noise + (snoise(vec2(time*10.0, uv.y * 2.4)) - 0.5) * 0.15; //WHY THE FUCK IS THIS A THING????? (don)
 	    
 	    // Apply the noise as x displacement for every line
 	    float xpos = uv.x - noise * noise * 0.15;

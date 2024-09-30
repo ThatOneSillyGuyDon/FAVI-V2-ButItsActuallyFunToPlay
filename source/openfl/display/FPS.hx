@@ -36,7 +36,7 @@ class FPS extends TextField
 	@:noCompletion private var currentTime:Float;
 	@:noCompletion private var times:Array<Float>;
 
-	public function new(x:Float = 10, y:Float = 10, color:Int = 0x000000)
+	public function new(x:Float = 10, y:Float = 10)
 	{
 		super();
 
@@ -46,7 +46,7 @@ class FPS extends TextField
 		currentFPS = 0;
 		selectable = false;
 		mouseEnabled = false;
-		defaultTextFormat = new TextFormat("_sans", 14, color);
+		defaultTextFormat = new TextFormat(openfl.utils.Assets.getFont("assets/fonts/disneyFreeplayFont.ttf").fontName, 14, 0xFFFFFF);
 		autoSize = LEFT;
 		multiline = true;
 		text = "FPS: ";
@@ -87,7 +87,7 @@ class FPS extends TextField
 			
 			#if openfl
 			memoryMegas = Math.abs(FlxMath.roundDecimal(System.totalMemory / 1000000, 1));
-			text += "\nMemory: " + memoryMegas + " MB";
+			text += "\nMemory: " + memoryMegas + " MB\nFunkin.avi v2.0.0";
 			#end
 
 			textColor = 0xFFFFFFFF;
