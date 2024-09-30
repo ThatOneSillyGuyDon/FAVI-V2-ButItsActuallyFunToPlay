@@ -30,7 +30,13 @@ class FPS extends TextField
 	/**
 		The current frame rate, expressed using frames-per-second
 	**/
-	public var currentFPS(default, null):Int;
+	public var currentFPS(default, null):Float;
+
+	public var curMemory:Float;
+	public var peakMemory:Float;
+	public var realAlpha:Float = 1;
+	public var lagging:Bool = false;
+	public var forceUpdateText(default, set):Bool = false;
 
 	@:noCompletion private var cacheCount:Int;
 	@:noCompletion private var currentTime:Float;
@@ -46,7 +52,7 @@ class FPS extends TextField
 		currentFPS = 0;
 		selectable = false;
 		mouseEnabled = false;
-		defaultTextFormat = new TextFormat('_sans', 14, 0xFFFFFF);
+		defaultTextFormat = new TextFormat('_sans', 12, 0xFFFFFF);
 		autoSize = LEFT;
 		multiline = true;
 		text = "FPS: ";
@@ -76,35 +82,107 @@ class FPS extends TextField
 			times.shift();
 		}
 
+		var aggressor:Float = 1;
+
 		var currentCount = times.length;
-		currentFPS = Math.round((currentCount + cacheCount) / 2);
+		currentFPS = (currentCount + cacheCount) / 2;
+
 		if (currentFPS > ClientPrefs.framerate) currentFPS = ClientPrefs.framerate;
 
 		if (currentCount != cacheCount /*&& visible*/)
 		{
-			text = "FPS: " + currentFPS;
-			var memoryMegas:Float = 0;
-			
-			#if openfl
-			memoryMegas = Math.abs(FlxMath.roundDecimal(System.totalMemory / 1000000, 1));
-			text += "\nMemory: " + memoryMegas/* + " MB\nFunkin.avi v2.0.0" don't. */;
-			#end
-
-			textColor = 0xFFFFFFFF;
-			if (memoryMegas > 3000 || currentFPS <= ClientPrefs.framerate / 2)
-			{
-				textColor = 0xFFFF0000;
-			}
-
-			#if (gl_stats && !disable_cffi && (!html5 || !canvas))
-			text += "\ntotalDC: " + Context3DStats.totalDrawCalls();
-			text += "\nstageDC: " + Context3DStats.contextDrawCalls(DrawCallContext.STAGE);
-			text += "\nstage3DDC: " + Context3DStats.contextDrawCalls(DrawCallContext.STAGE3D);
-			#end
-
-			text += "\n";
+			updateText();
 		}
 
 		cacheCount = currentCount;
+	}
+
+	private function set_forceUpdateText(value:Bool):Bool
+		{
+			updateText();
+			return value;
+		}
+	
+	private function updateText():Void
+	{
+		text = "FPS: " + Math.round(currentFPS);
+
+		var ms:Float = FlxG.elapsed;
+		ms *= 1000;
+
+		lagging = false;
+
+		textColor = 0xFFFFFF;
+		if (currentFPS <= ClientPrefs.framerate / 2)
+		{
+			textColor = 0xFF0000;
+			lagging = true;
+		}
+
+		text += '\n';
+
+		curMemory = openfl.display.MemoryRate.obtainMemory();
+		if (curMemory >= peakMemory)
+			peakMemory = curMemory;
+		text += 'RAM: ${formatMemory(Std.int(curMemory))} (${formatMemory(Std.int(peakMemory))} peak)';
+		//text += 'Used VRAM: ${CoolUtil.formatMemory(Std.int(FlxG.stage.context3D.totalGPUMemory))}'; // honestly not super useful
+		text += '\n';
+	}
+
+	public var textAfter:String = '';
+
+	public static function formatMemory(num:UInt):String
+	{
+		var size:Float = num;
+		var data = 0;
+		var dataTexts = ["B", "KB", "MB", "GB"];
+		while (size > 1024 && data < dataTexts.length - 1)
+		{
+			data++;
+			size = size / 1024;
+		}
+
+		size = Math.round(size * 100) / 100;
+		var formatSize:String = formatAccuracy(size);
+		return '${formatSize} ${dataTexts[data]}';
+	}
+
+	public static function formatAccuracy(value:Float)
+	{
+		var conversion:Map<String, String> = [
+			'0' => '0.00',
+			'0.0' => '0.00',
+			'0.00' => '0.00',
+			'00' => '00.00',
+			'00.0' => '00.00',
+			'00.00' => '00.00', // gotta do these as well because lazy
+			'000' => '000.00'
+		]; // these are to ensure you're getting the right values, instead of using complex if statements depending on string length
+
+		var stringVal:String = Std.string(value);
+		var converVal:String = '';
+		for (i in 0...stringVal.length)
+		{
+			if (stringVal.charAt(i) == '.')
+				converVal += '.';
+			else
+				converVal += '0';
+		}
+
+		var wantedConversion:String = conversion.get(converVal);
+		var convertedValue:String = '';
+
+		for (i in 0...wantedConversion.length)
+		{
+			if (stringVal.charAt(i) == '')
+				convertedValue += wantedConversion.charAt(i);
+			else
+				convertedValue += stringVal.charAt(i);
+		}
+
+		if (convertedValue.length == 0)
+			return '$value';
+
+		return convertedValue;
 	}
 }
