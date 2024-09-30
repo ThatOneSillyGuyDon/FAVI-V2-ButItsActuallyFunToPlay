@@ -45,11 +45,6 @@ class VisualsUISubState extends BaseOptionsMenu
 		'shaders', //Save data variable name
 		'bool', //Variable type
 		true); //Default value
-		option.hasVideo = true;
-		option.video = 'shaders_' + ClientPrefs.shaders;
-		option.onChange = () -> {
-			if (ClientPrefs.shaders) option.video = 'shaders_true';
-		}
 		addOption(option);
 
 		var option:Option = new Option('Anti-Aliasing',

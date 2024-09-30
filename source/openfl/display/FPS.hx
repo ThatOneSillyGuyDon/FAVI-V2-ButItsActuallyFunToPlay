@@ -46,7 +46,7 @@ class FPS extends TextField
 		currentFPS = 0;
 		selectable = false;
 		mouseEnabled = false;
-		defaultTextFormat = new TextFormat(openfl.utils.Assets.getFont("assets/fonts/disneyFreeplayFont.ttf").fontName, 14, 0xFFFFFF);
+		defaultTextFormat = new TextFormat('_sans', 14, 0xFFFFFF);
 		autoSize = LEFT;
 		multiline = true;
 		text = "FPS: ";
@@ -87,7 +87,7 @@ class FPS extends TextField
 			
 			#if openfl
 			memoryMegas = Math.abs(FlxMath.roundDecimal(System.totalMemory / 1000000, 1));
-			text += "\nMemory: " + memoryMegas + " MB\nFunkin.avi v2.0.0";
+			text += "\nMemory: " + memoryMegas/* + " MB\nFunkin.avi v2.0.0" don't. */;
 			#end
 
 			textColor = 0xFFFFFFFF;
