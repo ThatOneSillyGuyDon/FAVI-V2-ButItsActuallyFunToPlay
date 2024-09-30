@@ -603,7 +603,7 @@ class MainMenu extends MusicBeatState
 			var alien:VideoSprite = new VideoSprite(false);
 			alien.scale.set(2, 2);
 			alien.load(Paths.video('friendlyFellow'));
-			alien.addCallback("onEnd", () -> Sys.exit(0));
+			//alien.addCallback("onEnd", () -> Sys.exit(0));
 			alien.x += 320;
 			alien.y += 190;
 			alien.cameras = [camHUD];
