@@ -81,6 +81,13 @@ class VisualsUISubState extends BaseOptionsMenu
 		option.changeValue = 0.1;
 		option.decimals = 1;
 		addOption(option);
+
+		var option:Option = new Option('GPU Caching', // Name
+			"If checked, your GPU's VRAM can be used to store some textures.\nOnly enable if you have a good graphics card!", // Description
+			'useGPUCaching', // Save data variable name
+			'bool', // Variable type
+			false); // Default value
+		addOption(option);
 		
 		#if !mobile
 		var option:Option = new Option('FPS Counter',

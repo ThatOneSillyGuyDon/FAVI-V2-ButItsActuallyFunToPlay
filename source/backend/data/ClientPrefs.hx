@@ -32,6 +32,7 @@ class ClientPrefs {
 	public static var pauseMusic:String = 'Tea Time';
 	public static var checkForUpdates:Bool = true;
 	public static var comboStacking = true;
+	public static var useGPUCaching = false;
 	public static var gameplaySettings:Map<String, Dynamic> = [
 		'scrollspeed' => 1.0,
 		'scrolltype' => 'multiplicative', 
@@ -234,6 +235,9 @@ class ClientPrefs {
 		}
 		if(settings.data.badWindow != null) {
 			badWindow = settings.data.badWindow;
+		}
+		if(settings.data.useGPUCaching != null) {
+			useGPUCaching = settings.data.useGPUCaching;
 		}
 		if(settings.data.safeFrames != null) {
 			safeFrames = settings.data.safeFrames;

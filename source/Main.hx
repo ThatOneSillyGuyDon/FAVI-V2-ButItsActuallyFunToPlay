@@ -77,7 +77,10 @@ class Main extends Sprite
 		}
 	
 		ClientPrefs.loadDefaultKeys();
-		addChild(new FlxGame(gameWidth, gameHeight, initialState, #if (flixel < "5.0.0") zoom, #end framerate, framerate, skipSplash, startFullscreen));
+
+		var game:FlxGame = new FlxGame(gameWidth, gameHeight, initialState, #if (flixel < "5.0.0") zoom, #end framerate, framerate, skipSplash, startFullscreen);
+		@:privateAccess game._customSoundTray = gameObjects.ui.Soundtray;
+		addChild(game);
 
 		#if !mobile
 		fpsVar = new FPS(10, 3);
