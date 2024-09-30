@@ -389,7 +389,7 @@ class MainMenu extends MusicBeatState
 		versionShit.setFormat(Paths.font("DisneyFont.ttf"), 30, 0xFFFFFFFF, LEFT, FlxTextBorderStyle.OUTLINE, 0xFF000000);
 		versionShit.scrollFactor.set();
 		versionShit.cameras = [camHUD];
-		add(versionShit);
+		//add(versionShit);
  
 		theBox = new MessageBox(-400, FlxG.height - 80, {
 			text: 'Freeplay is Locked!', 

@@ -70,7 +70,7 @@ class FlxSoundTray extends Sprite
 		text.gridFitType = GridFitType.PIXEL;
 		#else
 		#end
-		var dtf:TextFormat = new TextFormat(Paths.font('DisneyFont'), 11, 0xdfdfdf); //idk if this will work, but let's find out
+		var dtf:TextFormat = new TextFormat(openfl.utils.Assets.getFont("assets/fonts/disneyFreeplayFont.ttf").fontName, 11, 0xdfdfdf); //idk if this will work, but let's find out
 		dtf.align = TextFormatAlign.CENTER;
 		text.defaultTextFormat = dtf;
 		addChild(text);
