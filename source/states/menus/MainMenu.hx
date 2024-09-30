@@ -461,10 +461,10 @@ class MainMenu extends MusicBeatState
 			redGradient.setGraphicSize(Std.int(redGradient.width * 0.7));
 			redGradient.screenCenter();
 			redGradient.cameras = [camHUD];
-			FlxTween.tween(redGradient, {alpha: 0.001}, 0.9);
+			FlxTween.tween(redGradient, {alpha: 0}, 0.9, {onComplete: sex -> redGradient.destroy()});
 			add(redGradient);
 
-			FlxG.sound.play(Paths.sound('funkinAVI/oof'), 1, false, null, true, () -> redGradient.destroy());
+			FlxG.sound.play(Paths.sound('funkinAVI/oof'), 1, false, null, true);
 		}
 
 		// more optimized than tweens if i'm not wrong
@@ -644,25 +644,29 @@ class MainMenu extends MusicBeatState
 			datBook.scale.set(.8, .8);
 			//shittyUnoptimizedBookCopy.scale.set(.75, .77);
 
-			//selectedSomethin = true;
-			FlxG.sound.play(Paths.sound('cancelMenu'));
-			theBox.sendMessage('You might have to wait...', 'The secrets that lie within this book shall soon be revealed...');
-			//FlxG.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
+			selectedSomethin = true;
+			FlxG.sound.play(Paths.sound('funkinAVI/menu/selectSfx'));
 
-			/*menuItems.forEach(function(spr:FlxSprite)
+			// no
+			//theBox.sendMessage('You might have to wait...', 'The secrets that lie within this book shall soon be revealed...');
+			
+			FlxG.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
+			menuItems.forEach(function(spr:FlxSprite)
 			{
-				FlxTween.tween(spr, {x: -250, alpha: 0}, 0.4, {
+				for (item in [arrow, spr])
+				FlxTween.tween(item, {x: -250, alpha: 0}, 0.4, {
 					ease: FlxEase.quadOut,
 					onComplete: function(twn:FlxTween)
 					{
 						spr.kill();
+						arrow.kill();
 					}
 				});
-			});*/
+			});
 
-			//if (arrow != null) FlxTween.tween(arrow, {alpha: 0}, 0, {ease: FlxEase.quadOut});
+			if (arrow != null) FlxTween.tween(arrow, {alpha: 0}, 0, {ease: FlxEase.quadOut});
 
-			//new FlxTimer().start(.6, s -> MusicBeatState.switchState(new states.menus.CharacterMenu()));
+			new FlxTimer().start(.6, s -> MusicBeatState.switchState(new states.menus.CharacterMenu()));
 		}
 
 		if (FlxG.mouse.justPressed && !selectedSomethin)
