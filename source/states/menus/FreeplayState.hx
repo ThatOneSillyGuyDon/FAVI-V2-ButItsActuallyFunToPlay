@@ -553,6 +553,11 @@ class FreeplayState extends MusicBeatState
 
 		Conductor.songPosition = FlxG.sound.music.time;
 
+		if (freeplayMenuList != 2)
+		{
+			for (icon in iconArray) icon.scale.set(FlxMath.lerp(2.1, icon.scale.x, .95), FlxMath.lerp(2.1, icon.scale.y, .95));
+		}
+
 		var isDontCross:Bool = songs[curSelected].songName == "Don't Cross!";
 
 		if (musicNotes != null)
@@ -564,16 +569,16 @@ class FreeplayState extends MusicBeatState
 		{
 			if (freeplayMenuList == 1)
 			{
-						shaderTime = Conductor.songPosition / 1000;
+				shaderTime = Conductor.songPosition / 1000;
 
-						glitchyStuff.setFloat('time', shaderTime);
-						glitchyStuff.setFloat('prob', shaderTime);
+				glitchyStuff.setFloat('time', shaderTime);
+				glitchyStuff.setFloat('prob', shaderTime);
 
-						mercyShader.setFloat('time', shaderTime);
-						mercyShader2.setFloat('time', shaderTime);
+				mercyShader.setFloat('time', shaderTime);
+				mercyShader2.setFloat('time', shaderTime);
 
-						smilesShader.setFloat('iTime', shaderTime);
-						smilesShader.setFloat('uTime', shaderTime);
+				smilesShader.setFloat('iTime', shaderTime);
+				smilesShader.setFloat('uTime', shaderTime);
 			}
 		}
 
@@ -628,7 +633,7 @@ class FreeplayState extends MusicBeatState
 				holdTime = 0;
 			}
 
-			if(controls.UI_DOWN || controls.UI_UP)
+			if((freeplayMenuList == 2 ? controls.UI_LEFT : controls.UI_DOWN) || (freeplayMenuList == 2 ? controls.UI_DOWN : controls.UI_RIGHT))
 			{
 				var checkLastHold:Int = Math.floor((holdTime - 0.5) * 10);
 				holdTime += elapsed;
@@ -636,7 +641,7 @@ class FreeplayState extends MusicBeatState
 
 				if(holdTime > 0.5 && checkNewHold - checkLastHold > 0)
 				{
-					changeSelection((checkNewHold - checkLastHold) * (controls.UI_UP ? -shiftMult : shiftMult));
+					changeSelection((checkNewHold - checkLastHold) * ((freeplayMenuList == 2 ? controls.UI_UP : controls.UI_LEFT) ? -shiftMult : shiftMult));
 					changeDiff();
 				}
 			}
@@ -741,6 +746,9 @@ class FreeplayState extends MusicBeatState
 			PlayState.isStoryMode = false;
 			PlayState.storyDifficulty = curDifficulty;
 
+			FlxG.sound.play(Paths.sound('funkinAVI/menu/confirmEpisode'));
+			for (icon in iconArray) icon.scale.set(2.35, 2.35);
+
 			trace('CURRENT WEEK: ' + WeekData.getWeekFileName());
 			if(colorTween != null) {
 				colorTween.cancel();
@@ -749,18 +757,17 @@ class FreeplayState extends MusicBeatState
 			if (freeplayMenuList != 2)
 			{				
 				FlxTween.tween(bg, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
-				FlxTween.tween(disc, {x: disc.x + 700}, 1, {ease: FlxEase.sineInOut});
+				FlxTween.tween(disc, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
 				FlxTween.tween(arrows, {alpha: 0}, 1);
-				FlxTween.tween(musicPlayer, {x: musicPlayer.x - 700}, 1, {ease: FlxEase.sineInOut});
-				FlxTween.tween(musicNotes, {x: musicNotes.x - 700}, 1, {ease: FlxEase.sineInOut});
-				FlxTween.tween(bgslider, {x: bgslider.x - 700}, 1, {ease: FlxEase.sineInOut});
-				for (i in 0...songs.length) FlxTween.tween(iconArray[i], {x: iconArray[i].x + 700}, 1, {ease: FlxEase.sineInOut});
-				FlxTween.tween(songText2, {x: songText2.x + 700}, 1, {ease: FlxEase.sineInOut});
-				FlxTween.tween(songText2, {y: songText2.y - 300}, 1, {ease: FlxEase.sineInOut});
-				FlxTween.tween(freeplayCtrlTxt, {alpha: 0}, 1.5, {ease: FlxEase.sineInOut});
-				FlxTween.tween(scoreText, {alpha: 0}, 1.5, {ease: FlxEase.sineInOut});
-				FlxTween.tween(diffText, {alpha: 0}, 1.5, {ease: FlxEase.sineInOut});
-				FlxTween.tween(songText2, {alpha: 0}, 1.5, {ease: FlxEase.sineInOut});
+				FlxTween.tween(musicPlayer, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
+				FlxTween.tween(musicNotes, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
+				FlxTween.tween(bgslider, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
+				FlxTween.tween(songText2, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
+				FlxTween.tween(songText2, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
+				FlxTween.tween(freeplayCtrlTxt, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
+				FlxTween.tween(scoreText, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
+				FlxTween.tween(diffText, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
+				FlxTween.tween(songText2, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
 			}
 			FlxG.sound.music.fadeOut();
 

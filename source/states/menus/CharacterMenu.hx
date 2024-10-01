@@ -123,15 +123,35 @@ class CharacterMenu extends MusicBeatState
         changeSelection();
     }
 
+    var holdTime:Float = 0;
     override public function update(elapsed:Float) {
         super.update(elapsed);
 
         if (controls.BACK) MusicBeatState.switchState(new MainMenu());
 
         if (controls.UI_LEFT_P)
-			changeSelection(-1);
+        {
+            changeSelection(-1);
+            holdTime = 0;
+        }
 		if (controls.UI_RIGHT_P)
-			changeSelection(1);
+        {
+            changeSelection(1);
+            holdTime = 0;
+        }
+
+        if(controls.UI_LEFT || controls.UI_RIGHT)
+        {
+            var checkLastHold:Int = Math.floor((holdTime - 0.5) * 10);
+            holdTime += elapsed;
+            var checkNewHold:Int = Math.floor((holdTime - 0.5) * 10);
+
+            if(holdTime > 0.5 && checkNewHold - checkLastHold > 0)
+            {
+                changeSelection((checkNewHold - checkLastHold));
+                //changeDiff();
+            }
+        }
 
         if (FlxG.keys.justPressed.F5) FlxG.resetState();
     }

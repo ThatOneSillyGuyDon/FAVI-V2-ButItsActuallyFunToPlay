@@ -79,8 +79,6 @@ class Soundtray extends FlxSoundTray
     y = coolLerp(y, lerpYPos, 0.1);
     alpha = coolLerp(alpha, alphaTarget, 0.25);
 
-    trace(x + " - " + y);
-
     // Animate sound tray thing
     if (_timer > 0)
     {
