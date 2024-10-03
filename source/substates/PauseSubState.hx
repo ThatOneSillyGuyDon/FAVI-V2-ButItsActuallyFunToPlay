@@ -661,6 +661,8 @@ class FAVIPauseSubState extends MusicBeatSubstate
 						case "options":
 							remove(disc);
 							toOptions = true;
+							FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+							FlxG.mouse.visible = true;
 							MusicBeatState.switchState(new states.options.OptionsState());
 							FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
 						case 'no-hope':
