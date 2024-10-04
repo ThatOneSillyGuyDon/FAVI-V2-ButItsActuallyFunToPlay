@@ -386,12 +386,14 @@ class MainMenu extends MusicBeatState
 
 		updateSelection();
 
-		// from the base game lol
-		var versionShit:FlxText = new FlxText(5, FlxG.height * 0.01, 0, 'Funkin.avi v2.0.0', 24);
-		versionShit.setFormat(Paths.font("DisneyFont.ttf"), 30, 0xFFFFFFFF, LEFT, FlxTextBorderStyle.OUTLINE, 0xFF000000);
-		versionShit.scrollFactor.set();
-		versionShit.cameras = [camHUD];
-		//add(versionShit);
+		if (!ClientPrefs.debugInfo)
+		{
+			var versionShit:FlxText = new FlxText(5, FlxG.height * 0.01, 0, 'Funkin.avi v2.0.0', 24);
+			versionShit.setFormat(Paths.font("DisneyFont.ttf"), 30, 0xFFFFFFFF, LEFT, FlxTextBorderStyle.OUTLINE, 0xFF000000);
+			versionShit.scrollFactor.set();
+			versionShit.cameras = [camHUD];
+			add(versionShit);
+		}
  
 		theBox = new MessageBox(-400, FlxG.height - 80, {
 			text: 'Freeplay is Locked!', 
@@ -603,9 +605,10 @@ class MainMenu extends MusicBeatState
 		}
 		
 		curSelected = FlxMath.wrap(Math.floor(curSelected) + changeValue, 0, optionShit.length - 1);
+		Conductor.songPosition = FlxG.sound.music != null ? FlxG.sound.music.time : 0;
 
 		if (ClientPrefs.shaders)
-			darkFilter.setFloat('iTime', elapsed);
+			darkFilter.setFloat('iTime', Conductor.songPosition / 1000);
 
 		for (i in 0...menuItems.length) menuItems.members[i].scale.set(FlxMath.lerp(.6, menuItems.members[i].scale.x, .95), FlxMath.lerp(.6, menuItems.members[i].scale.y, .95));
 

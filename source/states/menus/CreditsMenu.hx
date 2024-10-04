@@ -158,13 +158,13 @@ class CreditsMenu extends MusicBeatState
 		// dont mind me adding this funny
 		// yes i used the numbers because why not
 		FlxG.camera.shake(creditArray[curSelected][0].toLowerCase() == "malyplus" ? 0.01 : 0);
-		shaderTime += elapsed;
+		Conductor.songPosition = FlxG.sound.music != null ? FlxG.sound.music.time : 0;
 
 		teelSquares.alpha = FlxMath.lerp(creditArray[curSelected][0].toLowerCase() == "teelbe" ? FlxG.random.float(.2, 1) : 0, teelSquares.alpha, .85);
 
 		if (ClientPrefs.shaders)
 		{
-			cool_1980_shader.setFloat('iTime', shaderTime);
+			cool_1980_shader.setFloat('iTime', Conductor.songPosition / 1000);
 		}
 
 		if (controls.UI_UP_P)

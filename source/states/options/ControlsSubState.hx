@@ -4,6 +4,7 @@ import flash.text.TextField;
 import lime.utils.Assets;
 import haxe.Json;
 import flixel.input.keyboard.FlxKey;
+import gameObjects.utils.AttachedFlxText;
 
 class ControlsSubState extends MusicBeatSubstate {
 	private static var curSelected:Int = 1;
@@ -40,22 +41,24 @@ class ControlsSubState extends MusicBeatSubstate {
 		['Key 2', 'debug_2']
 	];
 
-	private var grpOptions:FlxTypedGroup<Alphabet>;
-	private var grpInputs:Array<AttachedText> = [];
-	private var grpInputsAlt:Array<AttachedText> = [];
+	private var grpOptions:FlxTypedGroup<FlxTextAlphabet>;
+	private var grpInputs:Array<AttachedFlxText> = [];
+	private var grpInputsAlt:Array<AttachedFlxText> = [];
 	var rebindingKey:Bool = false;
 	var nextAccept:Int = 5;
 
 	public function new() {
 		super();
 
-		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
-		bg.color = 0xFFea71fd;
+		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/options/background'));
+		bg.setGraphicSize(FlxG.width, FlxG.height);
+		bg.updateHitbox();
 		bg.screenCenter();
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
+		bg.setColorTransform(1, 1, 1, 1, 100, 100, 100, 255); // thanks mr color transform kisses
 		add(bg);
 
-		grpOptions = new FlxTypedGroup<Alphabet>();
+		grpOptions = new FlxTypedGroup<FlxTextAlphabet>();
 		add(grpOptions);
 
 		optionShit.push(['']);
@@ -68,7 +71,8 @@ class ControlsSubState extends MusicBeatSubstate {
 				isCentered = true;
 			}
 
-			var optionText:Alphabet = new Alphabet(200, 300, optionShit[i][0], (!isCentered || isDefaultKey));
+			var optionText:FlxTextAlphabet = new FlxTextAlphabet(200, 300, 0, optionShit[i][0]);
+			optionText.setFormat(Paths.font("BROUGHTTHESTYLE.otf"), 100, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 			optionText.isMenuItem = true;
 			if(isCentered) {
 				optionText.screenCenter(X);
@@ -79,6 +83,7 @@ class ControlsSubState extends MusicBeatSubstate {
 			optionText.distancePerItem.y = 60;
 			optionText.targetY = i - curSelected;
 			optionText.snapToPosition();
+			optionText.antialiasing = ClientPrefs.globalAntialiasing;
 			grpOptions.add(optionText);
 
 			if(!isCentered) {
@@ -250,16 +255,18 @@ class ControlsSubState extends MusicBeatSubstate {
 		return optionShit[num].length < 2 && optionShit[num][0] != defaultKey;
 	}
 
-	private function addBindTexts(optionText:Alphabet, num:Int) {
+	private function addBindTexts(optionText:FlxTextAlphabet, num:Int) {
 		var keys:Array<Dynamic> = ClientPrefs.keyBinds.get(optionShit[num][1]);
-		var text1 = new AttachedText(InputFormatter.getKeyName(keys[0]), 400, -55);
-		text1.setPosition(optionText.x + 400, optionText.y - 55);
+		var text1 = new gameObjects.utils.AttachedFlxText(InputFormatter.getKeyName(keys[0]), 400, 0);
+		text1.setFormat(Paths.font("VanillaExtractRegular.ttf"), 70, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		text1.setPosition(optionText.x + 400, optionText.y);
 		text1.sprTracker = optionText;
 		grpInputs.push(text1);
 		add(text1);
 
-		var text2 = new AttachedText(InputFormatter.getKeyName(keys[1]), 650, -55);
-		text2.setPosition(optionText.x + 650, optionText.y - 55);
+		var text2 = new gameObjects.utils.AttachedFlxText(InputFormatter.getKeyName(keys[1]), 650, 0);
+		text2.setFormat(Paths.font("VanillaExtractRegular.ttf"), 70, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		text2.setPosition(optionText.x + 650, optionText.y);
 		text2.sprTracker = optionText;
 		grpInputsAlt.push(text2);
 		add(text2);
@@ -267,13 +274,13 @@ class ControlsSubState extends MusicBeatSubstate {
 
 	function reloadKeys() {
 		while(grpInputs.length > 0) {
-			var item:AttachedText = grpInputs[0];
+			var item:AttachedFlxText = grpInputs[0];
 			item.kill();
 			grpInputs.remove(item);
 			item.destroy();
 		}
 		while(grpInputsAlt.length > 0) {
-			var item:AttachedText = grpInputsAlt[0];
+			var item:AttachedFlxText = grpInputsAlt[0];
 			item.kill();
 			grpInputsAlt.remove(item);
 			item.destroy();

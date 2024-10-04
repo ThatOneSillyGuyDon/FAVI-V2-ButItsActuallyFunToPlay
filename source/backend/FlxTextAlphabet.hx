@@ -32,6 +32,17 @@ class FlxTextAlphabet extends FlxText
         this.startPosition.y = Y;
     }
 
+    public function snapToPosition()
+    {
+        if (isMenuItem)
+        {
+            if(changeX)
+                x = (targetY * distancePerItem.x) + startPosition.x;
+            if(changeY)
+                y = (targetY * 1.3 * distancePerItem.y) + startPosition.y;
+        }
+    }
+
     public var changeLerp:Bool = false;
     public var lerpVal:Float = 0;
     override function update(elapsed:Float)

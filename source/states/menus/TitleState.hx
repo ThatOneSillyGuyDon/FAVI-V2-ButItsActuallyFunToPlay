@@ -170,6 +170,13 @@ class TitleState extends MusicBeatState
 		"THE 'CORE' CONTAINS THE EVIL"
 	];
 
+	// unlocks debug
+    // stolen from full restored lol
+	var keyCombo:Array<FlxKey> = [
+		FlxKey.UP, FlxKey.UP, FlxKey.DOWN, FlxKey.DOWN, FlxKey.LEFT, FlxKey.RIGHT, FlxKey.LEFT, FlxKey.RIGHT, FlxKey.B, FlxKey.A, FlxKey.ENTER
+	];
+	var keyIdx = 0;
+
 	override public function create():Void
 	{	
 		Paths.clearStoredMemory();
@@ -342,7 +349,6 @@ class TitleState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
-
 		if (FlxG.sound.music != null && !closedState)
 			Conductor.songPosition = FlxG.sound.music.time;
 
@@ -357,6 +363,23 @@ class TitleState extends MusicBeatState
 			}
 		}
 		#end
+
+		// CHEAT CODE FOR DEBUG MODE
+		// DO NOT TELL THIS TO ABSOLUTELY ANYONE ON RELEASE
+		if (keyIdx <= keyCombo.length - 1)
+		{
+			if (FlxG.keys.firstJustPressed() == keyCombo[keyIdx])
+			{
+				keyIdx++;
+				if (keyIdx >= keyCombo.length)
+				{
+					Main.debug = true;
+					FlxG.sound.play(Paths.sound("funkinAVI/easterEggSound"));
+				}
+			}
+			else if (FlxG.keys.firstJustPressed() != FlxKey.NONE)
+				keyIdx = 0;
+		}
 
 		/**
 		 * closing in a cool way

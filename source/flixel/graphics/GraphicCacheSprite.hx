@@ -5,6 +5,7 @@ import flixel.graphics.FlxGraphic;
 /**
  * Dummy FlxSprite that allows you to cache FlxGraphics, and immediatly send them to GPU memory.
  */
+@:access(flixel.graphics.FlxGraphic)
 class GraphicCacheSprite extends FlxSprite {
 	/**
 	 * Array containing all of the graphics cached by this sprite.

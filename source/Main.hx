@@ -2,7 +2,7 @@ package;
 
 import openfl.Assets;
 import openfl.Lib;
-import openfl.display.FPS;
+import backend.Framerate;
 import openfl.display.Sprite;
 import openfl.events.Event;
 import openfl.display.StageScaleMode;
@@ -29,7 +29,8 @@ class Main extends Sprite
 	var framerate:Int = 60; // How many frames per second the game should run at.
 	var skipSplash:Bool = true; // Whether to skip the flixel splash screen that appears in release mode.
 	var startFullscreen:Bool = false; // Whether to start the game in fullscreen on desktop targets
-	public static var fpsVar:FPS;
+	public static var fpsVar:Framerate;
+	public static var debug:Bool = false;
 
 	// You can pretty much ignore everything from here on - your code should go in your states.
 
@@ -83,7 +84,8 @@ class Main extends Sprite
 		addChild(game);
 
 		#if !mobile
-		fpsVar = new FPS(10, 3);
+		fpsVar = new Framerate(10, 3);
+		fpsVar.textColor = FlxColor.WHITE;
 		addChild(fpsVar);
 		Lib.current.stage.align = "tl";
 		Lib.current.stage.scaleMode = StageScaleMode.NO_SCALE;

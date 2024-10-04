@@ -97,6 +97,25 @@ class VisualsUISubState extends BaseOptionsMenu
 			true);
 		addOption(option);
 		option.onChange = onChangeFPSCounter;
+
+		var option:Option = new Option('Show Debug Info',
+			'If checked, adds additional information to the framerate counter (memory and mod version).',
+			'debugInfo',
+			'bool',
+			false);
+		addOption(option);
+
+		var option:Option = new Option('Framerate',
+		"Pretty self explanatory, isn't it?",
+		'framerate',
+		'int',
+		60);
+		addOption(option);
+
+		option.minValue = 60;
+		option.maxValue = 240;
+		option.displayFormat = '%v';
+		option.onChange = onChangeFramerate;
 		#end
 
 		var option:Option = new Option('Combo Stacking',
@@ -114,6 +133,20 @@ class VisualsUISubState extends BaseOptionsMenu
 	{
 		if(Main.fpsVar != null)
 			Main.fpsVar.visible = ClientPrefs.showFPS;
+	}
+
+	function onChangeFramerate()
+	{
+		if(ClientPrefs.framerate > FlxG.drawFramerate)
+		{
+			FlxG.updateFramerate = ClientPrefs.framerate;
+			FlxG.drawFramerate = ClientPrefs.framerate;
+		}
+		else
+		{
+			FlxG.drawFramerate = ClientPrefs.framerate;
+			FlxG.updateFramerate = ClientPrefs.framerate;
+		}
 	}
 	#end
 

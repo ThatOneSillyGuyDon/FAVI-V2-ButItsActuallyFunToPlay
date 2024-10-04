@@ -33,6 +33,7 @@ class ClientPrefs {
 	public static var checkForUpdates:Bool = true;
 	public static var comboStacking = true;
 	public static var useGPUCaching = false;
+	public static var debugInfo = false;
 	public static var gameplaySettings:Map<String, Dynamic> = [
 		'scrollspeed' => 1.0,
 		'scrolltype' => 'multiplicative', 
@@ -123,6 +124,7 @@ class ClientPrefs {
 		settings.data.henchmenDeath = Achievements.henchmenDeath;
 
 		settings.data.ratingOffset = ratingOffset;
+		settings.data.debugInfo = debugInfo;
 		settings.data.sickWindow = sickWindow;
 		settings.data.goodWindow = goodWindow;
 		settings.data.badWindow = badWindow;
@@ -164,6 +166,9 @@ class ClientPrefs {
 		}
 		if(settings.data.flashing != null) {
 			flashing = settings.data.flashing;
+		}
+		if(settings.data.debugInfo != null) {
+			debugInfo = settings.data.debugInfo;
 		}
 		if(settings.data.globalAntialiasing != null) {
 			globalAntialiasing = settings.data.globalAntialiasing;

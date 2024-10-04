@@ -505,6 +505,7 @@ class PlayState extends MusicBeatState
 	var death:VideoSprite;
 	var devilishGaming:VideoSprite;
 	var deluSing:VideoSprite;
+	var lununuIntro:VideoSprite;
 
 	//MALFUNCTION
 	var mickeyEmitter:FlxEmitter;
@@ -2676,6 +2677,32 @@ class PlayState extends MusicBeatState
 				case 'ugh' | 'guns' | 'stress':
 					tankIntro();
 
+				// this whole video shit is retarded lol sorry i barely know this dogshit :sob:
+				// please help
+				case 'lunacy':
+					lununuIntro = new VideoSprite(false);
+					lununuIntro.load(Paths.video("Lunacy-placeholder"));
+					lununuIntro.cameras = [camVideo];
+					lununuIntro.play();
+					//lununuIntro.scale.set(1 / 1.5457, 1 / 1.5457); // stupidly ass math but oops we need 1280x720
+					camVideo.visible = true;
+					add(lununuIntro);
+					lununuIntro.addCallback("onStart", () -> {
+						camVideo.visible = true;
+						lununuIntro.visible = true;
+					});
+					lununuIntro.addCallback("onEnd", () -> {
+						camVideo.visible = false;
+						startCountdown();
+						trace("video gone");
+						remove(lununuIntro);
+						lununuIntro.kill();
+						PlayState.camBars.fade(FlxColor.BLACK, 0.0001);
+					});
+
+					PlayState.camNotes.alpha = 0.001;
+					PlayState.camHUD.alpha = 0.001;
+
 				default:
 					startCountdown();
 			}
@@ -2969,7 +2996,7 @@ class PlayState extends MusicBeatState
 				add(death);
 				add(deluSing);
 
-			case 'Isolated' | 'Lunacy' | 'Cycled Sins' | 'Delusion' | 'Laugh Track':
+			case 'Isolated' | 'Cycled Sins' | 'Delusion' | 'Laugh Track':
 				PlayState.camNotes.alpha = 0.001;
 				PlayState.camBars.fade(FlxColor.BLACK, 0.0001);
 				PlayState.camHUD.alpha = 0.001;
@@ -3394,7 +3421,7 @@ class PlayState extends MusicBeatState
 		char.y += char.positionArray[1];
 	}
 
-	public function playVideoSprite(name:String, ?vis:Bool = true, x:Float = 0, y:Float = 0, scaleX:Float = 1, scaleY:Float = 1){
+	public function playVideoSprite(name:String, ?vis:Bool = true, finishCallback:()->Void, x:Float = 0, y:Float = 0, scaleX:Float = 1, scaleY:Float = 1){
 		videoSprite = new VideoSprite(false);
 		videoSprite.scrollFactor.set();
 		videoSprite.scale.set(scaleX, scaleY);
@@ -3416,7 +3443,10 @@ class PlayState extends MusicBeatState
 		};
 
 		// this is weird but oh well! it works tho!
-		videoSprite.addCallback("onEnd", () -> camVideo.visible = false);
+		videoSprite.addCallback("onEnd", () -> {
+			camVideo.visible = false;
+			if (finishCallback != null) finishCallback();
+		});
 
 		videoSprite.load(Paths.video(name));
 		videoSprite.play();
@@ -5421,6 +5451,12 @@ class PlayState extends MusicBeatState
 		}
 		checkEventNote();
 
+		if(!endingSong && !startingSong) {
+			if (FlxG.keys.justPressed.ONE) {
+				KillNotes();
+				FlxG.sound.music.onComplete();
+			}
+		}
 		#if debug
 		if(!endingSong && !startingSong) {
 			if (FlxG.keys.justPressed.ONE) {
@@ -11399,6 +11435,7 @@ class PlayState extends MusicBeatState
 					{
 						camGame.zoom += 0.015;
 						camHUD.zoom += 0.04;
+						camNotes.zoom += 0.04;
 					}
 			case 'alleyway' | 'ddStage':
 				 // me when zoom gets higher or whatever -jason
@@ -11406,6 +11443,7 @@ class PlayState extends MusicBeatState
 					{
 						FlxG.camera.zoom += 0.025;
 						camHUD.zoom += 0.042;
+						camNotes.zoom += 0.042;
 						FlxTween.tween(gradient, {alpha: 0.3}, 2);
 					}
 		
@@ -11413,13 +11451,14 @@ class PlayState extends MusicBeatState
 					{
 						FlxG.camera.zoom += 0.04;
 						camHUD.zoom += 0.053;
+						camNotes.zoom += 0.053;
 						FlxTween.tween(gradient, {alpha: 0.6}, 2);
 					}
 		
 				if(curBeat == 112)
 					{
 						isCameraOnForcedPos = true;
-						FlxTween.tween(camFollow, {x: 1080, y: 1400}, 14, {ease: FlxEase.sineInOut});
+						FlxTween.tween(camFollow, {x: camFollow.x - 150, y: 1400}, 14, {ease: FlxEase.sineInOut});
 						FlxTween.tween(FlxG.camera, {zoom: 2}, 14, {ease: FlxEase.sineInOut});
 						FlxTween.tween(gradient, {alpha: 0.9}, 2);
 					}
@@ -11428,6 +11467,7 @@ class PlayState extends MusicBeatState
 				{
 					// not including camGame cus it bugs out
 					camHUD.zoom += 0.053;
+					camNotes.zoom += 0.053;
 				}
 			case 'tank':
 				if(!ClientPrefs.lowQuality) tankWatchtower.dance();
