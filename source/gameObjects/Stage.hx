@@ -1123,7 +1123,7 @@ class Stage extends FlxTypedGroup<FlxBasic>
 				dad.setPosition(-400, -150);
 				boyfriend.setPosition(900, 300);
 			case 'alleyway' | 'ddStage':
-				boyfriend.setPosition(770, 450);
+				boyfriend.setPosition(250, -30);
 				dad.setPosition(1660, 120);
 			default:
 				boyfriend.setPosition(770, 450);

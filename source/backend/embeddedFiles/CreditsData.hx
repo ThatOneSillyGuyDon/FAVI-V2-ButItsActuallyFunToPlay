@@ -4,7 +4,7 @@ enum abstract CreditsData(String) from String to String {
     var devilishDeal:String = '{
 	"settings":
 	[
-		"Art: Domingo, Moe & Molkey.xml\n\nChart: Purg\n\nCode: DEMOLITIONDON96\n\nMusic: obscurity.", -40, -5
+		"Art: Domingo, Moe & Molkey.xml\n\nChart: Purg\n\nCode: DEMOLITIONDON96 & Jason\n\nMusic: obscurity.", -40, -5
 	]
 }';
     var isolated:String = '{
@@ -35,7 +35,7 @@ enum abstract CreditsData(String) from String to String {
     var hunted:String = '{
 	"settings":
 	[
-		"Art: GreyDoodlez & rezeo\n\nChart: Purg\n\nCode: DEMOLITIONDON96 & MalyPlus\n\nMusic: JBlitz", 18, -18
+		"Art: GreyDoodlez & rezeo\n\nChart: Purg\n\nCode: Jason, DEMOLITIONDON96 & MalyPlus\n\nMusic: JBlitz", 18, -18
 	]
 }';
     var laughTrack:String = '{
@@ -109,13 +109,13 @@ enum abstract CreditsData(String) from String to String {
     var birthday:String = '{
 	"settings":
 	[
-		"Art: Teelbe\n\nChart: Dreupy\n\nCode: DEMOLITIONDON96\n\nMusic: FR3SHMoure", 0, 28
+		"Art: Teelbe\n\nChart: Dreupy\n\nCode: Jason & DEMOLITIONDON96\n\nMusic: FR3SHMoure", 0, 28
 	]
 }';
     var delutrance:String = '{
 	"settings":
 	[
-		"Art: Who gives a fuck?\n\nChart: DEMOLITIONDON96\n\nCode: DEMOLITIONDON96\n\nMusic: RetroJogador", -32, 26
+		"Art: Who gives a fuck?\n\nChart: Jason & DEMOLITIONDON96\n\nCode: DEMOLITIONDON96\n\nMusic: RetroJogador", -32, 26
 	]
 }';
 	var creditsMenu:String = '';

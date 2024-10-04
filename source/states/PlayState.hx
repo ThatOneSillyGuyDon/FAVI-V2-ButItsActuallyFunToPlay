@@ -3268,7 +3268,7 @@ class PlayState extends MusicBeatState
 				dad.setPosition(-400, -150);
 				boyfriend.setPosition(900, 300);
 			case 'alleyway' | 'ddStage':
-				boyfriend.setPosition(770, 450);
+				boyfriend.setPosition(250, -30);
 				dad.setPosition(1660, 120);
 			default:
 				boyfriend.setPosition(770, 450);
@@ -11458,7 +11458,7 @@ class PlayState extends MusicBeatState
 				if(curBeat == 112)
 					{
 						isCameraOnForcedPos = true;
-						FlxTween.tween(camFollow, {x: camFollow.x - 150, y: 1400}, 14, {ease: FlxEase.sineInOut});
+						FlxTween.tween(camFollow, {x: camFollow.x - 150, y: 1380}, 14, {ease: FlxEase.sineInOut});
 						FlxTween.tween(FlxG.camera, {zoom: 2}, 14, {ease: FlxEase.sineInOut});
 						FlxTween.tween(gradient, {alpha: 0.9}, 2);
 					}

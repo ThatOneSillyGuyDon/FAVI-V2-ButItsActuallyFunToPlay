@@ -1,110 +1,66 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
 				-99,
 				-730
 			],
+			"loop": false,
+			"fps": 11,
 			"anim": "idle",
-			"fps": 24,
-			"name": "idle",
-			"indices": []
+			"indices": [],
+			"name": "MinnieDevDeal Idle"
 		},
 		{
-			"loop": false,
 			"offsets": [
-				-71,
-				-685
+				-115,
+				-738
 			],
+			"loop": false,
+			"fps": 11,
 			"anim": "singUP",
-			"fps": 24,
-			"name": "up0",
-			"indices": []
+			"indices": [],
+			"name": "MinnieDevDeal UpPose"
 		},
 		{
-			"loop": false,
-			"offsets": [
-				-84,
-				-694
-			],
-			"anim": "singDOWNmiss",
-			"fps": 24,
-			"name": "down_misses",
-			"indices": []
-		},
-		{
-			"loop": false,
 			"offsets": [
 				-109,
-				-703
+				-755
 			],
+			"loop": false,
+			"fps": 11,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "down0",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				-96,
-				-671
-			],
-			"anim": "singUPmiss",
-			"fps": 24,
-			"name": "up_misses",
-			"indices": []
+			"indices": [],
+			"name": "MinnieDevDeal DownPose"
 		},
 		{
 			"offsets": [
-				-27,
-				-747
+				-93,
+				-725
 			],
 			"loop": false,
-			"fps": 24,
+			"fps": 11,
 			"anim": "singLEFT",
 			"indices": [],
-			"name": "left0"
-		},
-		{
-			"offsets": [
-				-112,
-				-686
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right0"
+			"name": "MinnieDevDeal LeftPose"
 		},
 		{
 			"offsets": [
 				-92,
-				-687
+				-730
 			],
 			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHTmiss",
+			"fps": 11,
+			"anim": "singRIGHT",
 			"indices": [],
-			"name": "right_misses"
-		},
-		{
-			"offsets": [
-				-78,
-				-681
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singLEFTmiss",
-			"indices": [],
-			"name": "left_misses"
+			"name": "MinnieDevDeal RightPose"
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/minnie/MINNIE",
+	"image": "characters/MinnieDevDeal",
 	"position": [
-		0,
-		0
+		-1530,
+		-2000
 	],
 	"healthicon": "minnie",
 	"flip_x": true,
@@ -114,9 +70,9 @@
 		216
 	],
 	"camera_position": [
-		-390,
-		750
+		-660,
+		950
 	],
 	"sing_duration": 6.1,
-	"scale": 1
+	"scale": 0.6
 }
