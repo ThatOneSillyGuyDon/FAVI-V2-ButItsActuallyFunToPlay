@@ -156,7 +156,7 @@ class PlayState extends MusicBeatState
 	public var grpNoteSplashes:FlxTypedGroup<NoteSplash>;
 
 	public var grpSusNoteSplashes:FlxTypedGroup<SusNoteSplash>;
-	var sussplash:SusNoteSplash;
+	public var sussplash:Array<SusNoteSplash> = [];
 
 	public var camZooming:Bool = false;
 	public var camZoomingMult:Float = 1;
@@ -547,9 +547,9 @@ class PlayState extends MusicBeatState
 
 	override public function create()
 	{
-		pixelizeUI.setFloat('size', 5);
 		//trace('Playback Rate: ' + playbackRate);
 		Paths.clearStoredMemory();
+		Paths.clearUnusedMemory();
 
 		// for lua
 		instance = this;
@@ -643,6 +643,8 @@ class PlayState extends MusicBeatState
 
 		Conductor.mapBPMChanges(SONG);
 		Conductor.changeBPM(SONG.bpm);
+
+		pixelizeUI.setFloat('size', 5);
 
 		#if desktop
 		storyDifficultyText = CoolUtil.difficulties[storyDifficulty];
@@ -2151,14 +2153,28 @@ class PlayState extends MusicBeatState
 		grpNoteSplashes.add(splash);
 		splash.alpha = 0.0;
 
-		sussplash = new SusNoteSplash(100, 100);
-		grpSusNoteSplashes.add(sussplash);
-		sussplash.alpha = 0.0;
+		sussplash[0] = new SusNoteSplash(100, 100, 0);
+		add(sussplash[0]);
+		sussplash[0].alpha = 0.0;
 
 		opponentStrums = new FlxTypedGroup<StrumNote>();
 		playerStrums = new FlxTypedGroup<StrumNote>();
 
 		// startCountdown();
+
+		if (!isStoryMode) 
+			GameData.setFreeplayData();
+		else
+			switch (SONG.song)
+			{
+				case "Birthday":
+					GameData.muckneyLock = 'obtained';
+					GameData.saveShit();
+				case "Delutrance":
+					GameData.highOnCrackLock = "forceBackToSong";
+					GameData.saveShit();
+			}
+
 
 		generateSong(SONG.song);
 
@@ -2454,7 +2470,7 @@ class PlayState extends MusicBeatState
 			spaceBarCounter = new FlxText(0, 680, 0, 'Health Boosts Left: ' + limitThing, 15);
 			spaceBarCounter.setFormat(Paths.font("splatter.otf"), 30);
 			spaceBarCounter.cameras = [camOther];
-			spaceBarCounter.alpha = 0;
+			//spaceBarCounter.alpha = 0;
 			spaceBarCounter.scrollFactor.set();
 
 			if (!ClientPrefs.lowQuality)
@@ -2473,6 +2489,7 @@ class PlayState extends MusicBeatState
 						{
 							add(waltInstructionsMain);
 							add(waltSubTxt);
+							add(spaceBarCounter);
 		
 							FlxTween.tween(waltInstructionsMain, {alpha: 0}, 1, {ease: FlxEase.quadInOut, startDelay: 8});
 							FlxTween.tween(waltSubTxt, {alpha: 0}, 1, {ease: FlxEase.quadInOut, startDelay: 8});
@@ -2989,8 +3006,6 @@ class PlayState extends MusicBeatState
 				PlayState.camNotes.alpha = 0.001;
 				PlayState.camBars.fade(FlxColor.BLACK, 0.0001);
 				PlayState.camHUD.alpha = 0.001;
-				GameData.muckneyLock = 'beaten'; // instantly gives you birthday lel
-				GameData.saveShit();
 			case "Bless":
 				PlayState.camGame.alpha = 0.001;
 				PlayState.camHUD.alpha = 0.001;
@@ -3043,11 +3058,8 @@ class PlayState extends MusicBeatState
 					Paths.music(key);
 			}
 		}
-		Paths.clearUnusedMemory();
-		
-		CustomFadeTransition.nextCamera = camOther;
 
-		for(i in  0...unspawnNotes.length-1) if(unspawnNotes[i].isSustainNote) unspawnNotes[i].noAnimation = true;
+		//for(i in  0...unspawnNotes.length-1) if(unspawnNotes[i].isSustainNote) unspawnNotes[i].noAnimation = true;
 	}
 
 	#if (!flash && sys)
@@ -6821,6 +6833,16 @@ class PlayState extends MusicBeatState
 						GameData.episode1FPLock = "unlocked";
 						GameData.saveShit();
 					}
+					if (SONG.song == "Birthday")
+					{
+						GameData.muckneyLock = 'beaten';
+						GameData.saveShit();
+					}
+					if (SONG.song == "Delutrance")
+					{
+						GameData.highOnCrackLock = 'completed';
+						GameData.saveShit();
+					}
 					WeekData.loadTheFirstEnabledMod();
 					FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
 
@@ -6893,6 +6915,7 @@ class PlayState extends MusicBeatState
 				if(FlxTransitionableState.skipNextTransIn) {
 					CustomFadeTransition.nextCamera = null;
 				}
+				GameData.completeFPSong();
 				MusicBeatState.switchState(new FreeplayState());
 				FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
 				FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
@@ -7206,7 +7229,23 @@ class PlayState extends MusicBeatState
 					for (epicNote in sortedNotesList)
 					{
 						for (doubleNote in pressNotes) {
+							var leData:Int = Math.round(Math.abs(doubleNote.noteData));
 							if (Math.abs(doubleNote.strumTime - epicNote.strumTime) < 1) {
+								/*if (doubleNote.isSustainNote) {
+									if (doubleNote.isSustainNote && doubleNote.animation.name.endsWith('end')) {
+										sussplash[leData].playEnd();
+										visiblehold[leData] = false;
+									}
+									else {
+										if (!visiblehold[leData]) {
+											visiblehold[leData] = true;
+						
+											spawnSusNoteSplashOnNote(doubleNote);
+						
+											sussplash[leData].playContinue();
+										}
+									}
+								}*/
 								doubleNote.kill();
 								notes.remove(doubleNote, true);
 								doubleNote.destroy();
@@ -7373,6 +7412,11 @@ class PlayState extends MusicBeatState
 		//Dupe note remove
 		notes.forEachAlive(function(note:Note) {
 			if (daNote != note && daNote.mustPress && daNote.noteData == note.noteData && daNote.isSustainNote == note.isSustainNote && Math.abs(daNote.strumTime - note.strumTime) < 1) {
+				if (note.isSustainNote)
+				{
+					sussplash[note.noteData].playEnd();
+					visiblehold[note.noteData] = false;
+				}
 				note.kill();
 				notes.remove(note, true);
 				note.destroy();
@@ -7463,7 +7507,7 @@ class PlayState extends MusicBeatState
 		callOnLuas('noteMissPress', [direction]);
 	}
 
-	var visiblehold:Bool = false;
+	var visiblehold:Array<Bool> = [];
 
 	function opponentNoteHit(note:Note):Void
 	{
@@ -7782,9 +7826,9 @@ class PlayState extends MusicBeatState
 			note.destroy();
 		}
 
-		if (note.isSustainNote){
+		/*if (note.isSustainNote){
 			dad.holdTimer = 0;
-		}
+		}*/
 	}
 	
 	var malfunctionComboCheck:Int = 0;
@@ -7988,21 +8032,21 @@ class PlayState extends MusicBeatState
 			var leType:String = note.noteType;
 			callOnLuas('goodNoteHit', [notes.members.indexOf(note), leData, leType, isSus]);
 
-			if (isSus) {
+			/*if (isSus) {
 				if (isSus && note.animation.name.endsWith('end')) {
-					sussplash.playEnd();
-					visiblehold = false;
+					sussplash[leData].playEnd();
+					visiblehold[leData] = false;
 				}
 				else {
-					if (!visiblehold) {
-						visiblehold = true;
+					if (!visiblehold[leData]) {
+						visiblehold[leData] = true;
 	
 						spawnSusNoteSplashOnNote(note);
 	
-						sussplash.playContinue();
+						sussplash[leData].playContinue();
 					}
 				}
-			}
+			}*/
 
 			if (!note.isSustainNote)
 			{
@@ -8011,9 +8055,9 @@ class PlayState extends MusicBeatState
 				note.destroy();
 			}
 
-			if (note.isSustainNote){
+			/*if (note.isSustainNote){
 				boyfriend.holdTimer = 0;
-			}
+			}*/
 		}
 	}
 
@@ -8026,9 +8070,18 @@ class PlayState extends MusicBeatState
 	}
 
 	public function spawnSusNoteSplash(x:Float, y:Float, data:Int, ?note:Note = null) {
-		sussplash = grpSusNoteSplashes.recycle(SusNoteSplash);
-		sussplash.setupNoteSplash(x, y, data, note);
-		grpSusNoteSplashes.add(sussplash);
+		sussplash[data] = new SusNoteSplash();
+		sussplash[data].setupNoteSplash(x, y, data, note);
+		if (lightI != null)
+			if (lightI.visible) 
+				sussplash[data].setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0); 
+			else 
+				sussplash[data].setColorTransform(1, 1, 1, 1, 0, 0, 0, 0);
+		if (isPixelStage && ClientPrefs.shaders)
+			sussplash[data].shader = pixelizeUI;
+		sussplash[data].cameras = [camNotes];
+		add(sussplash[data]);
+		sussplash[data].playStart();
 	}
 
 	public function spawnNoteSplashOnNote(note:Note) {
@@ -9794,9 +9847,9 @@ class PlayState extends MusicBeatState
 				if (curBeat == 1008 || curBeat == 1064)
 					cinematicBarControls("moveboth", 1, "circOut", 140);
 				if (curBeat == 1024)
-					cinematicBarControls("moveboth", 1, "circOut", 160);
+					cinematicBarControls("moveboth", 1, "circOut", 80);
 				if (curBeat == 1030)
-					cinematicBarControls("moveboth", 1, "circOut", 180);
+					cinematicBarControls("moveboth", 1, "circOut", 100);
 				if (curBeat == 1136)
 					cinematicBarControls("kill", 0);
 
@@ -10112,6 +10165,7 @@ class PlayState extends MusicBeatState
 						tweenCamera(1.35, 7, "quartInOut");
 						PlayState.instance.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.4, timer: 2, colors: [255, 0, 0]});
 						PlayState.instance.camFlashSystem(BG_DARK, {alpha: 0.8, timer: 6, ease: FlxEase.quartInOut});
+						isCameraOnForcedPos = true;
 						FlxTween.tween(PlayState.instance.camFollow, {x: PlayState.instance.camFollow.x + 150, y: PlayState.instance.camFollow.y + 50}, 4.3, {ease: FlxEase.quartInOut});
 					// camera moves over to Mickey realizing he was never gonna win
 					case 1024:
@@ -10119,7 +10173,6 @@ class PlayState extends MusicBeatState
 					case 1040:
 						camFollow.x = 440;
 						camFollow.y = 360;
-						isCameraOnForcedPos = true;
 						FlxTween.tween(mickeySpirit, {alpha: 0.6}, 2, {ease: FlxEase.sineOut});
 						defaultCamZoom = 0.5;
 						PlayState.instance.camFlashSystem(BG_DARK, {alpha: 0, timer: 1, ease: FlxEase.circOut});
@@ -10911,7 +10964,7 @@ class PlayState extends MusicBeatState
 			notes.sort(FlxSort.byY, ClientPrefs.downScroll ? FlxSort.ASCENDING : FlxSort.DESCENDING);
 		}
 
-		// why is this even a fucking thing ????????
+		// why is this even a fucking thing ???????? --- because it is jason lmao
 		if (boyfriend.boppingIcon) iconP1.scale.set(1.2, 1.2);
 		if (dad.boppingIcon) iconP2.scale.set(1.2, 1.2);
 
@@ -11185,7 +11238,6 @@ class PlayState extends MusicBeatState
 												});
 											fireThing2.alpha = 0;
 											rain.visible = false;
-											clouds.visible = false;
 											stageCurtains.visible = true;
 										}
 										streetRuins.visible = false;

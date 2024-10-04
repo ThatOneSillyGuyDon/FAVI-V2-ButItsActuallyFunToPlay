@@ -1,4 +1,4 @@
-package flixel.graphics.title;
+package flixel.graphics.tile;
 
 #if FLX_DRAW_QUADS
 import flixel.FlxCamera;

@@ -67,9 +67,9 @@ class Soundtray extends FlxSoundTray
     y = -height;
     screenCenter();
 
-    volumeUpSound = Paths.sound("funkinAVI/menu/scrollSfx").toString();
-    volumeDownSound = Paths.sound("funkinAVI/menu/scrollSfx").toString();
-    volumeMaxSound = Paths.sound("cancelMenu").toString();
+    volumeUpSound = Paths.soundString("funkinAVI/menu/scrollSfx");
+    volumeDownSound = Paths.soundString("funkinAVI/menu/scrollSfx");
+    volumeMaxSound = Paths.soundString("cancelMenu");
 
     trace("Custom tray added!");
   }

@@ -1,7 +1,7 @@
 package backend.embeddedFiles;
 
 enum abstract Chart(String) from String to String {
-	var isolated:String = '{
+    var isolated:String = '{
 	"song": {
 		"composer": "obscurity",
 		"player1": "bf-fake-new",

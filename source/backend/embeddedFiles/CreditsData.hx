@@ -10,13 +10,13 @@ enum abstract CreditsData(String) from String to String {
     var isolated:String = '{
 	"settings":
 	[
-		"Art: Domingo\n\nChart: PhantomNexus\n\nCode: Jason & DEMOLITIONDON96\n\nMusic: obscurity.", 0, -5
+		"Art: Domingo & Molkey.xml\n\nChart: Purg\n\nCode: Jason & DEMOLITIONDON96\n\nMusic: obscurity.", 0, -5
 	]
 }';
     var lunacy:String = '{
 	"settings":
 	[
-		"Art: Domingo & Moe\n\nChart: Purg\n\nCode: Jason & DEMOLITIONDON96\n\nMusic: obscurity.", 25, -5
+		"Art: Domingo, Molkey.xml\n& Moe\n\nChart: Purg\n\nCode: Jason & DEMOLITIONDON96\n\nMusic: obscurity.", 25, -5
 	]
 }';
     var delusional:String = '{
@@ -31,10 +31,11 @@ enum abstract CreditsData(String) from String to String {
 		"What happened to us?\n\nWhy are we broken?\n\nI am sorry for what I have done.\n\nWill you ever forgive me?\n\nAfter everything that happened?", 16, -20
 	]
 }';
+	// fuck you goofy fnf
     var hunted:String = '{
 	"settings":
 	[
-		"Art: GreyDoodlez & rezeo\n\nChart: Purg\n\nCode: DEMOLITIONDON96 & MalyPlus\n\nMusic: JBlitz", 20, 16
+		"Art: GreyDoodlez & rezeo\n\nChart: Purg\n\nCode: DEMOLITIONDON96 & MalyPlus\n\nMusic: JBlitz", 18, -18
 	]
 }';
     var laughTrack:String = '{

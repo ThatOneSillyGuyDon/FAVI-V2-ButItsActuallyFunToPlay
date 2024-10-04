@@ -64,7 +64,7 @@ class Paths
 
 	/// haya I love you for the base cache dump I took to the max
 	public static function clearUnusedMemory() {
-		trace("clearing unused memory");
+		//trace("clearing unused memory");
 		// clear non local assets in the tracked assets list
 		for (key in currentTrackedAssets.keys()) {
 			// if it is not currently contained within the used local assets
@@ -78,14 +78,14 @@ class Paths
 					FlxG.bitmap._cache.remove(key);
 					obj.destroy();
 					currentTrackedAssets.remove(key);
-					trace("removing " + key);
+					/*trace("removing " + key);
 					if (uniqueRAMImages.contains(key))uniqueRAMImages.remove(key);
-					if (uniqueVRMImages.contains(key))uniqueVRMImages.remove(key);
+					if (uniqueVRMImages.contains(key))uniqueVRMImages.remove(key);*/
 				}
 			}
 		}
 
-		trace("--images in RAM after memory clear--");
+		/*trace("--images in RAM after memory clear--");
 		for (shit in uniqueRAMImages)
 			trace(shit);
 
@@ -93,7 +93,7 @@ class Paths
 		for (shit in uniqueVRMImages)
 			trace(shit);
 		trace("----");
-		getExpectedMemory();
+		getExpectedMemory();*/
 		// run the garbage collector for good measure lmfao
 		System.gc();
 	}
@@ -110,8 +110,8 @@ class Paths
 				openfl.Assets.cache.removeBitmapData(key);
 				FlxG.bitmap._cache.remove(key);
 				obj.destroy();
-                if (uniqueRAMImages.contains(key))uniqueRAMImages.remove(key);
-                if (uniqueVRMImages.contains(key))uniqueVRMImages.remove(key);
+                //if (uniqueRAMImages.contains(key))uniqueRAMImages.remove(key);
+                //if (uniqueVRMImages.contains(key))uniqueVRMImages.remove(key);
 			}
 		}
 
@@ -127,7 +127,7 @@ class Paths
 		// flags everything to be cleared out next unused memory clear
 		localTrackedAssets = [];
 		openfl.Assets.cache.clear("songs");
-		getExpectedMemory();
+		//getExpectedMemory();
 	}
 
 	static public var currentModDirectory:String = '';
@@ -219,6 +219,11 @@ class Paths
 		return 'assets/videos/$key.$VIDEO_EXT';
 	}
 
+	static public function soundString(key:String, ?library:String):String // just so the fucking sound tray can grab the audio correctly
+	{
+		return getPath('sounds/$key.$SOUND_EXT', SOUND, library);
+	}
+
 	static public function sound(key:String, ?library:String):Sound
 	{
 		var sound:Sound = returnSound('sounds', key, library);
@@ -282,10 +287,10 @@ class Paths
 			return inst;
 		}
 
-	inline static public function image(key:String, ?library:String, ?throwToGPU:Bool = false):FlxGraphic
+	inline static public function image(key:String, ?library:String):FlxGraphic
 	{
 		// streamlined the assets process more
-		var returnAsset:FlxGraphic = returnGraphic(key, library, throwToGPU);
+		var returnAsset:FlxGraphic = returnGraphic(key, library);
 		return returnAsset;
 	}
 
@@ -342,27 +347,27 @@ class Paths
 		return false;
 	}
 
-	inline static public function getSparrowAtlas(key:String, ?library:String, ?throwToGPU:Bool = false, ?prefix:String = 'images'):FlxAtlasFrames
+	inline static public function getSparrowAtlas(key:String, ?library:String):FlxAtlasFrames
 	{
 		#if MODS_ALLOWED
-		var imageLoaded:FlxGraphic = returnGraphic(key, library, throwToGPU, prefix);
+		var imageLoaded:FlxGraphic = returnGraphic(key, library);
 		var xmlExists:Bool = false;
 		if(FileSystem.exists(modsXml(key))) {
 			xmlExists = true;
 		}
 
 		return FlxAtlasFrames.fromSparrow((imageLoaded != null ? imageLoaded : image(key, library)),
-			(xmlExists ? File.getContent(modsXml(key)) : file('$prefix/$key.xml', library)));
+			(xmlExists ? File.getContent(modsXml(key)) : file('images/$key.xml', library)));
 		#else
-		return FlxAtlasFrames.fromSparrow(image(key, library), file('$prefix/$key.xml', library));
+		return FlxAtlasFrames.fromSparrow(image(key, library), file('images/$key.xml', library));
 		#end
 	}
 
 
-	inline static public function getPackerAtlas(key:String, ?library:String, ?throwToGPU:Bool = false)
+	inline static public function getPackerAtlas(key:String, ?library:String)
 	{
 		#if MODS_ALLOWED
-		var imageLoaded:FlxGraphic = returnGraphic(key, throwToGPU);
+		var imageLoaded:FlxGraphic = returnGraphic(key, library);
 		var txtExists:Bool = false;
 		if(FileSystem.exists(modsTxt(key))) {
 			txtExists = true;
@@ -384,67 +389,19 @@ class Paths
 
 	// completely rewritten asset loading? fuck!
 	public static var currentTrackedAssets:Map<String, FlxGraphic> = [];
-	public static function returnGraphic(key:String, ?library:String, ?throwToGPU:Bool = false, ?prefix:String = 'images') {
-		if (!ClientPrefs.useGPUCaching)
-			throwToGPU = false;
-		
-		var path = getPath('$prefix/$key.png', IMAGE, library);
-		var bitmap:BitmapData = null;
-
-		if(currentTrackedAssets.exists(path)){
-			if (throwToGPU && !uniqueVRMImages.contains(path)){
-				if (!localTrackedAssets.contains(path) && !dumpExclusions.contains(path))
-				{
-					// get rid of it
-					var obj = currentTrackedAssets.get(path);
-					@:privateAccess
-					if (obj != null)
-					{
-						openfl.Assets.cache.removeBitmapData(path);
-						FlxG.bitmap._cache.remove(path);
-						obj.destroy();
-						currentTrackedAssets.remove(path);
-						if (uniqueRAMImages.contains(path))uniqueRAMImages.remove(path);
-						if (uniqueVRMImages.contains(path))uniqueVRMImages.remove(path);
-					}
+	public static function returnGraphic(key:String, ?library:String) {
+			var path = getPath('images/$key.png', IMAGE, library);
+			//trace(path);
+			if (OpenFlAssets.exists(path, IMAGE)) {
+				if(!currentTrackedAssets.exists(path)) {
+					var newGraphic:FlxGraphic = FlxG.bitmap.add(path, false, path);
+					newGraphic.persist = true;
+					currentTrackedAssets.set(path, newGraphic);
 				}
-			}else{
-				localTrackedAssets.push(path);
 				return currentTrackedAssets.get(path);
 			}
-		}
-		
-		if(OpenFlAssets.exists(path, IMAGE))
-			bitmap = OpenFlAssets.getBitmapData(path);
-		
-		if(bitmap != null){
-			if(throwToGPU){
-				// based on what smokey learnt + my own research
-				// should be fine? idk lole
-				var tex:Texture = FlxG.stage.context3D.createTexture(bitmap.width, bitmap.height, BGRA, false);
-				tex.uploadFromBitmapData(bitmap);
-				// free mem
-				bitmap.dispose();
-				bitmap.disposeImage();
-				// push shit
-				bitmap = BitmapData.fromTexture(tex);
-				if (!uniqueVRMImages.contains(path))uniqueVRMImages.push(path);
-				uniqueRAMImages.remove(path);
-			}else{
-				if (!uniqueRAMImages.contains(path))uniqueRAMImages.push(path);
-				
-				uniqueVRMImages.remove(path);
-			}
 
-			@:privateAccess
-			var grafic = FlxGraphic.createGraphic(bitmap, key, false, false);
-			grafic.persist = true;
-			grafic.destroyOnNoUse = false;
-			localTrackedAssets.push(path);
-			currentTrackedAssets.set(path, grafic);
-			getExpectedMemory();
-			return grafic;
-		}
+		trace('oh no its returning null NOOOO');
 		return null;
 	}
 
@@ -595,7 +552,7 @@ class Paths
 	}
 	#end
 
-	static function getExpectedMemory(){
+	/*static function getExpectedMemory(){
 		expectedMemoryBytes = 0;
 
 		var processed:Array<FlxGraphic> =[];
@@ -616,5 +573,5 @@ class Paths
 			processed.push(obj);
 		}
 		processed = null;
-    }
+    }*/
 }

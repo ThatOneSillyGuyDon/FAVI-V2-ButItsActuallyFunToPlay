@@ -97,7 +97,7 @@ class Main extends Sprite
 		FlxG.mouse.visible = false;
 		#end
 
-		FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+		//FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
 		
 		#if CRASH_HANDLER
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);

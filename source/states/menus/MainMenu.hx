@@ -177,8 +177,7 @@ class MainMenu extends MusicBeatState
 	// the create 'state'
 	override function create()
 	{
-		if (!FlxG.mouse.visible)
-			FlxG.mouse.visible = true;
+		Paths.clearUnusedMemory();
 
 		camGame = new FlxCamera(); // Main camera for objects and stuff
 
@@ -189,11 +188,14 @@ class MainMenu extends MusicBeatState
 		FlxG.cameras.add(camHUD, false);
 		FlxG.cameras.setDefaultDrawTarget(camGame, true);
 
-		Paths.clearUnusedMemory();
-
 		FlxG.stage.addEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
 
 		super.create();
+
+		FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+		
+		if (!FlxG.mouse.visible)
+			FlxG.mouse.visible = true;
 
 		if (ClientPrefs.shaders)
 		{
@@ -437,6 +439,18 @@ class MainMenu extends MusicBeatState
 
 			FlxG.sound.play(Paths.sound('funkinAVI/fnaf_jumpscare'), 0.7, false, null, true, () -> cantaloupe.destroy());
 		}
+
+		/*if (GameData.highOnCrackLock == 'forceBackToSong') // you can't run from delutrance lol
+		{
+			var songLowercase:String = Paths.formatToSongPath("Delutrance");
+			var poop:String = Highscore.formatSong(songLowercase, 0); //fuck fuck fuck fuck fuck fuck
+			PlayState.SONG = Song.loadFromJson(poop, songLowercase);
+			new FlxTimer().start(0.25, function(tmr:FlxTimer)
+			{
+				LoadingState.loadAndSwitchState(new PlayState());
+				FlxG.sound.music.volume = 0;
+			});
+		}*/
 	}
 
 	var selectedSomethin:Bool = false;
@@ -491,12 +505,12 @@ class MainMenu extends MusicBeatState
 			{
 				if (theCodeOrder == (delutranceLmao.length - 1))
 				{
+					PlayState.SONG = Song.loadFromJson('delutrance-hard', 'delutrance');
 					PlayState.storyDifficulty = 0;
 					FlxG.sound.play(Paths.sound('funkinAVI/easterEggSound'));
 					FlxG.camera.fade(FlxColor.BLACK, 1);
 					camHUD.fade(FlxColor.BLACK, 1);
 					FlxG.sound.music.fadeOut(0.7);
-					PlayState.SONG = Song.loadFromJson('delutrance-hard', 'delutrance');
 					PlayState.campaignScore = 0;
 					PlayState.campaignMisses = 0;
 					new FlxTimer().start(1.4, function(tmr:FlxTimer)
@@ -524,8 +538,8 @@ class MainMenu extends MusicBeatState
 			{
 				if (theBirthdayCode == (birthdayCode.length - 1))
 				{
-					PlayState.storyDifficulty = 0;
 					PlayState.SONG = Song.loadFromJson('birthday-hard', 'birthday');
+					PlayState.storyDifficulty = 0;
 					PlayState.campaignScore = 0;
 					PlayState.campaignMisses = 0;
 					FlxG.sound.music.fadeOut(0.7);
@@ -603,7 +617,7 @@ class MainMenu extends MusicBeatState
 			var alien:VideoSprite = new VideoSprite(false);
 			alien.scale.set(2, 2);
 			alien.load(Paths.video('friendlyFellow'));
-			//alien.addCallback("onEnd", () -> Sys.exit(0));
+			alien.addCallback("onEnd", () -> Sys.exit(0));
 			alien.x += 320;
 			alien.y += 190;
 			alien.cameras = [camHUD];
@@ -611,11 +625,11 @@ class MainMenu extends MusicBeatState
 			add(alien);
 		}
 
-		if (FlxG.keys.justPressed.ONE && !selectedSomethin)
+		/*if (FlxG.keys.justPressed.ONE && !selectedSomethin)
 		{
 			GameData.unlockEverything();
 			FlxG.sound.play(Paths.sound('funkinAVI/easterEggSound'));
-		}
+		}*/
 
 		if (Math.floor(curSelected) != lastCurSelected)
 			updateSelection();
@@ -639,34 +653,41 @@ class MainMenu extends MusicBeatState
 		shittyUnoptimizedBookCopy.alpha = FlxMath.lerp(FlxG.mouse.overlaps(datBook) ? .7 : 0, shittyUnoptimizedBookCopy.alpha, .65);*/
 		evilAndFuckedUpBookScale = FlxG.mouse.overlaps(datBook) ? .7 : .65; 
 		
-		if (FlxG.mouse.overlaps(datBook) && FlxG.mouse.justPressed)
+		if (FlxG.mouse.overlaps(datBook) && FlxG.mouse.justPressed && !selectedSomethin)
 		{
-			datBook.scale.set(.8, .8);
-			//shittyUnoptimizedBookCopy.scale.set(.75, .77);
-
-			selectedSomethin = true;
-			FlxG.sound.play(Paths.sound('funkinAVI/menu/selectSfx'));
-
-			// no
-			//theBox.sendMessage('You might have to wait...', 'The secrets that lie within this book shall soon be revealed...');
-			
-			FlxG.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
-			menuItems.forEach(function(spr:FlxSprite)
+			if (GameData.episode1FPLock == "unlocked")
 			{
-				for (item in [arrow, spr])
-				FlxTween.tween(item, {x: -250, alpha: 0}, 0.4, {
-					ease: FlxEase.quadOut,
-					onComplete: function(twn:FlxTween)
-					{
-						spr.kill();
-						arrow.kill();
-					}
+				datBook.scale.set(.8, .8);
+				//shittyUnoptimizedBookCopy.scale.set(.75, .77);
+
+				selectedSomethin = true;
+				FlxG.sound.play(Paths.sound('funkinAVI/menu/selectSfx'));
+
+				//theBox.sendMessage('You might have to wait...', 'The secrets that lie within this book shall soon be revealed...');
+				
+				FlxG.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
+				menuItems.forEach(function(spr:FlxSprite)
+				{
+					for (item in [arrow, spr])
+					FlxTween.tween(item, {x: -250, alpha: 0}, 0.4, {
+						ease: FlxEase.quadOut,
+						onComplete: function(twn:FlxTween)
+						{
+							spr.kill();
+							arrow.kill();
+						}
+					});
 				});
-			});
 
-			if (arrow != null) FlxTween.tween(arrow, {alpha: 0}, 0, {ease: FlxEase.quadOut});
+				if (arrow != null) FlxTween.tween(arrow, {alpha: 0}, 0, {ease: FlxEase.quadOut});
 
-			new FlxTimer().start(.6, s -> MusicBeatState.switchState(new states.menus.CharacterMenu()));
+				new FlxTimer().start(.6, s -> MusicBeatState.switchState(new states.menus.CharacterMenu()));
+			}
+			else
+			{
+				FlxG.sound.play(Paths.sound('cancelMenu'));
+				theBox.sendMessage('You haven\'t unlocked this yet!', 'Play through his legacy first to open the other pages to this story.');
+			}
 		}
 
 		if (FlxG.mouse.justPressed && !selectedSomethin)
