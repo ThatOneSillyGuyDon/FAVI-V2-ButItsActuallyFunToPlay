@@ -683,8 +683,15 @@ class FAVIPauseSubState extends MusicBeatSubstate
 	
 								if (PlayState.isStoryMode)
 								{
-									MusicBeatState.switchState(new StoryMenu());
-									FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
+									if (GameData.highOnCrackLock == 'forceBackToSong')
+									{
+										restartSong();
+									}
+									else
+									{
+										MusicBeatState.switchState(new StoryMenu());
+										FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
+									}
 								}
 								else
 								{
@@ -694,9 +701,9 @@ class FAVIPauseSubState extends MusicBeatSubstate
 											states.menus.FreeplayState.freeplayMenuList = 0;
 											MusicBeatState.switchState(new states.menus.FreeplayState());
 										case 'Delutrance': // hahaha, you FOOL, you're obligated to play till you beat it!
-											if (FlxG.save.data.highOnCrackLock == 'forceBackToSong')
+											if (GameData.highOnCrackLock == 'forceBackToSong')
 											{
-												MusicBeatState.resetState();
+												restartSong();
 											}
 											else
 											{

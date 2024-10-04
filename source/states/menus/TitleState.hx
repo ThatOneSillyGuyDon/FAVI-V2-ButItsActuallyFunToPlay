@@ -221,21 +221,7 @@ class TitleState extends MusicBeatState
 
 		startIntro();
 
-		if (FlxG.save.data.highOnCrackLock == 'forceBackToSong') // you can't run from delutrance lol
-		{
-			PlayState.isStoryMode = false;
-			PlayState.storyDifficulty = 0;
-			PlayState.SONG = Song.loadFromJson('delutrance-hard', 'delutrance');
-			PlayState.campaignScore = 0;
-			PlayState.campaignMisses = 0;
-			new FlxTimer().start(0.25, function(tmr:FlxTimer)
-			{
-				closedState = true;
-				MusicBeatState.switchState(new PlayState());
-				FlxG.sound.music.volume = 0;
-			});
-		}
-
+		FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
 		FlxG.mouse.visible = true;
 
 		closedState = false;

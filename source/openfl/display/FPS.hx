@@ -52,7 +52,7 @@ class FPS extends TextField
 		currentFPS = 0;
 		selectable = false;
 		mouseEnabled = false;
-		defaultTextFormat = new TextFormat('_sans', 12, 0xFFFFFF);
+		defaultTextFormat = new TextFormat(openfl.utils.Assets.getFont("assets/fonts/disneyFreeplayFont.ttf").fontName /*your standards are lame Jason lol*/, 12, 0xFFFFFF);
 		autoSize = LEFT;
 		multiline = true;
 		text = "FPS: ";
@@ -126,7 +126,7 @@ class FPS extends TextField
 			peakMemory = curMemory;
 		text += 'RAM: ${formatMemory(Std.int(curMemory))} (${formatMemory(Std.int(peakMemory))} peak)';
 		//text += 'Used VRAM: ${CoolUtil.formatMemory(Std.int(FlxG.stage.context3D.totalGPUMemory))}'; // honestly not super useful
-		text += '\n';
+		text += '\nFunkin.avi v2.0.0';
 	}
 
 	public var textAfter:String = '';

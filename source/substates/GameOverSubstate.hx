@@ -1,5 +1,6 @@
 package substates;
 
+import flixel.addons.transition.FlxTransitionableState;
 
 /**
  * ## This is the screen that plays when you die in a song! Sounds simple enough, right?
@@ -119,13 +120,27 @@ class GameOverSubstate extends MusicBeatSubstate
 			WeekData.loadTheFirstEnabledMod();
 			if (PlayState.isStoryMode)
 			{
-				MusicBeatState.switchState(new StoryMenu());
-				FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
+				if (GameData.highOnCrackLock == 'forceBackToSong')
+				{
+					restartDelutrance();
+				}
+				else
+				{
+					MusicBeatState.switchState(new StoryMenu());
+					FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
+				}
 			}
 			else
 			{
-				MusicBeatState.switchState(new FreeplayState());
-				FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
+				if (GameData.highOnCrackLock == 'forceBackToSong')
+				{
+					restartDelutrance();
+				}
+				else
+				{
+					MusicBeatState.switchState(new FreeplayState());
+					FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
+				}
 			}
 			FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
 			PlayState.instance.callOnLuas('onGameOverConfirm', [false]);
@@ -170,6 +185,25 @@ class GameOverSubstate extends MusicBeatSubstate
 			Conductor.songPosition = FlxG.sound.music.time;
 		}
 		PlayState.instance.callOnLuas('onUpdatePost', [elapsed]);
+	}
+
+	function restartDelutrance(noTrans:Bool = false)
+	{
+		if (PlayState.useFakeDeluName)
+			PlayState.useFakeDeluName = false;
+		PlayState.instance.paused = true; // For lua
+		FlxG.sound.music.volume = 0;
+		PlayState.instance.vocals.volume = 0;
+
+		if(noTrans)
+		{
+			FlxTransitionableState.skipNextTransOut = true;
+			FlxG.resetState();
+		}
+		else
+		{
+			MusicBeatState.resetState();
+		}
 	}
 
 	override function beatHit()

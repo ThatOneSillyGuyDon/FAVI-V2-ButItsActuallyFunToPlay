@@ -38,6 +38,7 @@ class GameData
 	public static var warLock:String = 'locked';
 	public static var crossinLock:String = 'locked';
 	public static var mercyLock:String = 'locked';
+	public static var tgLock:String = 'locked';
 	public static var pnmLock:String = 'locked';
 	public static var rickyLock:String = 'locked';
 
@@ -74,11 +75,6 @@ class GameData
 		if (progression.data.episode1FPLock == null)
 			progression.data.episode1FPLock = 'locked';
 
-		if (progression.data.episodeSFPLock == null)
-			progression.data.episodeSFPLock = 'locked';
-		if (progression.data.episodeWFPLock == null)
-			progression.data.episodeWFPLock = 'locked';
-
 		if (progression.data.huntedLock == null)
 			progression.data.huntedLock = 'locked';
 		if (progression.data.oldisolateLock == null)
@@ -99,6 +95,8 @@ class GameData
 			progression.data.crossinLock = 'locked';
 		if (progression.data.mercyLock == null)
 			progression.data.mercyLock = 'locked';
+		if (progression.data.tgLock == null)
+			progression.data.tgLock = 'locked';
 		if (progression.data.pnmLock == null)
 			progression.data.pnmLock = 'locked';
 		if (progression.data.rickyLock == null)
@@ -168,6 +166,7 @@ class GameData
 		progression.data.warLock = warLock;
 		progression.data.crossinLock = crossinLock;
 		progression.data.mercyLock = mercyLock;
+		progression.data.tgLock = tgLock;
 		progression.data.pnmLock = pnmLock;
 		progression.data.rickyLock = rickyLock;
 
@@ -205,8 +204,8 @@ class GameData
 
 		episode1FPLock = progression.data.episode1FPLock;
 
-		episodeSFPLock = progression.data.episodeSFPLock;
-		episodeWFPLock = progression.data.episodeWFPLock;
+		//episodeSFPLock = progression.data.episodeSFPLock;
+		//episodeWFPLock = progression.data.episodeWFPLock;
 
 		huntedLock = progression.data.huntedLock;
 		oldisolateLock = progression.data.oldisolateLock;
@@ -218,6 +217,7 @@ class GameData
 		warLock = progression.data.warLock;
 		crossinLock = progression.data.crossinLock;
 		mercyLock = progression.data.mercyLock;
+		tgLock = progression.data.tgLock;
 		pnmLock = progression.data.pnmLock;
 		rickyLock = progression.data.rickyLock;
 
@@ -266,6 +266,7 @@ class GameData
 		warLock = 'beaten';
 		crossinLock = 'beaten';
 		mercyLock = 'beaten';
+		tgLock = 'beaten';
 		pnmLock = 'beaten';
 		rickyLock = 'beaten';
 
@@ -307,12 +308,18 @@ class GameData
 			case 'neglection':
 				if (progression.data.pnmLock != 'beaten')
 					pnmLock = 'unlocked';
-			case "don't cross!":
+			case "dont cross":
 				if (progression.data.crossinLock != 'beaten')
 					crossinLock = 'unlocked';
 			case 'war dilemma':
 				if (progression.data.warLock != 'beaten')
 					warLock = 'unlocked';
+			case 'twisted grins':
+				if (progression.data.tgLock != 'beaten')
+					tgLock = 'unlocked';
+			case 'mercy':
+				if (progression.data.mercyLock != 'beaten')
+					mercyLock = 'unlocked';
 			case 'cycled sins':
 				if (progression.data.sinsLock != 'beaten')
 					sinsLock = 'unlocked';
@@ -328,9 +335,6 @@ class GameData
 			case 'laugh track':
 				if (progression.data.rickyLock != 'beaten')
 					rickyLock = 'unlocked';
-			case 'birthday':
-				if (progression.data.muckneyLock != 'beaten')
-					muckneyLock = "voidIsOpen";
 			case 'mercy legacy':
 				if (progression.data.legacyWLock != 'beaten')
 					legacyWLock = 'unlocked';
@@ -364,9 +368,6 @@ class GameData
 			case 'resentment legacy':
 				if (progression.data.legacyRLock != 'beaten')
 					legacyRLock = 'unlocked';
-			case 'delutrance':
-				if (progression.data.highOnCrackLock != 'completed')
-					highOnCrackLock = 'forceBackToSong';
 		}
 		saveShit();
 	}
@@ -388,11 +389,16 @@ class GameData
 			case 'neglection':
 				if (ClientPrefs.mechanics)
 					pnmLock = 'beaten';
-			case "don't cross!":
+			case "dont cross":
 				if (ClientPrefs.mechanics)
 					crossinLock = 'beaten';
 			case 'war dilemma':
 				warLock = 'beaten';
+			case 'twisted grins':
+				tgLock = 'beaten';
+			case 'mercy':
+				if (ClientPrefs.mechanics)
+					mercyLock = 'beaten';
 			case 'cycled sins':
 				if (ClientPrefs.mechanics)
 					sinsLock = 'beaten';
@@ -448,41 +454,25 @@ class GameData
 		{
 			case NO_MALFUNCTION:
 				return (GameData.huntedLock == 'beaten'
-					&& GameData.oldisolateLock == 'beaten'
-					&& GameData.betaisolateLock == 'beaten'
 					&& GameData.rickyLock == 'beaten'
 					&& GameData.blessLock == 'beaten'
-					&& GameData.scrappedLock == 'beaten'
 					&& GameData.crossinLock == 'beaten'
 					&& GameData.warLock == 'beaten'
-					&& GameData.pnmLock == 'beaten'
+					&& GameData.tgLock == 'beaten'
+					&& GameData.mercyLock == 'beaten'
 					&& GameData.sinsLock == 'beaten'
-					&& GameData.legacyILock == 'beaten'
-					&& GameData.legacyLLock == 'beaten'
-					&& GameData.legacyDLock == 'beaten'
-					&& GameData.legacyHLock == 'beaten'
-					&& GameData.legacyWLock == 'beaten'
-					&& GameData.legacySLock == 'beaten'
 					&& !GameData.canAddMalfunction);
 
 			case ALL:
 				return (GameData.huntedLock == 'beaten'
-					&& GameData.oldisolateLock == 'beaten'
-					&& GameData.betaisolateLock == 'beaten'
-					&& GameData.rickyLock == 'beaten'
-					&& GameData.blessLock == 'beaten'
-					&& GameData.scrappedLock == 'beaten'
-					&& GameData.crossinLock == 'beaten'
-					&& GameData.warLock == 'beaten'
-					&& GameData.pnmLock == 'beaten'
-					&& GameData.sinsLock == 'beaten'
-					&& GameData.legacyILock == 'beaten'
-					&& GameData.legacyLLock == 'beaten'
-					&& GameData.legacyDLock == 'beaten'
-					&& GameData.legacyHLock == 'beaten'
-					&& GameData.legacyWLock == 'beaten'
-					&& GameData.legacySLock == 'beaten'
-					&& GameData.canAddMalfunction);
+				&& GameData.rickyLock == 'beaten'
+				&& GameData.blessLock == 'beaten'
+				&& GameData.crossinLock == 'beaten'
+				&& GameData.warLock == 'beaten'
+				&& GameData.tgLock == 'beaten'
+				&& GameData.mercyLock == 'beaten'
+				&& GameData.sinsLock == 'beaten'
+				&& GameData.canAddMalfunction);
 		}
 
 		// tragic

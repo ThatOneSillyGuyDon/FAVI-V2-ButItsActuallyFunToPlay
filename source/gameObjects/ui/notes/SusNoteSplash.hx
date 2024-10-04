@@ -34,7 +34,7 @@ class SusNoteSplash extends FlxSprite
 	}
 
 	function loadAnims(skin:String) {
-		frames = Paths.getSparrowAtlas(skin, null, false);
+		frames = Paths.getSparrowAtlas(skin);
 		for (i in 0...Note.colArray.length) {
 			animation.addByPrefix('holdCoverStart 0', 'sustain cover purple0', 24, false, false, false);
 			animation.addByPrefix('holdCoverStart 1', 'sustain cover blue0', 24, false, false, false);
