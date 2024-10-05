@@ -1914,7 +1914,7 @@ class PlayState extends MusicBeatState
 		windowName = "Funkin.avi - " + 
 		(isStoryMode ? curEpisode + " - " : "Freeplay - ") + 
 		(SONG.song == "Dont Cross" ? "Don't Cross!" : SONG.song) + 
-		" (Composed by: " + FreeplayState.getDiffRank() + 
+		" (Composed by: " + FreeplayState.getArtistName() + 
 		") - Chart by: " + Song.getCharterCredits() + 
 		" [" + FreeplayState.getDiffRank() + "]" + 
 		(checkMechanics ? ' - Mechanics: ' + (ClientPrefs.mechanics ? "Enabled" : "Disabled") : ""); // shitty long ass name that credits literally every fucking thing
@@ -7951,9 +7951,10 @@ class PlayState extends MusicBeatState
 							FlxG.sound.play(Paths.sound('funkinAVI/wiiCrash'), 1);
 				
 							if (FlxG.random.bool(10))
+																																																										
 								Application.current.window.alert("You Suck LMAO\n\n\nmaybe actually be good at the game for once instead of killing yourself so many times bro.", 'Note About Your Skill:'); // 10% of probability
-							else
-								Application.current.window.alert("<Message Log>\n========================                                                                                        \n\nhx (7504):\n   if(crashLivesCounter == -1)\n   {trace('0 lives left, closing game...')}\n\n\njust give up, you stand no chance against me, everett.",
+							else																																																																					/**corny ass shit no offense**/
+								Application.current.window.alert("<Message Log>\n========================                                                                                        \n\nPlayState.hx (7504):\n   if(crashLivesCounter == -1)\n   {trace('0 lives left, closing game...')}\n\n\njust give up, you stand no chance against me, everett.",
 									'Error On Funkin.avi.exe!:');
 				
 							Sys.exit(0);

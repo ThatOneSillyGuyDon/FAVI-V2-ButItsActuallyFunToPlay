@@ -35,7 +35,7 @@ enum abstract CreditsData(String) from String to String {
     var hunted:String = '{
 	"settings":
 	[
-		"Art: GreyDoodlez & rezeo\n\nChart: Purg\n\nCode: Jason, DEMOLITIONDON96 & MalyPlus\n\nMusic: JBlitz", 18, -18
+		"Art: GreyDoodlez & rezeo\n\nChart: Purg\n\nCode: Jason, DEMOLITIONDON96 \n& MalyPlus\n\nMusic: JBlitz", 18, -18
 	]
 }';
     var laughTrack:String = '{
@@ -47,7 +47,7 @@ enum abstract CreditsData(String) from String to String {
     var bless:String = '{
 	"settings":
 	[
-		"Art: DEMOLITIONDON96\nAustinWProductions, JDrive, Teelbe\n& Moe\n\nChart: DEMOLITIONDON96\n\nCode: MalyPlus & DEMOLITIONDON96\n\nMusic: PualTheUnTruest", 43, -30
+		"Art: DEMOLITIONDON96\nAustinWProductions, JDrive, Teelbe\n& Moe\n\nChart: DEMOLITIONDON96\n\nCode: Jason, MalyPlus \n& DEMOLITIONDON96\n\nMusic: PualTheUnTruest", 43, -30
 	]
 }';
     var dontCross1:String = '{
@@ -78,7 +78,7 @@ enum abstract CreditsData(String) from String to String {
     var warDilemma:String = '{
 	"settings":
 	[
-		"Art: BladzAMC_Emerald,\nAustinWProductions, & Teelbe\n\nChart: Purg\n\nCode: DEMOLITIONDON96\n\nMusic: Sayan Sama & obscurity.", -30, 0
+		"Art: BladzAMC_Emerald,\nAustinWProductions, & Teelbe\n\nChart: Purg\n\nCode: Jason & DEMOLITIONDON96\n\nMusic: Sayan Sama & obscurity.", -30, 0
 	]
 }';
     var twistedGrins:String = '{
