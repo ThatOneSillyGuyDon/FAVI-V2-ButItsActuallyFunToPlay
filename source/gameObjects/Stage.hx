@@ -520,7 +520,7 @@ class Stage extends FlxTypedGroup<FlxBasic>
 				semibg.antialiasing = ClientPrefs.globalAntialiasing;
 				add(semibg);
 			
-				var things = new FlxSprite(-1280 * PlayState.defaultCamZoom, -720 * PlayState.defaultCamZoom, Paths.image('things', defaultPath));
+				var things = new FlxSprite(-1280 * PlayState.defaultCamZoom, (-720 * PlayState.defaultCamZoom) + 150, Paths.image('things', defaultPath));
 				things.scrollFactor.set(.73, .64);
 				things.scale.set(1.25, 1.25);
 				things.updateHitbox();

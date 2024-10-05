@@ -340,7 +340,7 @@ class PlayState extends MusicBeatState
 	var iconTween:FlxTween;
 
 	// Display Texts
-	public var infoDisplay:String = CoolUtil.dashToSpace(PlayState.SONG.song);
+	public var infoDisplay:String = CoolUtil.dashToSpace(SONG.song);
 	public var diffDisplay:String = '[${CoolUtil.difficultyString}]';
 	public var engineDisplay:String = '~ Episode 1 ~';
 
@@ -653,7 +653,7 @@ class PlayState extends MusicBeatState
 		// String that contains the mode defined here so it isn't necessary to call changePresence for each mode
 		if (isStoryMode)
 		{
-			detailsText = "Episode 1: " + PlayState.SONG.song;
+			detailsText = "Episode 1: " + SONG.song;
 		}
 		else
 		{
@@ -1112,7 +1112,7 @@ class PlayState extends MusicBeatState
 					floor.active = false;
 					add(floor);	
 	
-					if (PlayState.SONG.song == 'Delusional' || PlayState.SONG.song == 'Delusion')
+					if (SONG.song == 'Delusional' || SONG.song == 'Delusion')
 					{	
 						fakeLightOfHope = new FlxSprite(-990, 1600).loadGraphic(Paths.image(pathway + 'falseHope'));
 						fakeLightOfHope.setGraphicSize(Std.int(fakeLightOfHope.width * 4));
@@ -1325,17 +1325,17 @@ class PlayState extends MusicBeatState
 							heavyRain.alpha = 0.0001;
 							heavyRain.animation.play('god is pissing omg');
 	
-							if (PlayState.SONG.song == 'Delusion')
+							if (SONG.song == 'Delusion')
 							{
 								streetDaytime.visible = true;
 								clouds.visible = true;
 								brightSky.visible = true;
 							}
 	
-							if (PlayState.SONG.song == 'Delusional') stageFront.alpha = 0.001;
+							if (SONG.song == 'Delusional') stageFront.alpha = 0.001;
 						}
 	
-						if (PlayState.SONG.song == 'Delusional') {
+						if (SONG.song == 'Delusional') {
 							camBars.fade(0x000000, .0001);
 						}
 				case 'forestNew':
@@ -1417,7 +1417,7 @@ class PlayState extends MusicBeatState
 					semibg.updateHitbox();
 					add(semibg);
 				
-					var things = new FlxSprite(-1280 * defaultCamZoom, -720 * defaultCamZoom, Paths.image(defaultPath + 'things'));
+					var things = new FlxSprite(-1280 * defaultCamZoom, (-720 * defaultCamZoom) + 150, Paths.image(defaultPath + 'things'));
 					things.scrollFactor.set(.73, .64);
 					things.scale.set(1.25, 1.25);
 					things.updateHitbox();
@@ -1493,7 +1493,7 @@ class PlayState extends MusicBeatState
 					defaultCamZoom = 0.8;
 					//spawnGirlfriend = false;
 	
-					accessPath = PlayState.SONG.song == 'Malfunction Legacy' ? 'PixelMouse' : 'malfunctionBG-NEW';
+					accessPath = SONG.song == 'Malfunction Legacy' ? 'PixelMouse' : 'malfunctionBG-NEW';
 					
 					staticBG = new FlxRuntimeShader(Shaders.tvStatic, null, 120);
 					glitchBG = new FlxRuntimeShader(Shaders.vignetteGlitch, null, 130);
@@ -1556,7 +1556,7 @@ class PlayState extends MusicBeatState
 					whiteBG.active = false;
 					add(whiteBG);
 					
-					if (PlayState.SONG.song != 'Malfunction Legacy')
+					if (SONG.song != 'Malfunction Legacy')
 					{
 						add(greyParticles);
 						foreground.add(blackParticles);
@@ -1644,11 +1644,11 @@ class PlayState extends MusicBeatState
 					
 					defaultCamZoom = 0.75;
 	
-					if (PlayState.SONG.song == 'Mercy')
+					if (SONG.song == 'Mercy')
 					{
 						camGame.alpha = 0;
 						camHUD.alpha = 0;
-						//PlayState.dadStrums.visible = false;
+						//dadStrums.visible = false;
 	
 						pissOfGlory = new FlxSprite(-470, -280);
 						pissOfGlory.loadGraphic(Paths.image(pathway + 'newWaltBG'));
@@ -1837,7 +1837,7 @@ class PlayState extends MusicBeatState
 				GameOverSubstate.characterName = 'bf-holding-gf-dead';
 		}
 
-		switch (PlayState.SONG.song)
+		switch (SONG.song)
 		{
 			case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Laugh Track" |  "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Birthday":
 				introSoundsSuffix = "-cartoon";
@@ -1913,8 +1913,8 @@ class PlayState extends MusicBeatState
 
 		windowName = "Funkin.avi - " + 
 		(isStoryMode ? curEpisode + " - " : "Freeplay - ") + 
-		(SONG.song == "Dont Cross" ? "Don't Cross!" : PlayState.SONG.song) + 
-		" (Composed by: " + FreeplayState.getArtistName() + 
+		(SONG.song == "Dont Cross" ? "Don't Cross!" : SONG.song) + 
+		" (Composed by: " + FreeplayState.getDiffRank() + 
 		") - Chart by: " + Song.getCharterCredits() + 
 		" [" + FreeplayState.getDiffRank() + "]" + 
 		(checkMechanics ? ' - Mechanics: ' + (ClientPrefs.mechanics ? "Enabled" : "Disabled") : ""); // shitty long ass name that credits literally every fucking thing
@@ -2265,61 +2265,62 @@ class PlayState extends MusicBeatState
 		iconP2.alpha = ClientPrefs.healthBarAlpha;
 		add(iconP2);
 		reloadHealthBarColors();
+		if (curStage == 'vaultRoom') iconP2.blend = ADD;
 			
-			// Hardcoded Icons
-			demonBFIcon = new HealthIcon('evilcy', true, false, true, false);
-			demonBFIcon.y = healthBar.y - 75;
-			demonBFIcon.x = FlxG.width * 0.87;
-			demonBFIcon.visible = false;
-			add(demonBFIcon);
+		// Hardcoded Icons
+		demonBFIcon = new HealthIcon('evilcy', true, false, true, false);
+		demonBFIcon.y = healthBar.y - 75;
+		demonBFIcon.x = FlxG.width * 0.87;
+		demonBFIcon.visible = false;
+		add(demonBFIcon);
+	
+		demonBFScary = new HealthIcon('evilcy', true, false, true, false);
+		demonBFScary.animation.curAnim.curFrame = 1;
+		demonBFScary.y = healthBar.y - 75;
+		demonBFScary.x = FlxG.width * 0.87;
+		demonBFScary.visible = false;
+		add(demonBFScary);
+	
+		fakeBFLosingFrame = new HealthIcon('evilrett', true, false, true, false);
+		fakeBFLosingFrame.animation.curAnim.curFrame = 1;
+		fakeBFLosingFrame.y = healthBar.y - 75;
+		fakeBFLosingFrame.x = FlxG.width * 0.87;
+		fakeBFLosingFrame.visible = false;
+		add(fakeBFLosingFrame);
+	
+		isolatedHappy = new HealthIcon('lunaavier', false, false, false, true);
+		isolatedHappy.animation.curAnim.curFrame = 2;
+		isolatedHappy.y = healthBar.y - 75;
+		isolatedHappy.visible = false;
+		add(isolatedHappy);
 		
-			demonBFScary = new HealthIcon('evilcy', true, false, true, false);
-			demonBFScary.animation.curAnim.curFrame = 1;
-			demonBFScary.y = healthBar.y - 75;
-			demonBFScary.x = FlxG.width * 0.87;
-			demonBFScary.visible = false;
-			add(demonBFScary);
+		lunacyIcon = new HealthIcon('lunaavier', false, false, true, false);
+		lunacyIcon.y = healthBar.y - 75;
+		lunacyIcon.visible = false;
+		add(lunacyIcon);
 		
-			fakeBFLosingFrame = new HealthIcon('evilrett', true, false, true, false);
-			fakeBFLosingFrame.animation.curAnim.curFrame = 1;
-			fakeBFLosingFrame.y = healthBar.y - 75;
-			fakeBFLosingFrame.x = FlxG.width * 0.87;
-			fakeBFLosingFrame.visible = false;
-			add(fakeBFLosingFrame);
-		
-			isolatedHappy = new HealthIcon('lunaavier', false, false, false, true);
-			isolatedHappy.animation.curAnim.curFrame = 2;
-			isolatedHappy.y = healthBar.y - 75;
-			isolatedHappy.visible = false;
-			add(isolatedHappy);
+		delusionalIcon = new HealthIcon('deluavier', false, false, true, false);
+		delusionalIcon.y = healthBar.y - 75;
+		delusionalIcon.visible = false;
+		add(delusionalIcon);
+	
+		minnieIcon = new HealthIcon('minnie', false, false, false, true);
+		minnieIcon.y = healthBar.y - 75;
+		minnieIcon.animation.curAnim.curFrame = 2;
+		minnieIcon.visible = false;
+		add(minnieIcon);
 			
-			lunacyIcon = new HealthIcon('lunaavier', false, false, true, false);
-			lunacyIcon.y = healthBar.y - 75;
-			lunacyIcon.visible = false;
-			add(lunacyIcon);
-			
-			delusionalIcon = new HealthIcon('deluavier', false, false, true, false);
-			delusionalIcon.y = healthBar.y - 75;
-			delusionalIcon.visible = false;
-			add(delusionalIcon);
-		
-			minnieIcon = new HealthIcon('minnie', false, false, false, true);
-			minnieIcon.y = healthBar.y - 75;
-			minnieIcon.animation.curAnim.curFrame = 2;
-			minnieIcon.visible = false;
-			add(minnieIcon);
-			  
-			satanIcon = new HealthIcon('satandd', true, false, true, false);
-			satanIcon.y = healthBar.y - 75;
-			satanIcon.animation.curAnim.curFrame = 0;
-			satanIcon.visible = false;
-			add(satanIcon);
-		
-			satanIconPulse = new HealthIcon('satandd', true, false, true, true);
-			satanIconPulse.y = healthBar.y - 75;
-			satanIconPulse.animation.curAnim.curFrame = 1;
-			satanIconPulse.visible = false;
-			add(satanIconPulse);
+		satanIcon = new HealthIcon('satandd', true, false, true, false);
+		satanIcon.y = healthBar.y - 75;
+		satanIcon.animation.curAnim.curFrame = 0;
+		satanIcon.visible = false;
+		add(satanIcon);
+	
+		satanIconPulse = new HealthIcon('satandd', true, false, true, true);
+		satanIconPulse.y = healthBar.y - 75;
+		satanIconPulse.animation.curAnim.curFrame = 1;
+		satanIconPulse.visible = false;
+		add(satanIconPulse);
 
 		demonBFIcon.cameras = [camHUD];
 		demonBFScary.cameras = [camHUD];
@@ -2330,7 +2331,7 @@ class PlayState extends MusicBeatState
 		satanIcon.cameras = [camHUD];
 		satanIconPulse.cameras = [camHUD];
 
-		if (PlayState.SONG.song == 'Devilish Deal')
+		if (SONG.song == 'Devilish Deal')
 		{
 			iconP1.visible = false;
 			iconP2.visible = false;
@@ -2521,7 +2522,7 @@ class PlayState extends MusicBeatState
 		{
 			windowName = "Funkin.avi - " + 
 			(isStoryMode ? curEpisode + " - " : "Freeplay - ") + 
-			(SONG.song == "Dont Cross" ? "Don't Cross!" : PlayState.SONG.song) + 
+			(SONG.song == "Dont Cross" ? "Don't Cross!" : SONG.song) + 
 			" [" + FreeplayState.getDiffRank() + "]"; // short version that displays after 5 seconds yayaya
 
 			lime.app.Application.current.window.title = windowName;
@@ -2697,11 +2698,11 @@ class PlayState extends MusicBeatState
 						trace("video gone");
 						remove(lununuIntro);
 						lununuIntro.kill();
-						PlayState.camBars.fade(FlxColor.BLACK, 0.0001);
+						camBars.fade(FlxColor.BLACK, 0.0001);
 					});
 
-					PlayState.camNotes.alpha = 0.001;
-					PlayState.camHUD.alpha = 0.001;
+					camNotes.alpha = 0.001;
+					camHUD.alpha = 0.001;
 
 				default:
 					startCountdown();
@@ -2744,7 +2745,7 @@ class PlayState extends MusicBeatState
 		
 		if (canaddshaders)
 		{
-			switch (PlayState.SONG.song)
+			switch (SONG.song)
 			{
 				case 'Bless':
 					camGame.setFilters(
@@ -2760,202 +2761,202 @@ class PlayState extends MusicBeatState
 				case 'Malfunction':
 					if(!ClientPrefs.lowQuality)
 					{
-						PlayState.camGame.setFilters(
+						camGame.setFilters(
 						[
-							new ShaderFilter(PlayState.chromZoomShader),
-							new ShaderFilter(PlayState.blurShader)
+							new ShaderFilter(chromZoomShader),
+							new ShaderFilter(blurShader)
 						]);
-						PlayState.camHUD.setFilters(
+						camHUD.setFilters(
 						[
-							new ShaderFilter(PlayState.chromNormalShader),
-							new ShaderFilter(PlayState.blurShader)
+							new ShaderFilter(chromNormalShader),
+							new ShaderFilter(blurShader)
 						]);
-							PlayState.camNotes.setFilters(
+							camNotes.setFilters(
 							[
-								new ShaderFilter(PlayState.chromNormalShader),
-								new ShaderFilter(PlayState.blurShader)
+								new ShaderFilter(chromNormalShader),
+								new ShaderFilter(blurShader)
 							]);
 
 						new flixel.util.FlxTimer().start(5, function(tmr)
 						{
-							PlayState.camGame.setFilters([new ShaderFilter(PlayState.chromZoomShader)]);
-							PlayState.camHUD.setFilters([new ShaderFilter(PlayState.chromNormalShader)]);
-							PlayState.camNotes.setFilters([new ShaderFilter(PlayState.chromNormalShader)]);
+							camGame.setFilters([new ShaderFilter(chromZoomShader)]);
+							camHUD.setFilters([new ShaderFilter(chromNormalShader)]);
+							camNotes.setFilters([new ShaderFilter(chromNormalShader)]);
 						});
 					}
 				case 'Malfunction Legacy':
 					if(!ClientPrefs.lowQuality)
 					{
-						PlayState.camGame.setFilters(
+						camGame.setFilters(
 						[
-							new ShaderFilter(PlayState.chromNormalShader),
-							new ShaderFilter(PlayState.blurShader)
+							new ShaderFilter(chromNormalShader),
+							new ShaderFilter(blurShader)
 						]);
-						PlayState.camHUD.setFilters(
+						camHUD.setFilters(
 						[
-							new ShaderFilter(PlayState.chromNormalShader),
-							new ShaderFilter(PlayState.blurShader)
+							new ShaderFilter(chromNormalShader),
+							new ShaderFilter(blurShader)
 						]);
-						PlayState.camNotes.setFilters(
+						camNotes.setFilters(
 							[
-								new ShaderFilter(PlayState.chromNormalShader),
-								new ShaderFilter(PlayState.blurShader)
+								new ShaderFilter(chromNormalShader),
+								new ShaderFilter(blurShader)
 							]);
 					}
 				case 'Devilish Deal' | 'Isolated' | 'Lunacy' | 'Delusional' | 'Delusion':
-					PlayState.redVignette.setFloat('time', 0.0);
+					redVignette.setFloat('time', 0.0);
 					if (!ClientPrefs.lowQuality)
 					{
-						PlayState.camGame.setFilters([
-                            new ShaderFilter(PlayState.redVignette),
-							new ShaderFilter(PlayState.dramaticCamMovement),
-							new ShaderFilter(PlayState.bloomEffect),
-							new ShaderFilter(PlayState.monitorFilter),
-							new ShaderFilter(PlayState.chromZoomShader),
-							new ShaderFilter(PlayState.chromNormalShader)
+						camGame.setFilters([
+                            new ShaderFilter(redVignette),
+							new ShaderFilter(dramaticCamMovement),
+							new ShaderFilter(bloomEffect),
+							new ShaderFilter(monitorFilter),
+							new ShaderFilter(chromZoomShader),
+							new ShaderFilter(chromNormalShader)
 						]);
-						PlayState.camHUD.setFilters([new ShaderFilter(PlayState.chromNormalShader)]);
-						PlayState.camNotes.setFilters([new ShaderFilter(PlayState.grayScale), new ShaderFilter(PlayState.chromNormalShader)]);
+						camHUD.setFilters([new ShaderFilter(chromNormalShader)]);
+						camNotes.setFilters([new ShaderFilter(grayScale), new ShaderFilter(chromNormalShader)]);
 					}
 					else
 					{
-						PlayState.camGame.setFilters([
-							new ShaderFilter(PlayState.monitorFilter),
-							new ShaderFilter(PlayState.chromNormalShader)
+						camGame.setFilters([
+							new ShaderFilter(monitorFilter),
+							new ShaderFilter(chromNormalShader)
 						]);
-						PlayState.camHUD.setFilters([new ShaderFilter(PlayState.chromNormalShader)]);
-						PlayState.camNotes.setFilters([new ShaderFilter(PlayState.grayScale)]);
+						camHUD.setFilters([new ShaderFilter(chromNormalShader)]);
+						camNotes.setFilters([new ShaderFilter(grayScale)]);
 					}
 				case 'Isolated Old' | 'Isolated Legacy' | 'Isolated Beta' | 'Lunacy Legacy' | 'Delusional Legacy':
-					PlayState.blurShader.setFloat('bluramount', 0.6);
-					PlayState.blurShaderHUD.setFloat('bluramount', 0.1);
-					PlayState.andromeda.setFloat('glitchModifier', 0.2);
-					PlayState.andromeda.setBool('perspectiveOn', true);
-					PlayState.andromeda.setBool('vignetteMoving', true);
+					blurShader.setFloat('bluramount', 0.6);
+					blurShaderHUD.setFloat('bluramount', 0.1);
+					andromeda.setFloat('glitchModifier', 0.2);
+					andromeda.setBool('perspectiveOn', true);
+					andromeda.setBool('vignetteMoving', true);
 					if (!ClientPrefs.lowQuality)
 					{
-						PlayState.camGame.setFilters([
-							new ShaderFilter(PlayState.grayScale),
-							new ShaderFilter(PlayState.blurShader),
-							new ShaderFilter(PlayState.andromeda)
+						camGame.setFilters([
+							new ShaderFilter(grayScale),
+							new ShaderFilter(blurShader),
+							new ShaderFilter(andromeda)
 						]);
-						PlayState.camHUD.setFilters([
-							new ShaderFilter(PlayState.grayScale),
-							new ShaderFilter(PlayState.blurShaderHUD),
-							new ShaderFilter(PlayState.andromeda)
+						camHUD.setFilters([
+							new ShaderFilter(grayScale),
+							new ShaderFilter(blurShaderHUD),
+							new ShaderFilter(andromeda)
 						]);
-						PlayState.camNotes.setFilters([
-							new ShaderFilter(PlayState.grayScale),
-							new ShaderFilter(PlayState.blurShaderHUD),
-							new ShaderFilter(PlayState.andromeda)
+						camNotes.setFilters([
+							new ShaderFilter(grayScale),
+							new ShaderFilter(blurShaderHUD),
+							new ShaderFilter(andromeda)
 						]);
 					}
 					else
 					{
-						PlayState.camGame.setFilters([new ShaderFilter(PlayState.grayScale)]);
-						PlayState.camHUD.setFilters([new ShaderFilter(PlayState.grayScale)]);
+						camGame.setFilters([new ShaderFilter(grayScale)]);
+						camHUD.setFilters([new ShaderFilter(grayScale)]);
 					}
 				case 'Hunted Legacy':
-					PlayState.blurShader.setFloat('bluramount', 0.6);
-					PlayState.blurShaderHUD.setFloat('bluramount', 0.1);
-					PlayState.andromeda.setFloat('glitchModifier', 0.2);
-					PlayState.andromeda.setBool('perspectiveOn', true);
-					PlayState.andromeda.setBool('vignetteMoving', true);
+					blurShader.setFloat('bluramount', 0.6);
+					blurShaderHUD.setFloat('bluramount', 0.1);
+					andromeda.setFloat('glitchModifier', 0.2);
+					andromeda.setBool('perspectiveOn', true);
+					andromeda.setBool('vignetteMoving', true);
 					if (!ClientPrefs.lowQuality)
 					{
-						PlayState.camGame.setFilters([
-							new ShaderFilter(PlayState.grayScale),
-							new ShaderFilter(PlayState.blurShader),
+						camGame.setFilters([
+							new ShaderFilter(grayScale),
+							new ShaderFilter(blurShader),
 						]);
-						@:privateAccess for(_camHUD in [PlayState.camHUD, PlayState.camNotes]) _camHUD.setFilters([
-							new ShaderFilter(PlayState.grayScale),
-							new ShaderFilter(PlayState.blurShaderHUD),
-							new ShaderFilter(PlayState.andromeda)
+						@:privateAccess for(_camHUD in [camHUD, camNotes]) _camHUD.setFilters([
+							new ShaderFilter(grayScale),
+							new ShaderFilter(blurShaderHUD),
+							new ShaderFilter(andromeda)
 						]);
 					}
 					else
 					{
-						PlayState.camGame.setFilters([new ShaderFilter(PlayState.grayScale)]);
-						PlayState.camHUD.setFilters([new ShaderFilter(PlayState.grayScale)]);
+						camGame.setFilters([new ShaderFilter(grayScale)]);
+						camHUD.setFilters([new ShaderFilter(grayScale)]);
 					}				
 				case 'Scrapped':
 					if (!ClientPrefs.lowQuality)
 					{
-						PlayState.camGame.setFilters([
-							new ShaderFilter(PlayState.staticEffect),
-							new ShaderFilter(PlayState.blurShader),
-							new ShaderFilter(PlayState.chromNormalShader),
-							new ShaderFilter(PlayState.chromZoomShader)
+						camGame.setFilters([
+							new ShaderFilter(staticEffect),
+							new ShaderFilter(blurShader),
+							new ShaderFilter(chromNormalShader),
+							new ShaderFilter(chromZoomShader)
 						]);
-						PlayState.camHUD.setFilters([
-							new ShaderFilter(PlayState.blurShaderHUD),
-							new ShaderFilter(PlayState.chromNormalShader)
+						camHUD.setFilters([
+							new ShaderFilter(blurShaderHUD),
+							new ShaderFilter(chromNormalShader)
 						]);
-							PlayState.camNotes.setFilters([
-								new ShaderFilter(PlayState.blurShaderHUD),
-								new ShaderFilter(PlayState.chromNormalShader)
+							camNotes.setFilters([
+								new ShaderFilter(blurShaderHUD),
+								new ShaderFilter(chromNormalShader)
 							]);
 					}
 					else
 					{
-						PlayState.camGame.setFilters([new ShaderFilter(PlayState.chromNormalShader)]);
-						PlayState.camHUD.setFilters([new ShaderFilter(PlayState.chromNormalShader)]);
-						PlayState.camNotes.setFilters([new ShaderFilter(PlayState.chromNormalShader)]);
+						camGame.setFilters([new ShaderFilter(chromNormalShader)]);
+						camHUD.setFilters([new ShaderFilter(chromNormalShader)]);
+						camNotes.setFilters([new ShaderFilter(chromNormalShader)]);
 					}
                 case 'Twisted Grins' | 'Twisted Grins Legacy':
                     if (!ClientPrefs.lowQuality)
                     {
-                        PlayState.camGame.setFilters([
-                            new ShaderFilter(PlayState.staticEffect),
-                            new ShaderFilter(PlayState.grayScale)
+                        camGame.setFilters([
+                            new ShaderFilter(staticEffect),
+                            new ShaderFilter(grayScale)
                         ]);
                     }
                     else
                     {
-                        PlayState.camGame.setFilters([new ShaderFilter(PlayState.grayScale)]);
+                        camGame.setFilters([new ShaderFilter(grayScale)]);
                     }
-                    PlayState.camHUD.setFilters([new ShaderFilter(PlayState.grayScale)]);
-                    PlayState.camNotes.setFilters([new ShaderFilter(PlayState.grayScale)]);
+                    camHUD.setFilters([new ShaderFilter(grayScale)]);
+                    camNotes.setFilters([new ShaderFilter(grayScale)]);
                 case 'Hunted':
                     if (!ClientPrefs.lowQuality)
                     {
-                        PlayState.camGame.setFilters([
-                            new ShaderFilter(PlayState.dramaticCamMovement),
-                            new ShaderFilter(PlayState.monitorFilter),
-                            new ShaderFilter(PlayState.bloomEffect)
+                        camGame.setFilters([
+                            new ShaderFilter(dramaticCamMovement),
+                            new ShaderFilter(monitorFilter),
+                            new ShaderFilter(bloomEffect)
                         ]);
                     }
                     else
                     {
-                        PlayState.camGame.setFilters([new ShaderFilter(PlayState.monitorFilter)]);
+                        camGame.setFilters([new ShaderFilter(monitorFilter)]);
                     }
-                    PlayState.camNotes.setFilters([new ShaderFilter(PlayState.grayScale)]);
+                    camNotes.setFilters([new ShaderFilter(grayScale)]);
                 case 'Mercy' | 'Mercy Legacy':
                     if (!ClientPrefs.lowQuality)
                     {
-                        PlayState.camGame.setFilters([
-                            new ShaderFilter(PlayState.waltStatic),
-                            new ShaderFilter(PlayState.dramaticCamMovement)
+                        camGame.setFilters([
+                            new ShaderFilter(waltStatic),
+                            new ShaderFilter(dramaticCamMovement)
                         ]);
                     }
                     else
                     {
-                        PlayState.camGame.setFilters([new ShaderFilter(PlayState.dramaticCamMovement)]);
+                        camGame.setFilters([new ShaderFilter(dramaticCamMovement)]);
                     }
-                    PlayState.camHUD.setFilters([new ShaderFilter(PlayState.dramaticCamMovement)]);
-                    PlayState.camNotes.setFilters([new ShaderFilter(PlayState.dramaticCamMovement)]);
+                    camHUD.setFilters([new ShaderFilter(dramaticCamMovement)]);
+                    camNotes.setFilters([new ShaderFilter(dramaticCamMovement)]);
 				case 'Cycled Sins Legacy':
-					PlayState.chromZoomShader.setFloat('aberration', 0.12);
-   		 			PlayState.chromZoomShader.setFloat('effectTime', 0.24);
-					PlayState.camGame.setFilters(
+					chromZoomShader.setFloat('aberration', 0.12);
+   		 			chromZoomShader.setFloat('effectTime', 0.24);
+					camGame.setFilters(
 					[
-						new ShaderFilter(PlayState.dramaticCamMovement)
+						new ShaderFilter(dramaticCamMovement)
 					]);
-					PlayState.camNotes.setFilters([new ShaderFilter(PlayState.grayScale)]);
+					camNotes.setFilters([new ShaderFilter(grayScale)]);
 			}
 		}
 
-		switch (PlayState.SONG.song)
+		switch (SONG.song)
 		{
 			case 'Devilish Deal':
 				devilishGaming = new VideoSprite(false);
@@ -2970,9 +2971,9 @@ class PlayState extends MusicBeatState
 					devilishGaming.setVideoTime(0);
 				});
 				dad.setColorTransform(-1, -1, -1, 1, 0, 0, 0, 0);
-				PlayState.camGame.alpha = 0.001;
-				PlayState.camHUD.alpha = 0.001;
-				PlayState.camNotes.alpha = 0.001; // 0.001 doesn't cause lag when setting alpha above 0 for some reason, yet it's still invisible
+				camGame.alpha = 0.001;
+				camHUD.alpha = 0.001;
+				camNotes.alpha = 0.001; // 0.001 doesn't cause lag when setting alpha above 0 for some reason, yet it's still invisible
 
 			case "Delusional":
 				deluSing = new VideoSprite(false);
@@ -2997,23 +2998,23 @@ class PlayState extends MusicBeatState
 				add(deluSing);
 
 			case 'Isolated' | 'Cycled Sins' | 'Delusion' | 'Laugh Track':
-				PlayState.camNotes.alpha = 0.001;
-				PlayState.camBars.fade(FlxColor.BLACK, 0.0001);
-				PlayState.camHUD.alpha = 0.001;
+				camNotes.alpha = 0.001;
+				camBars.fade(FlxColor.BLACK, 0.0001);
+				camHUD.alpha = 0.001;
 
 			case "War Dilemma":
 				cinematicBarControls("create", 1);
 				cinematicBarControls("moveboth", 0.0001, 'linear', 420);
-				PlayState.camNotes.alpha = 0.001;
-				PlayState.camHUD.alpha = 0.001;
+				camNotes.alpha = 0.001;
+				camHUD.alpha = 0.001;
 
 			case 'Mercy Legacy':
 				if (ClientPrefs.mechanics)
-					PlayState.instance.limitThing += 25;
+					limitThing += 25;
 
 			case 'Mercy':
 				if (ClientPrefs.mechanics)
-					PlayState.instance.limitThing += 20;
+					limitThing += 20;
 
 			// Glitched Mickey will give you a big fat middle finger for disabling the mechanics lmao
 			case 'Malfunction Legacy':
@@ -3024,19 +3025,19 @@ class PlayState extends MusicBeatState
 			case 'Malfunction':
 				add(crashLives);
 				add(crashLivesIcon);
-				PlayState.camNotes.alpha = 0.001;
-				PlayState.camGame.alpha = 0.001;
-				PlayState.camHUD.alpha = 0.001;
+				camNotes.alpha = 0.001;
+				camGame.alpha = 0.001;
+				camHUD.alpha = 0.001;
 				crashLivesCounter += 25;
 				crashLives.text = 'Lives: ${crashLivesCounter}';
 			case 'Birthday':
-				PlayState.camNotes.alpha = 0.001;
-				PlayState.camBars.fade(FlxColor.BLACK, 0.0001);
-				PlayState.camHUD.alpha = 0.001;
+				camNotes.alpha = 0.001;
+				camBars.fade(FlxColor.BLACK, 0.0001);
+				camHUD.alpha = 0.001;
 			case "Bless":
-				PlayState.camGame.alpha = 0.001;
-				PlayState.camHUD.alpha = 0.001;
-				PlayState.camNotes.alpha = 0.001;
+				camGame.alpha = 0.001;
+				camHUD.alpha = 0.001;
+				camNotes.alpha = 0.001;
 				var letsFight:VideoSprite = new VideoSprite(false);
 				letsFight.visible = false;
 				letsFight.load(Paths.video("blessCountdown"), [VideoSprite.muted]);
@@ -3187,7 +3188,8 @@ class PlayState extends MusicBeatState
 				}
 			case 'forestNew':
 				// It was before perfect but then Jason had put the new spritesheet... im gonna explode :) - MalyPlus
-				dad.setPosition(-110, -135); // goofy ahh goofy offsets - malyplus
+				// lol - jason the jasenous
+				dad.setPosition(-110, -15); // goofy ahh goofy offsets - malyplus
 				boyfriend.setPosition(480, -220);
 				gf.setPosition(170, -50);
 			case 'forestOld':
@@ -3323,7 +3325,7 @@ class PlayState extends MusicBeatState
 	}
 
 	public function reloadHealthBarColors() {
-		if (PlayState.SONG.song != 'Devilish Deal')
+		if (SONG.song != 'Devilish Deal')
 		{
 			healthBar.createFilledBar(FlxColor.fromRGB(dad.healthColorArray[0], dad.healthColorArray[1], dad.healthColorArray[2]),
 				FlxColor.fromRGB(boyfriend.healthColorArray[0], boyfriend.healthColorArray[1], boyfriend.healthColorArray[2]));
@@ -3899,7 +3901,7 @@ class PlayState extends MusicBeatState
 		introAssets.set('sins', ['favi/countdown/relapse-prepare', 'favi/countdown/relapse-ready', 'favi/countdown/relapse-set', 'favi/countdown/relapse-go']);
 
 		var introAlts:Array<String> = introAssets.get('default');
-		switch (PlayState.SONG.song)
+		switch (SONG.song)
 		{
 			case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Laugh Track" |  "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Birthday":
 				introAlts = introAssets.get('cartoon');
@@ -3993,7 +3995,7 @@ class PlayState extends MusicBeatState
 
 				var introAlts:Array<String> = introAssets.get('default');
 				var antialias:Bool = ClientPrefs.globalAntialiasing;
-				switch (PlayState.SONG.song)
+				switch (SONG.song)
 				{
 					case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Laugh Track" |  "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Birthday":
 						introAlts = introAssets.get('cartoon');
@@ -4028,7 +4030,7 @@ class PlayState extends MusicBeatState
 								countdownIntro.scrollFactor.set();
 								countdownIntro.updateHitbox();
 
-								if (PlayState.isPixelStage)
+								if (isPixelStage)
 									countdownIntro.setGraphicSize(Std.int(countdownIntro.width * daPixelZoom));
 
 								countdownIntro.screenCenter();
@@ -4062,7 +4064,7 @@ class PlayState extends MusicBeatState
 						countdownReady.scrollFactor.set();
 						countdownReady.updateHitbox();
 
-						if (PlayState.isPixelStage)
+						if (isPixelStage)
 							countdownReady.setGraphicSize(Std.int(countdownReady.width * daPixelZoom));
 
 						countdownReady.screenCenter();
@@ -4089,7 +4091,7 @@ class PlayState extends MusicBeatState
 						countdownSet.cameras = [camOther];
 						countdownSet.scrollFactor.set();
 
-						if (PlayState.isPixelStage)
+						if (isPixelStage)
 							countdownSet.setGraphicSize(Std.int(countdownSet.width * daPixelZoom));
 
 						countdownSet.screenCenter();
@@ -4115,7 +4117,7 @@ class PlayState extends MusicBeatState
 						countdownGo.cameras = [camOther];
 						countdownGo.scrollFactor.set();
 
-						if (PlayState.isPixelStage)
+						if (isPixelStage)
 							countdownGo.setGraphicSize(Std.int(countdownGo.width * daPixelZoom));
 
 						countdownGo.updateHitbox();
@@ -4278,7 +4280,7 @@ class PlayState extends MusicBeatState
 		previousFrameTime = FlxG.game.ticks;
 		lastReportedPlayheadPosition = 0;
 
-		FlxG.sound.playMusic(Paths.inst(PlayState.SONG.song), 1, false);
+		FlxG.sound.playMusic(Paths.inst(SONG.song), 1, false);
 		FlxG.sound.music.pitch = playbackRate;
 		FlxG.sound.music.onComplete = finishSong.bind();
 		vocals.play();
@@ -4330,10 +4332,10 @@ class PlayState extends MusicBeatState
 		// FlxG.log.add(ChartParser.parse());
 		songSpeedType = ClientPrefs.getGameplaySetting('scrolltype','multiplicative');
 
-		if (PlayState.SONG.voiceSfx1 == null)
-			PlayState.SONG.voiceSfx1 = "Player";
-		if (PlayState.SONG.voiceSfx2 == null)
-			PlayState.SONG.voiceSfx2 = 'Opponent';
+		if (SONG.voiceSfx1 == null)
+			SONG.voiceSfx1 = "Player";
+		if (SONG.voiceSfx2 == null)
+			SONG.voiceSfx2 = 'Opponent';
 
 		switch(songSpeedType)
 		{
@@ -4350,9 +4352,9 @@ class PlayState extends MusicBeatState
 
 		if (SONG.needsVoices)
 		{
-			vocals = new FlxSound().loadEmbedded(Paths.voices(PlayState.SONG.song));
-			bf_vocals = new FlxSound().loadEmbedded(Paths.voicesPlayer(PlayState.SONG.song, PlayState.SONG.voiceSfx1, CoolUtil.difficulties[storyDifficulty]));
-			opp_vocals = new FlxSound().loadEmbedded(Paths.voicesOpp(PlayState.SONG.song, PlayState.SONG.voiceSfx2, CoolUtil.difficulties[storyDifficulty]));
+			vocals = new FlxSound().loadEmbedded(Paths.voices(SONG.song));
+			bf_vocals = new FlxSound().loadEmbedded(Paths.voicesPlayer(SONG.song, SONG.voiceSfx1, CoolUtil.difficulties[storyDifficulty]));
+			opp_vocals = new FlxSound().loadEmbedded(Paths.voicesOpp(SONG.song, SONG.voiceSfx2, CoolUtil.difficulties[storyDifficulty]));
 		}
 		else
 		{
@@ -4367,7 +4369,7 @@ class PlayState extends MusicBeatState
 		FlxG.sound.list.add(vocals);
 		FlxG.sound.list.add(bf_vocals);
 		FlxG.sound.list.add(opp_vocals);
-		FlxG.sound.list.add(new FlxSound().loadEmbedded(Paths.inst(PlayState.SONG.song, CoolUtil.difficulties[storyDifficulty])));
+		FlxG.sound.list.add(new FlxSound().loadEmbedded(Paths.inst(SONG.song, CoolUtil.difficulties[storyDifficulty])));
 
 		notes = new FlxTypedGroup<Note>();
 		add(notes);
@@ -4864,89 +4866,89 @@ class PlayState extends MusicBeatState
 		shaderAnim = Conductor.songPosition / 1000;
 		if (canaddshaders)
 		{
-			switch (PlayState.SONG.song)
+			switch (SONG.song)
 			{
 				case "Bless":
 					shader.setFloat('iTime', shaderAnim);
 					othershader.setFloat('iTime', shaderAnim);
 
 				case 'Devilish Deal':
-					PlayState.chromZoomShader.setFloat('aberration', PlayState.instance.chromEffect);
-					PlayState.chromZoomShader.setFloat('effectTime', PlayState.instance.chromEffect);
-					PlayState.chromNormalShader.setFloat('rOffset', PlayState.instance.chromEffect / 70);
-					PlayState.chromNormalShader.setFloat('bOffset', -PlayState.instance.chromEffect / 70);
-					PlayState.dramaticCamMovement.setFloat('time', PlayState.instance.shaderAnim);
+					chromZoomShader.setFloat('aberration', chromEffect);
+					chromZoomShader.setFloat('effectTime', chromEffect);
+					chromNormalShader.setFloat('rOffset', chromEffect / 70);
+					chromNormalShader.setFloat('bOffset', -chromEffect / 70);
+					dramaticCamMovement.setFloat('time', shaderAnim);
 
 				case 'Isolated' | 'Lunacy' | 'Delusional':
-					PlayState.chromZoomShader.setFloat('aberration', PlayState.instance.chromEffect);
-					PlayState.chromZoomShader.setFloat('effectTime', PlayState.instance.chromEffect);
-					PlayState.chromNormalShader.setFloat('rOffset', PlayState.instance.chromEffect / 45);
-					PlayState.chromNormalShader.setFloat('bOffset', -PlayState.instance.chromEffect / 45);
-					PlayState.dramaticCamMovement.setFloat('time', PlayState.instance.shaderAnim);
-					if (PlayState.SONG.song == "Delusional")
+					chromZoomShader.setFloat('aberration', chromEffect);
+					chromZoomShader.setFloat('effectTime', chromEffect);
+					chromNormalShader.setFloat('rOffset', chromEffect / 45);
+					chromNormalShader.setFloat('bOffset', -chromEffect / 45);
+					dramaticCamMovement.setFloat('time', shaderAnim);
+					if (SONG.song == "Delusional")
 					{
-						PlayState.delusionalShift.setFloat('iTime', PlayState.instance.shaderAnim);
-						PlayState.delusionalShift.setFloat('uTime', PlayState.instance.shaderAnim);
-						PlayState.heatWaveEffect.setFloat("iTime", PlayState.instance.shaderAnim);
+						delusionalShift.setFloat('iTime', shaderAnim);
+						delusionalShift.setFloat('uTime', shaderAnim);
+						heatWaveEffect.setFloat("iTime", shaderAnim);
 					}
 
 				case 'Delusion':
-					PlayState.chromZoomShader.setFloat('aberration', PlayState.instance.chromEffect);
-					PlayState.chromZoomShader.setFloat('effectTime', PlayState.instance.chromEffect);
-					PlayState.chromNormalShader.setFloat('rOffset', PlayState.instance.chromEffect / 45);
-					PlayState.chromNormalShader.setFloat('bOffset', -PlayState.instance.chromEffect / 45);
-					PlayState.dramaticCamMovement.setFloat('time', PlayState.instance.shaderAnim);
-					PlayState.delusionalShift.setFloat('iTime', PlayState.instance.shaderAnim);
-					PlayState.delusionalShift.setFloat('uTime', PlayState.instance.shaderAnim);
-					PlayState.redVignette.setFloat('time', PlayState.instance.effectRed);
+					chromZoomShader.setFloat('aberration', chromEffect);
+					chromZoomShader.setFloat('effectTime', chromEffect);
+					chromNormalShader.setFloat('rOffset', chromEffect / 45);
+					chromNormalShader.setFloat('bOffset', -chromEffect / 45);
+					dramaticCamMovement.setFloat('time', shaderAnim);
+					delusionalShift.setFloat('iTime', shaderAnim);
+					delusionalShift.setFloat('uTime', shaderAnim);
+					redVignette.setFloat('time', effectRed);
 
 				case 'Malfunction':
-					PlayState.chromZoomShader.setFloat('aberration', PlayState.instance.chromEffect);
-					PlayState.chromZoomShader.setFloat('effectTime', PlayState.instance.chromEffect);
-					PlayState.chromNormalShader.setFloat('rOffset', PlayState.instance.chromEffect / 20);
-					PlayState.chromNormalShader.setFloat('bOffset', -PlayState.instance.chromEffect / 20);
+					chromZoomShader.setFloat('aberration', chromEffect);
+					chromZoomShader.setFloat('effectTime', chromEffect);
+					chromNormalShader.setFloat('rOffset', chromEffect / 20);
+					chromNormalShader.setFloat('bOffset', -chromEffect / 20);
 					if (ClientPrefs.epilepsy)
-						PlayState.blurShader.setFloat('bluramount', PlayState.instance.blurEffect);
+						blurShader.setFloat('bluramount', blurEffect);
 
 				case 'Malfunction Legacy':
-					PlayState.chromNormalShader.setFloat('rOffset', PlayState.instance.chromEffect / 20);
-					PlayState.chromNormalShader.setFloat('bOffset', -PlayState.instance.chromEffect / 20);
+					chromNormalShader.setFloat('rOffset', chromEffect / 20);
+					chromNormalShader.setFloat('bOffset', -chromEffect / 20);
 					if (ClientPrefs.epilepsy)
-						PlayState.blurShader.setFloat('bluramount', PlayState.instance.blurEffect);
+						blurShader.setFloat('bluramount', blurEffect);
 
 				case 'Isolated Beta' | 'Isolated Legacy' | 'Isolated Old' | 'Lunacy Legacy' | 'Delusional Legacy':
-					PlayState.andromeda.setFloat('iTime', PlayState.instance.shaderAnim);
+					andromeda.setFloat('iTime', shaderAnim);
 
 				case 'Scrapped':
 					if (ClientPrefs.epilepsy)
 					{
-						PlayState.blurShader.setFloat('bluramount', PlayState.instance.blurEffect);
-						PlayState.blurShaderHUD.setFloat('bluramount', PlayState.instance.blurHUD);
+						blurShader.setFloat('bluramount', blurEffect);
+						blurShaderHUD.setFloat('bluramount', blurHUD);
 					}
-					PlayState.chromZoomShader.setFloat('aberration', PlayState.instance.chromEffect);
-					PlayState.chromZoomShader.setFloat('effectTime', PlayState.instance.chromEffect);
-					PlayState.chromNormalShader.setFloat('rOffset', PlayState.instance.chromEffect / 35);
-					PlayState.chromNormalShader.setFloat('bOffset', -PlayState.instance.chromEffect / 35);
-					PlayState.staticEffect.setFloat('uTime', PlayState.instance.shaderAnim);
-					PlayState.staticEffect.setFloat('iTime', PlayState.instance.shaderAnim);
+					chromZoomShader.setFloat('aberration', chromEffect);
+					chromZoomShader.setFloat('effectTime', chromEffect);
+					chromNormalShader.setFloat('rOffset', chromEffect / 35);
+					chromNormalShader.setFloat('bOffset', -chromEffect / 35);
+					staticEffect.setFloat('uTime', shaderAnim);
+					staticEffect.setFloat('iTime', shaderAnim);
 
 				case 'Twisted Grins' | 'Twisted Grins Legacy':
-					PlayState.staticEffect.setFloat('uTime', PlayState.instance.shaderAnim);
-					PlayState.staticEffect.setFloat('iTime', PlayState.instance.shaderAnim);
+					staticEffect.setFloat('uTime', shaderAnim);
+					staticEffect.setFloat('iTime', shaderAnim);
 
 				case 'Hunted':
 					wobblyBG.setFloat('uTime', shaderAnim);
-					PlayState.redVignette.setFloat('time', PlayState.instance.shaderAnim);
+					redVignette.setFloat('time', shaderAnim);
 
 				case 'Mercy' | 'Mercy Legacy':
-					PlayState.waltStatic.setFloat('time', PlayState.instance.shaderAnim);
-					PlayState.dramaticCamMovement.setFloat('time', PlayState.instance.shaderAnim);
+					waltStatic.setFloat('time', shaderAnim);
+					dramaticCamMovement.setFloat('time', shaderAnim);
 
 				case 'Cycled Sins Legacy':
-					PlayState.redVignette.setFloat('time', PlayState.instance.shaderAnim);
-					PlayState.dramaticCamMovement.setFloat('time', PlayState.instance.shaderAnim);
-					PlayState.staticEffect.setFloat('uTime', PlayState.instance.shaderAnim);
-					PlayState.staticEffect.setFloat('iTime', PlayState.instance.shaderAnim);
+					redVignette.setFloat('time', shaderAnim);
+					dramaticCamMovement.setFloat('time', shaderAnim);
+					staticEffect.setFloat('uTime', shaderAnim);
+					staticEffect.setFloat('iTime', shaderAnim);
 			}
 		}
 
@@ -5089,6 +5091,8 @@ class PlayState extends MusicBeatState
 		if (dad.curCharacter == "white-noise-new")
 		{
 			dad.y += (wn_toy - dad.y) / 12;
+			iconP2.y += (((healthBar.y - 85) + -Math.sin(rotRateWn * 2) * 20 * 0.45) - iconP2.y) / 12;
+			moveCamera(!SONG.notes[curSection].mustHitSection); // so it moves properly !!
 		}
 
 		if(!inCutscene) {
@@ -5370,8 +5374,8 @@ class PlayState extends MusicBeatState
 							if (daNote.animation.curAnim.name.endsWith('end')) {
 								daNote.y += 10.5 * (fakeCrochet / 400) * 1.5 * songSpeed + (46 * (songSpeed - 1));
 								daNote.y -= 46 * (1 - (fakeCrochet / 600)) * songSpeed;
-								if(PlayState.isPixelStage) {
-									daNote.y += 8 + (6 - daNote.originalHeightForCalcs) * PlayState.daPixelZoom;
+								if(isPixelStage) {
+									daNote.y += 8 + (6 - daNote.originalHeightForCalcs) * daPixelZoom;
 								} else {
 									daNote.y -= 19;
 								}
@@ -5451,24 +5455,20 @@ class PlayState extends MusicBeatState
 		}
 		checkEventNote();
 
-		if(!endingSong && !startingSong) {
-			if (FlxG.keys.justPressed.ONE) {
-				KillNotes();
-				FlxG.sound.music.onComplete();
+		if (Main.debug)
+		{
+			if(!endingSong && !startingSong) {
+				if (FlxG.keys.justPressed.ONE) {
+					KillNotes();
+					FlxG.sound.music.onComplete();
+				}
 			}
-		}
-		#if debug
-		if(!endingSong && !startingSong) {
-			if (FlxG.keys.justPressed.ONE) {
-				KillNotes();
-				FlxG.sound.music.onComplete();
-			}
+	
 			if(FlxG.keys.justPressed.TWO) { //Go 10 seconds into the future :O
 				setSongTime(Conductor.songPosition + 10000);
 				clearNotesBefore(Conductor.songPosition);
 			}
 		}
-		#end
 
 		// the COOLER cam pos thing or whatever
 		// x, y, angle
@@ -5850,7 +5850,7 @@ class PlayState extends MusicBeatState
 	*/
 	public function tweenWaltScreen(percentage:Float, alpha:Float):Bool {
 		if (healthThing <= percentage)
-			FlxTween.tween(PlayState.instance.waltScreenThing, {alpha: alpha}, 0.15, {ease: FlxEase.sineInOut});
+			FlxTween.tween(waltScreenThing, {alpha: alpha}, 0.15, {ease: FlxEase.sineInOut});
 		else
 			return true;
 		return false;
@@ -5946,42 +5946,42 @@ class PlayState extends MusicBeatState
             switch (controlType.toLowerCase())
             {
                 case "add" | "create":
-					// idk if i should change this cus i dont wanna fuck up and i lazy to test them lol -sylinpix
-                    if (PlayState.instance.cinematicBars["top"] == null)
+					// idk if i should change this cus i dont wanna fuck up and i lazy to test them lol -sylinpix (jason)
+                    if (cinematicBars["top"] == null)
                     {
-                        PlayState.instance.cinematicBars["top"] = new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
-                        PlayState.instance.cinematicBars["top"].screenCenter(X);
-                        PlayState.instance.cinematicBars["top"].cameras = [PlayState.camBars];
-                        PlayState.instance.cinematicBars["top"].y = 0 - PlayState.instance.cinematicBars["top"].height; // offscreen
-                        PlayState.instance.add(PlayState.instance.cinematicBars["top"]);
+                        cinematicBars["top"] = new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
+                        cinematicBars["top"].screenCenter(X);
+                        cinematicBars["top"].cameras = [camBars];
+                        cinematicBars["top"].y = 0 - cinematicBars["top"].height; // offscreen
+                        add(cinematicBars["top"]);
                     }
     
-                    if (PlayState.instance.cinematicBars["bottom"] == null)
+                    if (cinematicBars["bottom"] == null)
                     {
-                        PlayState.instance.cinematicBars["bottom"] = new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
-                        PlayState.instance.cinematicBars["bottom"].screenCenter(X);
-                        PlayState.instance.cinematicBars["bottom"].cameras = [PlayState.camBars];
-                        PlayState.instance.cinematicBars["bottom"].y = FlxG.height; // offscreen
-                        PlayState.instance.add(PlayState.instance.cinematicBars["bottom"]);
+                        cinematicBars["bottom"] = new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
+                        cinematicBars["bottom"].screenCenter(X);
+                        cinematicBars["bottom"].cameras = [camBars];
+                        cinematicBars["bottom"].y = FlxG.height; // offscreen
+                        add(cinematicBars["bottom"]);
                     }
                     
                 case "remove" | "kill" | "delete":
-                    if (PlayState.instance.cinematicBars["top"] != null)
+                    if (cinematicBars["top"] != null)
 					{
-                        PlayState.instance.cinematicBars["top"].kill();
-						PlayState.instance.cinematicBars["top"] = null;
+                        cinematicBars["top"].kill();
+						cinematicBars["top"] = null;
 					}
-                    if (PlayState.instance.cinematicBars["bottom"] != null)
+                    if (cinematicBars["bottom"] != null)
 					{
-                        PlayState.instance.cinematicBars["bottom"].kill();
-						PlayState.instance.cinematicBars["bottom"] = null;
+                        cinematicBars["bottom"].kill();
+						cinematicBars["bottom"] = null;
 					}
                     
                 case "movetop" | "move top":
 					if (topBarTwn != null)
 						topBarTwn.cancel();
 
-                    topBarTwn = FlxTween.tween(PlayState.instance.cinematicBars["top"], {y: position - FlxG.height}, speed, {ease: returnTweenEase(ease), onComplete: function(twn:FlxTween)
+                    topBarTwn = FlxTween.tween(cinematicBars["top"], {y: position - FlxG.height}, speed, {ease: returnTweenEase(ease), onComplete: function(twn:FlxTween)
 					{
 						topBarTwn = null;
 					}});
@@ -5990,7 +5990,7 @@ class PlayState extends MusicBeatState
 					if (bottomBarTwn != null)
 						bottomBarTwn.cancel();
 
-                    bottomBarTwn = FlxTween.tween(PlayState.instance.cinematicBars["bottom"], {y: FlxG.height - position}, speed, {ease: returnTweenEase(ease), onComplete: function(twn:FlxTween)
+                    bottomBarTwn = FlxTween.tween(cinematicBars["bottom"], {y: FlxG.height - position}, speed, {ease: returnTweenEase(ease), onComplete: function(twn:FlxTween)
 					{
 						bottomBarTwn = null;
 					}});
@@ -6001,22 +6001,22 @@ class PlayState extends MusicBeatState
 					if (bottomBarTwn != null)
 						bottomBarTwn.cancel();
 
-                    topBarTwn = FlxTween.tween(PlayState.instance.cinematicBars["top"], {y: position - FlxG.height}, speed, {ease: returnTweenEase(ease), onComplete: function(twn:FlxTween)
+                    topBarTwn = FlxTween.tween(cinematicBars["top"], {y: position - FlxG.height}, speed, {ease: returnTweenEase(ease), onComplete: function(twn:FlxTween)
 					{
 						topBarTwn = null;
 					}});
-                    bottomBarTwn = FlxTween.tween(PlayState.instance.cinematicBars["bottom"], {y: FlxG.height - position}, speed, {ease: returnTweenEase(ease), onComplete: function(twn:FlxTween)
+                    bottomBarTwn = FlxTween.tween(cinematicBars["bottom"], {y: FlxG.height - position}, speed, {ease: returnTweenEase(ease), onComplete: function(twn:FlxTween)
 					{
 						bottomBarTwn = null;
 					}});
                     
                 case "boptop" | "bop top":
-                    PlayState.instance.cinematicBars["top"].y = position - FlxG.height;
-					FlxTween.tween(PlayState.instance.cinematicBars["top"], {y: (position - FlxG.height) + bopValue}, speed, {ease: returnTweenEase(ease)});
+                    cinematicBars["top"].y = position - FlxG.height;
+					FlxTween.tween(cinematicBars["top"], {y: (position - FlxG.height) + bopValue}, speed, {ease: returnTweenEase(ease)});
                     
                 case "bopbottom" | "bop bottom":
-                    PlayState.instance.cinematicBars["bottom"].y = FlxG.height - position;
-					FlxTween.tween(PlayState.instance.cinematicBars["bottom"], {y: (FlxG.height - position) - bopValue}, speed, {ease: returnTweenEase(ease)});
+                    cinematicBars["bottom"].y = FlxG.height - position;
+					FlxTween.tween(cinematicBars["bottom"], {y: (FlxG.height - position) - bopValue}, speed, {ease: returnTweenEase(ease)});
                     
                 case "bopboth" | "bop both":
 					if (topBarTwn != null)
@@ -6024,13 +6024,13 @@ class PlayState extends MusicBeatState
 					if (bottomBarTwn != null)
 						bottomBarTwn.cancel();
 
-                    PlayState.instance.cinematicBars["top"].y = position - FlxG.height;
-                    PlayState.instance.cinematicBars["bottom"].y = FlxG.height - position;
-					topBarTwn = FlxTween.tween(PlayState.instance.cinematicBars["top"], {y: (position - FlxG.height) + bopValue}, speed, {ease: returnTweenEase(ease), onComplete: function(twn:FlxTween)
+                    cinematicBars["top"].y = position - FlxG.height;
+                    cinematicBars["bottom"].y = FlxG.height - position;
+					topBarTwn = FlxTween.tween(cinematicBars["top"], {y: (position - FlxG.height) + bopValue}, speed, {ease: returnTweenEase(ease), onComplete: function(twn:FlxTween)
 					{
 						topBarTwn = null;
 					}});
-					bottomBarTwn = FlxTween.tween(PlayState.instance.cinematicBars["bottom"], {y: (FlxG.height - position) - bopValue}, speed, {ease: returnTweenEase(ease), onComplete: function(twn:FlxTween)
+					bottomBarTwn = FlxTween.tween(cinematicBars["bottom"], {y: (FlxG.height - position) - bopValue}, speed, {ease: returnTweenEase(ease), onComplete: function(twn:FlxTween)
 					{
 						bottomBarTwn = null;
 					}});
@@ -6050,7 +6050,7 @@ class PlayState extends MusicBeatState
         */
         public function tweenCamera(zoom:Float = 0.9, time:Float = 0.6, ease:Null<String>):Void
         {
-            FlxTween.tween(PlayState.camGame, {zoom: zoom}, time, {ease: returnTweenEase(ease), onComplete: e -> PlayState.defaultCamZoom = zoom});
+            FlxTween.tween(camGame, {zoom: zoom}, time, {ease: returnTweenEase(ease), onComplete: e -> defaultCamZoom = zoom});
         }
 
 	/**
@@ -6078,7 +6078,7 @@ class PlayState extends MusicBeatState
 					* - DEMOLITIONDON96
 					*/
 	
-					switch (PlayState.SONG.song)
+					switch (SONG.song)
 					{
 						default:
 							// nothing
@@ -6092,42 +6092,42 @@ class PlayState extends MusicBeatState
 					* - DEMOLITIOONDON96
 					*/
 	
-					switch (PlayState.curStage)
+					switch (curStage)
 					{
 						case 'waltRoom':
-							if (PlayState.instance.limitThing > 0)
+							if (limitThing > 0)
 							{
 								healthThing += 1.25;
-								PlayState.instance.limitThing -= 1;
+								limitThing -= 1;
 							}
 						
 						case 'apartment':
-							if (PlayState.instance.shootin)
-								PlayState.instance.dodged = true;
+							if (shootin)
+								dodged = true;
 	
 						default:
 							// nothing
 					}
 				}
 			} else {
-				switch (PlayState.SONG.song)
+				switch (SONG.song)
 				{
 					default:
 						//nothing
 				}
 				
-				switch (PlayState.curStage)
+				switch (curStage)
 				{
 					case 'waltRoom':
-						if (healthThing < 0.3 && PlayState.instance.limitThing > 0)
+						if (healthThing < 0.3 && limitThing > 0)
 						{
 							healthThing += 1.25;
-							PlayState.instance.limitThing -= 1;
+							limitThing -= 1;
 						}
 						
 					case 'apartment':
-						if (PlayState.instance.shootin)
-							PlayState.instance.dodged = true;
+						if (shootin)
+							dodged = true;
 					
 					default:
 						// nothing
@@ -6155,7 +6155,7 @@ class PlayState extends MusicBeatState
 			bf_vocals.pause();
 			opp_vocals.pause();
 		}
-		openSubState((PlayState.SONG.song.toLowerCase().endsWith('legacy') || PlayState.SONG.song == "Isolated Beta" || PlayState.SONG.song == "Isolated Old" ? new PauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y) : new FAVIPauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y)));
+		openSubState((SONG.song.toLowerCase().endsWith('legacy') || SONG.song == "Isolated Beta" || SONG.song == "Isolated Old" ? new PauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y) : new FAVIPauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y)));
 		//}
 
 		#if desktop
@@ -6539,7 +6539,7 @@ class PlayState extends MusicBeatState
 								addCharacterToList(value2, charType);
 							}
 
-							//if (Assets.exists(Paths.getPreloadPath('characters/' + boyfriend.curCharacter + '.json')) && Assets.exists(Paths.voicesPlayer(PlayState.SONG.song, boyfriend.curCharacter, CoolUtil.difficulties[storyDifficulty])))
+							//if (Assets.exists(Paths.getPreloadPath('characters/' + boyfriend.curCharacter + '.json')) && Assets.exists(Paths.voicesPlayer(SONG.song, boyfriend.curCharacter, CoolUtil.difficulties[storyDifficulty])))
 								//hasVocals = true;
 
 							var lastAlpha:Float = boyfriend.alpha;
@@ -6550,7 +6550,7 @@ class PlayState extends MusicBeatState
 							//bf_vocals.destroy();
 							//bf_vocals = null;
 							//if (SONG.needsVoices)
-								//bf_vocals = new FlxSound().loadEmbedded(Paths.voicesPlayer(PlayState.SONG.song, !hasVocals ? "Player" : boyfriend.curCharacter, CoolUtil.difficulties[storyDifficulty]));
+								//bf_vocals = new FlxSound().loadEmbedded(Paths.voicesPlayer(SONG.song, !hasVocals ? "Player" : boyfriend.curCharacter, CoolUtil.difficulties[storyDifficulty]));
 							//else
 								//bf_vocals = new FlxSound();
 						}
@@ -6562,7 +6562,7 @@ class PlayState extends MusicBeatState
 								addCharacterToList(value2, charType);
 							}
 
-							//if (Assets.exists(Paths.getPreloadPath('characters/' + dad.curCharacter + '.json')) && Assets.exists(Paths.voicesOpp(PlayState.SONG.song, dad.curCharacter, CoolUtil.difficulties[storyDifficulty])))
+							//if (Assets.exists(Paths.getPreloadPath('characters/' + dad.curCharacter + '.json')) && Assets.exists(Paths.voicesOpp(SONG.song, dad.curCharacter, CoolUtil.difficulties[storyDifficulty])))
 								//hasVocals = true;
 
 							var wasGf:Bool = dad.curCharacter.startsWith('gf');
@@ -6581,7 +6581,7 @@ class PlayState extends MusicBeatState
 							//opp_vocals.destroy();
 							//opp_vocals = null;
 							//if (SONG.needsVoices)
-								//opp_vocals = new FlxSound().loadEmbedded(Paths.voicesOpp(PlayState.SONG.song, !hasVocals ? "Opponent" : dad.curCharacter, CoolUtil.difficulties[storyDifficulty]));
+								//opp_vocals = new FlxSound().loadEmbedded(Paths.voicesOpp(SONG.song, !hasVocals ? "Opponent" : dad.curCharacter, CoolUtil.difficulties[storyDifficulty]));
 							//else
 								//opp_vocals = new FlxSound();
 						}
@@ -6907,7 +6907,7 @@ class PlayState extends MusicBeatState
 					var difficulty:String = CoolUtil.getDifficultyFilePath();
 
 					trace('LOADING NEXT SONG');
-					trace(Paths.formatToSongPath(PlayState.storyPlaylist[0]) + difficulty);
+					trace(Paths.formatToSongPath(storyPlaylist[0]) + difficulty);
 
 					var winterHorrorlandNext = (Paths.formatToSongPath(SONG.song) == "eggnog");
 					if (winterHorrorlandNext)
@@ -6927,9 +6927,9 @@ class PlayState extends MusicBeatState
 					prevCamFollow = camFollow;
 					prevCamFollowPos = camFollowPos;
 
-					var songLowercase:String = Paths.formatToSongPath(PlayState.storyPlaylist[0]);
+					var songLowercase:String = Paths.formatToSongPath(storyPlaylist[0]);
 
-					PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0] + difficulty, songLowercase);
+					SONG = Song.loadFromJson(storyPlaylist[0] + difficulty, songLowercase);
 					FlxG.sound.music.stop();
 
 					if(winterHorrorlandNext) {
@@ -7065,7 +7065,7 @@ class PlayState extends MusicBeatState
 		var pixelShitPart1:String = "";
 		var pixelShitPart2:String = '';
 
-		if (PlayState.isPixelStage)
+		if (isPixelStage)
 		{
 			pixelShitPart1 = 'pixelUI/';
 			pixelShitPart2 = '-pixel';
@@ -7110,7 +7110,7 @@ class PlayState extends MusicBeatState
 			lastRating = rating;
 		}
 
-		if (!PlayState.isPixelStage)
+		if (!isPixelStage)
 		{
 			comboSpr.setGraphicSize(Std.int(comboSpr.width * 0.7));
 			comboSpr.antialiasing = ClientPrefs.globalAntialiasing;
@@ -7165,7 +7165,7 @@ class PlayState extends MusicBeatState
 			if (!ClientPrefs.comboStacking)
 				lastScore.push(numScore);
 
-			if (!PlayState.isPixelStage)
+			if (!isPixelStage)
 			{
 				//nothing
 			}
@@ -7590,7 +7590,7 @@ class PlayState extends MusicBeatState
 			opp_vocals.volume = 1;
 		}
 
-		switch (PlayState.SONG.song)
+		switch (SONG.song)
         {  
             case 'Lunacy' | 'Delusional':
                 if (ClientPrefs.mechanics)
@@ -7603,54 +7603,54 @@ class PlayState extends MusicBeatState
                     if (healthThing > 0.4)
                         healthThing -= 0.01;
 
-					PlayState.camNotes.angle = PlayState.camHUD.angle = FlxG.random.float(-1.5, 1.5);
-					FlxTween.tween(PlayState.camNotes, {angle: 0}, .025);
-					PlayState.camGame.shake(0.0035, 0.05);
-					PlayState.camHUD.shake(0.002, 0.035);
-					FlxTween.tween(PlayState.camHUD, {angle: 0}, .025);
-                    PlayState.camNotes.shake(0.002, 0.035);
+					camNotes.angle = camHUD.angle = FlxG.random.float(-1.5, 1.5);
+					FlxTween.tween(camNotes, {angle: 0}, .025);
+					camGame.shake(0.0035, 0.05);
+					camHUD.shake(0.002, 0.035);
+					FlxTween.tween(camHUD, {angle: 0}, .025);
+                    camNotes.shake(0.002, 0.035);
                 }
                 
             case 'Malfunction':
-                if (PlayState.dad.curCharacter == 'glitched-mickey-new-pixel')
+                if (dad.curCharacter == 'glitched-mickey-new-pixel')
                 {
                     if (healthThing > 0.05)
                         healthThing -= 0.01;
                     if (ClientPrefs.shaking)
                     {
-                        PlayState.camGame.shake(0.008, 0.07);
-                        for (i in [PlayState.camHUD, PlayState.camNotes])
+                        camGame.shake(0.008, 0.07);
+                        for (i in [camHUD, camNotes])
                             i.shake(0.015, 0.07);
                     }
-                    if (PlayState.instance.canaddshaders)
+                    if (canaddshaders)
                     {			
                         if(!ClientPrefs.lowQuality && ClientPrefs.epilepsy)
                         {
-                            PlayState.camGame.setFilters([
-                                new ShaderFilter(PlayState.chromZoomShader),
-                                new ShaderFilter(PlayState.chromNormalShader),
-                                new ShaderFilter(PlayState.blurShader)
+                            camGame.setFilters([
+                                new ShaderFilter(chromZoomShader),
+                                new ShaderFilter(chromNormalShader),
+                                new ShaderFilter(blurShader)
                             ]);
-                            PlayState.camHUD.setFilters([
-                                new ShaderFilter(PlayState.chromNormalShader),
-                                new ShaderFilter(PlayState.blurShader)
+                            camHUD.setFilters([
+                                new ShaderFilter(chromNormalShader),
+                                new ShaderFilter(blurShader)
                             ]);
-                            PlayState.camNotes.setFilters([
-                                    new ShaderFilter(PlayState.chromNormalShader),
-                                    new ShaderFilter(PlayState.blurShader)
+                            camNotes.setFilters([
+                                    new ShaderFilter(chromNormalShader),
+                                    new ShaderFilter(blurShader)
                                 ]);
                         }
                         
-                        PlayState.instance.chromEffect += 0.2;
-                        PlayState.instance.blurEffect += 2.5;
+                        chromEffect += 0.2;
+                        blurEffect += 2.5;
                         
-                        if (PlayState.instance.chromTween != null)
-                            PlayState.instance.chromTween.cancel();
-                        if (PlayState.instance.blurTween != null)
-                            PlayState.instance.blurTween.cancel();
+                        if (chromTween != null)
+                            chromTween.cancel();
+                        if (blurTween != null)
+                            blurTween.cancel();
 
-                        PlayState.instance.chromTween = FlxTween.tween(
-                            PlayState.instance,
+                        chromTween = FlxTween.tween(
+                            instance,
                             {
                                 chromEffect: 0.0001
                             },
@@ -7659,12 +7659,12 @@ class PlayState extends MusicBeatState
                                 ease: FlxEase.sineOut,
                                 onComplete: function(twn:FlxTween)
                                 {
-                                    PlayState.instance.chromTween = null;
+                                    chromTween = null;
                                 }
                             }
                         );
-                        PlayState.instance.blurTween = FlxTween.tween(
-                            PlayState.instance,
+                        blurTween = FlxTween.tween(
+                            instance,
                             {
                                 blurEffect: 0.0
                             },
@@ -7676,55 +7676,55 @@ class PlayState extends MusicBeatState
                                 
                                     if(!ClientPrefs.lowQuality)
                                     {
-                                        PlayState.camGame.setFilters([new ShaderFilter(PlayState.chromZoomShader), new ShaderFilter(PlayState.chromNormalShader)]);
-                                        PlayState.camHUD.setFilters([new ShaderFilter(PlayState.chromNormalShader)]);
-                                        PlayState.camNotes.setFilters([new ShaderFilter(PlayState.chromNormalShader)]);
+                                        camGame.setFilters([new ShaderFilter(chromZoomShader), new ShaderFilter(chromNormalShader)]);
+                                        camHUD.setFilters([new ShaderFilter(chromNormalShader)]);
+                                        camNotes.setFilters([new ShaderFilter(chromNormalShader)]);
                                     }
-                                    PlayState.instance.blurTween = null;
+                                    blurTween = null;
                                 }
                             }
                         );
                     }
                 }
-                else if (PlayState.dad.curCharacter == 'gm-tired-pixel')
+                else if (dad.curCharacter == 'gm-tired-pixel')
                 {
                     if (healthThing > 0.36)
                         healthThing -= 0.01;
                     if (ClientPrefs.shaking)
                     {
-                        PlayState.camGame.shake(0.004, 0.07);
-                        PlayState.camHUD.shake(0.007, 0.07);
-                        PlayState.camNotes.shake(0.07, 0.07);
+                        camGame.shake(0.004, 0.07);
+                        camHUD.shake(0.007, 0.07);
+                        camNotes.shake(0.07, 0.07);
                     }
-                    if (PlayState.instance.canaddshaders)
+                    if (canaddshaders)
                     {
                         if(!ClientPrefs.lowQuality && ClientPrefs.epilepsy)
                         {
-                            PlayState.camGame.setFilters([
-                                new ShaderFilter(PlayState.chromZoomShader),
-                                new ShaderFilter(PlayState.chromNormalShader),
-                                new ShaderFilter(PlayState.blurShader)
+                            camGame.setFilters([
+                                new ShaderFilter(chromZoomShader),
+                                new ShaderFilter(chromNormalShader),
+                                new ShaderFilter(blurShader)
                             ]);
-                            PlayState.camHUD.setFilters([
-                                new ShaderFilter(PlayState.chromNormalShader),
-                                new ShaderFilter(PlayState.blurShader)
+                            camHUD.setFilters([
+                                new ShaderFilter(chromNormalShader),
+                                new ShaderFilter(blurShader)
                             ]);
-                            PlayState.camNotes.setFilters([
-                                    new ShaderFilter(PlayState.chromNormalShader),
-                                    new ShaderFilter(PlayState.blurShader)
+                            camNotes.setFilters([
+                                    new ShaderFilter(chromNormalShader),
+                                    new ShaderFilter(blurShader)
                                 ]);
                         }
                         
-                        PlayState.instance.chromEffect += 0.25;
-                        PlayState.instance.blurEffect += 2.5;
+                        chromEffect += 0.25;
+                        blurEffect += 2.5;
                         
-                        if (PlayState.instance.chromTween != null)
-                            PlayState.instance.chromTween.cancel();
-                        if (PlayState.instance.blurTween != null)
-                            PlayState.instance.blurTween.cancel();
+                        if (chromTween != null)
+                            chromTween.cancel();
+                        if (blurTween != null)
+                            blurTween.cancel();
 
-                        PlayState.instance.chromTween = FlxTween.tween(
-                            PlayState.instance,
+                        chromTween = FlxTween.tween(
+                            instance,
                             {
                                 chromEffect: 0.0001
                             },
@@ -7733,12 +7733,12 @@ class PlayState extends MusicBeatState
                                 ease: FlxEase.sineOut,
                                 onComplete: function(twn:FlxTween)
                                 {
-                                    PlayState.instance.chromTween = null;
+                                    chromTween = null;
                                 }
                             }
                         );
-                        PlayState.instance.blurTween = FlxTween.tween(
-                            PlayState.instance,
+                        blurTween = FlxTween.tween(
+                            instance,
                             {
                                 blurEffect: 0.0
                             },
@@ -7750,11 +7750,11 @@ class PlayState extends MusicBeatState
                                 
                                     if(!ClientPrefs.lowQuality)
                                     {
-                                        PlayState.camGame.setFilters([new ShaderFilter(PlayState.chromZoomShader), new ShaderFilter(PlayState.chromNormalShader)]);
-                                        PlayState.camHUD.setFilters([new ShaderFilter(PlayState.chromNormalShader)]);
-                                        PlayState.camNotes.setFilters([new ShaderFilter(PlayState.chromNormalShader)]);
+                                        camGame.setFilters([new ShaderFilter(chromZoomShader), new ShaderFilter(chromNormalShader)]);
+                                        camHUD.setFilters([new ShaderFilter(chromNormalShader)]);
+                                        camNotes.setFilters([new ShaderFilter(chromNormalShader)]);
                                     }
-                                    PlayState.instance.blurTween = null;
+                                    blurTween = null;
                                 }
                             }
                         );
@@ -7766,38 +7766,38 @@ class PlayState extends MusicBeatState
                        healthThing -= 0.016;
                 if (ClientPrefs.shaking)
                 {
-                    PlayState.camGame.shake(0.008, 0.07);
-                    for (i in [PlayState.camHUD, PlayState.camNotes])
+                    camGame.shake(0.008, 0.07);
+                    for (i in [camHUD, camNotes])
                         i.shake(0.015, 0.07);
                 }
-                if (PlayState.instance.canaddshaders)
+                if (canaddshaders)
                 {
                     if(!ClientPrefs.lowQuality && ClientPrefs.epilepsy)
                     {
-                        PlayState.camGame.setFilters([
-                            new ShaderFilter(PlayState.chromNormalShader),
-                            new ShaderFilter(PlayState.blurShader)
+                        camGame.setFilters([
+                            new ShaderFilter(chromNormalShader),
+                            new ShaderFilter(blurShader)
                         ]);
-                        PlayState.camHUD.setFilters([
-                            new ShaderFilter(PlayState.chromNormalShader),
-                            new ShaderFilter(PlayState.blurShader)
+                        camHUD.setFilters([
+                            new ShaderFilter(chromNormalShader),
+                            new ShaderFilter(blurShader)
                         ]);
-                        PlayState.camNotes.setFilters([
-                                new ShaderFilter(PlayState.chromNormalShader),
-                                new ShaderFilter(PlayState.blurShader)
+                        camNotes.setFilters([
+                                new ShaderFilter(chromNormalShader),
+                                new ShaderFilter(blurShader)
                             ]);
                     }
                         
-                    PlayState.instance.chromEffect += 0.3;
-                    PlayState.instance.blurEffect += 1.5;
+                    chromEffect += 0.3;
+                    blurEffect += 1.5;
                         
-                    if (PlayState.instance.chromTween != null)
-                        PlayState.instance.chromTween.cancel();
-                    if (PlayState.instance.blurTween != null)
-                        PlayState.instance.blurTween.cancel();
+                    if (chromTween != null)
+                        chromTween.cancel();
+                    if (blurTween != null)
+                        blurTween.cancel();
 
-                    PlayState.instance.chromTween = FlxTween.tween(
-                        PlayState.instance,
+                    chromTween = FlxTween.tween(
+                        instance,
                         {
                             chromEffect: 0.0001
                         },
@@ -7806,12 +7806,12 @@ class PlayState extends MusicBeatState
                             ease: FlxEase.sineOut,
                             onComplete: function(twn:FlxTween)
                             {
-                                PlayState.instance.chromTween = null;
+                                chromTween = null;
                             }
                         }
                     );
-                    PlayState.instance.blurTween = FlxTween.tween(
-                        PlayState.instance,
+                    blurTween = FlxTween.tween(
+                        instance,
                         {
                             blurEffect: 0.0
                         },
@@ -7823,21 +7823,21 @@ class PlayState extends MusicBeatState
                                 
                                 if(!ClientPrefs.lowQuality)
                                 {
-                                    PlayState.camGame.setFilters([new ShaderFilter(PlayState.chromNormalShader)]);
-                                    PlayState.camHUD.setFilters([new ShaderFilter(PlayState.chromNormalShader)]);
-                                    PlayState.camNotes.setFilters([new ShaderFilter(PlayState.chromNormalShader)]);
+                                    camGame.setFilters([new ShaderFilter(chromNormalShader)]);
+                                    camHUD.setFilters([new ShaderFilter(chromNormalShader)]);
+                                    camNotes.setFilters([new ShaderFilter(chromNormalShader)]);
                                 }
-                                PlayState.instance.blurTween = null;
+                                blurTween = null;
                             }
                         }
                     );
                 }
                 
             case "Dont Cross":
-                PlayState.boyfriend.x += 1.2;
-                PlayState.boyfriend.y -= 1.2;
-                PlayState.boyfriend.scale.x -= 0.0012;
-                PlayState.boyfriend.scale.y -= 0.0012;
+                boyfriend.x += 1.2;
+                boyfriend.y -= 1.2;
+                boyfriend.scale.x -= 0.0012;
+                boyfriend.scale.y -= 0.0012;
 
                 if (ClientPrefs.mechanics)
                 {
@@ -7953,7 +7953,7 @@ class PlayState extends MusicBeatState
 							if (FlxG.random.bool(10))
 								Application.current.window.alert("You Suck LMAO\n\n\nmaybe actually be good at the game for once instead of killing yourself so many times bro.", 'Note About Your Skill:'); // 10% of probability
 							else
-								Application.current.window.alert("<Message Log>\n========================                                                                                        \n\nPlayState.hx (7504):\n   if(crashLivesCounter == -1)\n   {trace('0 lives left, closing game...')}\n\n\njust give up, you stand no chance against me, everett.",
+								Application.current.window.alert("<Message Log>\n========================                                                                                        \n\nhx (7504):\n   if(crashLivesCounter == -1)\n   {trace('0 lives left, closing game...')}\n\n\njust give up, you stand no chance against me, everett.",
 									'Error On Funkin.avi.exe!:');
 				
 							Sys.exit(0);
@@ -8057,10 +8057,10 @@ class PlayState extends MusicBeatState
 
 			if (SONG.song == "Dont Cross")
 			{
-				PlayState.boyfriend.x -= 1.4;
-				PlayState.boyfriend.y += 1.4;
-				PlayState.boyfriend.scale.x += 0.0014;
-				PlayState.boyfriend.scale.y += 0.0014;
+				boyfriend.x -= 1.4;
+				boyfriend.y += 1.4;
+				boyfriend.scale.x += 0.0014;
+				boyfriend.scale.y += 0.0014;
 			}
 
 			var isSus:Bool = note.isSustainNote; //GET OUT OF MY HEAD, GET OUT OF MY HEAD, GET OUT OF MY HEAD
@@ -8131,7 +8131,7 @@ class PlayState extends MusicBeatState
 
 	public function spawnNoteSplash(x:Float, y:Float, data:Int, ?note:Note = null) {
 		var skin:String = 'noteSplashes';
-		if(PlayState.SONG.splashSkin != null && PlayState.SONG.splashSkin.length > 0) skin = PlayState.SONG.splashSkin;
+		if(SONG.splashSkin != null && SONG.splashSkin.length > 0) skin = SONG.splashSkin;
 
 		var hue:Float = 0;
 		var sat:Float = 0;
@@ -8371,7 +8371,7 @@ class PlayState extends MusicBeatState
 	{
 		super.stepHit();
 
-		switch (PlayState.SONG.song)
+		switch (SONG.song)
 		{
 			case "War Dilemma":
 				switch (curStep)
@@ -8398,7 +8398,7 @@ class PlayState extends MusicBeatState
 				switch (curStep)
 				{
 					case 1150: 
-						PlayState.defaultCamZoom = PlayState.camGame.zoom = 1.2;
+						defaultCamZoom = camGame.zoom = 1.2;
 						cinematicBarControls('moveboth', 0.0001, 'linear', 155);
 				}
 
@@ -8407,7 +8407,7 @@ class PlayState extends MusicBeatState
 				{
 					case 262 | 294 | 326 | 358: 
 						FlxG.camera.zoom += 0.015;
-						//PlayState.instance.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.35, ease: FlxEase.sineOut, timer: 0.6});
+						//camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.35, ease: FlxEase.sineOut, timer: 0.6});
 				}
 			case "Birthday":
 				switch (curStep)
@@ -8435,9 +8435,15 @@ class PlayState extends MusicBeatState
 							FlxTween.tween(light, {alpha: light.alpha + 0.2}, 0.64, {ease: FlxEase.expoOut});
 						}
 					case 253 | 263 | 273 | 284 | 295 | 305 | 316 | 326 | 337 | 347 | 358 | 368 | 379 | 389 | 400:
+						/*
+						please burn in hell
 						camGame.zoom += 0.1;
 						camHUD.zoom += 0.07;
-						camNotes.zoom += 0.1;
+						camNotes.zoom += 0.1;*/
+
+						camGame.zoom += 0.03;
+						camHUD.zoom += 0.015;
+						camNotes.zoom += 0.03;
 					case 421:
 						defaultCamZoom = 1.2;
 					case 442:
@@ -8466,7 +8472,7 @@ class PlayState extends MusicBeatState
 						lightI.visible = true;
 						flairI.visible = true;
 						playfieldRenderer.isInvertColors = true;
-						dad.blend = NORMAL;
+						dad.blend = iconP2.blend = NORMAL;
 						camBars.flash(FlxColor.BLACK, 2);
 						cinematicBarControls("add", 0.0001, 'linear', 0);
 						cinematicBarControls("moveboth", 0.0001, 'linear', 130);
@@ -8542,7 +8548,7 @@ class PlayState extends MusicBeatState
 						lightI.visible = false;
 						flairI.visible = false;
 						playfieldRenderer.isInvertColors = false;
-						dad.blend = ADD;
+						dad.blend = iconP2.blend = ADD;
 						cinematicBarControls("moveboth", 3, 'circInOut', 0);
 					case 1850:
 						defaultCamZoom = 0.9;
@@ -8576,7 +8582,7 @@ class PlayState extends MusicBeatState
 						lightI.visible = true;
 						flairI.visible = true;
 						playfieldRenderer.isInvertColors = true;
-						dad.blend = NORMAL;
+						dad.blend = iconP2.blend = NORMAL;
 						camBars.flash(FlxColor.BLACK, 2);
 						cinematicBarControls("moveboth", 1.5, 'sineout', 130);
 					case 2860:
@@ -8794,7 +8800,7 @@ class PlayState extends MusicBeatState
 						}
 					});
 				}	
-		switch (PlayState.SONG.song)
+		switch (SONG.song)
 		{
 			case "Bless":
 				switch (curBeat)
@@ -8808,171 +8814,171 @@ class PlayState extends MusicBeatState
 				switch (curBeat)
 				{
 					case 1 | 16 | 352 | 368: tweenCamera(1.3, 5, 'sineInOut');
-					case 14 | 30 | 46 | 64 | 80 | 84: PlayState.defaultCamZoom = 0.9;
+					case 14 | 30 | 46 | 64 | 80 | 84: defaultCamZoom = 0.9;
 					case 32 | 48: tweenCamera(1.2, 3, 'sinInOut');
-					case 40 | 42 | 44 | 56 | 58 | 60 | 62 | 82: PlayState.defaultCamZoom += 0.12;
-					case 66 | 86: PlayState.defaultCamZoom += 0.2;
-					case 68 | 88: PlayState.defaultCamZoom -= 0.15;
-					case 72 | 74 | 76 | 78 | 90 | 92 | 94: PlayState.defaultCamZoom += 0.09;
+					case 40 | 42 | 44 | 56 | 58 | 60 | 62 | 82: defaultCamZoom += 0.12;
+					case 66 | 86: defaultCamZoom += 0.2;
+					case 68 | 88: defaultCamZoom -= 0.15;
+					case 72 | 74 | 76 | 78 | 90 | 92 | 94: defaultCamZoom += 0.09;
 					case 96 | 224:
-						PlayState.instance.camFlashSystem(BG_DARK, {alpha: 0, timer: 0.001, ease: FlxEase.sineInOut});
-						if (ClientPrefs.flashing) PlayState.camGame.flash(FlxColor.WHITE, 1);
-						PlayState.defaultCamZoom = 0.9;
+						camFlashSystem(BG_DARK, {alpha: 0, timer: 0.001, ease: FlxEase.sineInOut});
+						if (ClientPrefs.flashing) camGame.flash(FlxColor.WHITE, 1);
+						defaultCamZoom = 0.9;
 					case 98 | 106 | 114 | 122 | 130 | 138 | 146 | 154 | 226 | 234 | 242 | 250 | 258 | 266 | 274 | 282 | 290 | 298 | 306 | 314 | 322 | 330 | 338 | 346:
-						PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.75, timer: 0.5, ease: FlxEase.circOut});
+						camFlashSystem(BG_FLASH, {alpha: 0.75, timer: 0.5, ease: FlxEase.circOut});
 						FlxG.camera.zoom += 0.2;
-						PlayState.camHUD.zoom += 0.23;
+						camHUD.zoom += 0.23;
 					case 99 | 107 | 115 | 123 | 131 | 139 | 147 | 155 | 227 | 235 | 243 | 251 | 259 | 267 | 275 | 283 | 291 | 299 | 307 | 315 | 323 | 331 | 339 | 347:
-						PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.3, timer: 0.5, ease: FlxEase.circOut});
+						camFlashSystem(BG_FLASH, {alpha: 0.3, timer: 0.5, ease: FlxEase.circOut});
 						FlxG.camera.zoom += 0.08;
-						PlayState.camHUD.zoom += 0.11;
+						camHUD.zoom += 0.11;
 					case 101 | 109 | 117 | 125 | 133 | 141 | 149 | 157 | 229 | 237 | 245 | 253 | 261 | 269 | 277 | 285 | 293 | 301 | 309 | 317 | 325 | 333 | 341 | 349:
-						PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.4, timer: 0.5, ease: FlxEase.circOut});
+						camFlashSystem(BG_FLASH, {alpha: 0.4, timer: 0.5, ease: FlxEase.circOut});
 						FlxG.camera.zoom += 0.1;
-						PlayState.camHUD.zoom += 0.13;
+						camHUD.zoom += 0.13;
 					case 102 | 110 | 118 | 126 | 134 | 142 | 150 | 230 | 238 | 246 | 254 | 262 | 270 | 278 | 286 | 294 | 302 | 310 | 318 | 326 | 334 | 342 | 350:
-						PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.55, timer: 0.5, ease: FlxEase.circOut});
+						camFlashSystem(BG_FLASH, {alpha: 0.55, timer: 0.5, ease: FlxEase.circOut});
 						FlxG.camera.zoom += 0.12;
-						PlayState.camHUD.zoom += 0.15;
+						camHUD.zoom += 0.15;
 					case 104 | 112 | 120 | 128 | 136 | 144 | 152 | 232 | 240 | 248 | 256 | 264 | 272 | 280 | 288 | 296 | 304 | 312 | 320 | 328 | 336 | 344:
-						PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.3, timer: 0.5, ease: FlxEase.circOut});
+						camFlashSystem(BG_FLASH, {alpha: 0.3, timer: 0.5, ease: FlxEase.circOut});
 						FlxG.camera.zoom += 0.23;
-						PlayState.camHUD.zoom += 0.26;
+						camHUD.zoom += 0.26;
 					case 158:
-						PlayState.instance.camFlashSystem(BG_DARK, {alpha: 0.85, timer: 1.2, ease: FlxEase.sineInOut});
+						camFlashSystem(BG_DARK, {alpha: 0.85, timer: 1.2, ease: FlxEase.sineInOut});
 						FlxG.camera.zoom += 0.23;
-						PlayState.camHUD.zoom += 0.26;
+						camHUD.zoom += 0.26;
 					case 192 | 200 | 208 | 216:
-						PlayState.defaultCamZoom += 0.1;
+						defaultCamZoom += 0.1;
 					case 366 | 382:
-						PlayState.defaultCamZoom -= 0.1;
+						defaultCamZoom -= 0.1;
 					case 367 | 383:
-						PlayState.defaultCamZoom -= 0.25;
+						defaultCamZoom -= 0.25;
 					case 412:
 						tweenCamera(2, 2, "sineIn");
 					case 416:
-						PlayState.camGame.visible = false;
-						PlayState.camHUD.visible = false;
+						camGame.visible = false;
+						camHUD.visible = false;
 				}
 			case 'Lunacy Legacy':
 				switch (curBeat)
 				{
-					case 4 | 8 | 12 | 14 | 40 | 56 | 104 | 112 | 120 | 124 | 126: PlayState.defaultCamZoom += 0.1;
+					case 4 | 8 | 12 | 14 | 40 | 56 | 104 | 112 | 120 | 124 | 126: defaultCamZoom += 0.1;
 					case 16 | 48: 
-						PlayState.defaultCamZoom = 0.9;
-						PlayState.camHUD.zoom += 0.02;
+						defaultCamZoom = 0.9;
+						camHUD.zoom += 0.02;
 						camNotes.zoom += .02;
-					case 20 | 44 | 60 | 132 | 142 | 164 | 174: PlayState.defaultCamZoom += 0.2;
+					case 20 | 44 | 60 | 132 | 142 | 164 | 174: defaultCamZoom += 0.2;
 					case 24:
 						tweenCamera(0.7, 2, "quartInOut");
-						FlxTween.tween(PlayState.camGame, {alpha: 0}, 1.5, {ease: FlxEase.quartInOut});
-						FlxTween.tween(PlayState.camHUD, {alpha: 0.15}, 2, {ease: FlxEase.quartInOut});
+						FlxTween.tween(camGame, {alpha: 0}, 1.5, {ease: FlxEase.quartInOut});
+						FlxTween.tween(camHUD, {alpha: 0.15}, 2, {ease: FlxEase.quartInOut});
 					case 32:
-						PlayState.camGame.alpha = 1;
-						if (ClientPrefs.flashing) PlayState.camGame.flash(FlxColor.WHITE, 1.5);
-						PlayState.camHUD.alpha = 1;
-						PlayState.camHUD.zoom += 0.02;
+						camGame.alpha = 1;
+						if (ClientPrefs.flashing) camGame.flash(FlxColor.WHITE, 1.5);
+						camHUD.alpha = 1;
+						camHUD.zoom += 0.02;
 						camNotes.zoom += .02;
-						PlayState.defaultCamZoom = 0.9;
-					case 68 | 76 | 176: PlayState.defaultCamZoom -= 0.1;
-					case 72 | 134 | 144: PlayState.defaultCamZoom -= 0.15;
-					case 80: PlayState.defaultCamZoom = 1.1;
-					case 88 | 166 | 224: PlayState.defaultCamZoom = 0.8;
+						defaultCamZoom = 0.9;
+					case 68 | 76 | 176: defaultCamZoom -= 0.1;
+					case 72 | 134 | 144: defaultCamZoom -= 0.15;
+					case 80: defaultCamZoom = 1.1;
+					case 88 | 166 | 224: defaultCamZoom = 0.8;
 					case 128 | 256:
-						PlayState.defaultCamZoom = 0.78;
-						if (ClientPrefs.flashing) PlayState.camGame.flash(FlxColor.WHITE, 1.5);
-						PlayState.camHUD.alpha = 0.0001;
+						defaultCamZoom = 0.78;
+						if (ClientPrefs.flashing) camGame.flash(FlxColor.WHITE, 1.5);
+						camHUD.alpha = 0.0001;
 					case 156 | 284:
 						tweenCamera(1, 1, "sineInOut");
-						FlxTween.tween(PlayState.camHUD, {alpha: 1}, 1.5, {ease: FlxEase.quartInOut});
-					case 160: if (ClientPrefs.flashing) PlayState.camGame.flash(FlxColor.BLACK, 1.5);
-					case 192: PlayState.defaultCamZoom += 0.25;
+						FlxTween.tween(camHUD, {alpha: 1}, 1.5, {ease: FlxEase.quartInOut});
+					case 160: if (ClientPrefs.flashing) camGame.flash(FlxColor.BLACK, 1.5);
+					case 192: defaultCamZoom += 0.25;
 					case 320:
-						if (ClientPrefs.flashing) PlayState.camGame.flash(FlxColor.BLACK, 1);
-						PlayState.instance.camFlashSystem(BG_DARK, {alpha: 0.85, timer: 1, ease: FlxEase.quartInOut});
-						PlayState.defaultCamZoom += 0.2;
-					case 336: PlayState.defaultCamZoom -= 0.35;
+						if (ClientPrefs.flashing) camGame.flash(FlxColor.BLACK, 1);
+						camFlashSystem(BG_DARK, {alpha: 0.85, timer: 1, ease: FlxEase.quartInOut});
+						defaultCamZoom += 0.2;
+					case 336: defaultCamZoom -= 0.35;
 					case 368: tweenCamera(1.3, 8, "quartInOut");
 					case 400:
-						if (ClientPrefs.flashing) PlayState.camGame.flash(FlxColor.BLACK, 1.5);
-						PlayState.instance.camFlashSystem(BG_DARK, {alpha: 0, timer: 1, ease: FlxEase.sineOut});
+						if (ClientPrefs.flashing) camGame.flash(FlxColor.BLACK, 1.5);
+						camFlashSystem(BG_DARK, {alpha: 0, timer: 1, ease: FlxEase.sineOut});
 					case 404:
-						FlxTween.tween(PlayState.camGame, {alpha: 0}, 1.5, {ease: FlxEase.quartInOut});
-						FlxTween.tween(PlayState.camHUD, {alpha: 0}, 1.5, {ease: FlxEase.quartInOut});
+						FlxTween.tween(camGame, {alpha: 0}, 1.5, {ease: FlxEase.quartInOut});
+						FlxTween.tween(camHUD, {alpha: 0}, 1.5, {ease: FlxEase.quartInOut});
 				}
 			case "Twisted Grins Legacy":
 				switch (curBeat)
 				{
 					case 62:
-						FlxTween.tween(PlayState.camGame, {alpha: 0}, 3, {ease: FlxEase.quartInOut});
-						FlxTween.tween(PlayState.camHUD, {alpha: 0}, 3, {ease: FlxEase.quartInOut});
-						FlxTween.tween(PlayState.camNotes, {alpha: 0}, 3, {ease: FlxEase.quartInOut});
+						FlxTween.tween(camGame, {alpha: 0}, 3, {ease: FlxEase.quartInOut});
+						FlxTween.tween(camHUD, {alpha: 0}, 3, {ease: FlxEase.quartInOut});
+						FlxTween.tween(camNotes, {alpha: 0}, 3, {ease: FlxEase.quartInOut});
 					case 72:
-						PlayState.camGame.alpha = 1;
-						if (ClientPrefs.flashing) PlayState.camGame.flash(FlxColor.WHITE, 1.5);
-						PlayState.camHUD.alpha = 1;
-						PlayState.camNotes.alpha = 0.001;
-					case 120 | 122 | 125 | 324 | 320 | 332 | 356 | 360 | 364: PlayState.defaultCamZoom += 0.15;
+						camGame.alpha = 1;
+						if (ClientPrefs.flashing) camGame.flash(FlxColor.WHITE, 1.5);
+						camHUD.alpha = 1;
+						camNotes.alpha = 0.001;
+					case 120 | 122 | 125 | 324 | 320 | 332 | 356 | 360 | 364: defaultCamZoom += 0.15;
 					case 128: tweenCamera(0.9, 1, "sineInOut");
-					case 156 | 400: PlayState.defaultCamZoom += 0.35;
-					case 159 | 308 | 340 | 376: PlayState.defaultCamZoom = 0.9;
+					case 156 | 400: defaultCamZoom += 0.35;
+					case 159 | 308 | 340 | 376: defaultCamZoom = 0.9;
 					case 160 | 228 | 404 | 472:
-						PlayState.defaultCamZoom = 0.9;
-						PlayState.instance.camFlashSystem(BG_DARK, {alpha: 0, timer: 0.5, ease: FlxEase.quartOut});
+						defaultCamZoom = 0.9;
+						camFlashSystem(BG_DARK, {alpha: 0, timer: 0.5, ease: FlxEase.quartOut});
 						if (ClientPrefs.shaking)
 						{
-							PlayState.camGame.shake(0.01, 24);
-							PlayState.camHUD.shake(0.004, 24);
-							PlayState.camNotes.shake(0.004, 24);
+							camGame.shake(0.01, 24);
+							camHUD.shake(0.004, 24);
+							camNotes.shake(0.004, 24);
 						}
 					case 224 | 468:
-						PlayState.instance.camFlashSystem(BG_DARK, {alpha: 0.8, timer: 0.5, ease: FlxEase.quartOut});
-						PlayState.defaultCamZoom += 0.35;
-					case 292: PlayState.defaultCamZoom = 1.3;
-					case 336: PlayState.defaultCamZoom -= 0.1;
+						camFlashSystem(BG_DARK, {alpha: 0.8, timer: 0.5, ease: FlxEase.quartOut});
+						defaultCamZoom += 0.35;
+					case 292: defaultCamZoom = 1.3;
+					case 336: defaultCamZoom -= 0.1;
 					case 536:
-						if (ClientPrefs.flashing) PlayState.camGame.flash(FlxColor.WHITE, 1.5);
-						PlayState.camHUD.visible = false;
-						PlayState.camNotes.visible = false;
-					case 575: PlayState.camGame.visible = false;
+						if (ClientPrefs.flashing) camGame.flash(FlxColor.WHITE, 1.5);
+						camHUD.visible = false;
+						camNotes.visible = false;
+					case 575: camGame.visible = false;
 				}
 			case 'Cycled Sins Legacy':
 				switch (curBeat)
 				{
 					case 128:
-						FlxTween.tween(PlayState.camHUD, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
-						FlxTween.tween(PlayState.camGame, {alpha: 0}, 1.5, {ease: FlxEase.sineInOut});
-						//FlxTween.tween(PlayState.dadStrums, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
-					case 138: FlxTween.tween(PlayState.camGame, {alpha: 1}, 1, {ease: FlxEase.sineInOut});
+						FlxTween.tween(camHUD, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
+						FlxTween.tween(camGame, {alpha: 0}, 1.5, {ease: FlxEase.sineInOut});
+						//FlxTween.tween(dadStrums, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
+					case 138: FlxTween.tween(camGame, {alpha: 1}, 1, {ease: FlxEase.sineInOut});
 					case 144:
-						PlayState.camGame.setFilters(
+						camGame.setFilters(
 						[
-							new ShaderFilter(PlayState.staticEffect),
-							new ShaderFilter(PlayState.redVignette),
-							new ShaderFilter(PlayState.chromZoomShader),
-							new ShaderFilter(PlayState.dramaticCamMovement),
+							new ShaderFilter(staticEffect),
+							new ShaderFilter(redVignette),
+							new ShaderFilter(chromZoomShader),
+							new ShaderFilter(dramaticCamMovement),
 						]);
-						PlayState.camGame.visible = true;
-						PlayState.camHUD.alpha = 1;
-						PlayState.camNotes.visible = true;
-						PlayState.camGame.flash(FlxColor.RED, 1.2);
+						camGame.visible = true;
+						camHUD.alpha = 1;
+						camNotes.visible = true;
+						camGame.flash(FlxColor.RED, 1.2);
 						FlxTween.tween(PlayState, {healthThing: 0.1}, 1, {ease: FlxEase.sineInOut});
 					case 272:
 						FlxTween.tween(PlayState, {healthThing: 0.1}, 20, {ease: FlxEase.quartInOut});
-						FlxTween.tween(PlayState.camHUD, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
-						FlxTween.tween(PlayState.camNotes, {alpha: 0}, 1, {ease: FlxEase.sineInOut, startDelay: 0.5});
+						FlxTween.tween(camHUD, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
+						FlxTween.tween(camNotes, {alpha: 0}, 1, {ease: FlxEase.sineInOut, startDelay: 0.5});
 					case 332:
-						FlxTween.tween(PlayState.camHUD, {alpha: 1}, 1, {ease: FlxEase.sineInOut});
-           	 			FlxTween.tween(PlayState.camNotes, {alpha: 1}, 1, {ease: FlxEase.sineInOut});
+						FlxTween.tween(camHUD, {alpha: 1}, 1, {ease: FlxEase.sineInOut});
+           	 			FlxTween.tween(camNotes, {alpha: 1}, 1, {ease: FlxEase.sineInOut});
 					case 544:
-						PlayState.camGame.flash(FlxColor.BLACK, 1.5);
-						PlayState.camHUD.visible = false;
-						PlayState.camNotes.visible = false;
+						camGame.flash(FlxColor.BLACK, 1.5);
+						camHUD.visible = false;
+						camNotes.visible = false;
 					//gunshots pew pew
 					case 158 | 172 | 190 | 204 | 212 | 220 | 222 | 228 | 236 | 244 | 252 | 254 | 260 | 268 | 334 | 398 | 422 | 428 | 430 | 436 | 446 | 452 | 462 | 468 | 472 | 478 | 486 | 492 | 494 | 500 | 510 | 514 | 520 | 524 | 526 | 532 | 540 | 542:
 						if (ClientPrefs.mechanics)
 						{
-							PlayState.instance.relapseGimmick(0.7, 0.3);
+							relapseGimmick(0.7, 0.3);
 						}
 				}
 			case 'Devilish Deal':
@@ -8981,167 +8987,167 @@ class PlayState extends MusicBeatState
 					// Intro
 					case 1: devilishGaming.play();
 
-					case 8: FlxTween.tween(PlayState.camGame, {alpha: 1}, 4.5, {ease: FlxEase.sineOut});
+					case 8: FlxTween.tween(camGame, {alpha: 1}, 4.5, {ease: FlxEase.sineOut});
 
 					case 16:
 						FlxTween.tween(camVideo, {alpha: 0}, 3, {ease: FlxEase.sineOut});
 						defaultCamZoom = 1.3;
-						PlayState.instance.manageLyrics('satandd', 'In the rain...', 'betterSatanFont.ttf', 30, 2, 'sineInOut', 0.1);
+						manageLyrics('satandd', 'In the rain...', 'betterSatanFont.ttf', 30, 2, 'sineInOut', 0.1);
 
 					case 20:
-						PlayState.instance.manageLyrics('satandd', '...Looking so blue...', 'betterSatanFont.ttf', 30, 3.2, 'sineInOut', 0.08);
+						manageLyrics('satandd', '...Looking so blue...', 'betterSatanFont.ttf', 30, 3.2, 'sineInOut', 0.08);
 
 					case 26:
-						PlayState.instance.manageLyrics('satandd', '...SPEAK...', 'betterSatanFont.ttf', 30, 0.7, 'sineInOut', 0.05);
+						manageLyrics('satandd', '...SPEAK...', 'betterSatanFont.ttf', 30, 0.7, 'sineInOut', 0.05);
 
 					case 28:
 						defaultCamZoom = 0.55;
-						PlayState.instance.manageLyrics('satandd', '...What is on your mind?', 'betterSatanFont.ttf', 30, 2.5, 'sineInOut', 0.06);
+						manageLyrics('satandd', '...What is on your mind?', 'betterSatanFont.ttf', 30, 2.5, 'sineInOut', 0.06);
 
 					case 30:
-						FlxTween.tween(PlayState.camHUD, {alpha: 1}, 2, {ease: FlxEase.sineOut});
-						FlxTween.tween(PlayState.camNotes, {alpha: 1}, 2, {ease: FlxEase.sineOut});
+						FlxTween.tween(camHUD, {alpha: 1}, 2, {ease: FlxEase.sineOut});
+						FlxTween.tween(camNotes, {alpha: 1}, 2, {ease: FlxEase.sineOut});
 
 					case 32 | 34 | 36 | 38 | 40 | 42 | 44 | 46 | 48 | 50 | 52 | 54 | 56 | 58:
-						if (PlayState.instance.canaddshaders)
+						if (canaddshaders)
 						{
-							if (PlayState.instance.chromTween != null)
-								PlayState.instance.chromTween.cancel();
+							if (chromTween != null)
+								chromTween.cancel();
 
-							PlayState.instance.chromEffect = 0.32;
+							chromEffect = 0.32;
 
-							PlayState.instance.chromTween = FlxTween.tween(PlayState.instance, {
+							chromTween = FlxTween.tween(instance, {
 								chromEffect: 0.0001
 							}, 1.2, {
 								ease: FlxEase.sineOut,
 								onComplete: function(twn:FlxTween)
 								{
-									PlayState.instance.chromTween = null;
+									chromTween = null;
 								}
 							});
 						}
 
 					case 60:
 						defaultCamZoom = 1.2;
-						FlxTween.tween(PlayState.camHUD, {alpha: 0.4}, 0.75, {ease: FlxEase.quartInOut});
-						FlxTween.tween(PlayState.camNotes, {alpha: 0.4}, 0.75, {ease: FlxEase.quartInOut});
+						FlxTween.tween(camHUD, {alpha: 0.4}, 0.75, {ease: FlxEase.quartInOut});
+						FlxTween.tween(camNotes, {alpha: 0.4}, 0.75, {ease: FlxEase.quartInOut});
 						FlxTween.tween(dad.colorTransform, {redMultiplier: 1, blueMultiplier: 1, greenMultiplier: 1}, 2, {ease: FlxEase.circInOut});
-						if (PlayState.instance.canaddshaders)
+						if (canaddshaders)
 						{
-							if (PlayState.instance.chromTween != null)
-								PlayState.instance.chromTween.cancel();
+							if (chromTween != null)
+								chromTween.cancel();
 
-							PlayState.instance.chromEffect = 0.15;
+							chromEffect = 0.15;
 
-							PlayState.instance.chromTween = FlxTween.tween(PlayState.instance, {
+							chromTween = FlxTween.tween(instance, {
 								chromEffect: 0.00001
 							}, 1.2, {
 								ease: FlxEase.sineOut,
 								onComplete: function(twn:FlxTween)
 								{
-									PlayState.instance.chromTween = null;
+									chromTween = null;
 								}
 							});
 						}
 
 					case 62:
-						if (PlayState.instance.canaddshaders)
+						if (canaddshaders)
 						{
-							if (PlayState.instance.chromTween != null)
-								PlayState.instance.chromTween.cancel();
+							if (chromTween != null)
+								chromTween.cancel();
 
-							PlayState.instance.chromEffect = 0.15;
+							chromEffect = 0.15;
 
-							PlayState.instance.chromTween = FlxTween.tween(PlayState.instance, {
+							chromTween = FlxTween.tween(instance, {
 								chromEffect: 0.00001
 							}, 2, {
 								ease: FlxEase.sineOut,
 								onComplete: function(twn:FlxTween)
 								{
-									PlayState.instance.chromTween = null;
+									chromTween = null;
 								}
 							});
 						}
 
 					case 64:
 						defaultCamZoom = 0.55;
-						FlxTween.tween(PlayState.camHUD, {alpha: 1}, 1.2, {ease: FlxEase.quartInOut});
-						FlxTween.tween(PlayState.camNotes, {alpha: 1}, 1.2, {ease: FlxEase.quartInOut});
+						FlxTween.tween(camHUD, {alpha: 1}, 1.2, {ease: FlxEase.quartInOut});
+						FlxTween.tween(camNotes, {alpha: 1}, 1.2, {ease: FlxEase.quartInOut});
 
 					case 128:
-						PlayState.camGame.visible = false;
-						PlayState.camNotes.visible = false;
+						camGame.visible = false;
+						camNotes.visible = false;
 						if (ClientPrefs.flashing)
-							PlayState.camOther.flash(FlxColor.WHITE, 1);
-						if (PlayState.instance.canaddshaders)
+							camOther.flash(FlxColor.WHITE, 1);
+						if (canaddshaders)
 						{
-							if (PlayState.instance.chromTween != null)
-								PlayState.instance.chromTween.cancel();
+							if (chromTween != null)
+								chromTween.cancel();
 
-							PlayState.instance.chromEffect = 0.4;
+							chromEffect = 0.4;
 
-							PlayState.instance.chromTween = FlxTween.tween(PlayState.instance, {
+							chromTween = FlxTween.tween(instance, {
 								chromEffect: 0.00001
 							}, 2.3, {
 								ease: FlxEase.sineOut,
 								onComplete: function(twn:FlxTween)
 								{
-									PlayState.instance.chromTween = null;
+									chromTween = null;
 								}
 							});
 						}
 				}
 
-				if (curBeat >= 64 && curBeat <= 95 && PlayState.instance.canaddshaders)
+				if (curBeat >= 64 && curBeat <= 95 && canaddshaders)
 				{
-					if (PlayState.instance.chromTween != null)
-						PlayState.instance.chromTween.cancel();
+					if (chromTween != null)
+						chromTween.cancel();
 
-					PlayState.instance.chromEffect = 0.23;
+					chromEffect = 0.23;
 
-					PlayState.instance.chromTween = FlxTween.tween(PlayState.instance, {
+					chromTween = FlxTween.tween(instance, {
 						chromEffect: 0.00001
 					}, 1.5, {
 						ease: FlxEase.sineOut,
 						onComplete: function(twn:FlxTween)
 						{
-							PlayState.instance.chromTween = null;
+							chromTween = null;
 						}
 					});
 				}
 
-				if (curBeat >= 96 && curBeat <= 111 && PlayState.instance.canaddshaders)
+				if (curBeat >= 96 && curBeat <= 111 && canaddshaders)
 				{
-					if (PlayState.instance.chromTween != null)
-						PlayState.instance.chromTween.cancel();
+					if (chromTween != null)
+						chromTween.cancel();
 
-					PlayState.instance.chromEffect = 0.27;
+					chromEffect = 0.27;
 
-					PlayState.instance.chromTween = FlxTween.tween(PlayState.instance, {
+					chromTween = FlxTween.tween(instance, {
 						chromEffect: 0.0001
 					}, 1.5, {
 						ease: FlxEase.sineOut,
 						onComplete: function(twn:FlxTween)
 						{
-							PlayState.instance.chromTween = null;
+							chromTween = null;
 						}
 					});
 				}
 
-				if (curBeat >= 112 && curBeat <= 127 && PlayState.instance.canaddshaders)
+				if (curBeat >= 112 && curBeat <= 127 && canaddshaders)
 				{
-					if (PlayState.instance.chromTween != null)
-						PlayState.instance.chromTween.cancel();
+					if (chromTween != null)
+						chromTween.cancel();
 
-					PlayState.instance.chromEffect = 0.32;
+					chromEffect = 0.32;
 
-					PlayState.instance.chromTween = FlxTween.tween(PlayState.instance, {
+					chromTween = FlxTween.tween(instance, {
 						chromEffect: 0.00001
 					}, 1.5, {
 						ease: FlxEase.sineOut,
 						onComplete: function(twn:FlxTween)
 						{
-							PlayState.instance.chromTween = null;
+							chromTween = null;
 						}
 					});
 				}
@@ -9152,115 +9158,115 @@ class PlayState extends MusicBeatState
 
 				switch (curBeat)
 				{
-					case 12: PlayState.camBars.fade(FlxColor.BLACK, 3, true);
+					case 12: camBars.fade(FlxColor.BLACK, 3, true);
 
 					case 30:
-						FlxTween.tween(PlayState.camHUD, {alpha: 1}, 3, {ease: FlxEase.quadOut});
-						FlxTween.tween(PlayState.camNotes, {alpha: 1}, 3, {ease: FlxEase.quadOut});
+						FlxTween.tween(camHUD, {alpha: 1}, 3, {ease: FlxEase.quadOut});
+						FlxTween.tween(camNotes, {alpha: 1}, 3, {ease: FlxEase.quadOut});
 
 					case 88: 
 						tweenCamera(1.4, 3, 'sineInOut');
-						PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.32, timer: 1.2, colors: [194, 194, 194]});
+						camFlashSystem(BG_FLASH, {alpha: 0.32, timer: 1.2, colors: [194, 194, 194]});
 
 					case 95: 
-						PlayState.cameraSpeed += 3;
-						//PlayState.instance.updateSectionCamera('dad', false);
+						cameraSpeed += 3;
+						//updateSectionCamera('dad', false);
 
 					case 96:
-						PlayState.cameraSpeed -= 3;
-						PlayState.defaultCamZoom = 0.85;
+						cameraSpeed -= 3;
+						defaultCamZoom = 0.85;
 						tweenCamera(0.85, 0.4, 'expoOut');
 
 						if (ClientPrefs.flashing)
-							PlayState.camGame.flash(FlxColor.WHITE, 1.5);
-						PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.4, timer: 0.35});
+							camGame.flash(FlxColor.WHITE, 1.5);
+						camFlashSystem(BG_FLASH, {alpha: 0.4, timer: 0.35});
 
 					case 160: 
 						tweenCamera(1.3, 2, 'sineInOut');
-						PlayState.instance.camFlashSystem(BG_DARK, {alpha: 0.85, timer: 0.5, ease: FlxEase.quartOut});
+						camFlashSystem(BG_DARK, {alpha: 0.85, timer: 0.5, ease: FlxEase.quartOut});
 
 					case 184:
-						PlayState.instance.camFlashSystem(BG_DARK, {alpha: 0.77, timer: 0.5, ease: FlxEase.quartOut});
+						camFlashSystem(BG_DARK, {alpha: 0.77, timer: 0.5, ease: FlxEase.quartOut});
 
 					case 188:
-						PlayState.instance.camFlashSystem(BG_DARK, {alpha: 0.6, timer: 0.5, ease: FlxEase.quartOut});
+						camFlashSystem(BG_DARK, {alpha: 0.6, timer: 0.5, ease: FlxEase.quartOut});
 
 					case 192: 
 						if (ClientPrefs.flashing)
-							PlayState.camGame.flash(FlxColor.WHITE, 1.5);
-						PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.32, timer: 0.35, colors: [194, 194, 194]});
+							camGame.flash(FlxColor.WHITE, 1.5);
+						camFlashSystem(BG_FLASH, {alpha: 0.32, timer: 0.35, colors: [194, 194, 194]});
 						
-						PlayState.defaultCamZoom = 1.25;
+						defaultCamZoom = 1.25;
 
 					// same as dad
-					// case 199: PlayState.instance.updateSectionCamera('bf', true);
+					// case 199: updateSectionCamera('bf', true);
 
 					// update after testing without the cam thing they rarely still stunned so idk what to do lmao
 
 					case 220: 
 						tweenCamera(0.85, 2, 'sineInOut');
-						PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.32, timer: 0.1, colors: [194, 194, 194]});
+						camFlashSystem(BG_FLASH, {alpha: 0.32, timer: 0.1, colors: [194, 194, 194]});
 
 					case 288:
-						PlayState.defaultCamZoom = 0.85;
+						defaultCamZoom = 0.85;
 
 						if (ClientPrefs.flashing)
-							PlayState.camGame.flash(FlxColor.WHITE, 1.5);
-						PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.4, timer: 0.35, colors: [194, 194, 194]});
+							camGame.flash(FlxColor.WHITE, 1.5);
+						camFlashSystem(BG_FLASH, {alpha: 0.4, timer: 0.35, colors: [194, 194, 194]});
 
 					case 352:
-						PlayState.instance.camFlashSystem(BG_DARK, {alpha: 0.85, timer: 0.5, ease: FlxEase.quartOut});
+						camFlashSystem(BG_DARK, {alpha: 0.85, timer: 0.5, ease: FlxEase.quartOut});
 						tweenCamera(1.07, 5, 'quadInOut');
-						PlayState.cameraSpeed -= 0.25;
+						cameraSpeed -= 0.25;
 
 					case 376:
-						PlayState.instance.camFlashSystem(BG_DARK, {alpha: 0, timer: 4, ease: FlxEase.quartInOut});
+						camFlashSystem(BG_DARK, {alpha: 0, timer: 4, ease: FlxEase.quartInOut});
 
 					case 36 | 40 | 44 | 52 | 56 | 60 | 64 | 68 | 72 | 76 | 80 | 84 | 92:
-						PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.32, timer: 1.2, colors: [194, 194, 194]});
+						camFlashSystem(BG_FLASH, {alpha: 0.32, timer: 1.2, colors: [194, 194, 194]});
 
 					case 100 | 104 | 108 | 116 | 120 | 124 | 132 | 136 | 140 | 148 | 152 | 156 | 228 | 232 | 236 | 240 | 244 | 252 | 260 | 264 | 268 | 276 |
 						280 | 284 | 292 | 296 | 300 | 308 | 312 | 316 | 324 | 328 | 332 | 340 | 344 | 348:
-						PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.4, timer: 0.35, colors: [194, 194, 194]});
+						camFlashSystem(BG_FLASH, {alpha: 0.4, timer: 0.35, colors: [194, 194, 194]});
 
 					case 98 | 102 | 106 | 110 | 114 | 118 | 122 | 126 | 130 | 134 | 138 | 142 | 146 | 150 | 154 | 158 | 226 | 230 | 234 | 238 | 242 | 246 |
 						250 | 254 | 258 | 262 | 266 | 270 | 274 | 278 | 282 | 286 | 290 | 294 | 298 | 302 | 306 | 310 | 314 | 318 | 322 | 326 | 330 | 334 |
 						338 | 342 | 346 | 350:
-						PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.67, timer: 0.35, colors: [194, 194, 194]});
+						camFlashSystem(BG_FLASH, {alpha: 0.67, timer: 0.35, colors: [194, 194, 194]});
 
 					case 194 | 196 | 198 | 200 | 202 | 204 | 206 | 210 | 212 | 214 | 222:
-						PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.32, timer: 0.35, colors: [194, 194, 194]});
+						camFlashSystem(BG_FLASH, {alpha: 0.32, timer: 0.35, colors: [194, 194, 194]});
 
 					case 216 | 217 | 218 | 219:
-						PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.32, timer: 0.1, colors: [194, 194, 194]});
-						PlayState.camHUD.zoom += 0.04;
+						camFlashSystem(BG_FLASH, {alpha: 0.32, timer: 0.1, colors: [194, 194, 194]});
+						camHUD.zoom += 0.04;
 						camNotes.zoom += .04;
 
 					case 128 | 256:
 						if (ClientPrefs.flashing)
-							PlayState.camGame.flash(FlxColor.WHITE, 1.5);
-						PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.4, timer: 0.35, colors: [194, 194, 194]});
+							camGame.flash(FlxColor.WHITE, 1.5);
+						camFlashSystem(BG_FLASH, {alpha: 0.4, timer: 0.35, colors: [194, 194, 194]});
 
 					case 48 | 336 | 304 | 272 | 112 | 144:
 						if (ClientPrefs.flashing)
-							PlayState.camGame.flash(FlxColor.BLACK, 1.5);
-						PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.32, timer: 1.2, colors: [194, 194, 194]});
+							camGame.flash(FlxColor.BLACK, 1.5);
+						camFlashSystem(BG_FLASH, {alpha: 0.32, timer: 1.2, colors: [194, 194, 194]});
 
 					case 32:
-						if (ClientPrefs.flashing) PlayState.camGame.flash(FlxColor.WHITE, 1.5);
+						if (ClientPrefs.flashing) camGame.flash(FlxColor.WHITE, 1.5);
 
 					case 416:
-						PlayState.camGame.visible = false;
-						PlayState.camHUD.visible = false;
-						PlayState.camNotes.visible = false;
+						camGame.visible = false;
+						camHUD.visible = false;
+						camNotes.visible = false;
 
 					case 224:
-						PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.4, timer: 0.35, colors: [194, 194, 194]});
-						if (ClientPrefs.flashing) PlayState.camGame.flash(FlxColor.WHITE, 1.5);
+						camFlashSystem(BG_FLASH, {alpha: 0.4, timer: 0.35, colors: [194, 194, 194]});
+						if (ClientPrefs.flashing) camGame.flash(FlxColor.WHITE, 1.5);
 
 					case 320:
-						PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.4, timer: 0.35, colors: [194, 194, 194]});
-						if (ClientPrefs.flashing) PlayState.camGame.flash(FlxColor.WHITE, 1.5);
+						camFlashSystem(BG_FLASH, {alpha: 0.4, timer: 0.35, colors: [194, 194, 194]});
+						if (ClientPrefs.flashing) camGame.flash(FlxColor.WHITE, 1.5);
 				}
 
 				if (curBeat == 1)
@@ -9302,9 +9308,9 @@ class PlayState extends MusicBeatState
 				{
 					if (curBeat % 2 == 0)
 					{
-						PlayState.camGame.zoom += 0.05;
-						PlayState.camHUD.zoom += 0.06;
-						PlayState.camNotes.zoom = PlayState.camHUD.zoom;
+						camGame.zoom += 0.05;
+						camHUD.zoom += 0.06;
+						camNotes.zoom = camHUD.zoom;
 					}
 				}
 
@@ -9350,14 +9356,14 @@ class PlayState extends MusicBeatState
 
 				if (curBeat == 100 || curBeat == 108 || curBeat == 116 || curBeat == 124 || curBeat == 132 || curBeat == 140 || curBeat == 148)
 				{
-					PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.5, timer: 0.5, ease: FlxEase.sineOut});
+					camFlashSystem(BG_FLASH, {alpha: 0.5, timer: 0.5, ease: FlxEase.sineOut});
 				}
 
 				if (curBeat == 160 || curBeat == 230 || curBeat == 240 || curBeat == 248 || curBeat == 256 || curBeat == 262 || curBeat == 272
 					|| curBeat == 280 || curBeat == 280 || curBeat == 288 || curBeat == 296 || curBeat == 304 || curBeat == 312 || curBeat == 320
 					|| curBeat == 328 || curBeat == 336 || curBeat == 344 || curBeat == 352)
 				{
-					PlayState.instance.camFlashSystem(BG_DARK, {alpha: 0, timer: 0.5, ease: FlxEase.quadOut});
+					camFlashSystem(BG_DARK, {alpha: 0, timer: 0.5, ease: FlxEase.quadOut});
 				}
 
 				// Darkens BG
@@ -9365,28 +9371,28 @@ class PlayState extends MusicBeatState
 					|| curBeat == 276 || curBeat == 284 || curBeat == 292 || curBeat == 300 || curBeat == 308 || curBeat == 316 || curBeat == 324
 					|| curBeat == 332 || curBeat == 340 || curBeat == 348)
 				{
-					PlayState.instance.camFlashSystem(BG_DARK, {alpha: 0.77, timer: 0.5, ease: FlxEase.quadOut});
+					camFlashSystem(BG_DARK, {alpha: 0.77, timer: 0.5, ease: FlxEase.quadOut});
 				}
 
 				if (curBeat == 424 || curBeat == 432 || curBeat == 440 || curBeat == 448 || curBeat == 456 || curBeat == 464 || curBeat == 472)
 				{
-					PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.65, timer: 0.6, ease: FlxEase.sineOut});
+					camFlashSystem(BG_FLASH, {alpha: 0.65, timer: 0.6, ease: FlxEase.sineOut});
 				}
 
 				if (curBeat == 32 || curBeat == 64)
 				{
-					if (PlayState.instance.chromTween != null)
-						PlayState.instance.chromTween.cancel();
+					if (chromTween != null)
+						chromTween.cancel();
 
-					PlayState.instance.chromEffect = 0.27;
+					chromEffect = 0.27;
 
-					PlayState.instance.chromTween = FlxTween.tween(PlayState.instance, {
+					chromTween = FlxTween.tween(instance, {
 						chromEffect: 0.0001
 					}, 1.5, {
 						ease: FlxEase.sineOut,
 						onComplete: function(twn:FlxTween)
 						{
-							PlayState.instance.chromTween = null;
+							chromTween = null;
 						}
 					});
 				}
@@ -9395,88 +9401,88 @@ class PlayState extends MusicBeatState
 					|| curBeat == 72 || curBeat == 78 || curBeat == 80 || curBeat == 86 || curBeat == 88 || curBeat == 102 || curBeat == 110
 					|| curBeat == 118 || curBeat == 126 || curBeat == 134 || curBeat == 142 || curBeat == 150)
 				{
-					if (PlayState.instance.chromTween != null)
-						PlayState.instance.chromTween.cancel();
+					if (chromTween != null)
+						chromTween.cancel();
 
-					PlayState.instance.chromEffect = 0.12;
+					chromEffect = 0.12;
 
-					PlayState.instance.chromTween = FlxTween.tween(PlayState.instance, {
+					chromTween = FlxTween.tween(instance, {
 						chromEffect: 0.0001
 					}, 0.3, {
 						ease: FlxEase.sineOut,
 						onComplete: function(twn:FlxTween)
 						{
-							PlayState.instance.chromTween = null;
+							chromTween = null;
 						}
 					});
 				}
 
 				if (curBeat == 96 || curBeat == 104 || curBeat == 112 || curBeat == 120 || curBeat == 128 || curBeat == 136 || curBeat == 144 || curBeat == 152)
 				{
-					if (PlayState.instance.chromTween != null)
-						PlayState.instance.chromTween.cancel();
+					if (chromTween != null)
+						chromTween.cancel();
 
-					PlayState.instance.chromEffect = 0.32;
+					chromEffect = 0.32;
 
-					PlayState.instance.chromTween = FlxTween.tween(PlayState.instance, {
+					chromTween = FlxTween.tween(instance, {
 						chromEffect: 0.0001
 					}, 2.1, {
 						ease: FlxEase.sineOut,
 						onComplete: function(twn:FlxTween)
 						{
-							PlayState.instance.chromTween = null;
+							chromTween = null;
 						}
 					});
 				}
 
 				if (curBeat == 100 || curBeat == 108 || curBeat == 116 || curBeat == 124 || curBeat == 132 || curBeat == 140 || curBeat == 148)
 				{
-					if (PlayState.instance.chromTween != null)
-						PlayState.instance.chromTween.cancel();
+					if (chromTween != null)
+						chromTween.cancel();
 	
-					PlayState.instance.chromEffect = 0.4;
+					chromEffect = 0.4;
 	
-					PlayState.instance.chromTween = FlxTween.tween(PlayState.instance, {
+					chromTween = FlxTween.tween(instance, {
 						chromEffect: 0.0001
 					}, 1, {
 						ease: FlxEase.sineOut,
 						onComplete: function(twn:FlxTween)
 						{
-							PlayState.instance.chromTween = null;
+							chromTween = null;
 						}
 					});
 				}
 
 				if (curBeat == 156)
 				{
-					if (PlayState.instance.chromTween != null)
-						PlayState.instance.chromTween.cancel();
+					if (chromTween != null)
+						chromTween.cancel();
 
-					PlayState.instance.chromTween = FlxTween.tween(PlayState.instance, {
+					chromTween = FlxTween.tween(instance, {
 						chromEffect: 0.33
 					}, 0.2, {
 						ease: FlxEase.sineOut,
 						onComplete: function(twn:FlxTween)
 						{
-							PlayState.instance.chromTween = null;
+							chromTween = null;
 						}
 					});
 				}
 
 				if (curBeat == 158)
 				{
-					if (PlayState.instance.chromTween != null)
-						PlayState.instance.chromTween.cancel();
+					if (chromTween != null)
+						chromTween.cancel();
 
-					PlayState.instance.chromEffect = 0.4;
+					chromEffect = 0.4;
 
-					PlayState.instance.chromTween = FlxTween.tween(PlayState.instance, {
+					chromTween = FlxTween.tween(instance, {
 						chromEffect: 0.0001
 					}, 0.2, {
 						ease: FlxEase.sineOut,
 						onComplete: function(twn:FlxTween)
 						{
-							PlayState.instance.chromTween = null;
+							chromTween = null;
 						}
 					});
 				}
@@ -9486,18 +9492,18 @@ class PlayState extends MusicBeatState
 					|| curBeat == 272 || curBeat == 280 || curBeat == 288 || curBeat == 296 || curBeat == 304 || curBeat == 312 || curBeat == 320
 					|| curBeat == 328 || curBeat == 336 || curBeat == 344)
 				{
-					if (PlayState.instance.chromTween != null)
-						PlayState.instance.chromTween.cancel();
+					if (chromTween != null)
+						chromTween.cancel();
 
-					PlayState.instance.chromEffect = 0.55;
+					chromEffect = 0.55;
 
-					PlayState.instance.chromTween = FlxTween.tween(PlayState.instance, {
+					chromTween = FlxTween.tween(instance, {
 						chromEffect: 0.0001
 					}, 0.6, {
 						ease: FlxEase.sineOut,
 						onComplete: function(twn:FlxTween)
 						{
-							PlayState.instance.chromTween = null;
+							chromTween = null;
 						}
 					});
 				}
@@ -9507,18 +9513,18 @@ class PlayState extends MusicBeatState
 					|| curBeat == 274 || curBeat == 282 || curBeat == 290 || curBeat == 298 || curBeat == 306 || curBeat == 314 || curBeat == 322
 					|| curBeat == 330 || curBeat == 338 || curBeat == 346)
 				{
-					if (PlayState.instance.chromTween != null)
-						PlayState.instance.chromTween.cancel();
+					if (chromTween != null)
+						chromTween.cancel();
 
-					PlayState.instance.chromEffect = 0.6;
+					chromEffect = 0.6;
 
-					PlayState.instance.chromTween = FlxTween.tween(PlayState.instance, {
+					chromTween = FlxTween.tween(instance, {
 						chromEffect: 0.0001
 					}, 0.25, {
 						ease: FlxEase.sineOut,
 						onComplete: function(twn:FlxTween)
 						{
-							PlayState.instance.chromTween = null;
+							chromTween = null;
 						}
 					});
 				}
@@ -9528,17 +9534,17 @@ class PlayState extends MusicBeatState
 					|| curBeat == 275 || curBeat == 283 || curBeat == 291 || curBeat == 299 || curBeat == 307 || curBeat == 315 || curBeat == 323
 					|| curBeat == 331 || curBeat == 339 || curBeat == 347)
 				{
-					if (PlayState.instance.chromTween != null)
-						PlayState.instance.chromTween.cancel();
+					if (chromTween != null)
+						chromTween.cancel();
 
-					PlayState.instance.chromTween = FlxTween.tween(PlayState.instance, {
+					chromTween = FlxTween.tween(instance, {
 						chromEffect: 0.5
 					}, 0.22, {
 						ease: FlxEase.sineOut,
 						onComplete: function(twn:FlxTween)
 						{
-							PlayState.instance.chromTween = null;
-							PlayState.instance.chromEffect = 0.00001;
+							chromTween = null;
+							chromEffect = 0.00001;
 						}
 					});
 				}
@@ -9546,17 +9552,17 @@ class PlayState extends MusicBeatState
 				if (curBeat == 165 || curBeat == 173 || curBeat == 181 || curBeat == 189 || curBeat == 197 || curBeat == 205 || curBeat == 213
 					|| curBeat == 221)
 				{
-					if (PlayState.instance.chromTween != null)
-						PlayState.instance.chromTween.cancel();
+					if (chromTween != null)
+						chromTween.cancel();
 
-					PlayState.instance.chromTween = FlxTween.tween(PlayState.instance, {
+					chromTween = FlxTween.tween(instance, {
 						chromEffect: 0.35
 					}, 0.2, {
 						ease: FlxEase.sineOut,
 						onComplete: function(twn:FlxTween)
 						{
-							PlayState.instance.chromTween = null;
-							PlayState.instance.chromEffect = 0.00001;
+							chromTween = null;
+							chromEffect = 0.00001;
 						}
 					});
 				}
@@ -9564,18 +9570,18 @@ class PlayState extends MusicBeatState
 				if (curBeat == 166 || curBeat == 174 || curBeat == 182 || curBeat == 190 || curBeat == 198 || curBeat == 206 || curBeat == 214
 					|| curBeat == 222)
 				{
-					if (PlayState.instance.chromTween != null)
-						PlayState.instance.chromTween.cancel();
+					if (chromTween != null)
+						chromTween.cancel();
 
-					PlayState.instance.chromEffect = 0.45;
+					chromEffect = 0.45;
 
-					PlayState.instance.chromTween = FlxTween.tween(PlayState.instance, {
+					chromTween = FlxTween.tween(instance, {
 						chromEffect: 0.0001
 					}, 0.2, {
 						ease: FlxEase.sineOut,
 						onComplete: function(twn:FlxTween)
 						{
-							PlayState.instance.chromTween = null;
+							chromTween = null;
 						}
 					});
 				}
@@ -9583,18 +9589,18 @@ class PlayState extends MusicBeatState
 				if (curBeat == 167 || curBeat == 175 || curBeat == 183 || curBeat == 191 || curBeat == 199 || curBeat == 207 || curBeat == 215
 					|| curBeat == 223)
 				{
-					if (PlayState.instance.chromTween != null)
-						PlayState.instance.chromTween.cancel();
+					if (chromTween != null)
+						chromTween.cancel();
 
-					PlayState.instance.chromEffect = 0.56;
+					chromEffect = 0.56;
 
-					PlayState.instance.chromTween = FlxTween.tween(PlayState.instance, {
+					chromTween = FlxTween.tween(instance, {
 						chromEffect: 0.0001
 					}, 0.2, {
 						ease: FlxEase.sineOut,
 						onComplete: function(twn:FlxTween)
 						{
-							PlayState.instance.chromTween = null;
+							chromTween = null;
 						}
 					});
 				}
@@ -9605,18 +9611,18 @@ class PlayState extends MusicBeatState
 					&& curBeat <= 311 || curBeat >= 316 && curBeat <= 319 || curBeat >= 324 && curBeat <= 327 || curBeat >= 332 && curBeat <= 335
 					|| curBeat >= 340 && curBeat <= 343 || curBeat >= 348 && curBeat <= 351)
 				{
-					if (PlayState.instance.chromTween != null)
-						PlayState.instance.chromTween.cancel();
+					if (chromTween != null)
+						chromTween.cancel();
 
-					PlayState.instance.chromEffect = 0.32;
+					chromEffect = 0.32;
 
-					PlayState.instance.chromTween = FlxTween.tween(PlayState.instance, {
+					chromTween = FlxTween.tween(instance, {
 						chromEffect: 0.00001
 					}, 0.22, {
 						ease: FlxEase.sineOut,
 						onComplete: function(twn:FlxTween)
 						{
-							PlayState.instance.chromTween = null;
+							chromTween = null;
 						}
 					});
 				}
@@ -9631,189 +9637,189 @@ class PlayState extends MusicBeatState
 					|| curBeat == 454 || curBeat == 456 || curBeat == 458 || curBeat == 460 || curBeat == 462 || curBeat == 464 || curBeat == 466
 					|| curBeat == 468 || curBeat == 470 || curBeat == 472 || curBeat == 474)
 				{
-					if (PlayState.instance.chromTween != null)
-						PlayState.instance.chromTween.cancel();
+					if (chromTween != null)
+						chromTween.cancel();
 
-					PlayState.instance.chromEffect = 0.3;
+					chromEffect = 0.3;
 
-					PlayState.instance.chromTween = FlxTween.tween(PlayState.instance, {
+					chromTween = FlxTween.tween(instance, {
 						chromEffect: 0.00001
 					}, 0.5, {
 						ease: FlxEase.sineOut,
 						onComplete: function(twn:FlxTween)
 						{
-							PlayState.instance.chromTween = null;
+							chromTween = null;
 						}
 					});
 				}
 
 				if (curBeat == 412)
 				{
-					if (PlayState.instance.chromTween != null)
-						PlayState.instance.chromTween.cancel();
+					if (chromTween != null)
+						chromTween.cancel();
 
-					PlayState.instance.chromEffect = 0.36;
+					chromEffect = 0.36;
 
-					PlayState.instance.chromTween = FlxTween.tween(PlayState.instance, {
+					chromTween = FlxTween.tween(instance, {
 						chromEffect: 0.00001
 					}, 1, {
 						ease: FlxEase.sineOut,
 						onComplete: function(twn:FlxTween)
 						{
-							PlayState.instance.chromTween = null;
+							chromTween = null;
 						}
 					});
 				}
 
 				if (curBeat == 476)
 				{
-					if (PlayState.instance.chromTween != null)
-						PlayState.instance.chromTween.cancel();
+					if (chromTween != null)
+						chromTween.cancel();
 
-					PlayState.instance.chromTween = FlxTween.tween(PlayState.instance, {
+					chromTween = FlxTween.tween(instance, {
 						chromEffect: 0.85
 					}, 1.6, {
 						ease: FlxEase.sineOut,
 						onComplete: function(twn:FlxTween)
 						{
-							PlayState.instance.chromTween = null;
+							chromTween = null;
 						}
 					});
 				}
 
 				if (curBeat == 480)
 				{
-					PlayState.instance.chromTween.cancel();
+					chromTween.cancel();
 
-					PlayState.instance.chromEffect = 0.00001;
+					chromEffect = 0.00001;
 				}
 
 				switch (curBeat)
 				{
 					// I'm NOT gonna have a fun time recoding all this for the BG dimming in and out later lmao
 
-					case 16: PlayState.camBars.fade(FlxColor.BLACK, 3, true);
+					case 16: camBars.fade(FlxColor.BLACK, 3, true);
 
 					case 32:
-						if (ClientPrefs.flashing) PlayState.camBars.flash(FlxColor.BLACK, 1.5);
-						tweenCamera(PlayState.camGame.zoom + .5, 16.5, 'sineInOut');
+						if (ClientPrefs.flashing) camBars.flash(FlxColor.BLACK, 1.5);
+						tweenCamera(camGame.zoom + .5, 16.5, 'sineInOut');
 
 					case 64:
 						if (ClientPrefs.flashing)
-							PlayState.camBars.flash(FlxColor.BLACK, 0.9);
+							camBars.flash(FlxColor.BLACK, 0.9);
 
 					case 88:
 						tweenCamera(.75, 2.2, 'sineInOut');
 
-						FlxTween.tween(PlayState.camHUD, {alpha: 1}, 5, {ease: FlxEase.sineOut});
-						FlxTween.tween(PlayState.camNotes, {alpha: 1}, 5, {ease: FlxEase.sineOut});
+						FlxTween.tween(camHUD, {alpha: 1}, 5, {ease: FlxEase.sineOut});
+						FlxTween.tween(camNotes, {alpha: 1}, 5, {ease: FlxEase.sineOut});
 
 					case 96:
-						PlayState.defaultCamZoom = 0.75;
+						defaultCamZoom = 0.75;
 						if (ClientPrefs.flashing)
-							PlayState.camBars.flash(FlxColor.WHITE, 1.5);
+							camBars.flash(FlxColor.WHITE, 1.5);
 
 					case 128 | 256:
-						if (ClientPrefs.flashing) PlayState.camBars.flash(FlxColor.WHITE, 1.5);
+						if (ClientPrefs.flashing) camBars.flash(FlxColor.WHITE, 1.5);
 
 					case 156:
-						PlayState.defaultCamZoom = 1.05;
+						defaultCamZoom = 1.05;
 
 					case 160:
 						boundValue = 1.25;
 						drainValue = 0.015;
-						PlayState.defaultCamZoom = 0.7;
-						if (ClientPrefs.flashing) PlayState.camBars.flash(FlxColor.BLACK, 1.5);
+						defaultCamZoom = 0.7;
+						if (ClientPrefs.flashing) camBars.flash(FlxColor.BLACK, 1.5);
 
 					case 192:
-						PlayState.defaultCamZoom = 0.75;
+						defaultCamZoom = 0.75;
 					case 200 | 238 | 270 | 316 | 332 | 344:
-						PlayState.defaultCamZoom = 0.8;
+						defaultCamZoom = 0.8;
 					case 208:
-						PlayState.defaultCamZoom = 0.85;
+						defaultCamZoom = 0.85;
 					case 216 | 252 | 284:
-						PlayState.defaultCamZoom = 0.9;
+						defaultCamZoom = 0.9;
 					case 220:
-						PlayState.defaultCamZoom = 0.95;
+						defaultCamZoom = 0.95;
 					case 222 | 267 | 239 | 271 | 334:
-						PlayState.defaultCamZoom = 1;
+						defaultCamZoom = 1;
 
 					case 224 | 288:
-						PlayState.defaultCamZoom = 0.75;
+						defaultCamZoom = 0.75;
 						if (ClientPrefs.flashing)
-							PlayState.camBars.flash(FlxColor.WHITE, 1.5);
-						FlxTween.tween(PlayState.camHUD, {alpha: 0}, 3, {ease: FlxEase.sineInOut});
-						FlxTween.tween(PlayState.camNotes, {alpha: 0}, 3, {ease: FlxEase.sineInOut});
+							camBars.flash(FlxColor.WHITE, 1.5);
+						FlxTween.tween(camHUD, {alpha: 0}, 3, {ease: FlxEase.sineInOut});
+						FlxTween.tween(camNotes, {alpha: 0}, 3, {ease: FlxEase.sineInOut});
 
 					case 228 | 260 | 292 | 286:
-						PlayState.defaultCamZoom = 1.1;
+						defaultCamZoom = 1.1;
 
 					case 230 | 262 | 296 | 312 | 236 | 268:
-						PlayState.defaultCamZoom = 0.65;
+						defaultCamZoom = 0.65;
 
 					case 232 | 264:
 						if (ClientPrefs.flashing)
-							PlayState.camBars.flash(FlxColor.WHITE, 1.5);
-						PlayState.defaultCamZoom = 0.7;
+							camBars.flash(FlxColor.WHITE, 1.5);
+						defaultCamZoom = 0.7;
 
 					case 412 | 240 | 272 | 300 | 304 | 336 | 248 | 280 | 328:
-						PlayState.defaultCamZoom = 0.7;
+						defaultCamZoom = 0.7;
 
 					case 320:
 						if (ClientPrefs.flashing)
-							PlayState.camBars.flash(FlxColor.WHITE, 1.5);
-						PlayState.defaultCamZoom = 0.7;
+							camBars.flash(FlxColor.WHITE, 1.5);
+						defaultCamZoom = 0.7;
 
 					case 254:
-						PlayState.defaultCamZoom = 1.1;
-						FlxTween.tween(PlayState.camHUD, {alpha: 1}, 1, {ease: FlxEase.sineInOut});
-						FlxTween.tween(PlayState.camNotes, {alpha: 1}, 1, {ease: FlxEase.sineInOut});
+						defaultCamZoom = 1.1;
+						FlxTween.tween(camHUD, {alpha: 1}, 1, {ease: FlxEase.sineInOut});
+						FlxTween.tween(camNotes, {alpha: 1}, 1, {ease: FlxEase.sineInOut});
 
 					case 318:
-						PlayState.defaultCamZoom = 1.25;
-						FlxTween.tween(PlayState.camHUD, {alpha: 1}, 1, {ease: FlxEase.sineInOut});
-						FlxTween.tween(PlayState.camNotes, {alpha: 1}, 1, {ease: FlxEase.sineInOut});
+						defaultCamZoom = 1.25;
+						FlxTween.tween(camHUD, {alpha: 1}, 1, {ease: FlxEase.sineInOut});
+						FlxTween.tween(camNotes, {alpha: 1}, 1, {ease: FlxEase.sineInOut});
 
 					case 310 | 342 | 350:
-						PlayState.defaultCamZoom = 1.25;
+						defaultCamZoom = 1.25;
 
 					case 352:
-						PlayState.defaultCamZoom = 0.65;
-						FlxTween.tween(PlayState.camHUD, {alpha: 0.25}, 8, {ease: FlxEase.sineInOut});
-						FlxTween.tween(PlayState.camNotes, {alpha: 0.25}, 8, {ease: FlxEase.sineInOut});
+						defaultCamZoom = 0.65;
+						FlxTween.tween(camHUD, {alpha: 0.25}, 8, {ease: FlxEase.sineInOut});
+						FlxTween.tween(camNotes, {alpha: 0.25}, 8, {ease: FlxEase.sineInOut});
 						FlxTween.tween(this, {healthThing: 0.01}, 20);
-						if (PlayState.instance.globalGradient != null)
-							FlxTween.tween(PlayState.instance.globalGradient, {alpha: 0.8}, 10);
+						if (globalGradient != null)
+							FlxTween.tween(globalGradient, {alpha: 0.8}, 10);
 						FlxTween.tween(FlxG.camera, {zoom: 1.1}, 18, {startDelay: 2});
 
 					case 408:
-						PlayState.defaultCamZoom = 0.9;
-						FlxTween.tween(PlayState.camHUD, {alpha: 0.36}, 4, {ease: FlxEase.sineInOut});
-						FlxTween.tween(PlayState.camNotes, {alpha: 0.36}, 4, {ease: FlxEase.sineInOut});
+						defaultCamZoom = 0.9;
+						FlxTween.tween(camHUD, {alpha: 0.36}, 4, {ease: FlxEase.sineInOut});
+						FlxTween.tween(camNotes, {alpha: 0.36}, 4, {ease: FlxEase.sineInOut});
 
-					case 416: if (ClientPrefs.flashing) PlayState.camBars.flash(FlxColor.WHITE, 1.5);
+					case 416: if (ClientPrefs.flashing) camBars.flash(FlxColor.WHITE, 1.5);
 
 					case 480:
 						boundValue = 1;
 						drainValue = 0.02;
 						if (ClientPrefs.flashing)
-							PlayState.camBars.flash(FlxColor.BLACK, 1.5);
-						PlayState.camHUD.alpha = 0;
-						PlayState.camNotes.alpha = 0;
+							camBars.flash(FlxColor.BLACK, 1.5);
+						camHUD.alpha = 0;
+						camNotes.alpha = 0;
 
 					case 481:
-						PlayState.instance.camFollow.x += 100;
+						camFollow.x += 100;
 	
 					case 506:
-						FlxTween.tween(PlayState.camHUD, {alpha: 0.5}, 4, {ease: FlxEase.sineInOut});
-						FlxTween.tween(PlayState.camNotes, {alpha: 0.5}, 4, {ease: FlxEase.sineInOut});
+						FlxTween.tween(camHUD, {alpha: 0.5}, 4, {ease: FlxEase.sineInOut});
+						FlxTween.tween(camNotes, {alpha: 0.5}, 4, {ease: FlxEase.sineInOut});
 
 					case 536:
-						FlxTween.tween(PlayState.camHUD, {alpha: 0}, 2, {ease: FlxEase.sineInOut});
-						FlxTween.tween(PlayState.camNotes, {alpha: 0}, 2, {ease: FlxEase.sineInOut});
+						FlxTween.tween(camHUD, {alpha: 0}, 2, {ease: FlxEase.sineInOut});
+						FlxTween.tween(camNotes, {alpha: 0}, 2, {ease: FlxEase.sineInOut});
 
 					case 540:
-						PlayState.camBars.fade(FlxColor.BLACK, 5);
+						camBars.fade(FlxColor.BLACK, 5);
 				}
 
 			case 'Delusional':
@@ -9890,38 +9896,38 @@ class PlayState extends MusicBeatState
 					cinematicBarControls("kill", 0);
 
 				if (curBeat == 146)
-					PlayState.instance.manageLyrics('evildelu', 'Count the minutes...', 'disneyFreeplayFont.ttf', 30, 1.1, 'sineInOut', .05);
+					manageLyrics('evildelu', 'Count the minutes...', 'disneyFreeplayFont.ttf', 30, 1.1, 'sineInOut', .05);
 				if (curBeat == 150)
-					PlayState.instance.manageLyrics('evildelu', "...of how long...", 'disneyFreeplayFont.ttf', 30, 1, 'sineInOut', 0.04);
+					manageLyrics('evildelu', "...of how long...", 'disneyFreeplayFont.ttf', 30, 1, 'sineInOut', 0.04);
 				if (curBeat == 154)
-					PlayState.instance.manageLyrics('evildelu', "...this show will play!", 'disneyFreeplayFont.ttf', 30, 2.2, 'quartInOut', .07);
+					manageLyrics('evildelu', "...this show will play!", 'disneyFreeplayFont.ttf', 30, 2.2, 'quartInOut', .07);
 				if (curBeat == 162)
-					PlayState.instance.manageLyrics('evildelu', "And remind yourself...", 'disneyFreeplayFont.ttf', 30, 1.3, 'sineInOut', .05);
+					manageLyrics('evildelu', "And remind yourself...", 'disneyFreeplayFont.ttf', 30, 1.3, 'sineInOut', .05);
 				if (curBeat == 167)
-					PlayState.instance.manageLyrics('evildelu', "...no matter what's in...", 'disneyFreeplayFont.ttf', 30, 2, 'sineInOut', .06);
+					manageLyrics('evildelu', "...no matter what's in...", 'disneyFreeplayFont.ttf', 30, 2, 'sineInOut', .06);
 				if (curBeat == 174)
-					PlayState.instance.manageLyrics('evildelu', "...THE WAY!", 'disneyFreeplayFont.ttf', 30, 1, 'circOut', .035);
+					manageLyrics('evildelu', "...THE WAY!", 'disneyFreeplayFont.ttf', 30, 1, 'circOut', .035);
 				if (curBeat == 178)
-					PlayState.instance.manageLyrics('evildelu', "All your dreams...", 'disneyFreeplayFont.ttf', 30, 1, 'sineInOut', .04);
+					manageLyrics('evildelu', "All your dreams...", 'disneyFreeplayFont.ttf', 30, 1, 'sineInOut', .04);
 				if (curBeat == 182)
-					PlayState.instance.manageLyrics('evildelu', "...ARE SO FAR OUT OF REACH!", 'disneyFreeplayFont.ttf', 30, 4, 'quartInOut', .055);
+					manageLyrics('evildelu', "...ARE SO FAR OUT OF REACH!", 'disneyFreeplayFont.ttf', 30, 4, 'quartInOut', .055);
 				if (curBeat == 190)
-					PlayState.instance.manageLyrics('evildelu', "But if YOUR delusions...", 'disneyFreeplayFont.ttf', 30, 2.2, 'sineInOut', .045);
+					manageLyrics('evildelu', "But if YOUR delusions...", 'disneyFreeplayFont.ttf', 30, 2.2, 'sineInOut', .045);
 				if (curBeat == 196)
-					PlayState.instance.manageLyrics('evildelu', "...still surround ya.", 'disneyFreeplayFont.ttf', 30, 1.3, "quartOut", .045);
+					manageLyrics('evildelu', "...still surround ya.", 'disneyFreeplayFont.ttf', 30, 1.3, "quartOut", .045);
 				if (curBeat == 200)
-					PlayState.instance.manageLyrics('evildelu', "Let's LOOP 'ROUND ONCE MORE.", 'betterSatanFont.ttf', 30, 3, "sineInOut", .065);
+					manageLyrics('evildelu', "Let's LOOP 'ROUND ONCE MORE.", 'betterSatanFont.ttf', 30, 3, "sineInOut", .065);
 
 				switch (curBeat)
 				{
 					case 1: 
 						boundValue = 1;
 						drainValue = 0.02;
-						PlayState.camBars.fade(FlxColor.BLACK, 2, true);
-					case 132: PlayState.defaultCamZoom = 1.3;
+						camBars.fade(FlxColor.BLACK, 2, true);
+					case 132: defaultCamZoom = 1.3;
 					case 136:
-						PlayState.camBars.fade(FlxColor.BLACK, 0.6);
-						for (daUIs in [PlayState.camHUD, PlayState.camNotes])
+						camBars.fade(FlxColor.BLACK, 0.6);
+						for (daUIs in [camHUD, camNotes])
 							FlxTween.tween(daUIs, {alpha: 0}, 3);
 					case 138:
 						camVideo.fade(FlxColor.BLACK, 5, true);
@@ -9931,155 +9937,155 @@ class PlayState extends MusicBeatState
 						deluSing.play();
 					// BF Starts Singing Some Lyrics
 					case 144:
-						PlayState.defaultCamZoom = 0.8;
-						PlayState.camBars.fade(0x000000, 5, true);
-						PlayState.instance.camFlashSystem(BG_DARK, {alpha: 1, timer: 0.3, ease: FlxEase.quartInOut});
-						PlayState.defaultCamZoom = 1.2;
-						PlayState.instance.camFollow.x -= 100;
-						PlayState.boyfriend.alpha = 0.0001;
-						FlxTween.tween(PlayState.boyfriend, {alpha: 1}, 6, {ease: returnTweenEase('sineInOut')});
-						FlxTween.tween(PlayState.instance.camFollow, {x: PlayState.instance.camFollow.x + 100}, 12, {ease: FlxEase.sineInOut});
+						defaultCamZoom = 0.8;
+						camBars.fade(0x000000, 5, true);
+						camFlashSystem(BG_DARK, {alpha: 1, timer: 0.3, ease: FlxEase.quartInOut});
+						defaultCamZoom = 1.2;
+						camFollow.x -= 100;
+						boyfriend.alpha = 0.0001;
+						FlxTween.tween(boyfriend, {alpha: 1}, 6, {ease: returnTweenEase('sineInOut')});
+						FlxTween.tween(camFollow, {x: camFollow.x + 100}, 12, {ease: FlxEase.sineInOut});
 					case 176:
-						PlayState.instance.camFlashSystem(BG_DARK, {alpha: 0, timer: 0.3, ease: FlxEase.quartInOut});
-						PlayState.defaultCamZoom = 0.75;
-						PlayState.camGame.flash(FlxColor.WHITE, 1);
+						camFlashSystem(BG_DARK, {alpha: 0, timer: 0.3, ease: FlxEase.quartInOut});
+						defaultCamZoom = 0.75;
+						camGame.flash(FlxColor.WHITE, 1);
 
 						// today in super r slur shit we have this cus i hate my life
-						FlxTween.tween(PlayState.instance.camFollow, {y: PlayState.instance.camFollow.y - 300}, .00000001, {onComplete: bensonFromRegularShow -> {
-							FlxTween.tween(PlayState.instance.camFollow, {y: PlayState.instance.camFollow.y + 300}, 7, {ease: FlxEase.sineInOut});
+						FlxTween.tween(camFollow, {y: camFollow.y - 300}, .00000001, {onComplete: bensonFromRegularShow -> {
+							FlxTween.tween(camFollow, {y: camFollow.y + 300}, 7, {ease: FlxEase.sineInOut});
 						}});
 					case 180 | 188 | 196:
-						PlayState.camGame.zoom += 0.3;
-						PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.5, timer: 0.35});
+						camGame.zoom += 0.3;
+						camFlashSystem(BG_FLASH, {alpha: 0.5, timer: 0.35});
 					case 184 | 192 | 200:
-						PlayState.camGame.zoom += 0.15;
-						PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.25, timer: 0.35});
-					case 204: PlayState.defaultCamZoom = 1;
+						camGame.zoom += 0.15;
+						camFlashSystem(BG_FLASH, {alpha: 0.25, timer: 0.35});
+					case 204: defaultCamZoom = 1;
 					case 208:
 						deluSing.visible = false;
-						PlayState.camBars.fade(0x00000, .000001);
-						PlayState.defaultCamZoom = 1.3;
+						camBars.fade(0x00000, .000001);
+						defaultCamZoom = 1.3;
 
 					// Mickey Screams Like A Bitch
 					case 212:
 						camVideo.visible = false;
 						boundValue = 0.6;
 						drainValue = 0.025;
-						PlayState.instance.chromEffect = 0.3;
-						PlayState.instance.chromTween = FlxTween.tween(PlayState.instance, {chromEffect: 1}, 1.2);
-						PlayState.camBars.fade(0x00000, .000001, true);
-						PlayState.defaultCamZoom = 0.75;
-						PlayState.camGame.shake(0.01, 1.2);
+						chromEffect = 0.3;
+						chromTween = FlxTween.tween(instance, {chromEffect: 1}, 1.2);
+						camBars.fade(0x00000, .000001, true);
+						defaultCamZoom = 0.75;
+						camGame.shake(0.01, 1.2);
 					// The Drop Starts
 					case 216:
-						FlxTween.tween(PlayState.camHUD, {alpha: 1}, 1, {ease: FlxEase.quadOut});
-						FlxTween.tween(PlayState.camNotes, {alpha: 1}, 1, {ease: FlxEase.quadOut});
-						PlayState.instance.chromTween.cancel();
-						PlayState.instance.chromTween = FlxTween.tween(PlayState.instance, {chromEffect: 0.18}, 0.6, {ease: FlxEase.sineOut});
+						FlxTween.tween(camHUD, {alpha: 1}, 1, {ease: FlxEase.quadOut});
+						FlxTween.tween(camNotes, {alpha: 1}, 1, {ease: FlxEase.quadOut});
+						chromTween.cancel();
+						chromTween = FlxTween.tween(instance, {chromEffect: 0.18}, 0.6, {ease: FlxEase.sineOut});
 						if (ClientPrefs.flashing)
-							PlayState.camGame.flash(FlxColor.WHITE, 0.5);
-						if (PlayState.instance.canaddshaders)
+							camGame.flash(FlxColor.WHITE, 0.5);
+						if (canaddshaders)
 						{
                             if (!ClientPrefs.lowQuality)
                             {
-                                PlayState.camGame.setFilters([
-                                    new ShaderFilter(PlayState.dramaticCamMovement),
-                                    new ShaderFilter(PlayState.bloomEffect),
-                                    new ShaderFilter(PlayState.monitorFilter),
-                                    new ShaderFilter(PlayState.chromZoomShader),
-                                    new ShaderFilter(PlayState.chromNormalShader),
-                                    new ShaderFilter(PlayState.delusionalShift)
+                                camGame.setFilters([
+                                    new ShaderFilter(dramaticCamMovement),
+                                    new ShaderFilter(bloomEffect),
+                                    new ShaderFilter(monitorFilter),
+                                    new ShaderFilter(chromZoomShader),
+                                    new ShaderFilter(chromNormalShader),
+                                    new ShaderFilter(delusionalShift)
                                 ]);
-                                PlayState.camHUD.setFilters([new ShaderFilter(PlayState.chromNormalShader), new ShaderFilter(PlayState.delusionalShift)]);
-                                PlayState.camNotes.setFilters([
-                                        new ShaderFilter(PlayState.grayScale),
-                                        new ShaderFilter(PlayState.chromNormalShader),
-                                        new ShaderFilter(PlayState.delusionalShift)
+                                camHUD.setFilters([new ShaderFilter(chromNormalShader), new ShaderFilter(delusionalShift)]);
+                                camNotes.setFilters([
+                                        new ShaderFilter(grayScale),
+                                        new ShaderFilter(chromNormalShader),
+                                        new ShaderFilter(delusionalShift)
                                     ]);
                             }
                             else
                             {
-                                PlayState.camGame.setFilters([
-                                    new ShaderFilter(PlayState.monitorFilter),
-                                    new ShaderFilter(PlayState.chromZoomShader),
-                                    new ShaderFilter(PlayState.chromNormalShader),
-                                    new ShaderFilter(PlayState.delusionalShift)
+                                camGame.setFilters([
+                                    new ShaderFilter(monitorFilter),
+                                    new ShaderFilter(chromZoomShader),
+                                    new ShaderFilter(chromNormalShader),
+                                    new ShaderFilter(delusionalShift)
                                 ]);
-                                PlayState.camHUD.setFilters([new ShaderFilter(PlayState.chromNormalShader), new ShaderFilter(PlayState.delusionalShift)]);
-                                PlayState.camNotes.setFilters([
-                                        new ShaderFilter(PlayState.grayScale),
-                                        new ShaderFilter(PlayState.chromNormalShader),
-                                        new ShaderFilter(PlayState.delusionalShift)
+                                camHUD.setFilters([new ShaderFilter(chromNormalShader), new ShaderFilter(delusionalShift)]);
+                                camNotes.setFilters([
+                                        new ShaderFilter(grayScale),
+                                        new ShaderFilter(chromNormalShader),
+                                        new ShaderFilter(delusionalShift)
                                     ]);
                             }
 						}
 					case 228:
-						PlayState.instance.chromTween = null;
-						PlayState.defaultCamZoom = 0.85;
-					case 230: PlayState.defaultCamZoom = 1;
-					case 232: PlayState.defaultCamZoom = 0.75;
-					case 278: PlayState.defaultCamZoom = 1;
-					case 280 | 312 | 344: PlayState.defaultCamZoom = 0.7;
-					case 288 | 296 | 304 | 320 | 328 | 336: PlayState.defaultCamZoom += 0.1;
-					case 308: PlayState.defaultCamZoom += 0.2;
-					case 340: PlayState.defaultCamZoom += 0.3;
-					case 356 | 388: PlayState.defaultCamZoom = 1.2;
-					case 358 | 390: PlayState.defaultCamZoom = 1.3;
-					case 360: PlayState.defaultCamZoom = 0.75;
+						chromTween = null;
+						defaultCamZoom = 0.85;
+					case 230: defaultCamZoom = 1;
+					case 232: defaultCamZoom = 0.75;
+					case 278: defaultCamZoom = 1;
+					case 280 | 312 | 344: defaultCamZoom = 0.7;
+					case 288 | 296 | 304 | 320 | 328 | 336: defaultCamZoom += 0.1;
+					case 308: defaultCamZoom += 0.2;
+					case 340: defaultCamZoom += 0.3;
+					case 356 | 388: defaultCamZoom = 1.2;
+					case 358 | 390: defaultCamZoom = 1.3;
+					case 360: defaultCamZoom = 0.75;
 					case 375:
-						PlayState.instance.chromTween = FlxTween.tween(PlayState.instance, {chromEffect: 1}, 0.1, {ease: FlxEase.sineInOut});
+						chromTween = FlxTween.tween(instance, {chromEffect: 1}, 0.1, {ease: FlxEase.sineInOut});
 						tweenCamera(1.5, 0.1, 'sineInOut');
 					case 376:
-						PlayState.instance.chromTween.cancel();
-						PlayState.instance.chromTween = null;
-						PlayState.camGame.visible = false;
-						PlayState.camHUD.visible = false;
+						chromTween.cancel();
+						chromTween = null;
+						camGame.visible = false;
+						camHUD.visible = false;
 					case 377:
-						PlayState.camGame.visible = true;
-						PlayState.camHUD.visible = true;
+						camGame.visible = true;
+						camHUD.visible = true;
 						if (ClientPrefs.flashing)
-							PlayState.camGame.flash(FlxColor.WHITE, 1);
-						PlayState.defaultCamZoom = 0.8;
-						PlayState.instance.chromTween = FlxTween.tween(PlayState.instance, {chromEffect: 0.1}, 0.6, {ease: FlxEase.quadOut});
+							camGame.flash(FlxColor.WHITE, 1);
+						defaultCamZoom = 0.8;
+						chromTween = FlxTween.tween(instance, {chromEffect: 0.1}, 0.6, {ease: FlxEase.quadOut});
 					case 472:
 						useFakeDeluName = true;
 						windowName = "...";
 						lime.app.Application.current.window.title = windowName;
 						boundValue = 2;
 						drainValue = 0;
-						PlayState.camGame.visible = false;
-						PlayState.camHUD.visible = false;
-						PlayState.camNotes.visible = false;
+						camGame.visible = false;
+						camHUD.visible = false;
+						camNotes.visible = false;
 						atmosphereParticle.visible = false;
 						ashParticle.visible = false;
 					case 473:
-						if (PlayState.instance.canaddshaders)
+						if (canaddshaders)
 						{
                             if (!ClientPrefs.lowQuality)
                             {
-                                PlayState.camGame.setFilters([
-                                    new ShaderFilter(PlayState.dramaticCamMovement),
-                                    new ShaderFilter(PlayState.bloomEffect),
-                                    new ShaderFilter(PlayState.monitorFilter),
-                                    new ShaderFilter(PlayState.chromZoomShader),
-                                    new ShaderFilter(PlayState.chromNormalShader)
+                                camGame.setFilters([
+                                    new ShaderFilter(dramaticCamMovement),
+                                    new ShaderFilter(bloomEffect),
+                                    new ShaderFilter(monitorFilter),
+                                    new ShaderFilter(chromZoomShader),
+                                    new ShaderFilter(chromNormalShader)
                                 ]);
-                               PlayState.camHUD.setFilters([new ShaderFilter(PlayState.chromNormalShader)]);
-                                PlayState.camNotes.setFilters([new ShaderFilter(PlayState.grayScale), new ShaderFilter(PlayState.chromNormalShader)]);
+                               camHUD.setFilters([new ShaderFilter(chromNormalShader)]);
+                                camNotes.setFilters([new ShaderFilter(grayScale), new ShaderFilter(chromNormalShader)]);
                             }
                             else
                             {
-                                PlayState.camGame.setFilters([
-                                    new ShaderFilter(PlayState.monitorFilter),
-                                    new ShaderFilter(PlayState.chromZoomShader),
-                                    new ShaderFilter(PlayState.chromNormalShader)
+                                camGame.setFilters([
+                                    new ShaderFilter(monitorFilter),
+                                    new ShaderFilter(chromZoomShader),
+                                    new ShaderFilter(chromNormalShader)
                                 ]);
-                                PlayState.camHUD.setFilters([new ShaderFilter(PlayState.chromNormalShader)]);
-                                PlayState.camNotes.setFilters([new ShaderFilter(PlayState.grayScale), new ShaderFilter(PlayState.chromNormalShader)]);
+                                camHUD.setFilters([new ShaderFilter(chromNormalShader)]);
+                                camNotes.setFilters([new ShaderFilter(grayScale), new ShaderFilter(chromNormalShader)]);
                             }
 						}
-						PlayState.instance.chromEffect = 0.00001;
-						PlayState.defaultCamZoom = 0.85;
+						chromEffect = 0.00001;
+						defaultCamZoom = 0.85;
 					case 476:
 						windowName = "Where am I...?";
 						lime.app.Application.current.window.title = windowName;
@@ -10096,8 +10102,8 @@ class PlayState extends MusicBeatState
 						windowName = "Funkin.avi - " + (isStoryMode ? curEpisode + " - " : "Freeplay - ") + "Regret [________]";
 						lime.app.Application.current.window.title = windowName;
 						// no healthbar to add more onto the atmosphere of this section
-						PlayState.camGame.visible = true;
-						PlayState.camNotes.visible = true;
+						camGame.visible = true;
+						camNotes.visible = true;
 					case 484:
 						windowName = "Funkin.avi - " + (isStoryMode ? curEpisode + " - " : "Freeplay - ") + "Regret [P_______]";
 						lime.app.Application.current.window.title = windowName;
@@ -10128,8 +10134,8 @@ class PlayState extends MusicBeatState
 						{
 							camVideo.visible = false;
 						}});
-						FlxTween.tween(PlayState.camGame, {alpha: 0.0001}, 5, {ease: FlxEase.quartInOut});
-						FlxTween.tween(PlayState.camNotes, {alpha: 0.0001}, 5, {ease: FlxEase.quartInOut});
+						FlxTween.tween(camGame, {alpha: 0.0001}, 5, {ease: FlxEase.quartInOut});
+						FlxTween.tween(camNotes, {alpha: 0.0001}, 5, {ease: FlxEase.quartInOut});
 					case 728:
 						windowName = "...";
 						lime.app.Application.current.window.title = windowName;
@@ -10147,71 +10153,71 @@ class PlayState extends MusicBeatState
 						ashParticle.visible = true;
 					case 744:
 						useFakeDeluName = false;
-						windowName = "Funkin.avi - " + (isStoryMode ? curEpisode + " - " : "Freeplay - ") + PlayState.SONG.song + " [" + FreeplayState.getDiffRank() + "]";
+						windowName = "Funkin.avi - " + (isStoryMode ? curEpisode + " - " : "Freeplay - ") + SONG.song + " [" + FreeplayState.getDiffRank() + "]";
 						lime.app.Application.current.window.title = windowName;
-						PlayState.camGame.alpha = 1;
-						PlayState.camHUD.visible = true;
-						PlayState.defaultCamZoom = 0.9;
-						PlayState.camNotes.alpha = 1;
-						PlayState.instance.chromEffect = 0.1;
+						camGame.alpha = 1;
+						camHUD.visible = true;
+						defaultCamZoom = 0.9;
+						camNotes.alpha = 1;
+						chromEffect = 0.1;
 						if (ClientPrefs.flashing)
-							PlayState.camGame.flash(FlxColor.WHITE, 0.5);
-						if (PlayState.instance.canaddshaders)
+							camGame.flash(FlxColor.WHITE, 0.5);
+						if (canaddshaders)
 						{
                             if (!ClientPrefs.lowQuality)
                             {
-                                PlayState.camGame.setFilters([
-                                    new ShaderFilter(PlayState.dramaticCamMovement),
-									new ShaderFilter(PlayState.heatWaveEffect),
-                                    new ShaderFilter(PlayState.bloomEffect),
-                                    new ShaderFilter(PlayState.monitorFilter),
-                                    new ShaderFilter(PlayState.chromZoomShader),
-                                    new ShaderFilter(PlayState.chromNormalShader),
-                                    new ShaderFilter(PlayState.delusionalShift)
+                                camGame.setFilters([
+                                    new ShaderFilter(dramaticCamMovement),
+									new ShaderFilter(heatWaveEffect),
+                                    new ShaderFilter(bloomEffect),
+                                    new ShaderFilter(monitorFilter),
+                                    new ShaderFilter(chromZoomShader),
+                                    new ShaderFilter(chromNormalShader),
+                                    new ShaderFilter(delusionalShift)
                                 ]);
-                                PlayState.camHUD.setFilters([new ShaderFilter(PlayState.chromNormalShader), new ShaderFilter(PlayState.delusionalShift)]);
-                                PlayState.camNotes.setFilters([
-                                        new ShaderFilter(PlayState.grayScale),
-                                        new ShaderFilter(PlayState.chromNormalShader),
-                                        new ShaderFilter(PlayState.delusionalShift)
+                                camHUD.setFilters([new ShaderFilter(chromNormalShader), new ShaderFilter(delusionalShift)]);
+                                camNotes.setFilters([
+                                        new ShaderFilter(grayScale),
+                                        new ShaderFilter(chromNormalShader),
+                                        new ShaderFilter(delusionalShift)
                                     ]);
                             }
                             else
                             {
-                                PlayState.camGame.setFilters([
-                                    new ShaderFilter(PlayState.monitorFilter),
-                                    new ShaderFilter(PlayState.chromZoomShader),
-                                    new ShaderFilter(PlayState.chromNormalShader),
-                                    new ShaderFilter(PlayState.delusionalShift)
+                                camGame.setFilters([
+                                    new ShaderFilter(monitorFilter),
+                                    new ShaderFilter(chromZoomShader),
+                                    new ShaderFilter(chromNormalShader),
+                                    new ShaderFilter(delusionalShift)
                                 ]);
-                                PlayState.camHUD.setFilters([new ShaderFilter(PlayState.chromNormalShader), new ShaderFilter(PlayState.delusionalShift)]);
-                                PlayState.camNotes.setFilters([
-                                        new ShaderFilter(PlayState.grayScale),
-                                        new ShaderFilter(PlayState.chromNormalShader),
-                                        new ShaderFilter(PlayState.delusionalShift)
+                                camHUD.setFilters([new ShaderFilter(chromNormalShader), new ShaderFilter(delusionalShift)]);
+                                camNotes.setFilters([
+                                        new ShaderFilter(grayScale),
+                                        new ShaderFilter(chromNormalShader),
+                                        new ShaderFilter(delusionalShift)
                                     ]);
                             }
 						}
 					case 880 | 884 | 888 | 892 | 896 | 900 | 904 | 908 | 913 | 916 | 920 | 924 | 929 | 933 | 936 | 940 | 944 | 948 | 952 | 956 | 960 | 964 | 968 | 972 | 976 | 980 | 984 | 988 | 993 | 997 | 1000 | 1004:
-						PlayState.instance.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.135, timer: 0.85, colors: [255, 0, 0]});
+						camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.135, timer: 0.85, colors: [255, 0, 0]});
 					// The part where shit gets serious, Evilrette/Satan starts the solo
 					case 1008:
 						boundValue = 1.5;
 						drainValue = 0.01;
 						tweenCamera(1.35, 7, "quartInOut");
-						PlayState.instance.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.4, timer: 2, colors: [255, 0, 0]});
-						PlayState.instance.camFlashSystem(BG_DARK, {alpha: 0.8, timer: 6, ease: FlxEase.quartInOut});
+						camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.4, timer: 2, colors: [255, 0, 0]});
+						camFlashSystem(BG_DARK, {alpha: 0.8, timer: 6, ease: FlxEase.quartInOut});
 						isCameraOnForcedPos = true;
-						FlxTween.tween(PlayState.instance.camFollow, {x: PlayState.instance.camFollow.x + 150, y: PlayState.instance.camFollow.y + 50}, 4.3, {ease: FlxEase.quartInOut});
+						FlxTween.tween(camFollow, {x: camFollow.x + 150, y: camFollow.y + 50}, 4.3, {ease: FlxEase.quartInOut});
 					// camera moves over to Mickey realizing he was never gonna win
 					case 1024:
-						FlxTween.tween(PlayState.instance.camFollow, {x: PlayState.instance.camFollow.x - 950, y: PlayState.instance.camFollow.y - 70}, 1.5, {ease: FlxEase.circInOut});
+						FlxTween.tween(camFollow, {x: camFollow.x - 950, y: camFollow.y - 70}, 1.5, {ease: FlxEase.circInOut});
 					case 1040:
 						camFollow.x = 440;
 						camFollow.y = 360;
 						FlxTween.tween(mickeySpirit, {alpha: 0.6}, 2, {ease: FlxEase.sineOut});
 						defaultCamZoom = 0.5;
-						PlayState.instance.camFlashSystem(BG_DARK, {alpha: 0, timer: 1, ease: FlxEase.circOut});
+						camFlashSystem(BG_DARK, {alpha: 0, timer: 1, ease: FlxEase.circOut});
 					case 1072:
 						FlxTween.tween(mickeySpirit, {alpha: 0}, 4, {ease: FlxEase.quartOut});
 						isCameraOnForcedPos = false;
@@ -10222,102 +10228,102 @@ class PlayState extends MusicBeatState
 						camVideo.fade(FlxColor.BLACK, 0.7);
 					case 1086:
 						camGame.visible = false;
-						FlxTween.tween(PlayState.camHUD, {alpha: 0}, 2);
-						FlxTween.tween(PlayState.camNotes, {alpha: 0}, 2);
+						FlxTween.tween(camHUD, {alpha: 0}, 2);
+						FlxTween.tween(camNotes, {alpha: 0}, 2);
 						camVideo.zoom += 0.3;
 						camVideo.fade(FlxColor.BLACK, 0.2, true);
 						FlxTween.tween(camVideo, {zoom: 1}, 0.5, {ease: FlxEase.sineOut});
-						PlayState.instance.camFlashSystem(BG_DARK, {timer: 5});
+						camFlashSystem(BG_DARK, {timer: 5});
 						death.setVideoTime(0);
 						death.resume();
 						death.visible = true;
 					case 1134:
-						PlayState.instance.camFlashSystem(BG_DARK, {alpha: 1, timer: 0.5, ease: FlxEase.sineOut});
+						camFlashSystem(BG_DARK, {alpha: 1, timer: 0.5, ease: FlxEase.sineOut});
 					case 1136:
-						PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 1, timer: 0.3, ease: FlxEase.sineOut});
-						if (PlayState.instance.canaddshaders)
+						camFlashSystem(BG_FLASH, {alpha: 1, timer: 0.3, ease: FlxEase.sineOut});
+						if (canaddshaders)
 							{
 								if (!ClientPrefs.lowQuality)
 								{
-									PlayState.camGame.setFilters([
-										new ShaderFilter(PlayState.dramaticCamMovement),
-										new ShaderFilter(PlayState.bloomEffect),
-										new ShaderFilter(PlayState.monitorFilter)
+									camGame.setFilters([
+										new ShaderFilter(dramaticCamMovement),
+										new ShaderFilter(bloomEffect),
+										new ShaderFilter(monitorFilter)
 									]);
 								}
 								else
 								{
-									PlayState.camGame.setFilters([
-										new ShaderFilter(PlayState.monitorFilter)
+									camGame.setFilters([
+										new ShaderFilter(monitorFilter)
 									]);
 								}
 							}
 					case 1144:
-						FlxTween.tween(PlayState.camVideo, {alpha: 0}, 4);
+						FlxTween.tween(camVideo, {alpha: 0}, 4);
 				}
 
 			if ((curBeat >= 216 && curBeat < 340) || (curBeat >= 344 && curBeat < 356) || (curBeat >= 360 && curBeat < 388) || 
 				(curBeat >= 392 && curBeat < 408) || (curBeat >= 880 && curBeat < 1072))
 			{
 				FlxG.camera.zoom += .015;
-				for (mridk in [PlayState.camHUD, PlayState.camNotes]) mridk.zoom += .03;
+				for (mridk in [camHUD, camNotes]) mridk.zoom += .03;
 			}
 
 			case 'Delusion':
 				switch (curBeat)
 				{
 					case 1:
-						FlxTween.tween(PlayState.camGame, {alpha: 1}, 2);
+						FlxTween.tween(camGame, {alpha: 1}, 2);
 					case 8:
-						PlayState.defaultCamZoom -= 0.08;
-						PlayState.instance.camFlashSystem(BG_FLASH, {timer: 0.35});
-						FlxTween.tween(PlayState.camHUD, {alpha: 1}, 0.4);
-						FlxTween.tween(PlayState.camNotes, {alpha: 1}, 0.3);
-					case 16: PlayState.defaultCamZoom += 0.1;
+						defaultCamZoom -= 0.08;
+						camFlashSystem(BG_FLASH, {timer: 0.35});
+						FlxTween.tween(camHUD, {alpha: 1}, 0.4);
+						FlxTween.tween(camNotes, {alpha: 1}, 0.3);
+					case 16: defaultCamZoom += 0.1;
 					case 24:
-						PlayState.camGame.zoom += 0.12;
-						PlayState.defaultCamZoom -= 0.2;
-						PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.35, timer: 0.45, ease: FlxEase.circOut, colors: [255, 135, 135]});
+						camGame.zoom += 0.12;
+						defaultCamZoom -= 0.2;
+						camFlashSystem(BG_FLASH, {alpha: 0.35, timer: 0.45, ease: FlxEase.circOut, colors: [255, 135, 135]});
 					case 25 | 26 | 27 | 28 | 29 | 30 | 31 | 32 | 33 | 34 | 35 | 41 | 42 | 43 | 44 | 45 | 46 | 47 | 48 | 49 | 50 | 51 | 52 | 53 | 54 | 55 | 56 | 57 | 58 | 59 | 60 | 61 | 62 | 63 | 64 | 65 | 66 | 67 | 68 | 69 | 70 | 71 | 137 | 138 | 139 | 140 | 141 | 142 | 143 | 144 | 145 | 146 | 147 | 148 | 149 | 150 | 151 | 152 | 153 | 154 | 155 | 156 | 157 | 158 | 159 | 160 | 161 | 162 | 163 | 164 | 165 | 166 | 167 | 168 | 169 | 170 | 171 | 172 | 173 | 174 | 175 | 176 | 177 | 178 | 179 | 180 | 181 | 182 | 183 | 184 | 185 | 186 | 187 | 188 | 189 | 190 | 191 | 192:
-						PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.35, timer: 0.45, ease: FlxEase.circOut, colors: [255, 135, 135]});
-						PlayState.camGame.zoom += 0.1;
+						camFlashSystem(BG_FLASH, {alpha: 0.35, timer: 0.45, ease: FlxEase.circOut, colors: [255, 135, 135]});
+						camGame.zoom += 0.1;
 					case 72 | 73 | 74 | 75 | 76 | 77 | 78 | 79 | 80 | 81 | 82 | 83 | 84 | 85 | 86 | 87:
-						PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.56, timer: 0.45, ease: FlxEase.circOut, colors: [255, 135, 135]});
-						PlayState.camGame.zoom += 0.16;
+						camFlashSystem(BG_FLASH, {alpha: 0.56, timer: 0.45, ease: FlxEase.circOut, colors: [255, 135, 135]});
+						camGame.zoom += 0.16;
 					case 88 | 89 | 90 | 91 | 92 | 93 | 94 | 95 | 96 | 97 | 98 | 99 | 100 | 101:
-						PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.89, timer: 0.45, ease: FlxEase.circOut, colors: [255, 135, 135]});
-						PlayState.camGame.zoom += 0.21;
+						camFlashSystem(BG_FLASH, {alpha: 0.89, timer: 0.45, ease: FlxEase.circOut, colors: [255, 135, 135]});
+						camGame.zoom += 0.21;
 					case 36 | 134:
-						PlayState.instance.camFlashSystem(BG_DARK, {alpha: 0.8, timer: 0.21, ease: FlxEase.sineOut});
-						PlayState.defaultCamZoom += 0.3;
+						camFlashSystem(BG_DARK, {alpha: 0.8, timer: 0.21, ease: FlxEase.sineOut});
+						defaultCamZoom += 0.3;
 					case 40:
-						PlayState.defaultCamZoom -= 0.25;
-						PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.6, timer: 0.3, ease: FlxEase.circOut, colors: [255, 135, 135]});
-						PlayState.camGame.zoom += 0.16;
+						defaultCamZoom -= 0.25;
+						camFlashSystem(BG_FLASH, {alpha: 0.6, timer: 0.3, ease: FlxEase.circOut, colors: [255, 135, 135]});
+						camGame.zoom += 0.16;
 					case 104 | 112 | 120 | 128:
-						PlayState.camGame.zoom += 0.25;
-						PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.6, timer: 0.3, ease: FlxEase.circOut, colors: [255, 135, 135]});
+						camGame.zoom += 0.25;
+						camFlashSystem(BG_FLASH, {alpha: 0.6, timer: 0.3, ease: FlxEase.circOut, colors: [255, 135, 135]});
 					case 136:
-						PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.35, timer: 0.45, ease: FlxEase.circOut, colors: [255, 135, 135]});
-						PlayState.camGame.zoom += 0.1;
-						PlayState.defaultCamZoom += 0.11;
+						camFlashSystem(BG_FLASH, {alpha: 0.35, timer: 0.45, ease: FlxEase.circOut, colors: [255, 135, 135]});
+						camGame.zoom += 0.1;
+						defaultCamZoom += 0.11;
 					case 108 | 116:
-						PlayState.instance.camFlashSystem(BG_DARK, {alpha: 0.2, timer: 0.35, ease: FlxEase.sineOut});
+						camFlashSystem(BG_DARK, {alpha: 0.2, timer: 0.35, ease: FlxEase.sineOut});
 					case 110 | 118:
-						PlayState.instance.camFlashSystem(BG_DARK, {alpha: 0.5, timer: 0.35, ease: FlxEase.sineOut});
+						camFlashSystem(BG_DARK, {alpha: 0.5, timer: 0.35, ease: FlxEase.sineOut});
 				}
 
 				if (curBeat >= 72 && curBeat <= 87)
 				{
-					PlayState.instance.effectRed = 1;
+					effectRed = 1;
 
-					if (PlayState.instance.vignetteTween != null)
-						PlayState.instance.vignetteTween.cancel();
+					if (vignetteTween != null)
+						vignetteTween.cancel();
 
-					PlayState.instance.vignetteTween = FlxTween.tween(PlayState.instance, {effectRed: 0.0}, 0.4, {ease: FlxEase.sineOut, onComplete: 
+					vignetteTween = FlxTween.tween(instance, {effectRed: 0.0}, 0.4, {ease: FlxEase.sineOut, onComplete: 
 						function(twn:FlxTween)
 							{
-								PlayState.instance.vignetteTween = null;
+								vignetteTween = null;
 							}
 						}
 					);
@@ -10325,15 +10331,15 @@ class PlayState extends MusicBeatState
 
 				if (curBeat >= 88 && curBeat <= 103)
 					{
-						PlayState.instance.effectRed = 1.2;
+						effectRed = 1.2;
 						
-						if (PlayState.instance.vignetteTween != null)
-							PlayState.instance.vignetteTween.cancel();
+						if (vignetteTween != null)
+							vignetteTween.cancel();
 	
-						PlayState.instance.vignetteTween = FlxTween.tween(PlayState.instance, {effectRed: 0.0}, 0.4, {ease: FlxEase.sineOut, onComplete: 
+						vignetteTween = FlxTween.tween(instance, {effectRed: 0.0}, 0.4, {ease: FlxEase.sineOut, onComplete: 
 							function(twn:FlxTween)
 								{
-									PlayState.instance.vignetteTween = null;
+									vignetteTween = null;
 								}
 							}
 						);
@@ -10361,66 +10367,84 @@ class PlayState extends MusicBeatState
 					case 208:
 						for (hudShit in [camHUD, camNotes])
 							FlxTween.tween(hudShit, {alpha: 1}, 2, {ease: FlxEase.quartOut});
+					case 272 | 276 | 280 | 284:
+						defaultCamZoom += .05;
+					case 288:
+						defaultCamZoom -= .2;
+				}
+
+				if (curBeat >= 240 && curBeat < 288 && curBeat % 2 == 0)
+				{
+					camGame.zoom += 0.015;
+					camHUD.zoom += 0.03;
+					camNotes.zoom += 0.03;
+				}
+
+				if (curBeat >= 288 && curBeat < 352)
+				{
+					camGame.zoom += 0.015;
+					camHUD.zoom += 0.03;
+					camNotes.zoom += 0.03;
 				}
 			case 'Scrapped':
 				switch (curBeat)
 				{
-					case 64: FlxTween.tween(PlayState.dad, {alpha: 1}, 10);
-					case 424: FlxTween.tween(PlayState.dad, {alpha: 0}, 5);
+					case 64: FlxTween.tween(dad, {alpha: 1}, 10);
+					case 424: FlxTween.tween(dad, {alpha: 0}, 5);
 				}
 
 			case 'Laugh Track':
 				switch (curBeat)
 				{
 					case 7:
-						PlayState.cameraSpeed = 50;
-						//PlayState.instance.camFollow.x += 100;
+						cameraSpeed = 50;
+						//camFollow.x += 100;
 					case 8:
-						PlayState.camBars.fade(FlxColor.BLACK, 5, true);
-						//FlxTween.tween(PlayState.instance.camFollow, {x: 0}, 3, {ease: FlxEase.circOut});
+						camBars.fade(FlxColor.BLACK, 5, true);
+						//FlxTween.tween(camFollow, {x: 0}, 3, {ease: FlxEase.circOut});
 					case 32:
-						PlayState.defaultCamZoom = 1.5;
+						defaultCamZoom = 1.5;
 						//new FlxTimer().start(0.001, function(tmr) // what a load of crap lol
 							//{
-								//PlayState.instance.camFollow.x -= 100;
+								//camFollow.x -= 100;
 							//});
 					//case 33: 
-						//FlxTween.tween(PlayState.instance.camFollow, {x: 0}, 3, {ease: FlxEase.circInOut});
+						//FlxTween.tween(camFollow, {x: 0}, 3, {ease: FlxEase.circInOut});
 					case 56:
 						tweenCamera(1, 1.5, 'circInOut');
-						FlxTween.tween(PlayState.camHUD, {alpha: 1}, 1.5, {ease: FlxEase.circInOut});
-						FlxTween.tween(PlayState.camNotes, {alpha: 1}, 1.5, {ease: FlxEase.circInOut});
+						FlxTween.tween(camHUD, {alpha: 1}, 1.5, {ease: FlxEase.circInOut});
+						FlxTween.tween(camNotes, {alpha: 1}, 1.5, {ease: FlxEase.circInOut});
 						cameraSpeed = 2;
 					case 64 | 67 | 72 | 75 | 80 | 83 | 88 | 91: 
 						FlxG.camera.zoom += 0.015;
 						camHUD.zoom += 0.03;
 						camNotes.zoom += .03;
-						//PlayState.instance.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.25, ease: FlxEase.sineOut, timer: 0.6});
+						//camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.25, ease: FlxEase.sineOut, timer: 0.6});
 					case 96:
-						PlayState.instance.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.6, ease: FlxEase.sineOut, timer: 1});
-						PlayState.cameraSpeed = 2.3;
-						PlayState.defaultCamZoom = .78;
+						camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.6, ease: FlxEase.sineOut, timer: 1});
+						cameraSpeed = 2.3;
+						defaultCamZoom = .78;
 					case 152:
-						PlayState.defaultCamZoom = 1;
+						defaultCamZoom = 1;
 						opponentCameraOffset[0] -= 50;
 						moveCamera(true);
 					case 156:
-						PlayState.defaultCamZoom = 1.2;
+						defaultCamZoom = 1.2;
 						opponentCameraOffset[0] -= 50;
 						moveCamera(true);
 					case 160:
-						PlayState.defaultCamZoom = .78;
+						defaultCamZoom = .78;
 						opponentCameraOffset[0] += 100;
 					case 184:
-						PlayState.defaultCamZoom = 1;
+						defaultCamZoom = 1;
 						boyfriendCameraOffset[0] += 50;
 						moveCamera(false);
 					case 188:
-						PlayState.defaultCamZoom = 1.2;
+						defaultCamZoom = 1.2;
 						boyfriendCameraOffset[0] += 50;
 						moveCamera(false);
 					case 192:
-						PlayState.defaultCamZoom = .78;
+						defaultCamZoom = .78;
 						boyfriendCameraOffset[0] -= 100;
 						opponentCameraOffset[0] -= 70;
 						isCameraOnForcedPos = true;
@@ -10431,35 +10455,35 @@ class PlayState extends MusicBeatState
 						opponentCameraOffset[0] += 70;
 						moveCamera(true);
 						// only time this actually works fine dear god
-						PlayState.instance.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.6, ease: FlxEase.sineOut, timer: 1});
-						PlayState.defaultCamZoom = .78;
+						camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.6, ease: FlxEase.sineOut, timer: 1});
+						defaultCamZoom = .78;
 					case 384:
 						triggerEventNote('Change Scroll Speed', '0.7', '2');
-						PlayState.cameraSpeed = 1;
+						cameraSpeed = 1;
 					case 484:
 						triggerEventNote('Change Scroll Speed', '1.1', '2');
-						PlayState.cameraSpeed = 1.8;
-						PlayState.defaultCamZoom = 1;
+						cameraSpeed = 1.8;
+						defaultCamZoom = 1;
 						boyfriendCameraOffset[0] += 50;
 						moveCamera(false);
 					case 488:
 						boyfriendCameraOffset[0] -= 50;
 						moveCamera(true);
-						PlayState.instance.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.6, ease: FlxEase.sineOut, timer: 1});
-						PlayState.defaultCamZoom = .78;
-						PlayState.cameraSpeed = 2.3;
+						camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.6, ease: FlxEase.sineOut, timer: 1});
+						defaultCamZoom = .78;
+						cameraSpeed = 2.3;
 					case 616:
-						PlayState.defaultCamZoom = 1;
+						defaultCamZoom = 1;
 						boyfriendCameraOffset[0] += 30;
 						moveCamera(false);
 					case 618:
-						PlayState.defaultCamZoom = 1.2;
+						defaultCamZoom = 1.2;
 						boyfriendCameraOffset[0] += 30;
 						opponentCameraOffset[0] += 60;
-						PlayState.cameraSpeed = 1.6;
+						cameraSpeed = 1.6;
 						moveCamera(false);
 					case 684:
-						PlayState.defaultCamZoom = 1.35;
+						defaultCamZoom = 1.35;
 						boyfriendCameraOffset[0] += 30;
 						moveCamera(false);
 				}
@@ -10469,7 +10493,7 @@ class PlayState extends MusicBeatState
 					FlxG.camera.zoom += 0.015;
 					camHUD.zoom += 0.03;
 					camNotes.zoom += .03;
-					//PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.15, ease: FlxEase.sineOut, timer: 0.35, colors: [255, 0, 0]});
+					//camFlashSystem(BG_FLASH, {alpha: 0.15, ease: FlxEase.sineOut, timer: 0.35, colors: [255, 0, 0]});
 				}
 
 				if (curBeat >= 192 && curBeat <= 256 && curBeat % 2 == 0)
@@ -10482,46 +10506,46 @@ class PlayState extends MusicBeatState
 			case 'Birthday':
 				switch (curBeat)
 				{
-					case 2: PlayState.camBars.fade(FlxColor.BLACK, 3, true);
-					case 32: PlayState.defaultCamZoom = 1.18;
+					case 2: camBars.fade(FlxColor.BLACK, 3, true);
+					case 32: defaultCamZoom = 1.18;
 					case 60:
-						PlayState.cameraSpeed = 0.5;
-						PlayState.defaultCamZoom = 0.85;
-						FlxTween.tween(PlayState.camHUD, {alpha: 1}, 3);
-						FlxTween.tween(PlayState.camNotes, {alpha: 1}, 3);
+						cameraSpeed = 0.5;
+						defaultCamZoom = 0.85;
+						FlxTween.tween(camHUD, {alpha: 1}, 3);
+						FlxTween.tween(camNotes, {alpha: 1}, 3);
 					case 64:
-						PlayState.camGame.flash(FlxColor.WHITE, 1);
-						PlayState.cameraSpeed = 1;
+						camGame.flash(FlxColor.WHITE, 1);
+						cameraSpeed = 1;
 					case 192:
-						PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.7, timer: 1, colors: [66, 224, 245]});
+						camFlashSystem(BG_FLASH, {alpha: 0.7, timer: 1, colors: [66, 224, 245]});
 						FlxG.camera.zoom += 0.09;
-						PlayState.camHUD.zoom += 0.08;
-						PlayState.camNotes.zoom += 0.08;
-						PlayState.defaultCamZoom = 1;
-						PlayState.cameraSpeed = 0.7;
-					case 204 | 205 | 221 | 222 | 223 | 236 | 237 | 253 | 254 | 255: PlayState.defaultCamZoom += 0.1;
-					case 206 | 238: PlayState.defaultCamZoom = 1;
+						camHUD.zoom += 0.08;
+						camNotes.zoom += 0.08;
+						defaultCamZoom = 1;
+						cameraSpeed = 0.7;
+					case 204 | 205 | 221 | 222 | 223 | 236 | 237 | 253 | 254 | 255: defaultCamZoom += 0.1;
+					case 206 | 238: defaultCamZoom = 1;
 					case 224:
-						PlayState.defaultCamZoom = 1;
-						PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.7, timer: 1, colors: [119, 247, 96]});
+						defaultCamZoom = 1;
+						camFlashSystem(BG_FLASH, {alpha: 0.7, timer: 1, colors: [119, 247, 96]});
 						FlxG.camera.zoom += 0.09;
-						PlayState.camHUD.zoom += 0.08;
-						PlayState.camNotes.zoom += 0.08;
-					case 256: PlayState.defaultCamZoom = 0.85;
+						camHUD.zoom += 0.08;
+						camNotes.zoom += 0.08;
+					case 256: defaultCamZoom = 0.85;
 					case 320: tweenCamera(1, 1.5, 'sineInOut');
 					case 336:
 						tweenCamera(1.3, 2.8, 'quartInOut');
-						PlayState.instance.offsetTwn = FlxTween.tween(PlayState.instance.camFollow, {x: PlayState.instance.camFollow.x - 150}, 3, {ease: FlxEase.sineInOut, onComplete: function(twn:FlxTween)
+						offsetTwn = FlxTween.tween(camFollow, {x: camFollow.x - 150}, 3, {ease: FlxEase.sineInOut, onComplete: function(twn:FlxTween)
 						{
-							PlayState.instance.offsetTwn = null;
+							offsetTwn = null;
 						}});
 					case 348:
-						if (PlayState.instance.offsetTwn != null)
-							PlayState.instance.offsetTwn.cancel();
+						if (offsetTwn != null)
+							offsetTwn.cancel();
 						tweenCamera(1, 1.2, 'quartInOut');
-						PlayState.instance.offsetTwn = FlxTween.tween(PlayState.instance.camFollow, {x: PlayState.instance.camFollow.x + 100}, 1.2, {ease: FlxEase.sineInOut, onComplete: function(twn:FlxTween)
+						offsetTwn = FlxTween.tween(camFollow, {x: camFollow.x + 100}, 1.2, {ease: FlxEase.sineInOut, onComplete: function(twn:FlxTween)
 							{
-								PlayState.instance.offsetTwn = null;
+								offsetTwn = null;
 							}});
 					case 351: 
 						dadGroup.scale.y = 0.6;
@@ -10546,19 +10570,19 @@ class PlayState extends MusicBeatState
 							boyfriendGroup.scale.y = 0.9;
 							FlxTween.tween(boyfriendGroup, {'scale.x': 0.9}, 0.7, {ease: FlxEase.quartOut});
 						}});
-					case 536 | 540 | 544: PlayState.defaultCamZoom += 0.18;
+					case 536 | 540 | 544: defaultCamZoom += 0.18;
 					case 548: tweenCamera(0.8, 2, 'sineOut');
 					case 552:
-						PlayState.camGame.visible = false;
-						PlayState.camHUD.visible = false;
-						PlayState.camNotes.visible = false;
-						PlayState.camOther.flash(FlxColor.WHITE, 3);
+						camGame.visible = false;
+						camHUD.visible = false;
+						camNotes.visible = false;
+						camOther.flash(FlxColor.WHITE, 3);
 				}
 				if (curBeat >= 64 && curBeat <= 191 || curBeat >= 256 && curBeat <= 319)
 				{
 					FlxG.camera.zoom += 0.015;
-					PlayState.camHUD.zoom += 0.03;
-					PlayState.camNotes.zoom += 0.03;
+					camHUD.zoom += 0.03;
+					camNotes.zoom += 0.03;
 				}
 
 			case 'Mercy Legacy':
@@ -10585,47 +10609,47 @@ class PlayState extends MusicBeatState
 				switch (curBeat)
 				{
 					case 16:
-						FlxTween.tween(PlayState.camGame, {alpha: 1}, 5, {ease: FlxEase.sineInOut});
-						FlxTween.tween(PlayState.camHUD, {alpha: 1}, 5, {ease: FlxEase.sineInOut, startDelay: 1.5});
-						PlayState.defaultCamZoom = 1.3;
+						FlxTween.tween(camGame, {alpha: 1}, 5, {ease: FlxEase.sineInOut});
+						FlxTween.tween(camHUD, {alpha: 1}, 5, {ease: FlxEase.sineInOut, startDelay: 1.5});
+						defaultCamZoom = 1.3;
 
-					case 32: PlayState.defaultCamZoom = 1.2;
-					case 40: PlayState.defaultCamZoom = 1.1;
-					case 48: PlayState.defaultCamZoom = 1;
-					case 56: PlayState.defaultCamZoom = 0.9;
-					case 64: PlayState.defaultCamZoom = 0.75;
+					case 32: defaultCamZoom = 1.2;
+					case 40: defaultCamZoom = 1.1;
+					case 48: defaultCamZoom = 1;
+					case 56: defaultCamZoom = 0.9;
+					case 64: defaultCamZoom = 0.75;
 
 					case 128: tweenCamera(1.1, 9.7, 'quadInOut');
 
 					// Very Spooky Phase 2 Walt (real)
 					case 256:
-						FlxTween.tween(PlayState.camGame, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
-						FlxTween.tween(PlayState.camHUD, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
-						FlxTween.tween(PlayState.camNotes, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
+						FlxTween.tween(camGame, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
+						FlxTween.tween(camHUD, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
+						FlxTween.tween(camNotes, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
 
 					case 264:
-						FlxTween.tween(PlayState.camGame, {alpha: 1}, 2, {ease: FlxEase.sineInOut});
-						PlayState.defaultCamZoom = 1.3;
+						FlxTween.tween(camGame, {alpha: 1}, 2, {ease: FlxEase.sineInOut});
+						defaultCamZoom = 1.3;
 
 					case 275:
-						PlayState.defaultCamZoom = 0.8;
-						FlxTween.tween(PlayState.camHUD, {alpha: 1}, 0.31, {ease: FlxEase.sineInOut});
-						FlxTween.tween(PlayState.camNotes, {alpha: 1}, 0.31, {ease: FlxEase.sineInOut});
-						if (ClientPrefs.mechanics) PlayState.instance.inkFormWarning.alpha = 1;
+						defaultCamZoom = 0.8;
+						FlxTween.tween(camHUD, {alpha: 1}, 0.31, {ease: FlxEase.sineInOut});
+						FlxTween.tween(camNotes, {alpha: 1}, 0.31, {ease: FlxEase.sineInOut});
+						if (ClientPrefs.mechanics) inkFormWarning.alpha = 1;
 
 					case 276:
-						if (ClientPrefs.mechanics) FlxTween.tween(PlayState.instance.inkFormWarning, {alpha: 0}, 2, {ease: FlxEase.sineInOut});
+						if (ClientPrefs.mechanics) FlxTween.tween(inkFormWarning, {alpha: 0}, 2, {ease: FlxEase.sineInOut});
 
 					case 468:
-						//FlxTween.tween(PlayState.bfStrums, {alpha: 0}, 4, {ease: FlxEase.sineInOut});
-						FlxTween.tween(PlayState.camHUD, {alpha: 0}, 4, {ease: FlxEase.sineInOut});
-						FlxTween.tween(PlayState.camNotes, {alpha: 0}, 1, {ease: FlxEase.sineInOut, startDelay: 3});
-						if (ClientPrefs.mechanics) FlxTween.tween(PlayState.instance.spaceBarCounter, {alpha: 0}, 2, {ease: FlxEase.sineInOut});
+						//FlxTween.tween(bfStrums, {alpha: 0}, 4, {ease: FlxEase.sineInOut});
+						FlxTween.tween(camHUD, {alpha: 0}, 4, {ease: FlxEase.sineInOut});
+						FlxTween.tween(camNotes, {alpha: 0}, 1, {ease: FlxEase.sineInOut, startDelay: 3});
+						if (ClientPrefs.mechanics) FlxTween.tween(spaceBarCounter, {alpha: 0}, 2, {ease: FlxEase.sineInOut});
 
 					// Final Stretch
 					case 498:
-						PlayState.camGame.alpha = 0;
-						PlayState.camOther.flash(FlxColor.WHITE, 3);
+						camGame.alpha = 0;
+						camOther.flash(FlxColor.WHITE, 3);
 				}
 
 				if (ClientPrefs.mechanics)
@@ -10675,85 +10699,85 @@ class PlayState extends MusicBeatState
 					switch (curBeat)
 					{
 						// Intro Cam Shit
-						case 16: PlayState.camBars.fade(0x000000, 0.0001, true);
+						case 16: camBars.fade(0x000000, 0.0001, true);
 						// because i dont know how to fucking use this goofy ass editor
 						opponentStrums.forEach(s -> {s.scale.set(.95, .95); s.alpha = .5;});
 						//case 32: tweenCamera(0.85, 5.5, 'quartInOut');
 						case 46:
 							//tweenCamera(0.6, 0.6, 'sineInOut');
-							FlxTween.tween(PlayState.camNotes, {alpha: 1}, 0.8, {ease: FlxEase.circInOut});
-							FlxTween.tween(PlayState.camHUD, {alpha: 1}, 0.8, {ease: FlxEase.circInOut});
+							FlxTween.tween(camNotes, {alpha: 1}, 0.8, {ease: FlxEase.circInOut});
+							FlxTween.tween(camHUD, {alpha: 1}, 0.8, {ease: FlxEase.circInOut});
 
 						// Phase 1 Section
 						case 174:
-							PlayState.instance.relapseGimmick(0.7, 0.3);
+							relapseGimmick(0.7, 0.3);
 						case 176:
 							camGame.fade(FlxColor.RED, 1, true);
 						case 180 | 182 | 196 | 198 | 212 | 254 | 286 | 303:
-							PlayState.instance.relapseGimmick(0.35, 0.15);
+							relapseGimmick(0.35, 0.15);
 						case 188 | 204:
-							PlayState.instance.relapseGimmick(1.4, 0.6);
+							relapseGimmick(1.4, 0.6);
 						case 206:
-							PlayState.instance.relapseGimmick(0.7, 0.54);
+							relapseGimmick(0.7, 0.54);
 						case 214:
-							PlayState.instance.relapseGimmick(0.7, 0.8);
+							relapseGimmick(0.7, 0.8);
 						case 222 | 228 | 244:
-							PlayState.instance.relapseGimmick(0.7, 1);
+							relapseGimmick(0.7, 1);
 						case 236:
-							PlayState.instance.relapseGimmick(0.7, 0.4);
+							relapseGimmick(0.7, 0.4);
 						case 248 | 262 | 276:
-							PlayState.instance.relapseGimmick(1.4, 1.2);
+							relapseGimmick(1.4, 1.2);
 						case 270 | 294:
-							PlayState.instance.relapseGimmick(0.7, 1.5);
+							relapseGimmick(0.7, 1.5);
 
 						// Cam Shit and Lyrics for intro to Phase 2
 						case 366:
-							FlxTween.tween(PlayState.camNotes, {alpha: 0}, 1);
-							FlxTween.tween(PlayState.camHUD, {alpha: 0}, 1);
+							FlxTween.tween(camNotes, {alpha: 0}, 1);
+							FlxTween.tween(camHUD, {alpha: 0}, 1);
 
-						case 381: PlayState.instance.manageLyrics('relapsegun-pixel', 'You REALLY think this is...', 'calibri-regular.ttf', 30, 1.1, 'sineInOut');
-						case 384: PlayState.instance.manageLyrics('relapsegun-pixel', '...some kind of...', 'calibri-regular.ttf', 30, 1.4, 'sineInOut');
-						case 388: PlayState.instance.manageLyrics('relapsegun-pixel', '...silly little GAME?', 'calibri-regular.ttf', 30, 1.15, 'sineInOut');
-						case 394: PlayState.instance.manageLyrics('relapsegun-pixel', 'Soon enough...', 'calibri-regular.ttf', 30, 1.3, 'sineInOut');
-						case 398: PlayState.instance.manageLyrics('relapsegun-pixel', "...you'll understand what ME...", 'calibri-regular.ttf', 30, 1.5, 'sineInOut');
-						case 404: PlayState.instance.manageLyrics('relapsegun-pixel', '...AND MY FRIENDS...', 'calibri-regular.ttf', 30, 1.6, 'sineInOut');
-						case 408: PlayState.instance.manageLyrics('relapsegun-pixel', '...HAVE TO GO THROUGH!', 'calibri-regular.ttf', 30, 1.1, 'sineInOut');
-						case 413: PlayState.instance.manageLyrics('relapsegun-pixel', 'Sooner or later...', 'calibri-regular.ttf', 30, 1.1, 'sineInOut');
-						case 417: PlayState.instance.manageLyrics('relapsegun-pixel', '...your DEATH will be nothing...', 'calibri-regular.ttf', 30, 1.1, 'sineInOut');
-						case 420: PlayState.instance.manageLyrics('relapsegun-pixel', '...BUT CYCLED SINS!', 'calibri-regular.ttf', 30, 1.1, 'sineInOut');
+						case 381: manageLyrics('relapsegun-pixel', 'You REALLY think this is...', 'calibri-regular.ttf', 30, 1.1, 'sineInOut');
+						case 384: manageLyrics('relapsegun-pixel', '...some kind of...', 'calibri-regular.ttf', 30, 1.4, 'sineInOut');
+						case 388: manageLyrics('relapsegun-pixel', '...silly little GAME?', 'calibri-regular.ttf', 30, 1.15, 'sineInOut');
+						case 394: manageLyrics('relapsegun-pixel', 'Soon enough...', 'calibri-regular.ttf', 30, 1.3, 'sineInOut');
+						case 398: manageLyrics('relapsegun-pixel', "...you'll understand what ME...", 'calibri-regular.ttf', 30, 1.5, 'sineInOut');
+						case 404: manageLyrics('relapsegun-pixel', '...AND MY FRIENDS...', 'calibri-regular.ttf', 30, 1.6, 'sineInOut');
+						case 408: manageLyrics('relapsegun-pixel', '...HAVE TO GO THROUGH!', 'calibri-regular.ttf', 30, 1.1, 'sineInOut');
+						case 413: manageLyrics('relapsegun-pixel', 'Sooner or later...', 'calibri-regular.ttf', 30, 1.1, 'sineInOut');
+						case 417: manageLyrics('relapsegun-pixel', '...your DEATH will be nothing...', 'calibri-regular.ttf', 30, 1.1, 'sineInOut');
+						case 420: manageLyrics('relapsegun-pixel', '...BUT CYCLED SINS!', 'calibri-regular.ttf', 30, 1.1, 'sineInOut');
 
 						case 429:
 							camGame.visible = false;
 						case 432:
 							camGame.visible = true;
-							FlxTween.tween(PlayState.camNotes, {alpha: 1}, 0.5, {ease: FlxEase.sineOut});
-							FlxTween.tween(PlayState.camHUD, {alpha: 1}, 0.5, {ease: FlxEase.sineOut});
+							FlxTween.tween(camNotes, {alpha: 1}, 0.5, {ease: FlxEase.sineOut});
+							FlxTween.tween(camHUD, {alpha: 1}, 0.5, {ease: FlxEase.sineOut});
 
 						// Phase 2 Section
 						case 434:
-							PlayState.instance.relapseGimmick(0.35, 0.5);
+							relapseGimmick(0.35, 0.5);
 						case 438:
-							PlayState.instance.relapseGimmick(0.35, 1, true);
+							relapseGimmick(0.35, 1, true);
 						case 446:
-							PlayState.instance.relapseGimmick(0.7, 0.35);
+							relapseGimmick(0.7, 0.35);
 						case 453:
-							PlayState.instance.relapseGimmick(0.7, 1, true);
+							relapseGimmick(0.7, 1, true);
 						case 460:
-							PlayState.instance.relapseGimmick(0.7, 0.9);
+							relapseGimmick(0.7, 0.9);
 						case 467:
-							PlayState.instance.relapseGimmick(0.35, 1.8, true);
+							relapseGimmick(0.35, 1.8, true);
 						case 471:
-							PlayState.instance.relapseGimmick(0.35, 1.1);
+							relapseGimmick(0.35, 1.1);
 						case 474:
-							PlayState.instance.relapseGimmick(0.35, 1.5);
+							relapseGimmick(0.35, 1.5);
 						case 476:
-							PlayState.instance.relapseGimmick(0.7, 1, true);
+							relapseGimmick(0.7, 1, true);
 						case 484:
-							PlayState.instance.relapseGimmick(0.35, 1.3);
+							relapseGimmick(0.35, 1.3);
 						case 486:
-							PlayState.instance.relapseGimmick(0.35, 2);
+							relapseGimmick(0.35, 2);
 						case 494:
-							PlayState.instance.relapseGimmick(0.35, 1.3, true);
+							relapseGimmick(0.35, 1.3, true);
 					}
 				}
 				else
@@ -10761,37 +10785,37 @@ class PlayState extends MusicBeatState
 					switch (curBeat)
 					{
 						// Intro Cam Shit
-						case 16: PlayState.camGame.alpha = 1;
+						case 16: camGame.alpha = 1;
 						//case 32: tweenCamera(0.85, 5.5, 'quartInOut');
 						case 46:
 							//tweenCamera(0.6, 0.6, 'sineInOut');
-							FlxTween.tween(PlayState.camNotes, {alpha: 1}, 0.8, {ease: FlxEase.circInOut});
-							FlxTween.tween(PlayState.camHUD, {alpha: 1}, 0.8, {ease: FlxEase.circInOut});
+							FlxTween.tween(camNotes, {alpha: 1}, 0.8, {ease: FlxEase.circInOut});
+							FlxTween.tween(camHUD, {alpha: 1}, 0.8, {ease: FlxEase.circInOut});
 						case 366:
-							FlxTween.tween(PlayState.camNotes, {alpha: 0}, 1);
-							FlxTween.tween(PlayState.camHUD, {alpha: 0}, 1);
+							FlxTween.tween(camNotes, {alpha: 0}, 1);
+							FlxTween.tween(camHUD, {alpha: 0}, 1);
 
-						case 381: PlayState.instance.manageLyrics('relapsegun-pixel', 'You REALLY think this is...', 'calibri-regular.ttf', 30, 1.1, 'sineInOut');
-						case 384: PlayState.instance.manageLyrics('relapsegun-pixel', '...some kind of...', 'calibri-regular.ttf', 30, 1.4, 'sineInOut');
-						case 388: PlayState.instance.manageLyrics('relapsegun-pixel', '...silly little GAME?', 'calibri-regular.ttf', 30, 1.15, 'sineInOut');
-						case 394: PlayState.instance.manageLyrics('relapsegun-pixel', 'Soon enough...', 'calibri-regular.ttf', 30, 1.3, 'sineInOut');
-						case 398: PlayState.instance.manageLyrics('relapsegun-pixel', "...you'll understand what ME...", 'calibri-regular.ttf', 30, 1.5, 'sineInOut');
-						case 404: PlayState.instance.manageLyrics('relapsegun-pixel', '...AND MY FRIENDS...', 'calibri-regular.ttf', 30, 1.6, 'sineInOut');
-						case 408: PlayState.instance.manageLyrics('relapsegun-pixel', '...HAVE TO GO THROUGH!', 'calibri-regular.ttf', 30, 1.1, 'sineInOut');
-						case 413: PlayState.instance.manageLyrics('relapsegun-pixel', 'Sooner or later...', 'calibri-regular.ttf', 30, 1.1, 'sineInOut');
-						case 417: PlayState.instance.manageLyrics('relapsegun-pixel', '...your DEATH will be nothing...', 'calibri-regular.ttf', 30, 1.1, 'sineInOut');
-						case 420: PlayState.instance.manageLyrics('relapsegun-pixel', '...BUT CYCLED SINS!', 'calibri-regular.ttf', 30, 1.1, 'sineInOut');
+						case 381: manageLyrics('relapsegun-pixel', 'You REALLY think this is...', 'calibri-regular.ttf', 30, 1.1, 'sineInOut');
+						case 384: manageLyrics('relapsegun-pixel', '...some kind of...', 'calibri-regular.ttf', 30, 1.4, 'sineInOut');
+						case 388: manageLyrics('relapsegun-pixel', '...silly little GAME?', 'calibri-regular.ttf', 30, 1.15, 'sineInOut');
+						case 394: manageLyrics('relapsegun-pixel', 'Soon enough...', 'calibri-regular.ttf', 30, 1.3, 'sineInOut');
+						case 398: manageLyrics('relapsegun-pixel', "...you'll understand what ME...", 'calibri-regular.ttf', 30, 1.5, 'sineInOut');
+						case 404: manageLyrics('relapsegun-pixel', '...AND MY FRIENDS...', 'calibri-regular.ttf', 30, 1.6, 'sineInOut');
+						case 408: manageLyrics('relapsegun-pixel', '...HAVE TO GO THROUGH!', 'calibri-regular.ttf', 30, 1.1, 'sineInOut');
+						case 413: manageLyrics('relapsegun-pixel', 'Sooner or later...', 'calibri-regular.ttf', 30, 1.1, 'sineInOut');
+						case 417: manageLyrics('relapsegun-pixel', '...your DEATH will be nothing...', 'calibri-regular.ttf', 30, 1.1, 'sineInOut');
+						case 420: manageLyrics('relapsegun-pixel', '...BUT CYCLED SINS!', 'calibri-regular.ttf', 30, 1.1, 'sineInOut');
 
 						case 432:
-							FlxTween.tween(PlayState.camNotes, {alpha: 1}, 0.5, {ease: FlxEase.sineOut});
-							FlxTween.tween(PlayState.camHUD, {alpha: 1}, 0.5, {ease: FlxEase.sineOut});
+							FlxTween.tween(camNotes, {alpha: 1}, 0.5, {ease: FlxEase.sineOut});
+							FlxTween.tween(camHUD, {alpha: 1}, 0.5, {ease: FlxEase.sineOut});
 					}
 				}
 
 				if (curBeat == 400 || curBeat == 404 || curBeat == 408 || curBeat == 412 || curBeat == 416 || curBeat == 420 || curBeat == 424
 					|| curBeat == 428)
 				{
-					PlayState.instance.camFlashSystem(BG_FLASH, {alpha: 0.32, timer: 1.2, colors: [255, 0, 0]});
+					camFlashSystem(BG_FLASH, {alpha: 0.32, timer: 1.2, colors: [255, 0, 0]});
 					FlxG.camera.zoom += 0.1;
 				}
 
@@ -10799,33 +10823,33 @@ class PlayState extends MusicBeatState
 				switch (curBeat)
 				{
 					// Intro Cam Stuff
-					case 1: FlxTween.tween(PlayState.camGame, {alpha: 1}, 5, {ease: FlxEase.sineInOut});
+					case 1: FlxTween.tween(camGame, {alpha: 1}, 5, {ease: FlxEase.sineInOut});
 					case 16: tweenCamera(1.2, 5, 'quartInOut');
 					case 32:
-						PlayState.defaultCamZoom = 0.8;
-						FlxTween.tween(PlayState.camHUD, {alpha: 1}, 0.5, {ease: FlxEase.sineOut});
-						FlxTween.tween(PlayState.camNotes, {alpha: 1}, 0.5, {ease: FlxEase.sineOut});
-					case 39 | 48 | 64 | 72 | 88 | 96 | 103 | 113 | 128 | 184 | 192: PlayState.defaultCamZoom = 0.8;
+						defaultCamZoom = 0.8;
+						FlxTween.tween(camHUD, {alpha: 1}, 0.5, {ease: FlxEase.sineOut});
+						FlxTween.tween(camNotes, {alpha: 1}, 0.5, {ease: FlxEase.sineOut});
+					case 39 | 48 | 64 | 72 | 88 | 96 | 103 | 113 | 128 | 184 | 192: defaultCamZoom = 0.8;
 					case 38 | 102: tweenCamera(1.5, 0.25, 'sineInOut');
-					case 45 | 61 | 110 | 126 | 187: PlayState.defaultCamZoom = 0.9;
-					case 46 | 62 | 67 | 76 | 83 | 92 | 111 | 127 | 158 | 190: PlayState.defaultCamZoom = 1;
-					case 47 | 63 | 68 | 84 | 112 | 159: PlayState.defaultCamZoom = 1.3;
-					case 69 | 85: PlayState.defaultCamZoom = 1.1;
-					case 160: PlayState.defaultCamZoom = 0.65;
+					case 45 | 61 | 110 | 126 | 187: defaultCamZoom = 0.9;
+					case 46 | 62 | 67 | 76 | 83 | 92 | 111 | 127 | 158 | 190: defaultCamZoom = 1;
+					case 47 | 63 | 68 | 84 | 112 | 159: defaultCamZoom = 1.3;
+					case 69 | 85: defaultCamZoom = 1.1;
+					case 160: defaultCamZoom = 0.65;
 					case 164: tweenCamera(1.5, 6, 'sineInOut');
 					case 191:
-						if (PlayState.instance.canaddshaders)
+						if (canaddshaders)
 						{
 							if (!ClientPrefs.lowQuality && ClientPrefs.epilepsy)
 							{
-								PlayState.camGame.setFilters([new ShaderFilter(PlayState.chromZoomShader), new ShaderFilter(PlayState.blurShader)]);
-								PlayState.camHUD.setFilters([new ShaderFilter(PlayState.chromNormalShader), new ShaderFilter(PlayState.blurShader)]);
-								PlayState.camNotes.setFilters([new ShaderFilter(PlayState.chromNormalShader), new ShaderFilter(PlayState.blurShader)]);
+								camGame.setFilters([new ShaderFilter(chromZoomShader), new ShaderFilter(blurShader)]);
+								camHUD.setFilters([new ShaderFilter(chromNormalShader), new ShaderFilter(blurShader)]);
+								camNotes.setFilters([new ShaderFilter(chromNormalShader), new ShaderFilter(blurShader)]);
 							}
 						}
                     case 320:
-                        FlxTween.tween(PlayState.camHUD, {alpha: 0}, 0.5);
-                        FlxTween.tween(PlayState.camNotes, {alpha: 0}, 0.5);
+                        FlxTween.tween(camHUD, {alpha: 0}, 0.5);
+                        FlxTween.tween(camNotes, {alpha: 0}, 0.5);
 					case 324:
 						// FUCK YOU, WE'RE USING THE SUPER COOL MODCHART EDITOR NOW WOOOOOO!!!
                         /*moveThatFuckingStrum(false, 0.5, 90, 0, 1060, 120, 0);
@@ -10839,10 +10863,10 @@ class PlayState extends MusicBeatState
 						var count:FlxSprite = new FlxSprite().loadGraphic(Paths.image('funkinAVI/intro/mal-prepare'));
 						count.scrollFactor.set();
 						count.updateHitbox();
-						count.setGraphicSize(Std.int(count.width * PlayState.daPixelZoom));
+						count.setGraphicSize(Std.int(count.width * daPixelZoom));
 						count.antialiasing = false;
 						count.screenCenter();
-						PlayState.instance.add(count);
+						add(count);
 						FlxTween.tween(count, {y: count.y += 50, alpha: 0}, Conductor.crochet / 1000, {
 							ease: FlxEase.cubeInOut,
 							onComplete: function(twn:FlxTween)
@@ -10855,10 +10879,10 @@ class PlayState extends MusicBeatState
 						var count:FlxSprite = new FlxSprite().loadGraphic(Paths.image('UI/funkinAVI/intro/mal-ready'));
 						count.scrollFactor.set();
 						count.updateHitbox();
-						count.setGraphicSize(Std.int(count.width * PlayState.daPixelZoom));
+						count.setGraphicSize(Std.int(count.width * daPixelZoom));
 						count.screenCenter();
 						count.antialiasing = false;
-						PlayState.instance.add(count);
+						add(count);
 						FlxTween.tween(count, {y: count.y += 50, alpha: 0}, Conductor.crochet / 1000, {
 							ease: FlxEase.cubeInOut,
 							onComplete: function(twn:FlxTween)
@@ -10871,10 +10895,10 @@ class PlayState extends MusicBeatState
 						var count:FlxSprite = new FlxSprite().loadGraphic(Paths.image('UI/funkinAVI/intro/mal-set'));
 						count.scrollFactor.set();
 						count.updateHitbox();
-						count.setGraphicSize(Std.int(count.width * PlayState.daPixelZoom));
+						count.setGraphicSize(Std.int(count.width * daPixelZoom));
 						count.screenCenter();
 						count.antialiasing = false;
-						PlayState.instance.add(count);
+						add(count);
 						FlxTween.tween(count, {y: count.y += 50, alpha: 0}, Conductor.crochet / 1000, {
 							ease: FlxEase.cubeInOut,
 							onComplete: function(twn:FlxTween)
@@ -10887,10 +10911,10 @@ class PlayState extends MusicBeatState
 						var count:FlxSprite = new FlxSprite().loadGraphic(Paths.image('UI/funkinAVI/intro/mal-go'));
 						count.scrollFactor.set();
 						count.updateHitbox();
-						count.setGraphicSize(Std.int(count.width * PlayState.daPixelZoom));
+						count.setGraphicSize(Std.int(count.width * daPixelZoom));
 						count.screenCenter();
 						count.antialiasing = false;
-						PlayState.instance.add(count);
+						add(count);
 						FlxTween.tween(count, {y: count.y += 50, alpha: 0}, Conductor.crochet / 1000, {
 							ease: FlxEase.cubeInOut,
 							onComplete: function(twn:FlxTween)
@@ -10900,8 +10924,8 @@ class PlayState extends MusicBeatState
 						});
 						FlxG.sound.play(Paths.sound('funkinAVI/countdownSounds/introGoCORRUPT-pixel'), 2);
                     case 328:
-                        FlxTween.tween(PlayState.camHUD, {alpha: 1}, 0.5);
-                        FlxTween.tween(PlayState.camNotes, {alpha: 1}, 0.5);
+                        FlxTween.tween(camHUD, {alpha: 1}, 0.5);
+                        FlxTween.tween(camNotes, {alpha: 1}, 0.5);
 
 						// Ight Jason, the fun part's all yours
 						// The fun begins 0_0
@@ -10911,82 +10935,82 @@ class PlayState extends MusicBeatState
 				switch (curBeat)
 				{
 					case 256:
-						FlxTween.tween(PlayState.camHUD, {alpha: 0}, 0.5);
-                    	FlxTween.tween(PlayState.camNotes, {alpha: 0}, 0.5);
+						FlxTween.tween(camHUD, {alpha: 0}, 0.5);
+                    	FlxTween.tween(camNotes, {alpha: 0}, 0.5);
 					case 257:
-						FlxTween.tween(PlayState.boyfriend, {alpha: 0.0001}, 0.5);
-						PlayState.camBars.fade(FlxColor.BLACK, 0.3);
+						FlxTween.tween(boyfriend, {alpha: 0.0001}, 0.5);
+						camBars.fade(FlxColor.BLACK, 0.3);
 					case 260:
-						PlayState.camBars.fade(FlxColor.BLACK, 1, true);
+						camBars.fade(FlxColor.BLACK, 1, true);
 					case 264:
-						FlxTween.tween(PlayState.camHUD, {alpha: 1}, 0.5);
-                        FlxTween.tween(PlayState.camNotes, {alpha: 1}, 0.5);
-					case 328: PlayState.camGame.visible = false;
+						FlxTween.tween(camHUD, {alpha: 1}, 0.5);
+                        FlxTween.tween(camNotes, {alpha: 1}, 0.5);
+					case 328: camGame.visible = false;
 					case 332: 
-						PlayState.camGame.visible = true;
-						PlayState.boyfriend.alpha = 1;
+						camGame.visible = true;
+						boyfriend.alpha = 1;
 				}
 
 			case 'Hunted':
 				if (curBeat == 176) {
 					tweenCamera(1.1, 4.1, 'sineInOut');
-					//PlayState.dadStrums.forEach(strum -> FlxTween.tween(strum, {y: strum.y + 700}, 2.5, {ease: FlxEase.elasticIn}));
-					//FlxTween.tween(PlayState.camNotes[0], {alpha: 0.0001}, 2.5);
-					//if (!Init.trueSettings.get('Centered Notefield')) PlayState.bfStrums.forEach(strum -> FlxTween.tween(strum, {x: strum.x - 320}, 2.5, {ease: FlxEase.elasticInOut}));
+					//dadStrums.forEach(strum -> FlxTween.tween(strum, {y: strum.y + 700}, 2.5, {ease: FlxEase.elasticIn}));
+					//FlxTween.tween(camNotes[0], {alpha: 0.0001}, 2.5);
+					//if (!Init.trueSettings.get('Centered Notefield')) bfStrums.forEach(strum -> FlxTween.tween(strum, {x: strum.x - 320}, 2.5, {ease: FlxEase.elasticInOut}));
 				}
 				if (curBeat == 184)
-					PlayState.defaultCamZoom = 1.4;
+					defaultCamZoom = 1.4;
 				if (curBeat == 190)
-					PlayState.defaultCamZoom = 0.65;
+					defaultCamZoom = 0.65;
 				if (curBeat == 192)
 				{
-					//PlayState.instance.camHudMoves = true;
+					//camHudMoves = true;
 					if (ClientPrefs.flashing)
-						PlayState.camGame.flash(FlxColor.WHITE, 1.5);
+						camGame.flash(FlxColor.WHITE, 1.5);
 					if (ClientPrefs.shaders)
 						if (!ClientPrefs.lowQuality)
 						{
-							PlayState.camGame.setFilters([
-								new ShaderFilter(PlayState.redVignette),
-								new ShaderFilter(PlayState.dramaticCamMovement),
-								new ShaderFilter(PlayState.monitorFilter),
-								new ShaderFilter(PlayState.bloomEffect)
+							camGame.setFilters([
+								new ShaderFilter(redVignette),
+								new ShaderFilter(dramaticCamMovement),
+								new ShaderFilter(monitorFilter),
+								new ShaderFilter(bloomEffect)
 							]);
 						}
 						else
 						{
-							PlayState.camGame.setFilters([new ShaderFilter(PlayState.redVignette), new ShaderFilter(PlayState.monitorFilter)]);
+							camGame.setFilters([new ShaderFilter(redVignette), new ShaderFilter(monitorFilter)]);
 						}
 				}
 				if (curBeat == 256)
 				{
-					//PlayState.instance.camHudMoves = false;
-					PlayState.camBars.flash(FlxColor.BLACK, 2);
+					//camHudMoves = false;
+					camBars.flash(FlxColor.BLACK, 2);
 					if (!ClientPrefs.lowQuality)
 					{
-						PlayState.camGame.setFilters([
-							new ShaderFilter(PlayState.dramaticCamMovement),
-							new ShaderFilter(PlayState.monitorFilter),
-							new ShaderFilter(PlayState.bloomEffect)
+						camGame.setFilters([
+							new ShaderFilter(dramaticCamMovement),
+							new ShaderFilter(monitorFilter),
+							new ShaderFilter(bloomEffect)
 						]);
 					}
 					else
 					{
-						PlayState.camGame.setFilters([new ShaderFilter(PlayState.monitorFilter)]);
+						camGame.setFilters([new ShaderFilter(monitorFilter)]);
 					}
 
-					//PlayState.dadStrums.forEach(strum -> FlxTween.tween(strum, {y: strum.y - 700}, 2.5, {ease: FlxEase.elasticOut}));
-					//FlxTween.tween(PlayState.camNotes[0], {alpha: 1}, 2.5);
-					//if (!Init.trueSettings.get('Centered Notefield')) PlayState.bfStrums.forEach(strum -> FlxTween.tween(strum, {x: strum.x + 320}, 2.5, {ease: FlxEase.elasticInOut}));
+					//dadStrums.forEach(strum -> FlxTween.tween(strum, {y: strum.y - 700}, 2.5, {ease: FlxEase.elasticOut}));
+					//FlxTween.tween(camNotes[0], {alpha: 1}, 2.5);
+					//if (!Init.trueSettings.get('Centered Notefield')) bfStrums.forEach(strum -> FlxTween.tween(strum, {x: strum.x + 320}, 2.5, {ease: FlxEase.elasticInOut}));
 
-					//PlayState.instance.uhhTurnBackNormalOrSmth();
+					//uhhTurnBackNormalOrSmth();
 				}
 
 				if (((curBeat >= 64 && curBeat < 128) && curBeat % 2 == 0) || (curBeat >= 128 && curBeat < 256))
 				{
 					FlxG.camera.zoom += ((curBeat > 176 && curBeat < 184) ? 0 : .05);
-					PlayState.camHUD.zoom += .04;
-					PlayState.camNotes.zoom += .04;
+					camHUD.zoom += .04;
+					camNotes.zoom += .04;
 				}
 		}
 
@@ -11041,7 +11065,7 @@ class PlayState extends MusicBeatState
 		switch (curStage)
 		{
 			case 'abandonedStreet':
-				switch (PlayState.SONG.song)
+				switch (SONG.song)
 					{
 						case 'Lunacy':
 							if (!lowQuality)
@@ -11284,7 +11308,7 @@ class PlayState extends MusicBeatState
 					{
 						if (FlxG.random.bool(3) && tumbleWeed == null)
 						{
-							if (PlayState.SONG.song == 'Delusional')
+							if (SONG.song == 'Delusional')
 							{
 								if (curBeat < 474)
 									summonWeedMakerLmfao();
@@ -11302,7 +11326,7 @@ class PlayState extends MusicBeatState
 						}
 					}
 				
-					/*if (PlayState.SONG.song == 'Delusion')
+					/*if (SONG.song == 'Delusion')
 					{
 						if (curBeat == 24)
 						{
@@ -11354,7 +11378,7 @@ class PlayState extends MusicBeatState
 					mascotRoomPOV.visible = false;
 				}
 			case 'forbiddenRealm':
-				if (PlayState.SONG.song == 'Malfunction')
+				if (SONG.song == 'Malfunction')
 					{
 						if (curBeat == 160)
 						{
@@ -11369,7 +11393,7 @@ class PlayState extends MusicBeatState
 						}
 					}
 			case 'apartment':
-				if (PlayState.SONG.song == "Cycled Sins Legacy")
+				if (SONG.song == "Cycled Sins Legacy")
 					{
 						if (curBeat == 144)
 						{
