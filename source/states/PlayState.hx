@@ -11026,8 +11026,16 @@ class PlayState extends MusicBeatState
 		}
 
 		// why is this even a fucking thing ???????? --- because it is jason lmao
-		if (boyfriend.boppingIcon) iconP1.scale.set(1.2, 1.2);
-		if (dad.boppingIcon) iconP2.scale.set(1.2, 1.2);
+		/*if (boyfriend.boppingIcon) iconP1.scale.set(1.2, 1.2);
+		if (dad.boppingIcon) iconP2.scale.set(1.2, 1.2);*/
+
+		// ok ok i need a plan b
+		// retarded code AND untested because monthly motel shit bla bla bla
+		// just know that we are NOT sonic legacy :sob:
+		if (boyfriend.curCharacter != 'etherealMickey' || boyfriend.curCharacter != 'everett-relapse') iconP1.scale.set(1.2, 1.2);
+
+		if (dad.curCharacter != 'white-noise-new' || dad.curCharacter != 'etherealGoofy' || dad.curCharacter != 'walt-new'
+			|| dad.curCharacter != 'walt-true' || dad.curCharacter != 'relapsedNEW') iconP2.scale.set(1.2, 1.2);
 
 		lunacyIcon.scale.set(1.15, 1.15);
 		lunacyIcon.updateHitbox();
