@@ -4205,7 +4205,9 @@ class PlayState extends MusicBeatState
 
 	public function updateScore(miss:Bool = false)
 	{
-		scoreTxt.text = Language.getPhrase('score_text', 'Score: {1} | Combo Breaks: {2} | Accuracy: {3}', [songScore, songMisses, (ratingName != '?' ? '$ratingFC (${Highscore.floorDecimal(ratingPercent * 100, 2)}%)' : '?')]);
+		scoreTxt.text = 'Score: ' + songScore
+		+ ' | Combo Breaks: ' + songMisses
+		+ ' | Rank: ' + (ratingName != '?' ? '$ratingFC (${Highscore.floorDecimal(ratingPercent * 100, 2)}%)' : '?');
 
 		if(ClientPrefs.scoreZoom && !miss && !cpuControlled)
 		{

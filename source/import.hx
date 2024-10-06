@@ -82,8 +82,6 @@ import backend.FunkinLua.ModchartSprite;
 import backend.FunkinLua.ModchartText;
 import backend.FunkinLua.DebugLuaText;
 
-import backend.Language;
-
 // import majority of classes the game uses from flixel almost everywhere
 import flixel.*;
 import flixel.ui.*;
