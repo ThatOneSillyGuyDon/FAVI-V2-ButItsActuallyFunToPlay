@@ -34,6 +34,7 @@ class ClientPrefs {
 	public static var comboStacking = true;
 	public static var useGPUCaching = false;
 	public static var debugInfo = false;
+	public static var language:String = 'en-US';
 	public static var gameplaySettings:Map<String, Dynamic> = [
 		'scrollspeed' => 1.0,
 		'scrolltype' => 'multiplicative', 
@@ -135,6 +136,8 @@ class ClientPrefs {
 		settings.data.pauseMusic = pauseMusic;
 		settings.data.checkForUpdates = checkForUpdates;
 		settings.data.comboStacking = comboStacking;
+
+		settings.data.language = language;
 	
 		settings.flush();
 
@@ -166,6 +169,9 @@ class ClientPrefs {
 		}
 		if(settings.data.flashing != null) {
 			flashing = settings.data.flashing;
+		}
+		if(settings.data.language != null) {
+			language = settings.data.language;
 		}
 		if(settings.data.debugInfo != null) {
 			debugInfo = settings.data.debugInfo;

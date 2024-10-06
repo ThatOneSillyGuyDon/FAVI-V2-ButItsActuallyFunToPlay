@@ -1,5 +1,44 @@
 package objects;
 
+/**
+ * DEPRECATED CLASS
+ *  * DEPRECATED CLASS
+ *  * DEPRECATED CLASS
+ *  * DEPRECATED CLASS
+ *  * DEPRECATED CLASS
+ *  * DEPRECATED CLASS
+ *  * DEPRECATED CLASS
+ *  * DEPRECATED CLASS
+ *  * DEPRECATED CLASS
+ *  * DEPRECATED CLASS
+ *  * DEPRECATED CLASS
+ *  * DEPRECATED CLASS
+ *  * DEPRECATED CLASS
+ *  * DEPRECATED CLASS
+ *  * DEPRECATED CLASS
+ *  * DEPRECATED CLASS
+ *  * DEPRECATED CLASS
+ *  * DEPRECATED CLASS
+ *  * DEPRECATED CLASS
+ *  * DEPRECATED CLASS
+ *  * DEPRECATED CLASS
+ *  * DEPRECATED CLASS
+ *  * DEPRECATED CLASS
+ *  * DEPRECATED CLASS
+ *  * DEPRECATED CLASS
+ *  * DEPRECATED CLASS
+ *  * DEPRECATED CLASS
+ *  * DEPRECATED CLASS
+ *  * DEPRECATED CLASS
+ *  * DEPRECATED CLASS
+ *  * DEPRECATED CLASS
+ *  * DEPRECATED CLASS
+ *  * DEPRECATED CLASS
+ *  * DEPRECATED CLASS
+ *  * DEPRECATED CLASS
+ *  * DEPRECATED CLASS
+ */
+
 import base.dependency.FeatherDeps.ScriptHandler;
 import flixel.FlxBasic;
 import flixel.FlxSprite;
@@ -16,6 +55,7 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import states.PlayState;
 
+@:deprecated("Stage is deprecated! use the PlayState class instead")
 class Stage extends FlxTypedGroup<FlxBasic>
 {
 	//

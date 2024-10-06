@@ -12,16 +12,54 @@ import flixel.text.FlxText;
 
 typedef Utils = 
 {
-    ?text:String,
-	?subText:String,
-	?font:String,
-    ?textColor:FlxColor,
-    ?boxWidth:Int,
-    ?boxHeight:Int,
-    ?boxColor:FlxColor,
-	?camera:flixel.FlxCamera
+    @:deprecated('text is no longer used! Use sendNotification instead')
+    @:noCompletion
+    /**
+    * The main text for your notification
+    */
+    @:optional var text:String;
+    
+    @:deprecated('text is no longer used! Use sendNotification instead')
+    @:noCompletion
+    /**
+    * The secondary text for your notification
+    */
+	@:optional var subText:String;
+
+	/**
+	* The font used for your notification box (affects both main and secondary text!)
+	*/
+    @:optional var font:String;
+
+    /**
+    * The text color used for your notification box (affects both main and secondary text!)
+    */
+    @:optional var textColor:FlxColor;
+
+    /**
+    * The width of your notification box.
+    */
+    @:optional var boxWidth:Int;
+
+    /**
+    * The height of your notification box.
+    */
+    @:optional var boxHeight:Int;
+
+    /**
+    * The color of your notification box.
+    */
+    @:optional var boxColor:FlxColor;
+
+	/**
+	* The camera that will be present in your notification box (Uses the last camera of the `FlxG.cameras.list` list by default).
+	*/
+	@:optional var camera:flixel.FlxCamera;
 } 
 
+/**
+ * The `MessageBox` class is a typed object that send a notification for anything you want to specify!
+ */
 class MessageBox extends FlxTypedGroup<FlxBasic>
 {
     public var box:FlxSprite;
@@ -30,11 +68,16 @@ class MessageBox extends FlxTypedGroup<FlxBasic>
 
     // var onDeny = new FlxSignal();
 
-    // stupid ahh tweens (they're extremly useless) !!
-    var freeplayTxtTween:FlxTween;
-	var freeplayTxtTween2:FlxTween;
-	var freeplayTxtTween3:FlxTween;
+    var boxTween:FlxTween;
+	var boxTween2:FlxTween;
+	var boxTween3:FlxTween;
 
+    /**
+     * Creates a new `MessageBox`.
+     * @param x the X axis of your `MessageBox`.
+     * @param y the Y axis of your `MessageBox`.
+     * @param utils additional tools for your box.
+     */
     public function new(x:Float = 0, y:Float = 0, utils:Utils) {
         // null checks
         if (utils.text == null) utils.text = "this is a message";
@@ -69,26 +112,31 @@ class MessageBox extends FlxTypedGroup<FlxBasic>
 		add(boxSubText);
     }
 
+    /**
+     * Send a `MessageBox` message to the game.
+     * @param text the principal piece of text of your notification.
+     * @param subText the secondary piece of text of your notification.
+     */
     public function sendMessage(text:String = 'text', subText:String = '')
     {
-        if (freeplayTxtTween != null)
-            freeplayTxtTween.cancel();
-        if (freeplayTxtTween2 != null)
-            freeplayTxtTween2.cancel();
-        if (freeplayTxtTween3 != null)
-            freeplayTxtTween3.cancel();
+        if (boxTween != null)
+            boxTween.cancel();
+        if (boxTween2 != null)
+            boxTween2.cancel();
+        if (boxTween3 != null)
+            boxTween3.cancel();
 
         boxText.text = text;
         boxSubText.text = subText;
 
-        freeplayTxtTween = FlxTween.tween(boxText, {
+        boxTween = FlxTween.tween(boxText, {
             alpha: 1,
             x: 0
         }, 0.8, {
             ease: FlxEase.sineOut,
             onComplete: function(twn:FlxTween)
             {
-                freeplayTxtTween = FlxTween.tween(boxText, {
+                boxTween = FlxTween.tween(boxText, {
                     alpha: 0,
                     x: -400
                 }, 1.5, {
@@ -96,19 +144,19 @@ class MessageBox extends FlxTypedGroup<FlxBasic>
                     ease: FlxEase.sineInOut,
                     onComplete: function(twn:FlxTween)
                     {
-                        freeplayTxtTween = null;
+                        boxTween = null;
                     }
                 });
             }
         });
-        freeplayTxtTween2 = FlxTween.tween(boxSubText, {
+        boxTween2 = FlxTween.tween(boxSubText, {
             alpha: 1,
             x: 0
         }, 0.8, {
             ease: FlxEase.sineOut,
             onComplete: function(twn:FlxTween)
             {
-                freeplayTxtTween2 = FlxTween.tween(boxSubText, {
+                boxTween2 = FlxTween.tween(boxSubText, {
                     alpha: 0,
                     x: -400
                 }, 1.5, {
@@ -116,19 +164,19 @@ class MessageBox extends FlxTypedGroup<FlxBasic>
                     ease: FlxEase.sineInOut,
                     onComplete: function(twn:FlxTween)
                     {
-                        freeplayTxtTween2 = null;
+                        boxTween2 = null;
                     }
                 });
             }
         });
-        freeplayTxtTween3 = FlxTween.tween(box, {
+        boxTween3 = FlxTween.tween(box, {
             alpha: 1,
             x: 0
         }, 0.8, {
             ease: FlxEase.sineOut,
             onComplete: function(twn:FlxTween)
             {
-                freeplayTxtTween3 = FlxTween.tween(box, {
+                boxTween3 = FlxTween.tween(box, {
                     alpha: 0,
                     x: -400
                 }, 1.5, {
@@ -136,7 +184,7 @@ class MessageBox extends FlxTypedGroup<FlxBasic>
                     ease: FlxEase.sineInOut,
                     onComplete: function(twn:FlxTween)
                     {
-                        freeplayTxtTween3 = null;
+                        boxTween3 = null;
                     }
                 });
             }

@@ -18,6 +18,7 @@ import sys.io.File;
 
 using flixel.util.FlxSpriteUtil;
 
+@:deprecated("SongCard is no longer used/supported!")
 class SongCard extends FlxSpriteGroup
 {	
 	// Pre-made Text
