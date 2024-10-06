@@ -16,6 +16,7 @@ class VisualsUISubState extends BaseOptionsMenu
 			"Choose your language (Languages that aren't english don't affect on images!)",
 			'language',
 			'string',
+			'English',
 			['English', 'Español']);
 		addOption(option);
 
