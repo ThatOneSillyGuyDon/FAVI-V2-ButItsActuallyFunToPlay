@@ -8,7 +8,7 @@
  * import YourClassHere;
  * import folder.YourClassHere;
  * import YourClassHere.AnotherClass;
- * using YourClassHere;
+ * using YourClassHere; // (`using` is ONLY useful for class extensions!)
  * using folder.folder2.YourClassHere;
  * ```
  * 
@@ -69,18 +69,18 @@ import shaders.WiggleEffect.WiggleEffectType;
 import substates.PauseSubState.FAVIPauseSubState;
 // stuff that won't let you compile unless they're being used
 #if VIDEOS_ALLOWED
-using gameObjects.video.VideoSprite;
+import gameObjects.video.VideoSprite;
 #end
-using backend.song.Conductor.BPMChangeEvent;
-using backend.song.Section.SwagSection;
-using backend.song.Song.SwagSong;
-using gameObjects.transitions.CustomFadeTransition;
-using gameObjects.ui.notes.Note.EventNote;
+import backend.song.Conductor.BPMChangeEvent;
+import backend.song.Section.SwagSection;
+import backend.song.Song.SwagSong;
+import gameObjects.transitions.CustomFadeTransition;
+import gameObjects.ui.notes.Note.EventNote;
 
 // shitty mod support stuff I plan on removing soon but for now is needed for the game to work
-using backend.FunkinLua.ModchartSprite;
-using backend.FunkinLua.ModchartText;
-using backend.FunkinLua.DebugLuaText;
+import backend.FunkinLua.ModchartSprite;
+import backend.FunkinLua.ModchartText;
+import backend.FunkinLua.DebugLuaText;
 
 // import majority of classes the game uses from flixel almost everywhere
 import flixel.*;
@@ -101,11 +101,11 @@ import flixel.graphics.tile.*;
 import flixel.graphics.frames.*;
 import flixel.graphics.atlas.*;
 
-using flixel.group.FlxGroup.FlxTypedGroup;
-using flixel.tweens.FlxTween.FlxTweenManager;
-using flixel.text.FlxText.FlxTextAlign;
-using flixel.text.FlxText.FlxTextBorderStyle;
-using flixel.util.FlxSignal.FlxTypedSignal;
+import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.tweens.FlxTween.FlxTweenManager;
+import flixel.text.FlxText.FlxTextAlign;
+import flixel.text.FlxText.FlxTextBorderStyle;
+import flixel.util.FlxSignal.FlxTypedSignal;
 
 using StringTools;
 #end
