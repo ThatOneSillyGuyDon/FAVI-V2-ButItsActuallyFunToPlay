@@ -2,3 +2,4 @@ export/
 .vscode/
 APIStuff.hx
 .DS_STORE
+source/flixel/FlxGame.hx
