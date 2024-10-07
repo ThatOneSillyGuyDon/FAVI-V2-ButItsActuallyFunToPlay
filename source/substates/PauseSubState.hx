@@ -486,7 +486,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 				case "Isolated": if (colorSetup != FlxColor.fromRGB(60, 60, 60)) colorSetup = FlxColor.fromRGB(60, 60, 60);
 				case "Lunacy": if (colorSetup != FlxColor.fromRGB(69, 54, 54)) colorSetup = FlxColor.fromRGB(69, 54, 54);
 				case "Delusional": if (colorSetup != FlxColor.fromRGB(79, 32, 32)) colorSetup = FlxColor.fromRGB(79, 32, 32);
-				case "Regret": if (colorSetup != FlxColor.WHITE) colorSetup = WHITE;
+				case "Regret": if (colorSetup != FlxColor.WHITE) colorSetup = FlxColor.WHITE;
 				case "Birthday": if (colorSetup != FlxColor.fromRGB(84, 255, 181)) colorSetup = FlxColor.fromRGB(84, 255, 181);
 				case "Delutrance": if (colorSetup != FlxColor.fromRGB(0, 16, 245)) colorSetup = FlxColor.fromRGB(0, 16, 245);
 			}
