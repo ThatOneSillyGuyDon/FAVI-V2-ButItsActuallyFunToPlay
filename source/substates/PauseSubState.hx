@@ -464,7 +464,6 @@ class FAVIPauseSubState extends MusicBeatSubstate
 	
 			// cool stuff
 			var getArt:String = 'Funkin_avi/pause/songs/';
-			var pauseArtAsset:String = CoolUtil.spaceToDash(PlayState.SONG.song.toLowerCase());
 			toOptions = false;
 			menuItems = itemStack;
 	
@@ -479,6 +478,20 @@ class FAVIPauseSubState extends MusicBeatSubstate
 			}
 
 			fuckingName = (PlayState.useFakeDeluName ? "Regret" : PlayState.SONG.song);
+
+			// stupid ass fix for story mode and getting secret songs
+			switch (fuckingName)
+			{
+				case "Devilish Deal": if (colorSetup != FlxColor.fromRGB(65, 88, 94)) colorSetup = FlxColor.fromRGB(65, 88, 94);
+				case "Isolated": if (colorSetup != FlxColor.fromRGB(60, 60, 60)) colorSetup = FlxColor.fromRGB(60, 60, 60);
+				case "Lunacy": if (colorSetup != FlxColor.fromRGB(69, 54, 54)) colorSetup = FlxColor.fromRGB(69, 54, 54);
+				case "Delusional": if (colorSetup != FlxColor.fromRGB(79, 32, 32)) colorSetup = FlxColor.fromRGB(79, 32, 32);
+				case "Regret": if (colorSetup != FlxColor.WHITE) colorSetup = WHITE;
+				case "Birthday": if (colorSetup != FlxColor.fromRGB(84, 255, 181)) colorSetup = FlxColor.fromRGB(84, 255, 181);
+				case "Delutrance": if (colorSetup != FlxColor.fromRGB(0, 16, 245)) colorSetup = FlxColor.fromRGB(0, 16, 245);
+			}
+
+			var pauseArtAsset:String = CoolUtil.spaceToDash(fuckingName.toLowerCase());
 
 			pauseMusic = new FlxSound();
 			pauseMusic.loadEmbedded(Paths.music("aviOST/pause/" + randomPauseSong), true, true);
