@@ -289,87 +289,110 @@ class GameData
 		saveShit();
 	}
 
+	public static function checkBotplay(lockValue:Null<String>)
+	{
+		if (lockValue == null)
+			lockValue = 'unlocked';
+
+		if ((lockValue == 'unlocked' || lockValue == 'obtained') || PlayState.isStoryMode)
+			PlayState.instance.cpuControlled = false;
+	}
+
 	public static function setFreeplayData()
 	{
 		var progression:FlxSave = new FlxSave();
 		progression.bind("gameProgression", CoolUtil.getSavePath());
 
+		var curLock:String;
+
+		if (PlayState.SONG.song == "Delutrance")
+			curLock = 'completed';
+		else
+			curLock = 'beaten';
+
 		switch (PlayState.SONG.song.toLowerCase())
 		{
 			case 'hunted':
 				if (progression.data.huntedLock != 'beaten')
-					huntedLock = 'unlocked';
+					curLock = huntedLock = 'unlocked';
 			case 'isolated old':
 				if (progression.data.oldisolateLock != 'beaten')
-					oldisolateLock = 'unlocked';
+					curLock = oldisolateLock = 'unlocked';
 			case 'isolated beta':
 				if (progression.data.betaisolateLock != 'beaten')
-					betaisolateLock = 'unlocked';
+					curLock = betaisolateLock = 'unlocked';
 			case 'neglection':
 				if (progression.data.pnmLock != 'beaten')
-					pnmLock = 'unlocked';
+					curLock = pnmLock = 'unlocked';
 			case "dont cross":
 				if (progression.data.crossinLock != 'beaten')
-					crossinLock = 'unlocked';
+					curLock = crossinLock = 'unlocked';
 			case 'war dilemma':
 				if (progression.data.warLock != 'beaten')
-					warLock = 'unlocked';
+					curLock = warLock = 'unlocked';
 			case 'twisted grins':
 				if (progression.data.tgLock != 'beaten')
-					tgLock = 'unlocked';
+					curLock = tgLock = 'unlocked';
+			case 'birthday':
+				if (progression.data.muckneyLock != 'beaten')
+					curLock = muckneyLock = 'beaten';
 			case 'mercy':
 				if (progression.data.mercyLock != 'beaten')
-					mercyLock = 'unlocked';
+					curLock = mercyLock = 'unlocked';
 			case 'cycled sins':
 				if (progression.data.sinsLock != 'beaten')
-					sinsLock = 'unlocked';
+					curLock = sinsLock = 'unlocked';
 			case 'malfunction':
 				if (progression.data.malfunctionLock != 'beaten')
-					malfunctionLock = 'unlocked';
+					curLock = malfunctionLock = 'unlocked';
 			case 'scrapped':
 				if (progression.data.scrappedLock != 'beaten')
-					scrappedLock = 'unlocked';
+					curLock = scrappedLock = 'unlocked';
 			case 'bless':
 				if (progression.data.blessLock != 'beaten')
-					blessLock = 'unlocked';
+					curLock = blessLock = 'unlocked';
 			case 'laugh track':
 				if (progression.data.rickyLock != 'beaten')
-					rickyLock = 'unlocked';
+					curLock = rickyLock = 'unlocked';
 			case 'mercy legacy':
 				if (progression.data.legacyWLock != 'beaten')
-					legacyWLock = 'unlocked';
+					curLock = legacyWLock = 'unlocked';
 			case 'isolated legacy':
 				if (progression.data.legacyILock != 'beaten')
-					legacyILock = 'unlocked';
+					curLock = legacyILock = 'unlocked';
 			case 'lunacy legacy':
 				if (progression.data.legacyLLock != 'beaten')
-					legacyLLock = 'unlocked';
+					curLock = legacyLLock = 'unlocked';
 			case 'delusional legacy':
 				if (progression.data.legacyDLock != 'beaten')
-					legacyDLock = 'unlocked';
+					curLock = legacyDLock = 'unlocked';
 			case 'hunted legacy':
 				if (progression.data.legacyHLock != 'beaten')
-					legacyHLock = 'unlocked';
+					curLock = legacyHLock = 'unlocked';
 			case 'malfunction legacy':
 				if (progression.data.legacyMLock != 'beaten')
-					legacyMLock = 'unlocked';
+					curLock = legacyMLock = 'unlocked';
 			case 'cycled sins legacy':
 				if (progression.data.legacySLock != 'beaten')
-					legacySLock = 'unlocked';
+					curLock = legacySLock = 'unlocked';
 			case 'bless legacy':
 				if (progression.data.legacyBLock != 'beaten')
-					legacyBLock = 'unlocked';
+					curLock = legacyBLock = 'unlocked';
 			case 'twisted grins legacy':
 				if (progression.data.legacyTLock != 'beaten')
-					legacyTLock = 'unlocked';
+					curLock = legacyTLock = 'unlocked';
 			case 'neglection legacy':
 				if (progression.data.legacyNLock != 'beaten')
-					legacyNLock = 'unlocked';
+					curLock = legacyNLock = 'unlocked';
 			case 'resentment legacy':
 				if (progression.data.legacyRLock != 'beaten')
-					legacyRLock = 'unlocked';
+					curLock = legacyRLock = 'unlocked';
+			case 'delutrance':
+				if (progression.data.highOnCrack != 'completed')
+					curLock = highOnCrackLock = 'unlocked';
 		}
 		saveShit();
+		checkBotplay(curLock); // just to double check :)))))))
 	}
 
 	public static function completeFPSong()

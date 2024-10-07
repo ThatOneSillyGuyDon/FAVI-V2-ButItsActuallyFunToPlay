@@ -647,6 +647,22 @@ class PlayState extends MusicBeatState
 
 		pixelizeUI.setFloat('size', 5);
 
+		if (!isStoryMode) 
+			GameData.setFreeplayData();
+		else
+		{
+			switch (SONG.song)
+			{
+				case "Birthday":
+					GameData.muckneyLock = 'unlocked';
+					GameData.saveShit();
+				case "Delutrance":
+					GameData.highOnCrackLock = "forceBackToSong";
+					GameData.saveShit();
+			}
+			GameData.checkBotplay(null);
+		}
+
 		#if desktop
 		storyDifficultyText = CoolUtil.difficulties[storyDifficulty];
 
@@ -2162,20 +2178,6 @@ class PlayState extends MusicBeatState
 		playerStrums = new FlxTypedGroup<StrumNote>();
 
 		// startCountdown();
-
-		if (!isStoryMode) 
-			GameData.setFreeplayData();
-		else
-			switch (SONG.song)
-			{
-				case "Birthday":
-					GameData.muckneyLock = 'obtained';
-					GameData.saveShit();
-				case "Delutrance":
-					GameData.highOnCrackLock = "forceBackToSong";
-					GameData.saveShit();
-			}
-
 
 		generateSong(SONG.song);
 
@@ -7071,7 +7073,7 @@ class PlayState extends MusicBeatState
 			pixelShitPart2 = '-pixel';
 		}
 
-		rating.loadGraphic(Paths.image(pixelShitPart1 + (((ratingPercent == 1 || cpuControlled) && !isPixelStage) ? "marvelous" : daRating.image) + pixelShitPart2));
+		rating.loadGraphic(Paths.image(pixelShitPart1 + (((ratingPercent == 1 || cpuControlled) && SONG.song != "Cycled Sins") ? "marvelous" : daRating.image) + (SONG.song == "Malfunction" ? '-mal' : '') + pixelShitPart2));
 		rating.cameras = [camHUD];
 		rating.scale.set(0.4, 0.4);
 		rating.screenCenter();
@@ -7082,7 +7084,7 @@ class PlayState extends MusicBeatState
 		rating.velocity.x -= FlxG.random.int(0, 10) * playbackRate;
 		rating.visible = (!ClientPrefs.hideHud && showRating);
 		if (!ClientPrefs.downScroll)
-			rating.y += 495;
+			rating.y += 495 + (SONG.song == "Malfunction" ? ((daRating.image == "sick" && ratingPercent != 1) ? -50 : -35) : 0);
 		if (SONG.song == "War Dilemma" && !ClientPrefs.downScroll)
 			rating.y -= 120;
 
@@ -7117,7 +7119,7 @@ class PlayState extends MusicBeatState
 		}
 		else
 		{
-			rating.setGraphicSize(Std.int(rating.width * daPixelZoom * 0.36));
+			rating.setGraphicSize(Std.int(rating.width * daPixelZoom * (SONG.song == "Malfunction" ? 0.25 : 0.36)));
 			comboSpr.setGraphicSize(Std.int(comboSpr.width * daPixelZoom * 0.85));
 		}
 
@@ -7154,13 +7156,13 @@ class PlayState extends MusicBeatState
 		}
 		for (i in seperatedScore)
 		{
-			var numScore:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'num' + Std.int(i) + (((ratingPercent == 1 || cpuControlled) && !isPixelStage) ? '-gold' : '') + pixelShitPart2));
+			var numScore:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'num' + Std.int(i) + (((ratingPercent == 1 || cpuControlled) && SONG.song != "Cycled Sins") ? (SONG.song == "Malfunction" ? '-malgold' : '-gold') : (SONG.song == "Malfunction" ? '-mal' : '')) + pixelShitPart2));
 			numScore.cameras = [camHUD];
 			numScore.scale.set(0.22, 0.22);
 			numScore.screenCenter();
 			numScore.x = (32 * daLoop) - 90;
 			numScore.x += FlxG.width * 0.92;
-			numScore.y = rating.y + 45;
+			numScore.y = rating.y + (SONG.song == "Malfunction" ? ((daRating.image == "sick" && ratingPercent != 1) ? 80 : 56) : 45);
 			
 			if (!ClientPrefs.comboStacking)
 				lastScore.push(numScore);
