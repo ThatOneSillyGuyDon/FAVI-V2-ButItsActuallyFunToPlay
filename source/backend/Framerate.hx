@@ -37,6 +37,7 @@ class Framerate extends TextField
 	public var realAlpha:Float = 1;
 	public var lagging:Bool = false;
 	public var forceUpdateText(default, set):Bool = false;
+	public var font:String = '';
 
 	@:noCompletion private var cacheCount:Int;
 	@:noCompletion private var currentTime:Float;
@@ -53,6 +54,7 @@ class Framerate extends TextField
 		selectable = false;
 		mouseEnabled = false;
 		defaultTextFormat = new TextFormat(openfl.utils.Assets.getFont("assets/fonts/disneyFreeplayFont.ttf").fontName /*your standards are lame Jason lol*/, 12, 0xFFFFFF);
+		font = openfl.utils.Assets.getFont("assets/fonts/disneyFreeplayFont.ttf").fontName;
 		autoSize = LEFT;
 		multiline = true;
 		text = "FPS: ";
@@ -112,14 +114,53 @@ class Framerate extends TextField
 
 		lagging = false;
 
-		textColor = 0xFFFFFF;
+		// why am I doing this? well, why tf not? (don)
+		switch (Type.getClass(FlxG.state))
+		{
+			case PlayState:
+				switch (PlayState.SONG.song)
+				{
+					case "Birthday":
+						if (font != openfl.utils.Assets.getFont("assets/fonts/spunchBobs.otf").fontName)
+						{
+							setTextFormat(new TextFormat(openfl.utils.Assets.getFont("assets/fonts/spunchBobs.otf").fontName, 10, 0xFFD1D1D1));
+							font = openfl.utils.Assets.getFont("assets/fonts/spunchBobs.otf").fontName;
+						}
+					case "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Twisted Grins Legacy" | "Malfunction Legacy" | "Cycled Sins Legacy" | "Mercy Legacy":
+						if (font != "_sans")
+						{
+							setTextFormat(new TextFormat("_sans", 12, 0xFFD1D1D1));
+							font = "_sans";
+						}
+					case "Malfunction":
+						if (font != openfl.utils.Assets.getFont("assets/fonts/Retro Gaming.ttf").fontName)
+						{
+							setTextFormat(new TextFormat(openfl.utils.Assets.getFont("assets/fonts/Retro Gaming.ttf").fontName, 9, 0x292929));
+							font = openfl.utils.Assets.getFont("assets/fonts/Retro Gaming.ttf").fontName;
+						}
+					default:
+						if (font != openfl.utils.Assets.getFont("assets/fonts/disneyFreeplayFont.ttf").fontName)
+						{
+							setTextFormat(new TextFormat(openfl.utils.Assets.getFont("assets/fonts/disneyFreeplayFont.ttf").fontName, 12, 0xFFD1D1D1));
+							font = openfl.utils.Assets.getFont("assets/fonts/disneyFreeplayFont.ttf").fontName;
+						}
+				}
+			
+			default:
+				if (font != openfl.utils.Assets.getFont("assets/fonts/disneyFreeplayFont.ttf").fontName)
+				{
+					setTextFormat(new TextFormat(openfl.utils.Assets.getFont("assets/fonts/disneyFreeplayFont.ttf").fontName, 12, 0xFFD1D1D1));
+					font = openfl.utils.Assets.getFont("assets/fonts/disneyFreeplayFont.ttf").fontName;
+				}
+		}
+
+		textColor = (Type.getClass(FlxG.state) == PlayState && PlayState.SONG.song == "Malfunction" ? 0x1F282E : 0xFFC2C2C2);
+		
 		if (currentFPS <= ClientPrefs.framerate / 2)
 		{
 			textColor = 0xFF0000;
 			lagging = true;
 		}
-
-		text += '\n';
 
 		curMemory = backend.MemoryRate.obtainMemory();
 		if (curMemory >= peakMemory)
@@ -127,9 +168,9 @@ class Framerate extends TextField
 
 		if (ClientPrefs.debugInfo)
 		{
-			text += 'RAM: ${formatMemory(Std.int(curMemory))} (${formatMemory(Std.int(peakMemory))} peak)';
-			text += '\nFunkin.avi v2.0.0';
+			text += '\nRAM: ${formatMemory(Std.int(curMemory))} (${formatMemory(Std.int(peakMemory))} peak)';
 		}
+		text += '\nFunkin.avi v2.0.0';
 	}
 
 	public var textAfter:String = '';

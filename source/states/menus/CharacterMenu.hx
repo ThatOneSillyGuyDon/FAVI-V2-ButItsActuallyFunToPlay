@@ -95,8 +95,9 @@ class CharacterMenu extends MusicBeatState
         ui.antialiasing = ClientPrefs.globalAntialiasing;
         add(ui);
 
-        name = new FlxText(0, 10).setFormat(Paths.font('infoMenu.ttf'), 30, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
-        name.screenCenter(X).x -= 150;
+        name = new FlxText(0, 10, 1280).setFormat(Paths.font('infoMenu.ttf'), 30, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
+        name.screenCenter(X);
+        name.alignment = CENTER;
         name.camera = hud;
         name.antialiasing = ClientPrefs.globalAntialiasing;
         add(name);

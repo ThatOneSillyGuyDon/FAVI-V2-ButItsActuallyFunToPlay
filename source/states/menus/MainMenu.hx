@@ -385,15 +385,6 @@ class MainMenu extends MusicBeatState
 		FlxG.camera.follow(camFollowPos, null, 1);
 
 		updateSelection();
-
-		if (!ClientPrefs.debugInfo)
-		{
-			var versionShit:FlxText = new FlxText(5, FlxG.height * 0.01, 0, 'Funkin.avi v2.0.0', 24);
-			versionShit.setFormat(Paths.font("DisneyFont.ttf"), 30, 0xFFFFFFFF, LEFT, FlxTextBorderStyle.OUTLINE, 0xFF000000);
-			versionShit.scrollFactor.set();
-			versionShit.cameras = [camHUD];
-			add(versionShit);
-		}
  
 		theBox = new MessageBox(-400, FlxG.height - 80, {
 			text: 'Freeplay is Locked!', 

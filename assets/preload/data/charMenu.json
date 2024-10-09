@@ -1,25 +1,26 @@
 {
     "info": 
 	[
-		["    Mickey Mouse   ", "bettermickey", 360, 220, 0.262, "In a world where what was a symbol of fun has turned into sadness and loneliness, after the loss of his greatest love for money, Mickey now finds himself on a dark path with no way out. What awaits him is just a frightening unknown, as the iconic mouse faces an uncertain and disturbing fate."],
+		["Michael \"Avier\" Mouse", "bettermickey", 360, 220, 0.262, "In a world where what was a symbol of fun has turned into sadness and loneliness, after the loss of his greatest love for money, Mickey now finds himself on a dark path with no way out. What awaits him is just a frightening unknown, as the iconic mouse faces an uncertain and disturbing fate."],
 		
-		["        Everett?      ", "evilrette", 0, -200, 0.45, "A sweet little blue-haired boy with an affinity for singing. He suddenly showed up during Mickey's loop, giving Mickey a companion in the Soulless Town. Mickey is...somewhat deterred by him, but he's too cute to harm a fly...
+		["Everett?", "evilrette", 0, -200, 0.45, "A sweet little blue-haired boy with an affinity for singing. He suddenly showed up during Mickey's loop, giving Mickey a companion in the Soulless Town. Mickey is...somewhat deterred by him, but he's too cute to harm a fly...
 
 		...right?"],
 		
-		["   Goofy and Donald   ", "Goofy", -50, -130, 0.35, "After Mickey's disappearance in the main events of the story, Mickey's friends decided to go hunting in order to get their mind off their friend's absence. Unfortunately, Goofy ended up accidentally shooting Donald, killing him due to believing he was another animal. The taste of duck meat got into Goofy, a mix of hunger and guilt fueling him as he goes to avenge Donald's death, too delusional to believe that he was the one who killed the duck. It was a bad idea for Everett to go hunting too.."],
+		["Hunter Goofy", "Goofy", -60, -150, 0.35, "After Mickey's disappearance in the main events of the story, Mickey's friends decided to go hunting in order to get their mind off their friend's absence. Unfortunately, Goofy ended up accidentally shooting Donald, killing him due to believing he was another animal. The taste of duck meat got into Goofy, a mix of hunger and guilt fueling him as he goes to avenge Donald's death, too delusional to believe that he was the one who killed the duck. It was a bad idea for Everett to go hunting too.."],
 		
-		["Adam Ricky (Mr. Smiles)", "smiles", -50, -40, 0.35, "A man so twisted and alone that he grew an addiction to the only thing that would bring him solace: Mickey Mouse cartoons. His addiction became so prominent that he created this suit of Mickey made of the teeth, gums, and other various organs by those who wronged him. The house he and his wife lived in caved in after his wife discovered the suit, killing them instantly. When Adam came to, he found that he inhabited the suit. 
+		["Adam Ricky (Mr. Smiles)", "smileYaFatBitch", 200, 362, 0.22, "A man so twisted and alone that he grew an addiction to the only thing that would bring him solace: Mickey Mouse cartoons. His addiction became so prominent that he created this suit of Mickey made of the teeth, gums, and other various organs by those who wronged him. The house he and his wife lived in caved in after his wife discovered the suit, killing them instantly. When Adam came to, he found that he inhabited the suit. 
 
 Now he gets other victims in their dreams in order to 'take their smiles', in an attempt to bring his wife back..."],
-	["            Walt            ", "walt", -280, -200, 0.5, "A version of Mickey that lost his Minnie at the hands of Walt Disney, his own creator. The death of Minnie awakens a rage inside Mickey that makes him vow to restore Minnie to her former glory, as well as get revenge on his creator."],	
+	["Walt", "walt", -280, -200, 0.5, "A version of Mickey that lost his Minnie at the hands of Walt Disney, his own creator. The death of Minnie awakens a rage inside Mickey that makes him vow to restore Minnie to her former glory, as well as get revenge on his creator."],	
 	
-	["          Muckney         ", "muckney", 70, 140, 0.3, "This little Mickey Mouse look-a-like is a youngin who's birthday is neverending! Literally. Every day is his birthday. Muckney is a bit of an airhead, but he's loveable all the same. He likes to blow balloons, and always has the goal to ruin a certain blue hedgehog's party, although he never makes it in time to do so. You wouldn't leave his birthday...
+	["Muckney", "muckney", 70, 140, 0.3, "This little Mickey Mouse look-a-like is a youngin who's birthday is neverending! Literally. Every day is his birthday. Muckney is a bit of an airhead, but he's loveable all the same. He likes to blow balloons, and always has the goal to ruin a certain blue hedgehog's party, although he never makes it in time to do so. You wouldn't leave his birthday...
 
 ...right? 
 
 He'd get sad if you left..."],
 
-		["Mickey Mouse (Don't Cross!)", "dontcross", 160, 20, 0.3, "Probably the strangest mouse of the bunch. Don't Cross has one goal and one goal alone: stop Boyfriend from crossing the line to America. Granted, Boyfriend just wants to escape the horrid community in his own game, but even still, Don't Cross Mickey isn't letting him go without a fight!"]
+		["Rubberross Mickey", "dontcross", 160, 20, 0.3, "Probably the strangest mouse of the bunch. Don't Cross has one goal and one goal alone: stop Boyfriend from crossing the line to America. Granted, Boyfriend just wants to escape the horrid community in his own game, but even still, Don't Cross Mickey isn't letting him go without a fight!"],
+	["Relapse Mouse", "relapsed2", 130, -50, 0.27, "A version of Mickey whose sanity starts to dwindle as a result of Daisy Duck's suicide. He decided to go on a stroll as to help calm his mind...and of course, that boy is there. Boyfriend better hope he acts quick this time around, else he gets his head blown off."]
 	]
 }
