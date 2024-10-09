@@ -506,6 +506,7 @@ class PlayState extends MusicBeatState
 	var devilishGaming:VideoSprite;
 	var deluSing:VideoSprite;
 	var lununuIntro:VideoSprite;
+	var deluOutro:VideoSprite;
 
 	//MALFUNCTION
 	var mickeyEmitter:FlxEmitter;
@@ -2687,24 +2688,22 @@ class PlayState extends MusicBeatState
 					lununuIntro.load(Paths.video("Lunacy-placeholder"));
 					lununuIntro.cameras = [camVideo];
 					lununuIntro.play();
-					//lununuIntro.scale.set(1 / 1.5457, 1 / 1.5457); // stupidly ass math but oops we need 1280x720
 					camVideo.visible = true;
 					add(lununuIntro);
 					lununuIntro.addCallback("onStart", () -> {
 						camVideo.visible = true;
 						lununuIntro.visible = true;
+						camBars.visible = false;
 					});
 					lununuIntro.addCallback("onEnd", () -> {
 						camVideo.visible = false;
+						camBars.visible = true;
+						camBars.fade(FlxColor.BLACK, 0.0001);
 						startCountdown();
 						trace("video gone");
 						remove(lununuIntro);
 						lununuIntro.kill();
-						camBars.fade(FlxColor.BLACK, 0.0001);
 					});
-
-					camNotes.alpha = 0.001;
-					camHUD.alpha = 0.001;
 
 				default:
 					startCountdown();
@@ -2999,7 +2998,7 @@ class PlayState extends MusicBeatState
 				add(death);
 				add(deluSing);
 
-			case 'Isolated' | 'Cycled Sins' | 'Delusion' | 'Laugh Track':
+			case 'Isolated' | 'Lunacy' | 'Cycled Sins' | 'Delusion' | 'Laugh Track':
 				camNotes.alpha = 0.001;
 				camBars.fade(FlxColor.BLACK, 0.0001);
 				camHUD.alpha = 0.001;
@@ -3272,7 +3271,7 @@ class PlayState extends MusicBeatState
 				dad.setPosition(-400, -150);
 				boyfriend.setPosition(900, 300);
 			case 'alleyway' | 'ddStage':
-				boyfriend.setPosition(250, -30);
+				boyfriend.setPosition(770, 450);
 				dad.setPosition(1660, 120);
 			default:
 				boyfriend.setPosition(770, 450);
@@ -6792,6 +6791,7 @@ class PlayState extends MusicBeatState
 
 
 	public var transitioning = false;
+	public var hasEndingScene:Bool = false;
 	public function endSong():Void
 	{
 		//Should kill you if you tried to cheat
@@ -6868,6 +6868,7 @@ class PlayState extends MusicBeatState
 				{
 					if (ClientPrefs.mechanics && SONG.song == "Delusional")
 					{
+						hasEndingScene = true;
 						GameData.episode1FPLock = "unlocked";
 						GameData.saveShit();
 					}
@@ -6882,13 +6883,42 @@ class PlayState extends MusicBeatState
 						GameData.saveShit();
 					}
 					WeekData.loadTheFirstEnabledMod();
-					FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
 
 					cancelMusicFadeTween();
 					if(FlxTransitionableState.skipNextTransIn) {
 						CustomFadeTransition.nextCamera = null;
 					}
-					MusicBeatState.switchState(new StoryMenu());
+
+					if (!hasEndingScene) 
+					{
+						FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
+						MusicBeatState.switchState(new StoryMenu());
+					}
+					else
+					{
+						switch (SONG.song)
+						{
+							case "Delusional":
+								for (i in [camNotes, camHUD, camGame, camBars])
+									if (i.visible)
+										i.visible = false;
+								
+								deluOutro = new VideoSprite(false);
+								deluOutro.load(Paths.video("Binary"));
+								deluOutro.cameras = [camVideo];
+								deluOutro.play();
+								add(deluOutro);
+								deluOutro.addCallback("onStart", () -> {
+									camVideo.alpha = 1;
+									deluOutro.visible = true;
+									death.visible = false;
+								});
+								deluOutro.addCallback("onEnd", () -> {
+									FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
+									MusicBeatState.switchState(new StoryMenu());
+								});
+						}
+					}
 
 					// if ()
 					if(!ClientPrefs.getGameplaySetting('practice', false) && !ClientPrefs.getGameplaySetting('botplay', false)) {

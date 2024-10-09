@@ -43,9 +43,16 @@ class CreditsMenu extends MusicBeatState
 
 	var redTextMarker = new FlxTextFormatMarkerPair(new FlxTextFormat(FlxColor.RED, true, true), '^red^');
 
+	var fuckingCameraSoTheMenuDoesntFuckUpOrWhateverCauseFlixelIsEVIL:FlxCamera;
+
 	override function create()
 	{
-		FlxG.stage.window.title = "Funkin.avi - Credits";
+		fuckingCameraSoTheMenuDoesntFuckUpOrWhateverCauseFlixelIsEVIL = new FlxCamera();
+
+		FlxG.cameras.reset(fuckingCameraSoTheMenuDoesntFuckUpOrWhateverCauseFlixelIsEVIL);
+		FlxG.cameras.setDefaultDrawTarget(fuckingCameraSoTheMenuDoesntFuckUpOrWhateverCauseFlixelIsEVIL, true);
+
+		openfl.Lib.application.window.title = "Funkin.avi - Credits";
 
 		path = 'Funkin_avi/credits';
 		
@@ -53,7 +60,9 @@ class CreditsMenu extends MusicBeatState
 
 		FlxG.sound.playMusic(Paths.music('aviOST/curtainCall'));
 
-		Conductor.changeBPM(164);
+		//Conductor.changeBPM(164);
+
+		persistentUpdate = true;
 
 		creditThing = jsonStuff();
 		creditArray = creditThing.devs;
@@ -115,14 +124,13 @@ class CreditsMenu extends MusicBeatState
 		creditIconSprite.antialiasing = ClientPrefs.globalAntialiasing;
 		add(creditIconSprite);
 
-		super.create();
-
-		cool_1980_shader = new FlxRuntimeShader(Shaders.filter1990, null, 140);
+		cool_1980_shader = new FlxRuntimeShader(Shaders.vhsFilter, null, 130);
+		var monitor = new FlxRuntimeShader(Shaders.monitorFilter, null, 140);
 
 		if (ClientPrefs.shaders)
-			FlxG.camera.setFilters([
+			fuckingCameraSoTheMenuDoesntFuckUpOrWhateverCauseFlixelIsEVIL.setFilters([
 				new ShaderFilter(cool_1980_shader),
-				new ShaderFilter(new FlxRuntimeShader(Shaders.monitorFilter, null, 140))
+				new ShaderFilter(monitor)
 			]);
 
 		if (!ClientPrefs.lowQuality)
@@ -147,6 +155,7 @@ class CreditsMenu extends MusicBeatState
 		}
 
 		changeSelection();
+		super.create();
 	}
 
 	var shaderTime:Float = 0;
@@ -164,7 +173,7 @@ class CreditsMenu extends MusicBeatState
 
 		if (ClientPrefs.shaders)
 		{
-			cool_1980_shader.setFloat('iTime', Conductor.songPosition / 1000);
+			cool_1980_shader.setFloat('time', Conductor.songPosition / 1000);
 		}
 
 		if (controls.UI_UP_P)
