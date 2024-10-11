@@ -11264,7 +11264,7 @@ class PlayState extends MusicBeatState
 									minnieBackground.visible = true;
 								}
 
-								if (curBeat == 679)
+								if (curBeat == 679 && !lowQuality)
 								{
 									stageCurtains.alpha = 0.0001;
 									stageCurtains.visible = true;
@@ -11272,11 +11272,14 @@ class PlayState extends MusicBeatState
 
 								if (curBeat == 680 || curBeat == 688 || curBeat == 696 || curBeat == 700 || curBeat == 704 || curBeat == 712 || curBeat == 720)
 								{
-									stageCurtains.alpha = 1;
-									FlxTween.tween(stageCurtains, {alpha: 0}, 1, {ease: FlxEase.circOut});
+									if (!lowQuality)
+									{
+										stageCurtains.alpha = 1;
+										FlxTween.tween(stageCurtains, {alpha: 0}, 1, {ease: FlxEase.circOut});
+									}
 								}
 
-								if (curBeat == 728)
+								if (curBeat == 728 && !lowQuality)
 									FlxTween.tween(stageCurtains, {alpha: 1}, 5);
 
 								if (curBeat == 740) // go back to the street in a even more decayed state
@@ -11331,13 +11334,13 @@ class PlayState extends MusicBeatState
 								}
 								if (curBeat == 880)
 								{
-									lightningStrike();
-									lightningStrikeFore();
 									FlxTween.tween(fakeLightOfHope, {color: FlxColor.WHITE}, 0.5, {ease: FlxEase.circOut});
 									if (!lowQuality) FlxTween.tween(fireThing2, {color: FlxColor.WHITE, alpha: 0.75}, 1.2, {ease: FlxEase.circOut});
 									FlxTween.tween(streetRuins, {color: FlxColor.WHITE}, 0.5, {ease: FlxEase.circOut});
 									if (!lowQuality)
 									{
+										lightningStrike();
+										lightningStrikeFore();
 										FlxTween.tween(fireForeground, {color: FlxColor.WHITE, alpha: 0.6}, 2, {ease: FlxEase.circOut});
 										FlxTween.tween(rain, {color: FlxColor.fromRGB(252, 141, 141)}, 0.5, {ease: FlxEase.circOut});
 										smokeShit.forEach(function(spr:FlxSprite)
