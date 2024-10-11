@@ -1,6 +1,92 @@
 package backend.embeddedFiles;
 
 enum abstract Event(String) from String to String {
+	var twistedGrinsNoteSpeed:String = '{
+	"song": {
+		"events": [
+			[
+				60428.5714285715,
+				[
+					[
+						"Change Scroll Speed",
+						"1.3",
+						"0"
+					]
+				]
+			],
+			[
+				75428.5714285715,
+				[
+					[
+						"Change Scroll Speed",
+						"1.6",
+						"10"
+					]
+				]
+			],
+			[
+				89142.8571428571,
+				[
+					[
+						"Change Scroll Speed",
+						"0.55",
+						"2"
+					]
+				]
+			],
+			[
+				102857.142857143,
+				[
+					[
+						"Change Scroll Speed",
+						"1",
+						"15"
+					]
+				]
+			],
+			[
+				117428.571428571,
+				[
+					[
+						"Change Scroll Speed",
+						"0.5",
+						"1"
+					]
+				]
+			],
+			[
+				178285.714285714,
+				[
+					[
+						"Change Scroll Speed",
+						"1.3",
+						"1"
+					]
+				]
+			],
+			[
+				192000,
+				[
+					[
+						"Change Scroll Speed",
+						"1.7",
+						"10"
+					]
+				]
+			],
+			[
+				205714.285714285,
+				[
+					[
+						"Change Scroll Speed",
+						"1",
+						"1"
+					]
+				]
+			]
+		]
+	}
+}';
     var dontCrossAnimatedShit:String = '{
 	"song": {
 		"events": [

@@ -506,6 +506,7 @@ class PlayState extends MusicBeatState
 	var devilishGaming:VideoSprite;
 	var deluSing:VideoSprite;
 	var lununuIntro:VideoSprite;
+	var minnieJumpscare:VideoSprite;
 	var deluOutro:VideoSprite;
 
 	//MALFUNCTION
@@ -2908,15 +2909,9 @@ class PlayState extends MusicBeatState
                     if (!ClientPrefs.lowQuality)
                     {
                         camGame.setFilters([
-                            new ShaderFilter(staticEffect),
-                            new ShaderFilter(grayScale)
+                            new ShaderFilter(staticEffect)
                         ]);
                     }
-                    else
-                    {
-                        camGame.setFilters([new ShaderFilter(grayScale)]);
-                    }
-                    camHUD.setFilters([new ShaderFilter(grayScale)]);
                     camNotes.setFilters([new ShaderFilter(grayScale)]);
                 case 'Hunted':
                     if (!ClientPrefs.lowQuality)
@@ -2982,6 +2977,11 @@ class PlayState extends MusicBeatState
 				deluSing.load(Paths.video("deluLyrics"));
 				deluSing.cameras = [camVideo];
 				deluSing.play();
+				deluSing.addCallback("onEnd", () -> {
+					deluSing.kill();
+					deluSing.destroy();
+					deluSing = null;
+				});
 				death = new VideoSprite(false);
 				death.visible = false;
 				//death.scale.set(0.36, 0.36);
@@ -2990,13 +2990,25 @@ class PlayState extends MusicBeatState
 				death.load(Paths.video("mickeyDeath"));
 				death.cameras = [camVideo];
 				death.play();
+				minnieJumpscare = new VideoSprite(false);
+				minnieJumpscare.visible = false;
+				minnieJumpscare.load(Paths.video("MinnieSegmentPlaceholder"));
+				minnieJumpscare.cameras = [camVideo];
+				minnieJumpscare.play();
+				minnieJumpscare.addCallback("onEnd", () -> {
+					minnieJumpscare.kill();
+					minnieJumpscare.destroy();
+					minnieJumpscare = null;
+				});
+				add(death);
+				add(deluSing);
+				add(minnieJumpscare);
 				new FlxTimer().start(0.001, function(tmr:FlxTimer)
 				{
 					death.pause();
 					deluSing.pause();
+					minnieJumpscare.pause();
 				});
-				add(death);
-				add(deluSing);
 
 			case 'Isolated' | 'Lunacy' | 'Cycled Sins' | 'Delusion' | 'Laugh Track':
 				camNotes.alpha = 0.001;
@@ -4387,10 +4399,10 @@ class PlayState extends MusicBeatState
 		var songName:String = Paths.formatToSongPath(SONG.song);
 		var fuckYou:String = "dont-cross";
 		var file:String = Paths.json((SONG.song == "Dont Cross" ? fuckYou : songName) + '/events');
+		var eventsData:Array<Dynamic>;
 
-		if (OpenFlAssets.exists(file) || SONG.song == "Dont Cross") {
-			trace('test');
-			var eventsData:Array<Dynamic> = Song.loadFromJson('events', (SONG.song == "Dont Cross" ? fuckYou : songName) ).events;
+		if (OpenFlAssets.exists(file) || SONG.song == "Dont Cross" || (SONG.song == "Twisted Grins" && ClientPrefs.mechanics)) {
+			eventsData = Song.loadFromJson('events', (SONG.song == "Dont Cross" ? fuckYou : songName) ).events;
 			for (event in eventsData) //Event Notes
 			{
 				for (i in 0...event[1].length)
@@ -6902,7 +6914,7 @@ class PlayState extends MusicBeatState
 								for (i in [camNotes, camHUD, camGame, camBars])
 									if (i.visible)
 										i.visible = false;
-								
+
 								deluOutro = new VideoSprite(false);
 								deluOutro.load(Paths.video("Binary"));
 								deluOutro.cameras = [camVideo];
@@ -10162,11 +10174,13 @@ class PlayState extends MusicBeatState
 					case 512:
 						windowName = "Funkin.avi - " + (isStoryMode ? curEpisode + " - " : "Freeplay - ") + "Regret [PEACEFUL]";
 						lime.app.Application.current.window.title = windowName;
+					case 672:
+						blendFlash.cameras = [camBars];
+						boyfriend.alpha = 0.0001;
+						camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.38, timer: 0.85, colors: [255, 255, 255]});
+						minnieJumpscare.play();
+						minnieJumpscare.visible = true;
 					case 720:
-						FlxTween.tween(boyfriend, {alpha: 0.0001}, 5, {ease: FlxEase.quartInOut, onComplete: function(twn:FlxTween)
-						{
-							camVideo.visible = false;
-						}});
 						FlxTween.tween(camGame, {alpha: 0.0001}, 5, {ease: FlxEase.quartInOut});
 						FlxTween.tween(camNotes, {alpha: 0.0001}, 5, {ease: FlxEase.quartInOut});
 					case 728:
@@ -10175,6 +10189,7 @@ class PlayState extends MusicBeatState
 					case 736:
 						windowName = "Welcome back.... Little mouse.";
 						lime.app.Application.current.window.title = windowName;
+						blendFlash.cameras = [camGame];
 					case 740:
 						isCameraOnForcedPos = false;
 						boundValue = 0.45;
@@ -10188,6 +10203,7 @@ class PlayState extends MusicBeatState
 						useFakeDeluName = false;
 						windowName = "Funkin.avi - " + (isStoryMode ? curEpisode + " - " : "Freeplay - ") + SONG.song + " [" + FreeplayState.getDiffRank() + "]";
 						lime.app.Application.current.window.title = windowName;
+						camVideo.visible = false;
 						camGame.alpha = 1;
 						camHUD.visible = true;
 						defaultCamZoom = 0.9;
@@ -11247,6 +11263,22 @@ class PlayState extends MusicBeatState
 									}
 									minnieBackground.visible = true;
 								}
+
+								if (curBeat == 679)
+								{
+									stageCurtains.alpha = 0.0001;
+									stageCurtains.visible = true;
+								}
+
+								if (curBeat == 680 || curBeat == 688 || curBeat == 696 || curBeat == 700 || curBeat == 704 || curBeat == 712 || curBeat == 720)
+								{
+									stageCurtains.alpha = 1;
+									FlxTween.tween(stageCurtains, {alpha: 0}, 1, {ease: FlxEase.circOut});
+								}
+
+								if (curBeat == 728)
+									FlxTween.tween(stageCurtains, {alpha: 1}, 5);
+
 								if (curBeat == 740) // go back to the street in a even more decayed state
 								{
 									//smokeParticles.emitting = true;
@@ -11263,7 +11295,6 @@ class PlayState extends MusicBeatState
 											});
 										heavyRain.visible = true;
 										totallyanoriginalname.visible = false;
-										stageCurtains.visible = true;
 									}
 									streetRuins.visible = true;
 									fakeLightOfHope.alpha = 0.5;

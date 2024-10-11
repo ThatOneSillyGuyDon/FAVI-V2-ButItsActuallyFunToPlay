@@ -49,7 +49,7 @@ class ModchartFile
     public function new(renderer:PlayfieldRenderer)
     {
 
-        data = loadFromJson(PlayState.SONG.song.toLowerCase());
+        data = loadFromJson(CoolUtil.spaceToDash(PlayState.SONG.song.toLowerCase()));
         this.renderer = renderer;
         renderer.modchart = this;
         loadPlayfields();
@@ -130,6 +130,11 @@ class ModchartFile
                 case "Delusional":
                     if (ClientPrefs.mechanics) 
                         json = cast Json.parse(ClientPrefs.downScroll ? Modchart.deluluModchartD : Modchart.deluluModchartU);
+                    else
+                        json = {modifiers: [], events: [], playfields: 1};
+                case "Twisted Grins":
+                    if (ClientPrefs.mechanics)
+                        json = cast Json.parse(ClientPrefs.downScroll ? Modchart.tgModchartD : Modchart.tgModchartU);
                     else
                         json = {modifiers: [], events: [], playfields: 1};
                 case "Malfunction":

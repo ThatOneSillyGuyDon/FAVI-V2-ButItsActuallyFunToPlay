@@ -108,7 +108,7 @@ class FreeplayState extends MusicBeatState
 				}
 			case 1: // Extras Menu
 				{		
-					getBlessed = new FlxRuntimeShader(Shaders.bloom, null, 120);
+					getBlessed = new FlxRuntimeShader(Shaders.bloom_alt, null, 120);
 					glitchyStuff = new FlxRuntimeShader(Shaders.vignetteGlitch, null, 130);
 					chromAberration = new FlxRuntimeShader(Shaders.aberration, null, 150);
 					chromAberration.setFloat('aberration', 0.07);
