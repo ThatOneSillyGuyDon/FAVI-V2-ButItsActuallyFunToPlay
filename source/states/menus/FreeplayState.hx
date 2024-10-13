@@ -260,20 +260,24 @@ class FreeplayState extends MusicBeatState
 		{
 			bgslider = new FlxSprite().loadGraphic(Paths.image(path + 'foreground-fp'));
 			bgslider.antialiasing = ClientPrefs.globalAntialiasing;
+			bgslider.camera = camHUD;
 			add(bgslider);
 
 			musicPlayer = new FlxSprite().loadGraphic(Paths.image(path + 'music-player'));
 			musicPlayer.blend = ADD;
 			musicPlayer.antialiasing = ClientPrefs.globalAntialiasing;
+			musicPlayer.camera = camHUD;
 			add(musicPlayer);
 
 			musicNotes = new FlxSprite().loadGraphic(Paths.image(path + 'music-notes'));
 			musicNotes.blend = ADD;
 			musicNotes.antialiasing = ClientPrefs.globalAntialiasing;
+			musicNotes.camera = camHUD;
 			add(musicNotes);
 
 			arrows = new FlxSprite().loadGraphic(Paths.image(path + 'arrows'));
 			arrows.antialiasing = ClientPrefs.globalAntialiasing;
+			arrows.camera = camHUD;
 			add(arrows);
 
 			disc = new FlxSprite().loadGraphic(Paths.image(path + 'disc'));
@@ -320,6 +324,7 @@ class FreeplayState extends MusicBeatState
 		{
 			songText2 = new FlxText(0, 0, 470, songs[i].songName);
 			songText = new Alphabet(100, (43 * i) + 120, songs[i].songName, true);
+			songText2.camera = camHUD;
 			
 			var icon:HealthIcon = new HealthIcon(songs[i].songCharacter);
 
@@ -390,7 +395,7 @@ class FreeplayState extends MusicBeatState
 			add(diffText);
 			add(scoreText);
 		}
-		else //The Newer, Better, Cooler Menu
+		else //The Newer, Better, With terrible ass code which i didn't made but can't complain because it works so it's fine, Cooler Menu
 		{
 			scoreText = new FlxText(FlxG.width * 0.7, 5, 450, "", 32);
 			scoreBG = new FlxSprite(scoreText.x - scoreText.width, 0).makeGraphic(Std.int(FlxG.width * 0.35), 66, 0xFF000000);
@@ -415,6 +420,9 @@ class FreeplayState extends MusicBeatState
 			add(scoreText);
 			add(freeplayCtrlTxt);
 			freeplayCtrlTxt.cameras = [camHUD];
+			scoreText.cameras = [camHUD];
+			scoreBG.cameras = [camHUD];
+			diffText.cameras = [camHUD];
 			FlxTween.tween(freeplayCtrlTxt, {alpha: 1}, 1.5, {ease: FlxEase.sineInOut, startDelay: 1});
 			FlxTween.tween(scoreText, {alpha: 1}, 1.5, {ease: FlxEase.sineInOut, startDelay: 1});
 			FlxTween.tween(diffText, {alpha: 1}, 1.5, {ease: FlxEase.sineInOut, startDelay: 1});
@@ -454,7 +462,7 @@ class FreeplayState extends MusicBeatState
 		 */
 
 		var textBG:FlxSprite = new FlxSprite(0, FlxG.height - 26).makeGraphic(FlxG.width, 26, 0xFF000000);
-		textBG.alpha = 0.6;
+		textBG.alpha = freeplayMenuList == 2 ? 0.6 : 0;
 		add(textBG);
 
 		#if PRELOAD_ALL
