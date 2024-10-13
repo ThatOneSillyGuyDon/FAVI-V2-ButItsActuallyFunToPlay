@@ -90,6 +90,8 @@ class FreeplayCategories extends MusicBeatState {
 		textInk.scale.set(0.76, 0.76);
 		welcome.scale.set(0.76, 0.76);
 
+		FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+
 		#if desktop
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("PICKING CATEGORY", "Freeplay: Category Menu", 'icon', 'disc-player');
