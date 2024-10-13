@@ -116,6 +116,11 @@ class Song
 			case "laugh-track": chartFile = Chart.laughTrack;
 			case "delutrance": chartFile = Chart.delutrance;
 			case "cycled-sins": chartFile = Chart.cycledSins;
+			case "twisted-grins": 
+				chartFile = Chart.twistedGrins;
+
+				if (jsonInput == 'events')
+					chartFile = Event.twistedGrinsNoteSpeed;
 			case "dont-cross":
 				if (!ClientPrefs.mechanics)
 				{

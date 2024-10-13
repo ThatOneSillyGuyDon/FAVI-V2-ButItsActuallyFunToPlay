@@ -69,6 +69,8 @@ class FreeplayState extends MusicBeatState
 	var gradient:FlxSprite;
 	var coolFilter:FlxSprite;
 
+	var spectrum:SpectrumWaveform;
+
 	public static var freeplayMenuList = 0;
 
 	public static var difficultyRank:String = 'HARD';
@@ -76,6 +78,7 @@ class FreeplayState extends MusicBeatState
 
 	var intendedColor:Int;
 	var colorTween:FlxTween;
+	var spectrumTwn:FlxTween;
 	var crossRandom:Int = FlxG.random.int(1, 5);
 
 	var songText2:FlxText;
@@ -83,8 +86,8 @@ class FreeplayState extends MusicBeatState
 
 	override function create()
 	{
-		//Paths.clearStoredMemory();
-		//Paths.clearUnusedMemory();
+		Paths.clearStoredMemory();
+		Paths.clearUnusedMemory();
 
 		lime.app.Application.current.window.title = "Funkin.avi - Freeplay: Setting Up Category...";
 
@@ -108,7 +111,7 @@ class FreeplayState extends MusicBeatState
 				}
 			case 1: // Extras Menu
 				{		
-					getBlessed = new FlxRuntimeShader(Shaders.bloom, null, 120);
+					getBlessed = new FlxRuntimeShader(Shaders.bloom_alt, null, 120);
 					glitchyStuff = new FlxRuntimeShader(Shaders.vignetteGlitch, null, 130);
 					chromAberration = new FlxRuntimeShader(Shaders.aberration, null, 150);
 					chromAberration.setFloat('aberration', 0.07);
@@ -258,6 +261,13 @@ class FreeplayState extends MusicBeatState
 
 		if (freeplayMenuList != 2)
 		{
+			spectrum = new SpectrumWaveform(-100, FlxG.height + 50, FlxG.sound.music, 780, FlxG.height, FROM_LEFT_TO_RIGHT, ROUNDED, 0xff001aff);
+			spectrum.design = ROUNDED;
+			spectrum.barWidth = 2;
+			spectrum.barSpacing = 3;
+			spectrum.visible = false;
+			add(spectrum);
+
 			bgslider = new FlxSprite().loadGraphic(Paths.image(path + 'foreground-fp'));
 			bgslider.antialiasing = ClientPrefs.globalAntialiasing;
 			bgslider.camera = camHUD;
@@ -299,6 +309,8 @@ class FreeplayState extends MusicBeatState
 			disc.screenCenter(Y);
 
 			disc.x += 650;
+			spectrum.x = disc.x - 10;
+			spectrum.y = disc.y - 20;
 
 			FlxTween.angle(disc, disc.angle, 360, 1.5, {type: LOOPING});
 
@@ -432,6 +444,7 @@ class FreeplayState extends MusicBeatState
 		bg.color = songs[curSelected].color;
 		intendedColor = bg.color;
 		FAVIPauseSubState.colorSetup = intendedColor;
+		if (spectrum != null) spectrum.color = intendedColor;
 
 		if(lastDifficultyName == '')
 		{
@@ -681,6 +694,7 @@ class FreeplayState extends MusicBeatState
 				colorTween.cancel();
 			}
 			FlxG.sound.play(Paths.sound('cancelMenu'));
+			FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
 			MusicBeatState.switchState(new FreeplayCategories());
 			FlxG.mouse.visible = true;
 		}
@@ -695,7 +709,6 @@ class FreeplayState extends MusicBeatState
 			if(instPlaying != curSelected)
 			{
 				#if PRELOAD_ALL
-
 				destroyFreeplayVocals();
 				FlxG.sound.music.volume = 0;
 				Paths.currentModDirectory = songs[curSelected].folder;
@@ -704,36 +717,9 @@ class FreeplayState extends MusicBeatState
 					songLowercase = "dont-cross";
 				var poop:String = Highscore.formatSong(songLowercase, curDifficulty);
 				PlayState.SONG = Song.loadFromJson(poop, songLowercase);
-				if (PlayState.SONG.needsVoices)
-				{
-					vocals = new FlxSound().loadEmbedded(Paths.voices(PlayState.SONG.song));
-					bf_vocals = new FlxSound().loadEmbedded(Paths.voicesPlayer(PlayState.SONG.song, if (PlayState.SONG.voiceSfx1 == null) "Player" else PlayState.SONG.voiceSfx1, CoolUtil.difficulties[curDifficulty]));
-					opp_vocals = new FlxSound().loadEmbedded(Paths.voicesOpp(PlayState.SONG.song, if (PlayState.SONG.voiceSfx2 == null) "Opponent" else PlayState.SONG.voiceSfx2, CoolUtil.difficulties[curDifficulty]));
-				}
-				else
-				{
-					vocals = new FlxSound();
-					bf_vocals = new FlxSound();
-					opp_vocals = new FlxSound();
-				}
-
-				FlxG.sound.list.add(vocals);
-				FlxG.sound.list.add(bf_vocals);
-				FlxG.sound.list.add(opp_vocals);
 				FlxG.sound.playMusic(Paths.inst(PlayState.SONG.song, CoolUtil.difficulties[curDifficulty]), 0.7);
-				vocals.play();
-				bf_vocals.play();
-				opp_vocals.play();
-				vocals.persist = true;
-				bf_vocals.persist = true;
-				opp_vocals.persist = true;
-				vocals.looped = true;
-				bf_vocals.looped = true;
-				opp_vocals.looped = true;
-				vocals.volume = 0.7;
-				bf_vocals.volume = 0.7;
-				opp_vocals.volume = 0.7;
 				instPlaying = curSelected;
+				if (spectrum != null) spectrum.visible = true;
 				#end
 			}
 		}
@@ -889,8 +875,19 @@ class FreeplayState extends MusicBeatState
 			if(colorTween != null) {
 				colorTween.cancel();
 			}
+			if (spectrumTwn != null) {
+				spectrumTwn.cancel();
+			}
 			intendedColor = newColor;
 			FAVIPauseSubState.colorSetup = intendedColor;
+			if (spectrum != null)
+			{
+				spectrumTwn = FlxTween.color(spectrum, 1, spectrum.color, intendedColor, {
+					onComplete: function(twn:FlxTween) {
+						spectrumTwn = null;
+					}
+				});
+			}
 			colorTween = FlxTween.color(bg, 1, bg.color, intendedColor, {
 				onComplete: function(twn:FlxTween) {
 					colorTween = null;

@@ -641,6 +641,7 @@ enum abstract Shaders(String) from String to String
     }
     ";
 
+	// gaussian bloom shader but no lag yay
     @:noCompletion var bloom_alt = 
     "
     #pragma header
@@ -658,40 +659,49 @@ enum abstract Shaders(String) from String to String
     uniform float uTime;
     uniform vec4 iMouse;
 
-    //BLOOM SHADER BY BBPANZU
-
-    const float amount = 1;
-
-    // GAUSSIAN BLUR SETTINGS
-    float dim = 2;
-    float Directions = 17.0;
-    float Quality = 20.0; 
-    float Size = 22.0; 
-    vec2 Radius = Size/openfl_TextureSize.xy;
-
-    void mainImage()
-    { 
-        vec2 uv = openfl_TextureCoordv.xy ;
-
-    float Pi = 6.28318530718; // Pi*2
-        
-    vec4 Color = texture2D( bitmap, uv);
+   void mainImage()
+{
+    float Pi = 6.28318530718;
     
-    for( float d=0.0; d<Pi; d+=Pi/Directions){
-    for(float i=1.0/Quality; i<=1.0; i+=1.0/Quality){
-    float ex = (cos(d)*Size*i)/openfl_TextureSize.x;
-    float why = (sin(d)*Size*i)/openfl_TextureSize.y;
+    //Gaussian blur settings
+    float Directions = 30.0;
+    float Quality = 6.0;
+    float Size = 4.0;
+    
+    // Sample the input texture
+    
+    // Stupid guassian setup shit
+    vec2 Radius = Size/iResolution.xy;
+    vec2 uv = fragCoord/iResolution.xy;
+    vec4 color = texture(iChannel0, uv);
 
-    Color += flixel_texture2D( bitmap, uv+vec2(ex,why));	
+    // Calcuate shitty blur
+    for(float d=0.0; d<Pi; d+=Pi/Directions)
+    {
+        for(float i=1.0/Quality; i<=1.0; i+=1.0/Quality)
+        {
+            float ex = (cos(d)*Size*i)/iResolution.x;
+            float why = (sin(d)*Size*i)/iResolution.y;
+            color += texture(iChannel0, uv+vec2(ex,why));
         }
     }
-        
-    Color /= (dim * Quality) * Directions - 15.0;
-    vec4 bloom =  (flixel_texture2D( bitmap, uv)/ dim)+Color;
-
-    gl_FragColor = bloom;
-
+    
+    color /= (1.0 * Quality) * Directions - 15.0;
+    
+    // Calculate the bloom effect
+    vec3 blur = vec3(-1.0);
+    for (int i = -4; i <= 4; i++) {
+        blur += texture(iChannel0, (fragCoord + vec2(i, 1.0))/iResolution.xy).rgb;
+        blur += texture(iChannel0, (fragCoord + vec2(1.0, i))/iResolution.xy).rgb;
     }
+    blur /= 50.0;
+    
+    vec3 bloom = mix(color.rgb, blur, 0.75);
+
+    // Apply the glow effect
+    vec3 glow = vec3(1.0) - exp(-bloom);
+    fragColor = vec4(glow + bloom, color.a);
+}
     ";
 
     /*
