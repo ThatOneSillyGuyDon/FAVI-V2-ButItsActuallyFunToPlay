@@ -28,7 +28,7 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		addOption(option);
 
 		var option:Option = new Option('Mechanics',
-			'Uncheck this if you\'re a pussy!\n(This will disable progress checks on specific songs).',
+			'Uncheck this if you\'re a pussy!\n^^(This will disable progress checks on specific songs)^^.',
 			'mechanics',
 			'bool',
 			false);
@@ -46,6 +46,13 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			'noReset',
 			'bool',
 			false);
+		addOption(option);
+
+		var option:Option = new Option('Auto Pause',
+			"If checked, the game will pause itself when unfocused.",
+			'autoPause',
+			'bool',
+			true);
 		addOption(option);
 
 		var option:Option = new Option('Hitsound Volume',

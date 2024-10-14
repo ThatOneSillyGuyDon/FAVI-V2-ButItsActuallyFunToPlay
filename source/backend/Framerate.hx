@@ -115,6 +115,7 @@ class Framerate extends TextField
 		lagging = false;
 
 		// why am I doing this? well, why tf not? (don)
+		// can't complain brah
 		switch (Type.getClass(FlxG.state))
 		{
 			case PlayState:
@@ -169,8 +170,8 @@ class Framerate extends TextField
 		if (ClientPrefs.debugInfo)
 		{
 			text += '\nRAM: ${formatMemory(Std.int(curMemory))} (${formatMemory(Std.int(peakMemory))} peak)';
+			text += '\nFunkin.avi v2.0.0'; // would be bringing a big ass doc of why this should stay in debug info but i barely have time so count your days
 		}
-		text += '\nFunkin.avi v2.0.0';
 	}
 
 	public var textAfter:String = '';

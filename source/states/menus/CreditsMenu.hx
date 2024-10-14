@@ -60,7 +60,7 @@ class CreditsMenu extends MusicBeatState
 
 		FlxG.sound.playMusic(Paths.music('aviOST/curtainCall'));
 
-		//Conductor.changeBPM(164);
+		//Conductor.bpm = (164);
 
 		persistentUpdate = true;
 
@@ -188,7 +188,7 @@ class CreditsMenu extends MusicBeatState
 		if (controls.BACK)
 		{
 			MusicBeatState.switchState(new MainMenu());
-			Conductor.changeBPM(50); // changes back to titlescreen bpm
+			Conductor.bpm = (50); // changes back to titlescreen bpm
 			FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'), 1); // resets music back to menu music
 			FlxG.sound.music.fadeIn();
 		}

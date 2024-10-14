@@ -1,5 +1,7 @@
 package states.options;
 
+import flixel.text.FlxText.FlxTextFormat;
+import flixel.text.FlxText.FlxTextFormatMarkerPair;
 import flash.text.TextField;
 import lime.utils.Assets;
 import haxe.Json;
@@ -27,6 +29,8 @@ class BaseOptionsMenu extends MusicBeatSubstate
 	var selectorRight:FlxSprite;
 
 	var dogshitPath:String = 'Funkin_avi/options';
+
+	var redTextMarker = new FlxTextFormatMarkerPair(new FlxTextFormat(FlxColor.RED, true, true), '^^');
 	
 	public function new()
 	{
@@ -88,6 +92,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 		descText.setFormat(Paths.font("DisneyFont.ttf"), 30, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		descText.scrollFactor.set();
 		descText.borderSize = 2.4;
+		descText.applyMarkup(descText.text, [redTextMarker]);
 		add(descText);
 
 		for (i in 0...optionsArray.length)
@@ -351,6 +356,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 		descText.text = optionsArray[curSelected].description;
 		descText.screenCenter(Y);
 		descText.y += 270;
+		descText.applyMarkup(descText.text, [redTextMarker]);
 
 		var bullShit:Int = 0;
 

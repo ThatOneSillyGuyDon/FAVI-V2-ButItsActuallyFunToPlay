@@ -81,7 +81,7 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		camFollow = new FlxPoint(boyfriend.getGraphicMidpoint().x, boyfriend.getGraphicMidpoint().y);
 
-		Conductor.changeBPM(100);
+		Conductor.bpm = (100);
 		// FlxG.camera.followLerp = 1;
 		// FlxG.camera.focusOn(FlxPoint.get(FlxG.width / 2, FlxG.height / 2));
 		FlxG.camera.scroll.set();

@@ -16,7 +16,7 @@ class FreeplayState extends MusicBeatState
 	var songs:Array<SongMetadata> = [];
 
 	var selector:FlxText;
-	private static var curSelected:Int = 0;
+	private var curSelected:Int = 0;
 	var curDifficulty:Int = -1;
 	private static var lastDifficultyName:String = '';
 
@@ -49,8 +49,9 @@ class FreeplayState extends MusicBeatState
 	var disc:FlxSprite;
 	var arrows:FlxSprite;
 
-	var camGame:FlxCamera; // Main camera
-	var camHUD:FlxCamera; // Shaders and stuff
+	var camGame:FlxCamera; // Main camera (including shaders n shit)
+	var camHUD:FlxCamera; // Objects
+	var camOther:FlxCamera; // Gameplay Changers + Fade transitions
 
 	var defaultCamZoom:Float = 1;
 	var camZoomTween:FlxTween;
@@ -83,6 +84,10 @@ class FreeplayState extends MusicBeatState
 
 	var songText2:FlxText;
 	var songText:Alphabet;
+
+	var bpm:Float = 1;
+
+	var songInstPlaying:Bool = false;
 
 	override function create()
 	{
@@ -231,19 +236,24 @@ class FreeplayState extends MusicBeatState
 
 		camGame = new FlxCamera();
 		camHUD = new FlxCamera();
+		camOther = new FlxCamera();
 
 		camHUD.bgColor.alpha = 0;
+		camOther.bgColor.alpha = 0;
 
 		FlxG.cameras.reset(camGame);
 		FlxG.cameras.add(camHUD, false);
+		FlxG.cameras.add(camOther, false);
 
 		FlxG.cameras.setDefaultDrawTarget(camGame, true);
 
+		CustomFadeTransition.nextCamera = camOther;
+
 		if (GameData.check(NO_MALFUNCTION))
-			{
-				GameData.canAddMalfunction = true;
-				GameData.saveShit();
-			}
+		{
+			GameData.canAddMalfunction = true;
+			GameData.saveShit();
+		}
 
 		bg = new FlxSprite();
 		if (freeplayMenuList == 2)
@@ -261,12 +271,16 @@ class FreeplayState extends MusicBeatState
 
 		if (freeplayMenuList != 2)
 		{
-			spectrum = new SpectrumWaveform(-100, FlxG.height + 50, FlxG.sound.music, 780, FlxG.height, FROM_LEFT_TO_RIGHT, ROUNDED, 0xff001aff);
-			spectrum.design = ROUNDED;
-			spectrum.barWidth = 2;
-			spectrum.barSpacing = 3;
-			spectrum.visible = false;
-			add(spectrum);
+			// SORRY IT'S JUST LAGGY AS FUCK LOL :SOB:
+			if (!ClientPrefs.lowQuality)
+			{
+				spectrum = new SpectrumWaveform(-100, FlxG.height + 50, FlxG.sound.music, 780, FlxG.height, FROM_LEFT_TO_RIGHT, ROUNDED, 0xff001aff);
+				spectrum.design = ROUNDED;
+				spectrum.barWidth = 2;
+				spectrum.barSpacing = 3;
+				spectrum.visible = false;
+				add(spectrum);
+			}
 
 			bgslider = new FlxSprite().loadGraphic(Paths.image(path + 'foreground-fp'));
 			bgslider.antialiasing = ClientPrefs.globalAntialiasing;
@@ -309,10 +323,11 @@ class FreeplayState extends MusicBeatState
 			disc.screenCenter(Y);
 
 			disc.x += 650;
-			spectrum.x = disc.x - 10;
-			spectrum.y = disc.y - 20;
-
-			FlxTween.angle(disc, disc.angle, 360, 1.5, {type: LOOPING});
+			if (!ClientPrefs.lowQuality) 
+			{
+				spectrum.x = disc.x - 10;
+				spectrum.y = disc.y - 20;
+			}
 
 			disc.x += 700;
 			arrows.alpha = 0.0001;
@@ -331,6 +346,8 @@ class FreeplayState extends MusicBeatState
 
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);
+
+		Conductor.bpm = 100;
 
 		for (i in 0...songs.length)
 		{
@@ -582,15 +599,18 @@ class FreeplayState extends MusicBeatState
 
 		if (freeplayMenuList != 2)
 		{
-			for (icon in iconArray) icon.scale.set(FlxMath.lerp(2.1, icon.scale.x, .95), FlxMath.lerp(2.1, icon.scale.y, .95));
+			for (icon in iconArray) icon.scale.set(FlxMath.lerp(2.1, icon.scale.x, CoolUtil.boundTo(1 - (elapsed * 9.6), 0, 1)), FlxMath.lerp(2.1, icon.scale.y, CoolUtil.boundTo(1 - (elapsed * 9.6), 0, 1)));
 		}
 
 		var isDontCross:Bool = songs[curSelected].songName == "Don't Cross!";
 
 		if (musicNotes != null)
-			{
-				musicNotes.y = -110 + Math.sin(Conductor.songPosition/850)*((FlxG.height * 0.015));
-			}
+		{
+			musicNotes.y = -110 + Math.sin(Conductor.songPosition/850)*((FlxG.height * 0.015));
+			musicNotes.scale.set(FlxMath.lerp(.78, musicNotes.scale.x, CoolUtil.boundTo(1 - (elapsed * 9.6), 0, 1)), FlxMath.lerp(.78, musicNotes.scale.y, CoolUtil.boundTo(1 - (elapsed * 9.6), 0, 1)));
+		}
+
+		if (disc != null) disc.angle += .25 * (bpm / 100);
 
 		if (ClientPrefs.shaders) // bye bye lag
 		{
@@ -706,22 +726,23 @@ class FreeplayState extends MusicBeatState
 		}
 		else if(space)
 		{
-			if(instPlaying != curSelected)
-			{
-				#if PRELOAD_ALL
-				destroyFreeplayVocals();
-				FlxG.sound.music.volume = 0;
-				Paths.currentModDirectory = songs[curSelected].folder;
-				var songLowercase:String = Paths.formatToSongPath(songs[curSelected].songName);
-				if (isDontCross) // I've been suffering trying to get the randomizer to work with hardcoded charts only to find out this piece of shit was causing the crash oh my FUCKING GOD I'M GONNA RIP MY FUCKING HEAD OFF!!!!! (don)
-					songLowercase = "dont-cross";
-				var poop:String = Highscore.formatSong(songLowercase, curDifficulty);
-				PlayState.SONG = Song.loadFromJson(poop, songLowercase);
-				FlxG.sound.playMusic(Paths.inst(PlayState.SONG.song, CoolUtil.difficulties[curDifficulty]), 0.7);
-				instPlaying = curSelected;
-				if (spectrum != null) spectrum.visible = true;
-				#end
-			}
+			#if PRELOAD_ALL
+			destroyFreeplayVocals();
+			FlxG.sound.music.volume = 0;
+			Paths.currentModDirectory = songs[curSelected].folder;
+			var songLowercase:String = Paths.formatToSongPath(songs[curSelected].songName);
+			if (isDontCross) // I've been suffering trying to get the randomizer to work with hardcoded charts only to find out this piece of shit was causing the crash oh my FUCKING GOD I'M GONNA RIP MY FUCKING HEAD OFF!!!!! (don)
+				songLowercase = "dont-cross";
+			var poop:String = Highscore.formatSong(songLowercase, curDifficulty);
+			PlayState.SONG = Song.loadFromJson(songLowercase, songLowercase);
+			FlxG.sound.playMusic(Paths.inst(PlayState.SONG.song, CoolUtil.difficulties[curDifficulty]), 0.7);
+			instPlaying = curSelected;
+			if (spectrum != null) spectrum.visible = true;
+			#end
+
+			songInstPlaying = true;
+			getBPM();
+			FlxTween.num(Conductor.bpm, bpm, 2, null, shitshitfuckfuck -> Conductor.bpm = shitshitfuckfuck);
 		}
 
 		else if (accepted)
@@ -772,6 +793,9 @@ class FreeplayState extends MusicBeatState
 				FlxTween.tween(songText2, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
 			}
 			FlxG.sound.music.fadeOut();
+
+			if (spectrum != null)
+				FlxTween.tween(spectrum, {alpha: 0}, 1);
 
 			new flixel.util.FlxTimer().start(freeplayMenuList == 2 ? 0.0001 : 1.5, function(e)
 			{
@@ -831,6 +855,16 @@ class FreeplayState extends MusicBeatState
 		PlayState.storyDifficulty = curDifficulty;
 		if (freeplayMenuList == 2) diffText.text = 'RANK: ' + difficultyRank; else diffText.text = "Difficulty: " + difficultyRank;// display the text
 		positionHighscore();
+	}
+
+	override function beatHit() {
+		super.beatHit();
+
+		if (curBeat % 2 == 0 && musicNotes != null && songInstPlaying)
+		{
+			//musicNotes.scale.set(.8, .8); yeahhhhhhhhhhhhhhh no.
+			for (icon in iconArray) icon.scale.set(2.35, 2.35);
+		}
 	}
 
 	function changeSelection(change:Int = 0, playSound:Bool = true)
@@ -1134,6 +1168,25 @@ class FreeplayState extends MusicBeatState
 			diffText.x = scoreText.x - 20;
 			diffText.y = scoreText.y + 70;
 		}
+	}
+
+	function getBPM():Float
+	{
+		switch (CoolUtil.spaceToDash(PlayState.SONG.song.toLowerCase()))
+		{
+			case 'devilish-deal': bpm = 90;
+			case 'isolated' | 'isolated-legacy': bpm = 165;
+			case 'lunacy': bpm = 188;
+			case 'delusional' | 'bless': bpm = 175;
+			case 'hunted' | 'malfunction-legacy' | 'war-dilemma' | 'mercy' | 'mercy-legacy' | 'hunted-legacy': bpm = 160;
+			case 'laugh-track' | 'birthday': bpm = 180;
+			case 'malfunction': bpm = 166;
+			case 'twisted-grins' | 'dont-cross': bpm = 140;
+			case 'delutrance': bpm = 123;
+			case 'cycled-sins': bpm = 161;
+			case 'isolated-beta' | 'isolated-old': bpm = 120;
+		}
+		return bpm;
 	}
 
 	public static function getDiffRank():String

@@ -32,7 +32,7 @@ class Conductor
 	/**
 	 * ## This variable is rather self explanitory...
 	 */
-	public static var bpm:Float = 100;
+	public static var bpm(default, set):Float = 100;
 
 	/**
 	 * ## This catches the game's current time in beats
@@ -194,12 +194,21 @@ class Conductor
 		return (60/bpm)*1000;
 	}
 
+	@:noCompletion // deprecated
 	public static function changeBPM(newBpm:Float)
 	{
 		bpm = newBpm;
 
 		crochet = calculateCrochet(bpm);
 		stepCrochet = crochet / 4;
+	}
+
+	public static function set_bpm(newBPM:Float):Float {
+		bpm = newBPM;
+		crochet = calculateCrochet(bpm);
+		stepCrochet = crochet / 4;
+
+		return bpm = newBPM;
 	}
 }
 

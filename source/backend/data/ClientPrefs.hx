@@ -34,6 +34,7 @@ class ClientPrefs {
 	public static var comboStacking = true;
 	public static var useGPUCaching = false;
 	public static var debugInfo = false;
+	public static var autoPause = true;
 	public static var gameplaySettings:Map<String, Dynamic> = [
 		'scrollspeed' => 1.0,
 		'scrolltype' => 'multiplicative', 
@@ -135,6 +136,7 @@ class ClientPrefs {
 		settings.data.pauseMusic = pauseMusic;
 		settings.data.checkForUpdates = checkForUpdates;
 		settings.data.comboStacking = comboStacking;
+		settings.data.autoPause = autoPause;
 	
 		settings.flush();
 
@@ -169,6 +171,9 @@ class ClientPrefs {
 		}
 		if(settings.data.debugInfo != null) {
 			debugInfo = settings.data.debugInfo;
+		}
+		if(settings.data.autoPause != null) {
+			autoPause = settings.data.autoPause;
 		}
 		if(settings.data.globalAntialiasing != null) {
 			globalAntialiasing = settings.data.globalAntialiasing;

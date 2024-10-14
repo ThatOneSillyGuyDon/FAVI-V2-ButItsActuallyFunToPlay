@@ -931,49 +931,49 @@ class FreeplaySongs extends MusicBeatState
 		switch (songs[curSelected].songName.toLowerCase().replace('-', ' '))
 		{
 			case 'cycled sins' | 'cycled sins legacy' | 'facade' | 'resentment' | 'scrapped':
-				Conductor.changeBPM(180);
+				Conductor.bpm = (180);
 
 			case 'hunted' | 'hunted legacy' | 'mercy' | 'mercy legacy' | 'war dilemma' | 'malfunction legacy' | 'twisted grins legacy':
-				Conductor.changeBPM(160);
+				Conductor.bpm = (160);
 
 			case 'neglection': 
-				Conductor.changeBPM(155);
+				Conductor.bpm = (155);
 
 			case 'birthday' | 'delusional':
-				Conductor.changeBPM(175);
+				Conductor.bpm = (175);
 
 			case 'bless legacy':
-				Conductor.changeBPM(120);
+				Conductor.bpm = (120);
 
 			case 'delusional legacy':
-				Conductor.changeBPM(185);
+				Conductor.bpm = (185);
 
 			case 'affliction':
-				Conductor.changeBPM(150);
+				Conductor.bpm = (150);
 
 			case 'isolated beta' | 'isolated old':
-				Conductor.changeBPM(120);
+				Conductor.bpm = (120);
 
 			case 'isolated' | "don't cross!" | 'isolated legacy':
-				Conductor.changeBPM(165);
+				Conductor.bpm = (165);
 
 			case 'devilish deal': 
-				Conductor.changeBPM(90);
+				Conductor.bpm = (90);
 
 			case 'lunacy': 
-				Conductor.changeBPM(188);
+				Conductor.bpm = (188);
 
 			case 'delutrance':
-				Conductor.changeBPM(123);
+				Conductor.bpm = (123);
 
 			case 'malfunction': 
-				Conductor.changeBPM(166);
+				Conductor.bpm = (166);
 
 			case 'twisted grins':
-				Conductor.changeBPM(390);
+				Conductor.bpm = (390);
 
 			default:
-				Conductor.changeBPM(100);
+				Conductor.bpm = (100);
 		}
 	}
 
