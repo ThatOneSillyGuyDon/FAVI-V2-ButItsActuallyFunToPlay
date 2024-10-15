@@ -73,13 +73,16 @@ class FreeplayCategories extends MusicBeatState {
 		FlxTween.tween(backdrop, {alpha: 1}, 0.5, {ease: FlxEase.quadOut});
 		add(backdrop);
 
-		spectrum = new SpectrumWaveform(0, 730, FlxG.sound.music, FlxG.width, FlxG.height, TO_UP_FROM_DOWN, ROUNDED, 0xffff5e5e);
-		spectrum.design = ROUNDED;
-		spectrum.barWidth = 6;
-		spectrum.barSpacing = 9;
-		spectrum.blend = ADD;
-		spectrum.alpha = 0.6;
-		add(spectrum);
+		if (!ClientPrefs.lowQuality)
+		{
+			spectrum = new SpectrumWaveform(0, 730, FlxG.sound.music, FlxG.width, FlxG.height, TO_UP_FROM_DOWN, ROUNDED, 0xffff5e5e);
+			spectrum.design = ROUNDED;
+			spectrum.barWidth = 6;
+			spectrum.barSpacing = 9;
+			spectrum.blend = ADD;
+			spectrum.alpha = 0.6;
+			add(spectrum);
+		}
 
 		textInk = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/freeplay/category/textBoxes'));
 		textInk.screenCenter();
