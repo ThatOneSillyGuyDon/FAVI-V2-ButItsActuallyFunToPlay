@@ -1226,7 +1226,7 @@ class FreeplayState extends MusicBeatState
 
 	function getBPM():Float
 	{
-		switch (CoolUtil.spaceToDash(PlayState.SONG.song.toLowerCase()))
+		switch (CoolUtil.spaceToDash(songs[curSelected].songName.toLowerCase()))
 		{
 			case 'devilish-deal': bpm = 90;
 			case 'isolated' | 'isolated-legacy': bpm = 165;
@@ -1235,7 +1235,7 @@ class FreeplayState extends MusicBeatState
 			case 'hunted' | 'malfunction-legacy' | 'war-dilemma' | 'mercy' | 'mercy-legacy' | 'hunted-legacy': bpm = 160;
 			case 'laugh-track' | 'birthday': bpm = 180;
 			case 'malfunction': bpm = 166;
-			case 'twisted-grins' | 'dont-cross': bpm = 140;
+			case 'twisted-grins' | "don't-cross!": bpm = 140;
 			case 'delutrance': bpm = 123;
 			case 'cycled-sins': bpm = 161;
 			case 'isolated-beta' | 'isolated-old': bpm = 120;
