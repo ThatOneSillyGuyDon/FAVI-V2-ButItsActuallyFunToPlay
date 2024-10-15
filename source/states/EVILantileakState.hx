@@ -34,7 +34,7 @@ class EVILantileakState extends FlxState
     override function update(elapsed:Float) {
         super.update(elapsed);
 
-        if (pass.text == 'test' && FlxG.keys.justPressed.ENTER)
+        if (box.text == 'test' && FlxG.keys.justPressed.ENTER)
         {
             trace('should work');
             MusicBeatState.switchState(new TitleState());
