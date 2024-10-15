@@ -170,8 +170,8 @@ class Framerate extends TextField
 		if (ClientPrefs.debugInfo)
 		{
 			text += '\nRAM: ${formatMemory(Std.int(curMemory))} (${formatMemory(Std.int(peakMemory))} peak)';
+			text += '\nFunkin.avi v2.0.0';
 		}
-		text += '\nFunkin.avi v2.0.0';
 	}
 
 	public var textAfter:String = '';
