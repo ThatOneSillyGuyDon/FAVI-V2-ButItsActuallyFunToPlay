@@ -33,6 +33,8 @@ class FreeplayCategories extends MusicBeatState {
 	var selectTween:FlxTween;
 	var unselectTween:FlxTween;
 
+	var spectrum:SpectrumWaveform;
+
 	var catDescString:Array<String> = [
 		"Story Mode Songs: After the hell seen in our little story, here you will be given power to replay the pain all over again.",
 		"Extra Songs: Danger lurks in every shadow, in every breath. An uncomfortable sense of unease takes hold as you venture through strange worlds where fear is a constant companion.",
@@ -70,6 +72,14 @@ class FreeplayCategories extends MusicBeatState {
         backdrop.setGraphicSize(Std.int(backdrop.width * 0.6));
 		FlxTween.tween(backdrop, {alpha: 1}, 0.5, {ease: FlxEase.quadOut});
 		add(backdrop);
+
+		spectrum = new SpectrumWaveform(0, 730, FlxG.sound.music, FlxG.width, FlxG.height, TO_UP_FROM_DOWN, ROUNDED, 0xffff5e5e);
+		spectrum.design = ROUNDED;
+		spectrum.barWidth = 6;
+		spectrum.barSpacing = 9;
+		spectrum.blend = ADD;
+		spectrum.alpha = 0.6;
+		add(spectrum);
 
 		textInk = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/freeplay/category/textBoxes'));
 		textInk.screenCenter();

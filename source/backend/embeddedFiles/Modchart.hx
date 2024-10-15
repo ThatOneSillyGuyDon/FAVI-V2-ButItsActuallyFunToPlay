@@ -963,6 +963,20 @@ enum abstract Modchart(String) from String to String {
 				1,
 				1
 			]
+		],
+		[
+			"ease",
+			[
+				16,
+				"5",
+				"cubeInOut",
+				",Z,,Y,,XMickey,,XGoofy,,guitarHero,,wavy:speed,,wavy,,flipThemLol"
+			],
+			[
+				false,
+				1,
+				1
+			]
 		]
 	],
 	"playfields": 1
@@ -1012,7 +1026,6 @@ enum abstract Modchart(String) from String to String {
 			-1
 		]
 	],
-	"playfields": 1,
 	"events": [
 		[
 			"ease",
@@ -1041,8 +1054,23 @@ enum abstract Modchart(String) from String to String {
 				1,
 				1
 			]
+		],
+		[
+			"ease",
+			[
+				16,
+				"5",
+				"circOut",
+				",Z,,Y,,XMickey,,XGoofy,,guitarHero,,wavy:speed,,wavy"
+			],
+			[
+				false,
+				1,
+				1
+			]
 		]
-	]
+	],
+	"playfields": 1
 }';
     var lunacyModchart:String = '{
 	"events": [

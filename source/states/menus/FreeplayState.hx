@@ -10,13 +10,16 @@ import openfl.filters.ShaderFilter;
 #if MODS_ALLOWED
 import sys.FileSystem;
 #end
+import sys.thread.Mutex;
+import sys.thread.Thread;
+import openfl.media.Sound;
 
 class FreeplayState extends MusicBeatState
 {
 	var songs:Array<SongMetadata> = [];
 
 	var selector:FlxText;
-	private var curSelected:Int = 0;
+	private static var curSelected:Int = 0;
 	var curDifficulty:Int = -1;
 	private static var lastDifficultyName:String = '';
 
@@ -71,6 +74,12 @@ class FreeplayState extends MusicBeatState
 	var coolFilter:FlxSprite;
 
 	var spectrum:SpectrumWaveform;
+
+	// to prevent lag when playing the inst
+	var songThread:Thread;
+	var threadActive:Bool = true;
+	var mutex:Mutex;
+	var songToPlay:Sound = null;
 
 	public static var freeplayMenuList = 0;
 
@@ -188,6 +197,7 @@ class FreeplayState extends MusicBeatState
 				}
 		}
 
+		mutex = new Mutex();
 		persistentUpdate = true;
 		PlayState.isStoryMode = false;
 		WeekData.reloadWeekFiles(false);
@@ -278,30 +288,25 @@ class FreeplayState extends MusicBeatState
 				spectrum.design = ROUNDED;
 				spectrum.barWidth = 2;
 				spectrum.barSpacing = 3;
-				spectrum.visible = false;
 				add(spectrum);
 			}
 
 			bgslider = new FlxSprite().loadGraphic(Paths.image(path + 'foreground-fp'));
 			bgslider.antialiasing = ClientPrefs.globalAntialiasing;
-			bgslider.camera = camHUD;
 			add(bgslider);
 
 			musicPlayer = new FlxSprite().loadGraphic(Paths.image(path + 'music-player'));
 			musicPlayer.blend = ADD;
 			musicPlayer.antialiasing = ClientPrefs.globalAntialiasing;
-			musicPlayer.camera = camHUD;
 			add(musicPlayer);
 
 			musicNotes = new FlxSprite().loadGraphic(Paths.image(path + 'music-notes'));
 			musicNotes.blend = ADD;
 			musicNotes.antialiasing = ClientPrefs.globalAntialiasing;
-			musicNotes.camera = camHUD;
 			add(musicNotes);
 
 			arrows = new FlxSprite().loadGraphic(Paths.image(path + 'arrows'));
 			arrows.antialiasing = ClientPrefs.globalAntialiasing;
-			arrows.camera = camHUD;
 			add(arrows);
 
 			disc = new FlxSprite().loadGraphic(Paths.image(path + 'disc'));
@@ -329,11 +334,15 @@ class FreeplayState extends MusicBeatState
 				spectrum.y = disc.y - 20;
 			}
 
+			for (obj in [bgslider, musicPlayer, musicNotes, arrows])
+				obj.cameras = [camHUD];
+
 			disc.x += 700;
 			arrows.alpha = 0.0001;
 			musicPlayer.x -= 700;
 			musicNotes.x -= 700;
 			bgslider.x -= 700;
+			if (!lowQuality) spectrum.x -= 700;
 			bg.alpha = 0.0001;
 
 			FlxTween.tween(bg, {alpha: 1}, 1, {ease: FlxEase.expoOut});
@@ -342,6 +351,7 @@ class FreeplayState extends MusicBeatState
 			FlxTween.tween(musicPlayer, {x: musicPlayer.x + 700}, 1, {ease: FlxEase.expoOut});
 			FlxTween.tween(musicNotes, {x: musicNotes.x + 700}, 1, {ease: FlxEase.expoOut});
 			FlxTween.tween(bgslider, {x: bgslider.x + 700}, 1, {ease: FlxEase.expoOut});
+			if (!lowQuality) FlxTween.tween(spectrum, {x: spectrum.x + 700}, 1, {ease: FlxEase.expoOut});
 		}
 
 		grpSongs = new FlxTypedGroup<Alphabet>();
@@ -353,8 +363,7 @@ class FreeplayState extends MusicBeatState
 		{
 			songText2 = new FlxText(0, 0, 470, songs[i].songName);
 			songText = new Alphabet(100, (43 * i) + 120, songs[i].songName, true);
-			songText2.camera = camHUD;
-			
+		
 			var icon:HealthIcon = new HealthIcon(songs[i].songCharacter);
 
 			if (freeplayMenuList == 2)
@@ -387,6 +396,7 @@ class FreeplayState extends MusicBeatState
 				songText2.alignment = CENTER;
 				songText2.antialiasing = ClientPrefs.globalAntialiasing;
 				songText2.y -= 300;
+				songText2.cameras = [camHUD];
 			}
 			songText.targetY = i;
 			grpSongs.add(songText);
@@ -449,9 +459,8 @@ class FreeplayState extends MusicBeatState
 			add(scoreText);
 			add(freeplayCtrlTxt);
 			freeplayCtrlTxt.cameras = [camHUD];
-			scoreText.cameras = [camHUD];
-			scoreBG.cameras = [camHUD];
 			diffText.cameras = [camHUD];
+			scoreText.cameras = [camHUD];
 			FlxTween.tween(freeplayCtrlTxt, {alpha: 1}, 1.5, {ease: FlxEase.sineInOut, startDelay: 1});
 			FlxTween.tween(scoreText, {alpha: 1}, 1.5, {ease: FlxEase.sineInOut, startDelay: 1});
 			FlxTween.tween(diffText, {alpha: 1}, 1.5, {ease: FlxEase.sineInOut, startDelay: 1});
@@ -584,6 +593,7 @@ class FreeplayState extends MusicBeatState
 	}*/
 
 	var instPlaying:Int = -1;
+	var disableSpace:Bool = false;
 	public static var vocals:FlxSound = null;
 	public static var bf_vocals:FlxSound = null;
 	public static var opp_vocals:FlxSound = null;
@@ -713,8 +723,8 @@ class FreeplayState extends MusicBeatState
 			if(colorTween != null) {
 				colorTween.cancel();
 			}
+			threadActive = false;
 			FlxG.sound.play(Paths.sound('cancelMenu'));
-			FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
 			MusicBeatState.switchState(new FreeplayCategories());
 			FlxG.mouse.visible = true;
 		}
@@ -726,27 +736,32 @@ class FreeplayState extends MusicBeatState
 		}
 		else if(space)
 		{
-			#if PRELOAD_ALL
-			destroyFreeplayVocals();
-			FlxG.sound.music.volume = 0;
-			Paths.currentModDirectory = songs[curSelected].folder;
-			var songLowercase:String = Paths.formatToSongPath(songs[curSelected].songName);
-			if (isDontCross) // I've been suffering trying to get the randomizer to work with hardcoded charts only to find out this piece of shit was causing the crash oh my FUCKING GOD I'M GONNA RIP MY FUCKING HEAD OFF!!!!! (don)
-				songLowercase = "dont-cross";
-			var poop:String = Highscore.formatSong(songLowercase, curDifficulty);
-			PlayState.SONG = Song.loadFromJson(songLowercase, songLowercase);
-			FlxG.sound.playMusic(Paths.inst(PlayState.SONG.song, CoolUtil.difficulties[curDifficulty]), 0.7);
-			instPlaying = curSelected;
-			if (spectrum != null) spectrum.visible = true;
-			#end
+			if(instPlaying != curSelected && !disableSpace)
+			{
+				mutex.acquire();
+				if (songToPlay != null)
+				{
+					FlxG.sound.playMusic(songToPlay);
 
-			songInstPlaying = true;
-			getBPM();
-			FlxTween.num(Conductor.bpm, bpm, 2, null, shitshitfuckfuck -> Conductor.bpm = shitshitfuckfuck);
+					if (FlxG.sound.music.fadeTween != null)
+						FlxG.sound.music.fadeTween.cancel();
+
+					FlxG.sound.music.volume = 0.0;
+					FlxG.sound.music.fadeIn(1.0, 0.0, 0.7);
+
+					songToPlay = null;
+				}
+				mutex.release();
+				songInstPlaying = true;
+				getBPM();
+				FlxTween.num(Conductor.bpm, bpm, 2, null, shitshitfuckfuck -> Conductor.bpm = shitshitfuckfuck);
+				instPlaying = curSelected;
+			}
 		}
 
 		else if (accepted)
 		{
+			threadActive = false;
 			persistentUpdate = false;
 			var songLowercase:String = Paths.formatToSongPath(songs[curSelected].songName);
 			if (isDontCross) // I've been suffering trying to get the randomizer to work with hardcoded charts only to find out this piece of shit was causing the crash oh my FUCKING GOD I'M GONNA RIP MY FUCKING HEAD OFF!!!!! (don)
@@ -770,7 +785,7 @@ class FreeplayState extends MusicBeatState
 			PlayState.storyDifficulty = curDifficulty;
 
 			FlxG.sound.play(Paths.sound('funkinAVI/menu/confirmEpisode'));
-			for (icon in iconArray) icon.scale.set(2.35, 2.35);
+			for (icon in iconArray) if (freeplayMenuList != 2) icon.scale.set(2.35, 2.35);
 
 			trace('CURRENT WEEK: ' + WeekData.getWeekFileName());
 			if(colorTween != null) {
@@ -780,11 +795,12 @@ class FreeplayState extends MusicBeatState
 			if (freeplayMenuList != 2)
 			{				
 				FlxTween.tween(bg, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
+				if (spectrum != null) FlxTween.tween(spectrum, {x: spectrum.x - 700}, 1, {ease: FlxEase.sineOut});
 				FlxTween.tween(disc, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
 				FlxTween.tween(arrows, {alpha: 0}, 1);
 				FlxTween.tween(musicPlayer, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
 				FlxTween.tween(musicNotes, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
-				FlxTween.tween(bgslider, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
+				FlxTween.tween(bgslider, {x: bgslider.x - 700}, 1, {ease: FlxEase.sineOut});
 				FlxTween.tween(songText2, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
 				FlxTween.tween(songText2, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
 				FlxTween.tween(freeplayCtrlTxt, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
@@ -794,17 +810,12 @@ class FreeplayState extends MusicBeatState
 			}
 			FlxG.sound.music.fadeOut();
 
-			if (spectrum != null)
-				FlxTween.tween(spectrum, {alpha: 0}, 1);
-
 			new flixel.util.FlxTimer().start(freeplayMenuList == 2 ? 0.0001 : 1.5, function(e)
 			{
 				LoadingState.loadAndSwitchState(new PlayState());
 			});
 
 			FlxG.sound.music.volume = 0;
-					
-			destroyFreeplayVocals();
 		}
 		else if(controls.RESET)
 		{
@@ -815,6 +826,7 @@ class FreeplayState extends MusicBeatState
 		super.update(elapsed);
 	}
 
+	// i would remove this but too lazy to remove this function from other menus rn so I don't get any compiling errors lol
 	public static function destroyFreeplayVocals() {
 		if(vocals != null) {
 			vocals.stop();
@@ -867,9 +879,49 @@ class FreeplayState extends MusicBeatState
 		}
 	}
 
+	function changeInst() {
+		if (songThread == null) {
+			songThread = Thread.create(function() {
+				while (true) {
+					if (!threadActive) return;
+
+					var index:Null<Int> = Thread.readMessage(false);
+					if (index != null) {
+						var inst:Sound = getInstrumentForSong(songs[curSelected].songName);
+						
+						if (threadActive) {
+							mutex.acquire();
+							songToPlay = inst;
+							mutex.release();
+						}
+					}
+				}
+			});
+		}
+		songThread.sendMessage(curSelected);
+	}
+
+	function getInstrumentForSong(songName:String):Sound {
+		if (songName == "Don't Cross!") {
+			return Paths.inst("dont-cross", CoolUtil.difficulties[curDifficulty]);
+		} 
+		return Paths.inst(songName, CoolUtil.difficulties[curDifficulty]);
+	}
+
+	var shittyTmr:FlxTimer;
 	function changeSelection(change:Int = 0, playSound:Bool = true)
 	{
 		if(playSound) FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'), 0.4);
+
+		disableSpace = true;
+
+		if (shittyTmr != null)
+			shittyTmr.cancel();
+
+		shittyTmr = new FlxTimer().start(0.75, function(tmr:FlxTimer) {
+			disableSpace = false;
+			shittyTmr = null;
+		});
 
 		if(ClientPrefs.flashing)
 			FlxG.camera.flash(FlxColor.BLACK, 0.1);
@@ -991,6 +1043,8 @@ class FreeplayState extends MusicBeatState
 				}
 			}
 		
+		changeInst();
+
 		Paths.currentModDirectory = songs[curSelected].folder;
 		PlayState.storyWeek = songs[curSelected].week;
 
