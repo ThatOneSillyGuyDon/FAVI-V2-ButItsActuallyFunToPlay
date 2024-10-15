@@ -342,7 +342,7 @@ class FreeplayState extends MusicBeatState
 			musicPlayer.x -= 700;
 			musicNotes.x -= 700;
 			bgslider.x -= 700;
-			if (!lowQuality) spectrum.x -= 700;
+			if (!ClientPrefs.lowQuality) spectrum.x -= 700;
 			bg.alpha = 0.0001;
 
 			FlxTween.tween(bg, {alpha: 1}, 1, {ease: FlxEase.expoOut});
@@ -351,7 +351,7 @@ class FreeplayState extends MusicBeatState
 			FlxTween.tween(musicPlayer, {x: musicPlayer.x + 700}, 1, {ease: FlxEase.expoOut});
 			FlxTween.tween(musicNotes, {x: musicNotes.x + 700}, 1, {ease: FlxEase.expoOut});
 			FlxTween.tween(bgslider, {x: bgslider.x + 700}, 1, {ease: FlxEase.expoOut});
-			if (!lowQuality) FlxTween.tween(spectrum, {x: spectrum.x + 700}, 1, {ease: FlxEase.expoOut});
+			if (!ClientPrefs.lowQuality) FlxTween.tween(spectrum, {x: spectrum.x + 700}, 1, {ease: FlxEase.expoOut});
 		}
 
 		grpSongs = new FlxTypedGroup<Alphabet>();
