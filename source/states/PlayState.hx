@@ -1967,12 +1967,30 @@ class PlayState extends MusicBeatState
 
 		iconP1 = new HealthIcon(boyfriend.healthIcon, true, boyfriend.animatedIcon, boyfriend.intenseIcon, boyfriend.boppingIcon);
 		iconP1.y = healthBar.y - 75;
+
+		// reposition specific icons on the y axis
+		switch (boyfriend.healthIcon)
+		{
+			case "everett": iconP1.y -= 20;
+			case "everettmodern": iconP1.y -= 10;
+			case "everettb": iconP1.y -= 5;
+		}
+
 		iconP1.visible = !ClientPrefs.hideHud;
 		iconP1.alpha = ClientPrefs.healthBarAlpha;
 		add(iconP1);
 
 		iconP2 = new HealthIcon(dad.healthIcon, false, dad.animatedIcon, dad.intenseIcon, dad.boppingIcon);
 		iconP2.y = healthBar.y - 75;
+
+		// reposition specific icons on the y axis
+		switch (dad.healthIcon)
+		{
+			case "walt" | "ricky" | "noise": iconP2.y -= 20;
+			case "goofy" | "smile": iconP2.y -= 10;
+			case "cross": iconP2.y -= 15;
+		}
+
 		iconP2.visible = !ClientPrefs.hideHud;
 		iconP2.alpha = ClientPrefs.healthBarAlpha;
 		add(iconP2);

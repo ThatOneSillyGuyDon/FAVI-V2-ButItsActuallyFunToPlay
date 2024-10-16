@@ -77,8 +77,8 @@ class FreeplayCategories extends MusicBeatState {
 		{
 			spectrum = new SpectrumWaveform(0, 730, FlxG.sound.music, FlxG.width, FlxG.height, TO_UP_FROM_DOWN, ROUNDED, 0xffff5e5e);
 			spectrum.design = ROUNDED;
-			spectrum.barWidth = 6;
-			spectrum.barSpacing = 9;
+			spectrum.barWidth = 12;
+			spectrum.barSpacing = 16;
 			spectrum.blend = ADD;
 			spectrum.alpha = 0.6;
 			add(spectrum);
@@ -225,6 +225,7 @@ class FreeplayCategories extends MusicBeatState {
 		}
 		
 		if (controls.BACK) {
+			FreeplayState.songInstPlaying = false;
 			FlxG.sound.play(Paths.sound("cancelMenu"));
 			MusicBeatState.switchState(new MainMenu());
 			FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));

@@ -96,13 +96,13 @@ class MainMenu extends MusicBeatState
 		"I dare you to press 7 on that keyboard of yours.",
 		"Cock & ball torture.",
 		"OKAY, YOU GOT DELUSIONAL, NOW STFU.",
-		"Cast & Crew (Couch Song) is on Cognitive Crisis, cry about it.",
+		"Cast & Crew (Couch Song) is CANCELLED, cry about it.",
 		"Look at that cute little devil, he c00t :3",
 		"Do you like the new menu art?",
 		"You're gonna love the final song.",
 		"Malfunction isn't easy anymore, fuck you, skill issue B)",
 		"Happy Birthday Muckney!",
-		"Psych Engine basically corrupted all our shit, which is why it's on Another Engine now.",
+		"We went from Psych corrupting our stuff to Forever being broken asf to Psych again, WHAT ARE THEY DOING???",
 		"SOMEONE PLEASE GIVE MICKEY HIS FUCKING SANDWICH",
 		"Have fun, you'll be here for like an hour or longer.",
 		"10 Seconds before I shut your fucking game again >:(",
@@ -124,7 +124,7 @@ class MainMenu extends MusicBeatState
 		"NOOOOOOOOOOO, YOU CAN'T JUST CHEAT THE GAME!!!!!!!",
 		"V3 Update in a Nutshell: Suicidal Remixes",
 		"Mom, can we have Wednesday's Infidelity?",
-		"GUYS, LOOK, IT'S SHIPY, SAY HELLO TO HER! :D",
+		"WHAT THE FUCK IS A KILOMETER?",
 		"Don't leave Muckney's party, please, you'll make him sad if you do :(",
 		"It's about drive, it's about power, we stay hungry, we devour.",
 		// i miss this one it was funny asf................
@@ -156,7 +156,7 @@ class MainMenu extends MusicBeatState
 		"there is no message, go play some minecraft",
 		"THEY HIT THE FUCKING PENTAGON, SMILES",
 		"Want a break from the ads? If you tap now to take a short servey, you'll recieve 30 minutes of ad-free music.",
-		"I bet you're complaining that this isn't on Psych Engine right about now, silly kiddo"
+		"I bet you're complaining that this isn't easy to steal assets from right about now, silly kiddo"
 	];
 
 	var defaultShader:FlxRuntimeShader;
