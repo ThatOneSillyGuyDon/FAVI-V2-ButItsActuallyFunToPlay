@@ -632,7 +632,7 @@ class FreeplayState extends MusicBeatState
 
 		if (disc != null && songInstPlaying) 
 		{
-			disc.angle += 3 * (bpm / 100);
+			disc.angle += 1.2 * (bpm / 100);
 		}
 
 		if (ClientPrefs.shaders) // bye bye lag
