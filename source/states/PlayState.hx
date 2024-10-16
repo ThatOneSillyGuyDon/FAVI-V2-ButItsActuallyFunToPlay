@@ -59,11 +59,6 @@ typedef FlashingSettings =
 
 class PlayState extends MusicBeatState
 {
-	// type false to turn it off the new feature that i added!
-	var isItDelvish:Bool = true;
-
-	var delvishShit:Bool = false;
-
 	public static var STRUM_X = 42;
 	public static var STRUM_X_MIDDLESCROLL = -278;
 	var middlescroll:Bool = false;
@@ -1585,13 +1580,6 @@ class PlayState extends MusicBeatState
 		{
 			case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Laugh Track" |  "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Birthday":
 				introSoundsSuffix = "-cartoon";
-
-				
-				if (isItDelvish)
-				{
-					delvishShit = true;
-				}
-
 			case "Cycled Sins Legacy" | "Cycled Sins":
 				introSoundsSuffix = "-sins";
 			case "Malfunction":
@@ -5867,7 +5855,7 @@ class PlayState extends MusicBeatState
 
 	public var isDead:Bool = false; //Don't mess with this on Lua!!!
 	function doDeathCheck(?skipHealthCheck:Bool = false) {
-		if (((skipHealthCheck && instakillOnMiss) || healthThing <= 0) && !practiceMode && !isDead && !delvishShit) // Yama wanted the funni in - MalyPlus
+		if (((skipHealthCheck && instakillOnMiss) || healthThing <= 0) && !practiceMode && !isDead && SONG.song != "Devilish Deal") // Yama wanted the funni in - MalyPlus /// Why did you even need to make new variables for this anyways? (don)
 		{
 			var ret:Dynamic = callOnLuas('onGameOver', [], false);
 			if(ret != FunkinLua.Function_Stop) {
