@@ -68,16 +68,28 @@ class GameOverSubstate extends MusicBeatSubstate
 		boyfriend.visible = false;
 		add(boyfriend);
 
-		var deathImage:FlxSprite = new FlxSprite().loadGraphic(Paths.image("favi/ui/deathLmao"));
+		var image:String;
+
+		if (PlayState.SONG.song == "Dont Cross")
+			image = "favi/ui/DontCrossGameOver";
+		else
+			image = "favi/ui/deathLmao";
+
+		var deathImage:FlxSprite = new FlxSprite().loadGraphic(Paths.image(image));
 		deathImage.screenCenter();
 		deathImage.scrollFactor.set(0, 0);
-		deathImage.alpha = 0.0001;
 		add(deathImage);
 
-		new flixel.util.FlxTimer().start(0.5, function(tmr)
+		if (PlayState.SONG.song == "Dont Cross")
+			FlxG.sound.play(Paths.sound("wompWomp"));
+		else
+		{
+			deathImage.alpha = 0.0001;
+			new flixel.util.FlxTimer().start(0.5, function(tmr)
 			{
 				FlxTween.tween(deathImage, {alpha: 1}, 3);
 			});
+		}
 
 		camFollow = new FlxPoint(boyfriend.getGraphicMidpoint().x, boyfriend.getGraphicMidpoint().y);
 
@@ -240,7 +252,7 @@ class GameOverSubstate extends MusicBeatSubstate
 						{
 							var songLowercase:String = "dont-cross";
 							var poop:String = "dont-cross-hard" + '${FlxG.random.int(1, 4)}'; //fuck fuck fuck fuck fuck fuck
-							PlayState.SONG = Song.loadFromJson(poop, songLowercase, FlxG.random.int(1, 5));
+							PlayState.SONG = Song.loadFromJson(poop, songLowercase, FlxG.random.int(1, 4));
 						}
 						
 					MusicBeatState.resetState();

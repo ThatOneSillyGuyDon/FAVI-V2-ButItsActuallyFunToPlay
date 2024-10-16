@@ -170,7 +170,7 @@ class Framerate extends TextField
 		if (ClientPrefs.debugInfo)
 		{
 			text += '\nRAM: ${formatMemory(Std.int(curMemory))} (${formatMemory(Std.int(peakMemory))} peak)';
-			text += '\nFunkin.avi v2.0.0'; // would be bringing a big ass doc of why this should stay in debug info but i barely have time so count your days
+			text += '\nFunkin.avi v2.0.0';
 		}
 	}
 

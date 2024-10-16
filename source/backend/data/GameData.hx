@@ -403,65 +403,52 @@ class GameData
 		switch (PlayState.SONG.song.toLowerCase())
 		{
 			case 'hunted':
-				if (ClientPrefs.mechanics)
 					huntedLock = 'beaten';
 			case 'isolated old':
 				oldisolateLock = 'beaten';
 			case 'isolated beta':
 				betaisolateLock = 'beaten';
 			case 'neglection':
-				if (ClientPrefs.mechanics)
 					pnmLock = 'beaten';
 			case "dont cross":
-				if (ClientPrefs.mechanics)
 					crossinLock = 'beaten';
 			case 'war dilemma':
 				warLock = 'beaten';
 			case 'twisted grins':
 				tgLock = 'beaten';
 			case 'mercy':
-				if (ClientPrefs.mechanics)
 					mercyLock = 'beaten';
 			case 'cycled sins':
-				if (ClientPrefs.mechanics)
 					sinsLock = 'beaten';
 			case 'malfunction':
-				if (ClientPrefs.mechanics)
 					malfunctionLock = 'beaten';
 			case 'scrapped':
 				scrappedLock = 'beaten';
 			case 'bless':
 				blessLock = 'beaten';
 			case 'laugh track':
-				if (ClientPrefs.mechanics)
 					rickyLock = 'beaten';
 			case 'birthday':
 				muckneyLock = 'beaten';
 			case 'mercy legacy':
-				if (ClientPrefs.mechanics)
 					legacyWLock = 'beaten';
 			case 'isolated legacy':
 				legacyILock = 'beaten';
 			case 'lunacy legacy':
 				legacyLLock = 'beaten';
 			case 'delusional legacy':
-				if (ClientPrefs.mechanics)
 					legacyDLock = 'beaten';
 			case 'hunted legacy':
 				legacyHLock = 'beaten';
 			case 'malfunction legacy':
-				if (ClientPrefs.mechanics)
 					legacyMLock = 'beaten';
 			case 'cycled sins legacy':
-				if (ClientPrefs.mechanics)
 					legacySLock = 'beaten';
 			case 'bless legacy':
 				legacyBLock = 'beaten';
 			case 'neglection legacy':
-				if (ClientPrefs.mechanics)
 					legacyNLock = 'beaten';
 			case 'twisted grins legacy':
-				if (ClientPrefs.mechanics)
 					legacyTLock = 'beaten';
 			case 'resentment legacy':
 				legacyRLock = 'beaten';

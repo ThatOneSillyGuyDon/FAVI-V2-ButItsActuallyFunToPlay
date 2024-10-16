@@ -790,7 +790,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 					{
 						var songLowercase:String = "dont-cross";
 						var poop:String = "dont-cross-hard" + '${FlxG.random.int(1, 4)}'; //fuck fuck fuck fuck fuck fuck
-						PlayState.SONG = Song.loadFromJson(poop, songLowercase, FlxG.random.int(1, 5));
+						PlayState.SONG = Song.loadFromJson(poop, songLowercase, FlxG.random.int(1, 4));
 					}
 		
 				if(noTrans)
