@@ -86,6 +86,8 @@ class MainMenu extends MusicBeatState
 	var camGame:FlxCamera;
 	var camHUD:FlxCamera;
 
+	var sigmaClick:FlxSprite;
+
 	var windowShit:Array<Any> = [
 		"Anyone up right now?",
 		"Shipy's SNS Mickey & F.AVI Mickey will make love to each other",
@@ -385,6 +387,14 @@ class MainMenu extends MusicBeatState
 		FlxG.camera.follow(camFollowPos, null, 1);
 
 		updateSelection();
+
+		if (GameData.episode1FPLock == 'unlocked')
+		{
+			sigmaClick = new FlxSprite(500, 600, Paths.image('Funkin_avi/menu/click'));
+			sigmaClick.setGraphicSize(150, 150);
+			sigmaClick.antialiasing = ClientPrefs.globalAntialiasing;
+			add(sigmaClick);
+		}
  
 		theBox = new MessageBox(-400, FlxG.height - 80, {
 			text: 'Freeplay is Locked!', 
