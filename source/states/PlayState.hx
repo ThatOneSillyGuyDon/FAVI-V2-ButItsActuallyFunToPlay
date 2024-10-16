@@ -62,7 +62,7 @@ class PlayState extends MusicBeatState
 	// type false to turn it off the new feature that i added!
 	var isItDelvish:Bool = true;
 
-	var delvishShit:Bool = false
+	var delvishShit:Bool = false;
 
 	public static var STRUM_X = 42;
 	public static var STRUM_X_MIDDLESCROLL = -278;
