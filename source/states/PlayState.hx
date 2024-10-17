@@ -4893,7 +4893,7 @@ class PlayState extends MusicBeatState
 			paused = true;
 			cancelMusicFadeTween();
 			
-			MusicBeatState.switchState(new CharacterEditorState(SONG.player2));
+			MusicBeatState.switchState(new CharacterEditorState(dad.curCharacter));
 			FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
 		}
 		
@@ -5160,11 +5160,11 @@ class PlayState extends MusicBeatState
 
 				case 'RIGHT' | 'RIGHT-alt' | 'RIGHTmiss':
 					camOffset[0] += 40;
-					if (!SONG.song.endsWith('Legacy')) camOffset[2] += 1.3;
+					if (!CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-legacy')) camOffset[2] += 1.3;
 
 				case 'LEFT' | 'LEFT-alt' | 'LEFTmiss':
 					camOffset[0] -= 40;
-					if (!SONG.song.endsWith('Legacy')) camOffset[2] -= 1.3;
+					if (!CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-legacy')) camOffset[2] -= 1.3;
 
 				case 'DOWN' | 'DOWN-alt' | 'DOWNmiss':
 					camOffset[1] += 40;

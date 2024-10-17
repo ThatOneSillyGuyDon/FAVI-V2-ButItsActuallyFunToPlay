@@ -80,8 +80,6 @@ class MessageBox extends FlxTypedGroup<FlxBasic>
      */
     public function new(x:Float = 0, y:Float = 0, utils:Utils) {
         // null checks
-        if (utils.text == null) utils.text = "this is a message";
-        if (utils.subText == null) utils.subText = "this is a sub text";
         if (utils.font == null) utils.font = 'vcr';
         if (utils.textColor == null) utils.textColor = FlxColor.WHITE;
         if (utils.boxWidth == null) utils.boxWidth = 360;
@@ -91,12 +89,12 @@ class MessageBox extends FlxTypedGroup<FlxBasic>
 
         super();
 
-        boxText = new FlxText(x, y, 0, utils.text, 24);
+        boxText = new FlxText(x, y, 0, 'this is a text!', 24);
 		boxText.setFormat(Paths.font(utils.font), 32, 0xFFFFFFFF, LEFT, FlxTextBorderStyle.OUTLINE, 0xFF000000);
 		boxText.scrollFactor.set();
 		boxText.camera = utils.camera;
 
-		boxSubText = new FlxText(x, boxText.y + 30, 0, utils.subText, 24);
+		boxSubText = new FlxText(x, boxText.y + 30, 0, 'this is a subtext!', 24);
 		boxSubText.setFormat(Paths.font(utils.font), 24, 0xFFFFFFFF, LEFT, FlxTextBorderStyle.OUTLINE, 0xFF000000);
 		boxSubText.scrollFactor.set();
 		boxSubText.camera = utils.camera;

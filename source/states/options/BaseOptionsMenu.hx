@@ -63,7 +63,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 
 		descBox = new FlxSprite().makeGraphic(1, 1, FlxColor.BLACK);
 
-		var optionText = new FlxSprite(0, 0, Paths.image('Funkin_avi/options/icon_preferences'));
+		var optionText = new FlxSprite(0, 0, Paths.image('Funkin_avi/options/icon_$title'));
 		optionText.screenCenter();
 		optionText.scale.set(.64, .64);
 		optionText.y -= 200;

@@ -14,6 +14,7 @@ import haxe.io.Path;
 import openfl.net.SharedObject;
 import openfl.net.SharedObjectFlushStatus;
 import sys.io.File;
+import flixel.addons.effects.FlxSkewedSprite;
 
 using StringTools;
 
@@ -86,7 +87,7 @@ class MainMenu extends MusicBeatState
 	var camGame:FlxCamera;
 	var camHUD:FlxCamera;
 
-	var sigmaClick:FlxSprite;
+	var sigmaClick:FlxSkewedSprite;
 
 	var windowShit:Array<Any> = [
 		"Anyone up right now?",
@@ -283,6 +284,21 @@ class MainMenu extends MusicBeatState
 			add(omgCamera);
 		}
 
+		trace(GameData.episode1FPLock);
+		if (GameData.episode1FPLock == 'unlocked')
+		{
+			sigmaClick = new FlxSkewedSprite(500, 600, Paths.image('Funkin_avi/menu/click'));
+			sigmaClick.antialiasing = ClientPrefs.globalAntialiasing;
+			sigmaClick.setGraphicSize(100, 100);
+			sigmaClick.updateHitbox();
+			sigmaClick.screenCenter();
+			sigmaClick.x -= 450;
+			sigmaClick.y -= 650;
+			sigmaClick.angle = 6;
+			sigmaClick.skew.set(15, -10);
+			add(sigmaClick);
+		}
+
 		datBook = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/menu/book'));
 		datBook.scrollFactor.set(0, 0);
 		datBook.setGraphicSize(Std.int(datBook.width * 0.67));
@@ -384,17 +400,9 @@ class MainMenu extends MusicBeatState
 		}
 
 		// set the camera to actually follow the camera object that was created before
-		FlxG.camera.follow(camFollowPos, null, 1);
+		FlxG.camera.follow(camFollowPos, LOCKON, 1);
 
 		updateSelection();
-
-		if (GameData.episode1FPLock == 'unlocked')
-		{
-			sigmaClick = new FlxSprite(500, 600, Paths.image('Funkin_avi/menu/click'));
-			sigmaClick.setGraphicSize(150, 150);
-			sigmaClick.antialiasing = ClientPrefs.globalAntialiasing;
-			add(sigmaClick);
-		}
  
 		theBox = new MessageBox(-400, FlxG.height - 80, {
 			text: 'Freeplay is Locked!', 
@@ -611,7 +619,7 @@ class MainMenu extends MusicBeatState
 		if (ClientPrefs.shaders)
 			darkFilter.setFloat('iTime', Conductor.songPosition / 1000);
 
-		for (i in 0...menuItems.length) menuItems.members[i].scale.set(FlxMath.lerp(.6, menuItems.members[i].scale.x, .95), FlxMath.lerp(.6, menuItems.members[i].scale.y, .95));
+		for (i in 0...menuItems.length) menuItems.members[i].scale.set(FlxMath.lerp(.6, menuItems.members[i].scale.x, CoolUtil.boundTo(1 - (elapsed * 9.6), 0, 1)), FlxMath.lerp(.6, menuItems.members[i].scale.y, CoolUtil.boundTo(1 - (elapsed * 9.6), 0, 1)));
 
 		if (FlxG.keys.justPressed.SEVEN && !selectedSomethin)
 		{
@@ -652,7 +660,19 @@ class MainMenu extends MusicBeatState
 			}
 		}
 
-		datBook.scale.set(FlxMath.lerp(evilAndFuckedUpBookScale, datBook.scale.x, .65), FlxMath.lerp(evilAndFuckedUpBookScale, datBook.scale.x, .65));
+		var lerpVal:Float = CoolUtil.boundTo(elapsed * 7.5, 0, 1);
+		camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x, lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal));
+
+		if (sigmaClick != null && FlxG.mouse.overlaps(sigmaClick) && FlxG.mouse.justPressed)
+		{
+			FlxG.sound.play(Paths.sound('funkinAVI/easterEggSound'));
+
+			FlxG.camera.fade();
+			FlxG.sound.music.fadeOut(3, 0, s -> FlxG.switchState(new states.menus.AskQuestionToThatGuy()));
+			FlxTween.tween(camGame, {y: -300}, 2, {ease: FlxEase.sineInOut});
+		}
+
+		datBook.scale.set(FlxMath.lerp(evilAndFuckedUpBookScale, datBook.scale.x, CoolUtil.boundTo(1 - (elapsed * 9.6), 0, 1)), FlxMath.lerp(evilAndFuckedUpBookScale, datBook.scale.x, CoolUtil.boundTo(1 - (elapsed * 9.6), 0, 1)));
 		/*shittyUnoptimizedBookCopy.scale.set(FlxMath.lerp(evilAndFuckedUpBookScale + .02, shittyUnoptimizedBookCopy.scale.x, .65), FlxMath.lerp(evilAndFuckedUpBookScale, shittyUnoptimizedBookCopy.scale.x, .65));
 		shittyUnoptimizedBookCopy.alpha = FlxMath.lerp(FlxG.mouse.overlaps(datBook) ? .7 : 0, shittyUnoptimizedBookCopy.alpha, .65);*/
 		evilAndFuckedUpBookScale = FlxG.mouse.overlaps(datBook) ? .7 : .65; 

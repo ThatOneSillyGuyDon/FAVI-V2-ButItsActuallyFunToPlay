@@ -400,7 +400,8 @@ class FreeplayState extends MusicBeatState
 				songText2.y -= 300;
 				songText2.cameras = [camHUD];
 
-				// really dumb way of fixing the offsets but eh, whetever
+				// really dumb way of fixing the offsets but eh, whetever -demo
+				// i mean, it could be worst but that looks good -jason
 				icon.x += songs[i].iconOffset[0];
 				icon.y += songs[i].iconOffset[1];
 			}
