@@ -577,6 +577,7 @@ class PlayState extends MusicBeatState
 			'NOTE_RIGHT'
 		];
 
+
 		//Ratings
 		ratingsData.push(new Rating('sick')); //default rating
 
@@ -5854,7 +5855,7 @@ class PlayState extends MusicBeatState
 
 	public var isDead:Bool = false; //Don't mess with this on Lua!!!
 	function doDeathCheck(?skipHealthCheck:Bool = false) {
-		if (((skipHealthCheck && instakillOnMiss) || healthThing <= 0) && !practiceMode && !isDead)
+		if (((skipHealthCheck && instakillOnMiss) || healthThing <= 0) && !practiceMode && !isDead && SONG.song != "Devilish Deal") // Yama wanted the funni in - MalyPlus /// Why did you even need to make new variables for this anyways? (don) //// This beef getting serious (jason)
 		{
 			var ret:Dynamic = callOnLuas('onGameOver', [], false);
 			if(ret != FunkinLua.Function_Stop) {
