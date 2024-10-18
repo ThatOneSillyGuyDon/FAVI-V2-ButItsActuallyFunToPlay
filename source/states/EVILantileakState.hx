@@ -16,28 +16,18 @@ class EVILantileakState extends FlxState
         box.screenCenter();
         add(box);
 
-        /*signInBox = new FlxButton(0, 475, "Continue", function()
+        signInBox = new FlxButton(0, 475, "Continue", function()
         {
-            if (pass.textField.text == 'test')
+            if (box.text == 'MzLJMDfYLQqOPTn')
             {
                 trace('should work');
-                MusicBeatState.switchState(new TitleState());
+                FlxG.switchState(new TitleState());
             }
         });
         signInBox.scale.set(1.5, 1.5);
         signInBox.screenCenter(X);
-        add(signInBox);*/
+        add(signInBox);
 
         super.create();
-    }
-
-    override function update(elapsed:Float) {
-        super.update(elapsed);
-
-        if (box.text == 'test' && FlxG.keys.justPressed.ENTER)
-        {
-            trace('should work');
-            MusicBeatState.switchState(new TitleState());
-        }
     }
 }

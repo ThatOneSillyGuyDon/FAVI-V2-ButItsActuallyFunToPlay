@@ -708,7 +708,7 @@ class FlxSprite extends FlxObject
 	 * @param   Width    How wide the graphic should be. If `<= 0`, and `Height` is set, the aspect ratio will be kept.
 	 * @param   Height   How high the graphic should be. If `<= 0`, and `Width` is set, the aspect ratio will be kept.
 	 */
-	public function setGraphicSize(width = 0, height = 0):Void
+	public function setGraphicSize(width = .0, height = .0):Void
 	{
 		if (width <= 0 && height <= 0)
 			return;

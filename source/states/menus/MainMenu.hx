@@ -292,8 +292,8 @@ class MainMenu extends MusicBeatState
 			sigmaClick.setGraphicSize(100, 100);
 			sigmaClick.updateHitbox();
 			sigmaClick.screenCenter();
-			sigmaClick.x -= 450;
-			sigmaClick.y -= 650;
+			sigmaClick.x -= 150;
+			sigmaClick.y -= 80;
 			sigmaClick.angle = 6;
 			sigmaClick.skew.set(15, -10);
 			add(sigmaClick);
