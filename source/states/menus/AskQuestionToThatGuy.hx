@@ -1,6 +1,13 @@
 package states.menus;
 
+import haxe.Json;
+import sys.io.File;
 import flixel.input.keyboard.FlxKey;
+
+typedef MenuJson = {
+    var intro:Array<String>;
+    var questionsAndAnswers:Array<Dynamic>;
+}
 
 class AskQuestionToThatGuy extends MusicBeatState
 {
@@ -17,6 +24,24 @@ class AskQuestionToThatGuy extends MusicBeatState
     var box:FlxUIInputText;
 
     var typing:Bool = false;
+
+    var introTexts:Array<String> = [
+        "Welcome to this place, JaySun T. Mouse is the name!\nAsk me anything you want!",
+        "You know the deal, ask me anything!",
+        "Hmmm.... Seems that you're here for something... Come on! Say anything!",
+        "Welcome back! Do you need anything or..."
+    ];
+
+    var questions:Array<String> = [
+        'who are you',
+        'who',
+        'what are you'
+    ];
+
+    var answers:Array<String> = [
+        'test result with who are you',
+        "sorry cant answer that"
+    ];
 
     override function create() {
         CustomFadeTransition.nextCamera = camHUD;
@@ -61,19 +86,25 @@ class AskQuestionToThatGuy extends MusicBeatState
         jaysunAnims.y += jaysunAnims.positionArray[1];
         add(jaysunAnims);
 
-        text = new FlxTypeText(175, 540, 900, '');
+        jaysun.visible = false;
+        jaysunAnims.visible = true;
+        targetZoom = 1;
+
+        text = new FlxTypeText(155, 520, 1100, '');
         text.setFormat(Paths.font('vcr.ttf'), 34, FlxColor.WHITE, LEFT, OUTLINE, FlxColor.BLACK);
         text.borderSize = 2;
-        text.resetText('Welcome to this place, JaySun T. Mouse is the name!\nAsk me anything you want!');
-        text.start(.04, false, false, [FlxKey.SPACE, FlxKey.ENTER], () -> {
-            jaysun.visible = false;
-            jaysunAnims.visible = true;
-            targetZoom = 1;
-        });
+        text.resetText(introTexts[FlxG.random.int(0, introTexts.length-1)]);
+        text.start(.04, true);
         text.sounds = [FlxG.sound.load(Paths.sound('scrollMenu'))];
         text.antialiasing = ClientPrefs.globalAntialiasing;
         text.camera = camHUD;
-        text.completeCallback = onCompleteCallback;
+        text.completeCallback = () -> {
+            jaysun.visible = true;
+            jaysunAnims.visible = false;
+    
+            text.erase(0);
+            targetZoom = .85;
+        };
         add(text);
 
         box = new FlxUIInputText(0, 90, 300, null, 32, FlxColor.BLACK, FlxColor.GRAY);
@@ -149,19 +180,36 @@ class AskQuestionToThatGuy extends MusicBeatState
         FlxG.camera.zoom = FlxMath.lerp(targetZoom, FlxG.camera.zoom, Math.exp(-elapsed * 3.125));
     }
 
-    // TODO: overhaul this for jsons so it's better
-    function askQuestion(textString:String)
+    var existentQuestion:Bool = false;
+    var finalText:String = null;
+    var finalAnimation:String = null;
+    function askQuestion(_:String)
     {
-        var returnText:String = '';
+        for (q in questions)
+        {
+            existentQuestion = box.text == q;
+            trace(_, {customParms: ['EXISTANT QUESTION: ' + existentQuestion]});
 
-        jaysun.visible = false;
-        jaysunAnims.visible = true;
-        jaysunAnims.playAnim('talk', true);
-        text.revive();
-        text.erase(0);
-        text.resetText("JaySun T. Mouse is the name! Even though I'm not exactly a Mouse… or a T… or a JaySun...");
-        text.start(.04, true);
-        targetZoom = 1;
+            if (existentQuestion)
+            {
+                switch (q)
+                {
+                    case 'who are you', 'who', 'what are you':
+                        finalText = "JaySun T. Mouse is the name! Even though I'm not exactly a Mouse… or a T… or a JaySun. You know what, just think of me as… a breeze of thin air… whatever that is. But if you want more info on me, I'd watch Orseofkorse. Who's Orseofkorse? … I donno.";
+                        finalAnimation = "talk";
+                }
+
+                jaysun.visible = false;
+                jaysunAnims.visible = true;
+                jaysunAnims.playAnim('talk', true);
+                targetZoom = 1;
+        
+                text.erase(0);
+                text.resetText(finalText);
+                text.start(.04);
+                text.completeCallback = onCompleteCallback;
+            }
+        }
     }
 
     function onCompleteCallback()
@@ -169,7 +217,6 @@ class AskQuestionToThatGuy extends MusicBeatState
         jaysun.visible = true;
         jaysunAnims.visible = false;
 
-        text.erase(0);
         targetZoom = .85;
     }
 }
