@@ -208,7 +208,7 @@ class FreeplayState extends MusicBeatState
 
 		#if desktop
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("In the Menus", null);
+		DiscordClient.changePresence("Freeplay Menu", "Loading Category...", "icon", "disc-player");
 		#end
 
 		/*for (i in 0...WeekData.weeksList.length) {
@@ -633,7 +633,7 @@ class FreeplayState extends MusicBeatState
 
 		if (disc != null && songInstPlaying) 
 		{
-			disc.angle += 1.2 * (bpm / 100);
+			disc.angle += 1.3 * (bpm / 100);
 		}
 
 		if (ClientPrefs.shaders) // bye bye lag
@@ -970,6 +970,16 @@ class FreeplayState extends MusicBeatState
 					lime.app.Application.current.window.title = "Funkin.avi - Freeplay: ??? - " + songName + " - Composed by: " + songArtist;
 				}
 		}
+
+		#if DISCORD_ALLOWED
+		#if DEV_BUILD
+		// Game Over doesn't get his own variable because it's only used here
+		DiscordClient.changePresence("Freeplay Menu", "It's a secret...", "icon", "disc-player");
+		#else
+		// Updating Discord Rich Presence
+		DiscordClient.changePresence("Freeplay Menu", "Picking Song: " + songs[curSelected].songName, "icon", "disc-player");
+		#end
+		#end
 			
 		var newColor:Int = songs[curSelected].color;
 		if(newColor != intendedColor) {

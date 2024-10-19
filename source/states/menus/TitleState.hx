@@ -194,9 +194,19 @@ class TitleState extends MusicBeatState
 		GameData.loadShit();
 		
 		CoolUtil.createCoreFile();
+
+		#if desktop
+		if (!DiscordClient.isInitialized)
+		{
+			DiscordClient.initialize();
+			Application.current.onExit.add (function (exitCode) {
+				DiscordClient.shutdown();
+			});
+		}
+		#end
 		
 		#if DISCORD_RPC
-		Discord.changePresence("TITLE SCREEN", 'Awaiting input...', 'icon', 'clock'); // dw, I'll make sure to update the RPC shit, if anything, I'm gonna end up making a seperate RPC for this version of the engine
+		Discord.changePresence("Title Screen", 'Waiting to start...', 'icon', 'clock'); // dw, I'll make sure to update the RPC shit, if anything, I'm gonna end up making a seperate RPC for this version of the engine
 		#end
 
 		curWacky = FlxG.random.getObject(getIntroTextShit());

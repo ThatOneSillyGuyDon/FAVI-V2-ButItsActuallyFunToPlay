@@ -210,9 +210,13 @@ class ChartingState extends MusicBeatState
 
 		// Paths.clearMemory();
 
-		#if desktop
+		#if DISCORD_ALLOWED
+		#if DEV_BUILD
+		DiscordClient.changePresence("Chart Editor", "Editing Something...", "icon", "toolbox");
+		#else
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("Chart Editor", StringTools.replace(_song.song, '-', ' '));
+		DiscordClient.changePresence("Chart Editor", StringTools.replace(_song.song, '-', ' '), "icon", "toolbox");
+		#end
 		#end
 
 		vortex = FlxG.save.data.chart_vortex;

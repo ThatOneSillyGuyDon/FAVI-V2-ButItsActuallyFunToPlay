@@ -67,6 +67,8 @@ class NoteMovement
              {
                  case "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Malfunction Legacy" | "Cycled Sins Legacy" | "Mercy Legacy" | "Delutrance" | "Birthday" | "Malfunction":
                      s = 0.7;
+                 case "Dont Cross" | "Mercy":
+                    s = 0.64;
                  default:
                      s = 0.6;
              }

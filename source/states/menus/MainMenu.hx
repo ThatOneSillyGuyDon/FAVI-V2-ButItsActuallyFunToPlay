@@ -238,7 +238,7 @@ class MainMenu extends MusicBeatState
 		transIn = FlxTransitionableState.defaultTransIn;
 		transOut = FlxTransitionableState.defaultTransOut;
 
-		DiscordClient.changePresence('Funkin.avi', 'Main Menu', 'icon', 'mouse');
+		DiscordClient.changePresence('Main Menu', 'Browsing...', 'icon', 'mouse');
 
 		// uh
 		persistentUpdate = persistentDraw = true;
@@ -626,6 +626,7 @@ class MainMenu extends MusicBeatState
 			FlxG.sound.music.volume = 0;
 			selectedSomethin = true;
 			lime.app.Application.current.window.title = "Funkin.avi - Nice try, cheater lmao";
+			DiscordClient.changePresence('HAHAHAHA', 'THIS USER TRIED TO CHEAT!', 'icon', 'mouse');
 			var alien:VideoSprite = new VideoSprite(false);
 			alien.scale.set(2, 2);
 			alien.load(Paths.video('friendlyFellow'));
