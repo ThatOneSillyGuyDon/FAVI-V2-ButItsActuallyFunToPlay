@@ -275,6 +275,10 @@ class Note extends FlxSprite
 						skin = "NOTE_assets";
 					case "Cycled Sins":
 						skin = "NOTE_assets-SIN";
+					case "Dont Cross":
+						skin = "NOTE_assets-CROSS";
+					case "War Dilemma":
+						skin = "NOTE_assets-WAR";
 					default:
 						skin = "NOTE_assets-DEFAULTSKIN";
 				}

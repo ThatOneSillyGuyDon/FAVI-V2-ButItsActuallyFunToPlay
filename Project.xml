@@ -2,7 +2,7 @@
 <project>
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="Friday Night Funkin': Psych Engine" file="Funkin" packageName="com.shadowmario.psychengine" package="com.shadowmario.psychengine" main="Main" version="0.2.8" company="DunkinFunkin" />
+	<app title="Funkin.avi" file="Funkin.avi" packageName="com.demolitiondon96.funkinavi" package="com.demolitiondon96.funkinavi" main="Main" version="2.0.0" company="Dunkin-Funkin" />
 
 	<!--Switch Export with Unique ApplicationID and Icon-->
 	<set name="APP_ID" value="0x0100f6c013bbc000" />
@@ -47,6 +47,8 @@
 	<define name="MODS_ALLOWED" if="desktop" />
 	<!--<define name="LUA_ALLOWED" if="desktop" />-->
 	<define name="ACHIEVEMENTS_ALLOWED" />
+	<define name="DISCORD_ALLOWED" />
+	<define name="DEV_BUILD" />
 	<define name="VIDEOS_ALLOWED" if="web || windows" unless="32bits"/>
 	<define name="TITLE_SCREEN_EASTER_EGG" if="officialBuild"/> <!-- DELETE THE if="officialBuild" for enabling this on an unofficial build -->
 	<define name="CRASH_HANDLER" if="desktop release" />
@@ -106,11 +108,6 @@
 	<haxelib name="hscript" />
 	<define name="hscriptPos" />
 
-	<haxelib name="tentools" />
-	<haxelib name="systools" />
-	<ndll name="systools" haxelib="systools" />
-
-
 	<!--Set this to the engine you're using!-->
 	<define name="PSYCH" />
 
@@ -126,6 +123,7 @@
 
 	<!--THIS ONE IS FOR NEGLECTION SO THERE'S PROPER ACTUAL 3D :]]-->
 	<!--haxelib name="away3d" /-->
+	<haxelib name="flxanimate"/>
 	<!-- <haxelib name="hxcpp-debug-server" if="desktop"/> -->
 
 	<!-- <haxelib name="markdown" /> -->
@@ -180,8 +178,11 @@
 
 	<!--Place custom nodes like icons here (higher priority to override the HaxeFlixel icon)-->
 	
-	<icon path="art/icon16.png" size='16'/>
-	<icon path="art/icon32.png" size='32'/>
-	<icon path="art/icon64.png" size='64'/>
-	<icon path="art/iconOG.png" />
+	<icon path="art/icon16-favi.png" size='16'/>
+	<icon path="art/icon32-favi.png" size='32'/>
+	<icon path="art/icon64-favi.png" size='64'/>
+	<icon path="art/icon128-favi.png" size='128'/>
+	<icon path="art/icon256-favi.png" size='256'/>
+	<icon path="art/icon512-favi.png" size='512'/>
+	<icon path="art/iconOG-favi.png" />
 </project>

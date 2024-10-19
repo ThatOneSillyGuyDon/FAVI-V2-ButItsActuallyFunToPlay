@@ -281,7 +281,7 @@ class PlayState extends MusicBeatState
 	public var opponentCameraOffset:Array<Float> = null;
 	public var girlfriendCameraOffset:Array<Float> = null;
 
-	#if desktop
+	#if DISCORD_ALLOWED
 	// Discord RPC variables
 	var storyDifficultyText:String = "";
 	public static var iconRPC:String = "";
@@ -577,7 +577,6 @@ class PlayState extends MusicBeatState
 			'NOTE_RIGHT'
 		];
 
-
 		//Ratings
 		ratingsData.push(new Rating('sick')); //default rating
 
@@ -667,17 +666,17 @@ class PlayState extends MusicBeatState
 			GameData.checkBotplay(null);
 		}
 
-		#if desktop
+		#if DISCORD_ALLOWED
 		storyDifficultyText = CoolUtil.difficulties[storyDifficulty];
 
 		// String that contains the mode defined here so it isn't necessary to call changePresence for each mode
 		if (isStoryMode)
 		{
-			detailsText = "Episode 1: " + SONG.song;
+			detailsText = "Episode 1 - " + SONG.song;
 		}
 		else
 		{
-			detailsText = "Freeplay";
+			detailsText = "Freeplay - " + SONG.song;
 		}
 
 		// String for when the game is paused
@@ -2460,9 +2459,13 @@ class PlayState extends MusicBeatState
 
 		precacheList.set('alphabet', 'image');
 	
-		#if desktop
+		#if DISCORD_ALLOWED
+		#if DEV_BUILD
+		DiscordClient.changePresence("Starting song.", "It's a secret...", "icon", "random");
+		#else
 		// Updating Discord Rich Presence.
-		DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter());
+		DiscordClient.changePresence(detailsText + " (" + FreeplayState.getDiffRank() + ")", "Starting song...", CoolUtil.spaceToDash(SONG.song.toLowerCase()), "random");
+		#end
 		#end
 
 		if(!ClientPrefs.controllerMode)
@@ -3952,6 +3955,15 @@ class PlayState extends MusicBeatState
 		+ ' | Combo Breaks: ' + songMisses
 		+ ' | Rank: ' + (ratingName != '?' ? '$ratingFC (${Highscore.floorDecimal(ratingPercent * 100, 2)}%)' : '?');
 
+		#if desktop
+		#if DEV_BUILD
+		DiscordClient.changePresence("Playing a song", scoreTxt.text, "icon", "random");
+		#else
+		// Updating Discord Rich Presence (with Time Left)
+		DiscordClient.changePresence(detailsText + " (" + FreeplayState.getDiffRank() + ")", scoreTxt.text, CoolUtil.spaceToDash(PlayState.SONG.song.toLowerCase()), "random", true, songLength - Conductor.songPosition - ClientPrefs.noteOffset);
+		#end
+		#end
+
 		if(ClientPrefs.scoreZoom && !miss && !cpuControlled)
 		{
 			if(scoreTxtTween != null) {
@@ -4058,10 +4070,15 @@ class PlayState extends MusicBeatState
 					spr.dance();
 				});
 		}
+		
 
-		#if desktop
+		#if DISCORD_ALLOWED
+		#if DEV_BUILD
+		DiscordClient.changePresence("Playing a song", scoreTxt.text, "icon", "random");
+		#else
 		// Updating Discord Rich Presence (with Time Left)
-		DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter(), true, songLength);
+		DiscordClient.changePresence(detailsText + " (" + FreeplayState.getDiffRank() + ")", scoreTxt.text, CoolUtil.spaceToDash(SONG.song.toLowerCase()), "random", true, songLength);
+		#end
 		#end
 		setOnLuas('songLength', songLength);
 		callOnLuas('onSongStart', []);
@@ -4502,14 +4519,23 @@ class PlayState extends MusicBeatState
 			paused = false;
 			callOnLuas('onResume', []);
 
-			#if desktop
+			#if DISCORD_ALLOWED
 			if (startTimer != null && startTimer.finished)
 			{
-				DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter(), true, songLength - Conductor.songPosition - ClientPrefs.noteOffset);
+				#if DEV_BUILD
+				DiscordClient.changePresence("Playing a song", "It's a secret...", "icon", "random");
+				#else
+				DiscordClient.changePresence(detailsText, SONG.song + " (" + FreeplayState.getDiffRank() + ")", CoolUtil.spaceToDash(SONG.song.toLowerCase()), "random", true, songLength - Conductor.songPosition - ClientPrefs.noteOffset);
+				#end
 			}
 			else
 			{
-				DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter());
+				#if DEV_BUILD
+				// Game Over doesn't get his own variable because it's only used here
+				DiscordClient.changePresence("Playing a song", "It's a secret...", "icon", "random");
+				#else
+				DiscordClient.changePresence(detailsText, SONG.song + " (" + FreeplayState.getDiffRank() + ")", CoolUtil.spaceToDash(SONG.song.toLowerCase()), "random");
+				#end
 			}
 			#end
 		}
@@ -4528,16 +4554,24 @@ class PlayState extends MusicBeatState
 		if (minnieJumpscare != null && minnieJumpscare.visible && !paused)
 			minnieJumpscare.resume();
 
-		#if desktop
+		#if DISCORD_ALLOWED
 		if (healthThing > 0 && !paused)
 		{
 			if (Conductor.songPosition > 0.0)
 			{
-				DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter(), true, songLength - Conductor.songPosition - ClientPrefs.noteOffset);
+				#if DEV_BUILD
+				DiscordClient.changePresence("Playing a song", scoreTxt.text, "icon", "random");
+				#else
+				DiscordClient.changePresence(detailsText + " (" + FreeplayState.getDiffRank() + ")", scoreTxt.text, CoolUtil.spaceToDash(SONG.song.toLowerCase()), "random", true, songLength - Conductor.songPosition - ClientPrefs.noteOffset);
+				#end
 			}
 			else
 			{
-				DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter());
+				#if DEV_BUILD
+				DiscordClient.changePresence("Playing a song", scoreTxt.text, "icon", "random");
+				#else
+				DiscordClient.changePresence(detailsText + " (" + FreeplayState.getDiffRank() + ")", scoreTxt.text, CoolUtil.spaceToDash(SONG.song.toLowerCase()), "random");
+				#end
 			}
 		}
 		#end
@@ -4556,10 +4590,14 @@ class PlayState extends MusicBeatState
 		if (minnieJumpscare != null && minnieJumpscare.visible && !paused)
 			minnieJumpscare.pause();
 
-		#if desktop
+		#if DISCORD_ALLOWED
 		if (healthThing > 0 && !paused)
 		{
-			DiscordClient.changePresence(detailsPausedText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter());
+			#if DEV_BUILD
+			DiscordClient.changePresence("Paused", scoreTxt.text, "icon", "random");
+			#else
+			DiscordClient.changePresence(detailsPausedText + " (" + FreeplayState.getDiffRank() + ")", scoreTxt.text, CoolUtil.spaceToDash(SONG.song.toLowerCase()), "random");
+			#end
 		}
 		#end
 
@@ -5834,8 +5872,12 @@ class PlayState extends MusicBeatState
 		openSubState((SONG.song.toLowerCase().endsWith('legacy') || SONG.song == "Isolated Beta" || SONG.song == "Isolated Old" ? new PauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y) : new FAVIPauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y)));
 		//}
 
-		#if desktop
-		DiscordClient.changePresence(detailsPausedText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter());
+		#if DISCORD_ALLOWED
+		#if DEV_BUILD
+		DiscordClient.changePresence("Paused", scoreTxt.text, "icon", "random");
+		#else
+		DiscordClient.changePresence(detailsPausedText + " (" + FreeplayState.getDiffRank() + ")", scoreTxt.text, CoolUtil.spaceToDash(SONG.song.toLowerCase()), "random");
+		#end
 		#end
 	}
 
@@ -5848,14 +5890,18 @@ class PlayState extends MusicBeatState
 		chartingMode = true;
 		FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
 
-		#if desktop
-		DiscordClient.changePresence("Chart Editor", null, null, true);
+		#if DISCORD_ALLOWED
+		#if DEV_BUILD
+		DiscordClient.changePresence("Chart Editor", "It's a secret...", "icon", "toolbox", true);
+		#else
+		DiscordClient.changePresence("Chart Editor", "Editing Chart: " + SONG.song, "icon", "toolbox", true);
+		#end
 		#end
 	}
 
 	public var isDead:Bool = false; //Don't mess with this on Lua!!!
 	function doDeathCheck(?skipHealthCheck:Bool = false) {
-		if (((skipHealthCheck && instakillOnMiss) || healthThing <= 0) && !practiceMode && !isDead && SONG.song != "Devilish Deal") // Yama wanted the funni in - MalyPlus /// Why did you even need to make new variables for this anyways? (don) //// This beef getting serious (jason)
+		if (((skipHealthCheck && instakillOnMiss) || healthThing <= 0) && !practiceMode && !isDead && SONG.song != "Devilish Deal")
 		{
 			var ret:Dynamic = callOnLuas('onGameOver', [], false);
 			if(ret != FunkinLua.Function_Stop) {
@@ -5881,9 +5927,14 @@ class PlayState extends MusicBeatState
 
 				// MusicBeatState.switchState(new GameOverState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 
-				#if desktop
+				#if DISCORD_ALLOWED
+				#if DEV_BUILD
 				// Game Over doesn't get his own variable because it's only used here
-				DiscordClient.changePresence("Game Over - " + detailsText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter());
+				DiscordClient.changePresence("Game Over", "Deaths: " + deathCounter, "icon", "random");
+				#else
+				// Game Over doesn't get his own variable because it's only used here
+				DiscordClient.changePresence("Game Over - " + detailsText, "Deaths: " + deathCounter, CoolUtil.spaceToDash(SONG.song.toLowerCase()), "random");
+				#end
 				#end
 				isDead = true;
 				return true;

@@ -229,7 +229,11 @@ class GameOverSubstate extends MusicBeatSubstate
 
 	function coolStartDeath(?volume:Float = 1):Void
 	{
-		FlxG.sound.playMusic(Paths.music("aviOST/gameOver/" + loopSoundName), volume);
+		switch (PlayState.SONG.song)
+		{
+			case "Dont Cross": FlxG.sound.playMusic(Paths.music("aviOST/gameOver/soaringHigh"), volume);
+			default: FlxG.sound.playMusic(Paths.music("aviOST/gameOver/yourFinalBow"), volume);
+		}
 		FlxG.sound.music.fadeIn(2, 0, 1);
 	}
 

@@ -72,7 +72,7 @@ class StoryMenu extends MusicBeatState
 		transIn = FlxTransitionableState.defaultTransIn;
 		transOut = FlxTransitionableState.defaultTransOut;
 
-		DiscordClient.changePresence('CHOOSING A WEEK', 'Campaign Story Menu');
+		DiscordClient.changePresence('Story Menu', 'Selecting Episode...');
 
 		spoopy = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/storymenu/spoopy'));
 		spoopy.scrollFactor.set(0, 0);

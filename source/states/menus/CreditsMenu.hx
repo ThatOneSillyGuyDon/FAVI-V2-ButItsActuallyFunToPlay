@@ -56,7 +56,7 @@ class CreditsMenu extends MusicBeatState
 
 		path = 'Funkin_avi/credits';
 		
-		DiscordClient.changePresence('BROWSING THE CREDITS', 'Credits Menu', 'icon', 'book');
+		DiscordClient.changePresence('Credits', 'Look at all these cool people!', 'icon', 'book');
 
 		FlxG.sound.playMusic(Paths.music('aviOST/curtainCall'));
 
