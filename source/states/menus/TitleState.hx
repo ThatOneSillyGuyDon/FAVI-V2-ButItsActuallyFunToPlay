@@ -216,16 +216,6 @@ class TitleState extends MusicBeatState
 
 		Application.current.window.title = 'Funkin.avi - ${windowArray[FlxG.random.int(0, windowArray.length-1)]}';
 
-		defaultShader = new FlxRuntimeShader(Shaders.grayScale, null, 140);
-		defaultShader2 = new FlxRuntimeShader(Shaders.monitorFilter, null, 140);
-		if(ClientPrefs.shaders)
-			{
-				FlxG.camera.setFilters(
-					[
-						new openfl.filters.ShaderFilter(defaultShader2)
-					]);
-			}
-
 		curWacky = FlxG.random.getObject(getIntroTextShit());
 
 		#if windows
