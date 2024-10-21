@@ -192,6 +192,8 @@ class TitleState extends MusicBeatState
 		ClientPrefs.loadPrefs();
 		Highscore.load();
 		GameData.loadShit();
+
+		AppIcon.changeIcon("newIcon");
 		
 		CoolUtil.createCoreFile();
 
@@ -215,6 +217,16 @@ class TitleState extends MusicBeatState
 		super.create();
 
 		Application.current.window.title = 'Funkin.avi - ${windowArray[FlxG.random.int(0, windowArray.length-1)]}';
+
+		defaultShader = new FlxRuntimeShader(Shaders.grayScale, null, 140);
+		defaultShader2 = new FlxRuntimeShader(Shaders.monitorFilter, null, 140);
+		if(ClientPrefs.shaders)
+			{
+				FlxG.camera.setFilters(
+					[
+						new openfl.filters.ShaderFilter(defaultShader2)
+					]);
+			}
 
 		curWacky = FlxG.random.getObject(getIntroTextShit());
 
@@ -241,15 +253,6 @@ class TitleState extends MusicBeatState
 
 	function startIntro()
 	{
-		if (!initialized)
-		{
-			if(FlxG.sound.music == null) {
-				FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'), 0);
-
-				FlxG.sound.music.fadeIn(4, 0, 0.7);
-			}
-		}
-
 		Conductor.bpm = (50);
 		persistentUpdate = true;
 
@@ -295,6 +298,12 @@ class TitleState extends MusicBeatState
 		credTextShit.visible = false;
 
 		FlxTween.tween(credTextShit, {y: credTextShit.y + 20}, 2.9, {ease: FlxEase.quadInOut, type: PINGPONG});
+
+		if(FlxG.sound.music == null) {
+			FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'), 0);
+
+			FlxG.sound.music.fadeIn(4, 0, 0.7);
+		}
 
 		whiteFade = new FlxSprite().makeGraphic(1, 1, 0xFFFFFFFF);
 		whiteFade.scale.set(FlxG.width * 3, FlxG.height * 3);

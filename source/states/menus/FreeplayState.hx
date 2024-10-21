@@ -106,6 +106,8 @@ class FreeplayState extends MusicBeatState
 
 		lime.app.Application.current.window.title = "Funkin.avi - Freeplay: Setting Up Category...";
 
+		AppIcon.changeIcon("newIcon");
+
 		/**
 		 * how addSong() function works here:
 		 * 
@@ -973,10 +975,8 @@ class FreeplayState extends MusicBeatState
 
 		#if DISCORD_ALLOWED
 		#if DEV_BUILD
-		// Game Over doesn't get his own variable because it's only used here
 		DiscordClient.changePresence("Freeplay Menu", "It's a secret...", "icon", "disc-player");
 		#else
-		// Updating Discord Rich Presence
 		DiscordClient.changePresence("Freeplay Menu", "Picking Song: " + songs[curSelected].songName, "icon", "disc-player");
 		#end
 		#end

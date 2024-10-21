@@ -14,6 +14,13 @@ class NoteSplash extends FlxSprite
 		var skin:String = 'noteSplashes';
 		if(PlayState.SONG.splashSkin != null && PlayState.SONG.splashSkin.length > 0) skin = PlayState.SONG.splashSkin;
 
+		switch (PlayState.SONG.song)
+		{
+			case "Devilish Deal" | "Isolated" | "Lunacy" | "Delusional" | "Hunted" | "Laugh Track" | "Twisted Grins": skin = "NOTE_splashesCartoon";
+			case "Mercy": skin = "NOTE_splashWalt";
+			default: skin = "noteSplashes";
+		}
+
 		loadAnims(skin);
 		
 		colorSwap = new ColorSwap();
@@ -30,6 +37,13 @@ class NoteSplash extends FlxSprite
 		if(texture == null) {
 			texture = 'noteSplashes';
 			if(PlayState.SONG.splashSkin != null && PlayState.SONG.splashSkin.length > 0) texture = PlayState.SONG.splashSkin;
+
+			switch (PlayState.SONG.song)
+			{
+				case "Devilish Deal" | "Isolated" | "Lunacy" | "Delusional" | "Hunted" | "Laugh Track" | "Twisted Grins": texture = "NOTE_splashesCartoon";
+				case "Mercy": texture = "NOTE_splashWalt";
+				default: texture = "noteSplashes";
+			}
 		}
 
 		if(textureLoaded != texture) {

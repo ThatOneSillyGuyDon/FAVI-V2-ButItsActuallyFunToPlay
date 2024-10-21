@@ -666,6 +666,16 @@ class PlayState extends MusicBeatState
 			GameData.checkBotplay(null);
 		}
 
+		switch (SONG.song)
+		{
+			case "Isolated Beta" | "Isolated Old" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Mercy Legacy" | "Twisted Grins Legacy" | "Cycled Sins Legacy" | "Malfunction Legacy":
+				AppIcon.changeIcon("legacyIcon");
+			case "Malfunction":
+				AppIcon.changeIcon("glitchIcon");
+			default: 
+				AppIcon.changeIcon("newIcon");
+		}
+
 		#if DISCORD_ALLOWED
 		storyDifficultyText = CoolUtil.difficulties[storyDifficulty];
 
@@ -2414,7 +2424,7 @@ class PlayState extends MusicBeatState
 				// please help
 				case 'lunacy':
 					lununuIntro = new VideoSprite(false);
-					lununuIntro.load(Paths.video("Lunacy-placeholder"));
+					lununuIntro.load(Paths.video("lunacyIntro"));
 					lununuIntro.cameras = [camVideo];
 					lununuIntro.play();
 					camVideo.visible = true;
@@ -7890,7 +7900,14 @@ class PlayState extends MusicBeatState
 
 	public function spawnNoteSplash(x:Float, y:Float, data:Int, ?note:Note = null) {
 		var skin:String = 'noteSplashes';
-		if(SONG.splashSkin != null && SONG.splashSkin.length > 0) skin = SONG.splashSkin;
+		switch (SONG.song)
+		{
+			case "Devilish Deal" | "Isolated" | "Lunacy" | "Delusional" | "Hunted" | "Laugh Track" | "Twisted Grins": SONG.splashSkin = "NOTE_splashesCartoon";
+			case "Mercy": SONG.splashSkin = "NOTE_splashWalt";
+			default: SONG.splashSkin = "noteSplashes";
+		}
+
+		skin = SONG.splashSkin;
 
 		var hue:Float = 0;
 		var sat:Float = 0;
@@ -7909,7 +7926,7 @@ class PlayState extends MusicBeatState
 		}
 
 		var splash:NoteSplash = grpNoteSplashes.recycle(NoteSplash);
-		splash.setupNoteSplash(x, y, data, skin, hue, sat, brt);
+		splash.setupNoteSplash(x + (skin != "noteSplashes" ? 25 : 0), y + (skin != "noteSplashes" ? 40 : 0), data, skin, hue, sat, brt);
 		if (lightI != null)
 			if (lightI.visible) 
 				splash.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0); 
@@ -8219,6 +8236,8 @@ class PlayState extends MusicBeatState
 					case 947:
 						defaultCamZoom = 0.9;
 					case 1115:
+						AppIcon.changeIcon("blessIcon");
+						CppAPI.lightMode();
 						for (blessableObjects in [dad, boyfriend, vault, chains, thingy, chains, chains2, chains3, iconP1, iconP2, healthBar, healthBarBG, fancyBarOverlay])
 							blessableObjects.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0);
 						for (textShit in [songTxt, watermarkTxt, scoreTxt])
@@ -8238,6 +8257,8 @@ class PlayState extends MusicBeatState
 					case 1157 | 1199 | 1241 | 1283 | 1325 | 1367 | 1409 | 1452 | 1493 | 1535 | 1577 | 1620 | 1662 | 1703 | 1745:
 						camFlashSystem(BG_FLASH, {alpha: 0.45, timer: 1});
 					case 1828:
+						AppIcon.changeIcon("newIcon");
+						CppAPI.darkMode();
 						for (i in [camHUD, camNotes])
 							FlxTween.tween(i, {alpha: 1}, 3);
 						camVideo.visible = true;
@@ -8247,6 +8268,20 @@ class PlayState extends MusicBeatState
 						letsFight.addCallback("onEnd", () -> camVideo.visible = false);
 						letsFight.play();
 						add(letsFight);
+						for (blessableObjects in [dad, boyfriend, vault, chains, thingy, chains, chains2, chains3, iconP1, iconP2, healthBar, healthBarBG, fancyBarOverlay])
+							blessableObjects.setColorTransform(1, 1, 1, 1, 0, 0, 0, 0);
+						for (textShit in [songTxt, watermarkTxt, scoreTxt])
+						{
+							textShit.color = FlxColor.WHITE;
+							textShit.borderColor = FlxColor.BLACK;
+						}
+						camGame.visible = true;
+						light.visible = true;
+						flair.visible = true;
+						lightI.visible = false;
+						flairI.visible = false;
+						playfieldRenderer.isInvertColors = false;
+						dad.blend = iconP2.blend = ADD;
 					case 1818:
 						defaultCamZoom = 2;
 					case 1835:
@@ -8294,20 +8329,6 @@ class PlayState extends MusicBeatState
 								counter.destroy();
 							}
 						});
-						for (blessableObjects in [dad, boyfriend, vault, chains, thingy, chains, chains2, chains3, iconP1, iconP2, healthBar, healthBarBG, fancyBarOverlay])
-							blessableObjects.setColorTransform(1, 1, 1, 1, 0, 0, 0, 0);
-						for (textShit in [songTxt, watermarkTxt, scoreTxt])
-						{
-							textShit.color = FlxColor.WHITE;
-							textShit.borderColor = FlxColor.BLACK;
-						}
-						camGame.visible = true;
-						light.visible = true;
-						flair.visible = true;
-						lightI.visible = false;
-						flairI.visible = false;
-						playfieldRenderer.isInvertColors = false;
-						dad.blend = iconP2.blend = ADD;
 						cinematicBarControls("moveboth", 3, 'circInOut', 0);
 					case 1850:
 						defaultCamZoom = 0.9;
@@ -8325,6 +8346,8 @@ class PlayState extends MusicBeatState
 						camFollow.y = 250;
 						defaultCamZoom = 0.5;
 					case 2524:
+						AppIcon.changeIcon("blessIcon");
+						CppAPI.lightMode();
 						defaultCamZoom = 0.95;
 						camFollow.x = 0;
 						camFollow.y = 0;
@@ -8345,6 +8368,8 @@ class PlayState extends MusicBeatState
 						camBars.flash(FlxColor.BLACK, 2);
 						cinematicBarControls("moveboth", 1.5, 'sineout', 130);
 					case 2860:
+						AppIcon.changeIcon("newIcon");
+						CppAPI.darkMode();
 						cinematicBarControls("moveboth", 2.5, 'circOut', 0);
 						for (blessableObjects in [dad, boyfriend, vault, chains, thingy, chains, chains2, chains3, iconP1, iconP2, healthBar, healthBarBG, fancyBarOverlay])
 							FlxTween.tween(blessableObjects.colorTransform, {
@@ -10392,22 +10417,21 @@ class PlayState extends MusicBeatState
 
 					// Very Spooky Phase 2 Walt (real)
 					case 256:
-						FlxTween.tween(camGame, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
 						FlxTween.tween(camHUD, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
 						FlxTween.tween(camNotes, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
 
 					case 264:
-						FlxTween.tween(camGame, {alpha: 1}, 2, {ease: FlxEase.sineInOut});
-						defaultCamZoom = 1.3;
+						defaultCamZoom = 0.75;
+						pissOfGlory.alpha = 0;
+						camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.5, ease: FlxEase.sineOut, timer: 0.2, colors: [247, 230, 166]});
 
 					case 275:
-						defaultCamZoom = 0.8;
+						greaterPiss.alpha = 1;
+						pissOfGlory.alpha = 1;
+						camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.5, ease: FlxEase.sineOut, timer: 0.2, colors: [247, 230, 166]});
+						FlxTween.tween(greaterPiss, {alpha: 0}, 0.25, {ease: FlxEase.sineOut});
 						FlxTween.tween(camHUD, {alpha: 1}, 0.31, {ease: FlxEase.sineInOut});
 						FlxTween.tween(camNotes, {alpha: 1}, 0.31, {ease: FlxEase.sineInOut});
-						if (ClientPrefs.mechanics) inkFormWarning.alpha = 1;
-
-					case 276:
-						if (ClientPrefs.mechanics) FlxTween.tween(inkFormWarning, {alpha: 0}, 2, {ease: FlxEase.sineInOut});
 
 					case 468:
 						//FlxTween.tween(bfStrums, {alpha: 0}, 4, {ease: FlxEase.sineInOut});

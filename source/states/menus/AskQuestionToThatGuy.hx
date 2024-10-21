@@ -95,7 +95,7 @@ class AskQuestionToThatGuy extends MusicBeatState
         text.borderSize = 2;
         text.resetText(introTexts[FlxG.random.int(0, introTexts.length-1)]);
         text.start(.04, true);
-        text.sounds = [FlxG.sound.load(Paths.sound('scrollMenu'))];
+        text.sounds = [FlxG.sound.load(Paths.sound('funkinAVI/Jaysun Dialogue Sound'))];
         text.antialiasing = ClientPrefs.globalAntialiasing;
         text.camera = camHUD;
         text.completeCallback = () -> {
@@ -158,12 +158,15 @@ class AskQuestionToThatGuy extends MusicBeatState
 		add(camFollowPos);
 
         FlxG.camera.follow(camFollowPos, null, 1);
-        FlxG.sound.playMusic(Paths.music('aviOST/Sneaky-Snitch'));
+        FlxG.sound.playMusic(Paths.music('aviOST/muchABlige'));
     }
 
     override function update(elapsed:Float) {
         if (controls.BACK && !typing)
+        {
             MusicBeatState.switchState(new MainMenu());
+            FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
+        }
 
         if (FlxG.keys.justPressed.F5)
             FlxG.resetState(); // offset related
@@ -186,30 +189,30 @@ class AskQuestionToThatGuy extends MusicBeatState
     function askQuestion(_:String)
     {
         for (q in questions)
-        {
-            existentQuestion = box.text == q;
-            trace(_, {customParms: ['EXISTANT QUESTION: ' + existentQuestion]});
-
-            if (existentQuestion)
             {
-                switch (q)
+                existentQuestion = box.text == q;
+                trace(_, {customParms: ['EXISTANT QUESTION: ' + existentQuestion]});
+    
+                if (existentQuestion)
                 {
-                    case 'who are you', 'who', 'what are you':
-                        finalText = "JaySun T. Mouse is the name! Even though I'm not exactly a Mouse… or a T… or a JaySun. You know what, just think of me as… a breeze of thin air… whatever that is. But if you want more info on me, I'd watch Orseofkorse. Who's Orseofkorse? … I donno.";
-                        finalAnimation = "talk";
+                    switch (q)
+                    {
+                        case 'who are you', 'who', 'what are you':
+                            finalText = "JaySun T. Mouse is the name! Even though I'm not exactly a Mouse… or a T… or a JaySun. You know what, just think of me as… a breeze of thin air… whatever that is. But if you want more info on me, I'd watch Orseofkorse. Who's Orseofkorse? … I donno.";
+                            finalAnimation = "talk";
+                    }
+    
+                    jaysun.visible = false;
+                    jaysunAnims.visible = true;
+                    jaysunAnims.playAnim('talk', true);
+                    targetZoom = 1;
+            
+                    text.erase(0);
+                    text.resetText(finalText);
+                    text.start(.04);
+                    text.completeCallback = onCompleteCallback;
                 }
-
-                jaysun.visible = false;
-                jaysunAnims.visible = true;
-                jaysunAnims.playAnim('talk', true);
-                targetZoom = 1;
-        
-                text.erase(0);
-                text.resetText(finalText);
-                text.start(.04);
-                text.completeCallback = onCompleteCallback;
             }
-        }
     }
 
     function onCompleteCallback()
