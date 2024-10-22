@@ -25,6 +25,7 @@ import backend.song.*;
 import backend.data.*;
 import backend.nSwitch.*;
 import backend.embeddedFiles.*;
+import backend.windows.*;
 import gameObjects.*;
 import gameObjects.ui.*;
 import gameObjects.utils.*;

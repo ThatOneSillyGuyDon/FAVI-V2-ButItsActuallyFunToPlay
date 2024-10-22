@@ -1,0 +1,115 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-880,
+				-970
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "idle",
+			"indices": [
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
+			],
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				170,
+				770
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "laugh",
+			"indices": [
+				0,
+				0,
+				0,
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				13,
+				14,
+				15,
+				13,
+				14,
+				15,
+				13,
+				14,
+				15,
+				13,
+				14,
+				15,
+				13,
+				14,
+				15,
+				13,
+				14,
+				15,
+				13,
+				14,
+				15,
+				13,
+				14,
+				15
+			],
+			"name": "idle"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				170,
+				770
+			],
+			"anim": "laughButSpammable",
+			"fps": 12,
+			"name": "idle",
+			"indices": [
+				13,
+				14,
+				15
+			]
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/waltLaugh",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "walt",
+	"flip_x": false,
+	"healthbar_colors": [
+		255,
+		237,
+		209
+	],
+	"camera_position": [
+		140,
+		80
+	],
+	"sing_duration": 6.1,
+	"scale": 0.3
+}

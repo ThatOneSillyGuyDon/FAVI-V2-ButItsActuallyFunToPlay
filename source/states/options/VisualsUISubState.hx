@@ -64,6 +64,13 @@ class VisualsUISubState extends BaseOptionsMenu
 			true); //Default value
 		addOption(option);
 
+		var option:Option = new Option('Low Quality', //Name
+			'If checked, disables some background details,\ndecreases loading times and improves performance.', //Description
+			'lowQuality', //Save data variable name
+			'bool', //Variable type
+			false); //Default value
+		addOption(option);
+
 		#if !html5 //Apparently other framerates isn't correctly supported on Browser? Probably it has some V-Sync shit enabled by default, idk
 		var option:Option = new Option('Framerate',
 			"Pretty self explanatory, isn't it?",

@@ -1,70 +1,81 @@
 {
 	"animations": [
 		{
+			"loop": true,
 			"offsets": [
 				-229,
 				-20
 			],
-			"loop": true,
-			"fps": 26,
 			"anim": "idle",
-			"indices": [],
-			"name": "idle"
+			"fps": 26,
+			"name": "idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-230,
 				-20
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
+			"fps": 24,
+			"name": "down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-230,
 				-20
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUP",
-			"indices": [],
-			"name": "up"
+			"fps": 24,
+			"name": "up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-220,
 				-20
 			],
-			"loop": false,
-			"fps": 16,
 			"anim": "laughing",
-			"indices": [],
-			"name": "laugh"
+			"fps": 16,
+			"name": "laugh",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-230,
 				-20
 			],
-			"loop": false,
-			"fps": 30,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right"
+			"fps": 30,
+			"name": "right",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-230,
 				-20
 			],
-			"loop": false,
-			"fps": 28,
 			"anim": "singLEFT",
+			"fps": 28,
+			"name": "left",
+			"indices": []
+		},
+		{
+			"offsets": [
+				-229,
+				-20
+			],
 			"indices": [],
-			"name": "left"
+			"fps": 20,
+			"anim": "MODCHARTS RAH",
+			"loop": false,
+			"name": "YouFinnaDead"
 		}
 	],
 	"no_antialiasing": true,
