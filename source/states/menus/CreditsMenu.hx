@@ -42,6 +42,7 @@ class CreditsMenu extends MusicBeatState
 	var creditThing:CreditStuff;
 
 	var redTextMarker = new FlxTextFormatMarkerPair(new FlxTextFormat(FlxColor.RED, true, true), '^red^');
+	var demosSigmaBlueThing = new FlxTextFormatMarkerPair(new FlxTextFormat(FlxColor.fromRGB(38, 168, 255), true, true), '^demo^');
 
 	var fuckingCameraSoTheMenuDoesntFuckUpOrWhateverCauseFlixelIsEVIL:FlxCamera;
 
@@ -129,7 +130,7 @@ class CreditsMenu extends MusicBeatState
 
 		if (ClientPrefs.shaders)
 			fuckingCameraSoTheMenuDoesntFuckUpOrWhateverCauseFlixelIsEVIL.setFilters([
-				new ShaderFilter(cool_1980_shader),
+				//new ShaderFilter(cool_1980_shader), // yeah so like no offense im very sorry but it isn't really readable AT ALL, you can uncomment if you want to idm
 				new ShaderFilter(monitor)
 			]);
 
@@ -172,9 +173,7 @@ class CreditsMenu extends MusicBeatState
 		teelSquares.alpha = FlxMath.lerp(creditArray[curSelected][0].toLowerCase() == "teelbe" ? FlxG.random.float(.2, 1) : 0, teelSquares.alpha, .85);
 
 		if (ClientPrefs.shaders)
-		{
 			cool_1980_shader.setFloat('time', Conductor.songPosition / 1000);
-		}
 
 		if (controls.UI_UP_P)
 		{
@@ -192,6 +191,9 @@ class CreditsMenu extends MusicBeatState
 			FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'), 1); // resets music back to menu music
 			FlxG.sound.music.fadeIn();
 		}
+
+		if(FlxG.mouse.wheel != 0)
+			changeSelection(-1 * FlxG.mouse.wheel);
 	}
 
 	override function destroy()
@@ -221,7 +223,7 @@ class CreditsMenu extends MusicBeatState
 
 		creditNameText.text = creditArray[curSelected][0] != null ? creditArray[curSelected][0] : 'unknown';
 		creditDescText.text = creditArray[curSelected][3] != null ? creditArray[curSelected][3] : 'unknown';
-		creditDescText.applyMarkup(creditDescText.text, [redTextMarker]);
+		creditDescText.applyMarkup(creditDescText.text, [redTextMarker, demosSigmaBlueThing]);
 		creditWorkText.text = creditArray[curSelected][2] != null ? creditArray[curSelected][2] : 'has not worked';
 		creditIconSprite.loadGraphic(Paths.image('$path/icons/${creditArray[curSelected][1]}'));
 		creditIconSprite.setGraphicSize(Std.int(creditIconSprite.width * creditArray[curSelected][6]));

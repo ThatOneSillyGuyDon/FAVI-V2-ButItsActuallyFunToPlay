@@ -408,7 +408,7 @@ class MainMenu extends MusicBeatState
 			text: 'Freeplay is Locked!', 
 			subText: 'Complete Episode 1 to Unlock this Menu!',
 			boxHeight: 90,
-			boxWidth: 490,
+			boxWidth: 600,
 			font: 'DisneyFont.ttf',
 			camera: camHUD
 		});

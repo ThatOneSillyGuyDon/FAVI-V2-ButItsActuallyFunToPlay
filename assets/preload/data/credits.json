@@ -33,7 +33,7 @@
 		[
 			"JDrive",
 			"jdrivelol",
-			"Co-Director, Cycled Sins art & Owner of Walt",
+			"Co-Director, PlayTester, Cycled Sins art & Owner of Walt",
 			"\n\n\nHi! Thanks for checking out Funkin.avi, and I hoped you enjoyed the mod as well as my little Walt guy. We've had this mod in the oven for quite a while now, and we're so glad we get to release it after all these years. We hope you weren't too disappointed. if you were, Oh well! 
 Until Next Time!",
 			-290,
@@ -44,7 +44,7 @@ Until Next Time!",
 		[
 			"Jason",
 			"jason",
-			"Co-Director, Programmer",
+			"Co-Director, Programmer, Concept Artist, Animator",
 			"",
 			-290,
 			-140,
@@ -55,7 +55,7 @@ Until Next Time!",
 			"Writer Anon",
 			"writer",
 			"Ex Co-director, Rewrote story of the mod, absolute fucking legend",
-			"Hey! I'm the guy that voiced the narrator and gave many ideas for Delusional's events. This is genuinely the first mod I've been a part of,\n\nand what a great experience it has been. Thanks for inviting me on, Demo and Toko, it's been great, and I cannot wait to do more.\n\nplease help me I am still trapped in demo's basement--\n\nP.S: Bonoan is cool and great\n(From Don: Thank you for everything Writer, you meant a lot to the team)",
+			"Hey! I'm the guy that voiced the narrator and gave many ideas for Delusional's events. This is genuinely the first mod I've been a part of,\n\nand what a great experience it has been. Thanks for inviting me on, Demo and Toko, it's been great, and I cannot wait to do more.\n\nplease help me I am still trapped in demo's basement--\n\nP.S: Bonoan is cool and great\n\n^demo^(From Don: Thank you for everything Writer, you meant a lot to the team)^demo^",
 			-300,
 			-140,
 			0.55,
@@ -65,7 +65,7 @@ Until Next Time!",
 			"KKCopinXD",
 			"kopin",
 			"Icon Artist & Concept Menu Artist",
-			"\nif it wasn't for Coolye3ted I wouldn't be here on this Mod to be able to work on it\n\nI've been here since 1.5 and It's an honor to be here working for this amazing team,\n\nI made a lot of friends I appreciate being able to be friends with them I hope you enjoyed the update we all worked hard to finish it! YIPPEEEEEEE-\n\nI made Malfuntion background, all MOD icons ( except Hunter Goofy ) all OST arts, dubbed Relapse Mouse and Malfuntion countdowns and I made FreePlay Concept",
+			"\nif it wasn't for Coolye3ted I wouldn't be here on this Mod to be able to work on it\n\nI've been here since 1.5 and It's an honor to be here working for this amazing team,\n\nI made a lot of friends I appreciate being able to be friends with them I hope you enjoyed the update we all worked hard to finish it! YIPPEEEEEEE-\n\nI made Malfuntion background, the mod icons ( except Hunter Goofy ) OST arts, dubbed Relapse Mouse and Malfuntion countdowns.",
 			40,
 			40,
 			1,
@@ -74,8 +74,8 @@ Until Next Time!",
 		[
 			"RetroJogador",
 			"joga",
-			"Composed Main Menu, Delutrance, & Made Menu Art",
-			"\nBtw I really enjoyed joining the mod team and ending this amazing update, \nalong the way I met and made a lot of cool friends. Changing the subject,\n\nI was responsible for making the Menu Music, Pause Music, Sanguis Muris and others, Arts I practically created the main menu, hud and Others,\n\nand I gave the voice to Mrs Smile in V2, Change the World, My Final Message: YIPPEEE- ",
+			"Composed Main Menu, Delutrance, PlayTester, & Made Menu Art",
+			"\nI really enjoyed joining the mod team and ending this amazing update, \nalong the way I met and made a lot of cool friends. Changing the subject,\n\nI was responsible for making the Menu Music, Pause Music, Sanguis Muris and others, Arts I practically created the main menu, hud and Others,\n\nand I gave the voice to Mrs Smile in V2, Change the World, My Final Message: YIPPEEE- ",
 			-320,
 			-130,
 			0.55,
@@ -85,7 +85,7 @@ Until Next Time!",
 			"MalyPlus",
 			"maly",
 			"Assistant Programmer",
-			"^red^ Boom your screen is shaking bitch ^red^",
+			"^red^ Boom your screen is shaking bitch\njokes aside, I hope you guys enjoyed playing this mod! ^red^",
 			-310,
 			-140,
 			0.55,
@@ -124,7 +124,7 @@ Until Next Time!",
 		[
 			"Moe",
 			"moe",
-			"Artist, Animator And Cutscenes",
+			"Artist, Animator, PlayTester And Cutscenes",
 			"Hi I did stuff\nHi Adam :)",
 			200,
 			310,
@@ -145,11 +145,11 @@ Until Next Time!",
 			"theonlyshittyre. / rezeo",
 			"shitty",
 			"Hunter Goofy.",
-			"my cock has fallen once again.",
+			"\n\n\n\nI'm grateful to work on this mod. I literally had time to have a baby while working here. honestly, I love the people here, I could come here and put dev words joking around, but I think I really needed to say that. enjoy our mod, davi luca approved it (he's my son).",
 			50,
 			40,
 			1,
-			false
+			true
 		],
 		[
 			"AustinTheRedDragon",
@@ -161,6 +161,7 @@ Until Next Time!",
 			0.22,
 			false
 		],
+		["GreyDoodlez", "grey", "Artist", "\n\nHola Javí, hola Slayer, hola Cedríc, Hola Lucíus, hola Leaff, hola Javivianos y Forevianos de corazón. Listo, híce que aparezcan en comunidad juego. Ahora chinguen a su madre, ola Sam. Hola Ruuben, pajero de mierda. XdxDXdxD Hola Palos, Hola Ivánculo. Hola, Acújin o TheNeonDS. Hola, Alexander Ajolote Furia Azulada. P.S; And for the rest, hope y'all enjoyed the mod!!! Humildad fuera.", -260, -130, 0.65, true],
 		[
 			"Gemmie Femmie",
 			"gamerchoice",
@@ -181,6 +182,20 @@ Until Next Time!",
 			0.57,
 			false
 		],
+		["Just_Kuro", "kuro", "Artist", "\n\n\n\nTo all those people who believed in me,\nthank you,\ni thank every single one of you for the opportunity to work on this wonderful project. Thank you all.", -290,
+		-140,
+		0.6, true],
+		["Kyuxhtysu", "kyuxhtsyu", "Artist & Redesigned Lilith (v2.5)", "gay sonic artist.", -725, -830, 0.18, false],
+
+		["PlayerTheMobile", "player", "Artist", "piles of homework extra-ordinary!
+		im an artist for this mod(i did like,posters idk)
+		this mod been through alot to get into release,dev hell finally over brah
+		Subscribe to PlayerTheMobile on Youtube
+		and uhhh,yea
+		doritos", 
+		-220, -150, 0.75, true],
+
+		["0yxz.", "0yxz", "Artist", "Communitygame don't go crazy on the gf design vro\nAs always, Avier x evilrett forever", -360, -280, 0.21, false],
 		[
 			"FR3SHMoure",
 			"fresh",
@@ -191,7 +206,11 @@ Until Next Time!",
 			0.67,
 			false
 		],
-		["Dreupy", "dreupy", "Charter", "MICKEY ^red^DIES^red^????", -45, 40, 0.85, false],
+		["Dreupy", "dreupy", "Charter and PlayTester", "MICKEY ^red^DIES^red^????", -45, 40, 0.85, false],
+		["Purg", "purg", "Charter, War Dilemma's #1 fan and PlayTester", "\n\n\nHi! I'm Purg, you may know me as the Voice Actor for the narrator, a charter for this mod, ^red^War Dillema's #1 meatrider^red^, or the Miserable Funk guy. It's been a dream of mine to work on this mod since it first released back in 2022, and is one of the main reasons I got into fnf modding. I hope you enjoy the mod! 
+
+And shoutouts to Yama and Niko for being there whenever I needed it, yall are my goats fr.
+also play miserable funk pls ty <33 ", -220, -150, 0.75, true],
 		[
 			"Mouse",
 			"mouse",
@@ -205,10 +224,6 @@ Thanks to the team for giving me the opportunity to work on this mod ^^
 			-130,
 			0.56,
 			true
-		],
-		["Just_Kuro", "kuro", "Artist", "\n\n\n\nTo all those people who believed in me,\nthank you,\ni thank every single one of you for the opportunity to work on this wonderful project.
-Thank you all.", 145, 130, 1.2, true],
-		["Kyuxhtysu", "kyuxhtsyu", "Artist & Redesigned Lilith (v2.5)", "gay sonic artist.", -725, -830, 0.18, false],
-		["0yxz.", "0yxz", "Artist", "Avier x Evilrett forever man.", -360, -280, 0.21, false]
+		]
     ]
 }

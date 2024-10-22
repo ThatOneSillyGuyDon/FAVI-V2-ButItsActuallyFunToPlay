@@ -30,7 +30,7 @@ typedef BPMChangeEvent =
 class Conductor
 {
 	/**
-	 * ## This variable is rather self explanitory...
+	 * # This variable is rather self explanitory...
 	 */
 	public static var bpm(default, set):Float = 100;
 
