@@ -106,8 +106,6 @@ class FreeplayState extends MusicBeatState
 
 		lime.app.Application.current.window.title = "Funkin.avi - Freeplay: Setting Up Category...";
 
-		AppIcon.changeIcon("newIcon");
-
 		/**
 		 * how addSong() function works here:
 		 * 
@@ -287,6 +285,7 @@ class FreeplayState extends MusicBeatState
 
 		if (freeplayMenuList != 2)
 		{
+			AppIcon.changeIcon("newIcon");
 			// SORRY IT'S JUST LAGGY AS FUCK LOL :SOB:
 			if (!ClientPrefs.lowQuality)
 			{
@@ -428,6 +427,7 @@ class FreeplayState extends MusicBeatState
 		// Basically an exact replica of the Funkin.avi V1 Freeplay Menu lol
 		if (freeplayMenuList == 2)
 		{
+			AppIcon.changeIcon("legacyIcon");
 			scoreText = new FlxText(FlxG.width * 0.7, 5, 0, "", 32);
 			scoreBG = new FlxSprite(scoreText.x - scoreText.width, 0).makeGraphic(Std.int(FlxG.width * 0.35), 66, 0xFF000000);
 			diffText = new FlxText(scoreText.x, scoreText.y + 36, 0, "", 24);

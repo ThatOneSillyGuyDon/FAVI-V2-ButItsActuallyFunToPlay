@@ -208,6 +208,8 @@ class ChartingState extends MusicBeatState
 			PlayState.SONG = _song;
 		}
 
+		AppIcon.changeIcon("debugicon");
+
 		// Paths.clearMemory();
 
 		#if DISCORD_ALLOWED
@@ -1724,9 +1726,12 @@ class ChartingState extends MusicBeatState
 
 			if (FlxG.keys.justPressed.BACKSPACE) {
 				PlayState.chartingMode = false;
-				MusicBeatState.switchState(new MasterEditorMenu());
-				FlxG.sound.playMusic(Paths.music('freakyMenu'));
-				FlxG.mouse.visible = false;
+				openSubState(new Prompt('Upon leaving the editor, you will lose all your progress.\n\nProceed?', 0, function(){
+					MusicBeatState.switchState(new MainMenu()); 
+					FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
+					FlxG.mouse.visible = true;
+					AppIcon.changeIcon("newIcon");
+				}, null,ignoreWarnings));
 				return;
 			}
 

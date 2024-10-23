@@ -102,6 +102,7 @@ class Song
 			case "isolated-old": chartFile = Chart.isolatedOld;
 			case "isolated-legacy": chartFile = Chart.isolatedLegacy;
 			case "lunacy": chartFile = Chart.lunacy;
+			case "lunacy-legacy": chartFile = Chart.lunacyLegacy;
 			case "delusional": chartFile = Chart.delusional;
 			case "malfunction": chartFile = Chart.malfunction;
 			case "malfunction-legacy": chartFile = Chart.malfunctionLegacy;

@@ -48,6 +48,8 @@ class FreeplayCategories extends MusicBeatState {
 
 		if (!FlxG.mouse.visible)
 			FlxG.mouse.visible = true;
+
+		AppIcon.changeIcon("newIcon");
 		
 		defaultShader2 = new FlxRuntimeShader(Shaders.monitorFilter, null, 140);
 		FlxG.camera.setFilters(

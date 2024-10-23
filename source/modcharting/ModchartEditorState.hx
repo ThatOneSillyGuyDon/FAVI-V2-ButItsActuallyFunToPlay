@@ -265,6 +265,8 @@ class ModchartEditorState extends MusicBeatState
 		camHUD = new FlxCamera();
 		camHUD.bgColor.alpha = 0;
 
+        AppIcon.changeIcon("debugicon");
+
 		FlxG.cameras.reset(camGame);
 		FlxG.cameras.add(camHUD, false);
 

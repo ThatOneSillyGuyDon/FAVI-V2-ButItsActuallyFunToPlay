@@ -668,11 +668,11 @@ class PlayState extends MusicBeatState
 
 		switch (SONG.song)
 		{
-			case "Isolated Beta" | "Isolated Old" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Mercy Legacy" | "Twisted Grins Legacy" | "Cycled Sins Legacy" | "Malfunction Legacy":
+			case "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Twisted Grins Legacy" | "Cycled Sins Legacy" | "Mercy Legacy" | "Malfunction Legacy":
 				AppIcon.changeIcon("legacyIcon");
 			case "Malfunction":
 				AppIcon.changeIcon("glitchIcon");
-			default: 
+			default:
 				AppIcon.changeIcon("newIcon");
 		}
 
@@ -5761,6 +5761,7 @@ class PlayState extends MusicBeatState
             }
         }
     
+		public var dumbCamTwn:FlxTween;
         /**
         * ## Camera Zoom Tween Fix
         * 
@@ -5774,7 +5775,14 @@ class PlayState extends MusicBeatState
         */
         public function tweenCamera(zoom:Float = 0.9, time:Float = 0.6, ease:Null<String>):Void
         {
-            FlxTween.tween(camGame, {zoom: zoom}, time, {ease: returnTweenEase(ease), onComplete: e -> defaultCamZoom = zoom});
+			if (dumbCamTwn != null)
+				dumbCamTwn.cancel();
+			
+            dumbCamTwn = FlxTween.tween(camGame, {zoom: zoom}, time, {ease: returnTweenEase(ease), onComplete: function(twn:FlxTween)
+			{
+				defaultCamZoom = zoom;
+				dumbCamTwn = null;
+			}});
         }
 
 	/**
@@ -8149,6 +8157,48 @@ class PlayState extends MusicBeatState
 
 		switch (SONG.song)
 		{
+			case 'Isolated Old':
+				switch (curStep)
+				{
+					case 1: tweenCamera(0.7, 0.5, "sineInOut");
+					case 16 | 144: tweenCamera(1.2, 10, "sineInOut");
+					case 96: tweenCamera(0.8, 0.3, "sineInOut");
+					case 120: tweenCamera(1.5, 0.5, "sineInOut");
+					case 128: tweenCamera(0.8, 0.5, "sineInOut");
+					case 192: tweenCamera(0.85, 5, "sineInOut");
+					case 256: tweenCamera(1.2, 8, "sineInOut");
+					case 304: tweenCamera(0.8, 4, "sineInOut");
+					case 336: tweenCamera(1.4, 9, "sineInOut");
+					case 384 | 704: tweenCamera(0.8, 2, "sineInOut");
+					case 576: tweenCamera(1.5, 12, "sineInOut");
+					case 640: tweenCamera(0.85, 2, "sineInOut");
+					case 656: tweenCamera(1.2, 9, "sineInOut");
+					case 768: tweenCamera(1.5, 20, "sineInOut");
+					case 896: tweenCamera(0.8, 5, "sineInOut");
+					case 1024: tweenCamera(0.1, 1, "sineInOut");
+					case 1040: tweenCamera(1.5, 30, "sineInOut");
+					case 1280: tweenCamera(0.85, 1, "sineInOut");
+				}
+			case 'Isolated Beta':
+				// why tf did this version have so much fucking zoom events?????
+				switch (curStep)
+				{
+					case 32 | 48 | 96 | 112 | 160 | 176 | 208 | 224 | 240 | 304 | 336 | 352 | 368 | 387 | 388 | 434 | 436 | 440 | 444 | 451 | 452 | 496 | 500 | 504 | 508 | 528 | 532 | 536 | 540 | 592 | 596 | 600 | 604 | 642 | 643 | 644 | 688 | 692 | 696 | 700 | 706 | 707 | 708 | 752 | 756 | 760 | 764 | 784 | 788 | 792 | 796 | 848 | 852 | 956 | 860 | 1056 | 1072 | 1088 | 1104 | 1120 | 1136 | 1152 | 1184 | 1200 | 1216 | 1232 | 1248 | 1264:
+						defaultCamZoom += 0.1;
+					case 64 | 192 | 390 | 416 | 424 | 454 | 480 | 488 | 672 | 680 | 736 | 744:
+						defaultCamZoom -= 0.2;
+					case 120:
+						defaultCamZoom = 1.5;
+					case 128 | 256 | 320 | 384 | 448 | 512 | 544 | 608 | 646 | 704 | 710 | 768 | 800 | 864 | 1280:
+						defaultCamZoom = 0.8;
+					case 412 | 420 | 476 | 484 | 668 | 676 | 732 | 740:
+						defaultCamZoom += 0.2;
+					case 896:
+						//fuck you, i am NOT doing the rest of those fuck ass zoom events
+						tweenCamera(1.6, 15, "sineInOut");
+					case 1024:
+						defaultCamZoom = 0.2;
+				}
 			case "War Dilemma":
 				switch (curStep)
 				{
@@ -8659,7 +8709,7 @@ class PlayState extends MusicBeatState
 						FlxTween.tween(camHUD, {alpha: 0.15}, 2, {ease: FlxEase.quartInOut});
 					case 32:
 						camGame.alpha = 1;
-						if (ClientPrefs.flashing) camGame.flash(FlxColor.WHITE, 1.5);
+						if (ClientPrefs.flashing) camBars.flash(FlxColor.WHITE, 1.5);
 						camHUD.alpha = 1;
 						camHUD.zoom += 0.02;
 						camNotes.zoom += .02;
@@ -8670,25 +8720,28 @@ class PlayState extends MusicBeatState
 					case 88 | 166 | 224: defaultCamZoom = 0.8;
 					case 128 | 256:
 						defaultCamZoom = 0.78;
-						if (ClientPrefs.flashing) camGame.flash(FlxColor.WHITE, 1.5);
+						if (ClientPrefs.flashing) camBars.flash(FlxColor.WHITE, 1.5);
 						camHUD.alpha = 0.0001;
+						camNotes.alpha = 0;
 					case 156 | 284:
 						tweenCamera(1, 1, "sineInOut");
 						FlxTween.tween(camHUD, {alpha: 1}, 1.5, {ease: FlxEase.quartInOut});
-					case 160: if (ClientPrefs.flashing) camGame.flash(FlxColor.BLACK, 1.5);
+						FlxTween.tween(camNotes, {alpha: 1}, 1.5, {ease: FlxEase.quartInOut});
+					case 160: if (ClientPrefs.flashing) camBars.flash(FlxColor.BLACK, 1.5);
 					case 192: defaultCamZoom += 0.25;
 					case 320:
-						if (ClientPrefs.flashing) camGame.flash(FlxColor.BLACK, 1);
+						if (ClientPrefs.flashing) camBars.flash(FlxColor.BLACK, 1);
 						camFlashSystem(BG_DARK, {alpha: 0.85, timer: 1, ease: FlxEase.quartInOut});
 						defaultCamZoom += 0.2;
 					case 336: defaultCamZoom -= 0.35;
 					case 368: tweenCamera(1.3, 8, "quartInOut");
 					case 400:
-						if (ClientPrefs.flashing) camGame.flash(FlxColor.BLACK, 1.5);
+						if (ClientPrefs.flashing) camBars.flash(FlxColor.BLACK, 1.5);
 						camFlashSystem(BG_DARK, {alpha: 0, timer: 1, ease: FlxEase.sineOut});
 					case 404:
 						FlxTween.tween(camGame, {alpha: 0}, 1.5, {ease: FlxEase.quartInOut});
 						FlxTween.tween(camHUD, {alpha: 0}, 1.5, {ease: FlxEase.quartInOut});
+						FlxTween.tween(camNotes, {alpha: 0}, 1.5, {ease: FlxEase.quartInOut});
 				}
 			case "Twisted Grins Legacy":
 				switch (curBeat)
@@ -8735,13 +8788,16 @@ class PlayState extends MusicBeatState
 						//FlxTween.tween(dadStrums, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
 					case 138: FlxTween.tween(camGame, {alpha: 1}, 1, {ease: FlxEase.sineInOut});
 					case 144:
-						camGame.setFilters(
-						[
-							new ShaderFilter(staticEffect),
-							new ShaderFilter(redVignette),
-							new ShaderFilter(chromZoomShader),
-							new ShaderFilter(dramaticCamMovement),
-						]);
+						if (ClientPrefs.shaders)
+						{
+							camGame.setFilters(
+							[
+								new ShaderFilter(staticEffect),
+								new ShaderFilter(redVignette),
+								new ShaderFilter(chromZoomShader),
+								new ShaderFilter(dramaticCamMovement),
+							]);
+						}
 						camGame.visible = true;
 						camHUD.alpha = 1;
 						camNotes.visible = true;
@@ -8956,9 +9012,12 @@ class PlayState extends MusicBeatState
 
 					case 95: 
 						cameraSpeed += 3;
+						isCameraOnForcedPos = true;
+						camFollow.x -= 950;
 						//updateSectionCamera('dad', false);
 
 					case 96:
+						isCameraOnForcedPos = false;
 						cameraSpeed -= 3;
 						defaultCamZoom = 0.85;
 						tweenCamera(0.85, 0.4, 'expoOut');
@@ -9013,12 +9072,12 @@ class PlayState extends MusicBeatState
 
 					case 100 | 104 | 108 | 116 | 120 | 124 | 132 | 136 | 140 | 148 | 152 | 156 | 228 | 232 | 236 | 240 | 244 | 252 | 260 | 264 | 268 | 276 |
 						280 | 284 | 292 | 296 | 300 | 308 | 312 | 316 | 324 | 328 | 332 | 340 | 344 | 348:
-						camFlashSystem(BG_FLASH, {alpha: 0.4, timer: 0.35, colors: [194, 194, 194]});
+						camFlashSystem(BG_FLASH, {alpha: 0.2, timer: 0.35, colors: [194, 194, 194]});
 
 					case 98 | 102 | 106 | 110 | 114 | 118 | 122 | 126 | 130 | 134 | 138 | 142 | 146 | 150 | 154 | 158 | 226 | 230 | 234 | 238 | 242 | 246 |
 						250 | 254 | 258 | 262 | 266 | 270 | 274 | 278 | 282 | 286 | 290 | 294 | 298 | 302 | 306 | 310 | 314 | 318 | 322 | 326 | 330 | 334 |
 						338 | 342 | 346 | 350:
-						camFlashSystem(BG_FLASH, {alpha: 0.67, timer: 0.35, colors: [194, 194, 194]});
+						camFlashSystem(BG_FLASH, {alpha: 0.55, timer: 0.35, colors: [194, 194, 194]});
 
 					case 194 | 196 | 198 | 200 | 202 | 204 | 206 | 210 | 212 | 214 | 222:
 						camFlashSystem(BG_FLASH, {alpha: 0.32, timer: 0.35, colors: [194, 194, 194]});
@@ -10564,7 +10623,7 @@ class PlayState extends MusicBeatState
 					switch (curBeat)
 					{
 						// Intro Cam Shit
-						case 16: camGame.alpha = 1;
+						case 16: camBars.fade(0x000000, 0.0001, true);
 						//case 32: tweenCamera(0.85, 5.5, 'quartInOut');
 						case 46:
 							//tweenCamera(0.6, 0.6, 'sineInOut');
