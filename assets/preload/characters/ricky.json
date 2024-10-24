@@ -1,63 +1,63 @@
 {
 	"animations": [
 		{
+			"loop": true,
 			"offsets": [
 				0,
 				0
 			],
-			"loop": true,
-			"fps": 24,
 			"anim": "idle",
-			"indices": [],
-			"name": "ricky idle"
+			"fps": 24,
+			"name": "ricky idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				60,
 				50
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "ricky left"
+			"fps": 24,
+			"name": "ricky left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "ricky down"
+			"fps": 24,
+			"name": "ricky down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				7,
 				20
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUP",
-			"indices": [],
-			"name": "ricky up"
+			"fps": 24,
+			"name": "ricky up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				9,
 				5
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "ricky right"
+			"fps": 24,
+			"name": "ricky right",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/ricky/ricky_assets",
+	"image": "characters/ricky",
 	"position": [
 		-300,
 		70
