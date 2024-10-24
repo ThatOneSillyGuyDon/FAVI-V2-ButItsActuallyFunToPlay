@@ -175,7 +175,7 @@ class CharacterMenu extends MusicBeatState
         descText.text = charArray[curSelected][5];
 
         #if DISCORD_RPC
-        Discord.changePresence('CHARACTER MENU', 'Checking ${charArray[curSelected][0]}', 'icon', 'mouse');
+        DiscordClient.changePresence('CHARACTER MENU', 'Checking ${charArray[curSelected][0]}', 'icon', 'mouse');
         #end
     }
 
