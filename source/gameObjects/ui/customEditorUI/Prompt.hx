@@ -74,7 +74,10 @@ class Prompt extends MusicBeatSubstate
 		add(buttonNo);
 		//add(buttons);
 		var textshit:FlxText = new FlxText(buttonNo.width*2, panel.y, 300, theText, 16);
+		textshit.setFormat(Paths.font("disneyFreeplayFont.ttf"), 16);
 		textshit.alignment = 'center';
+		textshit.borderColor = FlxColor.BLACK;
+		textshit.borderSize = 2;
 		add(textshit);
 		textshit.screenCenter();
 		buttonAccept.screenCenter();

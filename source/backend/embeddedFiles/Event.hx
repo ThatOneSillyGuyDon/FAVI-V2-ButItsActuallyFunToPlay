@@ -9,7 +9,7 @@ enum abstract Event(String) from String to String {
 				[
 					[
 						"Change Scroll Speed",
-						"1.3",
+						"1.2",
 						"0"
 					]
 				]
@@ -19,7 +19,7 @@ enum abstract Event(String) from String to String {
 				[
 					[
 						"Change Scroll Speed",
-						"1.6",
+						"1.4",
 						"10"
 					]
 				]
@@ -29,7 +29,7 @@ enum abstract Event(String) from String to String {
 				[
 					[
 						"Change Scroll Speed",
-						"0.55",
+						"0.6",
 						"2"
 					]
 				]
@@ -49,7 +49,7 @@ enum abstract Event(String) from String to String {
 				[
 					[
 						"Change Scroll Speed",
-						"0.5",
+						"0.6",
 						"1"
 					]
 				]
@@ -59,7 +59,7 @@ enum abstract Event(String) from String to String {
 				[
 					[
 						"Change Scroll Speed",
-						"1.3",
+						"1.25",
 						"1"
 					]
 				]
@@ -69,7 +69,7 @@ enum abstract Event(String) from String to String {
 				[
 					[
 						"Change Scroll Speed",
-						"1.7",
+						"1.5",
 						"10"
 					]
 				]
