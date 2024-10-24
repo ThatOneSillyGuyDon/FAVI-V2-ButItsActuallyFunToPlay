@@ -155,9 +155,6 @@ class PlayState extends MusicBeatState
 	public var playerStrums:FlxTypedGroup<StrumNote>;
 	public var grpNoteSplashes:FlxTypedGroup<NoteSplash>;
 
-	public var grpSusNoteSplashes:FlxTypedGroup<SusNoteSplash>;
-	public var sussplash:Array<SusNoteSplash> = [];
-
 	public var camZooming:Bool = false;
 	public var camZoomingMult:Float = 1;
 	public var camZoomingDecay:Float = 1;
@@ -1897,10 +1894,6 @@ class PlayState extends MusicBeatState
 		grpNoteSplashes.add(splash);
 		splash.alpha = 0.0;
 
-		sussplash[0] = new SusNoteSplash(100, 100, 0);
-		add(sussplash[0]);
-		sussplash[0].alpha = 0.0;
-
 		opponentStrums = new FlxTypedGroup<StrumNote>();
 		playerStrums = new FlxTypedGroup<StrumNote>();
 
@@ -2158,6 +2151,14 @@ class PlayState extends MusicBeatState
 			crashLivesIcon.scale.set(2.2, 2.2);
 			crashLivesIcon.antialiasing = false;
 			crashLivesIcon.cameras = [camHUD];
+
+			waltScreenThing = new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
+			waltScreenThing.scrollFactor.set();
+			waltScreenThing.cameras = [camOther];
+			waltScreenThing.alpha = 0.001;
+
+			if (curStage == "waltRoom" || SONG.song == "Delusional Legacy")
+				add(waltScreenThing);
 	
 			if (!ClientPrefs.lowQuality)
 			{
@@ -2193,18 +2194,6 @@ class PlayState extends MusicBeatState
 				default:
 					gf.visible = false;
 			}
-	
-			fade = new FlxSprite().makeGraphic(1, 1, 0x000000);
-			fade.screenCenter();
-			fade.cameras = [camNotes];
-			fade.scale.set(FlxG.width, FlxG.height);
-			fade.alpha = 0;
-			add(fade);
-	
-			waltScreenThing = new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
-			waltScreenThing.scrollFactor.set();
-			waltScreenThing.cameras = [camOther];
-			waltScreenThing.alpha = 0;
 
 			var waltInstructionsMain:FlxText = new FlxText(370, 500, 0, "Take Advantage of the SPACEBAR!", 30);
 			waltInstructionsMain.cameras = [camOther];
@@ -2241,20 +2230,19 @@ class PlayState extends MusicBeatState
 					add(globalGradient);
 				}
 		
-				if (curStage == 'waltRoom')
+			if (curStage == 'waltRoom')
+			{
+				if (ClientPrefs.mechanics)
 				{
-					if (ClientPrefs.mechanics)
-						{
-							add(waltScreenThing);
-							add(waltInstructionsMain);
-							add(waltSubTxt);
-							add(spaceBarCounter);
+					add(waltInstructionsMain);
+					add(waltSubTxt);
+					add(spaceBarCounter);
 		
-							FlxTween.tween(waltInstructionsMain, {alpha: 0}, 1, {ease: FlxEase.quadInOut, startDelay: 8});
-							FlxTween.tween(waltSubTxt, {alpha: 0}, 1, {ease: FlxEase.quadInOut, startDelay: 8});
-							FlxTween.tween(waltSubTxt, {alpha: 1}, 0.7, {ease: FlxEase.quadInOut, startDelay: 3});
-						}
+					FlxTween.tween(waltInstructionsMain, {alpha: 0}, 1, {ease: FlxEase.quadInOut, startDelay: 8});
+					FlxTween.tween(waltSubTxt, {alpha: 0}, 1, {ease: FlxEase.quadInOut, startDelay: 8});
+					FlxTween.tween(waltSubTxt, {alpha: 1}, 0.7, {ease: FlxEase.quadInOut, startDelay: 3});
 				}
+			}
 
 		strumLineNotes.cameras = [camHUD];
 		grpNoteSplashes.cameras = [camNotes];
@@ -5588,7 +5576,9 @@ class PlayState extends MusicBeatState
 								settings.timer = 1;
 		
 							if (settings.colors[0] == 0 && settings.colors[1] == 0 && settings.colors[2] == 0) // turn it to white, cause I can
-								blendFlash.color = FlxColor.WHITE;
+								blendFlash.blend = NORMAL;
+							else
+								blendFlash.blend = ADD;
 	
 							if (flashTween != null)
 								flashTween.cancel();
@@ -7083,21 +7073,6 @@ class PlayState extends MusicBeatState
 						for (doubleNote in pressNotes) {
 							var leData:Int = Math.round(Math.abs(doubleNote.noteData));
 							if (Math.abs(doubleNote.strumTime - epicNote.strumTime) < 1) {
-								/*if (doubleNote.isSustainNote) {
-									if (doubleNote.isSustainNote && doubleNote.animation.name.endsWith('end')) {
-										sussplash[leData].playEnd();
-										visiblehold[leData] = false;
-									}
-									else {
-										if (!visiblehold[leData]) {
-											visiblehold[leData] = true;
-						
-											spawnSusNoteSplashOnNote(doubleNote);
-						
-											sussplash[leData].playContinue();
-										}
-									}
-								}*/
 								doubleNote.kill();
 								notes.remove(doubleNote, true);
 								doubleNote.destroy();
@@ -7264,11 +7239,6 @@ class PlayState extends MusicBeatState
 		//Dupe note remove
 		notes.forEachAlive(function(note:Note) {
 			if (daNote != note && daNote.mustPress && daNote.noteData == note.noteData && daNote.isSustainNote == note.isSustainNote && Math.abs(daNote.strumTime - note.strumTime) < 1) {
-				if (note.isSustainNote)
-				{
-					sussplash[note.noteData].playEnd();
-					visiblehold[note.noteData] = false;
-				}
 				note.kill();
 				notes.remove(note, true);
 				note.destroy();
@@ -7885,22 +7855,6 @@ class PlayState extends MusicBeatState
 			var leType:String = note.noteType;
 			callOnLuas('goodNoteHit', [notes.members.indexOf(note), leData, leType, isSus]);
 
-			/*if (isSus) {
-				if (isSus && note.animation.name.endsWith('end')) {
-					sussplash[leData].playEnd();
-					visiblehold[leData] = false;
-				}
-				else {
-					if (!visiblehold[leData]) {
-						visiblehold[leData] = true;
-	
-						spawnSusNoteSplashOnNote(note);
-	
-						sussplash[leData].playContinue();
-					}
-				}
-			}*/
-
 			if (!note.isSustainNote)
 			{
 				note.kill();
@@ -7912,29 +7866,6 @@ class PlayState extends MusicBeatState
 				boyfriend.holdTimer = 0;
 			}*/
 		}
-	}
-
-	public function spawnSusNoteSplashOnNote(note:Note) {
-		if(note != null) {
-			var strum:StrumNote = playerStrums.members[note.noteData];
-			if(strum != null)
-				spawnSusNoteSplash(strum.x, strum.y, note.noteData, note);
-		}
-	}
-
-	public function spawnSusNoteSplash(x:Float, y:Float, data:Int, ?note:Note = null) {
-		sussplash[data] = new SusNoteSplash();
-		sussplash[data].setupNoteSplash(x, y, data, note);
-		if (lightI != null)
-			if (lightI.visible) 
-				sussplash[data].setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0); 
-			else 
-				sussplash[data].setColorTransform(1, 1, 1, 1, 0, 0, 0, 0);
-		if (isPixelStage && ClientPrefs.shaders)
-			sussplash[data].shader = pixelizeUI;
-		sussplash[data].cameras = [camNotes];
-		add(sussplash[data]);
-		sussplash[data].playStart();
 	}
 
 	public function spawnNoteSplashOnNote(note:Note) {
@@ -8684,12 +8615,102 @@ class PlayState extends MusicBeatState
 						for (i in [camHUD, camNotes])
 							FlxTween.tween(i, {alpha: 0}, 2);
 				}
+			case 'Delusional Legacy':
+				switch (curBeat)
+				{
+					case 32 | 64 | 180: 
+						camGame.flash(FlxColor.WHITE, 3);
+					case 48 | 80:
+						camBars.fade(FlxColor.BLACK, 3, true);
+					case 96:
+						camBars.fade(FlxColor.BLACK, 6, true);
+						camNotes.visible = false;
+						camHUD.visible = false;
+						tweenCamera(1.35, 6.2, "circInOut");
+					case 116:
+						camGame.flash(FlxColor.WHITE, 3);
+						camNotes.visible = true;
+						camHUD.visible = true;
+						defaultCamZoom = 0.9;
+					case 128 | 130 | 144 | 146 | 756:
+						defaultCamZoom += 0.1;
+					case 132 | 148 | 724 | 758 | 760:
+						defaultCamZoom -= 0.2;
+					case 178 | 692:
+						defaultCamZoom += 0.2;
+					case 180:
+						defaultCamZoom -= 0.2;
+						FlxTween.tween(waltScreenThing, {alpha: 0.7}, 18, {ease: FlxEase.sineInOut});
+						camGame.flash(FlxColor.WHITE, 3);
+					case 240:
+						FlxTween.tween(waltScreenThing, {alpha: 0.0001}, 1, {ease: FlxEase.sineOut});
+						defaultCamZoom += 0.2;
+					case 244:
+						defaultCamZoom -= 0.2;
+						camGame.flash(FlxColor.WHITE, 3);
+					case 308 | 340:
+						defaultCamZoom = 1.3;
+					case 324 | 328 | 332 | 336:
+						defaultCamZoom -= 0.1;
+					case 372:
+						camGame.flash(FlxColor.WHITE, 3);
+						FlxTween.tween(waltScreenThing, {alpha: 1}, 2, {ease: FlxEase.expoOut});
+						camHUD.visible = false;
+						camNotes.visible = false;
+					case 396:
+						tweenCamera(0.85, 4, "quartInOut");
+						FlxTween.tween(waltScreenThing, {alpha: 0.001}, 4, {ease: FlxEase.quartInOut});
+						camHUD.visible = true;
+						camNotes.visible = true;
+					case 564:
+						camBars.fade(FlxColor.BLACK, 2, true);
+						camHUD.visible = false;
+						camNotes.visible = false;
+					case 592:
+						FlxTween.tween(waltScreenThing, {alpha: 1}, 8, {ease: FlxEase.expoInOut});
+					case 628:
+						camGame.flash(FlxColor.WHITE, 3);
+						waltScreenThing.alpha = 0.001;
+						camNotes.visible = true;
+						camHUD.visible = true;
+						defaultCamZoom = 0.9;
+					case 636:
+						tweenCamera(1.2, 10, "quartInOut");
+					case 660:
+						tweenCamera(0.9, 2, "expoOut");
+					case 764:
+						camGame.flash(FlxColor.WHITE, 3);
+						defaultCamZoom = 0.9;
+					case 796:
+						tweenCamera(1.3, 15, "expoInOut");
+						FlxTween.tween(waltScreenThing, {alpha: 0.75}, 28, {ease: FlxEase.quartInOut});
+					case 892:
+						tweenCamera(0.8, 2, "expoIn");
+						FlxTween.tween(waltScreenThing, {alpha: 0}, 1, {ease: FlxEase.sineOut});
+					case 896:
+						camGame.flash(FlxColor.WHITE, 3);
+						FlxTween.tween(waltScreenThing, {alpha: 1}, 5, {ease: FlxEase.expoOut});
+						camHUD.visible = false;
+						camNotes.visible = false;
+					case 920:
+						FlxTween.tween(waltScreenThing, {alpha: 0}, 3);
+						camFlashSystem(BG_DARK, {alpha: 1, timer: 0.001});
+						camHUD.visible = true;
+						camNotes.visible = true;
+						isCameraOnForcedPos = true;
+						camFollow.x = 200;
+						camFollow.y = 300;
+						boyfriend.visible = false;
+					case 960:
+						tweenCamera(0.2, 5, "sineInOut");
+						FlxTween.tween(waltScreenThing, {alpha: 1}, 5, {ease: FlxEase.expoOut});
+				}
 			case 'Isolated Legacy':
 				switch (curBeat)
 				{
 					case 1 | 16 | 352 | 368: tweenCamera(1.3, 5, 'sineInOut');
 					case 14 | 30 | 46 | 64 | 80 | 84: defaultCamZoom = 0.9;
-					case 32 | 48: tweenCamera(1.2, 3, 'sinInOut');
+					case 32 | 48: tweenCamera(1.2, 3, 'sineInOut');
 					case 40 | 42 | 44 | 56 | 58 | 60 | 62 | 82: defaultCamZoom += 0.12;
 					case 66 | 86: defaultCamZoom += 0.2;
 					case 68 | 88: defaultCamZoom -= 0.15;
@@ -8749,7 +8770,7 @@ class PlayState extends MusicBeatState
 						FlxTween.tween(camHUD, {alpha: 0.15}, 2, {ease: FlxEase.quartInOut});
 					case 32:
 						camGame.alpha = 1;
-						if (ClientPrefs.flashing) camBars.flash(FlxColor.WHITE, 1.5);
+						if (ClientPrefs.flashing) camGame.flash(FlxColor.WHITE, 1.5);
 						camHUD.alpha = 1;
 						camHUD.zoom += 0.02;
 						camNotes.zoom += .02;
@@ -8760,23 +8781,23 @@ class PlayState extends MusicBeatState
 					case 88 | 166 | 224: defaultCamZoom = 0.8;
 					case 128 | 256:
 						defaultCamZoom = 0.78;
-						if (ClientPrefs.flashing) camBars.flash(FlxColor.WHITE, 1.5);
+						if (ClientPrefs.flashing) camGame.flash(FlxColor.WHITE, 1.5);
 						camHUD.alpha = 0.0001;
 						camNotes.alpha = 0;
 					case 156 | 284:
 						tweenCamera(1, 1, "sineInOut");
 						FlxTween.tween(camHUD, {alpha: 1}, 1.5, {ease: FlxEase.quartInOut});
 						FlxTween.tween(camNotes, {alpha: 1}, 1.5, {ease: FlxEase.quartInOut});
-					case 160: if (ClientPrefs.flashing) camBars.flash(FlxColor.BLACK, 1.5);
+					case 160: if (ClientPrefs.flashing) camGame.fade(FlxColor.BLACK, 1.5, true);
 					case 192: defaultCamZoom += 0.25;
 					case 320:
-						if (ClientPrefs.flashing) camBars.flash(FlxColor.BLACK, 1);
+						if (ClientPrefs.flashing) camGame.fade(FlxColor.BLACK, 1, true);
 						camFlashSystem(BG_DARK, {alpha: 0.85, timer: 1, ease: FlxEase.quartInOut});
 						defaultCamZoom += 0.2;
 					case 336: defaultCamZoom -= 0.35;
 					case 368: tweenCamera(1.3, 8, "quartInOut");
 					case 400:
-						if (ClientPrefs.flashing) camBars.flash(FlxColor.BLACK, 1.5);
+						if (ClientPrefs.flashing) camGame.fade(FlxColor.BLACK, 1.5, true);
 						camFlashSystem(BG_DARK, {alpha: 0, timer: 1, ease: FlxEase.sineOut});
 					case 404:
 						FlxTween.tween(camGame, {alpha: 0}, 1.5, {ease: FlxEase.quartInOut});

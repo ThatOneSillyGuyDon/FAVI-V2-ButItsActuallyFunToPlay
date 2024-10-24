@@ -104,6 +104,7 @@ class Song
 			case "lunacy": chartFile = Chart.lunacy;
 			case "lunacy-legacy": chartFile = Chart.lunacyLegacy;
 			case "delusional": chartFile = Chart.delusional;
+			case "delusional-legacy": chartFile = Chart.delusionalLegacy;
 			case "malfunction": chartFile = Chart.malfunction;
 			case "malfunction-legacy": chartFile = Chart.malfunctionLegacy;
 			case "bless": chartFile = Chart.bless;
@@ -211,7 +212,8 @@ class Song
 			case "Devilish Deal" | "Lunacy" | "Hunted" | "War Dilemma" | "Twisted Grins" | "Isolated": charter = "Purg";
 			case "Delusional" | "Cycled Sins" | "Birthday" | "Cycled Sins Legacy": charter = "Dreupy";
 			case "Lunacy Legacy": charter = "obscurity.";
-			case "Bless" | "Malfunction" | "Delutrance" | "Mercy" | "Mercy Legacy" | "Isolated Old" | "Isolated Legacy" | "Isolated Beta" | "Malfunction Legacy" | "Laugh Track" | "Delusional Legacy": charter = "DEMOLITIONDON96";
+			case "Bless" | "Malfunction" | "Delutrance" | "Mercy" | "Mercy Legacy" | "Isolated Old" | "Isolated Legacy" | "Isolated Beta" | "Malfunction Legacy" | "Laugh Track": charter = "DEMOLITIONDON96";
+			case "Delusional Legacy": charter = "Noppz";
 			case "Dont Cross":
 				switch (randomizer)
 				{
