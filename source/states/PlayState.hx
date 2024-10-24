@@ -638,7 +638,6 @@ class PlayState extends MusicBeatState
 		FlxG.cameras.add(camNotes, false);
 		FlxG.cameras.add(camOther, false);
 		grpNoteSplashes = new FlxTypedGroup<NoteSplash>();
-		grpSusNoteSplashes = new FlxTypedGroup<SusNoteSplash>();
 
 		FlxG.cameras.setDefaultDrawTarget(camGame, true);
 		CustomFadeTransition.nextCamera = camOther;
@@ -1909,7 +1908,6 @@ class PlayState extends MusicBeatState
 		add(playfieldRenderer);
 
 		add(grpNoteSplashes);
-		add(grpSusNoteSplashes);
 
 
 		camFollow = new FlxPoint();
@@ -2246,7 +2244,6 @@ class PlayState extends MusicBeatState
 
 		strumLineNotes.cameras = [camHUD];
 		grpNoteSplashes.cameras = [camNotes];
-		grpSusNoteSplashes.cameras = [camNotes];
 		notes.cameras = [camHUD];
 		healthBar.cameras = [camHUD];
 		healthBarBG.cameras = [camHUD];
@@ -8618,7 +8615,7 @@ class PlayState extends MusicBeatState
 			case 'Delusional Legacy':
 				switch (curBeat)
 				{
-					case 32 | 64 | 180: 
+					case 32 | 64: 
 						camGame.flash(FlxColor.WHITE, 3);
 					case 48 | 80:
 						camBars.fade(FlxColor.BLACK, 3, true);
