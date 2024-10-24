@@ -538,6 +538,9 @@ class PlayState extends MusicBeatState
 	var redGradThing:FlxSprite = new FlxSprite(-1200, 0).makeGraphic(FlxG.width, 1, 0xFFAA00AA);
 	var canZoom:Bool = false;
 
+	// TWISTED GRINS
+	var funiLight:FlxSprite;
+
 	//SHADER UPDATE SHIT
 	var updateShader:Float = 0;
 
@@ -1329,7 +1332,7 @@ class PlayState extends MusicBeatState
 					chair.active = false;
 					add(chair);
 	
-					var funiLight:FlxSprite = new FlxSprite(-500, -300).loadGraphic(Paths.image(pathway + 'light'));
+					funiLight = new FlxSprite(-500, -300).loadGraphic(Paths.image(pathway + 'light'));
 					funiLight.antialiasing = true;
 					funiLight.scrollFactor.set(1, 1);
 					funiLight.alpha = 0.6;
@@ -5255,6 +5258,9 @@ class PlayState extends MusicBeatState
 		CamUtils.updateCamera(camHUD, elapsed);
 		CamUtils.updateCamera(camNotes, elapsed);
 		CamUtils.updateCamera(camOther, elapsed);
+
+		if (funiLight != null)
+			funiLight.alpha = FlxMath.lerp(FlxG.random.float(.1, .7), funiLight.alpha, .85);
 
 		// yk i sometimes ask why we put sum stuff there n shit
 		uhhTurnBackNormalOrSmth = function () {
