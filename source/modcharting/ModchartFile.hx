@@ -153,6 +153,11 @@ class ModchartFile
                         json = {modifiers: [], events: [], playfields: 1};
                 case "Cycled Sins":
                     json = cast Json.parse(Modchart.cycledShit);
+                case "Delusional Legacy":
+                    if (ClientPrefs.mechanics)
+                        json = cast Json.parse(ClientPrefs.downScroll ? Modchart.deluLegModD : Modchart.deluLegModU);
+                    else
+                        json = {modifiers: [], events: [], playfields: 1};
                 default:
                     json = {modifiers: [], events: [], playfields: 1};
             }

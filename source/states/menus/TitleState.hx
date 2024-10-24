@@ -454,7 +454,7 @@ class TitleState extends MusicBeatState
 		for (i in 0...textArray.length)
 		{
 			var money:FlxText = new FlxText(0, 0, FlxG.width, textArray[i], 52);
-			money.setFormat(Paths.font("NewWaltDisneyFontRegular-BPen.ttf"), 52, FlxColor.WHITE, CENTER);
+			money.setFormat(Paths.font("DisneyFont.ttf"), 52, FlxColor.WHITE, CENTER);
 			money.screenCenter(X);
 			money.y += (i * 60) + 200;
 			credGroup.add(money);
@@ -465,7 +465,7 @@ class TitleState extends MusicBeatState
 	function addMoreText(text:String, ?offset:Float = 0)
 	{
 		var coolText:FlxText = new FlxText(0, 0, FlxG.width, text, 52);
-		coolText.setFormat("assets/fonts/NewWaltDisneyFontRegular-BPen.ttf", 52, FlxColor.WHITE, CENTER);
+		coolText.setFormat("assets/fonts/DisneyFont.ttf", 52, FlxColor.WHITE, CENTER);
 		coolText.screenCenter(X);
 		coolText.y += (textGroup.length * 60) + 200;
 		credGroup.add(coolText);

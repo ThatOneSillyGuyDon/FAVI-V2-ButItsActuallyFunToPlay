@@ -2,9 +2,9 @@
     "devs": [
         [
 			"Yama haki / Toko",
-			"yama",
-			"Creator, Owner, Director, Main Composer, PlayTester",
-			"I’m Yama I created this mod, with that one Domingo dude and that one dude that’s name has stuff to do with blowing shit up. I might be the first serious one out of all of these people but here we go.\n\nBack when this mod first started we barely had a team, we built this mod and made it something good. I’m glad I get to put my name in these credits and get famous WOOHOO!\n\nIn all seriousness though, thanks for the opportunity to be where I am in this community today. Sure I might be known as the funkin.avi dude for the rest of my time here, but I’ve grown to not be ashamed of that title. Without these people on the team this mod would’ve went NOWHERE, so I appreciate these talented creators joining the team. That being said, I cannot wait to share more Dunkin funkin projects with you guys, as this is just the beginning. There is so much more to come. And as for funkin.avi, there is so much more to this story.\n\nThank you so much for playing, and supporting us on this journey to COMPLETE FUNKIN.AVI!!! Alright I typed enough can you please let me go?",
+			"toko",
+			"Creator, Owner, Director, Composer, PlayTester",
+			"Toko/Yama here.\n\nI just wanted to say working on funkin.avi was an honor, and being the director of it is even more of an honor. This project is and will forever be one of the best projects I've ever worked on.\nI'm glad me and the team got to share it with you. \nI wanted to also say, thanks to the team for putting up with my bullshit, and staying with me on this project regardless of me not being the best person at times. \nI want to also thank you, the player. For playing this mod, and I hope you enjoyed it.\n Stay tuned guys me and the team are still cooking (We might burn the food.)",
 			-320,
 			-140,
 			0.55,
@@ -12,10 +12,10 @@
 		],
 		[
 			"DEMOLITIONDON96",
-			"demoboi",
-			"Director, Main Programmer, Artist, Charter",
-			"It's official, I have wasted 3 years of my life on a fucking mouse mod, and no, you can't take our assets without putting effort in your recreation cause I'm evil lmao.",
-			-310,
+			"don",
+			"Director, Composer, Main Programmer, Artist, Animator, Charter",
+			"Shut the fuck up you lame ass Psych engine kiddo.",
+			-320,
 			-140,
 			0.55,
 			false
@@ -23,49 +23,38 @@
 		[
 			"Domingo",
 			"domingo",
-			"Director, Main Artist, Animator, Cutscenes",
+			"Director, Main Artist, Animator, Cutscenes, PlayTester",
 			"\n\nA realistic depiction of working on Funkin.Avi!!\n\nOH WAIT by the time, June 12, 2023, I'm writing this I'm pretty sure it has been exactly 1 year since we have uploaded the very first demo of the mod. \n\nWe have come such a long way and I'm happy with what we've been able to achieve and the story hasn't even reached its climax. \nThank you for playing!",
-			-310,
+			-320,
 			-140,
 			0.55,
-			true
-		],
-		[
-			"JDrive",
-			"jdrivelol",
-			"Co-Director, PlayTester, Cycled Sins art & Owner of Walt",
-			"\n\n\nHi! Thanks for checking out Funkin.avi, and I hoped you enjoyed the mod as well as my little Walt guy. We've had this mod in the oven for quite a while now, and we're so glad we get to release it after all these years. We hope you weren't too disappointed. if you were, Oh well! 
-Until Next Time!",
-			-290,
-			-140,
-			0.6,
-			true
-		],
-		[
-			"Jason",
-			"jason",
-			"Co-Director, Programmer, Concept Artist, Animator",
-			"",
-			-290,
-			-140,
-			0.6,
 			true
 		],
         [
 			"Writer Anon",
 			"writer",
-			"Ex Co-director, Rewrote story of the mod, absolute fucking legend",
-			"Hey! I'm the guy that voiced the narrator and gave many ideas for Delusional's events. This is genuinely the first mod I've been a part of,\n\nand what a great experience it has been. Thanks for inviting me on, Demo and Toko, it's been great, and I cannot wait to do more.\n\nplease help me I am still trapped in demo's basement--\n\nP.S: Bonoan is cool and great\n\n^demo^(From Don: Thank you for everything Writer, you meant a lot to the team)^demo^",
+			"Co-director, Rewrote story of the mod & VA of certain cutscenes",
+			"\nHey! I'm the guy that voiced the narrator and gave many ideas for Delusional's events. This is genuinely the first mod I've been a part of,\n\nand what a great experience it has been. Thanks for inviting me on, Demo and Toko, it's been great, and I cannot wait to do more.\n\nplease help me I am still trapped in demo's basement--\n\nP.S: Bonoan is cool and great",
 			-300,
 			-140,
 			0.55,
 			true
 		],
 		[
+			"HanaCat",
+			"hana",
+			"Artist & Charter",
+			"i am the charter of devilish-deal !!\n and also animator some character !!\n\n and you are so isolated !!",
+			-230,
+			-140,
+			0.75,
+			false
+		],
+		[
 			"KKCopinXD",
 			"kopin",
 			"Icon Artist & Concept Menu Artist",
-			"\nif it wasn't for Coolye3ted I wouldn't be here on this Mod to be able to work on it\n\nI've been here since 1.5 and It's an honor to be here working for this amazing team,\n\nI made a lot of friends I appreciate being able to be friends with them I hope you enjoyed the update we all worked hard to finish it! YIPPEEEEEEE-\n\nI made Malfuntion background, the mod icons ( except Hunter Goofy ) OST arts, dubbed Relapse Mouse and Malfuntion countdowns.",
+			"\nif it wasn't for Coolye3ted I wouldn't be here on this Mod to be able to work on it\n\nI've been here since 1.5 and It's an honor to be here working for this amazing team,\n\nI made a lot of friends I appreciate being able to be friends with them I hope you enjoyed the update we all worked hard to finish it! YIPPEEEEEEE-\n\nI made Malfuntion background, all MOD icons ( except Hunter Goofy ) all OST arts, dubbed Relapse Mouse and Malfuntion countdowns and I made FreePlay Concept",
 			40,
 			40,
 			1,
@@ -74,27 +63,27 @@ Until Next Time!",
 		[
 			"RetroJogador",
 			"joga",
-			"Composed Main Menu, Delutrance, PlayTester, & Made Menu Art",
-			"\nI really enjoyed joining the mod team and ending this amazing update, \nalong the way I met and made a lot of cool friends. Changing the subject,\n\nI was responsible for making the Menu Music, Pause Music, Sanguis Muris and others, Arts I practically created the main menu, hud and Others,\n\nand I gave the voice to Mrs Smile in V2, Change the World, My Final Message: YIPPEEE- ",
+			"Composed Main Menu, Both Joke Songs, & Made Menu Art",
+			"\nBtw I really enjoyed joining the mod team and ending this amazing update, \nalong the way I met and made a lot of cool friends. Changing the subject,\n\nI was responsible for making the Menu Music, Pause Music, Sanguis Muris and others, Arts I practically created the main menu, hud and Others,\n\nand I gave the voice to Mrs Smile in V2, Change the World, My Final Message: YIPPEEE- ",
 			-320,
-			-130,
+			-140,
 			0.55,
 			true
 		],
 		[
-			"MalyPlus",
-			"maly",
-			"Assistant Programmer",
-			"^red^ Boom your screen is shaking bitch\njokes aside, I hope you guys enjoyed playing this mod! ^red^",
-			-310,
+			"_k3illy_kimbell",
+			"k3illy",
+			"Artist",
+			"\n\n\nhow to talk? say helloo guys~ \n\nI am an artist for Funkin.aviii mod this is my first mod that I work! \nThank you to HanaCat / Benjicat (close friend) and Demolition and some director! for invite me to work Funkin.avi! \n\nEven though I'm a little shy..- lmao",
+			-320,
 			-140,
 			0.55,
-			false
+			true
 		],
 		[
 			"Mr.IDK",
 			"idk",
-			"Artist & Owner of White Noise and RS",
+			"Artist (Also White Noise and RS)",
 			"uh idk i forgot :3",
 			-314,
 			-140,
@@ -112,7 +101,7 @@ Until Next Time!",
 			false
 		],
 		[
-			"BladzAMC_emerald",
+			"bladzamc_emerald",
 			"bladz",
 			"Artist and Playtester",
 			"I can feel Malfunction coming inside me",
@@ -124,106 +113,113 @@ Until Next Time!",
 		[
 			"Moe",
 			"moe",
-			"Artist, Animator, PlayTester And Cutscenes",
-			"Hi I did stuff\nHi Adam :)",
-			200,
-			310,
-			1.57,
+			"Artist, Animator And Cutscenes",
+			"6 FUCKING FARTS MAN. GET THE FUCK OUT",
+			-10,
+			50,
+			0.85,
 			false
 		],
 		[
 			"Teelbe",
 			"teelbe",
 			"Artist",
-			"I had fun working on dis lol,\neveryone did amazing on it and i hope yall like the mod :]",
+			"mickey mouse",
 			-320,
 			-140,
 			0.55,
 			false
 		],
 		[
-			"theonlyshittyre. / rezeo",
+			"theonlyshittyre.",
 			"shitty",
 			"Hunter Goofy.",
-			"\n\n\n\nI'm grateful to work on this mod. I literally had time to have a baby while working here. honestly, I love the people here, I could come here and put dev words joking around, but I think I really needed to say that. enjoy our mod, davi luca approved it (he's my son).",
+			"my cock has fallen once again.",
 			50,
 			40,
 			1,
-			true
+			false
 		],
 		[
 			"AustinTheRedDragon",
-			"austinw",
+			"austin",
 			"Artist, Owner of Mr. Smiles & Professionally Horny",
 			"I am not an alligator",
-			-380,
-			-300,
-			0.22,
+			30,
+			40,
+			1,
 			false
 		],
-		["GreyDoodlez", "grey", "Artist", "\n\nHola Javí, hola Slayer, hola Cedríc, Hola Lucíus, hola Leaff, hola Javivianos y Forevianos de corazón. Listo, híce que aparezcan en comunidad juego. Ahora chinguen a su madre, ola Sam. Hola Ruuben, pajero de mierda. XdxDXdxD Hola Palos, Hola Ivánculo. Hola, Acújin o TheNeonDS. Hola, Alexander Ajolote Furia Azulada. P.S; And for the rest, hope y'all enjoyed the mod!!! Humildad fuera.", -260, -130, 0.65, true],
 		[
-			"Gemmie Femmie",
+			"The Gamerchoice",
 			"gamerchoice",
 			"Concept Artist & Playtester",
-			"\n\nOfficially Licensed Homosexual\n\nSpeaking of which\n\nWhere are the ^red^HUGE MEN^red^ at?????\n^red^WHERE????\nGOD\nWHERE ARE THEY\nFUCK\nWHERE ARE THEY^red^",
+			"where are the men???1?! * has an erection *",
 			20,
 			40,
 			0.9,
-			true
-		],
-		[
-			"Molkey.xml",
-			"molkey",
-			"Artist and Cutscenes",
-			"blep, real shit",
-			-370,
-			-280,
-			0.57,
 			false
 		],
-		["Just_Kuro", "kuro", "Artist", "\n\n\n\nTo all those people who believed in me,\nthank you,\ni thank every single one of you for the opportunity to work on this wonderful project. Thank you all.", -290,
-		-140,
-		0.6, true],
-		["Kyuxhtysu", "kyuxhtsyu", "Artist & Redesigned Lilith (v2.5)", "gay sonic artist.", -725, -830, 0.18, false],
-
-		["PlayerTheMobile", "player", "Artist", "piles of homework extra-ordinary!
-		im an artist for this mod(i did like,posters idk)
-		this mod been through alot to get into release,dev hell finally over brah
-		Subscribe to PlayerTheMobile on Youtube
-		and uhhh,yea
-		doritos", 
-		-220, -150, 0.75, true],
-
-		["0yxz.", "0yxz", "Artist", "Communitygame don't go crazy on the gf design vro\nAs always, Avier x evilrett forever", -360, -280, 0.21, false],
+		[
+			"PlayerTheMobile",
+			"player",
+			"Artist and Cutscenes",
+			"\n\n\n\nDamn,I never thought I would get into this mod,thanks to Teelbe lmfao\nIm the funny cutscenes man,I'm just a random dumbo who likes drawing Mickey Mouse lol\n\nThank you for playing Funkin.AVI!!!",
+			-320,
+			-140,
+			0.55,
+			true
+		],
 		[
 			"FR3SHMoure",
 			"fresh",
 			"Composer (mostly well known for Delusional)",
-			"the swagging of 86",
-			-260,
-			-150,
-			0.67,
+			"the swagging of 68",
+			30,
+			40,
+			1,
 			false
 		],
-		["Dreupy", "dreupy", "Charter and PlayTester", "MICKEY ^red^DIES^red^????", -45, 40, 0.85, false],
-		["Purg", "purg", "Charter, War Dilemma's #1 fan and PlayTester", "\n\n\nHi! I'm Purg, you may know me as the Voice Actor for the narrator, a charter for this mod, ^red^War Dillema's #1 meatrider^red^, or the Miserable Funk guy. It's been a dream of mine to work on this mod since it first released back in 2022, and is one of the main reasons I got into fnf modding. I hope you enjoy the mod! 
-
-And shoutouts to Yama and Niko for being there whenever I needed it, yall are my goats fr.
-also play miserable funk pls ty <33 ", -220, -150, 0.75, true],
 		[
-			"Mouse",
-			"mouse",
-			"Made chromatics for Lilith & Everett",
-			"\nHonestly, I didn't think I'd get so far :oaoa: 
-Thanks to the team for giving me the opportunity to work on this mod ^^ 
-\"No hay peor paja que la que no se hace :muchacho: \" 
-\"Wowie deja de racearme solo a mi :Nopapu: \"
-\"Un saludo a pendejos en potencia y a la tarado army :holawe: \"",
+			"Prismatic9k",
+			"pris",
+			"Programmer",
+			"DUDE SHUT THE F- oh were rolling? Clip that out, CLIP THAT OUT!",
+			0,
+			60,
+			0.85,
+			false
+		],
+		[
+			"Schweizer",
+			"schweizer",
+			"Programmer",
+			"no quote :(",
+			-320,
+			-140,
+			0.55,
+			false
+		],
+		[
+			"Stik",
+			"stik",
+			"Programmer and Playtester",
+			"SHUT THE FUCK UP PURG",
 			-310,
-			-130,
-			0.56,
-			true
+			-150,
+			0.55,
+			false
+		],
+		["Dreupy", "dreupy", "Charter", "MICKEY DIES????", -45, 40, 0.85, false],
+		[
+			"Bax",
+			"bax",
+			"\"Peak\" Artist",
+			"Guh stop saying me peak >:(",
+			-590,
+			-450,
+			0.18,
+			false
 		]
     ]
 }
