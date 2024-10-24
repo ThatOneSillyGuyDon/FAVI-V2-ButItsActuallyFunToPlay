@@ -402,6 +402,13 @@ class PlayState extends MusicBeatState
 	public static var heatWaveEffect:FlxRuntimeShader = new FlxRuntimeShader(Shaders.heatWave, null, 120);
 	public static var pixelizeUI:FlxRuntimeShader = new FlxRuntimeShader(Shaders.unregisteredHyperCam2Quality, null, 140);
 
+	public static var legacyChrom:FlxRuntimeShader = new FlxRuntimeShader(LegacyShaders.chromaticAberration, null, 120);
+	public static var legacyDistort:FlxRuntimeShader = new FlxRuntimeShader(LegacyShaders.vcrDistortion, null, 120);
+	public static var legacyDefaultDistort:FlxRuntimeShader = new FlxRuntimeShader(LegacyShaders.vcrDistortion, null, 120);
+	public static var legacyTiltshift:FlxRuntimeShader = new FlxRuntimeShader(LegacyShaders.tiltshift, null, 120);
+	public static var legacyTiltshiftHUD:FlxRuntimeShader = new FlxRuntimeShader(LegacyShaders.tiltshift, null, 120);
+	public static var legacyGreyscale:FlxRuntimeShader = new FlxRuntimeShader(LegacyShaders.greyscale, null, 120);
+
 	public var chromEffect:Float = 0.0001;
 	public var blurEffect:Float = 0.0;
 	public var blurHUD:Float = 0.0;
@@ -2159,6 +2166,14 @@ class PlayState extends MusicBeatState
 					case 'stage' | 'desktop' | 'waltRoom' | 'apartment' | 'treasureIsland' | 'forbiddenRealm' | 'fuckingLine' | 'staticVoid' | 'vaultRoom' | 'war':
 					// don't add scratch assets
 	
+					case 'theLoop':
+						scratch = new FlxSprite();
+						scratch.frames = Paths.getSparrowAtlas('favi/filters/scratchShit');
+						scratch.animation.addByPrefix('e', 'scratch thing', 24, true);
+						scratch.animation.play('e');
+						scratch.cameras = [camHUD];
+						add(scratch);
+					
 					default:
 						scratch = new FlxSprite();
 						scratch.frames = Paths.getSparrowAtlas('favi/filters/scratchShit');
@@ -2572,28 +2587,49 @@ class PlayState extends MusicBeatState
 						camNotes.setFilters([new ShaderFilter(grayScale)]);
 					}
 				case 'Isolated Old' | 'Isolated Legacy' | 'Isolated Beta' | 'Lunacy Legacy' | 'Delusional Legacy':
-					blurShader.setFloat('bluramount', 0.6);
-					blurShaderHUD.setFloat('bluramount', 0.1);
-					andromeda.setFloat('glitchModifier', 0.2);
-					andromeda.setBool('perspectiveOn', true);
-					andromeda.setBool('vignetteMoving', true);
+					for (sigmas in ['r', 'g', 'b']) legacyChrom.setFloat('${sigmas}Offset', 0.005);
+
+					legacyDistort.setFloat('glitchModifier', 1);
+					legacyDistort.setFloat('iTime', 0);
+					legacyDistort.setBool('perspectiveOn', true);
+					legacyDistort.setBool('vignetteMoving', true);
+					legacyDistort.setBool('scanlinesOn', true);
+					legacyDistort.setBool('vignetteOn', true);
+					legacyDistort.setBool('distortionOn', false);
+					legacyDistort.setFloatArray('iResolution', [Lib.current.stage.stageWidth, Lib.current.stage.stageHeight]);
+
+					legacyDefaultDistort.setFloat('glitchModifier', 0);
+					legacyDefaultDistort.setFloat('iTime', 0);
+					legacyDefaultDistort.setBool('perspectiveOn', true);
+					legacyDefaultDistort.setBool('vignetteMoving', true);
+					legacyDefaultDistort.setBool('scanlinesOn', true);
+					legacyDefaultDistort.setBool('vignetteOn', true);
+					legacyDefaultDistort.setBool('distortionOn', true);
+					legacyDefaultDistort.setFloatArray('iResolution', [Lib.current.stage.stageWidth, Lib.current.stage.stageHeight]);
+
+					legacyTiltshift.setFloat('bluramount', .5);
+					legacyTiltshiftHUD.setFloat('bluramount', .6);
+
+					legacyTiltshift.setFloat('center', 0);
+					legacyTiltshiftHUD.setFloat('center', 0);
+
 					if (!ClientPrefs.lowQuality)
 					{
 						camGame.setFilters([
-							new ShaderFilter(grayScale),
-							new ShaderFilter(blurShader),
-							new ShaderFilter(andromeda)
+							new ShaderFilter(legacyChrom),
+							new ShaderFilter(legacyDistort),
+							new ShaderFilter(legacyDefaultDistort),
+							new ShaderFilter(legacyTiltshift),
+							new ShaderFilter(legacyGreyscale),
 						]);
+						
 						camHUD.setFilters([
-							new ShaderFilter(grayScale),
-							new ShaderFilter(blurShaderHUD),
-							new ShaderFilter(andromeda)
+							new ShaderFilter(legacyChrom),
+							new ShaderFilter(legacyDefaultDistort),
+							new ShaderFilter(legacyTiltshiftHUD),
+							new ShaderFilter(legacyGreyscale),
 						]);
-						camNotes.setFilters([
-							new ShaderFilter(grayScale),
-							new ShaderFilter(blurShaderHUD),
-							new ShaderFilter(andromeda)
-						]);
+						camNotes.filters = camHUD.filters;
 					}
 					else
 					{
@@ -4716,7 +4752,11 @@ class PlayState extends MusicBeatState
 						blurShader.setFloat('bluramount', blurEffect);
 
 				case 'Isolated Beta' | 'Isolated Legacy' | 'Isolated Old' | 'Lunacy Legacy' | 'Delusional Legacy':
-					andromeda.setFloat('iTime', shaderAnim);
+					legacyDistort.setFloat('iTime', shaderAnim);
+					legacyDistort.setFloatArray('iResolution', [Lib.current.stage.stageWidth, Lib.current.stage.stageHeight]);
+
+					legacyDefaultDistort.setFloat('iTime', shaderAnim);
+					legacyDefaultDistort.setFloatArray('iResolution', [Lib.current.stage.stageWidth, Lib.current.stage.stageHeight]);
 
 				case 'Scrapped':
 					if (ClientPrefs.epilepsy)

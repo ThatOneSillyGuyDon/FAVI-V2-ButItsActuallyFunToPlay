@@ -638,11 +638,11 @@ class MainMenu extends MusicBeatState
 			add(alien);
 		}
 
-		/*if (FlxG.keys.justPressed.ONE && !selectedSomethin)
+		if (FlxG.keys.justPressed.ONE && !selectedSomethin && Main.debug)
 		{
 			GameData.unlockEverything();
 			FlxG.sound.play(Paths.sound('funkinAVI/easterEggSound'));
-		}*/
+		}
 
 		if (Math.floor(curSelected) != lastCurSelected)
 			updateSelection();
