@@ -538,6 +538,13 @@ class PlayState extends MusicBeatState
 	var redGradThing:FlxSprite = new FlxSprite(-1200, 0).makeGraphic(FlxG.width, 1, 0xFFAA00AA);
 	var canZoom:Bool = false;
 
+	// BIRTHDAY NOTES
+	// you welcome
+	var spawnNotes:Map<String, Bool> = [
+		"muckney" => false,
+		"bf" => false
+	];
+
 	// TWISTED GRINS
 	var funiLight:FlxSprite;
 
@@ -7633,6 +7640,10 @@ class PlayState extends MusicBeatState
                     if(healthThing > 0.05) // trol
                         healthThing -= 0.015;
                 }
+
+			case 'Birthday':
+				if (spawnNotes['muckney'] && !note.isSustainNote) birthdayParticles(dadGroup);
+
         }
 
 		var time:Float = 0.15;
@@ -7793,6 +7804,8 @@ class PlayState extends MusicBeatState
 				}
 				if(combo > 9999) combo = 9999;
 				popUpScore(note);
+
+				if (spawnNotes['bf']) birthdayParticles(boyfriendGroup);
 			}
 			healthThing += note.hitHealth * 0.55;
 
@@ -10464,10 +10477,12 @@ class PlayState extends MusicBeatState
 							{
 								offsetTwn = null;
 							}});
-					case 351: 
+					case 350: 
 						dadGroup.scale.y = 0.6;
 						dadGroup.scale.x = 0.6;
 						FlxTween.tween(dadGroup, {'scale.x': 0}, 0.3, {ease: FlxEase.quartInOut});
+					case 352:
+						spawnNotes['muckney'] = true;
 					case 416: 
 						boyfriendGroup.scale.x = 0.9;
 						boyfriendGroup.scale.y = 0.9;
@@ -10476,17 +10491,22 @@ class PlayState extends MusicBeatState
 							boyfriendGroup.scale.x = 0.7;
 							FlxTween.tween(boyfriendGroup, {'scale.y': 0.7}, 0.5, {ease: FlxEase.quartOut});
 						}});
+					case 418:
+						spawnNotes['bf'] = true;
 					case 476: tweenCamera(0.85, 2, 'quartInOut');
 					case 477: FlxTween.tween(dadGroup, {'scale.x': 0}, 0.3, {ease: FlxEase.quartInOut, onComplete: function(twn:FlxTween)
 						{
 							dadGroup.scale.y = 0.6;
 							FlxTween.tween(dadGroup, {'scale.x': 0.6}, 0.3, {ease: FlxEase.quartOut});
 						}});
+					case 479:
+						spawnNotes['muckney'] = false;
 					case 481: FlxTween.tween(boyfriendGroup, {'scale.x': 0}, 0.7, {ease: FlxEase.quartInOut, onComplete: function(twn:FlxTween)
 						{
 							boyfriendGroup.scale.y = 0.9;
 							FlxTween.tween(boyfriendGroup, {'scale.x': 0.9}, 0.7, {ease: FlxEase.quartOut});
 						}});
+						spawnNotes['bf'] = false;
 					case 536 | 540 | 544: defaultCamZoom += 0.18;
 					case 548: tweenCamera(0.8, 2, 'sineOut');
 					case 552:
@@ -10495,7 +10515,7 @@ class PlayState extends MusicBeatState
 						camNotes.visible = false;
 						camOther.flash(FlxColor.WHITE, 3);
 				}
-				if (curBeat >= 64 && curBeat <= 191 || curBeat >= 256 && curBeat <= 319)
+				if ((curBeat >= 64 && curBeat <= 191) || (curBeat >= 256 && curBeat <= 319 && curBeat % 2 == 0))
 				{
 					FlxG.camera.zoom += 0.015;
 					camHUD.zoom += 0.03;
@@ -11548,6 +11568,28 @@ class PlayState extends MusicBeatState
 		#end
 		//trace(event, returnVal);
 		return returnVal;
+	}
+
+	public function birthdayParticles(targetGroup:FlxSpriteGroup) {
+		var path:String = 'favi/ui/bdaynotes';
+
+		var particleNote:FlxSprite = new FlxSprite().loadGraphic(Paths.image('$path/note_${FlxG.random.int(1, 3)}', 'shared'));
+		particleNote.setGraphicSize(Std.int(particleNote.width * 0.7));
+		particleNote.updateHitbox();
+		particleNote.x = FlxG.random.int(Std.int(targetGroup.x - (targetGroup == boyfriendGroup ? 0 : 150)), Std.int(targetGroup.x + (targetGroup == boyfriendGroup ? 500 : 300)));
+		particleNote.y = targetGroup.y - 170;
+		particleNote.velocity.y += targetGroup.y - 400;
+		particleNote.acceleration.y = 400 * playbackRate;
+
+		particleNote.angle = FlxG.random.int(0, 360);
+		
+		FlxTween.tween(particleNote, {alpha: 0}, 3, {
+			onComplete: function(tween:FlxTween)
+			{
+				particleNote.destroy();
+			}
+		});
+		add(particleNote);
 	}
 
 	// prob use velocity.x someday for not time enough for that
