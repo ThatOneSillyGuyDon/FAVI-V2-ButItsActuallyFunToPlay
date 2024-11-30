@@ -4,25 +4,25 @@ enum abstract CreditsData(String) from String to String {
     var devilishDeal:String = '{
 	"settings":
 	[
-		"Art: Domingo, Moe & Molkey.xml\n\nChart: Purg\n\nCode: DEMOLITIONDON96 & Jason\n\nMusic: obscurity.", -40, -5
+		"Art: Domingo, Moe\n\nChart: Purg\n\nCode: DEMOLITIONDON96 & Jason\n\nMusic: obscurity.", -40, -5
 	]
 }';
     var isolated:String = '{
 	"settings":
 	[
-		"Art: Domingo & Molkey.xml\n\nChart: Purg\n\nCode: Jason & DEMOLITIONDON96\n\nMusic: obscurity.", 0, -5
+		"Art: Domingo\n\nChart: Purg\n\nCode: Jason & DEMOLITIONDON96\n\nMusic: obscurity.", 0, -5
 	]
 }';
     var lunacy:String = '{
 	"settings":
 	[
-		"Art: Domingo, Molkey.xml\n& Moe\n\nChart: Purg\n\nCode: Jason & DEMOLITIONDON96\n\nMusic: obscurity.", 25, -5
+		"Art: Domingo\n& Moe\n\nChart: Purg\n\nCode: Jason & DEMOLITIONDON96\n\nMusic: obscurity.", 25, -5
 	]
 }';
     var delusional:String = '{
 	"settings":
 	[
-		"Art: Domingo, Moe, BladzAMC_Emerald,\nMolkey.xml, Teelbe &\nAustinWProductions\n\nChart: Dreupy\n\nCode: Jason, MalyPlus\n& DEMOLITIONDON96\n\nMusic: FR3SHMoure\n\nVoice Actor: BonoanAnything", -21, -43
+		"Art: Domingo, Moe, BladzAMC_Emerald,\nTeelbe &\nAustinWProductions\n\nChart: Dreupy\n\nCode: Jason, MalyPlus\n& DEMOLITIONDON96\n\nMusic: FR3SHMoure\n\nVoice Actor: BonoanAnything", -21, -43
 	]
 }';
     var regret:String = '{
@@ -53,26 +53,26 @@ enum abstract CreditsData(String) from String to String {
     var dontCross1:String = '{
 	"settings":
 	[
-		"Art: Domingo & Moe\n\nChart: Dreupy\n\nCode: DEMOLITIONDON96\n\nMusic: PualTheUnTruest\n\nVoice Actor: Molkey.xml", -55, 20
+		"Art: Domingo & Moe\n\nChart: Dreupy\n\nCode: DEMOLITIONDON96\n\nMusic: PualTheUnTruest\n", -55, 20
 	]
 }';
     var dontCross2:String = '{
 	"settings":
 	[
-		"Art: Domingo & Moe\n\nChart: Purg\n\nCode: DEMOLITIONDON96\n\nMusic: PualTheUnTruest\n\nVoice Actor: Molkey.xml", -55, 20
+		"Art: Domingo & Moe\n\nChart: Purg\n\nCode: DEMOLITIONDON96\n\nMusic: PualTheUnTruest\n", -55, 20
 	]
 }';
     var dontCross3:String = '{
 	"settings":
 	[
-		"Art: Domingo & Moe\n\nChart: DEMOLITIONDON96\n\nCode: DEMOLITIONDON96\n\nMusic: PualTheUnTruest\n\nVoice Actor: Molkey.xml", -55, 20
+		"Art: Domingo & Moe\n\nChart: DEMOLITIONDON96\n\nCode: DEMOLITIONDON96\n\nMusic: PualTheUnTruest\n", -55, 20
 	]
 }';
 	// In Case You'll add the dealthly chart
 	var dontCross4:String = '{
 		"settings":
 		[
-			"Art: Domingo & Moe\n\nChart: MalyPlus\n\nCode: DEMOLITIONDON96\n\nMusic: PualTheUnTruest\n\nVoice Actor: Molkey.xml", -55, 20
+			"Art: Domingo & Moe\n\nChart: MalyPlus\n\nCode: DEMOLITIONDON96\n\nMusic: PualTheUnTruest\n", -55, 20
 		]
 	}';
     var warDilemma:String = '{
