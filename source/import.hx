@@ -1,4 +1,4 @@
-#if !macro
+#if (!macro)
 /**
  * ## This file acts as a global import of all the classes you want to utilize on everything in the code!
  * 

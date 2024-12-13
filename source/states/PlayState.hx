@@ -1,5 +1,6 @@
 package states;
 
+import flixel.effects.FlxFlicker;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.graphics.atlas.FlxAtlas;
 import flixel.graphics.frames.FlxAtlasFrames;
@@ -525,6 +526,9 @@ class PlayState extends MusicBeatState
 	//MERCY
 	var pissOfGlory:FlxSprite;
 	var greaterPiss:FlxSprite;
+
+	var retardedButPissBehind:FlxSprite;
+	var sameAsAdobe:FlxSprite;
 
 	//DELUTRANCE SHADER LMFAO
 	var totallyAwsomeShader:FlxRuntimeShader;
@@ -1414,6 +1418,7 @@ class PlayState extends MusicBeatState
 						pissOfGlory = new FlxSprite(-470, -280);
 						pissOfGlory.loadGraphic(Paths.image(pathway + 'newWaltBG'));
 						pissOfGlory.scale.set(1.7, 1.7);
+						
 					}else{
 						pissOfGlory = new FlxSprite(-450, -300);
 						pissOfGlory.loadGraphic(Paths.image(pathway + 'walt-bg'));
@@ -1423,13 +1428,29 @@ class PlayState extends MusicBeatState
 					pissOfGlory.antialiasing = true;
 					pissOfGlory.scrollFactor.set(1, 1);
 					pissOfGlory.active = false;
-					add(pissOfGlory);
+
+					retardedButPissBehind = new FlxSprite().loadGraphicFromSprite(pissOfGlory);
+					add(retardedButPissBehind);
+
+					if (SONG.song == 'Mercy')
+					{
+						retardedButPissBehind.scale.set(1.7, 1.7);
+						retardedButPissBehind.updateHitbox();
+						retardedButPissBehind.setPosition(pissOfGlory.x, pissOfGlory.y);
+						retardedButPissBehind.alpha = 0.65;
+					}
 	
 					greaterPiss = new FlxSprite(-60, -70);
 					greaterPiss.loadGraphic(Paths.image(pathway + 'inkWaltBG'));
 					greaterPiss.scale.set(1.7, 1.7);
-					greaterPiss.alpha = 0;
-					add(greaterPiss);
+					greaterPiss.visible = false;
+
+					sameAsAdobe = new FlxSprite().loadGraphicFromSprite(greaterPiss);
+					sameAsAdobe.alpha = .65;
+					sameAsAdobe.visible = false;
+					sameAsAdobe.setPosition(greaterPiss.x, greaterPiss.y);
+					sameAsAdobe.scale.set(1.7, 1.7);
+					add(sameAsAdobe);
 	
 					if(!lowQuality)
 						{
@@ -1622,6 +1643,13 @@ class PlayState extends MusicBeatState
 
 		add(dadGroup);
 		add(boyfriendGroup);
+
+		// more shitty layering lol
+		if (curStage == 'waltRoom')
+		{
+			add(pissOfGlory);
+			add(greaterPiss);
+		}
 
 		switch(curStage)
 		{
@@ -4786,6 +4814,11 @@ class PlayState extends MusicBeatState
 			}
 		}
 
+		if (curStage == 'waltRoom') {
+			pissOfGlory.alpha = FlxMath.lerp(pissOfGlory.alpha, FlxG.random.float(0.35, .75), .35);
+			greaterPiss.alpha = FlxMath.lerp(greaterPiss.alpha, FlxG.random.float(0.35, .75), .35);
+		}
+
 		detectSpace(cpuControlled);
 
 		if (curStage == "waltRoom")
@@ -4795,27 +4828,27 @@ class PlayState extends MusicBeatState
 				spaceBarCounter.text = 'Health Boosts Left: ' + limitThing;
 				spaceBarCounter.alpha = 1;
 			
-						/*
-						 * This set monitors the brightness of the screen based on the percentage of your health
-						 * The original code was unoptimized asf, you can go see for yourself through the commit
-						 * history, thx @Wither362 for the more simplified code!
-						 *
-						 * -DEMOLITIONDON96
-						 */
-			
-						var healths:Array<Float> = [for (i in 1...21) i / 10]; // i dont really remember how were this done...
-						var alphas:Array<Float> = [
-							0.95, 0.90, 0.85, 0.80, 0.75, 0.70, 0.65, 0.60, 0.55, 0.50, 0.45, 0.40, 0.35, 0.30, 0.25, 0.20, 0.15, 0.10, 0.05, 0.0
-						];
-						var lastOne:Bool = true;
-						for (i in 0...healths.length)
-						{
-							if (lastOne)
-							{
-								lastOne = tweenWaltScreen(healths[i], alphas[i]);
-							}
-						}
+				/*
+				* This set monitors the brightness of the screen based on the percentage of your health
+				* The original code was unoptimized asf, you can go see for yourself through the commit
+				* history, thx @Wither362 for the more simplified code!
+				*
+				* -DEMOLITIONDON96
+				*/
+	
+				var healths:Array<Float> = [for (i in 1...21) i / 10]; // i dont really remember how were this done...
+				var alphas:Array<Float> = [
+					0.95, 0.90, 0.85, 0.80, 0.75, 0.70, 0.65, 0.60, 0.55, 0.50, 0.45, 0.40, 0.35, 0.30, 0.25, 0.20, 0.15, 0.10, 0.05, 0.0
+				];
+				var lastOne:Bool = true;
+				for (i in 0...healths.length)
+				{
+					if (lastOne)
+					{
+						lastOne = tweenWaltScreen(healths[i], alphas[i]);
 					}
+				}
+			}
 		}
 		
 		var wn_r:Float = 70;
@@ -10561,18 +10594,25 @@ class PlayState extends MusicBeatState
 					// Very Spooky Phase 2 Walt (real)
 					case 256:
 						FlxTween.tween(camHUD, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
-						FlxTween.tween(camNotes, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
+						//FlxTween.tween(camNotes, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
+						camNotes.fade();
+						FlxFlicker.flicker(retardedButPissBehind, 1.5, .07, false, false, s -> {
+							retardedButPissBehind.alpha = 0;
+							pissOfGlory.visible = false;
+						});
 
 					case 264:
 						defaultCamZoom = 0.75;
-						pissOfGlory.alpha = 0;
 						camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.5, ease: FlxEase.sineOut, timer: 0.2, colors: [247, 230, 166]});
+						camNotes.fade(FlxColor.BLACK, .25, true);
 
 					case 275:
-						greaterPiss.alpha = 1;
-						pissOfGlory.alpha = 1;
+						greaterPiss.visible = true;
+						retardedButPissBehind.alpha = 1;
+						sameAsAdobe.visible = true;
+
 						camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.5, ease: FlxEase.sineOut, timer: 0.2, colors: [247, 230, 166]});
-						FlxTween.tween(greaterPiss, {alpha: 0}, 0.25, {ease: FlxEase.sineOut});
+						FlxTween.tween(retardedButPissBehind, {alpha: 0}, 0.25, {ease: FlxEase.sineOut});
 						FlxTween.tween(camHUD, {alpha: 1}, 0.31, {ease: FlxEase.sineInOut});
 						FlxTween.tween(camNotes, {alpha: 1}, 0.31, {ease: FlxEase.sineInOut});
 
@@ -10585,7 +10625,7 @@ class PlayState extends MusicBeatState
 					// Final Stretch
 					case 498:
 						camGame.alpha = 0;
-						camOther.flash(FlxColor.WHITE, 3);
+						camOther.flash(FlxColor.WHITE, 1);
 				}
 
 				if (ClientPrefs.mechanics)

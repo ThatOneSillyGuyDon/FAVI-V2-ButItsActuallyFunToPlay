@@ -119,6 +119,10 @@ class Main extends Sprite
 				FlxG.game.__cacheBitmapData = null;
 		}
 	   });
+
+	   FlxG.signals.preStateCreate.add(shit -> {
+			FlxSprite.defaultAntialiasing = ClientPrefs.globalAntialiasing;
+	   });
 	}
 
 	static function resetSpriteCache(sprite:Sprite):Void {
