@@ -243,11 +243,12 @@ class MainMenu extends MusicBeatState
 		// uh
 		persistentUpdate = persistentDraw = true;
 
-		eyes = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/NEWmenu/HahaSadBoi'));
+		// WHY IS THIS USED
+		/*eyes = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/NEWmenu/HahaSadBoi'));
 		eyes.scrollFactor.set(0, 0);
 		eyes.screenCenter();
 		eyes.updateHitbox();
-		eyes.antialiasing = true;
+		eyes.antialiasing = true;*/
 
 		floor = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/menu/floor'));
 		floor.scrollFactor.set(0, 0);

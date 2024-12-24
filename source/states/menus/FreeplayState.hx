@@ -43,8 +43,8 @@ class FreeplayState extends MusicBeatState
 
 	private var iconArray:Array<HealthIcon> = [];
 
-	private var bg:Null<FlxSprite>;
-	private var delutranceBg:Null<FlxSprite>;
+	private var bg:FlxSprite;
+	private var delutranceBg:FlxSprite;
 
 	var bgslider:FlxSprite;
 	var musicPlayer:FlxSprite;
@@ -276,12 +276,12 @@ class FreeplayState extends MusicBeatState
 			bg.loadGraphic(Paths.image(path + 'fp-bg'));
 		add(bg);
 
-		delutranceBg = new FlxSprite();
+		/*delutranceBg = new FlxSprite();
 		delutranceBg.frames = Paths.getSparrowAtlas('favi/stages/trance/background');
 		delutranceBg.animation.addByPrefix("lmao", "background lmao", 24, true);
 		delutranceBg.scale.set(5, 5);
 		delutranceBg.animation.play("lmao");
-		delutranceBg.antialiasing = ClientPrefs.globalAntialiasing;
+		delutranceBg.antialiasing = ClientPrefs.globalAntialiasing;*/
 
 		if (freeplayMenuList != 2)
 		{
@@ -1129,7 +1129,7 @@ class FreeplayState extends MusicBeatState
 									]);
 							}
 							// pretty sure you know why
-							remove(delutranceBg);
+							//remove(delutranceBg);
 							add(bg);
 	
 						case 'twisted-grins' | 'resentment' | 'mortiferum-risus':
@@ -1162,7 +1162,7 @@ class FreeplayState extends MusicBeatState
 								FlxG.camera.shake(0.01, 0.001);
 							}
 							// fixing a bug of delulu bg not disappearing, and no, im not gonna use alpha
-							remove(delutranceBg);
+							//remove(delutranceBg);
 							add(bg);
 						
 						case 'devilish-deal' | 'delusional':
@@ -1173,12 +1173,12 @@ class FreeplayState extends MusicBeatState
 						case 'delutrance': 
 							FlxG.camera.setFilters([ new ShaderFilter(pixelShader)]);
 							remove(bg);
-							add(delutranceBg);
+							///add(delutranceBg);
 	
 						default:
 							FlxG.camera.setFilters([]); // fixed it yay
 							FlxG.camera.shake(0.01, 0.001);
-							remove(delutranceBg);
+							//remove(delutranceBg);
 							add(bg);
 					}
 				}
