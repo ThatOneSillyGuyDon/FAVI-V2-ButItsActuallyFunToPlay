@@ -78,11 +78,6 @@ import backend.song.Song.SwagSong;
 import gameObjects.transitions.CustomFadeTransition;
 import gameObjects.ui.notes.Note.EventNote;
 
-// shitty mod support stuff I plan on removing soon but for now is needed for the game to work
-import backend.FunkinLua.ModchartSprite;
-import backend.FunkinLua.ModchartText;
-import backend.FunkinLua.DebugLuaText;
-
 // import majority of classes the game uses from flixel almost everywhere
 import flixel.*;
 import flixel.ui.*;
