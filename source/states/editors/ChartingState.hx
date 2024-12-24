@@ -1620,9 +1620,9 @@ class ChartingState extends MusicBeatState
 		}
 
 		if(!blockInput) {
-			FlxG.sound.muteKeys = TitleState.muteKeys;
-			FlxG.sound.volumeDownKeys = TitleState.volumeDownKeys;
-			FlxG.sound.volumeUpKeys = TitleState.volumeUpKeys;
+			FlxG.sound.muteKeys = Init.muteKeys;
+			FlxG.sound.volumeDownKeys = Init.volumeDownKeys;
+			FlxG.sound.volumeUpKeys = Init.volumeUpKeys;
 			for (dropDownMenu in blockPressWhileScrolling) {
 				if(dropDownMenu.dropPanel.visible) {
 					blockInput = true;

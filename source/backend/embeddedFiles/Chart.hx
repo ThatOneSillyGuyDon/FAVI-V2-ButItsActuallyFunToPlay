@@ -25785,10 +25785,8 @@ enum abstract Chart(String) from String to String {
 		"stage": "ddStage",
 		"arrowSkin": "",
 		"needsVoices": true,
-		"voiceSfx1": "Player",
 		"speed": 2.4,
 		"bpm": 90,
-		"voiceSfx2": "Opponent"
 	}
 }';
 

@@ -31,10 +31,6 @@ import sys.io.File;
 
 class TitleState extends MusicBeatState
 {
-	public static var muteKeys:Array<FlxKey> = [FlxKey.ZERO];
-	public static var volumeDownKeys:Array<FlxKey> = [FlxKey.NUMPADMINUS, FlxKey.MINUS];
-	public static var volumeUpKeys:Array<FlxKey> = [FlxKey.NUMPADPLUS, FlxKey.PLUS];
-
 	public static var initialized:Bool = false;
 	public var camZooming:Bool = false;
 
@@ -181,31 +177,6 @@ class TitleState extends MusicBeatState
 	{	
 		Paths.clearStoredMemory();
 		Paths.clearUnusedMemory();
-
-		FlxG.game.focusLostFramerate = 60;
-		FlxG.sound.muteKeys = muteKeys;
-		FlxG.sound.volumeDownKeys = volumeDownKeys;
-		FlxG.sound.volumeUpKeys = volumeUpKeys;
-		FlxG.keys.preventDefaultKeys = [TAB];
-
-		PlayerSettings.init();
-		ClientPrefs.loadPrefs();
-		Highscore.load();
-		GameData.loadShit();
-
-		AppIcon.changeIcon("newIcon");
-		
-		CoolUtil.createCoreFile();
-
-		#if desktop
-		if (!DiscordClient.isInitialized)
-		{
-			DiscordClient.initialize();
-			Application.current.onExit.add (function (exitCode) {
-				DiscordClient.shutdown();
-			});
-		}
-		#end
 		
 		#if DISCORD_RPC
 		DiscordClient.changePresence("Title Screen", 'Waiting to start...', 'icon', 'clock'); // dw, I'll make sure to update the RPC shit, if anything, I'm gonna end up making a seperate RPC for this version of the engine
@@ -230,18 +201,7 @@ class TitleState extends MusicBeatState
 
 		curWacky = FlxG.random.getObject(getIntroTextShit());
 
-		#if windows
-		backend.windows.CppAPI.darkMode();
-        #end
-
-		#if Freeplay
-		MusicBeatState.switchState(new FreeplayCategories());
-		#end
-
 		startIntro();
-
-		FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
-		FlxG.mouse.visible = true;
 
 		closedState = false;
 	}
@@ -564,6 +524,7 @@ class TitleState extends MusicBeatState
 			skippedIntro = true;
 	}
 	
+	// todo make this less crap
 	function windowFixesAndEvents()
 		{
 			if(Application.current.window.title.contains("Funkin.avi - Hi, wanna see me glitch?"))

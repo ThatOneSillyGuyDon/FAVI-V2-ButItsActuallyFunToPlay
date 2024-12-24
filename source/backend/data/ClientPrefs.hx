@@ -304,12 +304,12 @@ class ClientPrefs {
 	public static function reloadControls() {
 		PlayerSettings.player1.controls.setKeyboardScheme(KeyboardScheme.Solo);
 
-		TitleState.muteKeys = copyKey(keyBinds.get('volume_mute'));
-		TitleState.volumeDownKeys = copyKey(keyBinds.get('volume_down'));
-		TitleState.volumeUpKeys = copyKey(keyBinds.get('volume_up'));
-		FlxG.sound.muteKeys = TitleState.muteKeys;
-		FlxG.sound.volumeDownKeys = TitleState.volumeDownKeys;
-		FlxG.sound.volumeUpKeys = TitleState.volumeUpKeys;
+		Init.muteKeys = copyKey(keyBinds.get('volume_mute'));
+		Init.volumeDownKeys = copyKey(keyBinds.get('volume_down'));
+		Init.volumeUpKeys = copyKey(keyBinds.get('volume_up'));
+		FlxG.sound.muteKeys = Init.muteKeys;
+		FlxG.sound.volumeDownKeys = Init.volumeDownKeys;
+		FlxG.sound.volumeUpKeys = Init.volumeUpKeys;
 	}
 	public static function copyKey(arrayToCopy:Array<FlxKey>):Array<FlxKey> {
 		var copiedArray:Array<FlxKey> = arrayToCopy.copy();

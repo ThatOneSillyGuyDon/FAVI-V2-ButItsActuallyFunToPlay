@@ -95,9 +95,9 @@ class FreeplayState extends MusicBeatState
 	var songText:Alphabet;
 
 	// making this a public static var so the disc just doesn't stop moving at all when going in and out of this menu
-	public static var bpm:Float = 1;
+	public var bpm:Float = 1;
 
-	public static var songInstPlaying:Bool = false;
+	public var songInstPlaying:Bool = false;
 
 	override function create()
 	{

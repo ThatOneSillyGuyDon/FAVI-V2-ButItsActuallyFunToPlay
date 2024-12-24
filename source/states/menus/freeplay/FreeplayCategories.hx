@@ -227,7 +227,6 @@ class FreeplayCategories extends MusicBeatState {
 		}
 		
 		if (controls.BACK) {
-			FreeplayState.songInstPlaying = false;
 			FlxG.sound.play(Paths.sound("cancelMenu"));
 			MusicBeatState.switchState(new MainMenu());
 			FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));

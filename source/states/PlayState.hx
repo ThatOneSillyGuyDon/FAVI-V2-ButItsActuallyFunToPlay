@@ -3898,10 +3898,11 @@ class PlayState extends MusicBeatState
 		// FlxG.log.add(ChartParser.parse());
 		songSpeedType = ClientPrefs.getGameplaySetting('scrolltype','multiplicative');
 
-		if (SONG.voiceSfx1 == null)
+		// retarded
+		/*if (SONG.voiceSfx1 == null)
 			SONG.voiceSfx1 = "Player";
 		if (SONG.voiceSfx2 == null)
-			SONG.voiceSfx2 = 'Opponent';
+			SONG.voiceSfx2 = 'Opponent';*/
 
 		switch(songSpeedType)
 		{
@@ -3919,8 +3920,15 @@ class PlayState extends MusicBeatState
 		if (SONG.needsVoices)
 		{
 			vocals = new FlxSound().loadEmbedded(Paths.voices(SONG.song));
-			bf_vocals = new FlxSound().loadEmbedded(Paths.voicesPlayer(SONG.song, SONG.voiceSfx1, CoolUtil.difficulties[storyDifficulty]));
-			opp_vocals = new FlxSound().loadEmbedded(Paths.voicesOpp(SONG.song, SONG.voiceSfx2, CoolUtil.difficulties[storyDifficulty]));
+
+			if (SONG.voiceSfx1 == null || SONG.voiceSfx2 == null)
+			{
+				bf_vocals = new FlxSound();
+				opp_vocals = new FlxSound();
+			} else {
+				bf_vocals = new FlxSound().loadEmbedded(Paths.voicesPlayer(SONG.song, SONG.voiceSfx1, CoolUtil.difficulties[storyDifficulty]));
+				opp_vocals = new FlxSound().loadEmbedded(Paths.voicesOpp(SONG.song, SONG.voiceSfx2, CoolUtil.difficulties[storyDifficulty]));
+			}
 		}
 		else
 		{

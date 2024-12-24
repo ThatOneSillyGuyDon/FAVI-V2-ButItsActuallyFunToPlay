@@ -579,10 +579,7 @@ class MainMenu extends MusicBeatState
 				}
 			}
 
-			if (theBirthdayCode == 1)
-				FlxG.sound.muteKeys = null;
-			else
-				FlxG.sound.muteKeys = [FlxKey.ZERO, FlxKey.NUMPADZERO];
+			FlxG.sound.muteKeys = theBirthdayCode >= 0 ? null : Init.muteKeys;
 		}
 
 		var changeValue:Int = 0;
