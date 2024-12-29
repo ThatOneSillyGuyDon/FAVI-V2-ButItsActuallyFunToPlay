@@ -184,8 +184,7 @@
 
 	<haxedef name="openfl_dpi_aware" if="openfl_dpi_aware" />
 
-	<!-- Haxe 4.3.0+: Enable pretty syntax errors and stuff. -->
-	<haxedef name="no-traces" /> 
+ 
 
 	<!-- _________________________________ Custom _______________________________ -->
 

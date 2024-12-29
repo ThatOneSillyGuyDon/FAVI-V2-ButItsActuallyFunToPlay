@@ -563,6 +563,7 @@ class PlayState extends MusicBeatState
 
 	override public function create()
 	{
+		FlxSprite.defaultAntialiasing = ClientPrefs.globalAntialiasing;
 		//trace('Playback Rate: ' + playbackRate);
 		Paths.clearStoredMemory();
 		Paths.clearUnusedMemory();
@@ -3530,7 +3531,7 @@ class PlayState extends MusicBeatState
 			return;
 		}
 
-		startTimer = new FlxTimer().start(Conductor.crochet / 1000 / playbackRate, function(tmr:FlxTimer)
+		startTimer = new FlxTimer().start(SONG.song == "Cycled Sins" ? .7 : Conductor.crochet / 1000 / playbackRate, function(tmr:FlxTimer)
 		{
 			if (gf != null && tmr.loopsLeft % Math.round(gfSpeed * gf.danceEveryNumBeats) == 0 && gf.animation.curAnim != null && !gf.animation.curAnim.name.startsWith("sing") && !gf.stunned)
 			{
@@ -3550,7 +3551,7 @@ class PlayState extends MusicBeatState
 			introAssets.set('pixel', ['pixelUI/ready-pixel', 'pixelUI/set-pixel', 'pixelUI/date-pixel']);
 			introAssets.set('cartoon', ['favi/countdown/prepare', 'favi/countdown/ready', 'favi/countdown/set', 'favi/countdown/go']);
 			introAssets.set('malfunction', ['favi/countdown/mal-prepare', 'favi/countdown/mal-ready', 'favi/countdown/mal-set', 'favi/countdown/mal-go']);
-			introAssets.set('sins', ['favi/countdown/relapse-prepare', 'favi/countdown/relapse-ready', 'favi/countdown/relapse-set', 'favi/countdown/relapse-go']);
+			introAssets.set('sins', ['favi/countdown/relapse-set', 'favi/countdown/relapse-ready', 'favi/countdown/relapse-prepare', 'favi/countdown/relapse-go']);
 
 			var introAlts:Array<String> = introAssets.get('default');
 			var antialias:Bool = ClientPrefs.globalAntialiasing;
@@ -7958,16 +7959,16 @@ class PlayState extends MusicBeatState
 							light.visible = true;
 							FlxTween.tween(light, {alpha: light.alpha + 0.2}, 0.64, {ease: FlxEase.expoOut});
 						}
+					/*
+					please burn in hell
 					case 253 | 263 | 273 | 284 | 295 | 305 | 316 | 326 | 337 | 347 | 358 | 368 | 379 | 389 | 400:
-						/*
-						please burn in hell
 						camGame.zoom += 0.1;
 						camHUD.zoom += 0.07;
-						camNotes.zoom += 0.1;*/
+						camNotes.zoom += 0.1;
 
 						camGame.zoom += 0.03;
 						camHUD.zoom += 0.015;
-						camNotes.zoom += 0.03;
+						camNotes.zoom += 0.03;*/
 					case 421:
 						defaultCamZoom = 1.2;
 					case 442:
@@ -8089,17 +8090,13 @@ class PlayState extends MusicBeatState
 						defaultCamZoom = 0.95;
 						camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.4, ease: FlxEase.circOut, timer: 1.35});
 					case 2187:
-						isCameraOnForcedPos = true;
-						camFollow.x = 450;
-						camFollow.y = 250;
-						defaultCamZoom = 0.5;
+						defaultCamZoom = 0.65;
 					case 2524:
 						AppIcon.changeIcon("blessIcon");
 						CppAPI.lightMode();
 						defaultCamZoom = 0.95;
 						camFollow.x = 0;
 						camFollow.y = 0;
-						isCameraOnForcedPos = false;
 						for (blessableObjects in [dad, boyfriend, vault, chains, thingy, chains, chains2, chains3, iconP1, iconP2, healthBar, healthBarBG, fancyBarOverlay])
 							blessableObjects.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0);
 						for (textShit in [songTxt, watermarkTxt, scoreTxt])
@@ -8141,7 +8138,7 @@ class PlayState extends MusicBeatState
 						if (ClientPrefs.shaders)
 						{
 							// We make ur Laptop fry till the end of the song :fire: - MalyPlus
-							camGame.setFilters([new ShaderFilter(shader), new ShaderFilter(othershader)]);
+							camGame.setFilters([/*new ShaderFilter(shader), */new ShaderFilter(othershader)]);
 						}
 						defaultCamZoom = 0.95;
 				}
@@ -10085,18 +10082,19 @@ class PlayState extends MusicBeatState
 						moveCamera(false);
 					case 192:
 						defaultCamZoom = .78;
-						boyfriendCameraOffset[0] -= 100;
+						//boyfriendCameraOffset[0] -= 100;
 						opponentCameraOffset[0] -= 70;
 						isCameraOnForcedPos = true;
 						FlxTween.tween(FlxG.camera, {zoom: 1.1}, 3.5, {startDelay: .9, ease: FlxEase.sineInOut, onComplete: a -> defaultCamZoom = 1.1});
 						FlxTween.tween(camFollow, {x: camFollow.x - 750}, 3.5, {startDelay: .9, ease: FlxEase.sineInOut, onComplete: s -> isCameraOnForcedPos = false});
 					case 256:
-						boyfriendCameraOffset[0] += 100;
+						boyfriendCameraOffset[0] -= 100;
 						opponentCameraOffset[0] += 70;
 						moveCamera(true);
 						// only time this actually works fine dear god
 						camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.6, ease: FlxEase.sineOut, timer: 1});
 						defaultCamZoom = .78;
+					case 383: opponentCameraOffset[0] += 70;
 					case 384:
 						triggerEventNote('Change Scroll Speed', '0.7', '2');
 						cameraSpeed = 1;
@@ -10385,6 +10383,8 @@ class PlayState extends MusicBeatState
 						case 366:
 							FlxTween.tween(camNotes, {alpha: 0}, 1);
 							FlxTween.tween(camHUD, {alpha: 0}, 1);
+							FlxTween.tween(camFollow, {x: camFollow.x - 300, y: camFollow.y + 150}, 30, {startDelay: 3, ease: FlxEase.sineInOut, onStart: fuck -> trace(camFollow.x + ',' + camFollow.y)});
+							FlxTween.tween(camGame, {zoom: .9}, 50, {startDelay: 15, ease: FlxEase.sineInOut});
 
 						case 381: manageLyrics('relapsegun-pixel', 'You REALLY think this is...', 'calibri-regular.ttf', 30, 1.1, 'sineInOut');
 						case 384: manageLyrics('relapsegun-pixel', '...some kind of...', 'calibri-regular.ttf', 30, 1.4, 'sineInOut');
@@ -10399,6 +10399,12 @@ class PlayState extends MusicBeatState
 
 						case 429:
 							camGame.visible = false;
+							FlxTween.cancelTweensOf(camFollow);
+							FlxTween.cancelTweensOf(camGame);
+
+							camGame.zoom = defaultCamZoom = .46;
+							camFollow.x = camFollowPos.x = 200;
+							camFollow.y = camFollowPos.y = 230;
 						case 432:
 							camGame.visible = true;
 							FlxTween.tween(camNotes, {alpha: 1}, 0.5, {ease: FlxEase.sineOut});
@@ -10661,10 +10667,14 @@ class PlayState extends MusicBeatState
 		// ok ok i need a plan b
 		// retarded code AND untested because monthly motel shit bla bla bla
 		// just know that we are NOT sonic legacy :sob:
-		if (boyfriend.curCharacter != 'etherealMickey' || boyfriend.curCharacter != 'everett-relapse') iconP1.scale.set(1.2, 1.2);
 
-		if (dad.curCharacter != 'white-noise-new' || dad.curCharacter != 'etherealGoofy' || dad.curCharacter != 'walt-new'
-			|| dad.curCharacter != 'walt-true' || dad.curCharacter != 'relapsedNEW') iconP2.scale.set(1.2, 1.2);
+		if (introSoundsSuffix != "-sins")
+		{
+			if (boyfriend.curCharacter != 'etherealMickey' || boyfriend.curCharacter != 'everett-relapse') iconP1.scale.set(1.2, 1.2);
+
+			if (dad.curCharacter != 'white-noise-new' || dad.curCharacter != 'etherealGoofy' || dad.curCharacter != 'walt-new'
+				|| dad.curCharacter != 'walt-true' || dad.curCharacter != 'relapsedNEW') iconP2.scale.set(1.2, 1.2);
+		}
 
 		lunacyIcon.scale.set(1.2, 1.2);
 		lunacyIcon.updateHitbox();
