@@ -57,7 +57,7 @@ class Init extends FlxState
 		#end
 
         FlxG.mouse.visible = true;
-        FlxG.mouse.useSystemCursor = true;
+        FlxG.mouse.useSystemCursor = false;
 
         #if windows
         backend.windows.CppAPI.darkMode();

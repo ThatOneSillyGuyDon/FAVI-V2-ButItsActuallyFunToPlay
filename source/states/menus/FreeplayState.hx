@@ -99,6 +99,9 @@ class FreeplayState extends MusicBeatState
 
 	public var songInstPlaying:Bool = false;
 
+	// this is only so it can fade because this fucking shit is 6 seconds long
+	private var confirmSound:FlxSound;
+
 	override function create()
 	{
 		Paths.clearStoredMemory();
@@ -361,6 +364,9 @@ class FreeplayState extends MusicBeatState
 
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);
+
+		confirmSound = new FlxSound();
+		if (freeplayMenuList != 2) confirmSound.loadEmbedded(Paths.sound('funkinAVI/menu/confirmEpisode'), false, true);
 
 		for (i in 0...songs.length)
 		{
@@ -801,7 +807,6 @@ class FreeplayState extends MusicBeatState
 			PlayState.isStoryMode = false;
 			PlayState.storyDifficulty = curDifficulty;
 
-			FlxG.sound.play(Paths.sound('funkinAVI/menu/confirmEpisode'));
 			for (icon in iconArray) if (freeplayMenuList != 2) icon.scale.set(2.35, 2.35);
 
 			trace('CURRENT WEEK: ' + WeekData.getWeekFileName());
@@ -811,6 +816,10 @@ class FreeplayState extends MusicBeatState
 
 			if (freeplayMenuList != 2)
 			{				
+				for (shitToCancelLolol in [bg, disc, arrows, musicPlayer, musicNotes, bgslider, songText2, freeplayCtrlTxt, diffText])
+					FlxTween.cancelTweensOf(shitToCancelLolol);
+				if (spectrum != null) FlxTween.cancelTweensOf(spectrum);
+
 				FlxTween.tween(bg, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
 				if (spectrum != null) FlxTween.tween(spectrum, {x: spectrum.x - 700}, 1, {ease: FlxEase.sineOut});
 				FlxTween.tween(disc, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
@@ -825,12 +834,27 @@ class FreeplayState extends MusicBeatState
 				FlxTween.tween(diffText, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
 				FlxTween.tween(songText2, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
 			}
-			FlxG.sound.music.fadeOut();
-
-			new flixel.util.FlxTimer().start(freeplayMenuList == 2 ? 0.0001 : 1.5, function(e)
+			
+			if (freeplayMenuList == 2)
 			{
+				FlxG.sound.music.stop();
 				LoadingState.loadAndSwitchState(new PlayState());
-			});
+			} else {
+				FlxG.sound.music.fadeOut(1, 0, tw -> FlxG.sound.music.stop());
+				FlxG.camera.shake(.005, 5);
+				FlxG.camera.zoom += .25;
+				FlxTween.tween(FlxG.camera, {zoom: 1}, .35, {ease: FlxEase.cubeOut});
+				camOther.fade(FlxColor.BLACK, 2);
+
+				confirmSound.play(false, 0, 4);
+				confirmSound.fadeOut(4);
+				confirmSound.onComplete = () -> LoadingState.loadAndSwitchState(new PlayState());
+			}
+
+			// BRO THIS SHIT IS SO FUCKING LONG LIKE 6 SECONDS
+			/*FlxG.sound.play(Paths.sound('funkinAVI/menu/confirmEpisode'), 1, false, null, true, () -> {
+				LoadingState.loadAndSwitchState(new PlayState());
+			});*/
 
 			FlxG.sound.music.volume = 0;
 		}

@@ -1265,29 +1265,30 @@ class PlayState extends MusicBeatState
 					fuckingsquares.antialiasing = false;
 					fuckingsquares.scrollFactor.set(1, 1);
 					fuckingsquares.active = false;
+					fuckingsquares.antialiasing = false;
 					add(fuckingsquares);
 	
 					var greyParticles:FlxEmitter = new FlxEmitter(-2080.5, 650.4);
-						greyParticles.launchMode = SQUARE;
-						greyParticles.velocity.set(-50, -200, 50, -600, -90, 0, 90, -600);
-						greyParticles.scale.set(4, 4, 4, 4, 0, 0, 0, 0);
-						greyParticles.drag.set(0, 0, 0, 0, 5, 5, 10, 10);
-						greyParticles.width = 4787.45;
-						greyParticles.alpha.set(1, 1);
-						greyParticles.lifespan.set(1.9, 4.9);
-						greyParticles.loadParticles(Paths.image(pathway + 'greyParticle'), 500, 16, true);
-						greyParticles.start(false, FlxG.random.float(.0521, .1060), 1000000);
-	
-						var blackParticles:FlxEmitter = new FlxEmitter(-2080.5, 912.4);
-						blackParticles.launchMode = SQUARE;
-						blackParticles.velocity.set(-70, -220, 70, -620, -110, 20, 110, -620);
-						blackParticles.scale.set(6, 6, 6, 6, 2, 2, 2, 2);
-						blackParticles.drag.set(2, 2, 2, 2, 7, 7, 12, 12);
-						blackParticles.width = 4787.45;
-						blackParticles.alpha.set(1, 1);
-						blackParticles.lifespan.set(1.9, 4.9);
-						blackParticles.loadParticles(Paths.image(pathway + 'particleBlack'), 500, 16, true);
-						blackParticles.start(false, FlxG.random.float(.0821, .1460), 1000000);
+					greyParticles.launchMode = SQUARE;
+					greyParticles.velocity.set(-50, -200, 50, -600, -90, 0, 90, -600);
+					greyParticles.scale.set(4, 4, 4, 4, 0, 0, 0, 0);
+					greyParticles.drag.set(0, 0, 0, 0, 5, 5, 10, 10);
+					greyParticles.width = 4787.45;
+					greyParticles.alpha.set(1, 1);
+					greyParticles.lifespan.set(1.9, 4.9);
+					greyParticles.loadParticles(Paths.image(pathway + 'greyParticle'), 500, 16, true);
+					greyParticles.start(false, FlxG.random.float(.0521, .1060), 1000000);
+
+					var blackParticles:FlxEmitter = new FlxEmitter(-2080.5, 912.4);
+					blackParticles.launchMode = SQUARE;
+					blackParticles.velocity.set(-70, -220, 70, -620, -110, 20, 110, -620);
+					blackParticles.scale.set(6, 6, 6, 6, 2, 2, 2, 2);
+					blackParticles.drag.set(2, 2, 2, 2, 7, 7, 12, 12);
+					blackParticles.width = 4787.45;
+					blackParticles.alpha.set(1, 1);
+					blackParticles.lifespan.set(1.9, 4.9);
+					blackParticles.loadParticles(Paths.image(pathway + 'particleBlack'), 500, 16, true);
+					blackParticles.start(false, FlxG.random.float(.0821, .1460), 1000000);
 					
 					mickeyEmitter = new FlxEmitter(-2099.8, 1620.4);
 					for (i in 0 ... 100)
@@ -1314,6 +1315,7 @@ class PlayState extends MusicBeatState
 					whiteBG.scale.set(FlxG.width, FlxG.height);
 					whiteBG.alpha = 0.001;
 					whiteBG.active = false;
+					whiteBG.antialiasing = false;
 					add(whiteBG);
 					
 					if (SONG.song != 'Malfunction Legacy')
@@ -1688,8 +1690,8 @@ class PlayState extends MusicBeatState
 		(SONG.song == "Dont Cross" ? "Don't Cross!" : SONG.song) + 
 		" (Composed by: " + FreeplayState.getArtistName() + 
 		") - Chart by: " + Song.getCharterCredits() + 
-		" [" + FreeplayState.getDiffRank() + "]" + 
-		(checkMechanics ? ' - Mechanics: ' + (ClientPrefs.mechanics ? "Enabled" : "Disabled") : ""); // shitty long ass name that credits literally every fucking thing
+		" [" + FreeplayState.getDiffRank() + "]" /*+ 
+		/*(checkMechanics ? ' - Mechanics: ' + (ClientPrefs.mechanics ? "Enabled" : "Disabled") : "")*/; // shitty long ass name that credits literally every fucking thing
 
 		var gfVersion:String = SONG.gfVersion;
 		if(gfVersion == null || gfVersion.length < 1)
@@ -3514,7 +3516,7 @@ class PlayState extends MusicBeatState
 		}
 
 		startedCountdown = true;
-		Conductor.songPosition = -Conductor.crochet * 5;
+		Conductor.songPosition = SONG.song == "Cycled Sins" ? ((-.8 * 5) * 1000) : -Conductor.crochet * 5;
 
 		var swagCounter:Int = 0;
 
@@ -3531,7 +3533,7 @@ class PlayState extends MusicBeatState
 			return;
 		}
 
-		startTimer = new FlxTimer().start(SONG.song == "Cycled Sins" ? .7 : Conductor.crochet / 1000 / playbackRate, function(tmr:FlxTimer)
+		startTimer = new FlxTimer().start(SONG.song == "Cycled Sins" ? .8 : Conductor.crochet / 1000 / playbackRate, function(tmr:FlxTimer)
 		{
 			if (gf != null && tmr.loopsLeft % Math.round(gfSpeed * gf.danceEveryNumBeats) == 0 && gf.animation.curAnim != null && !gf.animation.curAnim.name.startsWith("sing") && !gf.stunned)
 			{

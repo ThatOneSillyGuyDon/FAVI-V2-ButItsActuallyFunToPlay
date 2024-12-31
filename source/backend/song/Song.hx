@@ -95,6 +95,11 @@ class Song
 
 	public static function loadFromJson(jsonInput:String, ?folder:String, ?crossRandomizer:Int):SwagSong
 	{
+		/*chartFile = (jsonInput == "events" ? ChartMap.events : ChartMap.charts).get(folder);
+		
+		if (folder == "dont-cross" && !ClientPrefs.mechanics && jsonInput != "events")
+			chartFile = ChartMap.charts.get("don't cross 4");*/
+		
 		switch(folder)
 		{
 			case "isolated": chartFile = Chart.isolated;

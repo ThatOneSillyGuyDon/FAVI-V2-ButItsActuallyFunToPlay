@@ -97,7 +97,7 @@ enum abstract CreditsData(String) from String to String {
     var cycledSins:String = '{
 	"settings":
 	[
-		"Art: JDrive\n\nChart: Dreupy\n\nCode: DEMOLITIONDON96\n\nMusic: JBlitz\n\nVoice Actor: AustinWProductions", -38, -24
+		"Art: JDrive\n\nChart: Dreupy\n\nCode: DEMOLITIONDON96 & Jason\n\nMusic: JBlitz\n\nVoice Actor: AustinWProductions", -38, -24
 	]
 }';
     var malfunction:String = '{

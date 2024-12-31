@@ -432,7 +432,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 	var songName:FlxText;
 	var countDown:FlxText;
 	var hasResumed:Bool = false;
-	var hasFinishedAnim:Bool = false;
+	var hasFinishedAnim:Bool = true;
 	var satanTxt:FlxText;
 	var satanQuotes:Array<String> = [
 		"You can't leave now...",
@@ -810,6 +810,10 @@ class FAVIPauseSubState extends MusicBeatSubstate
 			songName.alpha = 0;
 			levelInfo.alpha = 0;
 			satanTxt.text = "";
+
+			for (allTweenSlop in [bg, bgOverlay, daSelector, tiles, menuHUD, albumHolder, levelInfo, songName, disc, songArt, songArtOutline])
+				FlxTween.cancelTweensOf(allTweenSlop);
+
 			if (PlayState.pauseCountEnabled)
 			{
 				FlxG.sound.play(Paths.sound('clickText'), 0.6);
