@@ -626,7 +626,7 @@ class MainMenu extends MusicBeatState
 			FlxG.sound.music.volume = 0;
 			selectedSomethin = true;
 			lime.app.Application.current.window.title = "Funkin.avi - Nice try, cheater lmao";
-			DiscordClient.changePresence('HAHAHAHA', 'THIS USER TRIED TO CHEAT!', 'icon', 'mouse');
+			DiscordClient.changePresence('HAHAHAHA', 'THIS USER TRIED TO CHEAT', 'icon', 'mouse');
 			var alien:VideoSprite = new VideoSprite(false);
 			alien.scale.set(2, 2);
 			alien.load(Paths.video('friendlyFellow'));
@@ -711,7 +711,7 @@ class MainMenu extends MusicBeatState
 			else
 			{
 				FlxG.sound.play(Paths.sound('cancelMenu'));
-				theBox.sendMessage('You haven\'t unlocked this yet!', 'Play through his legacy first to open the other pages to this story.');
+				theBox.sendMessage('You haven\'t unlocked this yet!', 'Play through his legacy first to open the other pages to this story...');
 			}
 		}
 
@@ -899,7 +899,7 @@ class MainMenu extends MusicBeatState
 		if (arrowTween != null)
 			arrowTween.cancel();
 
-		if (arrow != null)
+		if (arrow != null && !selectedSomethin)
 		{
 			switch (curSelected)
 			{
