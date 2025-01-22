@@ -4,25 +4,25 @@ enum abstract CreditsData(String) from String to String {
     var devilishDeal:String = '{
 	"settings":
 	[
-		"Art: Domingo, Moe & Molkey.xml\n\nChart: Purg\n\nCode: DEMOLITIONDON96 & Jason\n\nMusic: obscurity.", -40, -5
+		"Art: Domingo & Moe\n\nChart: Purg\n\nCode: DEMOLITIONDON96 & Jason\n\nMusic: obscurity.", -40, -5
 	]
 }';
     var isolated:String = '{
 	"settings":
 	[
-		"Art: Domingo & Molkey.xml\n\nChart: Purg\n\nCode: Jason & DEMOLITIONDON96\n\nMusic: obscurity.", 0, -5
+		"Art: Domingo\n\nChart: Purg\n\nCode: Jason & DEMOLITIONDON96\n\nMusic: obscurity.", 0, -5
 	]
 }';
     var lunacy:String = '{
 	"settings":
 	[
-		"Art: Domingo, Molkey.xml\n& Moe\n\nChart: Purg\n\nCode: Jason & DEMOLITIONDON96\n\nMusic: obscurity.", 25, -5
+		"Art: Domingo & Moe\n\nChart: Purg\n\nCode: Jason & DEMOLITIONDON96\n\nMusic: obscurity.", 25, -5
 	]
 }';
     var delusional:String = '{
 	"settings":
 	[
-		"Art: Domingo, Moe, BladzAMC_Emerald,\nMolkey.xml, Teelbe &\nAustinWProductions\n\nChart: Dreupy\n\nCode: Jason, MalyPlus\n& DEMOLITIONDON96\n\nMusic: FR3SHMoure\n\nVoice Actor: BonoanAnything", -21, -43
+		"Art: Domingo, Moe, BladzAMC_Emerald,\nTeelbe &\nAustinWProductions\n\nChart: Dreupy\n\nCode: Jason, MalyPlus\n& DEMOLITIONDON96\n\nMusic: FR3SHMoure\n\nVoice Actor: BonoanAnything", -21, -43
 	]
 }';
     var regret:String = '{

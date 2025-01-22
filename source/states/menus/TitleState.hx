@@ -224,7 +224,7 @@ class TitleState extends MusicBeatState
 			{
 				FlxG.camera.setFilters(
 					[
-						//new openfl.filters.ShaderFilter(defaultShader2)
+						new openfl.filters.ShaderFilter(defaultShader2)
 					]);
 			}
 

@@ -1,0 +1,115 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				170,
+				770
+			],
+			"anim": "laugh",
+			"fps": 12,
+			"name": "idle",
+			"indices": [
+				0,
+				0,
+				0,
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				13,
+				14,
+				15,
+				13,
+				14,
+				15,
+				13,
+				14,
+				15,
+				13,
+				14,
+				15,
+				13,
+				14,
+				15,
+				13,
+				14,
+				15,
+				13,
+				14,
+				15,
+				13,
+				14,
+				15
+			]
+		},
+		{
+			"offsets": [
+				170,
+				770
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "laughButSpammable",
+			"indices": [
+				13,
+				14,
+				15
+			],
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				990,
+				2460
+			],
+			"loop": true,
+			"fps": 10,
+			"anim": "idle",
+			"indices": [],
+			"name": "walt death dead-loop"
+		},
+		{
+			"offsets": [
+				990,
+				2460
+			],
+			"indices": [],
+			"fps": 10,
+			"anim": "death",
+			"loop": false,
+			"name": "walt death dead0"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/walt death",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "walt",
+	"flip_x": false,
+	"healthbar_colors": [
+		255,
+		237,
+		209
+	],
+	"camera_position": [
+		-100,
+		-420
+	],
+	"sing_duration": 6.1,
+	"scale": 0.3
+}

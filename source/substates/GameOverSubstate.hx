@@ -73,11 +73,12 @@ class GameOverSubstate extends MusicBeatSubstate
 		if (PlayState.SONG.song == "Dont Cross")
 			image = "favi/ui/DontCrossGameOver";
 		else
-			image = "favi/ui/deathLmao";
+			image = "favi/ui/episode1Death";
 
 		var deathImage:FlxSprite = new FlxSprite().loadGraphic(Paths.image(image));
 		deathImage.screenCenter();
 		deathImage.scrollFactor.set(0, 0);
+		if (PlayState.SONG.song != "Dont Cross") deathImage.scale.set(0.3, 0.3);
 		add(deathImage);
 
 		if (PlayState.SONG.song == "Dont Cross")
@@ -247,6 +248,7 @@ class GameOverSubstate extends MusicBeatSubstate
 			FlxG.sound.play(Paths.music(endSoundName));
 			new FlxTimer().start(0.7, function(tmr:FlxTimer)
 			{
+				var random:Int = FlxG.random.int(1, 5);
 				FlxG.camera.fade(FlxColor.BLACK, 2, false, function()
 				{
 					var songName:Array<String> = ['Dont Cross', "Dont-Cross", "dont cross", "dont-cross"];
@@ -255,8 +257,8 @@ class GameOverSubstate extends MusicBeatSubstate
 						if (PlayState.SONG.song == i)
 						{
 							var songLowercase:String = "dont-cross";
-							var poop:String = "dont-cross-hard" + '${FlxG.random.int(1, 4)}'; //fuck fuck fuck fuck fuck fuck
-							PlayState.SONG = Song.loadFromJson(poop, songLowercase, FlxG.random.int(1, 4));
+							var poop:String = "dont-cross-hard" + '${random}'; //fuck fuck fuck fuck fuck fuck
+							PlayState.SONG = Song.loadFromJson(poop, songLowercase, random);
 						}
 						
 					MusicBeatState.resetState();

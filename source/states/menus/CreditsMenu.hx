@@ -288,7 +288,7 @@ class CreditsMenu extends MusicBeatState
 		{ // reload reasons
 			switch (creditArray[curSelected][0].toLowerCase())
 			{
-				case 'demolitiondon96':
+				case 'thatonesillyguy // don':
 					creditDescText.fieldWidth = 500;
 					creditDescText.x = FlxG.width * 0.52;
 					creditDescText.y = FlxG.height * 0.5;

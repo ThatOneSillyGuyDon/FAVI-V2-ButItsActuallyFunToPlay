@@ -139,7 +139,7 @@ class Song
 						case 2: chartFile = Chart.dontCross2;
 						case 3: chartFile = Chart.dontCross3;
 						case 4: chartFile = Chart.dontCross4;
-						case 5: chartFile = Chart.dontCross1;
+						case 5: chartFile = Chart.dontCross5;
 					}
 				}
 
@@ -218,7 +218,8 @@ class Song
 				switch (randomizer)
 				{
 					case 1 | 4: charter = "DEMOLITIONDON96";
-					case 2 | 5: charter = "Dreupy";
+					case 2: charter = "Dreupy";
+					case 5: charter = "MalyPlus";
 					case 3: charter = "Purg";
 				}
 			default: charter = "Unknown";

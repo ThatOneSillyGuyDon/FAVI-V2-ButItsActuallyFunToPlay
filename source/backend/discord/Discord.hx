@@ -73,19 +73,11 @@ class DiscordClient
 		isInitialized = true;
 	}
 
-	public static function changePresence(?details:String = 'In the Menus', ?state:Null<String>, ?largeImageKey:String = 'default', ?smallImageKey : String, ?hasStartTimestamp : Bool, ?endTimestamp: Float)
+	public static function changePresence(?details:String = 'Starting Game...', ?state:Null<String>, ?largeImageKey:String = 'default', ?smallImageKey : String, ?hasStartTimestamp : Bool, ?endTimestamp: Float)
 	{
 		var startTimestamp:Float = 0;
 		if (hasStartTimestamp) startTimestamp = Date.now().getTime();
 		if (endTimestamp > 0) endTimestamp = startTimestamp + endTimestamp;
-
-		var button1 = DiscordButton.create();
-        button1.label = "Sigma";
-        //button1.url = "https://google.com";
-
-        var button2 = DiscordButton.create();
-        button2.label = "Discord";
-        button2.url = "https://discord.gg/qTZYpP4hg3";
 
 		presence.details = details;
 		presence.state = state;
@@ -95,10 +87,19 @@ class DiscordClient
 		// Obtained times are in milliseconds so they are divided so Discord can use it
 		presence.startTimestamp = Std.int(startTimestamp / 1000);
 		presence.endTimestamp = Std.int(endTimestamp / 1000);
-		presence.buttons[0] = button1;
-		presence.buttons[1] = button2;
-		updatePresence();
 
+		var button1:DiscordButton = DiscordButton.create();
+        button1.label = "Secret Early Access";
+		button1.url = "https://youtu.be/Xv9GQFaezNc?si=ngBQBzuKCoGBBtLn";
+
+        var button2:DiscordButton = DiscordButton.create();
+        button2.label = "Discord";
+        button2.url = "https://discord.gg/qTZYpP4hg3";
+
+		presence.buttons[0] = button2;
+		presence.buttons[1] = button1;
+
+		updatePresence();
 		//trace('Discord RPC Updated. Arguments: $details, $state, $smallImageKey, $hasStartTimestamp, $endTimestamp');
 	}
 

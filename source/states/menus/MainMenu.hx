@@ -899,7 +899,7 @@ class MainMenu extends MusicBeatState
 		if (arrowTween != null)
 			arrowTween.cancel();
 
-		if (arrow != null)
+		if (arrow != null && !selectedSomethin)
 		{
 			switch (curSelected)
 			{

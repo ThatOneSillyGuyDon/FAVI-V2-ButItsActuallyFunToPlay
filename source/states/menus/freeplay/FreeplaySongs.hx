@@ -1031,25 +1031,25 @@ class FreeplaySongs extends MusicBeatState
 		var mySong:String = ' [Listening to: ${songs[curSelected].songName}]';
 		#if DISCORD_RPC
 		#if DevBuild
-		DiscordClient.changePresence('CHOOSING A SONG', 'Freeplay Menu [CLASSIFIED]', 'icon', 'disc-player');
+		Discord.changePresence('CHOOSING A SONG', 'Freeplay Menu [CLASSIFIED]', 'icon', 'disc-player');
 		#else
 		switch (freeplayMenuList)
 		{
 			case 0:
 				{
-					DiscordClient.changePresence('CHOOSING A SONG', 'Freeplay Menu (MAIN SONGS)' + mySong, 'icon', 'disc-player');
+					Discord.changePresence('CHOOSING A SONG', 'Freeplay Menu (MAIN SONGS)' + mySong, 'icon', 'disc-player');
 				}
 			case 1:
 				{
-					DiscordClient.changePresence('CHOOSING A SONG', 'Freeplay Menu (EXTRAS)' + mySong, 'icon', 'disc-player');
+					Discord.changePresence('CHOOSING A SONG', 'Freeplay Menu (EXTRAS)' + mySong, 'icon', 'disc-player');
 				}
 			case 2:
 				{
-					DiscordClient.changePresence('CHOOSING A SONG', 'Freeplay Menu (LEGACY)' + mySong, 'icon', 'disc-player');
+					Discord.changePresence('CHOOSING A SONG', 'Freeplay Menu (LEGACY)' + mySong, 'icon', 'disc-player');
 				}
 			case 3:
 				{
-					DiscordClient.changePresence('???', 'Freeplay Menu (???)', 'icon', 'birthday-hat');
+					Discord.changePresence('???', 'Freeplay Menu (???)', 'icon', 'birthday-hat');
 				}
 		}
 		#end

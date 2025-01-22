@@ -751,7 +751,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 	
 		function changeSelection(change:Int = 0):Void
 		{
-			FlxG.sound.play(Paths.sound('base/menus/scrollMenu'), 0.6);
+			FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'), 0.6);
 	
 			if (menuItems != null)
 				curSelected = FlxMath.wrap(curSelected + change, 0, menuItems.length - 1);
@@ -783,14 +783,15 @@ class FAVIPauseSubState extends MusicBeatSubstate
 				FlxG.sound.music.volume = 0;
 				PlayState.instance.vocals.volume = 0;
 		
+				var random:Int = FlxG.random.int(1, 5);
 				var songName:Array<String> = ['Dont Cross', "Dont-Cross", "dont cross", "dont-cross"];
 		
 				for (i in songName)
 					if (PlayState.SONG.song == i)
 					{
 						var songLowercase:String = "dont-cross";
-						var poop:String = "dont-cross-hard" + '${FlxG.random.int(1, 4)}'; //fuck fuck fuck fuck fuck fuck
-						PlayState.SONG = Song.loadFromJson(poop, songLowercase, FlxG.random.int(1, 4));
+						var poop:String = "dont-cross-hard" + '${random}'; //fuck fuck fuck fuck fuck fuck
+						PlayState.SONG = Song.loadFromJson(poop, songLowercase, random);
 					}
 		
 				if(noTrans)
@@ -907,6 +908,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 						case "DEMOLITIONDON96": json = CreditsData.dontCross3;
 						case "Dreupy": json = CreditsData.dontCross1;
 						case "Purg": json = CreditsData.dontCross2;
+						case "MalyPlus": json = CreditsData.dontCross4;
 					}
 				case "War Dilemma": json = CreditsData.warDilemma;
 				case "Twisted Grins": json = CreditsData.twistedGrins;

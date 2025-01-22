@@ -47,7 +47,7 @@
 	<define name="MODS_ALLOWED" if="desktop" />
 	<!--<define name="LUA_ALLOWED" if="desktop" />-->
 	<define name="ACHIEVEMENTS_ALLOWED" />
-	<define name="DISCORD_ALLOWED" />
+	<define name="DISCORD_ALLOWED" if="desktop"/>
 	<define name="DEV_BUILD" />
 	<define name="VIDEOS_ALLOWED" if="web || windows" unless="32bits"/>
 	<define name="TITLE_SCREEN_EASTER_EGG" if="officialBuild"/> <!-- DELETE THE if="officialBuild" for enabling this on an unofficial build -->
@@ -122,6 +122,8 @@
 	<haxelib name="faxe" if='switch'/>
 	<!--<haxelib name="polymod"/> -->
 	<haxelib name="hxdiscord_rpc" if="desktop"/>
+
+	<haxedef name="DISCORD_DISABLE_IO_THREAD" if="hxdiscord_rpc" />
 
 	<!--THIS ONE IS FOR NEGLECTION SO THERE'S PROPER ACTUAL 3D :]]-->
 	<!--haxelib name="away3d" /-->

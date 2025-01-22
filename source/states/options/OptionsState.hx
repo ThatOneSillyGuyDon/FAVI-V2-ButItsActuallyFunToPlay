@@ -9,8 +9,9 @@ class OptionsState extends MusicBeatState
 {
 	var options:Array<String> = [
 		'Preferences',
-		'Controls',
+		'Graphics',
 		'Gameplay',
+		'Controls'
 	];
 
 	private static var curSelected:Int = 0;
@@ -25,6 +26,8 @@ class OptionsState extends MusicBeatState
 				openSubState(new VisualsUISubState());
 			case 'Controls':
 				openSubState(new ControlsSubState());
+			case 'Graphics':
+					openSubState(new GraphicsSettingsSubState());
 			case 'Gameplay':
 				openSubState(new GameplaySettingsSubState());
 		/*	case 'Note Colors':
@@ -48,6 +51,8 @@ class OptionsState extends MusicBeatState
 
 	var iForgot:FlxSprite;
 
+	var shit:FlxText;
+
 	override function create()
 	{
 		#if desktop
@@ -70,40 +75,6 @@ class OptionsState extends MusicBeatState
 		art.y += 100;
 		art.antialiasing = ClientPrefs.globalAntialiasing;
 		add(art);
-
-		optionText = new FlxSprite(0, 0, Paths.image('$dogshitPath/icon_${options[curSelected].toLowerCase()}'));
-		optionText.screenCenter();
-		optionText.scale.set(.64, .64);
-		optionText.y -= 200;
-		optionText.antialiasing = ClientPrefs.globalAntialiasing;
-		add(optionText);
-
-		selectorLeft = new FlxSprite(optionText.x - 20, 70).loadGraphic(Paths.image('$dogshitPath/arrow'));
-		//selectorLeft.y -= 50;
-		selectorLeft.scale.set(.6, .6);
-		selectorLeft.antialiasing = ClientPrefs.globalAntialiasing;
-		add(selectorLeft);
-
-		selectorRight = new FlxSprite(optionText.x + optionText.width - 190, 70).loadGraphic(Paths.image('$dogshitPath/arrow'));
-		//selectorRight.y -= 50;
-		selectorRight.scale.set(.6, .6);
-		selectorRight.antialiasing = ClientPrefs.globalAntialiasing;
-		selectorRight.flipX = true;
-		add(selectorRight);
-		
-		var graphic:FlxSprite = new FlxSprite().loadGraphic(Paths.image('$dogshitPath/IMG_1017'));
-		graphic.setGraphicSize(FlxG.width, FlxG.height);
-		graphic.updateHitbox();
-		graphic.screenCenter();
-		graphic.antialiasing = ClientPrefs.globalAntialiasing;
-		add(graphic);
-
-		var graphic:FlxSprite = new FlxSprite().loadGraphic(Paths.image('$dogshitPath/Untitled1595_20240710134131'));
-		graphic.setGraphicSize(FlxG.width, FlxG.height);
-		graphic.updateHitbox();
-		graphic.screenCenter();
-		graphic.antialiasing = ClientPrefs.globalAntialiasing;
-		add(graphic);
 
 		if (!ClientPrefs.lowQuality)
 		{
@@ -137,9 +108,9 @@ class OptionsState extends MusicBeatState
 
 		curSelected = 0;
 
-		var wip:FlxText = new FlxText(0, FlxG.height * 0.95, 0, "This menu is NOT finished yet! Expect some obvious bugs!", 32);
-		wip.setFormat(Paths.font("disneyFreeplayFont.ttf"), 15, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
-		add(wip);
+		shit = new FlxText(0, FlxG.height * 0.1, 0);
+		shit.setFormat(Paths.font("disneyFreeplayFont.ttf"), 40, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
+		add(shit);
 
 		changeSelection();
 		ClientPrefs.saveSettings();
@@ -157,33 +128,18 @@ class OptionsState extends MusicBeatState
 	{
 		super.update(elapsed);
 
-		selectorLeft.scale.set(FlxMath.lerp(.6, selectorLeft.scale.x, FlxMath.bound(1 - (elapsed * 3), 0, 1)), FlxMath.lerp(.6, selectorLeft.scale.y, FlxMath.bound(1 - (elapsed * 3), 0, 1)));
-		selectorRight.scale.set(FlxMath.lerp(.6, selectorRight.scale.x, FlxMath.bound(1 - (elapsed * 3), 0, 1)), FlxMath.lerp(.6, selectorRight.scale.y, FlxMath.bound(1 - (elapsed * 3), 0, 1)));
-
 		if (controls.UI_LEFT_P)
 		{
 			changeSelection(-1);
-			selectorLeft.scale.set(.5, .5);
 		}
 		if (controls.UI_RIGHT_P)
 		{
 			changeSelection(1);
-			selectorRight.scale.set(.5, .5);
 		}
 
 		if (FlxG.mouse.justPressed)
 		{
-			if (FlxG.mouse.overlaps(selectorLeft))
-			{
-				changeSelection(-1);
-				selectorLeft.scale.set(.5, .5);
-			}
-			else if (FlxG.mouse.overlaps(selectorRight))
-			{
-				changeSelection(1);
-				selectorRight.scale.set(.5, .5);
-			}
-			else if (FlxG.mouse.overlaps(art))
+			if (FlxG.mouse.overlaps(art))
 			{
 				openSelectedSubstate(options[curSelected]);
 			}
@@ -211,18 +167,36 @@ class OptionsState extends MusicBeatState
 		curSelected = FlxMath.wrap(curSelected + change, 0, options.length - 1);
 
 		art.loadGraphic(Paths.image('$dogshitPath/art_${options[curSelected].toLowerCase()}'));
-		optionText.loadGraphic(Paths.image('$dogshitPath/icon_${options[curSelected].toLowerCase()}'));
-
-		selectorLeft.x = optionText.x - 20;
-		selectorRight.x = optionText.x + optionText.width - 190;
+		shit.text = '< ${options[curSelected]} >';
+		shit.x = (FlxG.width - shit.width) * .5;
 
 		switch (curSelected)
 		{
+			case 0:
+				art.setPosition(((FlxG.width - art.width) / 2) + 150, ((FlxG.height - art.height) / 2) + 200);
+				art.scale.set(.7, .7);
+				art.updateHitbox();
+				art.screenCenter();
+				art.y += 100;
 			case 1:
 				art.setPosition(((FlxG.width - art.width) / 2) + 170, ((FlxG.height - art.height) / 2) + 170);
+				art.scale.set(.35, .35);
+				art.updateHitbox();
+				art.screenCenter();
+				art.y += 100;
+			case 2:
+				art.setPosition(((FlxG.width - art.width) / 2) + 150, ((FlxG.height - art.height) / 2) + 200);
+				art.scale.set(.35, .35);
+				art.updateHitbox();
+				art.screenCenter();
+				art.y += 100;
 
 			default:
 				art.setPosition(((FlxG.width - art.width) / 2) + 150, ((FlxG.height - art.height) / 2) + 200);
+				art.scale.set(.5, .5);
+				art.updateHitbox();
+				art.screenCenter();
+				art.y += 100;
 		}
 
 		FlxG.sound.play(Paths.sound('scrollMenu'));

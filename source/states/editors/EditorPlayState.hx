@@ -52,10 +52,22 @@ class EditorPlayState extends MusicBeatState
 	{
 		instance = this;
 
-		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
+		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/editor/chart/playtestBG'));
 		bg.scrollFactor.set();
 		bg.color = FlxColor.fromHSB(FlxG.random.int(0, 359), FlxG.random.float(0, 0.8), FlxG.random.float(0.3, 1));
 		add(bg);
+
+		var tiles:FlxBackdrop = new FlxBackdrop(Paths.image("Funkin_avi/editor/chart/arrowTile"), XY, 0, 0);
+		tiles.scrollFactor.set();
+		tiles.velocity.set(-80, 30);
+		tiles.blend = ADD;
+		tiles.color = bg.color;
+		tiles.alpha = 0.3;
+		add(tiles);
+
+		var underlay:FlxSprite = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/editor/chart/playtestUnderlays'));
+		underlay.scrollFactor.set();
+		add(underlay);
 
 		keysArray = [
 			ClientPrefs.copyKey(ClientPrefs.keyBinds.get('note_left')),
