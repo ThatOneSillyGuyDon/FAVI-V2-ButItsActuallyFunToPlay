@@ -450,9 +450,11 @@ class TitleState extends MusicBeatState
 		if(!closedState) {
 			FlxG.camera.zoom += 0.035;
 
-			// logo doesn't have animation, we make one by ourselfs instead
+			/*// logo doesn't have animation, we make one by ourselfs instead
 			logoBl.scale.x += 0.02;
-			logoBl.scale.y += 0.02;
+			logoBl.scale.y += 0.02;*/
+
+			logoBl.scale.set(.402, .402); // this is for christians sake -jason
 
 			sickBeats++;
 			switch (sickBeats)
