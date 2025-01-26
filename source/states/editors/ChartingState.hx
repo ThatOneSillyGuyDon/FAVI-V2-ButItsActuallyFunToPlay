@@ -23,7 +23,7 @@ import sys.io.File;
 #end
 
 
-@:access(flixel.sound.FlxSound._sound)
+@:access(flixel.system.FlxSound._sound)
 @:access(openfl.media.Sound.__buffer)
 
 class ChartingState extends MusicBeatState
@@ -2181,6 +2181,8 @@ class ChartingState extends MusicBeatState
 
 	var waveformPrinted:Bool = true;
 	var wavData:Array<Array<Array<Float>>> = [[[0], [0]], [[0], [0]]];
+
+	@:privateAccess
 	function updateWaveform() {
 		#if desktop
 		if(waveformPrinted) {

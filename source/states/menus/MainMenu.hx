@@ -446,7 +446,8 @@ class MainMenu extends MusicBeatState
 			cantaloupe.scale.set(0.05, 0.05);
 			cantaloupe.screenCenter(XY).x -= 700;
 			cantaloupe.y -= 300;
-			FlxTween.tween(cantaloupe.scale, {x: 2, y: 2}, 3, {ease: FlxEase.bounceOut, onComplete: _ -> FlxTween.tween(cantaloupe, {alpha: 0}, 2)});
+			FlxTween.tween(cantaloupe.scale, {x: 2, y: 2}, 3, {ease: FlxEase.linear, onComplete: _ -> FlxTween.tween(cantaloupe, {alpha: 0}, 2)});
+			cantaloupe.shake(.05, 0, 5);
 			add(cantaloupe);
 
 			FlxG.camera.shake(0.02, 5);

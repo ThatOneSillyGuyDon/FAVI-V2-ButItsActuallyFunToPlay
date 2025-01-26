@@ -183,9 +183,8 @@
 	<haxeflag name="--macro" value="include('my.pack')" />
 
 	<haxedef name="openfl_dpi_aware" if="openfl_dpi_aware" />
-
+	<define name="HXCPP_GC_BIG_BLOCKS" />
  
-
 	<!-- _________________________________ Custom _______________________________ -->
 
 	<!--Place custom nodes like icons here (higher priority to override the HaxeFlixel icon)-->
