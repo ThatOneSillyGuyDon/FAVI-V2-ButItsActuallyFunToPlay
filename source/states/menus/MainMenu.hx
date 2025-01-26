@@ -44,10 +44,10 @@ class MainMenu extends MusicBeatState
 
 	// the anniversary date of Funkin.avi lmao
 	var birthdayCode:Array<Dynamic> = [
-		[FlxKey.ZERO, FlxKey.NUMPADZERO],
-		[FlxKey.THREE, FlxKey.NUMPADTHREE],
 		[FlxKey.TWO, FlxKey.NUMPADTWO],
 		[FlxKey.ONE, FlxKey.NUMPADONE],
+		[FlxKey.ZERO, FlxKey.NUMPADZERO],
+		[FlxKey.THREE, FlxKey.NUMPADTHREE],
 		[FlxKey.TWO, FlxKey.NUMPADTWO],
 		[FlxKey.TWO, FlxKey.NUMPADTWO]
 	];
@@ -153,7 +153,7 @@ class MainMenu extends MusicBeatState
 		"Type \"HOWTODELUSIONAL\" for a special surprise :)",
 		"When did Funkin.avi start development?",
 		"I think one of the codes is a certain date",
-		"This mod was an idea that started on 03/21/22, pretty crazy, right?",
+		"The idea of the mod was created on 21/03/22, pretty crazy, right?",
 		"Everyday is Muckney's Birthday",
 		"there is no message, go play some minecraft",
 		"THEY HIT THE FUCKING PENTAGON",
@@ -582,7 +582,7 @@ class MainMenu extends MusicBeatState
 				}
 			}
 
-			FlxG.sound.muteKeys = theBirthdayCode >= 0 ? null : Init.muteKeys;
+			FlxG.sound.muteKeys = theBirthdayCode > 1 ? null : Init.muteKeys;
 		}
 
 		var changeValue:Int = 0;
