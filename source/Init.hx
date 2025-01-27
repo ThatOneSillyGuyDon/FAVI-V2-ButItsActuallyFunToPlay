@@ -44,8 +44,6 @@ class Init extends FlxState
 		FlxG.game.focusLostFramerate = 60;
 		FlxG.keys.preventDefaultKeys = [TAB];
 
-        hxvlc.util.Handle.init(['--no-lua']);
-
         FlxG.sound.soundTray.silent = true; // removes that annoying ass "BEEP" sound when you change the volume
 
         #if DISCORD_ALLOWED
