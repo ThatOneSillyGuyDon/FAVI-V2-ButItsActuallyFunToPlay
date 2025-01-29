@@ -551,8 +551,9 @@ class PlayState extends MusicBeatState
 
 	var curEpisode:String;
 
-	public static var windowName:String = "";
-	public static var lastWinName:String = "";
+	// fnf coders when they do new things (very scary!)
+	public static var windowName(default, set):String = "";
+	//public static var lastWinName(default, get):String = ""; // this is not used lol
 
 	public var foreground:FlxTypedGroup<FlxBasic>;
 
@@ -2234,7 +2235,7 @@ class PlayState extends MusicBeatState
 
 		startingSong = true;
 
-		lime.app.Application.current.window.title = windowName;
+		//lime.app.Application.current.window.title = windowName;
 
 		new FlxTimer().start(5, function(tmr:FlxTimer)
 		{
@@ -2243,7 +2244,7 @@ class PlayState extends MusicBeatState
 			(SONG.song == "Dont Cross" ? "Don't Cross!" : SONG.song) + 
 			" [" + FreeplayState.getDiffRank() + "]"; // short version that displays after 5 seconds yayaya
 
-			lime.app.Application.current.window.title = windowName;
+			//lime.app.Application.current.window.title = windowName;
 		});
 		
 		noteTypeMap.clear();
@@ -9680,7 +9681,7 @@ class PlayState extends MusicBeatState
 					case 472:
 						useFakeDeluName = true;
 						windowName = "...";
-						lime.app.Application.current.window.title = windowName;
+						//lime.app.Application.current.window.title = windowName;
 						boundValue = 2;
 						drainValue = 0;
 						camGame.visible = false;
@@ -9718,7 +9719,7 @@ class PlayState extends MusicBeatState
 						defaultCamZoom = 0.85;
 					case 476:
 						windowName = "Where am I...?";
-						lime.app.Application.current.window.title = windowName;
+						//lime.app.Application.current.window.title = windowName;
 					case 478:
 						camFollow.x = 630;
 						camFollow.y = 750;
@@ -9730,35 +9731,35 @@ class PlayState extends MusicBeatState
 						camVideo.visible = true;
 					case 480:
 						windowName = "Funkin.avi - " + (isStoryMode ? curEpisode + " - " : "Freeplay - ") + "Regret [________]";
-						lime.app.Application.current.window.title = windowName;
+						//lime.app.Application.current.window.title = windowName;
 						// no healthbar to add more onto the atmosphere of this section
 						camGame.visible = true;
 						camNotes.visible = true;
 					case 484:
 						windowName = "Funkin.avi - " + (isStoryMode ? curEpisode + " - " : "Freeplay - ") + "Regret [P_______]";
-						lime.app.Application.current.window.title = windowName;
+						//lime.app.Application.current.window.title = windowName;
 					case 488:
 						windowName = "Funkin.avi - " + (isStoryMode ? curEpisode + " - " : "Freeplay - ") + "Regret [PE______]";
-						lime.app.Application.current.window.title = windowName;
+						//lime.app.Application.current.window.title = windowName;
 					case 492:
 						windowName = "Funkin.avi - " + (isStoryMode ? curEpisode + " - " : "Freeplay - ") + "Regret [PEA_____]";
-						lime.app.Application.current.window.title = windowName;
+						//lime.app.Application.current.window.title = windowName;
 					case 496:
 						windowName = "Funkin.avi - " + (isStoryMode ? curEpisode + " - " : "Freeplay - ") + "Regret [PEAC____]";
-						lime.app.Application.current.window.title = windowName;
+						//lime.app.Application.current.window.title = windowName;
 					case 500:
 						windowName = "Funkin.avi - " + (isStoryMode ? curEpisode + " - " : "Freeplay - ") + "Regret [PEACE___]";
-						lime.app.Application.current.window.title = windowName;
+						//lime.app.Application.current.window.title = windowName;
 					case 504:
 						windowName = "Funkin.avi - " + (isStoryMode ? curEpisode + " - " : "Freeplay - ") + "Regret [PEACEF__]";
-						lime.app.Application.current.window.title = windowName;
+						//lime.app.Application.current.window.title = windowName;
 					case 508:
 						windowName = "Funkin.avi - " + (isStoryMode ? curEpisode + " - " : "Freeplay - ") + "Regret [PEACEFU_]";
-						lime.app.Application.current.window.title = windowName;
+						//lime.app.Application.current.window.title = windowName;
 						FlxTween.tween(boyfriend, {alpha: 0.45}, 2.5, {ease: FlxEase.expoOut});
 					case 512:
 						windowName = "Funkin.avi - " + (isStoryMode ? curEpisode + " - " : "Freeplay - ") + "Regret [PEACEFUL]";
-						lime.app.Application.current.window.title = windowName;
+						//lime.app.Application.current.window.title = windowName;
 					case 672:
 						blendFlash.cameras = [camBars];
 						boyfriend.alpha = 0.0001;
@@ -9770,10 +9771,10 @@ class PlayState extends MusicBeatState
 						FlxTween.tween(camNotes, {alpha: 0.0001}, 5, {ease: FlxEase.quartInOut});
 					case 728:
 						windowName = "...";
-						lime.app.Application.current.window.title = windowName;
+						//lime.app.Application.current.window.title = windowName;
 					case 736:
 						windowName = "Welcome back.... Little mouse.";
-						lime.app.Application.current.window.title = windowName;
+						//lime.app.Application.current.window.title = windowName;
 						blendFlash.cameras = [camGame];
 					case 740:
 						isCameraOnForcedPos = false;
@@ -9787,7 +9788,7 @@ class PlayState extends MusicBeatState
 					case 744:
 						useFakeDeluName = false;
 						windowName = "Funkin.avi - " + (isStoryMode ? curEpisode + " - " : "Freeplay - ") + SONG.song + " [" + FreeplayState.getDiffRank() + "]";
-						lime.app.Application.current.window.title = windowName;
+						//lime.app.Application.current.window.title = windowName;
 						camVideo.visible = false;
 						camGame.alpha = 1;
 						camHUD.visible = true;
@@ -10119,13 +10120,17 @@ class PlayState extends MusicBeatState
 					case 618:
 						defaultCamZoom = 1.2;
 						boyfriendCameraOffset[0] += 30;
-						opponentCameraOffset[0] += 60;
+						opponentCameraOffset[0] -= 110;
 						cameraSpeed = 1.6;
 						moveCamera(false);
 					case 684:
 						defaultCamZoom = 1.35;
 						boyfriendCameraOffset[0] += 30;
 						moveCamera(false);
+					case 688:
+						if (ClientPrefs.flashing) camHUD.flash();
+						FlxTween.tween(camHUD, {alpha: 0}, 1.5);
+						camGame.visible = camNotes.visible = false;
 				}
 
 				if ((curBeat >= 96 && curBeat <= 128) || (curBeat >= 256 && curBeat <= 384) || (curBeat >= 488 && curBeat <= 616))
@@ -11444,6 +11449,12 @@ class PlayState extends MusicBeatState
 		return null;
 	}
 	#end
+
+	function set_windowName(value:String):String
+	{
+		FlxG.stage.window.title = value;
+		return value;
+	}
 
 	var curLight:Int = -1;
 	var curLightEvent:Int = -1;

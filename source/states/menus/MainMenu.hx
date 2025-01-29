@@ -93,14 +93,14 @@ class MainMenu extends MusicBeatState
 		"Anyone up right now?",
 		"Shipy's SNS Mickey & F.AVI Mickey would make love to each other",
 		"We lied about Episode 2's release...",
-		"I trapped Demolition in my basement.",
+		"I trapped don in my basement.",
 		//"V3 will release next year, we need a fucking break",
 		"Someone put an end to my misery.",
 		"I dare you to press 7 on that keyboard of yours.",
 		"Cock & ball torture.",
 		"OKAY, YOU GOT DELUSIONAL, NOW STFU.",
 		//"Cast & Crew (Couch Song) is CANCELLED, cry about it.",
-		"Look at that cute little devil, he's cute.",
+		"Look at that cute little devil, he's cute :)",
 		"Do you like the new menu art?",
 		"You're gonna love the final song.",
 		"Malfunction isn't easy anymore, fuck you, skill issue.",
@@ -168,16 +168,7 @@ class MainMenu extends MusicBeatState
 	var defaultShader2:FlxRuntimeShader;
 	var darkFilter:FlxRuntimeShader;
 
-	public var logContent:String;
-
 	var evilAndFuckedUpBookScale = 1.0;
-
-	public function new(?logContent:String)
-	{
-		super();
-
-		this.logContent = logContent;
-	}
 
 	// the create 'state'
 	override function create()
