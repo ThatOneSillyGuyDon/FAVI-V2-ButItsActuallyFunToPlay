@@ -248,7 +248,7 @@ class GameOverSubstate extends MusicBeatSubstate
 			FlxG.sound.play(Paths.music(endSoundName));
 			new FlxTimer().start(0.7, function(tmr:FlxTimer)
 			{
-				var random:Int = FlxG.random.int(1, 5);
+				var random:Int = FlxG.random.int(1, 11);
 				FlxG.camera.fade(FlxColor.BLACK, 2, false, function()
 				{
 					var songName:Array<String> = ['Dont Cross', "Dont-Cross", "dont cross", "dont-cross"];

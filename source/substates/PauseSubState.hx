@@ -38,6 +38,7 @@ class PauseSubState extends MusicBeatSubstate
 		if(CoolUtil.difficulties.length < 2) menuItemsOG.remove('Change Difficulty'); //No need to change difficulty if there is only one!
 
 		lime.app.Application.current.window.title += " - {Paused}";
+		PlayState.windowTimer.active = false;
 		if(PlayState.chartingMode)
 		{
 			menuItemsOG.insert(2, 'Leave Charting Mode');
@@ -219,6 +220,7 @@ class PauseSubState extends MusicBeatSubstate
 			{
 				case "Resume":
 					lime.app.Application.current.window.title = PlayState.windowName;
+					PlayState.windowTimer.active = true;
 					close();
 				case 'Change Difficulty':
 					menuItems = difficultyChoices;
@@ -462,6 +464,8 @@ class FAVIPauseSubState extends MusicBeatSubstate
 			if (itemStack == null)
 				itemStack = ['continue', 'restart', 'options', PlayState.SONG.song == "Birthday" ? 'leave' : PlayState.SONG.song == "Delusional" ? 'no-hope' : 'escape'];
 	
+			PlayState.windowTimer.active = false;
+
 			// cool stuff
 			var getArt:String = 'Funkin_avi/pause/songs/';
 			toOptions = false;
@@ -673,6 +677,8 @@ class FAVIPauseSubState extends MusicBeatSubstate
 							restartSong();
 						case "options":
 							remove(disc);
+							if (PlayState.useFakeDeluName)
+								PlayState.useFakeDeluName = false;
 							toOptions = true;
 							FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
 							FlxG.mouse.visible = true;
@@ -688,6 +694,8 @@ class FAVIPauseSubState extends MusicBeatSubstate
 							remove(disc);
 							if (PlayState.useFakeDeluName)
 								PlayState.useFakeDeluName = false;
+							if (PlayState.pauseCountEnabled)
+								PlayState.pauseCountEnabled = false;
 							PlayState.seenCutscene = false;
 							PlayState.cancelMusicFadeTween();
 							PlayState.changedDifficulty = false;
@@ -779,11 +787,13 @@ class FAVIPauseSubState extends MusicBeatSubstate
 			{
 				if (PlayState.useFakeDeluName)
 					PlayState.useFakeDeluName = false;
+				if (PlayState.pauseCountEnabled)
+					PlayState.pauseCountEnabled = false;
 				PlayState.instance.paused = true; // For lua
 				FlxG.sound.music.volume = 0;
 				PlayState.instance.vocals.volume = 0;
 		
-				var random:Int = FlxG.random.int(1, 5);
+				var random:Int = FlxG.random.int(1, 11);
 				var songName:Array<String> = ['Dont Cross', "Dont-Cross", "dont cross", "dont-cross"];
 		
 				for (i in songName)
@@ -809,6 +819,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 		{
 			hasResumed = true;
 			songName.alpha = 0;
+			PlayState.windowTimer.active = false;
 			levelInfo.alpha = 0;
 			satanTxt.text = "";
 			if (PlayState.pauseCountEnabled)
@@ -909,6 +920,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 						case "Dreupy": json = CreditsData.dontCross1;
 						case "Purg": json = CreditsData.dontCross2;
 						case "MalyPlus": json = CreditsData.dontCross4;
+						case "rezeo285": json = CreditsData.dontCross5;
 					}
 				case "War Dilemma": json = CreditsData.warDilemma;
 				case "Twisted Grins": json = CreditsData.twistedGrins;

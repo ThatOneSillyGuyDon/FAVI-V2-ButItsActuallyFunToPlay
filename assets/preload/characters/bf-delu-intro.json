@@ -1,68 +1,69 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				-20
 			],
-			"loop": false,
-			"fps": 14,
 			"anim": "idle",
-			"indices": [],
-			"name": "Bf idle"
+			"fps": 14,
+			"name": "Bf idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				210,
 				-13
 			],
-			"loop": false,
-			"fps": 12,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "Bf note left"
+			"fps": 12,
+			"name": "Bf note left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				11,
 				-103
 			],
-			"loop": false,
-			"fps": 12,
 			"anim": "singDOWN-alt",
-			"indices": [],
-			"name": "Bf note down demon"
+			"fps": 12,
+			"name": "Bf note down demon",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-8,
 				33
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUP-alt",
-			"indices": [],
-			"name": "Bf note up Demon"
+			"fps": 24,
+			"name": "Bf note up Demon",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				-10
 			],
-			"loop": false,
-			"fps": 12,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "Bf note right"
+			"fps": 12,
+			"name": "Bf note right",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				11,
 				-101
 			],
-			"loop": false,
-			"fps": 12,
 			"anim": "singDOWN",
+			"fps": 12,
+			"name": "Bf note down",
 			"indices": [
 				0,
 				1,
@@ -78,17 +79,17 @@
 				11,
 				12,
 				13
-			],
-			"name": "Bf note down"
+			]
 		},
 		{
+			"loop": false,
 			"offsets": [
 				2,
 				33
 			],
-			"loop": false,
-			"fps": 12,
 			"anim": "singUP",
+			"fps": 12,
+			"name": "Bf note up",
 			"indices": [
 				0,
 				1,
@@ -104,8 +105,7 @@
 				11,
 				12,
 				13
-			],
-			"name": "Bf note up"
+			]
 		}
 	],
 	"no_antialiasing": false,
@@ -114,7 +114,7 @@
 		720,
 		500
 	],
-	"healthicon": "evilcy",
+	"healthicon": "evilpredelu",
 	"flip_x": true,
 	"healthbar_colors": [
 		81,

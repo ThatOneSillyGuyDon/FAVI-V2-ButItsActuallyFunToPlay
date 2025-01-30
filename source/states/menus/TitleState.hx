@@ -65,8 +65,8 @@ class TitleState extends MusicBeatState
 	var fade:FlxSprite;
 
 	private var windowArray:Array<Any> = [
-		"Also try Your Mom Simulator",
-		"Imagine making yet another Suicide Mouse mod?",
+		"Also try Public Bathroom Simulator",
+		"Another Suicide Mouse mod in big 2025",
 		"Comically Large Spoon",
 		"snas uddertail",
 		"K i l l .",
@@ -90,33 +90,33 @@ class TitleState extends MusicBeatState
 		"Vs Dead Bart is cancelled",
 		"Funkin.exe is the next WORST thing",
 		"Hi, wanna see me glitch?",
-		"R.I.P: Welcome Old (Definitely The Best Banger Ever) /j",
-		"POV: Your Mom",
+		"R.I.P: Welcome Old",
+		"POV: You have a joke from 2022 that you edited 3 years later",
 		".edud ssarg emos hcuot og ot deen uoy ,das yrev tsuj ,yltsenoh ,das si thaT ?sdrawkcab txet siht fo lla gnidaer otni troffe hcum os gnittup enigamI - iva.niknuF",
 		"Play Substance of Happiness!",
 		"Now with more depression!",
 		"Now with more suicide!",
 		"FNAF but with mice",
 		"No, we're not doing thicc Lilith fan-service art",
-		"Ben didn't drown, he sucked on Deez Nuts",
+		"i suck at swimming",
 		"What the fuck do you mean 'we have a couch song'?",
 		"Next Update: Episode 2",
-		"I have your IP Address: 103.189.166.35",
+		"I have your IP Address, but i can't put it here because of my limitations",
 		"fuckin.mp3 - i juss shat meseff",
-		"Subscribe to Yama haki and DEMOLITIONDON96 (haha, yes, shameless advertising)",
-		"Fun Fact: I inhaled your mom last night",
+		"Subscribe to Dunkin Funkin (haha, yes, shameless advertising)",
+		"Fun Fact: S",
 		"a",
 		" ",
 		"What do you want me to say?",
 		"I'm running out of things to say here...",
 		"This random message serves no purpose to the game or the lore",
-		"I'm DEAAAAAAAAAAAAD *plays Monochrome*",
+		"I feel... ALIVE!",
 		"Ah yes, this is a very original and very well thought out message for the game to randomly pick",
 		"Stop asking for art of official female versions of the characters in this mod",
 		"Help, my basement full of children I kidnapped is screaming, what do I do?",
 		"I got uranium up my ass",
 		"The horny detector has detected someone here in this game, I wonder who it is...",
-		"Fuck you *undicks your Snickers*",
+		"Fuck you *inverts your game*",
 		"MCM is a good mod",
 		"h o g .",
 		"HOOOG RIDDDAAAAAAAAAAAA *plays Clash Royale loading screen theme*",
@@ -128,46 +128,46 @@ class TitleState extends MusicBeatState
 		"Delusional is in, now STOP ASKING FOR IT",
 		"Its been 40 years and the mouse still hasn't regained sanity",
 		"freddy fazbear.",
-		"We don't know what to do for V3 :/",
-		"Mickeys are gonna need a big bed that's for sure",
+		"We know what to do for V3",
 		"Among us is not funny *nerd face*",
 		"Discord bots are goofy aaaahhhhh",
 		"Whoopsie looks like i gave the suicidal mouse a gun",
 		"This is the window title 69, literally", //funi number
 		"What the dog doin?",
-		"Check us out on Friday Night Bloxxin' on Roblox!",
-		"There's a Red Spy in the Base!!",
+		"There's a Red Spy in the Base!",
 		"fuckin.mp3 - jsjsjsdjdsjdsjadsjjads",
 		"Lemon Demon got no iPhone",
 		"The Update Y'all were waiting for",
 		"Mickey finds the forbidden sandwich",
 		"Dev Note: Add a bomb shop link in the messages",
-		"We literally improved everything just to prevent hating as much as possible",
+		"We tried our best to improve everything just to prevent hating as much as possible",
 		"Go touch grass",
 		"Mod Includes: PC Crashing and Banger Songs",
-		"Stop saying the square's name is Theodore!",
+		"What was the square guy's name again?",
 		"Let's be honest, Mods are carrying FNF",
+		"Let's be honest, the Base Game can't be top'd",
 		"Now better than ever!",
 		"Over 100+ Messages!",
 		"Your childhood friend is back!",
 		"Youtube Kids is the best at having totally not bad videos!",
 		"People skip this part, let's be honest",
 		"when he, when he at the, he at the street, the street next door.",
-		"fnf is cancelled go home.",
+		"fnf is cancelled go home.", // keeping this one
 		"I've entered the mainframe, PREPARE TO LOSE YOUR PC!",
 		"I live in your walls.",
-		"saster my beloved",
+		"greggreg my beloved",
 		"Send help, I've spent nearly 3 years coding for this mod",
 		"You found the Most Difficult message ever!!!1111!1",
 		"Congratulations, you won, now get out.",
 		"I ate your doorframe now.",
-		"No leakers allowed ):d",
+		"Man sure i love when your own mod gets leaked (i don't)",
 		"Imagine the credits for the messages",
 		"Mickey getting bitches, 100% real no fake",
 		"Lets Goku mcdonalds, Y'know what im saiyan?",
 		"Walter",
-		"T H E  'C O R E', D E S T R O Y  I T !",
-		"THE 'CORE' CONTAINS THE EVIL"
+		"Imagine waiting 3 years for a singular Friday Night Funkin' mod update"
+		/*"T H E  'C O R E', D E S T R O Y  I T !",
+		"THE 'CORE' CONTAINS THE EVIL"*/
 	];
 
 	// unlocks debug
@@ -635,10 +635,49 @@ class TitleState extends MusicBeatState
 				}
 				else if(Application.current.window.title.contains("Funkin.avi - I'm shutting down your game now, fuck you"))
 					{
-						new FlxTimer().start(1.5, function(tmr:FlxTimer){
+						new FlxTimer().start(2, function(tmr:FlxTimer){
 							System.exit(0);
 						});
 					}
+				else if(Application.current.window.title.contains('Funkin.avi - Fuck you *inverts your game*'))
+				{
+					if (ClientPrefs.shaders)
+					{
+						final invert = new FlxRuntimeShader("#pragma header
+						uniform float binaryIntensity;
+						uniform float negativity;
+						void main(){
+							vec2 uv = openfl_TextureCoordv.xy;
+							
+							// get snapped position
+							float psize = 0.04 * binaryIntensity;
+							float psq = 1.0 / psize;
+							float px = floor(uv.x * psq + 0.5) * psize;
+							float py = floor(uv.y * psq + 0.5) * psize;
+							
+							vec4 colSnap = texture2D(bitmap, vec2(px, py));
+							
+							float lum = pow(1.0 - (colSnap.r + colSnap.g + colSnap.b) / 3.0, binaryIntensity);
+							
+							float qsize = psize * lum;
+							float qsq = 1.0 / qsize;
+							float qx = floor(uv.x * qsq + 0.5) * qsize;
+							float qy = floor(uv.y * qsq + 0.5) * qsize;
+							float rx = (px - qx) * lum + uv.x;
+							float ry = (py - qy) * lum + uv.y;
+							vec4 color = flixel_texture2D(bitmap, vec2(rx, ry));
+							gl_FragColor = mix(color, vec4(1.0 - color.r, 1.0 - color.g, 1.0 - color.b, color.a) * color.a, negativity);
+						}", null, 120);
+						invert.setFloat('binaryIntensity', 1000);
+						FlxG.game.setFilters([new ShaderFilter(invert)]);
+						FlxTween.num(0, 1, .5, null, num -> invert.setFloat('negativity', num));
+					}
+					else
+					{
+						Application.current.window.title = 'Funkin.avi - ${windowArray[FlxG.random.int(0, windowArray.length-1)]}';
+						windowFixesAndEvents();
+					}
+				}	
 				else if(Application.current.window.title.contains("Funkin.avi - .edud ssarg emos hcuot og ot deen uoy ,das yrev tsuj ,yltsenoh ,das si thaT ?sdrawkcab txet siht fo lla gnidaer otni troffe hcum os gnittup enigamI - iva.niknuF"))
 					{
 						Application.current.window.title = ".edud ssarg emos hcuot og ot deen uoy ,das yrev tsuj ,yltsenoh ,das si thaT ?sdrawkcab txet siht fo lla gnidaer otni troffe hcum os gnittup enigamI - iva.niknuF";

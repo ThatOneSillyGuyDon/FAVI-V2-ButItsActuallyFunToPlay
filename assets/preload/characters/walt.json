@@ -1,59 +1,59 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				260
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "idle",
-			"indices": [],
-			"name": "Walt_Idle"
+			"fps": 24,
+			"name": "Walt_Idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				59,
 				285
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "Walt Left"
+			"fps": 24,
+			"name": "Walt Left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				20,
 				246
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "Walt_Down"
+			"fps": 24,
+			"name": "Walt_Down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-26,
 				343
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUP",
-			"indices": [],
-			"name": "Walt_Up"
+			"fps": 24,
+			"name": "Walt_Up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-4,
 				290
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "Walt_Right"
+			"fps": 24,
+			"name": "Walt_Right",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,
@@ -62,7 +62,7 @@
 		0,
 		50
 	],
-	"healthicon": "walt",
+	"healthicon": "waltold",
 	"flip_x": false,
 	"healthbar_colors": [
 		161,

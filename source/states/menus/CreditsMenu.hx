@@ -34,6 +34,9 @@ class CreditsMenu extends MusicBeatState
 
 	var cool_1980_shader:FlxRuntimeShader;
 
+	var upArrow:FlxText;
+	var downArrow:FlxText;
+	
 	var maxLength = 1;
 
 	var path:String;
@@ -100,6 +103,18 @@ class CreditsMenu extends MusicBeatState
 		teelSquares.antialiasing = ClientPrefs.globalAntialiasing;
 		teelSquares.alpha = 0;
 		add(teelSquares);
+
+		upArrow = new FlxText(270, 100, 0, ">");
+		upArrow.setFormat(Paths.font('disneyFreeplayFont.ttf'), 120, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
+		upArrow.angle = -90;
+		upArrow.borderSize = 3;
+		add(upArrow);
+
+		downArrow = new FlxText(250, 500, 0, ">");
+		downArrow.setFormat(Paths.font('disneyFreeplayFont.ttf'), 120, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
+		downArrow.angle = 90;
+		downArrow.borderSize = 3;
+		add(downArrow);
 
 		creditDescText = new FlxText(FlxG.width * 0.52, FlxG.height * 0.6, 500, creditArray[curSelected][3]);
 		creditDescText.setFormat(Paths.font('disneyFreeplayFont.ttf'), 40, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
@@ -172,16 +187,21 @@ class CreditsMenu extends MusicBeatState
 
 		teelSquares.alpha = FlxMath.lerp(creditArray[curSelected][0].toLowerCase() == "teelbe" ? FlxG.random.float(.2, 1) : 0, teelSquares.alpha, .85);
 
+		upArrow.y = FlxMath.lerp(100, upArrow.y, CoolUtil.boundTo(1 - (elapsed * 15), 0, 1));
+		downArrow.y = FlxMath.lerp(500, downArrow.y, CoolUtil.boundTo(1 - (elapsed * 15), 0, 1));
+
 		if (ClientPrefs.shaders)
 			cool_1980_shader.setFloat('time', Conductor.songPosition / 1000);
 
 		if (controls.UI_UP_P)
 		{
 			changeSelection(-1);
+			upArrow.y -= 25;
 		}
 		else if (controls.UI_DOWN_P)
 		{
 			changeSelection(1);
+			downArrow.y += 25;
 		}
 
 		if (controls.BACK)
@@ -296,6 +316,14 @@ class CreditsMenu extends MusicBeatState
 					creditNameText.y = FlxG.height * 0.3;
 					creditWorkText.y = FlxG.height * 0.41;
 					creditDescText.scale.set(0.8, 0.8);
+
+				case 'jason':
+					creditDescText.fieldWidth = 500;
+					creditDescText.x = FlxG.width * 0.52;
+					creditDescText.y = FlxG.height * 0.5;
+					creditDescText.scale.set(1, 1);
+					creditNameText.y = FlxG.height * 0.3;
+					creditWorkText.y = FlxG.height * 0.41;
 
 				default:
 					creditDescText.fieldWidth = 500;

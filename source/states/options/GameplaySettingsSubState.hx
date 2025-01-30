@@ -28,7 +28,7 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		addOption(option);
 
 		var option:Option = new Option('Mechanics',
-			'Uncheck this if you\'re a pussy!\n^^(This will disable progress checks on specific songs)^^.',
+			'Uncheck this if you can\'t beat certain songs.\n^^(THIS DOES NOT APPLY TO MALFUNCTION)^^',
 			'mechanics',
 			'bool',
 			false);
@@ -53,6 +53,13 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			'autoPause',
 			'bool',
 			true);
+		addOption(option);
+
+		var option:Option = new Option('Enable Pause Countdown',
+			"If checked, unpausing will trigger a countdown before resuming a song.",
+			'pauseCountdown',
+			'bool',
+			false);
 		addOption(option);
 
 		var option:Option = new Option('Hitsound Volume',

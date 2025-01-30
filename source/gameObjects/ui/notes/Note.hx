@@ -278,7 +278,7 @@ class Note extends FlxSprite
 						skin = "NOTE_assets-CARTOON";
 					case "Mercy":
 						skin = "NOTE_assets-MERCY";
-					case "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Malfunction Legacy" | "Cycled Sins Legacy" | "Mercy Legacy" | "Delutrance" | "Birthday" | "Malfunction":
+					case "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Malfunction Legacy" | "Twisted Grins Legacy" | "Cycled Sins Legacy" | "Mercy Legacy" | "Delutrance" | "Birthday" | "Malfunction":
 						skin = "NOTE_assets";
 					case "Cycled Sins":
 						skin = "NOTE_assets-SIN";

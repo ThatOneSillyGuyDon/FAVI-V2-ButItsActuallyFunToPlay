@@ -44,10 +44,10 @@ class MainMenu extends MusicBeatState
 
 	// the anniversary date of Funkin.avi lmao
 	var birthdayCode:Array<Dynamic> = [
-		[FlxKey.ZERO, FlxKey.NUMPADZERO],
-		[FlxKey.THREE, FlxKey.NUMPADTHREE],
 		[FlxKey.TWO, FlxKey.NUMPADTWO],
 		[FlxKey.ONE, FlxKey.NUMPADONE],
+		[FlxKey.ZERO, FlxKey.NUMPADZERO],
+		[FlxKey.THREE, FlxKey.NUMPADTHREE],
 		[FlxKey.TWO, FlxKey.NUMPADTWO],
 		[FlxKey.TWO, FlxKey.NUMPADTWO]
 	];
@@ -91,24 +91,23 @@ class MainMenu extends MusicBeatState
 
 	var windowShit:Array<Any> = [
 		"Anyone up right now?",
-		"Shipy's SNS Mickey & F.AVI Mickey will make love to each other",
+		"Shipy's SNS Mickey & F.AVI Mickey would make love to each other",
 		"We lied about Episode 2's release...",
-		"I trapped Demolition in my basement.",
-		"V3 will release next year, we need a fucking break",
-		"Someone put an end to my misery. - Mickey 2023",
+		"I trapped don in my basement.",
+		//"V3 will release next year, we need a fucking break",
+		"Someone put an end to my misery.",
 		"I dare you to press 7 on that keyboard of yours.",
 		"Cock & ball torture.",
 		"OKAY, YOU GOT DELUSIONAL, NOW STFU.",
-		"Cast & Crew (Couch Song) is CANCELLED, cry about it.",
-		"Look at that cute little devil, he c00t :3",
+		//"Cast & Crew (Couch Song) is CANCELLED, cry about it.",
+		"Look at that cute little devil, he's cute :)",
 		"Do you like the new menu art?",
 		"You're gonna love the final song.",
-		"Malfunction isn't easy anymore, fuck you, skill issue B)",
+		"Malfunction isn't easy anymore, fuck you, skill issue.",
 		"Happy Birthday Muckney!",
-		"We went from Psych corrupting our stuff to Forever being broken asf to Psych again, WHAT ARE THEY DOING???",
-		"SOMEONE PLEASE GIVE MICKEY HIS FUCKING SANDWICH",
+		"SOMEONE PLEASE GIVE MICKEY HIS FUCKING SANDVICH", // intentional misspell lolol
 		"Have fun, you'll be here for like an hour or longer.",
-		"10 Seconds before I shut your fucking game again >:(",
+		"10 Seconds before I shut your fucking game again >:[",
 		"Oh the misery, everybody wants to be my enemy.",
 		"Sex, NOW.",
 		"Quick, hide behind that conveniently shaped lamp!",
@@ -116,16 +115,16 @@ class MainMenu extends MusicBeatState
 		"blue lobster *jumpscare*",
 		"hi. *starts dancing on the floor*",
 		"sample text 2: electric boogaloo",
-		"The bastard named squidward cheated on poor mickey :(",
+		"The bastard named squidward cheated on poor mickey :[",
 		"D E A T H",
-		"Man, i'm starving... *Fight or Flight plays*",
+		"Man i'm hungry",
 		"Shit, the mouse got a gun again.",
 		"You should /kill @s NOW", // haha, funi Minecraft reference
 		"Why are you here? FNF is still cancelled.",
 		"This community is fr the big stinky.",
 		"Go ahead, cancel us, you'll only make us come back stronger.",
 		"NOOOOOOOOOOO, YOU CAN'T JUST CHEAT THE GAME!!!!!!!",
-		"V3 Update in a Nutshell: Suicidal Remixes",
+		// "V3 Update in a Nutshell: Suicidal Remixes",
 		"Mom, can we have Wednesday's Infidelity?",
 		"WHAT THE FUCK IS A KILOMETER?",
 		"Don't leave Muckney's party, please, you'll make him sad if you do :(",
@@ -146,36 +145,30 @@ class MainMenu extends MusicBeatState
 		"Mickey lost his ballsack.",
 		"Oh the horror of AI generated images.",
 		"You should [R] Reset Character NOW", // boblox reference
-		"peak mouse experience.",
-		"Austin is the most horniest of the team lmao",
-		"This mod was stressful to make, the organization was a mess lmao",
+		"awesome mouse experience.",
+		//"Austin is the most horniest of the team lmao",
+		"This mod was stressful to make.",
 		"Funkin.avi - Funkin.avi - Funkin.avi - Funkin.avi - Funkin.avi - Funkin.avi - Funkin.avi - Funkin.avi - Funkin.avi - Funkin.avi - Funkin.avi",
 		"Just like Domingo is constantly remaking Mickey's sprites, Dreupy is the Domingo of Delusional Recharts.",
 		"Type \"HOWTODELUSIONAL\" for a special surprise :)",
 		"When did Funkin.avi start development?",
 		"I think one of the codes is a certain date",
-		"This mod was an idea that started on 03/21/22, pretty crazy, right?",
+		"The idea of the mod was created on 21/03/22, pretty crazy, right?",
 		"Everyday is Muckney's Birthday",
 		"there is no message, go play some minecraft",
-		"THEY HIT THE FUCKING PENTAGON, SMILES",
+		"THEY HIT THE FUCKING PENTAGON",
 		"Want a break from the ads? If you tap now to take a short servey, you'll recieve 30 minutes of ad-free music.",
-		"I bet you're complaining that this isn't easy to steal assets from right about now, silly kiddo"
+		"I bet you're complaining that this isn't easy to steal assets from right about now, silly kiddo",
+		"Development was so long Mickey died of waiting",
+		"um um um um um um um",
+		"uhuhuhuh"
 	];
 
 	var defaultShader:FlxRuntimeShader;
 	var defaultShader2:FlxRuntimeShader;
 	var darkFilter:FlxRuntimeShader;
 
-	public var logContent:String;
-
 	var evilAndFuckedUpBookScale = 1.0;
-
-	public function new(?logContent:String)
-	{
-		super();
-
-		this.logContent = logContent;
-	}
 
 	// the create 'state'
 	override function create()
@@ -243,12 +236,6 @@ class MainMenu extends MusicBeatState
 		// uh
 		persistentUpdate = persistentDraw = true;
 
-		eyes = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/NEWmenu/HahaSadBoi'));
-		eyes.scrollFactor.set(0, 0);
-		eyes.screenCenter();
-		eyes.updateHitbox();
-		eyes.antialiasing = true;
-
 		floor = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/menu/floor'));
 		floor.scrollFactor.set(0, 0);
 		floor.setGraphicSize(Std.int(floor.width * 0.75));
@@ -284,7 +271,7 @@ class MainMenu extends MusicBeatState
 			add(omgCamera);
 		}
 
-		trace(GameData.episode1FPLock);
+		/*trace(GameData.episode1FPLock);
 		if (GameData.episode1FPLock == 'unlocked')
 		{
 			sigmaClick = new FlxSkewedSprite(500, 600, Paths.image('Funkin_avi/menu/click'));
@@ -297,7 +284,7 @@ class MainMenu extends MusicBeatState
 			sigmaClick.angle = 6;
 			sigmaClick.skew.set(15, -10);
 			add(sigmaClick);
-		}
+		}*/
 
 		datBook = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/menu/book'));
 		datBook.scrollFactor.set(0, 0);
@@ -344,16 +331,6 @@ class MainMenu extends MusicBeatState
 			gradient.antialiasing = true;
 			add(gradient);
 		}
-
-		magenta = new FlxSprite(-80).loadGraphic(Paths.image('menuDesat'));
-		magenta.scrollFactor.set(0, 0.18);
-		magenta.setGraphicSize(Std.int(magenta.width * 1.1));
-		magenta.updateHitbox();
-		magenta.screenCenter();
-		magenta.visible = false;
-		magenta.antialiasing = true;
-		magenta.color = 0xFFfd719b;
-		add(magenta);
 
 		// add the camera
 		camFollow = new FlxObject(0, 0, 1, 1);
@@ -444,6 +421,7 @@ class MainMenu extends MusicBeatState
 			cantaloupe.screenCenter(XY).x -= 700;
 			cantaloupe.y -= 300;
 			FlxTween.tween(cantaloupe.scale, {x: 2, y: 2}, 3, {ease: FlxEase.bounceOut, onComplete: _ -> FlxTween.tween(cantaloupe, {alpha: 0}, 2)});
+			cantaloupe.shake(.05, 0, 5);
 			add(cantaloupe);
 
 			FlxG.camera.shake(0.02, 5);
@@ -469,13 +447,26 @@ class MainMenu extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
-		if (!CoolUtil.findCoreFile())
+		/*if (!CoolUtil.findCoreFile())
 		{
 			new FlxTimer().start(1.0, function(tmr:FlxTimer)
 			{
 				FlxG.switchState(new SafeModeState());
 				FlxG.sound.music.volume = 0;
 			});
+		}*/
+
+		if (!sys.FileSystem.exists('./assets/shared/images/favi/stages/forbiddenRealm/DO NOT TOUCH MY MEME.png') && !GameData.canAddMalfunction)
+		{
+			selectedSomethin = true;
+			new FlxTimer().start(0.4, function(tmr:FlxTimer)
+			{
+				selectedSomethin = false;
+			});
+			FlxG.sound.play(Paths.sound('funkinAVI/easterEggSound'));
+		 	theBox.sendMessage('I just wanna talk bro.', 'New Freeplay Song Unlocked!');
+			GameData.canAddMalfunction = true;
+			GameData.saveShit();
 		}
 
 		var lerpVal:Float = CoolUtil.boundTo(elapsed * 7.5, 0, 1);
@@ -680,7 +671,7 @@ class MainMenu extends MusicBeatState
 		
 		if (FlxG.mouse.overlaps(datBook) && FlxG.mouse.justPressed && !selectedSomethin)
 		{
-			if (GameData.episode1FPLock == "unlocked")
+			if (GameData.malfunctionLock == "beaten")
 			{
 				datBook.scale.set(.8, .8);
 				//shittyUnoptimizedBookCopy.scale.set(.75, .77);
@@ -711,7 +702,7 @@ class MainMenu extends MusicBeatState
 			else
 			{
 				FlxG.sound.play(Paths.sound('cancelMenu'));
-				theBox.sendMessage('You haven\'t unlocked this yet!', 'Play through his legacy first to open the other pages to this story.');
+				theBox.sendMessage('You haven\'t unlocked this yet!', 'Complete EVERYTHING to open this book.');
 			}
 		}
 

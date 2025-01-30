@@ -114,6 +114,49 @@ also play miserable funk pls ty <33 ",
 
 		],
 		[
+			"8tastic!",
+			"8tastic",
+			"Pixel Artist for Everett on Malfunction",
+			"Something",
+			-186,
+			-370,
+			0.7,
+			false
+		],
+		[
+			"Mr. Chaos",
+			"chaos",
+			"Created the Spectrum Visualizer used in the Freeplay menu",
+			"I never thought that I would be working on something big, although I haven't done much for this mod",
+			-186,
+			-370,
+			0.7,
+			false
+		],
+		[
+			"BonoanAnything",
+			"bonoan",
+			"Evilrett VA, made lyrics for Delusional & trailers",
+			"\n\n\nThank you to AustinTheRedDragon for inviting me to this mod. Being here ever since early in development to seeing everything improve has been awesome. And I'm glad I could help the ways I could, with editing the trailers and voice acting. This was the first mod I have ever been a part of , so I'm glad I could be involved in this",
+			-200,
+			-370,
+			0.65,
+			true
+
+		],
+		[
+			"Sayan Sama",
+			"sayan",
+			"Made Twisted Grins V1 (Legacy)",
+			"",
+			-196,
+			-370,
+			0.65,
+			false
+
+		],
+
+		[
 			"Ms.IDK",
 			"idk",
 			"Artist & Owner of White Noise and RS",
@@ -135,10 +178,10 @@ also play miserable funk pls ty <33 ",
 		],
 		[
 			"BladzAMC_emerald",
-			"bladz",
+			"bladzNEW",
 			"Artist and Playtester",
-			"I can feel Malfunction coming inside me",
-			-320,
+			"- .... .. ... / -- --- -.. / .. ... / - --- --- / -- .- ... ... .. ...- .",
+			-310,
 			-140,
 			0.55,
 			false
@@ -147,7 +190,7 @@ also play miserable funk pls ty <33 ",
 			"PualTheUntruest",
 			"pual",
 			"Composer",
-			"",
+			"hi im pual im kinda good at music sometimes. thanks to don for letting my goofy ass in this peak as fuck mod!",
 			-166,
 			-370,
 			0.8,
@@ -157,9 +200,7 @@ also play miserable funk pls ty <33 ",
 			"Moe",
 			"moe",
 			"Artist, Animator And Cutscenes",
-			"Hi I did stuff
-
-Hi Adam :)",
+			":)",
 			200,
 			310,
 			1.57,
@@ -178,15 +219,15 @@ Hi Adam :)",
 		[
 			"theonlyshittyre. / rezeo",
 			"shitty",
-			"Hunter Goofy.",
-			"my cock has fallen once again.",
+			"Hunter Goofy Artist",
+			"\n\nhunted boi here! im really glad to be a part of the team, im not the best artist but i sure love working here. thanks to everyone on that team, theyre all good ppl that deserves only the best. also! if you played hunted before the 2.5 update, the sprites you see for hunter goofy, everett and lilith are outdated! cool things are coming. bless yall.",
 			50,
 			40,
 			1,
-			false
+			true
 		],
 		[
-			"AustinTheRedDragon",
+			"Austin W. Productions",
 			"austinw",
 			"Artist, Owner of Mr. Smiles & Professionally Horny",
 			"Just an average Dinosaur Human hybrid thing that hopes you enjoyed the mod, so uhm... Yeah",
@@ -198,7 +239,7 @@ Hi Adam :)",
 		[
 			"Gemmie Femmie",
 			"gemmieNEW",
-			"Concept Artist & Playtester",
+			"Concept Artist, Death Screen Artist & Playtester",
 			"\n\nOfficially Licensed Homosexual\nSpeaking of which\nWhere are the HUGE MEN at?????\nWHERE????\nGOD\nWHERE ARE THEY\nFUCK\nWHERE ARE THEY",
 			-290,
 			-140,
@@ -209,7 +250,7 @@ Hi Adam :)",
 			"FR3SHMoure",
 			"fresh",
 			"Composer (mostly well known for Delusional)",
-			"blepp.",
+			"blepp!",
 			-260,
 			-150,
 			0.67,
@@ -231,9 +272,9 @@ Un Saludo A La Gente De La Tarado Army, Volveran Mas Fuertes Que Nunca Gaaaa :VV
 			0.56,
 			true
 		],
-		["Just_Kuro", "kuro", "Artist", "\n\nTo all those people who believed in me,\nthank you,\ni thank every single one of you for the opportunity to work on this wonderful project.
+		["Just_Kuro", "kuro", "Artist", "\n\n\n\nTo all those people who believed in me,\nthank you,\ni thank every single one of you for the opportunity to work on this wonderful project.
 Thank you all.", -295, -130, 0.6, true],
 		["Kyuxhtysu", "kyuxhtsyu", "Artist & Redesigned Lilith (v2.5)", "gay sonic artist.", -725, -830, 0.18, false],
-		["0yxz.", "oyxzNEW", "Artist for the Settings UI & Character Info", "Communitygame don't go crazy on the gf design vro", -290, -135, 0.6, false]
+		["0yxz.", "oyxzNEWagain", "Artist for Settings & Info menus\nCarried the mod heavily with all the assets we were missing", "Avier x Evilrett forever man.", -360, -265, 0.22, false]
     ]
 }

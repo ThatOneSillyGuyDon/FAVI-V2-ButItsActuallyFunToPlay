@@ -63,30 +63,23 @@ class BaseOptionsMenu extends MusicBeatSubstate
 
 		descBox = new FlxSprite().makeGraphic(1, 1, FlxColor.BLACK);
 
-		var optionText = new FlxSprite(0, 0, Paths.image('Funkin_avi/options/icon_$title'));
-		optionText.screenCenter();
-		optionText.scale.set(.64, .64);
-		optionText.y -= 200;
-		optionText.antialiasing = ClientPrefs.globalAntialiasing;
-		FlxTween.tween(optionText, {y: optionText.x - 250, alpha: .75, 'scale.x': .5, 'scale.y': .5}, 1, {ease: FlxEase.expoOut});
-		add(optionText);
+		var shit = new FlxText(0, FlxG.height * 0.05, 0, title);
+		shit.setFormat(Paths.font("disneyFreeplayFont.ttf"), 25, FlxColor.fromRGB(255, 255, 255, Std.int(255 * .5)), CENTER, OUTLINE, FlxColor.BLACK);
+		shit.screenCenter(X);
+		add(shit);
 
-		selectorLeft = new FlxSprite(optionText.x - 50, 70).loadGraphic(Paths.image('$dogshitPath/arrow'));
-		//selectorLeft.y -= 50;
+		var selectorLeft = new FlxText(shit.x - 310, shit.y + 70, 0, '< ');
+		selectorLeft.setFormat(Paths.font("disneyFreeplayFont.ttf"), 150, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
 		selectorLeft.scale.set(.6, .6);
 		selectorLeft.antialiasing = ClientPrefs.globalAntialiasing;
-		FlxTween.tween(selectorLeft, {x: 176.5}, 1, {ease: FlxEase.expoOut});
+		//FlxTween.tween(selectorLeft, {x: 176.5}, 1, {ease: FlxEase.expoOut});
 		add(selectorLeft);
 
-		selectorRight = new FlxSprite(optionText.x + optionText.width - 170, 70).loadGraphic(Paths.image('$dogshitPath/arrow'));
-		//selectorRight.y -= 50;
+		var selectorRight = new FlxText(shit.x + 320, shit.y + 70, 0, ' >');
 		selectorRight.scale.set(.6, .6);
 		selectorRight.antialiasing = ClientPrefs.globalAntialiasing;
-		selectorRight.flipX = true;
-		FlxTween.tween(selectorRight, {x: 883.5}, 1, {ease: FlxEase.expoOut});
+		selectorRight.setFormat(Paths.font("disneyFreeplayFont.ttf"), 150, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
 		add(selectorRight);
-
-		trace (selectorLeft.x  + ' - ' + selectorRight.x);
 
 		descText = new FlxText(50, 900, 1180, "", 32);
 		descText.setFormat(Paths.font("DisneyFont.ttf"), 30, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -352,6 +345,8 @@ class BaseOptionsMenu extends MusicBeatSubstate
 			curSelected = optionsArray.length - 1;
 		if (curSelected >= optionsArray.length)
 			curSelected = 0;
+
+		grpOptions.members[curSelected].screenCenter(X);
 
 		descText.text = optionsArray[curSelected].description;
 		descText.screenCenter(Y);

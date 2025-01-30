@@ -139,6 +139,11 @@ class ModchartFile
                         json = {modifiers: [], events: [], playfields: 1};
                 case "Malfunction":
                     json = cast Json.parse(ClientPrefs.downScroll ? Modchart.malfunctionModchartD : Modchart.malfunctionModchartU);
+                case "Malfunction Legacy":
+                    if (ClientPrefs.mechanics)
+                        json = cast Json.parse(ClientPrefs.downScroll ? Modchart.malLegacyModD : Modchart.malLegacyModU);
+                    else
+                        json = {modifiers: [], events: [], playfields: 1};
                 case "Devilish Deal":
                     json = cast Json.parse(Modchart.devilishModchart);
                 case "War Dilemma":

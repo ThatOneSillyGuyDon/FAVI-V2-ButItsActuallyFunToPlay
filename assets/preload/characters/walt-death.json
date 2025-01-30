@@ -1,14 +1,13 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
 				170,
 				770
 			],
-			"anim": "laugh",
+			"loop": false,
 			"fps": 12,
-			"name": "idle",
+			"anim": "laugh",
 			"indices": [
 				0,
 				0,
@@ -53,33 +52,34 @@
 				13,
 				14,
 				15
-			]
-		},
-		{
-			"offsets": [
-				170,
-				770
-			],
-			"loop": false,
-			"fps": 12,
-			"anim": "laughButSpammable",
-			"indices": [
-				13,
-				14,
-				15
 			],
 			"name": "idle"
 		},
 		{
+			"loop": false,
+			"offsets": [
+				170,
+				770
+			],
+			"anim": "laughButSpammable",
+			"fps": 12,
+			"name": "idle",
+			"indices": [
+				13,
+				14,
+				15
+			]
+		},
+		{
+			"loop": true,
 			"offsets": [
 				990,
 				2460
 			],
-			"loop": true,
-			"fps": 10,
 			"anim": "idle",
-			"indices": [],
-			"name": "walt death dead-loop"
+			"fps": 10,
+			"name": "walt death dead-loop",
+			"indices": []
 		},
 		{
 			"offsets": [
@@ -87,7 +87,7 @@
 				2460
 			],
 			"indices": [],
-			"fps": 10,
+			"fps": 9,
 			"anim": "death",
 			"loop": false,
 			"name": "walt death dead0"
