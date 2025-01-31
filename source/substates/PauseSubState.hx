@@ -857,7 +857,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 								{
 									close();
 									remove(disc);
-									lime.app.Application.current.window.title = PlayState.windowName;
+									lime.app.Application.current.window.title = PlayState.lastWinName;
 								});
 							});
 						});
@@ -881,7 +881,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 				{
 					close();
 					remove(disc);
-					lime.app.Application.current.window.title = PlayState.windowName;
+					lime.app.Application.current.window.title = PlayState.lastWinName;
 				});
 			}
 		}	

@@ -604,7 +604,7 @@ class PlayState extends MusicBeatState
 	var curEpisode:String;
 
 	public static var windowName(default, set):String = "";
-	//public static var lastWinName:String = "";
+	public static var lastWinName:String = "";
 
 	public var foreground:FlxTypedGroup<FlxBasic>;
 
@@ -2773,7 +2773,6 @@ class PlayState extends MusicBeatState
 						camGame.setFilters([
 							new ShaderFilter(legacyChrom),
 							new ShaderFilter(legacyDistort),
-							new ShaderFilter(legacyTiltshift),
 							new ShaderFilter(legacyGreyscale),
 						]);
 						
@@ -4859,6 +4858,8 @@ class PlayState extends MusicBeatState
 		callOnLuas('onUpdate', [elapsed]);
 
 		updateHealthBar();
+
+		if (lastWinName != windowName) lastWinName = windowName; //jason, this is why I hate you
 
 		shaderAnim = Conductor.songPosition / 1000;
 
