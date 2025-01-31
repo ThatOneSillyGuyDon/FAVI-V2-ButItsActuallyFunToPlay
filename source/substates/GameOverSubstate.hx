@@ -129,7 +129,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		game = new FlxText(180, 50, 0, "G  A  M  E");
 		over = new FlxText(850, 50, 0, "O  V  E  R");
 		tryAgain = new FlxText(160, 560, 320, tryTxt[FlxG.random.int(0, tryTxt.length - 1)]);
-		quit = new FlxText(820, 560, 320, quitTxt[FlxG.random.int(0, quitTxt.length - 1)]);
+		quit = new FlxText(780, 560, 320, quitTxt[FlxG.random.int(0, quitTxt.length - 1)]);
 
 		game.angle = -13;
 		over.angle = 13;
@@ -165,6 +165,24 @@ class GameOverSubstate extends MusicBeatSubstate
 		if (!boyfriend.visible && PlayState.SONG.song != "Dont Cross")
 			endSoundName = "aviOST/gameOver/bellToll";
 
+		if (!ClientPrefs.lowQuality)
+		{
+			switch (PlayState.curStage)
+			{
+				case 'stage' | 'desktop' | 'waltRoom' | 'apartment' | 'treasureIsland' | 'forbiddenRealm' | 'fuckingLine' | 'staticVoid' | 'vaultRoom' | 'war':
+				// don't add scratch assets
+	
+				default:
+					var scratch:FlxSprite = new FlxSprite();
+					scratch.frames = Paths.getSparrowAtlas('favi/filters/scratchShit');
+					scratch.animation.addByPrefix('e', 'scratch thing', 24, true);
+					scratch.animation.play('e');
+					scratch.cameras = [stupidAssCam];
+					scratch.scrollFactor.set(0, 0);
+					add(scratch);
+			}
+		}
+
 		Conductor.bpm = (100);
 		// FlxG.camera.followLerp = 1;
 		// FlxG.camera.focusOn(FlxPoint.get(FlxG.width / 2, FlxG.height / 2));
@@ -186,6 +204,7 @@ class GameOverSubstate extends MusicBeatSubstate
 
 	var quitLerp:Float;
 	var tryLerp:Float;
+	var camLerpBullshit:Float;
 
 	var quitCol:FlxTween;
 	var tryCol:FlxTween;
@@ -197,6 +216,7 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		tryAgain.alpha = FlxMath.lerp(tryLerp, tryAgain.alpha, CoolUtil.boundTo(1 - (elapsed * 15), 0, 1));
 		quit.alpha = FlxMath.lerp(quitLerp, quit.alpha, CoolUtil.boundTo(1 - (elapsed * 15), 0, 1));
+		deathHUD.alpha = FlxMath.lerp(camLerpBullshit, deathHUD.alpha, CoolUtil.boundTo(1 - (elapsed * 15), 0, 1));
 
 		PlayState.instance.callOnLuas('onUpdate', [elapsed]);
 		if(updateCamera) {
@@ -303,7 +323,7 @@ class GameOverSubstate extends MusicBeatSubstate
 
 	function quitScreenShit()
 	{
-		FlxG.sound.music.stop();
+			FlxG.sound.music.stop();
 			PlayState.deathCounter = 0;
 			PlayState.seenCutscene = false;
 			PlayState.chartingMode = false;
@@ -317,8 +337,22 @@ class GameOverSubstate extends MusicBeatSubstate
 				}
 				else
 				{
-					MusicBeatState.switchState(new StoryMenu());
-					FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
+					if (!boyfriend.visible)
+					{
+						FlxG.sound.music.stop();
+						FlxG.sound.play(Paths.music(endSoundName));
+						camLerpBullshit = 0;
+						stupidAssCam.fade(FlxColor.BLACK, 1.4, false, function()
+						{
+							MusicBeatState.switchState(new StoryMenu());
+							FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
+						});
+					}
+					else
+					{
+						MusicBeatState.switchState(new StoryMenu());
+						FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
+					}
 				}
 			}
 			else
@@ -329,8 +363,22 @@ class GameOverSubstate extends MusicBeatSubstate
 				}
 				else
 				{
-					MusicBeatState.switchState(new FreeplayState());
-					FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
+					if (!boyfriend.visible)
+					{
+						FlxG.sound.music.stop();
+						FlxG.sound.play(Paths.music(endSoundName));
+						camLerpBullshit = 0;
+						stupidAssCam.fade(FlxColor.BLACK, 1.4, false, function()
+						{
+							MusicBeatState.switchState(new FreeplayState());
+							FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
+						});
+					}
+					else
+					{
+						MusicBeatState.switchState(new FreeplayState());
+						FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
+					}
 				}
 			}
 			FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
@@ -355,7 +403,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		}
 		FlxG.sound.music.fadeIn(2, 0, 1);
 		if (!boyfriend.visible)
-			FlxTween.tween(deathHUD, {alpha: 1}, 2, {ease: FlxEase.circOut});
+			camLerpBullshit = 1;
 	}
 
 	function endBullshit():Void
@@ -366,7 +414,8 @@ class GameOverSubstate extends MusicBeatSubstate
 			if (!boyfriend.visible)
 			{
 				FlxTween.tween(stupidAssCam, {zoom: stupidAssCam.zoom + 0.5}, 4, {ease: FlxEase.expoInOut});
-				FlxTween.tween(deathHUD, {zoom: 1.7, alpha: 0}, 1.2, {ease: FlxEase.expoOut});
+				FlxTween.tween(deathHUD, {zoom: 1.7}, 1.2, {ease: FlxEase.expoOut});
+				camLerpBullshit = 0;
 			}
 			boyfriend.playAnim('deathConfirm', true);
 			FlxG.sound.music.stop();
