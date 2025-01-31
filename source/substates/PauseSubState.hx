@@ -819,7 +819,6 @@ class FAVIPauseSubState extends MusicBeatSubstate
 		{
 			hasResumed = true;
 			songName.alpha = 0;
-			PlayState.windowTimer.active = false;
 			levelInfo.alpha = 0;
 			satanTxt.text = "";
 			if (PlayState.pauseCountEnabled)
@@ -858,6 +857,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 									close();
 									remove(disc);
 									lime.app.Application.current.window.title = PlayState.windowName;
+									PlayState.windowTimer.active = true;
 								});
 							});
 						});
@@ -882,6 +882,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 					close();
 					remove(disc);
 					lime.app.Application.current.window.title = PlayState.windowName;
+					PlayState.windowTimer.active = true;
 				});
 			}
 		}	
