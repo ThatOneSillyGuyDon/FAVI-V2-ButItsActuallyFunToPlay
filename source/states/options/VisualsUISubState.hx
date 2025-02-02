@@ -40,51 +40,6 @@ class VisualsUISubState extends BaseOptionsMenu
 			true);
 		addOption(option);
 
-		//I'd suggest using "Low Quality" as an example for making your own option since it is the simplest here
-		var option:Option = new Option('Low Quality', //Name
-			'If checked, ^^disables^^ some background details,\ndecreases loading times and improves performance.', //Description
-			'lowQuality', //Save data variable name
-			'bool', //Variable type
-			false); //Default value
-		addOption(option);
-
-		var option:Option = new Option('Anti-Aliasing',
-			'If unchecked, disables anti-aliasing, ^^increases performance\nat the cost of sharper visuals.^^',
-			'globalAntialiasing',
-			'bool',
-			true);
-		option.showBoyfriend = true;
-		option.onChange = onChangeAntiAliasing; //Changing onChange is only needed if you want to make a special interaction after it changes the value
-		addOption(option);
-
-		var option:Option = new Option('Shaders', //Name
-			'If unchecked, disables shaders.\nIt\'s used for some visual effects, ^^and also CPU intensive for weaker PCs.^^', //Description
-			'shaders', //Save data variable name
-			'bool', //Variable type
-			true); //Default value
-		addOption(option);
-
-		var option:Option = new Option('Low Quality', //Name
-			'If checked, disables some background details,\ndecreases loading times and improves performance.', //Description
-			'lowQuality', //Save data variable name
-			'bool', //Variable type
-			false); //Default value
-		addOption(option);
-
-		#if !html5 //Apparently other framerates isn't correctly supported on Browser? Probably it has some V-Sync shit enabled by default, idk
-		var option:Option = new Option('Framerate',
-			"Pretty self explanatory, isn't it?",
-			'framerate',
-			'int',
-			60);
-		addOption(option);
-
-		option.minValue = 60;
-		option.maxValue = 300;
-		option.displayFormat = '%v ';
-		option.onChange = onChangeFramerate;
-		#end
-
 		var option:Option = new Option('Camera Zooms',
 			"If unchecked, the camera won't zoom in on a beat hit.",
 			'camZooms',
@@ -110,13 +65,6 @@ class VisualsUISubState extends BaseOptionsMenu
 		option.changeValue = 0.1;
 		option.decimals = 1;
 		addOption(option);
-
-		var option:Option = new Option('GPU Caching', // Name
-			"If checked, your GPU's VRAM can be used to store some textures.\n^^Only enable if you have a good graphics card.^^", // Description
-			'useGPUCaching', // Save data variable name
-			'bool', // Variable type
-			false); // Default value
-		addOption(option);
 		
 		#if !mobile
 		var option:Option = new Option('FPS Counter',
@@ -133,18 +81,6 @@ class VisualsUISubState extends BaseOptionsMenu
 			'bool',
 			false);
 		addOption(option);
-
-		var option:Option = new Option('Framerate',
-		"Pretty self explanatory, isn't it?",
-		'framerate',
-		'int',
-		60);
-		addOption(option);
-
-		option.minValue = 60;
-		option.maxValue = 300;
-		option.displayFormat = '%v';
-		option.onChange = onChangeFramerate;
 		#end
 
 		var option:Option = new Option('Combo Stacking',

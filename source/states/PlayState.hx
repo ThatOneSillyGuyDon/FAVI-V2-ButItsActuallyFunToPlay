@@ -6739,9 +6739,7 @@ class PlayState extends MusicBeatState
 				return;
 			}
 		}
-
-		if (PlayState.pauseCountEnabled)
-			PlayState.pauseCountEnabled = false;
+		pauseCountEnabled = false;
 
 		timeBarBG.visible = false;
 		timeBar.visible = false;

@@ -536,7 +536,7 @@ class MainMenu extends MusicBeatState
 				}
 			}
 
-			if (birthdayKey && !selectedSomethin)
+			if (birthdayKey && !selectedSomethin && GameData.muckneyLock != "uninvited")
 			{
 				if (theBirthdayCode == (birthdayCode.length - 1))
 				{
@@ -777,6 +777,7 @@ class MainMenu extends MusicBeatState
 				//FlxG.sound.play(Paths.sound('base/menus/confirmMenu'));
 				FlxG.sound.play(Paths.sound('funkinAVI/menu/selectSfx'));
 				FlxG.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
+				FlxG.sound.music.fadeOut(0.8);
 				//FlxTween.tween(camGame, {zoom: 6}, 2, {ease: FlxEase.cubeInOut, startDelay: 0.5});
 
 				menuItems.forEach(function(spr:FlxSprite)
@@ -801,6 +802,7 @@ class MainMenu extends MusicBeatState
 							{
 								case 'freeplay':
 									MusicBeatState.switchState(new FreeplayCategories());
+									FlxG.sound.music.fadeIn(0.5, 0, 0.7);
 									FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
 							}
 						});
