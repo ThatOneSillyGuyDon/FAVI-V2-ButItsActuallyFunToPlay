@@ -274,7 +274,7 @@ class FreeplayState extends MusicBeatState
 		add(bg);
 
 		delutranceBg = new FlxSprite();
-		delutranceBg.frames = Paths.getSparrowAtlas('favi/stages/trance/background');
+		delutranceBg.frames = Paths.getSparrowAtlas(path + 'background');
 		delutranceBg.animation.addByPrefix("lmao", "background lmao", 24, true);
 		delutranceBg.scale.set(5, 5);
 		delutranceBg.animation.play("lmao");
@@ -1106,6 +1106,8 @@ class FreeplayState extends MusicBeatState
 									]);
 							}
 							FlxG.camera.shake(0.01, 0.001);
+							remove(delutranceBg);
+							add(bg);
 	
 						case "don't-cross!":
 							if(!ClientPrefs.lowQuality) {
