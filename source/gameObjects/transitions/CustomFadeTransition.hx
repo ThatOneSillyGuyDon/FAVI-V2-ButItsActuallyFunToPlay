@@ -14,16 +14,11 @@ class CustomFadeTransition extends MusicBeatSubstate {
 		super();
 
 		this.isTransIn = isTransIn;
-		var zoom:Float = CoolUtil.boundTo(FlxG.camera.zoom, 0.05, 1);
-		var width:Int = Std.int(FlxG.width / zoom);
-		var height:Int = Std.int(FlxG.height / zoom);
-		//transGradient = FlxGradient.createGradientFlxSprite(width, height, (isTransIn ? [0x0, FlxColor.BLACK] : [FlxColor.BLACK, 0x0]));
-		//transGradient.scrollFactor.set();
-		//add(transGradient);
-
-		transBlack = new FlxSprite().makeGraphic(width, height + 400, FlxColor.BLACK);
+		
+		transBlack = new FlxSprite().makeGraphic(1, 1, FlxColor.BLACK);
 		transBlack.scrollFactor.set(0, 0);
 		transBlack.screenCenter();
+		transBlack.scale.set(FlxG.width * 5, FlxG.height * 5);
 		if(!isTransIn)
 			transBlack.alpha = 0.001;
 		add(transBlack);
@@ -55,17 +50,7 @@ class CustomFadeTransition extends MusicBeatSubstate {
 	}
 
 	override function update(elapsed:Float) {
-		/*if(isTransIn) {
-			transBlack.y = transGradient.y + transGradient.height;
-		} else {
-			transBlack.y = transGradient.y - transBlack.height;
-		}*/
 		super.update(elapsed);
-		/*if(isTransIn) {
-			transBlack.y = transGradient.y + transGradient.height;
-		} else {
-			transBlack.y = transGradient.y - transBlack.height;
-		}*/
 	}
 
 	override function destroy() {
