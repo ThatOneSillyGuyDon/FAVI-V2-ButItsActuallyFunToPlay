@@ -8290,47 +8290,48 @@ class PlayState extends MusicBeatState
 			camNotes.zoom += 0.125;
 		}
 
-		if (SONG.song == "Isolated")
+		if (SONG.song == "Isolated") {
 			switch (curBeat)
 				{
 					case 160:
 						iconP2.alpha = 0;
-						isolatedHappy.visible = true;
-						FlxTween.tween(isolatedHappy, {alpha: 0}, 1);
+						if (isolatedHappy != null) isolatedHappy.visible = true;
+						if (isolatedHappy != null) FlxTween.tween(isolatedHappy, {alpha: 0}, 1);
 						FlxTween.tween(iconP2, {alpha: 1}, 0.6);
 
 					case 168:
-						lunacyIcon.visible = true;
+						if (lunacyIcon != null) lunacyIcon.visible = true;
 						iconP2.alpha = 0;
-						FlxTween.tween(lunacyIcon, {alpha: 0}, 1);
+						if (lunacyIcon != null) FlxTween.tween(lunacyIcon, {alpha: 0}, 1);
 						FlxTween.tween(iconP2, {alpha: 1}, 0.6);
 
 					case 172:
-						delusionalIcon.visible = true;
+						if (delusionalIcon != null) delusionalIcon.visible = true;
 						iconP2.alpha = 0;
-						FlxTween.tween(delusionalIcon, {alpha: 0}, 1);
+						if (delusionalIcon != null) FlxTween.tween(delusionalIcon, {alpha: 0}, 1);
 						FlxTween.tween(iconP2, {alpha: 1}, 0.6);
 
 					case 176:
-						fakeBFLosingFrame.visible = true;
+						if (fakeBFLosingFrame != null) fakeBFLosingFrame.visible = true;
 						iconP1.alpha = 0;
-						FlxTween.tween(fakeBFLosingFrame, {alpha: 0}, 1);
+						if (fakeBFLosingFrame != null) FlxTween.tween(fakeBFLosingFrame, {alpha: 0}, 1);
 						FlxTween.tween(iconP1, {alpha: 1}, 0.6);
 
 					case 184:
-						demonBFIcon.visible = true;
+						if (demonBFIcon != null) demonBFIcon.visible = true;
 						iconP1.alpha = 0;
-						FlxTween.tween(demonBFIcon, {alpha: 0}, 1);
+						if (demonBFIcon != null) FlxTween.tween(demonBFIcon, {alpha: 0}, 1);
 						FlxTween.tween(iconP1, {alpha: 1}, 0.6);
 
 					case 188:
-						demonBFScary.visible = true;
+						if (demonBFScary != null) demonBFScary.visible = true;
 						iconP1.alpha = 0;
-						FlxTween.tween(demonBFScary, {alpha: 0}, 1);
+						if (demonBFScary != null) FlxTween.tween(demonBFScary, {alpha: 0}, 1);
 						FlxTween.tween(iconP1, {alpha: 1}, 0.6);
 				}
+			}
 
-		if (SONG.song == "Devilish Deal")
+		if (SONG.song == "Devilish Deal") {
 			switch (curBeat)
 				{
 					case 1:
@@ -8440,7 +8441,8 @@ class PlayState extends MusicBeatState
 							satanTween = null;
 						}
 					});
-				}	
+				}
+			}	
 		switch (SONG.song)
 		{
 			case "Bless":
