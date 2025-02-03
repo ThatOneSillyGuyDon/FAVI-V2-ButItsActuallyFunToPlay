@@ -34,10 +34,7 @@ class GameOverSubstate extends MusicBeatSubstate
 
 	public static var instance:GameOverSubstate;
 
-	var game:FlxText;
-	var over:FlxText;
-	var tryAgain:FlxText;
-	var quit:FlxText;
+	var image:String;
 
 	var tryTxt:Array<String> = [
 		"Try Again",
@@ -68,15 +65,17 @@ class GameOverSubstate extends MusicBeatSubstate
 	public static var deathHUD:FlxCamera;
 	public static var stupidAssCam:FlxCamera;
 
-	// Everett Death Screen Buttons
-	var everettArrowUp:FlxSprite;
-	var everettArrowDown:FlxSprite;
-	var everettRetry:FlxSprite;
-	var everettLeave:FlxSprite;
+	// Custom UI Graphics
+	var uiArrowUp:FlxSprite;
+	var uiArrowDown:FlxSprite;
+	var uiRetry:FlxSprite;
+	var uiLeave:FlxSprite;
 
-	//Delusional Stuff
-	var deluRetry:FlxSprite;
-	var deluQuit:FlxSprite;
+	// Default UI
+	var game:FlxText;
+	var over:FlxText;
+	var tryAgain:FlxText;
+	var quit:FlxText;
 
 	/**
 	 * ## Resets variables to the default values!
@@ -121,8 +120,6 @@ class GameOverSubstate extends MusicBeatSubstate
 		boyfriend.cameras = [stupidAssCam];
 		add(boyfriend);
 
-		var image:String;
-
 		switch (PlayState.SONG.song)
 		{
 			case "Isolated" | "Lunacy": image = "favi/ui/gameOvers/episode1Death";
@@ -140,14 +137,51 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		switch(image)
 		{
+			case "favi/ui/gameOvers/episode1Death":
+				quitLerp = 0.0001;
+				tryLerp = 0.0001;
+				uiArrowDown = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/arrowEverett"));
+				uiArrowUp = new FlxSprite().loadGraphicFromSprite(uiArrowDown);
+				uiRetry = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/episode1Retry"));
+				uiLeave = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/episode1Leave"));
+				for (epiUI in [uiRetry, uiLeave])
+				{
+					epiUI.cameras = [stupidAssCam];
+					epiUI.screenCenter();
+					epiUI.scrollFactor.set(0, 0);
+					epiUI.scale.set(0.3, 0.3);
+					epiUI.alpha = 0.001;
+					epiUI.x -= 295;
+					epiUI.y -= 164;
+					epiUI.angle = -65;
+					add(epiUI);
+				}
+				for (everettUI in [uiArrowDown, uiArrowUp])
+				{
+					everettUI.cameras = [stupidAssCam];
+					everettUI.screenCenter();
+					everettUI.scrollFactor.set(0, 0);
+					everettUI.scale.set(0.37, 0.37);
+					everettUI.alpha = 0.001;
+					everettUI.x -= 524;
+					everettUI.y -= 172;
+					add(everettUI);
+				}
+				uiArrowDown.angle = 180;
+				uiArrowUp.angle = -6;
+				uiArrowDown.x += 50;
+				uiArrowUp.x += 400;
+				uiArrowDown.y += 62;
+				uiArrowUp.y -= 40;
+				
 			case "favi/ui/gameOvers/everettDeath":
 				quitLerp = 0.0001;
 				tryLerp = 0.0001;
-				everettArrowDown = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/arrowEverett"));
-				everettArrowUp = new FlxSprite().loadGraphicFromSprite(everettArrowDown);
-				everettRetry = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/retryEverett"));
-				everettLeave = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/leaveEverett"));
-				for (everettUI in [everettArrowDown, everettArrowUp, everettRetry, everettLeave])
+				uiArrowDown = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/arrowEverett"));
+				uiArrowUp = new FlxSprite().loadGraphicFromSprite(uiArrowDown);
+				uiRetry = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/retryEverett"));
+				uiLeave = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/leaveEverett"));
+				for (everettUI in [uiArrowDown, uiArrowUp, uiRetry, uiLeave])
 				{
 					everettUI.cameras = [stupidAssCam];
 					everettUI.screenCenter();
@@ -158,37 +192,33 @@ class GameOverSubstate extends MusicBeatSubstate
 					everettUI.y -= 54;
 					add(everettUI);
 				}
-				everettArrowDown.angle = 186;
-				everettArrowDown.x -= 180;
-				everettArrowDown.y += 10;
-				everettArrowUp.x += 50;
-				everettArrowUp.y -= 70;
+				uiArrowDown.angle = 186;
+				uiArrowDown.x -= 180;
+				uiArrowDown.y += 10;
+				uiArrowUp.x += 50;
+				uiArrowUp.y -= 70;
 
 			case "favi/ui/gameOvers/delusionalDeath":
 				tryLerp = 0.001;
 				quitLerp = 0.001;
 
-				deluRetry = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/retryDelu"));
-				deluRetry.screenCenter();
-				deluRetry.x += 440;
-				deluRetry.scrollFactor.set(0, 0);
-				deluRetry.setGraphicSize(0, FlxG.height);
-				deluRetry.cameras = [stupidAssCam];
-				deluRetry.alpha = 0.0001;
-				add(deluRetry);
+				uiRetry = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/retryDelu"));
+				uiLeave = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/deluLeave"));
 
-				deluQuit = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/deluLeave"));
-				deluQuit.screenCenter();
-				deluQuit.x += 440;
-				deluQuit.scrollFactor.set(0, 0);
-				deluQuit.setGraphicSize(0, FlxG.height);
-				deluQuit.cameras = [stupidAssCam];
-				deluQuit.alpha = 0.0001;
-				add(deluQuit);
+				for (deluUI in [uiRetry, uiLeave])
+				{
+					deluUI.screenCenter();
+					deluUI.x += 440;
+					deluUI.scrollFactor.set(0, 0);
+					deluUI.setGraphicSize(0, FlxG.height);
+					deluUI.cameras = [stupidAssCam];
+					deluUI.alpha = 0.0001;
+					add(deluUI);
+				}
 
-				everettArrowDown = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/arrowEverett"));
-				everettArrowUp = new FlxSprite().loadGraphicFromSprite(everettArrowDown);
-				for (everettUI in [everettArrowDown, everettArrowUp])
+				uiArrowDown = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/arrowEverett"));
+				uiArrowUp = new FlxSprite().loadGraphicFromSprite(uiArrowDown);
+				for (everettUI in [uiArrowDown, uiArrowUp])
 				{
 					everettUI.cameras = [stupidAssCam];
 					everettUI.screenCenter();
@@ -198,29 +228,32 @@ class GameOverSubstate extends MusicBeatSubstate
 					everettUI.x += 200;
 					add(everettUI);
 				}
-				everettArrowDown.angle = 194;
-				everettArrowUp.angle = 8;
-				everettArrowDown.x += 50;
-				everettArrowUp.x += 400;
+				uiArrowDown.angle = 194;
+				uiArrowUp.angle = 8;
+				uiArrowDown.x += 50;
+				uiArrowUp.x += 400;
 		}
 
-		game = new FlxText(180, 50, 0, "G  A  M  E");
-		over = new FlxText(850, 50, 0, "O  V  E  R");
-		tryAgain = new FlxText(160, 560, 320, tryTxt[FlxG.random.int(0, tryTxt.length - 1)]);
-		quit = new FlxText(780, 560, 320, quitTxt[FlxG.random.int(0, quitTxt.length - 1)]);
-
-		game.angle = -13;
-		over.angle = 13;
-
-		for (txt in [game, over, tryAgain, quit])
+		if (uiRetry == null)
 		{
-			txt.setFormat(Paths.font("DisneyFont.ttf"), 70, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-			txt.cameras = [deathHUD];
-			txt.borderSize = 6;
-			add(txt);
-		}
+			game = new FlxText(180, 50, 0, "G  A  M  E");
+			over = new FlxText(850, 50, 0, "O  V  E  R");
+			tryAgain = new FlxText(160, 560, 320, tryTxt[FlxG.random.int(0, tryTxt.length - 1)]);
+			quit = new FlxText(780, 560, 320, quitTxt[FlxG.random.int(0, quitTxt.length - 1)]);
 
-		tryAgain.color = FlxColor.YELLOW;
+			game.angle = -13;
+			over.angle = 13;
+
+			for (txt in [game, over, tryAgain, quit])
+			{
+				txt.setFormat(Paths.font("DisneyFont.ttf"), 70, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+				txt.cameras = [deathHUD];
+				txt.borderSize = 6;
+				add(txt);
+			}
+
+			tryAgain.color = FlxColor.YELLOW;
+		}
 
 		camFollow = new FlxPoint(boyfriend.getGraphicMidpoint().x, boyfriend.getGraphicMidpoint().y);
 
@@ -243,6 +276,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		if (!boyfriend.visible && PlayState.SONG.song != "Dont Cross")
 			endSoundName = "aviOST/gameOver/bellToll";
 
+		// i fucking pasted this code from PlayState cause i'm lazy lmfaoooooo
 		if (!ClientPrefs.lowQuality)
 		{
 			switch (PlayState.curStage)
@@ -281,34 +315,27 @@ class GameOverSubstate extends MusicBeatSubstate
 	var quitCol:FlxTween;
 	var tryCol:FlxTween;
 
-	var everArrowLerp:Float = 0.0001;
+	var arrowLerp:Float = 0.0001;
 
 	var isFollowingAlready:Bool = false;
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
-		tryAgain.alpha = FlxMath.lerp(tryLerp, tryAgain.alpha, CoolUtil.boundTo(1 - (elapsed * 15), 0, 1));
-		quit.alpha = FlxMath.lerp(quitLerp, quit.alpha, CoolUtil.boundTo(1 - (elapsed * 15), 0, 1));
-		deathHUD.alpha = FlxMath.lerp(camLerpBullshit, deathHUD.alpha, CoolUtil.boundTo(1 - (elapsed * 11), 0, 1));
-
-		if (deluRetry != null) 
-			deluRetry.alpha = FlxMath.lerp(tryLerp, deluRetry.alpha, CoolUtil.boundTo(1 - (elapsed * 8), 0, 1));
-
-		if (deluQuit != null)
-			deluQuit.alpha = FlxMath.lerp(quitLerp, deluQuit.alpha, CoolUtil.boundTo(1 - (elapsed * 8), 0, 1));
-
-		if (everettArrowDown != null && everettArrowUp != null)
+		if (tryAgain != null)
 		{
-			everettArrowDown.alpha = FlxMath.lerp(everArrowLerp, everettArrowDown.alpha, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
-			everettArrowUp.alpha = FlxMath.lerp(everArrowLerp, everettArrowUp.alpha, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
+			tryAgain.alpha = FlxMath.lerp(tryLerp, tryAgain.alpha, CoolUtil.boundTo(1 - (elapsed * 15), 0, 1));
+			quit.alpha = FlxMath.lerp(quitLerp, quit.alpha, CoolUtil.boundTo(1 - (elapsed * 15), 0, 1));
+			deathHUD.alpha = FlxMath.lerp(camLerpBullshit, deathHUD.alpha, CoolUtil.boundTo(1 - (elapsed * 11), 0, 1));
 		}
 
-		if (everettRetry != null)
-			everettRetry.alpha = FlxMath.lerp(tryLerp, everettRetry.alpha, CoolUtil.boundTo(1 - (elapsed * 8), 0, 1));
-
-		if (everettLeave != null)
-			everettLeave.alpha = FlxMath.lerp(quitLerp, everettLeave.alpha, CoolUtil.boundTo(1 - (elapsed * 8), 0, 1));
+		if (uiRetry != null)
+		{
+			uiRetry.alpha = FlxMath.lerp(tryLerp, uiRetry.alpha, CoolUtil.boundTo(1 - (elapsed * 8), 0, 1));
+			uiLeave.alpha = FlxMath.lerp(quitLerp, uiLeave.alpha, CoolUtil.boundTo(1 - (elapsed * 8), 0, 1));
+			uiArrowDown.alpha = FlxMath.lerp(arrowLerp, uiArrowDown.alpha, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
+			uiArrowUp.alpha = FlxMath.lerp(arrowLerp, uiArrowUp.alpha, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
+		}
 
 		PlayState.instance.callOnLuas('onUpdate', [elapsed]);
 		if(updateCamera) {
@@ -357,38 +384,38 @@ class GameOverSubstate extends MusicBeatSubstate
 			}
 		}
 
-		if ((controls.UI_DOWN_P || controls.UI_UP_P) && everArrowLerp == 1 && everettRetry != null)
+		if ((controls.UI_DOWN_P || controls.UI_UP_P) && arrowLerp == 1 && uiRetry != null && image == "favi/ui/gameOvers/everettDeath")
 		{
 			quitLerp = quitLerp == 1 ? 0.001 : 1;
 			tryLerp = tryLerp == 1 ? 0.001 : 1;
 			FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
 			if (controls.UI_DOWN_P)
-				everettArrowDown.alpha = 0.3;
+				uiArrowDown.alpha = 0.3;
 			if (controls.UI_UP_P)
-				everettArrowUp.alpha = 0.3;
+				uiArrowUp.alpha = 0.3;
 		}
 
-		if ((controls.UI_LEFT_P || controls.UI_RIGHT_P) && everArrowLerp == 1 && deluRetry != null)
+		if ((controls.UI_LEFT_P || controls.UI_RIGHT_P) && arrowLerp == 1 && uiRetry != null && image != "favi/ui/gameOvers/everettDeath")
 		{
 			quitLerp = quitLerp == 1 ? 0.001 : 1;
 			tryLerp = tryLerp == 1 ? 0.001 : 1;
 			FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
 			if (controls.UI_LEFT_P)
-				everettArrowDown.alpha = 0.3;
+				uiArrowDown.alpha = 0.3;
 			if (controls.UI_RIGHT_P)
-				everettArrowUp.alpha = 0.3;
+				uiArrowUp.alpha = 0.3;
 		}
 
 		if (controls.ACCEPT)
 		{
-			if ((tryLerp == 1 && deathHUD.alpha >= 0.5) || boyfriend.visible || (deluRetry != null && deluRetry.alpha >= 0.2) || (everettRetry != null && everettRetry.alpha >= 0.2))
+			if ((tryLerp == 1 && deathHUD.alpha >= 0.5) || boyfriend.visible || (uiRetry != null && uiRetry.alpha >= 0.2) || (uiRetry != null && uiRetry.alpha >= 0.2))
 				endBullshit();
 	
 			if (quitLerp == 1 && !boyfriend.visible)
 				quitScreenShit();
 		}
 
-		if (controls.BACK && (boyfriend.visible || (deluRetry != null && deluRetry.alpha >= 0.2)))
+		if (controls.BACK && boyfriend.visible)
 		{
 			quitScreenShit();
 		}
@@ -456,7 +483,7 @@ class GameOverSubstate extends MusicBeatSubstate
 					{
 						FlxG.sound.music.stop();
 						FlxG.sound.play(Paths.music(endSoundName));
-						camLerpBullshit = everArrowLerp = quitLerp = tryLerp = 0;
+						camLerpBullshit = arrowLerp = quitLerp = tryLerp = 0;
 						stupidAssCam.fade(FlxColor.BLACK, 1.4, false, function()
 						{
 							MusicBeatState.switchState(new StoryMenu());
@@ -482,7 +509,7 @@ class GameOverSubstate extends MusicBeatSubstate
 					{
 						FlxG.sound.music.stop();
 						FlxG.sound.play(Paths.music(endSoundName));
-						camLerpBullshit = everArrowLerp = quitLerp = tryLerp = 0;
+						camLerpBullshit = arrowLerp = quitLerp = tryLerp = 0;
 						stupidAssCam.fade(FlxColor.BLACK, 1.4, false, function()
 						{
 							MusicBeatState.switchState(new FreeplayState());
@@ -519,16 +546,10 @@ class GameOverSubstate extends MusicBeatSubstate
 		FlxG.sound.music.fadeIn(2, 0, 1);
 		if (!boyfriend.visible)
 			camLerpBullshit = 1;
-		if (deluRetry != null && !boyfriend.visible)
+		if ((uiRetry != null || uiLeave != null) && !boyfriend.visible)
 		{
 			camLerpBullshit = 0;
-			everArrowLerp = 1;
-			tryLerp = 1;
-		}
-		if ((everettRetry != null || everettLeave != null) && !boyfriend.visible)
-		{
-			camLerpBullshit = 0;
-			everArrowLerp = 1;
+			arrowLerp = 1;
 			tryLerp = 1;
 		}
 	}
@@ -542,7 +563,7 @@ class GameOverSubstate extends MusicBeatSubstate
 			{
 				FlxTween.tween(stupidAssCam, {zoom: stupidAssCam.zoom + 0.5}, 4, {ease: FlxEase.expoInOut});
 				FlxTween.tween(deathHUD, {zoom: 1.7}, 1.2, {ease: FlxEase.expoOut});
-				camLerpBullshit = everArrowLerp = quitLerp = tryLerp = 0;
+				camLerpBullshit = arrowLerp = quitLerp = tryLerp = 0;
 			}
 			boyfriend.playAnim('deathConfirm', true);
 			FlxG.sound.music.stop();

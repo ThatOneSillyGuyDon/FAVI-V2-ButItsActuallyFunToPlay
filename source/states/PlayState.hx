@@ -2147,71 +2147,76 @@ class PlayState extends MusicBeatState
 		}
 			
 		// Hardcoded Icons
-		demonBFIcon = new HealthIcon('evilcy', true, false, true, false);
-		demonBFIcon.y = healthBar.y - 75;
-		demonBFIcon.x = FlxG.width * 0.87;
-		demonBFIcon.visible = false;
-		add(demonBFIcon);
-	
-		demonBFScary = new HealthIcon('evildelu', true, false, true, false);
-		demonBFScary.animation.curAnim.curFrame = 1;
-		demonBFScary.y = healthBar.y - 75;
-		demonBFScary.x = FlxG.width * 0.87;
-		demonBFScary.visible = false;
-		add(demonBFScary);
-	
-		fakeBFLosingFrame = new HealthIcon('evilrett', true, false, true, false);
-		fakeBFLosingFrame.animation.curAnim.curFrame = 1;
-		fakeBFLosingFrame.y = healthBar.y - 75;
-		fakeBFLosingFrame.x = FlxG.width * 0.87;
-		fakeBFLosingFrame.visible = false;
-		add(fakeBFLosingFrame);
-	
-		isolatedHappy = new HealthIcon('lunaavier', false, false, false, true);
-		isolatedHappy.animation.curAnim.curFrame = 2;
-		isolatedHappy.y = healthBar.y - 75;
-		isolatedHappy.visible = false;
-		add(isolatedHappy);
-		
-		lunacyIcon = new HealthIcon('lunaavier', false, false, true, false);
-		lunacyIcon.y = healthBar.y - 75;
-		lunacyIcon.visible = false;
-		add(lunacyIcon);
-		
-		delusionalIcon = new HealthIcon('deluavier', false, false, true, false);
-		delusionalIcon.y = healthBar.y - 75;
-		delusionalIcon.visible = false;
-		add(delusionalIcon);
-	
-		minnieIcon = new HealthIcon('minnie', false, false, false, true);
-		minnieIcon.y = healthBar.y - 75;
-		minnieIcon.animation.curAnim.curFrame = 2;
-		minnieIcon.visible = false;
-		add(minnieIcon);
-			
-		satanIcon = new HealthIcon('satanddNEW', true, false, true, false);
-		satanIcon.y = healthBar.y - 90;
-		satanIcon.animation.curAnim.curFrame = 0;
-		satanIcon.visible = false;
-		add(satanIcon);
-	
-		satanIconPulse = new HealthIcon('satan', true, false, true, true);
-		satanIconPulse.y = healthBar.y - 90;
-		satanIconPulse.animation.curAnim.curFrame = 1;
-		satanIconPulse.visible = false;
-		add(satanIconPulse);
-
-		demonBFIcon.cameras = [camHUD];
-		demonBFScary.cameras = [camHUD];
-		fakeBFLosingFrame.cameras = [camHUD];
-		isolatedHappy.cameras = [camHUD];
-		lunacyIcon.cameras = [camHUD];
-		minnieIcon.cameras = [camHUD];
-		satanIcon.cameras = [camHUD];
-		satanIconPulse.cameras = [camHUD];
-
-		if (SONG.song == 'Devilish Deal')
+		if (SONG.song == "Isolated")
 		{
+			demonBFIcon = new HealthIcon('evilcy', true, false, true, false);
+			demonBFIcon.y = healthBar.y - 75;
+			demonBFIcon.x = FlxG.width * 0.87;
+			demonBFIcon.visible = false;
+			add(demonBFIcon);
+		
+			demonBFScary = new HealthIcon('evildelu', true, false, true, false);
+			demonBFScary.animation.curAnim.curFrame = 1;
+			demonBFScary.y = healthBar.y - 75;
+			demonBFScary.x = FlxG.width * 0.87;
+			demonBFScary.visible = false;
+			add(demonBFScary);
+		
+			fakeBFLosingFrame = new HealthIcon('evilrett', true, false, true, false);
+			fakeBFLosingFrame.animation.curAnim.curFrame = 1;
+			fakeBFLosingFrame.y = healthBar.y - 75;
+			fakeBFLosingFrame.x = FlxG.width * 0.87;
+			fakeBFLosingFrame.visible = false;
+			add(fakeBFLosingFrame);
+		
+			isolatedHappy = new HealthIcon('lunaavier', false, false, false, true);
+			isolatedHappy.animation.curAnim.curFrame = 2;
+			isolatedHappy.y = healthBar.y - 75;
+			isolatedHappy.visible = false;
+			add(isolatedHappy);
+			
+			lunacyIcon = new HealthIcon('lunaavier', false, false, true, false);
+			lunacyIcon.y = healthBar.y - 75;
+			lunacyIcon.visible = false;
+			add(lunacyIcon);
+			
+			delusionalIcon = new HealthIcon('deluavier', false, false, true, false);
+			delusionalIcon.y = healthBar.y - 75;
+			delusionalIcon.visible = false;
+			add(delusionalIcon);
+
+			demonBFIcon.cameras = [camHUD];
+			demonBFScary.cameras = [camHUD];
+			fakeBFLosingFrame.cameras = [camHUD];
+			isolatedHappy.cameras = [camHUD];
+			lunacyIcon.cameras = [camHUD];
+			delusionalIcon.cameras = [camHUD];
+		}
+	
+		if (SONG.song == "Devilish Deal")
+		{
+			minnieIcon = new HealthIcon('minnie', false, false, false, true);
+			minnieIcon.y = healthBar.y - 75;
+			minnieIcon.animation.curAnim.curFrame = 2;
+			minnieIcon.visible = false;
+			add(minnieIcon);
+			
+			satanIcon = new HealthIcon('satanddNEW', true, false, true, false);
+			satanIcon.y = healthBar.y - 90;
+			satanIcon.animation.curAnim.curFrame = 0;
+			satanIcon.visible = false;
+			add(satanIcon);
+		
+			satanIconPulse = new HealthIcon('satan', true, false, true, true);
+			satanIconPulse.y = healthBar.y - 90;
+			satanIconPulse.animation.curAnim.curFrame = 1;
+			satanIconPulse.visible = false;
+			add(satanIconPulse);
+
+			minnieIcon.cameras = [camHUD];
+			satanIcon.cameras = [camHUD];
+			satanIconPulse.cameras = [camHUD];
+
 			iconP1.visible = false;
 			iconP2.visible = false;
 			minnieIcon.visible = true;
@@ -5072,29 +5077,35 @@ class PlayState extends MusicBeatState
 		iconP2.scale.set(mult, mult);
 		iconP2.updateHitbox();
 
-		var mult:Float = FlxMath.lerp(1, minnieIcon.scale.x, CoolUtil.boundTo(1 - (elapsed * 9 * playbackRate), 0, 1));
-		minnieIcon.scale.set(mult, mult);
-		minnieIcon.updateHitbox();
+		if (SONG.song == "Devilish Deal")
+		{
+			var mult:Float = FlxMath.lerp(1, minnieIcon.scale.x, CoolUtil.boundTo(1 - (elapsed * 9 * playbackRate), 0, 1));
+			minnieIcon.scale.set(mult, mult);
+			minnieIcon.updateHitbox();
 
-		var mult:Float = FlxMath.lerp(1, demonBFIcon.scale.x, CoolUtil.boundTo(1 - (elapsed * 9 * playbackRate), 0, 1));
-		demonBFIcon.scale.set(mult, mult);
-		demonBFIcon.updateHitbox();
+			var mult:Float = FlxMath.lerp(1, satanIconPulse.scale.x, CoolUtil.boundTo(1 - (elapsed * 9 * playbackRate), 0, 1));
+			satanIconPulse.scale.set(mult, mult);
+			satanIconPulse.updateHitbox();
+		}
 
-		var mult:Float = FlxMath.lerp(1, satanIconPulse.scale.x, CoolUtil.boundTo(1 - (elapsed * 9 * playbackRate), 0, 1));
-		satanIconPulse.scale.set(mult, mult);
-		satanIconPulse.updateHitbox();
+		if (SONG.song == "Isolated")
+		{
+			var mult:Float = FlxMath.lerp(1, demonBFIcon.scale.x, CoolUtil.boundTo(1 - (elapsed * 9 * playbackRate), 0, 1));
+			demonBFIcon.scale.set(mult, mult);
+			demonBFIcon.updateHitbox();
 
-		var mult:Float = FlxMath.lerp(1, lunacyIcon.scale.x, CoolUtil.boundTo(1 - (elapsed * 9 * playbackRate), 0, 1));
-		lunacyIcon.scale.set(mult, mult);
-		lunacyIcon.updateHitbox();
+			var mult:Float = FlxMath.lerp(1, lunacyIcon.scale.x, CoolUtil.boundTo(1 - (elapsed * 9 * playbackRate), 0, 1));
+			lunacyIcon.scale.set(mult, mult);
+			lunacyIcon.updateHitbox();
 
-		var mult:Float = FlxMath.lerp(1, isolatedHappy.scale.x, CoolUtil.boundTo(1 - (elapsed * 9 * playbackRate), 0, 1));
-		isolatedHappy.scale.set(mult, mult);
-		isolatedHappy.updateHitbox();
+			var mult:Float = FlxMath.lerp(1, isolatedHappy.scale.x, CoolUtil.boundTo(1 - (elapsed * 9 * playbackRate), 0, 1));
+			isolatedHappy.scale.set(mult, mult);
+			isolatedHappy.updateHitbox();
 
-		var mult:Float = FlxMath.lerp(1, fakeBFLosingFrame.scale.x, CoolUtil.boundTo(1 - (elapsed * 9 * playbackRate), 0, 1));
-		fakeBFLosingFrame.scale.set(mult, mult);
-		fakeBFLosingFrame.updateHitbox();
+			var mult:Float = FlxMath.lerp(1, fakeBFLosingFrame.scale.x, CoolUtil.boundTo(1 - (elapsed * 9 * playbackRate), 0, 1));
+			fakeBFLosingFrame.scale.set(mult, mult);
+			fakeBFLosingFrame.updateHitbox();
+		}
 
 
 		var iconOffset:Int = 26;
@@ -5110,16 +5121,22 @@ class PlayState extends MusicBeatState
 			iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * iconP2.scale.x) / 2 - iconOffset * 2;
 		}
 
-		fakeBFLosingFrame.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * fakeBFLosingFrame.scale.x - 150) / 2 - iconOffset;
-		demonBFIcon.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * demonBFIcon.scale.x - 150) / 2  - iconOffset;
-		demonBFScary.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * demonBFScary.scale.x - 150) / 2 - iconOffset;
-		isolatedHappy.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * isolatedHappy.scale.x) / 2 - iconOffset * 2;
-		lunacyIcon.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * lunacyIcon.scale.x) / 2 - iconOffset * 2;
-		delusionalIcon.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * delusionalIcon.scale.x) / 2 - iconOffset * 2;
+		if (SONG.song == "Isolated")
+		{
+			fakeBFLosingFrame.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * fakeBFLosingFrame.scale.x - 150) / 2 - iconOffset;
+			demonBFIcon.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * demonBFIcon.scale.x - 150) / 2  - iconOffset;
+			demonBFScary.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * demonBFScary.scale.x - 150) / 2 - iconOffset;
+			isolatedHappy.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * isolatedHappy.scale.x) / 2 - iconOffset * 2;
+			lunacyIcon.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * lunacyIcon.scale.x) / 2 - iconOffset * 2;
+			delusionalIcon.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * delusionalIcon.scale.x) / 2 - iconOffset * 2;
+		}
 
-		minnieIcon.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(-healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * minnieIcon.scale.x) / 2 - iconOffset * 25;
-		satanIcon.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(-healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * satanIcon.scale.x - 150) / 2 - iconOffset * 24;
-		satanIconPulse.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(-healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * satanIconPulse.scale.x - 150) / 2 - iconOffset * 24;
+		if (SONG.song == "Devilish Deal")
+		{
+			minnieIcon.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(-healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * minnieIcon.scale.x) / 2 - iconOffset * 25;
+			satanIcon.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(-healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * satanIcon.scale.x - 150) / 2 - iconOffset * 24;
+			satanIconPulse.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(-healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * satanIconPulse.scale.x - 150) / 2 - iconOffset * 24;
+		}
 
 		if (healthThing > 2)
 			healthThing = 2;
@@ -5127,17 +5144,17 @@ class PlayState extends MusicBeatState
 		if (!boyfriend.animatedIcon)
 			if (iconP1.frames.frames.length >= 3 && healthBar.percent > 80)
 			{
-				demonBFIcon.animation.curAnim.curFrame = 2;
+				if (SONG.song == "Isolated") demonBFIcon.animation.curAnim.curFrame = 2;
 				iconP1.animation.curAnim.curFrame = 2;
 			}
 			else if (iconP1.frames.frames.length >= 2 && healthBar.percent < 20)
 			{
-				demonBFIcon.animation.curAnim.curFrame = 1;
+				if (SONG.song == "Isolated") demonBFIcon.animation.curAnim.curFrame = 1;
 				iconP1.animation.curAnim.curFrame = 1;
 			}
 			else
 			{
-				demonBFIcon.animation.curAnim.curFrame = 1;
+				if (SONG.song == "Isolated") demonBFIcon.animation.curAnim.curFrame = 1;
 				iconP1.animation.curAnim.curFrame = 0;
 			}
 		else
@@ -5149,20 +5166,29 @@ class PlayState extends MusicBeatState
 		if (!dad.animatedIcon)
 			if (iconP2.frames.frames.length >= 2 && healthBar.percent > 80)
 			{
-				lunacyIcon.animation.curAnim.curFrame = 1;
-				delusionalIcon.animation.curAnim.curFrame = 1;
+				if (SONG.song == "Isolated")
+				{
+					lunacyIcon.animation.curAnim.curFrame = 1;
+					delusionalIcon.animation.curAnim.curFrame = 1;
+				}
 				iconP2.animation.curAnim.curFrame = 1;
 			}
 			else if (iconP2.frames.frames.length >= 3 && healthBar.percent < 20)
 			{
-				lunacyIcon.animation.curAnim.curFrame = 2;
-				delusionalIcon.animation.curAnim.curFrame = 2;
+				if (SONG.song == "Isolated")
+				{
+					lunacyIcon.animation.curAnim.curFrame = 2;
+					delusionalIcon.animation.curAnim.curFrame = 2;
+				}
 				iconP2.animation.curAnim.curFrame = 2;
 			}
 			else
 			{
-				lunacyIcon.animation.curAnim.curFrame = 0;
-				delusionalIcon.animation.curAnim.curFrame = 0;
+				if (SONG.song == "Isolated")
+				{
+					lunacyIcon.animation.curAnim.curFrame = 0;
+					delusionalIcon.animation.curAnim.curFrame = 0;
+				}
 				iconP2.animation.curAnim.curFrame = 0;
 			}
 		else
@@ -6106,6 +6132,19 @@ class PlayState extends MusicBeatState
 			if(ret != FunkinLua.Function_Stop) {
 				boyfriend.stunned = true;
 				deathCounter++;
+
+				// kills any stuff that may cause lag during the process
+				for (cams in [camGame, camHUD, camNotes])
+					cams.setFilters([]); // kills the shaders if any exists
+
+				for (highEndShit in [scratch, scratchButLessVisible, fancyBarOverlay])
+					if (highEndShit != null)
+					{
+						remove(highEndShit);
+						highEndShit.kill();
+						highEndShit.destroy();
+						highEndShit = null;
+					}
 
 				paused = true;
 
@@ -11307,23 +11346,29 @@ class PlayState extends MusicBeatState
 					|| dad.curCharacter != 'walt-true' || dad.curCharacter != 'relapsedNEW') iconP2.scale.set(1.2, 1.2);
 			}
 
-		lunacyIcon.scale.set(1.2, 1.2);
-		lunacyIcon.updateHitbox();
+		if (SONG.song == "Isolated")
+		{
+			lunacyIcon.scale.set(1.2, 1.2);
+			lunacyIcon.updateHitbox();
 
-		isolatedHappy.scale.set(1.2, 1.2);
-		isolatedHappy.updateHitbox();
+			isolatedHappy.scale.set(1.2, 1.2);
+			isolatedHappy.updateHitbox();
 
-		demonBFIcon.scale.set(1.2, 1.2);
-		demonBFIcon.updateHitbox();
+			demonBFIcon.scale.set(1.2, 1.2);
+			demonBFIcon.updateHitbox();
 
-		fakeBFLosingFrame.scale.set(1.2, 1.2);
-		fakeBFLosingFrame.updateHitbox();
+			fakeBFLosingFrame.scale.set(1.2, 1.2);
+			fakeBFLosingFrame.updateHitbox();
+		}
 
-		minnieIcon.scale.set(1.2, 1.2);
-		minnieIcon.updateHitbox();
+		if (SONG.song == "Devilish Deal")
+		{
+			minnieIcon.scale.set(1.2, 1.2);
+			minnieIcon.updateHitbox();
 
-		satanIconPulse.scale.set(1.35, 1.35);
-		satanIconPulse.updateHitbox();
+			satanIconPulse.scale.set(1.35, 1.35);
+			satanIconPulse.updateHitbox();
+		}
 
 		iconP1.updateHitbox();
 		iconP2.updateHitbox();
