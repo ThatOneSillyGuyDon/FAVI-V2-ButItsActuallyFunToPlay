@@ -1,114 +1,114 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				-60,
 				-190
 			],
-			"loop": false,
-			"fps": 6,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "left"
+			"fps": 6,
+			"name": "left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-60,
 				-190
 			],
-			"loop": false,
-			"fps": 6,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
+			"fps": 6,
+			"name": "down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-60,
 				-190
 			],
-			"loop": false,
-			"fps": 6,
 			"anim": "singUP",
-			"indices": [],
-			"name": "up"
+			"fps": 6,
+			"name": "up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-60,
 				-190
 			],
-			"loop": false,
-			"fps": 6,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right"
+			"fps": 6,
+			"name": "right",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-60,
 				-190
 			],
-			"loop": false,
-			"fps": 6,
 			"anim": "singRIGHTmiss",
-			"indices": [],
-			"name": "missRight"
+			"fps": 6,
+			"name": "missRight",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-60,
 				-190
 			],
-			"loop": false,
-			"fps": 6,
 			"anim": "singLEFTmiss",
-			"indices": [],
-			"name": "missLeft"
+			"fps": 6,
+			"name": "missLeft",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-60,
 				-190
 			],
-			"loop": false,
-			"fps": 6,
 			"anim": "singUPmiss",
-			"indices": [],
-			"name": "missUp"
+			"fps": 6,
+			"name": "missUp",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-60,
 				-190
 			],
-			"loop": false,
-			"fps": 6,
 			"anim": "singDOWNmiss",
-			"indices": [],
-			"name": "missDown"
-		},
-		{
-			"loop": false,
-			"offsets": [
-				-60,
-				-150
-			],
-			"anim": "dodge",
-			"fps": 9,
-			"name": "dodge",
+			"fps": 6,
+			"name": "missDown",
 			"indices": []
 		},
 		{
 			"offsets": [
 				-60,
+				-150
+			],
+			"loop": false,
+			"fps": 9,
+			"anim": "dodge",
+			"indices": [],
+			"name": "dodge"
+		},
+		{
+			"loop": true,
+			"offsets": [
+				-60,
 				-190
 			],
-			"indices": [],
-			"fps": 5,
 			"anim": "idle",
-			"loop": true,
-			"name": "idle"
+			"fps": 5,
+			"name": "idle",
+			"indices": []
 		}
 	],
 	"no_antialiasing": true,
@@ -117,12 +117,12 @@
 		0,
 		0
 	],
-	"healthicon": "relapseeverett-pixel",
+	"healthicon": "everettsins-pixel",
 	"flip_x": true,
 	"healthbar_colors": [
-		172,
-		170,
-		170
+		206,
+		206,
+		206
 	],
 	"camera_position": [
 		0,

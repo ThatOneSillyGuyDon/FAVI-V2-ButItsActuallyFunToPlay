@@ -18,7 +18,7 @@ class EVILantileakState extends FlxState
 
         signInBox = new FlxButton(0, 475, "Continue", function()
         {
-            if (box.text == '3vSxfpk3sZ22kDg')
+            if (box.text == 'V7RVPXqWXuPkkgCTVLlU')
             {
                 trace('should work');
                 FlxG.switchState(new TitleState());

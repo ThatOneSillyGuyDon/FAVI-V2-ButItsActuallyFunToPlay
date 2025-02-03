@@ -1,81 +1,81 @@
 {
 	"animations": [
 		{
+			"loop": true,
 			"offsets": [
 				1,
 				0
 			],
-			"loop": true,
-			"fps": 12,
 			"anim": "idle",
-			"indices": [],
-			"name": "Relapsed2 Idle"
-		},
-		{
-			"offsets": [
-				0,
-				0
-			],
-			"loop": false,
 			"fps": 12,
+			"name": "Relapsed2 Idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "Relapsed2 Down"
+			"fps": 12,
+			"name": "Relapsed2 Down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"loop": false,
-			"fps": 13,
 			"anim": "singUP",
-			"indices": [],
-			"name": "Relapsed2 Up"
+			"fps": 13,
+			"name": "Relapsed2 Up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"loop": false,
-			"fps": 13,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "Relapsed2 Left"
+			"fps": 13,
+			"name": "Relapsed2 Left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"loop": false,
-			"fps": 13,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "Relapsed2 Right"
+			"fps": 13,
+			"name": "Relapsed2 Right",
+			"indices": []
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"loop": false,
+			"fps": 13,
 			"anim": "attack",
-			"fps": 13,
-			"name": "Relapsed2 Attack",
-			"indices": []
+			"indices": [],
+			"name": "Relapsed2 Attack"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"anim": "reload",
+			"loop": false,
 			"fps": 13,
-			"name": "Relapsed2 Reload",
-			"indices": []
+			"anim": "reload",
+			"indices": [],
+			"name": "Relapsed2 Reload"
 		}
 	],
 	"no_antialiasing": true,
@@ -84,7 +84,7 @@
 		-80,
 		180
 	],
-	"healthicon": "relapse-gun-pixel",
+	"healthicon": "relapsegun-pixel",
 	"flip_x": false,
 	"healthbar_colors": [
 		92,

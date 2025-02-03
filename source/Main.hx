@@ -44,28 +44,6 @@ class Main extends Sprite
 	{
 		super();
 
-		if (stage != null)
-		{
-			init();
-		}
-		else
-		{
-			addEventListener(Event.ADDED_TO_STAGE, init);
-		}
-	}
-
-	private function init(?E:Event):Void
-	{
-		if (hasEventListener(Event.ADDED_TO_STAGE))
-		{
-			removeEventListener(Event.ADDED_TO_STAGE, init);
-		}
-
-		setupGame();
-	}
-
-	private function setupGame():Void
-	{
 		var aviGameCrap:FlxGame = new FlxGame(game.gameWidth, game.gameHeight, Init, game.framerate, game.framerate, game.skipSplash, game.startFullscreen);
 		@:privateAccess aviGameCrap._customSoundTray = gameObjects.ui.Soundtray;
 		addChild(aviGameCrap);

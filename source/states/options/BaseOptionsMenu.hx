@@ -72,6 +72,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 		selectorLeft.setFormat(Paths.font("disneyFreeplayFont.ttf"), 150, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
 		selectorLeft.scale.set(.6, .6);
 		selectorLeft.antialiasing = ClientPrefs.globalAntialiasing;
+		//FlxTween.tween(selectorLeft, {x: 176.5}, 1, {ease: FlxEase.expoOut});
 		add(selectorLeft);
 
 		var selectorRight = new FlxText(shit.x + 320, shit.y + 70, 0, ' >');

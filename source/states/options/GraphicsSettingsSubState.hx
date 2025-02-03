@@ -15,7 +15,7 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 
 		//I'd suggest using "Low Quality" as an example for making your own option since it is the simplest here
 		var option:Option = new Option('Low Quality', //Name
-			'If checked, disables some background details,\ndecreases loading times and improves performance.', //Description
+			'If checked, ^^disables^^ some background details,\ndecreases loading times and improves performance.', //Description
 			'lowQuality', //Save data variable name
 			'bool', //Variable type
 			false); //Default value
@@ -31,7 +31,7 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 		addOption(option);
 
 		var option:Option = new Option('Shaders', //Name
-			'If unchecked, disables shaders.\nIt\'s used for some visual effects, and also CPU intensive for weaker PCs.', //Description
+			'If unchecked, disables shaders.\nIt\'s used for some visual effects, ^^and also CPU intensive for weaker PCs.^^', //Description
 			'shaders', //Save data variable name
 			'bool', //Variable type
 			true); //Default value

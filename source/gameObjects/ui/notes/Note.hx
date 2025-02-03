@@ -278,7 +278,7 @@ class Note extends FlxSprite
 						skin = "NOTE_assets-CARTOON";
 					case "Mercy":
 						skin = "NOTE_assets-MERCY";
-					case "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Malfunction Legacy" | "Cycled Sins Legacy" | "Mercy Legacy" | "Delutrance" | "Birthday" | "Malfunction":
+					case "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Malfunction Legacy" | "Twisted Grins Legacy" | "Cycled Sins Legacy" | "Mercy Legacy" | "Delutrance" | "Birthday" | "Malfunction":
 						skin = "NOTE_assets";
 					case "Cycled Sins":
 						skin = "NOTE_assets-SIN";
@@ -360,7 +360,17 @@ class Note extends FlxSprite
 			animation.addByPrefix(colArray[noteData] + 'hold', colArray[noteData] + ' hold piece');
 		}
 
-		setGraphicSize(Std.int(width * 0.7));
+		var s = 0.7;
+		switch (PlayState.SONG.song)
+		{
+			case "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Malfunction Legacy" | "Cycled Sins Legacy" | "Mercy Legacy" | "Delutrance" | "Birthday" | "Malfunction":
+				s = 0.7;
+			case "Dont Cross" | "Mercy":
+			   s = 0.64;
+			default:
+				s = 0.6;
+		}
+		setGraphicSize(Std.int(width * s));
 		updateHitbox();
 	}
 

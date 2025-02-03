@@ -12,14 +12,8 @@ import modcharting.ModchartUtil;
 import openfl.events.Event;
 import openfl.events.IOErrorEvent;
 
-//for lua and hscript
 class ModchartFuncs
 {
-    public static function loadLuaFunctions()
-    {
-
-    }
-
     public static function startMod(name:String, modClass:String, type:String = '', pf:Int = -1, ?instance:ModchartMusicBeatState = null)
     {
         if (instance == null)
@@ -34,8 +28,6 @@ class ModchartFuncs
         if (instance.playfieldRenderer.modchart.customModifiers.exists(modClass))
         {
             var modifier = new Modifier(name, getModTypeFromString(type), pf);
-            if (instance.playfieldRenderer.modchart.customModifiers.get(modClass).interp != null)
-                instance.playfieldRenderer.modchart.customModifiers.get(modClass).interp.variables.set('instance', instance);
             instance.playfieldRenderer.modchart.customModifiers.get(modClass).initMod(modifier); //need to do it this way instead because using current value in the modifier script didnt work
             //var modifier = instance.playfieldRenderer.modchart.customModifiers.get(modClass).copy();
             //modifier.tag = name; //set correct stuff because its copying shit

@@ -57,12 +57,7 @@ class FreeplayCategories extends MusicBeatState {
 				new openfl.filters.ShaderFilter(defaultShader2)
 			]);
 			
-		/*if (GameData.coversCategoryLock == 'unlocked')
-		{
-			freeplayCats = ['Episodes', 'Extras', 'Legacy', 'Covers']; // probably won't be used till V3 most likely unless Yama decides we add this category thing
-		}else*/ 
-	    		freeplayCats = ['episodes', 'extras', 'legacy'];
-    		//}
+	    freeplayCats = ['episodes', 'extras', 'legacy'];
 
         BG = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/freeplay/category/freeplayBG'));
 		BG.screenCenter();
@@ -227,6 +222,7 @@ class FreeplayCategories extends MusicBeatState {
 		}
 		
 		if (controls.BACK) {
+			FreeplayState.songInstPlaying = false;
 			FlxG.sound.play(Paths.sound("cancelMenu"));
 			MusicBeatState.switchState(new MainMenu());
 			FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));

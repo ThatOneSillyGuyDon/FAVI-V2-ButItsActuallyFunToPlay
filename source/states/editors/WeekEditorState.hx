@@ -421,9 +421,9 @@ class WeekEditorState extends MusicBeatState
 		}
 
 		if(!blockInput) {
-			FlxG.sound.muteKeys = Init.muteKeys;
-			FlxG.sound.volumeDownKeys = Init.volumeDownKeys;
-			FlxG.sound.volumeUpKeys = Init.volumeUpKeys;
+			FlxG.sound.muteKeys = TitleState.muteKeys;
+			FlxG.sound.volumeDownKeys = TitleState.volumeDownKeys;
+			FlxG.sound.volumeUpKeys = TitleState.volumeUpKeys;
 			if(FlxG.keys.justPressed.ESCAPE) {
 				MusicBeatState.switchState(new MasterEditorMenu());
 				FlxG.sound.playMusic(Paths.music('freakyMenu'));
@@ -784,9 +784,9 @@ class WeekEditorFreeplayState extends MusicBeatState
 				iconInputText.hasFocus = false;
 			}
 		} else {
-			FlxG.sound.muteKeys = Init.muteKeys;
-			FlxG.sound.volumeDownKeys = Init.volumeDownKeys;
-			FlxG.sound.volumeUpKeys = Init.volumeUpKeys;
+			FlxG.sound.muteKeys = TitleState.muteKeys;
+			FlxG.sound.volumeDownKeys = TitleState.volumeDownKeys;
+			FlxG.sound.volumeUpKeys = TitleState.volumeUpKeys;
 			if(FlxG.keys.justPressed.ESCAPE) {
 				MusicBeatState.switchState(new MasterEditorMenu());
 				FlxG.sound.playMusic(Paths.music('freakyMenu'));

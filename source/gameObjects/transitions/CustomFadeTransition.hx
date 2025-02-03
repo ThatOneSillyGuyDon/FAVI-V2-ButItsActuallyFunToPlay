@@ -17,28 +17,28 @@ class CustomFadeTransition extends MusicBeatSubstate {
 		var zoom:Float = CoolUtil.boundTo(FlxG.camera.zoom, 0.05, 1);
 		var width:Int = Std.int(FlxG.width / zoom);
 		var height:Int = Std.int(FlxG.height / zoom);
-		transGradient = FlxGradient.createGradientFlxSprite(width, height, (isTransIn ? [0x0, FlxColor.BLACK] : [FlxColor.BLACK, 0x0]));
-		transGradient.scrollFactor.set();
-		add(transGradient);
+		//transGradient = FlxGradient.createGradientFlxSprite(width, height, (isTransIn ? [0x0, FlxColor.BLACK] : [FlxColor.BLACK, 0x0]));
+		//transGradient.scrollFactor.set();
+		//add(transGradient);
 
 		transBlack = new FlxSprite().makeGraphic(width, height + 400, FlxColor.BLACK);
-		transBlack.scrollFactor.set();
+		transBlack.scrollFactor.set(0, 0);
+		transBlack.screenCenter();
+		if(!isTransIn)
+			transBlack.alpha = 0.001;
 		add(transBlack);
 
-		transGradient.x -= (width - FlxG.width) / 2;
-		transBlack.x = transGradient.x;
+		//transGradient.x -= (width - FlxG.width) / 2;
+		//transBlack.x = transGradient.x;
 
 		if(isTransIn) {
-			transGradient.y = transBlack.y - transBlack.height;
-			FlxTween.tween(transGradient, {y: transGradient.height + 50}, duration, {
+			FlxTween.tween(transBlack, {alpha: 0}, duration, {
 				onComplete: function(twn:FlxTween) {
 					close();
 				},
 			ease: FlxEase.linear});
 		} else {
-			transGradient.y = -transGradient.height;
-			transBlack.y = transGradient.y - transBlack.height + 50;
-			leTween = FlxTween.tween(transGradient, {y: transGradient.height + 50}, duration, {
+			FlxTween.tween(transBlack, {alpha: 1}, duration, {
 				onComplete: function(twn:FlxTween) {
 					if(finishCallback != null) {
 						finishCallback();
@@ -49,23 +49,23 @@ class CustomFadeTransition extends MusicBeatSubstate {
 
 		if(nextCamera != null) {
 			transBlack.cameras = [nextCamera];
-			transGradient.cameras = [nextCamera];
+			//transGradient.cameras = [nextCamera];
 		}
 		nextCamera = null;
 	}
 
 	override function update(elapsed:Float) {
-		if(isTransIn) {
+		/*if(isTransIn) {
 			transBlack.y = transGradient.y + transGradient.height;
 		} else {
 			transBlack.y = transGradient.y - transBlack.height;
-		}
+		}*/
 		super.update(elapsed);
-		if(isTransIn) {
+		/*if(isTransIn) {
 			transBlack.y = transGradient.y + transGradient.height;
 		} else {
 			transBlack.y = transGradient.y - transBlack.height;
-		}
+		}*/
 	}
 
 	override function destroy() {

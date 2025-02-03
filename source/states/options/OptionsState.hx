@@ -26,14 +26,16 @@ class OptionsState extends MusicBeatState
 				openSubState(new VisualsUISubState());
 			case 'Controls':
 				openSubState(new ControlsSubState());
+			case 'Graphics':
+					openSubState(new GraphicsSettingsSubState());
 			case 'Gameplay':
 				openSubState(new GameplaySettingsSubState());
-			case 'Graphics':
-				openSubState(new GraphicsSettingsSubState());
 		/*	case 'Note Colors':
 				openSubState(new NotesSubState());
 			case 'Controls':
 				openSubState(new ControlsSubState());
+			case 'Graphics':
+				openSubState(new GraphicsSettingsSubState());
 			case 'Gameplay':
 				openSubState(new GameplaySettingsSubState());
 			case 'Adjust Delay and Combo':
@@ -73,13 +75,6 @@ class OptionsState extends MusicBeatState
 		art.y += 100;
 		art.antialiasing = ClientPrefs.globalAntialiasing;
 		add(art);
-
-		optionText = new FlxSprite(0, 0, Paths.image('$dogshitPath/icon_${options[curSelected].toLowerCase()}'));
-		optionText.screenCenter();
-		optionText.scale.set(.64, .64);
-		optionText.y -= 200;
-		optionText.antialiasing = ClientPrefs.globalAntialiasing;
-		//add(optionText);
 
 		if (!ClientPrefs.lowQuality)
 		{
@@ -183,14 +178,12 @@ class OptionsState extends MusicBeatState
 				art.updateHitbox();
 				art.screenCenter();
 				art.y += 100;
-
 			case 1:
 				art.setPosition(((FlxG.width - art.width) / 2) + 170, ((FlxG.height - art.height) / 2) + 170);
 				art.scale.set(.35, .35);
 				art.updateHitbox();
 				art.screenCenter();
 				art.y += 100;
-
 			case 2:
 				art.setPosition(((FlxG.width - art.width) / 2) + 150, ((FlxG.height - art.height) / 2) + 200);
 				art.scale.set(.35, .35);

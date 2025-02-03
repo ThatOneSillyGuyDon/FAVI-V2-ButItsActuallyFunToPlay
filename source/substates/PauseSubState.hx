@@ -38,6 +38,7 @@ class PauseSubState extends MusicBeatSubstate
 		if(CoolUtil.difficulties.length < 2) menuItemsOG.remove('Change Difficulty'); //No need to change difficulty if there is only one!
 
 		lime.app.Application.current.window.title += " - {Paused}";
+		PlayState.windowTimer.active = false;
 		if(PlayState.chartingMode)
 		{
 			menuItemsOG.insert(2, 'Leave Charting Mode');
@@ -219,6 +220,7 @@ class PauseSubState extends MusicBeatSubstate
 			{
 				case "Resume":
 					lime.app.Application.current.window.title = PlayState.windowName;
+					PlayState.windowTimer.active = true;
 					close();
 				case 'Change Difficulty':
 					menuItems = difficultyChoices;
@@ -432,7 +434,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 	var songName:FlxText;
 	var countDown:FlxText;
 	var hasResumed:Bool = false;
-	var hasFinishedAnim:Bool = true;
+	var hasFinishedAnim:Bool = false;
 	var satanTxt:FlxText;
 	var satanQuotes:Array<String> = [
 		"You can't leave now...",
@@ -462,6 +464,8 @@ class FAVIPauseSubState extends MusicBeatSubstate
 			if (itemStack == null)
 				itemStack = ['continue', 'restart', 'options', PlayState.SONG.song == "Birthday" ? 'leave' : PlayState.SONG.song == "Delusional" ? 'no-hope' : 'escape'];
 	
+			PlayState.windowTimer.active = false;
+
 			// cool stuff
 			var getArt:String = 'Funkin_avi/pause/songs/';
 			toOptions = false;
@@ -673,6 +677,9 @@ class FAVIPauseSubState extends MusicBeatSubstate
 							restartSong();
 						case "options":
 							remove(disc);
+							if (PlayState.useFakeDeluName)
+								PlayState.useFakeDeluName = false;
+							PlayState.pauseCountEnabled = false;
 							toOptions = true;
 							FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
 							FlxG.mouse.visible = true;
@@ -688,6 +695,8 @@ class FAVIPauseSubState extends MusicBeatSubstate
 							remove(disc);
 							if (PlayState.useFakeDeluName)
 								PlayState.useFakeDeluName = false;
+							if (PlayState.pauseCountEnabled)
+								PlayState.pauseCountEnabled = false;
 							PlayState.seenCutscene = false;
 							PlayState.cancelMusicFadeTween();
 							PlayState.changedDifficulty = false;
@@ -751,7 +760,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 	
 		function changeSelection(change:Int = 0):Void
 		{
-			FlxG.sound.play(Paths.sound('base/menus/scrollMenu'), 0.6);
+			FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'), 0.6);
 	
 			if (menuItems != null)
 				curSelected = FlxMath.wrap(curSelected + change, 0, menuItems.length - 1);
@@ -779,18 +788,21 @@ class FAVIPauseSubState extends MusicBeatSubstate
 			{
 				if (PlayState.useFakeDeluName)
 					PlayState.useFakeDeluName = false;
+				if (PlayState.pauseCountEnabled)
+					PlayState.pauseCountEnabled = false;
 				PlayState.instance.paused = true; // For lua
 				FlxG.sound.music.volume = 0;
 				PlayState.instance.vocals.volume = 0;
 		
+				var random:Int = FlxG.random.int(1, 11);
 				var songName:Array<String> = ['Dont Cross', "Dont-Cross", "dont cross", "dont-cross"];
 		
 				for (i in songName)
 					if (PlayState.SONG.song == i)
 					{
 						var songLowercase:String = "dont-cross";
-						var poop:String = "dont-cross-hard" + '${FlxG.random.int(1, 4)}'; //fuck fuck fuck fuck fuck fuck
-						PlayState.SONG = Song.loadFromJson(poop, songLowercase, FlxG.random.int(1, 4));
+						var poop:String = "dont-cross-hard" + '${random}'; //fuck fuck fuck fuck fuck fuck
+						PlayState.SONG = Song.loadFromJson(poop, songLowercase, random);
 					}
 		
 				if(noTrans)
@@ -810,10 +822,6 @@ class FAVIPauseSubState extends MusicBeatSubstate
 			songName.alpha = 0;
 			levelInfo.alpha = 0;
 			satanTxt.text = "";
-
-			for (allTweenSlop in [bg, bgOverlay, daSelector, tiles, menuHUD, albumHolder, levelInfo, songName, disc, songArt, songArtOutline])
-				FlxTween.cancelTweensOf(allTweenSlop);
-
 			if (PlayState.pauseCountEnabled)
 			{
 				FlxG.sound.play(Paths.sound('clickText'), 0.6);
@@ -850,6 +858,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 									close();
 									remove(disc);
 									lime.app.Application.current.window.title = PlayState.windowName;
+									PlayState.windowTimer.active = true;
 								});
 							});
 						});
@@ -874,6 +883,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 					close();
 					remove(disc);
 					lime.app.Application.current.window.title = PlayState.windowName;
+					PlayState.windowTimer.active = true;
 				});
 			}
 		}	
@@ -911,6 +921,8 @@ class FAVIPauseSubState extends MusicBeatSubstate
 						case "DEMOLITIONDON96": json = CreditsData.dontCross3;
 						case "Dreupy": json = CreditsData.dontCross1;
 						case "Purg": json = CreditsData.dontCross2;
+						case "MalyPlus": json = CreditsData.dontCross4;
+						case "rezeo285": json = CreditsData.dontCross5;
 					}
 				case "War Dilemma": json = CreditsData.warDilemma;
 				case "Twisted Grins": json = CreditsData.twistedGrins;

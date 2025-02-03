@@ -31,6 +31,10 @@ import sys.io.File;
 
 class TitleState extends MusicBeatState
 {
+	public static var muteKeys:Array<FlxKey> = [FlxKey.ZERO];
+	public static var volumeDownKeys:Array<FlxKey> = [FlxKey.NUMPADMINUS, FlxKey.MINUS];
+	public static var volumeUpKeys:Array<FlxKey> = [FlxKey.NUMPADPLUS, FlxKey.PLUS];
+
 	public static var initialized:Bool = false;
 	public var camZooming:Bool = false;
 
@@ -125,13 +129,11 @@ class TitleState extends MusicBeatState
 		"Its been 40 years and the mouse still hasn't regained sanity",
 		"freddy fazbear.",
 		"We know what to do for V3",
-		//"Mickeys are gonna need a big bed that's for sure", // look man im sorry but no
 		"Among us is not funny *nerd face*",
 		"Discord bots are goofy aaaahhhhh",
 		"Whoopsie looks like i gave the suicidal mouse a gun",
 		"This is the window title 69, literally", //funi number
 		"What the dog doin?",
-		//"Check us out on Friday Night Bloxxin' on Roblox!", // rewrite got canned + afternight is pretty much not doing this anymore #lol
 		"There's a Red Spy in the Base!",
 		"fuckin.mp3 - jsjsjsdjdsjdsjadsjjads",
 		"Lemon Demon got no iPhone",
@@ -163,9 +165,9 @@ class TitleState extends MusicBeatState
 		"Mickey getting bitches, 100% real no fake",
 		"Lets Goku mcdonalds, Y'know what im saiyan?",
 		"Walter",
-		"Imagine waiting 3 years for a singular Friday Night Funkin' mod update",
-		"T H E  'C O R E', D E S T R O Y  I T !",
-		"THE 'CORE' CONTAINS THE EVIL"
+		"Imagine waiting 3 years for a singular Friday Night Funkin' mod update"
+		/*"T H E  'C O R E', D E S T R O Y  I T !",
+		"THE 'CORE' CONTAINS THE EVIL"*/
 	];
 
 	// unlocks debug
@@ -179,6 +181,31 @@ class TitleState extends MusicBeatState
 	{	
 		Paths.clearStoredMemory();
 		Paths.clearUnusedMemory();
+
+		FlxG.game.focusLostFramerate = 60;
+		FlxG.sound.muteKeys = muteKeys;
+		FlxG.sound.volumeDownKeys = volumeDownKeys;
+		FlxG.sound.volumeUpKeys = volumeUpKeys;
+		FlxG.keys.preventDefaultKeys = [TAB];
+
+		PlayerSettings.init();
+		ClientPrefs.loadPrefs();
+		Highscore.load();
+		GameData.loadShit();
+
+		AppIcon.changeIcon("newIcon");
+		
+		CoolUtil.createCoreFile();
+
+		#if desktop
+		if (!DiscordClient.isInitialized)
+		{
+			DiscordClient.initialize();
+			Application.current.onExit.add (function (exitCode) {
+				DiscordClient.shutdown();
+			});
+		}
+		#end
 		
 		#if DISCORD_RPC
 		DiscordClient.changePresence("Title Screen", 'Waiting to start...', 'icon', 'clock'); // dw, I'll make sure to update the RPC shit, if anything, I'm gonna end up making a seperate RPC for this version of the engine
@@ -197,13 +224,24 @@ class TitleState extends MusicBeatState
 			{
 				FlxG.camera.setFilters(
 					[
-						//new openfl.filters.ShaderFilter(defaultShader2)
+						new openfl.filters.ShaderFilter(defaultShader2)
 					]);
 			}
 
 		curWacky = FlxG.random.getObject(getIntroTextShit());
 
+		#if windows
+		backend.windows.CppAPI.darkMode();
+        #end
+
+		#if Freeplay
+		MusicBeatState.switchState(new FreeplayCategories());
+		#end
+
 		startIntro();
+
+		FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+		FlxG.mouse.visible = true;
 
 		closedState = false;
 	}
@@ -452,11 +490,9 @@ class TitleState extends MusicBeatState
 		if(!closedState) {
 			FlxG.camera.zoom += 0.035;
 
-			/*// logo doesn't have animation, we make one by ourselfs instead
+			// logo doesn't have animation, we make one by ourselfs instead
 			logoBl.scale.x += 0.02;
-			logoBl.scale.y += 0.02;*/
-
-			logoBl.scale.set(.402, .402); // this is for christians sake -jason
+			logoBl.scale.y += 0.02;
 
 			sickBeats++;
 			switch (sickBeats)
@@ -528,7 +564,6 @@ class TitleState extends MusicBeatState
 			skippedIntro = true;
 	}
 	
-	// todo make this less crap
 	function windowFixesAndEvents()
 		{
 			if(Application.current.window.title.contains("Funkin.avi - Hi, wanna see me glitch?"))
@@ -604,6 +639,45 @@ class TitleState extends MusicBeatState
 							System.exit(0);
 						});
 					}
+				else if(Application.current.window.title.contains('Funkin.avi - Fuck you *inverts your game*'))
+				{
+					if (ClientPrefs.shaders)
+					{
+						final invert = new FlxRuntimeShader("#pragma header
+						uniform float binaryIntensity;
+						uniform float negativity;
+						void main(){
+							vec2 uv = openfl_TextureCoordv.xy;
+							
+							// get snapped position
+							float psize = 0.04 * binaryIntensity;
+							float psq = 1.0 / psize;
+							float px = floor(uv.x * psq + 0.5) * psize;
+							float py = floor(uv.y * psq + 0.5) * psize;
+							
+							vec4 colSnap = texture2D(bitmap, vec2(px, py));
+							
+							float lum = pow(1.0 - (colSnap.r + colSnap.g + colSnap.b) / 3.0, binaryIntensity);
+							
+							float qsize = psize * lum;
+							float qsq = 1.0 / qsize;
+							float qx = floor(uv.x * qsq + 0.5) * qsize;
+							float qy = floor(uv.y * qsq + 0.5) * qsize;
+							float rx = (px - qx) * lum + uv.x;
+							float ry = (py - qy) * lum + uv.y;
+							vec4 color = flixel_texture2D(bitmap, vec2(rx, ry));
+							gl_FragColor = mix(color, vec4(1.0 - color.r, 1.0 - color.g, 1.0 - color.b, color.a) * color.a, negativity);
+						}", null, 120);
+						invert.setFloat('binaryIntensity', 1000);
+						FlxG.game.setFilters([new ShaderFilter(invert)]);
+						FlxTween.num(0, 1, .5, null, num -> invert.setFloat('negativity', num));
+					}
+					else
+					{
+						Application.current.window.title = 'Funkin.avi - ${windowArray[FlxG.random.int(0, windowArray.length-1)]}';
+						windowFixesAndEvents();
+					}
+				}	
 				else if(Application.current.window.title.contains("Funkin.avi - .edud ssarg emos hcuot og ot deen uoy ,das yrev tsuj ,yltsenoh ,das si thaT ?sdrawkcab txet siht fo lla gnidaer otni troffe hcum os gnittup enigamI - iva.niknuF"))
 					{
 						Application.current.window.title = ".edud ssarg emos hcuot og ot deen uoy ,das yrev tsuj ,yltsenoh ,das si thaT ?sdrawkcab txet siht fo lla gnidaer otni troffe hcum os gnittup enigamI - iva.niknuF";
@@ -620,43 +694,5 @@ class TitleState extends MusicBeatState
 					{
 						Application.current.window.title = " ";
 					}
-				else if(Application.current.window.title.contains('Funkin.avi - Fuck you *inverts your game*'))
-				{
-					final invert = new FlxRuntimeShader("#pragma header
-
-					uniform float binaryIntensity;
-					uniform float negativity;
-
-					void main(){
-						vec2 uv = openfl_TextureCoordv.xy;
-						
-						// get snapped position
-						float psize = 0.04 * binaryIntensity;
-						float psq = 1.0 / psize;
-
-						float px = floor(uv.x * psq + 0.5) * psize;
-						float py = floor(uv.y * psq + 0.5) * psize;
-						
-						vec4 colSnap = texture2D(bitmap, vec2(px, py));
-						
-						float lum = pow(1.0 - (colSnap.r + colSnap.g + colSnap.b) / 3.0, binaryIntensity);
-						
-						float qsize = psize * lum;
-						float qsq = 1.0 / qsize;
-
-						float qx = floor(uv.x * qsq + 0.5) * qsize;
-						float qy = floor(uv.y * qsq + 0.5) * qsize;
-
-						float rx = (px - qx) * lum + uv.x;
-						float ry = (py - qy) * lum + uv.y;
-
-						vec4 color = flixel_texture2D(bitmap, vec2(rx, ry));
-
-						gl_FragColor = mix(color, vec4(1.0 - color.r, 1.0 - color.g, 1.0 - color.b, color.a) * color.a, negativity);
-					}", null, 120);
-					invert.setFloat('binaryIntensity', 1000);
-					FlxG.game.setFilters([new ShaderFilter(invert)]);
-					FlxTween.num(0, 1, .5, null, num -> invert.setFloat('negativity', num));
-				}	
 		}
 }

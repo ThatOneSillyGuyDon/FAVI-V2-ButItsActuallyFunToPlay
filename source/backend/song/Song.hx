@@ -95,11 +95,6 @@ class Song
 
 	public static function loadFromJson(jsonInput:String, ?folder:String, ?crossRandomizer:Int):SwagSong
 	{
-		/*chartFile = (jsonInput == "events" ? ChartMap.events : ChartMap.charts).get(folder);
-		
-		if (folder == "dont-cross" && !ClientPrefs.mechanics && jsonInput != "events")
-			chartFile = ChartMap.charts.get("don't cross 4");*/
-		
 		switch(folder)
 		{
 			case "isolated": chartFile = Chart.isolated;
@@ -117,10 +112,12 @@ class Song
 			case "hunted": chartFile = Chart.hunted;
 			case "hunted-legacy": chartFile = Chart.huntedLegacy;
 			case "war-dilemma": chartFile = Chart.warDilemma;
+			case "cycled-sins-legacy": chartFile = Chart.cycledSinsLegacy;
 			case "birthday": chartFile = Chart.birthday;
 			case "mercy": chartFile = Chart.mercy;
 			case "mercy-legacy": chartFile = Chart.mercyLegacy;
 			case "laugh-track": chartFile = Chart.laughTrack;
+			case "twisted-grins-legacy": chartFile = Chart.twistedGrinsLegacy;
 			case "delutrance": chartFile = Chart.delutrance;
 			case "cycled-sins": chartFile = Chart.cycledSins;
 			case "twisted-grins": 
@@ -144,14 +141,14 @@ class Song
 						case 2: chartFile = Chart.dontCross2;
 						case 3: chartFile = Chart.dontCross3;
 						case 4: chartFile = Chart.dontCross4;
-						case 5: chartFile = Chart.dontCross1;
+						case 5: chartFile = Chart.dontCross5;
+						case 6: chartFile = Chart.dontCross6;
+						case 7: chartFile = Chart.dontCross7;
+						case 8: chartFile = Chart.dontCross8;
+						case 9: chartFile = Chart.dontCross9;
+						case 10: chartFile = Chart.dontCross10;
+						case 11: chartFile = Chart.dontCross11;
 					}
-				}
-
-				if (jsonInput == 'events')
-				{
-					trace('got event!');
-					chartFile = Event.dontCrossAnimatedShit;
 				}
 			default:
 				chartFile = null;
@@ -215,16 +212,18 @@ class Song
 		switch (PlayState.SONG.song)
 		{
 			case "Devilish Deal" | "Lunacy" | "Hunted" | "War Dilemma" | "Twisted Grins" | "Isolated": charter = "Purg";
-			case "Delusional" | "Cycled Sins" | "Birthday" | "Cycled Sins Legacy": charter = "Dreupy";
+			case "Delusional" | "Cycled Sins" | "Birthday" | "Cycled Sins Legacy" | "Twisted Grins Legacy": charter = "Dreupy";
 			case "Lunacy Legacy": charter = "obscurity.";
 			case "Bless" | "Malfunction" | "Delutrance" | "Mercy" | "Mercy Legacy" | "Isolated Old" | "Isolated Legacy" | "Isolated Beta" | "Malfunction Legacy" | "Laugh Track": charter = "DEMOLITIONDON96";
 			case "Delusional Legacy": charter = "Noppz";
 			case "Dont Cross":
 				switch (randomizer)
 				{
-					case 1 | 4: charter = "DEMOLITIONDON96";
-					case 2 | 5: charter = "Dreupy";
+					case 1 | 4 | 8 | 9 | 10 | 11: charter = "DEMOLITIONDON96";
+					case 2 | 7: charter = "Dreupy";
+					case 5: charter = "MalyPlus";
 					case 3: charter = "Purg";
+					case 6: charter = "rezeo285";
 				}
 			default: charter = "Unknown";
 		}

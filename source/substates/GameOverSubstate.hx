@@ -34,6 +34,49 @@ class GameOverSubstate extends MusicBeatSubstate
 
 	public static var instance:GameOverSubstate;
 
+	var image:String;
+
+	var tryTxt:Array<String> = [
+		"Try Again",
+		"Get Up",
+		"Don't Stop",
+		"Revive",
+		"Restart",
+		"Retry",
+		"Finish It",
+		"Continue",
+		"Play Again",
+		"Rise"
+	];
+
+	var quitTxt:Array<String> = [
+		"Give Up",
+		"Quit",
+		"Stop Trying",
+		"Leave",
+		"Run Away",
+		"You Coward",
+		"Give In",
+		"Surrender",
+		"Plead Mercy",
+		"Rot Away"
+	];
+
+	public static var deathHUD:FlxCamera;
+	public static var stupidAssCam:FlxCamera;
+
+	// Custom UI Graphics
+	var uiArrowUp:FlxSprite;
+	var uiArrowDown:FlxSprite;
+	var uiRetry:FlxSprite;
+	var uiLeave:FlxSprite;
+
+	// Default UI
+	var game:FlxText;
+	var over:FlxText;
+	var tryAgain:FlxText;
+	var quit:FlxText;
+
 	/**
 	 * ## Resets variables to the default values!
 	 * 
@@ -55,132 +98,334 @@ class GameOverSubstate extends MusicBeatSubstate
 	public function new(x:Float, y:Float, camX:Float, camY:Float)
 	{
 		super();
+
+		stupidAssCam = new FlxCamera();
+		deathHUD = new FlxCamera();
+		deathHUD.bgColor.alpha = 0;
+
+		FlxG.cameras.add(stupidAssCam);
+		FlxG.cameras.add(deathHUD, false);
+		deathHUD.alpha = 0.0001;
+
 		Conductor.songPosition = 0;
 
 		boyfriend = new Boyfriend(x, y, characterName);
 		boyfriend.x += boyfriend.positionArray[0];
 		boyfriend.y += boyfriend.positionArray[1];
 		boyfriend.visible = false;
+		boyfriend.cameras = [stupidAssCam];
 		add(boyfriend);
 
-		var image:String;
-
-		if (PlayState.SONG.song == "Dont Cross")
-			image = "favi/ui/DontCrossGameOver";
-		else
-			image = "favi/ui/deathLmao";
+		switch (PlayState.SONG.song)
+		{
+			case "Isolated" | "Lunacy": image = "favi/ui/gameOvers/episode1Death";
+			case "Delusional": image = "favi/ui/gameOvers/delusionalDeath";
+			case "Dont Cross": image = "favi/ui/gameOvers/DontCrossGameOver";
+			default: image = "favi/ui/gameOvers/everettDeath";
+		}
 
 		var deathImage:FlxSprite = new FlxSprite().loadGraphic(Paths.image(image));
 		deathImage.screenCenter();
 		deathImage.scrollFactor.set(0, 0);
+		deathImage.cameras = [stupidAssCam];
+		deathImage.setGraphicSize(0, FlxG.height);
 		add(deathImage);
 
-		if (PlayState.SONG.song == "Dont Cross")
-			FlxG.sound.play(Paths.sound("wompWomp"));
-		else
+		switch(image)
 		{
-			deathImage.alpha = 0.0001;
-			new flixel.util.FlxTimer().start(0.5, function(tmr)
+			case "favi/ui/gameOvers/episode1Death":
+				quitLerp = 0.0001;
+				tryLerp = 0.0001;
+				uiArrowDown = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/arrowEverett"));
+				uiArrowUp = new FlxSprite().loadGraphicFromSprite(uiArrowDown);
+				uiRetry = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/episode1Retry"));
+				uiLeave = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/episode1Leave"));
+				for (epiUI in [uiRetry, uiLeave])
+				{
+					epiUI.cameras = [stupidAssCam];
+					epiUI.screenCenter();
+					epiUI.scrollFactor.set(0, 0);
+					epiUI.scale.set(0.3, 0.3);
+					epiUI.alpha = 0.001;
+					epiUI.x -= 295;
+					epiUI.y -= 164;
+					epiUI.angle = -65;
+					add(epiUI);
+				}
+				for (everettUI in [uiArrowDown, uiArrowUp])
+				{
+					everettUI.cameras = [stupidAssCam];
+					everettUI.screenCenter();
+					everettUI.scrollFactor.set(0, 0);
+					everettUI.scale.set(0.37, 0.37);
+					everettUI.alpha = 0.001;
+					everettUI.x -= 524;
+					everettUI.y -= 172;
+					add(everettUI);
+				}
+				uiArrowDown.angle = 180;
+				uiArrowUp.angle = -6;
+				uiArrowDown.x += 50;
+				uiArrowUp.x += 400;
+				uiArrowDown.y += 62;
+				uiArrowUp.y -= 40;
+				
+			case "favi/ui/gameOvers/everettDeath":
+				quitLerp = 0.0001;
+				tryLerp = 0.0001;
+				uiArrowDown = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/arrowEverett"));
+				uiArrowUp = new FlxSprite().loadGraphicFromSprite(uiArrowDown);
+				uiRetry = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/retryEverett"));
+				uiLeave = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/leaveEverett"));
+				for (everettUI in [uiArrowDown, uiArrowUp, uiRetry, uiLeave])
+				{
+					everettUI.cameras = [stupidAssCam];
+					everettUI.screenCenter();
+					everettUI.scrollFactor.set(0, 0);
+					everettUI.scale.set(0.37, 0.37);
+					everettUI.alpha = 0.001;
+					everettUI.x += 200;
+					everettUI.y -= 54;
+					add(everettUI);
+				}
+				uiArrowDown.angle = 186;
+				uiArrowDown.x -= 180;
+				uiArrowDown.y += 10;
+				uiArrowUp.x += 50;
+				uiArrowUp.y -= 70;
+
+			case "favi/ui/gameOvers/delusionalDeath":
+				tryLerp = 0.001;
+				quitLerp = 0.001;
+
+				uiRetry = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/retryDelu"));
+				uiLeave = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/deluLeave"));
+
+				for (deluUI in [uiRetry, uiLeave])
+				{
+					deluUI.screenCenter();
+					deluUI.x += 440;
+					deluUI.scrollFactor.set(0, 0);
+					deluUI.setGraphicSize(0, FlxG.height);
+					deluUI.cameras = [stupidAssCam];
+					deluUI.alpha = 0.0001;
+					add(deluUI);
+				}
+
+				uiArrowDown = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/arrowEverett"));
+				uiArrowUp = new FlxSprite().loadGraphicFromSprite(uiArrowDown);
+				for (everettUI in [uiArrowDown, uiArrowUp])
+				{
+					everettUI.cameras = [stupidAssCam];
+					everettUI.screenCenter();
+					everettUI.scrollFactor.set(0, 0);
+					everettUI.scale.set(0.37, 0.37);
+					everettUI.alpha = 0.001;
+					everettUI.x += 200;
+					add(everettUI);
+				}
+				uiArrowDown.angle = 194;
+				uiArrowUp.angle = 8;
+				uiArrowDown.x += 50;
+				uiArrowUp.x += 400;
+		}
+
+		if (uiRetry == null)
+		{
+			game = new FlxText(180, 50, 0, "G  A  M  E");
+			over = new FlxText(850, 50, 0, "O  V  E  R");
+			tryAgain = new FlxText(160, 560, 320, tryTxt[FlxG.random.int(0, tryTxt.length - 1)]);
+			quit = new FlxText(780, 560, 320, quitTxt[FlxG.random.int(0, quitTxt.length - 1)]);
+
+			game.angle = -13;
+			over.angle = 13;
+
+			for (txt in [game, over, tryAgain, quit])
 			{
-				FlxTween.tween(deathImage, {alpha: 1}, 3);
-			});
+				txt.setFormat(Paths.font("DisneyFont.ttf"), 70, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+				txt.cameras = [deathHUD];
+				txt.borderSize = 6;
+				add(txt);
+			}
+
+			tryAgain.color = FlxColor.YELLOW;
 		}
 
 		camFollow = new FlxPoint(boyfriend.getGraphicMidpoint().x, boyfriend.getGraphicMidpoint().y);
 
+		switch (PlayState.SONG.song)
+		{
+			case "Isolated Beta" | "Isolated Old" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Twisted Grins Legacy" | "Hunted Legacy" | "Cycled Sins Legacy" | "Mercy Legacy" | "Malfunction Legacy" | "Bless": 
+				boyfriend.visible = true;
+				deathImage.alpha = 0.0001;
+				FlxG.sound.play(Paths.sound(deathSoundName));
+			case "Dont Cross":
+				FlxG.sound.play(Paths.sound("wompWomp"));
+			default:
+				deathImage.alpha = 0.0001;
+				new flixel.util.FlxTimer().start(0.5, function(tmr)
+				{
+					FlxTween.tween(deathImage, {alpha: 1}, 3);
+				});
+		}
+
+		if (!boyfriend.visible && PlayState.SONG.song != "Dont Cross")
+			endSoundName = "aviOST/gameOver/bellToll";
+
+		// i fucking pasted this code from PlayState cause i'm lazy lmfaoooooo
+		if (!ClientPrefs.lowQuality)
+		{
+			switch (PlayState.curStage)
+			{
+				case 'stage' | 'desktop' | 'waltRoom' | 'apartment' | 'treasureIsland' | 'forbiddenRealm' | 'fuckingLine' | 'staticVoid' | 'vaultRoom' | 'war':
+				// don't add scratch assets
+	
+				default:
+					var scratch:FlxSprite = new FlxSprite();
+					scratch.frames = Paths.getSparrowAtlas('favi/filters/scratchShit');
+					scratch.animation.addByPrefix('e', 'scratch thing', 24, true);
+					scratch.animation.play('e');
+					scratch.cameras = [stupidAssCam];
+					scratch.scrollFactor.set(0, 0);
+					add(scratch);
+			}
+		}
+
 		Conductor.bpm = (100);
 		// FlxG.camera.followLerp = 1;
 		// FlxG.camera.focusOn(FlxPoint.get(FlxG.width / 2, FlxG.height / 2));
-		FlxG.camera.scroll.set();
+		stupidAssCam.scroll.set();
 		FlxG.camera.target = null;
 
 		boyfriend.playAnim('firstDeath');
 
 		camFollowPos = new FlxObject(0, 0, 1, 1);
-		camFollowPos.setPosition(FlxG.camera.scroll.x + (FlxG.camera.width / 2), FlxG.camera.scroll.y + (FlxG.camera.height / 2));
+		camFollowPos.setPosition(stupidAssCam.scroll.x + (stupidAssCam.width / 2), stupidAssCam.scroll.y + (stupidAssCam.height / 2));
 		add(camFollowPos);
 	}
+
+	var quitLerp:Float = 0.5;
+	var tryLerp:Float = 1;
+	var camLerpBullshit:Float = 0.0001;
+
+	var quitCol:FlxTween;
+	var tryCol:FlxTween;
+
+	var arrowLerp:Float = 0.0001;
 
 	var isFollowingAlready:Bool = false;
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
+		if (tryAgain != null)
+		{
+			tryAgain.alpha = FlxMath.lerp(tryLerp, tryAgain.alpha, CoolUtil.boundTo(1 - (elapsed * 15), 0, 1));
+			quit.alpha = FlxMath.lerp(quitLerp, quit.alpha, CoolUtil.boundTo(1 - (elapsed * 15), 0, 1));
+			deathHUD.alpha = FlxMath.lerp(camLerpBullshit, deathHUD.alpha, CoolUtil.boundTo(1 - (elapsed * 11), 0, 1));
+		}
+
+		if (uiRetry != null)
+		{
+			uiRetry.alpha = FlxMath.lerp(tryLerp, uiRetry.alpha, CoolUtil.boundTo(1 - (elapsed * 8), 0, 1));
+			uiLeave.alpha = FlxMath.lerp(quitLerp, uiLeave.alpha, CoolUtil.boundTo(1 - (elapsed * 8), 0, 1));
+			uiArrowDown.alpha = FlxMath.lerp(arrowLerp, uiArrowDown.alpha, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
+			uiArrowUp.alpha = FlxMath.lerp(arrowLerp, uiArrowUp.alpha, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
+		}
 		if(updateCamera) {
 			var lerpVal:Float = CoolUtil.boundTo(elapsed * 0.6, 0, 1);
 			camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x, lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal));
 		}
 
-		if (controls.ACCEPT)
+		if (deathHUD.alpha >= 0.5)
 		{
-			endBullshit();
+			if (controls.UI_LEFT_P && tryLerp != 1)
+			{
+				if (quitCol != null) quitCol.cancel();
+				if (tryCol != null) tryCol.cancel();
+				quitLerp = 0.5;
+				tryLerp = 1;
+				quitCol = FlxTween.color(quit, 0.15, quit.color, FlxColor.WHITE, {ease: FlxEase.sineOut,
+					onComplete: function(twn:FlxTween) {
+						quitCol = null;
+					}
+				});
+				tryCol = FlxTween.color(tryAgain, 0.15, tryAgain.color, FlxColor.YELLOW, {ease: FlxEase.sineOut,
+					onComplete: function(twn:FlxTween) {
+						tryCol = null;
+					}
+				});
+				FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
+			}
+
+			if (controls.UI_RIGHT_P && quitLerp != 1)
+			{
+				if (quitCol != null) quitCol.cancel();
+				if (tryCol != null) tryCol.cancel();
+				quitLerp = 1;
+				tryLerp = 0.5;
+				quitCol = FlxTween.color(quit, 0.15, quit.color, FlxColor.RED, {ease: FlxEase.sineOut,
+					onComplete: function(twn:FlxTween) {
+						quitCol = null;
+					}
+				});
+				tryCol = FlxTween.color(tryAgain, 0.15, tryAgain.color, FlxColor.WHITE, {ease: FlxEase.sineOut,
+					onComplete: function(twn:FlxTween) {
+						tryCol = null;
+					}
+				});
+				FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
+			}
 		}
 
-		if (controls.BACK)
+		if ((controls.UI_DOWN_P || controls.UI_UP_P) && arrowLerp == 1 && uiRetry != null && image == "favi/ui/gameOvers/everettDeath")
 		{
-			FlxG.sound.music.stop();
-			PlayState.deathCounter = 0;
-			PlayState.seenCutscene = false;
-			PlayState.chartingMode = false;
+			quitLerp = quitLerp == 1 ? 0.001 : 1;
+			tryLerp = tryLerp == 1 ? 0.001 : 1;
+			FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
+			if (controls.UI_DOWN_P)
+				uiArrowDown.alpha = 0.3;
+			if (controls.UI_UP_P)
+				uiArrowUp.alpha = 0.3;
+		}
 
-			WeekData.loadTheFirstEnabledMod();
-			if (PlayState.isStoryMode)
-			{
-				if (GameData.highOnCrackLock == 'forceBackToSong')
-				{
-					restartDelutrance();
-				}
-				else
-				{
-					MusicBeatState.switchState(new StoryMenu());
-					FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
-				}
-			}
-			else
-			{
-				if (GameData.highOnCrackLock == 'forceBackToSong')
-				{
-					restartDelutrance();
-				}
-				else
-				{
-					MusicBeatState.switchState(new FreeplayState());
-					FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
-				}
-			}
-			FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+		if ((controls.UI_LEFT_P || controls.UI_RIGHT_P) && arrowLerp == 1 && uiRetry != null && image != "favi/ui/gameOvers/everettDeath")
+		{
+			quitLerp = quitLerp == 1 ? 0.001 : 1;
+			tryLerp = tryLerp == 1 ? 0.001 : 1;
+			FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
+			if (controls.UI_LEFT_P)
+				uiArrowDown.alpha = 0.3;
+			if (controls.UI_RIGHT_P)
+				uiArrowUp.alpha = 0.3;
+		}
+
+		if (controls.ACCEPT)
+		{
+			if ((tryLerp == 1 && deathHUD.alpha >= 0.5) || boyfriend.visible || (uiRetry != null && uiRetry.alpha >= 0.2) || (uiRetry != null && uiRetry.alpha >= 0.2))
+				endBullshit();
+	
+			if (quitLerp == 1 && !boyfriend.visible)
+				quitScreenShit();
+		}
+
+		if (controls.BACK && boyfriend.visible)
+		{
+			quitScreenShit();
 		}
 
 		if (boyfriend.animation.curAnim != null && boyfriend.animation.curAnim.name == 'firstDeath')
 		{
 			if(boyfriend.animation.curAnim.curFrame >= 12 && !isFollowingAlready)
 			{
-				FlxG.camera.follow(camFollowPos, LOCKON, 1);
+				stupidAssCam.follow(camFollowPos, LOCKON, 1);
 				updateCamera = true;
 				isFollowingAlready = true;
 			}
 
 			if (boyfriend.animation.curAnim.finished && !playingDeathSound)
 			{
-				if (PlayState.SONG.stage == 'tank')
-				{
-					playingDeathSound = true;
-					coolStartDeath(0.2);
-					
-					var exclude:Array<Int> = [];
-					//if(!ClientPrefs.cursing) exclude = [1, 3, 8, 13, 17, 21];
-
-					FlxG.sound.play(Paths.sound('jeffGameover/jeffGameover-' + FlxG.random.int(1, 25, exclude)), 1, false, null, true, function() {
-						if(!isEnding)
-						{
-							FlxG.sound.music.fadeIn(0.2, 1, 4);
-						}
-					});
-				}
-				else
-				{
-					coolStartDeath();
-				}
+				coolStartDeath();
 				boyfriend.startedDeath = true;
 			}
 		}
@@ -210,6 +455,70 @@ class GameOverSubstate extends MusicBeatSubstate
 		}
 	}
 
+	function quitScreenShit()
+	{
+			FlxG.sound.music.stop();
+			PlayState.deathCounter = 0;
+			PlayState.seenCutscene = false;
+			PlayState.chartingMode = false;
+			PlayState.pauseCountEnabled = false;
+
+			WeekData.loadTheFirstEnabledMod();
+			if (PlayState.isStoryMode)
+			{
+				if (GameData.highOnCrackLock == 'forceBackToSong')
+				{
+					restartDelutrance();
+				}
+				else
+				{
+					if (!boyfriend.visible)
+					{
+						FlxG.sound.music.stop();
+						FlxG.sound.play(Paths.music(endSoundName));
+						camLerpBullshit = arrowLerp = quitLerp = tryLerp = 0;
+						stupidAssCam.fade(FlxColor.BLACK, 1.4, false, function()
+						{
+							MusicBeatState.switchState(new StoryMenu());
+							FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
+						});
+					}
+					else
+					{
+						MusicBeatState.switchState(new StoryMenu());
+						FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
+					}
+				}
+			}
+			else
+			{
+				if (GameData.highOnCrackLock == 'forceBackToSong')
+				{
+					restartDelutrance();
+				}
+				else
+				{
+					if (!boyfriend.visible)
+					{
+						FlxG.sound.music.stop();
+						FlxG.sound.play(Paths.music(endSoundName));
+						camLerpBullshit = arrowLerp = quitLerp = tryLerp = 0;
+						stupidAssCam.fade(FlxColor.BLACK, 1.4, false, function()
+						{
+							MusicBeatState.switchState(new FreeplayState());
+							FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
+						});
+					}
+					else
+					{
+						MusicBeatState.switchState(new FreeplayState());
+						FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
+					}
+				}
+			}
+			FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+	}
+
 	override function beatHit()
 	{
 		super.beatHit();
@@ -223,10 +532,18 @@ class GameOverSubstate extends MusicBeatSubstate
 	{
 		switch (PlayState.SONG.song)
 		{
-			case "Dont Cross": FlxG.sound.playMusic(Paths.music("aviOST/gameOver/soaringHigh"), volume);
-			default: FlxG.sound.playMusic(Paths.music("aviOST/gameOver/yourFinalBow"), volume);
+			case "Isolated" | "Lunacy" | "Delusional": FlxG.sound.playMusic(Paths.music("aviOST/gameOver/yourFinalBow"), volume);
+			default: FlxG.sound.playMusic(Paths.music("aviOST/gameOver/soaringHigh"), volume);
 		}
 		FlxG.sound.music.fadeIn(2, 0, 1);
+		if (!boyfriend.visible)
+			camLerpBullshit = 1;
+		if ((uiRetry != null || uiLeave != null) && !boyfriend.visible)
+		{
+			camLerpBullshit = 0;
+			arrowLerp = 1;
+			tryLerp = 1;
+		}
 	}
 
 	function endBullshit():Void
@@ -234,12 +551,20 @@ class GameOverSubstate extends MusicBeatSubstate
 		if (!isEnding)
 		{
 			isEnding = true;
+			if (!boyfriend.visible)
+			{
+				FlxTween.tween(stupidAssCam, {zoom: stupidAssCam.zoom + 0.5}, 4, {ease: FlxEase.expoInOut});
+				FlxTween.tween(deathHUD, {zoom: 1.7}, 1.2, {ease: FlxEase.expoOut});
+				camLerpBullshit = arrowLerp = quitLerp = tryLerp = 0;
+			}
 			boyfriend.playAnim('deathConfirm', true);
 			FlxG.sound.music.stop();
 			FlxG.sound.play(Paths.music(endSoundName));
+			PlayState.pauseCountEnabled = false;
 			new FlxTimer().start(0.7, function(tmr:FlxTimer)
 			{
-				FlxG.camera.fade(FlxColor.BLACK, 2, false, function()
+				var random:Int = FlxG.random.int(1, 11);
+				stupidAssCam.fade(FlxColor.BLACK, 2, false, function()
 				{
 					var songName:Array<String> = ['Dont Cross', "Dont-Cross", "dont cross", "dont-cross"];
 
@@ -247,8 +572,8 @@ class GameOverSubstate extends MusicBeatSubstate
 						if (PlayState.SONG.song == i)
 						{
 							var songLowercase:String = "dont-cross";
-							var poop:String = "dont-cross-hard" + '${FlxG.random.int(1, 4)}'; //fuck fuck fuck fuck fuck fuck
-							PlayState.SONG = Song.loadFromJson(poop, songLowercase, FlxG.random.int(1, 4));
+							var poop:String = "dont-cross-hard" + '${random}'; //fuck fuck fuck fuck fuck fuck
+							PlayState.SONG = Song.loadFromJson(poop, songLowercase, random);
 						}
 						
 					MusicBeatState.resetState();

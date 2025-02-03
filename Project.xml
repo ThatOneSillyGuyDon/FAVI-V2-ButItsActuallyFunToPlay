@@ -42,8 +42,9 @@
 	
 	<!-- PSYCH ENGINE CUSTOMIZATION -->
 	<define name="MODS_ALLOWED" if="desktop" />
+	<!--<define name="LUA_ALLOWED" if="desktop" />-->
 	<define name="ACHIEVEMENTS_ALLOWED" />
-	<define name="DISCORD_ALLOWED" />
+	<define name="DISCORD_ALLOWED" if="desktop"/>
 	<define name="DEV_BUILD" />
 	<define name="VIDEOS_ALLOWED" if="web || windows" unless="32bits"/>
 	<define name="TITLE_SCREEN_EASTER_EGG" if="officialBuild"/> <!-- DELETE THE if="officialBuild" for enabling this on an unofficial build -->
@@ -103,8 +104,6 @@
 
 	<!--In case you want to use the addons package-->
 	<haxelib name="flixel-addons" />
-	<haxelib name="hscript" />
-	<define name="hscriptPos" />
 
 	<!--Set this to the engine you're using!-->
 	<define name="PSYCH" />
@@ -117,6 +116,8 @@
 	<haxelib name="faxe" if='switch'/>
 	<!--<haxelib name="polymod"/> -->
 	<haxelib name="hxdiscord_rpc" if="desktop"/>
+
+	<haxedef name="DISCORD_DISABLE_IO_THREAD" if="hxdiscord_rpc" />
 
 	<!--THIS ONE IS FOR NEGLECTION SO THERE'S PROPER ACTUAL 3D :]]-->
 	<!--haxelib name="away3d" /-->
@@ -184,7 +185,7 @@
 
 	<haxedef name="openfl_dpi_aware" if="openfl_dpi_aware" />
 	<define name="HXCPP_GC_BIG_BLOCKS" />
- 
+	
 	<!-- _________________________________ Custom _______________________________ -->
 
 	<!--Place custom nodes like icons here (higher priority to override the HaxeFlixel icon)-->

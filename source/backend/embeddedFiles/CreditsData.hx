@@ -4,7 +4,7 @@ enum abstract CreditsData(String) from String to String {
     var devilishDeal:String = '{
 	"settings":
 	[
-		"Art: Domingo, Moe\n\nChart: Purg\n\nCode: DEMOLITIONDON96 & Jason\n\nMusic: obscurity.", -40, -5
+		"Art: Domingo & Moe\n\nChart: Purg\n\nCode: DEMOLITIONDON96 & Jason\n\nMusic: obscurity.", -40, -5
 	]
 }';
     var isolated:String = '{
@@ -16,13 +16,13 @@ enum abstract CreditsData(String) from String to String {
     var lunacy:String = '{
 	"settings":
 	[
-		"Art: Domingo\n& Moe\n\nChart: Purg\n\nCode: Jason & DEMOLITIONDON96\n\nMusic: obscurity.", 25, -5
+		"Art: Domingo & Moe\n\nChart: Purg\n\nCode: Jason & DEMOLITIONDON96\n\nMusic: obscurity.", 25, -5
 	]
 }';
     var delusional:String = '{
 	"settings":
 	[
-		"Art: Domingo, Moe, BladzAMC_Emerald,\nTeelbe &\nAustinWProductions\n\nChart: Dreupy\n\nCode: Jason, MalyPlus\n& DEMOLITIONDON96\n\nMusic: FR3SHMoure\n\nVoice Actor: BonoanAnything", -21, -43
+		"Art: Domingo, Moe, BladzAMC_Emerald,\nTeelbe, Oyxz &\nAustinWProductions\n\nChart: Dreupy\n\nCode: Jason, MalyPlus\n& DEMOLITIONDON96\n\nMusic: FR3SHMoure\n\nVoice Actor: BonoanAnything", -21, -43
 	]
 }';
     var regret:String = '{
@@ -35,7 +35,7 @@ enum abstract CreditsData(String) from String to String {
     var hunted:String = '{
 	"settings":
 	[
-		"Art: GreyDoodlez & rezeo\n\nChart: Purg\n\nCode: Jason, DEMOLITIONDON96 \n& MalyPlus\n\nMusic: JBlitz", 18, -18
+		"Art: GreyDoodlez & rezeo\n\nChart: Purg\n\nCode: Jason, DEMOLITIONDON96 \n& MalyPlus\n\nMusic: JBlitz", 18, 0
 	]
 }';
     var laughTrack:String = '{
@@ -47,32 +47,39 @@ enum abstract CreditsData(String) from String to String {
     var bless:String = '{
 	"settings":
 	[
-		"Art: DEMOLITIONDON96\nAustinWProductions, JDrive, Teelbe\n& Moe\n\nChart: DEMOLITIONDON96\n\nCode: Jason, MalyPlus \n& DEMOLITIONDON96\n\nMusic: PualTheUnTruest", 43, -30
+		"Art: DEMOLITIONDON96\nAustinWProductions, JDrive, Teelbe\n& Moe\n\nChart: DEMOLITIONDON96\n\nCode: Jason, MalyPlus \n& DEMOLITIONDON96\n\nMusic: PualTheUnTruest", 33, -30
 	]
 }';
     var dontCross1:String = '{
 	"settings":
 	[
-		"Art: Domingo & Moe\n\nChart: Dreupy\n\nCode: DEMOLITIONDON96\n\nMusic: PualTheUnTruest\n", -55, 20
+		"Art: Domingo & Moe\n\nChart: Dreupy\n\nCode: DEMOLITIONDON96\n\nMusic: PualTheUnTruest", -55, 20
 	]
 }';
     var dontCross2:String = '{
 	"settings":
 	[
-		"Art: Domingo & Moe\n\nChart: Purg\n\nCode: DEMOLITIONDON96\n\nMusic: PualTheUnTruest\n", -55, 20
+		"Art: Domingo & Moe\n\nChart: Purg\n\nCode: DEMOLITIONDON96\n\nMusic: PualTheUnTruest", -55, 20
 	]
 }';
     var dontCross3:String = '{
 	"settings":
 	[
-		"Art: Domingo & Moe\n\nChart: DEMOLITIONDON96\n\nCode: DEMOLITIONDON96\n\nMusic: PualTheUnTruest\n", -55, 20
+		"Art: Domingo & Moe\n\nChart: DEMOLITIONDON96\n\nCode: DEMOLITIONDON96\n\nMusic: PualTheUnTruest", -55, 20
 	]
 }';
 	// In Case You'll add the dealthly chart
 	var dontCross4:String = '{
 		"settings":
 		[
-			"Art: Domingo & Moe\n\nChart: MalyPlus\n\nCode: DEMOLITIONDON96\n\nMusic: PualTheUnTruest\n", -55, 20
+			"Art: Domingo & Moe\n\nChart: MalyPlus\n\nCode: DEMOLITIONDON96\n\nMusic: PualTheUnTruest", -55, 20
+		]
+	}';
+
+	var dontCross5:String = '{
+		"settings":
+		[
+			"Art: Domingo & Moe\n\nChart: rezeo285\n\nCode: DEMOLITIONDON96\n\nMusic: PualTheUnTruest", -55, 20
 		]
 	}';
     var warDilemma:String = '{
@@ -91,13 +98,13 @@ enum abstract CreditsData(String) from String to String {
     var mercy:String = '{
 	"settings":
 	[
-		"Art: JDrive\n\nChart: DEMOLITIONDON96\n\nCode: Jason & DEMOLITIONDON96\n\nMusic: Ophomix24", 26, 26
+		"Art: JDrive & Ms.IDK\n\nChart: DEMOLITIONDON96\n\nCode: Jason & DEMOLITIONDON96\n\nMusic: Ophomix24", 26, 0
 	]
 }';
     var cycledSins:String = '{
 	"settings":
 	[
-		"Art: JDrive\n\nChart: Dreupy\n\nCode: DEMOLITIONDON96 & Jason\n\nMusic: JBlitz\n\nVoice Actor: AustinWProductions", -38, -24
+		"Art: JDrive\n\nChart: Dreupy\n\nCode: DEMOLITIONDON96\n\nMusic: JBlitz\n\nVoice Actor: AustinWProductions", -38, -24
 	]
 }';
     var malfunction:String = '{
@@ -109,13 +116,13 @@ enum abstract CreditsData(String) from String to String {
     var birthday:String = '{
 	"settings":
 	[
-		"Art: Teelbe\n\nChart: Dreupy\n\nCode: Jason & DEMOLITIONDON96\n\nMusic: FR3SHMoure", 0, 28
+		"Art: Teelbe\n\nChart: Dreupy\n\nCode: Jason & DEMOLITIONDON96\n\nMusic: FR3SHMoure", 0, 15
 	]
 }';
     var delutrance:String = '{
 	"settings":
 	[
-		"Art: Who gives a fuck?\n\nChart: Jason & DEMOLITIONDON96\n\nCode: DEMOLITIONDON96\n\nMusic: RetroJogador", -32, 26
+		"Art: Who gives a fuck?\n\nChart: Jason & DEMOLITIONDON96\n\nCode: DEMOLITIONDON96\n\nMusic: RetroJogador", -32, -10
 	]
 }';
 	var creditsMenu:String = '';

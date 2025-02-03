@@ -1,27 +1,63 @@
 {
     "info": 
 	[
-		["    Mickey Mouse   ", "bettermickey", 360, 220, 0.262, "In a world where what was a symbol of fun has turned into sadness and loneliness, after the loss of his greatest love for money, Mickey now finds himself on a dark path with no way out. What awaits him is just a frightening unknown, as the iconic mouse faces an uncertain and disturbing fate."],
+		["Mickey (Avier) Mouse", "avierNew", 380, 240, 0.262, "Who once was a good and loving husband became a very horrible person that hurt Minnie terribly.
 
-		["    Minnie Mouse   ", "theVictim", 240, 420, 0.212, " After having enough of Mickey's angry lash outs and suffering through his mental and physical torment against her, Minnie had enough. She ran away out into the street and started to cry endlessly, in a mix of sadness and pure rage. She stumbled across a dark alleyway with a cloaked man standing there.. offering her a deal to solve her problems. Little did she know just how devilish that deal would be.. "],
-		
-		["        Everett?      ", "evilrette", 0, -200, 0.45, "A sweet little blue-haired boy with an affinity for singing. He suddenly showed up during Mickey's loop, giving Mickey a companion in the Soulless Town. Mickey is...somewhat deterred by him, but he's too cute to harm a fly...
+On that fateful day, was when his whole world finally turned upside down, who now suffers endlessly in a loop cursed upon him by his own lover...
 
-		...right?"],
+Despite everything, he is determined to break free one day and finally end it all to just see Minnie one last time to say \"Sorry.\""],
+
+		["    Minnie Mouse   ", "theVictim", 240, 420, 0.212, "Loving wife, abuse survivor, caster of the curse brought upon Avier...
+
+After leaving her husband, out in the streets, she stumbles upon a stranger in an alleyway, who showed concern about her. Upon expressing feelings, this stranger offered a deal she could not resist!
+
+Little did she know what she was REALLY getting herself into..."],
 		
-		["   Goofy and Donald   ", "Goofy", -50, -130, 0.35, "After Mickey's disappearance in the main events of the story, Mickey's friends decided to go hunting in order to get their mind off their friend's absence. Unfortunately, Goofy ended up accidentally shooting Donald, killing him due to believing he was another animal. The taste of duck meat got into Goofy, a mix of hunger and guilt fueling him as he goes to avenge Donald's death, too delusional to believe that he was the one who killed the duck. It was a bad idea for Everett to go hunting too.."],
+		["        Evilrett       ", "evilrettNew", 410, 260, 0.29, "A false impersonator of Everett.
+
+Created by Satan himself for him to wear as a disguise, with reference to the best of his ability with Everett's appearance up close by snatching him into a void.
+
+Satan is clearly not the best at replicating him perfectly, as he got quite a few details wrong, alongside his appearance being fully white...
+
+Torments Avier throughout the story, and eventually, pisses off others as well..."],
 		
-		["Adam Ricky (Mr. Smiles)", "smiles", -50, -40, 0.35, "A man so twisted and alone that he grew an addiction to the only thing that would bring him solace: Mickey Mouse cartoons. His addiction became so prominent that he created this suit of Mickey made of the teeth, gums, and other various organs by those who wronged him. The house he and his wife lived in caved in after his wife discovered the suit, killing them instantly. When Adam came to, he found that he inhabited the suit. 
+		["   Goofy and Donald   ", "Goofy", -50, -130, 0.37, "After Mickey's disappearance in the main events of the story, Mickey's friends decided to go hunting in order to get their mind off their friend's absence. Unfortunately, Goofy ended up accidentally shooting Donald, killing him due to believing he was another animal. The taste of duck meat got into Goofy, a mix of hunger and guilt fueling him as he goes to avenge Donald's death, too delusional to believe that he was the one who killed the duck. It was a bad idea for Everett to go hunting too.."],
+		
+		["     Ricky P. Rat     ", "rickyPort", 420, 250, 0.3, "A grunt mouse who went rogue after having the only person who cared about him taken from him by him.
+
+He is VERY relentless and determined to win at all costs, as he does NOT like to be controlled by anyone.
+
+He is made up of mixed DNA of some weird green clown and mostly ink, went through several failed experiments before any of the events leading up to this."],
+
+		["     White Noise     ", "whiteNoise", -20, 180, 0.3, "Placeholder description."],
+
+		["RubberRoss Mickey", "dontcross", 160, 20, 0.3, "Probably the strangest mouse of the bunch, has one and only one goal alone: stop anyone from crossing the line to America. Granted, Boyfriend just wants to escape the horrid community in his own game, but even still, Mickey isn't letting him go without a fight!"],
+
+		["    Ethereal Mickey    ", "etheralMick", 360, 240, 0.25, "Placeholder description."],
+
+		["    Ethereal Goofy    ", "etheralGoofy", 470, 240, 0.3, "Placeholder description."],
+
+
+		["Adam Ricky (Mr. Smiles)", "smileYaFatBitch", 190, 380, 0.24, "A man so twisted and alone that he grew an addiction to the only thing that would bring him solace: Mickey Mouse cartoons. His addiction became so prominent that he created this suit of Mickey made of the teeth, gums, and other various organs by those who wronged him. The house he and his wife lived in caved in after his wife discovered the suit, killing them instantly. When Adam came to, he found that he inhabited the suit. 
 
 Now he gets other victims in their dreams in order to 'take their smiles', in an attempt to bring his wife back..."],
-	["            Walt            ", "walt", -280, -200, 0.5, "A version of Mickey that lost his Minnie at the hands of Walt Disney, his own creator. The death of Minnie awakens a rage inside Mickey that makes him vow to restore Minnie to her former glory, as well as get revenge on his creator."],	
+
+	["            Walt            ", "walt", -300, -180, 0.5, "A version of Mickey that lost his Minnie at the hands of Walt Disney, his own creator. The death of Minnie awakens a rage inside Mickey that makes him vow to restore Minnie to her former glory, as well as get revenge on his creator."],
+
+	["      Relapse Mouse      ", "relapsed2", 140, -40, 0.25, "A version of Mickey whose sanity starts to dwindle as a result of Daisy Duck's suicide. He decided to go on a stroll as to help calm his mind...and of course, that boy is there. Boyfriend better hope he acts quick this time around, else he gets his head blown off."],
 	
-	["          Muckney         ", "muckney", 70, 140, 0.3, "This little Mickey Mouse look-a-like is a youngin who's birthday is neverending! Literally. Every day is his birthday. Muckney is a bit of an airhead, but he's loveable all the same. He likes to blow balloons, and always has the goal to ruin a certain blue hedgehog's party, although he never makes it in time to do so. You wouldn't leave his birthday...
+	["        Malsquare        ", "malsquare", 120, -120, 0.26, "Omniversal asshole.
+
+A goofball who could literally end the existence of pretty much everything, yet chooses not to, simply because he finds that boring. He can shapeshift into anything he wants, and he chose to be a square...
+
+Has a very short temper, so he'll easily get angry or offended if you do something he doesn't like, for example:
+
+Trespassing his property!"],
+	
+	["          Muckney         ", "muckneyNew", 390, 230, 0.24, "This little Mickey Mouse look-a-like is a youngin who's birthday is neverending! Literally. Every day is his birthday. Muckney is a bit of an airhead, but he's loveable all the same. He likes to blow balloons, and always has the goal to ruin a certain blue hedgehog's party, although he never makes it in time to do so. You wouldn't leave his birthday...
 
 ...right? 
 
-He'd get sad if you left..."],
-
-		["Mickey Mouse (Don't Cross!)", "dontcross", 160, 20, 0.3, "Probably the strangest mouse of the bunch, has one and only one goal alone: stop anyone from crossing the line to America. Granted, Boyfriend just wants to escape the horrid community in his own game, but even still, Mickey isn't letting him go without a fight!"]
+He'd get sad if you left..."]
 	]
 }

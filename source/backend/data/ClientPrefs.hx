@@ -21,6 +21,7 @@ class ClientPrefs {
 	public static var camZooms:Bool = true;
 	public static var hideHud:Bool = false;
 	public static var noteOffset:Int = 0;
+	public static var pauseCountdown = false;
 	public static var arrowHSV:Array<Array<Int>> = [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]];
 	public static var ghostTapping:Bool = true;
 	public static var timeBarType:String = 'Time Left';
@@ -109,6 +110,7 @@ class ClientPrefs {
 		settings.data.lowQuality = lowQuality;
 		settings.data.shaders = shaders;
 		settings.data.framerate = framerate;
+		settings.data.pauseCountdown = pauseCountdown;
 		//settings.data.cursing = cursing;
 		//settings.data.violence = violence;
 		settings.data.camZooms = camZooms;
@@ -183,6 +185,9 @@ class ClientPrefs {
 		}
 		if(settings.data.lowQuality != null) {
 			lowQuality = settings.data.lowQuality;
+		}
+		if(settings.data.pauseCountdown != null) {
+			pauseCountdown = settings.data.pauseCountdown;
 		}
 		if(settings.data.shaders != null) {
 			shaders = settings.data.shaders;
@@ -304,12 +309,12 @@ class ClientPrefs {
 	public static function reloadControls() {
 		PlayerSettings.player1.controls.setKeyboardScheme(KeyboardScheme.Solo);
 
-		Init.muteKeys = copyKey(keyBinds.get('volume_mute'));
-		Init.volumeDownKeys = copyKey(keyBinds.get('volume_down'));
-		Init.volumeUpKeys = copyKey(keyBinds.get('volume_up'));
-		FlxG.sound.muteKeys = Init.muteKeys;
-		FlxG.sound.volumeDownKeys = Init.volumeDownKeys;
-		FlxG.sound.volumeUpKeys = Init.volumeUpKeys;
+		TitleState.muteKeys = copyKey(keyBinds.get('volume_mute'));
+		TitleState.volumeDownKeys = copyKey(keyBinds.get('volume_down'));
+		TitleState.volumeUpKeys = copyKey(keyBinds.get('volume_up'));
+		FlxG.sound.muteKeys = TitleState.muteKeys;
+		FlxG.sound.volumeDownKeys = TitleState.volumeDownKeys;
+		FlxG.sound.volumeUpKeys = TitleState.volumeUpKeys;
 	}
 	public static function copyKey(arrayToCopy:Array<FlxKey>):Array<FlxKey> {
 		var copiedArray:Array<FlxKey> = arrayToCopy.copy();

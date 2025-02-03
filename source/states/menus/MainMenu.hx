@@ -236,13 +236,6 @@ class MainMenu extends MusicBeatState
 		// uh
 		persistentUpdate = persistentDraw = true;
 
-		// WHY IS THIS USED
-		/*eyes = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/NEWmenu/HahaSadBoi'));
-		eyes.scrollFactor.set(0, 0);
-		eyes.screenCenter();
-		eyes.updateHitbox();
-		eyes.antialiasing = true;*/
-
 		floor = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/menu/floor'));
 		floor.scrollFactor.set(0, 0);
 		floor.setGraphicSize(Std.int(floor.width * 0.75));
@@ -278,7 +271,7 @@ class MainMenu extends MusicBeatState
 			add(omgCamera);
 		}
 
-		trace(GameData.episode1FPLock);
+		/*trace(GameData.episode1FPLock);
 		if (GameData.episode1FPLock == 'unlocked')
 		{
 			sigmaClick = new FlxSkewedSprite(500, 600, Paths.image('Funkin_avi/menu/click'));
@@ -291,7 +284,7 @@ class MainMenu extends MusicBeatState
 			sigmaClick.angle = 6;
 			sigmaClick.skew.set(15, -10);
 			add(sigmaClick);
-		}
+		}*/
 
 		datBook = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/menu/book'));
 		datBook.scrollFactor.set(0, 0);
@@ -338,16 +331,6 @@ class MainMenu extends MusicBeatState
 			gradient.antialiasing = true;
 			add(gradient);
 		}
-
-		magenta = new FlxSprite(-80).loadGraphic(Paths.image('menuDesat'));
-		magenta.scrollFactor.set(0, 0.18);
-		magenta.setGraphicSize(Std.int(magenta.width * 1.1));
-		magenta.updateHitbox();
-		magenta.screenCenter();
-		magenta.visible = false;
-		magenta.antialiasing = true;
-		magenta.color = 0xFFfd719b;
-		add(magenta);
 
 		// add the camera
 		camFollow = new FlxObject(0, 0, 1, 1);
@@ -464,13 +447,26 @@ class MainMenu extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
-		if (!CoolUtil.findCoreFile())
+		/*if (!CoolUtil.findCoreFile())
 		{
 			new FlxTimer().start(1.0, function(tmr:FlxTimer)
 			{
 				FlxG.switchState(new SafeModeState());
 				FlxG.sound.music.volume = 0;
 			});
+		}*/
+
+		if (!sys.FileSystem.exists('./assets/shared/images/favi/stages/forbiddenRealm/DO NOT TOUCH MY MEME.png') && !GameData.canAddMalfunction)
+		{
+			selectedSomethin = true;
+			new FlxTimer().start(0.4, function(tmr:FlxTimer)
+			{
+				selectedSomethin = false;
+			});
+			FlxG.sound.play(Paths.sound('funkinAVI/easterEggSound'));
+		 	theBox.sendMessage('I just wanna talk bro.', 'New Freeplay Song Unlocked!');
+			GameData.canAddMalfunction = true;
+			GameData.saveShit();
 		}
 
 		var lerpVal:Float = CoolUtil.boundTo(elapsed * 7.5, 0, 1);
@@ -540,7 +536,7 @@ class MainMenu extends MusicBeatState
 				}
 			}
 
-			if (birthdayKey && !selectedSomethin)
+			if (birthdayKey && !selectedSomethin && GameData.muckneyLock != "uninvited")
 			{
 				if (theBirthdayCode == (birthdayCode.length - 1))
 				{
@@ -672,7 +668,7 @@ class MainMenu extends MusicBeatState
 		
 		if (FlxG.mouse.overlaps(datBook) && FlxG.mouse.justPressed && !selectedSomethin)
 		{
-			if (GameData.episode1FPLock == "unlocked")
+			if (GameData.malfunctionLock == "beaten")
 			{
 				datBook.scale.set(.8, .8);
 				//shittyUnoptimizedBookCopy.scale.set(.75, .77);
@@ -703,7 +699,7 @@ class MainMenu extends MusicBeatState
 			else
 			{
 				FlxG.sound.play(Paths.sound('cancelMenu'));
-				theBox.sendMessage('You haven\'t unlocked this yet!', 'Play through his legacy first to open the other pages to this story...');
+				theBox.sendMessage('You haven\'t unlocked this yet!', 'Complete EVERYTHING to open this book.');
 			}
 		}
 
@@ -778,6 +774,7 @@ class MainMenu extends MusicBeatState
 				//FlxG.sound.play(Paths.sound('base/menus/confirmMenu'));
 				FlxG.sound.play(Paths.sound('funkinAVI/menu/selectSfx'));
 				FlxG.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
+				FlxG.sound.music.fadeOut(0.8);
 				//FlxTween.tween(camGame, {zoom: 6}, 2, {ease: FlxEase.cubeInOut, startDelay: 0.5});
 
 				menuItems.forEach(function(spr:FlxSprite)
@@ -802,6 +799,7 @@ class MainMenu extends MusicBeatState
 							{
 								case 'freeplay':
 									MusicBeatState.switchState(new FreeplayCategories());
+									FlxG.sound.music.fadeIn(0.5, 0, 0.7);
 									FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
 							}
 						});
