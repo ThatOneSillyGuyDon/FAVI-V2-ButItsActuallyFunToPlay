@@ -432,7 +432,7 @@ class GameOverSubstate extends MusicBeatSubstate
 			}
 		}
 
-		if ((controls.UI_DOWN_P || controls.UI_UP_P) && arrowLerp == 1 && uiRetry != null && image == "favi/ui/gameOvers/everettDeath")
+		if ((controls.UI_DOWN_P || controls.UI_UP_P) && arrowLerp == 1 && uiRetry != null && (image == "favi/ui/gameOvers/warGameOver" || image == "favi/ui/gameOvers/everettDeath"))
 		{
 			quitLerp = quitLerp == 1 ? 0.001 : 1;
 			tryLerp = tryLerp == 1 ? 0.001 : 1;
