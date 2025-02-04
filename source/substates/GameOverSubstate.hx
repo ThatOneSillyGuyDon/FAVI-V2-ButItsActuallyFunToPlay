@@ -105,7 +105,7 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		FlxG.cameras.add(stupidAssCam);
 		FlxG.cameras.add(deathHUD, false);
-		deathHUD.alpha = 0.0001;
+		deathHUD.alpha = PlayState.SONG.song == "War Dilemma" ? 0.25 : 0.0001;
 
 		Conductor.songPosition = 0;
 
@@ -311,6 +311,7 @@ class GameOverSubstate extends MusicBeatSubstate
 			case "War Dilemma":
 				deathImage.alpha = 0.0001;
 				FlxG.sound.play(Paths.sound("gunSfx"));
+				deathHUD.fade(FlxColor.WHITE, 1, true);
 				new flixel.util.FlxTimer().start(1.15, function(tmr)
 				{
 					FlxTween.tween(deathImage, {alpha: 1}, 3);
@@ -331,7 +332,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		{
 			switch (PlayState.curStage)
 			{
-				case 'stage' | 'desktop' | 'waltRoom' | 'apartment' | 'treasureIsland' | 'forbiddenRealm' | 'fuckingLine' | 'staticVoid' | 'vaultRoom' | 'war':
+				case 'stage' | 'desktop' | 'waltRoom' | 'apartment' | 'treasureIsland' | 'forbiddenRealm' | 'fuckingLine' | 'staticVoid' | 'vaultRoom':
 				// don't add scratch assets
 	
 				default:
