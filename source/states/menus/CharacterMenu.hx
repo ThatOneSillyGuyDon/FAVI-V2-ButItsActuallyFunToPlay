@@ -78,7 +78,7 @@ class CharacterMenu extends MusicBeatState
         spotlight.screenCenter();
         spotlight.setGraphicSize(Std.int(spotlight.width * .76));
         spotlight.antialiasing = ClientPrefs.globalAntialiasing;
-        FlxTween.tween(spotlight, {alpha: .4}, 3, {type: 4});
+        FlxTween.tween(spotlight, {alpha: .15}, 3, {type: 4});
         add(spotlight);
 
         // todo: replace flxsprite with flxparticle
@@ -86,6 +86,7 @@ class CharacterMenu extends MusicBeatState
         particles.screenCenter();
         particles.setGraphicSize(Std.int(particles.width * .76));
         particles.antialiasing = ClientPrefs.globalAntialiasing;
+        FlxTween.tween(spotlight, {alpha: .5}, 5, {type: 4});
         add(particles);
 
         ui = new FlxSprite().loadGraphic(Paths.image(path + 'UI'));

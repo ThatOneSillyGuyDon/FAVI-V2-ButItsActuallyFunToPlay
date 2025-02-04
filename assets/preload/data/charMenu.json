@@ -23,15 +23,27 @@ Torments Avier throughout the story, and eventually, pisses off others as well..
 		
 		["   Goofy and Donald   ", "Goofy", -50, -130, 0.37, "After Mickey's disappearance in the main events of the story, Mickey's friends decided to go hunting in order to get their mind off their friend's absence. Unfortunately, Goofy ended up accidentally shooting Donald, killing him due to believing he was another animal. The taste of duck meat got into Goofy, a mix of hunger and guilt fueling him as he goes to avenge Donald's death, too delusional to believe that he was the one who killed the duck. It was a bad idea for Everett to go hunting too.."],
 		
-		["     Ricky P. Rat     ", "rickyPort", 420, 250, 0.3, "A grunt mouse who went rogue after having the only person who cared about him taken from him by him.
+		["     Ricky P. Rat     ", "rickyPort", 420, 250, 0.3, "A grunt mouse who went rogue after having the only person who cared about him taken from him, by him.
 
 He is VERY relentless and determined to win at all costs, as he does NOT like to be controlled by anyone.
 
 He is made up of mixed DNA of some weird green clown and mostly ink, went through several failed experiments before any of the events leading up to this."],
 
-		["     White Noise     ", "whiteNoise", -20, 180, 0.3, "Placeholder description."],
+		["     White Noise     ", "whiteNoise", -20, 180, 0.3, "The ghost of Steamboat Willie, a ghostly apparition of the Mickey before.
 
-		["RubberRoss Mickey", "dontcross", 160, 20, 0.3, "Probably the strangest mouse of the bunch, has one and only one goal alone: stop anyone from crossing the line to America. Granted, Boyfriend just wants to escape the horrid community in his own game, but even still, Mickey isn't letting him go without a fight!"],
+Left to rot in the Disney vault after the creation of Mickey Mouse, White Noise now haunts the vault as a sorrowing spirit always wishing that he could've done something different.
+
+White Noise is a shy and timid ghost.
+
+always avoiding conflict if necessary."],
+
+		["RubberRoss Mickey", "dontcross", 160, 20, 0.3, "Probably the strangest mouse of the bunch, has one and only one goal alone: 
+		
+Stop anyone from crossing the line to America. 
+
+Granted, Boyfriend just wants to escape the horrid community in his own game...
+
+but even still, Mickey isn't letting him go without a fight!"],
 
 		["    Ethereal Mickey    ", "etheralMick", 360, 240, 0.25, "Placeholder description."],
 
@@ -42,19 +54,33 @@ He is made up of mixed DNA of some weird green clown and mostly ink, went throug
 
 Now he gets other victims in their dreams in order to 'take their smiles', in an attempt to bring his wife back..."],
 
-	["            Walt            ", "walt", -300, -180, 0.5, "A version of Mickey that lost his Minnie at the hands of Walt Disney, his own creator. The death of Minnie awakens a rage inside Mickey that makes him vow to restore Minnie to her former glory, as well as get revenge on his creator."],
+	["            Walt            ", "walt", -300, -180, 0.5, "A version of Mickey that lost his Minnie at the hands of Walt Disney, his own creator. 
+	
+The death of Minnie awakens a rage inside Mickey that makes him vow to restore Minnie to her former glory, as well as get revenge on his creator."],
 
-	["      Relapse Mouse      ", "relapsed2", 140, -40, 0.25, "A version of Mickey whose sanity starts to dwindle as a result of Daisy Duck's suicide. He decided to go on a stroll as to help calm his mind...and of course, that boy is there. Boyfriend better hope he acts quick this time around, else he gets his head blown off."],
+	["      Relapse Mouse      ", "relapsed2", 140, -40, 0.25, "A version of Mickey whose sanity starts to dwindle as a result of Daisy Duck's suicide.
+
+He decided to go on a stroll as to help calm his mind...
+
+and of course, that boy is there. 
+Everett better hope he acts quick this time around, else he gets his head blown off."],
 	
 	["        Malsquare        ", "malsquare", 120, -120, 0.26, "Omniversal asshole.
 
 A goofball who could literally end the existence of pretty much everything, yet chooses not to, simply because he finds that boring. He can shapeshift into anything he wants, and he chose to be a square...
 
-Has a very short temper, so he'll easily get angry or offended if you do something he doesn't like, for example:
+Has a very short temper, so he'll easily get angry or offended if you do something he doesn't like,
 
+for example:
 Trespassing his property!"],
 	
-	["          Muckney         ", "muckneyNew", 390, 230, 0.24, "This little Mickey Mouse look-a-like is a youngin who's birthday is neverending! Literally. Every day is his birthday. Muckney is a bit of an airhead, but he's loveable all the same. He likes to blow balloons, and always has the goal to ruin a certain blue hedgehog's party, although he never makes it in time to do so. You wouldn't leave his birthday...
+	["          Muckney         ", "muckneyNew", 390, 230, 0.24, "This little Mickey Mouse look-a-like is a youngin who's birthday is neverending!
+
+Literally. Every day is his birthday. Muckney is a bit of an airhead, but he's loveable all the same.
+
+He likes to blow balloons, and always has the goal to ruin a certain blue hedgehog's party, although he never makes it in time to do so. 
+
+You wouldn't leave his birthday...
 
 ...right? 
 
