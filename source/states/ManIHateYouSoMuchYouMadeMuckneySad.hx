@@ -27,11 +27,9 @@ import flixel.FlxG;
  */
 class ManIHateYouSoMuchYouMadeMuckneySad extends MusicBeatState
 {
-   // I got plans, and I'm gonna make the art for this lmao -don
+   // I got plans, and I'm gonna make the art for this lmao -don // nvm i lied :skull: -don
    var leMuckney:FlxSprite;
    var background:FlxSprite;
-   var booHooHeSoSadThatItsRainingNowYouAreSuchAHorriblePerson:FlxSprite;
-   var theFogIsComingTheFogIsComingTheFogIsComingTheFogIsComingTheFogIsComingTheFogIsComingTheFogIsComingTheFogIsComingTheFogIsComingTheFogIsComingTheFogIsComingTheFogIsComingTheFogIsComingTheFogIsComingTheFogIsComingTheFogIsComingTheFogIsComingTheFogIsComing:FlxSprite;
 
    // the text stuff
    var totallyEmotionalTextDisplay:FlxText;
@@ -43,6 +41,7 @@ class ManIHateYouSoMuchYouMadeMuckneySad extends MusicBeatState
       Application.current.window.borderless = true;
       Application.current.window.title = "Was it worth it?";
 
+      DiscordClient.changePresence('You fucking monster...', 'Muckney is sad now...', 'sadmuckney', 'mouse');
       if (!Main.debug)
       {
          // haha, you have to use Task Manager to close the game on this screen now :troll:
