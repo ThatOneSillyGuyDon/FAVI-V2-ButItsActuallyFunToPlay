@@ -149,6 +149,7 @@ class GameOverSubstate extends MusicBeatSubstate
 					bUI.scrollFactor.set(0, 0);
 					bUI.cameras = [stupidAssCam];
 					bUI.setGraphicSize(0, FlxG.height);
+					bUI.alpha = 0.0001;
 					add(bUI);
 				}
 				uiArrowDown.y = -9999;
@@ -168,6 +169,7 @@ class GameOverSubstate extends MusicBeatSubstate
 					warUI.scrollFactor.set(0, 0);
 					warUI.cameras = [stupidAssCam];
 					warUI.setGraphicSize(0, FlxG.height);
+					warUI.alpha = 0.0001;
 					add(warUI);
 				}
 
@@ -454,7 +456,7 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		if (controls.ACCEPT)
 		{
-			if ((tryLerp == 1 && deathHUD.alpha >= 0.5) || boyfriend.visible || (uiRetry != null && uiRetry.alpha >= 0.2) || (uiRetry != null && uiRetry.alpha >= 0.2))
+			if ((tryLerp == 1 && deathHUD.alpha >= 0.5) || boyfriend.visible || (uiRetry != null && uiRetry.alpha >= 0.6) || (uiRetry != null && uiRetry.alpha >= 0.6))
 				endBullshit();
 	
 			if (quitLerp == 1 && !boyfriend.visible)
