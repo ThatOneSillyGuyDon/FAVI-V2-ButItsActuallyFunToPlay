@@ -611,7 +611,7 @@ class GameOverSubstate extends MusicBeatSubstate
 			arrowLerp = 1;
 			tryLerp = 1;
 			if (PlayState.SONG.song == "Birthday")
-				quitLerp = 0.5;
+				quitLerp = 0.18;
 		}
 	}
 
