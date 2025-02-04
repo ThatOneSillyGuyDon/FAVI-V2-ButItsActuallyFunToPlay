@@ -121,6 +121,8 @@ class GameOverSubstate extends MusicBeatSubstate
 			case "Isolated" | "Lunacy": image = "favi/ui/gameOvers/episode1Death";
 			case "Delusional": image = "favi/ui/gameOvers/delusionalDeath";
 			case "Dont Cross": image = "favi/ui/gameOvers/DontCrossGameOver";
+			case "Birthday": image = "favi/ui/gameOvers/birthdayGameOver";
+			case "War Dilemma": image = "favi/ui/gameOvers/warGameOver";
 			default: image = "favi/ui/gameOvers/everettDeath";
 		}
 
@@ -133,6 +135,42 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		switch(image)
 		{
+			case "favi/ui/gameOvers/birthdayGameOver":
+				quitLerp = 0.0001;
+				tryLerp = 0.0001;
+				uiArrowDown = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/arrowEverett"));
+				uiArrowUp = new FlxSprite().loadGraphicFromSprite(uiArrowDown);
+				uiRetry = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/birthdayRetry"));
+				uiLeave = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/birthdayLeave"));
+
+				for (bUI in [uiArrowDown, uiArrowUp, uiRetry, uiLeave])
+				{
+					bUI.screenCenter();
+					bUI.scrollFactor.set(0, 0);
+					bUI.cameras = [stupidAssCam];
+					bUI.setGraphicSize(0, FlxG.height);
+					add(bUI);
+				}
+				uiArrowDown.y = -9999;
+				uiArrowUp.y = uiArrowDown.y;
+
+			case "favi/ui/gameOvers/warGameOver":
+				quitLerp = 0.0001;
+				tryLerp = 0.0001;
+				uiArrowDown = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/warArrowD"));
+				uiArrowUp = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/warArrowU"));
+				uiRetry = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/warRetry"));
+				uiLeave = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/warLeave"));
+
+				for (warUI in [uiArrowDown, uiArrowUp, uiRetry, uiLeave])
+				{
+					warUI.screenCenter();
+					warUI.scrollFactor.set(0, 0);
+					warUI.cameras = [stupidAssCam];
+					warUI.setGraphicSize(0, FlxG.height);
+					add(warUI);
+				}
+
 			case "favi/ui/gameOvers/episode1Death":
 				quitLerp = 0.0001;
 				tryLerp = 0.0001;
@@ -261,6 +299,20 @@ class GameOverSubstate extends MusicBeatSubstate
 				FlxG.sound.play(Paths.sound(deathSoundName));
 			case "Dont Cross":
 				FlxG.sound.play(Paths.sound("wompWomp"));
+			case "Birthday":
+				deathImage.alpha = 0.0001;
+				new flixel.util.FlxTimer().start(0.85, function(tmr)
+				{
+					FlxG.sound.play(Paths.sound("spotlightSfx"));
+					deathImage.alpha = 1;
+				});
+			case "War Dilemma":
+				deathImage.alpha = 0.0001;
+				FlxG.sound.play(Paths.sound("gunSfx"));
+				new flixel.util.FlxTimer().start(1.15, function(tmr)
+				{
+					FlxTween.tween(deathImage, {alpha: 1}, 3);
+				});
 			default:
 				deathImage.alpha = 0.0001;
 				new flixel.util.FlxTimer().start(0.5, function(tmr)
@@ -391,8 +443,8 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		if ((controls.UI_LEFT_P || controls.UI_RIGHT_P) && arrowLerp == 1 && uiRetry != null && image != "favi/ui/gameOvers/everettDeath")
 		{
-			quitLerp = quitLerp == 1 ? 0.001 : 1;
-			tryLerp = tryLerp == 1 ? 0.001 : 1;
+			quitLerp = quitLerp == 1 ? (PlayState.SONG.song == "Birthday" ? 0.5 : 0.001) : 1;
+			tryLerp = tryLerp == 1 ? (PlayState.SONG.song == "Birthday" ? 0.5 : 0.001) : 1;
 			FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
 			if (controls.UI_LEFT_P)
 				uiArrowDown.alpha = 0.3;
@@ -543,6 +595,8 @@ class GameOverSubstate extends MusicBeatSubstate
 			camLerpBullshit = 0;
 			arrowLerp = 1;
 			tryLerp = 1;
+			if (PlayState.SONG.song == "Birthday")
+				quitLerp = 0.5;
 		}
 	}
 

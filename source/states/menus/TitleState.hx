@@ -278,11 +278,6 @@ class TitleState extends MusicBeatState
 		titleText.antialiasing = ClientPrefs.globalAntialiasing;
 		add(titleText);
 
-		var logo:FlxSprite = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/logo'));
-		logo.screenCenter();
-		logo.antialiasing = ClientPrefs.globalAntialiasing;
-		logo.antialiasing = true;
-
 		credGroup = new FlxGroup();
 		add(credGroup);
 		textGroup = new FlxGroup();

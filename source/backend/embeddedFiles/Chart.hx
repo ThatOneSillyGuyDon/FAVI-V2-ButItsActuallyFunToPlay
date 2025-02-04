@@ -240485,6 +240485,8 @@ enum abstract Chart(String) from String to String {
 
     var dontCross7:String = '{
 	"song": {
+		"voiceSfx1": "Everett",
+		"voiceSfx2": "Crossin",
 		"player1": "everett-modern",
 		"player2": "dctl-mickey",
 		"notes": [
