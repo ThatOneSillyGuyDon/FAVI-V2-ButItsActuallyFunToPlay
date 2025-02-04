@@ -445,8 +445,8 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		if ((controls.UI_LEFT_P || controls.UI_RIGHT_P) && arrowLerp == 1 && uiRetry != null && image != "favi/ui/gameOvers/everettDeath")
 		{
-			quitLerp = quitLerp == 1 ? (PlayState.SONG.song == "Birthday" ? 0.5 : 0.001) : 1;
-			tryLerp = tryLerp == 1 ? (PlayState.SONG.song == "Birthday" ? 0.5 : 0.001) : 1;
+			quitLerp = quitLerp == 1 ? (PlayState.SONG.song == "Birthday" ? 0.18 : 0.001) : 1;
+			tryLerp = tryLerp == 1 ? (PlayState.SONG.song == "Birthday" ? 0.18 : 0.001) : 1;
 			FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
 			if (controls.UI_LEFT_P)
 				uiArrowDown.alpha = 0.3;
@@ -456,7 +456,7 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		if (controls.ACCEPT)
 		{
-			if ((tryLerp == 1 && deathHUD.alpha >= 0.5) || boyfriend.visible || (uiRetry != null && uiRetry.alpha >= 0.6) || (uiRetry != null && uiRetry.alpha >= 0.6))
+			if ((tryLerp == 1 && deathHUD.alpha >= 0.5) || boyfriend.visible || (uiRetry != null && uiRetry.alpha >= 0.2) || (uiRetry != null && uiRetry.alpha >= 0.2))
 				endBullshit();
 	
 			if (quitLerp == 1 && !boyfriend.visible)
@@ -518,55 +518,68 @@ class GameOverSubstate extends MusicBeatSubstate
 			PlayState.pauseCountEnabled = false;
 
 			WeekData.loadTheFirstEnabledMod();
-			if (PlayState.isStoryMode)
+			if (PlayState.SONG.song == "Birthday")
 			{
-				if (GameData.highOnCrackLock == 'forceBackToSong')
+				FlxG.sound.music.stop();
+				FlxG.sound.play(Paths.music(endSoundName));
+				camLerpBullshit = arrowLerp = quitLerp = tryLerp = 0;
+				stupidAssCam.fade(FlxColor.BLACK, 1.4, false, function()
 				{
-					restartDelutrance();
-				}
-				else
-				{
-					if (!boyfriend.visible)
-					{
-						FlxG.sound.music.stop();
-						FlxG.sound.play(Paths.music(endSoundName));
-						camLerpBullshit = arrowLerp = quitLerp = tryLerp = 0;
-						stupidAssCam.fade(FlxColor.BLACK, 1.4, false, function()
-						{
-							MusicBeatState.switchState(new StoryMenu());
-							FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
-						});
-					}
-					else
-					{
-						MusicBeatState.switchState(new StoryMenu());
-						FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
-					}
-				}
+					MusicBeatState.switchState(new ManIHateYouSoMuchYouMadeMuckneySad());
+				});
 			}
 			else
 			{
-				if (GameData.highOnCrackLock == 'forceBackToSong')
+				if (PlayState.isStoryMode)
 				{
-					restartDelutrance();
-				}
-				else
-				{
-					if (!boyfriend.visible)
+					if (GameData.highOnCrackLock == 'forceBackToSong')
 					{
-						FlxG.sound.music.stop();
-						FlxG.sound.play(Paths.music(endSoundName));
-						camLerpBullshit = arrowLerp = quitLerp = tryLerp = 0;
-						stupidAssCam.fade(FlxColor.BLACK, 1.4, false, function()
-						{
-							MusicBeatState.switchState(new FreeplayState());
-							FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
-						});
+						restartDelutrance();
 					}
 					else
 					{
-						MusicBeatState.switchState(new FreeplayState());
-						FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
+						if (!boyfriend.visible)
+						{
+							FlxG.sound.music.stop();
+							FlxG.sound.play(Paths.music(endSoundName));
+							camLerpBullshit = arrowLerp = quitLerp = tryLerp = 0;
+							stupidAssCam.fade(FlxColor.BLACK, 1.4, false, function()
+							{
+								MusicBeatState.switchState(new StoryMenu());
+								FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
+							});
+						}
+						else
+						{
+							MusicBeatState.switchState(new StoryMenu());
+							FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
+						}
+					}
+				}
+				else
+				{
+					if (GameData.highOnCrackLock == 'forceBackToSong')
+					{
+						restartDelutrance();
+					}
+					else
+					{
+						if (!boyfriend.visible)
+						{
+							FlxG.sound.music.stop();
+							FlxG.sound.play(Paths.music(endSoundName));
+							camLerpBullshit = arrowLerp = quitLerp = tryLerp = 0;
+							stupidAssCam.fade(FlxColor.BLACK, 1.4, false, function()
+							{
+								MusicBeatState.switchState(new FreeplayState());
+								FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
+							});
+						}
+						else
+						{
+							MusicBeatState.switchState(new FreeplayState());
+							FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
+						}
 					}
 				}
 			}
