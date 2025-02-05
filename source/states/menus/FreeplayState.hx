@@ -169,7 +169,7 @@ class FreeplayState extends MusicBeatState
 						addSong('Malfunction', 3, (GameData.malfunctionLock != 'unlocked' && GameData.malfunctionLock != 'beaten' ? 'mysteryfp' : 'mal-pixel'), FlxColor.fromRGB(150, 149, 186), 'obscurity', null, FlxColor.WHITE, (GameData.malfunctionLock == "beaten" || GameData.malfunctionLock == "unlocked" ? [32, 14] : [25, 0])); // Because Malfunction is getting some major upgrades later
 					}
 					
-					if ((GameData.muckneyLock == 'beaten' || GameData.muckneyLock == 'obtained') && GameData.muckneyLock != "uninvited")
+					if ((GameData.muckneyLock == 'beaten' || GameData.muckneyLock == 'obtained' || GameData.muckneyLock == 'uninvited'))
 					{
 						addSong('Birthday', 3, 'muckney', FlxColor.fromRGB(84, 255, 181), 'FR3SHMoure', 'PARTY', FlxColor.fromRGB(250, 234, 92), [10, 0]);
 					}
@@ -264,7 +264,7 @@ class FreeplayState extends MusicBeatState
 
 		FlxG.cameras.setDefaultDrawTarget(camGame, true);
 
-		CustomFadeTransition.nextCamera = camOther;
+		CustomFadeTransition.nextCamera = camHUD;
 
 		bg = new FlxSprite();
 		if (freeplayMenuList == 2)
@@ -406,7 +406,7 @@ class FreeplayState extends MusicBeatState
 				icon.x += songs[i].iconOffset[0];
 				icon.y += songs[i].iconOffset[1];
 			}
-			songText.targetY = i;
+			songText.targetY = 5;
 			grpSongs.add(songText);
 
 			songDisplay.push(songText2);
@@ -625,8 +625,6 @@ class FreeplayState extends MusicBeatState
 			for (icon in iconArray) icon.scale.set(FlxMath.lerp(2.1, icon.scale.x, CoolUtil.boundTo(1 - (elapsed * 9.6), 0, 1)), FlxMath.lerp(2.1, icon.scale.y, CoolUtil.boundTo(1 - (elapsed * 9.6), 0, 1)));
 		}
 
-		var isDontCross:Bool = songs[curSelected].songName == "Don't Cross!";
-
 		if (musicNotes != null)
 		{
 			musicNotes.y = -110 + Math.sin(Conductor.songPosition/850)*((FlxG.height * 0.015));
@@ -777,78 +775,77 @@ class FreeplayState extends MusicBeatState
 
 		else if (accepted)
 		{
-			songInstPlaying = false;
-			threadActive = false;
-			persistentUpdate = false;
-			var songLowercase:String = Paths.formatToSongPath(songs[curSelected].songName);
-			if (isDontCross) // I've been suffering trying to get the randomizer to work with hardcoded charts only to find out this piece of shit was causing the crash oh my FUCKING GOD I'M GONNA RIP MY FUCKING HEAD OFF!!!!! (don)
-				songLowercase = "dont-cross";
-			var poop:String = Highscore.formatSong(songLowercase, curDifficulty); //fuck fuck fuck fuck fuck fuck
-			/*#if MODS_ALLOWED
-			if(!sys.FileSystem.exists(Paths.modsJson(songLowercase + '/' + poop)) && !sys.FileSystem.exists(Paths.json(songLowercase + '/' + poop))) {
-			#else
-			if(!OpenFlAssets.exists(Paths.json(songLowercase + '/' + poop))) {
-			#end
-				poop = songLowercase;
-				curDifficulty = 1;
-				trace('Couldnt find file');
-			}*/
-			trace(poop);
-
-			PlayState.SONG = Song.loadFromJson(poop, songLowercase, crossRandom);
-			PlayState.isStoryMode = false;
-			PlayState.storyDifficulty = curDifficulty;
-
-			for (icon in iconArray) if (freeplayMenuList != 2) icon.scale.set(2.35, 2.35);
-
-			trace('CURRENT WEEK: ' + WeekData.getWeekFileName());
-			if(colorTween != null) {
-				colorTween.cancel();
-			}
-
-			if (freeplayMenuList != 2)
-			{	
-				for (shitToCancelLolol in [bg, disc, arrows, musicPlayer, musicNotes, bgslider, songText2, freeplayCtrlTxt, diffText])
-					FlxTween.cancelTweensOf(shitToCancelLolol);
-				if (spectrum != null) FlxTween.cancelTweensOf(spectrum);
-
-				FlxTween.tween(bg, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
-				if (spectrum != null) FlxTween.tween(spectrum, {x: spectrum.x - 700}, 1, {ease: FlxEase.sineOut});
-				FlxTween.tween(disc, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
-				FlxTween.tween(arrows, {alpha: 0}, 1);
-				FlxTween.tween(musicPlayer, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
-				FlxTween.tween(musicNotes, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
-				FlxTween.tween(bgslider, {x: bgslider.x - 700}, 1, {ease: FlxEase.sineOut});
-				FlxTween.tween(songText2, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
-				FlxTween.tween(songText2, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
-				FlxTween.tween(freeplayCtrlTxt, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
-				FlxTween.tween(scoreText, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
-				FlxTween.tween(diffText, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
-				FlxTween.tween(songText2, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
-			}
-			if (freeplayMenuList == 2)
-			{
-				FlxG.sound.music.stop();
-				LoadingState.loadAndSwitchState(new PlayState());
-			} else {
-				FlxG.sound.music.fadeOut(2.3, 0, tw -> LoadingState.loadAndSwitchState(new PlayState()));
-				FlxG.camera.shake(.005, 5);
-				FlxG.camera.zoom += .25;
-				FlxTween.tween(FlxG.camera, {zoom: 1}, .35, {ease: FlxEase.cubeOut});
-				camOther.fade(FlxColor.BLACK, 2);
-				confirmSound.play(false, 0, 4);
-				confirmSound.fadeOut(4);
-			}
-
-			FlxG.sound.music.volume = 0;
+			enterSong();
 		}
 		else if(controls.RESET)
 		{
 			persistentUpdate = false;
 			openSubState(new ResetScoreSubState(songs[curSelected].songName, curDifficulty, songs[curSelected].songCharacter));
-			FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
+			FlxG.sound.play(Paths.sound('cancelMenu'));
 		}
 		super.update(elapsed);
+	}
+
+	function enterSong()
+	{
+		if (songs[curSelected].songName == "Birthday" && GameData.muckneyLock == 'uninvited' && !Main.debug)
+		{
+			FlxG.sound.play(Paths.sound('cancelMenu')); // todo: maybe get a new sfx for the future?
+			return;
+		}
+		songInstPlaying = false;
+		threadActive = false;
+		persistentUpdate = false;
+		var songLowercase:String = Paths.formatToSongPath(songs[curSelected].songName);
+		if (songs[curSelected].songName == "Don't Cross!") // I've been suffering trying to get the randomizer to work with hardcoded charts only to find out this piece of shit was causing the crash oh my FUCKING GOD I'M GONNA RIP MY FUCKING HEAD OFF!!!!! (don)
+			songLowercase = "dont-cross";
+		var poop:String = Highscore.formatSong(songLowercase, curDifficulty); //fuck fuck fuck fuck fuck fuck
+
+		PlayState.SONG = Song.loadFromJson(poop, songLowercase, crossRandom);
+		PlayState.isStoryMode = false;
+		PlayState.storyDifficulty = curDifficulty;
+
+		for (icon in iconArray) if (freeplayMenuList != 2) icon.scale.set(2.35, 2.35);
+
+		if(colorTween != null) {
+			colorTween.cancel();
+		}
+
+		if (freeplayMenuList != 2)
+		{	
+			for (shitToCancelLolol in [bg, disc, arrows, musicPlayer, musicNotes, bgslider, songText2, freeplayCtrlTxt, diffText])
+				FlxTween.cancelTweensOf(shitToCancelLolol);
+			if (spectrum != null) FlxTween.cancelTweensOf(spectrum);
+
+			FlxTween.tween(bg, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
+			if (spectrum != null) FlxTween.tween(spectrum, {x: spectrum.x - 700}, 1, {ease: FlxEase.sineOut});
+			FlxTween.tween(disc, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
+			FlxTween.tween(arrows, {alpha: 0}, 1);
+			FlxTween.tween(musicPlayer, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
+			FlxTween.tween(musicNotes, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
+			FlxTween.tween(bgslider, {x: bgslider.x - 700}, 1, {ease: FlxEase.sineOut});
+			FlxTween.tween(songText2, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
+			FlxTween.tween(songText2, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
+			FlxTween.tween(freeplayCtrlTxt, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
+			FlxTween.tween(scoreText, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
+			FlxTween.tween(diffText, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
+			FlxTween.tween(songText2, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
+		}
+		if (freeplayMenuList == 2)
+		{
+			FlxG.sound.music.stop();
+			LoadingState.loadAndSwitchState(new PlayState());
+		} else {
+			FlxG.sound.music.fadeOut(2.3, 0, tw -> LoadingState.loadAndSwitchState(new PlayState()));
+			FlxG.camera.shake(.005, 5);
+			FlxG.camera.zoom += .25;
+			FlxTween.tween(FlxG.camera, {zoom: 1}, .35, {ease: FlxEase.cubeOut});
+			camOther.fade(FlxColor.BLACK, 2);
+			confirmSound.play(false, 0, 4);
+			confirmSound.fadeOut(4);
+		}
+
+		FlxG.sound.music.volume = 0;
 	}
 
 	// i would remove this but too lazy to remove this function from other menus rn so I don't get any compiling errors lol

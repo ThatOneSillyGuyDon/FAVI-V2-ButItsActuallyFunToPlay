@@ -104,7 +104,7 @@ class MainMenu extends MusicBeatState
 		"Do you like the new menu art?",
 		"You're gonna love the final song.",
 		"Malfunction isn't easy anymore, fuck you, skill issue.",
-		"Happy Birthday Muckney!",
+		(GameData.muckneyLock == 'beaten' || GameData.muckneyLock == 'uninvited' /**<- this 2nd one is important otherwise it wont work**/) ? ("Happy Birthday Muckney!" + (GameData.muckneyLock == 'uninvited' ? " Except for you, monster..." : "" /**nothing lol this is just to save some lines of code**/)) : "It's someone's birthday here!",
 		"SOMEONE PLEASE GIVE MICKEY HIS FUCKING SANDVICH", // intentional misspell lolol
 		"Have fun, you'll be here for like an hour or longer.",
 		"10 Seconds before I shut your fucking game again >:[",
@@ -310,13 +310,14 @@ class MainMenu extends MusicBeatState
 			moreCoolDetails.setGraphicSize(Std.int(moreCoolDetails.width * 0.75));
 			moreCoolDetails.updateHitbox();
 			moreCoolDetails.screenCenter();
-			moreCoolDetails.antialiasing = true;
+			moreCoolDetails.antialiasing = ClientPrefs.globalAntialiasing;
 			add(moreCoolDetails);
 
 			arrow = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/menu_arrow'));
 			arrow.setGraphicSize(Std.int(arrow.width * 0.3));
 			arrow.screenCenter(X);
 			arrow.scrollFactor.set(0, 0);
+			arrow.antialiasing = ClientPrefs.globalAntialiasing;
 
 			// i think colorTransform is better than a shader in this case. i don't know, i'm just doing theories
 			/*if (!Init.trueSettings.get('Disable Screen Shaders'))
