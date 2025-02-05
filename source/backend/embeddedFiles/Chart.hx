@@ -70034,6 +70034,46 @@ enum abstract Chart(String) from String to String {
 		"player1": "bf-pixel",
 		"events": [
 			[
+				130120.481927711,
+				[
+					[
+						"Change Character",
+						"dad",
+						"malsquare-withFace"
+					]
+				]
+			],
+			[
+				153253.012048193,
+				[
+					[
+						"Alt Idle Animation",
+						"dad",
+						"-alt"
+					]
+				]
+			],
+			[
+				164819.277108434,
+				[
+					[
+						"Alt Idle Animation",
+						"dad",
+						""
+					]
+				]
+			],
+			[
+				209638.554216867,
+				[
+					[
+						"Alt Idle Animation",
+						"dad",
+						"-alt"
+					]
+				]
+			],
+			[
 				"Play Animation",
 				115662.65060241,
 				[
@@ -78818,7 +78858,7 @@ enum abstract Chart(String) from String to String {
 				"typeOfSection": 0,
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"mustHitSection": false,
 				"changeBPM": false,
 				"bpm": 166
 			},
@@ -78922,7 +78962,7 @@ enum abstract Chart(String) from String to String {
 				"typeOfSection": 0,
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"mustHitSection": false,
 				"changeBPM": false,
 				"bpm": 166
 			},

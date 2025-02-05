@@ -2,17 +2,6 @@
 	"animations": [
 		{
 			"offsets": [
-				-229,
-				-20
-			],
-			"loop": true,
-			"fps": 26,
-			"anim": "idle",
-			"indices": [],
-			"name": "idle"
-		},
-		{
-			"offsets": [
 				-230,
 				-20
 			],
@@ -35,28 +24,6 @@
 		},
 		{
 			"offsets": [
-				-220,
-				-20
-			],
-			"loop": false,
-			"fps": 16,
-			"anim": "laughing",
-			"indices": [],
-			"name": "laugh"
-		},
-		{
-			"offsets": [
-				-230,
-				-20
-			],
-			"loop": false,
-			"fps": 30,
-			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right"
-		},
-		{
-			"offsets": [
 				-230,
 				-20
 			],
@@ -67,24 +34,46 @@
 			"name": "left"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-229,
 				-20
 			],
-			"anim": "MODCHARTS RAH",
+			"indices": [],
 			"fps": 20,
-			"name": "YouFinnaDead",
-			"indices": []
+			"anim": "idle",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				-230,
+				-20
+			],
+			"indices": [],
+			"fps": 25,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "right"
+		},
+		{
+			"offsets": [
+				-229,
+				-20
+			],
+			"indices": [],
+			"fps": 20,
+			"anim": "idle-alt",
+			"loop": false,
+			"name": "ohHeMad"
 		}
 	],
 	"no_antialiasing": true,
-	"image": "characters/malsquare-faceless",
+	"image": "characters/malsquare-afterLaugh",
 	"position": [
 		0,
 		0
 	],
-	"healthicon": "malNEW-pixel",
+	"healthicon": "mal2-pixel",
 	"flip_x": false,
 	"healthbar_colors": [
 		0,

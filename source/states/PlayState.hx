@@ -3998,7 +3998,7 @@ class PlayState extends MusicBeatState
 		DiscordClient.changePresence("Playing a song", scoreTxt.text, "icon", "random");
 		#else
 		// Updating Discord Rich Presence (with Time Left)
-		DiscordClient.changePresence(detailsText + " (" + FreeplayState.getDiffRank() + ")", scoreTxt.text, CoolUtil.spaceToDash(SONG.song.toLowerCase()), "random", true, songLength);
+		DiscordClient.changePresence(detailsText + " (" + FreeplayState.getDiffRank() + ")", scoreTxt.text, (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(SONG.song.toLowerCase())), "random", true, songLength);
 		#end
 		#end
 	}
@@ -4438,7 +4438,7 @@ class PlayState extends MusicBeatState
 				#if DEV_BUILD
 				DiscordClient.changePresence("Playing a song", "It's a secret...", "icon", "random");
 				#else
-				DiscordClient.changePresence(detailsText, SONG.song + " (" + FreeplayState.getDiffRank() + ")", CoolUtil.spaceToDash(SONG.song.toLowerCase()), "random", true, songLength - Conductor.songPosition - ClientPrefs.noteOffset);
+				DiscordClient.changePresence(detailsText, SONG.song + " (" + FreeplayState.getDiffRank() + ")", (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(SONG.song.toLowerCase())), "random", true, songLength - Conductor.songPosition - ClientPrefs.noteOffset);
 				#end
 			}
 			else
@@ -4447,7 +4447,7 @@ class PlayState extends MusicBeatState
 				// Game Over doesn't get his own variable because it's only used here
 				DiscordClient.changePresence("Playing a song", "It's a secret...", "icon", "random");
 				#else
-				DiscordClient.changePresence(detailsText, SONG.song + " (" + FreeplayState.getDiffRank() + ")", CoolUtil.spaceToDash(SONG.song.toLowerCase()), "random");
+				DiscordClient.changePresence(detailsText, SONG.song + " (" + FreeplayState.getDiffRank() + ")", (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(SONG.song.toLowerCase())), "random");
 				#end
 			}
 			#end
@@ -4475,7 +4475,7 @@ class PlayState extends MusicBeatState
 				#if DEV_BUILD
 				DiscordClient.changePresence("Playing a song", scoreTxt.text, "icon", "random");
 				#else
-				DiscordClient.changePresence(detailsText + " (" + FreeplayState.getDiffRank() + ")", scoreTxt.text, CoolUtil.spaceToDash(SONG.song.toLowerCase()), "random", true, songLength - Conductor.songPosition - ClientPrefs.noteOffset);
+				DiscordClient.changePresence(detailsText + " (" + FreeplayState.getDiffRank() + ")", scoreTxt.text, (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(SONG.song.toLowerCase())), "random", true, songLength - Conductor.songPosition - ClientPrefs.noteOffset);
 				#end
 			}
 			else
@@ -4483,7 +4483,7 @@ class PlayState extends MusicBeatState
 				#if DEV_BUILD
 				DiscordClient.changePresence("Playing a song", scoreTxt.text, "icon", "random");
 				#else
-				DiscordClient.changePresence(detailsText + " (" + FreeplayState.getDiffRank() + ")", scoreTxt.text, CoolUtil.spaceToDash(SONG.song.toLowerCase()), "random");
+				DiscordClient.changePresence(detailsText + " (" + FreeplayState.getDiffRank() + ")", scoreTxt.text, (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(SONG.song.toLowerCase())), "random");
 				#end
 			}
 		}
@@ -4509,7 +4509,7 @@ class PlayState extends MusicBeatState
 			#if DEV_BUILD
 			DiscordClient.changePresence("Paused", scoreTxt.text, "icon", "random");
 			#else
-			DiscordClient.changePresence(detailsPausedText + " (" + FreeplayState.getDiffRank() + ")", scoreTxt.text, CoolUtil.spaceToDash(SONG.song.toLowerCase()), "random");
+			DiscordClient.changePresence(detailsPausedText + " (" + FreeplayState.getDiffRank() + ")", scoreTxt.text, (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(SONG.song.toLowerCase())), "random");
 			#end
 		}
 		#end
@@ -4714,7 +4714,7 @@ class PlayState extends MusicBeatState
 			iconP2.y += (((healthBar.y - 85) + -Math.sin(rotRateWn * 2) * 20 * 0.45) - iconP2.y) / 12;
 			moveCamera(!SONG.notes[curSection].mustHitSection); // so it moves properly !!
 		}
-		else if (dad.curCharacter == "glitched-mickey-new-pixel")
+		else if (dad.curCharacter == "glitched-mickey-new-pixel" || dad.curCharacter == "malsquare-withFace")
 		{
 			moveCamera(!SONG.notes[curSection].mustHitSection); // so it moves properly !!
 		}
@@ -5781,7 +5781,7 @@ class PlayState extends MusicBeatState
 		#if DEV_BUILD
 		DiscordClient.changePresence("Paused", scoreTxt.text, "icon", "random");
 		#else
-		DiscordClient.changePresence(detailsPausedText + " (" + FreeplayState.getDiffRank() + ")", scoreTxt.text, CoolUtil.spaceToDash(SONG.song.toLowerCase()), "random");
+		DiscordClient.changePresence(detailsPausedText + " (" + FreeplayState.getDiffRank() + ")", scoreTxt.text, (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(SONG.song.toLowerCase())), "random");
 		#end
 		#end
 	}
@@ -5841,17 +5841,18 @@ class PlayState extends MusicBeatState
 
 			// MusicBeatState.switchState(new GameOverState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 
-			#if DISCORD_ALLOWED
-			#if DEV_BUILD
-			// Game Over doesn't get his own variable because it's only used here
-			DiscordClient.changePresence("Game Over", "Deaths: " + deathCounter, "icon", "random");
-			#else
-			// Game Over doesn't get his own variable because it's only used here
-			DiscordClient.changePresence("Game Over - " + detailsText, "Deaths: " + deathCounter, CoolUtil.spaceToDash(SONG.song.toLowerCase()), "random");
-			#end
-			#end
-			isDead = true;
-			return true;
+				#if DISCORD_ALLOWED
+				#if DEV_BUILD
+				// Game Over doesn't get his own variable because it's only used here
+				DiscordClient.changePresence("Game Over", "Deaths: " + deathCounter, "icon", "random");
+				#else
+				// Game Over doesn't get his own variable because it's only used here
+				DiscordClient.changePresence("Game Over - " + detailsText, "Deaths: " + deathCounter, (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(SONG.song.toLowerCase())), "random");
+				#end
+				#end
+				isDead = true;
+				return true;
+			}
 		}
 		return false;
 	}
@@ -7318,15 +7319,15 @@ class PlayState extends MusicBeatState
                         );
                     }
                 }
-                else if (dad.curCharacter == 'gm-tired-pixel')
+                else if (dad.curCharacter == 'malsquare-withFace')
                 {
-                    if (healthThing > 0.36)
-                        healthThing -= 0.01;
+                    if (healthThing > 0.05)
+                        healthThing -= 0.015;
                     if (ClientPrefs.shaking)
                     {
-                        camGame.shake(0.004, 0.07);
-                        camHUD.shake(0.007, 0.07);
-                        camNotes.shake(0.07, 0.07);
+						camGame.shake(0.01, 0.07);
+                        for (i in [camHUD, camNotes])
+                            i.shake(0.018, 0.07);
                     }
                     if (canaddshaders)
                     {
@@ -7347,7 +7348,7 @@ class PlayState extends MusicBeatState
                                 ]);
                         }
                         
-                        chromEffect += 0.25;
+                        chromEffect += 0.22;
                         blurEffect += 2.5;
                         
                         if (chromTween != null)
@@ -8331,7 +8332,8 @@ class PlayState extends MusicBeatState
 				}
 			}
 
-		if (SONG.song == "Devilish Deal") {
+		if (SONG.song == "Devilish Deal")
+		{
 			switch (curBeat)
 				{
 					case 1:
@@ -8361,20 +8363,20 @@ class PlayState extends MusicBeatState
 					if (satanTween != null)
 						satanTween.cancel();
 
-					satanIconPulse.alpha = 0.25;
-					satanIcon.alpha = 0.75;
+						satanIconPulse.alpha = 0.25;
+						satanIcon.alpha = 0.75;
 
-					iconPulseTween = FlxTween.tween(satanIconPulse, {alpha: 0}, 0.65, {onComplete: function(twn:FlxTween)
-						{
-							iconPulseTween = null;
-						}
-					});
-
-					satanTween = FlxTween.tween(satanIcon, {alpha: 1}, 0.65, {onComplete: function(twn:FlxTween)
-						{
-							satanTween = null;
-						}
-					});
+						iconPulseTween = FlxTween.tween(satanIconPulse, {alpha: 0}, 0.65, {onComplete: function(twn:FlxTween)
+							{
+								iconPulseTween = null;
+							}
+						});
+	
+						satanTween = FlxTween.tween(satanIcon, {alpha: 1}, 0.65, {onComplete: function(twn:FlxTween)
+							{
+								satanTween = null;
+							}
+						});
 				}
 				if (curBeat >= 80 && curBeat <= 95)
 				{
@@ -8383,20 +8385,20 @@ class PlayState extends MusicBeatState
 					if (satanTween != null)
 						satanTween.cancel();
 
-					satanIconPulse.alpha = 0.35;
-					satanIcon.alpha = 0.65;
+						satanIconPulse.alpha = 0.35;
+						satanIcon.alpha = 0.65;
 
-					iconPulseTween = FlxTween.tween(satanIconPulse, {alpha: 0}, 0.65, {onComplete: function(twn:FlxTween)
-						{
-							iconPulseTween = null;
-						}
-					});
+						iconPulseTween = FlxTween.tween(satanIconPulse, {alpha: 0}, 0.65, {onComplete: function(twn:FlxTween)
+							{
+								iconPulseTween = null;
+							}
+						});
 
-					satanTween = FlxTween.tween(satanIcon, {alpha: 1}, 0.65, {onComplete: function(twn:FlxTween)
-						{
-							satanTween = null;
-						}
-					});
+						satanTween = FlxTween.tween(satanIcon, {alpha: 1}, 0.65, {onComplete: function(twn:FlxTween)
+							{
+								satanTween = null;
+							}
+						});
 				}
 				if (curBeat >= 96 && curBeat <= 111)
 				{
@@ -8405,20 +8407,20 @@ class PlayState extends MusicBeatState
 					if (satanTween != null)
 						satanTween.cancel();
 
-					satanIconPulse.alpha = 0.5;
-					satanIcon.alpha = 0.5;
+						satanIconPulse.alpha = 0.5;
+						satanIcon.alpha = 0.5;
 
-					iconPulseTween = FlxTween.tween(satanIconPulse, {alpha: 0}, 0.65, {onComplete: function(twn:FlxTween)
-						{
-							iconPulseTween = null;
-						}
-					});
+						iconPulseTween = FlxTween.tween(satanIconPulse, {alpha: 0}, 0.65, {onComplete: function(twn:FlxTween)
+							{
+								iconPulseTween = null;
+							}
+						});
 
-					satanTween = FlxTween.tween(satanIcon, {alpha: 1}, 0.65, {onComplete: function(twn:FlxTween)
-						{
-							satanTween = null;
-						}
-					});
+						satanTween = FlxTween.tween(satanIcon, {alpha: 1}, 0.65, {onComplete: function(twn:FlxTween)
+							{
+								satanTween = null;
+							}
+						});
 				}
 				if (curBeat >= 112 && curBeat <= 130)
 				{
@@ -8427,22 +8429,22 @@ class PlayState extends MusicBeatState
 					if (satanTween != null)
 						satanTween.cancel();
 
-					satanIconPulse.alpha = 0.75;
-					satanIcon.alpha = 0.25;
+						satanIconPulse.alpha = 0.75;
+						satanIcon.alpha = 0.25;
 
-					iconPulseTween = FlxTween.tween(satanIconPulse, {alpha: 0}, 0.65, {onComplete: function(twn:FlxTween)
-						{
-							iconPulseTween = null;
-						}
-					});
+						iconPulseTween = FlxTween.tween(satanIconPulse, {alpha: 0}, 0.65, {onComplete: function(twn:FlxTween)
+							{
+								iconPulseTween = null;
+							}
+						});
 
-					satanTween = FlxTween.tween(satanIcon, {alpha: 1}, 0.65, {onComplete: function(twn:FlxTween)
-						{
-							satanTween = null;
-						}
-					});
-				}
-			}	
+						satanTween = FlxTween.tween(satanIcon, {alpha: 1}, 0.65, {onComplete: function(twn:FlxTween)
+							{
+								satanTween = null;
+							}
+						});
+				}	
+		}
 		switch (SONG.song)
 		{
 			case "Bless":
@@ -10480,25 +10482,20 @@ class PlayState extends MusicBeatState
 					// Very Spooky Phase 2 Walt (real)
 					case 256:
 						FlxTween.tween(camHUD, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
-						//FlxTween.tween(camNotes, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
-						camNotes.fade();
-						FlxFlicker.flicker(retardedButPissBehind, 1.5, .07, false, false, s -> {
-							retardedButPissBehind.alpha = 0;
-							pissOfGlory.visible = false;
-						});
+						FlxTween.tween(camNotes, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
 
 					case 264:
 						defaultCamZoom = 0.75;
+						retardedButPissBehind.visible = false;
+						sameAsAdobe.visible = false;
+						pissOfGlory.visible = false;
+						greaterPiss.visible = false;
 						camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.5, ease: FlxEase.sineOut, timer: 0.2, colors: [247, 230, 166]});
-						camNotes.fade(FlxColor.BLACK, .25, true);
 
 					case 275:
-						greaterPiss.visible = true;
-						retardedButPissBehind.alpha = 1;
-						sameAsAdobe.visible = false;
-
+						for (bullshit in [retardedButPissBehind, sameAsAdobe, pissOfGlory, greaterPiss])
+							bullshit.visible = true;
 						camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.5, ease: FlxEase.sineOut, timer: 0.2, colors: [247, 230, 166]});
-						FlxTween.tween(retardedButPissBehind, {alpha: 0}, 0.25, {ease: FlxEase.sineOut});
 						FlxTween.tween(sameAsAdobe, {alpha: 0}, 0.25, {ease: FlxEase.sineOut});
 						FlxTween.tween(camHUD, {alpha: 1}, 0.31, {ease: FlxEase.sineInOut});
 						FlxTween.tween(camNotes, {alpha: 1}, 0.31, {ease: FlxEase.sineInOut});
