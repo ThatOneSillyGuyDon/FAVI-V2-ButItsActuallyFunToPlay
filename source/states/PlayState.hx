@@ -719,7 +719,7 @@ class PlayState extends MusicBeatState
 					GameData.highOnCrackLock = "forceBackToSong";
 					GameData.saveShit();
 			}
-			GameData.checkBotplay(null);
+			if (!Main.debug) GameData.checkBotplay(null);
 		}
 
 		switch (SONG.song)
@@ -6530,7 +6530,8 @@ class PlayState extends MusicBeatState
 									death.visible = false;
 								});
 								deluOutro.addCallback("onEnd", () -> {
-									FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
+									// to be a tiny more creepy :trol:
+									//FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
 									MusicBeatState.switchState(new StoryMenu());
 								});
 						}
@@ -8913,7 +8914,6 @@ class PlayState extends MusicBeatState
 
 					case 95: 
 						cameraSpeed += 3;
-						isCameraOnForcedPos = true;
 						camFollow.x -= 950;
 						//updateSectionCamera('dad', false);
 
@@ -9536,7 +9536,8 @@ class PlayState extends MusicBeatState
 						FlxTween.tween(this, {healthThing: 0.01}, 20);
 						if (globalGradient != null)
 							FlxTween.tween(globalGradient, {alpha: 0.8}, 10);
-						FlxTween.tween(FlxG.camera, {zoom: 1.1}, 18, {startDelay: 2});
+						FlxTween.tween(FlxG.camera, {zoom: 1.1}, 18.5, {startDelay: 2});
+						FlxTween.tween(camFollow, {x: camFollow.x - 200}, 18.5, {startDelay: 2});
 
 					case 408:
 						defaultCamZoom = 0.9;

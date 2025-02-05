@@ -20,7 +20,10 @@ class RemakedFreeplayMenu extends MusicBeatState
 		if (curSelected == songslimit || curSelected > songslimit)
 		{
 			curSelected = 0;
-		}
+		} -maly
+		
+		FlxMath.wrap in question:
+					- the j
 	*/
 
 	

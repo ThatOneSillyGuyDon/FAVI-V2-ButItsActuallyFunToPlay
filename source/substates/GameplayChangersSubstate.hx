@@ -15,6 +15,8 @@ class GameplayChangersSubstate extends MusicBeatSubstate
 	private var checkboxGroup:FlxTypedGroup<CheckboxThingie>;
 	private var grpTexts:FlxTypedGroup<AttachedText>;
 
+	var pushBotplay = true;
+
 	function getOptions()
 	{
 		var goption:GameplayOption = new GameplayOption('Scroll Type', 'scrolltype', 'string', 'multiplicative', ["multiplicative", "constant"]);
@@ -70,8 +72,11 @@ class GameplayChangersSubstate extends MusicBeatSubstate
 		var option:GameplayOption = new GameplayOption('Practice Mode', 'practice', 'bool', false);
 		optionsArray.push(option);
 
-		var option:GameplayOption = new GameplayOption('Botplay', 'botplay', 'bool', false);
-		optionsArray.push(option);
+		if (pushBotplay)
+		{
+			var option:GameplayOption = new GameplayOption('Botplay', 'botplay', 'bool', false);
+			optionsArray.push(option);
+		}
 	}
 
 	public function getOptionByName(name:String)
@@ -85,9 +90,11 @@ class GameplayChangersSubstate extends MusicBeatSubstate
 		return null;
 	}
 
-	public function new()
+	public function new(pushBotplay = true)
 	{
 		super();
+
+		this.pushBotplay = pushBotplay;
 		
 		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		bg.alpha = 0.6;

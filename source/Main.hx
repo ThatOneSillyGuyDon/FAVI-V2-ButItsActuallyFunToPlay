@@ -7,6 +7,9 @@ import openfl.display.Sprite;
 import openfl.events.Event;
 import openfl.display.StageScaleMode;
 
+// this is only so the dead code eliminator doesn't kill it
+import backend.ALSoftConfig;
+
 //crash handler stuff
 #if CRASH_HANDLER
 import lime.app.Application;

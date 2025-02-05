@@ -97,6 +97,13 @@
 		NOT USING A DIRECT THING TO THE ASSET!!!
 	-->
 	<assets path="assets/fonts" embed='true'/>
+
+	<!-- OpenAL config -->
+	<section if="desktop">
+		<assets path="alsoft.txt" rename="plugins/alsoft.ini" type="text" if="windows"/>
+		<assets path="alsoft.txt" rename="plugins/alsoft.conf" type="text" unless="windows"/>
+	</section>
+
 	<!-- _______________________________ Libraries ______________________________ -->
 
 	<haxelib name="flixel" />
@@ -184,7 +191,11 @@
 	<haxeflag name="--macro" value="include('my.pack')" />
 
 	<haxedef name="openfl_dpi_aware" if="openfl_dpi_aware" />
-	<define name="HXCPP_GC_BIG_BLOCKS" />
+	<haxedef name="HXCPP_GC_BIG_BLOCKS" />
+	<haxedef name="HXCPP-GC-GENERATIONAL" />
+
+	<!-- prevents the game to run slow/delayed, like what the fuck are the traces not like us ?? -->
+	<haxedef name="no-traces" />
 	
 	<!-- _________________________________ Custom _______________________________ -->
 

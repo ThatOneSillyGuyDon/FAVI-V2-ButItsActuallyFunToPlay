@@ -294,7 +294,7 @@ class GameData
 		if (lockValue == null)
 			lockValue = 'unlocked';
 
-		if ((lockValue == 'unlocked' || lockValue == 'obtained') || PlayState.isStoryMode)
+		if ((lockValue == 'unlocked' || lockValue == 'obtained') || (PlayState.isStoryMode && !Main.debug))
 			PlayState.instance.cpuControlled = false;
 	}
 

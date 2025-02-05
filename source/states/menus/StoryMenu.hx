@@ -366,16 +366,18 @@ class StoryMenu extends MusicBeatState
 				{
 					persistentUpdate = false;
 
+					if (GameData.episode1FPLock == 'unlocked')
+					{
+						openSubState(new GameplayChangersSubstate(Main.debug));
+						return;
+					}
+
 					// Funni - MalyPlus
 					lime.app.Application.current.window.title = "Nah you thought you would be able to use BotPlay? nah.. im gonna shut down this app.";
-					new FlxTimer().start(0.3, function(tmr:FlxTimer)
+					new FlxTimer().start(1, function(tmr:FlxTimer)
 					{
 						System.exit(0);
 					});
-
-
-					// nah we aint letting them use botplay
-					//openSubState(new GameplayChangersSubstate());
 				}
 				else if(controls.RESET)
 				{
