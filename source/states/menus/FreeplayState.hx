@@ -169,7 +169,7 @@ class FreeplayState extends MusicBeatState
 						addSong('Malfunction', 3, (GameData.malfunctionLock != 'unlocked' && GameData.malfunctionLock != 'beaten' ? 'mysteryfp' : 'mal-pixel'), FlxColor.fromRGB(150, 149, 186), 'obscurity', null, FlxColor.WHITE, (GameData.malfunctionLock == "beaten" || GameData.malfunctionLock == "unlocked" ? [32, 14] : [25, 0])); // Because Malfunction is getting some major upgrades later
 					}
 					
-					if ((GameData.muckneyLock == 'beaten' || GameData.muckneyLock == 'obtained' || GameData.muckneyLock == 'uninvited'))
+					if ((GameData.muckneyLock == 'beaten' || GameData.muckneyLock == 'obtained') && GameData.muckneyLock != "uninvited")
 					{
 						addSong('Birthday', 3, 'muckney', FlxColor.fromRGB(84, 255, 181), 'FR3SHMoure', 'PARTY', FlxColor.fromRGB(250, 234, 92), [10, 0]);
 					}
