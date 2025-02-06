@@ -46,7 +46,7 @@ class ControlsSubState extends MusicBeatSubstate {
 	private var grpInputsAlt:Array<AttachedFlxText> = [];
 	var rebindingKey:Bool = false;
 	var nextAccept:Int = 5;
-	var optionText:FlxSprite;
+	var controlsTxt:FlxText;
 
 	public function new() {
 		super();
@@ -96,13 +96,10 @@ class ControlsSubState extends MusicBeatSubstate {
 			}
 		}
 
-		optionText = new FlxSprite(0, 0, Paths.image('Funkin_avi/options/icon_controls'));
-		optionText.screenCenter();
-		optionText.scale.set(.64, .64);
-		optionText.y -= 200;
-		optionText.antialiasing = ClientPrefs.globalAntialiasing;
-		FlxTween.tween(optionText, {y: optionText.x - 250, alpha: .75, 'scale.x': .5, 'scale.y': .5}, 1, {ease: FlxEase.expoOut});
-		add(optionText);
+		controlsTxt = new FlxText(0, FlxG.height * 0.05, 0, 'Controls');
+		controlsTxt.setFormat(Paths.font("disneyFreeplayFont.ttf"), 25, FlxColor.fromRGB(255, 255, 255, Std.int(255 * .5)), CENTER, OUTLINE, FlxColor.BLACK);
+		controlsTxt.screenCenter(X);
+		add(controlsTxt);
 
 		changeSelection();
 	}
@@ -178,7 +175,7 @@ class ControlsSubState extends MusicBeatSubstate {
 			nextAccept -= 1;
 		}
 
-		optionText.alpha = FlxMath.lerp(curSelected >= 3 ? .2 : 1, optionText.alpha, .85);
+		controlsTxt.alpha = FlxMath.lerp(curSelected >= 3 ? .2 : 1, controlsTxt.alpha, .85);
 
 		super.update(elapsed);
 	}

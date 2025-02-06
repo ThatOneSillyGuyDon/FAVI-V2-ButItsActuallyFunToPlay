@@ -15,6 +15,7 @@ import openfl.media.Sound;
 import openfl.net.FileReference;
 import openfl.utils.Assets as OpenFlAssets;
 import openfl.utils.ByteArray;
+import openfl.Lib;
 
 #if sys
 import flash.media.Sound;
@@ -209,6 +210,11 @@ class ChartingState extends MusicBeatState
 		}
 
 		AppIcon.changeIcon("debugicon");
+
+		Lib.application.window.onClose.removeAll(); // goes back to normal hopefully
+		Lib.application.window.onClose.add(function() {
+			DiscordClient.shutdown();
+		});
 
 		// Paths.clearMemory();
 
@@ -418,7 +424,7 @@ class ChartingState extends MusicBeatState
 
 		var reloadSongJson:FlxButton = new FlxButton(reloadSong.x, saveButton.y + 30, "Reload JSON", function()
 		{
-			openSubState(new Prompt('This action will clear current progress.\n\nProceed?', 0, function(){loadJson(_song.song.toLowerCase()); }, null,ignoreWarnings));
+			openSubState(new Prompt('This action will clear all unsaved progress or data here.\n\nProceed?', 0, function(){loadJson(_song.song.toLowerCase()); }, null,ignoreWarnings));
 		});
 
 		var loadAutosaveBtn:FlxButton = new FlxButton(reloadSongJson.x, reloadSongJson.y + 30, 'Load Autosave', function()
@@ -452,14 +458,14 @@ class ChartingState extends MusicBeatState
 
 		var clear_events:FlxButton = new FlxButton(320, 310, 'Clear events', function()
 			{
-				openSubState(new Prompt('This action will clear current progress.\n\nProceed?', 0, clearEvents, null,ignoreWarnings));
+				openSubState(new Prompt('This action will clear all unsaved progress or data here.\n\nProceed?', 0, clearEvents, null,ignoreWarnings));
 			});
 		clear_events.color = FlxColor.RED;
 		clear_events.label.color = FlxColor.WHITE;
 
 		var clear_notes:FlxButton = new FlxButton(320, clear_events.y + 30, 'Clear notes', function()
 			{
-				openSubState(new Prompt('This action will clear current progress.\n\nProceed?', 0, function(){for (sec in 0..._song.notes.length) {
+				openSubState(new Prompt('This action will clear all unsaved progress or data here.\n\nProceed?', 0, function(){for (sec in 0..._song.notes.length) {
 					_song.notes[sec].sectionNotes = [];
 				}
 				updateGrid();
@@ -1726,7 +1732,7 @@ class ChartingState extends MusicBeatState
 
 			if (FlxG.keys.justPressed.BACKSPACE) {
 				PlayState.chartingMode = false;
-				openSubState(new Prompt('Upon leaving the editor, you will lose all your progress.\n\nProceed?', 0, function(){
+				openSubState(new Prompt('Upon leaving the editor, you will lose all current progress that hasn\'t been saved here.\n\nProceed?', 0, function(){
 					MusicBeatState.switchState(new MainMenu()); 
 					FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
 					FlxG.mouse.visible = true;

@@ -264,7 +264,7 @@ class FreeplayState extends MusicBeatState
 
 		FlxG.cameras.setDefaultDrawTarget(camGame, true);
 
-		CustomFadeTransition.nextCamera = camOther;
+		CustomFadeTransition.nextCamera = camHUD;
 
 		bg = new FlxSprite();
 		if (freeplayMenuList == 2)
@@ -406,7 +406,7 @@ class FreeplayState extends MusicBeatState
 				icon.x += songs[i].iconOffset[0];
 				icon.y += songs[i].iconOffset[1];
 			}
-			songText.targetY = i;
+			songText.targetY = 5;
 			grpSongs.add(songText);
 
 			songDisplay.push(songText2);

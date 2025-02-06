@@ -9,6 +9,7 @@ import haxe.Json;
 import flixel.system.debug.interaction.tools.Pointer.GraphicCursorCross;
 import lime.system.Clipboard;
 import flixel.animation.FlxAnimation;
+import openfl.Lib;
 
 #if MODS_ALLOWED
 import sys.FileSystem;
@@ -57,6 +58,11 @@ class CharacterEditorState extends MusicBeatState
 	{
 		//FlxG.sound.playMusic(Paths.music('breakfast'), 0.5);
 
+		Lib.application.window.onClose.removeAll(); // goes back to normal hopefully
+		Lib.application.window.onClose.add(function() {
+			DiscordClient.shutdown();
+		});
+		
 		camEditor = new FlxCamera();
 		camHUD = new FlxCamera();
 		camHUD.bgColor.alpha = 0;

@@ -6,6 +6,7 @@ import flixel.system.FlxSound;
 import openfl.system.System;
 import sys.io.File;
 import haxe.Json;
+import openfl.Lib;
 
 /**
  * Pause Menu Data
@@ -36,6 +37,11 @@ class PauseSubState extends MusicBeatSubstate
 	{
 		super();
 		if(CoolUtil.difficulties.length < 2) menuItemsOG.remove('Change Difficulty'); //No need to change difficulty if there is only one!
+
+		Lib.application.window.onClose.removeAll(); // goes back to normal hopefully
+		Lib.application.window.onClose.add(function() {
+			DiscordClient.shutdown();
+		});
 
 		lime.app.Application.current.window.title += " - {Paused}";
 		PlayState.windowTimer.active = false;
@@ -260,6 +266,10 @@ class PauseSubState extends MusicBeatSubstate
 					PlayState.instance.botplayTxt.alpha = 1;
 					PlayState.instance.botplaySine = 0;
 				case "Exit to menu":
+					Lib.application.window.onClose.removeAll(); // goes back to normal hopefully
+					Lib.application.window.onClose.add(function() {
+						DiscordClient.shutdown();
+					});
 					PlayState.deathCounter = 0;
 					PlayState.seenCutscene = false;
 
@@ -296,6 +306,13 @@ class PauseSubState extends MusicBeatSubstate
 		PlayState.instance.paused = true; // For lua
 		FlxG.sound.music.volume = 0;
 		PlayState.instance.vocals.volume = 0;
+		PlayState.instance.opp_vocals.volume = 0;
+		PlayState.instance.bf_vocals.volume = 0;
+
+		Lib.application.window.onClose.removeAll(); // goes back to normal hopefully
+		Lib.application.window.onClose.add(function() {
+			DiscordClient.shutdown();
+		});
 
 		var songName:Array<String> = ['Dont Cross', "Dont-Cross", "dont cross", "dont-cross"];
 
@@ -465,6 +482,12 @@ class FAVIPauseSubState extends MusicBeatSubstate
 				itemStack = ['continue', 'restart', 'options', PlayState.SONG.song == "Birthday" ? 'leave' : PlayState.SONG.song == "Delusional" ? 'no-hope' : 'escape'];
 	
 			PlayState.windowTimer.active = false;
+
+			Lib.application.window.onClose.removeAll(); // goes back to normal hopefully
+			Lib.application.window.onClose.add(function() {
+				DiscordClient.shutdown();
+			});
+		
 
 			// cool stuff
 			var getArt:String = 'Funkin_avi/pause/songs/';
@@ -698,6 +721,10 @@ class FAVIPauseSubState extends MusicBeatSubstate
 							if (PlayState.pauseCountEnabled)
 								PlayState.pauseCountEnabled = false;
 							PlayState.seenCutscene = false;
+							Lib.application.window.onClose.removeAll(); // goes back to normal hopefully
+							Lib.application.window.onClose.add(function() {
+								DiscordClient.shutdown();
+							});
 							PlayState.cancelMusicFadeTween();
 							PlayState.changedDifficulty = false;
 							PlayState.chartingMode = false;
@@ -793,6 +820,12 @@ class FAVIPauseSubState extends MusicBeatSubstate
 				PlayState.instance.paused = true; // For lua
 				FlxG.sound.music.volume = 0;
 				PlayState.instance.vocals.volume = 0;
+				PlayState.instance.bf_vocals.volume = 0;
+				PlayState.instance.opp_vocals.volume = 0;
+				Lib.application.window.onClose.removeAll(); // goes back to normal hopefully
+				Lib.application.window.onClose.add(function() {
+					DiscordClient.shutdown();
+				});
 		
 				var random:Int = FlxG.random.int(1, 11);
 				var songName:Array<String> = ['Dont Cross', "Dont-Cross", "dont cross", "dont-cross"];

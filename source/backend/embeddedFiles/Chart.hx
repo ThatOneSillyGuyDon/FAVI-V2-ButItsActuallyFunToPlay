@@ -70034,6 +70034,46 @@ enum abstract Chart(String) from String to String {
 		"player1": "bf-pixel",
 		"events": [
 			[
+				130120.481927711,
+				[
+					[
+						"Change Character",
+						"dad",
+						"malsquare-withFace"
+					]
+				]
+			],
+			[
+				153253.012048193,
+				[
+					[
+						"Alt Idle Animation",
+						"dad",
+						"-alt"
+					]
+				]
+			],
+			[
+				164819.277108434,
+				[
+					[
+						"Alt Idle Animation",
+						"dad",
+						""
+					]
+				]
+			],
+			[
+				209638.554216867,
+				[
+					[
+						"Alt Idle Animation",
+						"dad",
+						"-alt"
+					]
+				]
+			],
+			[
 				"Play Animation",
 				115662.65060241,
 				[
@@ -78736,89 +78776,89 @@ enum abstract Chart(String) from String to String {
 				"sectionNotes": [
 					[
 						161927.710843373,
-						2,
+						6,
 						0
 					],
 					[
 						162018.072289157,
-						0,
+						4,
 						0
 					],
 					[
 						162108.43373494,
-						2,
+						6,
 						0
 					],
 					[
 						162198.795180723,
-						0,
+						4,
 						0
 					],
 					[
 						162289.156626506,
-						2,
+						6,
 						0
 					],
 					[
 						162379.518072289,
-						3,
+						7,
 						0
 					],
 					[
 						162469.879518072,
-						1,
+						5,
 						0
 					],
 					[
 						162560.240963855,
-						2,
+						6,
 						0
 					],
 					[
 						162650.602409639,
-						3,
+						7,
 						0
 					],
 					[
 						162740.963855422,
-						1,
+						5,
 						0
 					],
 					[
 						162831.325301205,
-						2,
+						6,
 						0
 					],
 					[
 						162921.686746988,
-						0,
+						4,
 						0
 					],
 					[
 						163012.048192771,
-						3,
+						7,
 						0
 					],
 					[
 						163102.409638554,
-						2,
+						6,
 						0
 					],
 					[
 						163192.771084337,
-						0,
+						4,
 						0
 					],
 					[
 						163283.13253012,
-						2,
+						6,
 						0
 					]
 				],
 				"typeOfSection": 0,
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"mustHitSection": false,
 				"changeBPM": false,
 				"bpm": 166
 			},
@@ -78826,95 +78866,95 @@ enum abstract Chart(String) from String to String {
 				"sectionNotes": [
 					[
 						163373.493975904,
-						1,
+						5,
 						0
 					],
 					[
 						163463.855421687,
-						3,
+						7,
 						0
 					],
 					[
 						163554.21686747,
-						2,
+						6,
 						0
 					],
 					[
 						163644.578313253,
-						0,
+						4,
 						0
 					],
 					[
 						163734.939759036,
-						2,
+						6,
 						0
 					],
 					[
 						163825.301204819,
-						0,
+						4,
 						0
 					],
 					[
 						163915.662650602,
-						3,
+						7,
 						0
 					],
 					[
 						164006.024096386,
-						1,
+						5,
 						0
 					],
 					[
 						164096.385542169,
-						2,
+						6,
 						0
 					],
 					[
 						164186.746987952,
-						3,
+						7,
 						0
 					],
 					[
 						164277.108433735,
-						1,
+						5,
 						0
 					],
 					[
 						164367.469879518,
-						3,
+						7,
 						0
 					],
 					[
 						164457.831325301,
-						2,
+						6,
 						90.3614457831325
 					],
 					[
 						164638.554216867,
-						0,
+						4,
 						90.3614457831325
 					],
 					[
 						163373.493975904,
-						0,
+						4,
 						0,
 						"Error Note"
 					],
 					[
 						163734.939759036,
-						1,
+						5,
 						0,
 						"Error Note"
 					],
 					[
 						164096.385542169,
-						0,
+						4,
 						0,
 						"Error Note"
 					],
 					[
 						164457.831325301,
-						1,
+						5,
 						0,
 						"Error Note"
 					]
@@ -78922,7 +78962,7 @@ enum abstract Chart(String) from String to String {
 				"typeOfSection": 0,
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"mustHitSection": false,
 				"changeBPM": false,
 				"bpm": 166
 			},
@@ -240485,6 +240525,8 @@ enum abstract Chart(String) from String to String {
 
     var dontCross7:String = '{
 	"song": {
+		"voiceSfx1": "Everett",
+		"voiceSfx2": "Crossin",
 		"player1": "everett-modern",
 		"player2": "dctl-mickey",
 		"notes": [

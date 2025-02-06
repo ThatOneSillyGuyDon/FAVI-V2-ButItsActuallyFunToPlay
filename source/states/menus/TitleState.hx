@@ -70,7 +70,7 @@ class TitleState extends MusicBeatState
 		"Comically Large Spoon",
 		"snas uddertail",
 		"K i l l .",
-		"Mr. Smile & White Noise are dating, this is canon.",
+		"Funny Date Fact...",
 		"Fun Fact: Beep Bap Brip Skippity Bop",
 		"Episode 1 is finally here, WOOOOOO",
 		"Sample Text",
@@ -79,7 +79,7 @@ class TitleState extends MusicBeatState
 		"Stfu, I'm playing Fortnite",
 		"Stop asking for suicidal remixes",
 		"Why did Everett & Lilith enter these horrific cartoons in the first place?",
-		"Muckney.mp4, realest one out there.",
+		GameData.muckneyLock == 'beaten' ? "Muckney, realest one out there." : "One of our characters is the realest one out there, but you gotta meet him first!",
 		"We late, but we late in style",
 		"ur adopted *insert get out sfx*",
 		"MOUSE RAP. MOUSE RAP",
@@ -181,31 +181,6 @@ class TitleState extends MusicBeatState
 	{	
 		Paths.clearStoredMemory();
 		Paths.clearUnusedMemory();
-
-		FlxG.game.focusLostFramerate = 60;
-		FlxG.sound.muteKeys = muteKeys;
-		FlxG.sound.volumeDownKeys = volumeDownKeys;
-		FlxG.sound.volumeUpKeys = volumeUpKeys;
-		FlxG.keys.preventDefaultKeys = [TAB];
-
-		PlayerSettings.init();
-		ClientPrefs.loadPrefs();
-		Highscore.load();
-		GameData.loadShit();
-
-		AppIcon.changeIcon("newIcon");
-		
-		CoolUtil.createCoreFile();
-
-		#if desktop
-		if (!DiscordClient.isInitialized)
-		{
-			DiscordClient.initialize();
-			Application.current.onExit.add (function (exitCode) {
-				DiscordClient.shutdown();
-			});
-		}
-		#end
 		
 		#if DISCORD_RPC
 		DiscordClient.changePresence("Title Screen", 'Waiting to start...', 'icon', 'clock'); // dw, I'll make sure to update the RPC shit, if anything, I'm gonna end up making a seperate RPC for this version of the engine
@@ -277,11 +252,6 @@ class TitleState extends MusicBeatState
 		titleText.borderSize = 1.5;
 		titleText.antialiasing = ClientPrefs.globalAntialiasing;
 		add(titleText);
-
-		var logo:FlxSprite = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/logo'));
-		logo.screenCenter();
-		logo.antialiasing = ClientPrefs.globalAntialiasing;
-		logo.antialiasing = true;
 
 		credGroup = new FlxGroup();
 		add(credGroup);
@@ -694,5 +664,16 @@ class TitleState extends MusicBeatState
 					{
 						Application.current.window.title = " ";
 					}
+					else if(Application.current.window.title.contains('Funkin.avi - Funny Date Fact...'))
+						{
+							// this one's special because we gotta prevent spoilers for the newies
+							if (GameData.tgLock == 'locked' && GameData.blessLock == 'locked')
+								Application.current.window.title = "Funkin.avi - Two of our characters are dating, this is canon.";
+							else if (GameData.tgLock == 'locked' && GameData.blessLock == 'beaten')
+								Application.current.window.title = "Funkin.avi - A Special Guest & White Noise are dating, this is canon.";
+							if (GameData.tgLock == 'beaten' && GameData.blessLock == 'locked')
+								Application.current.window.title = "Funkin.avi - Mr. Smiles & A Special Guest are dating, this is canon.";
+							else Application.current.window.title = "Funkin.avi - Mr. Smiles & White Noise are dating, this is canon.";
+						}
 		}
 }

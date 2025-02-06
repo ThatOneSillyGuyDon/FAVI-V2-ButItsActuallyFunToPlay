@@ -7,6 +7,7 @@ import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.system.FlxSound;
 import haxe.Json;
 import lime.utils.Assets;
+import flash.system.System;
 import openfl.Lib;
 import openfl.display.BlendMode;
 import openfl.display.StageQuality;
@@ -3894,6 +3895,29 @@ class PlayState extends MusicBeatState
 
 			NoteMovement.getDefaultStrumPos(this);
 
+			Lib.application.window.onClose.removeAll();
+			Lib.application.window.onClose.add(function() {
+				persistentUpdate = false;
+				persistentDraw = true;
+				paused = true;
+	
+				if(FlxG.sound.music != null) {
+					FlxG.sound.music.pause();
+					vocals.pause();
+					bf_vocals.pause();
+					opp_vocals.pause();
+				}
+	
+				openSubState(new Prompt('Are you sure you want to quit?\n\nYour data will still save if you do.', 0, function(){
+					System.exit(0);
+					DiscordClient.shutdown();
+				}, function(){
+					persistentUpdate = true;
+					persistentDraw = true;
+				},false, camOther));
+				Lib.application.window.onClose.cancel();
+			});
+
 			for (i in 0...playerStrums.length) {
 				setOnLuas('defaultPlayerStrumX' + i, playerStrums.members[i].x);
 				setOnLuas('defaultPlayerStrumY' + i, playerStrums.members[i].y);
@@ -4169,7 +4193,7 @@ class PlayState extends MusicBeatState
 		DiscordClient.changePresence("Playing a song", scoreTxt.text, "icon", "random");
 		#else
 		// Updating Discord Rich Presence (with Time Left)
-		DiscordClient.changePresence(detailsText + " (" + FreeplayState.getDiffRank() + ")", scoreTxt.text, CoolUtil.spaceToDash(PlayState.SONG.song.toLowerCase()), "random", true, songLength - Conductor.songPosition - ClientPrefs.noteOffset);
+		DiscordClient.changePresence(detailsText, SONG.song + " (" + FreeplayState.getDiffRank() + ")", (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(SONG.song.toLowerCase())), "random", true, songLength - Conductor.songPosition - ClientPrefs.noteOffset);
 		#end
 		#end
 
@@ -4286,7 +4310,7 @@ class PlayState extends MusicBeatState
 		DiscordClient.changePresence("Playing a song", scoreTxt.text, "icon", "random");
 		#else
 		// Updating Discord Rich Presence (with Time Left)
-		DiscordClient.changePresence(detailsText + " (" + FreeplayState.getDiffRank() + ")", scoreTxt.text, CoolUtil.spaceToDash(SONG.song.toLowerCase()), "random", true, songLength);
+		DiscordClient.changePresence(detailsText + " (" + FreeplayState.getDiffRank() + ")", scoreTxt.text, (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(SONG.song.toLowerCase())), "random", true, songLength);
 		#end
 		#end
 		setOnLuas('songLength', songLength);
@@ -4749,6 +4773,29 @@ class PlayState extends MusicBeatState
 			#end
 		}
 
+		Lib.application.window.onClose.removeAll();
+		Lib.application.window.onClose.add(function() {
+			persistentUpdate = false;
+			persistentDraw = true;
+			instance.paused = true;
+
+			if(FlxG.sound.music != null) {
+				FlxG.sound.music.pause();
+				vocals.pause();
+				bf_vocals.pause();
+				opp_vocals.pause();
+			}
+
+			openSubState(new Prompt('Are you sure you want to quit?\n\nYour data will still save if you do.', 0, function(){
+				System.exit(0);
+				DiscordClient.shutdown();
+			}, function(){
+				persistentUpdate = true;
+				persistentDraw = true;
+			},false, camOther));
+			Lib.application.window.onClose.cancel();
+		});
+
 		super.closeSubState();
 	}
 
@@ -4771,7 +4818,7 @@ class PlayState extends MusicBeatState
 				#if DEV_BUILD
 				DiscordClient.changePresence("Playing a song", scoreTxt.text, "icon", "random");
 				#else
-				DiscordClient.changePresence(detailsText + " (" + FreeplayState.getDiffRank() + ")", scoreTxt.text, CoolUtil.spaceToDash(SONG.song.toLowerCase()), "random", true, songLength - Conductor.songPosition - ClientPrefs.noteOffset);
+				DiscordClient.changePresence(detailsText, SONG.song + " (" + FreeplayState.getDiffRank() + ")", (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(SONG.song.toLowerCase())), "random", true, songLength - Conductor.songPosition - ClientPrefs.noteOffset);
 				#end
 			}
 			else
@@ -4779,7 +4826,7 @@ class PlayState extends MusicBeatState
 				#if DEV_BUILD
 				DiscordClient.changePresence("Playing a song", scoreTxt.text, "icon", "random");
 				#else
-				DiscordClient.changePresence(detailsText + " (" + FreeplayState.getDiffRank() + ")", scoreTxt.text, CoolUtil.spaceToDash(SONG.song.toLowerCase()), "random");
+				DiscordClient.changePresence(detailsText, SONG.song + " (" + FreeplayState.getDiffRank() + ")", (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(SONG.song.toLowerCase())), "random");
 				#end
 			}
 		}
@@ -4805,7 +4852,7 @@ class PlayState extends MusicBeatState
 			#if DEV_BUILD
 			DiscordClient.changePresence("Paused", scoreTxt.text, "icon", "random");
 			#else
-			DiscordClient.changePresence(detailsPausedText + " (" + FreeplayState.getDiffRank() + ")", scoreTxt.text, CoolUtil.spaceToDash(SONG.song.toLowerCase()), "random");
+			DiscordClient.changePresence(detailsPausedText + " (" + FreeplayState.getDiffRank() + ")", scoreTxt.text, (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(SONG.song.toLowerCase())), "random");
 			#end
 		}
 		#end
@@ -5020,7 +5067,7 @@ class PlayState extends MusicBeatState
 			iconP2.y += (((healthBar.y - 85) + -Math.sin(rotRateWn * 2) * 20 * 0.45) - iconP2.y) / 12;
 			moveCamera(!SONG.notes[curSection].mustHitSection); // so it moves properly !!
 		}
-		else if (dad.curCharacter == "glitched-mickey-new-pixel")
+		else if (dad.curCharacter == "glitched-mickey-new-pixel" || dad.curCharacter == "malsquare-withFace")
 		{
 			moveCamera(!SONG.notes[curSection].mustHitSection); // so it moves properly !!
 		}
@@ -6101,7 +6148,7 @@ class PlayState extends MusicBeatState
 		#if DEV_BUILD
 		DiscordClient.changePresence("Paused", scoreTxt.text, "icon", "random");
 		#else
-		DiscordClient.changePresence(detailsPausedText + " (" + FreeplayState.getDiffRank() + ")", scoreTxt.text, CoolUtil.spaceToDash(SONG.song.toLowerCase()), "random");
+		DiscordClient.changePresence(detailsPausedText + " (" + FreeplayState.getDiffRank() + ")", scoreTxt.text, (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(SONG.song.toLowerCase())), "random");
 		#end
 		#end
 	}
@@ -6171,7 +6218,7 @@ class PlayState extends MusicBeatState
 				DiscordClient.changePresence("Game Over", "Deaths: " + deathCounter, "icon", "random");
 				#else
 				// Game Over doesn't get his own variable because it's only used here
-				DiscordClient.changePresence("Game Over - " + detailsText, "Deaths: " + deathCounter, CoolUtil.spaceToDash(SONG.song.toLowerCase()), "random");
+				DiscordClient.changePresence("Game Over - " + detailsText, "Deaths: " + deathCounter, (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(SONG.song.toLowerCase())), "random");
 				#end
 				#end
 				isDead = true;
@@ -6779,6 +6826,11 @@ class PlayState extends MusicBeatState
 			}
 		}
 		pauseCountEnabled = false;
+
+		Lib.application.window.onClose.removeAll(); // goes back to normal hopefully
+		Lib.application.window.onClose.add(function() {
+			DiscordClient.shutdown();
+		});
 
 		timeBarBG.visible = false;
 		timeBar.visible = false;
@@ -7676,15 +7728,15 @@ class PlayState extends MusicBeatState
                         );
                     }
                 }
-                else if (dad.curCharacter == 'gm-tired-pixel')
+				else if (dad.curCharacter == 'malsquare-withFace')
                 {
-                    if (healthThing > 0.36)
-                        healthThing -= 0.01;
+					if (healthThing > 0.05)
+                        healthThing -= 0.015;
                     if (ClientPrefs.shaking)
                     {
-                        camGame.shake(0.004, 0.07);
-                        camHUD.shake(0.007, 0.07);
-                        camNotes.shake(0.07, 0.07);
+                        camGame.shake(0.01, 0.07);
+                        for (i in [camHUD, camNotes])
+                            i.shake(0.018, 0.07);
                     }
                     if (canaddshaders)
                     {
@@ -7705,7 +7757,7 @@ class PlayState extends MusicBeatState
                                 ]);
                         }
                         
-                        chromEffect += 0.25;
+                        chromEffect += 0.22;
                         blurEffect += 2.5;
                         
                         if (chromTween != null)
@@ -8704,6 +8756,7 @@ class PlayState extends MusicBeatState
 				}
 
 		if (SONG.song == "Devilish Deal")
+		{
 			switch (curBeat)
 				{
 					case 1:
@@ -8814,6 +8867,7 @@ class PlayState extends MusicBeatState
 						}
 					});
 				}	
+		}
 		switch (SONG.song)
 		{
 			case "Bless":

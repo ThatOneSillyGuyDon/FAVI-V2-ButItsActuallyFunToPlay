@@ -1,6 +1,7 @@
 package substates;
 
 import flixel.addons.transition.FlxTransitionableState;
+import openfl.Lib;
 
 /**
  * ## This is the screen that plays when you die in a song! Sounds simple enough, right?
@@ -109,7 +110,7 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		FlxG.cameras.add(stupidAssCam);
 		FlxG.cameras.add(deathHUD, false);
-		deathHUD.alpha = 0.0001;
+		deathHUD.alpha = PlayState.SONG.song == "War Dilemma" ? 0.25 : 0.0001;
 
 		Conductor.songPosition = 0;
 
@@ -125,6 +126,8 @@ class GameOverSubstate extends MusicBeatSubstate
 			case "Isolated" | "Lunacy": image = "favi/ui/gameOvers/episode1Death";
 			case "Delusional": image = "favi/ui/gameOvers/delusionalDeath";
 			case "Dont Cross": image = "favi/ui/gameOvers/DontCrossGameOver";
+			case "Birthday": image = "favi/ui/gameOvers/birthdayGameOver";
+			case "War Dilemma": image = "favi/ui/gameOvers/warGameOver";
 			default: image = "favi/ui/gameOvers/everettDeath";
 		}
 
@@ -137,6 +140,44 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		switch(image)
 		{
+			case "favi/ui/gameOvers/birthdayGameOver":
+				quitLerp = 0.0001;
+				tryLerp = 0.0001;
+				uiArrowDown = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/arrowEverett"));
+				uiArrowUp = new FlxSprite().loadGraphicFromSprite(uiArrowDown);
+				uiRetry = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/birthdayRetry"));
+				uiLeave = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/birthdayLeave"));
+
+				for (bUI in [uiArrowDown, uiArrowUp, uiRetry, uiLeave])
+				{
+					bUI.screenCenter();
+					bUI.scrollFactor.set(0, 0);
+					bUI.cameras = [stupidAssCam];
+					bUI.setGraphicSize(0, FlxG.height);
+					bUI.alpha = 0.0001;
+					add(bUI);
+				}
+				uiArrowDown.y = -9999;
+				uiArrowUp.y = uiArrowDown.y;
+
+			case "favi/ui/gameOvers/warGameOver":
+				quitLerp = 0.0001;
+				tryLerp = 0.0001;
+				uiArrowDown = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/warArrowD"));
+				uiArrowUp = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/warArrowU"));
+				uiRetry = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/warRetry"));
+				uiLeave = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/warLeave"));
+
+				for (warUI in [uiArrowDown, uiArrowUp, uiRetry, uiLeave])
+				{
+					warUI.screenCenter();
+					warUI.scrollFactor.set(0, 0);
+					warUI.cameras = [stupidAssCam];
+					warUI.setGraphicSize(0, FlxG.height);
+					warUI.alpha = 0.0001;
+					add(warUI);
+				}
+
 			case "favi/ui/gameOvers/episode1Death":
 				quitLerp = 0.0001;
 				tryLerp = 0.0001;
@@ -259,6 +300,21 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		switch (PlayState.SONG.song)
 		{
+			case "Birthday":
+				deathImage.alpha = 0.0001;
+				new flixel.util.FlxTimer().start(0.85, function(tmr)
+				{
+					FlxG.sound.play(Paths.sound("spotlightSfx"));
+					deathImage.alpha = 1;
+				});
+			case "War Dilemma":
+				deathImage.alpha = 0.0001;
+				deathHUD.fade(FlxColor.WHITE, 1, true);
+				FlxG.sound.play(Paths.sound("gunSfx"));
+				new flixel.util.FlxTimer().start(1.15, function(tmr)
+				{
+					FlxTween.tween(deathImage, {alpha: 1}, 3);
+				});
 			case "Isolated Beta" | "Isolated Old" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Twisted Grins Legacy" | "Hunted Legacy" | "Cycled Sins Legacy" | "Mercy Legacy" | "Malfunction Legacy" | "Bless": 
 				boyfriend.visible = true;
 				deathImage.alpha = 0.0001;
@@ -281,7 +337,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		{
 			switch (PlayState.curStage)
 			{
-				case 'stage' | 'desktop' | 'waltRoom' | 'apartment' | 'treasureIsland' | 'forbiddenRealm' | 'fuckingLine' | 'staticVoid' | 'vaultRoom' | 'war':
+				case 'stage' | 'desktop' | 'waltRoom' | 'apartment' | 'treasureIsland' | 'forbiddenRealm' | 'fuckingLine' | 'staticVoid' | 'vaultRoom':
 				// don't add scratch assets
 	
 				default:
@@ -384,7 +440,7 @@ class GameOverSubstate extends MusicBeatSubstate
 			}
 		}
 
-		if ((controls.UI_DOWN_P || controls.UI_UP_P) && arrowLerp == 1 && uiRetry != null && image == "favi/ui/gameOvers/everettDeath")
+		if ((controls.UI_DOWN_P || controls.UI_UP_P) && arrowLerp == 1 && uiRetry != null && (image == "favi/ui/gameOvers/warGameOver" || image == "favi/ui/gameOvers/everettDeath"))
 		{
 			quitLerp = quitLerp == 1 ? 0.001 : 1;
 			tryLerp = tryLerp == 1 ? 0.001 : 1;
@@ -397,8 +453,8 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		if ((controls.UI_LEFT_P || controls.UI_RIGHT_P) && arrowLerp == 1 && uiRetry != null && image != "favi/ui/gameOvers/everettDeath")
 		{
-			quitLerp = quitLerp == 1 ? 0.001 : 1;
-			tryLerp = tryLerp == 1 ? 0.001 : 1;
+			quitLerp = quitLerp == 1 ? (PlayState.SONG.song == "Birthday" ? 0.18 : 0.001) : 1;
+			tryLerp = tryLerp == 1 ? (PlayState.SONG.song == "Birthday" ? 0.18 : 0.001) : 1;
 			FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
 			if (controls.UI_LEFT_P)
 				uiArrowDown.alpha = 0.3;
@@ -450,6 +506,10 @@ class GameOverSubstate extends MusicBeatSubstate
 		PlayState.instance.paused = true; // For lua
 		FlxG.sound.music.volume = 0;
 		PlayState.instance.vocals.volume = 0;
+		Lib.application.window.onClose.removeAll(); // goes back to normal hopefully
+		Lib.application.window.onClose.add(function() {
+			DiscordClient.shutdown();
+		});
 
 		if(noTrans)
 		{
@@ -469,57 +529,74 @@ class GameOverSubstate extends MusicBeatSubstate
 			PlayState.seenCutscene = false;
 			PlayState.chartingMode = false;
 			PlayState.pauseCountEnabled = false;
+			Lib.application.window.onClose.removeAll(); // goes back to normal hopefully
+			Lib.application.window.onClose.add(function() {
+				DiscordClient.shutdown();
+			});
 
 			WeekData.loadTheFirstEnabledMod();
-			if (PlayState.isStoryMode)
+			if (PlayState.SONG.song == "Birthday")
 			{
-				if (GameData.highOnCrackLock == 'forceBackToSong')
+				FlxG.sound.music.stop();
+				FlxG.sound.play(Paths.music(endSoundName));
+				camLerpBullshit = arrowLerp = quitLerp = tryLerp = 0;
+				stupidAssCam.fade(FlxColor.BLACK, 1.4, false, function()
 				{
-					restartDelutrance();
-				}
-				else
-				{
-					if (!boyfriend.visible)
-					{
-						FlxG.sound.music.stop();
-						FlxG.sound.play(Paths.music(endSoundName));
-						camLerpBullshit = arrowLerp = quitLerp = tryLerp = 0;
-						stupidAssCam.fade(FlxColor.BLACK, 1.4, false, function()
-						{
-							MusicBeatState.switchState(new StoryMenu());
-							FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
-						});
-					}
-					else
-					{
-						MusicBeatState.switchState(new StoryMenu());
-						FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
-					}
-				}
+					MusicBeatState.switchState(new ManIHateYouSoMuchYouMadeMuckneySad());
+				});
 			}
 			else
 			{
-				if (GameData.highOnCrackLock == 'forceBackToSong')
+				if (PlayState.isStoryMode)
 				{
-					restartDelutrance();
-				}
-				else
-				{
-					if (!boyfriend.visible)
+					if (GameData.highOnCrackLock == 'forceBackToSong')
 					{
-						FlxG.sound.music.stop();
-						FlxG.sound.play(Paths.music(endSoundName));
-						camLerpBullshit = arrowLerp = quitLerp = tryLerp = 0;
-						stupidAssCam.fade(FlxColor.BLACK, 1.4, false, function()
-						{
-							MusicBeatState.switchState(new FreeplayState());
-							FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
-						});
+						restartDelutrance();
 					}
 					else
 					{
-						MusicBeatState.switchState(new FreeplayState());
-						FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
+						if (!boyfriend.visible)
+						{
+							FlxG.sound.music.stop();
+							FlxG.sound.play(Paths.music(endSoundName));
+							camLerpBullshit = arrowLerp = quitLerp = tryLerp = 0;
+							stupidAssCam.fade(FlxColor.BLACK, 1.4, false, function()
+							{
+								MusicBeatState.switchState(new StoryMenu());
+								FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
+							});
+						}
+						else
+						{
+							MusicBeatState.switchState(new StoryMenu());
+							FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
+						}
+					}
+				}
+				else
+				{
+					if (GameData.highOnCrackLock == 'forceBackToSong')
+					{
+						restartDelutrance();
+					}
+					else
+					{
+						if (!boyfriend.visible)
+						{
+							FlxG.sound.music.stop();
+							FlxG.sound.play(Paths.music(endSoundName));
+							camLerpBullshit = arrowLerp = quitLerp = tryLerp = 0;
+							stupidAssCam.fade(FlxColor.BLACK, 1.4, false, function()
+							{
+								MusicBeatState.switchState(new FreeplayState());
+								FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
+							});
+						}
+						else
+						{
+							MusicBeatState.switchState(new FreeplayState());
+							FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
+						}
 					}
 				}
 			}
@@ -551,6 +628,8 @@ class GameOverSubstate extends MusicBeatSubstate
 			camLerpBullshit = 0;
 			arrowLerp = 1;
 			tryLerp = 1;
+			if (PlayState.SONG.song == "Birthday")
+				quitLerp = 0.18;
 		}
 	}
 

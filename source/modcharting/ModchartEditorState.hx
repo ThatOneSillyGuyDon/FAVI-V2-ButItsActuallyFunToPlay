@@ -9,6 +9,7 @@ import openfl.net.FileReference;
 import openfl.events.Event;
 import openfl.events.IOErrorEvent;
 import openfl.geom.Rectangle;
+import openfl.Lib;
 import openfl.display.BitmapData;
 #if (flixel < "5.3.0")
 import flixel.system.FlxSound;
@@ -266,6 +267,11 @@ class ModchartEditorState extends MusicBeatState
 		camHUD.bgColor.alpha = 0;
 
         AppIcon.changeIcon("debugicon");
+
+        Lib.application.window.onClose.removeAll(); // goes back to normal hopefully
+		Lib.application.window.onClose.add(function() {
+			DiscordClient.shutdown();
+		});
 
 		FlxG.cameras.reset(camGame);
 		FlxG.cameras.add(camHUD, false);
