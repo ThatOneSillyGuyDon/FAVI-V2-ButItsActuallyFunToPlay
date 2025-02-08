@@ -177,6 +177,8 @@ class TitleState extends MusicBeatState
 	];
 	var keyIdx = 0;
 
+	var path:String = "Funkin_avi/title";
+
 	override public function create():Void
 	{	
 		Paths.clearStoredMemory();
@@ -228,24 +230,57 @@ class TitleState extends MusicBeatState
 
 	function startIntro()
 	{
-		Conductor.bpm = (50);
+		Conductor.bpm = (130/2);
 		persistentUpdate = true;
 
 		var bg:FlxSprite = new FlxSprite();
-		bg.loadGraphic(Paths.image('Funkin_avi/Title_bg'), false);
+		bg.loadGraphic(Paths.image('$path/titleSky'), false);
 		bg.screenCenter();
-		bg.scale.x = 0.68;
-		bg.scale.y = 0.67;
+		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
 
-		logoBl = new FlxSprite(150, 0);
-		logoBl.loadGraphic(Paths.image(('Funkin_avi/MickeyLogo')));
-		logoBl.antialiasing = true;
-		logoBl.updateHitbox();
-		logoBl.setGraphicSize(Std.int(logoBl.width * 0.4));
-		logoBl.screenCenter();
+		var buildings1:FlxBackdrop = new FlxBackdrop(Paths.image('$path/buildings2'), X, 0, 0);
+		buildings1.screenCenter();
+		buildings1.velocity.set(-250, 0);
+		buildings1.antialiasing = ClientPrefs.globalAntialiasing;
+		add(buildings1);
 
+		var blackShit1:FlxBackdrop = new FlxBackdrop(Paths.image('$path/blackShit2'), X, 0, 0);
+		blackShit1.screenCenter();
+		blackShit1.alpha = 0.47;
+		blackShit1.velocity.set(-300, 0);
+		blackShit1.antialiasing = ClientPrefs.globalAntialiasing;
+		add(blackShit1);
+
+		var dark:FlxSprite = new FlxSprite().loadGraphic(Paths.image('$path/buildingDark'));
+		dark.screenCenter();
+		dark.antialiasing = ClientPrefs.globalAntialiasing;
+		add(dark);
+
+		var buildings2:FlxBackdrop = new FlxBackdrop(Paths.image('$path/buildings1'), X, 0, 0);
+		buildings2.screenCenter();
+		buildings2.velocity.set(-350, 0);
+		buildings2.antialiasing = ClientPrefs.globalAntialiasing;
+		add(buildings2);
+
+		var blackShit2:FlxBackdrop = new FlxBackdrop(Paths.image('$path/blackShit1'), X, 0, 0);
+		blackShit2.screenCenter();
+		blackShit2.velocity.set(-400, 0);
+		blackShit2.antialiasing = ClientPrefs.globalAntialiasing;
+		add(blackShit2);
+
+		logoBl = new FlxSprite(150, 0);
+		logoBl.loadGraphic(Paths.image(('$path/titleLogo')));
+		logoBl.antialiasing = ClientPrefs.globalAntialiasing;
+		logoBl.updateHitbox();
+		logoBl.setGraphicSize(Std.int(logoBl.width * 0.85));
+		logoBl.screenCenter();
 		add(logoBl);
+
+		var vignette:FlxSprite = new FlxSprite().loadGraphic(Paths.image('$path/titleVignette'));
+		vignette.screenCenter();
+		vignette.antialiasing = ClientPrefs.globalAntialiasing;
+		add(vignette);
 
 		titleText = new FlxText(24, 600, 1200, "Click Anywhere Or Press Enter to Start", 96);
 		titleText.setFormat(Paths.font('MagicOwlFont.otf'), 60, FlxColor.fromRGB(255, 255, 255), CENTER, OUTLINE, FlxColor.BLACK);
@@ -270,7 +305,7 @@ class TitleState extends MusicBeatState
 		FlxTween.tween(credTextShit, {y: credTextShit.y + 20}, 2.9, {ease: FlxEase.quadInOut, type: PINGPONG});
 
 		if(FlxG.sound.music == null) {
-			FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'), 0);
+			FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'), 0);
 
 			FlxG.sound.music.fadeIn(4, 0, 0.7);
 		}
@@ -413,8 +448,8 @@ class TitleState extends MusicBeatState
 		}
 
 		FlxG.camera.zoom = FlxMath.lerp(1, FlxG.camera.zoom, FlxMath.bound(1 - (elapsed * 1.925), 0, 1));
-		logoBl.scale.x = FlxMath.lerp(0.4, logoBl.scale.x, FlxMath.bound(1 - (elapsed * 1.995), 0, 1));
-		logoBl.scale.y = FlxMath.lerp(0.4, logoBl.scale.y, FlxMath.bound(1 - (elapsed * 1.995), 0, 1));
+		logoBl.scale.x = FlxMath.lerp(0.85, logoBl.scale.x, FlxMath.bound(1 - (elapsed * 1.995), 0, 1));
+		logoBl.scale.y = FlxMath.lerp(0.85, logoBl.scale.y, FlxMath.bound(1 - (elapsed * 1.995), 0, 1));
 
 		super.update(elapsed);
 	}
@@ -461,8 +496,8 @@ class TitleState extends MusicBeatState
 			FlxG.camera.zoom += 0.035;
 
 			// logo doesn't have animation, we make one by ourselfs instead
-			logoBl.scale.x += 0.02;
-			logoBl.scale.y += 0.02;
+			logoBl.scale.x += 0.03;
+			logoBl.scale.y += 0.03;
 
 			sickBeats++;
 			switch (sickBeats)

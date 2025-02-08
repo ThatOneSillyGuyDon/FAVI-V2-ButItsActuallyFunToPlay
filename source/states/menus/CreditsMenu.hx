@@ -26,8 +26,11 @@ class CreditsMenu extends MusicBeatState
 	var creditNameText:FlxText;
 	var creditWorkText:FlxText;
 	var backdrop:FlxBackdrop;
+
 	var background:FlxSprite;
+	var dark:FlxSprite;
 	var box:FlxSprite;
+	var boxOverlay:FlxSprite;
 	var daStrip:FlxSprite;
 	var creditIconText:FlxSprite;
 	var teelSquares:FlxSprite;
@@ -71,10 +74,11 @@ class CreditsMenu extends MusicBeatState
 		creditThing = jsonStuff();
 		creditArray = creditThing.devs;
 
-		background = new FlxSprite().loadGraphic(Paths.image('$path/background'));
+		background = new FlxSprite().loadGraphic(Paths.image('$path/theLight'));
 		background.screenCenter();
 		background.antialiasing = ClientPrefs.globalAntialiasing;
 		add(background);
+		FlxTween.tween(background, {alpha: 0.25}, 2, {ease: FlxEase.expoInOut, type: PINGPONG});
 
 		// thank you shadow mario fnf
 		backdrop = new FlxBackdrop(FlxGridOverlay.createGrid(80, 80, 160, 160, true, 0xFFFFFF, 0x33FFFFFF));
@@ -85,15 +89,18 @@ class CreditsMenu extends MusicBeatState
 		backdrop.antialiasing = ClientPrefs.globalAntialiasing;
 		add(backdrop);
 
+		dark = new FlxSprite().loadGraphic(Paths.image('$path/darkness'));
+		dark.screenCenter();
+		dark.antialiasing = ClientPrefs.globalAntialiasing;
+		add(dark);
+
 		daStrip = new FlxSprite().loadGraphic(Paths.image('$path/filmstrip'));
 		daStrip.screenCenter();
-		daStrip.setGraphicSize(Std.int(daStrip.width * 0.8));
 		daStrip.antialiasing = ClientPrefs.globalAntialiasing;
 		add(daStrip);
 
-		box = new FlxSprite().loadGraphic(Paths.image('$path/box'));
-		box.screenCenter().x -= 80;
-		box.setGraphicSize(Std.int(box.width * 0.6));
+		box = new FlxSprite().loadGraphic(Paths.image('$path/iconFrame'));
+		box.screenCenter();
 		box.antialiasing = ClientPrefs.globalAntialiasing;
 		add(box);
 
@@ -139,6 +146,11 @@ class CreditsMenu extends MusicBeatState
 		creditIconSprite.setGraphicSize(Std.int(creditIconSprite.width * creditArray[curSelected][6]));
 		creditIconSprite.antialiasing = ClientPrefs.globalAntialiasing;
 		add(creditIconSprite);
+
+		boxOverlay = new FlxSprite().loadGraphic(Paths.image('$path/frameOverlay'));
+		boxOverlay.screenCenter();
+		boxOverlay.antialiasing = ClientPrefs.globalAntialiasing;
+		add(boxOverlay);
 
 		cool_1980_shader = new FlxRuntimeShader(Shaders.vhsFilter, null, 130);
 		var monitor = new FlxRuntimeShader(Shaders.monitorFilter, null, 140);
@@ -208,7 +220,7 @@ class CreditsMenu extends MusicBeatState
 		{
 			MusicBeatState.switchState(new MainMenu());
 			Conductor.bpm = (50); // changes back to titlescreen bpm
-			FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'), 1); // resets music back to menu music
+			FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'), 1); // resets music back to menu music
 			FlxG.sound.music.fadeIn();
 		}
 

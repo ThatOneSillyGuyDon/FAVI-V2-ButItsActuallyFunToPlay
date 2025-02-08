@@ -165,7 +165,7 @@ class AskQuestionToThatGuy extends MusicBeatState
         if (controls.BACK && !typing)
         {
             MusicBeatState.switchState(new MainMenu());
-            FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
+            FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
         }
 
         if (FlxG.keys.justPressed.F5)

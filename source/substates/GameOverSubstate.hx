@@ -563,13 +563,13 @@ class GameOverSubstate extends MusicBeatSubstate
 							stupidAssCam.fade(FlxColor.BLACK, 1.4, false, function()
 							{
 								MusicBeatState.switchState(new StoryMenu());
-								FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
+								FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 							});
 						}
 						else
 						{
 							MusicBeatState.switchState(new StoryMenu());
-							FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
+							FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 						}
 					}
 				}

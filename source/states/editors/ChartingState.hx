@@ -1734,7 +1734,7 @@ class ChartingState extends MusicBeatState
 				PlayState.chartingMode = false;
 				openSubState(new Prompt('Upon leaving the editor, you will lose all current progress that hasn\'t been saved here.\n\nProceed?', 0, function(){
 					MusicBeatState.switchState(new MainMenu()); 
-					FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
+					FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 					FlxG.mouse.visible = true;
 					AppIcon.changeIcon("newIcon");
 				}, null,ignoreWarnings));

@@ -76,7 +76,7 @@ class VideoShit extends MusicBeatState
 	// i just find it easier
 	function ermidfk()
 	{
-		FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'), 1);
+		FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'), 1);
 		FlxG.sound.music.fadeIn(0.3, 0, 0.2);
 		MusicBeatState.switchState(new MainMenu());
 	}

@@ -276,7 +276,7 @@ class PauseSubState extends MusicBeatSubstate
 					WeekData.loadTheFirstEnabledMod();
 					if(PlayState.isStoryMode) {
 						MusicBeatState.switchState(new StoryMenu());
-						FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
+						FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 					} else {
 						MusicBeatState.switchState(new FreeplayState());
 						FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
@@ -707,7 +707,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 							FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
 							FlxG.mouse.visible = true;
 							MusicBeatState.switchState(new states.options.OptionsState());
-							FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
+							FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 						case 'no-hope':
 							songText.shake(0.5, 1, 1);
 							satanTxt.text = satanQuotes[FlxG.random.int(0, satanQuotes.length - 1)];
@@ -739,7 +739,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 									else
 									{
 										MusicBeatState.switchState(new StoryMenu());
-										FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
+										FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 									}
 								}
 								else

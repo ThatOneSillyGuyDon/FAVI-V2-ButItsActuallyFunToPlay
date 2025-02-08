@@ -6911,7 +6911,7 @@ class PlayState extends MusicBeatState
 
 					if (!hasEndingScene) 
 					{
-						FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
+						FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 						MusicBeatState.switchState(new StoryMenu());
 					}
 					else
@@ -6934,7 +6934,7 @@ class PlayState extends MusicBeatState
 									death.visible = false;
 								});
 								deluOutro.addCallback("onEnd", () -> {
-									FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
+									FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 									MusicBeatState.switchState(new StoryMenu());
 								});
 						}
@@ -10226,8 +10226,11 @@ class PlayState extends MusicBeatState
 						camGame.visible = false;
 						camHUD.visible = false;
 						camNotes.visible = false;
-						atmosphereParticle.visible = false;
-						ashParticle.visible = false;
+						if (!lowQuality)
+						{
+							atmosphereParticle.visible = false;
+							ashParticle.visible = false;
+						}
 					case 473:
 						if (canaddshaders)
 						{
@@ -10322,8 +10325,11 @@ class PlayState extends MusicBeatState
 						boyfriend.alpha = 1;
 						camFollow.x = 0;
 						camFollow.y = 0;
-						atmosphereParticle.visible = true;
-						ashParticle.visible = true;
+						if (!lowQuality)
+						{
+							atmosphereParticle.visible = true;
+							ashParticle.visible = true;
+						}
 					case 744:
 						useFakeDeluName = false;
 						windowName = "Funkin.avi - " + (isStoryMode ? curEpisode + " - " : "Freeplay - ") + SONG.song + " [" + FreeplayState.getDiffRank() + "]";
