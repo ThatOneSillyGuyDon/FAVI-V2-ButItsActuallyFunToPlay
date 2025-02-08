@@ -253,7 +253,7 @@ class TitleState extends MusicBeatState
 
 	function startIntro()
 	{
-		Conductor.bpm = (50);
+		Conductor.bpm = (65);
 		persistentUpdate = true;
 
 		var bg:FlxSprite = new FlxSprite();
@@ -295,9 +295,7 @@ class TitleState extends MusicBeatState
 		FlxTween.tween(credTextShit, {y: credTextShit.y + 20}, 2.9, {ease: FlxEase.quadInOut, type: PINGPONG});
 
 		if(FlxG.sound.music == null) {
-			FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'), 0);
-
-			FlxG.sound.music.fadeIn(4, 0, 0.7);
+			FlxG.sound.playMusic(Paths.music('Exstended'), 1);
 		}
 
 		whiteFade = new FlxSprite().makeGraphic(1, 1, 0xFFFFFFFF);
@@ -449,28 +447,40 @@ class TitleState extends MusicBeatState
 		for (i in 0...textArray.length)
 		{
 			var money:FlxText = new FlxText(0, 0, FlxG.width, textArray[i], 52);
-			money.setFormat(Paths.font("DisneyFont.ttf"), 52, FlxColor.WHITE, CENTER);
+			money.setFormat(Paths.font("DisneyFont.ttf"), 62, FlxColor.WHITE, CENTER);
 			money.screenCenter(X);
 			money.y += (i * 60) + 200;
+			money.y += offset;
 			credGroup.add(money);
 			textGroup.add(money);
+
+			FlxTween.cancelTweensOf(money);
+			FlxTween.num(0, 1, 1, null, num -> money.alpha = num);
 		}
 	}
 
 	function addMoreText(text:String, ?offset:Float = 0)
 	{
 		var coolText:FlxText = new FlxText(0, 0, FlxG.width, text, 52);
-		coolText.setFormat("assets/fonts/DisneyFont.ttf", 52, FlxColor.WHITE, CENTER);
+		coolText.setFormat("assets/fonts/DisneyFont.ttf", 62, FlxColor.WHITE, CENTER);
 		coolText.screenCenter(X);
 		coolText.y += (textGroup.length * 60) + 200;
+		coolText.y += offset;
 		credGroup.add(coolText);
 		textGroup.add(coolText);
+
+		FlxTween.cancelTweensOf(coolText);
+		FlxTween.num(0, 1, 1, null, num -> coolText.alpha = num);
 	}
 
 	function deleteCoolText()
 	{
 		while (textGroup.members.length > 0)
 		{
+			textGroup.forEach(sigma -> {
+				if (Std.isOfType(sigma, FlxText))
+					FlxTween.num(1, 0, .5, null, num -> cast (sigma, FlxText).alpha = num);
+			});
 			credGroup.remove(textGroup.members[0], true);
 			textGroup.remove(textGroup.members[0], true);
 		}
@@ -483,8 +493,6 @@ class TitleState extends MusicBeatState
 		super.beatHit();
 
 		if(!closedState) {
-			FlxG.camera.zoom += 0.035;
-
 			// logo doesn't have animation, we make one by ourselfs instead
 			logoBl.scale.x += 0.02;
 			logoBl.scale.y += 0.02;
@@ -493,37 +501,38 @@ class TitleState extends MusicBeatState
 			switch (sickBeats)
 			{
 				case 1:
-					createCoolText(["Dunkin' Funkin' Team"], 15);
-				case 2:
-					addMoreText('Presents', 15);
+					createCoolText(["Dunkin' Funkin' Team"], 0);
 				case 3:
-					deleteCoolText();
-				case 4:
-					createCoolText(['The sights of hell...'], -40);
+					addMoreText('Presents', 0);
 				case 5:
-					addMoreText('..that awaits you.', -40);
-				case 6:
 					deleteCoolText();
 				case 7:
-					createCoolText([curWacky[0]]);
-				case 8:
-					addMoreText(curWacky[1]);
+					createCoolText(['The sights of hell...'], 0);
 				case 9:
-					deleteCoolText();
-				case 10:
-					addMoreText('Enjoy');
-				case 11:
-					addMoreText('Your Stay...');
+					addMoreText('..that awaits you.', 0);
 				case 12:
 					deleteCoolText();
-				case 13:
-					addMoreText('Funkin.avi');
 				case 14:
-					addMoreText('2.0');
-				case 15:
+					createCoolText([curWacky[0]]);
+				case 16:
+					addMoreText(curWacky[1]);
+				case 18:
+					deleteCoolText();
+				case 21:
+					addMoreText('Enjoy');
+				case 24:
+					addMoreText('Your Stay...');
+				case 27:
+					deleteCoolText();
+				case 30:
+					addMoreText('Funkin');
+				case 32:
+					deleteCoolText();
+					createCoolText(['Funkin.AVI'], 0);
+				case 35:
 					if(!isTweenCancelled)
 					fadeTween = FlxTween.tween(whiteFade, {alpha: 1}, 2, {ease: FlxEase.quartInOut});
-				case 16:
+				case 36:
 					if(!isTweenCancelled) {
 					fadeTween.cancel();
 					whiteFade.alpha = 0;	
