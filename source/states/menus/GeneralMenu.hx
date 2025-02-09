@@ -86,6 +86,9 @@ class GeneralMenu extends MusicBeatState {
             mouseOnButtons = false;
             changeItem(-1);
         }
+				if (controls.BACK) {
+						MusicBeatState.switchState(new MainMenu());
+				}
 
         checkMousePosition();
         super.update(elapsed);
@@ -117,11 +120,8 @@ class GeneralMenu extends MusicBeatState {
     }
 
     function selectItem(id:Int) {
-        switch(item[id]) {
-            case 'extra':
-            case 'story':
-            case 'tape':
-        }
+	      FreeplayState.freeplayMenuList = id;
+				MenuBeatState.switchState(new FreeplayState());
     }
 
     function changeItem(change:Int = 0) {
