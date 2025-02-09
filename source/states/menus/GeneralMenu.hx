@@ -121,7 +121,7 @@ class GeneralMenu extends MusicBeatState {
 
     function selectItem(id:Int) {
 	      FreeplayState.freeplayMenuList = id;
-				MenuBeatState.switchState(new FreeplayState());
+				MusicBeatState.switchState(new FreeplayState());
     }
 
     function changeItem(change:Int = 0) {
