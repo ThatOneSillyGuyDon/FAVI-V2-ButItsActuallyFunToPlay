@@ -741,7 +741,7 @@ class FreeplayState extends MusicBeatState
 			}
 			threadActive = false;
 			FlxG.sound.play(Paths.sound('cancelMenu'));
-			MusicBeatState.switchState(new FreeplayCategories());
+			MusicBeatState.switchState(new GeneralMenu());
 			FlxG.mouse.visible = true;
 		}
 
