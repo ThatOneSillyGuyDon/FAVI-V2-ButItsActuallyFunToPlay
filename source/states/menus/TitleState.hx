@@ -25,8 +25,6 @@ import openfl.display.BitmapData;
 import openfl.filters.BitmapFilter;
 import openfl.filters.ShaderFilter;
 
-import states.menus.GeneralMenu;
-
 import sys.FileSystem;
 import sys.io.File;
 //import flixel.graphics.FlxGraphic as FlixelGraphic;
@@ -439,7 +437,7 @@ class TitleState extends MusicBeatState
 
 				new FlxTimer().start(1.3, function(tmr:FlxTimer){
 					closedState = true;
-					MusicBeatState.switchState(new GeneralMenu());
+					MusicBeatState.switchState(new MainMenu());
 				});
 			}
 		}

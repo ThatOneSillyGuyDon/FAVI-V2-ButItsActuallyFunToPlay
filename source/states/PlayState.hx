@@ -786,7 +786,7 @@ class PlayState extends MusicBeatState
 		}
 		SONG.stage = curStage;
 
-		pathway = 'favi/stages/' + curStage + '/images/';
+		pathway = 'favi/stages/' + curStage + (SONG.song == "Malfunction" ? '/stupidShit/' : '/images/');
 		if (SONG.song == "Cycled Sins")
 			daPixelZoom = 5;
 		else
@@ -1302,6 +1302,104 @@ class PlayState extends MusicBeatState
 					var desktopThing:FlxSprite = new FlxSprite(-500, -100).loadGraphic(Paths.image(pathway + 'desktop'));
 					desktopThing.scale.set(1.3, 1);
 					add(desktopThing);
+				case 'grassNation':
+					isPixelStage = true;
+					defaultCamZoom = 0.8;
+					
+					if (!lowQuality)
+					{
+						var white:FlxSprite = new FlxSprite().makeGraphic(FlxG.width*5, FlxG.height*5, FlxColor.WHITE);
+						white.scrollFactor.set(0, 0);
+						white.antialiasing = ClientPrefs.globalAntialiasing;
+						white.screenCenter();
+						add(white);
+
+						var grass1:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image(pathway + 'grass4'));
+						grass1.scrollFactor.set(0.45, 0.45);
+						grass1.antialiasing = false;
+						if (ClientPrefs.shaders && !lowQuality)
+							grass1.shader = malBG;
+						add(grass1);
+
+						var grass2:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image(pathway + 'grass3'));
+						grass2.scrollFactor.set(0.57, 0.57);
+						grass2.antialiasing = false;
+						if (ClientPrefs.shaders && !lowQuality)
+							grass2.shader = malBG;
+						add(grass2);
+
+						var grass3:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image(pathway + 'grass2'));
+						grass3.scrollFactor.set(0.65, 0.65);
+						grass3.antialiasing = false;
+						if (ClientPrefs.shaders && !lowQuality)
+							grass3.shader = malBG;
+						add(grass3);
+
+						var grass4:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image(pathway + 'grass1'));
+						grass4.scrollFactor.set(0.75, 0.75);
+						grass4.antialiasing = false;
+						if (ClientPrefs.shaders && !lowQuality)
+							grass4.shader = malBG;
+						add(grass4);
+
+						var ground:FlxBackdrop = new FlxBackdrop(Paths.image(pathway + 'ground'), X, 0, 0);
+						ground.antialiasing = false;
+						add(ground);
+
+						var cloudClutters:FlxBackdrop = new FlxBackdrop(Paths.image(pathway + 'cloudClutters'), X, 0, 0);
+						cloudClutters.antialiasing = false;
+						cloudClutters.scrollFactor.set(0.92, 0.92);
+						cloudClutters.velocity.set(100, 0);
+						add(cloudClutters);
+
+						whiteBG = new FlxSprite().makeGraphic(1, 1, 0xFFFFFFFF);
+						whiteBG.scale.set(FlxG.width*5, FlxG.height*5);
+						whiteBG.scrollFactor.set(0, 0);
+						whiteBG.screenCenter();
+						whiteBG.alpha = 0.001;
+						whiteBG.active = false;
+						add(whiteBG);
+
+						var fog1:FlxBackdrop = new FlxBackdrop(Paths.image(pathway + 'fogBack'), X, 0, 0);
+						fog1.antialiasing = false;
+						fog1.scrollFactor.set(1.1, 1.1);
+						fog1.velocity.set(87, 0);
+						add(fog1);
+
+						var fog2:FlxBackdrop = new FlxBackdrop(Paths.image(pathway + 'fogFore'), X, 0, 0);
+						fog2.antialiasing = false;
+						fog2.scrollFactor.set(1.32, 1.32);
+						fog2.velocity.set(-173, 0);
+						foreground.add(fog2);
+
+						for (shit in [grass1, grass2, grass3, grass4, ground, cloudClutters, fog1, fog2])
+						{
+							shit.scale.set(1.75, 1.75);
+							shit.x -= 250;
+							shit.y += 50;
+						}
+					}
+					else
+					{
+						var white:FlxSprite = new FlxSprite().makeGraphic(FlxG.width*5, FlxG.height*5, FlxColor.WHITE);
+						white.scrollFactor.set(0, 0);
+						white.antialiasing = ClientPrefs.globalAntialiasing;
+						white.screenCenter();
+						add(white);
+						
+						var lowQualityBG:FlxSprite = new FlxSprite(-250, 50).loadGraphic(Paths.image('favi/stages/grassNation/bgLowQuality'));
+						lowQualityBG.antialiasing = false;
+						lowQualityBG.scale.set(1.75, 1.75);
+						add(lowQualityBG);
+
+						whiteBG = new FlxSprite(-800, -200).makeGraphic(1, 1, 0xFFFFFFFF);
+						whiteBG.scale.set(FlxG.width*5, FlxG.height*5);
+						whiteBG.scrollFactor.set(0, 0);
+						whiteBG.screenCenter();
+						whiteBG.alpha = 0.001;
+						whiteBG.active = false;
+						add(whiteBG);
+					}
 				case 'forbiddenRealm':
 					isPixelStage = true;
 					defaultCamZoom = 0.8;
@@ -2327,7 +2425,7 @@ class PlayState extends MusicBeatState
 			{
 				switch (curStage)
 				{
-					case 'stage' | 'desktop' | 'waltRoom' | 'apartment' | 'treasureIsland' | 'forbiddenRealm' | 'fuckingLine' | 'staticVoid' | 'vaultRoom' | 'war':
+					case 'stage' | 'desktop' | 'waltRoom' | 'apartment' | 'treasureIsland' | 'forbiddenRealm' | 'fuckingLine' | 'staticVoid' | 'vaultRoom' | 'war' | 'grassNation':
 					// don't add scratch assets
 	
 					case 'theLoop':
@@ -11136,20 +11234,29 @@ class PlayState extends MusicBeatState
 				switch (curBeat)
 				{
 					// Intro Cam Stuff
-					case 1: FlxTween.tween(camGame, {alpha: 1}, 5, {ease: FlxEase.sineInOut});
+					case 1:
+						camBars.fade(FlxColor.BLACK, 5, true);
+						camGame.alpha = 1;
 					case 16: tweenCamera(1.2, 5, 'quartInOut');
 					case 32:
 						defaultCamZoom = 0.8;
 						FlxTween.tween(camHUD, {alpha: 1}, 0.5, {ease: FlxEase.sineOut});
 						FlxTween.tween(camNotes, {alpha: 1}, 0.5, {ease: FlxEase.sineOut});
-					case 39 | 48 | 64 | 72 | 88 | 96 | 103 | 113 | 128 | 184 | 192: defaultCamZoom = 0.8;
+					case 39 | 48 | 64 | 72 | 88 | 96 | 103 | 113 | 128 | 192: defaultCamZoom = 0.8;
 					case 38 | 102: tweenCamera(1.5, 0.25, 'sineInOut');
 					case 45 | 61 | 110 | 126 | 187: defaultCamZoom = 0.9;
 					case 46 | 62 | 67 | 76 | 83 | 92 | 111 | 127 | 158 | 190: defaultCamZoom = 1;
 					case 47 | 63 | 68 | 84 | 112 | 159: defaultCamZoom = 1.3;
 					case 69 | 85: defaultCamZoom = 1.1;
-					case 160: defaultCamZoom = 0.65;
+					case 160: 
+						defaultCamZoom = 0.75;
+						whiteBG.alpha = 1;
+						FlxTween.tween(whiteBG, {alpha: 0}, 2);
+						camFlashSystem(BG_DARK, {alpha: 1, timer: 5, ease: FlxEase.expoInOut});
 					case 164: tweenCamera(1.5, 6, 'sineInOut');
+					case 184:
+						defaultCamZoom = 0.8;
+						camFlashSystem(BG_DARK, {alpha: 0, timer: 1, ease: FlxEase.sineOut});
 					case 191:
 						if (canaddshaders)
 						{

@@ -82401,7 +82401,7 @@ enum abstract Chart(String) from String to String {
 		"voiceSfx1": "BF",
 		"needsVoices": true,
 		"validScore": true,
-		"stage": "forbiddenRealm",
+		"stage": "grassNation",
 		"voiceSfx2": "Malsquare",
 		"bpm": 166,
 		"speed": 3,
