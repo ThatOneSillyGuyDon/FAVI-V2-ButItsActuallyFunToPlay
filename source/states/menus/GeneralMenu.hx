@@ -13,6 +13,7 @@ import flixel.input.keyboard.FlxKey;
 import flixel.input.keyboard.FlxKeyboard;
 import haxe.io.Path;
 import openfl.net.SharedObject;
+import lime.app.Application;
 import openfl.net.SharedObjectFlushStatus;
 import sys.io.File;
 import flixel.addons.effects.FlxSkewedSprite;
@@ -29,8 +30,20 @@ class GeneralMenu extends MusicBeatState {
     var bottom:FlxSprite;
     var dark:FlxSprite;
 
-    var item:Array<String> = ['extra', 'story', 'tape'];
+    var item:Array<String> = ['story', 'extra', 'tape'];
     var itemGroup:FlxTypedGroup<FlxSprite>;
+
+    var catDesc:FlxTypeText;
+	var backdrop:FlxBackdrop;
+	var defaultShader2:FlxRuntimeShader;
+
+    var spectrum:SpectrumWaveform;
+
+    var catDescString:Array<String> = [
+		"Story Mode Songs: After the hell seen in our little story, here you will be given power to replay the pain all over again.",
+		"Extra Songs: Danger lurks in every shadow, in every breath. An uncomfortable sense of unease takes hold as you venture through strange worlds where fear is a constant companion.",
+		"Legacy Songs: A place where long forgotten memories emerge from the shadows, reeling in the past and its viewers back"
+	];
 
     private static var curSelected:Int = 0;
     private static var allowInputs:Bool;
@@ -42,18 +55,51 @@ class GeneralMenu extends MusicBeatState {
         FlxG.cameras.reset(camMain);
         FlxG.cameras.setDefaultDrawTarget(camMain, true);
 
-        bg = new FlxSprite().loadGraphic(Paths.image('menu/menuBG'));
+        #if desktop
+		// Updating Discord Rich Presence
+		DiscordClient.changePresence("Freeplay Menu", "Choosing Category...", 'icon', 'disc-player');
+		#end
+
+		Application.current.window.title = "Funkin.avi - Freeplay: Category Menu";
+
+        if (!FlxG.mouse.visible)
+			FlxG.mouse.visible = true;
+
+		AppIcon.changeIcon("newIcon");
+		
+		defaultShader2 = new FlxRuntimeShader(Shaders.monitorFilter, null, 140);
+		FlxG.camera.setFilters(
+			[
+				new openfl.filters.ShaderFilter(defaultShader2)
+			]);
+
+        bg = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/category/menuBG'));
         bg.screenCenter();
         add(bg);
+        
+        backdrop = new FlxBackdrop(FlxGridOverlay.createGrid(80, 80, 160, 160, true, 0xFFFFFF, 0x33FFFFFF));
+		backdrop.velocity.set(40, 40);
+		backdrop.alpha = 0.5;
+        backdrop.setGraphicSize(Std.int(backdrop.width * 0.6));
+		add(backdrop);
+
+        if (!ClientPrefs.lowQuality)
+        {
+            spectrum = new SpectrumWaveform(0, 670, FlxG.sound.music, FlxG.width, FlxG.height, TO_UP_FROM_DOWN, ROUNDED, 0xffff5e5e);
+            spectrum.design = ROUNDED;
+            spectrum.barWidth = 12;
+            spectrum.barSpacing = 16;
+            spectrum.blend = ADD;
+            spectrum.alpha = 0.6;
+            add(spectrum);
+        }
 
         itemGroup = new FlxTypedGroup<FlxSprite>();
         add(itemGroup);
 
-        FlxG.mouse.visible = true;
-
         for (i in 0...item.length) {
             var itemSprite = new FlxSprite();
-            itemSprite.loadGraphic(Paths.image('menu/item/' + item[i] + '0'));
+            itemSprite.loadGraphic(Paths.image('Funkin_avi/category/item/' + item[i] + '0'));
             itemGroup.add(itemSprite);
             itemSprite.scale.set(0.95, 0.95);
             itemSprite.ID = i;
@@ -62,13 +108,40 @@ class GeneralMenu extends MusicBeatState {
             #end
         }
 
-        bottom = new FlxSprite(0, 50).loadGraphic(Paths.image('menu/bottom'));
-        bottom.scale.set(1.25, 1);
+        bottom = new FlxSprite(0, 0).loadGraphic(Paths.image('Funkin_avi/category/bottom'));
+        bottom.setGraphicSize(0, FlxG.height);
+        bottom.screenCenter();
         add(bottom);
 
-        dark = new FlxSprite().loadGraphic(Paths.image('menu/vingnette'));
+        catDesc = new FlxTypeText(0, 640, 500, '');
+		catDesc.setFormat(Paths.font("Oceanic_Cocktail_Demo.otf"), 28, FlxColor.WHITE, CENTER);
+		catDesc.screenCenter(X);
+		add(catDesc);
+
+        dark = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/category/vingnette'));
         dark.screenCenter();
         add(dark);
+
+        if(!ClientPrefs.lowQuality)
+			{
+				var scratchStuff:FlxSprite = new FlxSprite();
+				scratchStuff.frames = Paths.getSparrowAtlas('Funkin_avi/filters/scratchShit');
+				scratchStuff.animation.addByPrefix('idle', 'scratch thing 1', 24, true);
+				scratchStuff.animation.play('idle');
+				scratchStuff.screenCenter();
+				scratchStuff.scale.x = 1.1;
+				scratchStuff.scale.y = 1.1;
+				add(scratchStuff);
+	
+				var grain:FlxSprite = new FlxSprite();
+				grain.frames = Paths.getSparrowAtlas('Funkin_avi/filters/Grainshit');
+				grain.animation.addByPrefix('idle', 'grains 1', 24, true);
+				grain.animation.play('idle');
+				grain.screenCenter();
+				grain.scale.x = 1.1;
+				grain.scale.y = 1.1;
+				add(grain);
+            }
 
         super.create();
         updateSelection();
@@ -79,16 +152,22 @@ class GeneralMenu extends MusicBeatState {
         if (controls.UI_LEFT_P) {
             allowInputs = true;
             mouseOnButtons = false;
-            changeItem(1);
+            changeItem(-1);
         }
         if (controls.UI_RIGHT_P) {
             allowInputs = true;
             mouseOnButtons = false;
-            changeItem(-1);
+            changeItem(1);
         }
-				if (controls.BACK) {
-						MusicBeatState.switchState(new MainMenu());
-				}
+		if (controls.BACK) {
+			FreeplayState.songInstPlaying = false;
+			FlxG.sound.play(Paths.sound("cancelMenu"));
+			MusicBeatState.switchState(new MainMenu());
+			FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
+		}
+        if (controls.ACCEPT) {
+            selectItem(curSelected);
+        }
 
         checkMousePosition();
         super.update(elapsed);
@@ -99,7 +178,7 @@ class GeneralMenu extends MusicBeatState {
             for (i in 0...itemGroup.members.length) {
                 var spr:FlxSprite = itemGroup.members[i];
                 if (i == curSelected && !FlxG.mouse.overlaps(spr) || !mouseOnButtons) {
-                    spr.loadGraphic(Paths.image('menu/item/' + item[i] + '0'));
+                    spr.loadGraphic(Paths.image('Funkin_avi/category/item/' + item[i] + '0'));
                 }
             }
         }
@@ -120,8 +199,9 @@ class GeneralMenu extends MusicBeatState {
     }
 
     function selectItem(id:Int) {
-	      FreeplayState.freeplayMenuList = id;
-				MusicBeatState.switchState(new FreeplayState());
+        FlxG.mouse.visible = false;
+	    FreeplayState.freeplayMenuList = id;
+		MusicBeatState.switchState(new FreeplayState());
     }
 
     function changeItem(change:Int = 0) {
@@ -134,8 +214,11 @@ class GeneralMenu extends MusicBeatState {
     function updateSelection() {
         for (i in 0...item.length) {
             var spr:FlxSprite = itemGroup.members[i];
-            spr.loadGraphic(Paths.image('menu/item/' + item[i] + (i == curSelected ? '1' : '0')));
+            spr.loadGraphic(Paths.image('Funkin_avi/category/item/' + item[i] + (i == curSelected ? '1' : '0')));
         }
+        FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
+        catDesc.resetText(catDescString[curSelected]);
+		catDesc.start(0.02, true);
     }
 
 }

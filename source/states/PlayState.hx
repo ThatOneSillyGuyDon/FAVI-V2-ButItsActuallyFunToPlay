@@ -472,8 +472,8 @@ class PlayState extends MusicBeatState
 	 public var mickeySpirit:Character;
 	 public static var smokeShit:FlxTypedGroup<FlxSprite>;
 	 public static var smokeFore:FlxTypedGroup<FlxSprite>;
-	 public static var spriteShit:Array<String> = ['bigSmoke', 'smallSmoke', 'smallSmoke', 'bigSmoke'];
-	 public static var spriteShitForeground:Array<String> = ['bigSmoke', 'bigSmoke', 'smallSmoke', 'bigSmoke'];
+	 public static var spriteShit:Array<String> = ['smokeBBack', 'smokeTBack'];
+	 public static var spriteShitForeground:Array<String> = ['smokeBFore', 'smokeTFore'];
 	 public static var pathway:String = 'favi/stages/' + curStage + '/images/';
 	  
 	// Mickey being delusional and minnie appearing Scene For Delusional aaaa
@@ -975,21 +975,18 @@ class PlayState extends MusicBeatState
 	
 							for (i in 0...spriteShit.length)
 							{
-								var smoke:FlxSprite = new FlxSprite(0, 550);
+								var smoke:FlxBackdrop = new FlxBackdrop(Paths.image(pathway + spriteShit[i]), X, 0, 0);
 								smoke.ID = i;
-								smoke.frames = Paths.getSparrowAtlas(pathway + spriteShit[i]);
-								smoke.animation.addByPrefix('smoke', spriteShit[i] + ' idle', 4, true);
-								smoke.scale.set(1.3, 1.35);
+								smoke.x = -20;
+								smoke.y = 200;
+								smoke.scale.set(2.8, 2.5);
+								smoke.scrollFactor.set(1.2, 1.1);
 								smoke.alpha = 0.001;
-								smoke.blend = ADD;
 								smoke.antialiasing = ClientPrefs.globalAntialiasing;
-								smoke.animation.play('smoke');
 								switch (smoke.ID)
 								{
-									case 0: smoke.x -= 620;
-									case 1: smoke.x += 650;
-									case 2: smoke.x -= 60;
-									case 3: smoke.x += 1100;
+									case 0: smoke.velocity.set(-160, 0);
+									case 1: smoke.velocity.set(160, 0);
 								}
 								smokeShit.add(smoke);
 							}
@@ -1008,21 +1005,18 @@ class PlayState extends MusicBeatState
 	
 							for (i in 0...spriteShitForeground.length)
 							{
-								var smoke:FlxSprite = new FlxSprite(0, 670);
+								var smoke:FlxBackdrop = new FlxBackdrop(Paths.image(pathway + spriteShitForeground[i]), X, 0, 0);
 								smoke.ID = i;
-								smoke.frames = Paths.getSparrowAtlas(pathway + spriteShitForeground[i]);
-								smoke.animation.addByPrefix('smoke', spriteShitForeground[i] + ' idle', 4, true);
-								smoke.scale.set(1.6, 1.4);
+								smoke.x = -20;
+								smoke.y = 200;
+								smoke.scale.set(2.8, 2.5);
+								smoke.scrollFactor.set(1.55, 1.32);
 								smoke.alpha = 0.001;
-								smoke.blend = ADD;
 								smoke.antialiasing = ClientPrefs.globalAntialiasing;
-								smoke.animation.play('smoke');
 								switch (smoke.ID)
 								{
-									case 0: smoke.x -= 620;
-									case 1: smoke.x += 540;
-									case 2: smoke.x -= 60;
-									case 3: smoke.x += 1100;
+									case 0: smoke.velocity.set(230, 0);
+									case 1: smoke.velocity.set(-230, 0);
 								}
 								smokeFore.add(smoke);
 							}
