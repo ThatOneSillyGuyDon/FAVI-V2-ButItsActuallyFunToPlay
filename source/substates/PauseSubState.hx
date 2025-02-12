@@ -70,12 +70,14 @@ class PauseSubState extends MusicBeatSubstate
 		var randomPauseSong:String = "";
 		var randomizer:Int = FlxG.random.int(1, 3);
 
-		switch (randomizer)
+		/*switch (randomizer)
 		{
 			case 1: randomPauseSong = "calmlyWinds";
 			case 2: randomPauseSong = "soothingLight";
 			case 3: randomPauseSong = "simpleTunes";
-		}
+		}*/
+
+		randomPauseSong = "shipTheFartYayHoorayv3v";
 
 		pauseMusic = new FlxSound();
 		pauseMusic.loadEmbedded(Paths.music("aviOST/pause/" + randomPauseSong), true, true);
@@ -497,12 +499,14 @@ class FAVIPauseSubState extends MusicBeatSubstate
 			var randomPauseSong:String = "";
 			var randomizer:Int = FlxG.random.int(1, 3);
 
-			switch (randomizer)
+			/*switch (randomizer)
 			{
 				case 1: randomPauseSong = "calmlyWinds";
 				case 2: randomPauseSong = "soothingLight";
 				case 3: randomPauseSong = "simpleTunes";
-			}
+			}*/
+
+			randomPauseSong = "shipTheFartYayHoorayv3v";
 
 			fuckingName = (PlayState.useFakeDeluName ? "Regret" : PlayState.SONG.song);
 
