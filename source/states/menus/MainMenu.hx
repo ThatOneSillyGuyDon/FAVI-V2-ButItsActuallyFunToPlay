@@ -802,7 +802,7 @@ class MainMenu extends MusicBeatState
 							switch (daChoice)
 							{
 								case 'freeplay':
-									MusicBeatState.switchState(new FreeplayCategories());
+									MusicBeatState.switchState(new GeneralMenu());
 									FlxG.sound.music.fadeIn(0.5, 0, 0.7);
 									FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
 							}
