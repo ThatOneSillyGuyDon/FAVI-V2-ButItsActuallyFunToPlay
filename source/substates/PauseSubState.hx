@@ -70,14 +70,12 @@ class PauseSubState extends MusicBeatSubstate
 		var randomPauseSong:String = "";
 		var randomizer:Int = FlxG.random.int(1, 3);
 
-		/*switch (randomizer)
+		switch (randomizer)
 		{
-			case 1: randomPauseSong = "calmlyWinds";
-			case 2: randomPauseSong = "soothingLight";
-			case 3: randomPauseSong = "simpleTunes";
-		}*/
-
-		randomPauseSong = "shipTheFartYayHoorayv3v";
+			case 1: randomPauseSong = "shipTheFartYayHoorayv3v";
+			case 2: randomPauseSong = "somberNight";
+			case 3: randomPauseSong = "somberNight";
+		}
 
 		pauseMusic = new FlxSound();
 		pauseMusic.loadEmbedded(Paths.music("aviOST/pause/" + randomPauseSong), true, true);
@@ -454,6 +452,8 @@ class FAVIPauseSubState extends MusicBeatSubstate
 	var countDown:FlxText;
 	var hasResumed:Bool = false;
 	var hasFinishedAnim:Bool = false;
+	var pauseNameTxt:FlxText;
+	var pauseSongStr:String;
 	var satanTxt:FlxText;
 	var satanQuotes:Array<String> = [
 		"You can't leave now...",
@@ -499,14 +499,18 @@ class FAVIPauseSubState extends MusicBeatSubstate
 			var randomPauseSong:String = "";
 			var randomizer:Int = FlxG.random.int(1, 3);
 
-			/*switch (randomizer)
+			switch (randomizer)
 			{
-				case 1: randomPauseSong = "calmlyWinds";
-				case 2: randomPauseSong = "soothingLight";
-				case 3: randomPauseSong = "simpleTunes";
-			}*/
-
-			randomPauseSong = "shipTheFartYayHoorayv3v";
+				case 1: 
+					randomPauseSong = "shipTheFartYayHoorayv3v";
+					pauseSongStr = "Ship The Fart Hooray < 3 (Shining Stars)";
+				case 2: 
+					randomPauseSong = "somberNight";
+					pauseSongStr = "Ahh The Scary (Somber Night)";
+				case 3: 
+					randomPauseSong = "somberNight";
+					pauseSongStr = "Ahh The Scary (Somber Night)";
+			}
 
 			fuckingName = (PlayState.useFakeDeluName ? "Regret" : PlayState.SONG.song);
 
@@ -519,7 +523,6 @@ class FAVIPauseSubState extends MusicBeatSubstate
 				case "Delusional": if (colorSetup != FlxColor.fromRGB(79, 32, 32)) colorSetup = FlxColor.fromRGB(79, 32, 32);
 				case "Regret": if (colorSetup != FlxColor.WHITE) colorSetup = FlxColor.WHITE;
 				case "Birthday": if (colorSetup != FlxColor.fromRGB(84, 255, 181)) colorSetup = FlxColor.fromRGB(84, 255, 181);
-				case "Delutrance": if (colorSetup != FlxColor.fromRGB(0, 16, 245)) colorSetup = FlxColor.fromRGB(0, 16, 245);
 			}
 
 			var pauseArtAsset:String = CoolUtil.spaceToDash(fuckingName.toLowerCase());
@@ -558,6 +561,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 			daSelector = new FlxSprite().loadGraphic(Paths.image("Funkin_avi/pause/buttonSelector"));
 			countDown = new FlxText(0, 0, 0, "", 0);
 			satanTxt = new FlxText(0, 650, 0, "", 0);
+			pauseNameTxt = new FlxText(5, 700, 1280, "Now Playing: " + pauseSongStr + " - ForFurtherNotice");
 	
 			// text stuff
 			// I'M NOT DELUSIONAL, YOU'RE DELUSIONAL !!!!!!
@@ -565,6 +569,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 			songName.setFormat(Paths.font("disneyFreeplayFont.ttf"), 46, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 			countDown.setFormat(Paths.font("betterSatanFont.ttf"), 90, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 			satanTxt.setFormat(Paths.font("betterSatanFont.ttf"), 40, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			pauseNameTxt.setFormat(Paths.font("disneyFreeplayFont.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 	
 			// cool file check system so we don't need to compile the game everytime for this
 			if (sys.FileSystem.exists('./assets/images/' + getArt + pauseArtAsset + '.png'))
@@ -581,43 +586,28 @@ class FAVIPauseSubState extends MusicBeatSubstate
 	
 			levelInfo.text = array[0];
 	
-			levelInfo.scrollFactor.set();
-			bg.scrollFactor.set();
-			songName.scrollFactor.set();
-			countDown.scrollFactor.set();
+			for (obj in [levelInfo, bg, songName, countDown])
+				obj.scrollFactor.set();
 	
 			tiles.velocity.set(50, 30);
 	
-			countDown.screenCenter();
-			bgOverlay.screenCenter();
-			menuHUD.screenCenter();
-			albumHolder.screenCenter();
+			for (obj in [countDown, bgOverlay, menuHUD, albumHolder])
+				obj.screenCenter();
+
 			satanTxt.screenCenter(X);
 	
 			menuHUD.x -= 850;
 			albumHolder.x += 500;
 	
 			// alpha value setup
-			bg.alpha = 0.0001;
-			bgOverlay.alpha = 0.0001;
-			tiles.alpha = 0.0001;
-			levelInfo.alpha = 0.0001;
-			songName.alpha = 0.0001;
-			daSelector.alpha = 0.0001;
+			for (obj in [bg, bgOverlay, tiles, levelInfo, songName, daSelector, pauseNameTxt])
+				obj.alpha = 0.0001;
+
 			countDown.visible = false;
 	
 			// fuck it. add everything
-			add(bg);
-			add(bgOverlay);
-			add(tiles);
-			add(menuHUD);
-			add(albumHolder);
-			add(songName);
-			add(levelInfo);
-			add(disc);
-			add(songArtOutline);
-			add(songArt);
-			add(daSelector);
+			for (obj in [bg, bgOverlay, tiles, menuHUD, albumHolder, songName, levelInfo, pauseNameTxt, disc, songArtOutline, songArt, daSelector])
+				add(obj);
 	
 			bgOverlay.color = colorSetup;
 			tiles.color = colorSetup;
@@ -655,6 +645,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 			FlxTween.tween(disc, {angle: 360}, 2, {type: LOOPING});
 			FlxTween.tween(songArt, {x: songArt.x - 110}, 0.8, {ease: FlxEase.quartOut});
 			FlxTween.tween(songArtOutline, {x: songArtOutline.x - 110}, 0.8, {ease: FlxEase.quartOut});
+			FlxTween.tween(pauseNameTxt, {alpha: 1}, 1, {ease:FlxEase.quartOut});
 	
 			changeSelection();
 			lime.app.Application.current.window.title += " - {Paused}";
@@ -753,16 +744,6 @@ class FAVIPauseSubState extends MusicBeatSubstate
 										case 'Devilish Deal' | 'Isolated' | 'Lunacy' | 'Delusional':
 											states.menus.FreeplayState.freeplayMenuList = 0;
 											MusicBeatState.switchState(new states.menus.FreeplayState());
-										case 'Delutrance': // hahaha, you FOOL, you're obligated to play till you beat it!
-											if (GameData.highOnCrackLock == 'forceBackToSong')
-											{
-												restartSong();
-											}
-											else
-											{
-												states.menus.FreeplayState.freeplayMenuList = 1;
-												MusicBeatState.switchState(new states.menus.FreeplayState());
-											}
 										default:
 											states.menus.FreeplayState.freeplayMenuList = (PlayState.SONG.song.toLowerCase().endsWith('legacy') || PlayState.SONG.song == "Isolated Beta" || PlayState.SONG.song == "Isolated Old") ? 2 : 1;
 											MusicBeatState.switchState(new states.menus.FreeplayState()); // yeah, there's no way I'm making a case for EVERY fucking song in that menu, too much work!
@@ -869,6 +850,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 				FlxTween.tween(tiles, {alpha: 0}, 1, {ease: FlxEase.quartInOut});
 				FlxTween.tween(menuHUD, {x: menuHUD.x - 850}, 0.95, {ease: FlxEase.quartOut});
 				FlxTween.tween(albumHolder, {x: albumHolder.x + 500}, 0.95, {ease: FlxEase.quartOut});
+				FlxTween.tween(pauseNameTxt, {alpha: 0}, 0.75, {ease: FlxEase.quartOut});
 	
 				new FlxTimer().start(0.4, function(tmr:FlxTimer)
 				{
@@ -914,6 +896,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 				FlxTween.tween(bg, {alpha: 0}, 0.4, {ease: FlxEase.quartOut});
 				FlxTween.tween(bgOverlay, {alpha: 0}, 0.4, {ease: FlxEase.quartOut});
 				FlxTween.tween(daSelector, {alpha: 0}, 0.4, {ease: FlxEase.quartOut});
+				FlxTween.tween(pauseNameTxt, {alpha: 0}, 0.04, {ease: FlxEase.quartOut});
 	
 				new FlxTimer().start(0.5, function(tmr:FlxTimer)
 				{
@@ -967,7 +950,6 @@ class FAVIPauseSubState extends MusicBeatSubstate
 				case "Cycled Sins": json = CreditsData.cycledSins;
 				case "Malfunction": json = CreditsData.malfunction;
 				case "Birthday": json = CreditsData.birthday;
-				case "Delutrance": json = CreditsData.delutrance;
 			}
 		
 			if (json != null && json.length > 0)

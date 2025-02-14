@@ -62,16 +62,6 @@ Until Next Time!",
 			true
 		],
 		[
-			"RetroJogador",
-			"joga",
-			"Composed Main Menu, Delutrance, & Made Menu Art",
-			"\nBtw I really enjoyed joining the mod team and ending this amazing update, \nalong the way I met and made a lot of cool friends. Changing the subject,\n\nI was responsible for making the Menu Music, Pause Music, Sanguis Muris and others, Arts I practically created the main menu, hud and Others,\n\nand I gave the voice to Mrs Smile in V2, Change the World, My Final Message: YIPPEEE- ",
-			-320,
-			-130,
-			0.55,
-			true
-		],
-		[
 			"MalyPlus",
 			"maly",
 			"Assistant Programmer",
@@ -92,12 +82,19 @@ Until Next Time!",
 			false
 		],
 		[
+			"ZackGowman",
+			"zackIsPeter",
+			"Character Info Menu Art",
+			"But Where's Are Those Good And Old Fashioned-Values",
+			40, 170, 0.6, false
+		],
+		[
 			"GreyDoodlez",
-			"greyNEW",
+			"greyV25",
 			"Artist",
 			"Cedric, dejame ver a los niños.",
-			-270,
-			-135,
+			40,
+			145,
 			0.65,
 			false
 		],
@@ -158,7 +155,7 @@ also play miserable funk pls ty <33 ",
 
 		[
 			"Ms.IDK",
-			"idk",
+			"msidkBird",
 			"Artist & Owner of White Noise and RS",
 			"I hate suicide mouse!",
 			-314,

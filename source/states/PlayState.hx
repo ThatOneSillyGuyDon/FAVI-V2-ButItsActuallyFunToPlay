@@ -956,7 +956,6 @@ class PlayState extends MusicBeatState
 						streetRuins.scrollFactor.set(1, 1);
 						add(streetRuins);
 
-
 						// Bedroom Grah :fire: - MalyPlus
 						minnieBackground = new FlxSprite(-20, 200).loadGraphic(Paths.image(pathway + 'background'));
 						minnieBackground.scale.set(2,2);
@@ -10275,7 +10274,7 @@ class PlayState extends MusicBeatState
 						chromTween = FlxTween.tween(instance, {chromEffect: 1}, 0.1, {ease: FlxEase.sineInOut});
 						tweenCamera(1.5, 0.1, 'sineInOut');
 					case 376:
-						chromTween.cancel();
+						if (chromTween != null) chromTween.cancel();
 						chromTween = null;
 						camGame.visible = false;
 						camHUD.visible = false;

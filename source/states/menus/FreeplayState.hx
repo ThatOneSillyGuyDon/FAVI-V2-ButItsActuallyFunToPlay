@@ -44,7 +44,6 @@ class FreeplayState extends MusicBeatState
 	private var iconArray:Array<HealthIcon> = [];
 
 	private var bg:Null<FlxSprite>;
-	private var delutranceBg:Null<FlxSprite>;
 
 	var bgslider:FlxSprite;
 	var musicPlayer:FlxSprite;
@@ -173,11 +172,6 @@ class FreeplayState extends MusicBeatState
 					{
 						addSong('Birthday', 3, 'muckney', FlxColor.fromRGB(84, 255, 181), 'FR3SHMoure', 'PARTY', FlxColor.fromRGB(250, 234, 92), [10, 0]);
 					}
-					
-					if (GameData.highOnCrackLock == 'completed' || GameData.highOnCrackLock == "unlocked")
-					{
-						addSong('Delutrance', 3, 'delucrack', FlxColor.fromRGB(0, 16, 245), 'JogadorRetro', 'DELUSIONAL', FlxColor.fromRGB(5, 139, 242), [12, -10]); // It's still gonna force ya to fully play it if you replay the song lmfao
-					}
 				}
 			case 2: // Legacy Menu
 				{
@@ -272,13 +266,6 @@ class FreeplayState extends MusicBeatState
 		else
 			bg.loadGraphic(Paths.image(path + 'fp-bg'));
 		add(bg);
-
-		delutranceBg = new FlxSprite();
-		delutranceBg.frames = Paths.getSparrowAtlas(path + 'background');
-		delutranceBg.animation.addByPrefix("lmao", "background lmao", 24, true);
-		delutranceBg.scale.set(5, 5);
-		delutranceBg.animation.play("lmao");
-		delutranceBg.antialiasing = ClientPrefs.globalAntialiasing;
 
 		if (freeplayMenuList != 2)
 		{
@@ -1106,8 +1093,6 @@ class FreeplayState extends MusicBeatState
 									]);
 							}
 							FlxG.camera.shake(0.01, 0.001);
-							remove(delutranceBg);
-							add(bg);
 	
 						case "don't-cross!":
 							if(!ClientPrefs.lowQuality) {
@@ -1138,10 +1123,7 @@ class FreeplayState extends MusicBeatState
 										new ShaderFilter(mercyShader2),
 									]);
 							}
-							// pretty sure you know why
-							remove(delutranceBg);
-							add(bg);
-	
+
 						case 'twisted-grins' | 'resentment' | 'mortiferum-risus':
 							if(!ClientPrefs.lowQuality)
 								FlxG.camera.setFilters([new ShaderFilter(smilesShader)]);
@@ -1171,25 +1153,15 @@ class FreeplayState extends MusicBeatState
 								FlxG.camera.setFilters([]);
 								FlxG.camera.shake(0.01, 0.001);
 							}
-							// fixing a bug of delulu bg not disappearing, and no, im not gonna use alpha
-							remove(delutranceBg);
-							add(bg);
 						
 						case 'devilish-deal' | 'delusional':
 							if(!ClientPrefs.lowQuality)
 								FlxG.camera.setFilters([new ShaderFilter(chromAberration)]);
 							FlxG.camera.shake(0.01, 0.001);
 	
-						case 'delutrance': 
-							FlxG.camera.setFilters([ new ShaderFilter(pixelShader)]);
-							remove(bg);
-							add(delutranceBg);
-	
 						default:
 							FlxG.camera.setFilters([]); // fixed it yay
 							FlxG.camera.shake(0.01, 0.001);
-							remove(delutranceBg);
-							add(bg);
 					}
 				}
 			}
@@ -1270,7 +1242,6 @@ class FreeplayState extends MusicBeatState
 			case 'laugh-track' | 'birthday': bpm = 180;
 			case 'malfunction': bpm = 166;
 			case 'twisted-grins' | "don't-cross!": bpm = 140;
-			case 'delutrance': bpm = 123;
 			case 'cycled-sins': bpm = 161;
 			case 'isolated-beta' | 'isolated-old': bpm = 120;
 		}
@@ -1287,7 +1258,6 @@ class FreeplayState extends MusicBeatState
 				case 'malfunction': difficultyRank = 'null';
 				case "dont-cross": difficultyRank = 'GOOD LUCK';
 				case 'birthday': difficultyRank = 'PARTY';
-				case 'delutrance': difficultyRank = 'DELUSIONAL';
 				default: difficultyRank = 'HARD';
 			}
 			return difficultyRank;
@@ -1306,7 +1276,6 @@ class FreeplayState extends MusicBeatState
 				case "Isolated Legacy": songArtist = "Toko & obscurity.";
 				case "War Dilemma": songArtist = "Sayan Sama & obscurity.";
 				case "Mercy": songArtist = "Ophomix24";
-				case "Delutrance": songArtist = "RetroJogador";
 				default: songArtist = "Unknown";
 			}
 			return songArtist;

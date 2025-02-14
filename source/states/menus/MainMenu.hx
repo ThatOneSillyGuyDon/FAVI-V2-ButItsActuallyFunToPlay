@@ -236,40 +236,13 @@ class MainMenu extends MusicBeatState
 		// uh
 		persistentUpdate = persistentDraw = true;
 
-		floor = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/menu/floor'));
+		floor = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/menu/menuBG'));
 		floor.scrollFactor.set(0, 0);
-		floor.setGraphicSize(Std.int(floor.width * 0.75));
+		floor.setGraphicSize(0, FlxG.height);
 		floor.updateHitbox();
 		floor.screenCenter();
 		floor.antialiasing = true;
 		add(floor);
-
-		if (!ClientPrefs.lowQuality)
-		{
-			blood = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/menu/blood'));
-			blood.scrollFactor.set(0, 0);
-			blood.setGraphicSize(Std.int(blood.width * 0.75));
-			blood.updateHitbox();
-			blood.screenCenter();
-			blood.antialiasing = true;
-			add(blood);
-
-			otherCoolDetail = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/menu/coolDetails'));
-			otherCoolDetail.scrollFactor.set(0, 0);
-			otherCoolDetail.setGraphicSize(Std.int(otherCoolDetail.width * 0.75));
-			otherCoolDetail.updateHitbox();
-			otherCoolDetail.screenCenter();
-			otherCoolDetail.antialiasing = true;
-			add(otherCoolDetail);
-
-			omgCamera = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/menu/camera_in_a_cool_way'));
-			omgCamera.scrollFactor.set(0, 0);
-			omgCamera.setGraphicSize(Std.int(omgCamera.width * 0.75));
-			omgCamera.updateHitbox();
-			omgCamera.screenCenter();
-			omgCamera.antialiasing = true;
-			add(omgCamera);
-		}
 
 		/*trace(GameData.episode1FPLock);
 		if (GameData.episode1FPLock == 'unlocked')
@@ -288,9 +261,9 @@ class MainMenu extends MusicBeatState
 
 		datBook = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/menu/book'));
 		datBook.scrollFactor.set(0, 0);
-		datBook.setGraphicSize(Std.int(datBook.width * 0.67));
+		datBook.setGraphicSize(0, FlxG.height);
 		datBook.updateHitbox();
-		datBook.screenCenter().x += 280;
+		datBook.screenCenter().x -= 220;
 		datBook.antialiasing = true;
 		add(datBook);
 
@@ -305,16 +278,7 @@ class MainMenu extends MusicBeatState
 
 		if (!ClientPrefs.lowQuality)
 		{
-			moreCoolDetails = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/menu/light'));
-			moreCoolDetails.scrollFactor.set(0, 0);
-			moreCoolDetails.setGraphicSize(Std.int(moreCoolDetails.width * 0.75));
-			moreCoolDetails.updateHitbox();
-			moreCoolDetails.screenCenter();
-			moreCoolDetails.antialiasing = ClientPrefs.globalAntialiasing;
-			add(moreCoolDetails);
-
-			arrow = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/menu_arrow'));
-			arrow.setGraphicSize(Std.int(arrow.width * 0.3));
+			arrow = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/menu/menuArrow'));
 			arrow.screenCenter(X);
 			arrow.scrollFactor.set(0, 0);
 			arrow.antialiasing = ClientPrefs.globalAntialiasing;
@@ -326,11 +290,18 @@ class MainMenu extends MusicBeatState
 
 			gradient = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/filters/gradient'));
 			gradient.scrollFactor.set(0, 0);
-			gradient.setGraphicSize(Std.int(gradient.width * 0.75));
+			gradient.setGraphicSize(Std.int(gradient.width * 0.78));
+			gradient.x -= 5;
 			gradient.updateHitbox();
 			gradient.screenCenter();
 			gradient.antialiasing = true;
 			add(gradient);
+
+			var vig = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/menu/vignette'));
+			vig.setGraphicSize(0, FlxG.height);
+			vig.scrollFactor.set(0, 0);
+			vig.screenCenter();
+			add(vig);
 		}
 
 		// add the camera
@@ -349,38 +320,37 @@ class MainMenu extends MusicBeatState
 		{
 			var offset:Float = 108 - (Math.max(optionShit.length, 4) - 4) * 80;
 			var menuItem:FlxSprite = new FlxSprite(0, (i * 100) + offset);
-			menuItem.scale.set(0.6, 0.6);
+			menuItem.scale.set(0.45, 0.45);
+			menuItem.updateHitbox();
 			menuItem.loadGraphic(Paths.image('Funkin_avi/menu/buttons/' + optionShit[i]));
 			menuItem.ID = i;
 			menuItem.screenCenter(X);
-			menuItem.x -= 100;
+			menuItem.x += 460;
 			menuItems.add(menuItem);
 			var scr:Float = (optionShit.length - 4) * 0.135;
-			menuItem.scrollFactor.set(0, scr);
+			menuItem.scrollFactor.set(0, 0);
 
 			switch (menuItem.ID)
 			{
 				case 0:
-					menuItem.y = 150;
+					menuItem.y = 130;
 				case 1:
-					menuItem.y = 250;
+					menuItem.x += 25;
+					menuItem.y = 240;
 				case 2:
+					menuItem.x += 50;
 					menuItem.y = 350;
 				case 3:
-					menuItem.y = 450;
+					menuItem.x += 75;
+					menuItem.y = 460;
 			}
 
 			menuItem.antialiasing = true;
 			menuItem.updateHitbox();
-
-			if (arrow != null)
-				arrow.angle = 90;
 		}
 
 		// set the camera to actually follow the camera object that was created before
 		FlxG.camera.follow(camFollowPos, LOCKON, 1);
-
-		updateSelection();
  
 		theBox = new MessageBox(-400, FlxG.height - 80, {
 			text: 'Freeplay is Locked!', 
@@ -441,9 +411,16 @@ class MainMenu extends MusicBeatState
 				FlxG.sound.music.volume = 0;
 			});
 		}*/
+		updateSelection();
+		new FlxTimer().start(0.1, function(tmr){
+			menuItems.forEach(function(spr:FlxSprite){
+				spr.updateHitbox();
+			});
+		});
 	}
 
 	var selectedSomethin:Bool = false;
+	var isHitboxFixed:Bool = false;
 	var counterControl:Float = 0;
 
 	override function update(elapsed:Float)
@@ -492,49 +469,10 @@ class MainMenu extends MusicBeatState
 			var hitCorrectKey:Bool = false;
 			var birthdayKey:Bool = false;
 
-			for (i in 0...delutranceLmao[theCodeOrder].length)
-			{
-				if (FlxG.keys.checkStatus(delutranceLmao[theCodeOrder][i], JUST_PRESSED))
-					hitCorrectKey = true;
-			}
-
 			for (b in 0...birthdayCode[theBirthdayCode].length)
 			{
 				if (FlxG.keys.checkStatus(birthdayCode[theBirthdayCode][b], JUST_PRESSED))
 					birthdayKey = true;
-			}
-
-			if (hitCorrectKey && !selectedSomethin)
-			{
-				if (theCodeOrder == (delutranceLmao.length - 1))
-				{
-					PlayState.SONG = Song.loadFromJson('delutrance-hard', 'delutrance');
-					PlayState.storyDifficulty = 0;
-					FlxG.sound.play(Paths.sound('funkinAVI/easterEggSound'));
-					FlxG.camera.fade(FlxColor.BLACK, 1);
-					camHUD.fade(FlxColor.BLACK, 1);
-					FlxG.sound.music.fadeOut(0.7);
-					PlayState.campaignScore = 0;
-					PlayState.campaignMisses = 0;
-					new FlxTimer().start(1.4, function(tmr:FlxTimer)
-					{
-						LoadingState.loadAndSwitchState(new PlayState());
-						FlxG.sound.music.volume = 0;
-					});
-				}
-				else
-				{
-					theCodeOrder++;
-				}
-			}
-			else
-			{
-				theCodeOrder = 0;
-				for (i in 0...delutranceLmao[0].length)
-				{
-					if (FlxG.keys.checkStatus(delutranceLmao[0][i], JUST_PRESSED))
-						theCodeOrder = 1;
-				}
 			}
 
 			if (birthdayKey && !selectedSomethin && GameData.muckneyLock != "uninvited")
@@ -636,7 +574,7 @@ class MainMenu extends MusicBeatState
 			FlxG.sound.play(Paths.sound('funkinAVI/easterEggSound'));
 		}
 
-		if (Math.floor(curSelected) != lastCurSelected)
+		if (Math.floor(curSelected) != lastCurSelected || !isHitboxFixed)
 			updateSelection();
 
 		if (FlxG.mouse.justMoved)
@@ -668,13 +606,13 @@ class MainMenu extends MusicBeatState
 		datBook.scale.set(FlxMath.lerp(evilAndFuckedUpBookScale, datBook.scale.x, CoolUtil.boundTo(1 - (elapsed * 9.6), 0, 1)), FlxMath.lerp(evilAndFuckedUpBookScale, datBook.scale.x, CoolUtil.boundTo(1 - (elapsed * 9.6), 0, 1)));
 		/*shittyUnoptimizedBookCopy.scale.set(FlxMath.lerp(evilAndFuckedUpBookScale + .02, shittyUnoptimizedBookCopy.scale.x, .65), FlxMath.lerp(evilAndFuckedUpBookScale, shittyUnoptimizedBookCopy.scale.x, .65));
 		shittyUnoptimizedBookCopy.alpha = FlxMath.lerp(FlxG.mouse.overlaps(datBook) ? .7 : 0, shittyUnoptimizedBookCopy.alpha, .65);*/
-		evilAndFuckedUpBookScale = FlxG.mouse.overlaps(datBook) ? .7 : .65; 
+		evilAndFuckedUpBookScale = (FlxG.mouse.overlaps(datBook) && !FlxG.mouse.overlaps(menuItems.members[curSelected])) ? 1.1 : 1; 
 		
-		if (FlxG.mouse.overlaps(datBook) && FlxG.mouse.justPressed && !selectedSomethin)
+		if ((FlxG.mouse.overlaps(datBook) && !FlxG.mouse.overlaps(menuItems.members[curSelected])) && FlxG.mouse.justPressed && !selectedSomethin)
 		{
 			if (GameData.malfunctionLock == "beaten")
 			{
-				datBook.scale.set(.8, .8);
+				datBook.scale.set(.9, .9);
 				//shittyUnoptimizedBookCopy.scale.set(.75, .77);
 
 				selectedSomethin = true;
@@ -686,7 +624,7 @@ class MainMenu extends MusicBeatState
 				menuItems.forEach(function(spr:FlxSprite)
 				{
 					for (item in [arrow, spr])
-					FlxTween.tween(item, {x: -250, alpha: 0}, 0.4, {
+					FlxTween.tween(item, {x: item.x + 250, alpha: 0}, 0.4, {
 						ease: FlxEase.quadOut,
 						onComplete: function(twn:FlxTween)
 						{
@@ -822,7 +760,7 @@ class MainMenu extends MusicBeatState
 			{
 				if (curSelected != spr.ID)
 				{
-					FlxTween.tween(spr, {x: -250, alpha: 0}, 0.4, {
+					FlxTween.tween(spr, {x: spr.x + 250, alpha: 0}, 0.4, {
 						ease: FlxEase.quadOut,
 						onComplete: function(twn:FlxTween)
 						{
@@ -875,7 +813,7 @@ class MainMenu extends MusicBeatState
 		}
 	}
 
-	var lastCurSelected:Int = 0;
+	var lastCurSelected:Int = 1;
 	var arrowX:Float = 0;
 	var arrowY:Float = 0;
 
@@ -884,55 +822,42 @@ class MainMenu extends MusicBeatState
 		// reset all selections
 		menuItems.forEach(function(spr:FlxSprite)
 		{
-			if (!ClientPrefs.shaders)
-				spr.shader = null;
 			spr.alpha = 0.45;
+			spr.color = FlxColor.WHITE;
 			spr.updateHitbox();
 		});
-
-		if (arrowTween != null)
-			arrowTween.cancel();
 
 		if (arrow != null && !selectedSomethin)
 		{
 			switch (curSelected)
 			{
 				case 0:
-					arrowX = -35;
-					arrowY = 60;
+					arrowX = 560;
+					arrowY = 155;
 				case 1:
-					arrowX = 25;
-					arrowY = 160;
-				case 2:
-					arrowX = 35;
+					arrowX = 690;
 					arrowY = 255;
+				case 2:
+					arrowX = 730;
+					arrowY = 360;
 				case 3:
-					arrowX = 15;
-					arrowY = 355;
+					arrowX = 740;
+					arrowY = 470;
 			}
-
-			/*arrowTween = FlxTween.tween(arrow, {
-				x: arrowX,
-				y: arrowY
-			}, 0.1, {
-				ease: FlxEase.quadOut,
-				onComplete: function(twn:FlxTween)
-				{
-					arrowTween = null;
-				}
-			});*/
 		}
 
 		// don't use <, worst mistake of my carrer
 		if (menuItems.members[Math.floor(curSelected)].alpha == 0.45)
 		{
-			menuItems.members[Math.floor(curSelected)].setColorTransform(1, 1, 1, 1, 0, 0, 0, 0);
+			menuItems.members[Math.floor(curSelected)].color = FlxColor.RED;
 			menuItems.members[Math.floor(curSelected)].alpha = 1;
 		}
 
 		menuItems.members[Math.floor(curSelected)].updateHitbox();
 
 		lastCurSelected = Math.floor(curSelected);
+		if (!isHitboxFixed) 
+			isHitboxFixed = true;
 	}
 
 	function onMouseMove(r)

@@ -85,7 +85,19 @@ class GeneralMenu extends MusicBeatState {
 
         if (!ClientPrefs.lowQuality)
         {
-            spectrum = new SpectrumWaveform(0, 670, FlxG.sound.music, FlxG.width, FlxG.height, TO_UP_FROM_DOWN, ROUNDED, 0xffff5e5e);
+            var greyParticles:FlxEmitter = new FlxEmitter(-2080.5, 650.4);
+			greyParticles.launchMode = SQUARE;
+			greyParticles.velocity.set(-50, -200, 50, -600, -90, 0, 90, -600);
+			greyParticles.scale.set(1, 2, 0.3, 0.5, 0, 0, 0, 0);
+			greyParticles.drag.set(0, 0, 0, 0, 5, 5, 10, 10);
+			greyParticles.width = 4787.45;
+			greyParticles.alpha.set(1, 1);
+			greyParticles.lifespan.set(1.9, 4.9);
+			greyParticles.loadParticles(Paths.image('Funkin_avi/category/categoryParticle'), 500, 16, true);
+			greyParticles.start(false, FlxG.random.float(.0521, .1060), 1000000);
+            add(greyParticles);
+
+            spectrum = new SpectrumWaveform(0, 630, FlxG.sound.music, FlxG.width, FlxG.height, TO_UP_FROM_DOWN, ROUNDED, 0xffff5e5e);
             spectrum.design = ROUNDED;
             spectrum.barWidth = 12;
             spectrum.barSpacing = 16;
@@ -113,7 +125,7 @@ class GeneralMenu extends MusicBeatState {
         bottom.screenCenter();
         add(bottom);
 
-        catDesc = new FlxTypeText(0, 640, 500, '');
+        catDesc = new FlxTypeText(0, 610, 500, '');
 		catDesc.setFormat(Paths.font("Oceanic_Cocktail_Demo.otf"), 28, FlxColor.WHITE, CENTER);
 		catDesc.screenCenter(X);
 		add(catDesc);
@@ -121,6 +133,12 @@ class GeneralMenu extends MusicBeatState {
         dark = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/category/vingnette'));
         dark.screenCenter();
         add(dark);
+
+        var frame = new FlxSprite().loadGraphic(Paths.image("Funkin_avi/category/categoryFrame"));
+        frame.setGraphicSize(0, FlxG.height);
+        frame.screenCenter();
+        add(frame);
+        FlxTween.tween(frame, {alpha: 0.25}, 3, {ease: FlxEase.quartInOut, type: 4});
 
         if(!ClientPrefs.lowQuality)
 			{

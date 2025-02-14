@@ -119,11 +119,5 @@ enum abstract CreditsData(String) from String to String {
 		"Art: Teelbe\n\nChart: Dreupy\n\nCode: Jason & ThatOneSillyGuy\n\nMusic: FR3SHMoure", 0, 15
 	]
 }';
-    var delutrance:String = '{
-	"settings":
-	[
-		"Art: Who gives a fuck?\n\nChart: Jason & ThatOneSillyGuy\n\nCode: ThatOneSillyGuy\n\nMusic: RetroJogador", -32, -10
-	]
-}';
 	var creditsMenu:String = '';
 }

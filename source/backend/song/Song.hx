@@ -118,7 +118,6 @@ class Song
 			case "mercy-legacy": chartFile = Chart.mercyLegacy;
 			case "laugh-track": chartFile = Chart.laughTrack;
 			case "twisted-grins-legacy": chartFile = Chart.twistedGrinsLegacy;
-			case "delutrance": chartFile = Chart.delutrance;
 			case "cycled-sins": chartFile = Chart.cycledSins;
 			case "twisted-grins": 
 				chartFile = Chart.twistedGrins;
@@ -214,7 +213,7 @@ class Song
 			case "Devilish Deal" | "Lunacy" | "Hunted" | "War Dilemma" | "Twisted Grins" | "Isolated": charter = "Purg";
 			case "Delusional" | "Cycled Sins" | "Birthday" | "Cycled Sins Legacy" | "Twisted Grins Legacy": charter = "Dreupy";
 			case "Lunacy Legacy": charter = "obscurity.";
-			case "Bless" | "Malfunction" | "Delutrance" | "Mercy" | "Mercy Legacy" | "Isolated Old" | "Isolated Legacy" | "Isolated Beta" | "Malfunction Legacy" | "Laugh Track": charter = "DEMOLITIONDON96";
+			case "Bless" | "Malfunction" | "Mercy" | "Mercy Legacy" | "Isolated Old" | "Isolated Legacy" | "Isolated Beta" | "Malfunction Legacy" | "Laugh Track": charter = "DEMOLITIONDON96";
 			case "Delusional Legacy": charter = "Noppz";
 			case "Dont Cross":
 				switch (randomizer)
