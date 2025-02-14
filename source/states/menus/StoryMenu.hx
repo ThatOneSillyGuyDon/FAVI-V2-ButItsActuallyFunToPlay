@@ -74,32 +74,34 @@ class StoryMenu extends MusicBeatState
 
 		DiscordClient.changePresence('Story Menu', 'Selecting Episode...');
 
-		spoopy = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/storymenu/spoopy'));
+		spoopy = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/storymenu/todaywewillplayfivenightsatfreddys'));
 		spoopy.scrollFactor.set(0, 0);
 		spoopy.setGraphicSize(Std.int(spoopy.width * 1.05));
 		spoopy.updateHitbox();
-		spoopy.scale.set(0.8, 0.8);
+		spoopy.scale.set(1, 1);
 		spoopy.screenCenter();
 		spoopy.antialiasing = true;
 		add(spoopy);
 
-		book = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/storymenu/lethimbook'));
+		book = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/storymenu/helloeverybodymynameismarkiplier'));
 		book.scrollFactor.set(0, 0);
 		book.setGraphicSize(Std.int(book.width * 1.1));
 		book.updateHitbox();
 		book.screenCenter();
-		book.scale.set(0.85, 0.85);
+		book.scale.set(1, 1);
 		book.antialiasing = true;
 		book.alpha = 1;
 		add(book);
 
-		ispy = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/storymenu/i_spy'));
+
+		// idk brah
+		/*ispy = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/storymenu/i_spy'));
 		ispy.scrollFactor.set(0, 0);
 		ispy.updateHitbox();
 		ispy.screenCenter();
 		ispy.scale.set(0.8, 0.8);
 		ispy.antialiasing = true;
-		add(ispy);
+		add(ispy);*/
 
 		bookStuff = new FlxTypedGroup<FlxSprite>();
 		add(bookStuff);
@@ -117,13 +119,13 @@ class StoryMenu extends MusicBeatState
 
 		// I have a present simple for you
 
-		booksimage = new FlxSprite(100, 0);
+		booksimage = new FlxSprite(100, 150);
 		booksimage.angle = FlxG.random.float(-15, 18);
 		booksimage.scale.set(0.45, 0.45);
 		booksimage.antialiasing = ClientPrefs.globalAntialiasing;
 		add(booksimage); // Istg, i need to learn some day about the arrays ugh
 
-		weekIcon = new FlxSprite(booksimage.x + 125, booksimage.y + 450);
+		weekIcon = new FlxSprite(booksimage.x + 125, booksimage.y - 50);
 		weekIcon.antialiasing = ClientPrefs.globalAntialiasing;
 		add(weekIcon);
 
@@ -220,7 +222,7 @@ class StoryMenu extends MusicBeatState
 		//add(yellowBG);
 		add(grpWeekCharacters);
 
-		txtTracklist = new FlxText(1070, 90, 0, "Tracks", 38);
+		txtTracklist = new FlxText(1070, 210, 0, "Tracks", 38);
 		txtTracklist.setFormat(Paths.font("DisneyFont.ttf"), 32, FlxColor.WHITE, RIGHT, OUTLINE, FlxColor.BLACK);
 		txtTracklist.borderSize = 2;
 		add(txtTracklist);
@@ -232,6 +234,10 @@ class StoryMenu extends MusicBeatState
 
 		if(!ClientPrefs.lowQuality) 
 		{
+			var fogShit:FlxSprite = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/storymenu/supa_dark_mode'));
+			fogShit.screenCenter();
+			add(fogShit);
+
 			var scratch:FlxSprite = new FlxSprite();
 			scratch.frames = Paths.getSparrowAtlas('Funkin_avi/filters/scratchShit');
 			scratch.animation.addByPrefix('idle', 'scratch thing 1', 24, true);
@@ -249,6 +255,8 @@ class StoryMenu extends MusicBeatState
 			grain.scale.x = 1.1;
 			grain.scale.y = 1.1;
 			add(grain);
+
+
 		}
 
 		gradient = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/filters/gradient'));
@@ -275,17 +283,6 @@ class StoryMenu extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
-		/*
-		if (curWeek == 0) // idk with one works so erm fuck
-		{
-			booksimage.loadGraphic(Paths.image('Funkin_avi/storymenu/bookPics/depression'));
-			booksimage.alpha = 1;
-		}
-		else
-		{
-			booksimage.alpha = 0.0001; // fack you its going to disapear mode
-		}*/
-
 		// just got an idea but need to rename the files
 		booksimage.loadGraphic(Paths.image('Funkin_avi/storymenu/bookPics/portrait_$curWeek'));
 		booksimage.scale.set(FlxMath.lerp(.45, booksimage.scale.x, .95), FlxMath.lerp(.45, booksimage.scale.x, .95));
