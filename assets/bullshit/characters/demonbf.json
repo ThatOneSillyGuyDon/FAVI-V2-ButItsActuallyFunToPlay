@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "Demon Idle dance"
+		},
+		{
+			"offsets": [
+				513,
+				-18
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "Demon note left"
+		},
+		{
+			"offsets": [
+				100,
+				-172
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "Demon note down"
+		},
+		{
+			"offsets": [
+				56,
+				148
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "Demon note up"
+		},
+		{
+			"offsets": [
+				-210,
+				0
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Demon note right"
+		}
+	],
+	"no_antialiasing": true,
+	"image": "characters/DELUSIONAL_IS_DONE/FINAL_FINAL_demon_bf",
+	"position": [
+		10,
+		20
+	],
+	"healthicon": "face",
+	"flip_x": true,
+	"healthbar_colors": [
+		161,
+		161,
+		161
+	],
+	"camera_position": [
+		140,
+		160
+	],
+	"sing_duration": 6.1,
+	"scale": 0.8
+}

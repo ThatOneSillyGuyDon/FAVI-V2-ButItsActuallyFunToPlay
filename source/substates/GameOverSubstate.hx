@@ -688,7 +688,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		switch (PlayState.SONG.song)
 		{
 			case "Isolated" | "Lunacy" | "Delusional": FlxG.sound.playMusic(Paths.music("aviOST/gameOver/yourFinalBow"), volume);
-			default: FlxG.sound.playMusic(Paths.music("aviOST/gameOver/soaringHigh"), volume);
+			default: FlxG.sound.playMusic(Paths.music("aviOST/gameOver/amIReal"), volume);
 		}
 		FlxG.sound.music.fadeIn(2, 0, 1);
 		if (!boyfriend.visible)

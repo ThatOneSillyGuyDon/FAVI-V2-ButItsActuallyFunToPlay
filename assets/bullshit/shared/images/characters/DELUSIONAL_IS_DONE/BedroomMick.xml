@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="BedroomMick.png">
+<SubTexture name="BedroomMick idle0000" x="1564" y="983" width="813" height="862" frameX="-214" frameY="-124" frameWidth="1280" frameHeight="1000" />
+<SubTexture name="BedroomMick idle0001" x="818" y="1863" width="844" height="852" frameX="-204" frameY="-134" frameWidth="1280" frameHeight="1000" />
+<SubTexture name="BedroomMick idle0002" x="1662" y="1863" width="834" height="850" frameX="-208" frameY="-136" frameWidth="1280" frameHeight="1000" />
+<SubTexture name="BedroomMick idle0003" x="0" y="1863" width="818" height="858" frameX="-212" frameY="-128" frameWidth="1280" frameHeight="1000" />
+<SubTexture name="BedroomMick idle0004" x="2425" y="0" width="816" height="861" frameX="-212" frameY="-125" frameWidth="1280" frameHeight="1000" />
+<SubTexture name="BedroomMick idle0005" x="1564" y="983" width="813" height="862" frameX="-214" frameY="-124" frameWidth="1280" frameHeight="1000" />
+<SubTexture name="BedroomMick idle0006" x="1564" y="983" width="813" height="862" frameX="-214" frameY="-124" frameWidth="1280" frameHeight="1000" />
+<SubTexture name="BedroomMick down0000" x="3241" y="1594" width="819" height="780" frameX="-280" frameY="-220" frameWidth="1280" frameHeight="1000" />
+<SubTexture name="BedroomMick down0001" x="3241" y="804" width="783" height="790" frameX="-290" frameY="-196" frameWidth="1280" frameHeight="1000" />
+<SubTexture name="BedroomMick down0002" x="3241" y="804" width="783" height="790" frameX="-290" frameY="-196" frameWidth="1280" frameHeight="1000" />
+<SubTexture name="BedroomMick up0000" x="0" y="0" width="795" height="983" frameX="-220" frameY="-12" frameWidth="1280" frameHeight="1000" />
+<SubTexture name="BedroomMick up0001" x="795" y="0" width="815" height="957" frameX="-212" frameY="-29" frameWidth="1280" frameHeight="1000" />
+<SubTexture name="BedroomMick up0002" x="1610" y="0" width="815" height="957" frameX="-212" frameY="-29" frameWidth="1280" frameHeight="1000" />
+<SubTexture name="BedroomMick left0000" x="0" y="983" width="785" height="880" frameX="-226" frameY="-120" frameWidth="1280" frameHeight="1000" />
+<SubTexture name="BedroomMick left0001" x="785" y="983" width="779" height="869" frameX="-248" frameY="-117" frameWidth="1280" frameHeight="1000" />
+<SubTexture name="BedroomMick left0002" x="785" y="983" width="779" height="869" frameX="-248" frameY="-117" frameWidth="1280" frameHeight="1000" />
+<SubTexture name="BedroomMick right0000" x="0" y="2721" width="1072" height="793" frameX="-202" frameY="-207" frameWidth="1280" frameHeight="1000" />
+<SubTexture name="BedroomMick right0001" x="3241" y="0" width="858" height="804" frameX="-216" frameY="-182" frameWidth="1280" frameHeight="1000" />
+<SubTexture name="BedroomMick right0002" x="3241" y="0" width="858" height="804" frameX="-216" frameY="-182" frameWidth="1280" frameHeight="1000" />
+</TextureAtlas>

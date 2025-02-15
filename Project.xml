@@ -85,6 +85,18 @@
 	<assets path="assets/songs"         library="songs"         exclude="*.mp3" unless="web"/>
 	<assets path="assets/shared"        library="shared"        exclude="*.ogg" if="web"/>
 	<assets path="assets/shared"        library="shared"        exclude="*.mp3" unless="web"/>
+
+	<!-- 
+	UNCOMMENT THIS ONLY FOR TESTING OR FINAL BUILD!!!!! 
+	DELETE DUPLICATE ASSETS IN PRELOAD AND SHARED SO THESE CAN WORK PROPERLY!!!!
+
+	<assets path="assets/bullshit/shared" rename="assets/shared" library="shared" embed='true'/> 
+	<assets path="assets/bullshit/songs" rename="assets/songs" library="songs" embed='true'/>
+	<assets path="assets/bullshit/images" rename="assets/images" embed='true'/>
+	<assets path="assets/bullshit/characters" rename="assets/characters" embed='true'/>
+	<assets path="assets/bullshit/sounds" rename="assets/sounds" embed='true'/>
+	<assets path="assets/bullshit/music" rename="assets/music" embed='true'/>
+	-->
 	
 	<section if="MODS_ALLOWED">
 		<assets path='example_mods' rename='mods' embed='false'/>

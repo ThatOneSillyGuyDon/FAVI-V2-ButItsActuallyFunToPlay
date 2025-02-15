@@ -1,0 +1,96 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-87,
+				-30
+			],
+			"loop": false,
+			"fps": 20,
+			"anim": "idle",
+			"indices": [],
+			"name": "Mickey idle dance"
+		},
+		{
+			"offsets": [
+				174,
+				-92
+			],
+			"loop": false,
+			"fps": 20,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "Mickey left"
+		},
+		{
+			"offsets": [
+				-184,
+				-46
+			],
+			"loop": false,
+			"fps": 20,
+			"anim": "singUP",
+			"indices": [],
+			"name": "Mickey up"
+		},
+		{
+			"offsets": [
+				-20,
+				-434
+			],
+			"loop": false,
+			"fps": 20,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Mickey right"
+		},
+		{
+			"offsets": [
+				20,
+				-250
+			],
+			"loop": false,
+			"fps": 20,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "Mickey down"
+		},
+		{
+			"loop": true,
+			"offsets": [
+				-88,
+				-29
+			],
+			"anim": "idle-loop",
+			"fps": 20,
+			"name": "Mickey idle dance",
+			"indices": [
+				10,
+				11,
+				12,
+				13,
+				14,
+				15
+			]
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/DELUSIONAL_IS_DONE/NEW_DELU_MICKEY",
+	"position": [
+		-450,
+		-280
+	],
+	"healthicon": "deluavier",
+	"flip_x": false,
+	"healthbar_colors": [
+		101,
+		101,
+		101
+	],
+	"camera_position": [
+		110,
+		150
+	],
+	"sing_duration": 6.1,
+	"scale": 1
+}

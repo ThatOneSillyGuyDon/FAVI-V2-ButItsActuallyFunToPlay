@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-420,
+				-70
+			],
+			"loop": false,
+			"fps": 20,
+			"anim": "idle",
+			"indices": [],
+			"name": "Demon Idle dance"
+		},
+		{
+			"offsets": [
+				-55,
+				-84
+			],
+			"loop": false,
+			"fps": 26,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "Demon note left"
+		},
+		{
+			"offsets": [
+				-357,
+				-210
+			],
+			"loop": false,
+			"fps": 28,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "Demon note down"
+		},
+		{
+			"offsets": [
+				-360,
+				47
+			],
+			"loop": false,
+			"fps": 28,
+			"anim": "singUP",
+			"indices": [],
+			"name": "Demon note up"
+		},
+		{
+			"offsets": [
+				-486,
+				-82
+			],
+			"loop": false,
+			"fps": 27,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Demon note right"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/bf-demon/FINAL_FINAL_demon_bf",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "evildelu",
+	"flip_x": true,
+	"healthbar_colors": [
+		0,
+		0,
+		0
+	],
+	"camera_position": [
+		-270,
+		150
+	],
+	"sing_duration": 6.1,
+	"scale": 0.8
+}

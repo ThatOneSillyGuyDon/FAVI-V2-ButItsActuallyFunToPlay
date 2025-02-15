@@ -335,6 +335,9 @@ class MainMenu extends MusicBeatState
 				case 0:
 					menuItem.y = 130;
 				case 1:
+					if (GameData.episode1FPLock != "unlocked")
+						menuItem.loadGraphic(Paths.image('Funkin_avi/menu/buttons/freeplayLocked'));
+
 					menuItem.x += 25;
 					menuItem.y = 240;
 				case 2:
@@ -434,7 +437,7 @@ class MainMenu extends MusicBeatState
 			});
 		}*/
 
-		if (!sys.FileSystem.exists('./assets/shared/images/favi/stages/forbiddenRealm/DO NOT TOUCH MY MEME.png') && !GameData.canAddMalfunction)
+		if (!sys.FileSystem.exists('./assets/shared/images/favi/stages/forbiddenRealm/DO NOT TOUCH MY MEME.png') && GameData.check(NO_MALFUNCTION))
 		{
 			selectedSomethin = true;
 			new FlxTimer().start(0.4, function(tmr:FlxTimer)
@@ -723,7 +726,7 @@ class MainMenu extends MusicBeatState
 				{
 					if (curSelected != spr.ID)
 					{
-						FlxTween.tween(spr, {x: -250, alpha: 0}, 0.4, {
+						FlxTween.tween(spr, {x: spr.x + 250, alpha: 0}, 0.4, {
 							ease: FlxEase.quadOut,
 							onComplete: function(twn:FlxTween)
 							{

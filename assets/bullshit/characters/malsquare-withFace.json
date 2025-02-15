@@ -1,0 +1,89 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				50,
+				60
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				50,
+				60
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				50,
+				60
+			],
+			"anim": "singLEFT",
+			"fps": 28,
+			"name": "left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				51,
+				60
+			],
+			"anim": "idle",
+			"fps": 20,
+			"name": "idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				50,
+				60
+			],
+			"anim": "singRIGHT",
+			"fps": 25,
+			"name": "right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				51,
+				60
+			],
+			"anim": "idle-alt",
+			"fps": 20,
+			"name": "ohHeMad",
+			"indices": []
+		}
+	],
+	"no_antialiasing": true,
+	"image": "characters/malsquare-afterLaugh",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "malNEW-pixel",
+	"flip_x": false,
+	"healthbar_colors": [
+		0,
+		0,
+		0
+	],
+	"camera_position": [
+		-520,
+		-650
+	],
+	"sing_duration": 6.1,
+	"scale": 5.99999999999999
+}

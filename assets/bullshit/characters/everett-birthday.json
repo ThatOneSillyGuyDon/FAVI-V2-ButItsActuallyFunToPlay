@@ -1,0 +1,122 @@
+{
+	"animations": [
+		{
+			"loop": true,
+			"offsets": [
+				-90,
+				-512
+			],
+			"anim": "idle",
+			"fps": 12,
+			"name": "idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-60,
+				-510
+			],
+			"anim": "singUPmiss",
+			"fps": 12,
+			"name": "miss-up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-60,
+				-505
+			],
+			"anim": "singUP",
+			"fps": 12,
+			"name": "up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-100,
+				-500
+			],
+			"anim": "singDOWN",
+			"fps": 12,
+			"name": "down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-110,
+				-510
+			],
+			"anim": "singLEFTmiss",
+			"fps": 12,
+			"name": "miss-down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-110,
+				-509
+			],
+			"anim": "singLEFT",
+			"fps": 12,
+			"name": "left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-86,
+				-515
+			],
+			"anim": "singRIGHT",
+			"fps": 12,
+			"name": "right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-90,
+				-510
+			],
+			"anim": "singRIGHTmiss",
+			"fps": 12,
+			"name": "miss-down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-90,
+				-510
+			],
+			"anim": "singDOWNmiss",
+			"fps": 12,
+			"name": "miss-right",
+			"indices": []
+		}
+	],
+	"no_antialiasing": true,
+	"image": "characters/Birthevere",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "everettb",
+	"flip_x": true,
+	"healthbar_colors": [
+		221,
+		221,
+		201
+	],
+	"camera_position": [
+		-10,
+		520
+	],
+	"sing_duration": 6.1,
+	"scale": 0.9
+}
