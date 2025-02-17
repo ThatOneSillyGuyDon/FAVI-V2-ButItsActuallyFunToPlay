@@ -234,10 +234,6 @@ class TitleState extends MusicBeatState
 		backend.windows.CppAPI.darkMode();
         #end
 
-		#if Freeplay
-		MusicBeatState.switchState(new FreeplayCategories());
-		#end
-
 		startIntro();
 
 		FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);

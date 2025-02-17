@@ -6601,7 +6601,7 @@ class PlayState extends MusicBeatState
 					CustomFadeTransition.nextCamera = null;
 				}
 				GameData.completeFPSong();
-				MusicBeatState.switchState(new FreeplayState());
+				MusicBeatState.switchState(new RemakedFreeplayMenu());
 				FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
 				FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
 				changedDifficulty = false;

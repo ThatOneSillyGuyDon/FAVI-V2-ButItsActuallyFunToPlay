@@ -90,11 +90,12 @@ class Init extends FlxState
 		FlxG.mouse.visible = true;
 
         // initializating ends here and switches to the state the Main class intends to
-        #if Freeplay
-        FlxG.switchState(Type.createInstance(FreeplayCategories, [])); 
-        #end
 
         trace('Initialization complete, switching to ${Type.getClassName(Main.game.initialState)}');
+        #if Freeplay
+        FlxG.switchState(Type.createInstance(RemakedFreeplayMenu, [])); 
+        #else
         FlxG.switchState(Type.createInstance(Main.game.initialState, []));   
+        #end
     }
 }
