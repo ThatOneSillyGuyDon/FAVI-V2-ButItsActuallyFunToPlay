@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "idle",
+			"fps": 7,
+			"name": "idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				50,
+				10
+			],
+			"anim": "singLEFT",
+			"fps": 7,
+			"name": "right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				30,
+				40
+			],
+			"anim": "singDOWN",
+			"fps": 7,
+			"name": "down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				20,
+				90
+			],
+			"anim": "singUP",
+			"fps": 7,
+			"name": "up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				8,
+				18
+			],
+			"anim": "singRIGHT",
+			"fps": 7,
+			"name": "left",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/bf-trance/bfkillyourself",
+	"position": [
+		-260,
+		-110
+	],
+	"healthicon": "evilcrack",
+	"flip_x": true,
+	"healthbar_colors": [
+		215,
+		235,
+		255
+	],
+	"camera_position": [
+		70,
+		230
+	],
+	"sing_duration": 6.1,
+	"scale": 0.6
+}

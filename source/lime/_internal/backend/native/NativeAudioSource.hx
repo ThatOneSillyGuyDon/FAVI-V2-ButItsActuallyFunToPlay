@@ -156,16 +156,12 @@ class NativeAudioSource
 			trace(pos); */
 		/*var filter = AL.createFilter();
 			trace(AL.getErrorString());
-
 			AL.filteri(filter, AL.FILTER_TYPE, AL.FILTER_LOWPASS);
 			trace(AL.getErrorString());
-
 			AL.filterf(filter, AL.LOWPASS_GAIN, 0.5);
 			trace(AL.getErrorString());
-
 			AL.filterf(filter, AL.LOWPASS_GAINHF, 0.5);
 			trace(AL.getErrorString());
-
 			AL.sourcei(handle, AL.DIRECT_FILTER, filter);
 			trace(AL.getErrorString()); */
 

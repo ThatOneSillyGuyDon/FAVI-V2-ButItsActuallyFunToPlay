@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				590,
+				640
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "Mickeystoppedworking Idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				580,
+				634
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "Mickeystoppedworking Left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				590,
+				630
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "Mickeystoppedworking Up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				590,
+				642
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "Mickeystoppedworking Down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				600,
+				640
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "Mickeystoppedworking Right",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/mickey-hopeless-unused/Mickeystoppedworking",
+	"position": [
+		0,
+		120
+	],
+	"healthicon": "bitch",
+	"flip_x": false,
+	"healthbar_colors": [
+		96,
+		96,
+		96
+	],
+	"camera_position": [
+		-290,
+		-320
+	],
+	"sing_duration": 6.1,
+	"scale": 0.7
+}

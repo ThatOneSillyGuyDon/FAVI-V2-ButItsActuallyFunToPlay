@@ -7,6 +7,8 @@ import openfl.system.System;
 import sys.io.File;
 import haxe.Json;
 import openfl.Lib;
+import flixel.text.FlxText.FlxTextFormat;
+import flixel.text.FlxText.FlxTextFormatMarkerPair;
 
 /**
  * Pause Menu Data
@@ -429,10 +431,12 @@ class FAVIPauseSubState extends MusicBeatSubstate
 {
 	public static var colorSetup:Null<FlxColor> = FlxColor.WHITE;
 	public static var toOptions:Bool = false;
+
 	#if desktop
 	public static var getPropertyFromDesktop = Sys.getEnv(Sys.systemName() == "Windows" ? "UserProfile" : "HOME") + "\\Desktop";
 	public static var yourName = Sys.environment()["USERNAME"];
     #end
+
 	var bg:FlxSprite;
 	var bgOverlay:FlxSprite;
 	var menuHUD:FlxSprite;
@@ -454,27 +458,16 @@ class FAVIPauseSubState extends MusicBeatSubstate
 	var hasFinishedAnim:Bool = false;
 	var pauseNameTxt:FlxText;
 	var pauseSongStr:String;
-	var satanTxt:FlxText;
-	var satanQuotes:Array<String> = [
-		"You can't leave now...",
-		"Not so fast, little one...",
-		"You've come too far to leave now...",
-		"The fun has just begun...",
-		"Don't be afraid of a little mouse...",
-		"He's already died many times...",
-		"What difference will you leaving do?",
-		"Leaving so soon?",
-		"Something wrong, " + yourName + "?",
-		"Are you scared?",
-		"You've seen too much, I won't let you go yet...",
-		"Do you know who I am?"
-	];
+	var satanTxt:FlxTypeText;
+	var satanQuotes:Array<String> = [];
 
 	var json:String = null;
 	var array:Array<Dynamic>;
 	var data:PauseData;
 
 	var fuckingName:String;
+
+	var creepyRed = new FlxTextFormatMarkerPair(new FlxTextFormat(FlxColor.RED, true, false, FlxColor.fromRGB(46, 0, 0)), '*');
 
 	public function new(x:Float, y:Float, ?itemStack:Array<String>)
 		{
@@ -492,9 +485,33 @@ class FAVIPauseSubState extends MusicBeatSubstate
 		
 
 			// cool stuff
-			var getArt:String = 'Funkin_avi/pause/songs/';
 			toOptions = false;
 			menuItems = itemStack;
+
+			// Will use your discord username if you're connected while playing lmao
+			if (DiscordClient.isInitialized)
+				yourName = DiscordClient.discordName;
+
+			satanQuotes = [
+				"No, it is forbidden...",
+				"You can't leave now...",
+				"You're not going anywhere...",
+				"You've come too far to leave now...",
+				"The fun has just begun...",
+				"Don't be afraid of a little mouse...",
+				"Stay right where you are, " + yourName + "...",
+				"He's already died many times...",
+				"What difference will you leaving do?",
+				"Leaving so soon?",
+				"Something wrong, " + yourName + "?",
+				"Are you scared?",
+				"You've seen too much, I won't let you go yet...",
+				"Do you know who I am?",
+				"You're a coward, " + yourName + "...",
+				"Not so fast, friend...",
+				"Not so fast, " + yourName + "...",
+				"Why leave so soon? You'll be back. *And we'll be waiting...*"
+			];
 	
 			var randomPauseSong:String = "";
 			var randomizer:Int = FlxG.random.int(1, 3);
@@ -559,23 +576,20 @@ class FAVIPauseSubState extends MusicBeatSubstate
 			disc = new FlxSprite(songArt.x, songArt.y - 12).loadGraphic(Paths.image('Funkin_avi/pause/disc'));
 			songName = new FlxText(FlxG.width * 0.78 + array[1], 10, 0, (PlayState.SONG.song == "Dont Cross" ? "Don't Cross!" : (PlayState.useFakeDeluName ? "Regret" : PlayState.SONG.song)), 32);
 			daSelector = new FlxSprite().loadGraphic(Paths.image("Funkin_avi/pause/buttonSelector"));
-			countDown = new FlxText(0, 0, 0, "", 0);
-			satanTxt = new FlxText(0, 650, 0, "", 0);
+			countDown = new FlxText(0, 0, 1280, "", 0);
+			satanTxt = new FlxTypeText(0, 25, 1280, "");
 			pauseNameTxt = new FlxText(5, 700, 1280, "Now Playing: " + pauseSongStr + " - ForFurtherNotice");
 	
 			// text stuff
 			// I'M NOT DELUSIONAL, YOU'RE DELUSIONAL !!!!!!
 			levelInfo.setFormat(Paths.font("disneyFreeplayFont.ttf"), 18, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 			songName.setFormat(Paths.font("disneyFreeplayFont.ttf"), 46, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-			countDown.setFormat(Paths.font("betterSatanFont.ttf"), 90, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-			satanTxt.setFormat(Paths.font("betterSatanFont.ttf"), 40, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			countDown.setFormat(Paths.font("disneyFreeplayFont.ttf"), 90, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			satanTxt.setFormat(Paths.font("disneyFreeplayFont.ttf"), 32, FlxColor.fromRGB(255, 117, 107), CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.fromRGB(92, 0, 26));
+			satanTxt.borderSize = 2;
 			pauseNameTxt.setFormat(Paths.font("disneyFreeplayFont.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 	
-			// cool file check system so we don't need to compile the game everytime for this
-			if (sys.FileSystem.exists('./assets/images/' + getArt + pauseArtAsset + '.png'))
-				songArt.loadGraphic(Paths.image(getArt + pauseArtAsset));
-			else
-				songArt.loadGraphic(Paths.image(getArt + 'unknown-song'));
+			songArt.loadGraphic(Paths.imageAlbum(pauseArtAsset));
 	
 			// scales
 			bg.scale.set(FlxG.width * 4, FlxG.height * 4);
@@ -705,7 +719,8 @@ class FAVIPauseSubState extends MusicBeatSubstate
 							FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 						case 'no-hope':
 							songText.shake(0.5, 1, 1);
-							satanTxt.text = satanQuotes[FlxG.random.int(0, satanQuotes.length - 1)];
+							satanTxt.applyMarkup(satanQuotes[FlxG.random.int(0, satanQuotes.length - 1)], [creepyRed]);
+							satanTxt.start(0.02, true);
 						case 'leave':
 							remove(disc);
 							MusicBeatState.switchState(new states.ManIHateYouSoMuchYouMadeMuckneySad()); // grah

@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				94,
+				-2
+			],
+			"loop": false,
+			"fps": 10,
+			"anim": "idle",
+			"indices": [],
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				95,
+				1
+			],
+			"loop": false,
+			"fps": 10,
+			"anim": "singUP",
+			"indices": [],
+			"name": "up"
+		},
+		{
+			"offsets": [
+				95,
+				0
+			],
+			"loop": true,
+			"fps": 14,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down"
+		},
+		{
+			"offsets": [
+				94,
+				-4
+			],
+			"loop": false,
+			"fps": 10,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right"
+		},
+		{
+			"offsets": [
+				93,
+				0
+			],
+			"loop": true,
+			"fps": 14,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "left"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/mick-isolated-new/mick-isolated-new",
+	"position": [
+		320,
+		520
+	],
+	"healthicon": "avier",
+	"flip_x": false,
+	"healthbar_colors": [
+		216,
+		216,
+		216
+	],
+	"camera_position": [
+		315,
+		320
+	],
+	"sing_duration": 6.1,
+	"scale": 0.6
+}

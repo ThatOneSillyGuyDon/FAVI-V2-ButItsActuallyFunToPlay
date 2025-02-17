@@ -10736,7 +10736,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Change Character",
 						"dad",
-						"mickey-delu-intro"
+						"mick-lunacyEnd"
 					]
 				]
 			],
@@ -92032,11 +92032,11 @@ enum abstract Chart(String) from String to String {
 		"splashSkin": "noteSplashes",
 		"song": "Twisted Grins",
 		"needsVoices": true,
-		"voiceSfx1": "Player",
+		"voiceSfx1": "Everett",
 		"arrowSkin": "",
 		"stage": "trueGrinsOfSins",
 		"validScore": true,
-		"voiceSfx2": "Opponent",
+		"voiceSfx2": "Adam",
 		"bpm": 140,
 		"speed": 2.7
 	}

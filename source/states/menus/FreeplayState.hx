@@ -74,12 +74,6 @@ class FreeplayState extends MusicBeatState
 
 	var spectrum:SpectrumWaveform;
 
-	// to prevent lag when playing the inst
-	var songThread:Thread;
-	var threadActive:Bool = true;
-	var mutex:Mutex;
-	var songToPlay:Sound = null;
-
 	public static var freeplayMenuList = 0;
 
 	public static var difficultyRank:String = 'HARD';
@@ -99,7 +93,7 @@ class FreeplayState extends MusicBeatState
 	public static var songInstPlaying:Bool = false;
 
 	// this is only so it can fade because this fucking shit is 6 seconds long
-	private var confirmSound:FlxSound;
+	public static var confirmSound:FlxSound;
 
 	override function create()
 	{
@@ -198,7 +192,6 @@ class FreeplayState extends MusicBeatState
 				}
 		}
 
-		mutex = new Mutex();
 		persistentUpdate = true;
 		PlayState.isStoryMode = false;
 		WeekData.reloadWeekFiles(false);
@@ -347,7 +340,7 @@ class FreeplayState extends MusicBeatState
 		add(grpSongs);
 
 		confirmSound = new FlxSound();
-		if (freeplayMenuList != 2) confirmSound.loadEmbedded(Paths.sound('funkinAVI/menu/confirmEpisode'), false, true);
+		if (freeplayMenuList != 2) confirmSound.loadEmbedded(Paths.sound('funkinAVI/menu/confirmEpisode'));
 
 		for (i in 0...songs.length)
 		{
@@ -726,7 +719,6 @@ class FreeplayState extends MusicBeatState
 			if(colorTween != null) {
 				colorTween.cancel();
 			}
-			threadActive = false;
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 			MusicBeatState.switchState(new GeneralMenu());
 			FlxG.mouse.visible = true;
@@ -741,20 +733,16 @@ class FreeplayState extends MusicBeatState
 		{
 			if(instPlaying != curSelected && !disableSpace)
 			{
-				mutex.acquire();
-				if (songToPlay != null)
-				{
-					FlxG.sound.playMusic(songToPlay);
+				if (songs[curSelected].songName == "Don't Cross!")
+					FlxG.sound.playMusic(Paths.inst("dont-cross", CoolUtil.difficulties[curDifficulty]));
+				else
+					FlxG.sound.playMusic(Paths.inst(songs[curSelected].songName, CoolUtil.difficulties[curDifficulty]));
 
-					if (FlxG.sound.music.fadeTween != null)
-						FlxG.sound.music.fadeTween.cancel();
+				if (FlxG.sound.music.fadeTween != null)
+					FlxG.sound.music.fadeTween.cancel();
 
-					FlxG.sound.music.volume = 0.0;
-					FlxG.sound.music.fadeIn(1.0, 0.0, 0.7);
-
-					songToPlay = null;
-				}
-				mutex.release();
+				FlxG.sound.music.volume = 0.0;
+				FlxG.sound.music.fadeIn(1.0, 0.0, 0.7);
 				songInstPlaying = true;
 				getBPM();
 				FlxTween.num(Conductor.bpm, bpm, 2, null, shitshitfuckfuck -> Conductor.bpm = shitshitfuckfuck);
@@ -765,7 +753,6 @@ class FreeplayState extends MusicBeatState
 		else if (accepted)
 		{
 			songInstPlaying = false;
-			threadActive = false;
 			persistentUpdate = false;
 			var songLowercase:String = Paths.formatToSongPath(songs[curSelected].songName);
 			if (isDontCross) // I've been suffering trying to get the randomizer to work with hardcoded charts only to find out this piece of shit was causing the crash oh my FUCKING GOD I'M GONNA RIP MY FUCKING HEAD OFF!!!!! (don)
@@ -889,35 +876,6 @@ class FreeplayState extends MusicBeatState
 			//musicNotes.scale.set(.8, .8); yeahhhhhhhhhhhhhhh no.
 			for (icon in iconArray) icon.scale.set(2.35, 2.35);
 		}
-	}
-
-	function changeInst() {
-		if (songThread == null) {
-			songThread = Thread.create(function() {
-				while (true) {
-					if (!threadActive) return;
-
-					var index:Null<Int> = Thread.readMessage(false);
-					if (index != null) {
-						var inst:Sound = getInstrumentForSong(songs[curSelected].songName);
-						
-						if (threadActive) {
-							mutex.acquire();
-							songToPlay = inst;
-							mutex.release();
-						}
-					}
-				}
-			});
-		}
-		songThread.sendMessage(curSelected);
-	}
-
-	function getInstrumentForSong(songName:String):Sound {
-		if (songName == "Don't Cross!") {
-			return Paths.inst("dont-cross", CoolUtil.difficulties[curDifficulty]);
-		} 
-		return Paths.inst(songName, CoolUtil.difficulties[curDifficulty]);
 	}
 
 	var shittyTmr:FlxTimer;
@@ -1062,8 +1020,6 @@ class FreeplayState extends MusicBeatState
 						item.alpha = 1;
 				}
 			}
-		
-		changeInst();
 
 		Paths.currentModDirectory = songs[curSelected].folder;
 		PlayState.storyWeek = songs[curSelected].week;

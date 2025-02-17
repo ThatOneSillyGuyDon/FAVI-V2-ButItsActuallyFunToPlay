@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				-60,
+				120
+			],
+			"anim": "idle",
+			"fps": 10,
+			"name": "Mickeycross Idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-60,
+				120
+			],
+			"anim": "singLEFT",
+			"fps": 12,
+			"name": "Mickeycross Left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-60,
+				120
+			],
+			"anim": "singDOWN",
+			"fps": 12,
+			"name": "Mickeycross Down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-60,
+				120
+			],
+			"anim": "singUP",
+			"fps": 12,
+			"name": "Mickeycross Up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-60,
+				120
+			],
+			"anim": "singRIGHT",
+			"fps": 12,
+			"name": "Mickeycross Right",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/dctl-mickey/Mickeycross",
+	"position": [
+		-750,
+		-370
+	],
+	"healthicon": "cross",
+	"flip_x": false,
+	"healthbar_colors": [
+		198,
+		198,
+		198
+	],
+	"camera_position": [
+		220,
+		280
+	],
+	"sing_duration": 6.1,
+	"scale": 0.7
+}

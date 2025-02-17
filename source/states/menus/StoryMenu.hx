@@ -57,9 +57,7 @@ class StoryMenu extends MusicBeatState
 	{
 		super.create();
 
-		defaultShader = new FlxRuntimeShader(Shaders.grayScale, null, 140);
 		defaultShader2 = new FlxRuntimeShader(Shaders.monitorFilter, null, 140);
-		blur = new FlxRuntimeShader(Shaders.theBlurOf87, null, 140);
 		FlxG.camera.setFilters(
 			[
 				new openfl.filters.ShaderFilter(defaultShader2)
@@ -85,28 +83,8 @@ class StoryMenu extends MusicBeatState
 		book.alpha = 1;
 		add(book);
 
-		// idk brah
-		/*ispy = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/storymenu/i_spy'));
-		ispy.scrollFactor.set(0, 0);
-		ispy.updateHitbox();
-		ispy.screenCenter();
-		ispy.scale.set(0.8, 0.8);
-		ispy.antialiasing = true;
-		add(ispy);*/
-
 		bookStuff = new FlxTypedGroup<FlxSprite>();
 		add(bookStuff);
-
-		/*for (i in 0...bookImage.length)
-		{
-			var image:FlxSprite = new FlxSprite(100, 0).loadGraphic(Paths.image('Funkin_avi/storymenu/bookPics/' + bookImage[i]));
-			image.ID = i;
-			image.angle = FlxG.random.float(-15, 18);
-			image.alpha = 0.0001;
-			image.scale.set(0.45, 0.45);
-			bookStuff.add(image);
-		}*/
-
 
 		// I have a present simple for you
 
@@ -190,8 +168,6 @@ class StoryMenu extends MusicBeatState
 		gradient.antialiasing = true;
 		add(gradient);
 
-		// very unprofessional yoshubs!
-
 		changeWeek();
 		changeDifficulty();
 		updateText();
@@ -254,42 +230,19 @@ class StoryMenu extends MusicBeatState
 				}
 
 				// WE DONT NEED IT GRAHHHH CAUSE ONLY HARD MODE IS IN THIS MOD I THINK!!!!!!!!!!!!!!!!!!! - MalyPlus
-				/*if (controls.UI_RIGHT)
-					rightArrow.animation.play('press')
-				else
-					rightArrow.animation.play('idle');
-
-				if (controls.UI_LEFT)
-					leftArrow.animation.play('press');
-				else
-					leftArrow.animation.play('idle');
-
+				/*
 				if (controls.UI_RIGHT_P)
 					changeDifficulty(1);
 				else if (controls.UI_LEFT_P)
 					changeDifficulty(-1);
 				else if (upP || downP)
 					changeDifficulty();*/
+				
 				if (leftP || rightP)
 				{
 					changeDifficulty(); // nothing special, just in case
 				}
 
-				if(FlxG.keys.justPressed.CONTROL)
-				{
-					persistentUpdate = false;
-
-					// Funni - MalyPlus
-					lime.app.Application.current.window.title = "Nah you thought you would be able to use BotPlay? nah.. im gonna shut down this app.";
-					new FlxTimer().start(0.3, function(tmr:FlxTimer)
-					{
-						System.exit(0);
-					});
-
-
-					// nah we aint letting them use botplay
-					//openSubState(new GameplayChangersSubstate());
-				}
 				else if(controls.RESET)
 				{
 					persistentUpdate = false;

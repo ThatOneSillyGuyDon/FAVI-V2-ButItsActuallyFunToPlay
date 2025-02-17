@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "idle",
+			"fps": 11,
+			"name": "glitched-mickey-calm idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singLEFT",
+			"fps": 19,
+			"name": "glitched-mickey-calm left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singDOWN",
+			"fps": 18,
+			"name": "glitched-mickey-calm down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singUP",
+			"fps": 20,
+			"name": "glitched-mickey-calm up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singRIGHT",
+			"fps": 20,
+			"name": "glitched-mickey-calm right",
+			"indices": []
+		}
+	],
+	"no_antialiasing": true,
+	"image": "characters/gm-calm-pixel/glitched-mickey-calm",
+	"position": [
+		0,
+		-60
+	],
+	"healthicon": "glitched-mickey-new-pixel",
+	"flip_x": false,
+	"healthbar_colors": [
+		0,
+		0,
+		0
+	],
+	"camera_position": [
+		-300,
+		-250
+	],
+	"sing_duration": 6.1,
+	"scale": 2.3
+}

@@ -30,7 +30,7 @@ class GeneralMenu extends MusicBeatState {
     var bottom:FlxSprite;
     var dark:FlxSprite;
 
-    var item:Array<String> = ['story', 'extra', 'tape'];
+    var item:Array<String> = ['story', 'extra', 'legacy'];
     var itemGroup:FlxTypedGroup<FlxSprite>;
 
     var catDesc:FlxTypeText;
@@ -113,7 +113,6 @@ class GeneralMenu extends MusicBeatState {
             var itemSprite = new FlxSprite();
             itemSprite.loadGraphic(Paths.image('Funkin_avi/category/item/' + item[i] + '0'));
             itemGroup.add(itemSprite);
-            itemSprite.scale.set(0.95, 0.95);
             itemSprite.ID = i;
             switch (itemSprite.ID)
             {
@@ -123,6 +122,10 @@ class GeneralMenu extends MusicBeatState {
                 case 1:
                     itemSprite.scale.set(0.92, 0.92);
                     itemSprite.x += 20;
+                case 2:
+                    itemSprite.scale.set(0.71, 0.71);
+                    itemSprite.x += 50;
+                    itemSprite.y -= 40;
             }
             #if desktop
             FlxMouseEvent.add(itemSprite, onClick, null, mouseHandlerOver, mouseHandlerOut, true, true, true);
@@ -245,7 +248,7 @@ class GeneralMenu extends MusicBeatState {
         }
         FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
         catDesc.resetText(catDescString[curSelected]);
-		catDesc.start(0.02, true);
+		catDesc.start(0.013, true);
     }
 
 }
