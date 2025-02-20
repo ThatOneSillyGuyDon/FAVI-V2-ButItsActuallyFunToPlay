@@ -526,10 +526,16 @@ class PlayState extends MusicBeatState
 	var devilishGaming:VideoSprite;
 	var deluSing:VideoSprite;
 	var lununuIntro:VideoSprite;
-	var storyIntro:VideoSprite;
+	var episodeIntro:VideoSprite;
 	var isolatedIntro:VideoSprite;
 	var minnieJumpscare:VideoSprite;
 	var deluOutro:VideoSprite;
+
+	var skipSceneTxt:FlxText;
+    var skipDial:FlxPieDial;
+    var skipLerp:Float = 0.0;
+    var skipTmr:FlxTimer;
+	var canSkip:Bool = false;
 
 	//MALFUNCTION
 	var mickeyEmitter:FlxEmitter;
@@ -2769,15 +2775,64 @@ class PlayState extends MusicBeatState
 
 				// this whole video shit is retarded lol sorry i barely know this dogshit :sob:
 				// please help
-				/*case 'devilish-deal':
+				case 'devilish-deal':
+					camGame.visible = false;
 					episodeIntro = new VideoSprite(false);
-					episodeIntro.load(Paths.video('episode1Intro'));
+					episodeIntro.load(Paths.video('episodeIntro'));
 					episodeIntro.cameras = [camVideo];
 					episodeIntro.play();
 					camVideo.visible = true;
-				//case 'isolated':*/
-
+					add(episodeIntro);
+					episodeIntro.addCallback("onStart", () -> {
+						camVideo.visible = true;
+						episodeIntro.visible = true;
+					});
+					episodeIntro.addCallback("onEnd", () -> {
+						devilishGaming = new VideoSprite(false);
+						devilishGaming.load(Paths.video("devilishIntro"), [VideoSprite.muted]);
+						add(devilishGaming);
+						devilishGaming.cameras = [camVideo];
+						devilishGaming.play();
+						devilishGaming.visible = false;
+						camVideo.visible = true;
+						camGame.visible = true;
+						new FlxTimer().start(0.001, function(tmr:FlxTimer)
+						{
+							devilishGaming.pause();
+							devilishGaming.setVideoTime(0);
+						});
+						startCountdown();
+						canSkip = false;
+						trace("video gone");
+						remove(episodeIntro);
+						episodeIntro.kill();
+						episodeIntro = null;
+					});
+				case 'isolated':
+					camGame.visible = false;
+					isolatedIntro = new VideoSprite(false);
+					isolatedIntro.load(Paths.video('isolatedIntro'));
+					isolatedIntro.cameras = [camVideo];
+					isolatedIntro.play();
+					add(isolatedIntro);
+					camVideo.visible = true;
+					isolatedIntro.addCallback("onStart", () -> {
+						camVideo.visible = true;
+						isolatedIntro.visible = true;
+					});
+					isolatedIntro.addCallback("onEnd", () -> {
+						camVideo.visible = false;
+						camGame.visible = true;
+						camBars.fade(FlxColor.BLACK, 0.001);
+						startCountdown();
+						canSkip = false;
+						trace("video gone");
+						remove(isolatedIntro);
+						isolatedIntro.kill();
+						isolatedIntro = null;
+					});
 				case 'lunacy':
+					camGame.visible = false;
 					lununuIntro = new VideoSprite(false);
 					lununuIntro.load(Paths.video("lunacyIntro"));
 					lununuIntro.cameras = [camVideo];
@@ -2792,17 +2847,34 @@ class PlayState extends MusicBeatState
 					lununuIntro.addCallback("onEnd", () -> {
 						camVideo.visible = false;
 						camBars.visible = true;
+						camGame.visible = true;
+						canSkip = false;
 						camBars.fade(FlxColor.BLACK, 0.0001);
 						startCountdown();
 						trace("video gone");
 						remove(lununuIntro);
 						lununuIntro.kill();
+						lununuIntro = null;
 					});
 
 				default:
 					startCountdown();
 			}
 			seenCutscene = true;
+			canSkip = true;
+
+			skipSceneTxt = new FlxText(0, 25, 1280, "Spam SPACE to skip this cutscene.");
+			skipSceneTxt.setFormat(Paths.font("MagicOwlFont.otf"), 32, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
+			skipSceneTxt.alpha = 0.0001;
+			skipSceneTxt.cameras = [camVideo];
+			add(skipSceneTxt);
+	
+			skipDial = new FlxPieDial(0, 0, 45, FlxColor.WHITE, 10, CIRCLE, true, 30);
+			skipDial.screenCenter();
+			skipDial.amount = 0.0;
+			skipDial.alpha = 0.0001;
+			skipDial.cameras = [camVideo];
+			add(skipDial);
 		}
 		else
 		{
@@ -3068,18 +3140,21 @@ class PlayState extends MusicBeatState
 		switch (SONG.song)
 		{
 			case 'Devilish Deal':
-				devilishGaming = new VideoSprite(false);
-				devilishGaming.load(Paths.video("devilishIntro"), [VideoSprite.muted]);
-				add(devilishGaming);
-				devilishGaming.cameras = [camVideo];
-				devilishGaming.play();
-				devilishGaming.visible = false;
-				camVideo.visible = true;
-				new FlxTimer().start(0.001, function(tmr:FlxTimer)
+				if (!isStoryMode)
 				{
-					devilishGaming.pause();
-					devilishGaming.setVideoTime(0);
-				});
+					devilishGaming = new VideoSprite(false);
+					devilishGaming.load(Paths.video("devilishIntro"), [VideoSprite.muted]);
+					add(devilishGaming);
+					devilishGaming.cameras = [camVideo];
+					devilishGaming.play();
+					devilishGaming.visible = false;
+					camVideo.visible = true;
+					new FlxTimer().start(0.001, function(tmr:FlxTimer)
+					{
+						devilishGaming.pause();
+						devilishGaming.setVideoTime(0);
+					});
+				}
 				dad.setColorTransform(-1, -1, -1, 1, 0, 0, 0, 0);
 				camGame.alpha = 0.001;
 				camHUD.alpha = 0.001;
@@ -3098,9 +3173,6 @@ class PlayState extends MusicBeatState
 				});
 				death = new VideoSprite(false);
 				death.visible = false;
-				//death.scale.set(0.36, 0.36);
-				//death.x -= 1300;
-				//death.y -= 790;
 				death.load(Paths.video("mickeyDeath"));
 				death.cameras = [camVideo];
 				death.play();
@@ -3131,7 +3203,7 @@ class PlayState extends MusicBeatState
 
 			case 'Isolated' | 'Lunacy' | 'Cycled Sins' | 'Delusion' | 'Laugh Track':
 				camNotes.alpha = 0.001;
-				camBars.fade(FlxColor.BLACK, 0.0001);
+				if (!isStoryMode) camBars.fade(FlxColor.BLACK, 0.0001);
 				camHUD.alpha = 0.001;
 
 			case "War Dilemma":
@@ -4887,6 +4959,7 @@ class PlayState extends MusicBeatState
 			if (minnieJumpscare != null && minnieJumpscare.visible)
 				minnieJumpscare.pause();
 
+
 			if (inst != null)
 			{
 				inst.pause();
@@ -5014,15 +5087,24 @@ class PlayState extends MusicBeatState
 
 	override public function onFocus():Void
 	{
-		if (death != null && death.visible && !paused)
-			death.resume();
-		if (devilishGaming != null && devilishGaming.visible && !paused)
-			devilishGaming.resume();
-		if (deluSing != null && deluSing.visible && !paused)
-			deluSing.resume();
-		if (minnieJumpscare != null && minnieJumpscare.visible && !paused)
-			minnieJumpscare.resume();
-
+		if (FlxG.autoPause)
+		{
+			if (death != null && death.visible)
+				death.resume();
+			if (devilishGaming != null && devilishGaming.visible)
+				devilishGaming.resume();
+			if (deluSing != null && deluSing.visible)
+				deluSing.resume();
+			if (minnieJumpscare != null && minnieJumpscare.visible)
+				minnieJumpscare.resume();
+			if (episodeIntro != null && episodeIntro.visible)
+				episodeIntro.resume();
+			if (isolatedIntro != null && isolatedIntro.visible)
+				isolatedIntro.resume();
+			if (lununuIntro != null && lununuIntro.visible)
+				lununuIntro.resume();
+		}
+	
 		#if DISCORD_ALLOWED
 		if (healthThing > 0 && !paused)
 		{
@@ -5050,14 +5132,23 @@ class PlayState extends MusicBeatState
 
 	override public function onFocusLost():Void
 	{
-		if (death != null && death.visible && !paused)
-			death.pause();
-		if (devilishGaming != null && devilishGaming.visible && !paused)
-			devilishGaming.pause();
-		if (deluSing != null && deluSing.visible && !paused)
-			deluSing.pause();
-		if (minnieJumpscare != null && minnieJumpscare.visible && !paused)
-			minnieJumpscare.pause();
+		if (FlxG.autoPause)
+			{
+				if (death != null && death.visible)
+					death.pause();
+				if (devilishGaming != null && devilishGaming.visible)
+					devilishGaming.pause();
+				if (deluSing != null && deluSing.visible)
+					deluSing.pause();
+				if (minnieJumpscare != null && minnieJumpscare.visible)
+					minnieJumpscare.pause();
+				if (episodeIntro != null && episodeIntro.visible)
+					episodeIntro.pause();
+				if (isolatedIntro != null && isolatedIntro.visible)
+					isolatedIntro.pause();
+				if (lununuIntro != null && lununuIntro.visible)
+					lununuIntro.pause();
+			}
 
 		#if DISCORD_ALLOWED
 		if (healthThing > 0 && !paused)
@@ -5258,6 +5349,85 @@ class PlayState extends MusicBeatState
 						}
 					}
 		}
+
+		if (canSkip)
+		{
+			if (FlxG.keys.justPressed.ANY)
+			{
+				if (skipTmr != null)
+					skipTmr.cancel();
+	
+				skipTmr = new FlxTimer().start(2.5, function(tmr) {
+					skipLerp = 0.0;
+					skipDial.amount = 0;
+				});
+				skipLerp = 1.0;
+			}
+	
+			if (FlxG.keys.justPressed.SPACE)
+			{
+				skipDial.amount += 0.1;
+			}
+	
+			if (skipDial.amount >= 1)
+			{
+				if (episodeIntro != null)
+				{
+					episodeIntro.pause();
+					episodeIntro.visible = false;
+					devilishGaming = new VideoSprite(false);
+					devilishGaming.load(Paths.video("devilishIntro"), [VideoSprite.muted]);
+					add(devilishGaming);
+					devilishGaming.cameras = [camVideo];
+					devilishGaming.play();
+					devilishGaming.visible = false;
+					camVideo.visible = true;
+					camGame.visible = true;
+					new FlxTimer().start(0.001, function(tmr:FlxTimer)
+					{
+						devilishGaming.pause();
+						devilishGaming.setVideoTime(0);
+					});
+					trace("video gone");
+					remove(episodeIntro);
+					episodeIntro.kill();
+					episodeIntro = null;
+				}
+				if (isolatedIntro != null)
+				{
+					isolatedIntro.pause();
+					isolatedIntro.visible = false;
+					camVideo.visible = false;
+					camGame.visible = true;
+					camBars.fade(FlxColor.BLACK, 0.001);
+					trace("video gone");
+					remove(isolatedIntro);
+					isolatedIntro.kill();
+					isolatedIntro = null;
+				}
+				if (lununuIntro != null)
+				{
+					lununuIntro.pause();
+					lununuIntro.visible = false;
+					camVideo.visible = false;
+					camBars.visible = true;
+					camGame.visible = true;
+					camBars.fade(FlxColor.BLACK, 0.0001);
+					trace("video gone");
+					remove(lununuIntro);
+					lununuIntro.kill();
+					lununuIntro = null;
+				}
+				skipDial.visible = false;
+				skipSceneTxt.visible = false;
+				canSkip = false;
+				startCountdown();
+			}
+		}
+	
+		if (skipSceneTxt != null)
+			for (skipper in [skipSceneTxt, skipDial])
+				skipper.alpha = FlxMath.lerp(skipLerp, skipper.alpha, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
 		
 		// shitty system for the camera to stay updated
 		var wn_r:Float = 70;

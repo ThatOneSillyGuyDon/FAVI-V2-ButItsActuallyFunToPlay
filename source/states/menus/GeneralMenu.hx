@@ -124,8 +124,8 @@ class GeneralMenu extends MusicBeatState {
                     itemSprite.x += 20;
                 case 2:
                     itemSprite.scale.set(0.71, 0.71);
-                    itemSprite.x += 50;
-                    itemSprite.y -= 40;
+                    itemSprite.x += 70;
+                    itemSprite.y -= 50;
             }
             #if desktop
             FlxMouseEvent.add(itemSprite, onClick, null, mouseHandlerOver, mouseHandlerOut, true, true, true);
