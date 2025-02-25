@@ -70954,77 +70954,7 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
-				128674.698795181,
-				[
-					[
-						"Play Animation",
-						"laughing",
-						"dad"
-					]
-				]
-			],
-			[
-				128855.421686747,
-				[
-					[
-						"Play Animation",
-						"laughing",
-						"dad"
-					]
-				]
-			],
-			[
-				129036.144578313,
-				[
-					[
-						"Play Animation",
-						"laughing",
-						"dad"
-					]
-				]
-			],
-			[
-				129216.86746988,
-				[
-					[
-						"Play Animation",
-						"laughing",
-						"dad"
-					]
-				]
-			],
-			[
-				129397.590361446,
-				[
-					[
-						"Play Animation",
-						"laughing",
-						"dad"
-					]
-				]
-			],
-			[
-				129578.313253012,
-				[
-					[
-						"Play Animation",
-						"laughing",
-						"dad"
-					]
-				]
-			],
-			[
-				129759.036144578,
-				[
-					[
-						"Play Animation",
-						"laughing",
-						"dad"
-					]
-				]
-			],
-			[
-				129939.759036145,
+				128313.253012048,
 				[
 					[
 						"Play Animation",
@@ -72319,12 +72249,592 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
+				142048.192771084,
+				[
+					[
+						"No Signal Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				142093.373493976,
+				[
+					[
+						"No Signal Event",
+						"changebg",
+						"1"
+					]
+				]
+			],
+			[
+				142138.554216868,
+				[
+					[
+						"No Signal Event",
+						"changebg",
+						"3"
+					]
+				]
+			],
+			[
+				142183.734939759,
+				[
+					[
+						"No Signal Event",
+						"changebg",
+						"2"
+					]
+				]
+			],
+			[
+				142228.915662651,
+				[
+					[
+						"No Signal Event",
+						"togglevis",
+						""
+					],
+					[
+						"Static Event",
+						"settime",
+						"0.2"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				142409.638554217,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				143132.530120482,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				143493.975903615,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				143855.421686747,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				144216.86746988,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				146024.096385542,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				146385.542168675,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				146746.987951807,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				147108.43373494,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				148915.662650602,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				149277.108433735,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				149638.554216868,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				150000,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				151807.228915663,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				152168.674698795,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				152530.120481928,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				152891.56626506,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
 				153253.012048193,
 				[
 					[
 						"Alt Idle Animation",
 						"dad",
 						"-alt"
+					]
+				]
+			],
+			[
+				153795.180722892,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				153975.903614458,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				154698.795180723,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				155060.240963855,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				155421.686746988,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				155783.132530121,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				157590.361445783,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				157951.807228916,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				158313.253012048,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				158674.698795181,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				160481.927710843,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				160843.373493976,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				161204.819277109,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				161566.265060241,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				163373.493975904,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				163734.939759036,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				164096.385542169,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				164457.831325301,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
 					]
 				]
 			],
@@ -72355,6 +72865,426 @@ enum abstract Chart(String) from String to String {
 						"Static Event",
 						"settime",
 						"0.6"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				177108.43373494,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				177650.602409638,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				177831.325301205,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"2"
+					]
+				]
+			],
+			[
+				178554.21686747,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				179096.385542168,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				179277.108433735,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"3"
+					]
+				]
+			],
+			[
+				180000,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				180542.168674699,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				180722.891566265,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"4"
+					]
+				]
+			],
+			[
+				181445.78313253,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				181987.951807229,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				182168.674698795,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"1"
+					]
+				]
+			],
+			[
+				182891.56626506,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				183433.734939759,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				183614.457831325,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"2"
+					]
+				]
+			],
+			[
+				184337.34939759,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				184879.518072289,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				185060.240963855,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"3"
+					]
+				]
+			],
+			[
+				185783.13253012,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				186325.301204819,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				186506.024096385,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"1"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
 					],
 					[
 						"Static Event",
@@ -72429,12 +73359,1047 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
+				188674.698795181,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				189036.144578313,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"4"
+					]
+				]
+			],
+			[
+				189216.867469879,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				189397.590361446,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"2"
+					]
+				]
+			],
+			[
+				190120.481927711,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				190481.927710843,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"1"
+					]
+				]
+			],
+			[
+				190662.650602409,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				190843.373493976,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"3"
+					]
+				]
+			],
+			[
+				191566.265060241,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				191927.710843373,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"2"
+					]
+				]
+			],
+			[
+				192108.43373494,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				192289.156626506,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"3"
+					]
+				]
+			],
+			[
+				193012.048192771,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				193373.493975903,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"4"
+					]
+				]
+			],
+			[
+				193554.21686747,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				193734.939759036,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"1"
+					]
+				]
+			],
+			[
+				194457.831325301,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				194819.277108433,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"2"
+					]
+				]
+			],
+			[
+				195000,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				195180.722891566,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"3"
+					]
+				]
+			],
+			[
+				195903.614457831,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				196265.060240964,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"4"
+					]
+				]
+			],
+			[
+				196445.78313253,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				196626.506024096,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"1"
+					]
+				]
+			],
+			[
+				197349.397590361,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				197710.843373494,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"2"
+					]
+				]
+			],
+			[
+				197891.56626506,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				198072.289156626,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"3"
+					]
+				]
+			],
+			[
+				198795.180722891,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				199156.626506024,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"4"
+					]
+				]
+			],
+			[
+				199337.34939759,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				199518.072289156,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"1"
+					]
+				]
+			],
+			[
+				200240.963855421,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				200602.409638554,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"2"
+					]
+				]
+			],
+			[
+				200783.13253012,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				200963.855421687,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"3"
+					]
+				]
+			],
+			[
+				201686.746987952,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				202048.192771084,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"4"
+					]
+				]
+			],
+			[
+				202228.91566265,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				202409.638554217,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"1"
+					]
+				]
+			],
+			[
+				203132.530120482,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				203493.975903614,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"2"
+					]
+				]
+			],
+			[
+				203674.698795181,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				203855.421686747,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"3"
+					]
+				]
+			],
+			[
+				204578.313253012,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				204939.759036144,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"4"
+					]
+				]
+			],
+			[
+				205120.481927711,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				205301.204819277,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"1"
+					]
+				]
+			],
+			[
+				206024.096385542,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				206385.542168674,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"2"
+					]
+				]
+			],
+			[
+				206566.265060241,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				206746.987951807,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"3"
+					]
+				]
+			],
+			[
+				207469.879518072,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				207831.325301205,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"4"
+					]
+				]
+			],
+			[
+				208012.048192771,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				208192.771084337,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"1"
+					]
+				]
+			],
+			[
+				208915.662650602,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				209277.108433735,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"2"
+					]
+				]
+			],
+			[
+				209457.831325301,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
 				209638.554216867,
 				[
 					[
 						"Alt Idle Animation",
 						"dad",
 						"-alt"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
 					]
 				]
 			],
@@ -84751,7 +86716,7 @@ enum abstract Chart(String) from String to String {
 	var twistedGrins:String = '{
 	"song": {
 		"player1": "everretBFfinal",
-		"gfVersion": "gf",
+		"gfVersion": "lilith",
 		"notes": [
 			{
 				"sectionBeats": 4,

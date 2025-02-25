@@ -34,15 +34,16 @@ class GeneralMenu extends MusicBeatState {
     var itemGroup:FlxTypedGroup<FlxSprite>;
 
     var catDesc:FlxTypeText;
+    var catTitle:FlxTypeText;
 	var backdrop:FlxBackdrop;
 	var defaultShader2:FlxRuntimeShader;
 
     var spectrum:SpectrumWaveform;
 
-    var catDescString:Array<String> = [
-		"Story Mode Songs: After the hell seen in our little story, here you will be given power to replay the pain all over again.",
-		"Extra Songs: Danger lurks in every shadow, in every breath. An uncomfortable sense of unease takes hold as you venture through strange worlds where fear is a constant companion.",
-		"Legacy Songs: A place where long forgotten memories emerge from the shadows, reeling in the past and its viewers back"
+    var catDescInfo:Array<Array<String>> = [
+		["Repeat the Story", "This little book contains all the songs that occurred in story mode, feel free to repeat their misery as much as you like."],
+		["Unfamiliar Lands", "Everett & Lilith have had adventures of their own before the main story's events occurred, enter the portals that may lead to meeting some new faces."],
+		["A Blast From the Past", "Relive the classic days of what this used to be back in 2022 - 2023! Oh so much has changed since then after all this time."]
 	];
 
     private static var curSelected:Int = 0;
@@ -101,6 +102,7 @@ class GeneralMenu extends MusicBeatState {
             spectrum.design = ROUNDED;
             spectrum.barWidth = 12;
             spectrum.barSpacing = 16;
+            spectrum.roundValue = 25;
             spectrum.blend = ADD;
             spectrum.alpha = 0.6;
             add(spectrum);
@@ -141,6 +143,18 @@ class GeneralMenu extends MusicBeatState {
 		catDesc.setFormat(Paths.font("Oceanic_Cocktail_Demo.otf"), 28, FlxColor.WHITE, CENTER);
 		catDesc.screenCenter(X);
 		add(catDesc);
+
+        var fpTitle:FlxText = new FlxText(0, 40, 1280, "Freeplay Menu");
+        fpTitle.setFormat(Paths.font('Oceanic_Cocktail_Demo.otf'), 65, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
+        fpTitle.screenCenter(X);
+        fpTitle.borderSize = 3;
+        add(fpTitle);
+
+        catTitle = new FlxTypeText(0, 100, 1280, "");
+        catTitle.setFormat(Paths.font('Oceanic_Cocktail_Demo.otf'), 32, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
+        catTitle.borderSize = 3;
+        catTitle.screenCenter(X);
+        add(catTitle);
 
         dark = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/category/vingnette'));
         dark.screenCenter();
@@ -247,8 +261,10 @@ class GeneralMenu extends MusicBeatState {
             spr.loadGraphic(Paths.image('Funkin_avi/category/item/' + item[i] + (i == curSelected ? '1' : '0')));
         }
         FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
-        catDesc.resetText(catDescString[curSelected]);
-		catDesc.start(0.013, true);
+        catDesc.resetText(catDescInfo[curSelected][1]);
+		catDesc.start(0.012, true);
+        catTitle.resetText(catDescInfo[curSelected][0]);
+        catTitle.start(0.017, true);
     }
 
 }

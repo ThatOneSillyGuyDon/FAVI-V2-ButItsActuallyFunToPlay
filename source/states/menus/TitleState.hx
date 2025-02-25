@@ -195,7 +195,6 @@ class TitleState extends MusicBeatState
 
 		Application.current.window.title = 'Funkin.avi - ${windowArray[FlxG.random.int(0, windowArray.length-1)]}';
 
-		defaultShader = new FlxRuntimeShader(Shaders.grayScale, null, 140);
 		defaultShader2 = new FlxRuntimeShader(Shaders.monitorFilter, null, 140);
 		if(ClientPrefs.shaders)
 			{
@@ -245,17 +244,20 @@ class TitleState extends MusicBeatState
 		buildings1.antialiasing = ClientPrefs.globalAntialiasing;
 		add(buildings1);
 
-		var blackShit1:FlxBackdrop = new FlxBackdrop(Paths.image('$path/blackShit2'), X, 0, 0);
-		blackShit1.screenCenter();
-		blackShit1.alpha = 0.47;
-		blackShit1.velocity.set(-300, 0);
-		blackShit1.antialiasing = ClientPrefs.globalAntialiasing;
-		add(blackShit1);
+		if (!ClientPrefs.lowQuality)
+		{
+			var blackShit1:FlxBackdrop = new FlxBackdrop(Paths.image('$path/blackShit2'), X, 0, 0);
+			blackShit1.screenCenter();
+			blackShit1.alpha = 0.47;
+			blackShit1.velocity.set(-300, 0);
+			blackShit1.antialiasing = ClientPrefs.globalAntialiasing;
+			add(blackShit1);
 
-		var dark:FlxSprite = new FlxSprite().loadGraphic(Paths.image('$path/buildingDark'));
-		dark.screenCenter();
-		dark.antialiasing = ClientPrefs.globalAntialiasing;
-		add(dark);
+			var dark:FlxSprite = new FlxSprite().loadGraphic(Paths.image('$path/buildingDark'));
+			dark.screenCenter();
+			dark.antialiasing = ClientPrefs.globalAntialiasing;
+			add(dark);
+		}
 
 		var buildings2:FlxBackdrop = new FlxBackdrop(Paths.image('$path/buildings1'), X, 0, 0);
 		buildings2.screenCenter();
@@ -263,11 +265,14 @@ class TitleState extends MusicBeatState
 		buildings2.antialiasing = ClientPrefs.globalAntialiasing;
 		add(buildings2);
 
-		var blackShit2:FlxBackdrop = new FlxBackdrop(Paths.image('$path/blackShit1'), X, 0, 0);
-		blackShit2.screenCenter();
-		blackShit2.velocity.set(-400, 0);
-		blackShit2.antialiasing = ClientPrefs.globalAntialiasing;
-		add(blackShit2);
+		if (!ClientPrefs.lowQuality)
+		{
+			var blackShit2:FlxBackdrop = new FlxBackdrop(Paths.image('$path/blackShit1'), X, 0, 0);
+			blackShit2.screenCenter();
+			blackShit2.velocity.set(-400, 0);
+			blackShit2.antialiasing = ClientPrefs.globalAntialiasing;
+			add(blackShit2);
+		}
 
 		logoBl = new FlxSprite(150, 0);
 		logoBl.loadGraphic(Paths.image(('$path/titleLogo')));
@@ -304,7 +309,7 @@ class TitleState extends MusicBeatState
 
 		FlxTween.tween(credTextShit, {y: credTextShit.y + 20}, 2.9, {ease: FlxEase.quadInOut, type: PINGPONG});
 
-		if(FlxG.sound.music == null) {
+		if(FlxG.sound.music == null || FlxG.sound.music.volume == 0) {
 			FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'), 0);
 
 			FlxG.sound.music.fadeIn(4, 0, 0.7);

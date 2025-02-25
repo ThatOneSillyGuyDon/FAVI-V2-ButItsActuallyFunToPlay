@@ -76,7 +76,7 @@ class PauseSubState extends MusicBeatSubstate
 		{
 			case 1: randomPauseSong = "shipTheFartYayHoorayv3v";
 			case 2: randomPauseSong = "somberNight";
-			case 3: randomPauseSong = "somberNight";
+			case 3: randomPauseSong = "theWretchedTilezones";
 		}
 
 		pauseMusic = new FlxSound();
@@ -520,13 +520,13 @@ class FAVIPauseSubState extends MusicBeatSubstate
 			{
 				case 1: 
 					randomPauseSong = "shipTheFartYayHoorayv3v";
-					pauseSongStr = "Ship The Fart Hooray < 3 (Shining Stars)";
+					pauseSongStr = "Ship The Fart Hooray < 3 (Distant Stars)";
 				case 2: 
 					randomPauseSong = "somberNight";
 					pauseSongStr = "Ahh The Scary (Somber Night)";
 				case 3: 
-					randomPauseSong = "somberNight";
-					pauseSongStr = "Ahh The Scary (Somber Night)";
+					randomPauseSong = "theWretchedTilezones";
+					pauseSongStr = "The Wretched Tilezones (Simple Life)";
 			}
 
 			fuckingName = (PlayState.useFakeDeluName ? "Regret" : PlayState.SONG.song);

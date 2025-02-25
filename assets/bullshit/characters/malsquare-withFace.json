@@ -8,7 +8,7 @@
 			],
 			"anim": "singDOWN",
 			"fps": 24,
-			"name": "down",
+			"name": "down0",
 			"indices": []
 		},
 		{
@@ -19,7 +19,7 @@
 			],
 			"anim": "singUP",
 			"fps": 24,
-			"name": "up",
+			"name": "up0",
 			"indices": []
 		},
 		{
@@ -30,7 +30,7 @@
 			],
 			"anim": "singLEFT",
 			"fps": 28,
-			"name": "left",
+			"name": "left0",
 			"indices": []
 		},
 		{
@@ -52,7 +52,7 @@
 			],
 			"anim": "singRIGHT",
 			"fps": 25,
-			"name": "right",
+			"name": "right0",
 			"indices": []
 		},
 		{
@@ -65,6 +65,84 @@
 			"fps": 20,
 			"name": "ohHeMad",
 			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				51,
+				54
+			],
+			"anim": "singDOWN-alt",
+			"fps": 24,
+			"name": "downAlt",
+			"indices": [
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9
+			]
+		},
+		{
+			"offsets": [
+				79,
+				36
+			],
+			"indices": [
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9
+			],
+			"fps": 24,
+			"anim": "singUP-alt",
+			"loop": false,
+			"name": "upAlt"
+		},
+		{
+			"offsets": [
+				-310,
+				60
+			],
+			"indices": [
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9
+			],
+			"fps": 30,
+			"anim": "singRIGHT-alt",
+			"loop": false,
+			"name": "rightAlt"
+		},
+		{
+			"offsets": [
+				450,
+				10
+			],
+			"indices": [
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9
+			],
+			"fps": 28,
+			"anim": "singLEFT-alt",
+			"loop": false,
+			"name": "leftAlt"
 		}
 	],
 	"no_antialiasing": true,

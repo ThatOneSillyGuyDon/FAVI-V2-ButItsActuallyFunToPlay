@@ -73,8 +73,7 @@ class ManIHateYouSoMuchYouMadeMuckneySad extends MusicBeatState
       totallyEmotionalTextDisplay.borderSize = 5;
       add(totallyEmotionalTextDisplay);
       
-      var birthdayInstButSlower:FlxSound = new FlxSound().loadEmbedded(Paths.inst("Birthday", CoolUtil.difficulties[PlayState.storyDifficulty]));
-      birthdayInstButSlower.pitch = 0.45;
+      var birthdayInstButSlower:FlxSound = new FlxSound().loadEmbedded(Paths.music("aviOST/aTrueMonster"));
       FlxG.sound.list.add(birthdayInstButSlower);
       birthdayInstButSlower.play();
    }

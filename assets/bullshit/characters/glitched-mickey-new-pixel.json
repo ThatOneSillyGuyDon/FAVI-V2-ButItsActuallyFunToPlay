@@ -1,81 +1,159 @@
 {
 	"animations": [
 		{
-			"loop": true,
 			"offsets": [
 				51,
 				60
 			],
-			"anim": "idle",
+			"loop": true,
 			"fps": 26,
-			"name": "idle",
-			"indices": []
+			"anim": "idle",
+			"indices": [],
+			"name": "idle"
 		},
 		{
 			"loop": false,
 			"offsets": [
+				51,
+				60
+			],
+			"anim": "MODCHARTS RAH",
+			"fps": 20,
+			"name": "YouFinnaDead",
+			"indices": []
+		},
+		{
+			"offsets": [
 				50,
 				60
 			],
+			"loop": false,
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "down",
-			"indices": []
+			"indices": [],
+			"name": "down0"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				50,
 				60
 			],
-			"anim": "singUP",
+			"loop": false,
 			"fps": 24,
-			"name": "up",
-			"indices": []
+			"anim": "singUP",
+			"indices": [],
+			"name": "up0"
+		},
+		{
+			"offsets": [
+				50,
+				60
+			],
+			"loop": false,
+			"fps": 30,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right0"
+		},
+		{
+			"offsets": [
+				50,
+				60
+			],
+			"loop": false,
+			"fps": 28,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "left0"
+		},
+		{
+			"offsets": [
+				51,
+				54
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN-alt",
+			"indices": [
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9
+			],
+			"name": "downAlt"
 		},
 		{
 			"loop": false,
+			"offsets": [
+				79,
+				36
+			],
+			"anim": "singUP-alt",
+			"fps": 24,
+			"name": "upAlt",
+			"indices": [
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9
+			]
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-310,
+				60
+			],
+			"anim": "singRIGHT-alt",
+			"fps": 30,
+			"name": "rightAlt",
+			"indices": [
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9
+			]
+		},
+		{
+			"loop": false,
+			"offsets": [
+				450,
+				10
+			],
+			"anim": "singLEFT-alt",
+			"fps": 28,
+			"name": "leftAlt",
+			"indices": [
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9
+			]
+		},
+		{
 			"offsets": [
 				61,
 				66
 			],
-			"anim": "laughing",
-			"fps": 16,
-			"name": "laugh",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				50,
-				60
-			],
-			"anim": "singRIGHT",
-			"fps": 30,
-			"name": "right",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				50,
-				60
-			],
-			"anim": "singLEFT",
-			"fps": 28,
-			"name": "left",
-			"indices": []
-		},
-		{
-			"offsets": [
-				51,
-				60
-			],
-			"loop": false,
-			"fps": 20,
-			"anim": "MODCHARTS RAH",
 			"indices": [],
-			"name": "YouFinnaDead"
+			"fps": 19,
+			"anim": "laughing",
+			"loop": false,
+			"name": "laugh"
 		}
 	],
 	"no_antialiasing": true,

@@ -108,5 +108,11 @@ import flixel.text.FlxText.FlxTextAlign;
 import flixel.text.FlxText.FlxTextBorderStyle;
 import flixel.util.FlxSignal.FlxTypedSignal;
 
+#if (flixel <= "5.2.2")
+	import flixel.system.FlxSound;
+#else
+	import flixel.sound.FlxSound;
+#end
+
 using StringTools;
 #end

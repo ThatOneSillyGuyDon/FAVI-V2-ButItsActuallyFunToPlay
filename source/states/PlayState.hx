@@ -2528,7 +2528,7 @@ class PlayState extends MusicBeatState
 
 			switch (curStage)
 			{
-				case "forestNew" | "desktop" | "circus" | 'clubhouse':
+				case "forestNew" | "desktop" | "circus" | 'clubhouse' | 'trueGrinsOfSins':
 					//do nothing, gf exists
 				case 'apartment':
 					if (SONG.song == "Cycled Sins Legacy") gf.visible = false;
@@ -3455,6 +3455,7 @@ class PlayState extends MusicBeatState
 			case 'trueGrinsOfSins':
 				boyfriend.setPosition(1300, 400);
 				dad.setPosition(0, 0);
+				gf.setPosition(1100, 560);
 			case 'vaultRoom':
 				boyfriend.setPosition(960, 530);
 				if (dad.curCharacter == 'white-noise-new') dad.setPosition(-680, -520); else dad.setPosition(90, 60);
@@ -7187,7 +7188,7 @@ class PlayState extends MusicBeatState
 						CustomFadeTransition.nextCamera = null;
 					}
 
-					if (!hasEndingScene) 
+					/*if (!hasEndingScene) 
 					{
 						FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 						MusicBeatState.switchState(new StoryMenu());
@@ -7216,7 +7217,7 @@ class PlayState extends MusicBeatState
 									MusicBeatState.switchState(new StoryMenu());
 								});
 						}
-					}
+					}*/
 
 					// if ()
 					if(!ClientPrefs.getGameplaySetting('practice', false) && !ClientPrefs.getGameplaySetting('botplay', false)) {
@@ -7873,6 +7874,9 @@ class PlayState extends MusicBeatState
 					altAnim = '-alt';
 				}
 			}
+
+			if (note.noteType == "Error Note") // Makes Malsquare use his alt animations when he hits error notes cause I don't wanna rechart the entire damn thing just for his alt set to be used
+				altAnim = '-alt';
 
 			var char:Character = dad;
 			var animToPlay:String = singAnimations[Std.int(Math.abs(note.noteData))] + altAnim;
