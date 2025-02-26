@@ -3104,7 +3104,6 @@ class PlayState extends MusicBeatState
                         camGame.setFilters([
                             new ShaderFilter(dramaticCamMovement),
                             new ShaderFilter(monitorFilter),
-                            new ShaderFilter(bloomEffect)
                         ]);
                     }
                     else
