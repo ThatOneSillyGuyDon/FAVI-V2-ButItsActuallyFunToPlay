@@ -146,30 +146,33 @@ class FreeplayState extends MusicBeatState
 
 					//if (GameData.episode1FPLock == 'unlocked')
 					//{
-						//addSong('Resentment', 3, 'mr-smiles', FlxColor.fromRGB(99, 66, 66), 'obscurity', 'NORMAL', FlxColor.fromRGB(255, 220, 220));
-						//addSong('Mortiferum-Risus', 3, 'mr-smiles', FlxColor.fromRGB(143, 91, 91), 'Sayan Sama', 'NORMAL', FlxColor.fromRGB(255, 220, 220));
 						addSong('Hunted', 3, (GameData.huntedLock != 'unlocked' && GameData.huntedLock != 'beaten' ? 'mysteryfp' : 'goofy'), FlxColor.fromRGB(94, 28, 35), 'JBlitz', 'NORMAL', FlxColor.fromRGB(255, 220, 220), (GameData.huntedLock == "beaten" || GameData.huntedLock == "unlocked" ? [24, -8] : [25, 0]), "Modcharts that may cause visual distortion.");
-						//addSong('Delusion', 3, 'insanemick', FlxColor.fromRGB(25, 25, 25), 'I forgor', 'NORMAL', FlxColor.fromRGB(255, 220, 220));
 						addSong('Laugh Track', 3, (GameData.rickyLock != 'unlocked' && GameData.rickyLock != 'beaten' ? 'mysteryfp' : 'ricky'), FlxColor.fromRGB(181, 0, 0), 'PualTheUnTruest', 'HARD', FlxColor.fromRGB(255, 187, 187), (GameData.rickyLock == "beaten" || GameData.rickyLock == "unlocked" ? [20, -15] : [25, 0]), "None");
-						addSong('Bless', 3, (GameData.blessLock != 'unlocked' && GameData.blessLock != 'beaten' ? 'mysteryfp' : 'noise'), FlxColor.WHITE, 'PualTheUnTruest', 'HARD', FlxColor.fromRGB(255, 187, 187), (GameData.blessLock == "beaten" || GameData.blessLock == "unlocked" ? [40, -10] : [25, 0]), "None");
+						addSong('Bless', 3, (GameData.blessLock != 'unlocked' && GameData.blessLock != 'beaten' ? 'mysteryfp' : 'noise'), FlxColor.WHITE, 'PualTheUnTruest', 'HARD', FlxColor.fromRGB(255, 187, 187), (GameData.blessLock == "beaten" || GameData.blessLock == "unlocked" ? [30, -10] : [25, 0]), "None");
 						//addSong('Scrapped', 3, (GameData.scrappedLock != 'unlocked' && GameData.scrappedLock != 'beaten' ? 'mysteryfp' : 'rs'), FlxColor.fromRGB(0, 0, 0), 'FR3SHMoure', 'HARD', FlxColor.fromRGB(255, 187, 187));
-						addSong("Don't Cross!", 3, (GameData.crossinLock != 'unlocked' && GameData.crossinLock != 'beaten' ? 'mysteryfp' : 'cross'), FlxColor.fromRGB(255, 0, 0), 'PualTheUnTruest', 'GOOD LUCK', FlxColor.fromRGB(201, 0, 0), (GameData.crossinLock == "beaten" || GameData.crossinLock == "unlocked" ? [23, 0] : [25, 0]), "Chart is randomized every attempt.");
+						addSong("Don't Cross!", 3, (GameData.crossinLock != 'unlocked' && GameData.crossinLock != 'beaten' ? 'mysteryfp' : 'cross'), FlxColor.fromRGB(255, 0, 0), 'PualTheUnTruest', 'GOOD LUCK', FlxColor.fromRGB(201, 0, 0), (GameData.crossinLock == "beaten" || GameData.crossinLock == "unlocked" ? [23, -10] : [25, 0]), "Chart is randomized every attempt.");
 						addSong('War Dilemma', 3, (GameData.warLock != 'unlocked' && GameData.warLock != 'beaten' ? 'mysteryfp' : 'ethernalg'), FlxColor.fromRGB(204, 41, 103), 'Sayan Sama & obscurity', 'HARD', FlxColor.fromRGB(255, 187, 187), (GameData.warLock == "beaten" || GameData.warLock == "unlocked" ? [24, 1] : [25, 0]), "Modcharts that may cause visual distortion.");
-						addSong('Twisted Grins', 3, (GameData.tgLock != 'unlocked' && GameData.tgLock != 'beaten' ? 'mysteryfp' : 'smile'), FlxColor.fromRGB(54, 38, 38), 'PualTheUnTruest', 'HARD', FlxColor.fromRGB(255, 187, 187), (GameData.tgLock == "beaten" || GameData.tgLock == "unlocked" ? [25, 0] : [25, 0]), "Scroll speed changes & Modcharts that may cause visual distortion");
-						addSong('Mercy', 3, (GameData.mercyLock != 'beaten' && GameData.mercyLock != 'beaten' ? 'mysteryfp' : 'walt'), FlxColor.fromRGB(176, 169, 116), 'Ophomix24', 'INSANE', FlxColor.fromRGB(255, 110, 110), (GameData.mercyLock == "beaten" || GameData.mercyLock == "unlocked" ? [32, -20] : [25, 0]), "Drains your health until death. Utilizes the mechanic keybind, highly recommend checking your controls setting before playing.");
+						addSong('Twisted Grins', 3, (GameData.tgLock != 'unlocked' && GameData.tgLock != 'beaten' ? 'mysteryfp' : 'smile'), FlxColor.fromRGB(54, 38, 38), 'PualTheUnTruest', 'HARD', FlxColor.fromRGB(255, 187, 187), (GameData.tgLock == "beaten" || GameData.tgLock == "unlocked" ? [25, -10] : [25, 0]), "Scroll speed changes & Modcharts that may cause visual distortion");
+						addSong('Mercy', 3, (GameData.mercyLock != 'beaten' && GameData.mercyLock != 'beaten' ? 'mysteryfp' : 'walt'), FlxColor.fromRGB(176, 169, 116), 'Ophomix24', 'INSANE', FlxColor.fromRGB(255, 110, 110), (GameData.mercyLock == "beaten" || GameData.mercyLock == "unlocked" ? [27, -20] : [25, 0]), "Drains your health until death. Utilizes the mechanic keybind, highly recommend checking your controls setting before playing.");
 						//addSong('Neglection', 3, (GameData.pnmLock != 'unlocked' && GameData.pnmLock != 'beaten' ? 'mysteryfp' : 'pnm'), FlxColor.fromRGB(117, 86, 27), 'AttackPan', 'NORMAL', FlxColor.fromRGB(255, 220, 220));
 						addSong('Cycled Sins', 3, (GameData.sinsLock != 'unlocked' && GameData.sinsLock != 'beaten' ? 'mysteryfp' : 'relapse-pixel'), FlxColor.fromRGB(105, 30, 30), 'JBlitz', 'HARD', FlxColor.fromRGB(255, 187, 187), (GameData.sinsLock == "beaten" || GameData.sinsLock == "unlocked" ? [24, -21] : [25, 0]), "Dodge Relapse Mouse's gunshots. Utilizes the mechanic keybind, highly recommend checking your controls setting before playing."); //messing with the saves for this later
 						//addSong('Whimsical-Bar-Blues', 3, 'mick-isolated-new', FlxColor.fromRGB(133, 190, 255), 'inneaux & Sayan Sama', 'NORMAL', FlxColor.fromRGB(255, 220, 220));
 					//}
+					/*
+					if (GameData.episode2FPLock == 'unlocked')
+					{
+						addSong('Scrapped', 3, (GameData.scrappedLock != 'unlocked' && GameData.scrappedLock != 'beaten' ? 'mysteryfp' : 'rs'), FlxColor.fromRGB(0, 0, 0), 'FR3SHMoure', 'HARD', FlxColor.fromRGB(255, 187, 187), [0, 0], "None");
+					}
+					*/
 					
 					if (GameData.canAddMalfunction)
 					{
-						addSong('Malfunction', 3, (GameData.malfunctionLock != 'unlocked' && GameData.malfunctionLock != 'beaten' ? 'mysteryfp' : 'mal-pixel'), FlxColor.fromRGB(150, 149, 186), 'obscurity', null, FlxColor.WHITE, (GameData.malfunctionLock == "beaten" || GameData.malfunctionLock == "unlocked" ? [32, 14] : [25, 0]), "Contains extreme flashing lights, very unforgiving modcharts, life system & note gimmicks. Mechanics are enabled by default upon playing.\nGood luck."); // Because Malfunction is getting some major upgrades later
+						addSong('Malfunction', 3, (GameData.malfunctionLock != 'unlocked' && GameData.malfunctionLock != 'beaten' ? 'mysteryfp' : 'mal-pixel'), FlxColor.fromRGB(150, 149, 186), 'obscurity', null, FlxColor.WHITE, (GameData.malfunctionLock == "beaten" || GameData.malfunctionLock == "unlocked" ? [27, 0] : [25, 0]), "Contains extreme flashing lights, very unforgiving modcharts, life system & note gimmicks. Mechanics are enabled by default upon playing.\nGood luck."); // Because Malfunction is getting some major upgrades later
 					}
 					
 					if ((GameData.muckneyLock == 'beaten' || GameData.muckneyLock == 'obtained') && GameData.muckneyLock != "uninvited")
 					{
-						addSong('Birthday', 3, 'muckney', FlxColor.fromRGB(84, 255, 181), 'FR3SHMoure', 'PARTY', FlxColor.fromRGB(250, 234, 92), [15, 0], "Don't leave his party, you'll make him sad.");
+						addSong('Birthday', 3, 'muckney', FlxColor.fromRGB(84, 255, 181), 'FR3SHMoure', 'PARTY', FlxColor.fromRGB(250, 234, 92), [15, -5], "Don't leave his party, you'll make him sad.");
 					}
 				}
 			case 2: // Legacy Menu
@@ -299,6 +302,9 @@ class FreeplayState extends MusicBeatState
 			overlay.cameras = [camOther];
 			overlay.antialiasing = ClientPrefs.globalAntialiasing;
 			add(overlay);
+
+			for (obj in [spectrum, table, albumCover, book, rug, gramo, disc, shade])
+				obj.cameras = [camHUD];
 		}
 
 		albumHolder = new FlxTypedGroup<FlxSprite>();
@@ -341,6 +347,7 @@ class FreeplayState extends MusicBeatState
 				icon.setGraphicSize(Std.int(icon.width * 0.8));
 				icon.antialiasing = ClientPrefs.globalAntialiasing;
 				icon.y += 150;
+				icon.cameras = [camHUD];
 
 				songText2.screenCenter();
 				songText2.x -= 346;
@@ -348,8 +355,9 @@ class FreeplayState extends MusicBeatState
 				songText2.antialiasing = ClientPrefs.globalAntialiasing;
 				songText2.cameras = [camHUD];
 
-				album.scale.set(0.3, 0.3);
+				album.scale.set(0.31, 0.3);
 				album.antialiasing = ClientPrefs.globalAntialiasing;
+				album.cameras = [camHUD];
 				albumHolder.add(album);
 
 				// really dumb way of fixing the offsets but eh, whetever -demo
@@ -410,6 +418,8 @@ class FreeplayState extends MusicBeatState
 			add(scoreText);
 			add(freeplayCtrlTxt);
 			add(gimmickInfo);
+			scoreText.cameras = [camHUD];
+			diffText.cameras = [camHUD];
 			freeplayCtrlTxt.cameras = [camHUD];
 			gimmickInfo.cameras = [camHUD];
 		}
@@ -677,7 +687,7 @@ class FreeplayState extends MusicBeatState
 			PlayState.isStoryMode = false;
 			PlayState.storyDifficulty = curDifficulty;
 
-			for (icon in iconArray) if (freeplayMenuList != 2) icon.scale.set(2.35, 2.35);
+			for (icon in iconArray) if (freeplayMenuList != 2) icon.scale.set(1.25, 1.25);
 
 			trace('CURRENT WEEK: ' + WeekData.getWeekFileName());
 			if(colorTween != null) {
@@ -716,6 +726,7 @@ class FreeplayState extends MusicBeatState
 			musicNote.updateHitbox();
 			musicNote.antialiasing = ClientPrefs.globalAntialiasing;
 			musicNote.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0);
+			musicNote.cameras = [camHUD];
 			add(musicNote);
 	
 			musicNote.alpha = 0;

@@ -312,6 +312,26 @@ class BaseOptionsMenu extends MusicBeatSubstate
 			}
 		}
 
+		if (boyfriend != null && boyfriend.visible)
+		{
+			if (controls.NOTE_UP)
+			{
+				boyfriend.playAnim("singUP");
+			}
+			if (controls.NOTE_DOWN)
+			{
+				boyfriend.playAnim("singDOWN");
+			}
+			if (controls.NOTE_LEFT)
+			{
+				boyfriend.playAnim("singLEFT");
+			}
+			if (controls.NOTE_RIGHT)
+			{
+				boyfriend.playAnim("singRIGHT");
+			}
+		}
+
 		if(boyfriend != null && boyfriend.animation.curAnim.finished) {
 			boyfriend.dance();
 		}
@@ -394,8 +414,12 @@ class BaseOptionsMenu extends MusicBeatSubstate
 			boyfriend.destroy();
 		}
 
-		boyfriend = new Character(440, 220, 'bf', true);
+		boyfriend = new Character(440, 220, 'everett-modern', true);
 		boyfriend.setGraphicSize(Std.int(boyfriend.width * 0.75));
+		boyfriend.addOffset("singLEFT", 18, 0);
+		boyfriend.addOffset("singRIGHT", -36, 0);
+		boyfriend.addOffset("singUP", -33, 23);
+		boyfriend.addOffset("singDOWN", -7, -22);
 		boyfriend.updateHitbox();
 		boyfriend.dance();
 		insert(1, boyfriend);

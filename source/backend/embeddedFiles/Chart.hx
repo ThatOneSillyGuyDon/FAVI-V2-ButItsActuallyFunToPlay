@@ -74404,6 +74404,76 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
+				209728.91566265,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"1"
+					]
+				]
+			],
+			[
+				209819.277108433,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"2"
+					]
+				]
+			],
+			[
+				209909.638554216,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"3"
+					]
+				]
+			],
+			[
+				210000,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"4"
+					]
+				]
+			],
+			[
+				210090.361445783,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"1"
+					]
+				]
+			],
+			[
+				210180.722891566,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"2"
+					]
+				]
+			],
+			[
+				210271.084337349,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"3"
+					]
+				]
+			],
+			[
 				210361.445783132,
 				[
 					[
@@ -74413,6 +74483,11 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						"No Signal Event",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
 						"togglevis",
 						""
 					]

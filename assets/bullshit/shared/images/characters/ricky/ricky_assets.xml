@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="ricky_assets.png">
+	<!-- Created with Adobe Animate version 22.0.0.93 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="ricky down0000" x="0" y="0" width="865" height="631" frameX="0" frameY="-12" frameWidth="865" frameHeight="644"/>
+	<SubTexture name="ricky down0001" x="0" y="0" width="865" height="631" frameX="0" frameY="-12" frameWidth="865" frameHeight="644"/>
+	<SubTexture name="ricky down0002" x="865" y="0" width="863" height="637" frameX="-2" frameY="-7" frameWidth="865" frameHeight="644"/>
+	<SubTexture name="ricky down0003" x="865" y="0" width="863" height="637" frameX="-2" frameY="-7" frameWidth="865" frameHeight="644"/>
+	<SubTexture name="ricky down0004" x="1728" y="0" width="852" height="644" frameX="-4" frameY="0" frameWidth="865" frameHeight="644"/>
+	<SubTexture name="ricky down0005" x="1728" y="0" width="852" height="644" frameX="-4" frameY="0" frameWidth="865" frameHeight="644"/>
+	<SubTexture name="ricky down0006" x="1728" y="0" width="852" height="644" frameX="-4" frameY="0" frameWidth="865" frameHeight="644"/>
+	<SubTexture name="ricky down0007" x="1728" y="0" width="852" height="644" frameX="-4" frameY="0" frameWidth="865" frameHeight="644"/>
+	<SubTexture name="ricky down0008" x="1728" y="0" width="852" height="644" frameX="-4" frameY="0" frameWidth="865" frameHeight="644"/>
+	<SubTexture name="ricky down0009" x="1728" y="0" width="852" height="644" frameX="-4" frameY="0" frameWidth="865" frameHeight="644"/>
+	<SubTexture name="ricky down0010" x="1728" y="0" width="852" height="644" frameX="-4" frameY="0" frameWidth="865" frameHeight="644"/>
+	<SubTexture name="ricky down0011" x="1728" y="0" width="852" height="644" frameX="-4" frameY="0" frameWidth="865" frameHeight="644"/>
+	<SubTexture name="ricky down0012" x="1728" y="0" width="852" height="644" frameX="-4" frameY="0" frameWidth="865" frameHeight="644"/>
+	<SubTexture name="ricky down0013" x="1728" y="0" width="852" height="644" frameX="-4" frameY="0" frameWidth="865" frameHeight="644"/>
+	<SubTexture name="ricky idle0000" x="2580" y="0" width="852" height="632" frameX="-2" frameY="-11" frameWidth="860" frameHeight="644"/>
+	<SubTexture name="ricky idle0001" x="0" y="644" width="852" height="632" frameX="-2" frameY="-11" frameWidth="860" frameHeight="644"/>
+	<SubTexture name="ricky idle0002" x="852" y="644" width="855" height="631" frameX="-5" frameY="-12" frameWidth="860" frameHeight="644"/>
+	<SubTexture name="ricky idle0003" x="1707" y="644" width="855" height="631" frameX="-5" frameY="-12" frameWidth="860" frameHeight="644"/>
+	<SubTexture name="ricky idle0004" x="2562" y="644" width="856" height="639" frameX="-4" frameY="-5" frameWidth="860" frameHeight="644"/>
+	<SubTexture name="ricky idle0005" x="0" y="1283" width="856" height="639" frameX="-4" frameY="-5" frameWidth="860" frameHeight="644"/>
+	<SubTexture name="ricky idle0006" x="856" y="1283" width="851" height="644" frameX="-3" frameY="0" frameWidth="860" frameHeight="644"/>
+	<SubTexture name="ricky idle0007" x="1707" y="1283" width="851" height="644" frameX="-3" frameY="0" frameWidth="860" frameHeight="644"/>
+	<SubTexture name="ricky idle0008" x="2558" y="1283" width="849" height="644" frameX="0" frameY="0" frameWidth="860" frameHeight="644"/>
+	<SubTexture name="ricky idle0009" x="0" y="1927" width="849" height="644" frameX="0" frameY="0" frameWidth="860" frameHeight="644"/>
+	<SubTexture name="ricky idle0010" x="2558" y="1283" width="849" height="644" frameX="0" frameY="0" frameWidth="860" frameHeight="644"/>
+	<SubTexture name="ricky idle0011" x="0" y="1927" width="849" height="644" frameX="0" frameY="0" frameWidth="860" frameHeight="644"/>
+	<SubTexture name="ricky idle0012" x="2558" y="1283" width="849" height="644" frameX="0" frameY="0" frameWidth="860" frameHeight="644"/>
+	<SubTexture name="ricky idle0013" x="0" y="1927" width="849" height="644" frameX="0" frameY="0" frameWidth="860" frameHeight="644"/>
+	<SubTexture name="ricky left0000" x="849" y="1927" width="807" height="693" frameX="0" frameY="0" frameWidth="816" frameHeight="693"/>
+	<SubTexture name="ricky left0001" x="849" y="1927" width="807" height="693" frameX="0" frameY="0" frameWidth="816" frameHeight="693"/>
+	<SubTexture name="ricky left0002" x="1656" y="1927" width="810" height="691" frameX="0" frameY="-2" frameWidth="816" frameHeight="693"/>
+	<SubTexture name="ricky left0003" x="1656" y="1927" width="810" height="691" frameX="0" frameY="-2" frameWidth="816" frameHeight="693"/>
+	<SubTexture name="ricky left0004" x="2466" y="1927" width="810" height="690" frameX="-6" frameY="-3" frameWidth="816" frameHeight="693"/>
+	<SubTexture name="ricky left0005" x="2466" y="1927" width="810" height="690" frameX="-6" frameY="-3" frameWidth="816" frameHeight="693"/>
+	<SubTexture name="ricky left0006" x="2466" y="1927" width="810" height="690" frameX="-6" frameY="-3" frameWidth="816" frameHeight="693"/>
+	<SubTexture name="ricky left0007" x="2466" y="1927" width="810" height="690" frameX="-6" frameY="-3" frameWidth="816" frameHeight="693"/>
+	<SubTexture name="ricky left0008" x="2466" y="1927" width="810" height="690" frameX="-6" frameY="-3" frameWidth="816" frameHeight="693"/>
+	<SubTexture name="ricky left0009" x="2466" y="1927" width="810" height="690" frameX="-6" frameY="-3" frameWidth="816" frameHeight="693"/>
+	<SubTexture name="ricky left0010" x="2466" y="1927" width="810" height="690" frameX="-6" frameY="-3" frameWidth="816" frameHeight="693"/>
+	<SubTexture name="ricky left0011" x="2466" y="1927" width="810" height="690" frameX="-6" frameY="-3" frameWidth="816" frameHeight="693"/>
+	<SubTexture name="ricky left0012" x="2466" y="1927" width="810" height="690" frameX="-6" frameY="-3" frameWidth="816" frameHeight="693"/>
+	<SubTexture name="ricky left0013" x="2466" y="1927" width="810" height="690" frameX="-6" frameY="-3" frameWidth="816" frameHeight="693"/>
+	<SubTexture name="ricky right0000" x="0" y="2620" width="877" height="649" frameX="-5" frameY="0" frameWidth="882" frameHeight="649"/>
+	<SubTexture name="ricky right0001" x="0" y="2620" width="877" height="649" frameX="-5" frameY="0" frameWidth="882" frameHeight="649"/>
+	<SubTexture name="ricky right0002" x="877" y="2620" width="875" height="649" frameX="-2" frameY="0" frameWidth="882" frameHeight="649"/>
+	<SubTexture name="ricky right0003" x="877" y="2620" width="875" height="649" frameX="-2" frameY="0" frameWidth="882" frameHeight="649"/>
+	<SubTexture name="ricky right0004" x="1752" y="2620" width="880" height="644" frameX="0" frameY="-5" frameWidth="882" frameHeight="649"/>
+	<SubTexture name="ricky right0005" x="1752" y="2620" width="880" height="644" frameX="0" frameY="-5" frameWidth="882" frameHeight="649"/>
+	<SubTexture name="ricky right0006" x="1752" y="2620" width="880" height="644" frameX="0" frameY="-5" frameWidth="882" frameHeight="649"/>
+	<SubTexture name="ricky right0007" x="1752" y="2620" width="880" height="644" frameX="0" frameY="-5" frameWidth="882" frameHeight="649"/>
+	<SubTexture name="ricky right0008" x="1752" y="2620" width="880" height="644" frameX="0" frameY="-5" frameWidth="882" frameHeight="649"/>
+	<SubTexture name="ricky right0009" x="1752" y="2620" width="880" height="644" frameX="0" frameY="-5" frameWidth="882" frameHeight="649"/>
+	<SubTexture name="ricky right0010" x="1752" y="2620" width="880" height="644" frameX="0" frameY="-5" frameWidth="882" frameHeight="649"/>
+	<SubTexture name="ricky right0011" x="1752" y="2620" width="880" height="644" frameX="0" frameY="-5" frameWidth="882" frameHeight="649"/>
+	<SubTexture name="ricky right0012" x="1752" y="2620" width="880" height="644" frameX="0" frameY="-5" frameWidth="882" frameHeight="649"/>
+	<SubTexture name="ricky right0013" x="1752" y="2620" width="880" height="644" frameX="0" frameY="-5" frameWidth="882" frameHeight="649"/>
+	<SubTexture name="ricky up0000" x="2632" y="2620" width="873" height="666"/>
+	<SubTexture name="ricky up0001" x="2632" y="2620" width="873" height="666"/>
+	<SubTexture name="ricky up0002" x="0" y="3286" width="873" height="662" frameX="0" frameY="-3" frameWidth="873" frameHeight="666"/>
+	<SubTexture name="ricky up0003" x="0" y="3286" width="873" height="662" frameX="0" frameY="-3" frameWidth="873" frameHeight="666"/>
+	<SubTexture name="ricky up0004" x="873" y="3286" width="872" height="663" frameX="0" frameY="-2" frameWidth="873" frameHeight="666"/>
+	<SubTexture name="ricky up0005" x="873" y="3286" width="872" height="663" frameX="0" frameY="-2" frameWidth="873" frameHeight="666"/>
+	<SubTexture name="ricky up0006" x="873" y="3286" width="872" height="663" frameX="0" frameY="-2" frameWidth="873" frameHeight="666"/>
+	<SubTexture name="ricky up0007" x="873" y="3286" width="872" height="663" frameX="0" frameY="-2" frameWidth="873" frameHeight="666"/>
+	<SubTexture name="ricky up0008" x="873" y="3286" width="872" height="663" frameX="0" frameY="-2" frameWidth="873" frameHeight="666"/>
+	<SubTexture name="ricky up0009" x="873" y="3286" width="872" height="663" frameX="0" frameY="-2" frameWidth="873" frameHeight="666"/>
+	<SubTexture name="ricky up0010" x="873" y="3286" width="872" height="663" frameX="0" frameY="-2" frameWidth="873" frameHeight="666"/>
+	<SubTexture name="ricky up0011" x="873" y="3286" width="872" height="663" frameX="0" frameY="-2" frameWidth="873" frameHeight="666"/>
+	<SubTexture name="ricky up0012" x="873" y="3286" width="872" height="663" frameX="0" frameY="-2" frameWidth="873" frameHeight="666"/>
+	<SubTexture name="ricky up0013" x="873" y="3286" width="872" height="663" frameX="0" frameY="-2" frameWidth="873" frameHeight="666"/>
+</TextureAtlas>

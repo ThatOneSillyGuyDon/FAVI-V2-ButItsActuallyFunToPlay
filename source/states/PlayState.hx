@@ -7188,12 +7188,12 @@ class PlayState extends MusicBeatState
 						CustomFadeTransition.nextCamera = null;
 					}
 
-					/*if (!hasEndingScene) 
-					{
+					//if (!hasEndingScene) 
+					//{
 						FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 						MusicBeatState.switchState(new StoryMenu());
-					}
-					else
+					//}
+					/*else
 					{
 						switch (SONG.song)
 						{
@@ -10369,7 +10369,7 @@ class PlayState extends MusicBeatState
 				if (curBeat == 196)
 					manageLyrics('evildelu', "...still surround ya.", 'disneyFreeplayFont.ttf', 30, 1.3, "quartOut", .045);
 				if (curBeat == 200)
-					manageLyrics('evildelu', "Let's LOOP 'ROUND ONCE MORE.", 'betterSatanFont.ttf', 30, 3, "sineInOut", .065);
+					manageLyrics('evildelu', "Let's LOOP 'ROUND ONCE MORE.", 'disneyFreeplayFont.ttf', 30, 3, "sineInOut", .065);
 
 				switch (curBeat)
 				{
@@ -10432,7 +10432,7 @@ class PlayState extends MusicBeatState
 					case 216:
 						FlxTween.tween(camHUD, {alpha: 1}, 1, {ease: FlxEase.quadOut});
 						FlxTween.tween(camNotes, {alpha: 1}, 1, {ease: FlxEase.quadOut});
-						chromTween.cancel();
+						if (chromTween != null) chromTween.cancel();
 						chromTween = FlxTween.tween(instance, {chromEffect: 0.18}, 0.6, {ease: FlxEase.sineOut});
 						if (ClientPrefs.flashing)
 							camGame.flash(FlxColor.WHITE, 0.5);
@@ -10442,7 +10442,6 @@ class PlayState extends MusicBeatState
                             {
                                 camGame.setFilters([
                                     new ShaderFilter(dramaticCamMovement),
-                                    new ShaderFilter(bloomEffect),
                                     new ShaderFilter(monitorFilter),
                                     new ShaderFilter(chromZoomShader),
                                     new ShaderFilter(chromNormalShader),
@@ -10520,7 +10519,6 @@ class PlayState extends MusicBeatState
                             {
                                 camGame.setFilters([
                                     new ShaderFilter(dramaticCamMovement),
-                                    new ShaderFilter(bloomEffect),
                                     new ShaderFilter(monitorFilter),
                                     new ShaderFilter(chromZoomShader),
                                     new ShaderFilter(chromNormalShader)
@@ -10631,7 +10629,6 @@ class PlayState extends MusicBeatState
                                 camGame.setFilters([
                                     new ShaderFilter(dramaticCamMovement),
 									new ShaderFilter(heatWaveEffect),
-                                    new ShaderFilter(bloomEffect),
                                     new ShaderFilter(monitorFilter),
                                     new ShaderFilter(chromZoomShader),
                                     new ShaderFilter(chromNormalShader),
@@ -10709,7 +10706,6 @@ class PlayState extends MusicBeatState
 								{
 									camGame.setFilters([
 										new ShaderFilter(dramaticCamMovement),
-										new ShaderFilter(bloomEffect),
 										new ShaderFilter(monitorFilter)
 									]);
 								}
@@ -11632,7 +11628,6 @@ class PlayState extends MusicBeatState
 								new ShaderFilter(redVignette),
 								new ShaderFilter(dramaticCamMovement),
 								new ShaderFilter(monitorFilter),
-								new ShaderFilter(bloomEffect)
 							]);
 						}
 						else
@@ -11649,7 +11644,6 @@ class PlayState extends MusicBeatState
 						camGame.setFilters([
 							new ShaderFilter(dramaticCamMovement),
 							new ShaderFilter(monitorFilter),
-							new ShaderFilter(bloomEffect)
 						]);
 					}
 					else

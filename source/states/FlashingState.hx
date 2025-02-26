@@ -14,7 +14,7 @@ class FlashingState extends MusicBeatState
 	{
 		super.create();
 
-		FlxG.sound.playMusic(Paths.music("aviOST/amIReal"));
+		FlxG.sound.playMusic(Paths.music("aviOST/gameOver/amIReal", "shared"));
 		FlxG.sound.music.pitch = 0.45;
 
 		var fog:FlxBackdrop = new FlxBackdrop(Paths.image("Funkin_avi/warning/warningFog"), X, 0, 0);
