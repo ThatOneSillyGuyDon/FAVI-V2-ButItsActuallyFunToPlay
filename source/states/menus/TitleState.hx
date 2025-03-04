@@ -230,7 +230,7 @@ class TitleState extends MusicBeatState
 
 	function startIntro()
 	{
-		Conductor.bpm = (130/2);
+		Conductor.bpm = (50);
 		persistentUpdate = true;
 
 		var bg:FlxSprite = new FlxSprite();

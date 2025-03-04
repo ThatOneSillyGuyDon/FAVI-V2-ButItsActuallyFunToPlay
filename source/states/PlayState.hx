@@ -623,8 +623,6 @@ class PlayState extends MusicBeatState
 	public var foreground:FlxTypedGroup<FlxBasic>;
 
 	// SHADER FOR BLESS ONLY CUZ IM DUMBASS - MalyPlus
-
-	var shader:FlxRuntimeShader = new FlxRuntimeShader(Shaders.blessBlur);
 	var othershader:FlxRuntimeShader = new FlxRuntimeShader(Shaders.blessLightsShit);
 
 	override public function create()
@@ -1838,6 +1836,36 @@ class PlayState extends MusicBeatState
 					gradient.scale.set(0.5, 0.5);
 					gradient.alpha = 0;
 					add(gradient);
+				case "menuSongs":
+					defaultCamZoom = 1;
+
+					var sky = new FlxSprite().loadGraphic(Paths.image(pathway + "secretBG"));
+					sky.scrollFactor.set(0, 0);
+					add(sky);
+
+					var stars1 = new FlxSprite().loadGraphic(Paths.image(pathway + "secretStars1"));
+					stars1.scrollFactor.set(0, 0);
+					add(stars1);
+					
+					var stars2 = new FlxSprite().loadGraphic(Paths.image(pathway + "secretStars2"));
+					stars2.scrollFactor.set(0, 0);
+					stars2.alpha = 0.001;
+					add(stars2);
+
+					var street = new FlxSprite().loadGraphic(Paths.image(pathway + "secretStreet"));
+					street.scrollFactor.set(0, 0);
+					add(street);
+
+					var underlay = new FlxSprite().loadGraphic(Paths.image(pathway + "secretNoteUnderlay"));
+					underlay.cameras = [camNotes];
+					add(underlay);
+
+					var overlay = new FlxSprite().loadGraphic(Paths.image(pathway + "secretOverlay"));
+					overlay.cameras = [camOther];
+					add(overlay);
+
+					FlxTween.tween(stars1, {alpha: 0}, 3, {type: 4});
+					FlxTween.tween(stars2, {alpha: 1}, 3, {type: 4});
 		}
 
 		stageBGFlash = new FlxSprite().makeGraphic(1, 1, 0xFFFFFFFF);
@@ -1856,7 +1884,7 @@ class PlayState extends MusicBeatState
 
 		switch (SONG.song)
 		{
-			case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Twisted Grins Legacy" | "Laugh Track" |  "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Birthday":
+			case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Twisted Grins Legacy" | "Laugh Track" |  "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Birthday" | "Rotten Petals" | "Seeking Freedom" | "Am I Real?" | "Curtain Call" | "Your Final Bow" | "A True Monster" | "The Wretched Tilezones (Simple Life)" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "Ahh the Scary (Somber Night)":
 				introSoundsSuffix = "-cartoon";
 			case "Cycled Sins Legacy" | "Cycled Sins":
 				introSoundsSuffix = "-sins";
@@ -2141,7 +2169,7 @@ class PlayState extends MusicBeatState
 
 		Conductor.songPosition = -5000 / Conductor.songPosition;
 
-		middlescroll = SONG.song.toLowerCase() == 'cycled sins' || ClientPrefs.middleScroll;
+		middlescroll = SONG.song.toLowerCase() == 'cycled sins' || ClientPrefs.middleScroll || curStage == "menuSongs";
 
 		strumLine = new FlxSprite(middlescroll ? STRUM_X_MIDDLESCROLL : STRUM_X, 50).makeGraphic(FlxG.width, 10);
 		if(ClientPrefs.downScroll) strumLine.y = FlxG.height - 150;
@@ -2248,14 +2276,14 @@ class PlayState extends MusicBeatState
 		healthBarBG.xAdd = -4;
 		healthBarBG.yAdd = -4;
 		add(healthBarBG);
-		if(ClientPrefs.downScroll || curStage == "waltRoom") healthBarBG.y = 0.11 * FlxG.height;
+		if(ClientPrefs.downScroll || curStage == "waltRoom" || curStage == "menuSongs") healthBarBG.y = 0.11 * FlxG.height;
 
 		fancyBarOverlay = new FlxSprite(healthBarBG.x, healthBarBG.y).loadGraphic(Paths.image('episode1Overlay'));
 		fancyBarOverlay.scale.set(1.01, 1);
 		fancyBarOverlay.cameras = [camHUD];
 		fancyBarOverlay.screenCenter(X);
 		fancyBarOverlay.scrollFactor.set();
-		if (ClientPrefs.downScroll || curStage == "waltRoom")
+		if (ClientPrefs.downScroll || curStage == "waltRoom" || curStage == "menuSongs")
 		{
 			fancyBarOverlay.y -= 10;
 		}
@@ -2309,9 +2337,9 @@ class PlayState extends MusicBeatState
 		reloadHealthBarColors();
 		if (curStage == 'vaultRoom') iconP2.blend = ADD;
 
-		if (curStage == "waltRoom")
+		if (curStage == "waltRoom" || curStage == "menuSongs")
 		{
-			if (ClientPrefs.downScroll || curStage == "waltRoom")
+			if (ClientPrefs.downScroll)
 				fancyBarOverlay.flipY = true;
 			for (bar in [healthBar, healthBarBG, fancyBarOverlay])
 			{
@@ -2402,7 +2430,7 @@ class PlayState extends MusicBeatState
 			satanIcon.visible = true;
 		}
 
-		scoreTxt = new FlxText(0, (curStage == "waltRoom" ? (ClientPrefs.downScroll ? 15 : 675) : healthBarBG.y + 36), FlxG.width, "", 20);
+		scoreTxt = new FlxText(0, ((curStage == "menuSongs" || curStage == "waltRoom") ? (ClientPrefs.downScroll ? 15 : 675) : healthBarBG.y + 36), FlxG.width, "", 20);
 		scoreTxt.setFormat(Paths.font("DisneyFont.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
 		scoreTxt.borderSize = 1.25;
@@ -2430,8 +2458,8 @@ class PlayState extends MusicBeatState
 		watermarkTxt.screenCenter(X);
 		add(watermarkTxt);
 
-		songTxt = new FlxText(watermarkTxt.x, watermarkTxt.y + 30, 0, (SONG.song == "Dont Cross" ? "Don't Cross!" : '$infoDisplay'));
-		songTxt.setFormat(Paths.font('DisneyFont.ttf'), 22, FlxColor.WHITE);
+		songTxt = new FlxText(watermarkTxt.x, watermarkTxt.y + 30, 1280, (SONG.song == "Dont Cross" ? "Don't Cross!" : '$infoDisplay'));
+		songTxt.setFormat(Paths.font('DisneyFont.ttf'), 22, FlxColor.WHITE, CENTER);
 		songTxt.setBorderStyle(OUTLINE, FlxColor.BLACK, 2);
 		songTxt.alpha = 0.6;
 		songTxt.screenCenter(X);
@@ -2439,6 +2467,20 @@ class PlayState extends MusicBeatState
 
 		watermarkTxt.cameras = [camHUD];
 		songTxt.cameras = [camHUD];
+
+		if (curStage == "menuSongs")
+		{
+			watermarkTxt.visible = false;
+			songTxt.alpha = 1;
+			songTxt.angle = 90;
+			songTxt.screenCenter(Y);
+			songTxt.x += 270;
+			scoreTxt.screenCenter(Y);
+			scoreTxt.angle = -90;
+			scoreTxt.x -= 270;
+			iconP1.visible = false;
+			iconP2.visible = false;
+		}
 
 		botplayTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "BOTPLAY", 32);
 		botplayTxt.setFormat(Paths.font("disneyFont.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -2530,6 +2572,10 @@ class PlayState extends MusicBeatState
 			{
 				case "forestNew" | "desktop" | "circus" | 'clubhouse' | 'trueGrinsOfSins':
 					//do nothing, gf exists
+				case "menuSongs":
+					boyfriend.visible = false;
+					dad.visible = false;
+					gf.visible = false;
 				case 'apartment':
 					if (SONG.song == "Cycled Sins Legacy") gf.visible = false;
 				default:
@@ -2921,7 +2967,6 @@ class PlayState extends MusicBeatState
 				case 'Bless':
 					camGame.setFilters(
 						[
-							new ShaderFilter(shader),
 							new ShaderFilter(othershader)
 						]
 					);
@@ -3402,7 +3447,7 @@ class PlayState extends MusicBeatState
 				// lol - jason the jasenous
 				dad.setPosition(-110, -15); // goofy ahh goofy offsets - malyplus
 				boyfriend.setPosition(480, -220);
-				gf.setPosition(170, -50);
+				gf.setPosition(170, -70);
 			case 'forestOld':
 				dad.setPosition(0, 0);
     			boyfriend.setPosition(900, -20);
@@ -4120,7 +4165,7 @@ class PlayState extends MusicBeatState
 		var introAlts:Array<String> = introAssets.get('default');
 		switch (SONG.song)
 		{
-			case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Laugh Track" |  "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Birthday":
+			case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Laugh Track" |  "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Birthday" | "Rotten Petals" | "Curtain Call" | "Seeking Freedom" | "A True Monster" | "Am I Real?" | "Your Final Bow" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "The Wretched Tilezones (Simple Life)" | "Ahh the Scary (Somber Night)":
 				introAlts = introAssets.get('cartoon');
 			case "Cycled Sins Legacy" | "Cycled Sins":
 				introAlts = introAssets.get('sins');
@@ -4199,7 +4244,11 @@ class PlayState extends MusicBeatState
 			for (i in 0...opponentStrums.length) {
 				setOnLuas('defaultOpponentStrumX' + i, opponentStrums.members[i].x);
 				setOnLuas('defaultOpponentStrumY' + i, opponentStrums.members[i].y);
-				if(middlescroll) opponentStrums.members[i].visible = false;
+				if(middlescroll) 
+				{
+					opponentStrums.members[i].x -= 99999999;
+					opponentStrums.members[i].visible = false;
+				}
 			}
 
 			startedCountdown = true;
@@ -4248,7 +4297,7 @@ class PlayState extends MusicBeatState
 				var antialias:Bool = ClientPrefs.globalAntialiasing;
 				switch (SONG.song)
 				{
-					case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Laugh Track" |  "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Twisted Grins Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Birthday":
+					case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Laugh Track" |  "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Birthday" | "Rotten Petals" | "Curtain Call" | "Seeking Freedom" | "A True Monster" | "Am I Real?" | "Your Final Bow" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "The Wretched Tilezones (Simple Life)" | "Ahh the Scary (Somber Night)":
 						introAlts = introAssets.get('cartoon');
 					case "Cycled Sins Legacy" | "Cycled Sins":
 						introAlts = introAssets.get('sins');
@@ -4625,7 +4674,29 @@ class PlayState extends MusicBeatState
 
 		curSong = songData.song;
 
-		inst = new FlxSound().loadEmbedded(Paths.inst(SONG.song, CoolUtil.difficulties[storyDifficulty]));
+		switch (SONG.song)
+		{
+			case "Rotten Petals":
+				inst = new FlxSound().loadEmbedded(Paths.music("aviOST/rottenPetals"));
+			case "Seeking Freedom":
+				inst = new FlxSound().loadEmbedded(Paths.music("aviOST/seekingFreedom"));
+			case "Curtain Call":
+				inst = new FlxSound().loadEmbedded(Paths.music("aviOST/curtainCall"));
+			case "A True Monster":
+				inst = new FlxSound().loadEmbedded(Paths.music("aviOST/aTrueMonster"));
+			case "Am I Real?":
+				inst = new FlxSound().loadEmbedded(Paths.music("aviOST/gameOver/amIReal"));
+			case "Your Final Bow":
+				inst = new FlxSound().loadEmbedded(Paths.music("aviOST/gameOver/yourFinalBow"));
+			case "The Wretched Tilezones (Simple Life)":
+				inst = new FlxSound().loadEmbedded(Paths.music("aviOST/pause/theWretchedTilezones"));
+			case "Ahh the Scary (Somber Night)":
+				inst = new FlxSound().loadEmbedded(Paths.music("aviOST/pause/somberNight"));
+			case "Ship the Fart Yay Hooray <3 (Distant Stars)":
+				inst = new FlxSound().loadEmbedded(Paths.music("aviOST/pause/shipTheFartYayHoorayv3v"));
+			default:
+				inst = new FlxSound().loadEmbedded(Paths.inst(SONG.song, CoolUtil.difficulties[storyDifficulty]));
+		}
 
 		if (SONG.needsVoices)
 		{
@@ -5221,7 +5292,6 @@ class PlayState extends MusicBeatState
 			switch (SONG.song)
 			{
 				case "Bless":
-					shader.setFloat('iTime', shaderAnim);
 					othershader.setFloat('iTime', shaderAnim);
 
 				case 'Devilish Deal':
@@ -5675,6 +5745,9 @@ class PlayState extends MusicBeatState
 
 					if(ClientPrefs.timeBarType != 'Song Name')
 						timeTxt.text = FlxStringUtil.formatTime(secondsTotal, false);
+
+					if (curStage == "menuSongs")
+						songTxt.text = SONG.song + " - " + FlxStringUtil.formatTime(secondsTotal, false);
 				}
 			}
 
@@ -5880,7 +5953,7 @@ class PlayState extends MusicBeatState
 
 		var char = cameraOnDad ? dad : boyfriend;
 
-		if (char.animation.curAnim != null && !isCameraOnForcedPos) 
+		if (char.animation.curAnim != null && !isCameraOnForcedPos && curStage != "menuSongs") 
 		{
 			switch (char.animation.curAnim.name.substring(4))
 			{
@@ -7377,7 +7450,7 @@ class PlayState extends MusicBeatState
 		note.rating = daRating.name;
 		score = daRating.score;
 
-		if(daRating.noteSplash && !note.noteSplashDisabled)
+		if(daRating.noteSplash && !note.noteSplashDisabled && curStage != "menuSongs")
 		{
 			spawnNoteSplashOnNote(note);
 		}
@@ -8423,7 +8496,7 @@ class PlayState extends MusicBeatState
 		var skin:String = 'noteSplashes';
 		switch (SONG.song)
 		{
-			case "Devilish Deal" | "Isolated" | "Lunacy" | "Delusional" | "Hunted" | "Laugh Track" | "Twisted Grins": SONG.splashSkin = "NOTE_splashesCartoon";
+			case "Devilish Deal" | "Isolated" | "Lunacy" | "Delusional" | "Hunted" | "Laugh Track" | "Twisted Grins" | "Rotten Petals" | "Seeking Freedom" | "Am I Real?" | "Your Final Bow" | "The Wretched Tilezones (Simple Life)" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "Ahh the Scary (Somber Night)" | "Curtain Call": SONG.splashSkin = "NOTE_splashesCartoon";
 			case "Mercy": SONG.splashSkin = "NOTE_splashWalt";
 			default: SONG.splashSkin = "noteSplashes";
 		}
@@ -8754,212 +8827,6 @@ class PlayState extends MusicBeatState
 					case 1407:
 						FlxTween.tween(dadGroup, {'scale.x': 1, 'scale.y': 1}, 0.3, {ease: FlxEase.quartOut});
 				}
-			case "Bless":
-				switch (curStep)
-				{
-					case 1:
-						FlxTween.tween(camGame, {alpha: 1}, 5, {ease: FlxEase.expoOut});
-						for (light in [light, flair])
-						{
-							light.visible = false;
-							light.alpha -= 0.2;
-						}
-					case 42:
-						for (hud in [camHUD, camNotes])
-							FlxTween.tween(hud, {alpha: 1}, 3);
-					case 84:
-						for (light in[light, flair])
-						{
-							light.visible = true;
-							FlxTween.tween(light, {alpha: light.alpha + 0.2}, 0.64, {ease: FlxEase.expoOut});
-						}
-					case 253 | 263 | 273 | 284 | 295 | 305 | 316 | 326 | 337 | 347 | 358 | 368 | 379 | 389 | 400:
-						/*
-						please burn in hell
-						camGame.zoom += 0.1;
-						camHUD.zoom += 0.07;
-						camNotes.zoom += 0.1;*/
-
-						camGame.zoom += 0.03;
-						camHUD.zoom += 0.015;
-						camNotes.zoom += 0.03;
-					case 421:
-						defaultCamZoom = 1.2;
-					case 442:
-						defaultCamZoom = 0.95;
-					case 610:
-						defaultCamZoom = 1.2;
-					case 615:
-						defaultCamZoom = 0.95;
-						camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.4, ease: FlxEase.circOut, timer: 1.35});
-					case 862:
-						defaultCamZoom = 1.1;
-					case 904:
-						defaultCamZoom = 1.3;
-					case 947:
-						defaultCamZoom = 0.9;
-					case 1115:
-						AppIcon.changeIcon("blessIcon");
-						CppAPI.lightMode();
-						for (blessableObjects in [dad, boyfriend, vault, chains, thingy, chains, chains2, chains3, iconP1, iconP2, healthBar, healthBarBG, fancyBarOverlay])
-							blessableObjects.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0);
-						for (textShit in [songTxt, watermarkTxt, scoreTxt])
-						{
-							textShit.color = FlxColor.BLACK;
-							textShit.borderColor = FlxColor.WHITE;
-						}
-						light.visible = false;
-						flair.visible = false;
-						lightI.visible = true;
-						flairI.visible = true;
-						playfieldRenderer.isInvertColors = true;
-						dad.blend = iconP2.blend = NORMAL;
-						camBars.flash(FlxColor.BLACK, 2);
-						cinematicBarControls("add", 0.0001, 'linear', 0);
-						cinematicBarControls("moveboth", 0.0001, 'linear', 130);
-					case 1157 | 1199 | 1241 | 1283 | 1325 | 1367 | 1409 | 1452 | 1493 | 1535 | 1577 | 1620 | 1662 | 1703 | 1745:
-						camFlashSystem(BG_FLASH, {alpha: 0.45, timer: 1});
-					case 1828:
-						AppIcon.changeIcon("newIcon");
-						CppAPI.darkMode();
-						for (i in [camHUD, camNotes])
-							FlxTween.tween(i, {alpha: 1}, 3);
-						camVideo.visible = true;
-						var letsFight:VideoSprite = new VideoSprite(false);
-						letsFight.load(Paths.video("blessCountdown"), [VideoSprite.muted]);
-						letsFight.cameras = [camVideo];
-						letsFight.addCallback("onEnd", () -> camVideo.visible = false);
-						letsFight.play();
-						add(letsFight);
-						for (blessableObjects in [dad, boyfriend, vault, chains, thingy, chains, chains2, chains3, iconP1, iconP2, healthBar, healthBarBG, fancyBarOverlay])
-							blessableObjects.setColorTransform(1, 1, 1, 1, 0, 0, 0, 0);
-						for (textShit in [songTxt, watermarkTxt, scoreTxt])
-						{
-							textShit.color = FlxColor.WHITE;
-							textShit.borderColor = FlxColor.BLACK;
-						}
-						camGame.visible = true;
-						light.visible = true;
-						flair.visible = true;
-						lightI.visible = false;
-						flairI.visible = false;
-						playfieldRenderer.isInvertColors = false;
-						dad.blend = iconP2.blend = ADD;
-					case 1818:
-						defaultCamZoom = 2;
-					case 1835:
-						var counter:FlxSprite = new FlxSprite().loadGraphic(Paths.image("ready"));
-						counter.cameras = [camOther];
-						counter.scrollFactor.set();
-						counter.updateHitbox();
-						counter.screenCenter();
-						add(counter);
-						FlxTween.tween(counter, {alpha: 0}, Conductor.crochet / 1000, {
-							ease: FlxEase.cubeInOut,
-							onComplete: function(twn:FlxTween)
-							{
-								remove(counter);
-								counter.destroy();
-							}
-						});
-					case 1840:
-						var counter:FlxSprite = new FlxSprite().loadGraphic(Paths.image("set"));
-						counter.cameras = [camOther];
-						counter.scrollFactor.set();
-						counter.updateHitbox();
-						counter.screenCenter();
-						add(counter);
-						FlxTween.tween(counter, {alpha: 0}, Conductor.crochet / 1000, {
-							ease: FlxEase.cubeInOut,
-							onComplete: function(twn:FlxTween)
-							{
-								remove(counter);
-								counter.destroy();
-							}
-						});
-					case 1845:
-						var counter:FlxSprite = new FlxSprite().loadGraphic(Paths.image("go"));
-						counter.cameras = [camOther];
-						counter.scrollFactor.set();
-						counter.updateHitbox();
-						counter.screenCenter();
-						add(counter);
-						FlxTween.tween(counter, {alpha: 0}, Conductor.crochet / 1000, {
-							ease: FlxEase.cubeInOut,
-							onComplete: function(twn:FlxTween)
-							{
-								remove(counter);
-								counter.destroy();
-							}
-						});
-						cinematicBarControls("moveboth", 3, 'circInOut', 0);
-					case 1850:
-						defaultCamZoom = 0.9;
-						camVideo.visible = false;
-						camGame.zoom += 0.15;
-						camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.45, timer: 0.25});
-					case 2018:
-						defaultCamZoom = 1.15;
-					case 2024:
-						defaultCamZoom = 0.95;
-						camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.4, ease: FlxEase.circOut, timer: 1.35});
-					case 2187:
-						isCameraOnForcedPos = true;
-						camFollow.x = 450;
-						camFollow.y = 250;
-						defaultCamZoom = 0.5;
-					case 2524:
-						AppIcon.changeIcon("blessIcon");
-						CppAPI.lightMode();
-						defaultCamZoom = 0.95;
-						camFollow.x = 0;
-						camFollow.y = 0;
-						isCameraOnForcedPos = false;
-						for (blessableObjects in [dad, boyfriend, vault, chains, thingy, chains, chains2, chains3, iconP1, iconP2, healthBar, healthBarBG, fancyBarOverlay])
-							blessableObjects.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0);
-						for (textShit in [songTxt, watermarkTxt, scoreTxt])
-						{
-							textShit.color = FlxColor.BLACK;
-							textShit.borderColor = FlxColor.WHITE;
-						}
-						light.visible = false;
-						flair.visible = false;
-						lightI.visible = true;
-						flairI.visible = true;
-						playfieldRenderer.isInvertColors = true;
-						dad.blend = iconP2.blend = NORMAL;
-						camBars.flash(FlxColor.BLACK, 2);
-						cinematicBarControls("moveboth", 1.5, 'sineout', 130);
-					case 2860:
-						AppIcon.changeIcon("newIcon");
-						CppAPI.darkMode();
-						cinematicBarControls("moveboth", 2.5, 'circOut', 0);
-						for (blessableObjects in [dad, boyfriend, vault, chains, thingy, chains, chains2, chains3, iconP1, iconP2, healthBar, healthBarBG, fancyBarOverlay])
-							FlxTween.tween(blessableObjects.colorTransform, {
-								redOffset: 0,
-								blueOffset: 0,
-								greenOffset: 0,
-								redMultiplier: 1,
-								blueMultiplier: 1,
-								greenMultiplier: 1
-							}, 2, {ease: FlxEase.quartOut});
-						for (textShit in [songTxt, watermarkTxt, scoreTxt])
-						{
-							textShit.color = FlxColor.WHITE;
-							textShit.borderColor = FlxColor.BLACK;
-							textShit.alpha = 0;
-							FlxTween.tween(textShit, {alpha: 1}, 2, {ease: FlxEase.quartOut});
-						}
-					case 2881 | 2889 | 2897:
-						defaultCamZoom += 0.05;
-					case 2902:
-						if (ClientPrefs.shaders)
-						{
-							// We make ur Laptop fry till the end of the song :fire: - MalyPlus
-							camGame.setFilters([new ShaderFilter(shader), new ShaderFilter(othershader)]);
-						}
-						defaultCamZoom = 0.95;
-				}
 		}
 
 		if (Math.abs(inst.time - (Conductor.songPosition - Conductor.offset)) > (20 * playbackRate)
@@ -8991,9 +8858,9 @@ class PlayState extends MusicBeatState
 
 		if (canBopCam)
 		{
-			camGame.zoom += 0.15;
-			camHUD.zoom += 0.1;
-			camNotes.zoom += 0.125;
+			camGame.zoom += SONG.song == "Bless" ? 0.06 : 0.15;
+			camHUD.zoom += SONG.song == "Bless" ? 0.02 : 0.1;
+			camNotes.zoom += SONG.song == "Bless" ? 0.025: 0.125;
 		}
 
 		if (SONG.song == "Isolated")
@@ -9151,14 +9018,6 @@ class PlayState extends MusicBeatState
 		}
 		switch (SONG.song)
 		{
-			case "Bless":
-				switch (curBeat)
-				{
-					case 447:
-						camGame.visible = false;
-						for (i in [camHUD, camNotes])
-							FlxTween.tween(i, {alpha: 0}, 2);
-				}
 			case 'Delusional Legacy':
 				switch (curBeat)
 				{
@@ -10942,6 +10801,184 @@ class PlayState extends MusicBeatState
 					case 588:
 						camBars.fade(FlxColor.BLACK, 5);
 					
+				}
+
+			case "Bless":
+				switch (curBeat)
+				{
+					case 1:
+						cinematicBarControls("create", 1);
+						for (i in [light, flair])
+							i.alpha = 0.001;
+						FlxTween.tween(camGame, {alpha: 1}, 2);
+					case 7:
+						for (hud in [camHUD, camNotes])
+							FlxTween.tween(hud, {alpha: 1}, 3);
+					case 16:
+						FlxTween.tween(light, {alpha: .37}, 2, {ease: FlxEase.circOut});
+						FlxTween.tween(flair, {alpha: .6}, 2, {ease: FlxEase.circOut});
+					case 24 | 28 | 30 | 146 | 147 | 164 | 172 | 396 | 398 | 399 | 414 | 415 | 548 | 551 | 744 | 748:
+						defaultCamZoom += 0.1;
+					case 32 | 100 | 400:
+						defaultCamZoom -= 0.3;
+					case 48:
+						canBopCam = true;
+					case 80 | 116 | 384 | 464:
+						canBopCam = false;
+						FlxTween.tween(light, {alpha: 0}, .3, {ease: FlxEase.circOut});
+						FlxTween.tween(flair, {alpha: 0}, .3, {ease: FlxEase.circOut});
+						defaultCamZoom += 0.25;
+						camFlashSystem(BG_DARK, {alpha: 1, timer: 0.5, ease: FlxEase.expoOut});
+					case 84 | 118 | 386 | 465:
+						FlxTween.tween(light, {alpha: .37}, .2, {ease: FlxEase.circOut});
+						FlxTween.tween(flair, {alpha: .6}, .2, {ease: FlxEase.circOut});
+						canBopCam = true;
+						defaultCamZoom -= 0.25;
+						camFlashSystem(BG_FLASH, {alpha: 1, timer: 1.5, ease: FlxEase.expoOut});
+					case 99:
+						defaultCamZoom += 0.3;
+					case 148:
+						defaultCamZoom -= 0.2;
+						cinematicBarControls("moveboth", 2, "circOut", 90);
+					case 180:
+						defaultCamZoom -= 0.2;
+					case 212:
+						AppIcon.changeIcon("blessIcon");
+						CppAPI.lightMode();
+						for (blessableObjects in [dad, boyfriend, vault, chains, thingy, chains, chains2, chains3, iconP1, iconP2, healthBar, healthBarBG, fancyBarOverlay])
+							blessableObjects.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0);
+						for (textShit in [songTxt, watermarkTxt, scoreTxt])
+						{
+							textShit.color = FlxColor.BLACK;
+							textShit.borderColor = FlxColor.WHITE;
+						}
+						light.visible = false;
+						flair.visible = false;
+						lightI.visible = true;
+						flairI.visible = true;
+						playfieldRenderer.isInvertColors = true;
+						dad.blend = iconP2.blend = NORMAL;
+						camBars.flash(FlxColor.BLACK, 2);
+						cinematicBarControls("moveboth", 1.2, 'expoOut', 130);
+						canBopCam = false;
+					case 220 | 228 | 236 | 244 | 252 | 260 | 268 | 284 | 292 | 300 | 308 | 316 | 324 | 332 | 484 | 488 | 402 | 496 | 500 | 504 | 508 | 516 | 520 | 524 | 528 | 532 | 536 | 540:
+						camFlashSystem(BG_FLASH, {alpha: 0.45, timer: 1});
+					case 276:
+						camFlashSystem(BG_FLASH, {alpha: 0.45, timer: 1});
+						canBopCam = true;
+					case 340:
+						camGame.visible = false;
+						for (i in [camHUD, camNotes])
+							FlxTween.tween(i, {alpha: 0}, 1);
+					case 348:
+						light.visible = true;
+						flair.visible = true;
+						lightI.visible = false;
+						flairI.visible = false;
+						playfieldRenderer.isInvertColors = false;
+						dad.blend = iconP2.blend = ADD;
+						for (i in [camHUD, camNotes])
+							FlxTween.tween(i, {alpha: 1}, 3);
+						for (blessableObjects in [dad, boyfriend, vault, chains, thingy, chains, chains2, chains3, iconP1, iconP2, healthBar, healthBarBG, fancyBarOverlay])
+							blessableObjects.setColorTransform(1, 1, 1, 1, 0, 0, 0, 0);
+						for (textShit in [songTxt, watermarkTxt, scoreTxt])
+						{
+							textShit.color = FlxColor.WHITE;
+							textShit.borderColor = FlxColor.BLACK;
+						}
+						AppIcon.changeIcon("newIcon");
+						CppAPI.darkMode();
+						var letsFight:VideoSprite = new VideoSprite(false);
+						letsFight.load(Paths.video("blessCountdown"), [VideoSprite.muted]);
+						letsFight.cameras = [camVideo];
+						letsFight.addCallback("onEnd", () -> camVideo.visible = false);
+						letsFight.play();
+						add(letsFight);
+					case 352:
+						camGame.visible = true;
+						defaultCamZoom = 0.9;
+						camVideo.visible = false;
+						camGame.zoom += 0.15;
+						camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.7, timer: 0.25});
+						cinematicBarControls("moveboth", 1.2, "expoOut", 0);
+					case 416:
+						isCameraOnForcedPos = true;
+						camFollow.x = 450;
+						camFollow.y = 250;
+						defaultCamZoom = 0.5;
+					case 480:
+						AppIcon.changeIcon("blessIcon");
+						CppAPI.lightMode();
+						defaultCamZoom = 0.95;
+						camFollow.x = 0;
+						camFollow.y = 0;
+						isCameraOnForcedPos = false;
+						for (blessableObjects in [dad, boyfriend, vault, chains, thingy, chains, chains2, chains3, iconP1, iconP2, healthBar, healthBarBG, fancyBarOverlay])
+							blessableObjects.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0);
+						for (textShit in [songTxt, watermarkTxt, scoreTxt])
+						{
+							textShit.color = FlxColor.BLACK;
+							textShit.borderColor = FlxColor.WHITE;
+						}
+						light.visible = false;
+						flair.visible = false;
+						lightI.visible = true;
+						flairI.visible = true;
+						playfieldRenderer.isInvertColors = true;
+						dad.blend = iconP2.blend = NORMAL;
+						camBars.flash(FlxColor.BLACK, 2);
+						cinematicBarControls("moveboth", 1.5, 'sineout', 130);
+					case 544:
+						canBopCam = false;
+						AppIcon.changeIcon("newIcon");
+						CppAPI.darkMode();
+						cinematicBarControls("moveboth", 2.5, 'circOut', 0);
+						for (blessableObjects in [dad, boyfriend, vault, chains, thingy, chains, chains2, chains3, iconP1, iconP2, healthBar, healthBarBG, fancyBarOverlay])
+							FlxTween.tween(blessableObjects.colorTransform, {
+								redOffset: 0,
+								blueOffset: 0,
+								greenOffset: 0,
+								redMultiplier: 1,
+								blueMultiplier: 1,
+								greenMultiplier: 1
+							}, 2, {ease: FlxEase.quartOut});
+						for (textShit in [songTxt, watermarkTxt, scoreTxt])
+						{
+							textShit.color = FlxColor.WHITE;
+							textShit.borderColor = FlxColor.BLACK;
+							textShit.alpha = 0;
+							FlxTween.tween(textShit, {alpha: 1}, 2, {ease: FlxEase.quartOut});
+						}
+					case 552:
+						canBopCam = true;
+						defaultCamZoom -= 0.2;
+						camBars.flash(FlxColor.WHITE, 2);
+						if (ClientPrefs.shaders)
+						{
+							// We make ur Laptop fry till the end of the song :fire: - MalyPlus
+							camGame.setFilters([new ShaderFilter(othershader)]);
+						}
+					case 620:
+						lightI.visible = false;
+						thingy.visible = false;
+						flairI.visible = false;
+						canBopCam = false;
+						playfieldRenderer.isInvertColors = false;
+						dad.blend = iconP2.blend = ADD;
+						camBars.flash(FlxColor.BLACK, 3);
+						if (ClientPrefs.shaders)
+						{
+							camGame.setFilters([]);
+						}
+						camFlashSystem(BG_DARK, {alpha: 0.85, timer: 0.0001, ease: FlxEase.expoOut});
+						cinematicBarControls("moveboth", 1.5, 'sineout', 60);
+						cameraSpeed = 0.6;
+					case 684:
+						canBopCam = true;
+					case 752:
+						camBars.flash(FlxColor.WHITE, 2);
+						for (cam in [camGame, camHUD, camNotes])
+							cam.visible = false;
 				}
 
 			case 'Laugh Track':

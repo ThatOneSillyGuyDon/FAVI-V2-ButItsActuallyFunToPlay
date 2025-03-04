@@ -28,6 +28,8 @@ class BaseOptionsMenu extends MusicBeatSubstate
 	var selectorLeft:FlxSprite;
 	var selectorRight:FlxSprite;
 
+	var spamCounter:Float = 0;
+
 	var dogshitPath:String = 'Funkin_avi/options';
 
 	var redTextMarker = new FlxTextFormatMarkerPair(new FlxTextFormat(FlxColor.RED, true, true), '^^');
@@ -314,22 +316,33 @@ class BaseOptionsMenu extends MusicBeatSubstate
 
 		if (boyfriend != null && boyfriend.visible)
 		{
-			if (controls.NOTE_UP)
+			if (controls.NOTE_UP_P)
 			{
 				boyfriend.playAnim("singUP");
+				spamCounter += 1;
 			}
-			if (controls.NOTE_DOWN)
+			if (controls.NOTE_DOWN_P)
 			{
 				boyfriend.playAnim("singDOWN");
+				spamCounter += 1;
 			}
-			if (controls.NOTE_LEFT)
+			if (controls.NOTE_LEFT_P)
 			{
 				boyfriend.playAnim("singLEFT");
+				spamCounter += 1;
 			}
-			if (controls.NOTE_RIGHT)
+			if (controls.NOTE_RIGHT_P)
 			{
 				boyfriend.playAnim("singRIGHT");
+				spamCounter += 1;
 			}
+		}
+
+		if (spamCounter >= 150 && GameData.episode1FPLock == "unlocked")
+		{
+			FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
+			FreeplayState.freeplayMenuList = 3;
+			MusicBeatState.switchState(new FreeplayState());
 		}
 
 		if(boyfriend != null && boyfriend.animation.curAnim.finished) {

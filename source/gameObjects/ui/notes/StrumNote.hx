@@ -34,6 +34,13 @@ class StrumNote extends FlxSprite
 
 		switch (PlayState.SONG.song)
 		{
+			case "Rotten Petals" | "Curtain Call" | "Seeking Freedom" | "A True Monster" | "Am I Real?" | "Your Final Bow" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "The Wretched Tilezones (Simple Life)" | "Ahh the Scary (Somber Night)":
+				switch (FreeplayState.maniaSkin)
+				{
+					case 0: skin = "NOTE_assets-MANIA";
+					case 1: skin = "NOTE_assets-MANIABAR";
+					case 2: skin = "NOTE_assets-MANIACIRCLE";
+				}
 			case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Laugh Track":
 				skin = "NOTE_assets-CARTOON";
 			case "Mercy":

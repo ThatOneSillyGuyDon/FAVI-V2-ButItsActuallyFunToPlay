@@ -118,7 +118,7 @@ class Note extends FlxSprite
 		noteSplashTexture = PlayState.SONG.splashSkin;
 		switch (PlayState.SONG.song)
 		{
-			case "Devilish Deal" | "Isolated" | "Lunacy" | "Delusional" | "Hunted" | "Laugh Track" | "Twisted Grins": noteSplashTexture = "NOTE_splashesCartoon";
+			case "Devilish Deal" | "Isolated" | "Lunacy" | "Delusional" | "Hunted" | "Laugh Track" | "Twisted Grins" | "Rotten Petals" | "Seeking Freedom" | "Am I Real?" | "Your Final Bow" | "The Wretched Tilezones (Simple Life)" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "Ahh the Scary (Somber Night)" | "Curtain Call": noteSplashTexture = "NOTE_splashesCartoon";
 			case "Mercy": noteSplashTexture = "NOTE_splashWalt";
 			default: noteSplashTexture = "noteSplashes";
 		}
@@ -274,6 +274,13 @@ class Note extends FlxSprite
 			if(skin == null || skin.length < 1) {
 				switch (PlayState.SONG.song)
 				{
+					case "Rotten Petals" | "Curtain Call" | "Seeking Freedom" | "A True Monster" | "Am I Real?" | "Your Final Bow" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "The Wretched Tilezones (Simple Life)" | "Ahh the Scary (Somber Night)":
+						switch (FreeplayState.maniaSkin)
+						{
+							case 0: skin = "NOTE_assets-MANIA";
+							case 1: skin = "NOTE_assets-MANIABAR";
+							case 2: skin = "NOTE_assets-MANIACIRCLE";
+						}
 					case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Laugh Track":
 						skin = "NOTE_assets-CARTOON";
 					case "Mercy":

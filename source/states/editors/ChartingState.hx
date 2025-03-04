@@ -1376,7 +1376,29 @@ class ChartingState extends MusicBeatState
 	}
 
 	function generateSong() {
-		FlxG.sound.playMusic(Paths.inst(currentSongName, CoolUtil.difficulties[PlayState.storyDifficulty]), 0.6/*, false*/);
+		switch (_song.song)
+		{
+			case "Rotten Petals":
+				FlxG.sound.playMusic(Paths.music("aviOST/rottenPetals"));
+			case "Seeking Freedom":
+				FlxG.sound.playMusic(Paths.music("aviOST/seekingFreedom"));
+			case "Curtain Call":
+				FlxG.sound.playMusic(Paths.music("aviOST/curtainCall"));
+			case "A True Monster":
+				FlxG.sound.playMusic(Paths.music("aviOST/aTrueMonster"));
+			case "Am I Real?":
+				FlxG.sound.playMusic(Paths.music("aviOST/gameOver/amIReal"));
+			case "Your Final Bow":
+				FlxG.sound.playMusic(Paths.music("aviOST/gameOver/yourFinalBow"));
+			case "The Wretched Tilezones (Simple Life)":
+				FlxG.sound.playMusic(Paths.music("aviOST/pause/theWretchedTilezones"));
+			case "Ahh the Scary (Somber Night)":
+				FlxG.sound.playMusic(Paths.music("aviOST/pause/somberNight"));
+			case "Ship the Fart Yay Hooray <3 (Distant Stars)":
+				FlxG.sound.playMusic(Paths.music("aviOST/pause/shipTheFartYayHoorayv3v"));
+			default:
+				FlxG.sound.playMusic(Paths.inst(currentSongName, CoolUtil.difficulties[PlayState.storyDifficulty]), 0.6);
+		}
 
 		FlxG.sound.music.onComplete = function()
 		{
@@ -2188,7 +2210,7 @@ class ChartingState extends MusicBeatState
 	var lastSecBeatsNext:Float = 0;
 	function reloadGridLayer() {
 		gridLayer.clear();
-		gridBG = FlxGridOverlay.create(GRID_SIZE, GRID_SIZE, GRID_SIZE * 9, Std.int(GRID_SIZE * getSectionBeats() * 4 * zoomList[curZoom]));
+		gridBG = FlxGridOverlay.create(GRID_SIZE, GRID_SIZE, GRID_SIZE * 9, Std.int(GRID_SIZE * getSectionBeats() * 4 * zoomList[curZoom]), true, FlxColor.fromRGB(16, 16, 16), FlxColor.fromRGB(32, 32, 32));
 
 		#if desktop
 		if(FlxG.save.data.chart_waveformInst || FlxG.save.data.chart_waveformVoices) {
@@ -2200,7 +2222,7 @@ class ChartingState extends MusicBeatState
 		var foundNextSec:Bool = false;
 		if(sectionStartTime(1) <= FlxG.sound.music.length)
 		{
-			nextGridBG = FlxGridOverlay.create(GRID_SIZE, GRID_SIZE, GRID_SIZE * 9, Std.int(GRID_SIZE * getSectionBeats(curSec + 1) * 4 * zoomList[curZoom]));
+			nextGridBG = FlxGridOverlay.create(GRID_SIZE, GRID_SIZE, GRID_SIZE * 9, Std.int(GRID_SIZE * getSectionBeats(curSec + 1) * 4 * zoomList[curZoom]), true, FlxColor.fromRGB(16, 16, 16), FlxColor.fromRGB(32, 32, 32));
 			leHeight = Std.int(gridBG.height + nextGridBG.height);
 			foundNextSec = true;
 		}

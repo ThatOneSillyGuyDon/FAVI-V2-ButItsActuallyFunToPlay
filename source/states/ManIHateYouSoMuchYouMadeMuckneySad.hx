@@ -45,8 +45,6 @@ class ManIHateYouSoMuchYouMadeMuckneySad extends MusicBeatState
       // haha, you have to use Task Manager to close the game on this screen now :troll:
       Lib.application.window.onClose.add(function() {
 			Lib.application.window.onClose.cancel();
-         // yes.
-         FlxG.sound.play(Paths.sound("nuh-uh"));
 		});
 
       DiscordClient.changePresence('You fucking monster...', 'Muckney is sad now...', 'sadmuckney', 'mouse');

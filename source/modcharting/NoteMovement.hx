@@ -32,7 +32,7 @@ class NoteMovement
             // SUPER shitty fix so the scales aren't wonky
             switch (PlayState.SONG.song)
             {
-                case "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Malfunction Legacy" | "Cycled Sins Legacy" | "Mercy Legacy" | "Delutrance" | "Birthday":
+                case "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Malfunction Legacy" | "Twisted Grins Legacy" | "Cycled Sins Legacy" | "Mercy Legacy" | "Delutrance" | "Birthday":
                     s = 0.7;
                 default:
                     s = 0.6;

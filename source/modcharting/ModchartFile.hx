@@ -146,6 +146,11 @@ class ModchartFile
                         json = {modifiers: [], events: [], playfields: 1};
                 case "Devilish Deal":
                     json = cast Json.parse(Modchart.devilishModchart);
+                case "Bless":
+                    if (ClientPrefs.mechanics)
+                        json = Json.parse(ClientPrefs.downScroll ? Modchart.blessDownscroll : Modchart.blessUpscroll);
+                    else
+                        json = {modifiers: [], events: [], playfields: 1};
                 case "War Dilemma":
                     if (ClientPrefs.mechanics)
                         json = cast Json.parse(ClientPrefs.downScroll ? Modchart.warModchartD : Modchart.warModchartU);
@@ -161,6 +166,16 @@ class ModchartFile
                 case "Delusional Legacy":
                     if (ClientPrefs.mechanics)
                         json = cast Json.parse(ClientPrefs.downScroll ? Modchart.deluLegModD : Modchart.deluLegModU);
+                    else
+                        json = {modifiers: [], events: [], playfields: 1};
+                case "Rotten Petals":
+                    if (ClientPrefs.mechanics)
+                        json = cast Json.parse(Modchart.petalsManiaMod);
+                    else
+                        json = {modifiers: [], events: [], playfields: 1};
+                case "Ahh the Scary (Somber Night)":
+                    if (ClientPrefs.mechanics)
+                        json = cast Json.parse(Modchart.nightManiaMod);
                     else
                         json = {modifiers: [], events: [], playfields: 1};
                 default:

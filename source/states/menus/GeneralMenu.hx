@@ -204,6 +204,7 @@ class GeneralMenu extends MusicBeatState {
             changeItem(1);
         }
 		if (controls.BACK) {
+            Conductor.bpm = 50;
 			FreeplayState.songInstPlaying = false;
 			FlxG.sound.play(Paths.sound("cancelMenu"));
 			MusicBeatState.switchState(new MainMenu());

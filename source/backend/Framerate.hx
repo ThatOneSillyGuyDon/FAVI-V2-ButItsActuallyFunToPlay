@@ -133,19 +133,18 @@ class Framerate extends TextField
 							setTextFormat(new TextFormat(openfl.utils.Assets.getFont("assets/fonts/Retro Gaming.ttf").fontName, 9, 0x292929));
 							font = openfl.utils.Assets.getFont("assets/fonts/Retro Gaming.ttf").fontName;
 						}
+					case "Isolated Beta" | "Isolated Old" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Twisted Grins Legacy" | "Mercy Legacy" | "Cycled Sins Legacy" | "Malfunction Legacy":
+						if (font != "_sans")
+						{
+							setTextFormat(new TextFormat("_sans", 12, 0xFFD1D1D1));
+							font = "_sans";
+						}
 					default:
-						if (PlayState.SONG.song.endsWith("Legacy"))
-							if (font != "_sans")
-							{
-								setTextFormat(new TextFormat("_sans", 12, 0xFFD1D1D1));
-								font = "_sans";
-							}
-						else
-							if (font != openfl.utils.Assets.getFont("assets/fonts/disneyFreeplayFont.ttf").fontName)
-							{
-								setTextFormat(new TextFormat(openfl.utils.Assets.getFont("assets/fonts/disneyFreeplayFont.ttf").fontName, 12, 0xFFD1D1D1));
-								font = openfl.utils.Assets.getFont("assets/fonts/disneyFreeplayFont.ttf").fontName;
-							}
+						if (font != openfl.utils.Assets.getFont("assets/fonts/disneyFreeplayFont.ttf").fontName)
+						{
+							setTextFormat(new TextFormat(openfl.utils.Assets.getFont("assets/fonts/disneyFreeplayFont.ttf").fontName, 12, 0xFFD1D1D1));
+							font = openfl.utils.Assets.getFont("assets/fonts/disneyFreeplayFont.ttf").fontName;
+						}
 				}
 			
 			default:

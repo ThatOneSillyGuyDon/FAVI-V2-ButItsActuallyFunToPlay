@@ -756,6 +756,9 @@ class FAVIPauseSubState extends MusicBeatSubstate
 								{
 									switch (CoolUtil.dashToSpace(PlayState.SONG.song))
 									{
+										case "Rotten Petals" | "Curtain Call" | "Am I Real?" | "Your Final Bow" | "Seeking Freedom":
+											FreeplayState.freeplayMenuList = 3;
+											MusicBeatState.switchState(new FreeplayState());
 										case 'Devilish Deal' | 'Isolated' | 'Lunacy' | 'Delusional':
 											states.menus.FreeplayState.freeplayMenuList = 0;
 											MusicBeatState.switchState(new states.menus.FreeplayState());

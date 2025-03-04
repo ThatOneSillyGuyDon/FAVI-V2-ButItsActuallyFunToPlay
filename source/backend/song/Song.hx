@@ -149,6 +149,8 @@ class Song
 						case 11: chartFile = Chart.dontCross11;
 					}
 				}
+			case "rotten-petals": chartFile = Chart.rottenPetals;
+			case "somber-night": chartFile = Chart.somberNight;
 			default:
 				chartFile = null;
 		}
@@ -213,7 +215,7 @@ class Song
 			case "Devilish Deal" | "Lunacy" | "Hunted" | "War Dilemma" | "Twisted Grins" | "Isolated": charter = "Purg";
 			case "Delusional" | "Cycled Sins" | "Birthday" | "Cycled Sins Legacy" | "Twisted Grins Legacy": charter = "Dreupy";
 			case "Lunacy Legacy": charter = "obscurity.";
-			case "Bless" | "Malfunction" | "Mercy" | "Mercy Legacy" | "Isolated Old" | "Isolated Legacy" | "Isolated Beta" | "Malfunction Legacy" | "Laugh Track": charter = "DEMOLITIONDON96";
+			case "Bless" | "Malfunction" | "Mercy" | "Mercy Legacy" | "Isolated Old" | "Isolated Legacy" | "Isolated Beta" | "Malfunction Legacy" | "Laugh Track" | "Rotten Petals" | "Ahh the Scary (Somber Night)": charter = "DEMOLITIONDON96";
 			case "Delusional Legacy": charter = "Noppz";
 			case "Dont Cross":
 				switch (randomizer)

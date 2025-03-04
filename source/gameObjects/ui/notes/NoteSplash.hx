@@ -16,7 +16,7 @@ class NoteSplash extends FlxSprite
 
 		switch (PlayState.SONG.song)
 		{
-			case "Devilish Deal" | "Isolated" | "Lunacy" | "Delusional" | "Hunted" | "Laugh Track" | "Twisted Grins": skin = "NOTE_splashesCartoon";
+			case "Devilish Deal" | "Isolated" | "Lunacy" | "Delusional" | "Hunted" | "Laugh Track" | "Twisted Grins" | "Rotten Petals" | "Seeking Freedom" | "Am I Real?" | "Your Final Bow" | "The Wretched Tilezones (Simple Life)" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "Ahh the Scary (Somber Night)" | "Curtain Call": skin = "NOTE_splashesCartoon";
 			case "Mercy": skin = "NOTE_splashWalt";
 			default: skin = "noteSplashes";
 		}
