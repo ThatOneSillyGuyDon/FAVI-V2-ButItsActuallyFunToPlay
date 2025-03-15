@@ -62,16 +62,6 @@ Until Next Time!",
 			true
 		],
 		[
-			"RetroJogador",
-			"joga",
-			"Composed Main Menu, Delutrance, & Made Menu Art",
-			"\nBtw I really enjoyed joining the mod team and ending this amazing update, \nalong the way I met and made a lot of cool friends. Changing the subject,\n\nI was responsible for making the Menu Music, Pause Music, Sanguis Muris and others, Arts I practically created the main menu, hud and Others,\n\nand I gave the voice to Mrs Smile in V2, Change the World, My Final Message: YIPPEEE- ",
-			-320,
-			-130,
-			0.55,
-			true
-		],
-		[
 			"MalyPlus",
 			"maly",
 			"Assistant Programmer",
@@ -93,11 +83,11 @@ Until Next Time!",
 		],
 		[
 			"GreyDoodlez",
-			"greyNEW",
+			"greyFINAL",
 			"Artist",
 			"Cedric, dejame ver a los niños.",
-			-270,
-			-135,
+			45,
+			155,
 			0.65,
 			false
 		],
@@ -134,6 +124,17 @@ also play miserable funk pls ty <33 ",
 			false
 		],
 		[
+			"PlayerTheMobile",
+			"placeholder",
+			"Discord Icon Artist",
+			"\n\n\n\nHey,the only thing contributed was an icon that you’ll see on discord lol
+im glad we got this mod out",
+			-315,
+			-140,
+			0.55,
+			true
+		],
+		[
 			"BonoanAnything",
 			"bonoan",
 			"Evilrett VA, made lyrics for Delusional & trailers",
@@ -158,10 +159,50 @@ also play miserable funk pls ty <33 ",
 
 		[
 			"Ms.IDK",
-			"idk",
+			"msidkBird",
 			"Artist & Owner of White Noise and RS",
 			"I hate suicide mouse!",
 			-314,
+			-140,
+			0.55,
+			false
+		],
+		[
+			"JBlitz",
+			"placeholder",
+			"Composer",
+			"",
+			-315,
+			-140,
+			0.55,
+			false
+		],
+		[
+			"BlueFishAnimation",
+			"bluefish",
+			"Freeplay Menu Art",
+			"",
+			20,
+			40,
+			0.5,
+			false
+		],
+		[
+			"obscurity",
+			"placeholder",
+			"Composer of Malfunction, War Dilemma & almost all the Episode 1 tracks",
+			"",
+			-315,
+			-140,
+			0.55,
+			false
+		],
+		[
+			"ForFurtherNotice",
+			"placeholder",
+			"Composer of Pause Themes",
+			"",
+			-315,
 			-140,
 			0.55,
 			false
@@ -208,13 +249,23 @@ also play miserable funk pls ty <33 ",
 		],
 		[
 			"Teelbe",
-			"teelbe",
+			"teelLogo",
 			"Artist",
 			"I had fun working on dis lol,\neveryone did amazing on it and\ni hope yall like the mod :]",
 			-320,
 			-140,
 			0.55,
 			false
+		],
+		[
+			"JustJustin",
+			"justinx",
+			"Made Ricky Chromatic",
+			"\n\nmy odd squad name would be OJustin, What would yours be? Find out at\n\n\nhttps://www.oddsquadtv.com/oddsquad/agents/createagent/ !",
+			0,
+			80,
+			0.6,
+			true
 		],
 		[
 			"theonlyshittyre. / rezeo",
@@ -274,7 +325,7 @@ Un Saludo A La Gente De La Tarado Army, Volveran Mas Fuertes Que Nunca Gaaaa :VV
 		],
 		["Just_Kuro", "kuro", "Artist", "\n\n\n\nTo all those people who believed in me,\nthank you,\ni thank every single one of you for the opportunity to work on this wonderful project.
 Thank you all.", -295, -130, 0.6, true],
-		["Kyuxhtysu", "kyuxhtsyu", "Artist & Redesigned Lilith (v2.5)", "gay sonic artist.", -725, -830, 0.18, false],
+		["Kyuxhtysu", "kyuxhtsyu", "Artist & Redesigned Lilith", "gay sonic artist.", -725, -830, 0.18, false],
 		["0yxz.", "oyxzNEWagain", "Artist for Settings & Info menus\nCarried the mod heavily with all the assets we were missing", "Avier x Evilrett forever man.", -360, -265, 0.22, false]
     ]
 }
