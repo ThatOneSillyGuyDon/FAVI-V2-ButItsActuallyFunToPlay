@@ -489,7 +489,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 			menuItems = itemStack;
 
 			// Will use your discord username if you're connected while playing lmao
-			if (DiscordClient.isInitialized)
+			if (DiscordClient.isInitialized && DiscordClient.discordName != "None")
 				yourName = DiscordClient.discordName;
 
 			satanQuotes = [
@@ -756,7 +756,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 								{
 									switch (CoolUtil.dashToSpace(PlayState.SONG.song))
 									{
-										case "Rotten Petals" | "Curtain Call" | "Am I Real?" | "Your Final Bow" | "Seeking Freedom":
+										case "Rotten Petals" | "Curtain Call" | "Am I Real?" | "Your Final Bow" | "Seeking Freedom" | "Ahh the Scary (Somber Night)" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "The Wretched Tilezones (Simple Life)" | "A True Monster":
 											FreeplayState.freeplayMenuList = 3;
 											MusicBeatState.switchState(new FreeplayState());
 										case 'Devilish Deal' | 'Isolated' | 'Lunacy' | 'Delusional':
@@ -975,4 +975,209 @@ class FAVIPauseSubState extends MusicBeatSubstate
 			else 
 				return null;
 		}
+}
+
+class PauseManiaSubstate extends MusicBeatSubstate
+{
+	var menuItems:Array<String>;
+	var curSelected:Int = 0;
+	var buttonGroup:FlxTypedGroup<FlxSprite>;
+	var pauseMusic:FlxSound;
+	var hasFinishedAnim:Bool = false;
+	var canQuit:Bool = false;
+	var songText:FlxSprite;
+
+	public function new(x:Float, y:Float, ?itemStack:Array<String>)
+		{
+			super();
+	
+			if (itemStack == null)
+				itemStack = ['maniaResume', 'maniaRetry', 'maniaOptions', 'maniaQuit'];
+	
+			PlayState.windowTimer.active = false;
+
+			Lib.application.window.onClose.removeAll(); // goes back to normal hopefully
+			Lib.application.window.onClose.add(function() {
+				DiscordClient.shutdown();
+			});
+		
+
+			// cool stuff
+			FAVIPauseSubState.toOptions = false;
+			menuItems = itemStack;
+
+			var randomPauseSong:String = "";
+			var randomizer:Int = FlxG.random.int(1, 3);
+
+			switch (randomizer)
+			{
+				case 1: 
+					randomPauseSong = "shipTheFartYayHoorayv3v";
+				case 2: 
+					randomPauseSong = "somberNight";
+				case 3: 
+					randomPauseSong = "theWretchedTilezones";
+			}
+
+			pauseMusic = new FlxSound();
+			pauseMusic.loadEmbedded(Paths.music("aviOST/pause/" + randomPauseSong), true, true);
+			pauseMusic.volume = 0;
+			pauseMusic.play(false, FlxG.random.int(0, Std.int(pauseMusic.length / 2)));
+
+			FlxG.sound.list.add(pauseMusic);
+
+			var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
+			bg.alpha = 0;
+			bg.scrollFactor.set();
+			add(bg);
+
+			// menu buttons
+			buttonGroup = new FlxTypedGroup<FlxSprite>();
+			add(buttonGroup);
+	
+			for (i in 0...menuItems.length)
+			{
+				songText = new FlxSprite(0, 0).loadGraphic(Paths.image('Funkin_avi/pause/menuButtons/${menuItems[i]}'));
+				songText.alpha = 0;
+				songText.scale.set(0.55, 0.55);
+				songText.ID = i;
+				songText.screenCenter();
+				FlxTween.tween(songText, {alpha: 1}, 0.45, {ease: FlxEase.quartInOut, onComplete: function(twn:FlxTween)
+				{
+					hasFinishedAnim = true;
+				}});
+				buttonGroup.add(songText);
+			}
+
+			FlxTween.tween(bg, {alpha: 0.6}, 0.4, {ease: FlxEase.quartInOut});
+
+			changeSelection();
+			lime.app.Application.current.window.title += " - {Paused}";
+			cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
+		}
+
+		override function update(elapsed:Float)
+		{
+			updateSelection();
+	
+			super.update(elapsed);
+
+			var upP = controls.UI_UP_P;
+			var downP = controls.UI_DOWN_P;
+			var accepted = controls.ACCEPT;
+			
+			if (hasFinishedAnim)
+				{
+					if (upP)
+						changeSelection(-1);
+					if (downP)
+						changeSelection(1);
+					if (accepted)
+					{
+						var daSelected:String = menuItems[curSelected];
+		
+						switch (daSelected)
+						{
+							case "maniaResume":
+								close();
+								lime.app.Application.current.window.title = PlayState.windowName;
+								PlayState.windowTimer.active = true;
+							case "maniaRetry":
+								restartSong();
+							case "maniaOptions":
+								FAVIPauseSubState.toOptions = true;
+								FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+								FlxG.mouse.visible = true;
+								MusicBeatState.switchState(new states.options.OptionsState());
+								FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
+							case "maniaQuit":
+								if (!canQuit)
+								{
+									songText.loadGraphic(Paths.image('Funkin_avi/pause/menuButtons/quitConfirm'));
+									canQuit = true;
+								}
+								else
+								{
+									Lib.application.window.onClose.removeAll(); // goes back to normal hopefully
+									Lib.application.window.onClose.add(function() {
+										DiscordClient.shutdown();
+									});
+									PlayState.cancelMusicFadeTween();
+									PlayState.changedDifficulty = false;
+									PlayState.chartingMode = false;
+									PlayState.deathCounter = 0;
+			
+									FreeplayState.freeplayMenuList = 3;
+									MusicBeatState.switchState(new FreeplayState());
+									FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
+									FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+								}
+						}
+					}
+				}
+
+			
+			if (pauseMusic != null && pauseMusic.playing)
+				{
+					if (pauseMusic.volume < 0.5)
+						pauseMusic.volume += 0.1 * elapsed;
+				}
+			}
+		
+			override function destroy()
+			{
+				if (pauseMusic != null)
+					pauseMusic.destroy();
+		
+				super.destroy();
+			}
+
+			public static function restartSong(noTrans:Bool = false)
+				{
+					if (PlayState.useFakeDeluName)
+						PlayState.useFakeDeluName = false;
+					if (PlayState.pauseCountEnabled)
+						PlayState.pauseCountEnabled = false;
+					PlayState.instance.paused = true; // For lua
+					FlxG.sound.music.volume = 0;
+					PlayState.instance.vocals.volume = 0;
+					PlayState.instance.bf_vocals.volume = 0;
+					PlayState.instance.opp_vocals.volume = 0;
+					Lib.application.window.onClose.removeAll(); // goes back to normal hopefully
+					Lib.application.window.onClose.add(function() {
+						DiscordClient.shutdown();
+					});
+
+					if(noTrans)
+					{
+						FlxTransitionableState.skipNextTransOut = true;
+						FlxG.resetState();
+					}
+					else
+					{
+						MusicBeatState.resetState();
+					}
+				}
+
+			function changeSelection(change:Int = 0):Void
+			{
+					FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'), 0.6);
+			
+					if (menuItems != null)
+						curSelected = FlxMath.wrap(curSelected + change, 0, menuItems.length - 1);
+			}
+
+			function updateSelection()
+			{
+				if (hasFinishedAnim)
+				{
+					buttonGroup.forEach(function(spr:FlxSprite)
+					{
+						spr.alpha = 0.45;
+					});
+				
+					if (buttonGroup.members[curSelected].alpha == 0.45)
+						buttonGroup.members[curSelected].alpha = 1;
+				}
+			}
 }

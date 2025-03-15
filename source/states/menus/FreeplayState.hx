@@ -205,10 +205,7 @@ class FreeplayState extends MusicBeatState
 				{
 					addSong('Rotten Petals', 3, "avier", FlxColor.WHITE, 'Yama Haki/Toko', "MANIA", FlxColor.CYAN, [15, 0], "None");
 					addSong('Seeking Freedom', 3, "avier", FlxColor.WHITE, 'Yama Haki/Toko', "MANIA", FlxColor.CYAN, [15, 0], "None");
-					addSong('Am I Real?', 3, "avier", FlxColor.WHITE, 'Logan N.', "MANIA", FlxColor.CYAN, [15, 0], "None");
-					addSong('Your Final Bow', 3, "avier", FlxColor.WHITE, 'Yama Haki/Toko', "MANIA", FlxColor.CYAN, [15, 0], "None");
 					addSong('Curtain Call', 3, "avier", FlxColor.WHITE, 'Sayan Sama', "MANIA", FlxColor.CYAN, [15, 0], "None");
-					addSong("A True Monster", 3, "avier", FlxColor.WHITE, 'FR3SHMoure', "MANIA", FlxColor.CYAN, [15, 0], "None");
 					addSong("Distant Stars", 3, "avier", FlxColor.WHITE, 'ForFurtherNotice', "MANIA", FlxColor.CYAN, [15, 0], "None");
 					addSong("Somber Night", 3, "avier", FlxColor.WHITE, 'ForFurtherNotice', "MANIA", FlxColor.CYAN, [15, 0], "None");
 					addSong("Simple Life", 3, "avier", FlxColor.WHITE, 'ForFurtherNotice', "MANIA", FlxColor.CYAN, [15, 0], "None");
@@ -336,7 +333,7 @@ class FreeplayState extends MusicBeatState
 			songText = new Alphabet(100, (43 * i) + 120, songs[i].songName, true);
 			album = new FlxSprite(-130, -160);
 			if (songs[i].songCharacter != "mysteryfp")
-				album.loadGraphic(Paths.imageAlbum(CoolUtil.spaceToDash(songs[i].songName.toLowerCase())));
+				album.loadGraphic(Paths.imageAlbum((freeplayMenuList == 3 ? "volume2Album" : CoolUtil.spaceToDash(songs[i].songName.toLowerCase()))));
 			else
 				album.loadGraphic(Paths.imageAlbum("unknown-song"));
 		
@@ -857,19 +854,19 @@ class FreeplayState extends MusicBeatState
 		{
 			case 0: 
 				{
-					lime.app.Application.current.window.title = "Funkin.avi - Freeplay: Episode Songs - " + songName + ' - Composed by: ' + songArtist;
+					lime.app.Application.current.window.title = "Funkin.avi - Freeplay: Story Menu- " + songName + ' - Composed by: ' + songArtist;
 				}
 			case 1:
 				{
-					lime.app.Application.current.window.title = "Funkin.avi - Freeplay: Extra Songs - " + songName + " - Composed by: " + songArtist;
+					lime.app.Application.current.window.title = "Funkin.avi - Freeplay: Extras Menu - " + songName + " - Composed by: " + songArtist;
 				}
 			case 2:
 				{
-					lime.app.Application.current.window.title = "Funkin.avi - Freeplay: Legacy Songs - " + songName + " - Composed by: " + songArtist;
+					lime.app.Application.current.window.title = "Funkin.avi - Freeplay: Legacy Menu - " + songName + " - Composed by: " + songArtist;
 				}
 			case 3:
 				{
-					lime.app.Application.current.window.title = "Funkin.avi - Freeplay: ??? - " + songName + " - Composed by: " + songArtist;
+					lime.app.Application.current.window.title = "Funkin.avi - Freeplay: Mania Menu - " + songName + " - Composed by: " + songArtist;
 				}
 		}
 

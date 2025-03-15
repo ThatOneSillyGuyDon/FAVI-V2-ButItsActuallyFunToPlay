@@ -62,6 +62,8 @@ class ChartingState extends MusicBeatState
 		['Static Event', "Value 1: Determines what this triggers\nValue 2: Additional value input if needed\n\nValue 1 Inputs available:\n- togglevis\n- setalpha\n- twnalpha\n- settime"],
 		['Change Mal BG', "Value 1: Determines what this triggers\nValue 2: Additional value input if needed\n\nValue 1 Inputs available:\n- togglevis\n- setalpha\n- changebg"],
 		['No Signal Event', "Value 1: Determines what this triggers\nValue 2: Additional value input if needed\n\nValue 1 Inputs available:\n- togglevis\n- setalpha\n- changebg"],
+		['Mania BG Flash', "Value 1 Info: Customizer for how the flash will work\nValue 2 Info: Whether only the sky or the whole BG will flash\n\nValue 1: timer, ease, alpha, red value, green value, blue value\nValue 2: sky or all"],
+		['Mercy Transition', "too lazy to put a description here"]
 	];
 
 	var audioStuff:Array<String> = [];

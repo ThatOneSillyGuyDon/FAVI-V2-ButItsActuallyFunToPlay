@@ -68,6 +68,8 @@ import shaders.WiggleEffect;
 import shaders.WiggleEffect.WiggleEffectType;
 
 import substates.PauseSubState.FAVIPauseSubState;
+import substates.PauseSubState.PauseManiaSubstate;
+import substates.GameOverSubstate.ManiaLoseSubstate;
 // stuff that won't let you compile unless they're being used
 #if VIDEOS_ALLOWED
 import gameObjects.video.VideoSprite;

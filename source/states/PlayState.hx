@@ -377,6 +377,7 @@ class PlayState extends MusicBeatState
 	public var waltScreenThing:FlxSprite; // idk, this is needed too for some reason
 	public var inkFormWarning:FlxText;
 	public var spaceBarCounter:FlxText;
+	public var mercyBoostIcon:FlxSprite;
 	public var limitThing:Int = 0; // Default Value
 
 	var stageBGFlash:FlxSprite;
@@ -384,6 +385,8 @@ class PlayState extends MusicBeatState
 
 	var blendFlash:FlxSprite;
 	var flashTween:FlxTween;
+
+	var skyFlash:FlxSprite;
 
 	public static var windowTimer:FlxTimer;
 
@@ -757,11 +760,11 @@ class PlayState extends MusicBeatState
 		// String that contains the mode defined here so it isn't necessary to call changePresence for each mode
 		if (isStoryMode)
 		{
-			detailsText = "Episode 1 - " + SONG.song;
+			detailsText = "Episode 1 - " + SONG.song + " (" + FreeplayState.getDiffRank() + ")";
 		}
 		else
 		{
-			detailsText = "Freeplay - " + SONG.song;
+			detailsText = "Freeplay - " + SONG.song + " (" + FreeplayState.getDiffRank() + ")";
 		}
 
 		// String for when the game is paused
@@ -1284,15 +1287,37 @@ class PlayState extends MusicBeatState
 					defaultCamZoom = 1.25;
 					cameraSpeed = 50;
 	
-					var clubhouse:FlxSprite = new FlxSprite(-410, -100);
-					clubhouse.frames = Paths.getSparrowAtlas(pathway + 'daHouse');
-					clubhouse.animation.addByPrefix('balloons bounce', 'daHouse idle', 12, true);
-					clubhouse.animation.play('balloons bounce');
-					clubhouse.scale.set(1.15, 1.15);
-					clubhouse.updateHitbox();
-					clubhouse.antialiasing = true;
-					clubhouse.scrollFactor.set(1, 1);
+					var clubhouse:FlxSprite = new FlxSprite(-470, -150).loadGraphic(Paths.image(pathway + 'clubhouse'));
 					add(clubhouse);
+
+					if (!ClientPrefs.lowQuality)
+					{
+						var ballon1 = new FlxSprite(-250, -310);
+						ballon1.frames = Paths.getSparrowAtlas(pathway + "Balloon_assets");
+						ballon1.animation.addByPrefix("bop", "idle", 24, true);
+						ballon1.animation.play("bop");
+						add(ballon1);
+
+						var ballon2 = new FlxSprite(350, -310);
+						ballon2.frames = Paths.getSparrowAtlas(pathway + "Balloon_assets");
+						ballon2.animation.addByPrefix("bop", "idle", 24, true);
+						ballon2.animation.play("bop");
+						add(ballon2);
+
+						for (i in [ballon1, ballon2])
+						{
+							i.scale.set(0.45, 0.45);
+							i.y -= 280; // i got lazy
+						}
+
+						var banners = new FlxSprite(-480, -110).loadGraphic(Paths.image(pathway + "birthdayBanners"));
+						banners.scrollFactor.set(1.2, 1.2);
+						foreground.add(banners);
+
+						var foreObj = new FlxSprite(-470, -400).loadGraphic(Paths.image(pathway + 'foreBG'));
+						foreObj.scrollFactor.set(1.4, 1.4);
+						foreground.add(foreObj);
+					}
 	
 					var vignette:FlxSprite = new FlxSprite(-250, -140).loadGraphic(Paths.image(pathway + 'vignetteOverlay'));
 					vignette.cameras = [camOther];
@@ -1852,6 +1877,12 @@ class PlayState extends MusicBeatState
 					stars2.alpha = 0.001;
 					add(stars2);
 
+					skyFlash = new FlxSprite().makeGraphic(FlxG.width*5, FlxG.height*5, FlxColor.WHITE);
+					skyFlash.screenCenter();
+					skyFlash.scrollFactor.set(0, 0);
+					skyFlash.alpha = 0.001;
+					add(skyFlash);
+
 					var street = new FlxSprite().loadGraphic(Paths.image(pathway + "secretStreet"));
 					street.scrollFactor.set(0, 0);
 					add(street);
@@ -1934,6 +1965,7 @@ class PlayState extends MusicBeatState
 			"Laugh Track",
 			"Dont Cross",
 			"Cycled Sins",
+			"Bless",
 			"Mercy",
 			"Cycled Sins Legacy",
 			"Mercy Legacy",
@@ -1951,13 +1983,16 @@ class PlayState extends MusicBeatState
 			default: curEpisode = "Episode ???";
 		}
 
-		windowName = "Funkin.avi - " + 
-		(isStoryMode ? curEpisode + " - " : "Freeplay - ") + 
-		(SONG.song == "Dont Cross" ? "Don't Cross!" : SONG.song) + 
-		" (Composed by: " + FreeplayState.getArtistName() + 
-		") - Chart by: " + Song.getCharterCredits() + 
-		" [" + FreeplayState.getDiffRank() + "]" + 
-		(checkMechanics ? ' - Mechanics: ' + (ClientPrefs.mechanics ? "Enabled" : "Disabled") : ""); // shitty long ass name that credits literally every fucking thing
+		if (SONG.song == "Devilish Deal" && isStoryMode && GameData.episode1FPLock != "unlocked")
+			windowName = "Funkin.avi - Episode 1: Isolated (Composed by: obscurity) - Chart by: Purg [NORMAL] - Mechanics: " + (ClientPrefs.mechanics ? "Enabled" : "Disabled"); // shitty long ass name that credits literally every fucking thing
+		else
+			windowName = "Funkin.avi - " + 
+			(isStoryMode ? curEpisode + " - " : "Freeplay - ") + 
+			(SONG.song == "Dont Cross" ? "Don't Cross!" : SONG.song) + 
+			" (Composed by: " + FreeplayState.getArtistName() + 
+			") - Chart by: " + Song.getCharterCredits() + 
+			" [" + FreeplayState.getDiffRank() + "]" + 
+			(checkMechanics ? ' - Mechanics: ' + (ClientPrefs.mechanics ? "Enabled" : "Disabled") : ""); // shitty long ass name that credits literally every fucking thing
 
 
 		#if LUA_ALLOWED
@@ -2339,8 +2374,7 @@ class PlayState extends MusicBeatState
 
 		if (curStage == "waltRoom" || curStage == "menuSongs")
 		{
-			if (ClientPrefs.downScroll)
-				fancyBarOverlay.flipY = true;
+			fancyBarOverlay.flipY = true;
 			for (bar in [healthBar, healthBarBG, fancyBarOverlay])
 			{
 				bar.angle = 90;
@@ -2601,8 +2635,20 @@ class PlayState extends MusicBeatState
 			inkFormWarning.scrollFactor.set();
 			inkFormWarning.screenCenter();
 	
-			spaceBarCounter = new FlxText(0, 680, 0, 'Health Boosts Left: ' + limitThing, 15);
-			spaceBarCounter.setFormat(Paths.font("splatter.otf"), 30);
+			mercyBoostIcon = new FlxSprite(-10, 600);
+			mercyBoostIcon.frames = Paths.getSparrowAtlas("favi/ui/mercyIcon");
+			mercyBoostIcon.animation.addByPrefix("full", "full", 7, true);
+			mercyBoostIcon.animation.addByPrefix("hmm", "hmm", 7, true);
+			mercyBoostIcon.animation.addByPrefix("halfway", "halfway", 7, true);
+			mercyBoostIcon.animation.addByPrefix("thatsBad", "thatsBad", 7, true);
+			mercyBoostIcon.animation.addByPrefix("almostOut", "almostOut", 7, true);
+			mercyBoostIcon.animation.addByPrefix("empty", "empty", 7, true);
+			mercyBoostIcon.animation.play("full");
+			mercyBoostIcon.scale.set(0.75, 0.75);
+			mercyBoostIcon.scrollFactor.set();			
+
+			spaceBarCounter = new FlxText(0, 650, 140, '${limitThing}', 15);
+			spaceBarCounter.setFormat(Paths.font("splatter.otf"), 30, FlxColor.BLACK, CENTER, OUTLINE, FlxColor.WHITE);
 			spaceBarCounter.cameras = [camOther];
 			//spaceBarCounter.alpha = 0;
 			spaceBarCounter.scrollFactor.set();
@@ -2623,6 +2669,7 @@ class PlayState extends MusicBeatState
 				{
 					add(waltInstructionsMain);
 					add(waltSubTxt);
+					add(mercyBoostIcon);
 					add(spaceBarCounter);
 		
 					FlxTween.tween(waltInstructionsMain, {alpha: 0}, 1, {ease: FlxEase.quadInOut, startDelay: 8});
@@ -2651,7 +2698,7 @@ class PlayState extends MusicBeatState
 			var fakeCam:FlxCamera = new FlxCamera();
 			fakeCam.bgColor.alpha = 0;
 			FlxG.cameras.add(fakeCam, false);
-			for (funny in [healthBar, healthBarBG, fancyBarOverlay, iconP1, iconP2])
+			for (funny in [healthBar, healthBarBG, fancyBarOverlay, iconP1, iconP2, spaceBarCounter, mercyBoostIcon])
 				funny.cameras = [fakeCam];
 		}
 
@@ -2824,7 +2871,7 @@ class PlayState extends MusicBeatState
 				case 'devilish-deal':
 					camGame.visible = false;
 					episodeIntro = new VideoSprite(false);
-					episodeIntro.load(Paths.video('episodeIntro'));
+					episodeIntro.load(Paths.video('episodeStart'));
 					episodeIntro.cameras = [camVideo];
 					episodeIntro.play();
 					camVideo.visible = true;
@@ -2834,6 +2881,26 @@ class PlayState extends MusicBeatState
 						episodeIntro.visible = true;
 					});
 					episodeIntro.addCallback("onEnd", () -> {
+						if (SONG.song == "Devilish Deal" && isStoryMode && GameData.episode1FPLock != "unlocked")
+						{
+							windowName = "Funkin.avi - " + 
+							(isStoryMode ? curEpisode + " - " : "Freeplay - ") + 
+							(SONG.song == "Dont Cross" ? "Don't Cross!" : SONG.song) + 
+							" (Composed by: " + FreeplayState.getArtistName() + 
+							") - Chart by: " + Song.getCharterCredits() + 
+							" [" + FreeplayState.getDiffRank() + "]"; // shitty long ass name that credits literally every fucking thing
+							lime.app.Application.current.window.title = windowName;
+
+							windowTimer = new FlxTimer().start(5, function(tmr:FlxTimer)
+							{
+								windowName = "Funkin.avi - " + 
+								(isStoryMode ? curEpisode + " - " : "Freeplay - ") + 
+								(SONG.song == "Dont Cross" ? "Don't Cross!" : SONG.song) + 
+								" [" + FreeplayState.getDiffRank() + "]"; // short version that displays after 5 seconds yayaya
+					
+								lime.app.Application.current.window.title = windowName;
+							});
+						}
 						devilishGaming = new VideoSprite(false);
 						devilishGaming.load(Paths.video("devilishIntro"), [VideoSprite.muted]);
 						add(devilishGaming);
@@ -2941,13 +3008,20 @@ class PlayState extends MusicBeatState
 		}
 
 		precacheList.set('alphabet', 'image');
+
+		switch (FreeplayState.freeplayMenuList)
+		{
+			case 2: iconRPC = "volume1";
+			case 3: iconRPC = "volume2";
+			default: iconRPC = CoolUtil.spaceToDash(SONG.song.toLowerCase());
+		}
 	
 		#if DISCORD_ALLOWED
 		#if DEV_BUILD
 		DiscordClient.changePresence("Starting song.", "It's a secret...", "icon", "random");
 		#else
 		// Updating Discord Rich Presence.
-		DiscordClient.changePresence(detailsText + " (" + FreeplayState.getDiffRank() + ")", "Starting song...", CoolUtil.spaceToDash(SONG.song.toLowerCase()), "random");
+		DiscordClient.changePresence(detailsText, "Starting song...", iconRPC, "random");
 		#end
 		#end
 
@@ -3222,7 +3296,7 @@ class PlayState extends MusicBeatState
 				death.play();
 				minnieJumpscare = new VideoSprite(false);
 				minnieJumpscare.visible = false;
-				minnieJumpscare.load(Paths.video("MinnieSegmentPlaceholder"));
+				minnieJumpscare.load(Paths.video("minniePart"), [VideoSprite.muted]);
 				minnieJumpscare.cameras = [camVideo];
 				minnieJumpscare.play();
 				minnieJumpscare.addCallback("onEnd", () -> {
@@ -3258,11 +3332,17 @@ class PlayState extends MusicBeatState
 
 			case 'Mercy Legacy':
 				if (ClientPrefs.mechanics)
+				{
 					limitThing += 25;
+					initialCount = limitThing;
+				}
 
 			case 'Mercy':
 				if (ClientPrefs.mechanics)
+				{
 					limitThing += 20;
+					initialCount = limitThing;
+				}
 
 			// Glitched Mickey will give you a big fat middle finger for disabling the mechanics lmao
 			case 'Malfunction Legacy':
@@ -4524,7 +4604,7 @@ class PlayState extends MusicBeatState
 		DiscordClient.changePresence("Playing a song", scoreTxt.text, "icon", "random");
 		#else
 		// Updating Discord Rich Presence (with Time Left)
-		DiscordClient.changePresence(detailsText, SONG.song + " (" + FreeplayState.getDiffRank() + ")", (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(SONG.song.toLowerCase())), "random", true, songLength - Conductor.songPosition - ClientPrefs.noteOffset);
+		DiscordClient.changePresence(detailsText, scoreTxt.text, (useFakeDeluName ? "regret" : iconRPC), "random", true, songLength - Conductor.songPosition - ClientPrefs.noteOffset);
 		#end
 		#end
 
@@ -4641,7 +4721,7 @@ class PlayState extends MusicBeatState
 		DiscordClient.changePresence("Playing a song", scoreTxt.text, "icon", "random");
 		#else
 		// Updating Discord Rich Presence (with Time Left)
-		DiscordClient.changePresence(detailsText + " (" + FreeplayState.getDiffRank() + ")", scoreTxt.text, (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(SONG.song.toLowerCase())), "random", true, songLength);
+		DiscordClient.changePresence(detailsText, scoreTxt.text, (useFakeDeluName ? "regret" : iconRPC), "random", true, songLength);
 		#end
 		#end
 		setOnLuas('songLength', songLength);
@@ -5115,7 +5195,7 @@ class PlayState extends MusicBeatState
 				#if DEV_BUILD
 				DiscordClient.changePresence("Playing a song", "It's a secret...", "icon", "random");
 				#else
-				DiscordClient.changePresence(detailsText, SONG.song + " (" + FreeplayState.getDiffRank() + ")", CoolUtil.spaceToDash(SONG.song.toLowerCase()), "random", true, songLength - Conductor.songPosition - ClientPrefs.noteOffset);
+				DiscordClient.changePresence(detailsText, scoreTxt.text, (useFakeDeluName ? "regret" : iconRPC), "random", true, songLength - Conductor.songPosition - ClientPrefs.noteOffset);
 				#end
 			}
 			else
@@ -5124,7 +5204,7 @@ class PlayState extends MusicBeatState
 				// Game Over doesn't get his own variable because it's only used here
 				DiscordClient.changePresence("Playing a song", "It's a secret...", "icon", "random");
 				#else
-				DiscordClient.changePresence(detailsText, SONG.song + " (" + FreeplayState.getDiffRank() + ")", CoolUtil.spaceToDash(SONG.song.toLowerCase()), "random");
+				DiscordClient.changePresence(detailsText, scoreTxt.text, (useFakeDeluName ? "regret" : iconRPC), "random");
 				#end
 			}
 			#end
@@ -5184,7 +5264,7 @@ class PlayState extends MusicBeatState
 				#if DEV_BUILD
 				DiscordClient.changePresence("Playing a song", scoreTxt.text, "icon", "random");
 				#else
-				DiscordClient.changePresence(detailsText, SONG.song + " (" + FreeplayState.getDiffRank() + ")", (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(SONG.song.toLowerCase())), "random", true, songLength - Conductor.songPosition - ClientPrefs.noteOffset);
+				DiscordClient.changePresence(detailsText, scoreTxt.text, (useFakeDeluName ? "regret" : iconRPC), "random", true, songLength - Conductor.songPosition - ClientPrefs.noteOffset);
 				#end
 			}
 			else
@@ -5192,7 +5272,7 @@ class PlayState extends MusicBeatState
 				#if DEV_BUILD
 				DiscordClient.changePresence("Playing a song", scoreTxt.text, "icon", "random");
 				#else
-				DiscordClient.changePresence(detailsText, SONG.song + " (" + FreeplayState.getDiffRank() + ")", (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(SONG.song.toLowerCase())), "random");
+				DiscordClient.changePresence(detailsText, scoreTxt.text, (useFakeDeluName ? "regret" : iconRPC), "random");
 				#end
 			}
 		}
@@ -5227,7 +5307,7 @@ class PlayState extends MusicBeatState
 			#if DEV_BUILD
 			DiscordClient.changePresence("Paused", scoreTxt.text, "icon", "random");
 			#else
-			DiscordClient.changePresence(detailsPausedText + " (" + FreeplayState.getDiffRank() + ")", scoreTxt.text, (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(SONG.song.toLowerCase())), "random");
+			DiscordClient.changePresence(detailsPausedText, scoreTxt.text, (useFakeDeluName ? "regret" : iconRPC), "random");
 			#end
 		}
 		#end
@@ -5394,8 +5474,7 @@ class PlayState extends MusicBeatState
 		{
 			if (ClientPrefs.mechanics)
 			{
-				spaceBarCounter.text = 'Health Boosts Left: ' + limitThing;
-				spaceBarCounter.alpha = 1;
+				spaceBarCounter.text = '${limitThing}';
 			
 						/*
 						 * This set monitors the brightness of the screen based on the percentage of your health
@@ -5445,6 +5524,26 @@ class PlayState extends MusicBeatState
 				{
 					episodeIntro.pause();
 					episodeIntro.visible = false;
+					if (SONG.song == "Devilish Deal" && isStoryMode && GameData.episode1FPLock != "unlocked")
+					{
+						windowName = "Funkin.avi - " + 
+						(isStoryMode ? curEpisode + " - " : "Freeplay - ") + 
+						(SONG.song == "Dont Cross" ? "Don't Cross!" : SONG.song) + 
+						" (Composed by: " + FreeplayState.getArtistName() + 
+						") - Chart by: " + Song.getCharterCredits() + 
+						" [" + FreeplayState.getDiffRank() + "]"; // shitty long ass name that credits literally every fucking thing
+						lime.app.Application.current.window.title = windowName;
+
+						windowTimer = new FlxTimer().start(5, function(tmr:FlxTimer)
+						{
+							windowName = "Funkin.avi - " + 
+							(isStoryMode ? curEpisode + " - " : "Freeplay - ") + 
+							(SONG.song == "Dont Cross" ? "Don't Cross!" : SONG.song) + 
+							" [" + FreeplayState.getDiffRank() + "]"; // short version that displays after 5 seconds yayaya
+				
+							lime.app.Application.current.window.title = windowName;
+						});
+					}
 					devilishGaming = new VideoSprite(false);
 					devilishGaming.load(Paths.video("devilishIntro"), [VideoSprite.muted]);
 					add(devilishGaming);
@@ -5508,11 +5607,11 @@ class PlayState extends MusicBeatState
 		{
 			dad.y += (wn_toy - dad.y) / 12;
 			iconP2.y += (((healthBar.y - 85) + -Math.sin(rotRateWn * 2) * 20 * 0.45) - iconP2.y) / 12;
-			moveCamera(!SONG.notes[curSection].mustHitSection); // so it moves properly !!
+			if (camGame.visible) moveCamera(!SONG.notes[curSection].mustHitSection); // so it moves properly !!
 		}
 		else if (dad.curCharacter == "glitched-mickey-new-pixel" || dad.curCharacter == "malsquare-withFace")
 		{
-			moveCamera(!SONG.notes[curSection].mustHitSection); // so it moves properly !!
+			if(camGame.visible) moveCamera(!SONG.notes[curSection].mustHitSection); // so it moves properly !!
 		}
 
 		if(!inCutscene) {
@@ -6497,6 +6596,10 @@ class PlayState extends MusicBeatState
 	*
 	* @author DEMOLITIONDON96
 	*/
+
+	var mercyTmr:FlxTimer;
+	var disabledDrain:Bool = false;
+	var initialCount:Int = 0;
 	public function detectSpace(isAutoplay:Bool = false)
 		{
 			if (!isAutoplay)
@@ -6529,8 +6632,26 @@ class PlayState extends MusicBeatState
 						case 'waltRoom':
 							if (limitThing > 0)
 							{
+								if (mercyTmr != null)
+									mercyTmr.cancel();
+
+								disabledDrain = true;
+								mercyTmr = new FlxTimer().start(1.2, function(tmr:FlxTimer)
+								{
+									disabledDrain = false;
+									mercyTmr = null;
+								});
 								healthThing += 1.25;
 								limitThing -= 1;
+								var mathShit:Float = limitThing / initialCount;
+								switch (mathShit)
+								{
+									case 0.75: mercyBoostIcon.animation.play("hmm");
+									case 0.5: mercyBoostIcon.animation.play("halfway");
+									case 0.25: mercyBoostIcon.animation.play("thatsBad");
+									case 0.1 | 0.12: mercyBoostIcon.animation.play("almostOut");
+									case 0: mercyBoostIcon.animation.play("empty");
+								}
 							}
 						
 						case 'apartment':
@@ -6553,8 +6674,26 @@ class PlayState extends MusicBeatState
 					case 'waltRoom':
 						if (healthThing < 0.3 && limitThing > 0)
 						{
+							if (mercyTmr != null)
+								mercyTmr.cancel();
+
+							disabledDrain = true;
+							mercyTmr = new FlxTimer().start(1.2, function(tmr:FlxTimer)
+							{
+								disabledDrain = false;
+								mercyTmr = null;
+							});
 							healthThing += 1.25;
 							limitThing -= 1;
+							var mathShit:Float = limitThing / initialCount;
+							switch (mathShit)
+							{
+								case 0.75: mercyBoostIcon.animation.play("hmm");
+								case 0.5: mercyBoostIcon.animation.play("halfway");
+								case 0.25: mercyBoostIcon.animation.play("thatsBad");
+								case 0.1 | 0.12: mercyBoostIcon.animation.play("almostOut");
+								case 0: mercyBoostIcon.animation.play("empty");
+							}
 						}
 						
 					case 'apartment':
@@ -6587,14 +6726,14 @@ class PlayState extends MusicBeatState
 			bf_vocals.pause();
 			opp_vocals.pause();
 		}
-		openSubState((SONG.song.toLowerCase().endsWith('legacy') || SONG.song == "Isolated Beta" || SONG.song == "Isolated Old" ? new PauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y) : new FAVIPauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y)));
+		openSubState((SONG.song.toLowerCase().endsWith('legacy') || SONG.song == "Isolated Beta" || SONG.song == "Isolated Old" ? new PauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y) : (FreeplayState.freeplayMenuList != 3 ? new FAVIPauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y) : new PauseManiaSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y))));
 		//}
 
 		#if DISCORD_ALLOWED
 		#if DEV_BUILD
 		DiscordClient.changePresence("Paused", scoreTxt.text, "icon", "random");
 		#else
-		DiscordClient.changePresence(detailsPausedText + " (" + FreeplayState.getDiffRank() + ")", scoreTxt.text, (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(SONG.song.toLowerCase())), "random");
+		DiscordClient.changePresence(detailsPausedText + " (" + FreeplayState.getDiffRank() + ")", scoreTxt.text, (useFakeDeluName ? "regret" : iconRPC), "random");
 		#end
 		#end
 	}
@@ -6641,20 +6780,47 @@ class PlayState extends MusicBeatState
 
 				paused = true;
 
-				vocals.stop();
-				bf_vocals.stop();
-				opp_vocals.stop();
-				inst.stop();
+				Lib.application.window.onClose.removeAll(); // goes back to normal hopefully
+				Lib.application.window.onClose.add(function() {
+					DiscordClient.shutdown();
+				});
 
-				persistentUpdate = false;
-				persistentDraw = false;
-				for (tween in modchartTweens) {
-					tween.active = true;
+				if (FreeplayState.freeplayMenuList != 3)
+				{
+					vocals.stop();
+					bf_vocals.stop();
+					opp_vocals.stop();
+					inst.stop();
+
+					persistentUpdate = false;
+					persistentDraw = false;
+					for (tween in modchartTweens) {
+						tween.active = true;
+					}
+					for (timer in modchartTimers) {
+						timer.active = true;
+					}
+					openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x - boyfriend.positionArray[0], boyfriend.getScreenPosition().y - boyfriend.positionArray[1], camFollowPos.x, camFollowPos.y));
 				}
-				for (timer in modchartTimers) {
-					timer.active = true;
+				else
+				{
+					vocals.stop();
+					bf_vocals.stop();
+					opp_vocals.stop();
+					FlxTween.tween(this, {playbackRate: 0.001}, 7, {ease: FlxEase.expoOut});
+					FlxTween.tween(inst, {pitch: 0.001}, 7, {ease: FlxEase.expoOut, onComplete: function(twn:FlxTween)
+					{
+						persistentUpdate = false;
+						persistentDraw = false;
+						for (tween in modchartTweens) {
+							tween.active = true;
+						}
+						for (timer in modchartTimers) {
+							timer.active = true;
+						}
+					}});
+					openSubState(new ManiaLoseSubstate(boyfriend.getScreenPosition().x - boyfriend.positionArray[0], boyfriend.getScreenPosition().y - boyfriend.positionArray[1], camFollowPos.x, camFollowPos.y));
 				}
-				openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x - boyfriend.positionArray[0], boyfriend.getScreenPosition().y - boyfriend.positionArray[1], camFollowPos.x, camFollowPos.y));
 
 				// MusicBeatState.switchState(new GameOverState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 
@@ -6664,7 +6830,7 @@ class PlayState extends MusicBeatState
 				DiscordClient.changePresence("Game Over", "Deaths: " + deathCounter, "icon", "random");
 				#else
 				// Game Over doesn't get his own variable because it's only used here
-				DiscordClient.changePresence("Game Over - " + detailsText, "Deaths: " + deathCounter, (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(SONG.song.toLowerCase())), "random");
+				DiscordClient.changePresence("Game Over - " + detailsText, "Deaths: " + deathCounter, (useFakeDeluName ? "regret" : iconRPC), "random");
 				#end
 				#end
 				isDead = true;
@@ -6704,6 +6870,8 @@ class PlayState extends MusicBeatState
 
 	var staticTwn:FlxTween;
 	var staticTmr:Float = 1;
+
+	var skyTwn:FlxTween;
 
 	public function triggerEventNote(eventName:String, value1:String, value2:String) {
 		switch(eventName) {
@@ -7000,6 +7168,55 @@ class PlayState extends MusicBeatState
 							if (!ClientPrefs.lowQuality) noSignalBG.animation.play('signal${Std.parseFloat(value2)}');
 					}
 				}	
+
+			case "Mania BG Flash":
+				var triggerVars:Array<String> = value1.split(',');
+				if (ClientPrefs.flashing)
+				{
+					switch (value2.toLowerCase())
+					{
+						case "sky":
+							if (skyTwn != null)
+								skyTwn.cancel();
+
+							if (skyFlash != null)
+							{
+								skyFlash.color = FlxColor.fromRGB(Std.parseInt(triggerVars[3]), Std.parseInt(triggerVars[4]), Std.parseInt(triggerVars[5]));
+								skyFlash.alpha = Std.parseFloat(triggerVars[2]);
+								skyTwn = FlxTween.tween(skyFlash, {alpha: 0}, Std.parseFloat(triggerVars[0]), {ease: returnTweenEase(triggerVars[1]), onComplete: function(twn:FlxTween)
+								{
+									skyTwn = null;
+								}});
+							}
+						case "all": 
+							camFlashSystem(BG_FLASH, {
+								timer: Std.parseFloat(triggerVars[0]), 
+								ease: returnTweenEase(triggerVars[1]), 
+								alpha: Std.parseFloat(triggerVars[2]), 
+								colors: [Std.parseInt(triggerVars[3]), Std.parseInt(triggerVars[4]), Std.parseInt(triggerVars[5])]
+							});
+					}
+				}
+
+			case "Mercy Transition":
+				switch (value1.toLowerCase())
+				{
+					case "start":
+						defaultCamZoom = 0.75;
+						retardedButPissBehind.visible = false;
+						sameAsAdobe.visible = false;
+						pissOfGlory.visible = false;
+						greaterPiss.visible = false;
+						camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.5, ease: FlxEase.sineOut, timer: 0.2, colors: [247, 230, 166]});
+
+					case "finish":
+						for (bullshit in [retardedButPissBehind, sameAsAdobe, pissOfGlory, greaterPiss])
+							bullshit.visible = true;
+						camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.5, ease: FlxEase.sineOut, timer: 0.2, colors: [247, 230, 166]});
+						FlxTween.tween(sameAsAdobe, {alpha: 0}, 0.25, {ease: FlxEase.sineOut});
+						FlxTween.tween(camHUD, {alpha: 1}, 0.31, {ease: FlxEase.sineInOut});
+						FlxTween.tween(camNotes, {alpha: 1}, 0.31, {ease: FlxEase.sineInOut});
+				}
 
 			case 'Set Property':
 				var killMe:Array<String> = value1.split('.');
@@ -10358,6 +10575,19 @@ class PlayState extends MusicBeatState
 						chromTween = FlxTween.tween(instance, {chromEffect: 0.1}, 0.6, {ease: FlxEase.quadOut});
 					case 472:
 						useFakeDeluName = true;
+						#if DISCORD_ALLOWED
+						#if !DEV_BUILD
+						DiscordClient.changePresence("...", "...", (useFakeDeluName ? "regret" : iconRPC), "random", true, songLength - Conductor.songPosition - ClientPrefs.noteOffset);
+						#end
+						#end
+						if (isStoryMode)
+						{
+							detailsText = "Episode 1 - Regret (PEACEFUL)";
+						}
+						else
+						{
+							detailsText = "Freeplay - Regret (PEACEFUL)";
+						}
 						windowName = "...";
 						lime.app.Application.current.window.title = windowName;
 						boundValue = 2;
@@ -10398,6 +10628,11 @@ class PlayState extends MusicBeatState
 						chromEffect = 0.00001;
 						defaultCamZoom = 0.85;
 					case 476:
+						#if DISCORD_ALLOWED
+						#if !DEV_BUILD
+						DiscordClient.changePresence("Are You Satisfied?", "...", (useFakeDeluName ? "regret" : iconRPC), "random", true, songLength - Conductor.songPosition - ClientPrefs.noteOffset);
+						#end
+						#end
 						windowName = "Where am I...?";
 						lime.app.Application.current.window.title = windowName;
 					case 478:
@@ -10410,6 +10645,11 @@ class PlayState extends MusicBeatState
 						boyfriend.alpha = 0.0001;
 						camVideo.visible = true;
 					case 480:
+						#if DISCORD_ALLOWED
+						#if !DEV_BUILD
+						DiscordClient.changePresence(detailsText, scoreTxt.text, (useFakeDeluName ? "regret" : iconRPC), "random", true, songLength - Conductor.songPosition - ClientPrefs.noteOffset);
+						#end
+						#end
 						windowName = "Funkin.avi - " + (isStoryMode ? curEpisode + " - " : "Freeplay - ") + "Regret [________]";
 						lime.app.Application.current.window.title = windowName;
 						// no healthbar to add more onto the atmosphere of this section
@@ -10470,6 +10710,19 @@ class PlayState extends MusicBeatState
 						}
 					case 744:
 						useFakeDeluName = false;
+						if (isStoryMode)
+						{
+							detailsText = "Episode 1 - " + SONG.song + " (" + FreeplayState.getDiffRank() + ")";
+						}
+						else
+						{
+							detailsText = "Freeplay - " + SONG.song + " (" + FreeplayState.getDiffRank() + ")";
+						}
+						#if DISCORD_ALLOWED
+						#if !DEV_BUILD
+						DiscordClient.changePresence(detailsText, scoreTxt.text, (useFakeDeluName ? "regret" : iconRPC), "random", true, songLength - Conductor.songPosition - ClientPrefs.noteOffset);
+						#end
+						#end
 						windowName = "Funkin.avi - " + (isStoryMode ? curEpisode + " - " : "Freeplay - ") + SONG.song + " [" + FreeplayState.getDiffRank() + "]";
 						lime.app.Application.current.window.title = windowName;
 						camVideo.visible = false;
@@ -10861,7 +11114,7 @@ class PlayState extends MusicBeatState
 						camBars.flash(FlxColor.BLACK, 2);
 						cinematicBarControls("moveboth", 1.2, 'expoOut', 130);
 						canBopCam = false;
-					case 220 | 228 | 236 | 244 | 252 | 260 | 268 | 284 | 292 | 300 | 308 | 316 | 324 | 332 | 484 | 488 | 402 | 496 | 500 | 504 | 508 | 516 | 520 | 524 | 528 | 532 | 536 | 540:
+					case 220 | 228 | 236 | 244 | 252 | 260 | 268 | 284 | 292 | 300 | 308 | 316 | 324 | 332 | 484 | 488 | 492 | 496 | 500 | 504 | 508 | 516 | 520 | 524 | 528 | 532 | 536 | 540:
 						camFlashSystem(BG_FLASH, {alpha: 0.45, timer: 1});
 					case 276:
 						camFlashSystem(BG_FLASH, {alpha: 0.45, timer: 1});
@@ -11104,6 +11357,8 @@ class PlayState extends MusicBeatState
 					case 64:
 						camGame.flash(FlxColor.WHITE, 1);
 						cameraSpeed = 1;
+					case 128:
+						defaultCamZoom = 0.73;
 					case 192:
 						camFlashSystem(BG_FLASH, {alpha: 0.7, timer: 1, colors: [66, 224, 245]});
 						FlxG.camera.zoom += 0.09;
@@ -11130,7 +11385,7 @@ class PlayState extends MusicBeatState
 					case 348:
 						if (offsetTwn != null)
 							offsetTwn.cancel();
-						tweenCamera(1, 1.2, 'quartInOut');
+						tweenCamera(0.75, 1.2, 'quartInOut');
 						offsetTwn = FlxTween.tween(camFollow, {x: camFollow.x + 100}, 1.2, {ease: FlxEase.sineInOut, onComplete: function(twn:FlxTween)
 							{
 								offsetTwn = null;
@@ -11222,27 +11477,10 @@ class PlayState extends MusicBeatState
 						FlxTween.tween(camHUD, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
 						FlxTween.tween(camNotes, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
 
-					case 264:
-						defaultCamZoom = 0.75;
-						retardedButPissBehind.visible = false;
-						sameAsAdobe.visible = false;
-						pissOfGlory.visible = false;
-						greaterPiss.visible = false;
-						camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.5, ease: FlxEase.sineOut, timer: 0.2, colors: [247, 230, 166]});
-
-					case 275:
-						for (bullshit in [retardedButPissBehind, sameAsAdobe, pissOfGlory, greaterPiss])
-							bullshit.visible = true;
-						camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.5, ease: FlxEase.sineOut, timer: 0.2, colors: [247, 230, 166]});
-						FlxTween.tween(sameAsAdobe, {alpha: 0}, 0.25, {ease: FlxEase.sineOut});
-						FlxTween.tween(camHUD, {alpha: 1}, 0.31, {ease: FlxEase.sineInOut});
-						FlxTween.tween(camNotes, {alpha: 1}, 0.31, {ease: FlxEase.sineInOut});
-
 					case 468:
 						//FlxTween.tween(bfStrums, {alpha: 0}, 4, {ease: FlxEase.sineInOut});
 						FlxTween.tween(camHUD, {alpha: 0}, 4, {ease: FlxEase.sineInOut});
 						FlxTween.tween(camNotes, {alpha: 0}, 1, {ease: FlxEase.sineInOut, startDelay: 3});
-						if (ClientPrefs.mechanics) FlxTween.tween(spaceBarCounter, {alpha: 0}, 2, {ease: FlxEase.sineInOut});
 
 					case 480:
 						FlxTween.tween(dad, {alpha: 0}, 5);
@@ -11254,7 +11492,7 @@ class PlayState extends MusicBeatState
 						camOther.flash(FlxColor.WHITE, 3);
 				}
 
-				if (ClientPrefs.mechanics)
+				if (ClientPrefs.mechanics && !disabledDrain)
 				{
 					// Health Drain Shit
 					if (curBeat >= 0 && curBeat <= 63)

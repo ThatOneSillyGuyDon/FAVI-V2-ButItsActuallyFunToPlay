@@ -1083,7 +1083,7 @@ class CharacterEditorState extends MusicBeatState
 		DiscordClient.changePresence("Charactor Editor", "Don't you got anything else to do?", "icon", "toolbox");
 		#else
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("Character Editor", "Character: " + daAnim, leHealthIcon.getCharacter(), "icon", "toolbox");
+		DiscordClient.changePresence("Character Editor", "Character: " + daAnim, "icon", "toolbox");
 		#end
 		#end
 	}

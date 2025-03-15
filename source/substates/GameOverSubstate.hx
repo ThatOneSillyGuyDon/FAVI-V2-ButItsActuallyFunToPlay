@@ -742,3 +742,121 @@ class GameOverSubstate extends MusicBeatSubstate
 		}
 	}
 }
+
+class ManiaLoseSubstate extends MusicBeatSubstate
+{
+	public static var instance:ManiaLoseSubstate;
+	var retryBtn:FlxSprite;
+	var quitBtn:FlxSprite;
+	var canUseCtrls:Bool = false;
+
+	var stupidLerps:Array<Float> = [1, .35];
+
+	override function create()
+		{
+			instance = this;
+			PlayState.instance.callOnLuas('onGameOverStart', []);
+	
+			super.create();
+		}
+	
+	public function new(x:Float, y:Float, camX:Float, camY:Float)
+	{
+		super();
+
+		var red = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.RED);
+		red.blend = ADD;
+		red.alpha = 0.85;
+		add(red);
+		FlxTween.tween(red, {alpha: 0}, 1);
+
+		var black = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
+		black.alpha = 0.001;
+		add(black);
+		FlxTween.tween(black, {alpha: 1}, 3, {startDelay: 2.5});
+
+		var results = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/mania/deathResults"));
+		results.alpha = 0.001;
+		add(results);
+
+		var resultsTxt = new FlxText(65, 70, 850, "Level Failed\nSicks: " + PlayState.instance.sicks + "                  Goods: " + PlayState.instance.goods + "\nBads: " + PlayState.instance.bads + "                  Shits: " + PlayState.instance.shits + "\nMisses: " + PlayState.instance.songMisses + "                  Hits: " + PlayState.instance.songHits + "\n\nScore: " + PlayState.instance.songScore + "\n\nAccuracy: " + Highscore.floorDecimal(PlayState.instance.ratingPercent * 100, 2) + "%", 0);
+		resultsTxt.setFormat(Paths.font("resultsFont.ttf"), 40, FlxColor.WHITE, CENTER);
+		resultsTxt.alpha = 0.001;
+		add(resultsTxt);
+
+		var songLength:Float = PlayState.instance.inst.length;
+		var curTime:Float = Conductor.songPosition - ClientPrefs.noteOffset;
+		if(curTime < 0) curTime = 0;
+
+		var songName = new FlxText(890, 60, 450, PlayState.SONG.song + "\n\n\n\n\n\n\n\n\n\n\n" + FlxStringUtil.formatTime(Math.floor(curTime / 1000), false) + "/" + FlxStringUtil.formatTime(Math.floor(songLength / 1000)), 0);
+		songName.setFormat(Paths.font("resultsFont.ttf"), 22, FlxColor.WHITE, CENTER);
+		songName.alpha = 0.001;
+		add(songName);
+
+		var album = new FlxSprite(0, -190).loadGraphic(Paths.imageAlbum("volume2Album"));
+		album.scale.set(0.3, 0.3);
+		album.screenCenter(X);
+		album.x += 475;
+		album.alpha = 0.001;
+		add(album);
+
+		for (i in [results, resultsTxt, songName, album])
+			FlxTween.tween(i, {alpha: 1}, 3, {startDelay: 2.7});
+
+		retryBtn = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/mania/deathRetry"));
+		retryBtn.alpha = 0.001;
+		add(retryBtn);
+
+		quitBtn = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/mania/deathQuit"));
+		quitBtn.alpha = 0.001;
+		add(quitBtn);
+
+		new FlxTimer().start(5, function(tmr:FlxTimer){
+			FlxG.sound.music.stop();
+			FlxG.sound.music.volume = 0;
+			PlayState.instance.inst.stop();
+			FlxG.sound.playMusic(Paths.music('aviOST/gameOver/mistfulWind'));
+			FlxG.sound.music.fadeIn(2, 0, 1);
+			canUseCtrls = true;
+		});
+
+		cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
+	}
+
+	override function update(elapsed:Float)
+	{
+		super.update(elapsed);
+
+		if (canUseCtrls)
+		{
+			retryBtn.alpha = FlxMath.lerp(stupidLerps[0], retryBtn.alpha, CoolUtil.boundTo(1 - (elapsed * 15), 0, 1));
+			quitBtn.alpha = FlxMath.lerp(stupidLerps[1], quitBtn.alpha, CoolUtil.boundTo(1 - (elapsed * 15), 0, 1));
+			if (controls.UI_LEFT_P || controls.UI_RIGHT_P)
+			{
+				FlxG.sound.play(Paths.sound("funkinAVI/menu/scrollSfx"));
+				stupidLerps[0] = stupidLerps[0] == 1 ? 0.35 : 1;
+				stupidLerps[1] = stupidLerps[1] == 1 ? 0.35 : 1;
+			}
+
+			if (controls.ACCEPT)
+			{
+				FlxG.sound.play(Paths.sound("funkinAVI/menu/selectSfx"));
+				if (stupidLerps[0] == 1)
+				{
+					PlayState.camOther.fade(FlxColor.BLACK, 2, false, function()
+					{
+						MusicBeatState.resetState();
+					});
+				}
+				else
+				{
+					PlayState.camOther.fade(FlxColor.BLACK, 2, false, function()
+					{
+						MusicBeatState.switchState(new FreeplayState());
+						FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
+					});
+				}
+			}
+		}
+	}
+}
