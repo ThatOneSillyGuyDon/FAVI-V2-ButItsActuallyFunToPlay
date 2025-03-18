@@ -45,7 +45,7 @@ class StrumNote extends FlxSprite
 				skin = "NOTE_assets-CARTOON";
 			case "Mercy":
 				skin = "NOTE_assets-MERCY";
-			case "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Malfunction Legacy" | "Twisted Grins Legacy" | "Cycled Sins Legacy" | "Mercy Legacy" | "Delutrance" | "Birthday" | "Malfunction":
+			case "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Malfunction Legacy" | "Twisted Grins Legacy" | "Cycled Sins Legacy" | "Mercy Legacy" | "Delutrance" | "Malfunction":
 				skin = "NOTE_assets";
 			case "Cycled Sins":
 				skin = "NOTE_assets-SIN";
@@ -53,6 +53,8 @@ class StrumNote extends FlxSprite
 				skin = "NOTE_assets-CROSS";
 			case "War Dilemma":
 				skin = "NOTE_assets-WAR";
+			case "Birthday":
+				skin = "NOTE_assets-BIRTHDAY";
 			default:
 				skin = "NOTE_assets-DEFAULTSKIN";
 		}

@@ -320,7 +320,7 @@ class MainMenu extends MusicBeatState
 		{
 			var offset:Float = 108 - (Math.max(optionShit.length, 4) - 4) * 80;
 			var menuItem:FlxSprite = new FlxSprite(0, (i * 100) + offset);
-			menuItem.scale.set(0.45, 0.45);
+			menuItem.scale.set(0.6, 0.6);
 			menuItem.updateHitbox();
 			menuItem.loadGraphic(Paths.image('Funkin_avi/menu/buttons/' + optionShit[i]));
 			menuItem.ID = i;
@@ -511,7 +511,7 @@ class MainMenu extends MusicBeatState
 				}
 			}
 
-			if (theBirthdayCode == 1)
+			if (theBirthdayCode == 2)
 				FlxG.sound.muteKeys = null;
 			else
 				FlxG.sound.muteKeys = [FlxKey.ZERO, FlxKey.NUMPADZERO];
@@ -575,6 +575,12 @@ class MainMenu extends MusicBeatState
 		{
 			GameData.unlockEverything();
 			FlxG.sound.play(Paths.sound('funkinAVI/easterEggSound'));
+		}
+
+		if (FlxG.keys.justPressed.TWO && !selectedSomethin)
+		{
+			GameData.episode1FPLock = "unlocked";
+			GameData.saveShit();
 		}
 
 		if (Math.floor(curSelected) != lastCurSelected || !isHitboxFixed)

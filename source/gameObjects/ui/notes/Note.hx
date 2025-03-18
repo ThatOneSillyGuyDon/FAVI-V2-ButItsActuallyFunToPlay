@@ -120,6 +120,7 @@ class Note extends FlxSprite
 		{
 			case "Devilish Deal" | "Isolated" | "Lunacy" | "Delusional" | "Hunted" | "Laugh Track" | "Twisted Grins" | "Rotten Petals" | "Seeking Freedom" | "Am I Real?" | "Your Final Bow" | "The Wretched Tilezones (Simple Life)" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "Ahh the Scary (Somber Night)" | "Curtain Call": noteSplashTexture = "NOTE_splashesCartoon";
 			case "Mercy": noteSplashTexture = "NOTE_splashWalt";
+			case "Birthday": noteSplashTexture = "Birthday_splash";
 			default: noteSplashTexture = "noteSplashes";
 		}
 
@@ -285,7 +286,7 @@ class Note extends FlxSprite
 						skin = "NOTE_assets-CARTOON";
 					case "Mercy":
 						skin = "NOTE_assets-MERCY";
-					case "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Malfunction Legacy" | "Twisted Grins Legacy" | "Cycled Sins Legacy" | "Mercy Legacy" | "Delutrance" | "Birthday" | "Malfunction":
+					case "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Malfunction Legacy" | "Twisted Grins Legacy" | "Cycled Sins Legacy" | "Mercy Legacy" | "Delutrance" | "Malfunction":
 						skin = "NOTE_assets";
 					case "Cycled Sins":
 						skin = "NOTE_assets-SIN";
@@ -293,6 +294,8 @@ class Note extends FlxSprite
 						skin = "NOTE_assets-CROSS";
 					case "War Dilemma":
 						skin = "NOTE_assets-WAR";
+					case "Birthday":
+						skin = "NOTE_assets-BIRTHDAY";
 					default:
 						skin = "NOTE_assets-DEFAULTSKIN";
 				}
@@ -370,7 +373,7 @@ class Note extends FlxSprite
 		var s = 0.7;
 		switch (PlayState.SONG.song)
 		{
-			case "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Malfunction Legacy" | "Cycled Sins Legacy" | "Mercy Legacy" | "Delutrance" | "Birthday" | "Malfunction":
+			case "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Malfunction Legacy" | "Cycled Sins Legacy" | "Mercy Legacy" | "Delutrance" | "Malfunction":
 				s = 0.7;
 			case "Dont Cross" | "Mercy":
 			   s = 0.64;

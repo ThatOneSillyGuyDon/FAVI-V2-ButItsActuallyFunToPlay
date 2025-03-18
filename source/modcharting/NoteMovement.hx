@@ -32,8 +32,10 @@ class NoteMovement
             // SUPER shitty fix so the scales aren't wonky
             switch (PlayState.SONG.song)
             {
-                case "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Malfunction Legacy" | "Twisted Grins Legacy" | "Cycled Sins Legacy" | "Mercy Legacy" | "Delutrance" | "Birthday":
+                case "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Malfunction Legacy" | "Twisted Grins Legacy" | "Cycled Sins Legacy" | "Mercy Legacy" | "Malfunction":
                     s = 0.7;
+                case "Dont Cross" | "Mercy":
+                    s = 0.64;
                 default:
                     s = 0.6;
             }
@@ -65,7 +67,7 @@ class NoteMovement
              // SUPER shitty fix so the scales aren't wonky
              switch (PlayState.SONG.song)
              {
-                 case "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Malfunction Legacy" | "Twisted Grins Legacy" | "Cycled Sins Legacy" | "Mercy Legacy" | "Delutrance" | "Birthday" | "Malfunction":
+                 case "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Malfunction Legacy" | "Twisted Grins Legacy" | "Cycled Sins Legacy" | "Mercy Legacy" | "Malfunction":
                      s = 0.7;
                  case "Dont Cross" | "Mercy":
                     s = 0.64;

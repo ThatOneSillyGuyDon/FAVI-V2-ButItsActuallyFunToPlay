@@ -4,13 +4,13 @@ enum abstract CreditsData(String) from String to String {
     var devilishDeal:String = '{
 	"settings":
 	[
-		"Art: Domingo & Moe\n\nChart: Purg\n\nCode: ThatOneSillyGuy & Jason\n\nMusic: obscurity.", -40, -5
+		"Art: Domingo, Moe, Oyxz,\n& SkylarFilm\n\nChart: Purg\n\nCode: ThatOneSillyGuy & Jason\n\nMusic: obscurity.", -40, -5
 	]
 }';
     var isolated:String = '{
 	"settings":
 	[
-		"Art: Domingo\n\nChart: Purg\n\nCode: Jason & ThatOneSillyGuy\n\nMusic: obscurity.", 0, -5
+		"Art: Domingo & Moe\n\nChart: Purg\n\nCode: Jason & ThatOneSillyGuy\n\nMusic: obscurity.", 0, -5
 	]
 }';
     var lunacy:String = '{
@@ -22,7 +22,7 @@ enum abstract CreditsData(String) from String to String {
     var delusional:String = '{
 	"settings":
 	[
-		"Art: Domingo, Moe, BladzAMC_Emerald,\nTeelbe, Oyxz &\nAustinWProductions\n\nChart: Dreupy\n\nCode: Jason, MalyPlus\n& ThatOneSillyGuy\n\nMusic: FR3SHMoure\n\nVoice Actor: BonoanAnything", -21, -43
+		"Art: Domingo, Moe, BladzAMC_Emerald,\nTeelbe, Oyxz, GreyDoodlez,\nAustinWProductions\n& ThatOneSillyGuy\n\nChart: Dreupy\n\nCode: Jason, MalyPlus\n& ThatOneSillyGuy\n\nMusic: FR3SHMoure\n\nVoice Actor: BonoanAnything", -21, -43
 	]
 }';
     var regret:String = '{
@@ -35,13 +35,13 @@ enum abstract CreditsData(String) from String to String {
     var hunted:String = '{
 	"settings":
 	[
-		"Art: GreyDoodlez & rezeo\n\nChart: Purg\n\nCode: Jason, ThatOneSillyGuy \n& MalyPlus\n\nMusic: JBlitz", 18, 0
+		"Art: GreyDoodlez, Jason,\n8tastic & rezeo\n\nChart: Purg\n\nCode: Jason, ThatOneSillyGuy \n& MalyPlus\n\nMusic: JBlitz", 18, 0
 	]
 }';
     var laughTrack:String = '{
 	"settings":
 	[
-		"Art: Just_Kuro & GreyDoodlez\n\nChart: ThatOneSillyGuy\n\nCode: Jason & ThatOneSillyGuy\n\nMusic: PualTheUnTruest", -35, -5
+		"Art: Just_Kuro, Jason &\nGreyDoodlez\n\nChart: ThatOneSillyGuy\n\nCode: Jason & ThatOneSillyGuy\n\nMusic: PualTheUnTruest", -35, -5
 	]
 }';
     var bless:String = '{
