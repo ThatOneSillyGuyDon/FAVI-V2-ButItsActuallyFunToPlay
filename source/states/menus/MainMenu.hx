@@ -613,7 +613,7 @@ class MainMenu extends MusicBeatState
 		
 		if ((FlxG.mouse.overlaps(datBook) && !FlxG.mouse.overlaps(menuItems.members[curSelected])) && FlxG.mouse.justPressed && !selectedSomethin)
 		{
-			if (GameData.malfunctionLock == "beaten")
+			if (GameData.malfunctionLock == "unlocked" || GameData.malfunctionLock == "beaten")
 			{
 				datBook.scale.set(.9, .9);
 				//shittyUnoptimizedBookCopy.scale.set(.75, .77);
