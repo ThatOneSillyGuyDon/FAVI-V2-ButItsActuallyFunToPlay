@@ -97,6 +97,12 @@
 	<assets path="assets/bullshit/sounds" rename="assets/sounds" embed='true'/>
 	<assets path="assets/bullshit/music" rename="assets/music" embed='true'/>
 	-->
+	<assets path="assets/bullshit/shared" rename="assets/shared" library="shared" embed='true'/> 
+	<assets path="assets/bullshit/songs" rename="assets/songs" library="songs" embed='true'/>
+	<assets path="assets/bullshit/images" rename="assets/images" embed='true'/>
+	<assets path="assets/bullshit/characters" rename="assets/characters" embed='true'/>
+	<assets path="assets/bullshit/sounds" rename="assets/sounds" embed='true'/>
+	<assets path="assets/bullshit/music" rename="assets/music" embed='true'/>
 	
 	<section if="MODS_ALLOWED">
 		<assets path='example_mods' rename='mods' embed='false'/>

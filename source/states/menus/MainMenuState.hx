@@ -30,6 +30,8 @@ class MainMenuState extends MusicBeatState
 	var camFollowPos:FlxObject;
 	var debugKeys:Array<FlxKey>;
 
+	var discord:FlxSprite;
+
 	override function create()
 	{
 		#if MODS_ALLOWED
@@ -111,6 +113,14 @@ class MainMenuState extends MusicBeatState
 			menuItem.updateHitbox();
 		}
 
+		discord = new FlxSprite(20, FlxG.height - 100, Paths.image('Funkin_avi/menu/discordicon'));
+		discord.scrollFactor.set(0, 0);
+		discord.setGraphicSize(discord.width * .35);
+		discord.updateHitbox();
+		discord.screenCenter();
+		discord.antialiasing = ClientPrefs.globalAntialiasing;
+		add(discord);
+
 		FlxG.camera.follow(camFollowPos, null, 1);
 
 		var versionShit:FlxText = new FlxText(12, FlxG.height - 44, 0, "Psych Engine v" + psychEngineVersion, 12);
@@ -160,6 +170,9 @@ class MainMenuState extends MusicBeatState
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
 			if(FreeplayState.vocals != null) FreeplayState.vocals.volume += 0.5 * elapsed;
 		}
+
+		if (FlxG.mouse.overlaps(discord) && FlxG.mouse.justReleased)
+			CoolUtil.browserLoad('https://discord.gg/qTZYpP4hg3');
 
 		var lerpVal:Float = CoolUtil.boundTo(elapsed * 7.5, 0, 1);
 		camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x, lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal));
