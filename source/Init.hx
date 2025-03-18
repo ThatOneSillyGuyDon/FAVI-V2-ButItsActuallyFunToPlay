@@ -66,18 +66,23 @@ class Init extends FlxState
         // fixes shaders acting weird when resizing the screen
         @:privateAccess
         {
+            final resetSpriteCache = function(sprite:openfl.display.Sprite) {
+                @:privateAccess {
+                    sprite.__cacheBitmap = null;
+                    sprite.__cacheBitmapData = null;
+                }
+            }
+
             FlxG.signals.gameResized.add((w, h) -> {
                 if (FlxG.cameras != null) for (cam in FlxG.cameras.list)
                     if (cam != null && cam.filters != null)
                     {
-                        cam.flashSprite.__cacheBitmap = null;
-                        cam.flashSprite.__cacheBitmapData = null;
+                        resetSpriteCache(cam.flashSprite);
                     }
     
                 if (FlxG.game != null) 
                 {
-                    FlxG.game.__cacheBitmap = null;
-                    FlxG.game.__cacheBitmapData = null;
+                    resetSpriteCache(FlxG.game);
                 }
            });
         }
