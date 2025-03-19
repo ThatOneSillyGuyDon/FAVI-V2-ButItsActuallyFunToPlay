@@ -737,7 +737,7 @@ class PlayState extends MusicBeatState
 			switch (SONG.song)
 			{
 				case "Birthday":
-					GameData.muckneyLock = 'unlocked';
+					GameData.birthdayLocky = 'unlocked';
 					GameData.saveShit();
 				case "Delutrance":
 					GameData.highOnCrackLock = "forceBackToSong";
@@ -7511,7 +7511,7 @@ class PlayState extends MusicBeatState
 					}
 					if (SONG.song == "Birthday")
 					{
-						GameData.muckneyLock = 'beaten';
+						GameData.birthdayLocky = 'beaten';
 						GameData.saveShit();
 					}
 					if (SONG.song == "Delutrance")

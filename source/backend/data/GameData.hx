@@ -64,7 +64,7 @@ class GameData
 
 	// Hidden Songs
 	public static var canAddMalfunction:Bool = false;
-	public static var muckneyLock:String = "uncompleted";
+	public static var birthdayLocky:String = "uncompleted";
 	public static var highOnCrackLock:String = "undiscovered";
 
 	public static function lockinIt():Void
@@ -137,8 +137,8 @@ class GameData
 
 		if (progression.data.canAddMalfunction == null)
 			progression.data.canAddMalfunction = false;
-		if (progression.data.muckneyLock == null)
-			progression.data.muckneyLock = "uncompleted";
+		if (progression.data.birthdayLocky == null)
+			progression.data.birthdayLocky = "uncompleted";
 		if (progression.data.highOnCrackLock == null)
 			progression.data.highOnCrackLock = "undiscovered";
 
@@ -189,7 +189,7 @@ class GameData
 		progression.data.hasSeenFlxSplash = hasSeenFlxSplash;
 
 		progression.data.canAddMalfunction = canAddMalfunction;
-		progression.data.muckneyLock = muckneyLock;
+		progression.data.birthdayLocky = birthdayLocky;
 		progression.data.highOnCrackLock = highOnCrackLock;
 
 		progression.flush();
@@ -240,7 +240,7 @@ class GameData
 		hasSeenFlxSplash = progression.data.hasSeenFlxSplash;
 
 		canAddMalfunction = progression.data.canAddMalfunction;
-		muckneyLock = progression.data.muckneyLock;
+		birthdayLocky = progression.data.birthdayLocky;
 		highOnCrackLock = progression.data.highOnCrackLock;
 
 		saveShit();
@@ -283,7 +283,7 @@ class GameData
 		legacyRLock = 'beaten';
 
 		canAddMalfunction = true;
-		muckneyLock = 'beaten';
+		birthdayLocky = 'beaten';
 		highOnCrackLock = 'completed';
 
 		saveShit();
@@ -334,8 +334,8 @@ class GameData
 				if (progression.data.tgLock != 'beaten')
 					curLock = tgLock = 'unlocked';
 			case 'birthday':
-				if (progression.data.muckneyLock != 'beaten')
-					curLock = muckneyLock = 'beaten';
+				if (progression.data.birthdayLocky != 'beaten')
+					curLock = birthdayLocky = 'beaten';
 			case 'mercy':
 				if (progression.data.mercyLock != 'beaten')
 					curLock = mercyLock = 'unlocked';
@@ -429,7 +429,7 @@ class GameData
 			case 'laugh track':
 					rickyLock = 'beaten';
 			case 'birthday':
-				muckneyLock = 'beaten';
+				birthdayLocky = 'beaten';
 			case 'mercy legacy':
 					legacyWLock = 'beaten';
 			case 'isolated legacy':

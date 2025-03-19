@@ -177,7 +177,7 @@ class FreeplaySongs extends MusicBeatState
 						addSong('Malfunction', 3, (GameData.malfunctionLock != 'unlocked' && GameData.malfunctionLock != 'beaten' ? 'untouched-song' : 'glitched-mickey-new-pixel'), FlxColor.fromRGB(150, 149, 186), 'obscurity', null, FlxColor.WHITE); // Because Malfunction is getting some major upgrades later
 					}
 					
-					if (GameData.muckneyLock == 'beaten')
+					if (GameData.birthdayLocky == 'beaten')
 					{
 						addSong('Birthday', 3, 'muckney', FlxColor.fromRGB(84, 255, 181), 'FR3SHMoure', 'PARTY', FlxColor.fromRGB(250, 234, 92));
 					}

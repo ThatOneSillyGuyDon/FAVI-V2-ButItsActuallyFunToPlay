@@ -79,7 +79,7 @@ class TitleState extends MusicBeatState
 		"Stfu, I'm playing Fortnite",
 		"Stop asking for suicidal remixes",
 		"Why did Everett & Lilith enter these horrific cartoons in the first place?",
-		GameData.muckneyLock == 'beaten' ? "Muckney, realest one out there." : "One of our characters is the realest one out there, but you gotta meet him first!",
+		GameData.birthdayLocky == 'beaten' ? "Muckney, realest one out there." : "One of our characters is the realest one out there, but you gotta meet him first!",
 		"We late, but we late in style",
 		"ur adopted *insert get out sfx*",
 		"MOUSE RAP. MOUSE RAP",

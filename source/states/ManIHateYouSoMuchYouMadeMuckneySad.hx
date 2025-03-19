@@ -50,7 +50,7 @@ class ManIHateYouSoMuchYouMadeMuckneySad extends MusicBeatState
       DiscordClient.changePresence('You fucking monster...', 'Muckney is sad now...', 'sadmuckney', 'mouse');
 
       // bans you from playing Birthday
-      GameData.muckneyLock = "uninvited";
+      GameData.birthdayLocky = "uninvited";
       GameData.saveShit();
 
       // setup screen

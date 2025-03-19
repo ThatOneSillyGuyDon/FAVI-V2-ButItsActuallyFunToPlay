@@ -105,7 +105,7 @@ class MainMenu extends MusicBeatState
 		"Do you like the new menu art?",
 		"You're gonna love the final song.",
 		"Malfunction isn't easy anymore, fuck you, skill issue.",
-			(GameData.muckneyLock == 'beaten' || GameData.muckneyLock == 'uninvited' /**<- this 2nd one is important otherwise it wont work**/) ? ("Happy Birthday Muckney!" + (GameData.muckneyLock == 'uninvited' ? " Except for you, monster..." : "" /**nothing lol this is just to save some lines of code**/)) : "It's someone's birthday here!",
+			(GameData.birthdayLocky == 'beaten' || GameData.birthdayLocky == 'uninvited' /**<- this 2nd one is important otherwise it wont work**/) ? ("Happy Birthday Muckney!" + (GameData.birthdayLocky == 'uninvited' ? " Except for you, monster..." : "" /**nothing lol this is just to save some lines of code**/)) : "It's someone's birthday here!",
 		"SOMEONE PLEASE GIVE MICKEY HIS FUCKING SANDVICH", // intentional misspell lolol
 		"Have fun, you'll be here for like an hour or longer.",
 		"10 Seconds before I shut your fucking game again >:[",
@@ -162,7 +162,10 @@ class MainMenu extends MusicBeatState
 		"I bet you're complaining that this isn't easy to steal assets from right about now, silly kiddo",
 		"Development was so long Mickey died of waiting",
 		"um um um um um um um",
-		"uhuhuhuh"
+		"uhuhuhuh",
+		"This is actually the patch's exclusive message, hi to however found this message - malyplus",
+		"women.",
+		"men."
 	];
 
 	var defaultShader:FlxRuntimeShader;
@@ -439,6 +442,8 @@ class MainMenu extends MusicBeatState
 
 	var iconOverlap:Float = 0.9;
 
+	var howmuchyoufuckinkeptdoingit:Int = 0;
+
 	override function update(elapsed:Float)
 	{
 		var iconLerp:Float = CoolUtil.boundTo(elapsed * 9, 0, 1);
@@ -492,11 +497,11 @@ class MainMenu extends MusicBeatState
 					birthdayKey = true;
 			}
 
-			if (birthdayKey && !selectedSomethin && GameData.muckneyLock != "uninvited")
+			if (birthdayKey && !selectedSomethin && GameData.birthdayLocky != "uninvited")
 			{
 				if (theBirthdayCode == (birthdayCode.length - 1))
 				{
-					PlayState.SONG = Song.loadFromJson('birthday-hard', 'birthday');
+					/*PlayState.SONG = Song.loadFromJson('birthday-hard', 'birthday');
 					PlayState.storyDifficulty = 0;
 					PlayState.campaignScore = 0;
 					PlayState.campaignMisses = 0;
@@ -508,7 +513,41 @@ class MainMenu extends MusicBeatState
 					{
 						LoadingState.loadAndSwitchState(new PlayState());
 						FlxG.sound.music.volume = 0;
-					});
+					});*/
+					if (GameData.birthdayLocky == "unlocked" || GameData.birthdayLocky == "beaten")
+					{
+						// can i kill myself please?
+						FlxG.sound.play(Paths.sound('cancelMenu'));
+						switch(howmuchyoufuckinkeptdoingit) {
+							case 0:
+								theBox.sendMessage('You\'ve already unlocked this song!', 'Go to freeplay to play the song.');
+							case 1:
+								theBox.sendMessage('Can\'t you understand?', 'You already unlocked the song.');
+							case 2:
+								theBox.sendMessage('Can\'t you read?', 'This. Is. Already. Unlocked.');
+							case 3:
+								theBox.sendMessage('go to freeplay menu.', 'its already unlocked.');
+							case 4:
+								theBox.sendMessage('IF YOU KEEP DOING IT THEN', 'IM GONNA DO SOMETHING BAD');
+							case 5:
+								theBox.sendMessage('...', 'Im closing the game. Fuck you');
+								new FlxTimer().start(2, function(tmr:FlxTimer){
+									System.exit(0);
+								});
+						}
+
+
+						howmuchyoufuckinkeptdoingit++;
+
+					}
+					else
+					{
+						// There's the new way of you getting Birthday brah - MalyPlus
+						GameData.birthdayLocky = 'unlocked';
+						//FlxG.sound.play(Paths.sound('confirmMenu'));
+						FlxG.sound.play(Paths.sound('funkinAVI/easterEggSound'));
+						theBox.sendMessage('Something has unlocked!', 'Check freeplay to see what has been unlocked.');
+					}
 				}
 				else
 				{
@@ -730,7 +769,7 @@ class MainMenu extends MusicBeatState
 
 		if (daChoice == 'freeplay')
 		{
-			if (GameData.episode1FPLock == 'unlocked' || GameData.muckneyLock == 'beaten')
+			if (GameData.episode1FPLock == 'unlocked' || GameData.birthdayLocky == 'beaten')
 			{
 				for (sillies in [arrow, menuItems.members[Math.floor(curSelected)]])
 				{
