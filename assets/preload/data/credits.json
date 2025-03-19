@@ -299,12 +299,12 @@ this mod is my favorite mod I've ever worked on, thank you once again for playin
 		],
 		[
 			"ForFurtherNotice",
-			"placeholder",
+			"noticeIcon",
 			"Composer of Pause Themes",
 			"",
-			-315,
-			-140,
-			0.55,
+			-630,
+			-550,
+			0.15,
 			false
 		],
 		[

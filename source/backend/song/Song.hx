@@ -151,6 +151,7 @@ class Song
 				}
 			case "rotten-petals": chartFile = Chart.rottenPetals;
 			case "somber-night": chartFile = Chart.somberNight;
+			case "simple-life": chartFile = Chart.simpleLife;
 			default:
 				chartFile = null;
 		}
@@ -212,7 +213,7 @@ class Song
 	{
 		switch (PlayState.SONG.song)
 		{
-			case "Devilish Deal" | "Lunacy" | "Hunted" | "War Dilemma" | "Twisted Grins" | "Isolated": charter = "Purg";
+			case "Devilish Deal" | "Lunacy" | "Hunted" | "War Dilemma" | "Twisted Grins" | "Isolated" | "The Wretched Tilezones (Simple Life)": charter = "Purg";
 			case "Delusional" | "Cycled Sins" | "Birthday" | "Cycled Sins Legacy" | "Twisted Grins Legacy": charter = "Dreupy";
 			case "Lunacy Legacy": charter = "obscurity.";
 			case "Bless" | "Malfunction" | "Mercy" | "Mercy Legacy" | "Isolated Old" | "Isolated Legacy" | "Isolated Beta" | "Malfunction Legacy" | "Laugh Track" | "Rotten Petals" | "Ahh the Scary (Somber Night)": charter = "DEMOLITIONDON96";

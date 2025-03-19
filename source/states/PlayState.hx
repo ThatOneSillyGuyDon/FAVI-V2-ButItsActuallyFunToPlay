@@ -5693,10 +5693,10 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		if (FlxG.keys.anyJustPressed(debugKeysChart) && !endingSong && !inCutscene)
+		/*if (FlxG.keys.anyJustPressed(debugKeysChart) && !endingSong && !inCutscene)
 		{
 			openChartEditor();
-		}
+		}*/
 
 		// FlxG.watch.addQuick('VOL', vocals.amplitudeLeft);
 		// FlxG.watch.addQuick('VOLRight', vocals.amplitudeRight);
@@ -5835,7 +5835,7 @@ class PlayState extends MusicBeatState
 			else if (healthBar.percent <= 80 && iconP2.animation.name != '${dad.healthIcon}Neutral')
 				iconP2.animation.play(dad.healthIcon + "Neutral");
 
-		if (FlxG.keys.anyJustPressed(debugKeysCharacter) && !endingSong && !inCutscene) {
+		/*if (FlxG.keys.anyJustPressed(debugKeysCharacter) && !endingSong && !inCutscene) {
 			persistentUpdate = false;
 			paused = true;
 			cancelMusicFadeTween();
@@ -5850,7 +5850,7 @@ class PlayState extends MusicBeatState
 			cancelMusicFadeTween();
 			MusicBeatState.switchState(new modcharting.ModchartEditorState());
 			FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
-		}
+		}*/
 
 		if (startedCountdown)
 		{

@@ -105,7 +105,7 @@ class CreditsMenu extends MusicBeatState
 		add(box);
 
 		teelSquares = new FlxSprite().loadGraphic(Paths.image('$path/teelbeSpecial'));
-		teelSquares.screenCenter().x -= 80;
+		teelSquares.screenCenter().x -= 120;
 		teelSquares.setGraphicSize(Std.int(box.width * 0.6));
 		teelSquares.antialiasing = ClientPrefs.globalAntialiasing;
 		teelSquares.alpha = 0;

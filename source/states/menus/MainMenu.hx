@@ -63,6 +63,7 @@ class MainMenu extends MusicBeatState
 	var omgCamera:FlxSprite;
 	var datBook:FlxSprite;
 	var shittyUnoptimizedBookCopy:FlxSprite;
+	var discordIcon:FlxSprite;
 
 	var gradient:FlxSprite;
 
@@ -241,7 +242,7 @@ class MainMenu extends MusicBeatState
 		floor.setGraphicSize(0, FlxG.height);
 		floor.updateHitbox();
 		floor.screenCenter();
-		floor.antialiasing = true;
+		floor.antialiasing = ClientPrefs.globalAntialiasing;
 		add(floor);
 
 		/*trace(GameData.episode1FPLock);
@@ -264,8 +265,17 @@ class MainMenu extends MusicBeatState
 		datBook.setGraphicSize(0, FlxG.height);
 		datBook.updateHitbox();
 		datBook.screenCenter().x -= 220;
-		datBook.antialiasing = true;
+		datBook.antialiasing = ClientPrefs.globalAntialiasing;
 		add(datBook);
+
+		/*discordIcon = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/menu/discordIcon'));
+		discordIcon.scrollFactor.set(0, 0);
+		discordIcon.scale.set(0.6, 0.6);
+		discordIcon.updateHitbox();
+		discordIcon.screenCenter().x += 250;
+		discordIcon.y += 350;
+		discordIcon.antialiasing = ClientPrefs.globalAntialiasing;
+		add(discordIcon);*/
 
 		/*shittyUnoptimizedBookCopy = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/menu/book'));
 		shittyUnoptimizedBookCopy.scrollFactor.set(0, 0);
@@ -294,12 +304,13 @@ class MainMenu extends MusicBeatState
 			gradient.x -= 5;
 			gradient.updateHitbox();
 			gradient.screenCenter();
-			gradient.antialiasing = true;
+			gradient.antialiasing = ClientPrefs.globalAntialiasing;
 			add(gradient);
 
 			var vig = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/menu/vignette'));
 			vig.setGraphicSize(0, FlxG.height);
 			vig.scrollFactor.set(0, 0);
+			vig.antialiasing = ClientPrefs.globalAntialiasing;
 			vig.screenCenter();
 			add(vig);
 		}
@@ -348,7 +359,7 @@ class MainMenu extends MusicBeatState
 					menuItem.y = 460;
 			}
 
-			menuItem.antialiasing = true;
+			menuItem.antialiasing = ClientPrefs.globalAntialiasing;
 			menuItem.updateHitbox();
 		}
 
@@ -426,8 +437,11 @@ class MainMenu extends MusicBeatState
 	var isHitboxFixed:Bool = false;
 	var counterControl:Float = 0;
 
+	var iconOverlap:Float = 0.9;
+
 	override function update(elapsed:Float)
 	{
+		var iconLerp:Float = CoolUtil.boundTo(elapsed * 9, 0, 1);
 		/*if (!CoolUtil.findCoreFile())
 		{
 			new FlxTimer().start(1.0, function(tmr:FlxTimer)
@@ -611,6 +625,11 @@ class MainMenu extends MusicBeatState
 			FlxG.sound.music.fadeOut(3, 0, s -> FlxG.switchState(new states.menus.AskQuestionToThatGuy()));
 			FlxTween.tween(camGame, {y: -300}, 2, {ease: FlxEase.sineInOut});
 		}
+
+		//if (FlxG.mouse.overlaps(discordIcon))
+		//{
+
+		//}
 
 		datBook.scale.set(FlxMath.lerp(evilAndFuckedUpBookScale, datBook.scale.x, CoolUtil.boundTo(1 - (elapsed * 9.6), 0, 1)), FlxMath.lerp(evilAndFuckedUpBookScale, datBook.scale.x, CoolUtil.boundTo(1 - (elapsed * 9.6), 0, 1)));
 		/*shittyUnoptimizedBookCopy.scale.set(FlxMath.lerp(evilAndFuckedUpBookScale + .02, shittyUnoptimizedBookCopy.scale.x, .65), FlxMath.lerp(evilAndFuckedUpBookScale, shittyUnoptimizedBookCopy.scale.x, .65));
