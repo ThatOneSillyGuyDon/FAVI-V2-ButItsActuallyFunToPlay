@@ -8213,7 +8213,9 @@ class PlayState extends MusicBeatState
 				}
 			}
 
-			if (note.noteType == "Error Note") // Makes Malsquare use his alt animations when he hits error notes cause I don't wanna rechart the entire damn thing just for his alt set to be used
+			// yeah so we forgot legacy kms
+			// 							- MalyPlus
+			if (note.noteType == "Error Note" && SONG.song != "Malfunction Legacy") // Makes Malsquare use his alt animations when he hits error notes cause I don't wanna rechart the entire damn thing just for his alt set to be used
 				altAnim = '-alt';
 
 			var char:Character = dad;
@@ -10484,6 +10486,7 @@ class PlayState extends MusicBeatState
 				if (curBeat == 1136)
 					cinematicBarControls("kill", 0);
 
+				
 				if (curBeat == 146)
 					manageLyrics('evilpredelu', 'Count the minutes...', 'disneyFreeplayFont.ttf', 30, 1.1, 'sineInOut', .05);
 				if (curBeat == 150)
@@ -10525,6 +10528,7 @@ class PlayState extends MusicBeatState
 						deluSing.visible = true;
 						deluSing.setVideoTime(0);
 						deluSing.resume();
+						if (vocals.volume != 1) vocals.volume = 1; // it should be fixed then
 					case 144:
 						defaultCamZoom = 0.8;
 						camBars.fade(0x000000, 5, true);
