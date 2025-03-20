@@ -503,7 +503,8 @@ class MainMenu extends MusicBeatState
 				{
 					if (GameData.birthdayLocky == "unlocked" || GameData.birthdayLocky == "beaten")
 					{
-						// can i kill myself please? --- no bro, not yet (don)
+						// can i kill myself please? --- no bro, not yet (don) --- nah ima now kms fuck you (malyplus)
+
 						FlxG.sound.play(Paths.sound('cancelMenu'));
 						switch(howmuchyoufuckinkeptdoingit) {
 							case 0:

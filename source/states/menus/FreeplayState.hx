@@ -329,8 +329,13 @@ class FreeplayState extends MusicBeatState
 			offandon.antialiasing = ClientPrefs.globalAntialiasing;
 			offandon.cameras = [camHUD];
 
-			for (obj in [spectrum, table, albumCover, book, rug, gramo, disc, shade])
-				obj.cameras = [camHUD];
+			if (!ClientPrefs.lowQuality) { // STOP CHANGING IT LET IT STAY (MalyPlus).
+				for (obj in [spectrum, table, albumCover, book, rug, gramo, disc, shade])
+					obj.cameras = [camHUD];
+			} else {
+				for (obj in [table, albumCover, book, rug, gramo, disc, shade])
+					obj.cameras = [camHUD];
+			}
 		}
 
 		albumHolder = new FlxTypedGroup<FlxSprite>();
