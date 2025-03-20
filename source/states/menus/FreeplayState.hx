@@ -13,6 +13,7 @@ import sys.FileSystem;
 import sys.thread.Mutex;
 import sys.thread.Thread;
 import openfl.media.Sound;
+import backend.data.ClientPrefs;
 
 class FreeplayState extends MusicBeatState
 {
@@ -54,6 +55,7 @@ class FreeplayState extends MusicBeatState
 	var musicNotes:FlxSprite;
 	var disc:FlxSprite;
 	var arrows:FlxSprite;
+	var offandon:FlxSprite;
 
 	var camGame:FlxCamera; // Main camera (including shaders n shit)
 	var camHUD:FlxCamera; // Objects
@@ -307,6 +309,17 @@ class FreeplayState extends MusicBeatState
 			shade.y = disc.y + 140;
 			add(shade);
 
+			final boxBot = new FlxSprite().loadGraphic(Paths.image('$path/botplaybox'));
+			add(boxBot);
+			boxBot.antialiasing = ClientPrefs.globalAntialiasing;
+			boxBot.cameras = [camHUD];
+
+			offandon = new FlxSprite().loadGraphic(Paths.image('$path/off'));
+			if(ClientPrefs.gameplaySettings["botplay"] == true)  offandon.loadGraphic(Paths.image('$path/on'));
+			add(offandon);
+			offandon.antialiasing = ClientPrefs.globalAntialiasing;
+			offandon.cameras = [camHUD];
+
 			final overlay = new FlxSprite().loadGraphic(Paths.image('$path/overlay'));
 			overlay.setGraphicSize(FlxG.width * 1.135, FlxG.height * 1.135);
 			overlay.updateHitbox();
@@ -541,6 +554,16 @@ class FreeplayState extends MusicBeatState
 		return (!leWeek.startUnlocked && leWeek.weekBefore.length > 0 && (!StoryMenuState.weekCompleted.exists(leWeek.weekBefore) || !StoryMenuState.weekCompleted.get(leWeek.weekBefore)));
 	}
 
+	function changeBotPlay(){
+		ClientPrefs.gameplaySettings["botplay"] = (ClientPrefs.gameplaySettings["botplay"] == true) ? false : true;
+		if (ClientPrefs.gameplaySettings["botplay"] == true) {
+			offandon.loadGraphic(Paths.image('$path/on'));
+		} else {
+			offandon.loadGraphic(Paths.image('$path/off'));
+		}
+		return;
+	}
+
 	var instPlaying:Int = -1;
 	var disableSpace:Bool = false;
 	public static var vocals:FlxSound = null;
@@ -559,6 +582,10 @@ class FreeplayState extends MusicBeatState
 		if (freeplayMenuList != 2)
 		{
 			for (icon in iconArray) icon.scale.set(FlxMath.lerp(0.8, icon.scale.x, CoolUtil.boundTo(1 - (elapsed * 9.6), 0, 1)), FlxMath.lerp(0.8, icon.scale.y, CoolUtil.boundTo(1 - (elapsed * 9.6), 0, 1)));
+
+			if (FlxG.keys.justPressed.B) {
+				changeBotPlay();
+			}
 		}
 
 		var isDontCross:Bool = songs[curSelected].songName == "Don't Cross!";
