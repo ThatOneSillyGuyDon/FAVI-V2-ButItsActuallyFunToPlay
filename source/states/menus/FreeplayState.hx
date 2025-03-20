@@ -55,7 +55,6 @@ class FreeplayState extends MusicBeatState
 	var musicNotes:FlxSprite;
 	var disc:FlxSprite;
 	var arrows:FlxSprite;
-	var offandon:FlxSprite;
 
 	var camGame:FlxCamera; // Main camera (including shaders n shit)
 	var camHUD:FlxCamera; // Objects
@@ -96,6 +95,8 @@ class FreeplayState extends MusicBeatState
 	var songText2:FlxText;
 	var songText:Alphabet;
 	var gimmickInfo:FlxText;
+
+	var offandon:FlxSprite;
 
 	// making this a public static var so the disc just doesn't stop moving at all when going in and out of this menu
 	public static var bpm:Float = 1;
@@ -309,6 +310,14 @@ class FreeplayState extends MusicBeatState
 			shade.y = disc.y + 140;
 			add(shade);
 
+			final overlay = new FlxSprite().loadGraphic(Paths.image('$path/overlay'));
+			overlay.setGraphicSize(FlxG.width * 1.135, FlxG.height * 1.135);
+			overlay.updateHitbox();
+			overlay.screenCenter();
+			overlay.cameras = [camOther];
+			overlay.antialiasing = ClientPrefs.globalAntialiasing;
+			add(overlay);
+
 			final boxBot = new FlxSprite().loadGraphic(Paths.image('$path/botplaybox'));
 			add(boxBot);
 			boxBot.antialiasing = ClientPrefs.globalAntialiasing;
@@ -320,21 +329,8 @@ class FreeplayState extends MusicBeatState
 			offandon.antialiasing = ClientPrefs.globalAntialiasing;
 			offandon.cameras = [camHUD];
 
-			final overlay = new FlxSprite().loadGraphic(Paths.image('$path/overlay'));
-			overlay.setGraphicSize(FlxG.width * 1.135, FlxG.height * 1.135);
-			overlay.updateHitbox();
-			overlay.screenCenter();
-			overlay.cameras = [camOther];
-			overlay.antialiasing = ClientPrefs.globalAntialiasing;
-			add(overlay);
-
-			if (!ClientPrefs.lowQuality) {
-				for (obj in [spectrum, table, albumCover, book, rug, gramo, disc, shade])
-					obj.cameras = [camHUD];
-			} else {
-				for (obj in [table, albumCover, book, rug, gramo, disc, shade])
-					obj.cameras = [camHUD];
-			}
+			for (obj in [spectrum, table, albumCover, book, rug, gramo, disc, shade])
+				obj.cameras = [camHUD];
 		}
 
 		albumHolder = new FlxTypedGroup<FlxSprite>();
@@ -582,10 +578,6 @@ class FreeplayState extends MusicBeatState
 		if (freeplayMenuList != 2)
 		{
 			for (icon in iconArray) icon.scale.set(FlxMath.lerp(0.8, icon.scale.x, CoolUtil.boundTo(1 - (elapsed * 9.6), 0, 1)), FlxMath.lerp(0.8, icon.scale.y, CoolUtil.boundTo(1 - (elapsed * 9.6), 0, 1)));
-
-			if (FlxG.keys.justPressed.B) {
-				changeBotPlay();
-			}
 		}
 
 		var isDontCross:Bool = songs[curSelected].songName == "Don't Cross!";
@@ -599,6 +591,10 @@ class FreeplayState extends MusicBeatState
 		if (disc != null && songInstPlaying) 
 		{
 			disc.angle += Conductor.crochet / 1000 * 2;
+		}
+
+		if (FlxG.keys.justPressed.B) {
+			changeBotPlay();
 		}
 
 		if (ClientPrefs.shaders) // bye bye lag

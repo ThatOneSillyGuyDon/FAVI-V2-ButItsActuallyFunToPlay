@@ -304,11 +304,8 @@ class GameData
 		progression.bind("gameProgression", CoolUtil.getSavePath());
 
 		var curLock:String;
-
-		if (PlayState.SONG.song == "Delutrance")
-			curLock = 'completed';
-		else
-			curLock = 'beaten';
+		
+		curLock = 'beaten';
 
 		switch (PlayState.SONG.song.toLowerCase())
 		{
@@ -387,9 +384,6 @@ class GameData
 			case 'resentment legacy':
 				if (progression.data.legacyRLock != 'beaten')
 					curLock = legacyRLock = 'unlocked';
-			case 'delutrance':
-				if (progression.data.highOnCrack != 'completed')
-					curLock = highOnCrackLock = 'unlocked';
 		}
 		saveShit();
 		checkBotplay(curLock); // just to double check :)))))))
@@ -421,39 +415,37 @@ class GameData
 			case 'cycled sins':
 					sinsLock = 'beaten';
 			case 'malfunction':
-					malfunctionLock = 'beaten';
+				malfunctionLock = 'beaten';
 			case 'scrapped':
 				scrappedLock = 'beaten';
 			case 'bless':
 				blessLock = 'beaten';
 			case 'laugh track':
-					rickyLock = 'beaten';
+				rickyLock = 'beaten';
 			case 'birthday':
 				birthdayLocky = 'beaten';
 			case 'mercy legacy':
-					legacyWLock = 'beaten';
+				legacyWLock = 'beaten';
 			case 'isolated legacy':
 				legacyILock = 'beaten';
 			case 'lunacy legacy':
 				legacyLLock = 'beaten';
 			case 'delusional legacy':
-					legacyDLock = 'beaten';
+				legacyDLock = 'beaten';
 			case 'hunted legacy':
 				legacyHLock = 'beaten';
 			case 'malfunction legacy':
-					legacyMLock = 'beaten';
+				legacyMLock = 'beaten';
 			case 'cycled sins legacy':
-					legacySLock = 'beaten';
+				legacySLock = 'beaten';
 			case 'bless legacy':
 				legacyBLock = 'beaten';
 			case 'neglection legacy':
-					legacyNLock = 'beaten';
+				legacyNLock = 'beaten';
 			case 'twisted grins legacy':
-					legacyTLock = 'beaten';
+				legacyTLock = 'beaten';
 			case 'resentment legacy':
 				legacyRLock = 'beaten';
-			case 'delutrance':
-				highOnCrackLock = 'completed';
 		}
 		saveShit();
 	}

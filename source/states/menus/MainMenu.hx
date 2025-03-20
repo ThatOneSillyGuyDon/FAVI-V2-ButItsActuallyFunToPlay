@@ -174,6 +174,8 @@ class MainMenu extends MusicBeatState
 
 	var evilAndFuckedUpBookScale = 1.0;
 
+	var howmuchyoufuckinkeptdoingit:Int = 0;
+
 	// the create 'state'
 	override function create()
 	{
@@ -442,8 +444,6 @@ class MainMenu extends MusicBeatState
 
 	var iconOverlap:Float = 0.9;
 
-	var howmuchyoufuckinkeptdoingit:Int = 0;
-
 	override function update(elapsed:Float)
 	{
 		var iconLerp:Float = CoolUtil.boundTo(elapsed * 9, 0, 1);
@@ -501,22 +501,9 @@ class MainMenu extends MusicBeatState
 			{
 				if (theBirthdayCode == (birthdayCode.length - 1))
 				{
-					/*PlayState.SONG = Song.loadFromJson('birthday-hard', 'birthday');
-					PlayState.storyDifficulty = 0;
-					PlayState.campaignScore = 0;
-					PlayState.campaignMisses = 0;
-					FlxG.sound.music.fadeOut(0.7);
-					FlxG.sound.play(Paths.sound('funkinAVI/easterEggSound'));
-					FlxG.camera.fade(FlxColor.BLACK, 1);
-					camHUD.fade(FlxColor.BLACK, 1);
-					new FlxTimer().start(1.4, function(tmr:FlxTimer)
-					{
-						LoadingState.loadAndSwitchState(new PlayState());
-						FlxG.sound.music.volume = 0;
-					});*/
 					if (GameData.birthdayLocky == "unlocked" || GameData.birthdayLocky == "beaten")
 					{
-						// can i kill myself please?
+						// can i kill myself please? --- no bro, not yet (don)
 						FlxG.sound.play(Paths.sound('cancelMenu'));
 						switch(howmuchyoufuckinkeptdoingit) {
 							case 0:
@@ -564,7 +551,7 @@ class MainMenu extends MusicBeatState
 				}
 			}
 
-			if (theBirthdayCode == 2)
+			if (theBirthdayCode == 3)
 				FlxG.sound.muteKeys = null;
 			else
 				FlxG.sound.muteKeys = [FlxKey.ZERO, FlxKey.NUMPADZERO];

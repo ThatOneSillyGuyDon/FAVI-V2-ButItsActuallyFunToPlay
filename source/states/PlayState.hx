@@ -10486,7 +10486,6 @@ class PlayState extends MusicBeatState
 				if (curBeat == 1136)
 					cinematicBarControls("kill", 0);
 
-				
 				if (curBeat == 146)
 					manageLyrics('evilpredelu', 'Count the minutes...', 'disneyFreeplayFont.ttf', 30, 1.1, 'sineInOut', .05);
 				if (curBeat == 150)
