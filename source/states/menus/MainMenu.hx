@@ -174,7 +174,7 @@ class MainMenu extends MusicBeatState
 
 	var evilAndFuckedUpBookScale = 1.0;
 
-	var howmuchyoufuckinkeptdoingit:Int = 0;
+	var howmuchyoufuckinkeptdoingit:Int = -1;
 
 	// the create 'state'
 	override function create()
