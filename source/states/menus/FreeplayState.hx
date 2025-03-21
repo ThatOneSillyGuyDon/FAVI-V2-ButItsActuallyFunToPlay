@@ -328,7 +328,7 @@ class FreeplayState extends MusicBeatState
 			add(offandon);
 			offandon.antialiasing = ClientPrefs.globalAntialiasing;
 			offandon.cameras = [camHUD];
-
+			
 			if (!ClientPrefs.lowQuality)
 				for (obj in [spectrum, table, albumCover, book, rug, gramo, disc, shade])
 					obj.cameras = [camHUD];

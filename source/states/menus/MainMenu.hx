@@ -174,7 +174,7 @@ class MainMenu extends MusicBeatState
 
 	var evilAndFuckedUpBookScale = 1.0;
 
-	var howmuchyoufuckinkeptdoingit:Int = 0;
+	var howmuchyoufuckinkeptdoingit:Int = -1;
 
 	// the create 'state'
 	override function create()
@@ -503,7 +503,8 @@ class MainMenu extends MusicBeatState
 				{
 					if (GameData.birthdayLocky == "unlocked" || GameData.birthdayLocky == "beaten")
 					{
-						// can i kill myself please? --- no bro, not yet (don)
+						// can i kill myself please? --- no bro, not yet (don) --- nah ima now kms fuck you (malyplus)
+
 						FlxG.sound.play(Paths.sound('cancelMenu'));
 						switch(howmuchyoufuckinkeptdoingit) {
 							case 0:
