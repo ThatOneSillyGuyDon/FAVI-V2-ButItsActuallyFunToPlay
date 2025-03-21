@@ -174,7 +174,7 @@ class MainMenu extends MusicBeatState
 
 	var evilAndFuckedUpBookScale = 1.0;
 
-	var howmuchyoufuckinkeptdoingit:Int = -1;
+	var howmuchyoufuckinkeptdoingit:Int = 0;
 
 	// the create 'state'
 	override function create()
@@ -503,8 +503,7 @@ class MainMenu extends MusicBeatState
 				{
 					if (GameData.birthdayLocky == "unlocked" || GameData.birthdayLocky == "beaten")
 					{
-						// can i kill myself please? --- no bro, not yet (don) --- nah ima now kms fuck you (malyplus)
-
+						// can i kill myself please? --- no bro, not yet (don)
 						FlxG.sound.play(Paths.sound('cancelMenu'));
 						switch(howmuchyoufuckinkeptdoingit) {
 							case 0:
@@ -531,7 +530,7 @@ class MainMenu extends MusicBeatState
 					else
 					{
 						// There's the new way of you getting Birthday brah - MalyPlus
-						GameData.birthdayLocky = 'unlocked';
+						GameData.birthdayLocky = 'obtained';
 						//FlxG.sound.play(Paths.sound('confirmMenu'));
 						FlxG.sound.play(Paths.sound('funkinAVI/easterEggSound'));
 						theBox.sendMessage('Something has unlocked!', 'Check freeplay to see what has been unlocked.');
@@ -607,7 +606,7 @@ class MainMenu extends MusicBeatState
 			FlxG.sound.play(Paths.sound('funkinAVI/easterEggSound'));
 		}
 
-		if (FlxG.keys.justPressed.TWO && !selectedSomethin)
+		if (FlxG.keys.justPressed.TWO && !selectedSomethin && Main.debug)
 		{
 			GameData.episode1FPLock = "unlocked";
 			GameData.saveShit();

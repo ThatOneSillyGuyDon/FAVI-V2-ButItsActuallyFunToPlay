@@ -176,7 +176,7 @@ class FreeplayState extends MusicBeatState
 						addSong('Malfunction', 3, (GameData.malfunctionLock != 'unlocked' && GameData.malfunctionLock != 'beaten' ? 'mysteryfp' : 'mal-pixel'), FlxColor.fromRGB(150, 149, 186), 'obscurity', null, FlxColor.WHITE, (GameData.malfunctionLock == "beaten" || GameData.malfunctionLock == "unlocked" ? [27, 0] : [25, 0]), "Contains extreme flashing lights, very unforgiving modcharts, life system & note gimmicks. Mechanics are enabled by default upon playing.\nGood luck."); // Because Malfunction is getting some major upgrades later
 					}
 					
-					if ((GameData.birthdayLocky == 'unlocked' || GameData.birthdayLocky == 'beaten' || GameData.birthdayLocky == 'obtained') && GameData.birthdayLocky != "uninvited")
+					if ((GameData.birthdayLocky == 'beaten' || GameData.birthdayLocky == 'obtained') && GameData.birthdayLocky != "uninvited")
 					{
 						addSong('Birthday', 3, 'muckney', FlxColor.fromRGB(84, 255, 181), 'FR3SHMoure', 'PARTY', FlxColor.fromRGB(250, 234, 92), [15, -5], "Don't leave his party, you'll make him sad.");
 					}
@@ -328,7 +328,7 @@ class FreeplayState extends MusicBeatState
 			add(offandon);
 			offandon.antialiasing = ClientPrefs.globalAntialiasing;
 			offandon.cameras = [camHUD];
-			
+
 			if (!ClientPrefs.lowQuality)
 				for (obj in [spectrum, table, albumCover, book, rug, gramo, disc, shade])
 					obj.cameras = [camHUD];

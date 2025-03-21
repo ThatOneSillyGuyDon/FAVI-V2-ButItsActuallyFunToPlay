@@ -742,15 +742,8 @@ class FAVIPauseSubState extends MusicBeatSubstate
 	
 								if (PlayState.isStoryMode)
 								{
-									if (GameData.highOnCrackLock == 'forceBackToSong')
-									{
-										restartSong();
-									}
-									else
-									{
 										MusicBeatState.switchState(new StoryMenu());
 										FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
-									}
 								}
 								else
 								{
@@ -956,7 +949,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 				case "Dont Cross":
 					switch(Song.getCharterCredits())
 					{
-						case "DEMOLITIONDON96": json = CreditsData.dontCross3;
+						case "ThatOneSillyGuy": json = CreditsData.dontCross3;
 						case "Dreupy": json = CreditsData.dontCross1;
 						case "Purg": json = CreditsData.dontCross2;
 						case "MalyPlus": json = CreditsData.dontCross4;

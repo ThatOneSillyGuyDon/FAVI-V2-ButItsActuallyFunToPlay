@@ -619,12 +619,6 @@ class GameOverSubstate extends MusicBeatSubstate
 			{
 				if (PlayState.isStoryMode)
 				{
-					if (GameData.highOnCrackLock == 'forceBackToSong')
-					{
-						restartDelutrance();
-					}
-					else
-					{
 						if (!boyfriend.visible)
 						{
 							FlxG.sound.music.stop();
@@ -641,16 +635,9 @@ class GameOverSubstate extends MusicBeatSubstate
 							MusicBeatState.switchState(new StoryMenu());
 							FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 						}
-					}
 				}
 				else
 				{
-					if (GameData.highOnCrackLock == 'forceBackToSong')
-					{
-						restartDelutrance();
-					}
-					else
-					{
 						if (!boyfriend.visible)
 						{
 							FlxG.sound.music.stop();
@@ -667,7 +654,6 @@ class GameOverSubstate extends MusicBeatSubstate
 							MusicBeatState.switchState(new FreeplayState());
 							FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
 						}
-					}
 				}
 			}
 			FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);

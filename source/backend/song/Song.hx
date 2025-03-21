@@ -128,6 +128,8 @@ class Song
 				if (!ClientPrefs.mechanics)
 				{
 					trace('lmao no, get fucked');
+					if (ClientPrefs.gameplaySettings["botplay"])
+						ClientPrefs.gameplaySettings["botplay"] = false;
 					chartFile = Chart.dontCross4; // because no lmao
 				}
 				else
@@ -139,14 +141,14 @@ class Song
 						case 1: chartFile = Chart.dontCross1;
 						case 2: chartFile = Chart.dontCross2;
 						case 3: chartFile = Chart.dontCross3;
-						case 4: chartFile = Chart.dontCross4;
-						case 5: chartFile = Chart.dontCross5;
-						case 6: chartFile = Chart.dontCross6;
+						case 4: chartFile = ClientPrefs.gameplaySettings["botplay"] ? Chart.dontCross1 : Chart.dontCross4;
+						case 5: chartFile = ClientPrefs.gameplaySettings["botplay"] ? Chart.dontCross3 : Chart.dontCross5;
+						case 6: chartFile = ClientPrefs.gameplaySettings["botplay"] ? Chart.dontCross2 : Chart.dontCross6;
 						case 7: chartFile = Chart.dontCross7;
-						case 8: chartFile = Chart.dontCross8;
-						case 9: chartFile = Chart.dontCross9;
-						case 10: chartFile = Chart.dontCross10;
-						case 11: chartFile = Chart.dontCross11;
+						case 8: chartFile = ClientPrefs.gameplaySettings["botplay"] ? Chart.dontCross1 : Chart.dontCross8;
+						case 9: chartFile = ClientPrefs.gameplaySettings["botplay"] ? Chart.dontCross1 : Chart.dontCross9;
+						case 10: chartFile = ClientPrefs.gameplaySettings["botplay"] ? Chart.dontCross1 : Chart.dontCross10;
+						case 11: chartFile = ClientPrefs.gameplaySettings["botplay"] ? Chart.dontCross1 : Chart.dontCross11;
 					}
 				}
 			case "rotten-petals": chartFile = Chart.rottenPetals;
@@ -216,16 +218,16 @@ class Song
 			case "Devilish Deal" | "Lunacy" | "Hunted" | "War Dilemma" | "Twisted Grins" | "Isolated" | "The Wretched Tilezones (Simple Life)": charter = "Purg";
 			case "Delusional" | "Cycled Sins" | "Birthday" | "Cycled Sins Legacy" | "Twisted Grins Legacy": charter = "Dreupy";
 			case "Lunacy Legacy": charter = "obscurity.";
-			case "Bless" | "Malfunction" | "Mercy" | "Mercy Legacy" | "Isolated Old" | "Isolated Legacy" | "Isolated Beta" | "Malfunction Legacy" | "Laugh Track" | "Rotten Petals" | "Ahh the Scary (Somber Night)": charter = "DEMOLITIONDON96";
+			case "Bless" | "Malfunction" | "Mercy" | "Mercy Legacy" | "Isolated Old" | "Isolated Legacy" | "Isolated Beta" | "Malfunction Legacy" | "Laugh Track" | "Rotten Petals" | "Ahh the Scary (Somber Night)": charter = "ThatOneSillyGuy";
 			case "Delusional Legacy": charter = "Noppz";
 			case "Dont Cross":
 				switch (randomizer)
 				{
-					case 1 | 4 | 8 | 9 | 10 | 11: charter = "DEMOLITIONDON96";
+					case 1 | 4 | 8 | 9 | 10 | 11: charter = "ThatOneSillyGuy";
 					case 2 | 7: charter = "Dreupy";
-					case 5: charter = "MalyPlus";
+					case 5: charter = ClientPrefs.gameplaySettings["botplay"] ? "Purg" : "MalyPlus";
 					case 3: charter = "Purg";
-					case 6: charter = "rezeo285";
+					case 6: charter = ClientPrefs.gameplaySettings["botplay"] ? "Dreupy" : "rezeo285";
 				}
 			default: charter = "Unknown";
 		}

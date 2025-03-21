@@ -740,9 +740,6 @@ class PlayState extends MusicBeatState
 				case "Birthday":
 					GameData.birthdayLocky = 'unlocked';
 					GameData.saveShit();
-				case "Delutrance":
-					GameData.highOnCrackLock = "forceBackToSong";
-					GameData.saveShit();
 			}
 			if (!GameData.canOverrideCPU)
 				GameData.checkBotplay(null);
@@ -7528,11 +7525,6 @@ class PlayState extends MusicBeatState
 					if (SONG.song == "Birthday")
 					{
 						GameData.birthdayLocky = 'beaten';
-						GameData.saveShit();
-					}
-					if (SONG.song == "Delutrance")
-					{
-						GameData.highOnCrackLock = 'completed';
 						GameData.saveShit();
 					}
 					WeekData.loadTheFirstEnabledMod();

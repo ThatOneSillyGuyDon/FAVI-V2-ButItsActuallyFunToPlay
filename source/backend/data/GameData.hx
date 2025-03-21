@@ -65,7 +65,7 @@ class GameData
 	// Hidden Songs
 	public static var canAddMalfunction:Bool = false;
 	public static var birthdayLocky:String = "uncompleted";
-	public static var highOnCrackLock:String = "undiscovered";
+	public static var maniaSaves:Array<String> = ["unlocked", "unlocked", "unlocked"];
 
 	public static function lockinIt():Void
 	{
@@ -190,7 +190,6 @@ class GameData
 
 		progression.data.canAddMalfunction = canAddMalfunction;
 		progression.data.birthdayLocky = birthdayLocky;
-		progression.data.highOnCrackLock = highOnCrackLock;
 
 		progression.flush();
 	}
@@ -241,7 +240,6 @@ class GameData
 
 		canAddMalfunction = progression.data.canAddMalfunction;
 		birthdayLocky = progression.data.birthdayLocky;
-		highOnCrackLock = progression.data.highOnCrackLock;
 
 		saveShit();
 	}
@@ -284,7 +282,6 @@ class GameData
 
 		canAddMalfunction = true;
 		birthdayLocky = 'beaten';
-		highOnCrackLock = 'completed';
 
 		saveShit();
 	}
