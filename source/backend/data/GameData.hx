@@ -298,13 +298,22 @@ class GameData
 			PlayState.instance.cpuControlled = false;
 	}
 
+	public static var canOverrideCPU:Bool = false;
+
+	public static function overrideBotplay()
+	{
+		canOverrideCPU = true;
+		ClientPrefs.gameplaySettings["botplay"] = true;
+		MusicBeatState.switchState(new PlayState());
+	}
+
 	public static function setFreeplayData()
 	{
 		var progression:FlxSave = new FlxSave();
 		progression.bind("gameProgression", CoolUtil.getSavePath());
 
 		var curLock:String;
-		
+
 		curLock = 'beaten';
 
 		switch (PlayState.SONG.song.toLowerCase())
@@ -386,7 +395,8 @@ class GameData
 					curLock = legacyRLock = 'unlocked';
 		}
 		saveShit();
-		checkBotplay(curLock); // just to double check :)))))))
+		if (!GameData.canOverrideCPU)
+			checkBotplay(curLock); // just to double check :)))))))
 	}
 
 	public static function completeFPSong()

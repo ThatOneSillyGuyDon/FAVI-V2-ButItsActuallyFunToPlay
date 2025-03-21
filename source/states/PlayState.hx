@@ -267,6 +267,7 @@ class PlayState extends MusicBeatState
 	public static var campaignScore:Int = 0;
 	public static var campaignMisses:Int = 0;
 	public static var seenCutscene:Bool = false;
+	public static var finishedScene:Bool = false;
 	public static var deathCounter:Int = 0;
 
 	public static var defaultCamZoom:Float = 1.05;
@@ -743,7 +744,8 @@ class PlayState extends MusicBeatState
 					GameData.highOnCrackLock = "forceBackToSong";
 					GameData.saveShit();
 			}
-			GameData.checkBotplay(null);
+			if (!GameData.canOverrideCPU)
+				GameData.checkBotplay(null);
 		}
 
 		switch (SONG.song)
@@ -2014,11 +2016,12 @@ class PlayState extends MusicBeatState
 		switch (SONG.song)
 		{
 			case "Devilish Deal" | "Isolated" | "Lunacy" | "Delusional": curEpisode = "Episode 1";
+			case "Complications" | "Hallucinations" | "Backfired": curEpisode = "Episode 2"; // might as well prepare it early (these names are just made up, idk what the real ones are lmao)
 			default: curEpisode = "Episode ???";
 		}
 
 		if (SONG.song == "Devilish Deal" && isStoryMode && GameData.episode1FPLock != "unlocked")
-			windowName = "Funkin.avi - Episode 1: Isolated (Composed by: obscurity) - Chart by: Purg [NORMAL] - Mechanics: " + (ClientPrefs.mechanics ? "Enabled" : "Disabled"); // shitty long ass name that credits literally every fucking thing
+			windowName = "Funkin.avi - Episode 1 - Isolated (Composed by: obscurity) - Chart by: Purg [NORMAL] - Mechanics: " + (ClientPrefs.mechanics ? "Enabled" : "Disabled"); // shitty long ass name that credits literally every fucking thing
 		else
 			windowName = "Funkin.avi - " + 
 			(isStoryMode ? curEpisode + " - " : "Freeplay - ") + 
@@ -2751,10 +2754,13 @@ class PlayState extends MusicBeatState
 
 		windowTimer = new FlxTimer().start(5, function(tmr:FlxTimer)
 		{
-			windowName = "Funkin.avi - " + 
-			(isStoryMode ? curEpisode + " - " : "Freeplay - ") + 
-			(SONG.song == "Dont Cross" ? "Don't Cross!" : SONG.song) + 
-			" [" + FreeplayState.getDiffRank() + "]"; // short version that displays after 5 seconds yayaya
+			if (GameData.episode1FPLock != "unlocked")
+				windowName = "Funkin.avi - Episode 1 - Isolated [NORMAL]"
+			else
+				windowName = "Funkin.avi - " + 
+				(isStoryMode ? curEpisode + " - " : "Freeplay - ") + 
+				(SONG.song == "Dont Cross" ? "Don't Cross!" : SONG.song) + 
+				" [" + FreeplayState.getDiffRank() + "]"; // short version that displays after 5 seconds yayaya
 
 			lime.app.Application.current.window.title = windowName;
 		});
@@ -2944,6 +2950,7 @@ class PlayState extends MusicBeatState
 								lime.app.Application.current.window.title = windowName;
 							});
 						}
+						finishedScene = true;
 						devilishGaming = new VideoSprite(false);
 						devilishGaming.load(Paths.video("devilishIntro"), [VideoSprite.muted]);
 						add(devilishGaming);
@@ -2979,6 +2986,7 @@ class PlayState extends MusicBeatState
 					isolatedIntro.addCallback("onEnd", () -> {
 						camVideo.visible = false;
 						camGame.visible = true;
+						finishedScene = true;
 						camBars.fade(FlxColor.BLACK, 0.001);
 						startCountdown();
 						canSkip = false;
@@ -3004,6 +3012,7 @@ class PlayState extends MusicBeatState
 						camVideo.visible = false;
 						camBars.visible = true;
 						camGame.visible = true;
+						finishedScene = true;
 						canSkip = false;
 						camBars.fade(FlxColor.BLACK, 0.0001);
 						startCountdown();
@@ -3364,7 +3373,7 @@ class PlayState extends MusicBeatState
 
 			case 'Isolated' | 'Lunacy' | 'Cycled Sins' | 'Delusion' | 'Laugh Track':
 				camNotes.alpha = 0.001;
-				if (!isStoryMode) camBars.fade(FlxColor.BLACK, 0.0001);
+				if (finishedScene) camBars.fade(FlxColor.BLACK, 0.0001);
 				camHUD.alpha = 0.001;
 
 			case "War Dilemma":
@@ -4283,7 +4292,7 @@ class PlayState extends MusicBeatState
 		introAssets.set('pixel', ['pixelUI/ready-pixel', 'pixelUI/set-pixel', 'pixelUI/date-pixel']);
 		introAssets.set('cartoon', ['favi/countdown/prepare', 'favi/countdown/ready', 'favi/countdown/set', 'favi/countdown/go']);
 		introAssets.set('malfunction', ['favi/countdown/mal-prepare', 'favi/countdown/mal-ready', 'favi/countdown/mal-set', 'favi/countdown/mal-go']);
-		introAssets.set('sins', ['favi/countdown/relapse-prepare', 'favi/countdown/relapse-ready', 'favi/countdown/relapse-set', 'favi/countdown/relapse-go']);
+		introAssets.set('sins', ['favi/countdown/relapse2NEW-prepare', 'favi/countdown/relapse2NEW-ready', 'favi/countdown/relapse2NEW-set', 'favi/countdown/relapse2NEW-go']);
 
 		var introAlts:Array<String> = introAssets.get('default');
 		switch (SONG.song)
@@ -4414,7 +4423,7 @@ class PlayState extends MusicBeatState
 				introAssets.set('pixel', ['pixelUI/ready-pixel', 'pixelUI/set-pixel', 'pixelUI/date-pixel']);
 				introAssets.set('cartoon', ['favi/countdown/prepare', 'favi/countdown/ready', 'favi/countdown/set', 'favi/countdown/go']);
 				introAssets.set('malfunction', ['favi/countdown/mal-prepare', 'favi/countdown/mal-ready', 'favi/countdown/mal-set', 'favi/countdown/mal-go']);
-				introAssets.set('sins', ['favi/countdown/relapse-prepare', 'favi/countdown/relapse-ready', 'favi/countdown/relapse-set', 'favi/countdown/relapse-go']);
+				introAssets.set('sins', ['favi/countdown/relapse2NEW-prepare', 'favi/countdown/relapse2NEW-ready', 'favi/countdown/relapse2NEW-set', 'favi/countdown/relapse2NEW-go']);
 
 				var introAlts:Array<String> = introAssets.get('default');
 				var antialias:Bool = ClientPrefs.globalAntialiasing;
@@ -5565,6 +5574,7 @@ class PlayState extends MusicBeatState
 			{
 				if (episodeIntro != null)
 				{
+					finishedScene = true;
 					episodeIntro.pause();
 					episodeIntro.visible = false;
 					if (SONG.song == "Devilish Deal" && isStoryMode && GameData.episode1FPLock != "unlocked")
@@ -5607,6 +5617,7 @@ class PlayState extends MusicBeatState
 				}
 				if (isolatedIntro != null)
 				{
+					finishedScene = true;
 					isolatedIntro.pause();
 					isolatedIntro.visible = false;
 					camVideo.visible = false;
@@ -5619,6 +5630,7 @@ class PlayState extends MusicBeatState
 				}
 				if (lununuIntro != null)
 				{
+					finishedScene = true;
 					lununuIntro.pause();
 					lununuIntro.visible = false;
 					camVideo.visible = false;
@@ -7460,6 +7472,10 @@ class PlayState extends MusicBeatState
 
 		deathCounter = 0;
 		seenCutscene = false;
+		finishedScene = false;
+
+		if (GameData.canOverrideCPU)
+			GameData.canOverrideCPU = false;
 
 		/*#if ACHIEVEMENTS_ALLOWED
 		if(achievementObj != null) {
@@ -8213,8 +8229,6 @@ class PlayState extends MusicBeatState
 				}
 			}
 
-			// yeah so we forgot legacy kms
-			// 							- MalyPlus
 			if (note.noteType == "Error Note" && SONG.song != "Malfunction Legacy") // Makes Malsquare use his alt animations when he hits error notes cause I don't wanna rechart the entire damn thing just for his alt set to be used
 				altAnim = '-alt';
 
@@ -11659,16 +11673,16 @@ class PlayState extends MusicBeatState
 							FlxTween.tween(camNotes, {alpha: 0}, 1);
 							FlxTween.tween(camHUD, {alpha: 0}, 1);
 
-						case 381: manageLyrics('relapse-pixel', 'You REALLY think this is...', 'freeplayDisneyFont.ttf', 30, 1.1, 'sineInOut');
-						case 384: manageLyrics('relapse-pixel', '...some kind of...', 'freeplayDisneyFont.ttf', 30, 1.4, 'sineInOut');
-						case 388: manageLyrics('relapse-pixel', '...silly little GAME?', 'freeplayDisneyFont.ttf', 30, 1.15, 'sineInOut');
-						case 394: manageLyrics('relapse-pixel', 'Soon enough...', 'freeplayDisneyFont.ttf', 30, 1.3, 'sineInOut');
-						case 398: manageLyrics('relapse-pixel', "...you'll understand what ME...", 'freeplayDisneyFont.ttf', 30, 1.5, 'sineInOut');
-						case 404: manageLyrics('relapse-pixel', '...AND MY FRIENDS...', 'freeplayDisneyFont.ttf', 30, 1.6, 'sineInOut');
-						case 408: manageLyrics('relapse-pixel', '...HAVE TO GO THROUGH!', 'freeplayDisneyFont.ttf', 30, 1.1, 'sineInOut');
-						case 413: manageLyrics('relapse-pixel', 'Sooner or later...', 'freeplayDisneyFont.ttf', 30, 1.1, 'sineInOut');
-						case 417: manageLyrics('relapse-pixel', '...your DEATH will be nothing...', 'freeplayDisneyFont.ttf', 30, 1.1, 'sineInOut');
-						case 421: manageLyrics('relapse-pixel', '...BUT CYCLED SINS!', 'freeplayDisneyFont.ttf', 30, 1.1, 'sineInOut');
+						case 381: manageLyrics('relapse2NEW-pixel', 'You REALLY think this is...', 'freeplayDisneyFont.ttf', 30, 1.1, 'sineInOut');
+						case 384: manageLyrics('relapse2NEW-pixel', '...some kind of...', 'freeplayDisneyFont.ttf', 30, 1.4, 'sineInOut');
+						case 388: manageLyrics('relapse2NEW-pixel', '...silly little GAME?', 'freeplayDisneyFont.ttf', 30, 1.15, 'sineInOut');
+						case 394: manageLyrics('relapse2NEW-pixel', 'Soon enough...', 'freeplayDisneyFont.ttf', 30, 1.3, 'sineInOut');
+						case 398: manageLyrics('relapse2NEW-pixel', "...you'll understand what ME...", 'freeplayDisneyFont.ttf', 30, 1.5, 'sineInOut');
+						case 404: manageLyrics('relapse2NEW-pixel', '...AND MY FRIENDS...', 'freeplayDisneyFont.ttf', 30, 1.6, 'sineInOut');
+						case 408: manageLyrics('relapse2NEW-pixel', '...HAVE TO GO THROUGH!', 'freeplayDisneyFont.ttf', 30, 1.1, 'sineInOut');
+						case 413: manageLyrics('relapse2NEW-pixel', 'Sooner or later...', 'freeplayDisneyFont.ttf', 30, 1.1, 'sineInOut');
+						case 417: manageLyrics('relapse2NEW-pixel', '...your DEATH will be nothing...', 'freeplayDisneyFont.ttf', 30, 1.1, 'sineInOut');
+						case 421: manageLyrics('relapse2NEW-pixel', '...BUT CYCLED SINS!', 'freeplayDisneyFont.ttf', 30, 1.1, 'sineInOut');
 
 						case 429:
 							camGame.visible = false;
@@ -11691,10 +11705,10 @@ class PlayState extends MusicBeatState
 						case 494 | 508:
 							relapseGimmick(0.35, 1.3, true);
 
-						case 560: manageLyrics('relapse-pixel', 'Why doesn\'t my torturous ways travail...', 'freeplayDisneyFont.ttf', 30, 5, 'sineInOut');
-						case 576: manageLyrics('relapse-pixel', 'I\'m mental, indisposed and ill...', 'freeplayDisneyFont.ttf', 30, 5, 'sineInOut');
-						case 592: manageLyrics('relapse-pixel', 'I\'m deranged, full of hatred...', 'freeplayDisneyFont.ttf', 30, 5, 'sineInOut');
-						case 608: manageLyrics('relapse-pixel', 'This should\'ve been your termination... isn\'t it?', 'freeplayDisneyFont.ttf', 30, 5, 'sineInOut');
+						case 560: manageLyrics('relapse2NEW-pixel', 'Why doesn\'t my torturous ways travail...', 'freeplayDisneyFont.ttf', 30, 5, 'sineInOut');
+						case 576: manageLyrics('relapse2NEW-pixel', 'I\'m mental, indisposed and ill...', 'freeplayDisneyFont.ttf', 30, 5, 'sineInOut');
+						case 592: manageLyrics('relapse2NEW-pixel', 'I\'m deranged, full of hatred...', 'freeplayDisneyFont.ttf', 30, 5, 'sineInOut');
+						case 608: manageLyrics('relapse2NEW-pixel', 'This should\'ve been your termination... isn\'t it?', 'freeplayDisneyFont.ttf', 30, 5, 'sineInOut');
 
 						case 632:
 							sinsEnd = true;
@@ -11730,16 +11744,16 @@ class PlayState extends MusicBeatState
 							FlxTween.tween(camNotes, {alpha: 0}, 1);
 							FlxTween.tween(camHUD, {alpha: 0}, 1);
 
-						case 381: manageLyrics('relapse-pixel', 'You REALLY think this is...', 'freeplayDisneyFont.ttf', 30, 1.1, 'sineInOut');
-						case 384: manageLyrics('relapse-pixel', '...some kind of...', 'freeplayDisneyFont.ttf', 30, 1.4, 'sineInOut');
-						case 388: manageLyrics('relapse-pixel', '...silly little GAME?', 'freeplayDisneyFont.ttf', 30, 1.15, 'sineInOut');
-						case 394: manageLyrics('relapse-pixel', 'Soon enough...', 'freeplayDisneyFont.ttf', 30, 1.3, 'sineInOut');
-						case 398: manageLyrics('relapse-pixel', "...you'll understand what ME...", 'freeplayDisneyFont.ttf', 30, 1.5, 'sineInOut');
-						case 404: manageLyrics('relapse-pixel', '...AND MY FRIENDS...', 'freeplayDisneyFont.ttf', 30, 1.6, 'sineInOut');
-						case 408: manageLyrics('relapse-pixel', '...HAVE TO GO THROUGH!', 'freeplayDisneyFont.ttf', 30, 1.1, 'sineInOut');
-						case 413: manageLyrics('relapse-pixel', 'Sooner or later...', 'freeplayDisneyFont.ttf', 30, 1.1, 'sineInOut');
-						case 417: manageLyrics('relapse-pixel', '...your DEATH will be nothing...', 'freeplayDisneyFont.ttf', 30, 1.1, 'sineInOut');
-						case 421: manageLyrics('relapse-pixel', '...BUT CYCLED SINS!', 'freeplayDisneyFont.ttf', 30, 1.1, 'sineInOut');
+						case 381: manageLyrics('relapse2NEW-pixel', 'You REALLY think this is...', 'freeplayDisneyFont.ttf', 30, 1.1, 'sineInOut');
+						case 384: manageLyrics('relapse2NEW-pixel', '...some kind of...', 'freeplayDisneyFont.ttf', 30, 1.4, 'sineInOut');
+						case 388: manageLyrics('relapse2NEW-pixel', '...silly little GAME?', 'freeplayDisneyFont.ttf', 30, 1.15, 'sineInOut');
+						case 394: manageLyrics('relapse2NEW-pixel', 'Soon enough...', 'freeplayDisneyFont.ttf', 30, 1.3, 'sineInOut');
+						case 398: manageLyrics('relapse2NEW-pixel', "...you'll understand what ME...", 'freeplayDisneyFont.ttf', 30, 1.5, 'sineInOut');
+						case 404: manageLyrics('relapse2NEW-pixel', '...AND MY FRIENDS...', 'freeplayDisneyFont.ttf', 30, 1.6, 'sineInOut');
+						case 408: manageLyrics('relapse2NEW-pixel', '...HAVE TO GO THROUGH!', 'freeplayDisneyFont.ttf', 30, 1.1, 'sineInOut');
+						case 413: manageLyrics('relapse2NEW-pixel', 'Sooner or later...', 'freeplayDisneyFont.ttf', 30, 1.1, 'sineInOut');
+						case 417: manageLyrics('relapse2NEW-pixel', '...your DEATH will be nothing...', 'freeplayDisneyFont.ttf', 30, 1.1, 'sineInOut');
+						case 421: manageLyrics('relapse2NEW-pixel', '...BUT CYCLED SINS!', 'freeplayDisneyFont.ttf', 30, 1.1, 'sineInOut');
 
 						case 429:
 							camGame.visible = false;
@@ -11748,10 +11762,10 @@ class PlayState extends MusicBeatState
 							FlxTween.tween(camNotes, {alpha: 1}, 0.5, {ease: FlxEase.sineOut});
 							FlxTween.tween(camHUD, {alpha: 1}, 0.5, {ease: FlxEase.sineOut});
 
-						case 560: manageLyrics('relapse-pixel', 'Why doesn\'t my torturous ways travail...', 'freeplayDisneyFont.ttf', 30, 5, 'sineInOut');
-						case 576: manageLyrics('relapse-pixel', 'I\'m mental, indisposed and ill...', 'freeplayDisneyFont.ttf', 30, 5, 'sineInOut');
-						case 592: manageLyrics('relapse-pixel', 'I\'m deranged, full of hatred...', 'freeplayDisneyFont.ttf', 30, 5, 'sineInOut');
-						case 608: manageLyrics('relapse-pixel', 'This should\'ve been your termination... isn\'t it?', 'freeplayDisneyFont.ttf', 30, 5, 'sineInOut');
+						case 560: manageLyrics('relapse2NEW-pixel', 'Why doesn\'t my torturous ways travail...', 'freeplayDisneyFont.ttf', 30, 5, 'sineInOut');
+						case 576: manageLyrics('relapse2NEW-pixel', 'I\'m mental, indisposed and ill...', 'freeplayDisneyFont.ttf', 30, 5, 'sineInOut');
+						case 592: manageLyrics('relapse2NEW-pixel', 'I\'m deranged, full of hatred...', 'freeplayDisneyFont.ttf', 30, 5, 'sineInOut');
+						case 608: manageLyrics('relapse2NEW-pixel', 'This should\'ve been your termination... isn\'t it?', 'freeplayDisneyFont.ttf', 30, 5, 'sineInOut');
 
 						case 632:
 							sinsEnd = true;

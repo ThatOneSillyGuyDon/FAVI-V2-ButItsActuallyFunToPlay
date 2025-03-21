@@ -596,19 +596,8 @@ class MainMenu extends MusicBeatState
 
 		if (FlxG.keys.justPressed.SEVEN && !selectedSomethin)
 		{
-			FlxG.sound.music.volume = 0;
-			selectedSomethin = true;
-			lime.app.Application.current.window.title = "Funkin.avi - Nice try, cheater lmao";
-			DiscordClient.changePresence('HAHAHAHA', 'THIS USER TRIED TO CHEAT!', 'icon', 'mouse');
-			var alien:VideoSprite = new VideoSprite(false);
-			alien.scale.set(2, 2);
-			alien.load(Paths.video('friendlyFellow'));
-			alien.addCallback("onEnd", () -> Sys.exit(0));
-			alien.x += 320;
-			alien.y += 190;
-			alien.cameras = [camHUD];
-			alien.play();
-			add(alien);
+			FlxG.sound.play(Paths.sound('cancelMenu'));
+			theBox.sendMessage('Sorry, debug access is not allowed!', 'We will open it back up in a later update however...');
 		}
 
 		if (FlxG.keys.justPressed.ONE && !selectedSomethin && Main.debug)

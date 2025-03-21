@@ -734,8 +734,11 @@ class GameOverSubstate extends MusicBeatSubstate
 							var poop:String = "dont-cross-hard" + '${random}'; //fuck fuck fuck fuck fuck fuck
 							PlayState.SONG = Song.loadFromJson(poop, songLowercase, random);
 						}
-						
-					MusicBeatState.resetState();
+					
+					if (PlayState.deathCounter == 3)
+						MusicBeatState.switchState(new BotplayScreen());
+					else
+						MusicBeatState.resetState();
 				});
 			});
 			PlayState.instance.callOnLuas('onGameOverConfirm', [true]);
