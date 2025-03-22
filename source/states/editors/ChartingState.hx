@@ -1755,7 +1755,7 @@ class ChartingState extends MusicBeatState
 			if (FlxG.keys.justPressed.BACKSPACE) {
 				PlayState.chartingMode = false;
 				openSubState(new Prompt('Upon leaving the editor, you will lose all current progress that hasn\'t been saved here.\n\nProceed?', 0, function(){
-					MusicBeatState.switchState(new MainMenu()); 
+					MusicBeatState.switchState(new MainMenuState()); 
 					FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 					FlxG.mouse.visible = true;
 					AppIcon.changeIcon("newIcon");

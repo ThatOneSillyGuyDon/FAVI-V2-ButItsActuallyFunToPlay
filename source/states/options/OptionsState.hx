@@ -148,7 +148,7 @@ class OptionsState extends MusicBeatState
 		if (controls.BACK)
 		{
 			FlxG.sound.play(Paths.sound('cancelMenu'));
-			MusicBeatState.switchState((FAVIPauseSubState.toOptions ? new PlayState() : new MainMenu()));
+			MusicBeatState.switchState((FAVIPauseSubState.toOptions ? new PlayState() : new MainMenuState()));
 			if (FAVIPauseSubState.toOptions)
 			{
 				FlxG.mouse.visible = false;

@@ -218,7 +218,7 @@ class CreditsMenu extends MusicBeatState
 
 		if (controls.BACK)
 		{
-			MusicBeatState.switchState(new MainMenu());
+			MusicBeatState.switchState(new MainMenuState());
 			Conductor.bpm = (50); // changes back to titlescreen bpm
 			FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'), 1); // resets music back to menu music
 			FlxG.sound.music.fadeIn();

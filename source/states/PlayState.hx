@@ -5702,10 +5702,10 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		/*if (FlxG.keys.anyJustPressed(debugKeysChart) && !endingSong && !inCutscene)
+		if (FlxG.keys.anyJustPressed(debugKeysChart) && !endingSong && !inCutscene)
 		{
 			openChartEditor();
-		}*/
+		}
 
 		// FlxG.watch.addQuick('VOL', vocals.amplitudeLeft);
 		// FlxG.watch.addQuick('VOLRight', vocals.amplitudeRight);
@@ -5844,7 +5844,7 @@ class PlayState extends MusicBeatState
 			else if (healthBar.percent <= 80 && iconP2.animation.name != '${dad.healthIcon}Neutral')
 				iconP2.animation.play(dad.healthIcon + "Neutral");
 
-		/*if (FlxG.keys.anyJustPressed(debugKeysCharacter) && !endingSong && !inCutscene) {
+		if (FlxG.keys.anyJustPressed(debugKeysCharacter) && !endingSong && !inCutscene) {
 			persistentUpdate = false;
 			paused = true;
 			cancelMusicFadeTween();
@@ -5859,7 +5859,7 @@ class PlayState extends MusicBeatState
 			cancelMusicFadeTween();
 			MusicBeatState.switchState(new modcharting.ModchartEditorState());
 			FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
-		}*/
+		}
 
 		if (startedCountdown)
 		{
@@ -10908,82 +10908,6 @@ class PlayState extends MusicBeatState
 				for (mridk in [camHUD, camNotes]) mridk.zoom += .03;
 			}
 
-			case 'Delusion':
-				switch (curBeat)
-				{
-					case 1:
-						FlxTween.tween(camGame, {alpha: 1}, 2);
-					case 8:
-						defaultCamZoom -= 0.08;
-						camFlashSystem(BG_FLASH, {timer: 0.35});
-						FlxTween.tween(camHUD, {alpha: 1}, 0.4);
-						FlxTween.tween(camNotes, {alpha: 1}, 0.3);
-					case 16: defaultCamZoom += 0.1;
-					case 24:
-						camGame.zoom += 0.12;
-						defaultCamZoom -= 0.2;
-						camFlashSystem(BG_FLASH, {alpha: 0.35, timer: 0.45, ease: FlxEase.circOut, colors: [255, 135, 135]});
-					case 25 | 26 | 27 | 28 | 29 | 30 | 31 | 32 | 33 | 34 | 35 | 41 | 42 | 43 | 44 | 45 | 46 | 47 | 48 | 49 | 50 | 51 | 52 | 53 | 54 | 55 | 56 | 57 | 58 | 59 | 60 | 61 | 62 | 63 | 64 | 65 | 66 | 67 | 68 | 69 | 70 | 71 | 137 | 138 | 139 | 140 | 141 | 142 | 143 | 144 | 145 | 146 | 147 | 148 | 149 | 150 | 151 | 152 | 153 | 154 | 155 | 156 | 157 | 158 | 159 | 160 | 161 | 162 | 163 | 164 | 165 | 166 | 167 | 168 | 169 | 170 | 171 | 172 | 173 | 174 | 175 | 176 | 177 | 178 | 179 | 180 | 181 | 182 | 183 | 184 | 185 | 186 | 187 | 188 | 189 | 190 | 191 | 192:
-						camFlashSystem(BG_FLASH, {alpha: 0.35, timer: 0.45, ease: FlxEase.circOut, colors: [255, 135, 135]});
-						camGame.zoom += 0.1;
-					case 72 | 73 | 74 | 75 | 76 | 77 | 78 | 79 | 80 | 81 | 82 | 83 | 84 | 85 | 86 | 87:
-						camFlashSystem(BG_FLASH, {alpha: 0.56, timer: 0.45, ease: FlxEase.circOut, colors: [255, 135, 135]});
-						camGame.zoom += 0.16;
-					case 88 | 89 | 90 | 91 | 92 | 93 | 94 | 95 | 96 | 97 | 98 | 99 | 100 | 101:
-						camFlashSystem(BG_FLASH, {alpha: 0.89, timer: 0.45, ease: FlxEase.circOut, colors: [255, 135, 135]});
-						camGame.zoom += 0.21;
-					case 36 | 134:
-						camFlashSystem(BG_DARK, {alpha: 0.8, timer: 0.21, ease: FlxEase.sineOut});
-						defaultCamZoom += 0.3;
-					case 40:
-						defaultCamZoom -= 0.25;
-						camFlashSystem(BG_FLASH, {alpha: 0.6, timer: 0.3, ease: FlxEase.circOut, colors: [255, 135, 135]});
-						camGame.zoom += 0.16;
-					case 104 | 112 | 120 | 128:
-						camGame.zoom += 0.25;
-						camFlashSystem(BG_FLASH, {alpha: 0.6, timer: 0.3, ease: FlxEase.circOut, colors: [255, 135, 135]});
-					case 136:
-						camFlashSystem(BG_FLASH, {alpha: 0.35, timer: 0.45, ease: FlxEase.circOut, colors: [255, 135, 135]});
-						camGame.zoom += 0.1;
-						defaultCamZoom += 0.11;
-					case 108 | 116:
-						camFlashSystem(BG_DARK, {alpha: 0.2, timer: 0.35, ease: FlxEase.sineOut});
-					case 110 | 118:
-						camFlashSystem(BG_DARK, {alpha: 0.5, timer: 0.35, ease: FlxEase.sineOut});
-				}
-
-				if (curBeat >= 72 && curBeat <= 87)
-				{
-					effectRed = 1;
-
-					if (vignetteTween != null)
-						vignetteTween.cancel();
-
-					vignetteTween = FlxTween.tween(instance, {effectRed: 0.0}, 0.4, {ease: FlxEase.sineOut, onComplete: 
-						function(twn:FlxTween)
-							{
-								vignetteTween = null;
-							}
-						}
-					);
-				}
-
-				if (curBeat >= 88 && curBeat <= 103)
-					{
-						effectRed = 1.2;
-						
-						if (vignetteTween != null)
-							vignetteTween.cancel();
-	
-						vignetteTween = FlxTween.tween(instance, {effectRed: 0.0}, 0.4, {ease: FlxEase.sineOut, onComplete: 
-							function(twn:FlxTween)
-								{
-									vignetteTween = null;
-								}
-							}
-						);
-					}
-
 			case "War Dilemma":
 				switch (curBeat)
 				{
@@ -12415,21 +12339,7 @@ class PlayState extends MusicBeatState
 							if (FlxG.random.bool(36)) lightningStrikeFore();
 						}
 					}
-				
-					/*if (SONG.song == 'Delusion')
-					{
-						if (curBeat == 24)
-						{
-							FlxTween.tween(streetDaytime, {alpha: 0}, 5);
-							FlxTween.tween(clouds, {alpha: 0}, 5);
-							FlxTween.tween(brightSky, {alpha: 0}, 5);
-						}
-						if (curBeat == 232)
-						{
-							fakeLightOfHope.visible = true;
-							streetRuins.visible = true;
-						}
-					}*/
+
 			case 'forestNew':
 				if (ClientPrefs.shaders)
 					{
