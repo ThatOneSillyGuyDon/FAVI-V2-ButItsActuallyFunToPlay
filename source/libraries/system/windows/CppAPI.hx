@@ -1,4 +1,4 @@
-package backend.windows;
+package libraries.system.windows;
 
 //taken from Wednesday Infidelity cus lunar allowed it lmao !! (https://twitter.com/lunarcleint/status/1573550933530681344)
 class CppAPI

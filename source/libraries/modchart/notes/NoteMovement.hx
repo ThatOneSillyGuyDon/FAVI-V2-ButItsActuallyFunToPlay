@@ -1,5 +1,4 @@
-package modcharting;
-
+package libraries.modchart.notes;
 class NoteMovement
 {
     public static var keyCount = 4;

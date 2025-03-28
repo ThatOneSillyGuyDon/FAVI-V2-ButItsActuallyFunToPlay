@@ -1,5 +1,4 @@
-package modchart.system;
-
+package libraries.modchart.system;
 
 import haxe.Exception;
 import haxe.Json;

@@ -1,4 +1,4 @@
-package modcharting;
+package libraries.modchart.states;
 
 class ModchartMusicBeatState extends FlxUIState
 {

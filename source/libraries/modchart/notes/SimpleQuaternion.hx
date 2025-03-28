@@ -1,4 +1,4 @@
-package modcharting;
+package libraries.modchart.notes;
 
 import openfl.geom.Vector3D;
 

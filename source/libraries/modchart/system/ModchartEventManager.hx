@@ -1,4 +1,5 @@
-package modcharting;
+package libraries.modchart.system;
+
 
 class ModchartEventManager
 {

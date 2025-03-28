@@ -1,4 +1,4 @@
-package modcharting;
+package libraries.modchart.system;
 
 import openfl.geom.Vector3D;
 import flixel.FlxG;

@@ -1,4 +1,4 @@
-package modcharting;
+package libraries.modchart.notes;
 
 import flixel.graphics.tile.FlxDrawTrianglesItem.DrawData;
 import openfl.geom.Vector3D;

@@ -1,6 +1,6 @@
-package modcharting;
+package libraries.modchart;
 
-import modcharting.Modifier;
+import modchart.Modifier;
 
 class ModTable
 {
