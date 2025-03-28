@@ -46,20 +46,18 @@ import states.menus.freeplay.*;
 
 // import specific menus and objects to prevent compile errors
 #if desktop
-import backend.discord.Discord;
+import libraries.network.discord.Discord;
 #end
+
+// import REFACTORED libraries
+import libraries.*;
+
 import states.editors.ChartingState;
 import gameObjects.Achievements;
 import gameObjects.Character;
 import gameObjects.ui.dialogue.DialogueBoxPsych;
 import gameObjects.ui.menu.MenuCharacter;
 import backend.song.Conductor;
-import backend.data.StageData;
-import backend.data.WeekData;
-import backend.Controls;
-
-// import modchart system
-import modcharting.*;
 
 // import shaders
 import shaders.ColorSwap;

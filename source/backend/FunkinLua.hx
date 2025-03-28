@@ -8,7 +8,7 @@ import llua.State;
 import llua.Convert;
 #end
 
-import animateatlas.AtlasFrameMaker;
+import libraries.animateatlas.AtlasFrameMaker;
 import flixel.input.keyboard.FlxKey;
 import flixel.system.FlxSound;
 import openfl.Lib;

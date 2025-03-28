@@ -21,6 +21,7 @@ import animateatlas.AtlasFrameMaker;
 import lime.app.Application;
 import flixel.addons.effects.FlxSkewedSprite;
 import flixel.math.FlxMatrix;
+import libraries.*;
 
 #if !flash 
 import openfl.filters.ShaderFilter;

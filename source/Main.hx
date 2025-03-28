@@ -2,7 +2,7 @@ package;
 
 import openfl.Assets;
 import openfl.Lib;
-import backend.Framerate;
+import libraries.system.fps.Framerate;
 import openfl.display.Sprite;
 import openfl.events.Event;
 import openfl.display.StageScaleMode;

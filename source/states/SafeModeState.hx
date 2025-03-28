@@ -1,19 +1,17 @@
 package states;
 
 import flixel.input.keyboard.FlxKey;
+import states.other.SafeModeTypes;
+
 
 class SafeModeState extends MusicBeatState
 {
 	var curLine:Int = 0;
 	var command:String = "";
 
-	var allowedKeys:Array<Int> = [
-		FlxKey.ENTER, FlxKey.BACKSPACE, FlxKey.SPACE, FlxKey.A, FlxKey.B, FlxKey.C, FlxKey.D, FlxKey.E, FlxKey.F, FlxKey.G, FlxKey.H, FlxKey.I, FlxKey.J,
-		FlxKey.K, FlxKey.L, FlxKey.M, FlxKey.N, FlxKey.O, FlxKey.P, FlxKey.Q, FlxKey.R, FlxKey.S, FlxKey.T, FlxKey.U, FlxKey.V, FlxKey.W, FlxKey.X, FlxKey.Y,
-		FlxKey.Z
-	];
+	var allowedKeys:Array<Int> = SafeModeConstants.allowedKeys;
+	var commands:Array<String> = SafeModeConstants.commands;
 
-	var commands:Array<String> = ["help", "getinfo", "about", "shutdown", "clear", "say"];
 	var texts:Array<FlxText> = [];
 	var lines:Array<String> = [];
 	var underscored:String = '_';

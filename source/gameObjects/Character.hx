@@ -1,6 +1,6 @@
 package gameObjects;
 
-import animateatlas.AtlasFrameMaker;
+import libraries.animateatlas.AtlasFrameMaker;
 import flixel.animation.FlxBaseAnimation;
 import flixel.graphics.frames.FlxAtlasFrames;
 #if MODS_ALLOWED
