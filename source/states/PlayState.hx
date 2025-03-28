@@ -17,7 +17,7 @@ import flixel.group.FlxSpriteGroup;
 import flixel.input.keyboard.FlxKey;
 import openfl.events.KeyboardEvent;
 import flixel.animation.FlxAnimationController;
-import animateatlas.AtlasFrameMaker;
+import libraries.animateatlas.AtlasFrameMaker;
 import lime.app.Application;
 import flixel.addons.effects.FlxSkewedSprite;
 import flixel.math.FlxMatrix;

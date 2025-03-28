@@ -1,4 +1,4 @@
-package librarires.modchart;
+package libraries.modchart;
 
 enum ModifierType
 {

@@ -1,3 +1,3 @@
 package libraries.flixel.system;
 
-typedef FlxSound = flixel.sound.FlxSound;
+typedef FlxSound = libraries.flixel.sound.FlxSound;

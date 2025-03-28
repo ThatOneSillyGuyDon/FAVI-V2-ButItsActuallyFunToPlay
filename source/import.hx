@@ -19,7 +19,6 @@
  import unused.*;
 
  // import objects, menus and backend support
-import backend.*;
 import backend.menu.*;
 import backend.song.*;
 import backend.data.*;
@@ -35,6 +34,7 @@ import gameObjects.ui.menu.*;
 import gameObjects.ui.animatedText.*;
 import gameObjects.ui.notes.*;
 import gameObjects.ui.customEditorUI.*;
+
 
 // import screens you see in-game
 import substates.*;
@@ -52,12 +52,21 @@ import libraries.network.discord.Discord;
 // import REFACTORED libraries
 import libraries.*;
 
+import libraries.modchart.notes.*;
+import libraries.modchart.ModTable;
+import libraries.modchart.Modifier;
+import libraries.modchart.states.*;
+
+
 import states.editors.ChartingState;
 import gameObjects.Achievements;
 import gameObjects.Character;
 import gameObjects.ui.dialogue.DialogueBoxPsych;
 import gameObjects.ui.menu.MenuCharacter;
 import backend.song.Conductor;
+import backend.FunkinLua.ModchartSprite;
+import backend.FunkinLua.ModchartText;
+import backend.FunkinLua.DebugLuaText;
 
 // import shaders
 import shaders.ColorSwap;
@@ -109,9 +118,9 @@ import flixel.text.FlxText.FlxTextBorderStyle;
 import flixel.util.FlxSignal.FlxTypedSignal;
 
 #if (flixel <= "5.2.2")
-	import flixel.system.FlxSound;
+	import libraries.flixel.system.FlxSound;
 #else
-	import flixel.sound.FlxSound;
+	import libraries.flixel.sound.FlxSound;
 #end
 
 using StringTools;
