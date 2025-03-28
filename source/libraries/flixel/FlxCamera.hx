@@ -1,4 +1,4 @@
-package flixel;
+package libraries.flixel;
 
 import flash.display.Bitmap;
 import flash.display.BitmapData;

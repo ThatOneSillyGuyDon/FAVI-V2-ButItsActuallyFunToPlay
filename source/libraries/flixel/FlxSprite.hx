@@ -1,4 +1,4 @@
-package flixel;
+package libraries.flixel;
 
 import flixel.util.FlxTimer;
 import flash.display.BitmapData;

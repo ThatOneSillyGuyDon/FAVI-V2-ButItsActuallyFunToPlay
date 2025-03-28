@@ -1,4 +1,4 @@
-package flixel.graphics;
+package libraries.flixel.graphics;
 
 import flixel.graphics.FlxGraphic;
 

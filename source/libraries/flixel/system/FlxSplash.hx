@@ -1,4 +1,4 @@
-package flixel.system;
+package libraries.flixel.system;
 
 import openfl.display.Graphics;
 import openfl.display.Sprite;

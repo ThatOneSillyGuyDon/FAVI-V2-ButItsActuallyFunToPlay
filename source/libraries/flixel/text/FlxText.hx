@@ -1,4 +1,4 @@
-package flixel.text;
+package libraries.flixel.text;
 
 import flash.display.BitmapData;
 import flash.geom.ColorTransform;

@@ -1,4 +1,4 @@
-package flixel.sound;
+package libraries.flixel.sound;
 
 import openfl.events.Event;
 import openfl.events.IEventDispatcher;
