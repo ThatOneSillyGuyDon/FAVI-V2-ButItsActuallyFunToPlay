@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="Mickeycross.png"><SubTexture name="Mickeycross Idle0000" x="1645" y="2148" width="695" height="1025" frameX="-345" frameY="-394" frameWidth="1500" frameHeight="1500" />
+<SubTexture name="Mickeycross Idle0001" x="3524" y="1020" width="695" height="1012" frameX="-352" frameY="-407" frameWidth="1500" frameHeight="1500" />
+<SubTexture name="Mickeycross Idle0002" x="5045" y="0" width="691" height="987" frameX="-377" frameY="-432" frameWidth="1500" frameHeight="1500" />
+<SubTexture name="Mickeycross Idle0003" x="4359" y="0" width="686" height="988" frameX="-389" frameY="-432" frameWidth="1500" frameHeight="1500" />
+<SubTexture name="Mickeycross Idle0004" x="2678" y="3180" width="684" height="999" frameX="-392" frameY="-421" frameWidth="1500" frameHeight="1500" />
+<SubTexture name="Mickeycross Idle0005" x="3524" y="2032" width="689" height="1011" frameX="-374" frameY="-409" frameWidth="1500" frameHeight="1500" />
+<SubTexture name="Mickeycross Idle0006" x="2340" y="2148" width="697" height="1023" frameX="-346" frameY="-396" frameWidth="1500" frameHeight="1500" />
+<SubTexture name="Mickeycross Idle0007" x="1645" y="2148" width="695" height="1025" frameX="-345" frameY="-394" frameWidth="1500" frameHeight="1500" />
+<SubTexture name="Mickeycross Right0000" x="0" y="3180" width="929" height="1015" frameX="-396" frameY="-405" frameWidth="1500" frameHeight="1500" />
+<SubTexture name="Mickeycross Right0001" x="2611" y="1038" width="908" height="1035" frameX="-428" frameY="-385" frameWidth="1500" frameHeight="1500" />
+<SubTexture name="Mickeycross Right0002" x="2611" y="0" width="913" height="1038" frameX="-426" frameY="-382" frameWidth="1500" frameHeight="1500" />
+<SubTexture name="Mickeycross Right0003" x="3362" y="3180" width="915" height="995" frameX="-416" frameY="-425" frameWidth="1500" frameHeight="1500" />
+<SubTexture name="Mickeycross Right0004" x="1768" y="3180" width="910" height="1004" frameX="-420" frameY="-416" frameWidth="1500" frameHeight="1500" />
+<SubTexture name="Mickeycross Left0000" x="1736" y="1086" width="851" height="1034" frameX="-106" frameY="-386" frameWidth="1500" frameHeight="1500" />
+<SubTexture name="Mickeycross Left0001" x="3524" y="0" width="835" height="1020" frameX="-105" frameY="-400" frameWidth="1500" frameHeight="1500" />
+<SubTexture name="Mickeycross Left0002" x="929" y="3180" width="839" height="1012" frameX="-101" frameY="-408" frameWidth="1500" frameHeight="1500" />
+<SubTexture name="Mickeycross Left0003" x="824" y="2148" width="821" height="1029" frameX="-102" frameY="-391" frameWidth="1500" frameHeight="1500" />
+<SubTexture name="Mickeycross Left0004" x="0" y="2148" width="824" height="1032" frameX="-104" frameY="-388" frameWidth="1500" frameHeight="1500" />
+<SubTexture name="Mickeycross Down0000" x="0" y="4195" width="925" height="882" frameX="-239" frameY="-532" frameWidth="1500" frameHeight="1500" />
+<SubTexture name="Mickeycross Down0001" x="925" y="4195" width="948" height="854" frameX="-234" frameY="-559" frameWidth="1500" frameHeight="1500" />
+<SubTexture name="Mickeycross Down0002" x="3761" y="4195" width="959" height="816" frameX="-234" frameY="-597" frameWidth="1500" frameHeight="1500" />
+<SubTexture name="Mickeycross Down0003" x="2813" y="4195" width="948" height="817" frameX="-253" frameY="-597" frameWidth="1500" frameHeight="1500" />
+<SubTexture name="Mickeycross Down0004" x="1873" y="4195" width="940" height="828" frameX="-249" frameY="-586" frameWidth="1500" frameHeight="1500" />
+<SubTexture name="Mickeycross Up0000" x="0" y="1086" width="869" height="1062" frameX="-270" frameY="-359" frameWidth="1500" frameHeight="1500" />
+<SubTexture name="Mickeycross Up0001" x="868" y="0" width="873" height="1080" frameX="-257" frameY="-341" frameWidth="1500" frameHeight="1500" />
+<SubTexture name="Mickeycross Up0002" x="0" y="0" width="868" height="1086" frameX="-255" frameY="-335" frameWidth="1500" frameHeight="1500" />
+<SubTexture name="Mickeycross Up0003" x="869" y="1086" width="867" height="1053" frameX="-258" frameY="-370" frameWidth="1500" frameHeight="1500" />
+<SubTexture name="Mickeycross Up0004" x="1741" y="0" width="870" height="1070" frameX="-258" frameY="-353" frameWidth="1500" frameHeight="1500" />
+</TextureAtlas>

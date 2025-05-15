@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="bf-smokin.png">
+	<!-- Created with Adobe Animate version 22.0.1.105 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="bitch0000" x="0" y="0" width="156" height="476" frameX="-62" frameY="0" frameWidth="280" frameHeight="476"/>
+	<SubTexture name="bitch0001" x="156" y="0" width="182" height="434" frameX="-49" frameY="-41" frameWidth="280" frameHeight="476"/>
+	<SubTexture name="bitch0002" x="338" y="0" width="206" height="397" frameX="-37" frameY="-78" frameWidth="280" frameHeight="476"/>
+	<SubTexture name="bitch0003" x="544" y="0" width="226" height="366" frameX="-27" frameY="-109" frameWidth="280" frameHeight="476"/>
+	<SubTexture name="bitch0004" x="770" y="0" width="242" height="338" frameX="-19" frameY="-136" frameWidth="280" frameHeight="476"/>
+	<SubTexture name="bitch0005" x="1012" y="0" width="256" height="316" frameX="-12" frameY="-158" frameWidth="280" frameHeight="476"/>
+	<SubTexture name="bitch0006" x="1268" y="0" width="267" height="299" frameX="-6" frameY="-175" frameWidth="280" frameHeight="476"/>
+	<SubTexture name="bitch0007" x="1535" y="0" width="274" height="287" frameX="-3" frameY="-187" frameWidth="280" frameHeight="476"/>
+	<SubTexture name="bitch0008" x="0" y="476" width="279" height="280" frameX="0" frameY="-194" frameWidth="280" frameHeight="476"/>
+	<SubTexture name="bitch0009" x="279" y="476" width="280" height="278" frameX="0" frameY="-196" frameWidth="280" frameHeight="476"/>
+	<SubTexture name="bitch20000" x="559" y="476" width="497" height="162" frameX="0" frameY="-115" frameWidth="497" frameHeight="277"/>
+	<SubTexture name="bitch20001" x="1056" y="476" width="473" height="175" frameX="-12" frameY="-102" frameWidth="497" frameHeight="277"/>
+	<SubTexture name="bitch20002" x="1529" y="476" width="449" height="188" frameX="-24" frameY="-89" frameWidth="497" frameHeight="277"/>
+	<SubTexture name="bitch20003" x="0" y="756" width="424" height="201" frameX="-36" frameY="-76" frameWidth="497" frameHeight="277"/>
+	<SubTexture name="bitch20004" x="424" y="756" width="400" height="213" frameX="-48" frameY="-64" frameWidth="497" frameHeight="277"/>
+	<SubTexture name="bitch20005" x="824" y="756" width="376" height="226" frameX="-60" frameY="-51" frameWidth="497" frameHeight="277"/>
+	<SubTexture name="bitch20006" x="1200" y="756" width="351" height="239" frameX="-72" frameY="-38" frameWidth="497" frameHeight="277"/>
+	<SubTexture name="bitch20007" x="1551" y="756" width="327" height="251" frameX="-84" frameY="-25" frameWidth="497" frameHeight="277"/>
+	<SubTexture name="bitch20008" x="0" y="1007" width="303" height="264" frameX="-96" frameY="-12" frameWidth="497" frameHeight="277"/>
+	<SubTexture name="bitch20009" x="303" y="1007" width="278" height="276" frameX="-108" frameY="0" frameWidth="497" frameHeight="277"/>
+</TextureAtlas>

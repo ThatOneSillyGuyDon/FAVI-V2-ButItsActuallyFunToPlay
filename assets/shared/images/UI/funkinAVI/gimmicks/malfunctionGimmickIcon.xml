@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="malfunctionGimmickIcon.png">
+<SubTexture name="lives-icon idle0000" x="69" y="36" width="31" height="31" frameX="-3" frameY="-5" frameWidth="30" frameHeight="30" />
+<SubTexture name="lives-icon glitchin0000" x="36" y="36" width="33" height="35" frameX="-1" frameY="-1" frameWidth="30" frameHeight="30" />
+<SubTexture name="lives-icon glitchin0001" x="0" y="0" width="34" height="36" frameX="-1" frameY="0" frameWidth="30" frameHeight="30" />
+<SubTexture name="lives-icon glitchin0002" x="34" y="0" width="32" height="36" frameX="-3" frameY="0" frameWidth="30" frameHeight="30" />
+<SubTexture name="lives-icon glitchin0003" x="66" y="0" width="36" height="36" frameX="0" frameY="0" frameWidth="30" frameHeight="30" />
+<SubTexture name="lives-icon glitchin0004" x="0" y="36" width="36" height="36" frameX="0" frameY="0" frameWidth="30" frameHeight="30" />
+</TextureAtlas>

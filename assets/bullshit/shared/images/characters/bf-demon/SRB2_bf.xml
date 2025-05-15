@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="SRB2 bf.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Demon idle0000" x="0" y="0" width="801" height="885"/>
+	<SubTexture name="Demon idle0001" x="816" y="0" width="801" height="885"/>
+	<SubTexture name="Demon idle0002" x="1632" y="0" width="801" height="885"/>
+	<SubTexture name="Demon idle0003" x="2448" y="0" width="801" height="885"/>
+	<SubTexture name="Demon idle0004" x="3264" y="0" width="801" height="885"/>
+	<SubTexture name="Demon idle0005" x="3264" y="0" width="801" height="885"/>
+	<SubTexture name="Demon idle0006" x="0" y="900" width="801" height="885"/>
+	<SubTexture name="Demon idle0007" x="0" y="900" width="801" height="885"/>
+	<SubTexture name="Demon idle0008" x="816" y="900" width="801" height="885"/>
+	<SubTexture name="Demon idle0009" x="816" y="900" width="801" height="885"/>
+	<SubTexture name="Demon idle0010" x="1632" y="900" width="801" height="885"/>
+	<SubTexture name="Demon idle0011" x="1632" y="900" width="801" height="885"/>
+	<SubTexture name="Demon idle0012" x="1632" y="900" width="801" height="885"/>
+	<SubTexture name="Demon idle0013" x="1632" y="900" width="801" height="885"/>
+	<SubTexture name="Demon note down0000" x="2448" y="900" width="1054" height="835"/>
+	<SubTexture name="Demon note down0001" x="2448" y="900" width="1054" height="835"/>
+	<SubTexture name="Demon note down0002" x="0" y="1800" width="1054" height="835"/>
+	<SubTexture name="Demon note down0003" x="0" y="1800" width="1054" height="835"/>
+	<SubTexture name="Demon note down0004" x="1069" y="1800" width="1054" height="835"/>
+	<SubTexture name="Demon note down0005" x="1069" y="1800" width="1054" height="835"/>
+	<SubTexture name="Demon note down0006" x="2138" y="1800" width="1054" height="835"/>
+	<SubTexture name="Demon note down0007" x="2138" y="1800" width="1054" height="835"/>
+	<SubTexture name="Demon note down0008" x="0" y="2650" width="1054" height="835"/>
+	<SubTexture name="Demon note down0009" x="0" y="2650" width="1054" height="835"/>
+	<SubTexture name="Demon note down0010" x="0" y="2650" width="1054" height="835"/>
+	<SubTexture name="Demon note down0011" x="0" y="2650" width="1054" height="835"/>
+	<SubTexture name="Demon note down0012" x="0" y="2650" width="1054" height="835"/>
+	<SubTexture name="Demon note down0013" x="0" y="2650" width="1054" height="835"/>
+	<SubTexture name="Demon note left0000" x="1069" y="2650" width="896" height="914"/>
+	<SubTexture name="Demon note left0001" x="1069" y="2650" width="896" height="914"/>
+	<SubTexture name="Demon note left0002" x="1980" y="2650" width="896" height="914"/>
+	<SubTexture name="Demon note left0003" x="1980" y="2650" width="896" height="914"/>
+	<SubTexture name="Demon note left0004" x="2891" y="2650" width="896" height="914"/>
+	<SubTexture name="Demon note left0005" x="2891" y="2650" width="896" height="914"/>
+	<SubTexture name="Demon note left0006" x="0" y="3579" width="896" height="914"/>
+	<SubTexture name="Demon note left0007" x="0" y="3579" width="896" height="914"/>
+	<SubTexture name="Demon note left0008" x="911" y="3579" width="896" height="914"/>
+	<SubTexture name="Demon note left0009" x="911" y="3579" width="896" height="914"/>
+	<SubTexture name="Demon note left0010" x="911" y="3579" width="896" height="914"/>
+	<SubTexture name="Demon note left0011" x="911" y="3579" width="896" height="914"/>
+	<SubTexture name="Demon note left0012" x="911" y="3579" width="896" height="914"/>
+	<SubTexture name="Demon note left0013" x="911" y="3579" width="896" height="914"/>
+	<SubTexture name="Demon note right0000" x="1822" y="3579" width="981" height="935"/>
+	<SubTexture name="Demon note right0001" x="1822" y="3579" width="981" height="935"/>
+	<SubTexture name="Demon note right0002" x="2818" y="3579" width="981" height="935"/>
+	<SubTexture name="Demon note right0003" x="2818" y="3579" width="981" height="935"/>
+	<SubTexture name="Demon note right0004" x="0" y="4529" width="981" height="935"/>
+	<SubTexture name="Demon note right0005" x="0" y="4529" width="981" height="935"/>
+	<SubTexture name="Demon note right0006" x="996" y="4529" width="981" height="935"/>
+	<SubTexture name="Demon note right0007" x="996" y="4529" width="981" height="935"/>
+	<SubTexture name="Demon note right0008" x="1992" y="4529" width="981" height="935"/>
+	<SubTexture name="Demon note right0009" x="1992" y="4529" width="981" height="935"/>
+	<SubTexture name="Demon note right0010" x="1992" y="4529" width="981" height="935"/>
+	<SubTexture name="Demon note right0011" x="1992" y="4529" width="981" height="935"/>
+	<SubTexture name="Demon note right0012" x="1992" y="4529" width="981" height="935"/>
+	<SubTexture name="Demon note right0013" x="1992" y="4529" width="981" height="935"/>
+	<SubTexture name="Demon note up0000" x="2988" y="4529" width="780" height="936"/>
+	<SubTexture name="Demon note up0001" x="2988" y="4529" width="780" height="936"/>
+	<SubTexture name="Demon note up0002" x="0" y="5480" width="780" height="936"/>
+	<SubTexture name="Demon note up0003" x="0" y="5480" width="780" height="936"/>
+	<SubTexture name="Demon note up0004" x="795" y="5480" width="780" height="936"/>
+	<SubTexture name="Demon note up0005" x="795" y="5480" width="780" height="936"/>
+	<SubTexture name="Demon note up0006" x="1590" y="5480" width="780" height="936"/>
+	<SubTexture name="Demon note up0007" x="1590" y="5480" width="780" height="936"/>
+	<SubTexture name="Demon note up0008" x="2385" y="5480" width="780" height="936"/>
+	<SubTexture name="Demon note up0009" x="2385" y="5480" width="780" height="936"/>
+	<SubTexture name="Demon note up0010" x="2385" y="5480" width="780" height="936"/>
+	<SubTexture name="Demon note up0011" x="2385" y="5480" width="780" height="936"/>
+	<SubTexture name="Demon note up0012" x="2385" y="5480" width="780" height="936"/>
+	<SubTexture name="Demon note up0013" x="2385" y="5480" width="780" height="936"/>
+	<SubTexture name="Demon note up0014" x="2385" y="5480" width="780" height="936"/>
+</TextureAtlas>

@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				590,
+				640
+			],
+			"anim": "idle",
+			"fps": 5,
+			"name": "Mickey3 Idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				560,
+				644
+			],
+			"anim": "singLEFT",
+			"fps": 5,
+			"name": "Mickey3 Left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				530,
+				630
+			],
+			"anim": "singUP",
+			"fps": 5,
+			"name": "Mickey3 Up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				460,
+				642
+			],
+			"anim": "singDOWN",
+			"fps": 5,
+			"name": "Mickey3 Down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				470,
+				640
+			],
+			"anim": "singRIGHT",
+			"fps": 5,
+			"name": "Mickey3 Right",
+			"indices": []
+		}
+	],
+	"no_antialiasing": true,
+	"image": "characters/mick-trance/mickeykillyourself",
+	"position": [
+		-150,
+		120
+	],
+	"healthicon": "delucrack",
+	"flip_x": false,
+	"healthbar_colors": [
+		216,
+		216,
+		216
+	],
+	"camera_position": [
+		-290,
+		-320
+	],
+	"sing_duration": 6.1,
+	"scale": 0.7
+}

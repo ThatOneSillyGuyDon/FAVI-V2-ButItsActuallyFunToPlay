@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Free texture packer v0.6.7 http://free-tex-packer.com
+-->
+<TextureAtlas imagePath="Birthevere.png" width="1480" height="2355">
+  <SubTexture name="up0001.png" x="0" y="0"  width="339" height="624" frameX="-200" frameY="-12" frameWidth="720" frameHeight="720"/>
+  <SubTexture name="up0002.png" x="0" y="624"  width="341" height="601" frameX="-196" frameY="-35" frameWidth="720" frameHeight="720"/>
+  <SubTexture name="left0002.png" x="339" y="0"  width="343" height="581" frameX="-116" frameY="-107" frameWidth="720" frameHeight="720"/>
+  <SubTexture name="left0001.png" x="0" y="1225"  width="365" height="576" frameX="-90" frameY="-110" frameWidth="720" frameHeight="720"/>
+  <SubTexture name="right0002.png" x="341" y="581"  width="372" height="558" frameX="-225" frameY="-130" frameWidth="720" frameHeight="720"/>
+  <SubTexture name="right0001.png" x="682" y="0"  width="374" height="557" frameX="-239" frameY="-128" frameWidth="720" frameHeight="720"/>
+  <SubTexture name="idle0001.png" x="0" y="1801"  width="454" height="554" frameX="-169" frameY="-130" frameWidth="720" frameHeight="720"/>
+  <SubTexture name="idle0002.png" x="365" y="1139"  width="454" height="552" frameX="-171" frameY="-130" frameWidth="720" frameHeight="720"/>
+  <SubTexture name="down0002.png" x="713" y="557"  width="450" height="480" frameX="-151" frameY="-171" frameWidth="720" frameHeight="720"/>
+  <SubTexture name="down0001.png" x="1056" y="0"  width="424" height="466" frameX="-171" frameY="-186" frameWidth="720" frameHeight="720"/>
+</TextureAtlas>

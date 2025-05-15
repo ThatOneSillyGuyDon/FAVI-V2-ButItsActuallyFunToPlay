@@ -1,0 +1,100 @@
+{
+	"animations": [
+		{
+			"loop": true,
+			"offsets": [
+				1,
+				0
+			],
+			"anim": "idle",
+			"fps": 12,
+			"name": "Relapsed2 Idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singDOWN",
+			"fps": 12,
+			"name": "Relapsed2 Down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singUP",
+			"fps": 13,
+			"name": "Relapsed2 Up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singLEFT",
+			"fps": 13,
+			"name": "Relapsed2 Left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singRIGHT",
+			"fps": 13,
+			"name": "Relapsed2 Right",
+			"indices": []
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 13,
+			"anim": "attack",
+			"indices": [],
+			"name": "Relapsed2 Attack"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 13,
+			"anim": "reload",
+			"indices": [],
+			"name": "Relapsed2 Reload"
+		}
+	],
+	"no_antialiasing": true,
+	"image": "characters/relapse-gun-pixel/Relapsed2",
+	"position": [
+		-80,
+		180
+	],
+	"healthicon": "relapsegun-pixel",
+	"flip_x": false,
+	"healthbar_colors": [
+		92,
+		0,
+		0
+	],
+	"camera_position": [
+		320,
+		-300
+	],
+	"sing_duration": 6.1,
+	"scale": 1.4
+}

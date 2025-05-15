@@ -9,6 +9,7 @@ import shaders.RGBPalette.RGBShaderReference;
 import objects.StrumNote;
 
 import flixel.math.FlxRect;
+import flixel.addons.effects.FlxSkewedSprite;
 
 using StringTools;
 
@@ -36,9 +37,12 @@ typedef NoteSplashData = {
  * 
  * If you want to make a custom note type, you should search for: "function set_noteType"
 **/
-class Note extends FlxSprite
+class Note extends FlxSkewedSprite
 {
 	public var extraData:Map<String, Dynamic> = new Map<String, Dynamic>();
+
+	public var mesh:modcharting.SustainStrip = null;
+  	public var z:Float = 0;
 
 	public var strumTime:Float = 0;
 	public var noteData:Int = 0;

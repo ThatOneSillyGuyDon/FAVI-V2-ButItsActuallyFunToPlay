@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="glitched-mickey-calm.png">
+<SubTexture name="glitched-mickey-calm idle0000" x="1068" y="0" width="288" height="224" frameX="-240" frameY="-316" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm idle0001" x="0" y="1196" width="308" height="164" frameX="-240" frameY="-376" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm idle0002" x="0" y="988" width="296" height="208" frameX="-240" frameY="-332" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm idle0003" x="1068" y="0" width="288" height="224" frameX="-240" frameY="-316" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm idle0004" x="1068" y="0" width="288" height="224" frameX="-240" frameY="-316" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm idle0005" x="1068" y="0" width="288" height="224" frameX="-240" frameY="-316" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm idle0006" x="1068" y="0" width="288" height="224" frameX="-240" frameY="-316" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm idle0007" x="1068" y="0" width="288" height="224" frameX="-240" frameY="-316" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm idle0008" x="1068" y="0" width="288" height="224" frameX="-240" frameY="-316" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm idle0009" x="1068" y="0" width="288" height="224" frameX="-240" frameY="-316" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm idle0010" x="1068" y="0" width="288" height="224" frameX="-240" frameY="-316" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm idle0011" x="1068" y="0" width="288" height="224" frameX="-240" frameY="-316" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm idle0012" x="1068" y="0" width="288" height="224" frameX="-240" frameY="-316" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm left0000" x="1068" y="224" width="256" height="224" frameX="-224" frameY="-316" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm left0001" x="0" y="280" width="280" height="240" frameX="-200" frameY="-300" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm left0002" x="1068" y="448" width="260" height="224" frameX="-220" frameY="-316" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm left0003" x="1068" y="448" width="260" height="224" frameX="-220" frameY="-316" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm left0004" x="1068" y="448" width="260" height="224" frameX="-220" frameY="-316" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm left0005" x="1068" y="672" width="248" height="216" frameX="-236" frameY="-324" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm left0006" x="800" y="232" width="264" height="204" frameX="-240" frameY="-336" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm down0000" x="1356" y="0" width="256" height="176" frameX="-240" frameY="-364" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm down0001" x="584" y="1196" width="288" height="156" frameX="-224" frameY="-384" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm down0002" x="308" y="1196" width="276" height="164" frameX="-232" frameY="-376" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm down0003" x="1356" y="0" width="256" height="176" frameX="-240" frameY="-364" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm down0004" x="860" y="988" width="260" height="192" frameX="-240" frameY="-348" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm down0005" x="800" y="436" width="264" height="200" frameX="-240" frameY="-340" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm down0006" x="584" y="988" width="276" height="204" frameX="-240" frameY="-336" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm up0000" x="0" y="0" width="240" height="280" frameX="-240" frameY="-260" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm up0001" x="240" y="0" width="240" height="260" frameX="-240" frameY="-280" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm up0002" x="280" y="280" width="240" height="240" frameX="-240" frameY="-300" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm up0003" x="296" y="520" width="256" height="232" frameX="-232" frameY="-308" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm up0004" x="280" y="280" width="240" height="240" frameX="-240" frameY="-300" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm up0005" x="280" y="280" width="240" height="240" frameX="-240" frameY="-300" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm up0006" x="280" y="280" width="240" height="240" frameX="-240" frameY="-300" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm up0007" x="520" y="280" width="252" height="236" frameX="-240" frameY="-304" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm up0008" x="800" y="0" width="268" height="232" frameX="-240" frameY="-308" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm right0000" x="0" y="520" width="296" height="236" frameX="-240" frameY="-304" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm right0001" x="480" y="0" width="320" height="252" frameX="-240" frameY="-288" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm right0002" x="0" y="756" width="328" height="232" frameX="-240" frameY="-308" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm right0003" x="0" y="756" width="328" height="232" frameX="-240" frameY="-308" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm right0004" x="0" y="756" width="328" height="232" frameX="-240" frameY="-308" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm right0005" x="328" y="756" width="324" height="232" frameX="-240" frameY="-308" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm right0006" x="652" y="756" width="308" height="232" frameX="-240" frameY="-308" frameWidth="720" frameHeight="720" />
+<SubTexture name="glitched-mickey-calm right0007" x="296" y="988" width="288" height="208" frameX="-240" frameY="-332" frameWidth="720" frameHeight="720" />
+</TextureAtlas>

@@ -1,0 +1,4 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="dd-satanNEW.png">
+<SubTexture name="dd-satanNEW idle0000" x="0" y="0" width="365" height="646" frameX="-492" frameY="-125" frameWidth="1125" frameHeight="920" />
+</TextureAtlas>

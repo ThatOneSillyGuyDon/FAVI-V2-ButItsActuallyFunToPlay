@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="fat_mick.png">
+	<!-- Created with Adobe Animate version 21.0.6.41649 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="IdleFatMick instance 10000" x="0" y="0" width="573" height="618" frameX="0" frameY="-38" frameWidth="573" frameHeight="656"/>
+	<SubTexture name="IdleFatMick instance 10001" x="0" y="0" width="573" height="618" frameX="0" frameY="-38" frameWidth="573" frameHeight="656"/>
+	<SubTexture name="IdleFatMick instance 10002" x="573" y="0" width="553" height="622" frameX="-11" frameY="-34" frameWidth="573" frameHeight="656"/>
+	<SubTexture name="IdleFatMick instance 10003" x="573" y="0" width="553" height="622" frameX="-11" frameY="-34" frameWidth="573" frameHeight="656"/>
+	<SubTexture name="IdleFatMick instance 10004" x="1126" y="0" width="536" height="638" frameX="-22" frameY="-18" frameWidth="573" frameHeight="656"/>
+	<SubTexture name="IdleFatMick instance 10005" x="1126" y="0" width="536" height="638" frameX="-22" frameY="-18" frameWidth="573" frameHeight="656"/>
+	<SubTexture name="IdleFatMick instance 10006" x="0" y="638" width="532" height="654" frameX="-26" frameY="-2" frameWidth="573" frameHeight="656"/>
+	<SubTexture name="IdleFatMick instance 10007" x="0" y="638" width="532" height="654" frameX="-26" frameY="-2" frameWidth="573" frameHeight="656"/>
+	<SubTexture name="IdleFatMick instance 10008" x="532" y="638" width="531" height="656" frameX="-27" frameY="0" frameWidth="573" frameHeight="656"/>
+	<SubTexture name="IdleFatMick instance 10009" x="532" y="638" width="531" height="656" frameX="-27" frameY="0" frameWidth="573" frameHeight="656"/>
+	<SubTexture name="IdleFatMick instance 10010" x="532" y="638" width="531" height="656" frameX="-27" frameY="0" frameWidth="573" frameHeight="656"/>
+	<SubTexture name="IdleFatMick instance 10011" x="532" y="638" width="531" height="656" frameX="-27" frameY="0" frameWidth="573" frameHeight="656"/>
+	<SubTexture name="IdleFatMick instance 10012" x="532" y="638" width="531" height="656" frameX="-27" frameY="0" frameWidth="573" frameHeight="656"/>
+	<SubTexture name="IdleFatMick instance 10013" x="532" y="638" width="531" height="656" frameX="-27" frameY="0" frameWidth="573" frameHeight="656"/>
+	<SubTexture name="IdleFatMick instance 10014" x="1063" y="638" width="553" height="645" frameX="-20" frameY="-10" frameWidth="573" frameHeight="656"/>
+</TextureAtlas>

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="mickParticle.png">
+<SubTexture name="mickParticle idle0000" x="0" y="0" width="118" height="117" frameX="-14" frameY="-23" frameWidth="128" frameHeight="128" />
+<SubTexture name="mickParticle idle0001" x="118" y="0" width="132" height="113" frameX="-6" frameY="-23" frameWidth="128" frameHeight="128" />
+<SubTexture name="mickParticle idle0002" x="0" y="117" width="129" height="106" frameX="-9" frameY="-27" frameWidth="128" frameHeight="128" />
+<SubTexture name="mickParticle idle0003" x="250" y="0" width="123" height="90" frameX="-11" frameY="-37" frameWidth="128" frameHeight="128" />
+</TextureAtlas>

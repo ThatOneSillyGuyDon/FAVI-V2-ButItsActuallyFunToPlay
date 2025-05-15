@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="usbLmao.png">
+<SubTexture name="usb idle0000" x="406" y="1417" width="440" height="285" frameX="-629" frameY="-791" frameWidth="1920" frameHeight="1080" />
+<SubTexture name="usb idle0001" x="0" y="1417" width="406" height="317" frameX="-652" frameY="-759" frameWidth="1920" frameHeight="1080" />
+<SubTexture name="usb idle0002" x="1121" y="983" width="393" height="340" frameX="-661" frameY="-736" frameWidth="1920" frameHeight="1080" />
+<SubTexture name="usb idle0003" x="746" y="983" width="375" height="361" frameX="-672" frameY="-714" frameWidth="1920" frameHeight="1080" />
+<SubTexture name="usb idle0004" x="396" y="983" width="350" height="392" frameX="-689" frameY="-680" frameWidth="1920" frameHeight="1080" />
+<SubTexture name="usb up0000" x="420" y="0" width="303" height="491" frameX="-720" frameY="-582" frameWidth="1920" frameHeight="1080" />
+<SubTexture name="usb up0001" x="1115" y="0" width="303" height="465" frameX="-720" frameY="-609" frameWidth="1920" frameHeight="1080" />
+<SubTexture name="usb up0002" x="1418" y="455" width="303" height="444" frameX="-720" frameY="-630" frameWidth="1920" frameHeight="1080" />
+<SubTexture name="usb left0000" x="0" y="0" width="420" height="507" frameX="-588" frameY="-566" frameWidth="1920" frameHeight="1080" />
+<SubTexture name="usb left0001" x="723" y="0" width="392" height="481" frameX="-616" frameY="-593" frameWidth="1920" frameHeight="1080" />
+<SubTexture name="usb left0002" x="477" y="507" width="368" height="468" frameX="-646" frameY="-606" frameWidth="1920" frameHeight="1080" />
+<SubTexture name="usb down0000" x="1196" y="1417" width="360" height="267" frameX="-672" frameY="-809" frameWidth="1920" frameHeight="1080" />
+<SubTexture name="usb down0001" x="846" y="1417" width="350" height="283" frameX="-679" frameY="-793" frameWidth="1920" frameHeight="1080" />
+<SubTexture name="usb down0002" x="1514" y="983" width="338" height="301" frameX="-689" frameY="-775" frameWidth="1920" frameHeight="1080" />
+<SubTexture name="usb right0000" x="0" y="507" width="477" height="476" frameX="-697" frameY="-598" frameWidth="1920" frameHeight="1080" />
+<SubTexture name="usb right0001" x="1418" y="0" width="437" height="455" frameX="-689" frameY="-619" frameWidth="1920" frameHeight="1080" />
+<SubTexture name="usb right0002" x="0" y="983" width="396" height="434" frameX="-682" frameY="-640" frameWidth="1920" frameHeight="1080" />
+</TextureAtlas>

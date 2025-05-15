@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				51,
+				61
+			],
+			"loop": false,
+			"fps": 11,
+			"anim": "idle",
+			"indices": [],
+			"name": "Mickey2 Idle"
+		},
+		{
+			"offsets": [
+				55,
+				56
+			],
+			"loop": false,
+			"fps": 11,
+			"anim": "singUP",
+			"indices": [],
+			"name": "Mickey2 Up"
+		},
+		{
+			"offsets": [
+				60,
+				68
+			],
+			"loop": false,
+			"fps": 11,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "Mickey2 Down"
+		},
+		{
+			"offsets": [
+				35,
+				55
+			],
+			"loop": false,
+			"fps": 11,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "Mickey2 Left"
+		},
+		{
+			"offsets": [
+				70,
+				70
+			],
+			"loop": false,
+			"fps": 11,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Mickey2 Right"
+		}
+	],
+	"no_antialiasing": true,
+	"image": "characters/lunamick-new/lunamick-new",
+	"position": [
+		-270,
+		-100
+	],
+	"healthicon": "lunaavier",
+	"flip_x": false,
+	"healthbar_colors": [
+		121,
+		121,
+		121
+	],
+	"camera_position": [
+		420,
+		230
+	],
+	"sing_duration": 4,
+	"scale": 0.65
+}
