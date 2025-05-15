@@ -173,7 +173,7 @@ class FreeplayState extends MusicBeatState
 					
 					if (GameData.canAddMalfunction)
 					{
-						addSong('Malfunction', 3, (GameData.malfunctionLock != 'unlocked' && GameData.malfunctionLock != 'beaten' ? 'mysteryfp' : 'mal-pixel'), FlxColor.fromRGB(150, 149, 186), 'obscurity', null, FlxColor.WHITE, (GameData.malfunctionLock == "beaten" || GameData.malfunctionLock == "unlocked" ? [27, 0] : [25, 0]), "Contains extreme flashing lights, very unforgiving modcharts, life system & note gimmicks. Mechanics are enabled by default upon playing.\nGood luck."); // Because Malfunction is getting some major upgrades later
+						addSong('Malfunction', 3, (GameData.malfunctionLock != 'unlocked' && GameData.malfunctionLock != 'beaten' ? 'mysteryfp' : 'malIntro-pixel'), FlxColor.fromRGB(150, 149, 186), 'obscurity', null, FlxColor.WHITE, (GameData.malfunctionLock == "beaten" || GameData.malfunctionLock == "unlocked" ? [27, 0] : [25, 0]), "Contains extreme flashing lights, very unforgiving modcharts, life system & note gimmicks. Mechanics are enabled by default upon playing.\nGood luck."); // Because Malfunction is getting some major upgrades later
 					}
 					
 					if ((GameData.birthdayLocky == 'beaten' || GameData.birthdayLocky == 'obtained') && GameData.birthdayLocky != "uninvited")
@@ -597,7 +597,8 @@ class FreeplayState extends MusicBeatState
 			disc.angle += Conductor.crochet / 1000 * 2;
 		}
 
-		if (FlxG.keys.justPressed.B) {
+		//Makes it so the game doesn't crash when turning botplay on in legacy menu -SonicFan0208
+		if (FlxG.keys.justPressed.B && freeplayMenuList != 2) {
 			changeBotPlay();
 		}
 
@@ -767,12 +768,14 @@ class FreeplayState extends MusicBeatState
 
 			FlxG.sound.music.volume = 0;
 		}
+		/*
 		else if(controls.RESET)
 		{
 			persistentUpdate = false;
 			openSubState(new ResetScoreSubState(songs[curSelected].songName, curDifficulty, songs[curSelected].songCharacter));
 			FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
 		}
+		*/
 		super.update(elapsed);
 	}
 

@@ -3370,7 +3370,7 @@ class PlayState extends MusicBeatState
 
 			case 'Isolated' | 'Lunacy' | 'Cycled Sins' | 'Delusion' | 'Laugh Track':
 				camNotes.alpha = 0.001;
-				if (finishedScene) camBars.fade(FlxColor.BLACK, 0.0001);
+				camBars.fade(FlxColor.BLACK, 0.0001);
 				camHUD.alpha = 0.001;
 
 			case "War Dilemma":
@@ -4289,7 +4289,8 @@ class PlayState extends MusicBeatState
 		introAssets.set('pixel', ['pixelUI/ready-pixel', 'pixelUI/set-pixel', 'pixelUI/date-pixel']);
 		introAssets.set('cartoon', ['favi/countdown/prepare', 'favi/countdown/ready', 'favi/countdown/set', 'favi/countdown/go']);
 		introAssets.set('malfunction', ['favi/countdown/mal-prepare', 'favi/countdown/mal-ready', 'favi/countdown/mal-set', 'favi/countdown/mal-go']);
-		introAssets.set('sins', ['favi/countdown/relapse2NEW-prepare', 'favi/countdown/relapse2NEW-ready', 'favi/countdown/relapse2NEW-set', 'favi/countdown/relapse2NEW-go']);
+		//Should've been "relapse" NOT "relapse2NEW" -SonicFan0208
+		introAssets.set('sins', ['favi/countdown/relapse-prepare', 'favi/countdown/relapse-ready', 'favi/countdown/relapse-set', 'favi/countdown/relapse-go']);
 
 		var introAlts:Array<String> = introAssets.get('default');
 		switch (SONG.song)
@@ -4420,7 +4421,7 @@ class PlayState extends MusicBeatState
 				introAssets.set('pixel', ['pixelUI/ready-pixel', 'pixelUI/set-pixel', 'pixelUI/date-pixel']);
 				introAssets.set('cartoon', ['favi/countdown/prepare', 'favi/countdown/ready', 'favi/countdown/set', 'favi/countdown/go']);
 				introAssets.set('malfunction', ['favi/countdown/mal-prepare', 'favi/countdown/mal-ready', 'favi/countdown/mal-set', 'favi/countdown/mal-go']);
-				introAssets.set('sins', ['favi/countdown/relapse2NEW-prepare', 'favi/countdown/relapse2NEW-ready', 'favi/countdown/relapse2NEW-set', 'favi/countdown/relapse2NEW-go']);
+				introAssets.set('sins', ['favi/countdown/relapse-prepare', 'favi/countdown/relapse-ready', 'favi/countdown/relapse-set', 'favi/countdown/relapse-go']);
 
 				var introAlts:Array<String> = introAssets.get('default');
 				var antialias:Bool = ClientPrefs.globalAntialiasing;
@@ -7748,7 +7749,7 @@ class PlayState extends MusicBeatState
 			pixelShitPart2 = '-pixel';
 		}
 
-		rating.loadGraphic(Paths.image(pixelShitPart1 + (((ratingPercent == 1 || cpuControlled) && SONG.song != "Cycled Sins") ? "marvelous" : daRating.image) + (SONG.song == "Malfunction" ? '-mal' : '') + pixelShitPart2));
+		rating.loadGraphic(Paths.image(pixelShitPart1 + (((ratingPercent == 1 || cpuControlled) && SONG.song != "Cycled Sins" && SONG.song != "Cycled Sins Legacy" && SONG.song != "Malfunction Legacy") ? "marvelous" : daRating.image) + (SONG.song == "Malfunction" ? '-mal' : '') + pixelShitPart2));
 		rating.cameras = [camHUD];
 		rating.scale.set(0.4, 0.4);
 		rating.screenCenter();
@@ -7831,7 +7832,7 @@ class PlayState extends MusicBeatState
 		}
 		for (i in seperatedScore)
 		{
-			var numScore:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'num' + Std.int(i) + (((ratingPercent == 1 || cpuControlled) && SONG.song != "Cycled Sins") ? (SONG.song == "Malfunction" ? '-malgold' : '-gold') : (SONG.song == "Malfunction" ? '-mal' : '')) + pixelShitPart2));
+			var numScore:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'num' + Std.int(i) + (((ratingPercent == 1 || cpuControlled) && SONG.song != "Cycled Sins" && SONG.song != "Cycled Sins Legacy" && SONG.song != "Malfunction Legacy") ? (SONG.song == "Malfunction" ? '-malgold' : '-gold') : (SONG.song == "Malfunction" ? '-mal' : '')) + pixelShitPart2));
 			numScore.cameras = [camHUD];
 			numScore.scale.set(0.22, 0.22);
 			numScore.screenCenter();
@@ -11589,6 +11590,7 @@ class PlayState extends MusicBeatState
 							FlxTween.tween(camNotes, {alpha: 0}, 1);
 							FlxTween.tween(camHUD, {alpha: 0}, 1);
 
+						//dunno if it's just me, but i feel like he should be saying "Do you think" instead of "You REALLY think" - SonicFan0208
 						case 381: manageLyrics('relapse2NEW-pixel', 'You REALLY think this is...', 'freeplayDisneyFont.ttf', 30, 1.1, 'sineInOut');
 						case 384: manageLyrics('relapse2NEW-pixel', '...some kind of...', 'freeplayDisneyFont.ttf', 30, 1.4, 'sineInOut');
 						case 388: manageLyrics('relapse2NEW-pixel', '...silly little GAME?', 'freeplayDisneyFont.ttf', 30, 1.15, 'sineInOut');
@@ -11660,6 +11662,7 @@ class PlayState extends MusicBeatState
 							FlxTween.tween(camNotes, {alpha: 0}, 1);
 							FlxTween.tween(camHUD, {alpha: 0}, 1);
 
+						//dunno if it's just me, but i feel like he should be saying "Do you think" instead of "You REALLY think" - SonicFan0208
 						case 381: manageLyrics('relapse2NEW-pixel', 'You REALLY think this is...', 'freeplayDisneyFont.ttf', 30, 1.1, 'sineInOut');
 						case 384: manageLyrics('relapse2NEW-pixel', '...some kind of...', 'freeplayDisneyFont.ttf', 30, 1.4, 'sineInOut');
 						case 388: manageLyrics('relapse2NEW-pixel', '...silly little GAME?', 'freeplayDisneyFont.ttf', 30, 1.15, 'sineInOut');

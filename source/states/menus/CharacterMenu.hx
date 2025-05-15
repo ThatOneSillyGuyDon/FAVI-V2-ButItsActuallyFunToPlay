@@ -55,8 +55,8 @@ class CharacterMenu extends MusicBeatState
         bg.antialiasing = ClientPrefs.globalAntialiasing;
         add(bg);
 
-        character = new FlxSprite().loadGraphic(Paths.image(path + 'characters/isolatedMick'));
-        character.screenCenter().x -= 300;
+        character = new FlxSprite(340, 360).loadGraphic(Paths.image(path + 'characters/isolatedMick'));
+        //character.screenCenter().x -= 300; apparently this didn't work when i tried to compile so...
         character.setGraphicSize(Std.int(character.width * .75));
         character.angle = 6;
         character.antialiasing = ClientPrefs.globalAntialiasing;
