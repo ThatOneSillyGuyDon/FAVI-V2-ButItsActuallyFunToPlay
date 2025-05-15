@@ -1,8 +1,5 @@
 package states;
 
-import lime.app.Application;
-import flixel.addons.transition.FlxTransitionableState;
-
 class OutdatedState extends MusicBeatState
 {
 	public static var leftState:Bool = false;

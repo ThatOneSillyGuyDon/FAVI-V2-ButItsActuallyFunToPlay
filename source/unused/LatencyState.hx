@@ -1,4 +1,6 @@
-package unused;
+package;
+
+import flixel.FlxState;
 
 class LatencyState extends FlxState
 {
@@ -26,7 +28,7 @@ class LatencyState extends FlxState
 		strumLine = new FlxSprite(FlxG.width / 2, 100).makeGraphic(FlxG.width, 5);
 		add(strumLine);
 
-		Conductor.bpm = (120);
+		Conductor.changeBPM(120);
 
 		super.create();
 	}

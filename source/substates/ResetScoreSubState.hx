@@ -1,14 +1,19 @@
 package substates;
 
+import backend.WeekData;
+import backend.Highscore;
+
+import flixel.FlxSubState;
+import objects.HealthIcon;
+
 class ResetScoreSubState extends MusicBeatSubstate
 {
 	var bg:FlxSprite;
-	var optionsCam:FlxCamera = new FlxCamera();
-	var alphabetArray:Array<FlxText> = [];
+	var alphabetArray:Array<Alphabet> = [];
 	var icon:HealthIcon;
 	var onYes:Bool = false;
-	var yesText:FlxText;
-	var noText:FlxText;
+	var yesText:Alphabet;
+	var noText:Alphabet;
 
 	var song:String;
 	var difficulty:Int;
@@ -20,66 +25,48 @@ class ResetScoreSubState extends MusicBeatSubstate
 		this.song = song;
 		this.difficulty = difficulty;
 		this.week = week;
-		FlxG.cameras.add(optionsCam,false);
-		optionsCam.bgColor = FlxColor.TRANSPARENT;
+
 		super();
 
 		var name:String = song;
 		if(week > -1) {
 			name = WeekData.weeksLoaded.get(WeekData.weeksList[week]).weekName;
 		}
-		name += ' (' + CoolUtil.difficulties[difficulty] + ')?';
+		name += ' (' + Difficulty.getString(difficulty) + ')?';
 
 		bg = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		bg.alpha = 0;
-		bg.camera = optionsCam;
 		bg.scrollFactor.set();
 		add(bg);
 
 		var tooLong:Float = (name.length > 18) ? 0.8 : 1; //Fucking Winter Horrorland
-		var text:FlxText = new FlxText(0, 180, FlxG.width, "Reset the score of", 60);
-		text.setFormat(Paths.font("DisneyFont.ttf"), 60, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		var text:Alphabet = new Alphabet(0, 180, "Reset the score of", true);
 		text.screenCenter(X);
 		alphabetArray.push(text);
-		text.borderSize = 1.25;
 		text.alpha = 0;
-		text.camera = optionsCam;
 		add(text);
-
-		var text:FlxText = new FlxText(0, text.y + 90, FlxG.width, name, 60);
-		text.setFormat(Paths.font("DisneyFont.ttf"), 60, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		text.scale.x = tooLong;
-		text.camera = optionsCam;
+		var text:Alphabet = new Alphabet(0, text.y + 90, name, true);
+		text.scaleX = tooLong;
 		text.screenCenter(X);
 		if(week == -1) text.x += 60 * tooLong;
-		text.borderSize = 1.25;
 		alphabetArray.push(text);
-
 		text.alpha = 0;
 		add(text);
 		if(week == -1) {
 			icon = new HealthIcon(character);
 			icon.setGraphicSize(Std.int(icon.width * tooLong));
 			icon.updateHitbox();
-			icon.camera = optionsCam;
 			icon.setPosition(text.x - icon.width + (10 * tooLong), text.y - 30);
 			icon.alpha = 0;
 			add(icon);
 		}
 
-		yesText = new FlxText(0, text.y + 150, FlxG.width, "Yes", 60);
-		yesText.setFormat(Paths.font("DisneyFont.ttf"), 60, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		yesText = new Alphabet(0, text.y + 150, 'Yes', true);
 		yesText.screenCenter(X);
-		yesText.borderSize = 1.25;
-		yesText.camera = optionsCam;
 		yesText.x -= 200;
 		add(yesText);
-
-		noText = new FlxText(0, text.y + 150, FlxG.width, "No", 60);
-		noText.setFormat(Paths.font("DisneyFont.ttf"), 60, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		noText = new Alphabet(0, text.y + 150, 'No', true);
 		noText.screenCenter(X);
-		noText.borderSize = 1.25;
-		noText.camera = optionsCam;
 		noText.x += 200;
 		add(noText);
 		updateOptions();
@@ -103,7 +90,6 @@ class ResetScoreSubState extends MusicBeatSubstate
 		}
 		if(controls.BACK) {
 			FlxG.sound.play(Paths.sound('cancelMenu'), 1);
-			FlxG.cameras.remove(optionsCam);
 			close();
 		} else if(controls.ACCEPT) {
 			if(onYes) {
@@ -114,7 +100,6 @@ class ResetScoreSubState extends MusicBeatSubstate
 				}
 			}
 			FlxG.sound.play(Paths.sound('cancelMenu'), 1);
-			FlxG.cameras.remove(optionsCam);
 			close();
 		}
 		super.update(elapsed);

@@ -2,15 +2,17 @@ package states;
 
 import lime.app.Promise;
 import lime.app.Future;
-import flixel.graphics.frames.FlxAtlasFrames;
+
+import flixel.FlxState;
 
 import openfl.utils.Assets;
 import lime.utils.Assets as LimeAssets;
 import lime.utils.AssetLibrary;
 import lime.utils.AssetManifest;
 
+import backend.StageData;
+
 import haxe.io.Path;
-import flixel.util.FlxTimer;
 
 class LoadingState extends MusicBeatState
 {
@@ -21,32 +23,6 @@ class LoadingState extends MusicBeatState
 	// I'd recommend doing it on both actually lol
 	
 	// TO DO: Make this easier
-
-	var funi:Array<String> = [
-		"Loading...",
-		"Getting the stuff...",
-		"Please wait...",
-		"Wait please...",
-		"Please hold...",
-		"Loading content...",
-		"Load...",
-		"Please load...",
-		"Can you wait...?",
-		"Getting the shits...",
-		"Grabbing da shits...",
-		"Generating world...",
-		"Hold your horses...",
-		"For fuck sakes, wait damnit...",
-		"Hold on, the game ain't going anywhere...",
-		"Bitch, please wait...",
-		"Just wait, please...",
-		"Please wait on the line...",
-		"Preparing some cool stuff...",
-		"So cool...",
-		"Loading some cool shit...",
-		"Human, i remeber your loading...",
-		"I am loading..."
-	];
 	
 	var target:FlxState;
 	var stopMusic = false;
@@ -64,31 +40,22 @@ class LoadingState extends MusicBeatState
 
 	var funkay:FlxSprite;
 	var loadBar:FlxSprite;
-
-	var loadingImage:FlxSprite;
-	var iconAnimated:FlxSprite;
-
 	override function create()
 	{
+		var bg:FlxSprite = new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height, 0xffcaff4d);
+		bg.antialiasing = ClientPrefs.data.antialiasing;
+		add(bg);
+		funkay = new FlxSprite(0, 0).loadGraphic(Paths.getPath('images/funkay.png', IMAGE));
+		funkay.setGraphicSize(0, FlxG.height);
+		funkay.updateHitbox();
+		add(funkay);
+		funkay.antialiasing = ClientPrefs.data.antialiasing;
+		funkay.scrollFactor.set();
+		funkay.screenCenter();
 
-		lime.app.Application.current.window.title = 'Funkin.avi - ${funi[FlxG.random.int(0, funi.length-1)]}';
-		
-		loadingImage = new FlxSprite(0,0);
-		loadingImage.loadGraphic(Paths.image("Funkin_avi/loadingScreen/loadingScreen"));
-		loadingImage.screenCenter();
-		loadingImage.antialiasing = ClientPrefs.globalAntialiasing;
-		add(loadingImage);
-
-		iconAnimated = new FlxSprite(0,0);
-		iconAnimated.antialiasing = ClientPrefs.globalAntialiasing;
-		iconAnimated.scrollFactor.set(0, 0);
-		iconAnimated.scale.set(0.2, 0.2);
-		iconAnimated.x += 880;
-		iconAnimated.y += 330;
-		iconAnimated.frames = Paths.getSparrowAtlas('Funkin_avi/loadingScreen/loadingicon');
-		iconAnimated.animation.addByPrefix('loadBitch', "loadingicon", 16, true);
-		iconAnimated.animation.play('loadBitch');
-		add(iconAnimated);
+		loadBar = new FlxSprite(0, FlxG.height - 20).makeGraphic(FlxG.width, 10, 0xffff16d2);
+		loadBar.screenCenter(X);
+		add(loadBar);
 		
 		initSongsManifest().onComplete
 		(
@@ -96,14 +63,13 @@ class LoadingState extends MusicBeatState
 			{
 				callbacks = new MultiCallback(onLoad);
 				var introComplete = callbacks.add("introComplete");
-				/*if (PlayState.SONG != null) {
+				if (PlayState.SONG != null) {
 					checkLoadSong(getSongPath());
 					if (PlayState.SONG.needsVoices)
 						checkLoadSong(getVocalPath());
-				}*/
-				checkLibrary("shared");
+				}
 				if(directory != null && directory.length > 0 && directory != 'shared') {
-					checkLibrary(directory);
+					checkLibrary('week_assets');
 				}
 
 				var fadeTime = 0.5;
@@ -134,7 +100,7 @@ class LoadingState extends MusicBeatState
 		{
 			@:privateAccess
 			if (!LimeAssets.libraryPaths.exists(library))
-				throw "Missing library: " + library;
+				throw new haxe.Exception("Missing library: " + library);
 
 			var callback = callbacks.add("library:" + library);
 			Assets.loadLibrary(library).onComplete(function (_) { callback(); });
@@ -144,6 +110,18 @@ class LoadingState extends MusicBeatState
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+		funkay.setGraphicSize(Std.int(0.88 * FlxG.width + 0.9 * (funkay.width - 0.88 * FlxG.width)));
+		funkay.updateHitbox();
+		if(controls.ACCEPT)
+		{
+			funkay.setGraphicSize(Std.int(funkay.width + 60));
+			funkay.updateHitbox();
+		}
+
+		if(callbacks != null) {
+			targetShit = FlxMath.remapToRange(callbacks.numRemaining / callbacks.length, 1, 0, 0, 1);
+			loadBar.scale.x += 0.5 * (targetShit - loadBar.scale.x);
+		}
 	}
 	
 	function onLoad()
@@ -180,21 +158,25 @@ class LoadingState extends MusicBeatState
 		Paths.setCurrentLevel(directory);
 		trace('Setting asset folder to ' + directory);
 
+		/*#if NO_PRELOAD_ALL
 		var loaded:Bool = false;
 		if (PlayState.SONG != null) {
-			loaded = isSoundLoaded(getSongPath()) && (!PlayState.SONG.needsVoices || isSoundLoaded(getVocalPath())) && isLibraryLoaded("shared") && isLibraryLoaded(directory);
+			loaded = isSoundLoaded(getSongPath()) && (!PlayState.SONG.needsVoices || isSoundLoaded(getVocalPath())) && isLibraryLoaded('week_assets');
 		}
 		
 		if (!loaded)
 			return new LoadingState(target, stopMusic, directory);
+		#end*/
 		if (stopMusic && FlxG.sound.music != null)
 			FlxG.sound.music.stop();
-
+		
 		return target;
 	}
-
+	
+	/*#if NO_PRELOAD_ALL
 	static function isSoundLoaded(path:String):Bool
 	{
+		trace(path);
 		return Assets.cache.hasSound(path);
 	}
 	
@@ -202,6 +184,7 @@ class LoadingState extends MusicBeatState
 	{
 		return Assets.getLibrary(library) != null;
 	}
+	#end*/
 	
 	override function destroy()
 	{

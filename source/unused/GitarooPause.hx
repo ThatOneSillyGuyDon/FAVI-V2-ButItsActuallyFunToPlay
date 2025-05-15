@@ -1,4 +1,4 @@
-package unused;
+package;
 
 import flixel.graphics.frames.FlxAtlasFrames;
 

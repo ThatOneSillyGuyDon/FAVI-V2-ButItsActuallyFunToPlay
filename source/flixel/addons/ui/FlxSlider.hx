@@ -13,10 +13,6 @@ import flixel.util.FlxSpriteUtil;
 import flixel.util.FlxColor;
 
 /**
- * Modified version of FlxSlider just so I can manipulate the
- * thickness of the handle separately from the bar itself
- *  -DEMOLITIONDON96
- * 
  * A slider GUI element for float and integer manipulation.
  * @author Gama11
  */
@@ -137,12 +133,6 @@ class FlxSlider extends FlxSpriteGroup
 	var _thickness:Int;
 
 	/**
-	 * The thickness of the handle - make sure to call createSlider() if you
-	 * want to change this.
-	 */
-	var _handleThickness:Int;
-
-	/**
 	 * The color of the slider - make sure to call createSlider() if you
 	 * want to change this.
 	 */
@@ -186,12 +176,11 @@ class FlxSlider extends FlxSpriteGroup
 	 * @param	Width 			Width of the slider
 	 * @param	Height 			Height of the slider
 	 * @param	Thickness 		Thickness of the slider
-	 * @param 	HandleThickness			Thickness of the handle
 	 * @param	Color 			Color of the slider background and all texts except for valueText showing the current value
 	 * @param	HandleColor 	Color of the slider handle and the valueText showing the current value
 	 */
 	public function new(Object:Dynamic, VarString:String, X:Float = 0, Y:Float = 0, MinValue:Float = 0, MaxValue:Float = 10, Width:Int = 100, Height:Int = 15,
-			Thickness:Int = 3, HandleThickness:Int = 3, Color:Int = 0xFF000000, HandleColor:Int = 0xFF828282)
+			Thickness:Int = 3, Color:Int = 0xFF000000, HandleColor:Int = 0xFF828282)
 	{
 		super();
 
@@ -221,7 +210,6 @@ class FlxSlider extends FlxSpriteGroup
 		_width = Width;
 		_height = Height;
 		_thickness = Thickness;
-		_handleThickness = HandleThickness;
 		_color = Color;
 		_handleColor = HandleColor;
 
@@ -245,7 +233,7 @@ class FlxSlider extends FlxSpriteGroup
 		FlxSpriteUtil.drawLine(body, 0, _height / 2, _width, _height / 2, {color: _color, thickness: _thickness});
 
 		handle = new FlxSprite(offset.x, offset.y);
-		handle.makeGraphic(_handleThickness, _height, _handleColor);
+		handle.makeGraphic(_thickness, _height, _handleColor);
 		handle.scrollFactor.set();
 
 		// Creating the texts
