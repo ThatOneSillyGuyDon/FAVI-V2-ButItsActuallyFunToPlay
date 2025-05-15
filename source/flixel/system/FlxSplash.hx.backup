@@ -14,6 +14,8 @@ class FlxSplash extends FlxState
 {
 	public static var nextState:Class<FlxState>;
 
+	////I'M ONLY MAKING IT AS A BACKUP BECAUSE ITS BROKEN FOR ME!!! - Sonic_fan208/goober man.
+
 	/**
 	 * @since 4.8.0
 	 */
