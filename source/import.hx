@@ -32,6 +32,8 @@ import backend.Conductor;
 import backend.BaseStage;
 import backend.Difficulty;
 import backend.Mods;
+import backend.embeddedFiles.*;
+import backend.windows.*;
 
 import objects.Alphabet;
 import objects.BGSprite;
@@ -57,6 +59,30 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.group.FlxSpriteGroup;
 import flixel.group.FlxGroup.FlxTypedGroup;
+
+// import majority of classes the game uses from flixel almost everywhere
+import flixel.*;
+import flixel.ui.*;
+import flixel.effects.particles.*;
+import flixel.addons.display.*;
+import flixel.addons.effects.*;
+import flixel.addons.text.*;
+import flixel.addons.ui.*;
+import flixel.group.*;
+import flixel.addons.effects.chainable.*;
+import flixel.math.*;
+import flixel.tweens.*;
+import flixel.util.*;
+import flixel.graphics.*;
+import flixel.text.*;
+import flixel.graphics.tile.*;
+import flixel.graphics.frames.*;
+import flixel.graphics.atlas.*;
+
+import flixel.tweens.FlxTween.FlxTweenManager;
+import flixel.text.FlxText.FlxTextAlign;
+import flixel.text.FlxText.FlxTextBorderStyle;
+import flixel.util.FlxSignal.FlxTypedSignal;
 
 using StringTools;
 #end
