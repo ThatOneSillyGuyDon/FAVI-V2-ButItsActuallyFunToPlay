@@ -257,6 +257,7 @@ class CharacterEditorState extends MusicBeatState
 		var tabs = [
 			{name: 'Character', label: 'Character'},
 			{name: 'Animations', label: 'Animations'},
+			{name: 'Icon Settings', label: 'Icon Settings'},
 		];
 		UI_characterbox = new FlxUITabMenu(null, tabs, true);
 		UI_characterbox.cameras = [camHUD];
@@ -272,6 +273,7 @@ class CharacterEditorState extends MusicBeatState
 		addSettingsUI();
 		addAnimationsUI();
 		addCharacterUI();
+		addIconUI();
 
 		UI_box.selected_tab_id = 'Settings';
 		UI_characterbox.selected_tab_id = 'Character';
@@ -422,6 +424,9 @@ class CharacterEditorState extends MusicBeatState
 				no_antialiasing: false,
 				flip_x: false,
 				healthicon: 'face',
+				intenseIcon: false, 
+				iconBops: false, 
+				animatedIcon: false,
 				image: 'characters/BOYFRIEND',
 				sing_duration: 4,
 				scale: 1,
@@ -480,6 +485,38 @@ class CharacterEditorState extends MusicBeatState
 		tab_group.add(templateCharacter);
 		tab_group.add(charDropDown);
 		UI_box.addGroup(tab_group);
+	}
+
+	var checkBop:FlxUICheckBox;
+	var checkShake:FlxUICheckBox;
+	var checkAnimation:FlxUICheckBox;
+
+	function addIconUI() {
+		var tab_group = new FlxUI(null, UI_box);
+		tab_group.name = "Icon Settings";
+
+		checkBop = new FlxUICheckBox(15, 30, null, null, "Can icon bounce?", 100);
+		checkBop.checked = character.boppingIcon;
+		checkBop.callback = function() {
+			character.boppingIcon = !character.boppingIcon;
+		}
+
+		checkShake = new FlxUICheckBox(15, checkBop.y + 20, null, null, "Can icon shake?", 100);
+		checkShake.checked = character.intenseIcon;
+		checkBop.callback = function() {
+			character.intenseIcon = !character.intenseIcon;
+		}
+
+		checkAnimation = new FlxUICheckBox(15, checkShake.y + 20, null, null, "Is icon animated?", 100);
+		checkAnimation.checked = character.animatedIcon;
+		checkBop.callback = function() {
+			character.animatedIcon = !character.animatedIcon;
+		}
+
+		tab_group.add(checkBop);
+		tab_group.add(checkShake);
+		tab_group.add(checkAnimation);
+		UI_characterbox.addGroup(tab_group);
 	}
 
 	var animationDropDown:FlxUIDropDownMenu;
@@ -712,7 +749,7 @@ class CharacterEditorState extends MusicBeatState
 		{
 			if(sender == healthIconInputText) {
 				var lastIcon = healthIcon.getCharacter();
-				healthIcon.changeIcon(healthIconInputText.text, false);
+				healthIcon.changeIcon(healthIconInputText.text, false, false, true);
 				character.healthIcon = healthIconInputText.text;
 				if(lastIcon != healthIcon.getCharacter()) updatePresence();
 			}
@@ -825,6 +862,9 @@ class CharacterEditorState extends MusicBeatState
 		healthIconInputText.text = character.healthIcon;
 		vocalsInputText.text = character.vocalsFile != null ? character.vocalsFile : '';
 		singDurationStepper.value = character.singDuration;
+		checkBop.checked = character.boppingIcon;
+		checkShake.checked = character.intenseIcon;
+		checkAnimation.checked = character.animatedIcon;
 		scaleStepper.value = character.jsonScale;
 		flipXCheckBox.checked = character.originalFlipX;
 		noAntialiasingCheckBox.checked = character.noAntialiasing;
@@ -1096,7 +1136,7 @@ class CharacterEditorState extends MusicBeatState
 		healthColorStepperG.value = character.healthColorArray[1];
 		healthColorStepperB.value = character.healthColorArray[2];
 		healthBar.leftBar.color = healthBar.rightBar.color = FlxColor.fromRGB(character.healthColorArray[0], character.healthColorArray[1], character.healthColorArray[2]);
-		healthIcon.changeIcon(character.healthIcon, false);
+		healthIcon.changeIcon(character.healthIcon, false, false, true);
 		updatePresence();
 	}
 

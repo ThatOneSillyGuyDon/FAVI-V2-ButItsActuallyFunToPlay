@@ -167,11 +167,23 @@ class Note extends FlxSkewedSprite
 	}
 
 	private function set_noteType(value:String):String {
-		noteSplashData.texture = PlayState.SONG != null ? PlayState.SONG.splashSkin : 'noteSplashes';
+		noteSplashData.texture = PlayState.SONG.splashSkin;
+		switch (PlayState.SONG.song)
+		{
+			case "Devilish Deal" | "Isolated" | "Lunacy" | "Delusional" | "Hunted" | "Laugh Track" | "Twisted Grins" | "Rotten Petals" | "Seeking Freedom" | "Am I Real?" | "Your Final Bow" | "The Wretched Tilezones (Simple Life)" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "Ahh the Scary (Somber Night)" | "Curtain Call": noteSplashData.texture = "NOTE_splashesCartoon";
+			case "Mercy": noteSplashData.texture = "NOTE_splashWalt";
+			case "Birthday": noteSplashData.texture = "Birthday_splash";
+			default: noteSplashData.texture = "noteSplashes";
+		}
 		defaultRGB();
 
 		if(noteData > -1 && noteType != value) {
 			switch(value) {
+				case 'Error Note':
+					ignoreNote = mustPress;
+					reloadNote('ERRORNOTE_assets');
+					noteSplashData.texture = null;
+					lowPriority = true;
 				case 'Hurt Note':
 					ignoreNote = mustPress;
 					//reloadNote('HURTNOTE_assets');
@@ -254,8 +266,11 @@ class Note extends FlxSkewedSprite
 
 		if (isSustainNote && prevNote != null)
 		{
-			alpha = 0.6;
-			multAlpha = 0.6;
+			if (PlayState.SONG.song != "Bless")
+			{
+				alpha = 0.6;
+				multAlpha = 0.6;
+			}
 			hitsoundDisabled = true;
 			if(ClientPrefs.data.downScroll) flipY = true;
 
@@ -329,7 +344,35 @@ class Note extends FlxSkewedSprite
 
 		var skin:String = texture + postfix;
 		if(texture.length < 1) {
-			skin = PlayState.SONG != null ? PlayState.SONG.arrowSkin : null;
+			skin = PlayState.SONG.arrowSkin;
+			if(skin == null || skin.length < 1) {
+				switch (PlayState.SONG.song)
+				{
+					case "Rotten Petals" | "Curtain Call" | "Seeking Freedom" | "A True Monster" | "Am I Real?" | "Your Final Bow" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "The Wretched Tilezones (Simple Life)" | "Ahh the Scary (Somber Night)":
+						switch (FreeplayState.maniaSkin)
+						{
+							case 0: skin = "NOTE_assets-MANIA";
+							case 1: skin = "NOTE_assets-MANIABAR";
+							case 2: skin = "NOTE_assets-MANIACIRCLE";
+						}
+					case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Laugh Track":
+						skin = "NOTE_assets-CARTOON";
+					case "Mercy":
+						skin = "NOTE_assets-MERCY";
+					case "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Malfunction Legacy" | "Twisted Grins Legacy" | "Cycled Sins Legacy" | "Mercy Legacy" | "Delutrance" | "Malfunction":
+						skin = "NOTE_assets";
+					case "Cycled Sins":
+						skin = "NOTE_assets-SIN";
+					case "Dont Cross":
+						skin = "NOTE_assets-CROSS";
+					case "War Dilemma":
+						skin = "NOTE_assets-WAR";
+					case "Birthday":
+						skin = "NOTE_assets-BIRTHDAY";
+					default:
+						skin = "NOTE_assets-DEFAULTSKIN";
+				}
+			}
 			if(skin == null || skin.length < 1)
 				skin = defaultNoteSkin + postfix;
 		}
@@ -405,7 +448,17 @@ class Note extends FlxSkewedSprite
 		}
 		else animation.addByPrefix(colArray[noteData] + 'Scroll', colArray[noteData] + '0');
 
-		setGraphicSize(Std.int(width * 0.7));
+		var s = 0.7;
+		switch (PlayState.SONG.song)
+		{
+			case "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Malfunction Legacy" | "Cycled Sins Legacy" | "Mercy Legacy" | "Delutrance" | "Malfunction":
+				s = 0.7;
+			case "Dont Cross" | "Mercy":
+			   s = 0.64;
+			default:
+				s = 0.6;
+		}
+		setGraphicSize(Std.int(width * s));
 		updateHitbox();
 	}
 

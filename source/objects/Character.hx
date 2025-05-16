@@ -11,7 +11,6 @@ import haxe.Json;
 
 import backend.Song;
 import backend.Section;
-import states.stages.objects.TankmenBG;
 
 typedef CharacterFile = {
 	var animations:Array<AnimArray>;
@@ -19,6 +18,9 @@ typedef CharacterFile = {
 	var scale:Float;
 	var sing_duration:Float;
 	var healthicon:String;
+	var animatedIcon:Bool;
+	var intenseIcon:Bool;
+	var iconBops:Bool;
 
 	var position:Array<Float>;
 	var camera_position:Array<Float>;
@@ -64,6 +66,9 @@ class Character extends FlxSprite
 	public var skipDance:Bool = false;
 
 	public var healthIcon:String = 'face';
+	public var animatedIcon:Bool = false;
+	public var intenseIcon:Bool = false;
+	public var boppingIcon:Bool = true;
 	public var animationsArray:Array<AnimArray> = [];
 
 	public var positionArray:Array<Float> = [0, 0];
@@ -179,6 +184,9 @@ class Character extends FlxSprite
 
 		// data
 		healthIcon = json.healthicon;
+		animatedIcon = json.animatedIcon;
+		intenseIcon = json.intenseIcon;
+		boppingIcon = json.iconBops;
 		singDuration = json.sing_duration;
 		flipX = (json.flip_x != isPlayer);
 		healthColorArray = (json.healthbar_colors != null && json.healthbar_colors.length > 2) ? json.healthbar_colors : [161, 161, 161];
@@ -398,7 +406,6 @@ class Character extends FlxSprite
 					animationNotes.push(songNotes);
 				}
 			}
-			TankmenBG.animationNotes = animationNotes;
 			animationNotes.sort(sortAnims);
 		}
 		catch(e:Dynamic) {}

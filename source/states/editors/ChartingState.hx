@@ -2637,17 +2637,20 @@ class ChartingState extends MusicBeatState
 
 	function updateHeads():Void
 	{
+		var healthIconP1:String = loadHealthIconFromCharacter(_song.player1);
+		var healthIconP2:String = loadHealthIconFromCharacter(_song.player2);
+		
 		if (_song.notes[curSec].mustHitSection)
 		{
-			leftIcon.changeIcon(characterData.iconP1);
-			rightIcon.changeIcon(characterData.iconP2);
-			if (_song.notes[curSec].gfSection) leftIcon.changeIcon('gf');
+			leftIcon.changeIcon(healthIconP1, isAnimated, isIntense, true);
+			rightIcon.changeIcon(healthIconP2, isAnimated, isIntense, true);
+			if (_song.notes[curSec].gfSection) leftIcon.changeIcon('gf', false, false, true);
 		}
 		else
 		{
-			leftIcon.changeIcon(characterData.iconP2);
-			rightIcon.changeIcon(characterData.iconP1);
-			if (_song.notes[curSec].gfSection) leftIcon.changeIcon('gf');
+			leftIcon.changeIcon(healthIconP2, isAnimated, isIntense, true);
+			rightIcon.changeIcon(healthIconP1, isAnimated, isIntense, true);
+			if (_song.notes[curSec].gfSection) leftIcon.changeIcon('gf', false, false, true);
 		}
 	}
 
@@ -2677,6 +2680,38 @@ class ChartingState extends MusicBeatState
 		var rawJson = OpenFlAssets.getText(path);
 		#end
 		return cast Json.parse(rawJson);
+	}
+
+	var isAnimated:Bool = false;
+	var isIntense:Bool = false;
+
+	function loadHealthIconFromCharacter(char:String) {
+		var characterPath:String = 'characters/' + char + '.json';
+		#if MODS_ALLOWED
+		var path:String = Paths.modFolders(characterPath);
+		if (!FileSystem.exists(path)) {
+			path = Paths.getSharedPath(characterPath);
+		}
+
+		if (!FileSystem.exists(path))
+		#else
+		var path:String = Paths.getSharedPath(characterPath);
+		if (!OpenFlAssets.exists(path))
+		#end
+		{
+			path = Paths.getSharedPath('characters/' + Character.DEFAULT_CHARACTER + '.json'); //If a character couldn't be found, change him to BF just to prevent a crash
+		}
+
+		#if MODS_ALLOWED
+		var rawJson = File.getContent(path);
+		#else
+		var rawJson = OpenFlAssets.getText(path);
+		#end
+
+		var json:Character.CharacterFile = cast Json.parse(rawJson);
+		isAnimated = json.animatedIcon;
+		isIntense = json.intenseIcon;
+		return json.healthicon;
 	}
 
 	function updateNoteUI():Void
