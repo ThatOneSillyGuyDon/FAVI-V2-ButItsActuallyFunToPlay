@@ -252,6 +252,37 @@ class Paths
 		return null;
 	}
 
+	inline static public function imageAlbum(key:String, ?library:String):FlxGraphic
+	{
+		// streamlined the assets process more
+		var returnAsset:FlxGraphic = returnAlbumGraphic('Funkin_avi/pause/songs/$key', library);
+		return returnAsset;
+	}
+
+	public static function returnAlbumGraphic(key:String, ?library:String, ?allowGPU:Bool = true) {
+		var bitmap:BitmapData = null;
+		var file:String = null;
+		{
+			file = getPath('images/$key.png', IMAGE, library);
+			if (currentTrackedAssets.exists(file))
+			{
+				localTrackedAssets.push(file);
+				return currentTrackedAssets.get(file);
+			}
+			else if (OpenFlAssets.exists(file, IMAGE))
+				bitmap = OpenFlAssets.getBitmapData(file);
+		}
+
+		if (bitmap != null)
+		{
+			var retVal = cacheBitmap(file, bitmap, allowGPU);
+			if(retVal != null) return retVal;
+		}
+
+		trace('$file returned null, using placeholder album!');
+		return imageAlbum('unknown-song');
+	}
+
 	static public function cacheBitmap(file:String, ?bitmap:BitmapData = null, ?allowGPU:Bool = true)
 	{
 		if(bitmap == null)

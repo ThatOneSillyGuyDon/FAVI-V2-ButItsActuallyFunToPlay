@@ -8,7 +8,9 @@ class Difficulty
 		'Hard'
 	];
 	public static var list:Array<String> = [];
-	private static var defaultDifficulty(default, never):String = 'Normal'; //The chart that has no suffix and starting difficulty on Freeplay/Story Mode
+	public static var defaultDifficulty(default, never):String = 'Normal'; //The chart that has no suffix and starting difficulty on Freeplay/Story Mode
+
+	public static var difficulties:Array<String> = [];
 
 	inline public static function getFilePath(num:Null<Int> = null)
 	{
@@ -24,6 +26,11 @@ class Difficulty
 			fileSuffix = '';
 		}
 		return Paths.formatToSongPath(fileSuffix);
+	}
+
+	public static function difficultyString():String
+	{
+		return difficulties[PlayState.storyDifficulty].toUpperCase();
 	}
 
 	inline public static function loadFromWeek(week:WeekData = null)

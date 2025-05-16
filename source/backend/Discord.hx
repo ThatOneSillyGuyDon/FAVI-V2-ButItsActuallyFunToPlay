@@ -8,19 +8,14 @@ import hxdiscord_rpc.Types;
 class DiscordClient
 {
 	public static var isInitialized:Bool = false;
-	private static final _defaultID:String = "863222024192262205";
+	private static final _defaultID:String = "1297021927788904491";
 	public static var clientID(default, set):String = _defaultID;
 	private static var presence:DiscordRichPresence = DiscordRichPresence.create();
-
-	public static function check()
-	{
-		if(ClientPrefs.data.discordRPC) initialize();
-		else if(isInitialized) shutdown();
-	}
+	public static var discordName:String = "None";
 	
 	public static function prepare()
 	{
-		if (!isInitialized && ClientPrefs.data.discordRPC)
+		if (!isInitialized)
 			initialize();
 
 		Application.current.window.onClose.add(function() {
@@ -32,14 +27,20 @@ class DiscordClient
 		Discord.Shutdown();
 		isInitialized = false;
 	}
-	
+
 	private static function onReady(request:cpp.RawConstPointer<DiscordUser>):Void {
 		var requestPtr:cpp.Star<DiscordUser> = cpp.ConstPointer.fromRaw(request).ptr;
 
 		if (Std.parseInt(cast(requestPtr.discriminator, String)) != 0) //New Discord IDs/Discriminator system
+		{
 			trace('(Discord) Connected to User (${cast(requestPtr.username, String)}#${cast(requestPtr.discriminator, String)})');
+			discordName = '${cast(requestPtr.username, String)}#${cast(requestPtr.discriminator, String)}';
+		}
 		else //Old discriminators
+		{
 			trace('(Discord) Connected to User (${cast(requestPtr.username, String)})');
+			discordName = '${cast(requestPtr.username, String)}';
+		}
 
 		changePresence();
 	}
@@ -79,7 +80,7 @@ class DiscordClient
 		isInitialized = true;
 	}
 
-	public static function changePresence(?details:String = 'In the Menus', ?state:Null<String>, ?smallImageKey : String, ?hasStartTimestamp : Bool, ?endTimestamp: Float)
+	public static function changePresence(?details:String = 'Starting Game...', ?state:Null<String>, ?largeImageKey:String = 'default', ?smallImageKey : String, ?hasStartTimestamp : Bool, ?endTimestamp: Float)
 	{
 		var startTimestamp:Float = 0;
 		if (hasStartTimestamp) startTimestamp = Date.now().getTime();
@@ -87,14 +88,25 @@ class DiscordClient
 
 		presence.details = details;
 		presence.state = state;
-		presence.largeImageKey = 'icon';
-		presence.largeImageText = "Engine Version: " + states.MainMenuState.psychEngineVersion;
-		presence.smallImageKey = smallImageKey;
+		presence.largeImageKey = largeImageKey;
+		presence.largeImageText = "Funkin.avi";
+		presence.smallImageKey =  smallImageKey;
 		// Obtained times are in milliseconds so they are divided so Discord can use it
 		presence.startTimestamp = Std.int(startTimestamp / 1000);
 		presence.endTimestamp = Std.int(endTimestamp / 1000);
-		updatePresence();
 
+		var button1:DiscordButton = DiscordButton.create();
+        button1.label = "GameJolt Page";
+		button1.url = "https://gamejolt.com/games/funkin-avi/710505";
+
+        var button2:DiscordButton = DiscordButton.create();
+        button2.label = "Discord Server";
+        button2.url = "https://discord.gg/qTZYpP4hg3";
+
+		presence.buttons[0] = button2;
+		presence.buttons[1] = button1;
+
+		updatePresence();
 		//trace('Discord RPC Updated. Arguments: $details, $state, $smallImageKey, $hasStartTimestamp, $endTimestamp');
 	}
 
@@ -117,29 +129,4 @@ class DiscordClient
 		}
 		return newID;
 	}
-
-	#if MODS_ALLOWED
-	public static function loadModRPC()
-	{
-		var pack:Dynamic = Mods.getPack();
-		if(pack != null && pack.discordRPC != null && pack.discordRPC != clientID)
-		{
-			clientID = pack.discordRPC;
-			//trace('Changing clientID! $clientID, $_defaultID');
-		}
-	}
-	#end
-
-	#if LUA_ALLOWED
-	public static function addLuaCallbacks(lua:State) {
-		Lua_helper.add_callback(lua, "changeDiscordPresence", function(details:String, state:Null<String>, ?smallImageKey:String, ?hasStartTimestamp:Bool, ?endTimestamp:Float) {
-			changePresence(details, state, smallImageKey, hasStartTimestamp, endTimestamp);
-		});
-
-		Lua_helper.add_callback(lua, "changeDiscordClientID", function(?newID:String = null) {
-			if(newID == null) newID = _defaultID;
-			clientID = newID;
-		});
-	}
-	#end
 }

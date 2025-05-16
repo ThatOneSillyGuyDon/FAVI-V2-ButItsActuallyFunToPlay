@@ -1,6 +1,6 @@
 package options;
 
-import states.MainMenuState;
+import states.menus.MainMenuState;
 import backend.StageData;
 
 class OptionsState extends MusicBeatState

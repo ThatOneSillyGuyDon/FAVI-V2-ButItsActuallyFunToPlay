@@ -1,4 +1,4 @@
-package states;
+package states.menus;
 
 #if desktop
 import sys.thread.Thread;
@@ -24,14 +24,10 @@ import openfl.display.Bitmap;
 import openfl.display.BitmapData;
 import openfl.filters.BitmapFilter;
 import openfl.filters.ShaderFilter;
-import flixel.group.FlxGroup;
 
 import sys.FileSystem;
 import sys.io.File;
 //import flixel.graphics.FlxGraphic as FlixelGraphic;
-
-import flixel.addons.display.FlxRuntimeShader;
-import openfl.filters.ShaderFilter;
 
 class TitleState extends MusicBeatState
 {
@@ -83,7 +79,7 @@ class TitleState extends MusicBeatState
 		"Stfu, I'm playing Fortnite",
 		"Stop asking for suicidal remixes",
 		"Why did Everett & Lilith enter these horrific cartoons in the first place?",
-		//GameData.birthdayLocky == 'beaten' ? "Muckney, realest one out there." : "One of our characters is the realest one out there, but you gotta meet him first!",
+		GameData.birthdayLocky == 'beaten' ? "Muckney, realest one out there." : "One of our characters is the realest one out there, but you gotta meet him first!",
 		"We late, but we late in style",
 		"ur adopted *insert get out sfx*",
 		"MOUSE RAP. MOUSE RAP",
@@ -397,7 +393,7 @@ class TitleState extends MusicBeatState
 				keyIdx++;
 				if (keyIdx >= keyCombo.length)
 				{
-					//Main.debug = true;
+					Main.debug = true;
 					FlxG.sound.play(Paths.sound("funkinAVI/easterEggSound"));
 				}
 			}
@@ -708,7 +704,7 @@ class TitleState extends MusicBeatState
 				else if(Application.current.window.title.contains("Funkin.avi -  "))
 					{
 						Application.current.window.title = " ";
-					}/*
+					}
 					else if(Application.current.window.title.contains('Funkin.avi - Funny Date Fact...'))
 						{
 							// this one's special because we gotta prevent spoilers for the newies
@@ -719,6 +715,6 @@ class TitleState extends MusicBeatState
 							if (GameData.tgLock == 'beaten' && GameData.blessLock == 'locked')
 								Application.current.window.title = "Funkin.avi - Mr. Smiles & A Special Guest are dating, this is canon.";
 							else Application.current.window.title = "Funkin.avi - Mr. Smiles & White Noise are dating, this is canon.";
-						}*/
+						}
 		}
 }

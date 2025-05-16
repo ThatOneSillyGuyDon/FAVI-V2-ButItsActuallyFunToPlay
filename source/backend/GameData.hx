@@ -300,7 +300,7 @@ class GameData
 	public static function overrideBotplay()
 	{
 		canOverrideCPU = true;
-		ClientPrefs.gameplaySettings["botplay"] = true;
+		ClientPrefs.data.gameplaySettings["botplay"] = true;
 		MusicBeatState.switchState(new PlayState());
 	}
 
@@ -497,7 +497,7 @@ class GameData
 			case 'mortiferum risus':
 				episodeSFPLock = 'unlocked';
 			case 'affliction':
-				if (ClientPrefs.mechanics)
+				if (ClientPrefs.data.mechanics)
 					episodeWFPLock = 'unlocked';
 		}
 		saveShit();

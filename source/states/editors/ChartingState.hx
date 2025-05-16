@@ -201,6 +201,7 @@ class ChartingState extends MusicBeatState
 				events: [],
 				bpm: 150.0,
 				needsVoices: true,
+				composer: "Unknown",
 				player1: 'bf',
 				player2: 'dad',
 				gfVersion: 'gf',

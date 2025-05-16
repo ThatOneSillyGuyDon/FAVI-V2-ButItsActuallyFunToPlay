@@ -4,7 +4,7 @@ import flixel.util.FlxSave;
 import flixel.input.keyboard.FlxKey;
 import flixel.input.gamepad.FlxGamepadInputID;
 
-import states.TitleState;
+import states.menus.TitleState;
 
 // Add a variable here and it will get automatically saved
 @:structInit class SaveVariables {
@@ -75,6 +75,13 @@ import states.TitleState;
 	public var safeFrames:Float = 10;
 	public var guitarHeroSustains:Bool = true;
 	public var discordRPC:Bool = true;
+
+	//Favi Variables :)
+	public var mechanics:Bool = true;
+	public var epilepsy:Bool = true;
+	public var pauseCountdown = false;
+	public var debugInfo = false;
+	public var shaking:Bool = true;
 }
 
 class ClientPrefs {
@@ -104,7 +111,9 @@ class ClientPrefs {
 		'volume_down'	=> [NUMPADMINUS, MINUS],
 		
 		'debug_1'		=> [SEVEN],
-		'debug_2'		=> [EIGHT]
+		'debug_2'		=> [EIGHT],
+		//New debug key so you can change it
+		'debug_3'		=> [NINE]
 	];
 	public static var gamepadBinds:Map<String, Array<FlxGamepadInputID>> = [
 		'note_up'		=> [DPAD_UP, Y],
@@ -211,9 +220,11 @@ class ClientPrefs {
 		if (FlxG.save.data.mute != null)
 			FlxG.sound.muted = FlxG.save.data.mute;
 
+		/*
 		#if DISCORD_ALLOWED
 		DiscordClient.check();
 		#end
+		*/
 
 		// controls on a separate save file
 		var save:FlxSave = new FlxSave();

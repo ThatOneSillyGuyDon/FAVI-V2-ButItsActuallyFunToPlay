@@ -16,7 +16,7 @@ import openfl.display.Sprite;
 import openfl.events.Event;
 import openfl.display.StageScaleMode;
 import lime.app.Application;
-import states.TitleState;
+import states.menus.TitleState;
 
 #if linux
 import lime.graphics.Image;
@@ -49,6 +49,7 @@ class Main extends Sprite
 	};
 
 	public static var fpsVar:FPSCounter;
+	public static var debug:Bool = false;
 
 	// You can pretty much ignore everything from here on - your code should go in your states.
 

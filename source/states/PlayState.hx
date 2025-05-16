@@ -28,8 +28,6 @@ import haxe.Json;
 import cutscenes.CutsceneHandler;
 import cutscenes.DialogueBoxPsych;
 
-import states.StoryMenuState;
-import states.FreeplayState;
 import states.editors.ChartingState;
 import states.editors.CharacterEditorState;
 
@@ -387,14 +385,6 @@ class PlayState extends MusicBeatState
 		switch (curStage)
 		{
 			case 'stage': new states.stages.StageWeek1(); //Week 1
-			case 'spooky': new states.stages.Spooky(); //Week 2
-			case 'philly': new states.stages.Philly(); //Week 3
-			case 'limo': new states.stages.Limo(); //Week 4
-			case 'mall': new states.stages.Mall(); //Week 5 - Cocoa, Eggnog
-			case 'mallEvil': new states.stages.MallEvil(); //Week 5 - Winter Horrorland
-			case 'school': new states.stages.School(); //Week 6 - Senpai, Roses
-			case 'schoolEvil': new states.stages.SchoolEvil(); //Week 6 - Thorns
-			case 'tank': new states.stages.Tank(); //Week 7 - Ugh, Guns, Stress
 		}
 
 		if(isPixelStage) {
@@ -926,23 +916,44 @@ class PlayState extends MusicBeatState
 	var finishTimer:FlxTimer = null;
 
 	// For being able to mess with the sprites on Lua
+	public var countdownIntro:FlxSprite;
 	public var countdownReady:FlxSprite;
 	public var countdownSet:FlxSprite;
 	public var countdownGo:FlxSprite;
 	public static var startOnTime:Float = 0;
 
+	public var count3:FlxSound;
+	public var count2:FlxSound;
+	public var count1:FlxSound;
+	public var countGo:FlxSound;
+
 	function cacheCountdown()
 	{
 		var introAssets:Map<String, Array<String>> = new Map<String, Array<String>>();
-		var introImagesArray:Array<String> = switch(stageUI) {
-			case "pixel": ['${stageUI}UI/ready-pixel', '${stageUI}UI/set-pixel', '${stageUI}UI/date-pixel'];
-			case "normal": ["ready", "set" ,"go"];
-			default: ['${stageUI}UI/ready', '${stageUI}UI/set', '${stageUI}UI/go'];
-		}
-		introAssets.set(stageUI, introImagesArray);
-		var introAlts:Array<String> = introAssets.get(stageUI);
-		for (asset in introAlts) Paths.image(asset);
+		introAssets.set('default', ['ready', 'set', 'go']);
+		introAssets.set('pixel', ['pixelUI/ready-pixel', 'pixelUI/set-pixel', 'pixelUI/date-pixel']);
+		introAssets.set('cartoon', ['favi/countdown/prepare', 'favi/countdown/ready', 'favi/countdown/set', 'favi/countdown/go']);
+		introAssets.set('malfunction', ['favi/countdown/mal-prepare', 'favi/countdown/mal-ready', 'favi/countdown/mal-set', 'favi/countdown/mal-go']);
+		introAssets.set('sins', ['favi/countdown/relapse2NEW-prepare', 'favi/countdown/relapse2NEW-ready', 'favi/countdown/relapse2NEW-set', 'favi/countdown/relapse2NEW-go']);
 
+		var introAlts:Array<String> = introAssets.get('default');
+		switch (SONG.song)
+		{
+			case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Laugh Track" |  "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Birthday" | "Rotten Petals" | "Curtain Call" | "Seeking Freedom" | "A True Monster" | "Am I Real?" | "Your Final Bow" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "The Wretched Tilezones (Simple Life)" | "Ahh the Scary (Somber Night)":
+				introAlts = introAssets.get('cartoon');
+			case "Cycled Sins Legacy" | "Cycled Sins":
+				introAlts = introAssets.get('sins');
+			case "Malfunction" | "Malfunction Legacy":
+				introAlts = introAssets.get('malfunction');
+			default:
+				if(isPixelStage) {
+					introAlts = introAssets.get('pixel');
+				}
+		}
+		
+		for (asset in introAlts)
+			Paths.image(asset);
+		
 		Paths.sound('intro3' + introSoundsSuffix);
 		Paths.sound('intro2' + introSoundsSuffix);
 		Paths.sound('intro1' + introSoundsSuffix);
@@ -966,6 +977,18 @@ class PlayState extends MusicBeatState
 			generateStaticArrows(1);
 
 			NoteMovement.getDefaultStrumPos(this);
+
+			count3 = new FlxSound().loadEmbedded(Paths.sound('intro3' + introSoundsSuffix));
+			count2 = new FlxSound().loadEmbedded(Paths.sound('intro2' + introSoundsSuffix));
+			count1 = new FlxSound().loadEmbedded(Paths.sound('intro1' + introSoundsSuffix));
+			countGo = new FlxSound().loadEmbedded(Paths.sound('introGo' + introSoundsSuffix));
+
+			for (sfx in [count3, count2, count1, countGo])
+			{
+				FlxG.sound.list.add(sfx);
+				sfx.volume = 0.6;
+			}
+
 			for (i in 0...playerStrums.length) {
 				setOnScripts('defaultPlayerStrumX' + i, playerStrums.members[i].x);
 				setOnScripts('defaultPlayerStrumY' + i, playerStrums.members[i].y);
@@ -982,6 +1005,7 @@ class PlayState extends MusicBeatState
 			callOnScripts('onCountdownStarted', null);
 
 			var swagCounter:Int = 0;
+
 			if (startOnTime > 0) {
 				clearNotesBefore(startOnTime);
 				setSongTime(startOnTime - 350);
@@ -999,36 +1023,153 @@ class PlayState extends MusicBeatState
 				characterBopper(tmr.loopsLeft);
 
 				var introAssets:Map<String, Array<String>> = new Map<String, Array<String>>();
-				var introImagesArray:Array<String> = switch(stageUI) {
-					case "pixel": ['${stageUI}UI/ready-pixel', '${stageUI}UI/set-pixel', '${stageUI}UI/date-pixel'];
-					case "normal": ["ready", "set" ,"go"];
-					default: ['${stageUI}UI/ready', '${stageUI}UI/set', '${stageUI}UI/go'];
-				}
-				introAssets.set(stageUI, introImagesArray);
+				introAssets.set('default', ['ready', 'set', 'go']);
+				introAssets.set('pixel', ['pixelUI/ready-pixel', 'pixelUI/set-pixel', 'pixelUI/date-pixel']);
+				introAssets.set('cartoon', ['favi/countdown/prepare', 'favi/countdown/ready', 'favi/countdown/set', 'favi/countdown/go']);
+				introAssets.set('malfunction', ['favi/countdown/mal-prepare', 'favi/countdown/mal-ready', 'favi/countdown/mal-set', 'favi/countdown/mal-go']);
+				introAssets.set('sins', ['favi/countdown/relapse2NEW-prepare', 'favi/countdown/relapse2NEW-ready', 'favi/countdown/relapse2NEW-set', 'favi/countdown/relapse2NEW-go']);
 
-				var introAlts:Array<String> = introAssets.get(stageUI);
-				var antialias:Bool = (ClientPrefs.data.antialiasing && !isPixelStage);
-				var tick:Countdown = THREE;
+				var introAlts:Array<String> = introAssets.get('default');
+				var antialias:Bool = ClientPrefs.data.antialiasing;
+				switch (SONG.song)
+				{
+					case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Laugh Track" |  "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Birthday" | "Rotten Petals" | "Curtain Call" | "Seeking Freedom" | "A True Monster" | "Am I Real?" | "Your Final Bow" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "The Wretched Tilezones (Simple Life)" | "Ahh the Scary (Somber Night)":
+						introAlts = introAssets.get('cartoon');
+					case "Cycled Sins Legacy" | "Cycled Sins":
+						introAlts = introAssets.get('sins');
+						antialias = false;
+					case "Malfunction" | "Malfunction Legacy":
+						introAlts = introAssets.get('malfunction');
+						antialias = false;
+					default:
+						if(isPixelStage) {
+							introAlts = introAssets.get('pixel');
+							antialias = false;
+						}
+				}
 
 				switch (swagCounter)
 				{
 					case 0:
-						FlxG.sound.play(Paths.sound('intro3' + introSoundsSuffix), 0.6);
-						tick = THREE;
+						countdownIntro = new FlxSprite().loadGraphic(Paths.image(introAlts[0]));
+						countdownIntro.cameras = [camOther];
+						countdownIntro.scrollFactor.set();
+						countdownIntro.updateHitbox();
+
+						if (isPixelStage)
+							countdownIntro.setGraphicSize(Std.int(countdownIntro.width * daPixelZoom));
+
+						countdownIntro.screenCenter();
+						countdownIntro.antialiasing = antialias;
+						switch (SONG.song)
+						{
+							case "War Dilemma" | "Dont Cross" | "Bless" | "Mercy" | "Mercy Legacy" | "Delutrance":
+								//nothing
+							default:
+								insert(members.indexOf(notes), countdownIntro);
+								FlxTween.tween(countdownIntro, {alpha: 0}, Conductor.crochet / 1000, {
+									ease: FlxEase.cubeInOut,
+									onComplete: function(twn:FlxTween)
+									{
+										remove(countdownIntro);
+										countdownIntro.destroy();
+									}
+								});
+						}
+						count3.play();
 					case 1:
-						countdownReady = createCountdownSprite(introAlts[0], antialias);
-						FlxG.sound.play(Paths.sound('intro2' + introSoundsSuffix), 0.6);
-						tick = TWO;
+						switch (SONG.song)
+						{
+							case "War Dilemma" | "Dont Cross" | "Bless" | "Mercy" | "Mercy Legacy" | "Delutrance":
+								countdownReady = new FlxSprite().loadGraphic(Paths.image(introAlts[0]));
+							default:
+								countdownReady = new FlxSprite().loadGraphic(Paths.image(introAlts[1]));
+						}
+						countdownReady.cameras = [camOther];
+						countdownReady.scrollFactor.set();
+						countdownReady.updateHitbox();
+
+						if (isPixelStage)
+							countdownReady.setGraphicSize(Std.int(countdownReady.width * daPixelZoom));
+
+						countdownReady.screenCenter();
+						countdownReady.antialiasing = antialias;
+						insert(members.indexOf(notes), countdownReady);
+						FlxTween.tween(countdownReady, {/*y: countdownReady.y + 100,*/ alpha: 0}, Conductor.crochet / 1000, {
+							ease: FlxEase.cubeInOut,
+							onComplete: function(twn:FlxTween)
+							{
+								remove(countdownReady);
+								countdownReady.destroy();
+							}
+						});
+						count2.play();
 					case 2:
-						countdownSet = createCountdownSprite(introAlts[1], antialias);
-						FlxG.sound.play(Paths.sound('intro1' + introSoundsSuffix), 0.6);
-						tick = ONE;
+						switch (SONG.song)
+						{
+							case "War Dilemma" | "Dont Cross" | "Bless" | "Mercy" | "Mercy Legacy" | "Delutrance":
+								countdownSet = new FlxSprite().loadGraphic(Paths.image(introAlts[1]));
+							default:
+								countdownSet = new FlxSprite().loadGraphic(Paths.image(introAlts[2]));
+						}
+						
+						countdownSet.cameras = [camOther];
+						countdownSet.scrollFactor.set();
+
+						if (isPixelStage)
+							countdownSet.setGraphicSize(Std.int(countdownSet.width * daPixelZoom));
+
+						countdownSet.screenCenter();
+						countdownSet.antialiasing = antialias;
+						insert(members.indexOf(notes), countdownSet);
+						FlxTween.tween(countdownSet, {/*y: countdownSet.y + 100,*/ alpha: 0}, Conductor.crochet / 1000, {
+							ease: FlxEase.cubeInOut,
+							onComplete: function(twn:FlxTween)
+							{
+								remove(countdownSet);
+								countdownSet.destroy();
+							}
+						});
+						count1.play();
 					case 3:
-						countdownGo = createCountdownSprite(introAlts[2], antialias);
-						FlxG.sound.play(Paths.sound('introGo' + introSoundsSuffix), 0.6);
-						tick = GO;
+						switch (SONG.song)
+						{
+							case "War Dilemma" | "Dont Cross" | "Bless" | "Mercy" | "Mercy Legacy" | "Delutrance":
+								countdownGo = new FlxSprite().loadGraphic(Paths.image(introAlts[2]));
+							default:
+								countdownGo = new FlxSprite().loadGraphic(Paths.image(introAlts[3]));
+						}
+						countdownGo.cameras = [camOther];
+						countdownGo.scrollFactor.set();
+
+						if (isPixelStage)
+							countdownGo.setGraphicSize(Std.int(countdownGo.width * daPixelZoom));
+
+						countdownGo.updateHitbox();
+
+						countdownGo.screenCenter();
+						countdownGo.antialiasing = antialias;
+						insert(members.indexOf(notes), countdownGo);
+						FlxTween.tween(countdownGo, {/*y: countdownGo.y + 100,*/ alpha: 0}, Conductor.crochet / 1000, {
+							ease: FlxEase.cubeInOut,
+							onComplete: function(twn:FlxTween)
+							{
+								remove(countdownGo);
+								countdownGo.destroy();
+							}
+						});
+						countGo.play();
 					case 4:
-						tick = START;
+						//if (ClientPrefs.data.pauseCountdown)
+						//	pauseCountEnabled = true;
+					case 5:
+						new FlxTimer().start(0.5, function(tmr:FlxTimer) {
+							for (sfx in [count3, count2, count1, countGo])
+							{
+								FlxG.sound.list.remove(sfx);
+								sfx = null;
+							}
+						});
 				}
 
 				notes.forEachAlive(function(note:Note) {
@@ -1041,9 +1182,9 @@ class PlayState extends MusicBeatState
 					}
 				});
 
-				stagesFunc(function(stage:BaseStage) stage.countdownTick(tick, swagCounter));
+				//stagesFunc(function(stage:BaseStage) stage.countdownTick(tick, swagCounter));
 				callOnLuas('onCountdownTick', [swagCounter]);
-				callOnHScript('onCountdownTick', [tick, swagCounter]);
+				//callOnHScript('onCountdownTick', [tick, swagCounter]);
 
 				swagCounter += 1;
 			}, 5);
@@ -2360,17 +2501,17 @@ class PlayState extends MusicBeatState
 				if (storyPlaylist.length <= 0)
 				{
 					Mods.loadTopMod();
-					FlxG.sound.playMusic(Paths.music('freakyMenu'));
+					FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 					#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
 
-					MusicBeatState.switchState(new StoryMenuState());
+					MusicBeatState.switchState(new StoryMenu());
 
 					// if ()
 					if(!ClientPrefs.getGameplaySetting('practice') && !ClientPrefs.getGameplaySetting('botplay')) {
-						StoryMenuState.weekCompleted.set(WeekData.weeksList[storyWeek], true);
+						StoryMenu.weekCompleted.set(WeekData.weeksList[storyWeek], true);
 						Highscore.saveWeekScore(WeekData.getWeekFileName(), campaignScore, storyDifficulty);
 
-						FlxG.save.data.weekCompleted = StoryMenuState.weekCompleted;
+						FlxG.save.data.weekCompleted = StoryMenu.weekCompleted;
 						FlxG.save.flush();
 					}
 					changedDifficulty = false;
@@ -2398,8 +2539,10 @@ class PlayState extends MusicBeatState
 				Mods.loadTopMod();
 				#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
 
+				GameData.completeFPSong();
 				MusicBeatState.switchState(new FreeplayState());
-				FlxG.sound.playMusic(Paths.music('freakyMenu'));
+				FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
+				FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
 				changedDifficulty = false;
 			}
 			transitioning = true;

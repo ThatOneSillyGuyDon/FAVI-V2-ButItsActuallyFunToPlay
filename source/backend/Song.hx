@@ -2,8 +2,12 @@ package backend;
 
 import haxe.Json;
 import lime.utils.Assets;
-
 import backend.Section;
+
+#if sys
+import sys.io.File;
+import sys.FileSystem;
+#end
 
 typedef SwagSong =
 {
@@ -13,6 +17,8 @@ typedef SwagSong =
 	var bpm:Float;
 	var needsVoices:Bool;
 	var speed:Float;
+
+	var composer:String;
 
 	var player1:String;
 	var player2:String;
@@ -32,6 +38,9 @@ typedef SwagSong =
 
 class Song
 {
+	public static var chartFile:String;
+	public static var randomizer:Int;
+	
 	public var song:String;
 	public var notes:Array<SwagSection>;
 	public var events:Array<Dynamic>;
@@ -45,6 +54,7 @@ class Song
 	public var gameOverEnd:String;
 	public var disableNoteRGB:Bool = false;
 	public var speed:Float = 1;
+	public static var charter:String = "Unknown";
 	public var stage:String;
 	public var player1:String = 'bf';
 	public var player2:String = 'dad';
@@ -90,8 +100,70 @@ class Song
 		this.bpm = bpm;
 	}
 
-	public static function loadFromJson(jsonInput:String, ?folder:String):SwagSong
+	public static function loadFromJson(jsonInput:String, ?folder:String, ?crossRandomizer:Int):SwagSong
 	{
+		switch(folder)
+		{
+			case "isolated": chartFile = Chart.isolated;
+			case "isolated-beta": chartFile = Chart.isolatedBeta;
+			case "isolated-old": chartFile = Chart.isolatedOld;
+			case "isolated-legacy": chartFile = Chart.isolatedLegacy;
+			case "lunacy": chartFile = Chart.lunacy;
+			case "lunacy-legacy": chartFile = Chart.lunacyLegacy;
+			case "delusional": chartFile = Chart.delusional;
+			case "delusional-legacy": chartFile = Chart.delusionalLegacy;
+			case "malfunction": chartFile = Chart.malfunction;
+			case "malfunction-legacy": chartFile = Chart.malfunctionLegacy;
+			case "bless": chartFile = Chart.bless;
+			case "devilish-deal": chartFile = Chart.devilishDeal;
+			case "hunted": chartFile = Chart.hunted;
+			case "hunted-legacy": chartFile = Chart.huntedLegacy;
+			case "war-dilemma": chartFile = Chart.warDilemma;
+			case "cycled-sins-legacy": chartFile = Chart.cycledSinsLegacy;
+			case "birthday": chartFile = Chart.birthday;
+			case "mercy": chartFile = Chart.mercy;
+			case "mercy-legacy": chartFile = Chart.mercyLegacy;
+			case "laugh-track": chartFile = Chart.laughTrack;
+			case "twisted-grins-legacy": chartFile = Chart.twistedGrinsLegacy;
+			case "cycled-sins": chartFile = Chart.cycledSins;
+			case "twisted-grins": 
+				chartFile = Chart.twistedGrins;
+
+				if (jsonInput == 'events')
+					chartFile = Event.twistedGrinsNoteSpeed;
+			case "dont-cross":
+				if (!ClientPrefs.data.mechanics)
+				{
+					trace('lmao no, get fucked');
+					if (ClientPrefs.data.gameplaySettings["botplay"])
+						ClientPrefs.data.gameplaySettings["botplay"] = false;
+					chartFile = Chart.dontCross4; // because no lmao
+				}
+				else
+				{
+					randomizer = crossRandomizer;
+					trace('random chart loaded!');
+					switch (randomizer)
+					{
+						case 1: chartFile = Chart.dontCross1;
+						case 2: chartFile = Chart.dontCross2;
+						case 3: chartFile = Chart.dontCross3;
+						case 4: chartFile = ClientPrefs.data.gameplaySettings["botplay"] ? Chart.dontCross1 : Chart.dontCross4;
+						case 5: chartFile = ClientPrefs.data.gameplaySettings["botplay"] ? Chart.dontCross3 : Chart.dontCross5;
+						case 6: chartFile = ClientPrefs.data.gameplaySettings["botplay"] ? Chart.dontCross2 : Chart.dontCross6;
+						case 7: chartFile = Chart.dontCross7;
+						case 8: chartFile = ClientPrefs.data.gameplaySettings["botplay"] ? Chart.dontCross1 : Chart.dontCross8;
+						case 9: chartFile = ClientPrefs.data.gameplaySettings["botplay"] ? Chart.dontCross1 : Chart.dontCross9;
+						case 10: chartFile = ClientPrefs.data.gameplaySettings["botplay"] ? Chart.dontCross1 : Chart.dontCross10;
+						case 11: chartFile = ClientPrefs.data.gameplaySettings["botplay"] ? Chart.dontCross1 : Chart.dontCross11;
+					}
+				}
+			case "rotten-petals": chartFile = Chart.rottenPetals;
+			case "somber-night": chartFile = Chart.somberNight;
+			case "simple-life": chartFile = Chart.simpleLife;
+			default:
+				chartFile = null;
+		}
 		var rawJson = null;
 		
 		var formattedFolder:String = Paths.formatToSongPath(folder);
@@ -104,14 +176,18 @@ class Song
 		#end
 
 		if(rawJson == null) {
-			var path:String = Paths.json(formattedFolder + '/' + formattedSong);
-
-			#if sys
-			if(FileSystem.exists(path))
-				rawJson = File.getContent(path).trim();
-			else
-			#end
+			if (chartFile == null)
+			{
+				#if sys
+				rawJson = File.getContent(Paths.json(formattedFolder + '/' + formattedSong)).trim();
+				#else
 				rawJson = Assets.getText(Paths.json(formattedFolder + '/' + formattedSong)).trim();
+				#end
+			}
+			else
+			{
+				rawJson = chartFile;
+			}
 		}
 
 		while (!rawJson.endsWith("}"))
@@ -142,8 +218,32 @@ class Song
 		return songJson;
 	}
 
+	public static function getCharterCredits():String
+	{
+		switch (PlayState.SONG.song)
+		{
+			case "Devilish Deal" | "Lunacy" | "Hunted" | "War Dilemma" | "Twisted Grins" | "Isolated" | "The Wretched Tilezones (Simple Life)": charter = "Purg";
+			case "Delusional" | "Cycled Sins" | "Birthday" | "Cycled Sins Legacy" | "Twisted Grins Legacy": charter = "Dreupy";
+			case "Lunacy Legacy": charter = "obscurity.";
+			case "Bless" | "Malfunction" | "Mercy" | "Mercy Legacy" | "Isolated Old" | "Isolated Legacy" | "Isolated Beta" | "Malfunction Legacy" | "Laugh Track" | "Rotten Petals" | "Ahh the Scary (Somber Night)": charter = "ThatOneSillyGuy";
+			case "Delusional Legacy": charter = "Noppz";
+			case "Dont Cross":
+				switch (randomizer)
+				{
+					case 1 | 4 | 8 | 9 | 10 | 11: charter = "ThatOneSillyGuy";
+					case 2 | 7: charter = "Dreupy";
+					case 5: charter = ClientPrefs.data.gameplaySettings["botplay"] ? "Purg" : "MalyPlus";
+					case 3: charter = "Purg";
+					case 6: charter = ClientPrefs.data.gameplaySettings["botplay"] ? "Dreupy" : "rezeo285";
+				}
+			default: charter = "Unknown";
+		}
+		return charter;
+	}
+
 	public static function parseJSONshit(rawJson:String):SwagSong
 	{
-		return cast Json.parse(rawJson).song;
+		var swagShit:SwagSong = cast Json.parse(rawJson).song;
+		return swagShit;
 	}
 }

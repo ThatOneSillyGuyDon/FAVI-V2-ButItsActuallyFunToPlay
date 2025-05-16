@@ -157,4 +157,18 @@ class CoolUtil
 				text.borderStyle = NONE;
 		}
 	}
+
+	//WE BRINGING BACK OLD VARS WITH THIS ONE!!!
+	inline public static function boundTo(value:Float, min:Float, max:Float):Float {
+		return Math.max(min, Math.min(max, value));
+	}
+
+	inline public static function dashToSpace(string:String):String
+		return string.replace("-", " ");
+
+	inline public static function spaceToDash(string:String):String
+		return string.replace(" ", "-");
+
+	inline public static function swapSpaceDash(string:String):String
+		return StringTools.contains(string, '-') ? dashToSpace(string) : spaceToDash(string);
 }
