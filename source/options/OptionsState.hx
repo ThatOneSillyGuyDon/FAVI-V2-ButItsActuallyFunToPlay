@@ -1,64 +1,108 @@
 package options;
 
-import states.menus.MainMenuState;
-import backend.StageData;
+import flash.text.TextField;
+import lime.utils.Assets;
+import haxe.Json;
+import flixel.input.keyboard.FlxKey;
 
 class OptionsState extends MusicBeatState
 {
-	var options:Array<String> = ['Note Colors', 'Controls', 'Adjust Delay and Combo', 'Graphics', 'Visuals and UI', 'Gameplay'];
-	private var grpOptions:FlxTypedGroup<Alphabet>;
+	var options:Array<String> = [
+		'Preferences',
+		'Graphics',
+		'Gameplay',
+		'Controls'
+	];
+
 	private static var curSelected:Int = 0;
 	public static var menuBG:FlxSprite;
-	public static var onPlayState:Bool = false;
+	var dogshitPath:String = 'Funkin_avi/options';
 
-	function openSelectedSubstate(label:String) {
-		switch(label) {
-			case 'Note Colors':
-				openSubState(new options.NotesSubState());
+	function openSelectedSubstate(label:String)
+	{
+		switch (label)
+		{
+			case 'Preferences':
+				openSubState(new VisualsUISubState());
 			case 'Controls':
-				openSubState(new options.ControlsSubState());
+				openSubState(new ControlsSubState());
 			case 'Graphics':
-				openSubState(new options.GraphicsSettingsSubState());
-			case 'Visuals and UI':
-				openSubState(new options.VisualsUISubState());
+				openSubState(new GraphicsSettingsSubState());
 			case 'Gameplay':
-				openSubState(new options.GameplaySettingsSubState());
-			case 'Adjust Delay and Combo':
-				MusicBeatState.switchState(new options.NoteOffsetState());
+				openSubState(new GameplaySettingsSubState());
 		}
 	}
 
-	var selectorLeft:Alphabet;
-	var selectorRight:Alphabet;
+	var selectorLeft:FlxSprite;
+	var selectorRight:FlxSprite;
 
-	override function create() {
-		#if DISCORD_ALLOWED
-		DiscordClient.changePresence("Options Menu", null);
+	var art:FlxSprite;
+	var optionText:FlxSprite;
+
+	var iForgot:FlxSprite;
+
+	var shit:FlxText;
+
+	public static var onPlayState:Bool = false;
+
+	override function create()
+	{
+		#if desktop
+		DiscordClient.changePresence("Options Menu", "Changing settings...", "icon", "gear");
 		#end
 
-		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
-		bg.antialiasing = ClientPrefs.data.antialiasing;
-		bg.color = 0xFFea71fd;
-		bg.updateHitbox();
+		FlxG.stage.window.title = "Funkin.avi - Settings";
 
+		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('$dogshitPath/background'));
+		bg.setGraphicSize(FlxG.width, FlxG.height);
+		bg.updateHitbox();
 		bg.screenCenter();
+		bg.antialiasing = ClientPrefs.data.antialiasing;
 		add(bg);
 
-		grpOptions = new FlxTypedGroup<Alphabet>();
-		add(grpOptions);
+		art = new FlxSprite().loadGraphic(Paths.image('$dogshitPath/art_${options[curSelected].toLowerCase()}'));
+		art.scale.set(.7, .7);
+		art.updateHitbox();
+		art.screenCenter();
+		art.y += 100;
+		art.antialiasing = ClientPrefs.data.antialiasing;
+		add(art);
 
-		for (i in 0...options.length)
+		if (!ClientPrefs.data.lowQuality)
 		{
-			var optionText:Alphabet = new Alphabet(0, 0, options[i], true);
-			optionText.screenCenter();
-			optionText.y += (100 * (i - (options.length / 2))) + 50;
-			grpOptions.add(optionText);
+			var gradient:FlxSprite = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/filters/gradient'));
+			gradient.scrollFactor.set(0, 0);
+			gradient.setGraphicSize(Std.int(gradient.width * 0.75));
+			gradient.updateHitbox();
+			gradient.screenCenter();
+			gradient.antialiasing = true;
+			gradient.scale.x += .1;
+			add(gradient);
+
+			var scratchStuff:FlxSprite = new FlxSprite();
+			scratchStuff.frames = Paths.getSparrowAtlas('Funkin_avi/filters/scratchShit');
+			scratchStuff.animation.addByPrefix('idle', 'scratch thing 1', 24, true);
+			scratchStuff.animation.play('idle');
+			scratchStuff.screenCenter();
+			scratchStuff.scale.x = 1.1;
+			scratchStuff.scale.y = 1.1;
+			add(scratchStuff);
+
+			var grain:FlxSprite = new FlxSprite();
+			grain.frames = Paths.getSparrowAtlas('Funkin_avi/filters/Grainshit');
+			grain.animation.addByPrefix('idle', 'grains 1', 24, true);
+			grain.animation.play('idle');
+			grain.screenCenter();
+			grain.scale.x = 1.1;
+			grain.scale.y = 1.1;
+			add(grain);
 		}
 
-		selectorLeft = new Alphabet(0, 0, '>', true);
-		add(selectorLeft);
-		selectorRight = new Alphabet(0, 0, '<', true);
-		add(selectorRight);
+		curSelected = 0;
+
+		shit = new FlxText(0, FlxG.height * 0.1, 0);
+		shit.setFormat(Paths.font("disneyFreeplayFont.ttf"), 40, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
+		add(shit);
 
 		changeSelection();
 		ClientPrefs.saveSettings();
@@ -66,25 +110,35 @@ class OptionsState extends MusicBeatState
 		super.create();
 	}
 
-	override function closeSubState() {
+	override function closeSubState()
+	{
 		super.closeSubState();
 		ClientPrefs.saveSettings();
-		#if DISCORD_ALLOWED
-		DiscordClient.changePresence("Options Menu", null);
-		#end
 	}
 
-	override function update(elapsed:Float) {
+	override function update(elapsed:Float)
+	{
 		super.update(elapsed);
 
-		if (controls.UI_UP_P) {
+		if (controls.UI_LEFT_P)
+		{
 			changeSelection(-1);
 		}
-		if (controls.UI_DOWN_P) {
+		if (controls.UI_RIGHT_P)
+		{
 			changeSelection(1);
 		}
 
-		if (controls.BACK) {
+		if (FlxG.mouse.justPressed)
+		{
+			if (FlxG.mouse.overlaps(art))
+			{
+				openSelectedSubstate(options[curSelected]);
+			}
+		}
+
+		if (controls.BACK)
+		{
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 			if(onPlayState)
 			{
@@ -94,37 +148,50 @@ class OptionsState extends MusicBeatState
 			}
 			else MusicBeatState.switchState(new MainMenuState());
 		}
-		else if (controls.ACCEPT) openSelectedSubstate(options[curSelected]);
-	}
-	
-	function changeSelection(change:Int = 0) {
-		curSelected += change;
-		if (curSelected < 0)
-			curSelected = options.length - 1;
-		if (curSelected >= options.length)
-			curSelected = 0;
 
-		var bullShit:Int = 0;
-
-		for (item in grpOptions.members) {
-			item.targetY = bullShit - curSelected;
-			bullShit++;
-
-			item.alpha = 0.6;
-			if (item.targetY == 0) {
-				item.alpha = 1;
-				selectorLeft.x = item.x - 63;
-				selectorLeft.y = item.y;
-				selectorRight.x = item.x + item.width + 15;
-				selectorRight.y = item.y;
-			}
+		if (controls.ACCEPT)
+		{
+			openSelectedSubstate(options[curSelected]);
 		}
-		FlxG.sound.play(Paths.sound('scrollMenu'));
 	}
 
-	override function destroy()
+	function changeSelection(change:Int = 0)
 	{
-		ClientPrefs.loadPrefs();
-		super.destroy();
+		curSelected = FlxMath.wrap(curSelected + change, 0, options.length - 1);
+
+		art.loadGraphic(Paths.image('$dogshitPath/art_${options[curSelected].toLowerCase()}'));
+		shit.text = '< ${options[curSelected]} >';
+		shit.x = (FlxG.width - shit.width) * .5;
+
+		switch (curSelected)
+		{
+			case 0:
+				art.setPosition(((FlxG.width - art.width) / 2) + 150, ((FlxG.height - art.height) / 2) + 200);
+				art.scale.set(.7, .7);
+				art.updateHitbox();
+				art.screenCenter();
+				art.y += 100;
+			case 1:
+				art.setPosition(((FlxG.width - art.width) / 2) + 170, ((FlxG.height - art.height) / 2) + 170);
+				art.scale.set(.35, .35);
+				art.updateHitbox();
+				art.screenCenter();
+				art.y += 100;
+			case 2:
+				art.setPosition(((FlxG.width - art.width) / 2) + 150, ((FlxG.height - art.height) / 2) + 200);
+				art.scale.set(.35, .35);
+				art.updateHitbox();
+				art.screenCenter();
+				art.y += 100;
+
+			default:
+				art.setPosition(((FlxG.width - art.width) / 2) + 150, ((FlxG.height - art.height) / 2) + 200);
+				art.scale.set(.5, .5);
+				art.updateHitbox();
+				art.screenCenter();
+				art.y += 100;
+		}
+
+		FlxG.sound.play(Paths.sound('scrollMenu'));
 	}
 }

@@ -181,6 +181,11 @@ class Paths
 		return 'assets/videos/$key.$VIDEO_EXT';
 	}
 
+	static public function soundString(key:String, ?library:String):String // just so the fucking sound tray can grab the audio correctly
+	{
+		return getPath('sounds/$key.$SOUND_EXT', SOUND, library);
+	}
+
 	static public function sound(key:String, ?library:String):Sound
 	{
 		var sound:Sound = returnSound('sounds', key, library);

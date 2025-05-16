@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="mickeyIsolateDrop.png">
+<SubTexture name="mickeyIsolateDrop idle0000" x="3975" y="2130" width="745" height="1059" frameX="-404" frameY="-299" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="mickeyIsolateDrop idle0001" x="3479" y="3395" width="747" height="1052" frameX="-402" frameY="-305" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="mickeyIsolateDrop idle0002" x="3975" y="1070" width="741" height="1060" frameX="-406" frameY="-298" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="mickeyIsolateDrop idle0003" x="2630" y="2305" width="705" height="1074" frameX="-433" frameY="-284" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="mickeyIsolateDrop idle0004" x="1292" y="2305" width="669" height="1084" frameX="-466" frameY="-275" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="mickeyIsolateDrop idle0005" x="0" y="2305" width="651" height="1090" frameX="-485" frameY="-270" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="mickeyIsolateDrop idle0006" x="3070" y="1111" width="639" height="1092" frameX="-497" frameY="-268" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="mickeyIsolateDrop idle0007" x="651" y="2305" width="641" height="1088" frameX="-495" frameY="-271" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="mickeyIsolateDrop left0000" x="1750" y="1182" width="822" height="1111" frameX="-332" frameY="-239" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="mickeyIsolateDrop left0001" x="0" y="1182" width="845" height="1123" frameX="-239" frameY="-227" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="mickeyIsolateDrop left0002" x="845" y="1182" width="905" height="1115" frameX="-259" frameY="-235" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="mickeyIsolateDrop left0003" x="3070" y="0" width="905" height="1111" frameX="-262" frameY="-239" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="mickeyIsolateDrop right0000" x="3975" y="0" width="1061" height="1070" frameX="-239" frameY="-289" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="mickeyIsolateDrop right0001" x="0" y="3395" width="1158" height="1069" frameX="-173" frameY="-290" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="mickeyIsolateDrop right0002" x="1158" y="3395" width="1158" height="1064" frameX="-176" frameY="-295" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="mickeyIsolateDrop right0003" x="2316" y="3395" width="1163" height="1064" frameX="-172" frameY="-295" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="mickeyIsolateDrop up0000" x="2286" y="0" width="784" height="1147" frameX="-329" frameY="-201" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="mickeyIsolateDrop up0001" x="0" y="0" width="750" height="1182" frameX="-344" frameY="-172" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="mickeyIsolateDrop up0002" x="750" y="0" width="767" height="1169" frameX="-337" frameY="-183" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="mickeyIsolateDrop up0003" x="1517" y="0" width="769" height="1165" frameX="-337" frameY="-186" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="mickeyIsolateDrop down0000" x="1961" y="2305" width="669" height="1076" frameX="-502" frameY="-280" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="mickeyIsolateDrop down0001" x="0" y="4464" width="773" height="1025" frameX="-421" frameY="-330" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="mickeyIsolateDrop down0002" x="5036" y="0" width="706" height="1040" frameX="-473" frameY="-315" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="mickeyIsolateDrop down0003" x="4226" y="3395" width="703" height="1044" frameX="-474" frameY="-312" frameWidth="1650" frameHeight="1400" />
+</TextureAtlas>

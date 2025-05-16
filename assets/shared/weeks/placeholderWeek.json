@@ -1,0 +1,21 @@
+{
+	"songs": [
+		["Test", "face", [129, 100, 233]]
+	],
+
+	"weekCharacters": [
+		"",
+		"bf",
+		"gf"
+	],
+	"weekBackground": "stage",
+
+	"attachedImage": "episode0",
+	"storyName": "MISSING WEEK",
+	"weekBefore": "tutorial",
+	"weekName": "Tutorial",
+	"startUnlocked": true,
+
+	"hideStoryMode": false,
+	"hideFreeplay": false
+}

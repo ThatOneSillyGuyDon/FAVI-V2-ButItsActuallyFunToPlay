@@ -4,7 +4,7 @@ package;
 import android.content.Context;
 #end
 
-import debug.FPSCounter;
+import backend.Framerate;
 
 import flixel.graphics.FlxGraphic;
 import flixel.FlxGame;
@@ -41,14 +41,14 @@ class Main extends Sprite
 	var game = {
 		width: 1280, // WINDOW width
 		height: 720, // WINDOW height
-		initialState: TitleState, // initial game state
+		initialState: /*EVILantileakState; *uncomment for playtest builds*/ TitleState, // The FlxState the game starts with.
 		zoom: -1.0, // game state bounds
-		framerate: 60, // default framerate
+		framerate: 60,
 		skipSplash: true, // if the default flixel splash screen should be skipped
 		startFullscreen: false // if the game should start at fullscreen mode
 	};
 
-	public static var fpsVar:FPSCounter;
+	public static var fpsVar:Framerate;
 	public static var debug:Bool = false;
 
 	// You can pretty much ignore everything from here on - your code should go in your states.
@@ -106,11 +106,14 @@ class Main extends Sprite
 		#if LUA_ALLOWED Lua.set_callbacks_function(cpp.Callable.fromStaticFunction(psychlua.CallbackHandler.call)); #end
 		Controls.instance = new Controls();
 		ClientPrefs.loadDefaultKeys();
-		#if ACHIEVEMENTS_ALLOWED Achievements.load(); #end
-		addChild(new FlxGame(game.width, game.height, game.initialState, #if (flixel < "5.0.0") game.zoom, #end game.framerate, game.framerate, game.skipSplash, game.startFullscreen));
+
+		var game:FlxGame = new FlxGame(game.width, game.height, game.initialState, #if (flixel < "5.0.0") game.zoom, #end game.framerate, game.framerate, game.skipSplash, game.startFullscreen);
+		@:privateAccess game._customSoundTray = objects.ui.Soundtray;
+		addChild(game);
 
 		#if !mobile
-		fpsVar = new FPSCounter(10, 3, 0xFFFFFF);
+		fpsVar = new Framerate(10, 3);
+		fpsVar.textColor = FlxColor.WHITE;
 		addChild(fpsVar);
 		Lib.current.stage.align = "tl";
 		Lib.current.stage.scaleMode = StageScaleMode.NO_SCALE;

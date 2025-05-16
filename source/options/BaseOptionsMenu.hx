@@ -1,32 +1,39 @@
 package options;
 
+import flixel.text.FlxText.FlxTextFormat;
+import flixel.text.FlxText.FlxTextFormatMarkerPair;
+import flash.text.TextField;
+import lime.utils.Assets;
+import haxe.Json;
 import flixel.input.keyboard.FlxKey;
-import flixel.input.gamepad.FlxGamepad;
-import flixel.input.gamepad.FlxGamepadInputID;
-import flixel.input.gamepad.FlxGamepadManager;
-
-import objects.CheckboxThingie;
-import objects.AttachedText;
-import options.Option;
-import backend.InputFormatter;
-
+import backend.FlxTextAlphabet;
+import objects.AttachedFlxText;
 class BaseOptionsMenu extends MusicBeatSubstate
 {
 	private var curOption:Option = null;
 	private var curSelected:Int = 0;
 	private var optionsArray:Array<Option>;
 
-	private var grpOptions:FlxTypedGroup<Alphabet>;
+	private var grpOptions:FlxTypedGroup<FlxTextAlphabet>;
 	private var checkboxGroup:FlxTypedGroup<CheckboxThingie>;
-	private var grpTexts:FlxTypedGroup<AttachedText>;
+	private var grpTexts:FlxTypedGroup<AttachedFlxText>;
 
+	private var boyfriend:Character = null;
 	private var descBox:FlxSprite;
 	private var descText:FlxText;
 
 	public var title:String;
 	public var rpcTitle:String;
 
-	public var bg:FlxSprite;
+	var selectorLeft:FlxSprite;
+	var selectorRight:FlxSprite;
+
+	var spamCounter:Float = 0;
+
+	var dogshitPath:String = 'Funkin_avi/options';
+
+	var redTextMarker = new FlxTextFormatMarkerPair(new FlxTextFormat(FlxColor.RED, true, true), '^^');
+	
 	public function new()
 	{
 		super();
@@ -34,71 +41,139 @@ class BaseOptionsMenu extends MusicBeatSubstate
 		if(title == null) title = 'Options';
 		if(rpcTitle == null) rpcTitle = 'Options Menu';
 		
-		#if DISCORD_ALLOWED
-		DiscordClient.changePresence(rpcTitle, null);
+		#if desktop
+		DiscordClient.changePresence(rpcTitle, "Changing settings...", "icon", "gear");
 		#end
 		
-		bg = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
-		bg.color = 0xFFea71fd;
+		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/options/background'));
+		bg.setGraphicSize(FlxG.width, FlxG.height);
+		bg.updateHitbox();
 		bg.screenCenter();
 		bg.antialiasing = ClientPrefs.data.antialiasing;
+		bg.color = 0x343434;
 		add(bg);
 
 		// avoids lagspikes while scrolling through menus!
-		grpOptions = new FlxTypedGroup<Alphabet>();
+		grpOptions = new FlxTypedGroup<FlxTextAlphabet>();
 		add(grpOptions);
 
-		grpTexts = new FlxTypedGroup<AttachedText>();
+		grpTexts = new FlxTypedGroup<AttachedFlxText>();
 		add(grpTexts);
 
 		checkboxGroup = new FlxTypedGroup<CheckboxThingie>();
 		add(checkboxGroup);
 
 		descBox = new FlxSprite().makeGraphic(1, 1, FlxColor.BLACK);
-		descBox.alpha = 0.6;
-		add(descBox);
 
-		var titleText:Alphabet = new Alphabet(75, 45, title, true);
-		titleText.setScale(0.6);
-		titleText.alpha = 0.4;
-		add(titleText);
+		var shit = new FlxText(0, FlxG.height * 0.05, 0, title);
+		shit.setFormat(Paths.font("disneyFreeplayFont.ttf"), 25, FlxColor.fromRGB(255, 255, 255, Std.int(255 * .5)), CENTER, OUTLINE, FlxColor.BLACK);
+		shit.screenCenter(X);
+		add(shit);
 
-		descText = new FlxText(50, 600, 1180, "", 32);
-		descText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		var selectorLeft = new FlxText(shit.x - 310, shit.y + 70, 0, '< ');
+		selectorLeft.setFormat(Paths.font("disneyFreeplayFont.ttf"), 150, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
+		selectorLeft.scale.set(.6, .6);
+		selectorLeft.antialiasing = ClientPrefs.data.antialiasing;
+		//FlxTween.tween(selectorLeft, {x: 176.5}, 1, {ease: FlxEase.expoOut});
+		add(selectorLeft);
+
+		var selectorRight = new FlxText(shit.x + 320, shit.y + 70, 0, ' >');
+		selectorRight.scale.set(.6, .6);
+		selectorRight.antialiasing = ClientPrefs.data.antialiasing;
+		selectorRight.setFormat(Paths.font("disneyFreeplayFont.ttf"), 150, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
+		add(selectorRight);
+
+		descText = new FlxText(50, 900, 1180, "", 32);
+		descText.setFormat(Paths.font("DisneyFont.ttf"), 30, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		descText.scrollFactor.set();
 		descText.borderSize = 2.4;
+		descText.applyMarkup(descText.text, [redTextMarker]);
 		add(descText);
 
 		for (i in 0...optionsArray.length)
 		{
-			var optionText:Alphabet = new Alphabet(290, 260, optionsArray[i].name, false);
+			var optionText:FlxTextAlphabet = new FlxTextAlphabet(480, 135, 0, optionsArray[i].name);
+			optionText.setFormat(Paths.font("BROUGHTTHESTYLE.otf"), 90, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 			optionText.isMenuItem = true;
+			optionText.changeY = false;
+			optionText.changeLerp = true;
+			optionText.lerpVal = 1;
+			optionText.distancePerItem.x += 200;
 			/*optionText.forceX = 300;
 			optionText.yMult = 90;*/
 			optionText.targetY = i;
+			optionText.screenCenter(X).x -= 50;
 			grpOptions.add(optionText);
 
-			if(optionsArray[i].type == 'bool')
-			{
-				var checkbox:CheckboxThingie = new CheckboxThingie(optionText.x - 105, optionText.y, Std.string(optionsArray[i].getValue()) == 'true');
+			if(optionsArray[i].type == 'bool') {
+				var checkbox:CheckboxThingie = new CheckboxThingie(optionText.x + optionText.width + 100, optionText.y, optionsArray[i].getValue() == true);
 				checkbox.sprTracker = optionText;
+				checkbox.offsetY = -50;
 				checkbox.ID = i;
 				checkboxGroup.add(checkbox);
-			}
-			else
-			{
-				optionText.x -= 80;
-				optionText.startPosition.x -= 80;
+			} else {
 				//optionText.xAdd -= 80;
-				var valueText:AttachedText = new AttachedText('' + optionsArray[i].getValue(), optionText.width + 60);
+				var valueText:AttachedFlxText = new AttachedFlxText('' + optionsArray[i].getValue(), optionText.width + 80, 0);
+				valueText.setFormat(Paths.font("BROUGHTTHESTYLE.otf"), 90, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 				valueText.sprTracker = optionText;
+				//valueText.offsetY = -50;
+				valueText.offsetX = -120;
 				valueText.copyAlpha = true;
 				valueText.ID = i;
 				grpTexts.add(valueText);
-				optionsArray[i].child = valueText;
+				optionsArray[i].setChild(valueText);
 			}
 			//optionText.snapToPosition(); //Don't ignore me when i ask for not making a fucking pull request to uncomment this line ok
+
+			if(optionsArray[i].showBoyfriend && boyfriend == null)
+			{
+				reloadBoyfriend();
+			}
 			updateTextFrom(optionsArray[i]);
+		}
+
+		var graphic:FlxSprite = new FlxSprite().loadGraphic(Paths.image('$dogshitPath/IMG_1017'));
+		graphic.setGraphicSize(FlxG.width, FlxG.height);
+		graphic.updateHitbox();
+		graphic.screenCenter();
+		graphic.antialiasing = ClientPrefs.data.antialiasing;
+		add(graphic);
+
+		var graphic:FlxSprite = new FlxSprite().loadGraphic(Paths.image('$dogshitPath/Untitled1595_20240710134131'));
+		graphic.setGraphicSize(FlxG.width, FlxG.height);
+		graphic.updateHitbox();
+		graphic.screenCenter();
+		graphic.antialiasing = ClientPrefs.data.antialiasing;
+		add(graphic);
+
+		if (!ClientPrefs.data.lowQuality)
+		{
+			var gradient:FlxSprite = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/filters/gradient'));
+			gradient.scrollFactor.set(0, 0);
+			gradient.setGraphicSize(Std.int(gradient.width * 0.75));
+			gradient.updateHitbox();
+			gradient.screenCenter();
+			gradient.antialiasing = true;
+			gradient.scale.x += .1;
+			add(gradient);
+
+			var scratchStuff:FlxSprite = new FlxSprite();
+			scratchStuff.frames = Paths.getSparrowAtlas('Funkin_avi/filters/scratchShit');
+			scratchStuff.animation.addByPrefix('idle', 'scratch thing 1', 24, true);
+			scratchStuff.animation.play('idle');
+			scratchStuff.screenCenter();
+			scratchStuff.scale.x = 1.1;
+			scratchStuff.scale.y = 1.1;
+			add(scratchStuff);
+
+			var grain:FlxSprite = new FlxSprite();
+			grain.frames = Paths.getSparrowAtlas('Funkin_avi/filters/Grainshit');
+			grain.animation.addByPrefix('idle', 'grains 1', 24, true);
+			grain.animation.play('idle');
+			grain.screenCenter();
+			grain.scale.x = 1.1;
+			grain.scale.y = 1.1;
+			add(grain);
 		}
 
 		changeSelection();
@@ -108,33 +183,18 @@ class BaseOptionsMenu extends MusicBeatSubstate
 	public function addOption(option:Option) {
 		if(optionsArray == null || optionsArray.length < 1) optionsArray = [];
 		optionsArray.push(option);
-		return option;
 	}
 
 	var nextAccept:Int = 5;
 	var holdTime:Float = 0;
 	var holdValue:Float = 0;
-
-	var bindingKey:Bool = false;
-	var holdingEsc:Float = 0;
-	var bindingBlack:FlxSprite;
-	var bindingText:Alphabet;
-	var bindingText2:Alphabet;
 	override function update(elapsed:Float)
 	{
-		super.update(elapsed);
-
-		if(bindingKey)
-		{
-			bindingKeyUpdate(elapsed);
-			return;
-		}
-
-		if (controls.UI_UP_P)
+		if (controls.UI_LEFT_P)
 		{
 			changeSelection(-1);
 		}
-		if (controls.UI_DOWN_P)
+		if (controls.UI_RIGHT_P)
 		{
 			changeSelection(1);
 		}
@@ -146,53 +206,30 @@ class BaseOptionsMenu extends MusicBeatSubstate
 
 		if(nextAccept <= 0)
 		{
-			if(curOption.type == 'bool')
+			var usesCheckbox = true;
+			if(curOption.type != 'bool')
+			{
+				usesCheckbox = false;
+			}
+
+			if(usesCheckbox)
 			{
 				if(controls.ACCEPT)
 				{
-					FlxG.sound.play(Paths.sound('scrollMenu'));
+					FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
 					curOption.setValue((curOption.getValue() == true) ? false : true);
 					curOption.change();
 					reloadCheckboxes();
 				}
-			}
-			else
-			{
-				if(curOption.type == 'keybind')
-				{
-					if(controls.ACCEPT)
-					{
-						bindingBlack = new FlxSprite().makeGraphic(1, 1, FlxColor.WHITE);
-						bindingBlack.scale.set(FlxG.width, FlxG.height);
-						bindingBlack.updateHitbox();
-						bindingBlack.alpha = 0;
-						FlxTween.tween(bindingBlack, {alpha: 0.6}, 0.35, {ease: FlxEase.linear});
-						add(bindingBlack);
-	
-						bindingText = new Alphabet(FlxG.width / 2, 160, "Rebinding " + curOption.name, false);
-						bindingText.alignment = CENTERED;
-						add(bindingText);
-						
-						bindingText2 = new Alphabet(FlxG.width / 2, 340, "Hold ESC to Cancel\nHold Backspace to Delete", true);
-						bindingText2.alignment = CENTERED;
-						add(bindingText2);
-	
-						bindingKey = true;
-						holdingEsc = 0;
-						ClientPrefs.toggleVolumeKeys(false);
-						FlxG.sound.play(Paths.sound('scrollMenu'));
-					}
-				}
-				else if(controls.UI_LEFT || controls.UI_RIGHT)
-				{
-					var pressed = (controls.UI_LEFT_P || controls.UI_RIGHT_P);
-					if(holdTime > 0.5 || pressed)
-					{
-						if(pressed)
-						{
+			} else {
+				if(controls.UI_UP || controls.UI_DOWN) {
+					var pressed = (controls.UI_UP_P || controls.UI_DOWN_P);
+					if(holdTime > 0.5 || pressed) {
+						if(pressed) {
 							var add:Dynamic = null;
-							if(curOption.type != 'string')
-								add = controls.UI_LEFT ? -curOption.changeValue : curOption.changeValue;
+							if(curOption.type != 'string') {
+								add = controls.UI_UP ? -curOption.changeValue : curOption.changeValue;
+							}
 
 							switch(curOption.type)
 							{
@@ -214,13 +251,14 @@ class BaseOptionsMenu extends MusicBeatSubstate
 
 								case 'string':
 									var num:Int = curOption.curOption; //lol
-									if(controls.UI_LEFT_P) --num;
+									if(controls.UI_UP_P) --num;
 									else num++;
 
-									if(num < 0)
+									if(num < 0) {
 										num = curOption.options.length - 1;
-									else if(num >= curOption.options.length)
+									} else if(num >= curOption.options.length) {
 										num = 0;
+									}
 
 									curOption.curOption = num;
 									curOption.setValue(curOption.options[num]); //lol
@@ -228,11 +266,9 @@ class BaseOptionsMenu extends MusicBeatSubstate
 							}
 							updateTextFrom(curOption);
 							curOption.change();
-							FlxG.sound.play(Paths.sound('scrollMenu'));
-						}
-						else if(curOption.type != 'string')
-						{
-							holdValue += curOption.scrollSpeed * elapsed * (controls.UI_LEFT ? -1 : 1);
+							FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
+						} else if(curOption.type != 'string') {
+							holdValue += curOption.scrollSpeed * elapsed * (controls.UI_UP ? -1 : 1);
 							if(holdValue < curOption.minValue) holdValue = curOption.minValue;
 							else if (holdValue > curOption.maxValue) holdValue = curOption.maxValue;
 
@@ -249,224 +285,90 @@ class BaseOptionsMenu extends MusicBeatSubstate
 						}
 					}
 
-					if(curOption.type != 'string')
+					if(curOption.type != 'string') {
 						holdTime += elapsed;
-				}
-				else if(controls.UI_LEFT_R || controls.UI_RIGHT_R)
-				{
-					if(holdTime > 0.5) FlxG.sound.play(Paths.sound('scrollMenu'));
-					holdTime = 0;
+					}
+				} else if(controls.UI_UP_R || controls.UI_DOWN_R) {
+					clearHold();
 				}
 			}
 
 			if(controls.RESET)
 			{
-				var leOption:Option = optionsArray[curSelected];
-				if(leOption.type != 'keybind')
+				for (i in 0...optionsArray.length)
 				{
+					var leOption:Option = optionsArray[i];
 					leOption.setValue(leOption.defaultValue);
 					if(leOption.type != 'bool')
 					{
-						if(leOption.type == 'string') leOption.curOption = leOption.options.indexOf(leOption.getValue());
+						if(leOption.type == 'string')
+						{
+							leOption.curOption = leOption.options.indexOf(leOption.getValue());
+						}
 						updateTextFrom(leOption);
 					}
+					leOption.change();
 				}
-				else
-				{
-					leOption.setValue(!Controls.instance.controllerMode ? leOption.defaultKeys.keyboard : leOption.defaultKeys.gamepad);
-					updateBind(leOption);
-				}
-				leOption.change();
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				reloadCheckboxes();
 			}
 		}
 
+		if (boyfriend != null && boyfriend.visible)
+		{
+			if (controls.NOTE_UP_P)
+			{
+				boyfriend.playAnim("singUP");
+				spamCounter += 1;
+			}
+			if (controls.NOTE_DOWN_P)
+			{
+				boyfriend.playAnim("singDOWN");
+				spamCounter += 1;
+			}
+			if (controls.NOTE_LEFT_P)
+			{
+				boyfriend.playAnim("singLEFT");
+				spamCounter += 1;
+			}
+			if (controls.NOTE_RIGHT_P)
+			{
+				boyfriend.playAnim("singRIGHT");
+				spamCounter += 1;
+			}
+		}
+
+		if (spamCounter >= 150 && GameData.episode1FPLock == "unlocked")
+		{
+			FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
+			FreeplayState.freeplayMenuList = 3;
+			MusicBeatState.switchState(new FreeplayState());
+		}
+
+		if(boyfriend != null && boyfriend.animation.curAnim.finished) {
+			boyfriend.dance();
+		}
+
 		if(nextAccept > 0) {
 			nextAccept -= 1;
 		}
-	}
-
-	function bindingKeyUpdate(elapsed:Float)
-	{
-		if(FlxG.keys.pressed.ESCAPE || FlxG.gamepads.anyPressed(B))
-		{
-			holdingEsc += elapsed;
-			if(holdingEsc > 0.5)
-			{
-				FlxG.sound.play(Paths.sound('cancelMenu'));
-				closeBinding();
-			}
-		}
-		else if (FlxG.keys.pressed.BACKSPACE || FlxG.gamepads.anyPressed(BACK))
-		{
-			holdingEsc += elapsed;
-			if(holdingEsc > 0.5)
-			{
-				if (!controls.controllerMode) curOption.keys.keyboard = NONE;
-				else curOption.keys.gamepad = NONE;
-				updateBind(!controls.controllerMode ? InputFormatter.getKeyName(NONE) : InputFormatter.getGamepadName(NONE));
-				FlxG.sound.play(Paths.sound('cancelMenu'));
-				closeBinding();
-			}
-		}
-		else
-		{
-			holdingEsc = 0;
-			var changed:Bool = false;
-			if(!controls.controllerMode)
-			{
-				if(FlxG.keys.justPressed.ANY || FlxG.keys.justReleased.ANY)
-				{
-					var keyPressed:FlxKey = cast (FlxG.keys.firstJustPressed(), FlxKey);
-					var keyReleased:FlxKey = cast (FlxG.keys.firstJustReleased(), FlxKey);
-
-					if(keyPressed != NONE && keyPressed != ESCAPE && keyPressed != BACKSPACE)
-					{
-						changed = true;
-						curOption.keys.keyboard = keyPressed;
-					}
-					else if(keyReleased != NONE && (keyReleased == ESCAPE || keyReleased == BACKSPACE))
-					{
-						changed = true;
-						curOption.keys.keyboard = keyReleased;
-					}
-				}
-			}
-			else if(FlxG.gamepads.anyJustPressed(ANY) || FlxG.gamepads.anyJustPressed(LEFT_TRIGGER) || FlxG.gamepads.anyJustPressed(RIGHT_TRIGGER) || FlxG.gamepads.anyJustReleased(ANY))
-			{
-				var keyPressed:FlxGamepadInputID = NONE;
-				var keyReleased:FlxGamepadInputID = NONE;
-				if(FlxG.gamepads.anyJustPressed(LEFT_TRIGGER))
-					keyPressed = LEFT_TRIGGER; //it wasnt working for some reason
-				else if(FlxG.gamepads.anyJustPressed(RIGHT_TRIGGER))
-					keyPressed = RIGHT_TRIGGER; //it wasnt working for some reason
-				else
-				{
-					for (i in 0...FlxG.gamepads.numActiveGamepads)
-					{
-						var gamepad:FlxGamepad = FlxG.gamepads.getByID(i);
-						if(gamepad != null)
-						{
-							keyPressed = gamepad.firstJustPressedID();
-							keyReleased = gamepad.firstJustReleasedID();
-							if(keyPressed != NONE || keyReleased != NONE) break;
-						}
-					}
-				}
-
-				if(keyPressed != NONE && keyPressed != FlxGamepadInputID.BACK && keyPressed != FlxGamepadInputID.B)
-				{
-					changed = true;
-					curOption.keys.gamepad = keyPressed;
-				}
-				else if(keyReleased != NONE && (keyReleased == FlxGamepadInputID.BACK || keyReleased == FlxGamepadInputID.B))
-				{
-					changed = true;
-					curOption.keys.gamepad = keyReleased;
-				}
-			}
-
-			if(changed)
-			{
-				var key:String = null;
-				if(!controls.controllerMode)
-				{
-					if(curOption.keys.keyboard == null) curOption.keys.keyboard = 'NONE';
-					curOption.setValue(curOption.keys.keyboard);
-					key = InputFormatter.getKeyName(FlxKey.fromString(curOption.keys.keyboard));
-				}
-				else
-				{
-					if(curOption.keys.gamepad == null) curOption.keys.gamepad = 'NONE';
-					curOption.setValue(curOption.keys.gamepad);
-					key = InputFormatter.getGamepadName(FlxGamepadInputID.fromString(curOption.keys.gamepad));
-				}
-				updateBind(key);
-				FlxG.sound.play(Paths.sound('confirmMenu'));
-				closeBinding();
-			}
-		}
-	}
-
-	final MAX_KEYBIND_WIDTH = 320;
-	function updateBind(?text:String = null, ?option:Option = null)
-	{
-		if(option == null) option = curOption;
-		if(text == null)
-		{
-			text = option.getValue();
-			if(text == null) text = 'NONE';
-
-			if(!controls.controllerMode)
-				text = InputFormatter.getKeyName(FlxKey.fromString(text));
-			else
-				text = InputFormatter.getGamepadName(FlxGamepadInputID.fromString(text));
-		}
-
-		var bind:AttachedText = cast option.child;
-		var attach:AttachedText = new AttachedText(text, bind.offsetX);
-		attach.sprTracker = bind.sprTracker;
-		attach.copyAlpha = true;
-		attach.ID = bind.ID;
-		playstationCheck(attach);
-		attach.scaleX = Math.min(1, MAX_KEYBIND_WIDTH / attach.width);
-		attach.x = bind.x;
-		attach.y = bind.y;
-
-		option.child = attach;
-		grpTexts.insert(grpTexts.members.indexOf(bind), attach);
-		grpTexts.remove(bind);
-		bind.destroy();
-	}
-
-	function playstationCheck(alpha:Alphabet)
-	{
-		if(!controls.controllerMode) return;
-
-		var gamepad:FlxGamepad = FlxG.gamepads.firstActive;
-		var model:FlxGamepadModel = gamepad != null ? gamepad.detectedModel : UNKNOWN;
-		var letter = alpha.letters[0];
-		if(model == PS4)
-		{
-			switch(alpha.text)
-			{
-				case '[', ']': //Square and Triangle respectively
-					letter.image = 'alphabet_playstation';
-					letter.updateHitbox();
-					
-					letter.offset.x += 4;
-					letter.offset.y -= 5;
-			}
-		}
-	}
-
-	function closeBinding()
-	{
-		bindingKey = false;
-		bindingBlack.destroy();
-		remove(bindingBlack);
-
-		bindingText.destroy();
-		remove(bindingText);
-
-		bindingText2.destroy();
-		remove(bindingText2);
-		ClientPrefs.toggleVolumeKeys(true);
+		super.update(elapsed);
 	}
 
 	function updateTextFrom(option:Option) {
-		if(option.type == 'keybind')
-		{
-			updateBind(option);
-			return;
-		}
-
 		var text:String = option.displayFormat;
 		var val:Dynamic = option.getValue();
 		if(option.type == 'percent') val *= 100;
 		var def:Dynamic = option.defaultValue;
 		option.text = text.replace('%v', val).replace('%d', def);
+	}
+
+	function clearHold()
+	{
+		if(holdTime > 0.5) {
+			FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
+		}
+		holdTime = 0;
 	}
 	
 	function changeSelection(change:Int = 0)
@@ -474,38 +376,72 @@ class BaseOptionsMenu extends MusicBeatSubstate
 		curSelected += change;
 		if (curSelected < 0)
 			curSelected = optionsArray.length - 1;
-		else if (curSelected >= optionsArray.length)
+		if (curSelected >= optionsArray.length)
 			curSelected = 0;
+
+		grpOptions.members[curSelected].screenCenter(X);
 
 		descText.text = optionsArray[curSelected].description;
 		descText.screenCenter(Y);
 		descText.y += 270;
+		descText.applyMarkup(descText.text, [redTextMarker]);
 
 		var bullShit:Int = 0;
 
-		for (item in grpOptions.members)
-		{
+		for (item in grpOptions.members) {
 			item.targetY = bullShit - curSelected;
 			bullShit++;
 
-			item.alpha = 0.6;
-			if (item.targetY == 0) item.alpha = 1;
+			item.alpha = 0;
+			if (item.targetY == 0) {
+				item.alpha = 1;
+			}
 		}
-		for (text in grpTexts)
-		{
-			text.alpha = 0.6;
-			if(text.ID == curSelected) text.alpha = 1;
+		for (text in grpTexts) {
+			text.alpha = 0;
+			if(text.ID == curSelected) {
+				text.alpha = 1;
+			}
 		}
 
-		descBox.setPosition(descText.x - 10, descText.y - 10);
-		descBox.setGraphicSize(Std.int(descText.width + 20), Std.int(descText.height + 25));
-		descBox.updateHitbox();
+		if(boyfriend != null)
+		{
+			boyfriend.visible = optionsArray[curSelected].showBoyfriend;
+		}
 
 		curOption = optionsArray[curSelected]; //shorter lol
-		FlxG.sound.play(Paths.sound('scrollMenu'));
+		FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
 	}
 
-	function reloadCheckboxes()
-		for (checkbox in checkboxGroup)
-			checkbox.daValue = Std.string(optionsArray[checkbox.ID].getValue()) == 'true'; //Do not take off the Std.string() from this, it will break a thing in Mod Settings Menu
+	override function closeSubState() {
+		super.closeSubState();
+	}
+
+	public function reloadBoyfriend()
+	{
+		var wasVisible:Bool = false;
+		if(boyfriend != null) {
+			wasVisible = boyfriend.visible;
+			boyfriend.kill();
+			remove(boyfriend);
+			boyfriend.destroy();
+		}
+
+		boyfriend = new Character(440, 220, 'everett-modern', true);
+		boyfriend.setGraphicSize(Std.int(boyfriend.width * 0.75));
+		boyfriend.addOffset("singLEFT", 18, 0);
+		boyfriend.addOffset("singRIGHT", -36, 0);
+		boyfriend.addOffset("singUP", -33, 23);
+		boyfriend.addOffset("singDOWN", -7, -22);
+		boyfriend.updateHitbox();
+		boyfriend.dance();
+		insert(1, boyfriend);
+		boyfriend.visible = wasVisible;
+	}
+
+	function reloadCheckboxes() {
+		for (checkbox in checkboxGroup) {
+			checkbox.daValue = (optionsArray[checkbox.ID].getValue() == true);
+		}
+	}
 }

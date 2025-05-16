@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="Mickey1.png"><SubTexture name="Mickey1 Idle0000" x="4934" y="1061" width="735" height="1060" frameX="-421" frameY="-298" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="Mickey1 Idle0001" x="4934" y="3173" width="735" height="1047" frameX="-424" frameY="-311" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="Mickey1 Idle0002" x="4934" y="2121" width="706" height="1052" frameX="-455" frameY="-306" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="Mickey1 Idle0003" x="4934" y="0" width="796" height="1061" frameX="-365" frameY="-297" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="Mickey1 Idle0004" x="3919" y="3375" width="821" height="1072" frameX="-335" frameY="-286" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="Mickey1 Idle0005" x="2218" y="3375" width="786" height="1081" frameX="-360" frameY="-278" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="Mickey1 Idle0006" x="2394" y="2256" width="741" height="1085" frameX="-398" frameY="-274" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="Mickey1 Idle0007" x="1671" y="2256" width="723" height="1086" frameX="-409" frameY="-273" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="Mickey1 Idle0008" x="2997" y="1119" width="721" height="1087" frameX="-412" frameY="-272" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="Mickey1 Idle0009" x="3806" y="1085" width="724" height="1084" frameX="-410" frameY="-275" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="Mickey1 Up0000" x="805" y="1135" width="804" height="1120" frameX="-340" frameY="-202" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="Mickey1 Up0001" x="0" y="0" width="750" height="1135" frameX="-378" frameY="-186" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="Mickey1 Up0002" x="750" y="0" width="733" height="1133" frameX="-383" frameY="-189" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="Mickey1 Up0003" x="1483" y="0" width="754" height="1133" frameX="-364" frameY="-188" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="Mickey1 Up0004" x="2237" y="0" width="760" height="1133" frameX="-358" frameY="-188" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="Mickey1 Down0000" x="0" y="4459" width="800" height="1059" frameX="-464" frameY="-297" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="Mickey1 Down0001" x="800" y="4459" width="856" height="1042" frameX="-425" frameY="-314" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="Mickey1 Down0002" x="2642" y="4459" width="976" height="1035" frameX="-302" frameY="-321" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="Mickey1 Down0003" x="3618" y="4459" width="976" height="1031" frameX="-303" frameY="-325" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="Mickey1 Down0004" x="1656" y="4459" width="986" height="1036" frameX="-292" frameY="-320" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="Mickey1 Left0000" x="849" y="2256" width="822" height="1111" frameX="-332" frameY="-239" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="Mickey1 Left0001" x="0" y="1135" width="805" height="1121" frameX="-317" frameY="-229" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="Mickey1 Left0002" x="1609" y="1135" width="807" height="1119" frameX="-308" frameY="-231" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="Mickey1 Left0003" x="2997" y="0" width="809" height="1119" frameX="-305" frameY="-231" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="Mickey1 Left0004" x="0" y="2256" width="849" height="1119" frameX="-315" frameY="-231" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="Mickey1 Right0000" x="3004" y="3375" width="915" height="1081" frameX="-231" frameY="-278" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="Mickey1 Right0001" x="3806" y="2169" width="1125" height="1084" frameX="-41" frameY="-275" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="Mickey1 Right0002" x="3806" y="0" width="1128" height="1085" frameX="-44" frameY="-274" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="Mickey1 Right0003" x="0" y="3375" width="1103" height="1084" frameX="-59" frameY="-275" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="Mickey1 Right0004" x="1103" y="3375" width="1115" height="1084" frameX="-47" frameY="-275" frameWidth="1650" frameHeight="1400" />
+</TextureAtlas>
