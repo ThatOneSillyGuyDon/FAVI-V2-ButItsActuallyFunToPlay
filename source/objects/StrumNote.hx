@@ -1,20 +1,17 @@
 package objects;
 
-import backend.animation.PsychAnimationController;
-
-import shaders.RGBPalette;
-import shaders.RGBPalette.RGBShaderReference;
-
+import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.addons.effects.FlxSkewedSprite;
 
 class StrumNote extends FlxSkewedSprite
 {
-	public var rgbShader:RGBShaderReference;
+	private var colorSwap:ColorSwap;
 	public var resetAnim:Float = 0;
 	private var noteData:Int = 0;
 	public var direction:Float = 90;//plan on doing scroll directions soon -bb
 	public var downScroll:Bool = false;//plan on doing scroll directions soon -bb
 	public var sustainReduce:Bool = true;
+	
 	private var player:Int;
 	
 	public var texture(default, set):String = null;
@@ -26,40 +23,46 @@ class StrumNote extends FlxSkewedSprite
 		return value;
 	}
 
-	public var useRGBShader:Bool = true;
+	var skin:String = "";
+
 	public function new(x:Float, y:Float, leData:Int, player:Int) {
-		animation = new PsychAnimationController(this);
-
-		rgbShader = new RGBShaderReference(this, Note.initializeGlobalRGBShader(leData));
-		rgbShader.enabled = false;
-		if(PlayState.SONG != null && PlayState.SONG.disableNoteRGB) useRGBShader = false;
-		
-		var arr:Array<FlxColor> = ClientPrefs.data.arrowRGB[leData];
-		if(PlayState.isPixelStage) arr = ClientPrefs.data.arrowRGBPixel[leData];
-		
-		if(leData <= arr.length)
-		{
-			@:bypassAccessor
-			{
-				rgbShader.r = arr[0];
-				rgbShader.g = arr[1];
-				rgbShader.b = arr[2];
-			}
-		}
-
+		colorSwap = new ColorSwap();
+		shader = colorSwap.shader;
 		noteData = leData;
 		this.player = player;
 		this.noteData = leData;
 		super(x, y);
 
-		var skin:String = null;
-		if(PlayState.SONG != null && PlayState.SONG.arrowSkin != null && PlayState.SONG.arrowSkin.length > 1) skin = PlayState.SONG.arrowSkin;
-		else skin = Note.defaultNoteSkin;
+		switch (PlayState.SONG.song)
+		{
+			case "Rotten Petals" | "Curtain Call" | "Seeking Freedom" | "A True Monster" | "Am I Real?" | "Your Final Bow" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "The Wretched Tilezones (Simple Life)" | "Ahh the Scary (Somber Night)":
+				switch (FreeplayState.maniaSkin)
+				{
+					case 0: skin = "NOTE_assets-MANIA";
+					case 1: skin = "NOTE_assets-MANIABAR";
+					case 2: skin = "NOTE_assets-MANIACIRCLE";
+				}
+			case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Laugh Track":
+				skin = "NOTE_assets-CARTOON";
+			case "Mercy":
+				skin = "NOTE_assets-MERCY";
+			case "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Malfunction Legacy" | "Twisted Grins Legacy" | "Cycled Sins Legacy" | "Mercy Legacy" | "Delutrance" | "Malfunction":
+				skin = "NOTE_assets";
+			case "Cycled Sins":
+				skin = "NOTE_assets-SIN";
+			case "Dont Cross":
+				skin = "NOTE_assets-CROSS";
+			case "War Dilemma":
+				skin = "NOTE_assets-WAR";
+			case "Birthday":
+				skin = "NOTE_assets-BIRTHDAY";
+			default:
+				skin = "NOTE_assets-DEFAULTSKIN";
+		}
 
-		var customSkin:String = skin + Note.getNoteSkinPostfix();
-		if(Paths.fileExists('images/$customSkin.png', IMAGE)) skin = customSkin;
-
+		if(PlayState.SONG.arrowSkin != null && PlayState.SONG.arrowSkin.length > 1) skin = PlayState.SONG.arrowSkin;
 		texture = skin; //Load texture and anims
+
 		scrollFactor.set();
 	}
 
@@ -111,7 +114,17 @@ class StrumNote extends FlxSkewedSprite
 			animation.addByPrefix('red', 'arrowRIGHT');
 
 			antialiasing = ClientPrefs.data.antialiasing;
-			setGraphicSize(Std.int(width * 0.7));
+			var s = 0.7;
+			switch (PlayState.SONG.song)
+			{
+				case "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Malfunction Legacy" | "Twisted Grins Legacy" | "Cycled Sins Legacy" | "Mercy Legacy" | "Delutrance" | "Birthday" | "Malfunction":
+					s = 0.7;
+				case "Dont Cross" | "Mercy":
+				   s = 0.64;
+				default:
+					s = 0.6;
+			}
+			setGraphicSize(Std.int(width * s));
 
 			switch (Math.abs(noteData) % 4)
 			{
@@ -157,16 +170,27 @@ class StrumNote extends FlxSkewedSprite
 				resetAnim = 0;
 			}
 		}
+		//if(animation.curAnim != null){ //my bad i was upset
+		if(animation.curAnim.name == 'confirm' && !PlayState.isPixelStage) {
+			centerOrigin();
+		//}
+		}
+
 		super.update(elapsed);
 	}
 
 	public function playAnim(anim:String, ?force:Bool = false) {
 		animation.play(anim, force);
-		if(animation.curAnim != null)
-		{
-			centerOffsets();
-			centerOrigin();
+		centerOffsets();
+		centerOrigin();
+		if(animation.curAnim == null || animation.curAnim.name == 'static') {
+			colorSwap.hue = 0;
+			colorSwap.saturation = 0;
+			colorSwap.brightness = 0;
+		} else {
+			if(animation.curAnim.name == 'confirm' && !PlayState.isPixelStage) {
+				centerOrigin();
+			}
 		}
-		if(useRGBShader) rgbShader.enabled = (animation.curAnim != null && animation.curAnim.name != 'static');
 	}
 }

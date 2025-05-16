@@ -93,6 +93,7 @@ class DevilishStage extends BaseStage
 
 		game.boyfriend.setPosition(770, 450);
 		game.dad.setPosition(1660, 120);
+		game.gf.visible = false;
 
 		game.dad.setColorTransform(-1, -1, -1, 1, 0, 0, 0, 0);
 		camGame.alpha = 0.001;
@@ -157,6 +158,26 @@ class DevilishStage extends BaseStage
 			episodeIntro.visible = true;
 		});
 		episodeIntro.addCallback("onEnd", () -> {
+			if (PlayState.SONG.song == "Devilish Deal" && isStoryMode && GameData.episode1FPLock != "unlocked")
+			{
+				PlayState.windowName = "Funkin.avi - " + 
+				(isStoryMode ? game.curEpisode + " - " : "Freeplay - ") + 
+				(PlayState.SONG.song == "Dont Cross" ? "Don't Cross!" : PlayState.SONG.song) + 
+				" (Composed by: " + FreeplayState.getArtistName() + 
+				") - Chart by: " + Song.getCharterCredits() + 
+				" [" + FreeplayState.getDiffRank() + "]"; // shitty long ass name that credits literally every fucking thing
+				lime.app.Application.current.window.title = PlayState.windowName;
+
+				PlayState.windowTimer = new FlxTimer().start(5, function(tmr:FlxTimer)
+				{
+					PlayState.windowName = "Funkin.avi - " + 
+					(isStoryMode ? game.curEpisode + " - " : "Freeplay - ") + 
+					(PlayState.SONG.song == "Dont Cross" ? "Don't Cross!" : PlayState.SONG.song) + 
+					" [" + FreeplayState.getDiffRank() + "]"; // short version that displays after 5 seconds yayaya
+		
+					lime.app.Application.current.window.title = PlayState.windowName;
+				});
+			}
 			//finishedScene = true;
 			devilishGaming = new VideoSprite(false);
 			devilishGaming.load(Paths.video("devilishIntro"), [VideoSprite.muted]);
@@ -537,9 +558,9 @@ class DevilishStage extends BaseStage
 		satanIconPulse.scale.set(mult, mult);
 		satanIconPulse.updateHitbox();
 
-		minnieIcon.x = game.healthBar.x + (game.healthBar.width * (FlxMath.remapToRange(-game.healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * minnieIcon.scale.x) / 2 - game.iconOffset * 25;
-		satanIcon.x = game.healthBar.x + (game.healthBar.width * (FlxMath.remapToRange(-game.healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * satanIcon.scale.x - 150) / 2 - game.iconOffset * 24;
-		satanIconPulse.x = game.healthBar.x + (game.healthBar.width * (FlxMath.remapToRange(-game.healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * satanIconPulse.scale.x - 150) / 2 - game.iconOffset * 24;
+		satanIconPulse.x = game.healthBar.barCenter + (150 * game.iconP1.scale.x - 150) / 2 - game.iconOffset;
+		satanIcon.x = game.healthBar.barCenter + (150 * game.iconP1.scale.x - 150) / 2 - game.iconOffset;
+		minnieIcon.x = game.healthBar.barCenter - (150 * game.iconP2.scale.x) / 2 - game.iconOffset * 2;
 
 		if (ClientPrefs.data.shaders)
 		{

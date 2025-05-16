@@ -1245,26 +1245,6 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
                         unspawnNotes.push(sustainNote);
 
                         #if PSYCH
-                        #if (PSYCHVERSION >= "0.7")
-						sustainNote.correctionOffset = swagNote.height / 2;
-                        if(!PlayState.isPixelStage)
-						{
-							if(oldNote.isSustainNote)
-							{
-								oldNote.scale.y *= Note.SUSTAIN_SIZE / oldNote.frameHeight;
-								oldNote.scale.y /= playbackSpeed;
-								oldNote.updateHitbox();
-							}
-
-							if(ClientPrefs.data.downScroll) sustainNote.correctionOffset = 0;
-						}
-						else if (oldNote.isSustainNote)
-						{
-							oldNote.scale.y /= playbackSpeed;
-							oldNote.updateHitbox();
-						}
-                        
-
                         if (sustainNote.mustPress) sustainNote.x += FlxG.width / 2; // general offset
                         else if(ClientPrefs.data.middleScroll)
                         {
@@ -1272,15 +1252,6 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
                             if(daNoteData > 1) //Up and Right
                                 sustainNote.x += FlxG.width / 2 + 25;
                         }
-                        #else
-                        if (sustainNote.mustPress) sustainNote.x += FlxG.width / 2; // general offset
-                        else if(ClientPrefs.middleScroll)
-                        {
-                            sustainNote.x += 310;
-                            if(daNoteData > 1) //Up and Right
-                                sustainNote.x += FlxG.width / 2 + 25;
-                        }
-                        #end
                         #end
                     }
                 }

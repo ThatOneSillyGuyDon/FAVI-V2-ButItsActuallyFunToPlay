@@ -4,7 +4,7 @@ import lime.app.Application;
 import flixel.text.FlxText.FlxTextFormat;
 import flixel.text.FlxText.FlxTextFormatMarkerPair;
 import backend.FlxTextAlphabet;
-import gameObjects.utils.AttachedFlxText;
+import objects.AttachedFlxText;
 import flixel.addons.transition.FlxTransitionableState;
 
 class BotplayScreen extends MusicBeatState {

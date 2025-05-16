@@ -20,6 +20,13 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			false); //Default value
 		addOption(option);
 
+		var option:Option = new Option('Middlescroll',
+			'If checked, note feild is centered.',
+			'middleScroll',
+			'bool',
+			false);
+		addOption(option);
+
 		var option:Option = new Option('Mechanics',
 			'Uncheck this if you can\'t beat certain songs.\n^^(THIS DOES NOT APPLY TO MALFUNCTION)^^',
 			'mechanics',
