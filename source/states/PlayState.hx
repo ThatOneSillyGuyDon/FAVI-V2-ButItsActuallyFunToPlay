@@ -64,6 +64,36 @@ import psychlua.HScript;
 import tea.SScript;
 #end
 
+enum FlashType
+{
+	BG_FLASH;
+	BG_DARK;
+	CAM_FLASH_FANCY;
+}
+
+typedef FlashingSettings = 
+{
+	/**
+	* The visiblity of your background you want it to flash at
+	*/
+	@:optional var alpha:Float;
+
+	/**
+	* How long you want the fade out transition to take
+	*/
+	@:optional var timer:Float;
+
+	/**
+	* Fade out transition easing
+	*/
+	@:optional var ease:(t:Float)->Float;
+
+	/**
+	 * The array of the color values (RGB)
+	 */
+	 @:optional var colors:Array<Int>;
+}
+
 /**
  * This is where all the Gameplay stuff happens and is managed
  *
@@ -199,7 +229,6 @@ class PlayState extends MusicBeatState
 	public var healthGain:Float = 1;
 	public var healthLoss:Float = 1;
 
-	public var guitarHeroSustains:Bool = false;
 	public var instakillOnMiss:Bool = false;
 	public var cpuControlled:Bool = false;
 	public var practiceMode:Bool = false;
@@ -307,8 +336,17 @@ class PlayState extends MusicBeatState
 
 	var curEpisode:String;
 
+	var stageBGFlash:FlxSprite;
+	var BGFlashTween:FlxTween;
+
+	var blendFlash:FlxSprite;
+	var flashTween:FlxTween;
+
 	public static var windowName:String = "";
 	public static var windowTimer:FlxTimer;
+
+	//Space bar vars
+	public var limitThing:Int = 0; // Default Value
 
 	//Pause/gameOver variables
 	public static var pauseCountEnabled:Bool = false;
@@ -344,7 +382,6 @@ class PlayState extends MusicBeatState
 		instakillOnMiss = ClientPrefs.getGameplaySetting('instakill');
 		practiceMode = ClientPrefs.getGameplaySetting('practice');
 		cpuControlled = ClientPrefs.getGameplaySetting('botplay');
-		guitarHeroSustains = ClientPrefs.data.guitarHeroSustains;
 
 		// var gameCam:FlxCamera = FlxG.camera;
 		camGame = initPsychCamera();
@@ -472,7 +509,16 @@ class PlayState extends MusicBeatState
 			case 'stage': new states.stages.StageWeek1(); //Week 1
 			case 'alleyway' | 'ddStage': new states.stages.DevilishStage(); //Devilish Deal
 			case 'fuckingLine': new states.stages.FuckingLine(); //Don't Cross!
+			case 'waltRoom': new states.stages.WaltStage(); //Mercy/Mercy Legacy
 		}
+
+		stageBGFlash = new FlxSprite().makeGraphic(1, 1, 0xFFFFFFFF);
+		stageBGFlash.scale.set(FlxG.width * 5, FlxG.height * 5);
+		stageBGFlash.alpha = 0.0001; // it's at this value so the game doesn't lag when it becomes visible
+		stageBGFlash.x -= 750;
+		stageBGFlash.y -= 450;
+		stageBGFlash.scrollFactor.set();
+		add(stageBGFlash);
 
 		switch (SONG.song)
 		{
@@ -608,6 +654,15 @@ class PlayState extends MusicBeatState
 		uiGroup = new FlxSpriteGroup();
 		add(uiGroup);
 
+		blendFlash = new FlxSprite().makeGraphic(1, 1, 0xFFFFFFFF);
+		blendFlash.scale.set(FlxG.width * 5, FlxG.height * 5);
+		blendFlash.alpha = 0.0001;
+		blendFlash.blend = ADD;
+		blendFlash.x -= 750;
+		blendFlash.y -= 450;
+		blendFlash.scrollFactor.set();
+		add(blendFlash);
+
 		Conductor.songPosition = -5000 / Conductor.songPosition;
 		var showTime:Bool = (ClientPrefs.data.timeBarType != 'Disabled');
 		timeTxt = new FlxText(STRUM_X + (FlxG.width / 2) - 248, 19, 400, "", 32);
@@ -678,6 +733,7 @@ class PlayState extends MusicBeatState
 		healthBar.visible = !ClientPrefs.data.hideHud;
 		healthBar.alpha = ClientPrefs.data.healthBarAlpha;
 		reloadHealthBarColors();
+		if(ClientPrefs.data.downScroll || curStage == "waltRoom" || curStage == "menuSongs") healthBar.y = 0.11 * FlxG.height;
 
 		//have to make an underlay so you can see the healthbar colors lmao
 		fancyBarOverlay = new FlxSprite(healthBar.x, healthBar.y).loadGraphic(Paths.image('episode1Overlay'));
@@ -697,7 +753,7 @@ class PlayState extends MusicBeatState
 		uiGroup.add(fancyBarOverlay);
 		uiGroup.add(healthBar);
 
-		iconP1 = new HealthIcon(boyfriend.healthIcon, true);
+		iconP1 = new HealthIcon((SONG.song == "Mercy" ? "everettmercy" : boyfriend.healthIcon));
 		iconP1.y = healthBar.y - 75;
 		iconP1.visible = !ClientPrefs.data.hideHud;
 		iconP1.alpha = ClientPrefs.data.healthBarAlpha;
@@ -705,17 +761,43 @@ class PlayState extends MusicBeatState
 
 		iconP2 = new HealthIcon(dad.healthIcon, false);
 		iconP2.y = healthBar.y - 75;
+
+		// reposition specific icons on the healthbar properly
+		switch (dad.healthIcon)
+		{
+			case "walt" | "ricky" | "noise": iconP2.y -= 20;
+			case "goofy" | "smile" | "relapseNEW-pixel": iconP2.y -= 10;
+			case "cross": iconP2.y -= 15;
+		}
+
 		iconP2.visible = !ClientPrefs.data.hideHud;
 		iconP2.alpha = ClientPrefs.data.healthBarAlpha;
 		uiGroup.add(iconP2);
 
-		scoreTxt = new FlxText(0, healthBar.y + 40, FlxG.width, "", 20);
+		scoreTxt = new FlxText(0, ((curStage == "menuSongs" || curStage == "waltRoom") ? (ClientPrefs.data.downScroll ? 15 : 675) : healthBar.y + 36), FlxG.width, "", 20);
 		scoreTxt.setFormat(Paths.font("DisneyFont.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
 		scoreTxt.borderSize = 1.25;
 		scoreTxt.visible = !ClientPrefs.data.hideHud;
 		updateScore(false);
 		uiGroup.add(scoreTxt);
+
+		if (curStage == 'vaultRoom') iconP2.blend = ADD;
+
+		if (curStage == "waltRoom" || curStage == "menuSongs")
+		{
+			fancyBarOverlay.flipY = true;
+			for (bar in [healthBar, fancyBarOverlay])
+			{
+				bar.angle = 90;
+				bar.x -= 580;
+				bar.y += 270;
+			}
+			fancyBarOverlay.x += 54;
+			fancyBarOverlay.y -= 53;
+			iconP1.x = healthBar.x + 220;
+			iconP2.x = healthBar.x + 220;
+		}
 
 		switch (SONG.song)
 		{
@@ -806,6 +888,16 @@ class PlayState extends MusicBeatState
 					scratch.cameras = [camOther];
 					add(scratch);
 			}
+		}
+
+		// shitty thing to make it so the health bar is visible at all times
+		if (curStage == "waltRoom")
+		{
+			var fakeCam:FlxCamera = new FlxCamera();
+			fakeCam.bgColor.alpha = 0;
+			FlxG.cameras.add(fakeCam, false);
+			for (funny in [healthBar, fancyBarOverlay, iconP1, iconP2])
+				funny.cameras = [fakeCam];
 		}
 
 		startingSong = true;
@@ -1255,28 +1347,6 @@ class PlayState extends MusicBeatState
 				FlxG.sound.list.add(sfx);
 				sfx.volume = 0.6;
 			}
-
-			Lib.application.window.onClose.removeAll();
-			Lib.application.window.onClose.add(function() {
-				persistentUpdate = false;
-				persistentDraw = true;
-				paused = true;
-	
-				if(inst != null) {
-					inst.pause();
-					vocals.pause();
-					opponentVocals.pause();
-				}
-	
-				openSubState(new substates.Prompt('Are you sure you want to quit?\n\nYou will lose your unsaved progress.', 0, function(){
-					System.exit(0);
-					DiscordClient.shutdown();
-				}, function(){
-					persistentUpdate = true;
-					persistentDraw = true;
-				},false, camOther));
-				Lib.application.window.onClose.cancel();
-			});
 
 			for (i in 0...playerStrums.length) {
 				setOnScripts('defaultPlayerStrumX' + i, playerStrums.members[i].x);
@@ -1977,28 +2047,6 @@ class PlayState extends MusicBeatState
 
 	override function closeSubState()
 	{
-		Lib.application.window.onClose.removeAll();
-		Lib.application.window.onClose.add(function() {
-			persistentUpdate = false;
-			persistentDraw = true;
-			instance.paused = true;
-
-			if(inst != null) {
-				inst.pause();
-				vocals.pause();
-				opponentVocals.pause();
-			}
-
-			openSubState(new substates.Prompt('Are you sure you want to quit?\n\nYour data will still save if you do.', 0, function(){
-				System.exit(0);
-				DiscordClient.shutdown();
-			}, function(){
-				persistentUpdate = true;
-				persistentDraw = true;
-			},false, camOther));
-			Lib.application.window.onClose.cancel();
-		});
-		
 		super.closeSubState();
 		
 		stagesFunc(function(stage:BaseStage) stage.closeSubState());
@@ -2120,8 +2168,8 @@ class PlayState extends MusicBeatState
 				openCharacterEditor();
 		}
 
-		if (healthBar.bounds.max != null && health > healthBar.bounds.max)
-			health = healthBar.bounds.max;
+		if (health > 2)
+			health = 2;
 
 		updateIconsScale(elapsed);
 		updateIconsPosition();
@@ -2429,6 +2477,117 @@ class PlayState extends MusicBeatState
 		});
 	}
 
+	/**
+	* # Stage Background Flash Function
+	*
+	* Basically the BG Flash used in Isolated but it's now hardcoded and can be used globally now.
+	* The reasoning for this is cause I'm NOT gonna go and duplicate the flash assets from the episode 1
+	* stage onto other stages I want to use it at, too much work!
+	*
+	* @param flashType - Defines how you want the BG flash handler to behave
+	* @param settings - A structure with the flashing options.
+	*
+	* @author DEMOLITIONDON96 ft. Jason
+	*/
+	public function camFlashSystem(flashType:FlashType, settings:FlashingSettings)
+	{
+		// null checkes
+		if (settings.colors == null) settings.colors = [255, 255, 255];
+		if (settings.timer == null) settings.timer = 3;
+		if (settings.ease == null) settings.ease = FlxEase.linear;
+		if (settings.alpha == null) settings.alpha = .5;
+
+		// due to the fact that some silly 19 year old guy called demo overuses the shit
+		// out of the zooms this has to exist in cases of emergency   - jason the silly !!
+		// stageBGFlash.setPosition(-FlxG.width * FlxG.camera.zoom, -FlxG.height * FlxG.camera.zoom);
+
+		if (ClientPrefs.data.flashing && stageBGFlash != null)
+		{
+			switch (flashType)
+			{
+				case BG_FLASH:
+					if (settings.alpha > 1 || settings.alpha < 0) // prevents a crash from making a dumb mistake
+						stageBGFlash.alpha = 0.5;
+					else
+						stageBGFlash.alpha = settings.alpha;
+
+					if (settings.timer <= 0) // another check to prevent a crash
+						settings.timer = 1;
+
+					if (settings.colors[0] == 0 && settings.colors[1] == 0 && settings.colors[2] == 0) // blend check cause it makes it look cool
+						stageBGFlash.blend = NORMAL;
+					else
+						stageBGFlash.blend = ADD;
+
+					stageBGFlash.color = FlxColor.fromRGB(settings.colors[0], settings.colors[1], settings.colors[2], 255);
+
+					if (BGFlashTween != null) // makes it so it won't look wonky, visually
+						BGFlashTween.cancel();
+
+					BGFlashTween = FlxTween.tween(stageBGFlash, {alpha: 0}, settings.timer, {
+						ease: settings.ease,
+						onComplete: function(twn:FlxTween)
+						{
+							BGFlashTween = null;
+						}
+					});
+
+				case BG_DARK:
+					if (stageBGFlash != null)
+					{
+						if (BGFlashTween != null)
+							BGFlashTween.cancel();
+
+						if (stageBGFlash.blend != NORMAL)
+							stageBGFlash.blend = NORMAL;
+
+						if (settings.timer <= 0)
+							settings.timer = 1;
+
+						stageBGFlash.color = FlxColor.BLACK; // hardcoded to be black
+
+						BGFlashTween = FlxTween.tween(stageBGFlash, {alpha: settings.alpha}, settings.timer, {
+							ease: settings.ease,
+							onComplete: function(twn:FlxTween)
+							{
+								BGFlashTween = null;
+							}
+						});
+					}
+				
+				case CAM_FLASH_FANCY:
+					if (blendFlash != null)
+					{
+						if (settings.alpha > 1 || settings.alpha < 0) // prevents a crash from making a dumb mistake
+							blendFlash.alpha = 0.5;
+						else
+							blendFlash.alpha = settings.alpha;
+
+						if (settings.timer <= 0) // another check to prevent a crash
+							settings.timer = 1;
+
+						if (settings.colors[0] == 0 && settings.colors[1] == 0 && settings.colors[2] == 0) // turn it to white, cause I can
+							blendFlash.blend = NORMAL;
+						else
+							blendFlash.blend = ADD;
+
+						if (flashTween != null)
+							flashTween.cancel();
+
+						blendFlash.color = FlxColor.fromRGB(settings.colors[0], settings.colors[1], settings.colors[2], 255);
+
+						flashTween = FlxTween.tween(blendFlash, {alpha: 0}, settings.timer, {
+							ease: settings.ease,
+							onComplete: function(twn:FlxTween)
+							{
+								flashTween = null;
+							}
+						});
+					}
+			}
+		}
+	}
+
 	public static function returnTweenEase(ease:String = '')
 	{
 		switch (ease.toLowerCase())
@@ -2526,8 +2685,16 @@ class PlayState extends MusicBeatState
 	public dynamic function updateIconsPosition()
 	{
 		var iconOffset:Int = 26;
-		iconP1.x = healthBar.barCenter + (150 * iconP1.scale.x - 150) / 2 - iconOffset;
-		iconP2.x = healthBar.barCenter - (150 * iconP2.scale.x) / 2 - iconOffset * 2;
+		if (curStage == "waltRoom")
+		{
+			iconP1.y = healthBar.y + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * iconP1.scale.y - 150) / 2 - iconOffset * 11.85;
+			iconP2.y = healthBar.y + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * iconP2.scale.y) / 2 - iconOffset * 13.85;
+		}
+		else
+		{
+			iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * iconP1.scale.x - 150) / 2 - iconOffset;
+			iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * iconP2.scale.x) / 2 - iconOffset * 2;
+		}
 	}
 
 	var iconsAnimations:Bool = true;
@@ -2547,6 +2714,30 @@ class PlayState extends MusicBeatState
 		iconP1.animation.curAnim.curFrame = (healthBar.percent < 20) ? 1 : 0; //If health is under 20%, change player icon to frame 1 (losing icon), otherwise, frame 0 (normal)
 		iconP2.animation.curAnim.curFrame = (healthBar.percent > 80) ? 1 : 0; //If health is over 80%, change opponent icon to frame 1 (losing icon), otherwise, frame 0 (normal)
 		return health;
+	}
+
+	public var dumbCamTwn:FlxTween;
+	/**
+	* ## Camera Zoom Tween Fix
+	* 
+	* Don't know why, but this was NEEDED to fix the zooming from breaking, smh.
+	*
+	* @param zoom - Sets the zoom value of the camera
+	* @param time - How long you want the tween to take
+	* @param ease - I suggest reading the HaxeFlixel API on this one, this uses FlxEase's library components if you don't know how to use this
+	*
+	* @author JustJasonLol
+	*/
+	public function tweenCamera(zoom:Float = 0.9, time:Float = 0.6, ease:Null<String>):Void
+	{
+		if (dumbCamTwn != null)
+			dumbCamTwn.cancel();
+		
+		dumbCamTwn = FlxTween.tween(camGame, {zoom: zoom}, time, {ease: returnTweenEase(ease), onComplete: function(twn:FlxTween)
+		{
+			defaultCamZoom = zoom;
+			dumbCamTwn = null;
+		}});
 	}
 
 	function openPauseMenu()
@@ -3475,8 +3666,7 @@ class PlayState extends MusicBeatState
 					var canHit:Bool = (n != null && !strumsBlocked[n.noteData] && n.canBeHit
 						&& n.mustPress && !n.tooLate && !n.wasGoodHit && !n.blockHit);
 
-					if (guitarHeroSustains)
-						canHit = canHit && n.parent != null && n.parent.wasGoodHit;
+					canHit = canHit && n.parent != null && n.parent.wasGoodHit;
 
 					if (canHit && n.isSustainNote) {
 						var released:Bool = !holdArray[n.noteData];
@@ -3532,7 +3722,7 @@ class PlayState extends MusicBeatState
 		if(note != null) subtract = note.missHealth;
 
 		// GUITAR HERO SUSTAIN CHECK LOL!!!!
-		if (note != null && guitarHeroSustains && note.parent == null) {
+		if (note != null && note.parent == null) {
 			if(note.tail.length > 0) {
 				note.alpha = 0.35;
 				for(childNote in note.tail) {
@@ -3549,7 +3739,7 @@ class PlayState extends MusicBeatState
 				// i think it would be fair if damage multiplied based on how long the sustain is -Tahir
 			}
 		}
-		if (note != null && guitarHeroSustains && note.parent != null && note.isSustainNote) {
+		if (note != null && note.parent != null && note.isSustainNote) {
 			
 			var parentNote:Note = note.parent;
 			if (parentNote.wasGoodHit && parentNote.tail.length > 0) {
@@ -3570,8 +3760,8 @@ class PlayState extends MusicBeatState
 
 		var lastCombo:Int = combo;
 		combo = 0;
-
 		health -= subtract * healthLoss;
+
 		if(!practiceMode) songScore -= 10;
 		if(!endingSong) songMisses++;
 		totalPlayed++;
@@ -3826,12 +4016,11 @@ class PlayState extends MusicBeatState
 				crashLivesIcon.y -= 20;
 				FlxTween.tween(crashLivesIcon, {y: crashLivesIcon.y + 20}, 0.3, {ease: FlxEase.sineOut});
 			}
+			health += note.hitHealth * 0.55;
 			if(combo > 9999) combo = 9999;
 			popUpScore(note);
 		}
-		var gainHealth:Bool = true; // prevent health gain, *if* sustains are treated as a singular note
-		if (guitarHeroSustains && note.isSustainNote) gainHealth = false;
-		if (gainHealth) health += note.hitHealth * healthGain;
+		health += note.hitHealth * healthGain;
 
 		if (SONG.song == "Dont Cross")
 		{
@@ -3970,8 +4159,12 @@ class PlayState extends MusicBeatState
 		if (generatedMusic)
 			notes.sort(FlxSort.byY, ClientPrefs.data.downScroll ? FlxSort.ASCENDING : FlxSort.DESCENDING);
 
-		iconP1.scale.set(1.2, 1.2);
-		iconP2.scale.set(1.2, 1.2);
+		if (introSoundsSuffix != "-sins")
+		{
+			if (boyfriend.curCharacter != 'etherealMickey' || boyfriend.curCharacter != 'everett-relapse') iconP1.scale.set(1.2, 1.2);
+			if (dad.curCharacter != 'white-noise-new' || dad.curCharacter != 'etherealGoofy' || dad.curCharacter != 'walt-new'
+				|| dad.curCharacter != 'walt-true' || dad.curCharacter != 'relapsedNEW') iconP2.scale.set(1.2, 1.2);
+		}
 
 		iconP1.updateHitbox();
 		iconP2.updateHitbox();
