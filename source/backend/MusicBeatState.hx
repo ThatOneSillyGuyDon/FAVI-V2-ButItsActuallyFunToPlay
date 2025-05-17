@@ -21,13 +21,9 @@ class MusicBeatState extends modcharting.ModchartMusicBeatState
 		return Controls.instance;
 	}
 
-	var _psychCameraInitialized:Bool = false;
-
 	override function create() {
 		var skip:Bool = FlxTransitionableState.skipNextTransOut;
 		#if MODS_ALLOWED Mods.updatedOnState = false; #end
-
-		if(!_psychCameraInitialized) initPsychCamera();
 
 		super.create();
 
@@ -43,7 +39,6 @@ class MusicBeatState extends modcharting.ModchartMusicBeatState
 		var camera = new PsychCamera();
 		FlxG.cameras.reset(camera);
 		FlxG.cameras.setDefaultDrawTarget(camera, true);
-		_psychCameraInitialized = true;
 		//trace('initialized psych camera ' + Sys.cpuTime());
 		return camera;
 	}

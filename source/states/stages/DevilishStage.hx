@@ -220,7 +220,7 @@ class DevilishStage extends BaseStage
 		if(curBeat == 112)
 		{
 			game.isCameraOnForcedPos = true;
-			FlxTween.tween(camFollow, {x: camFollow.x - 150, y: 1380}, 14, {ease: FlxEase.sineInOut});
+			FlxTween.tween(game.camFollow, {x: game.camFollow.x - 150, y: 1380}, 14, {ease: FlxEase.sineInOut});
 			FlxTween.tween(FlxG.camera, {zoom: 2}, 14, {ease: FlxEase.sineInOut});
 			FlxTween.tween(gradient, {alpha: 0.9}, 2);
 		}
@@ -561,9 +561,9 @@ class DevilishStage extends BaseStage
 
 		super.update(elapsed);
 
-		minnieIcon.x = game.healthBar.x + (game.healthBar.width * (FlxMath.remapToRange(-game.healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * minnieIcon.scale.x) / 2 - game.iconOffset * 25;
-		satanIcon.x = game.healthBar.x + (game.healthBar.width * (FlxMath.remapToRange(-game.healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * satanIcon.scale.x - 150) / 2 - game.iconOffset * 24;
-		satanIconPulse.x = game.healthBar.x + (game.healthBar.width * (FlxMath.remapToRange(-game.healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * satanIconPulse.scale.x - 150) / 2 - game.iconOffset * 24;
+		minnieIcon.x = game.healthBar.x + (game.healthBar.width * (FlxMath.remapToRange(-game.healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * game.iconP2.scale.x) / 2 - game.iconOffset * 25;
+		satanIcon.x = game.healthBar.x + (game.healthBar.width * (FlxMath.remapToRange(-game.healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * game.iconP1.scale.x - 150) / 2 - game.iconOffset * 24;
+		satanIconPulse.x = game.healthBar.x + (game.healthBar.width * (FlxMath.remapToRange(-game.healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * game.iconP1.scale.x - 150) / 2 - game.iconOffset * 24;
 
 		if (ClientPrefs.data.shaders)
 		{

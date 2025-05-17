@@ -142,14 +142,12 @@ class PlayState extends MusicBeatState
 	public var instancesExclude:Array<String> = [];
 	#end
 
-	#if LUA_ALLOWED
 	public var modchartTweens:Map<String, FlxTween> = new Map<String, FlxTween>();
-	public var modchartSprites:Map<String, ModchartSprite> = new Map<String, ModchartSprite>();
+	//public var modchartSprites:Map<String, ModchartSprite> = new Map<String, ModchartSprite>();
 	public var modchartTimers:Map<String, FlxTimer> = new Map<String, FlxTimer>();
 	public var modchartSounds:Map<String, FlxSound> = new Map<String, FlxSound>();
 	public var modchartTexts:Map<String, FlxText> = new Map<String, FlxText>();
 	public var modchartSaves:Map<String, FlxSave> = new Map<String, FlxSave>();
-	#end
 
 	public var BF_X:Float = 770;
 	public var BF_Y:Float = 100;
@@ -196,8 +194,11 @@ class PlayState extends MusicBeatState
 	public var unspawnNotes:Array<Note> = [];
 	public var eventNotes:Array<EventNote> = [];
 
-	public var camFollow:FlxObject;
-	private static var prevCamFollow:FlxObject;
+	//Handles the new epic mega sexy cam code that i've done
+	public var camFollow:FlxPoint;
+	public var camFollowPos:FlxObject;
+	private static var prevCamFollow:FlxPoint;
+	private static var prevCamFollowPos:FlxObject;
 
 	public var strumLineNotes:FlxTypedGroup<StrumNote>;
 	public var opponentStrums:FlxTypedGroup<StrumNote>;
@@ -212,7 +213,6 @@ class PlayState extends MusicBeatState
 	public var gfSpeed:Int = 1;
 	public var healthThing:Float = 1;
 	public var healthLerp:Float = 1;
-	public var health(default, set):Float = 1;
 	public var combo:Int = 0;
 
 	private var healthBarBG:AttachedSprite;
@@ -292,7 +292,7 @@ class PlayState extends MusicBeatState
 	#if DISCORD_ALLOWED
 	// Discord RPC variables
 	var storyDifficultyText:String = "";
-	var detailsText:String = "";
+	public static var detailsText:String = "";
 	var detailsPausedText:String = "";
 	#end
 
@@ -332,6 +332,12 @@ class PlayState extends MusicBeatState
 
 	var backupGpu:Bool;
 
+	//FUNKIN.AVI V2
+	var drainValue:Float = 0;
+	var boundValue:Float = 0;
+	//public var smoothyHealth:Float = 1; // IF YOU READ THIS ITS ONLY FOR MERCY !!
+	public static var thing:Int;
+
 	public var cinematicBars:Map<String, FlxSprite> = ["top" => null, "bottom" => null];
 
 	//Shaders n' shit
@@ -342,12 +348,14 @@ class PlayState extends MusicBeatState
 
 	public static var pathway:String = 'favi/stages/' + curStage + '/images/';
 
-	var curEpisode:String;
+	public static var curEpisode:String;
 
 	var stageBGFlash:FlxSprite;
 	var BGFlashTween:FlxTween;
 
-	var blendFlash:FlxSprite;
+	public var globalGradient:FlxSprite;
+
+	public static var blendFlash:FlxSprite;
 	var flashTween:FlxTween;
 
 	public static var windowName:String = "";
@@ -392,7 +400,7 @@ class PlayState extends MusicBeatState
 		cpuControlled = ClientPrefs.getGameplaySetting('botplay');
 
 		// var gameCam:FlxCamera = FlxG.camera;
-		camGame = initPsychCamera();
+		camGame = new FlxCamera();
 		camHUD = new FlxCamera();
 		camBars = new FlxCamera();
 		camVideo = new FlxCamera();
@@ -404,11 +412,14 @@ class PlayState extends MusicBeatState
 		camOther.bgColor.alpha = 0;
 		fakeCam.bgColor.alpha = 0;
 
+		FlxG.cameras.reset(camGame);
 		FlxG.cameras.add(camVideo, false);
 		FlxG.cameras.add(camBars, false);
 		FlxG.cameras.add(camHUD, false);
 		FlxG.cameras.add(camOther, false);
 		FlxG.cameras.add(fakeCam, false);
+
+		FlxG.cameras.setDefaultDrawTarget(camGame, true);
 		grpNoteSplashes = new FlxTypedGroup<NoteSplash>();
 
 		persistentUpdate = true;
@@ -524,6 +535,7 @@ class PlayState extends MusicBeatState
 		{
 			case 'stage': new states.stages.StageWeek1(); //Week 1
 			case 'alleyway' | 'ddStage': new states.stages.DevilishStage(); //Devilish Deal
+			case 'abandonedStreet': new states.stages.Episode1Street(); //Isolated, Lunacy, and Delusional
 			case 'fuckingLine': new states.stages.FuckingLine(); //Don't Cross!
 			case 'waltRoom': new states.stages.WaltStage(); //Mercy/Mercy Legacy
 			case 'menuSongs': new states.stages.MenuSongs(); //Menu Songs
@@ -728,22 +740,31 @@ class PlayState extends MusicBeatState
 		noteGroup.add(playfieldRenderer);
 		noteGroup.add(grpNoteSplashes);
 
-		camFollow = new FlxObject(0, 0, 1, 1);
-		camFollow.setPosition(camPos.x, camPos.y);
-		camPos.put();
 
+		camFollow = new FlxPoint();
+		camFollowPos = new FlxObject(0, 0, 1, 1);
+
+		snapCamFollowToPos(camPos.x, camPos.y);
 		if (prevCamFollow != null)
 		{
 			camFollow = prevCamFollow;
 			prevCamFollow = null;
 		}
-		add(camFollow);
+		if (prevCamFollowPos != null)
+		{
+			camFollowPos = prevCamFollowPos;
+			prevCamFollowPos = null;
+		}
+		add(camFollowPos);
 
-		FlxG.camera.follow(camFollow, LOCKON, 0);
+		FlxG.camera.follow(camFollowPos, LOCKON, 1);
+		// FlxG.camera.setScrollBounds(0, FlxG.width, 0, FlxG.height);
 		FlxG.camera.zoom = defaultCamZoom;
-		FlxG.camera.snapToTarget();
+		FlxG.camera.focusOn(camFollow);
 
 		FlxG.worldBounds.set(0, 0, FlxG.width, FlxG.height);
+
+		FlxG.fixedTimestep = false;
 		moveCameraSection();
 
 		healthBarBG = new AttachedSprite('healthBar');
@@ -904,6 +925,16 @@ class PlayState extends MusicBeatState
 		crashLivesIcon.scale.set(2.2, 2.2);
 		crashLivesIcon.antialiasing = false;
 		crashLivesIcon.cameras = [camHUD];
+
+		if (!ClientPrefs.data.lowQuality)
+		{
+			globalGradient = new FlxSprite().loadGraphic(Paths.image('UI/gimmicks/gradient'));
+			globalGradient.screenCenter();
+			globalGradient.setGraphicSize(Std.int(globalGradient.width * 0.68));
+			globalGradient.cameras = [camOther];
+			globalGradient.alpha = 0;
+			add(globalGradient);
+		}
 
 		uiGroup.cameras = [camHUD];
 		noteGroup.cameras = [camHUD];
@@ -2208,8 +2239,12 @@ class PlayState extends MusicBeatState
 		healthLerp = FlxMath.lerp(healthLerp, healthThing, .2 / (ClientPrefs.data.framerate / 60));
 	}
 
+	var cameraOnDad = false;
+
 	override public function update(elapsed:Float)
 	{
+		callOnScripts('onUpdate', [elapsed]);
+		
 		// shitty system for the camera to stay updated
 		var wn_r:Float = 70;
 		var rotRateWn = curStep / 9.5;
@@ -2226,9 +2261,10 @@ class PlayState extends MusicBeatState
 			if(camGame.visible) moveCamera(!SONG.notes[curSection].mustHitSection); // so it moves properly !!
 		}
 		
-		if(!inCutscene && !paused && !freezeCamera) {
-			FlxG.camera.followLerp = 2.4 * cameraSpeed * playbackRate;
-			if(!startingSong && !endingSong && boyfriend.getAnimationName().startsWith('idle')) {
+		if(!inCutscene) {
+			var lerpVal:Float = CoolUtil.boundTo(elapsed * 2.4 * cameraSpeed * playbackRate, 0, 1);
+			camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x, lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal));
+			if(!startingSong && !endingSong && boyfriend.animation.curAnim != null && boyfriend.animation.curAnim.name.startsWith('idle')) {
 				boyfriendIdleTime += elapsed;
 				if(boyfriendIdleTime >= 0.15) { // Kind of a mercy thing for making the achievement easier to get as it's apparently frustrating to some playerss
 					boyfriendIdled = true;
@@ -2237,12 +2273,14 @@ class PlayState extends MusicBeatState
 				boyfriendIdleTime = 0;
 			}
 		}
-		else FlxG.camera.followLerp = 0;
-		callOnScripts('onUpdate', [elapsed]);
 
 		updateHealthBar();
 
 		super.update(elapsed);
+
+		//Shitty thing so that the camera doesn't bug in some instances.
+		if (generatedMusic && !endingSong && !isCameraOnForcedPos)
+			moveCameraSection();
 
 		setOnScripts('curDecStep', curDecStep);
 		setOnScripts('curDecBeat', curDecBeat);
@@ -2268,11 +2306,87 @@ class PlayState extends MusicBeatState
 				openCharacterEditor();
 		}
 
+		var mult:Float = FlxMath.lerp(1, iconP1.scale.x, CoolUtil.boundTo(1 - (elapsed * 9 * playbackRate), 0, 1));
+		iconP1.scale.set(mult, mult);
+		iconP1.updateHitbox();
+
+		var fuck:Float = SONG.song == "Cycled Sins" ? 0.85 : 1;
+		var mult:Float = FlxMath.lerp(fuck, iconP2.scale.x, CoolUtil.boundTo(1 - (elapsed * 9 * playbackRate), 0, 1));
+		iconP2.scale.set(mult, mult);
+		iconP2.updateHitbox();
+
 		if (healthThing > 2)
 			healthThing = 2;
 
-		updateIconsScale(elapsed);
-		updateIconsPosition();
+		if (!boyfriend.animatedIcon)
+			if (iconP1.frames.frames.length >= 3 && healthBar.percent > 80)
+			{
+				if (SONG.song == "Isolated") states.stages.Episode1Street.demonBFIcon.animation.curAnim.curFrame = 2;
+				iconP1.animation.curAnim.curFrame = 2;
+			}
+			else if (iconP1.frames.frames.length >= 2 && healthBar.percent < 20)
+			{
+				if (SONG.song == "Isolated") states.stages.Episode1Street.demonBFIcon.animation.curAnim.curFrame = 1;
+				iconP1.animation.curAnim.curFrame = 1;
+			}
+			else
+			{
+				if (SONG.song == "Isolated") states.stages.Episode1Street.demonBFIcon.animation.curAnim.curFrame = 1;
+				iconP1.animation.curAnim.curFrame = 0;
+			}
+		else
+			if (healthBar.percent < 20 && iconP1.animation.name != '${boyfriend.healthIcon}Losing')
+				iconP1.animation.play(boyfriend.healthIcon + "Losing");
+			else if (healthBar.percent >= 20 && iconP1.animation.name != '${boyfriend.healthIcon}Neutral')
+				iconP1.animation.play(boyfriend.healthIcon + "Neutral");
+
+		if (!dad.animatedIcon)
+			if (iconP2.frames.frames.length >= 2 && healthBar.percent > 80)
+			{
+				if (SONG.song == "Isolated")
+				{
+					states.stages.Episode1Street.lunacyIcon.animation.curAnim.curFrame = 1;
+					states.stages.Episode1Street.delusionalIcon.animation.curAnim.curFrame = 1;
+				}
+				iconP2.animation.curAnim.curFrame = 1;
+			}
+			else if (iconP2.frames.frames.length >= 3 && healthBar.percent < 20)
+			{
+				if (SONG.song == "Isolated")
+				{
+					states.stages.Episode1Street.lunacyIcon.animation.curAnim.curFrame = 2;
+					states.stages.Episode1Street.delusionalIcon.animation.curAnim.curFrame = 2;
+				}
+				iconP2.animation.curAnim.curFrame = 2;
+			}
+			else
+			{
+				if (SONG.song == "Isolated")
+				{
+					states.stages.Episode1Street.lunacyIcon.animation.curAnim.curFrame = 0;
+					states.stages.Episode1Street.delusionalIcon.animation.curAnim.curFrame = 0;
+				}
+				iconP2.animation.curAnim.curFrame = 0;
+			}
+		else
+			if (healthBar.percent > 80 && iconP2.animation.name != '${dad.healthIcon}Losing')
+				iconP2.animation.play(dad.healthIcon + "Losing");
+			else if (healthBar.percent <= 80 && iconP2.animation.name != '${dad.healthIcon}Neutral')
+				iconP2.animation.play(dad.healthIcon + "Neutral");
+
+
+		var iconOffset:Int = 26;
+
+		if (curStage == "waltRoom")
+		{
+			iconP1.y = healthBar.y + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * iconP1.scale.y - 150) / 2 - iconOffset * 11.85;
+			iconP2.y = healthBar.y + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * iconP2.scale.y) / 2 - iconOffset * 13.85;
+		}
+		else
+		{
+			iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * iconP1.scale.x - 150) / 2 - iconOffset;
+			iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * iconP2.scale.x) / 2 - iconOffset * 2;
+		}
 
 		if (startedCountdown && !paused)
 			Conductor.songPosition += FlxG.elapsed * 1000 * playbackRate;
@@ -2498,8 +2612,44 @@ class PlayState extends MusicBeatState
 		}
 		#end
 
-		setOnScripts('cameraX', camFollow.x);
-		setOnScripts('cameraY', camFollow.y);
+		// the COOLER cam pos thing or whatever
+		// x, y, angle
+		var camOffset = [0.0, 0.0, 0];
+
+		var char = cameraOnDad ? dad : boyfriend;
+
+		if (char.animation.curAnim != null && !isCameraOnForcedPos && curStage != "menuSongs") 
+		{
+			switch (char.animation.curAnim.name.substring(4))
+			{
+				case 'UP' | 'UP-alt' | 'UPmiss':
+					camOffset[1] -= 40;
+
+				case 'RIGHT' | 'RIGHT-alt' | 'RIGHTmiss':
+					camOffset[0] += 40;
+					if (!CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-legacy')) camOffset[2] += 1.3;
+
+				case 'LEFT' | 'LEFT-alt' | 'LEFTmiss':
+					camOffset[0] -= 40;
+					if (!CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-legacy')) camOffset[2] -= 1.3;
+
+				case 'DOWN' | 'DOWN-alt' | 'DOWNmiss':
+					camOffset[1] += 40;
+			}
+		}
+
+		if(!inCutscene) {
+			var lerpVal:Float = CoolUtil.boundTo(elapsed * 2.4 * cameraSpeed, 0, 1);
+			camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x + camOffset[0], lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y + camOffset[1], lerpVal));
+			camGame.angle = FlxMath.lerp(camGame.angle, 0 + camOffset[2], CoolUtil.boundTo(CoolUtil.boundTo(elapsed * 2.4 / 0.4, 0, 1) * cameraSpeed , 0, 1));
+		}
+
+		backend.CamUtils.updateCamera(camGame, elapsed);
+		backend.CamUtils.updateCamera(camHUD, elapsed);
+		backend.CamUtils.updateCamera(camOther, elapsed);
+
+		setOnScripts('cameraX', camFollowPos.x);
+		setOnScripts('cameraY', camFollowPos.y);
 		setOnScripts('botPlay', cpuControlled);
 		callOnScripts('onUpdatePost', [elapsed]);
 	}
@@ -2896,47 +3046,8 @@ class PlayState extends MusicBeatState
 		}});
 	}
 
-	// Health icon updaters
-	public dynamic function updateIconsScale(elapsed:Float)
-	{
-		var mult:Float = FlxMath.lerp(1, iconP1.scale.x, Math.exp(-elapsed * 9 * playbackRate));
-		iconP1.scale.set(mult, mult);
-		iconP1.updateHitbox();
-
-		var mult:Float = FlxMath.lerp(1, iconP2.scale.x, Math.exp(-elapsed * 9 * playbackRate));
-		iconP2.scale.set(mult, mult);
-		iconP2.updateHitbox();
-	}
-
-	public dynamic function updateIconsPosition()
-	{
-		var iconOffset:Int = 26;
-		if (curStage == "waltRoom")
-		{
-			iconP1.y = healthBar.y + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * iconP1.scale.y - 150) / 2 - iconOffset * 11.85;
-			iconP2.y = healthBar.y + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * iconP2.scale.y) / 2 - iconOffset * 13.85;
-		}
-		else
-		{
-			iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * iconP1.scale.x - 150) / 2 - iconOffset;
-			iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * iconP2.scale.x) / 2 - iconOffset * 2;
-		}
-	}
-
-	var iconsAnimations:Bool = true;
-	function set_health(value:Float):Float // You can alter how icon animations work here
-	{
-		if (healthThing > 2)
-			healthThing = 2;
-
-		iconP1.animation.curAnim.curFrame = (healthBar.percent < 20) ? 1 : 0; //If health is under 20%, change player icon to frame 1 (losing icon), otherwise, frame 0 (normal)
-		iconP2.animation.curAnim.curFrame = (healthBar.percent > 80) ? 1 : 0; //If health is over 80%, change opponent icon to frame 1 (losing icon), otherwise, frame 0 (normal)
-		return health;
-	}
-
 	function openPauseMenu()
 	{
-		FlxG.camera.followLerp = 0;
 		persistentUpdate = false;
 		persistentDraw = true;
 		paused = true;
@@ -2964,7 +3075,6 @@ class PlayState extends MusicBeatState
 
 	function openChartEditor()
 	{
-		FlxG.camera.followLerp = 0;
 		persistentUpdate = false;
 		paused = true;
 		if(FlxG.sound.music != null)
@@ -2982,7 +3092,6 @@ class PlayState extends MusicBeatState
 
 	function openCharacterEditor()
 	{
-		FlxG.camera.followLerp = 0;
 		persistentUpdate = false;
 		paused = true;
 		if(FlxG.sound.music != null)
@@ -3027,12 +3136,11 @@ class PlayState extends MusicBeatState
 					persistentDraw = false;
 					FlxTimer.globalManager.clear();
 					FlxTween.globalManager.clear();
-					#if LUA_ALLOWED
+					
 					modchartTimers.clear();
 					modchartTweens.clear();
-					#end
 
-					openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x - boyfriend.positionArray[0], boyfriend.getScreenPosition().y - boyfriend.positionArray[1], camFollow.x, camFollow.y));
+					openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x - boyfriend.positionArray[0], boyfriend.getScreenPosition().y - boyfriend.positionArray[1], camFollowPos.x, camFollowPos.y));
 				}
 				else
 				{
@@ -3045,12 +3153,11 @@ class PlayState extends MusicBeatState
 						persistentDraw = false;
 						FlxTimer.globalManager.clear();
 						FlxTween.globalManager.clear();
-						#if LUA_ALLOWED
+						
 						modchartTimers.clear();
 						modchartTweens.clear();
-						#end
 					}});
-					openSubState(new ManiaLoseSubstate(boyfriend.getScreenPosition().x - boyfriend.positionArray[0], boyfriend.getScreenPosition().y - boyfriend.positionArray[1], camFollow.x, camFollow.y));
+					openSubState(new ManiaLoseSubstate(boyfriend.getScreenPosition().x - boyfriend.positionArray[0], boyfriend.getScreenPosition().y - boyfriend.positionArray[1], camFollowPos.x, camFollowPos.y));
 				}
 					// MusicBeatState.switchState(new GameOverState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 
@@ -3158,14 +3265,16 @@ class PlayState extends MusicBeatState
 			case 'Camera Follow Pos':
 				if(camFollow != null)
 				{
+					var val1:Float = Std.parseFloat(value1);
+					var val2:Float = Std.parseFloat(value2);
+					if(Math.isNaN(val1)) val1 = 0;
+					if(Math.isNaN(val2)) val2 = 0;
+
 					isCameraOnForcedPos = false;
-					if(flValue1 != null || flValue2 != null)
-					{
+					if(!Math.isNaN(Std.parseFloat(value1)) || !Math.isNaN(Std.parseFloat(value2))) {
+						camFollow.x = val1;
+						camFollow.y = val2;
 						isCameraOnForcedPos = true;
-						if(flValue1 == null) flValue1 = 0;
-						if(flValue2 == null) flValue2 = 0;
-						camFollow.x = flValue1;
-						camFollow.y = flValue2;
 					}
 				}
 
@@ -3317,6 +3426,56 @@ class PlayState extends MusicBeatState
 					#end
 				}
 
+			case 'Tween Camera Zoom':
+				var zoom:Float = Std.parseFloat(value1);
+				var time:Float = Std.parseFloat(value2);
+				if(Math.isNaN(time) || time <= 0) time = 0;
+	
+				if ((time) > 0) {
+					modchartTweens.set("TweenCamZoom", FlxTween.tween(FlxG.camera, {zoom: (zoom)}, (time), {
+						ease: FlxEase.quadInOut,
+						onComplete: function(twn:FlxTween)
+						{
+							defaultCamZoom = (zoom);
+						}
+					}));	
+				} else {
+					defaultCamZoom = (zoom);
+				}
+			case 'Tween Camera Pos':
+				var split = value1.split("%%");
+
+				var xxx:Float = 0;
+				var yyy:Float = 0;
+
+				if(split[0] != null) xxx = Std.parseFloat(split[0].trim());
+				if(split[1] != null) yyy = Std.parseFloat(split[1].trim());
+				if(Math.isNaN(xxx)) xxx = 0;
+				if(Math.isNaN(yyy)) yyy = 0;
+
+				var time:Float = Std.parseFloat(value2);
+
+				if(Math.isNaN(time) || time <= 0) time = 0;
+	
+				if ((time) > 0) {
+					modchartTweens.set("TweenCamX", FlxTween.tween(camFollow, {x: xxx}, (time), {
+						ease: FlxEase.quadInOut,
+						onComplete: function(twn:FlxTween)
+						{
+							camFollow.x = xxx;
+						}
+					}));	
+					modchartTweens.set("TweenCamY", FlxTween.tween(camFollow, {y: yyy}, (time), {
+						ease: FlxEase.quadInOut,
+						onComplete: function(twn:FlxTween)
+						{
+							camFollow.y = yyy;
+						}
+					}));
+				} else {
+					camFollow.x = (yyy);
+				}	
+
 			case 'Play Sound':
 				if(flValue2 == null) flValue2 = 1;
 				FlxG.sound.play(Paths.sound(value1), flValue2);
@@ -3326,15 +3485,12 @@ class PlayState extends MusicBeatState
 		callOnScripts('onEvent', [eventName, value1, value2, strumTime]);
 	}
 
-	function moveCameraSection(?sec:Null<Int>):Void {
-		if(sec == null) sec = curSection;
-		if(sec < 0) sec = 0;
+	function moveCameraSection():Void {
+		if(SONG.notes[curSection] == null) return;
 
-		if(SONG.notes[sec] == null) return;
-
-		if (gf != null && SONG.notes[sec].gfSection)
+		if (gf != null && SONG.notes[curSection].gfSection)
 		{
-			camFollow.setPosition(gf.getMidpoint().x, gf.getMidpoint().y);
+			camFollow.set(gf.getMidpoint().x, gf.getMidpoint().y);
 			camFollow.x += gf.cameraPosition[0] + girlfriendCameraOffset[0];
 			camFollow.y += gf.cameraPosition[1] + girlfriendCameraOffset[1];
 			tweenCamIn();
@@ -3342,47 +3498,64 @@ class PlayState extends MusicBeatState
 			return;
 		}
 
-		var isDad:Bool = (SONG.notes[sec].mustHitSection != true);
-		moveCamera(isDad);
-		callOnScripts('onMoveCamera', [isDad ? 'dad' : 'boyfriend']);
-	}
-
-	var cameraTwn:FlxTween;
-	public function moveCamera(isDad:Bool)
-	{
-		if(isDad)
+		if (!SONG.notes[curSection].mustHitSection)
 		{
-			camFollow.setPosition(dad.getMidpoint().x + 150, dad.getMidpoint().y - 100);
-			camFollow.x += dad.cameraPosition[0] + opponentCameraOffset[0];
-			camFollow.y += dad.cameraPosition[1] + opponentCameraOffset[1];
-			tweenCamIn();
+			cameraOnDad = true;
+			moveCamera(true);
+			callOnScripts('onMoveCamera', ['dad']);
 		}
 		else
 		{
-			camFollow.setPosition(boyfriend.getMidpoint().x - 100, boyfriend.getMidpoint().y - 100);
-			camFollow.x -= boyfriend.cameraPosition[0] - boyfriendCameraOffset[0];
-			camFollow.y += boyfriend.cameraPosition[1] + boyfriendCameraOffset[1];
-
-			if (songName == 'tutorial' && cameraTwn == null && FlxG.camera.zoom != 1)
+			cameraOnDad = false;
+			moveCamera(false);
+			callOnScripts('onMoveCamera', ['boyfriend']);
+		}
+	}
+	
+	var cameraTwn:FlxTween;
+	public function moveCamera(isDad:Bool)
+	{
+		if (!isCameraOnForcedPos)
+		{
+			if(isDad)
 			{
-				cameraTwn = FlxTween.tween(FlxG.camera, {zoom: 1}, (Conductor.stepCrochet * 4 / 1000), {ease: FlxEase.elasticInOut, onComplete:
-					function (twn:FlxTween)
-					{
-						cameraTwn = null;
-					}
-				});
+				camFollow.set(dad.getMidpoint().x + 150, dad.getMidpoint().y - 100);
+				camFollow.x += dad.cameraPosition[0] + opponentCameraOffset[0];
+				camFollow.y += dad.cameraPosition[1] + opponentCameraOffset[1];
+				tweenCamIn();
+			}
+			else
+			{
+				camFollow.set(boyfriend.getMidpoint().x - 100, boyfriend.getMidpoint().y - 100);
+				camFollow.x -= boyfriend.cameraPosition[0] - boyfriendCameraOffset[0];
+				camFollow.y += boyfriend.cameraPosition[1] + boyfriendCameraOffset[1];
+
+				if (Paths.formatToSongPath(SONG.song) == 'tutorial' && cameraTwn == null && FlxG.camera.zoom != 1)
+				{
+					cameraTwn = FlxTween.tween(FlxG.camera, {zoom: 1}, (Conductor.stepCrochet * 4 / 1000), {ease: FlxEase.elasticInOut, onComplete:
+						function (twn:FlxTween)
+						{
+							cameraTwn = null;
+						}
+					});
+				}
 			}
 		}
 	}
 
-	public function tweenCamIn() {
-		if (songName == 'tutorial' && cameraTwn == null && FlxG.camera.zoom != 1.3) {
+	function tweenCamIn() {
+		if (Paths.formatToSongPath(SONG.song) == 'tutorial' && cameraTwn == null && FlxG.camera.zoom != 1.3) {
 			cameraTwn = FlxTween.tween(FlxG.camera, {zoom: 1.3}, (Conductor.stepCrochet * 4 / 1000), {ease: FlxEase.elasticInOut, onComplete:
 				function (twn:FlxTween) {
 					cameraTwn = null;
 				}
 			});
 		}
+	}
+
+	function snapCamFollowToPos(x:Float, y:Float) {
+		camFollow.set(x, y);
+		camFollowPos.setPosition(x, y);
 	}
 
 	public function finishSong(?ignoreNoteOffset:Bool = false):Void
@@ -3504,7 +3677,9 @@ class PlayState extends MusicBeatState
 
 					FlxTransitionableState.skipNextTransIn = true;
 					FlxTransitionableState.skipNextTransOut = true;
+					
 					prevCamFollow = camFollow;
+					prevCamFollowPos = camFollowPos;
 
 					var songLowercase:String = Paths.formatToSongPath(storyPlaylist[0]);
 
@@ -4033,6 +4208,13 @@ class PlayState extends MusicBeatState
 				char.playAnim(animToPlay, true);
 				char.holdTimer = 0;
 			}
+
+			// forces the 3rd character in the background in Delusional to work
+			if(states.stages.Episode1Street.mickeySpirit != null)
+			{
+				states.stages.Episode1Street.mickeySpirit.playAnim(animToPlay, true);
+				states.stages.Episode1Street.mickeySpirit.holdTimer = 0;
+			}
 		}
 
 		if(opponentVocals.length <= 0) vocals.volume = 1;
@@ -4041,6 +4223,10 @@ class PlayState extends MusicBeatState
 
 		switch (SONG.song)
         {  
+			case 'Lunacy' | 'Delusional':
+                if (ClientPrefs.data.mechanics)
+                     if (healthThing > boundValue)
+                        healthThing -= drainValue;
 			case "Dont Cross":
 				boyfriend.x += 1.2;
 				boyfriend.y -= 1.2;
@@ -4230,7 +4416,7 @@ class PlayState extends MusicBeatState
 				crashLivesIcon.y -= 20;
 				FlxTween.tween(crashLivesIcon, {y: crashLivesIcon.y + 20}, 0.3, {ease: FlxEase.sineOut});
 			}
-			health += note.hitHealth * 0.55;
+			healthThing += note.hitHealth * 0.55;
 			if(combo > 9999) combo = 9999;
 			popUpScore(note);
 		}
@@ -4373,6 +4559,13 @@ class PlayState extends MusicBeatState
 		if (generatedMusic)
 			notes.sort(FlxSort.byY, ClientPrefs.data.downScroll ? FlxSort.ASCENDING : FlxSort.DESCENDING);
 
+		// why is this even a fucking thing ???????? --- because it is jason lmao
+		/*if (boyfriend.boppingIcon) iconP1.scale.set(1.2, 1.2);
+		if (dad.boppingIcon) iconP2.scale.set(1.2, 1.2);*/
+
+		// ok ok i need a plan b
+		// retarded code AND untested because monthly motel shit bla bla bla
+		// just know that we are NOT sonic legacy :sob:
 		if (introSoundsSuffix != "-sins")
 		{
 			if (boyfriend.curCharacter != 'etherealMickey' || boyfriend.curCharacter != 'everett-relapse') iconP1.scale.set(1.2, 1.2);
@@ -4387,6 +4580,50 @@ class PlayState extends MusicBeatState
 
 		super.beatHit();
 		lastBeatHit = curBeat;
+
+		if (SONG.song == "Delusional")
+		{
+			switch(curBeat)
+			{
+				case 212:
+					camVideo.visible = false;
+					camGame.visible = true;
+					camGame.alpha = 1;
+				case 478:
+					camFollow.x = 630;
+					camFollow.y = 750;
+					isCameraOnForcedPos = true;
+					defaultCamZoom = 0.5;
+					boyfriend.cameras = [camVideo];
+					boyfriend.x += 700;
+					boyfriend.alpha = 0.0001;
+					camVideo.visible = true;
+					noteGroup.visible = false;
+				case 672:
+					blendFlash.cameras = [camBars];
+					boyfriend.alpha = 0.0001;
+				case 736:
+					blendFlash.cameras = [camGame];
+				case 744:
+					camVideo.visible = false;
+					camGame.alpha = 1;
+					camHUD.visible = true;
+					defaultCamZoom = 0.9;
+					chromEffect = 0.1;
+					if (ClientPrefs.data.flashing)
+						camGame.flash(FlxColor.WHITE, 0.5);
+				case 1082:
+					FlxTween.tween(camGame, {zoom: 1.6}, 1, {ease: FlxEase.sineInOut});
+					camVideo.visible = true;
+					camVideo.fade(FlxColor.BLACK, 0.7);
+				case 1086:
+					camGame.visible = false;
+					FlxTween.tween(camHUD, {alpha: 0}, 2);
+					camVideo.zoom += 0.3;
+					camVideo.fade(FlxColor.BLACK, 0.2, true);
+					FlxTween.tween(camVideo, {zoom: 1}, 0.5, {ease: FlxEase.sineOut});
+			}
+		}
 
 		setOnScripts('curBeat', curBeat);
 		callOnScripts('onBeatHit');
