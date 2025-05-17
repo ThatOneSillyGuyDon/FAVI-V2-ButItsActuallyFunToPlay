@@ -33,8 +33,6 @@ class WaltStage extends BaseStage
 
 	override function create()
 	{
-		//game.health = 0.5;
-
 		game.defaultCamZoom = 0.75;
 	
 		if (PlayState.SONG.song == 'Mercy')
@@ -111,7 +109,7 @@ class WaltStage extends BaseStage
 		add(waltGoop);
 
 		var waltInstructionsMain:FlxText = new FlxText(370, 500, 0, "Take Advantage of the SPACEBAR!", 30);
-		waltInstructionsMain.cameras = [camOther];
+		waltInstructionsMain.cameras = [game.fakeCam];
 		waltInstructionsMain.setFormat(Paths.font("splatter.otf"), 30);
 		waltInstructionsMain.alpha = 0;
 		waltInstructionsMain.scrollFactor.set();
@@ -119,13 +117,13 @@ class WaltStage extends BaseStage
 		var waltSubTxt:FlxText = new FlxText(waltInstructionsMain.x + 66, waltInstructionsMain.y + 40, 0,
 			"(It will help you regain health when critically low)", 15);
 		waltSubTxt.setFormat(Paths.font("splatter.otf"), 15);
-		waltSubTxt.cameras = [camOther];
+		waltSubTxt.cameras = [game.fakeCam];
 		waltSubTxt.alpha = 0;
 		waltSubTxt.scrollFactor.set();
 
 		inkFormWarning = new FlxText(0, 0, 0, "PRESS SPACE!", 15);
 		inkFormWarning.setFormat(Paths.font("splatter.otf"), 50);
-		inkFormWarning.cameras = [camOther];
+		inkFormWarning.cameras = [game.fakeCam];
 		inkFormWarning.alpha = 0;
 		inkFormWarning.scrollFactor.set();
 		inkFormWarning.screenCenter();
@@ -138,14 +136,14 @@ class WaltStage extends BaseStage
 		mercyBoostIcon.animation.addByPrefix("thatsBad", "thatsBad", 7, true);
 		mercyBoostIcon.animation.addByPrefix("almostOut", "almostOut", 7, true);
 		mercyBoostIcon.animation.addByPrefix("empty", "empty", 7, true);
-		mercyBoostIcon.cameras = [camOther];
+		mercyBoostIcon.cameras = [game.fakeCam];
 		mercyBoostIcon.animation.play("full");
 		mercyBoostIcon.scale.set(0.75, 0.75);
 		mercyBoostIcon.scrollFactor.set();			
 
 		spaceBarCounter = new FlxText(0, 650, 140, '', 15);
 		spaceBarCounter.setFormat(Paths.font("splatter.otf"), 30, FlxColor.BLACK, CENTER, OUTLINE, FlxColor.WHITE);
-		spaceBarCounter.cameras = [camOther];
+		spaceBarCounter.cameras = [game.fakeCam];
 		//spaceBarCounter.alpha = 0;
 		spaceBarCounter.scrollFactor.set();
 
@@ -248,9 +246,6 @@ class WaltStage extends BaseStage
 			}
 		}
 
-		game.iconP1.y = game.healthBar.y + (game.healthBar.width * (FlxMath.remapToRange(game.healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * game.iconP1.scale.y - 150) / 2 - game.iconOffset * 11.85;
-		game.iconP2.y = game.healthBar.y + (game.healthBar.width * (FlxMath.remapToRange(game.healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * game.iconP2.scale.y) / 2 - game.iconOffset * 13.85;
-
 		if (!game.cpuControlled)
 		{
 			if (FlxG.keys.justPressed.SPACE)
@@ -269,7 +264,7 @@ class WaltStage extends BaseStage
 								disabledDrain = false;
 								mercyTmr = null;
 							});
-							game.health += 1.25;
+							game.healthThing += 1.25;
 							limitThing -= 1;
 							var mathShit:Float = limitThing / initialCount;
 							switch (mathShit)
@@ -296,7 +291,7 @@ class WaltStage extends BaseStage
 			switch (PlayState.curStage)
 			{
 				case 'waltRoom':
-					if (game.health < 0.3 && limitThing > 0)
+					if (game.healthThing < 0.3 && limitThing > 0)
 					{
 						if (mercyTmr != null)
 							mercyTmr.cancel();
@@ -307,7 +302,7 @@ class WaltStage extends BaseStage
 							disabledDrain = false;
 							mercyTmr = null;
 						});
-						game.health += 1.25;
+						game.healthThing += 1.25;
 						limitThing -= 1;
 						var mathShit:Float = limitThing / initialCount;
 						switch (mathShit)
@@ -368,41 +363,41 @@ class WaltStage extends BaseStage
 		{
 			// Health Drain Shit
 			if (curBeat >= 0 && curBeat <= 63)
-				game.health -= 0.005;
+				game.healthThing -= 0.005;
 			else if (curBeat >= 64 && curBeat <= 79)
-				game.health -= 0.025;
+				game.healthThing -= 0.025;
 			else if (curBeat >= 80 && curBeat <= 87)
-				game.health -= 0.055;
+				game.healthThing -= 0.055;
 			else if (curBeat >= 88 && curBeat <= 95)
-				game.health -= 0.015;
+				game.healthThing -= 0.015;
 			else if (curBeat >= 96 && curBeat <= 127)
-				game.health -= 0.036;
+				game.healthThing -= 0.036;
 			else if (curBeat >= 128 && curBeat <= 159)
-				game.health -= 0.14;
+				game.healthThing -= 0.14;
 			else if (curBeat >= 160 && curBeat <= 191)
-				game.health -= 0.031;
+				game.healthThing -= 0.031;
 			else if (curBeat >= 192 && curBeat <= 207)
-				game.health -= 0.015;
+				game.healthThing -= 0.015;
 			else if (curBeat >= 208 && curBeat <= 239)
-				game.health -= 0.03;
+				game.healthThing -= 0.03;
 			else if (curBeat >= 240 && curBeat <= 255)
-				game.health -= 0.005;
+				game.healthThing -= 0.005;
 			else if (curBeat >= 256 && curBeat <= 291)
-				game.health -= 0.02;
+				game.healthThing -= 0.02;
 			else if (curBeat >= 292 && curBeat <= 307)
-				game.health -= 0.03;
+				game.healthThing -= 0.03;
 			else if (curBeat >= 308 && curBeat <= 339)
-				game.health -= 0.04;
+				game.healthThing -= 0.04;
 			else if (curBeat >= 340 && curBeat <= 371)
-				game.health -= 0.055;
+				game.healthThing -= 0.055;
 			else if (curBeat >= 372 && curBeat <= 387)
-				game.health -= 0.078;
+				game.healthThing -= 0.078;
 			else if (curBeat >= 388 && curBeat <= 403)
-				game.health -= 0.09;
+				game.healthThing -= 0.09;
 			else if (curBeat >= 404 && curBeat <= 451)
-				game.health -= 0.1;
+				game.healthThing -= 0.1;
 			else if (curBeat >= 452 && curBeat <= 467)
-				game.health -= 0.115;
+				game.healthThing -= 0.115;
 		}
 	}
 	/**
@@ -411,7 +406,7 @@ class WaltStage extends BaseStage
 	* @author Wither362
 	*/
 	public function tweenWaltScreen(percentage:Float, alpha:Float):Bool {
-		if (game.health <= percentage)
+		if (game.healthThing <= percentage)
 			FlxTween.tween(waltScreenThing, {alpha: alpha}, 0.15, {ease: FlxEase.sineInOut});
 		else
 			return true;

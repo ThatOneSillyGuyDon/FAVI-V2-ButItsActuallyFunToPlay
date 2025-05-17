@@ -13,8 +13,8 @@ class DevilishStage extends BaseStage
 	var bg:FlxSprite;
 	var overlay:FlxSprite;
 
-	var devilishGaming:VideoSprite;
-	var episodeIntro:VideoSprite;
+	public static var devilishGaming:VideoSprite;
+	public static var episodeIntro:VideoSprite;
 
 	 // Hardcoded Devilish Deal Icon Frames
 	 public var minnieIcon:HealthIcon;
@@ -250,6 +250,7 @@ class DevilishStage extends BaseStage
 			case 112: minnieIcon.animation.curAnim.curFrame = 0;
 			case 128:
 				game.healthBar.visible = false;
+				game.healthBarBG.visible = false;
 				minnieIcon.visible = false;
 				satanIcon.visible = false;
 				game.noteGroup.visible = false;
@@ -558,9 +559,11 @@ class DevilishStage extends BaseStage
 		satanIconPulse.scale.set(mult, mult);
 		satanIconPulse.updateHitbox();
 
-		satanIconPulse.x = game.healthBar.barCenter + (150 * game.iconP1.scale.x - 150) / 2 - game.iconOffset;
-		satanIcon.x = game.healthBar.barCenter + (150 * game.iconP1.scale.x - 150) / 2 - game.iconOffset;
-		minnieIcon.x = game.healthBar.barCenter - (150 * game.iconP2.scale.x) / 2 - game.iconOffset * 2;
+		super.update(elapsed);
+
+		minnieIcon.x = game.healthBar.x + (game.healthBar.width * (FlxMath.remapToRange(-game.healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * minnieIcon.scale.x) / 2 - game.iconOffset * 25;
+		satanIcon.x = game.healthBar.x + (game.healthBar.width * (FlxMath.remapToRange(-game.healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * satanIcon.scale.x - 150) / 2 - game.iconOffset * 24;
+		satanIconPulse.x = game.healthBar.x + (game.healthBar.width * (FlxMath.remapToRange(-game.healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * satanIconPulse.scale.x - 150) / 2 - game.iconOffset * 24;
 
 		if (ClientPrefs.data.shaders)
 		{

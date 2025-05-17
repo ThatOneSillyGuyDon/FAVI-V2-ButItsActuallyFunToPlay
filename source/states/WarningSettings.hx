@@ -4,8 +4,9 @@ import lime.app.Application;
 import flixel.text.FlxText.FlxTextFormat;
 import flixel.text.FlxText.FlxTextFormatMarkerPair;
 import backend.FlxTextAlphabet;
-import gameObjects.utils.AttachedFlxText;
+import objects.AttachedFlxText;
 import flixel.addons.transition.FlxTransitionableState;
+import options.Option;
 
 class WarningSettings extends MusicBeatState {
     var menuCam:FlxCamera;
@@ -39,7 +40,7 @@ class WarningSettings extends MusicBeatState {
 
         var option:Option = new Option('Anti-Aliasing',
             'If unchecked, disables anti-aliasing, increases performance\nat the cost of sharper visuals.',
-            'globalAntialiasing',
+            'antialiasing',
             'bool',
             true);
         addOption(option);
@@ -90,7 +91,6 @@ class WarningSettings extends MusicBeatState {
 		FlxG.cameras.add(superCoolIntroCam, false);        
 
         FlxG.cameras.setDefaultDrawTarget(menuCam, true);
-		CustomFadeTransition.nextCamera = menuCam;
 
         FlxTransitionableState.skipNextTransIn = false;
 		FlxTransitionableState.skipNextTransOut = false;
@@ -114,13 +114,13 @@ class WarningSettings extends MusicBeatState {
         var selectorLeft = new FlxText(shit.x - 45, shit.y + 70, 0, '< ');
         selectorLeft.setFormat(Paths.font("disneyFreeplayFont.ttf"), 150, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
 		selectorLeft.scale.set(.6, .6);
-		selectorLeft.antialiasing = ClientPrefs.globalAntialiasing;
+		selectorLeft.antialiasing = ClientPrefs.data.antialiasing;
 		//FlxTween.tween(selectorLeft, {x: 176.5}, 1, {ease: FlxEase.expoOut});
 		add(selectorLeft);
 
 		var selectorRight = new FlxText(shit.x + 555, shit.y + 70, 0, ' >');
 		selectorRight.scale.set(.6, .6);
-		selectorRight.antialiasing = ClientPrefs.globalAntialiasing;
+		selectorRight.antialiasing = ClientPrefs.data.antialiasing;
 		selectorRight.setFormat(Paths.font("disneyFreeplayFont.ttf"), 150, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
 		add(selectorRight);
 

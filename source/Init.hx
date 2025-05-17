@@ -20,8 +20,7 @@ class Init extends FlxState
 		ClientPrefs.loadDefaultKeys();
 		FlxG.save.bind('funkin', CoolUtil.getSavePath());
 
-        PlayerSettings.init();
-		ClientPrefs.loadPrefs();
+        ClientPrefs.loadPrefs();
 		Highscore.load();
 		GameData.loadShit();
 
@@ -29,7 +28,7 @@ class Init extends FlxState
 		
 		CoolUtil.createCoreFile();
 
-        if (FlxG.save.data.weekCompleted != null) StoryMenuState.weekCompleted = FlxG.save.data.weekCompleted;
+        if (FlxG.save.data.weekCompleted != null) StoryMenu.weekCompleted = FlxG.save.data.weekCompleted;
 
         #if cpp
 		// run the gc's for a little bit of perfomance improvements :]]
@@ -92,7 +91,7 @@ class Init extends FlxState
 		Lib.current.stage.window.setIcon(icon);
 		#end
         
-        FlxG.autoPause = ClientPrefs.autoPause;
+        FlxG.autoPause = ClientPrefs.data.autoPause;
         FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
 		FlxG.mouse.visible = true;
 
