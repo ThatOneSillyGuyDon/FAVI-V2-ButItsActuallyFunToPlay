@@ -827,6 +827,7 @@ class MainMenuState extends MusicBeatState
 									transIn = FlxTransitionableState.defaultTransIn;
 									transOut = FlxTransitionableState.defaultTransOut;
 									Mouse.cursor = AUTO;
+									options.OptionsState.onPlayState = false;
 									LoadingState.loadAndSwitchState(new options.OptionsState());
 							}
 						});

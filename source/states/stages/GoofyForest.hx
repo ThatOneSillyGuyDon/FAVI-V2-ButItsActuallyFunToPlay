@@ -1,0 +1,180 @@
+package states.stages;
+
+import states.stages.objects.*;
+
+#if !flash 
+import openfl.filters.ShaderFilter;
+#end
+
+class GoofyForest extends BaseStage
+{
+	var wobblyBG:FlxRuntimeShader = new FlxRuntimeShader(Shaders.acidTrip, null, 120);
+	var treesFront:FlxSprite;
+	var goofyStreet:FlxSprite;
+	var treesBack:FlxSprite;
+	var otherBack:FlxSprite;
+	var goofyBG:FlxSprite;
+
+	public var shaderAnim:Float = 0;
+	public static var redVignette:FlxRuntimeShader = new FlxRuntimeShader(Shaders.redFromAngryBirds, null, 120);
+	public static var dramaticCamMovement:FlxRuntimeShader = new FlxRuntimeShader(Shaders.cameraMovement, null, 150);
+	public static var monitorFilter:FlxRuntimeShader = new FlxRuntimeShader(Shaders.monitorFilter, null, 140);
+
+	override function create()
+	{
+		// Literally what Goofy is seeing right about now lmfao
+		wobblyBG.setFloat('uSpeed', 1.0);
+		wobblyBG.setFloat('uFrequency', 1.0);
+		wobblyBG.setFloat('uWaveAmplitude', 0.5);
+
+		game.cameraSpeed = 0.9;
+		game.defaultCamZoom = 0.65;
+
+		if(!ClientPrefs.data.lowQuality)
+		{
+			goofyBG = new FlxSprite(-600, -450).loadGraphic(Paths.image(PlayState.pathway + 'actualNew/sky'));
+			goofyBG.scrollFactor.set(0.7, 0.7);
+			goofyBG.screenCenter();
+			add(goofyBG);
+		}
+
+		otherBack = new FlxSprite(-600, -450).loadGraphic(Paths.image(PlayState.pathway + 'actualNew/bushes'));
+		otherBack.scale.set(1.3, 1.2);
+		add(otherBack);
+
+		treesBack = new FlxSprite(-600, -450).loadGraphic(Paths.image(PlayState.pathway + 'actualNew/treesBG'));
+		treesBack.scrollFactor.set(1, 0.8);
+		add(treesBack);
+
+		goofyStreet = new FlxSprite(-600, -450).loadGraphic(Paths.image(PlayState.pathway + 'actualNew/road'));
+		goofyStreet.scrollFactor.set(1, 1);
+		add(goofyStreet);
+
+		if(!ClientPrefs.data.lowQuality)
+		{
+			treesFront = new FlxSprite(-600, -450).loadGraphic(Paths.image(PlayState.pathway + 'actualNew/treesFG'));
+			treesFront.scrollFactor.set(1.2, 1.2);
+		}
+	}
+	
+	override function createPost()
+	{
+		if (ClientPrefs.data.shaders)
+		{
+			if (!ClientPrefs.data.lowQuality)
+			{
+				camGame.setFilters([
+					new ShaderFilter(dramaticCamMovement),
+					new ShaderFilter(monitorFilter),
+				]);
+			}
+			else
+			{
+				camGame.setFilters([new ShaderFilter(monitorFilter)]);
+			}
+		}
+		add(treesFront);
+
+		game.dad.setPosition(-110, -15); // goofy ahh goofy offsets - malyplus
+		game.boyfriend.setPosition(480, -220);
+		game.gf.setPosition(170, -70);
+	}
+
+	override function update(elapsed:Float)
+	{
+		if (ClientPrefs.data.shaders)
+		{
+			shaderAnim = Conductor.songPosition / 1000;
+			
+			wobblyBG.setFloat('uTime', shaderAnim);
+			redVignette.setFloat('time', shaderAnim);
+			dramaticCamMovement.setFloat('time', shaderAnim);
+		}
+	}
+
+	
+	override function beatHit()
+	{
+		if (curBeat == 176) 
+		{
+			game.tweenCamera(1.1, 4.1, 'sineInOut');
+		}
+		if (curBeat == 184)
+			game.defaultCamZoom = 1.4;
+		if (curBeat == 190)
+			game.defaultCamZoom = 0.65;
+		if (curBeat == 192)
+		{
+			//camHudMoves = true;
+			if (ClientPrefs.data.flashing)
+				camGame.flash(FlxColor.WHITE, 1.5);
+			if (ClientPrefs.data.shaders)
+			{
+				if (!ClientPrefs.data.lowQuality)
+				{
+					camGame.setFilters([
+						new ShaderFilter(redVignette),
+						new ShaderFilter(dramaticCamMovement),
+						new ShaderFilter(monitorFilter),
+					]);
+				}
+				else
+				{
+					camGame.setFilters([new ShaderFilter(redVignette), new ShaderFilter(monitorFilter)]);
+				}
+			}
+		}
+		if (curBeat == 256)
+		{
+			//camHudMoves = false;
+			game.camBars.flash(FlxColor.BLACK, 2);
+			if (ClientPrefs.data.shaders)
+			{
+				if (!ClientPrefs.data.lowQuality)
+				{
+					camGame.setFilters([
+						new ShaderFilter(dramaticCamMovement),
+						new ShaderFilter(monitorFilter),
+					]);
+				}
+				else
+				{
+					camGame.setFilters([new ShaderFilter(monitorFilter)]);
+				}
+			}
+		}
+
+		if (((curBeat >= 64 && curBeat < 128) && curBeat % 2 == 0) || (curBeat >= 128 && curBeat < 256))
+		{
+			FlxG.camera.zoom += ((curBeat > 176 && curBeat < 184) ? 0 : .05);
+			camHUD.zoom += .04;
+		}
+
+		if (ClientPrefs.data.shaders)
+		{
+			if (curBeat == 192)
+			{	
+				if(!ClientPrefs.data.lowQuality && goofyBG != null && treesFront != null)
+					{
+						goofyBG.shader = wobblyBG;
+						goofyStreet.shader = wobblyBG;
+						treesBack.shader = wobblyBG;
+						otherBack.shader = wobblyBG;
+						treesFront.shader = wobblyBG;
+					}
+			}
+		}
+
+		if (curBeat == 256)
+		{
+			if(!ClientPrefs.data.lowQuality && treesFront != null && goofyBG != null)
+				{
+					goofyBG.shader = null;
+					goofyStreet.shader = null;
+					treesBack.shader = null;
+					otherBack.shader = null;
+					treesFront.shader = null;
+				}
+		}
+	}
+}

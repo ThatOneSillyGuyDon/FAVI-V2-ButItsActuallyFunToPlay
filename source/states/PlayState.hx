@@ -172,7 +172,7 @@ class PlayState extends MusicBeatState
 
 	@:noCompletion
 	static function get_isPixelStage():Bool
-		return stageUI == "pixel" || stageUI.endsWith("-pixel");
+		return stageUI == "pixel" || stageUI.endsWith("-pixel") || SONG.song == "Malfunction";
 
 	public static var SONG:SwagSong = null;
 	public static var isStoryMode:Bool = false;
@@ -329,6 +329,13 @@ class PlayState extends MusicBeatState
 	// Callbacks for stages
 	public var startCallback:Void->Void = null;
 	public var endCallback:Void->Void = null;
+
+	// stores the last judgement object
+	public static var lastRating:FlxSprite;
+	// stores the last combo sprite object
+	public static var lastCombo:FlxSprite;
+	// stores the last combo score objects in an array
+	public static var lastScore:Array<FlxSprite> = [];
 
 	var backupGpu:Bool;
 
@@ -536,8 +543,15 @@ class PlayState extends MusicBeatState
 			case 'stage': new states.stages.StageWeek1(); //Week 1
 			case 'alleyway' | 'ddStage': new states.stages.DevilishStage(); //Devilish Deal
 			case 'abandonedStreet': new states.stages.Episode1Street(); //Isolated, Lunacy, and Delusional
+			case 'forestNew': new states.stages.GoofyForest(); //Hunted
+			case 'circus': new states.stages.LaughyTracky(); //Laugh Track
+			case 'vaultRoom': new states.stages.YouveBeenBlessed(); //Bless
 			case 'fuckingLine': new states.stages.FuckingLine(); //Don't Cross!
+			case 'war': new states.stages.GiveMeTheFiles(); //War Dilemma
+			case 'trueGrinsOfSins': new states.stages.SmileStage(); //Twisted Grins
 			case 'waltRoom': new states.stages.WaltStage(); //Mercy/Mercy Legacy
+			case 'grassNation': 
+				new states.stages.ForbiddenRealm(); //Malfunction
 			case 'menuSongs': new states.stages.MenuSongs(); //Menu Songs
 		}
 
@@ -548,6 +562,12 @@ class PlayState extends MusicBeatState
 		stageBGFlash.y -= 450;
 		stageBGFlash.scrollFactor.set();
 		add(stageBGFlash);
+
+		switch(Paths.formatToSongPath(SONG.song))
+		{
+			case 'stress':
+				GameOverSubstate.characterName = 'bf-holding-gf-dead';
+		}
 
 		switch (SONG.song)
 		{
@@ -678,10 +698,16 @@ class PlayState extends MusicBeatState
 
 		comboGroup = new FlxSpriteGroup();
 		add(comboGroup);
-		noteGroup = new FlxTypedGroup<FlxBasic>();
-		add(noteGroup);
 		uiGroup = new FlxSpriteGroup();
 		add(uiGroup);
+		noteGroup = new FlxTypedGroup<FlxBasic>();
+		add(noteGroup);
+
+		switch(curStage)
+		{
+			case "vaultRoom":
+				dad.blend = ADD;
+		}
 
 		blendFlash = new FlxSprite().makeGraphic(1, 1, 0xFFFFFFFF);
 		blendFlash.scale.set(FlxG.width * 5, FlxG.height * 5);
@@ -925,6 +951,21 @@ class PlayState extends MusicBeatState
 		crashLivesIcon.scale.set(2.2, 2.2);
 		crashLivesIcon.antialiasing = false;
 		crashLivesIcon.cameras = [camHUD];
+
+		if (SONG.song == "Malfunction")
+		{
+			add(crashLives);
+			add(crashLivesIcon);
+			crashLivesCounter += 25;
+			crashLives.text = 'Lives: ${crashLivesCounter}';
+		}
+		else if (SONG.song == "Malfunction Legacy")
+		{
+			add(crashLives);
+			add(crashLivesIcon);
+			crashLivesCounter += 30;
+			crashLives.text = 'Lives: ${crashLivesCounter}';
+		}
 
 		if (!ClientPrefs.data.lowQuality)
 		{
@@ -3759,9 +3800,14 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		var placement:Float = FlxG.width * 0.35;
+		var placement:String = Std.string(combo);
+
 		var rating:FlxSprite = new FlxSprite();
 		var score:Int = 350;
+
+		var coolText:FlxText = new FlxText(0, 0, 0, placement, 32);
+		coolText.screenCenter();
+		coolText.x = FlxG.width * 0.35;
 
 		//tryna do MS based judgment due to popular demand
 		var daRating:Rating = Conductor.judgeNote(ratingsData, noteDiff / playbackRate);
@@ -3787,50 +3833,60 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		var uiPrefix:String = "";
-		var uiSuffix:String = '';
-		var antialias:Bool = ClientPrefs.data.antialiasing;
+		var pixelShitPart1:String = "";
+		var pixelShitPart2:String = '';
 
-		if (stageUI != "normal")
+		if (isPixelStage)
 		{
-			uiPrefix = '${stageUI}UI/';
-			if (PlayState.isPixelStage) uiSuffix = '-pixel';
-			antialias = !isPixelStage;
+			pixelShitPart1 = 'pixelUI/';
+			pixelShitPart2 = '-pixel';
 		}
 
-		rating.loadGraphic(Paths.image(uiPrefix + daRating.image + uiSuffix));
+		rating.loadGraphic(Paths.image(pixelShitPart1 + (((ratingPercent == 1 || cpuControlled) && SONG.song != "Cycled Sins") ? "marvelous" : daRating.image) + (SONG.song == "Malfunction" ? '-mal' : '') + pixelShitPart2));
+		rating.scale.set(0.4, 0.4);
 		rating.screenCenter();
-		rating.x = placement - 40;
-		rating.y -= 60;
+		rating.x = FlxG.width * 0.8;
+		rating.y = 100;
 		rating.acceleration.y = 550 * playbackRate * playbackRate;
 		rating.velocity.y -= FlxG.random.int(140, 175) * playbackRate;
 		rating.velocity.x -= FlxG.random.int(0, 10) * playbackRate;
 		rating.visible = (!ClientPrefs.data.hideHud && showRating);
-		rating.x += ClientPrefs.data.comboOffset[0];
-		rating.y -= ClientPrefs.data.comboOffset[1];
-		rating.antialiasing = antialias;
+		if (!ClientPrefs.data.downScroll)
+			rating.y += 495 + (SONG.song == "Malfunction" ? ((daRating.image == "sick" && ratingPercent != 1) ? -50 : -35) : 0);
+		if (SONG.song == "War Dilemma" && !ClientPrefs.data.downScroll)
+			rating.y -= 120;
 
-		var comboSpr:FlxSprite = new FlxSprite().loadGraphic(Paths.image(uiPrefix + 'combo' + uiSuffix));
+		var comboSpr:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'combo' + pixelShitPart2));
 		comboSpr.screenCenter();
-		comboSpr.x = placement;
+		comboSpr.x = coolText.x;
 		comboSpr.acceleration.y = FlxG.random.int(200, 300) * playbackRate * playbackRate;
 		comboSpr.velocity.y -= FlxG.random.int(140, 160) * playbackRate;
 		comboSpr.visible = (!ClientPrefs.data.hideHud && showCombo);
 		comboSpr.x += ClientPrefs.data.comboOffset[0];
 		comboSpr.y -= ClientPrefs.data.comboOffset[1];
-		comboSpr.antialiasing = antialias;
 		comboSpr.y += 60;
 		comboSpr.velocity.x += FlxG.random.int(1, 10) * playbackRate;
-		comboGroup.add(rating);
 
-		if (!PlayState.isPixelStage)
+		if (SONG.song == "Bless")
+			if (states.stages.YouveBeenBlessed.lightI != null && states.stages.YouveBeenBlessed.lightI.visible)
+				rating.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0);
+
+		comboGroup.add(rating);
+		
+		if (!ClientPrefs.data.comboStacking)
 		{
-			rating.setGraphicSize(Std.int(rating.width * 0.7));
+			if (lastRating != null) lastRating.kill();
+			lastRating = rating;
+		}
+
+		if (!isPixelStage)
+		{
 			comboSpr.setGraphicSize(Std.int(comboSpr.width * 0.7));
+			comboSpr.antialiasing = ClientPrefs.data.antialiasing;
 		}
 		else
 		{
-			rating.setGraphicSize(Std.int(rating.width * daPixelZoom * 0.85));
+			rating.setGraphicSize(Std.int(rating.width * daPixelZoom * (SONG.song == "Malfunction" ? 0.25 : 0.36)));
 			comboSpr.setGraphicSize(Std.int(comboSpr.width * daPixelZoom * 0.85));
 		}
 
@@ -3850,23 +3906,50 @@ class PlayState extends MusicBeatState
 		var xThing:Float = 0;
 		if (showCombo)
 			comboGroup.add(comboSpr);
+		if (!ClientPrefs.data.comboStacking)
+		{
+			if (lastCombo != null) lastCombo.kill();
+			lastCombo = comboSpr;
+		}
+		if (lastScore != null)
+		{
+			while (lastScore.length > 0)
+			{
+				lastScore[0].kill();
+				lastScore.remove(lastScore[0]);
+			}
+		}
 
 		for (i in seperatedScore)
 		{
-			var numScore:FlxSprite = new FlxSprite().loadGraphic(Paths.image(uiPrefix + 'num' + Std.int(i) + uiSuffix));
+			var numScore:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'num' + Std.int(i) + (((ratingPercent == 1 || cpuControlled) && SONG.song != "Cycled Sins") ? (SONG.song == "Malfunction" ? '-malgold' : '-gold') : (SONG.song == "Malfunction" ? '-mal' : '')) + pixelShitPart2));
+			numScore.scale.set(0.22, 0.22);
 			numScore.screenCenter();
-			numScore.x = placement + (43 * daLoop) - 90 + ClientPrefs.data.comboOffset[2];
-			numScore.y += 80 - ClientPrefs.data.comboOffset[3];
+			numScore.x = (32 * daLoop) - 90;
+			numScore.x += FlxG.width * 0.92;
+			numScore.y = rating.y + (SONG.song == "Malfunction" ? ((daRating.image == "sick" && ratingPercent != 1) ? 80 : 56) : 45);
+			
+			if (!ClientPrefs.data.comboStacking)
+				lastScore.push(numScore);
 
-			if (!PlayState.isPixelStage) numScore.setGraphicSize(Std.int(numScore.width * 0.5));
-			else numScore.setGraphicSize(Std.int(numScore.width * daPixelZoom));
+			if (!isPixelStage)
+			{
+				//nothing
+			}
+			else
+			{
+				numScore.setGraphicSize(Std.int(numScore.width * daPixelZoom * 0.28));
+			}
 			numScore.updateHitbox();
 
 			numScore.acceleration.y = FlxG.random.int(200, 300) * playbackRate * playbackRate;
 			numScore.velocity.y -= FlxG.random.int(140, 160) * playbackRate;
 			numScore.velocity.x = FlxG.random.float(-5, 5) * playbackRate;
 			numScore.visible = !ClientPrefs.data.hideHud;
-			numScore.antialiasing = antialias;
+
+			if (SONG.song == "Bless")
+				if (states.stages.YouveBeenBlessed.lightI != null && states.stages.YouveBeenBlessed.lightI.visible)
+					numScore.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0);
 
 			//if (combo >= 10 || combo == 0)
 			if(showComboNum)
@@ -3884,6 +3967,10 @@ class PlayState extends MusicBeatState
 			if(numScore.x > xThing) xThing = numScore.x;
 		}
 		comboSpr.x = xThing + 50;
+
+		coolText.text = Std.string(seperatedScore);
+		// add(coolText);
+
 		FlxTween.tween(rating, {alpha: 0}, 0.2 / playbackRate, {
 			startDelay: Conductor.crochet * 0.001 / playbackRate
 		});
@@ -3891,6 +3978,7 @@ class PlayState extends MusicBeatState
 		FlxTween.tween(comboSpr, {alpha: 0}, 0.2 / playbackRate, {
 			onComplete: function(tween:FlxTween)
 			{
+				coolText.destroy();
 				comboSpr.destroy();
 				rating.destroy();
 			},
@@ -4081,7 +4169,6 @@ class PlayState extends MusicBeatState
 					keyReleased(i);
 	}
 
-	var malfunctionComboCheck:Int = 0;
 	function noteMiss(daNote:Note):Void { //You didn't hit the key and let it go offscreen, also used by Hurt Notes
 		//Dupe note remove
 		notes.forEachAlive(function(note:Note) {
@@ -4089,7 +4176,6 @@ class PlayState extends MusicBeatState
 				invalidateNote(note);
 		});
 
-		malfunctionComboCheck = 0;
 		noteMissCommon(daNote.noteData, daNote);
 		var result:Dynamic = callOnLuas('noteMiss', [notes.members.indexOf(daNote), daNote.noteData, daNote.noteType, daNote.isSustainNote]);
 		if(result != LuaUtils.Function_Stop && result != LuaUtils.Function_StopHScript && result != LuaUtils.Function_StopAll) callOnHScript('noteMiss', [daNote]);
@@ -4147,9 +4233,9 @@ class PlayState extends MusicBeatState
 			doDeathCheck(true);
 		}
 
-		var lastCombo:Int = combo;
+		malfunctionComboCheck = 0;
 		combo = 0;
-		healthThing -= subtract * healthLoss;
+		healthThing -= note.missHealth * healthLoss;
 
 		if(!practiceMode) songScore -= 10;
 		if(!endingSong) songMisses++;
@@ -4168,7 +4254,7 @@ class PlayState extends MusicBeatState
 			var animToPlay:String = singAnimations[Std.int(Math.abs(Math.min(singAnimations.length-1, direction)))] + 'miss' + suffix;
 			char.playAnim(animToPlay, true);
 
-			if(char != gf && lastCombo > 5 && gf != null && gf.animOffsets.exists('sad'))
+			if(char != gf && gf != null && gf.animOffsets.exists('sad'))
 			{
 				gf.playAnim('sad');
 				gf.specialAnim = true;
@@ -4227,6 +4313,154 @@ class PlayState extends MusicBeatState
                 if (ClientPrefs.data.mechanics)
                      if (healthThing > boundValue)
                         healthThing -= drainValue;
+			case 'Laugh Track':
+                if (ClientPrefs.data.shaking)
+                {
+                    if (healthThing > 0.4)
+                        healthThing -= 0.01;
+
+					camHUD.angle = FlxG.random.float(-1.5, 1.5);
+					camGame.shake(0.0035, 0.05);
+					camHUD.shake(0.002, 0.035);
+					FlxTween.tween(camHUD, {angle: 0}, .025);
+                }
+			case 'Malfunction':
+                if (dad.curCharacter == 'glitched-mickey-new-pixel')
+                {
+                    if (healthThing > 0.05)
+                        healthThing -= 0.01;
+                    if (ClientPrefs.data.shaking)
+                    {
+                        camGame.shake(0.008, 0.07);
+                        camHUD.shake(0.015, 0.07);
+                    }
+                    if (ClientPrefs.data.shaders)
+                    {			
+                        if(!ClientPrefs.data.lowQuality && ClientPrefs.data.epilepsy)
+                        {
+                            camGame.setFilters([
+                                new ShaderFilter(states.stages.ForbiddenRealm.chromZoomShader),
+                                new ShaderFilter(states.stages.ForbiddenRealm.chromNormalShader),
+                                new ShaderFilter(states.stages.ForbiddenRealm.blurShader)
+                            ]);
+                            camHUD.setFilters([
+                                new ShaderFilter(states.stages.ForbiddenRealm.chromNormalShader),
+                                new ShaderFilter(states.stages.ForbiddenRealm.blurShader)
+                            ]);
+                        }
+                        
+                        chromEffect += 0.2;
+                        states.stages.ForbiddenRealm.blurEffect += 2.5;
+                        
+                        if (chromTween != null)
+                            chromTween.cancel();
+                        if (states.stages.ForbiddenRealm.blurTween != null)
+                            states.stages.ForbiddenRealm.blurTween.cancel();
+
+                        chromTween = FlxTween.tween(
+                            instance,
+                            {
+                                chromEffect: 0.0001
+                            },
+                            0.1,
+                            {
+                                ease: FlxEase.sineOut,
+                                onComplete: function(twn:FlxTween)
+                                {
+                                    chromTween = null;
+                                }
+                            }
+                        );
+                        states.stages.ForbiddenRealm.blurTween = FlxTween.tween(
+                            states.stages.ForbiddenRealm,
+                            {
+                                blurEffect: 0.0
+                            },
+                            0.1,
+                            {
+                                ease: FlxEase.sineOut,
+                                onComplete: function(twn:FlxTween)
+                                {
+                                
+                                    if(!ClientPrefs.data.lowQuality)
+                                    {
+                                        camGame.setFilters([new ShaderFilter(states.stages.ForbiddenRealm.chromZoomShader), new ShaderFilter(states.stages.ForbiddenRealm.chromNormalShader)]);
+                                        camHUD.setFilters([new ShaderFilter(states.stages.ForbiddenRealm.chromNormalShader)]);
+                                    }
+                                    states.stages.ForbiddenRealm.blurTween = null;
+                                }
+                            }
+                        );
+                    }
+                }
+				else if (dad.curCharacter == 'malsquare-withFace')
+                {
+					if (healthThing > 0.05)
+                        healthThing -= 0.015;
+                    if (ClientPrefs.data.shaking)
+                    {
+                        camGame.shake(0.01, 0.07);
+                        camHUD.shake(0.018, 0.07);
+                    }
+                    if (ClientPrefs.data.shaders)
+                    {
+                        if(!ClientPrefs.data.lowQuality && ClientPrefs.data.epilepsy)
+                        {
+                            camGame.setFilters([
+                                new ShaderFilter(states.stages.ForbiddenRealm.chromZoomShader),
+                                new ShaderFilter(states.stages.ForbiddenRealm.chromNormalShader),
+                                new ShaderFilter(states.stages.ForbiddenRealm.blurShader)
+                            ]);
+                            camHUD.setFilters([
+                                new ShaderFilter(states.stages.ForbiddenRealm.chromNormalShader),
+                                new ShaderFilter(states.stages.ForbiddenRealm.blurShader)
+                            ]);
+                        }
+                        
+                        chromEffect += 0.22;
+                        states.stages.ForbiddenRealm.blurEffect += 2.5;
+                        
+                        if (chromTween != null)
+                            chromTween.cancel();
+                        if (states.stages.ForbiddenRealm.blurTween != null)
+                            states.stages.ForbiddenRealm.blurTween.cancel();
+
+                        chromTween = FlxTween.tween(
+                            instance,
+                            {
+                                chromEffect: 0.0001
+                            },
+                            0.1,
+                            {
+                                ease: FlxEase.sineOut,
+                                onComplete: function(twn:FlxTween)
+                                {
+                                    chromTween = null;
+                                }
+                            }
+                        );
+                        states.stages.ForbiddenRealm.blurTween = FlxTween.tween(
+                            states.stages.ForbiddenRealm,
+                            {
+                                blurEffect: 0.0
+                            },
+                            0.1,
+                            {
+                                ease: FlxEase.sineOut,
+                                onComplete: function(twn:FlxTween)
+                                {
+                                
+                                    if(!ClientPrefs.data.lowQuality)
+                                    {
+                                        camGame.setFilters([new ShaderFilter(states.stages.ForbiddenRealm.chromZoomShader), new ShaderFilter(states.stages.ForbiddenRealm.chromNormalShader)]);
+                                        camHUD.setFilters([new ShaderFilter(states.stages.ForbiddenRealm.chromNormalShader)]);
+                                    }
+                                    states.stages.ForbiddenRealm.blurTween = null;
+                                }
+                            }
+                        );
+                    }
+                }
 			case "Dont Cross":
 				boyfriend.x += 1.2;
 				boyfriend.y -= 1.2;
@@ -4246,6 +4480,8 @@ class PlayState extends MusicBeatState
 		if (!note.isSustainNote) invalidateNote(note);
 	}
 
+	var malfunctionComboCheck:Int = 0;
+	
 	public function goodNoteHit(note:Note):Void
 	{
 		if(note.wasGoodHit) return;
@@ -4402,7 +4638,7 @@ class PlayState extends MusicBeatState
 		if (!note.isSustainNote)
 		{
 			if (SONG.song == "Malfunction") malfunctionComboCheck += 1;
-			combo ++;
+			combo += 1;
 			if (malfunctionComboCheck == 100 && SONG.song == "Malfunction")
 			{
 				malfunctionComboCheck = 0;
@@ -4478,11 +4714,7 @@ class PlayState extends MusicBeatState
 		}
 		var splash:NoteSplash = grpNoteSplashes.recycle(NoteSplash);
 		splash.setupNoteSplash(x + offsetX, y + offsetY, data, skin, 0, 0, 0);
-		//if (lightI != null)
-			//if (lightI.visible) 
-				//splash.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0); 
-			//else 
-				splash.setColorTransform(1, 1, 1, 1, 0, 0, 0, 0);
+			splash.setColorTransform(1, 1, 1, 1, 0, 0, 0, 0);
 		if (isPixelStage && ClientPrefs.data.shaders)
 			splash.shader = pixelizeUI;
 		grpNoteSplashes.add(splash);
@@ -4549,6 +4781,8 @@ class PlayState extends MusicBeatState
 
 	var lastBeatHit:Int = -1;
 
+	var canBopCam:Bool = false;
+
 	override function beatHit()
 	{
 		if(lastBeatHit >= curBeat) {
@@ -4580,6 +4814,12 @@ class PlayState extends MusicBeatState
 
 		super.beatHit();
 		lastBeatHit = curBeat;
+
+		if (canBopCam)
+		{
+			camGame.zoom += SONG.song == "Bless" ? 0.06 : 0.15;
+			camHUD.zoom += SONG.song == "Bless" ? 0.02 : 0.1;
+		}
 
 		if (SONG.song == "Delusional")
 		{

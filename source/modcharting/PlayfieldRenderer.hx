@@ -62,6 +62,8 @@ class PlayfieldRenderer extends FlxSprite //extending flxsprite just so i can ed
     public var playStateInstance:PlayState;
     public var playfields:Array<Playfield> = []; //adding an extra playfield will add 1 for each player
 
+    public var isInvertColors:Bool = false;
+
     public var eventManager:ModchartEventManager;
     public var modifierTable:ModTable;
     public var tweenManager:TweenManager = null;
@@ -119,6 +121,29 @@ class PlayfieldRenderer extends FlxSprite //extending flxsprite just so i can ed
         } catch(e) {
             trace(e);
         }
+
+        // Bless shit
+        if (isInvertColors)
+        {
+            strumGroup.forEach(function(spr:StrumNote) {
+                spr.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0);
+            });
+            notes.forEach(function(note:Note) {
+                note.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0);
+                if (note.mesh != null) note.mesh.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0);
+            });
+        }
+        else if (PlayState.SONG.song == "Bless")
+        {
+            strumGroup.forEach(function(spr:StrumNote) {
+                spr.setColorTransform(1, 1, 1, 1, 0, 0, 0, 0);
+            });
+            notes.forEach(function(note:Note) {
+               note.setColorTransform(1, 1, 1, 1, 0, 0, 0, 0);
+                if (note.mesh != null) note.mesh.setColorTransform(1, 1, 1, 1, 0, 0, 0, 0);
+            });
+        }
+
         super.update(elapsed);
     }
 

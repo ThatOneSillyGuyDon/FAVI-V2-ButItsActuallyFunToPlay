@@ -8,6 +8,7 @@ import openfl.filters.ShaderFilter;
 
 class Episode1Street extends BaseStage
 {
+	//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 	var death:VideoSprite;
 	var deluSing:VideoSprite;
 	var lununuIntro:VideoSprite;
