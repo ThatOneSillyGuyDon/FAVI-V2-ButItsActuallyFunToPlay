@@ -589,8 +589,8 @@ class PlayState extends MusicBeatState
 			case 'trueGrinsOfSins': new states.stages.SmileStage(); //Twisted Grins
 			case 'waltRoom': new states.stages.WaltStage(); //Mercy/Mercy Legacy
 			case 'apartment': new states.stages.ShotgunMick(); //Cycled Sins
-			case 'grassNation': 
-				new states.stages.ForbiddenRealm(); //Malfunction
+			case 'grassNation': new states.stages.ForbiddenRealm(); //Malfunction
+			case 'clubhouse': new states.stages.Birtbhday(); //Birthday
 			case 'menuSongs': new states.stages.MenuSongs(); //Menu Songs
 		}
 
@@ -1590,7 +1590,7 @@ class PlayState extends MusicBeatState
 							case "War Dilemma" | "Dont Cross" | "Bless" | "Mercy" | "Mercy Legacy" | "Delutrance":
 								//nothing
 							default:
-								insert(members.indexOf(notes), countdownIntro);
+								add(countdownIntro);
 								FlxTween.tween(countdownIntro, {alpha: 0}, Conductor.crochet / 1000, {
 									ease: FlxEase.cubeInOut,
 									onComplete: function(twn:FlxTween)
@@ -1618,7 +1618,7 @@ class PlayState extends MusicBeatState
 
 						countdownReady.screenCenter();
 						countdownReady.antialiasing = antialias;
-						insert(members.indexOf(notes), countdownReady);
+						add(countdownReady);
 						FlxTween.tween(countdownReady, {/*y: countdownReady.y + 100,*/ alpha: 0}, Conductor.crochet / 1000, {
 							ease: FlxEase.cubeInOut,
 							onComplete: function(twn:FlxTween)
@@ -1646,6 +1646,7 @@ class PlayState extends MusicBeatState
 						countdownSet.screenCenter();
 						countdownSet.antialiasing = antialias;
 						insert(members.indexOf(notes), countdownSet);
+						add(countdownSet);
 						FlxTween.tween(countdownSet, {/*y: countdownSet.y + 100,*/ alpha: 0}, Conductor.crochet / 1000, {
 							ease: FlxEase.cubeInOut,
 							onComplete: function(twn:FlxTween)
@@ -1674,6 +1675,7 @@ class PlayState extends MusicBeatState
 						countdownGo.screenCenter();
 						countdownGo.antialiasing = antialias;
 						insert(members.indexOf(notes), countdownGo);
+						add(countdownGo);
 						FlxTween.tween(countdownGo, {/*y: countdownGo.y + 100,*/ alpha: 0}, Conductor.crochet / 1000, {
 							ease: FlxEase.cubeInOut,
 							onComplete: function(twn:FlxTween)
@@ -4335,7 +4337,7 @@ class PlayState extends MusicBeatState
 			}
 
 			// forces the 3rd character in the background in Delusional to work
-			if(states.stages.Episode1Street.mickeySpirit != null)
+			if(states.stages.Episode1Street.mickeySpirit != null && SONG.song == "Delusional")
 			{
 				states.stages.Episode1Street.mickeySpirit.playAnim(animToPlay, true);
 				states.stages.Episode1Street.mickeySpirit.holdTimer = 0;
@@ -4521,6 +4523,8 @@ class PlayState extends MusicBeatState
 					if(healthThing > 0.05) // trol
 						healthThing -= 0.015;
 				}
+			case 'Birthday':
+				if (states.stages.Birtbhday.spawnNotes['muckney'] && !note.isSustainNote) birthdayParticles(dadGroup);
 		}
 		
 		var result:Dynamic = callOnLuas('opponentNoteHit', [notes.members.indexOf(note), Math.abs(note.noteData), note.noteType, note.isSustainNote]);
@@ -4701,9 +4705,10 @@ class PlayState extends MusicBeatState
 				crashLivesIcon.y -= 20;
 				FlxTween.tween(crashLivesIcon, {y: crashLivesIcon.y + 20}, 0.3, {ease: FlxEase.sineOut});
 			}
-			healthThing += note.hitHealth * 0.55;
 			if(combo > 9999) combo = 9999;
 			popUpScore(note);
+
+			if (states.stages.Birtbhday.spawnNotes['bf']) birthdayParticles(boyfriendGroup);
 		}
 		healthThing += note.hitHealth * 0.55;
 
@@ -4720,6 +4725,26 @@ class PlayState extends MusicBeatState
 
 		if(!note.isSustainNote) 
 			invalidateNote(note);
+	}
+
+	public function birthdayParticles(targetGroup:FlxSpriteGroup) {
+		var path:String = 'favi/ui/bdaynotes';
+		var particleNote:FlxSprite = new FlxSprite().loadGraphic(Paths.image('$path/note_${FlxG.random.int(1, 3)}'));
+		particleNote.setGraphicSize(Std.int(particleNote.width * 0.7));
+		particleNote.updateHitbox();
+		particleNote.x = FlxG.random.int(Std.int(targetGroup.x - (targetGroup == boyfriendGroup ? 0 : 150)), Std.int(targetGroup.x + (targetGroup == boyfriendGroup ? 500 : 300)));
+		particleNote.y = targetGroup.y - 170;
+		particleNote.velocity.y += targetGroup.y - 400;
+		particleNote.acceleration.y = 400 * playbackRate;
+		particleNote.angle = FlxG.random.int(0, 360);
+		
+		FlxTween.tween(particleNote, {alpha: 0}, 3, {
+			onComplete: function(tween:FlxTween)
+			{
+				particleNote.destroy();
+			}
+		});
+		add(particleNote);
 	}
 
 	public function invalidateNote(note:Note):Void {
