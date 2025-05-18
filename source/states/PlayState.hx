@@ -172,7 +172,7 @@ class PlayState extends MusicBeatState
 
 	@:noCompletion
 	static function get_isPixelStage():Bool
-		return stageUI == "pixel" || stageUI.endsWith("-pixel") || SONG.song == "Malfunction";
+		return stageUI == "pixel" || stageUI.endsWith("-pixel") || SONG.song == "Malfunction" || SONG.song == "Malfunction Legacy" || SONG.song == "Cycled Sins" || SONG.song == "Cycled Sins Legacy";
 
 	public static var SONG:SwagSong = null;
 	public static var isStoryMode:Bool = false;
@@ -375,6 +375,44 @@ class PlayState extends MusicBeatState
 	public static var pauseCountEnabled:Bool = false;
 	public static var useFakeDeluName:Bool = false;
 
+	var relapseEndNotes:Array<String> = [
+		"ah",
+		"eh",
+		"ah",
+		"eh",
+		"oo",
+		"o",
+		"o",
+		"ah",
+		"ehh",
+		"ooo",
+		"ahh",
+		"eee",
+		"ah",
+		"ah",
+		"e",
+		"ah",
+		"ah",
+		"ah",
+		"ee",
+		"o",
+		"eh",
+		"o",
+		"e",
+		"oh",
+		"e",
+		"oh",
+		"e",
+		"ah",
+		"ehh",
+		"ahh",
+		"ahh",
+		"ee",
+		"ohhh"
+	];
+
+	var sinsEnd:Bool = false;
+
 	override public function create()
 	{
 		//trace('Playback Rate: ' + playbackRate);
@@ -550,6 +588,7 @@ class PlayState extends MusicBeatState
 			case 'war': new states.stages.GiveMeTheFiles(); //War Dilemma
 			case 'trueGrinsOfSins': new states.stages.SmileStage(); //Twisted Grins
 			case 'waltRoom': new states.stages.WaltStage(); //Mercy/Mercy Legacy
+			case 'apartment': new states.stages.ShotgunMick(); //Cycled Sins
 			case 'grassNation': 
 				new states.stages.ForbiddenRealm(); //Malfunction
 			case 'menuSongs': new states.stages.MenuSongs(); //Menu Songs
@@ -1415,7 +1454,7 @@ class PlayState extends MusicBeatState
 		introAssets.set('pixel', ['pixelUI/ready-pixel', 'pixelUI/set-pixel', 'pixelUI/date-pixel']);
 		introAssets.set('cartoon', ['favi/countdown/prepare', 'favi/countdown/ready', 'favi/countdown/set', 'favi/countdown/go']);
 		introAssets.set('malfunction', ['favi/countdown/mal-prepare', 'favi/countdown/mal-ready', 'favi/countdown/mal-set', 'favi/countdown/mal-go']);
-		introAssets.set('sins', ['favi/countdown/relapse2NEW-prepare', 'favi/countdown/relapse2NEW-ready', 'favi/countdown/relapse2NEW-set', 'favi/countdown/relapse2NEW-go']);
+		introAssets.set('sins', ['favi/countdown/relapse-prepare', 'favi/countdown/relapse-ready', 'favi/countdown/relapse-set', 'favi/countdown/relapse-go']);
 
 		var introAlts:Array<String> = introAssets.get('default');
 		switch (SONG.song)
@@ -1485,7 +1524,7 @@ class PlayState extends MusicBeatState
 			}
 
 			startedCountdown = true;
-			Conductor.songPosition = -Conductor.crochet * 5;
+			Conductor.songPosition = SONG.song == "Cycled Sins" ? ((-.8 * 5) * 1000) : -Conductor.crochet * 5;
 			setOnScripts('startedCountdown', true);
 			callOnScripts('onCountdownStarted', null);
 
@@ -1503,7 +1542,7 @@ class PlayState extends MusicBeatState
 			}
 			moveCameraSection();
 
-			startTimer = new FlxTimer().start(Conductor.crochet / 1000 / playbackRate, function(tmr:FlxTimer)
+			startTimer = new FlxTimer().start(SONG.song == "Cycled Sins" ? .8 : Conductor.crochet / 1000 / playbackRate, function(tmr:FlxTimer)
 			{
 				characterBopper(tmr.loopsLeft);
 
@@ -1512,7 +1551,7 @@ class PlayState extends MusicBeatState
 				introAssets.set('pixel', ['pixelUI/ready-pixel', 'pixelUI/set-pixel', 'pixelUI/date-pixel']);
 				introAssets.set('cartoon', ['favi/countdown/prepare', 'favi/countdown/ready', 'favi/countdown/set', 'favi/countdown/go']);
 				introAssets.set('malfunction', ['favi/countdown/mal-prepare', 'favi/countdown/mal-ready', 'favi/countdown/mal-set', 'favi/countdown/mal-go']);
-				introAssets.set('sins', ['favi/countdown/relapse2NEW-prepare', 'favi/countdown/relapse2NEW-ready', 'favi/countdown/relapse2NEW-set', 'favi/countdown/relapse2NEW-go']);
+				introAssets.set('sins', ['favi/countdown/relapse-prepare', 'favi/countdown/relapse-ready', 'favi/countdown/relapse-set', 'favi/countdown/relapse-go']);
 
 				var introAlts:Array<String> = introAssets.get('default');
 				var antialias:Bool = ClientPrefs.data.antialiasing;
@@ -4303,6 +4342,16 @@ class PlayState extends MusicBeatState
 			}
 		}
 
+		if (sinsEnd && !note.isSustainNote)
+		{
+			var text:FlxText = new FlxText(-750, 490, 150, relapseEndNotes[0]);
+			text.setFormat(Paths.font("freeplayDisneyFont.ttf"), 70, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			//trace(relapseEndNotes);
+			addBehindDad(text);
+			FlxTween.tween(text, {x: text.x - FlxG.random.int(-150, 150), y: text.y - 700, alpha: 0, angle: FlxG.random.int(-20, 20)}, 2, {ease: FlxEase.sineOut});
+			relapseEndNotes.shift();
+		}
+
 		if(opponentVocals.length <= 0) vocals.volume = 1;
 		strumPlayAnim(true, Std.int(Math.abs(note.noteData)), Conductor.stepCrochet * 1.25 / 1000 / playbackRate);
 		note.hitByOpponent = true;
@@ -4893,7 +4942,7 @@ class PlayState extends MusicBeatState
 			if (generatedMusic && !endingSong && !isCameraOnForcedPos)
 				moveCameraSection();
 
-			if (camZooming && FlxG.camera.zoom < 1.35 && ClientPrefs.data.camZooms)
+			if (camZooming && FlxG.camera.zoom < 1.35 && ClientPrefs.data.camZooms && SONG.song != "Cycled Sins")
 			{
 				FlxG.camera.zoom += 0.015 * camZoomingMult;
 				camHUD.zoom += 0.03 * camZoomingMult;
