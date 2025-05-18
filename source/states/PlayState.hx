@@ -2468,6 +2468,12 @@ class PlayState extends MusicBeatState
 		{
 			iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * iconP1.scale.x - 150) / 2 - iconOffset;
 			iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * iconP2.scale.x) / 2 - iconOffset * 2;
+			if (SONG.song == "Devilish Deal")
+			{
+				states.stages.DevilishStage.minnieIcon.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(-healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * iconP2.scale.x) / 2 - iconOffset * 25;
+				states.stages.DevilishStage.satanIcon.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(-healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * iconP1.scale.x - 150) / 2 - iconOffset * 24;
+				states.stages.DevilishStage.satanIconPulse.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(-healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * iconP1.scale.x - 150) / 2 - iconOffset * 24;
+			}
 		}
 
 		if (startedCountdown && !paused)
@@ -3208,40 +3214,19 @@ class PlayState extends MusicBeatState
 
 				paused = true;
 
-				if (FreeplayState.freeplayMenuList != 3)
-				{
-					vocals.stop();
-					opponentVocals.stop();
-					FlxG.sound.music.stop();
+				vocals.stop();
+				opponentVocals.stop();
+				FlxG.sound.music.stop();
 
-					persistentUpdate = false;
-					persistentDraw = false;
-					FlxTimer.globalManager.clear();
-					FlxTween.globalManager.clear();
-					
-					modchartTimers.clear();
-					modchartTweens.clear();
+				persistentUpdate = false;
+				persistentDraw = false;
+				FlxTimer.globalManager.clear();
+				FlxTween.globalManager.clear();
+				
+				modchartTimers.clear();
+				modchartTweens.clear();
 
-					openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x - boyfriend.positionArray[0], boyfriend.getScreenPosition().y - boyfriend.positionArray[1], camFollowPos.x, camFollowPos.y));
-				}
-				else
-				{
-					vocals.stop();
-					opponentVocals.stop();
-					FlxTween.tween(this, {playbackRate: 0.001}, 7, {ease: FlxEase.expoOut});
-					FlxTween.tween(FlxG.sound.music, {pitch: 0.001}, 7, {ease: FlxEase.expoOut, onComplete: function(twn:FlxTween)
-					{
-						persistentUpdate = false;
-						persistentDraw = false;
-						FlxTimer.globalManager.clear();
-						FlxTween.globalManager.clear();
-						
-						modchartTimers.clear();
-						modchartTweens.clear();
-					}});
-					openSubState(new ManiaLoseSubstate(boyfriend.getScreenPosition().x - boyfriend.positionArray[0], boyfriend.getScreenPosition().y - boyfriend.positionArray[1], camFollowPos.x, camFollowPos.y));
-				}
-					// MusicBeatState.switchState(new GameOverState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
+				openSubState(new GameOverSubstate());
 
 				#if DISCORD_ALLOWED
 				// Game Over doesn't get his its variable because it's only used here

@@ -24,7 +24,6 @@ class ForbiddenRealm extends BaseStage
 	public static var malBG:FlxRuntimeShader = new FlxRuntimeShader(Shaders.malfunctionBGEffect, null, 120);
 	public static var blurShader:FlxRuntimeShader = new FlxRuntimeShader(Shaders.tiltShift, null, 120);
 
-	public var chromEffect:Float = 0.0001;
 	public static var blurEffect:Float = 0.0;
 	public var shaderAnim:Float = 0;
 
@@ -216,24 +215,27 @@ class ForbiddenRealm extends BaseStage
 
 		game.gf.visible = false;
 
-		if(!ClientPrefs.data.lowQuality)
+		if (ClientPrefs.data.shaders)
 		{
-			camGame.setFilters(
-			[
-				new ShaderFilter(chromZoomShader),
-				new ShaderFilter(blurShader),
-			]);
-			camHUD.setFilters(
-			[
-				new ShaderFilter(chromNormalShader),
-				new ShaderFilter(blurShader)
-			]);
-			
-			new flixel.util.FlxTimer().start(5, function(tmr)
+			if(!ClientPrefs.data.lowQuality)
 			{
-				camGame.setFilters([new ShaderFilter(chromZoomShader)]);
-				camHUD.setFilters([new ShaderFilter(chromNormalShader)]);
-			});
+				camGame.setFilters(
+				[
+					new ShaderFilter(chromZoomShader),
+					new ShaderFilter(blurShader),
+				]);
+				camHUD.setFilters(
+				[
+					new ShaderFilter(chromNormalShader),
+					new ShaderFilter(blurShader)
+				]);
+				
+				new flixel.util.FlxTimer().start(5, function(tmr)
+				{
+					camGame.setFilters([new ShaderFilter(chromZoomShader)]);
+					camHUD.setFilters([new ShaderFilter(chromNormalShader)]);
+				});
+			}
 		}
 		
 	}
@@ -244,12 +246,12 @@ class ForbiddenRealm extends BaseStage
 		
 		if (ClientPrefs.data.shaders)
 		{
-			chromNormalShader.setFloat('rOffset', chromEffect / 20);
-			chromNormalShader.setFloat('bOffset', -chromEffect / 20);
+			chromNormalShader.setFloat('rOffset', game.chromEffect / 20);
+			chromNormalShader.setFloat('bOffset', -game.chromEffect / 20);
 			if (!ClientPrefs.data.lowQuality)
 			{
-				chromZoomShader.setFloat('aberration', chromEffect);
-				chromZoomShader.setFloat('effectTime', chromEffect);
+				chromZoomShader.setFloat('aberration', game.chromEffect);
+				chromZoomShader.setFloat('effectTime', game.chromEffect);
 				malFreakG.setFloat("iTime", shaderAnim);
 				malBG.setFloat("iTime", shaderAnim);
 				if (ClientPrefs.data.epilepsy)

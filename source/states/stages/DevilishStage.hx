@@ -17,9 +17,9 @@ class DevilishStage extends BaseStage
 	public static var episodeIntro:VideoSprite;
 
 	 // Hardcoded Devilish Deal Icon Frames
-	 public var minnieIcon:HealthIcon;
-	 public var satanIcon:HealthIcon;
-	 public var satanIconPulse:HealthIcon;
+	 public static var minnieIcon:HealthIcon;
+	 public static var satanIcon:HealthIcon;
+	 public static var satanIconPulse:HealthIcon;
 	 public var iconPulseTween:FlxTween;
 	 public var satanTween:FlxTween;
 
@@ -560,10 +560,6 @@ class DevilishStage extends BaseStage
 		satanIconPulse.updateHitbox();
 
 		super.update(elapsed);
-
-		minnieIcon.x = game.healthBar.x + (game.healthBar.width * (FlxMath.remapToRange(-game.healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * game.iconP2.scale.x) / 2 - game.iconOffset * 25;
-		satanIcon.x = game.healthBar.x + (game.healthBar.width * (FlxMath.remapToRange(-game.healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * game.iconP1.scale.x - 150) / 2 - game.iconOffset * 24;
-		satanIconPulse.x = game.healthBar.x + (game.healthBar.width * (FlxMath.remapToRange(-game.healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * game.iconP1.scale.x - 150) / 2 - game.iconOffset * 24;
 
 		if (ClientPrefs.data.shaders)
 		{

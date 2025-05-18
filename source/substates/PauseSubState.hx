@@ -58,14 +58,18 @@ class PauseSubState extends MusicBeatSubstate
 		}
 		difficultyChoices.push('BACK');
 
+		var randomPauseSong:String = "";
+		var randomizer:Int = FlxG.random.int(1, 3);
+
+		switch (randomizer)
+		{
+			case 1: randomPauseSong = "shipTheFartYayHoorayv3v";
+			case 2: randomPauseSong = "somberNight";
+			case 3: randomPauseSong = "theWretchedTilezones";
+		}
 
 		pauseMusic = new FlxSound();
-		try
-		{
-			var pauseSong:String = getPauseSong();
-			if(pauseSong != null) pauseMusic.loadEmbedded(Paths.music(pauseSong), true, true);
-		}
-		catch(e:Dynamic) {}
+		pauseMusic.loadEmbedded(Paths.music("aviOST/pause/" + randomPauseSong), true, true);
 		pauseMusic.volume = 0;
 		pauseMusic.play(false, FlxG.random.int(0, Std.int(pauseMusic.length / 2)));
 
@@ -299,25 +303,25 @@ class PauseSubState extends MusicBeatSubstate
 					PlayState.instance.paused = true; // For lua
 					PlayState.instance.vocals.volume = 0;
 					MusicBeatState.switchState(new OptionsState());
-					if(ClientPrefs.data.pauseMusic != 'None')
-					{
-						FlxG.sound.playMusic(Paths.music(Paths.formatToSongPath(ClientPrefs.data.pauseMusic)), pauseMusic.volume);
-						FlxTween.tween(FlxG.sound.music, {volume: 1}, 0.8);
-						FlxG.sound.music.time = pauseMusic.time;
-					}
+					FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 					OptionsState.onPlayState = true;
+					FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+					FlxG.mouse.visible = true;
 				case "Exit to menu":
 					#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
 					PlayState.deathCounter = 0;
 					PlayState.seenCutscene = false;
 
 					Mods.loadTopMod();
-					if(PlayState.isStoryMode)
+					if(PlayState.isStoryMode) {
 						MusicBeatState.switchState(new StoryMenu());
-					else 
+						FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
+					}
+					else {
 						MusicBeatState.switchState(new FreeplayState());
-
-					FlxG.sound.playMusic(Paths.music('freakyMenu'));
+						FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
+						FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+					}
 					PlayState.changedDifficulty = false;
 					PlayState.chartingMode = false;
 					FlxG.camera.followLerp = 0;
