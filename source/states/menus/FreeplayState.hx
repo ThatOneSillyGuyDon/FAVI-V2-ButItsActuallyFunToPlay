@@ -97,6 +97,9 @@ class FreeplayState extends MusicBeatState
 
 	var offandon:FlxSprite;
 
+	//For legacy botplay thingy
+	var boyplaytext:FlxText;
+
 	// making this a public static var so the disc just doesn't stop moving at all when going in and out of this menu
 	public static var bpm:Float = 1;
 
@@ -491,17 +494,13 @@ class FreeplayState extends MusicBeatState
 		textBG.alpha = freeplayMenuList == 2 ? 0.6 : 0;
 		add(textBG);
 
-		#if PRELOAD_ALL
-		var leText:String = "Press SPACE to listen to the Song / Press CTRL to open the Gameplay Changers Menu / Press RESET to Reset your Score and Accuracy.";
-		var size:Int = 16;
-		#else
-		var leText:String = "Press CTRL to open the Gameplay Changers Menu / Press RESET to Reset your Score and Accuracy.";
+		var leText:String = 'Press B to toggle Botplay. Botplay: ${ClientPrefs.data.gameplaySettings["botplay"] == true ? 'ON' : 'OFF'}';
 		var size:Int = 18;
-		#end
-		var text:FlxText = new FlxText(textBG.x, textBG.y + 4, FlxG.width, leText, size);
-		text.setFormat(Paths.font("vcr.ttf"), size, FlxColor.WHITE, RIGHT);
-		text.scrollFactor.set();
-		//add(text);
+		boyplaytext = new FlxText(textBG.x, textBG.y + 4, FlxG.width, leText, size);
+		boyplaytext.setFormat(Paths.font("vcr.ttf"), size, FlxColor.WHITE, CENTER);
+		boyplaytext.scrollFactor.set();
+		if (freeplayMenuList == 2)
+			add(boyplaytext);
 
 		if(!ClientPrefs.data.lowQuality)
 			{
@@ -562,10 +561,20 @@ class FreeplayState extends MusicBeatState
 
 	function changeBotPlay(){
 		ClientPrefs.data.gameplaySettings["botplay"] = (ClientPrefs.data.gameplaySettings["botplay"] == true) ? false : true;
-		if (ClientPrefs.data.gameplaySettings["botplay"] == true) {
-			offandon.loadGraphic(Paths.image('$path/on'));
-		} else {
-			offandon.loadGraphic(Paths.image('$path/off'));
+		if (freeplayMenuList != 2)
+		{
+			if (ClientPrefs.data.gameplaySettings["botplay"] == true) {
+				offandon.loadGraphic(Paths.image('$path/on'));
+			} else {
+				offandon.loadGraphic(Paths.image('$path/off'));
+			}
+		}
+		else
+		{
+			if (ClientPrefs.data.gameplaySettings["botplay"] == true)
+				boyplaytext.text = 'Press B to toggle Botplay. Botplay: ON';
+			else
+				boyplaytext.text = 'Press B to toggle Botplay. Botplay: OFF';
 		}
 		return;
 	}

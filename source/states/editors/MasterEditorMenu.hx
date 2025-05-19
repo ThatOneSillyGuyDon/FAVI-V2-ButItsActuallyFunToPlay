@@ -1,16 +1,16 @@
 package states.editors;
 
-import backend.WeekData;
-
-import objects.Character;
-
-import states.menus.MainMenuState;
-import states.menus.FreeplayState;
+import flixel.addons.transition.FlxTransitionableState;
+import flixel.system.FlxSound;
+#if MODS_ALLOWED
+import sys.FileSystem;
+#end
 
 class MasterEditorMenu extends MusicBeatState
 {
 	var options:Array<String> = [
 		'Chart Editor',
+		'Modchart Editor',
 		'Character Editor',
 		'Week Editor',
 		'Menu Character Editor',
@@ -27,7 +27,7 @@ class MasterEditorMenu extends MusicBeatState
 	override function create()
 	{
 		FlxG.camera.bgColor = FlxColor.BLACK;
-		#if DISCORD_ALLOWED
+		#if desktop
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("Editors Main Menu", null);
 		#end
@@ -59,12 +59,12 @@ class MasterEditorMenu extends MusicBeatState
 		directoryTxt.scrollFactor.set();
 		add(directoryTxt);
 		
-		for (folder in Mods.getModDirectories())
+		for (folder in Paths.getModDirectories())
 		{
 			directories.push(folder);
 		}
 
-		var found:Int = directories.indexOf(Mods.currentModDirectory);
+		var found:Int = directories.indexOf(Paths.currentModDirectory);
 		if(found > -1) curDirectory = found;
 		changeDirectory();
 		#end
@@ -103,21 +103,25 @@ class MasterEditorMenu extends MusicBeatState
 		if (controls.ACCEPT)
 		{
 			switch(options[curSelected]) {
-				case 'Chart Editor'://felt it would be cool maybe
-					LoadingState.loadAndSwitchState(new ChartingState(), false);
 				case 'Character Editor':
 					LoadingState.loadAndSwitchState(new CharacterEditorState(Character.DEFAULT_CHARACTER, false));
 				case 'Week Editor':
 					MusicBeatState.switchState(new WeekEditorState());
 				case 'Menu Character Editor':
 					MusicBeatState.switchState(new MenuCharacterEditorState());
-				case 'Dialogue Editor':
-					LoadingState.loadAndSwitchState(new DialogueEditorState(), false);
 				case 'Dialogue Portrait Editor':
 					LoadingState.loadAndSwitchState(new DialogueCharacterEditorState(), false);
+				case 'Dialogue Editor':
+					LoadingState.loadAndSwitchState(new DialogueEditorState(), false);
+				case 'Chart Editor'://felt it would be cool maybe
+					LoadingState.loadAndSwitchState(new ChartingState(), false);
+				case 'Modchart Editor':
+					LoadingState.loadAndSwitchState(new ModchartEditorState(), false);
 			}
 			FlxG.sound.music.volume = 0;
+			#if PRELOAD_ALL
 			FreeplayState.destroyFreeplayVocals();
+			#end
 		}
 		
 		var bullShit:Int = 0;
@@ -167,8 +171,8 @@ class MasterEditorMenu extends MusicBeatState
 			directoryTxt.text = '< No Mod Directory Loaded >';
 		else
 		{
-			Mods.currentModDirectory = directories[curDirectory];
-			directoryTxt.text = '< Loaded Mod Directory: ' + Mods.currentModDirectory + ' >';
+			Paths.currentModDirectory = directories[curDirectory];
+			directoryTxt.text = '< Loaded Mod Directory: ' + Paths.currentModDirectory + ' >';
 		}
 		directoryTxt.text = directoryTxt.text.toUpperCase();
 	}

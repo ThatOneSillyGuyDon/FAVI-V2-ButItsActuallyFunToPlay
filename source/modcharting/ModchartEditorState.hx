@@ -85,8 +85,8 @@ class ModchartEditorEvent extends FlxSprite
         frames = Paths.getSparrowAtlas("ui skins/" + utilities.Options.getData("uiSkin") + "/arrows/default", 'shared');
         animation.addByPrefix('note', 'left0');
         #else
-        frames = Paths.getSparrowAtlas('eventArrowModchart', 'shared');
-        animation.addByPrefix('note', 'idle0');
+        frames = Paths.getSparrowAtlas('NOTE_assets');
+        animation.addByPrefix('note', 'purple0');
         #end
         //makeGraphic(48, 48);
         
@@ -375,10 +375,6 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
 		persistentUpdate = true;
 		persistentDraw = true;
 
-        var bg:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('menuDesat'));
-        bg.setGraphicSize(Std.int(FlxG.width), Std.int(FlxG.height));
-        add(bg);
-
         #if PSYCH
         if (PlayState.isPixelStage) //Skew Kills Pixel Notes (How are you going to stretch already pixelated bit by bit notes?)
         {
@@ -399,6 +395,7 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
 	if(FlxG.sound.music != null)
 		FlxG.sound.music.stop();
 
+        FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
         FlxG.mouse.visible = true;
 
         #if LEATHER 
@@ -1419,18 +1416,12 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
     public static function createGrid(CellWidth:Int, CellHeight:Int, Width:Int, Height:Int):BitmapData
     {
         // How many cells can we fit into the width/height? (round it UP if not even, then trim back)
-        var Color1 = FlxColor.GRAY; //quant colors!!!
-        var Color2 = FlxColor.WHITE;
-        // var Color3 = FlxColor.LIME;
+        var Color1 = FlxColor.RED; //quant colors!!!
+        var Color2 = FlxColor.BLUE;
+        var Color3 = FlxColor.LIME;
         var rowColor:Int = Color1;
         var lastColor:Int = Color1;
         var grid:BitmapData = new BitmapData(Width, Height, true);
-
-        // grid.lock();
-
-        // FlxDestroyUtil.dispose(grid);
-
-        // grid = null;
 
         // If there aren't an even number of cells in a row then we need to swap the lastColor value
         var y:Int = 0;
@@ -1441,12 +1432,14 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
             var x:Int = 0;
             while (x <= Width)
             {
-                if (timesFilled % 2 == 0)
+                if (timesFilled % 4 == 0)
                     lastColor = Color1;
-                else if (timesFilled % 2 == 1)
+                else if (timesFilled % 4 == 2)
                     lastColor = Color2;
+                else 
+                    lastColor = Color3;
+
                 grid.fillRect(new Rectangle(x, y, CellWidth, CellHeight), lastColor);
-                // grid.unlock();
                 timesFilled++;
 
                 x += CellWidth;

@@ -297,16 +297,41 @@ class ModchartFile
                         json = cast Json.parse(Modchart.nightManiaMod);
                     else
                         json = {modifiers: [], events: [], playfields: 1};
-                //Legacy Songs (Songs that still need middlescroll support!)
                 case "Delusional Legacy":
                     if (ClientPrefs.data.mechanics)
-                        json = cast Json.parse(ClientPrefs.data.downScroll ? Modchart.deluLegModD : Modchart.deluLegModU);
+                    {
+                        //Upscroll
+                        if (!ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
+                            json = cast Json.parse(Modchart.deluLegModU);
+                        //Downscroll
+                        else if (ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
+                            json = cast Json.parse(Modchart.deluLegModD);
+                        //Middle-Upscroll
+                        else if (!ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
+                            json = cast Json.parse(Modchart.deluLegModMU);
+                        //Middle-Downscroll
+                        else if (ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
+                            json = cast Json.parse(Modchart.deluLegModMD);
+                    }
                     else
                         json = {modifiers: [], events: [], playfields: 1};
 
                 case "Malfunction Legacy":
                     if (ClientPrefs.data.mechanics)
-                        json = cast Json.parse(ClientPrefs.data.downScroll ? Modchart.malLegacyModD : Modchart.malLegacyModU);
+                    {
+                        //Upscroll
+                        if (!ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
+                            json = cast Json.parse(Modchart.malLegacyModU);
+                        //Downscroll
+                        else if (ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
+                            json = cast Json.parse(Modchart.malLegacyModD);
+                        //Middle-Upscroll
+                        else if (!ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
+                            json = cast Json.parse(Modchart.malLegacyModMU);
+                        //Middle-Downscroll
+                        else if (ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
+                            json = cast Json.parse(Modchart.malLegacyModMD);
+                    }
                     else
                         json = {modifiers: [], events: [], playfields: 1};
 

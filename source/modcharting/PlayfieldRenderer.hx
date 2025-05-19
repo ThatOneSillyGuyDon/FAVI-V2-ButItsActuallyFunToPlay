@@ -2,7 +2,6 @@ package modcharting;
 
 import flixel.tweens.misc.BezierPathTween;
 import flixel.tweens.misc.BezierPathNumTween;
-import flixel.util.FlxTimer.FlxTimerManager;
 import flixel.math.FlxMath;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
@@ -18,9 +17,7 @@ import flixel.FlxSprite;
 
 import flixel.FlxG;
 import modcharting.Modifier;
-import managers.*;
 import flixel.system.FlxAssets.FlxShader;
-import managers.TweenManager;
 
 #if LEATHER
 import states.PlayState;
@@ -66,8 +63,7 @@ class PlayfieldRenderer extends FlxSprite //extending flxsprite just so i can ed
 
     public var eventManager:ModchartEventManager;
     public var modifierTable:ModTable;
-    public var tweenManager:TweenManager = null;
-    public var timerManager:FlxTimerManager = null;
+    public var tweenManager:FlxTweenManager;
 
     public var modchart:ModchartFile;
     public var inEditor:Bool = false;
@@ -98,8 +94,7 @@ class PlayfieldRenderer extends FlxSprite //extending flxsprite just so i can ed
         //fix stupid crash because the renderer in playstate is still technically null at this point and its needed for json loading
         instance.playfieldRenderer = this;
 
-        tweenManager = new TweenManager();
-        timerManager = new FlxTimerManager();
+        tweenManager = new FlxTweenManager();
         eventManager = new ModchartEventManager(this);
         modifierTable = new ModTable(instance, this);
         addNewPlayfield(0,0,0);
@@ -114,13 +109,8 @@ class PlayfieldRenderer extends FlxSprite //extending flxsprite just so i can ed
 
     override function update(elapsed:Float) 
     {
-        try {
-            eventManager.update(elapsed);
-            tweenManager.update(elapsed); //should be automatically paused when you pause in game
-            timerManager.update(elapsed);
-        } catch(e) {
-            trace(e);
-        }
+        eventManager.update(elapsed);
+        tweenManager.update(elapsed); //should be automatically paused when you pause in game
 
         // Bless shit
         if (isInvertColors)
@@ -500,34 +490,6 @@ class PlayfieldRenderer extends FlxSprite //extending flxsprite just so i can ed
             return ModchartUtil.getScrollSpeed(playStateInstance);
         return 1.0; 
     }
-
-    public function createTween(Object:Dynamic, Values:Dynamic, Duration:Float, ?Options:TweenOptions):FlxTween
-    {
-        var tween:FlxTween = tweenManager.tween(Object, Values, Duration, Options);
-        tween.manager = tweenManager;
-        return tween;
-    }
-    
-    public function createTweenNum(FromValue:Float, ToValue:Float, Duration:Float = 1, ?Options:TweenOptions, ?TweenFunction:Float->Void):FlxTween
-    {
-        var tween:FlxTween = tweenManager.num(FromValue, ToValue, Duration, Options, TweenFunction);
-        tween.manager = tweenManager;
-        return tween;
-    }
-    
-    public function createBezierPathTween(Object:Dynamic, Values:Dynamic, Duration:Float, ?Options:TweenOptions):FlxTween
-        {
-            var tween:FlxTween = tweenManager.bezierPathTween(Object, Values, Duration, Options);
-            tween.manager = tweenManager;
-            return tween;
-        }
-    
-    public function createBezierPathNumTween(Points:Array<Float>, Duration:Float, ?Options:TweenOptions, ?TweenFunction:Float->Void):FlxTween
-        {
-            var tween:FlxTween = tweenManager.bezierPathNumTween(Points, Duration, Options,TweenFunction);
-            tween.manager = tweenManager;
-            return tween;
-        }
 
     override public function destroy()
     {

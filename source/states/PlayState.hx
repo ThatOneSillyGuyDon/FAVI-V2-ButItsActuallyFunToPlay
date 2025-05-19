@@ -592,6 +592,11 @@ class PlayState extends MusicBeatState
 			case 'grassNation': new states.stages.ForbiddenRealm(); //Malfunction
 			case 'clubhouse': new states.stages.Birtbhday(); //Birthday
 			case 'menuSongs': new states.stages.MenuSongs(); //Menu Songs
+			//Legacy is A S S
+			case 'theLoop': new states.stages.legacyStages.LegEpisode1Street(); //Episode 1 legacy songs
+			case 'forestOld': new states.stages.legacyStages.LegForest(); //Hunted Legacy
+			case 'smilesOffice': new states.stages.legacyStages.LegSmile(); //Twisted Grins Legacy
+			case 'forbiddenRealm': new states.stages.legacyStages.LegForbiddenRealm(); //Malfunction Legacy
 		}
 
 		stageBGFlash = new FlxSprite().makeGraphic(1, 1, 0xFFFFFFFF);
@@ -2314,7 +2319,6 @@ class PlayState extends MusicBeatState
 	var startedCountdown:Bool = false;
 	var canPause:Bool = true;
 	var freezeCamera:Bool = false;
-	var allowDebugKeys:Bool = true;
 
 	function updateHealthBar():Void
 	{
@@ -2380,12 +2384,19 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		if(!endingSong && !inCutscene && allowDebugKeys)
+		if (controls.justPressed('debug_1') && !endingSong && !inCutscene)
 		{
-			if (controls.justPressed('debug_1'))
-				openChartEditor();
-			else if (controls.justPressed('debug_2'))
-				openCharacterEditor();
+			openChartEditor();
+		}
+
+		if (controls.justPressed('debug_2') && !endingSong && !inCutscene)
+		{			
+			openCharacterEditor();
+		}
+
+		if (controls.justPressed('debug_3') && !endingSong && !inCutscene)
+		{
+			openModchartEditor(); 
 		}
 
 		var mult:Float = FlxMath.lerp(1, iconP1.scale.x, CoolUtil.boundTo(1 - (elapsed * 9 * playbackRate), 0, 1));
@@ -3163,6 +3174,7 @@ class PlayState extends MusicBeatState
 
 	function openChartEditor()
 	{
+		FlxG.camera.followLerp = 0;
 		persistentUpdate = false;
 		paused = true;
 		if(FlxG.sound.music != null)
@@ -3180,12 +3192,28 @@ class PlayState extends MusicBeatState
 
 	function openCharacterEditor()
 	{
+		FlxG.camera.followLerp = 0;
 		persistentUpdate = false;
 		paused = true;
 		if(FlxG.sound.music != null)
 			FlxG.sound.music.stop();
 		#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
+
 		MusicBeatState.switchState(new CharacterEditorState(SONG.player2));
+		FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+	}
+
+	function openModchartEditor()
+	{
+		FlxG.camera.followLerp = 0;
+		persistentUpdate = false;
+		paused = true;
+		if(FlxG.sound.music != null)
+			FlxG.sound.music.stop();
+		#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
+
+
+		MusicBeatState.switchState(new modcharting.ModchartEditorState());
 		FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
 	}
 
@@ -4497,7 +4525,73 @@ class PlayState extends MusicBeatState
                         );
                     }
                 }
-			case "Dont Cross":
+			case 'Malfunction Legacy': // the reason this gets a separate case is cause shader effects are gonna be different
+                if (healthThing > 0.05)
+                       healthThing -= 0.016;
+                if (ClientPrefs.data.shaking)
+                {
+                    camGame.shake(0.008, 0.07);
+                    camHUD.shake(0.015, 0.07);
+                }
+                if (ClientPrefs.data.shaders)
+                {
+                    if(!ClientPrefs.data.lowQuality && ClientPrefs.data.epilepsy)
+                    {
+                        camGame.setFilters([
+                            new ShaderFilter(states.stages.legacyStages.LegForbiddenRealm.chromNormalShader),
+                            new ShaderFilter(states.stages.legacyStages.LegForbiddenRealm.blurShader)
+                        ]);
+                        camHUD.setFilters([
+                            new ShaderFilter(states.stages.legacyStages.LegForbiddenRealm.chromNormalShader),
+                            new ShaderFilter(states.stages.legacyStages.LegForbiddenRealm.blurShader)
+                        ]);
+                    }
+                        
+                    chromEffect += 0.3;
+                    states.stages.legacyStages.LegForbiddenRealm.blurEffect += 1.5;
+                        
+                    if (chromTween != null)
+                        chromTween.cancel();
+                    if (states.stages.legacyStages.LegForbiddenRealm.blurTween != null)
+                        states.stages.legacyStages.LegForbiddenRealm.blurTween.cancel();
+
+                    chromTween = FlxTween.tween(
+                        instance,
+                        {
+                            chromEffect: 0.0001
+                        },
+                        0.1,
+                        {
+                            ease: FlxEase.sineOut,
+                            onComplete: function(twn:FlxTween)
+                            {
+                                chromTween = null;
+                            }
+                        }
+                    );
+                    states.stages.legacyStages.LegForbiddenRealm.blurTween = FlxTween.tween(
+                        states.stages.legacyStages.LegForbiddenRealm,
+                        {
+                            blurEffect: 0.0
+                        },
+                        0.1,
+                        {
+                            ease: FlxEase.sineOut,
+                            onComplete: function(twn:FlxTween)
+                            {
+                                
+                                if(!ClientPrefs.data.lowQuality)
+                                {
+                                    camGame.setFilters([new ShaderFilter(states.stages.legacyStages.LegForbiddenRealm.chromNormalShader)]);
+                                    camHUD.setFilters([new ShaderFilter(states.stages.legacyStages.LegForbiddenRealm.chromNormalShader)]);
+                                }
+                                states.stages.legacyStages.LegForbiddenRealm.blurTween = null;
+                            }
+                        }
+                    );
+                }
+                
+            case "Dont Cross":
 				boyfriend.x += 1.2;
 				boyfriend.y -= 1.2;
 				boyfriend.scale.x -= 0.0012;
@@ -5256,7 +5350,7 @@ class PlayState extends MusicBeatState
 	private function checkForAchievement(achievesToCheck:Array<String> = null)
 	{
 		if(chartingMode) return;
-
+		
 		var usedPractice:Bool = (ClientPrefs.getGameplaySetting('practice') || ClientPrefs.getGameplaySetting('botplay'));
 		if(cpuControlled) return;
 
