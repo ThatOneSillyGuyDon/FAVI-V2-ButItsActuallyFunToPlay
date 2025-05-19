@@ -509,11 +509,11 @@ class PlayState extends MusicBeatState
 		// String that contains the mode defined here so it isn't necessary to call changePresence for each mode
 		if (isStoryMode)
 		{
-			detailsText = "Episode 1 - " + SONG.song + " (" + FreeplayState.getDiffRank() + ")";
+			detailsText = "Episode 1 - " + (SONG.song == "Dont Cross" ? "Don't Cross!" : SONG.song) + " (" + FreeplayState.getDiffRank() + ")";
 		}
 		else
 		{
-			detailsText = "Freeplay - " + SONG.song + " (" + FreeplayState.getDiffRank() + ")";
+			detailsText = "Freeplay - " + (SONG.song == "Dont Cross" ? "Don't Cross!" : SONG.song) + " (" + FreeplayState.getDiffRank() + ")";
 		}
 
 		// String for when the game is paused
@@ -1849,6 +1849,9 @@ class PlayState extends MusicBeatState
 				scoreTxtTween = null;
 			}
 		});
+
+		// Updating Discord Rich Presence (with Time Left)
+		DiscordClient.changePresence(detailsText, scoreTxt.text, (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(SONG.song).toLowerCase()), "random", true, songLength - Conductor.songPosition - ClientPrefs.data.noteOffset);
 	}
 
 	public function setSongTime(time:Float)
@@ -1912,7 +1915,7 @@ class PlayState extends MusicBeatState
 
 		#if DISCORD_ALLOWED
 		// Updating Discord Rich Presence (with Time Left)
-		if(autoUpdateRPC) DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter(), true, songLength);
+		if(autoUpdateRPC) DiscordClient.changePresence(detailsText, scoreTxt.text, (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(SONG.song).toLowerCase()), 'something so the game doesnt freak tf out', true, songLength);
 		#end
 		setOnScripts('songLength', songLength);
 		callOnScripts('onSongStart');
@@ -2269,7 +2272,7 @@ class PlayState extends MusicBeatState
 	override public function onFocusLost():Void
 	{
 		#if DISCORD_ALLOWED
-		if (healthThing > 0 && !paused && autoUpdateRPC) DiscordClient.changePresence(detailsPausedText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter());
+		if (healthThing > 0 && !paused && autoUpdateRPC) DiscordClient.changePresence(detailsPausedText, scoreTxt.text, (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(SONG.song).toLowerCase()), "idkMan");
 		#end
 
 		super.onFocusLost();
@@ -2283,9 +2286,9 @@ class PlayState extends MusicBeatState
 		if(!autoUpdateRPC) return;
 
 		if (showTime)
-			DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter(), true, songLength - Conductor.songPosition - ClientPrefs.data.noteOffset);
+			DiscordClient.changePresence(detailsText, scoreTxt.text, (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(SONG.song).toLowerCase()), "idkMan", true, songLength - Conductor.songPosition - ClientPrefs.data.noteOffset);
 		else
-			DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter());
+			DiscordClient.changePresence(detailsText, scoreTxt.text, (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(SONG.song).toLowerCase()), "idkMan");
 		#end
 	}
 
@@ -3168,7 +3171,7 @@ class PlayState extends MusicBeatState
 		openSubState(new PauseSubState());
 
 		#if DISCORD_ALLOWED
-		if(autoUpdateRPC) DiscordClient.changePresence(detailsPausedText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter());
+		if(autoUpdateRPC) DiscordClient.changePresence(detailsPausedText, scoreTxt.text, (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(SONG.song).toLowerCase()), "idkMan");
 		#end
 	}
 
@@ -3258,7 +3261,7 @@ class PlayState extends MusicBeatState
 
 				#if DISCORD_ALLOWED
 				// Game Over doesn't get his its variable because it's only used here
-				if(autoUpdateRPC) DiscordClient.changePresence("Game Over - " + detailsText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter());
+				if(autoUpdateRPC) DiscordClient.changePresence("Game Over - " + detailsText, 'Deaths: ${deathCounter}', (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(SONG.song).toLowerCase()), "idkMan");
 				#end
 				isDead = true;
 				return true;

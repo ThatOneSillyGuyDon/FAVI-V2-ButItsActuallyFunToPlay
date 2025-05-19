@@ -1550,7 +1550,9 @@ class Episode1Street extends BaseStage
 						{
 							PlayState.detailsText = "Freeplay - Regret (PEACEFUL)";
 						}
+						PlayState.useFakeDeluName = true;
 						PlayState.windowName = "...";
+						DiscordClient.changePresence("Do you have any idea...", "", (PlayState.useFakeDeluName ? "regret" : CoolUtil.spaceToDash(game.SONG.song).toLowerCase()), "idkMan");
 						lime.app.Application.current.window.title = PlayState.windowName;
 						game.boundValue = 2;
 						game.drainValue = 0;
@@ -1589,8 +1591,10 @@ class Episode1Street extends BaseStage
 						game.defaultCamZoom = 0.85;
 					case 476:
 						PlayState.windowName = "Where am I...?";
+						DiscordClient.changePresence("Do you have any idea...", "...what you're dealing with?", (PlayState.useFakeDeluName ? "regret" : CoolUtil.spaceToDash(PlayState.SONG.song).toLowerCase()), "idkMan");
 						lime.app.Application.current.window.title = PlayState.windowName;
 					case 480:
+						DiscordClient.changePresence(PlayState.detailsText, game.scoreTxt.text, (PlayState.useFakeDeluName ? "regret" : CoolUtil.spaceToDash(PlayState.SONG.song).toLowerCase()), "idkMan");
 						PlayState.windowName = "Funkin.avi - " + (isStoryMode ? PlayState.curEpisode + " - " : "Freeplay - ") + "Regret [________]";
 						lime.app.Application.current.window.title = PlayState.windowName;
 						camGame.visible = true;
@@ -1650,7 +1654,7 @@ class Episode1Street extends BaseStage
 						game.uiGroup.visible = false;
 						camGame.alpha = 1;
 					case 744:
-						//game.useFakeDeluName = false;
+						PlayState.useFakeDeluName = false;
 						if (isStoryMode)
 						{
 							PlayState.detailsText = "Episode 1 - " + PlayState.SONG.song + " (" + FreeplayState.getDiffRank() + ")";
@@ -1660,6 +1664,7 @@ class Episode1Street extends BaseStage
 							PlayState.detailsText = "Freeplay - " + PlayState.SONG.song + " (" + FreeplayState.getDiffRank() + ")";
 						}
 						PlayState.windowName = "Funkin.avi - " + (isStoryMode ? PlayState.curEpisode + " - " : "Freeplay - ") + PlayState.SONG.song + " [" + FreeplayState.getDiffRank() + "]";
+						DiscordClient.changePresence(PlayState.detailsText, game.scoreTxt.text, (PlayState.useFakeDeluName ? "regret" : CoolUtil.spaceToDash(PlayState.SONG.song).toLowerCase()), "idkMan");
 						lime.app.Application.current.window.title = PlayState.windowName;
 						game.camVideo.visible = false;
 						camGame.alpha = 1;
