@@ -57,6 +57,16 @@ class NoteMovement
             var s = Std.parseFloat(game.ui_settings[0]) * (Std.parseFloat(game.ui_settings[2]) - (Std.parseFloat(game.mania_size[localKeyCount-1])));
             #else
             var s = 0.7;
+            // SUPER shitty fix so the scales aren't wonky
+            switch (PlayState.SONG.song)
+            {
+                case "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Malfunction Legacy" | "Twisted Grins Legacy" | "Cycled Sins Legacy" | "Mercy Legacy" | "Malfunction":
+                    s = 0.7;
+                case "Dont Cross" | "Mercy":
+                    s = 0.64;
+                default:
+                    s = 0.6;
+            }
             #end
 
             defaultScale.push(s);
