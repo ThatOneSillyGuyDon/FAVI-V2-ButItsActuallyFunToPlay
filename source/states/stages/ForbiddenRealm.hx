@@ -24,7 +24,7 @@ class ForbiddenRealm extends BaseStage
 	public static var malBG:FlxRuntimeShader = new FlxRuntimeShader(Shaders.malfunctionBGEffect, null, 120);
 	public static var blurShader:FlxRuntimeShader = new FlxRuntimeShader(Shaders.tiltShift, null, 120);
 
-	public static var blurEffect:Float = 0.0;
+	public static var blurEffect:Float = 0;
 	public var shaderAnim:Float = 0;
 
 	public static var blurTween:FlxTween;

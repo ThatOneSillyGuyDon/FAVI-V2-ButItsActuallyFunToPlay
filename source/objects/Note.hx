@@ -157,6 +157,16 @@ class Note extends FlxSkewedSprite
 					noMissAnimation = true;
 				case 'GF Sing':
 					gfNote = true;
+				case 'Mal Must Miss These':
+					noAnimation = true;
+					noMissAnimation = true;
+					hitCausesMiss = false;
+					ignoreNote = true;
+				case 'Mal Must Miss These (Error Edition)':
+					noAnimation = true;
+					noMissAnimation = true;
+					hitCausesMiss = false;
+					ignoreNote = true;
 			}
 			noteType = value;
 		}

@@ -2629,10 +2629,11 @@ class PlayState extends MusicBeatState
 								}
 							}
 
-							if (!daNote.mustPress && daNote.wasGoodHit && !daNote.hitByOpponent && !daNote.ignoreNote)
+							if (!daNote.mustPress && daNote.wasGoodHit && !daNote.hitByOpponent && !daNote.ignoreNote && daNote.noteType != "Mal Must Miss These" && daNote.noteType != "Mal Must Miss These (Error Edition)")
 							{
 								opponentNoteHit(daNote);
 							}
+							camZooming = true;
 
 							if(!daNote.blockHit && daNote.mustPress && cpuControlled && daNote.canBeHit) {
 								if(daNote.isSustainNote) {

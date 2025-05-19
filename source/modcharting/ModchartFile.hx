@@ -248,7 +248,7 @@ class ModchartFile
                 case "Dont Cross":
                     if (ClientPrefs.data.mechanics && FlxG.random.bool(15))
                     {
-                        trace('Fuck you, die.')
+                        trace('Fuck you, die.');
                         //Upscroll
                         if (!ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
                             json = cast Json.parse(Modchart.dontcrossModchartU);
