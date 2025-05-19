@@ -287,6 +287,7 @@ class Episode1Street extends BaseStage
 				deluSing.cameras = [game.camVideo];
 				deluSing.play();
 				deluSing.pause();
+				deluSing.setVideoTime(0);
 				deluSing.addCallback("onEnd", () -> {
 					deluSing.kill();
 					deluSing.destroy();
@@ -298,12 +299,14 @@ class Episode1Street extends BaseStage
 				death.cameras = [game.camVideo];
 				death.play();
 				death.pause();
+				death.setVideoTime(0);
 				minnieJumpscare = new VideoSprite(false);
 				minnieJumpscare.visible = false;
 				minnieJumpscare.load(Paths.video("minniePart"), [VideoSprite.muted]);
 				minnieJumpscare.cameras = [game.camVideo];
 				minnieJumpscare.play();
 				minnieJumpscare.pause();
+				minnieJumpscare.setVideoTime(0);
 				minnieJumpscare.addCallback("onEnd", () -> {
 					minnieJumpscare.kill();
 					minnieJumpscare.destroy();
@@ -527,6 +530,7 @@ class Episode1Street extends BaseStage
 			case 'evildelu': game.boyfriend.setPosition(550, 190);
 			case 'bf-delu-intro': game.boyfriend.setPosition(750, 350);
 			case 'bf-demon': game.boyfriend.setPosition(275, 65);
+			case 'Mickey-Bedroom': game.boyfriend.setPosition(575, 50);
 			default: game.boyfriend.setPosition(275, 50);
 		}
 	}
@@ -1592,6 +1596,7 @@ class Episode1Street extends BaseStage
 						camGame.visible = true;
 						game.noteGroup.visible = true;
 						game.comboGroup.visible = false;
+						game.boyfriend.x += 1000;
 					case 484:
 						PlayState.windowName = "Funkin.avi - " + (isStoryMode ? PlayState.curEpisode + " - " : "Freeplay - ") + "Regret [P_______]";
 						lime.app.Application.current.window.title = PlayState.windowName;

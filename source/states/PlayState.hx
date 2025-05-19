@@ -4988,7 +4988,7 @@ class PlayState extends MusicBeatState
 					isCameraOnForcedPos = true;
 					defaultCamZoom = 0.5;
 					boyfriend.cameras = [camVideo];
-					boyfriend.x += 700;
+					boyfriend.x += 1000;
 					boyfriend.alpha = 0.0001;
 					camVideo.visible = true;
 					noteGroup.visible = false;
