@@ -375,15 +375,18 @@ class ForbiddenRealm extends BaseStage
 				FlxTween.tween(camHUD, {alpha: 1}, 0.5);
 			case 360:
 				game.camFlashSystem(BG_DARK, {alpha: 0.3, timer: 0.25, ease: FlxEase.sineOut});
-				game.opponentCameraOffset[0] -= 90;
+				if (!game.cpuControlled)
+					game.opponentCameraOffset[0] -= 90;
 				game.defaultCamZoom += 0.05;
 			case 362:
 				game.camFlashSystem(BG_DARK, {alpha: 0.6, timer: 0.25, ease: FlxEase.sineOut});
-				game.opponentCameraOffset[0] -= 105;
+				if (!game.cpuControlled)
+					game.opponentCameraOffset[0] -= 105;
 				game.defaultCamZoom += 0.1;
 			case 364:
 				game.camFlashSystem(BG_DARK, {alpha: 0, timer: 0.5, ease: FlxEase.sineOut});
-				game.opponentCameraOffset[0] += 195;
+				if (!game.cpuControlled)
+					game.opponentCameraOffset[0] += 195;
 				game.defaultCamZoom -= 0.15;
 				game.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.85, timer: 1.5, ease: FlxEase.quartOut, colors: [255, 0, 0]});
 			case 378:
@@ -399,11 +402,13 @@ class ForbiddenRealm extends BaseStage
 				FlxG.camera.zoom += 0.1;
 			case 392:
 				game.camFlashSystem(BG_DARK, {alpha: 0.75, timer: 0.35, ease: FlxEase.sineOut});
-				game.opponentCameraOffset[0] -= 200;
+				if (!game.cpuControlled)
+					game.opponentCameraOffset[0] -= 200;
 				game.defaultCamZoom += 0.15;
 			case 394:
 				game.camFlashSystem(BG_FLASH, {alpha: 0.85, timer: 1.5, ease: FlxEase.quartOut, colors: [255, 0, 0]});
-				game.opponentCameraOffset[0] += 200;
+				if (!game.cpuControlled)
+					game.opponentCameraOffset[0] += 200;
 				game.defaultCamZoom -= 0.15;
 			case 396 | 397 | 398 | 399 | 404 | 405 | 406 | 407 | 412 | 413 | 414 | 415 | 420 | 421 | 422 | 444 | 445 | 446 | 447 | 452 | 453 | 454 | 455:
 				game.camFlashSystem(BG_FLASH, {alpha: 0.15, timer: 0.3, ease: FlxEase.quartOut, colors: [255, 0, 0]});
@@ -411,13 +416,16 @@ class ForbiddenRealm extends BaseStage
 			case 456:
 				game.camFlashSystem(BG_DARK, {alpha: 0.75, timer: 5, ease: FlxEase.sineInOut});
 				game.tweenCamera(1.35, 7, "sineInOut");
-				game.opponentCameraOffset[0] -= 25;
+				if (!game.cpuControlled)
+					game.opponentCameraOffset[0] -= 25;
 			case 460 | 464 | 468 | 472 | 476 | 480 | 484:
-				game.opponentCameraOffset[0] -= 25;
+				if (!game.cpuControlled)
+					game.opponentCameraOffset[0] -= 25;
 			case 488:
 				game.camFlashSystem(BG_FLASH, {alpha: 0.85, timer: 2, ease: FlxEase.sineOut, colors: [255, 255, 255]});
 				game.defaultCamZoom = 0.9;
-				game.opponentCameraOffset[0] += 200;
+				if (!game.cpuControlled)
+					game.opponentCameraOffset[0] += 200;
 			case 504:
 				FlxTween.tween(game.camFollow, {x: game.camFollow.x + 150}, 5, {ease: FlxEase.sineInOut});
 			case 520 | 524 | 528 | 532 | 536 | 540 | 544 | 548:

@@ -607,12 +607,6 @@ class PlayState extends MusicBeatState
 		stageBGFlash.scrollFactor.set();
 		add(stageBGFlash);
 
-		switch(Paths.formatToSongPath(SONG.song))
-		{
-			case 'stress':
-				GameOverSubstate.characterName = 'bf-holding-gf-dead';
-		}
-
 		switch (SONG.song)
 		{
 			case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Twisted Grins Legacy" | "Laugh Track" |  "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Birthday" | "Rotten Petals" | "Seeking Freedom" | "Am I Real?" | "Curtain Call" | "Your Final Bow" | "A True Monster" | "The Wretched Tilezones (Simple Life)" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "Ahh the Scary (Somber Night)":
@@ -1125,7 +1119,7 @@ class PlayState extends MusicBeatState
 		Paths.image('alphabet');
 
 		if (PauseSubState.songName != null)
-			Paths.music(PauseSubState.songName);
+			Paths.music(PauseSubState.songName, 'music');
 		else if(Paths.formatToSongPath(ClientPrefs.data.pauseMusic) != 'none')
 			Paths.music(Paths.formatToSongPath(ClientPrefs.data.pauseMusic));
 
@@ -2235,8 +2229,12 @@ class PlayState extends MusicBeatState
 				vocals.pause();
 				opponentVocals.pause();
 			}
-			FlxTimer.globalManager.forEach(function(tmr:FlxTimer) if(!tmr.finished) tmr.active = false);
-			FlxTween.globalManager.forEach(function(twn:FlxTween) if(!twn.finished) twn.active = false);
+			for (tween in modchartTweens) {
+				tween.active = false;
+			}
+			for (timer in modchartTimers) {
+				timer.active = false;
+			}
 		}
 
 		super.openSubState(SubState);
@@ -2629,7 +2627,7 @@ class PlayState extends MusicBeatState
 								}
 							}
 
-							if (!daNote.mustPress && daNote.wasGoodHit && !daNote.hitByOpponent && !daNote.ignoreNote && daNote.noteType != "Mal Must Miss These" && daNote.noteType != "Mal Must Miss These (Error Edition)")
+							if (!daNote.mustPress && daNote.wasGoodHit && !daNote.hitByOpponent && !daNote.ignoreNote/* && daNote.noteType != "Mal Must Miss These" && daNote.noteType != "Mal Must Miss These (Error Edition)"*/)
 							{
 								opponentNoteHit(daNote);
 							}
@@ -3174,7 +3172,7 @@ class PlayState extends MusicBeatState
 					note.resetAnim = 0;
 				}
 		}
-		openSubState(new PauseSubState());
+		openSubState((SONG.song.toLowerCase().endsWith('legacy') || SONG.song == "Isolated Beta" || SONG.song == "Isolated Old" ? new PauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y) : (FreeplayState.freeplayMenuList != 3 ? new FAVIPauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y) : new PauseManiaSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y))));
 
 		#if DISCORD_ALLOWED
 		if(autoUpdateRPC) DiscordClient.changePresence(detailsPausedText, scoreTxt.text, (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(SONG.song).toLowerCase()), "idkMan");
@@ -3251,19 +3249,38 @@ class PlayState extends MusicBeatState
 
 				paused = true;
 
-				vocals.stop();
-				opponentVocals.stop();
-				FlxG.sound.music.stop();
+				if (FreeplayState.freeplayMenuList != 3)
+				{
+					vocals.stop();
+					opponentVocals.stop();
+					FlxG.sound.music.stop();
 
-				persistentUpdate = false;
-				persistentDraw = false;
-				FlxTimer.globalManager.clear();
-				FlxTween.globalManager.clear();
-				
-				modchartTimers.clear();
-				modchartTweens.clear();
+					persistentUpdate = false;
+					persistentDraw = false;
+					FlxTimer.globalManager.clear();
+					FlxTween.globalManager.clear();
+					
+					modchartTimers.clear();
+					modchartTweens.clear();
 
-				openSubState(new GameOverSubstate());
+					openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x - boyfriend.positionArray[0], boyfriend.getScreenPosition().y - boyfriend.positionArray[1], camFollowPos.x, camFollowPos.y));
+				}
+				else
+				{
+					vocals.stop();
+					opponentVocals.stop();
+					FlxG.sound.music.stop();
+
+					persistentUpdate = false;
+					persistentDraw = false;
+					FlxTimer.globalManager.clear();
+					FlxTween.globalManager.clear();
+					
+					modchartTimers.clear();
+					modchartTweens.clear();
+
+					openSubState(new ManiaLoseSubstate(boyfriend.getScreenPosition().x - boyfriend.positionArray[0], boyfriend.getScreenPosition().y - boyfriend.positionArray[1], camFollowPos.x, camFollowPos.y));
+				}
 
 				#if DISCORD_ALLOWED
 				// Game Over doesn't get his its variable because it's only used here
