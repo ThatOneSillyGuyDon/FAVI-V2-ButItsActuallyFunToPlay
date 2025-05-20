@@ -137,6 +137,7 @@ class WaltStage extends BaseStage
 		mercyBoostIcon.animation.addByPrefix("almostOut", "almostOut", 7, true);
 		mercyBoostIcon.animation.addByPrefix("empty", "empty", 7, true);
 		mercyBoostIcon.cameras = [game.fakeCam];
+		mercyBoostIcon.alpha = 0;
 		mercyBoostIcon.animation.play("full");
 		mercyBoostIcon.scale.set(0.75, 0.75);
 		mercyBoostIcon.scrollFactor.set();			
@@ -144,15 +145,13 @@ class WaltStage extends BaseStage
 		spaceBarCounter = new FlxText(0, 650, 140, '', 15);
 		spaceBarCounter.setFormat(Paths.font("splatter.otf"), 30, FlxColor.BLACK, CENTER, OUTLINE, FlxColor.WHITE);
 		spaceBarCounter.cameras = [game.fakeCam];
-		//spaceBarCounter.alpha = 0;
+		spaceBarCounter.alpha = 0;
 		spaceBarCounter.scrollFactor.set();
 
 		if (ClientPrefs.data.mechanics)
 		{
 			add(waltInstructionsMain);
 			add(waltSubTxt);
-			add(mercyBoostIcon);
-			add(spaceBarCounter);
 
 			FlxTween.tween(waltInstructionsMain, {alpha: 1}, 1, {ease: FlxEase.quadInOut, startDelay: 1});
 			FlxTween.tween(waltInstructionsMain, {alpha: 0}, 1, {ease: FlxEase.quadInOut, startDelay: 8});
@@ -330,6 +329,14 @@ class WaltStage extends BaseStage
 				// Cam Stuff Handler
 				switch (curBeat)
 				{
+					case 1:
+						if (ClientPrefs.data.mechanics)
+						{
+							add(mercyBoostIcon);
+							add(spaceBarCounter);
+							FlxTween.tween(mercyBoostIcon, {alpha: 1}, 2, {ease: FlxEase.sineInOut});
+							FlxTween.tween(spaceBarCounter, {alpha: 1}, 3, {ease: FlxEase.sineInOut});
+						}
 					case 16:
 						FlxTween.tween(camGame, {alpha: 1}, 5, {ease: FlxEase.sineInOut});
 						FlxTween.tween(camHUD, {alpha: 1}, 5, {ease: FlxEase.sineInOut, startDelay: 1.5});
@@ -403,6 +410,17 @@ class WaltStage extends BaseStage
 						game.healthThing -= 0.115;
 				}
 			case 'Mercy Legacy':
+				switch (curBeat)
+				{
+					case 1:
+						if (ClientPrefs.data.mechanics)
+						{
+							add(mercyBoostIcon);
+							add(spaceBarCounter);
+							FlxTween.tween(mercyBoostIcon, {alpha: 1}, 2, {ease: FlxEase.sineInOut});
+							FlxTween.tween(spaceBarCounter, {alpha: 1}, 3, {ease: FlxEase.sineInOut});
+						}
+				}
 				if (ClientPrefs.data.mechanics)
 				{
 					if (curBeat >= 0 && curBeat <= 63)

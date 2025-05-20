@@ -85,7 +85,6 @@ class ShotgunMick extends BaseStage
 			relapseIconLol.scale.set(0.85, 0.85);
 			relapseIconLol.alpha = 0.001;
 			add(relapseIconLol);
-			relapseIconLol.cameras = [camHUD];
 		}
 
 		if (PlayState.SONG.song == "Cycled Sins")
@@ -124,6 +123,7 @@ class ShotgunMick extends BaseStage
 							warningTxt.x -= 200;
 							warningTxt.cameras = [camOther];
 							add(warningTxt);
+							game.uiGroup.add(relapseIconLol);
 							for (i in [warningTxt, dodgeWarning])
 								FlxTween.tween(i, {alpha: 1}, 1.5, {onComplete: function(twn:FlxTween)
 								{

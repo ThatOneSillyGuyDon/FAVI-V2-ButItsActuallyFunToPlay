@@ -867,7 +867,7 @@ class PlayState extends MusicBeatState
 		healthBarBG.sprTracker = healthBar;
 		uiGroup.add(healthBar);
 
-		iconP1 = new HealthIcon((SONG.song == "Mercy" ? "everettmercy" : boyfriend.healthIcon), true);
+		iconP1 = new HealthIcon((SONG.song == "Mercy" ? "everettmercy" : boyfriend.healthIcon), (SONG.song == "Mercy" ? false : true));
 		iconP1.y = healthBar.y - 75;
 		iconP1.visible = !ClientPrefs.data.hideHud;
 		iconP1.alpha = ClientPrefs.data.healthBarAlpha;
@@ -2223,12 +2223,27 @@ class PlayState extends MusicBeatState
 		stagesFunc(function(stage:BaseStage) stage.openSubState(SubState));
 		if (paused)
 		{
-			if (FlxG.sound.music != null)
+			if (inst != null)
 			{
-				FlxG.sound.music.pause();
+				inst.pause();
 				vocals.pause();
 				opponentVocals.pause();
 			}
+
+			if (startTimer != null && !startTimer.finished)
+				startTimer.active = false;
+			if (finishTimer != null && !finishTimer.finished)
+				finishTimer.active = false;
+			if (songSpeedTween != null)
+				songSpeedTween.active = false;
+
+			var chars:Array<Character> = [boyfriend, gf, dad];
+			for (char in chars) {
+				if(char != null && char.colorTween != null) {
+					char.colorTween.active = false;
+				}
+			}
+
 			for (tween in modchartTweens) {
 				tween.active = false;
 			}
@@ -2251,8 +2266,27 @@ class PlayState extends MusicBeatState
 			{
 				resyncVocals();
 			}
-			FlxTimer.globalManager.forEach(function(tmr:FlxTimer) if(!tmr.finished) tmr.active = true);
-			FlxTween.globalManager.forEach(function(twn:FlxTween) if(!twn.finished) twn.active = true);
+
+			if (startTimer != null && !startTimer.finished)
+				startTimer.active = true;
+			if (finishTimer != null && !finishTimer.finished)
+				finishTimer.active = true;
+			if (songSpeedTween != null)
+				songSpeedTween.active = true;
+
+			var chars:Array<Character> = [boyfriend, gf, dad];
+			for (char in chars) {
+				if(char != null && char.colorTween != null) {
+					char.colorTween.active = true;
+				}
+			}
+
+			for (tween in modchartTweens) {
+				tween.active = true;
+			}
+			for (timer in modchartTimers) {
+				timer.active = true;
+			}
 
 			paused = false;
 			callOnScripts('onResume');
@@ -2627,15 +2661,15 @@ class PlayState extends MusicBeatState
 								}
 							}
 
-							if (!daNote.mustPress && daNote.wasGoodHit && !daNote.hitByOpponent && !daNote.ignoreNote/* && daNote.noteType != "Mal Must Miss These" && daNote.noteType != "Mal Must Miss These (Error Edition)"*/)
+							if (!daNote.mustPress && daNote.wasGoodHit && !daNote.hitByOpponent && !daNote.ignoreNote)
 							{
 								opponentNoteHit(daNote);
 							}
-							camZooming = true;
 
 							if (daNote.noteType == "Mal Must Miss These" || daNote.noteType == "Mal Must Miss These (Error Edition)")
 							{
 								opponentVocals.volume = 0;
+								camZooming = true;
 							}
 
 							if(!daNote.blockHit && daNote.mustPress && cpuControlled && daNote.canBeHit) {
@@ -3267,17 +3301,17 @@ class PlayState extends MusicBeatState
 				}
 				else
 				{
-					vocals.stop();
-					opponentVocals.stop();
-					FlxG.sound.music.stop();
-
-					persistentUpdate = false;
-					persistentDraw = false;
-					FlxTimer.globalManager.clear();
-					FlxTween.globalManager.clear();
-					
-					modchartTimers.clear();
-					modchartTweens.clear();
+					FlxTween.tween(this, {playbackRate: 0.001}, 7, {ease: FlxEase.expoOut});
+					FlxTween.tween(FlxG.sound.music, {pitch: 0.001}, 7, {ease: FlxEase.expoOut, onComplete: function(twn:FlxTween)
+					{
+						persistentUpdate = false;
+						persistentDraw = false;
+						FlxTimer.globalManager.clear();
+						FlxTween.globalManager.clear();
+						
+						modchartTimers.clear();
+						modchartTweens.clear();
+					}});
 
 					openSubState(new ManiaLoseSubstate(boyfriend.getScreenPosition().x - boyfriend.positionArray[0], boyfriend.getScreenPosition().y - boyfriend.positionArray[1], camFollowPos.x, camFollowPos.y));
 				}
