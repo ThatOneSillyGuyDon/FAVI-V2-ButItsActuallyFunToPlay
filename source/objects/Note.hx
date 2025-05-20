@@ -163,6 +163,7 @@ class Note extends FlxSkewedSprite
 					hitCausesMiss = false;
 					ignoreNote = true;
 				case 'Mal Must Miss These (Error Edition)':
+					reloadNote('ERROR');
 					noAnimation = true;
 					noMissAnimation = true;
 					hitCausesMiss = false;

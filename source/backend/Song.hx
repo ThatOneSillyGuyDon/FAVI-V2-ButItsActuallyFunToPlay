@@ -112,7 +112,11 @@ class Song
 			case "lunacy-legacy": chartFile = Chart.lunacyLegacy;
 			case "delusional": chartFile = Chart.delusional;
 			case "delusional-legacy": chartFile = Chart.delusionalLegacy;
-			case "malfunction": chartFile = Chart.malfunction;
+			case "malfunction": 
+				if(ClientPrefs.data.gameplaySettings["botplay"] == true)
+					chartFile = Chart.malfunctionBOT;
+				else
+					chartFile = Chart.malfunction;
 			case "malfunction-legacy": chartFile = Chart.malfunctionLegacy;
 			case "bless": chartFile = Chart.bless;
 			case "devilish-deal": chartFile = Chart.devilishDeal;

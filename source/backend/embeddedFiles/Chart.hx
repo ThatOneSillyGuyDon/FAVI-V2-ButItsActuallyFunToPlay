@@ -314841,4 +314841,17222 @@ enum abstract Chart(String) from String to String {
 			"speed": 3
 		}
 	}';
+
+	var malfunctionBOT:String = '{
+	"song": {
+		"composer": "obscurity",
+		"player1": "bf-pixel",
+		"events": [
+			[
+				-5000,
+				[
+					[
+						"Alt Idle Animation",
+						"dad",
+						"-bruh"
+					]
+				]
+			],
+			[
+				57831.3253012049,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.4"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				63614.4578313253,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.4"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				66506.0240963856,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.87"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				69397.5903614458,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				72018.0722891567,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.3"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0.8"
+					]
+				]
+			],
+			[
+				72289.1566265061,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				74909.6385542169,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"0.5"
+					]
+				]
+			],
+			[
+				75180.7228915663,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.9"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				77801.2048192772,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"0.6"
+					]
+				]
+			],
+			[
+				78072.2891566266,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				80602.4096385543,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"0.6"
+					]
+				]
+			],
+			[
+				80963.8554216868,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				81686.7469879519,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.5"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				82409.6385542169,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.5"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				83132.530120482,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.5"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				83493.9759036145,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"0.6"
+					]
+				]
+			],
+			[
+				83855.4216867471,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.5"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				84578.3132530121,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.5"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				85301.2048192772,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.5"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				86024.0963855422,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.5"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				86385.5421686748,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"0.6"
+					]
+				]
+			],
+			[
+				86746.9879518073,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				87469.8795180724,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.5"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				88192.7710843374,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.5"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				88915.6626506025,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.5"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				89277.108433735,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"0.6"
+					]
+				]
+			],
+			[
+				89638.5542168675,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.5"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				90361.4457831326,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.5"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				91084.3373493977,
+				[
+					[
+						"Static Event",
+						"settime",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0.5"
+					]
+				]
+			],
+			[
+				92168.6746987953,
+				[
+					[
+						"Change Mal BG",
+						"setalpha",
+						"1"
+					]
+				]
+			],
+			[
+				92213.8554216868,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"2"
+					]
+				]
+			],
+			[
+				92259.0361445784,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"3"
+					]
+				]
+			],
+			[
+				92304.21686747,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"4"
+					]
+				]
+			],
+			[
+				92349.3975903615,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"1"
+					]
+				]
+			],
+			[
+				92394.5783132531,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"2"
+					]
+				]
+			],
+			[
+				92439.7590361447,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"3"
+					]
+				]
+			],
+			[
+				92484.9397590362,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"4"
+					]
+				]
+			],
+			[
+				92530.1204819278,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.5"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				95060.2409638555,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.4"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0.6"
+					]
+				]
+			],
+			[
+				95421.6867469881,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				97951.8072289158,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.4"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0.6"
+					]
+				]
+			],
+			[
+				98313.2530120483,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				100843.373493976,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.4"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0.6"
+					]
+				]
+			],
+			[
+				101204.819277109,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				104096.385542169,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.5"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				106626.506024096,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.4"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0.6"
+					]
+				]
+			],
+			[
+				106987.951807229,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				109518.072289157,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.4"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0.6"
+					]
+				]
+			],
+			[
+				109879.518072289,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				112409.638554217,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.4"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0.6"
+					]
+				]
+			],
+			[
+				112771.08433735,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				115301.204819277,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				118554.21686747,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.7"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				120451.807228916,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				120722.891566265,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"No Signal Event",
+						"setalpha",
+						"1"
+					]
+				]
+			],
+			[
+				121445.78313253,
+				[
+					[
+						"No Signal Event",
+						"togglevis",
+						""
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.5"
+					]
+				]
+			],
+			[
+				126144.578313253,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"0.7"
+					]
+				]
+			],
+			[
+				126506.024096386,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"0.2"
+					]
+				]
+			],
+			[
+				127228.915662651,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.8"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				130481.927710844,
+				[
+					[
+						"No Signal Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				130662.65060241,
+				[
+					[
+						"No Signal Event",
+						"changebg",
+						"2"
+					]
+				]
+			],
+			[
+				130753.012048193,
+				[
+					[
+						"No Signal Event",
+						"changebg",
+						"3"
+					]
+				]
+			],
+			[
+				130843.373493976,
+				[
+					[
+						"No Signal Event",
+						"togglevis",
+						""
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"settime",
+						"0.2"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				131114.457831325,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.3"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				131385.542168675,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131389.307228916,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131393.072289157,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131396.837349398,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131400.602409639,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131404.36746988,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131408.132530121,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131411.897590362,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131415.662650603,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131419.427710844,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131423.192771084,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131426.957831325,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131430.722891566,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131434.487951807,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131438.253012048,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131442.018072289,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131445.78313253,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131449.548192771,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131453.313253012,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131457.078313253,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131460.843373494,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131464.608433735,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131468.373493976,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131472.138554217,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131475.903614458,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131479.668674699,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131483.43373494,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131487.198795181,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131490.963855422,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131494.728915663,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131498.493975904,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131502.259036145,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131506.024096386,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131509.789156627,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131513.554216868,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131517.319277109,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131521.08433735,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131524.849397591,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131528.614457831,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131532.379518072,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131536.144578313,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131539.909638554,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131543.674698795,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131547.439759036,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131551.204819277,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131554.969879518,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131558.734939759,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131562.5,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				131566.265060241,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.5"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				132289.156626506,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.7"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				133012.048192771,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"2"
+					]
+				]
+			],
+			[
+				133373.493975904,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"3"
+					]
+				]
+			],
+			[
+				133734.939759036,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"4"
+					]
+				]
+			],
+			[
+				134096.385542169,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"1"
+					]
+				]
+			],
+			[
+				134457.831325301,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"2"
+					]
+				]
+			],
+			[
+				134819.277108434,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"3"
+					],
+					[
+						"Static Event",
+						"settime",
+						"0.2"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0.7"
+					]
+				]
+			],
+			[
+				135180.722891566,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"4"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				136265.060240964,
+				[
+					[
+						"No Signal Event",
+						"togglevis",
+						""
+					],
+					[
+						"No Signal Event",
+						"changebg",
+						"1"
+					]
+				]
+			],
+			[
+				136445.78313253,
+				[
+					[
+						"No Signal Event",
+						"changebg",
+						"4"
+					]
+				]
+			],
+			[
+				136536.144578313,
+				[
+					[
+						"No Signal Event",
+						"changebg",
+						"3"
+					]
+				]
+			],
+			[
+				136626.506024097,
+				[
+					[
+						"No Signal Event",
+						"togglevis",
+						""
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"settime",
+						"0.2"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				136897.590361446,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.3"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				137168.674698795,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137172.439759036,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137176.204819277,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137179.969879518,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137183.734939759,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137187.5,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137191.265060241,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137195.030120482,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137198.795180723,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137202.560240964,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137206.325301205,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137210.090361446,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137213.855421687,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137217.620481928,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137221.385542169,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137225.15060241,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137228.915662651,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137232.680722892,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137236.445783133,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137240.210843374,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137243.975903615,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137247.740963856,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137251.506024097,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137255.271084338,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137259.036144578,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137262.801204819,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137266.56626506,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137270.331325301,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137274.096385542,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137277.861445783,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137281.626506024,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137285.391566265,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137289.156626506,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137292.921686747,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137296.686746988,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137300.451807229,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137304.21686747,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137307.981927711,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137311.746987952,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137315.512048193,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137319.277108434,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137323.042168675,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137326.807228916,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137330.572289157,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137334.337349398,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137338.102409639,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137341.86746988,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137345.632530121,
+				[
+					[
+						"Static Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				137349.397590362,
+				[
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				138795.180722892,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.5"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				140602.409638554,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"0.3"
+					]
+				]
+			],
+			[
+				140963.855421687,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				142048.192771084,
+				[
+					[
+						"No Signal Event",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				142093.373493976,
+				[
+					[
+						"No Signal Event",
+						"changebg",
+						"1"
+					]
+				]
+			],
+			[
+				142138.554216868,
+				[
+					[
+						"No Signal Event",
+						"changebg",
+						"3"
+					]
+				]
+			],
+			[
+				142183.734939759,
+				[
+					[
+						"No Signal Event",
+						"changebg",
+						"2"
+					]
+				]
+			],
+			[
+				142228.915662651,
+				[
+					[
+						"No Signal Event",
+						"togglevis",
+						""
+					],
+					[
+						"Static Event",
+						"settime",
+						"0.2"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				142409.638554217,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				143132.530120482,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				143493.975903615,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				143855.421686747,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				144216.86746988,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				146024.096385542,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				146385.542168675,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				146746.987951807,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				147108.43373494,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				148915.662650602,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				149277.108433735,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				149638.554216868,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				150000,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				151807.228915663,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				152168.674698795,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				152530.120481928,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				152891.56626506,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				153795.180722892,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				153975.903614458,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				154698.795180723,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				155060.240963855,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				155421.686746988,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				155783.132530121,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				157590.361445783,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				157951.807228916,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				158313.253012048,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				158674.698795181,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				160481.927710843,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				160843.373493976,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				161204.819277109,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				161566.265060241,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				163373.493975904,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				163734.939759036,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				164096.385542169,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				164457.831325301,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				164819.277108434,
+				[
+					[
+						"Static Event",
+						"settime",
+						"10"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0.6"
+					]
+				]
+			],
+			[
+				176385.542168674,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.6"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				177108.43373494,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				177650.602409638,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				177831.325301205,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"2"
+					]
+				]
+			],
+			[
+				178554.21686747,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				179096.385542168,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				179277.108433735,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"3"
+					]
+				]
+			],
+			[
+				180000,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				180542.168674699,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				180722.891566265,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"4"
+					]
+				]
+			],
+			[
+				181445.78313253,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				181987.951807229,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				182168.674698795,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"1"
+					]
+				]
+			],
+			[
+				182891.56626506,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				183433.734939759,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				183614.457831325,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"2"
+					]
+				]
+			],
+			[
+				184337.34939759,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				184879.518072289,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				185060.240963855,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"3"
+					]
+				]
+			],
+			[
+				185783.13253012,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				186325.301204819,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				186506.024096385,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"1"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				187228.91566265,
+				[
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				187409.638554217,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"4"
+					]
+				]
+			],
+			[
+				187590.361445783,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"2"
+					]
+				]
+			],
+			[
+				187771.084337349,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"3"
+					]
+				]
+			],
+			[
+				187951.807228915,
+				[
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.7"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				188674.698795181,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				189036.144578313,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"4"
+					]
+				]
+			],
+			[
+				189216.867469879,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				189397.590361446,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"2"
+					]
+				]
+			],
+			[
+				190120.481927711,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				190481.927710843,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"1"
+					]
+				]
+			],
+			[
+				190662.650602409,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				190843.373493976,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"3"
+					]
+				]
+			],
+			[
+				191566.265060241,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				191927.710843373,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"2"
+					]
+				]
+			],
+			[
+				192108.43373494,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				192289.156626506,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"3"
+					]
+				]
+			],
+			[
+				193012.048192771,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				193373.493975903,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"4"
+					]
+				]
+			],
+			[
+				193554.21686747,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				193734.939759036,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"1"
+					]
+				]
+			],
+			[
+				194457.831325301,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				194819.277108433,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"2"
+					]
+				]
+			],
+			[
+				195000,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				195180.722891566,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"3"
+					]
+				]
+			],
+			[
+				195903.614457831,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				196265.060240964,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"4"
+					]
+				]
+			],
+			[
+				196445.78313253,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				196626.506024096,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"1"
+					]
+				]
+			],
+			[
+				197349.397590361,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				197710.843373494,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"2"
+					]
+				]
+			],
+			[
+				197891.56626506,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				198072.289156626,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"3"
+					]
+				]
+			],
+			[
+				198795.180722891,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				199156.626506024,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"4"
+					]
+				]
+			],
+			[
+				199337.34939759,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				199518.072289156,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"1"
+					]
+				]
+			],
+			[
+				200240.963855421,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				200602.409638554,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"2"
+					]
+				]
+			],
+			[
+				200783.13253012,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				200963.855421687,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"3"
+					]
+				]
+			],
+			[
+				201686.746987952,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				202048.192771084,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"4"
+					]
+				]
+			],
+			[
+				202228.91566265,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				202409.638554217,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"1"
+					]
+				]
+			],
+			[
+				203132.530120482,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				203493.975903614,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"2"
+					]
+				]
+			],
+			[
+				203674.698795181,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				203855.421686747,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"3"
+					]
+				]
+			],
+			[
+				204578.313253012,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				204939.759036144,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"4"
+					]
+				]
+			],
+			[
+				205120.481927711,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				205301.204819277,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"1"
+					]
+				]
+			],
+			[
+				206024.096385542,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				206385.542168674,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"2"
+					]
+				]
+			],
+			[
+				206566.265060241,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				206746.987951807,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"3"
+					]
+				]
+			],
+			[
+				207469.879518072,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				207831.325301205,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"4"
+					]
+				]
+			],
+			[
+				208012.048192771,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				208192.771084337,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"changebg",
+						"1"
+					]
+				]
+			],
+			[
+				208915.662650602,
+				[
+					[
+						"Static Event",
+						"settime",
+						"0.25"
+					],
+					[
+						"Static Event",
+						"setalpha",
+						"0.75"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				209277.108433735,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"2"
+					]
+				]
+			],
+			[
+				209457.831325301,
+				[
+					[
+						"Static Event",
+						"twnalpha",
+						"1"
+					]
+				]
+			],
+			[
+				209638.554216867,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			],
+			[
+				209728.91566265,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"1"
+					]
+				]
+			],
+			[
+				209819.277108433,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"2"
+					]
+				]
+			],
+			[
+				209909.638554216,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"3"
+					]
+				]
+			],
+			[
+				210000,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"4"
+					]
+				]
+			],
+			[
+				210090.361445783,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"1"
+					]
+				]
+			],
+			[
+				210180.722891566,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"2"
+					]
+				]
+			],
+			[
+				210271.084337349,
+				[
+					[
+						"Change Mal BG",
+						"changebg",
+						"3"
+					]
+				]
+			],
+			[
+				210361.445783132,
+				[
+					[
+						"Static Event",
+						"setalpha",
+						"0.6"
+					],
+					[
+						"No Signal Event",
+						"togglevis",
+						""
+					],
+					[
+						"Change Mal BG",
+						"togglevis",
+						""
+					]
+				]
+			],
+			[
+				210406.626506024,
+				[
+					[
+						"No Signal Event",
+						"changebg",
+						"1"
+					]
+				]
+			],
+			[
+				210451.807228915,
+				[
+					[
+						"No Signal Event",
+						"changebg",
+						"2"
+					]
+				]
+			],
+			[
+				210496.987951807,
+				[
+					[
+						"No Signal Event",
+						"changebg",
+						"3"
+					]
+				]
+			],
+			[
+				210542.168674698,
+				[
+					[
+						"No Signal Event",
+						"changebg",
+						"4"
+					]
+				]
+			],
+			[
+				210587.34939759,
+				[
+					[
+						"No Signal Event",
+						"changebg",
+						"1"
+					]
+				]
+			],
+			[
+				210632.530120481,
+				[
+					[
+						"No Signal Event",
+						"changebg",
+						"2"
+					]
+				]
+			],
+			[
+				210677.710843373,
+				[
+					[
+						"No Signal Event",
+						"changebg",
+						"3"
+					]
+				]
+			],
+			[
+				210722.891566265,
+				[
+					[
+						"No Signal Event",
+						"changebg",
+						"4"
+					]
+				]
+			],
+			[
+				210768.072289156,
+				[
+					[
+						"No Signal Event",
+						"changebg",
+						"1"
+					]
+				]
+			],
+			[
+				210813.253012048,
+				[
+					[
+						"No Signal Event",
+						"changebg",
+						"2"
+					]
+				]
+			],
+			[
+				210858.433734939,
+				[
+					[
+						"No Signal Event",
+						"changebg",
+						"3"
+					]
+				]
+			],
+			[
+				210903.614457831,
+				[
+					[
+						"No Signal Event",
+						"changebg",
+						"4"
+					]
+				]
+			],
+			[
+				210948.795180722,
+				[
+					[
+						"No Signal Event",
+						"changebg",
+						"1"
+					]
+				]
+			],
+			[
+				210993.975903614,
+				[
+					[
+						"No Signal Event",
+						"changebg",
+						"2"
+					]
+				]
+			],
+			[
+				211039.156626506,
+				[
+					[
+						"No Signal Event",
+						"changebg",
+						"3"
+					]
+				]
+			],
+			[
+				211084.337349397,
+				[
+					[
+						"No Signal Event",
+						"togglevis",
+						""
+					],
+					[
+						"Static Event",
+						"settime",
+						"1"
+					],
+					[
+						"Static Event",
+						"twnalpha",
+						"0"
+					]
+				]
+			]
+		],
+		"notes": [
+			{
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"mustHitSection": false
+			},
+			{
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"mustHitSection": false
+			},
+			{
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"mustHitSection": false
+			},
+			{
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"mustHitSection": false
+			},
+			{
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [
+					[
+						11927.7108433735,
+						2,
+						273,
+						"Mal Must Miss These"
+					],
+					[
+						12289.156626506,
+						0,
+						273,
+						"Mal Must Miss These"
+					],
+					[
+						12650.6024096386,
+						1,
+						273,
+						"Mal Must Miss These"
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": false
+			},
+			{
+				"sectionNotes": [
+					[
+						13012.0481927711,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						13192.7710843373,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						13373.4939759036,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						13554.2168674699,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						13734.9397590361,
+						0,
+						273,
+						"Mal Must Miss These"
+					],
+					[
+						14096.3855421687,
+						1,
+						273,
+						"Mal Must Miss These"
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": false
+			},
+			{
+				"sectionNotes": [
+					[
+						14819.2771084337,
+						1,
+						273,
+						"Mal Must Miss These"
+					],
+					[
+						15180.7228915663,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						15361.4457831325,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						15542.1686746988,
+						1,
+						273,
+						"Mal Must Miss These"
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": false
+			},
+			{
+				"sectionNotes": [
+					[
+						16265.0602409639,
+						2,
+						273,
+						"Mal Must Miss These"
+					],
+					[
+						16445.7831325301,
+						3,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						16807.2289156626,
+						1,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						16626.5060240964,
+						0,
+						273,
+						"Mal Must Miss These"
+					],
+					[
+						16987.9518072289,
+						3,
+						273,
+						"Mal Must Miss These"
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": false
+			},
+			{
+				"sectionNotes": [
+					[
+						17710.843373494,
+						2,
+						271.084337349398
+					],
+					[
+						18072.2891566265,
+						0,
+						271.084337349398
+					],
+					[
+						18433.7349397591,
+						1,
+						271.084337349398
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [
+					[
+						18795.1807228916,
+						2,
+						0
+					],
+					[
+						18975.9036144578,
+						2,
+						0
+					],
+					[
+						19156.6265060241,
+						3,
+						0
+					],
+					[
+						19337.3493975904,
+						2,
+						0
+					],
+					[
+						19518.0722891566,
+						0,
+						271.084337349398
+					],
+					[
+						19879.5180722892,
+						1,
+						271.084337349398
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [
+					[
+						20602.4096385542,
+						1,
+						271.084337349398
+					],
+					[
+						20963.8554216868,
+						3,
+						0
+					],
+					[
+						21144.578313253,
+						3,
+						0
+					],
+					[
+						21325.3012048193,
+						1,
+						271.084337349398
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [
+					[
+						22048.1927710844,
+						2,
+						271.084337349398
+					],
+					[
+						22228.9156626506,
+						3,
+						90.3614457831325
+					],
+					[
+						22409.6385542169,
+						0,
+						271.084337349398
+					],
+					[
+						22590.3614457831,
+						1,
+						90.3614457831325
+					],
+					[
+						22771.0843373494,
+						3,
+						271.084337349398
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [
+					[
+						23132.5301204819,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						23313.2530120482,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						23493.9759036144,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						23674.6987951807,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						23855.421686747,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						23945.7831325301,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						24036.1445783132,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						24126.5060240964,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						24216.8674698795,
+						1,
+						273,
+						"Mal Must Miss These"
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": false
+			},
+			{
+				"sectionNotes": [
+					[
+						24578.313253012,
+						3,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						24939.7590361446,
+						1,
+						273,
+						"Mal Must Miss These"
+					],
+					[
+						24578.313253012,
+						2,
+						273,
+						"Mal Must Miss These"
+					],
+					[
+						25301.2048192771,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						25481.9277108434,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						25662.6506024096,
+						1,
+						273,
+						"Mal Must Miss These"
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": false
+			},
+			{
+				"sectionNotes": [
+					[
+						26024.0963855422,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						26204.8192771084,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						26385.5421686747,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						26566.265060241,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						26746.9879518072,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						26927.7108433735,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						27108.4337349397,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						27289.156626506,
+						1,
+						0,
+						"Mal Must Miss These"
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": false
+			},
+			{
+				"sectionNotes": [
+					[
+						27469.8795180723,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						27650.6024096385,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						27831.3253012048,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						28012.0481927711,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						28192.7710843373,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						28373.4939759036,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						28554.2168674699,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						28734.9397590361,
+						0,
+						0,
+						"Mal Must Miss These"
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": false
+			},
+			{
+				"sectionNotes": [
+					[
+						28915.6626506024,
+						2,
+						0
+					],
+					[
+						29096.3855421687,
+						2,
+						0
+					],
+					[
+						29277.1084337349,
+						0,
+						0
+					],
+					[
+						29457.8313253012,
+						2,
+						0
+					],
+					[
+						29638.5542168675,
+						2,
+						0
+					],
+					[
+						29728.9156626506,
+						3,
+						0
+					],
+					[
+						29819.2771084337,
+						2,
+						0
+					],
+					[
+						29909.6385542169,
+						0,
+						0
+					],
+					[
+						30000,
+						1,
+						271.084337349398
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [
+					[
+						30361.4457831325,
+						3,
+						90.3614457831325
+					],
+					[
+						30361.4457831325,
+						2,
+						271.084337349398
+					],
+					[
+						30722.8915662651,
+						1,
+						271.084337349398
+					],
+					[
+						31084.3373493976,
+						2,
+						0
+					],
+					[
+						31265.0602409639,
+						2,
+						0
+					],
+					[
+						31445.7831325301,
+						1,
+						271.084337349398
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [
+					[
+						31807.2289156627,
+						0,
+						0
+					],
+					[
+						31987.9518072289,
+						1,
+						0
+					],
+					[
+						32168.6746987952,
+						3,
+						0
+					],
+					[
+						32349.3975903615,
+						1,
+						0
+					],
+					[
+						32530.1204819277,
+						2,
+						0
+					],
+					[
+						32710.843373494,
+						1,
+						0
+					],
+					[
+						32891.5662650602,
+						3,
+						0
+					],
+					[
+						33072.2891566265,
+						1,
+						0
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [
+					[
+						33253.0120481928,
+						3,
+						0
+					],
+					[
+						33433.734939759,
+						1,
+						0
+					],
+					[
+						33614.4578313253,
+						0,
+						0
+					],
+					[
+						33795.1807228916,
+						2,
+						0
+					],
+					[
+						33975.9036144578,
+						0,
+						0
+					],
+					[
+						34156.6265060241,
+						3,
+						0
+					],
+					[
+						34337.3493975904,
+						2,
+						0
+					],
+					[
+						34518.0722891566,
+						0,
+						0
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [
+					[
+						35060.2409638554,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						35421.6867469879,
+						0,
+						273,
+						"Mal Must Miss These"
+					],
+					[
+						35060.2409638554,
+						2,
+						273,
+						"Mal Must Miss These"
+					],
+					[
+						35783.1325301205,
+						1,
+						273,
+						"Mal Must Miss These"
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": false
+			},
+			{
+				"sectionNotes": [
+					[
+						36144.578313253,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						36325.3012048193,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						36506.0240963855,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						36686.7469879518,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						37048.1927710843,
+						1,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						37409.6385542169,
+						1,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						36867.4698795181,
+						2,
+						273,
+						"Mal Must Miss These"
+					],
+					[
+						37228.9156626506,
+						3,
+						273,
+						"Mal Must Miss These"
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": false
+			},
+			{
+				"sectionNotes": [
+					[
+						37951.8072289157,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						38042.1686746988,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						38132.5301204819,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						38222.8915662651,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						38313.2530120482,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						38493.9759036145,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						37771.0843373494,
+						1,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						37590.3614457831,
+						0,
+						273,
+						"Mal Must Miss These"
+					],
+					[
+						38674.6987951807,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						38855.421686747,
+						0,
+						0,
+						"Mal Must Miss These"
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": false
+			},
+			{
+				"sectionNotes": [
+					[
+						39036.1445783133,
+						3,
+						183,
+						"Mal Must Miss These"
+					],
+					[
+						39036.1445783133,
+						2,
+						637,
+						"Mal Must Miss These"
+					],
+					[
+						39759.0361445783,
+						0,
+						274,
+						"Mal Must Miss These"
+					],
+					[
+						39939.7590361446,
+						1,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						40301.2048192771,
+						2,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						40120.4819277108,
+						3,
+						273,
+						"Mal Must Miss These"
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": false
+			},
+			{
+				"sectionNotes": [
+					[
+						40481.9277108434,
+						0,
+						273,
+						"Mal Must Miss These"
+					],
+					[
+						40843.3734939759,
+						2,
+						273,
+						"Mal Must Miss These"
+					],
+					[
+						41204.8192771084,
+						3,
+						273,
+						"Mal Must Miss These"
+					],
+					[
+						41566.265060241,
+						1,
+						273,
+						"Mal Must Miss These"
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": false
+			},
+			{
+				"sectionNotes": [
+					[
+						41927.7108433735,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						42108.4337349398,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						42289.156626506,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						42469.8795180723,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						42650.6024096386,
+						2,
+						273,
+						"Mal Must Miss These"
+					],
+					[
+						42831.3253012048,
+						1,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						43012.0481927711,
+						0,
+						273,
+						"Mal Must Miss These"
+					],
+					[
+						43192.7710843373,
+						1,
+						91,
+						"Mal Must Miss These"
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": false
+			},
+			{
+				"sectionNotes": [
+					[
+						43554.2168674699,
+						1,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						43373.4939759036,
+						3,
+						273,
+						"Mal Must Miss These"
+					],
+					[
+						43734.9397590361,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						43825.3012048193,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						43915.6626506024,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						44006.0240963855,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						44096.3855421687,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						44277.1084337349,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						44457.8313253012,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						44638.5542168675,
+						1,
+						0,
+						"Mal Must Miss These"
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": false
+			},
+			{
+				"sectionNotes": [
+					[
+						44819.2771084337,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						45000,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						45180.7228915663,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						45361.4457831325,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						45542.1686746988,
+						2,
+						273,
+						"Mal Must Miss These"
+					],
+					[
+						45903.6144578313,
+						1,
+						273,
+						"Mal Must Miss These"
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": false
+			},
+			{
+				"sectionNotes": [
+					[
+						46626.5060240964,
+						2,
+						271.084337349398
+					],
+					[
+						46626.5060240964,
+						3,
+						0
+					],
+					[
+						46987.9518072289,
+						0,
+						271.084337349398
+					],
+					[
+						47349.3975903615,
+						1,
+						271.084337349398
+					],
+					[
+						46265.0602409639,
+						6,
+						273,
+						"Mal Must Miss These"
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [
+					[
+						47710.843373494,
+						2,
+						0
+					],
+					[
+						47891.5662650603,
+						2,
+						0
+					],
+					[
+						48072.2891566265,
+						3,
+						0
+					],
+					[
+						48253.0120481928,
+						2,
+						0
+					],
+					[
+						48433.7349397591,
+						2,
+						271.084337349398
+					],
+					[
+						48614.4578313253,
+						1,
+						90.3614457831325
+					],
+					[
+						48795.1807228916,
+						3,
+						271.084337349398
+					],
+					[
+						48975.9036144579,
+						1,
+						90.3614457831325
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [
+					[
+						49156.6265060241,
+						0,
+						271.084337349398
+					],
+					[
+						49337.3493975904,
+						1,
+						90.3614457831325
+					],
+					[
+						49518.0722891567,
+						2,
+						0
+					],
+					[
+						49608.4337349398,
+						3,
+						0
+					],
+					[
+						49698.7951807229,
+						0,
+						0
+					],
+					[
+						49789.1566265061,
+						3,
+						0
+					],
+					[
+						49879.5180722892,
+						1,
+						0
+					],
+					[
+						50060.2409638555,
+						1,
+						0
+					],
+					[
+						50240.9638554217,
+						3,
+						0
+					],
+					[
+						50421.686746988,
+						0,
+						0
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [
+					[
+						50602.4096385543,
+						2,
+						632.530120481928
+					],
+					[
+						50602.4096385543,
+						3,
+						180.722891566265
+					],
+					[
+						51325.3012048193,
+						0,
+						271.084337349398
+					],
+					[
+						51506.0240963856,
+						1,
+						90.3614457831325
+					],
+					[
+						51686.7469879518,
+						3,
+						271.084337349398
+					],
+					[
+						51867.4698795181,
+						2,
+						90.3614457831325
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [
+					[
+						52048.1927710844,
+						0,
+						271.084337349398
+					],
+					[
+						52409.6385542169,
+						2,
+						271.084337349398
+					],
+					[
+						52771.0843373494,
+						3,
+						271.084337349398
+					],
+					[
+						53132.530120482,
+						1,
+						271.084337349398
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [
+					[
+						53493.9759036145,
+						2,
+						0
+					],
+					[
+						53674.6987951808,
+						2,
+						0
+					],
+					[
+						53855.421686747,
+						3,
+						0
+					],
+					[
+						54036.1445783133,
+						2,
+						0
+					],
+					[
+						54216.8674698796,
+						2,
+						271.084337349398
+					],
+					[
+						54397.5903614458,
+						1,
+						90.3614457831325
+					],
+					[
+						54578.3132530121,
+						0,
+						271.084337349398
+					],
+					[
+						54759.0361445783,
+						1,
+						90.3614457831325
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [
+					[
+						54939.7590361446,
+						3,
+						271.084337349398
+					],
+					[
+						55120.4819277109,
+						1,
+						90.3614457831325
+					],
+					[
+						55301.2048192771,
+						2,
+						0
+					],
+					[
+						55391.5662650603,
+						1,
+						0
+					],
+					[
+						55481.9277108434,
+						0,
+						0
+					],
+					[
+						55572.2891566265,
+						2,
+						0
+					],
+					[
+						55662.6506024097,
+						3,
+						0
+					],
+					[
+						55843.3734939759,
+						3,
+						0
+					],
+					[
+						56024.0963855422,
+						2,
+						0
+					],
+					[
+						56204.8192771085,
+						1,
+						0
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [
+					[
+						56385.5421686747,
+						0,
+						0
+					],
+					[
+						56566.265060241,
+						1,
+						0
+					],
+					[
+						56746.9879518073,
+						2,
+						0
+					],
+					[
+						56927.7108433735,
+						1,
+						0
+					],
+					[
+						57108.4337349398,
+						2,
+						271.084337349398
+					],
+					[
+						57469.8795180723,
+						1,
+						271.084337349398
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [
+					[
+						57831.3253012049,
+						3,
+						1355.42168674699
+					],
+					[
+						57831.3253012049,
+						2,
+						271.084337349398
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [
+					[
+						59277.108433735,
+						0,
+						1355.42168674699
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [
+					[
+						60722.8915662651,
+						2,
+						271.084337349398
+					],
+					[
+						60722.8915662651,
+						3,
+						1355.42168674699
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [
+					[
+						62168.6746987952,
+						2,
+						632.530120481928
+					],
+					[
+						62530.1204819277,
+						1,
+						271.084337349398
+					],
+					[
+						62891.5662650603,
+						3,
+						632.530120481928
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [
+					[
+						63614.4578313253,
+						2,
+						271.084337349398
+					],
+					[
+						63614.4578313253,
+						0,
+						1355.42168674699
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [
+					[
+						65060.2409638555,
+						3,
+						1355.42168674699
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [
+					[
+						66506.0240963856,
+						1,
+						0
+					],
+					[
+						66506.0240963856,
+						2,
+						1355.42168674699
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"mustHitSection": false
+			},
+			{
+				"sectionNotes": [
+					[
+						70481.9277108434,
+						2,
+						271.084337349398,
+						"Mal Must Miss These"
+					],
+					[
+						69397.5903614458,
+						2,
+						273,
+						"Mal Must Miss These"
+					],
+					[
+						69578.3132530121,
+						1,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						69759.0361445784,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						69849.3975903615,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						69939.7590361446,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						70030.1204819278,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						70120.4819277109,
+						1,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						70301.2048192772,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						70391.5662650603,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						70346.3855421687,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						70436.7469879519,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						70662.6506024097,
+						1,
+						91,
+						"Mal Must Miss These"
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": false
+			},
+			{
+				"sectionNotes": [
+					[
+						70843.373493976,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						71024.0963855422,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						71204.8192771085,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						71385.5421686748,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						71566.265060241,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						71746.9879518073,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						71746.9879518073,
+						0,
+						273,
+						"Mal Must Miss These"
+					],
+					[
+						72108.4337349398,
+						2,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						71656.6265060242,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": false
+			},
+			{
+				"sectionNotes": [
+					[
+						72289.1566265061,
+						1,
+						273,
+						"Mal Must Miss These"
+					],
+					[
+						72650.6024096386,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						72740.9638554218,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						72831.3253012049,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						73012.0481927711,
+						1,
+						1,
+						"Mal Must Miss These"
+					],
+					[
+						73373.4939759037,
+						1,
+						274,
+						"Mal Must Miss These"
+					],
+					[
+						72740.9638554218,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						73192.7710843374,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						73283.1325301205,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						73330.5722891567,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						73237.951807229,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": false
+			},
+			{
+				"sectionNotes": [
+					[
+						73734.9397590362,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						73915.6626506025,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						74096.3855421687,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						74277.108433735,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						74457.8313253013,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						74548.1927710844,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						74638.5542168675,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						74728.9156626507,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						74819.2771084338,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						75000.0000000001,
+						3,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						73734.9397590362,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						74819.2771084338,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": false
+			},
+			{
+				"sectionNotes": [
+					[
+						75180.7228915663,
+						2,
+						271.084337349398
+					],
+					[
+						75361.4457831326,
+						1,
+						90.3614457831325
+					],
+					[
+						75542.1686746988,
+						3,
+						0
+					],
+					[
+						75632.530120482,
+						0,
+						0
+					],
+					[
+						75722.8915662651,
+						2,
+						0
+					],
+					[
+						75813.2530120482,
+						3,
+						0
+					],
+					[
+						75903.6144578314,
+						1,
+						90.3614457831325
+					],
+					[
+						76084.3373493976,
+						0,
+						0
+					],
+					[
+						76129.5180722892,
+						3,
+						0
+					],
+					[
+						76174.6987951808,
+						0,
+						0
+					],
+					[
+						76219.8795180723,
+						3,
+						0
+					],
+					[
+						76265.0602409639,
+						2,
+						271.084337349398
+					],
+					[
+						76445.7831325302,
+						1,
+						90.3614457831325
+					],
+					[
+						75271.0843373495,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						75632.530120482,
+						1,
+						0,
+						"Error Note"
+					],
+					[
+						75993.9759036145,
+						2,
+						90.3614457831325,
+						"Error Note"
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [
+					[
+						76626.5060240964,
+						3,
+						0
+					],
+					[
+						76807.2289156627,
+						3,
+						0
+					],
+					[
+						76987.951807229,
+						2,
+						0
+					],
+					[
+						77168.6746987952,
+						1,
+						0
+					],
+					[
+						77349.3975903615,
+						2,
+						0
+					],
+					[
+						77439.7590361446,
+						1,
+						0
+					],
+					[
+						77530.1204819278,
+						0,
+						271.084337349398
+					],
+					[
+						77530.1204819278,
+						2,
+						0
+					],
+					[
+						77891.5662650603,
+						2,
+						90.3614457831325
+					],
+					[
+						76716.8674698796,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						76807.2289156627,
+						0,
+						0,
+						"Error Note"
+					],
+					[
+						77078.3132530121,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						77439.7590361446,
+						3,
+						0,
+						"Error Note"
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [
+					[
+						78072.2891566266,
+						1,
+						271.084337349398
+					],
+					[
+						78433.7349397591,
+						2,
+						0
+					],
+					[
+						78524.0963855422,
+						3,
+						0
+					],
+					[
+						78524.0963855422,
+						1,
+						0
+					],
+					[
+						78614.4578313254,
+						0,
+						0
+					],
+					[
+						78795.1807228916,
+						1,
+						0
+					],
+					[
+						78975.9036144579,
+						3,
+						0
+					],
+					[
+						79021.0843373495,
+						0,
+						0
+					],
+					[
+						79066.265060241,
+						3,
+						0
+					],
+					[
+						79111.4457831326,
+						0,
+						0
+					],
+					[
+						79156.6265060242,
+						1,
+						271.084337349398
+					],
+					[
+						78162.6506024097,
+						0,
+						0,
+						"Error Note"
+					],
+					[
+						78343.373493976,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						78433.7349397591,
+						0,
+						0,
+						"Error Note"
+					],
+					[
+						78795.1807228916,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						78975.9036144579,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						79066.265060241,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						79246.9879518073,
+						3,
+						0,
+						"Error Note"
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [
+					[
+						79518.0722891567,
+						2,
+						0
+					],
+					[
+						79518.0722891567,
+						3,
+						0
+					],
+					[
+						79698.795180723,
+						1,
+						0
+					],
+					[
+						79879.5180722892,
+						0,
+						0
+					],
+					[
+						80060.2409638555,
+						3,
+						0
+					],
+					[
+						80240.9638554217,
+						2,
+						0
+					],
+					[
+						80331.3253012049,
+						0,
+						0
+					],
+					[
+						80421.686746988,
+						3,
+						0
+					],
+					[
+						80512.0481927711,
+						1,
+						0
+					],
+					[
+						80602.4096385543,
+						0,
+						0
+					],
+					[
+						80602.4096385543,
+						2,
+						0
+					],
+					[
+						80783.1325301205,
+						3,
+						90.3614457831325
+					],
+					[
+						79879.5180722892,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						80150.6024096386,
+						1,
+						0,
+						"Error Note"
+					],
+					[
+						80602.4096385543,
+						3,
+						0,
+						"Error Note"
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [
+					[
+						80963.8554216868,
+						6,
+						0
+					],
+					[
+						81325.3012048193,
+						6,
+						0
+					],
+					[
+						81506.0240963856,
+						5,
+						0
+					],
+					[
+						81686.7469879519,
+						5,
+						0
+					],
+					[
+						82048.1927710844,
+						7,
+						0
+					],
+					[
+						81144.5783132531,
+						6,
+						0,
+						"Error Note"
+					],
+					[
+						81867.4698795181,
+						6,
+						0,
+						"Error Note"
+					],
+					[
+						82228.9156626507,
+						5,
+						0,
+						"Error Note"
+					],
+					[
+						80963.8554216868,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						80963.8554216868,
+						2,
+						273,
+						"Mal Must Miss These"
+					],
+					[
+						81325.3012048193,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						81415.6626506025,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						81506.0240963856,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						81596.3855421687,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						81686.7469879519,
+						1,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						82048.1927710844,
+						1,
+						273,
+						"Mal Must Miss These"
+					],
+					[
+						81957.8313253013,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						81867.4698795181,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						81914.9096385543,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						82005.2710843374,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": false
+			},
+			{
+				"sectionNotes": [
+					[
+						82409.6385542169,
+						6,
+						0
+					],
+					[
+						82771.0843373495,
+						5,
+						0
+					],
+					[
+						82951.8072289157,
+						5,
+						0
+					],
+					[
+						83132.530120482,
+						6,
+						0
+					],
+					[
+						83493.9759036145,
+						5,
+						271.084337349398
+					],
+					[
+						83493.9759036145,
+						4,
+						90.3614457831325
+					],
+					[
+						82590.3614457832,
+						4,
+						0,
+						"Error Note"
+					],
+					[
+						83313.2530120483,
+						7,
+						0,
+						"Error Note"
+					],
+					[
+						82409.6385542169,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						82590.3614457832,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						82680.7228915663,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						82771.0843373495,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						82951.8072289157,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						83132.530120482,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						83313.2530120483,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						83493.9759036145,
+						2,
+						273,
+						"Mal Must Miss These"
+					],
+					[
+						82500.0000000001,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						83493.9759036145,
+						0,
+						91,
+						"Mal Must Miss These (Error Edition)"
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": false
+			},
+			{
+				"sectionNotes": [
+					[
+						83855.4216867471,
+						6,
+						0
+					],
+					[
+						84216.8674698796,
+						6,
+						0
+					],
+					[
+						84397.5903614459,
+						5,
+						0
+					],
+					[
+						84578.3132530121,
+						5,
+						0
+					],
+					[
+						84939.7590361447,
+						7,
+						0
+					],
+					[
+						84036.1445783133,
+						6,
+						0,
+						"Error Note"
+					],
+					[
+						84759.0361445784,
+						6,
+						0,
+						"Error Note"
+					],
+					[
+						85120.4819277109,
+						5,
+						0,
+						"Error Note"
+					],
+					[
+						83855.4216867471,
+						3,
+						273,
+						"Mal Must Miss These"
+					],
+					[
+						84216.8674698796,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						84307.2289156627,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						84397.5903614459,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						84487.951807229,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						84578.3132530121,
+						1,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						84939.7590361447,
+						0,
+						273,
+						"Mal Must Miss These"
+					],
+					[
+						84759.0361445784,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						84849.3975903615,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						84892.3192771085,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						84804.21686747,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": false
+			},
+			{
+				"sectionNotes": [
+					[
+						85301.2048192772,
+						6,
+						0
+					],
+					[
+						85662.6506024097,
+						5,
+						0
+					],
+					[
+						85843.373493976,
+						5,
+						0
+					],
+					[
+						86024.0963855422,
+						4,
+						0
+					],
+					[
+						86385.5421686748,
+						5,
+						271.084337349398
+					],
+					[
+						86385.5421686748,
+						7,
+						90.3614457831325
+					],
+					[
+						85481.9277108435,
+						4,
+						0,
+						"Error Note"
+					],
+					[
+						86204.8192771085,
+						6,
+						0,
+						"Error Note"
+					],
+					[
+						85301.2048192772,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						85481.9277108435,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						85662.6506024097,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						85843.373493976,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						86024.0963855422,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						86204.8192771085,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						86385.5421686748,
+						2,
+						273,
+						"Mal Must Miss These"
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": false
+			},
+			{
+				"sectionNotes": [
+					[
+						86746.9879518073,
+						3,
+						0
+					],
+					[
+						86746.9879518073,
+						2,
+						271.084337349398
+					],
+					[
+						87108.4337349398,
+						1,
+						0
+					],
+					[
+						87198.795180723,
+						2,
+						0
+					],
+					[
+						87289.1566265061,
+						3,
+						0
+					],
+					[
+						87379.5180722892,
+						0,
+						0
+					],
+					[
+						87469.8795180724,
+						1,
+						90.3614457831325
+					],
+					[
+						87650.6024096386,
+						3,
+						0
+					],
+					[
+						87695.7831325302,
+						0,
+						0
+					],
+					[
+						87740.9638554218,
+						2,
+						0
+					],
+					[
+						87786.1445783133,
+						3,
+						0
+					],
+					[
+						87831.3253012049,
+						1,
+						271.084337349398
+					],
+					[
+						86837.3493975904,
+						0,
+						0,
+						"Error Note"
+					],
+					[
+						87379.5180722892,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						87650.6024096386,
+						1,
+						0,
+						"Error Note"
+					],
+					[
+						87921.686746988,
+						0,
+						90.3614457831325,
+						"Error Note"
+					],
+					[
+						86746.9879518073,
+						7,
+						455,
+						"Mal Must Miss These"
+					],
+					[
+						87289.1566265061,
+						4,
+						273,
+						"Mal Must Miss These"
+					],
+					[
+						87831.3253012049,
+						6,
+						0,
+						"Mal Must Miss These"
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [
+					[
+						88192.7710843374,
+						2,
+						0
+					],
+					[
+						88283.1325301206,
+						3,
+						0
+					],
+					[
+						88373.4939759037,
+						2,
+						0
+					],
+					[
+						88463.8554216868,
+						3,
+						0
+					],
+					[
+						88554.2168674699,
+						0,
+						0
+					],
+					[
+						88734.9397590362,
+						1,
+						0
+					],
+					[
+						88915.6626506025,
+						2,
+						0
+					],
+					[
+						89096.3855421687,
+						3,
+						0
+					],
+					[
+						89277.108433735,
+						2,
+						271.084337349398
+					],
+					[
+						89277.108433735,
+						0,
+						90.3614457831325
+					],
+					[
+						88283.1325301206,
+						1,
+						0,
+						"Error Note"
+					],
+					[
+						88463.8554216868,
+						1,
+						0,
+						"Error Note"
+					],
+					[
+						88734.9397590362,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						89277.108433735,
+						1,
+						180.722891566265,
+						"Error Note"
+					],
+					[
+						88192.7710843374,
+						6,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						88554.21686747,
+						4,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						88734.9397590362,
+						4,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						88915.6626506025,
+						6,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						89277.108433735,
+						4,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						89277.108433735,
+						5,
+						273,
+						"Mal Must Miss These"
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [
+					[
+						89638.5542168675,
+						3,
+						271.084337349398
+					],
+					[
+						90000.0000000001,
+						1,
+						0
+					],
+					[
+						90090.3614457832,
+						0,
+						0
+					],
+					[
+						90180.7228915663,
+						2,
+						0
+					],
+					[
+						90271.0843373495,
+						3,
+						0
+					],
+					[
+						90361.4457831326,
+						1,
+						90.3614457831325
+					],
+					[
+						90542.1686746989,
+						2,
+						0
+					],
+					[
+						90587.3493975904,
+						3,
+						0
+					],
+					[
+						90632.530120482,
+						2,
+						0
+					],
+					[
+						90677.7108433736,
+						1,
+						0
+					],
+					[
+						90722.8915662651,
+						0,
+						271.084337349398
+					],
+					[
+						89728.9156626507,
+						2,
+						90.3614457831325,
+						"Error Note"
+					],
+					[
+						90361.4457831326,
+						0,
+						0,
+						"Error Note"
+					],
+					[
+						89638.5542168676,
+						6,
+						273,
+						"Mal Must Miss These"
+					],
+					[
+						90180.7228915664,
+						4,
+						273,
+						"Mal Must Miss These"
+					],
+					[
+						90722.8915662652,
+						6,
+						0,
+						"Mal Must Miss These"
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [
+					[
+						91084.3373493977,
+						2,
+						0
+					],
+					[
+						91265.0602409639,
+						2,
+						0
+					],
+					[
+						91445.7831325302,
+						0,
+						0
+					],
+					[
+						91626.5060240965,
+						3,
+						0
+					],
+					[
+						91807.2289156627,
+						0,
+						0
+					],
+					[
+						91987.951807229,
+						2,
+						0
+					],
+					[
+						92168.6746987953,
+						2,
+						271.084337349398
+					],
+					[
+						91084.3373493977,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						91265.060240964,
+						1,
+						0,
+						"Error Note"
+					],
+					[
+						91445.7831325302,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						91626.5060240965,
+						1,
+						0,
+						"Error Note"
+					],
+					[
+						91807.2289156627,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						91807.2289156627,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						91987.951807229,
+						1,
+						0,
+						"Error Note"
+					],
+					[
+						91987.951807229,
+						0,
+						0,
+						"Error Note"
+					],
+					[
+						91987.951807229,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						92168.6746987953,
+						0,
+						271.084337349398,
+						"Error Note"
+					],
+					[
+						92168.6746987953,
+						1,
+						271.084337349398,
+						"Error Note"
+					],
+					[
+						92168.6746987953,
+						3,
+						271.084337349398,
+						"Error Note"
+					],
+					[
+						91084.3373493977,
+						6,
+						0,
+						"Mal Must Miss These"
+					]
+				],
+				"lengthInSteps": 16,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						92530.1204819278,
+						7,
+						271.084337349398
+					],
+					[
+						93795.1807228917,
+						5,
+						90.3614457831325
+					],
+					[
+						92620.4819277109,
+						5,
+						271.084337349398,
+						"Error Note"
+					],
+					[
+						92981.9277108435,
+						4,
+						180.722891566265,
+						"Error Note"
+					],
+					[
+						93162.6506024097,
+						7,
+						0,
+						"Error Note"
+					],
+					[
+						93343.373493976,
+						7,
+						0,
+						"Error Note"
+					],
+					[
+						93433.7349397591,
+						5,
+						180.722891566265,
+						"Error Note"
+					],
+					[
+						93704.8192771085,
+						7,
+						0,
+						"Error Note"
+					],
+					[
+						92530.1204819278,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						92620.4819277109,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						92710.8433734941,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						92710.8433734941,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						92801.2048192772,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						93162.6506024097,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						93253.0120481929,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						93343.373493976,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						93433.7349397591,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						93524.0963855423,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						93795.1807228917,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						93885.5421686748,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						92891.5662650603,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						92981.9277108435,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						93072.2891566266,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						93027.108433735,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						92936.7469879519,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						93614.4578313254,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						93704.8192771085,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						93659.638554217,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"bpm": 150,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						93975.9036144579,
+						4,
+						271.084337349398
+					],
+					[
+						95240.9638554218,
+						7,
+						90.3614457831325
+					],
+					[
+						94156.6265060242,
+						6,
+						0,
+						"Error Note"
+					],
+					[
+						94337.3493975905,
+						7,
+						0,
+						"Error Note"
+					],
+					[
+						94427.7108433736,
+						5,
+						0,
+						"Error Note"
+					],
+					[
+						94608.4337349399,
+						4,
+						0,
+						"Error Note"
+					],
+					[
+						94789.1566265061,
+						5,
+						180.722891566265,
+						"Error Note"
+					],
+					[
+						94969.8795180724,
+						7,
+						0,
+						"Error Note"
+					],
+					[
+						95150.6024096387,
+						5,
+						0,
+						"Error Note"
+					],
+					[
+						95331.3253012049,
+						4,
+						0,
+						"Error Note"
+					],
+					[
+						93975.9036144579,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						94066.2650602411,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						94156.6265060242,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						94246.9879518073,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						94608.4337349399,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						94698.795180723,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						94789.1566265061,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						94879.5180722893,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						94969.8795180724,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						95240.9638554218,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						95331.3253012049,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						94337.3493975905,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						94427.7108433736,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						94472.8915662652,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						94518.0722891567,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						94382.530120482,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						95150.6024096387,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						95060.2409638555,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						95105.4216867471,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						94156.6265060242,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						93975.9036144579,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"bpm": 150,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						95421.6867469881,
+						5,
+						271.084337349398
+					],
+					[
+						96686.7469879519,
+						5,
+						90.3614457831325
+					],
+					[
+						95602.4096385543,
+						7,
+						0,
+						"Error Note"
+					],
+					[
+						96054.21686747,
+						6,
+						0,
+						"Error Note"
+					],
+					[
+						95873.4939759037,
+						4,
+						451.807228915663,
+						"Error Note"
+					],
+					[
+						96415.6626506025,
+						7,
+						0,
+						"Error Note"
+					],
+					[
+						96596.3855421688,
+						6,
+						0,
+						"Error Note"
+					],
+					[
+						95602.4096385543,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						95783.1325301206,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						95873.4939759037,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						95963.8554216869,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						95830.5722891567,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						95918.6746987953,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						96506.0240963856,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						96596.3855421688,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						96553.4638554218,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						95421.6867469881,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						95512.0481927712,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						95602.4096385543,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						95692.7710843375,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						96054.21686747,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						96144.5783132531,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						96234.9397590362,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						96325.3012048194,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						96415.6626506025,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						96686.7469879519,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						96777.108433735,
+						3,
+						0,
+						"Mal Must Miss These"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"bpm": 166,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						96867.4698795182,
+						6,
+						271.084337349398
+					],
+					[
+						98132.530120482,
+						7,
+						90.3614457831325
+					],
+					[
+						97048.1927710844,
+						7,
+						0,
+						"Error Note"
+					],
+					[
+						97319.2771084338,
+						5,
+						0,
+						"Error Note"
+					],
+					[
+						96957.8313253013,
+						4,
+						0,
+						"Error Note"
+					],
+					[
+						97590.3614457832,
+						7,
+						0,
+						"Error Note"
+					],
+					[
+						97771.0843373495,
+						5,
+						0,
+						"Error Note"
+					],
+					[
+						98042.1686746989,
+						4,
+						0,
+						"Error Note"
+					],
+					[
+						98132.530120482,
+						6,
+						0,
+						"Error Note"
+					],
+					[
+						97590.3614457832,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						97680.7228915664,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						97771.0843373495,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						97861.4457831326,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						97500.0000000001,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						97138.5542168676,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						97048.1927710844,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						96957.8313253013,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						96867.4698795182,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						98132.530120482,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						98222.8915662652,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						96867.4698795182,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						97048.1927710844,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						97228.9156626507,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						97319.2771084338,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						97409.638554217,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						97366.71686747,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						97274.0963855423,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						98042.1686746989,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						97951.8072289158,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						97996.9879518073,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"bpm": 166,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						98313.2530120483,
+						1,
+						0
+					],
+					[
+						98403.6144578314,
+						2,
+						0
+					],
+					[
+						98493.9759036146,
+						3,
+						0
+					],
+					[
+						98493.9759036146,
+						1,
+						0
+					],
+					[
+						98584.3373493977,
+						0,
+						0
+					],
+					[
+						99036.1445783133,
+						3,
+						0
+					],
+					[
+						99126.5060240965,
+						1,
+						0
+					],
+					[
+						99216.8674698796,
+						0,
+						0
+					],
+					[
+						99307.2289156627,
+						1,
+						0
+					],
+					[
+						99397.5903614459,
+						3,
+						0
+					],
+					[
+						99487.951807229,
+						1,
+						0
+					],
+					[
+						99442.7710843374,
+						0,
+						0
+					],
+					[
+						98674.6987951808,
+						1,
+						90.3614457831325
+					],
+					[
+						98855.4216867471,
+						0,
+						90.3614457831325
+					],
+					[
+						99578.3132530122,
+						3,
+						0
+					],
+					[
+						98403.6144578314,
+						0,
+						0,
+						"Error Note"
+					],
+					[
+						98584.3373493977,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						98855.4216867471,
+						2,
+						361.44578313253,
+						"Error Note"
+					],
+					[
+						99397.5903614459,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						99578.3132530122,
+						0,
+						0,
+						"Error Note"
+					],
+					[
+						98584.3373493977,
+						4,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						98493.9759036146,
+						4,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						98313.2530120483,
+						4,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						98541.4156626507,
+						7,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						98631.7771084338,
+						7,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						99578.3132530122,
+						5,
+						91,
+						"Mal Must Miss These"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"bpm": 166,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						99759.0361445784,
+						2,
+						0
+					],
+					[
+						99939.7590361447,
+						2,
+						0
+					],
+					[
+						100030.120481928,
+						0,
+						0
+					],
+					[
+						99849.3975903615,
+						3,
+						0
+					],
+					[
+						99939.7590361447,
+						1,
+						0
+					],
+					[
+						99759.0361445784,
+						1,
+						0
+					],
+					[
+						100481.927710843,
+						0,
+						0
+					],
+					[
+						100572.289156627,
+						1,
+						0
+					],
+					[
+						100662.65060241,
+						3,
+						0
+					],
+					[
+						100753.012048193,
+						2,
+						0
+					],
+					[
+						100120.481927711,
+						2,
+						90.3614457831325
+					],
+					[
+						100301.204819277,
+						3,
+						90.3614457831325
+					],
+					[
+						100843.373493976,
+						0,
+						90.3614457831325
+					],
+					[
+						101024.096385542,
+						3,
+						90.3614457831325
+					],
+					[
+						99849.3975903616,
+						0,
+						0,
+						"Error Note"
+					],
+					[
+						100030.120481928,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						100120.481927711,
+						1,
+						90.3614457831325,
+						"Error Note"
+					],
+					[
+						100301.204819277,
+						2,
+						90.3614457831325,
+						"Error Note"
+					],
+					[
+						100481.927710843,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						100572.289156627,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						100662.65060241,
+						0,
+						0,
+						"Error Note"
+					],
+					[
+						100753.012048193,
+						1,
+						0,
+						"Error Note"
+					],
+					[
+						100933.734939759,
+						2,
+						180.722891566265,
+						"Error Note"
+					],
+					[
+						99759.0361445784,
+						6,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						99849.3975903616,
+						7,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						99939.7590361447,
+						6,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						100030.120481928,
+						4,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						101024.096385542,
+						5,
+						91,
+						"Mal Must Miss These"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"bpm": 166,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						101204.819277109,
+						1,
+						0
+					],
+					[
+						101295.180722892,
+						2,
+						0
+					],
+					[
+						101385.542168675,
+						3,
+						0
+					],
+					[
+						101385.542168675,
+						1,
+						0
+					],
+					[
+						101475.903614458,
+						0,
+						0
+					],
+					[
+						101927.710843374,
+						3,
+						0
+					],
+					[
+						102018.072289157,
+						1,
+						0
+					],
+					[
+						102108.43373494,
+						0,
+						0
+					],
+					[
+						102198.795180723,
+						1,
+						0
+					],
+					[
+						102289.156626506,
+						3,
+						0
+					],
+					[
+						102379.518072289,
+						1,
+						0
+					],
+					[
+						102334.337349398,
+						0,
+						0
+					],
+					[
+						101566.265060241,
+						1,
+						90.3614457831325
+					],
+					[
+						101746.987951807,
+						0,
+						90.3614457831325
+					],
+					[
+						102469.879518072,
+						3,
+						0
+					],
+					[
+						102560.240963856,
+						0,
+						0
+					],
+					[
+						101204.819277109,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						101295.180722892,
+						0,
+						0,
+						"Error Note"
+					],
+					[
+						101475.903614458,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						101566.265060241,
+						3,
+						90.3614457831325,
+						"Error Note"
+					],
+					[
+						101746.987951807,
+						1,
+						90.3614457831325,
+						"Error Note"
+					],
+					[
+						101927.710843374,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						102108.43373494,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						102289.156626506,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						102469.879518072,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						101204.819277109,
+						6,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						101295.180722892,
+						7,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						101385.542168675,
+						4,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						101475.903614458,
+						5,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						102469.879518072,
+						7,
+						91,
+						"Mal Must Miss These"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"bpm": 166,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						102650.602409639,
+						1,
+						0
+					],
+					[
+						102831.325301205,
+						1,
+						0
+					],
+					[
+						102921.686746988,
+						3,
+						0
+					],
+					[
+						102740.963855422,
+						0,
+						0
+					],
+					[
+						102831.325301205,
+						2,
+						0
+					],
+					[
+						102650.602409639,
+						2,
+						0
+					],
+					[
+						103373.493975904,
+						3,
+						0
+					],
+					[
+						103463.855421687,
+						2,
+						0
+					],
+					[
+						103554.21686747,
+						0,
+						0
+					],
+					[
+						103644.578313253,
+						1,
+						0
+					],
+					[
+						103012.048192771,
+						1,
+						90.3614457831325
+					],
+					[
+						103192.771084337,
+						0,
+						90.3614457831325
+					],
+					[
+						103734.939759036,
+						3,
+						90.3614457831325
+					],
+					[
+						103915.662650603,
+						0,
+						90.3614457831325
+					],
+					[
+						102740.963855422,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						102921.686746988,
+						0,
+						0,
+						"Error Note"
+					],
+					[
+						103012.048192771,
+						2,
+						90.3614457831325,
+						"Error Note"
+					],
+					[
+						103192.771084337,
+						3,
+						90.3614457831325,
+						"Error Note"
+					],
+					[
+						103373.493975904,
+						0,
+						0,
+						"Error Note"
+					],
+					[
+						103463.855421687,
+						1,
+						0,
+						"Error Note"
+					],
+					[
+						103554.21686747,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						103644.578313253,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						103734.939759036,
+						0,
+						90.3614457831325,
+						"Error Note"
+					],
+					[
+						103915.662650603,
+						3,
+						90.3614457831325,
+						"Error Note"
+					],
+					[
+						102650.602409639,
+						6,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						102740.963855422,
+						4,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						102831.325301205,
+						6,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						102921.686746988,
+						4,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						103915.662650603,
+						7,
+						91,
+						"Mal Must Miss These"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"bpm": 166,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						104096.385542169,
+						7,
+						1355.42168674699
+					],
+					[
+						104186.746987952,
+						6,
+						903.614457831325,
+						"Error Note"
+					],
+					[
+						104548.192771084,
+						4,
+						813.253012048193,
+						"Error Note"
+					],
+					[
+						104096.385542169,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						104186.746987952,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						104277.108433735,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						104277.108433735,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						104367.469879518,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						104909.638554217,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						105000,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						105090.361445783,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						105361.445783133,
+						3,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						104819.277108434,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						104728.915662651,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						104457.831325301,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						104548.192771084,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						104638.554216868,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						104593.373493976,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						104505.271084337,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						105180.722891566,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						105271.08433735,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						105225.903614458,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"bpm": 166,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"sectionNotes": [
+					[
+						105542.168674699,
+						4,
+						1355.42168674699
+					],
+					[
+						105722.891566265,
+						7,
+						542.168674698795,
+						"Error Note"
+					],
+					[
+						105993.975903615,
+						5,
+						632.530120481928,
+						"Error Note"
+					],
+					[
+						106716.86746988,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						106626.506024097,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						106671.686746988,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						106084.337349398,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						105993.975903615,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						105903.614457831,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						106039.156626506,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						105951.054216868,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						105542.168674699,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						105542.168674699,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						105632.530120482,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						105722.891566265,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						105722.891566265,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						105813.253012048,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						106174.698795181,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						106265.060240964,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						106355.421686747,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						106445.78313253,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						106536.144578313,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						106807.228915663,
+						0,
+						91,
+						"Mal Must Miss These"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						106987.951807229,
+						5,
+						1355.42168674699
+					],
+					[
+						107168.674698795,
+						7,
+						632.530120481928,
+						"Error Note"
+					],
+					[
+						107530.120481928,
+						4,
+						632.530120481928,
+						"Error Note"
+					],
+					[
+						106987.951807229,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						107078.313253012,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						107168.674698795,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						107259.036144578,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						107620.481927711,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						107710.843373494,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						107801.204819277,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						107891.56626506,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						107981.927710843,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						108253.012048193,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						108343.373493976,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						107168.674698795,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						107349.397590362,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						107530.120481928,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						107439.759036145,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						107399.096385542,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						107484.939759036,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						108072.289156627,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						108162.65060241,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						108119.728915663,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"bpm": 166,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						108433.734939759,
+						6,
+						1355.42168674699
+					],
+					[
+						108524.096385542,
+						5,
+						632.530120481928,
+						"Error Note"
+					],
+					[
+						108885.542168675,
+						7,
+						632.530120481928,
+						"Error Note"
+					],
+					[
+						108433.734939759,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						108614.457831325,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						108795.180722892,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						108885.542168675,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						108840.361445783,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						108975.903614458,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						108930.722891566,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						109608.43373494,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						109518.072289157,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						109472.891566265,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						109565.512048193,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						108433.734939759,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						108524.096385542,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						108614.457831325,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						108704.819277109,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						109066.265060241,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						109156.626506024,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						109246.987951807,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						109337.34939759,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						109427.710843374,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						109698.795180723,
+						0,
+						91,
+						"Mal Must Miss These"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"bpm": 166,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"sectionNotes": [
+					[
+						109879.518072289,
+						1,
+						0
+					],
+					[
+						109969.879518072,
+						2,
+						0
+					],
+					[
+						110060.240963855,
+						3,
+						0
+					],
+					[
+						110060.240963855,
+						1,
+						0
+					],
+					[
+						110150.602409638,
+						0,
+						0
+					],
+					[
+						110602.409638554,
+						3,
+						0
+					],
+					[
+						110692.771084337,
+						1,
+						0
+					],
+					[
+						110783.13253012,
+						0,
+						0
+					],
+					[
+						110873.493975903,
+						1,
+						0
+					],
+					[
+						110963.855421686,
+						3,
+						0
+					],
+					[
+						111054.216867469,
+						1,
+						0
+					],
+					[
+						110240.963855422,
+						1,
+						90.3614457831325
+					],
+					[
+						110421.686746988,
+						0,
+						90.3614457831325
+					],
+					[
+						111144.578313253,
+						0,
+						90.3614457831325
+					],
+					[
+						111009.036144578,
+						2,
+						0
+					],
+					[
+						109879.518072289,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						109969.879518072,
+						0,
+						0,
+						"Error Note"
+					],
+					[
+						110150.602409639,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						110240.963855422,
+						3,
+						90.3614457831325,
+						"Error Note"
+					],
+					[
+						110421.686746988,
+						2,
+						90.3614457831325,
+						"Error Note"
+					],
+					[
+						110692.771084337,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						110873.493975904,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						111144.578313253,
+						3,
+						90.3614457831325,
+						"Error Note"
+					],
+					[
+						109879.518072289,
+						6,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						110240.963855422,
+						6,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						110602.409638554,
+						6,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						110692.771084337,
+						7,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						110783.132530121,
+						6,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						110873.493975904,
+						4,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						110963.855421687,
+						6,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						111054.21686747,
+						7,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						111144.578313253,
+						5,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						111234.939759036,
+						4,
+						0,
+						"Mal Must Miss These"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						111325.301204819,
+						2,
+						0
+					],
+					[
+						111506.024096385,
+						2,
+						0
+					],
+					[
+						111596.385542168,
+						0,
+						0
+					],
+					[
+						111415.662650602,
+						3,
+						0
+					],
+					[
+						111506.024096385,
+						1,
+						0
+					],
+					[
+						111325.301204819,
+						1,
+						0
+					],
+					[
+						112048.192771084,
+						0,
+						0
+					],
+					[
+						112138.554216867,
+						1,
+						0
+					],
+					[
+						112228.91566265,
+						3,
+						0
+					],
+					[
+						112319.277108433,
+						2,
+						0
+					],
+					[
+						112590.361445783,
+						0,
+						90.3614457831325
+					],
+					[
+						111686.746987952,
+						1,
+						90.3614457831325
+					],
+					[
+						111867.469879518,
+						3,
+						90.3614457831325
+					],
+					[
+						112409.638554217,
+						3,
+						90.3614457831325
+					],
+					[
+						111415.662650603,
+						0,
+						0,
+						"Error Note"
+					],
+					[
+						111596.385542169,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						111686.746987952,
+						2,
+						90.3614457831325,
+						"Error Note"
+					],
+					[
+						111867.469879518,
+						0,
+						90.3614457831325,
+						"Error Note"
+					],
+					[
+						112048.192771084,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						112138.554216868,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						112228.915662651,
+						0,
+						0,
+						"Error Note"
+					],
+					[
+						112319.277108434,
+						1,
+						0,
+						"Error Note"
+					],
+					[
+						112409.638554217,
+						0,
+						90.3614457831325,
+						"Error Note"
+					],
+					[
+						112590.361445783,
+						3,
+						90.3614457831325,
+						"Error Note"
+					],
+					[
+						111325.301204819,
+						5,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						111686.746987952,
+						5,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						112048.192771084,
+						5,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						112138.554216868,
+						6,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						112228.915662651,
+						7,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						112319.277108434,
+						5,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						112409.638554217,
+						4,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						112500,
+						5,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						112590.361445783,
+						6,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						112680.722891566,
+						7,
+						0,
+						"Mal Must Miss These"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						112771.08433735,
+						1,
+						0
+					],
+					[
+						112861.445783133,
+						2,
+						0
+					],
+					[
+						112951.807228916,
+						3,
+						0
+					],
+					[
+						112951.807228916,
+						1,
+						0
+					],
+					[
+						113042.168674699,
+						0,
+						0
+					],
+					[
+						113493.975903615,
+						3,
+						0
+					],
+					[
+						113584.337349398,
+						1,
+						0
+					],
+					[
+						113674.698795181,
+						0,
+						0
+					],
+					[
+						113765.060240964,
+						1,
+						0
+					],
+					[
+						113855.421686747,
+						3,
+						0
+					],
+					[
+						113945.78313253,
+						1,
+						0
+					],
+					[
+						113132.530120482,
+						1,
+						90.3614457831325
+					],
+					[
+						113313.253012048,
+						0,
+						90.3614457831325
+					],
+					[
+						113900.602409639,
+						2,
+						0
+					],
+					[
+						114036.144578313,
+						0,
+						0
+					],
+					[
+						114126.506024097,
+						2,
+						0
+					],
+					[
+						112771.08433735,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						112861.445783133,
+						0,
+						0,
+						"Error Note"
+					],
+					[
+						113042.168674699,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						113132.530120482,
+						3,
+						90.3614457831325,
+						"Error Note"
+					],
+					[
+						113313.253012048,
+						2,
+						90.3614457831325,
+						"Error Note"
+					],
+					[
+						113584.337349398,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						113674.698795181,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						113765.060240964,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						114036.144578313,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						112771.08433735,
+						4,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						113132.530120482,
+						4,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						113493.975903615,
+						4,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						113584.337349398,
+						6,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						113674.698795181,
+						7,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						113765.060240964,
+						5,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						113855.421686747,
+						6,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						113945.78313253,
+						7,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						114036.144578313,
+						4,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						114126.506024097,
+						6,
+						0,
+						"Mal Must Miss These"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						114397.590361446,
+						2,
+						0
+					],
+					[
+						114487.951807229,
+						0,
+						0
+					],
+					[
+						114307.228915663,
+						3,
+						0
+					],
+					[
+						114397.590361446,
+						1,
+						0
+					],
+					[
+						114216.86746988,
+						1,
+						0
+					],
+					[
+						114939.759036145,
+						0,
+						0
+					],
+					[
+						115030.120481928,
+						1,
+						0
+					],
+					[
+						115120.481927711,
+						3,
+						0
+					],
+					[
+						115210.843373494,
+						2,
+						0
+					],
+					[
+						115481.927710843,
+						0,
+						90.3614457831325
+					],
+					[
+						114578.313253012,
+						1,
+						90.3614457831325
+					],
+					[
+						114759.036144578,
+						3,
+						90.3614457831325
+					],
+					[
+						115301.204819277,
+						3,
+						90.3614457831325
+					],
+					[
+						114216.86746988,
+						0,
+						0
+					],
+					[
+						114487.951807229,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						114668.674698795,
+						2,
+						271.084337349398,
+						"Error Note"
+					],
+					[
+						115120.481927711,
+						0,
+						0,
+						"Error Note"
+					],
+					[
+						115301.204819277,
+						1,
+						0,
+						"Error Note"
+					],
+					[
+						115481.927710844,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						114216.86746988,
+						7,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						114578.313253012,
+						7,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						114939.759036145,
+						7,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						115030.120481928,
+						6,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						115120.481927711,
+						4,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						115210.843373494,
+						6,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						115301.204819277,
+						5,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						115391.56626506,
+						4,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						115481.927710844,
+						5,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						115572.289156627,
+						7,
+						0,
+						"Mal Must Miss These"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						118554.21686747,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						118644.578313253,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						118734.939759036,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						118825.301204819,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						118915.662650603,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						119006.024096386,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						119367.469879518,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						119457.831325301,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						119548.192771084,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						119819.277108434,
+						1,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						119186.746987952,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						119277.108433735,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						119231.927710844,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						119096.385542169,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						119141.56626506,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						119638.554216868,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						119728.915662651,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						119909.638554217,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						119864.457831325,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						119683.734939759,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						120000,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						120090.361445783,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						120180.722891566,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						120451.807228916,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						120542.168674699,
+						2,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						120722.891566265,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						120813.253012048,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						120903.614457831,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						120993.975903615,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						121265.060240964,
+						2,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						120361.445783133,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						120632.530120482,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						120271.08433735,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						120316.265060241,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						120589.608433735,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						121355.421686747,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						121174.698795181,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						121084.337349398,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						121131.777108434,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						121219.879518072,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						121312.5,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						122620.481927711,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						122801.204819277,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						122530.120481928,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						122756.024096386,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						122575.301204819,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						122710.843373494,
+						2,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						122439.759036145,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						122259.036144578,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						122168.674698795,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						122349.397590362,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						122078.313253012,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						121987.951807229,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						121897.590361446,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						121807.228915663,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						121716.86746988,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						121626.506024097,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						121445.78313253,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						121536.144578313,
+						0,
+						0,
+						"Mal Must Miss These"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						122891.56626506,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						122981.927710844,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						123072.289156627,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						123343.373493976,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						123614.457831325,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						123433.734939759,
+						3,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						123704.819277109,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						123795.180722892,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						123885.542168675,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						124156.626506024,
+						2,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						123162.65060241,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						123253.012048193,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						123207.831325301,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						123524.096385542,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						123478.915662651,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						124066.265060241,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						123975.903614458,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						124021.08433735,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						124111.445783133,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						124337.349397591,
+						2,
+						0
+					],
+					[
+						124427.710843374,
+						1,
+						0
+					],
+					[
+						124518.072289157,
+						0,
+						0
+					],
+					[
+						124698.795180723,
+						1,
+						0
+					],
+					[
+						125060.240963856,
+						3,
+						0
+					],
+					[
+						125150.602409639,
+						1,
+						0
+					],
+					[
+						125240.963855422,
+						2,
+						0
+					],
+					[
+						125331.325301205,
+						3,
+						0
+					],
+					[
+						125421.686746988,
+						2,
+						0
+					],
+					[
+						125512.048192771,
+						0,
+						0
+					],
+					[
+						125602.409638554,
+						1,
+						90.3614457831325
+					],
+					[
+						124337.349397591,
+						3,
+						0
+					],
+					[
+						124879.518072289,
+						2,
+						0
+					],
+					[
+						124789.156626506,
+						0,
+						0
+					],
+					[
+						124879.518072289,
+						1,
+						0
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						125783.132530121,
+						3,
+						0
+					],
+					[
+						125873.493975904,
+						0,
+						0
+					],
+					[
+						125963.855421687,
+						2,
+						0
+					],
+					[
+						126054.21686747,
+						3,
+						0
+					],
+					[
+						126144.578313253,
+						1,
+						0
+					],
+					[
+						126234.939759036,
+						0,
+						0
+					],
+					[
+						126596.385542169,
+						0,
+						0
+					],
+					[
+						126325.301204819,
+						2,
+						90.3614457831325
+					],
+					[
+						126506.024096386,
+						3,
+						0
+					],
+					[
+						126686.746987952,
+						1,
+						0
+					],
+					[
+						126777.108433735,
+						3,
+						0
+					],
+					[
+						127048.192771084,
+						2,
+						90.3614457831325
+					],
+					[
+						126867.469879518,
+						0,
+						90.3614457831325
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						127228.915662651,
+						1,
+						0
+					],
+					[
+						127409.638554217,
+						2,
+						0
+					],
+					[
+						127590.361445783,
+						0,
+						0
+					],
+					[
+						127680.722891566,
+						3,
+						0
+					],
+					[
+						127771.08433735,
+						2,
+						0
+					],
+					[
+						127861.445783133,
+						0,
+						0
+					],
+					[
+						127951.807228916,
+						3,
+						0
+					],
+					[
+						128042.168674699,
+						2,
+						0
+					],
+					[
+						128132.530120482,
+						3,
+						0
+					],
+					[
+						128222.891566265,
+						1,
+						0
+					],
+					[
+						128313.253012048,
+						0,
+						0
+					],
+					[
+						128403.614457831,
+						3,
+						0
+					],
+					[
+						128493.975903615,
+						2,
+						90.3614457831325
+					],
+					[
+						127228.915662651,
+						0,
+						0
+					],
+					[
+						127409.638554217,
+						3,
+						0
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						128674.698795181,
+						5,
+						0
+					],
+					[
+						128765.060240964,
+						7,
+						0
+					],
+					[
+						128855.421686747,
+						5,
+						0
+					],
+					[
+						128945.78313253,
+						4,
+						0
+					],
+					[
+						129126.506024097,
+						5,
+						0
+					],
+					[
+						129397.590361446,
+						4,
+						0
+					],
+					[
+						129487.951807229,
+						6,
+						0
+					],
+					[
+						129216.86746988,
+						7,
+						90.3614457831325
+					],
+					[
+						129578.313253012,
+						5,
+						0
+					],
+					[
+						129668.674698795,
+						6,
+						0
+					],
+					[
+						129939.759036145,
+						6,
+						90.3614457831325
+					],
+					[
+						129036.144578313,
+						6,
+						0
+					],
+					[
+						129759.036144578,
+						7,
+						90.3614457831325
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						130120.481927711,
+						6,
+						0,
+						"Error Note"
+					],
+					[
+						130481.927710844,
+						7,
+						0,
+						"Error Note"
+					],
+					[
+						130481.927710844,
+						4,
+						0,
+						"Error Note"
+					],
+					[
+						130843.373493976,
+						5,
+						0,
+						"Error Note"
+					],
+					[
+						131024.096385542,
+						7,
+						0,
+						"Error Note"
+					],
+					[
+						131024.096385542,
+						4,
+						0,
+						"Error Note"
+					],
+					[
+						130662.65060241,
+						6,
+						0,
+						"Error Note"
+					],
+					[
+						130753.012048193,
+						4,
+						0,
+						"Error Note"
+					],
+					[
+						130843.373493976,
+						6,
+						0,
+						"Error Note"
+					],
+					[
+						131204.819277109,
+						5,
+						271.084337349398,
+						"Error Note"
+					],
+					[
+						131250,
+						7,
+						0,
+						"Error Note"
+					],
+					[
+						131295.180722892,
+						4,
+						0,
+						"Error Note"
+					],
+					[
+						131340.361445783,
+						7,
+						0,
+						"Error Note"
+					],
+					[
+						131385.542168675,
+						4,
+						0,
+						"Error Note"
+					],
+					[
+						131430.722891566,
+						7,
+						0,
+						"Error Note"
+					],
+					[
+						131475.903614458,
+						4,
+						0,
+						"Error Note"
+					],
+					[
+						130301.204819277,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						130391.56626506,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						130753.012048193,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						130662.65060241,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						130120.481927711,
+						2,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						130481.927710844,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						130481.927710844,
+						3,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						130843.373493976,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						130933.734939759,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						131024.096385542,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						131204.819277109,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						131385.542168675,
+						2,
+						0,
+						"Mal Must Miss These"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						131566.265060241,
+						6,
+						0,
+						"Error Note"
+					],
+					[
+						131566.265060241,
+						7,
+						0,
+						"Error Note"
+					],
+					[
+						131746.987951807,
+						5,
+						0,
+						"Error Note"
+					],
+					[
+						131927.710843374,
+						7,
+						0,
+						"Error Note"
+					],
+					[
+						131927.710843374,
+						4,
+						0,
+						"Error Note"
+					],
+					[
+						132108.43373494,
+						5,
+						0,
+						"Error Note"
+					],
+					[
+						132108.43373494,
+						6,
+						90.3614457831325,
+						"Error Note"
+					],
+					[
+						132289.156626506,
+						4,
+						0,
+						"Error Note"
+					],
+					[
+						132469.879518072,
+						6,
+						0,
+						"Error Note"
+					],
+					[
+						132650.602409639,
+						7,
+						0,
+						"Error Note"
+					],
+					[
+						132831.325301205,
+						5,
+						0,
+						"Error Note"
+					],
+					[
+						131566.265060241,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						131656.626506024,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						131837.349397591,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						131746.987951807,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						131927.710843374,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						132108.43373494,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						132289.156626506,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						132289.156626506,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						132469.879518072,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						132650.602409639,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						132831.325301205,
+						1,
+						0,
+						"Mal Must Miss These"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						133012.048192771,
+						7,
+						0,
+						"Error Note"
+					],
+					[
+						133012.048192771,
+						5,
+						0,
+						"Error Note"
+					],
+					[
+						133012.048192771,
+						4,
+						0,
+						"Error Note"
+					],
+					[
+						133192.771084337,
+						5,
+						0,
+						"Error Note"
+					],
+					[
+						133373.493975904,
+						7,
+						0,
+						"Error Note"
+					],
+					[
+						133373.493975904,
+						6,
+						0,
+						"Error Note"
+					],
+					[
+						133554.21686747,
+						5,
+						0,
+						"Error Note"
+					],
+					[
+						133734.939759036,
+						6,
+						0,
+						"Error Note"
+					],
+					[
+						133734.939759036,
+						4,
+						0,
+						"Error Note"
+					],
+					[
+						133915.662650603,
+						7,
+						0,
+						"Error Note"
+					],
+					[
+						134096.385542169,
+						5,
+						0,
+						"Error Note"
+					],
+					[
+						134096.385542169,
+						4,
+						0,
+						"Error Note"
+					],
+					[
+						134277.108433735,
+						6,
+						0,
+						"Error Note"
+					],
+					[
+						134367.469879518,
+						7,
+						0,
+						"Error Note"
+					],
+					[
+						133012.048192771,
+						2,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						133373.493975904,
+						0,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						133373.493975904,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						133734.939759036,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						133825.301204819,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						133915.662650603,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						134096.385542169,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						134277.108433735,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						133192.771084337,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						133283.132530121,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						133554.21686747,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						133644.578313253,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						134457.831325301,
+						5,
+						0,
+						"Error Note"
+					],
+					[
+						134638.554216868,
+						6,
+						0,
+						"Error Note"
+					],
+					[
+						134457.831325301,
+						4,
+						0,
+						"Error Note"
+					],
+					[
+						134819.277108434,
+						7,
+						0,
+						"Error Note"
+					],
+					[
+						134819.277108434,
+						5,
+						0,
+						"Error Note"
+					],
+					[
+						135000,
+						4,
+						0,
+						"Error Note"
+					],
+					[
+						135180.722891566,
+						6,
+						0,
+						"Error Note"
+					],
+					[
+						135361.445783133,
+						7,
+						0,
+						"Error Note"
+					],
+					[
+						135542.168674699,
+						5,
+						0,
+						"Error Note"
+					],
+					[
+						135722.891566265,
+						4,
+						0,
+						"Error Note"
+					],
+					[
+						134457.831325301,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						134548.192771084,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						134728.915662651,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						134638.554216868,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						134819.277108434,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						135000,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						135180.722891566,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						135180.722891566,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						135361.445783133,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						135542.168674699,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						135722.891566265,
+						1,
+						0,
+						"Mal Must Miss These"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						135903.614457831,
+						2,
+						90.3614457831325
+					],
+					[
+						136084.337349398,
+						0,
+						0
+					],
+					[
+						136174.698795181,
+						0,
+						0
+					],
+					[
+						136265.060240964,
+						2,
+						0
+					],
+					[
+						136265.060240964,
+						3,
+						90.3614457831325
+					],
+					[
+						136445.78313253,
+						1,
+						0
+					],
+					[
+						136536.144578313,
+						1,
+						0
+					],
+					[
+						136626.506024097,
+						2,
+						0
+					],
+					[
+						136716.86746988,
+						1,
+						0
+					],
+					[
+						136807.228915663,
+						3,
+						0
+					],
+					[
+						136987.951807229,
+						2,
+						0
+					],
+					[
+						137168.674698795,
+						2,
+						0
+					],
+					[
+						136265.060240964,
+						1,
+						0,
+						"Error Note"
+					],
+					[
+						136445.78313253,
+						0,
+						0,
+						"Error Note"
+					],
+					[
+						136536.144578313,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						136987.951807229,
+						1,
+						271.084337349398,
+						"Error Note"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						137349.397590362,
+						1,
+						0
+					],
+					[
+						137439.759036145,
+						0,
+						0
+					],
+					[
+						137530.120481928,
+						2,
+						0
+					],
+					[
+						137620.481927711,
+						1,
+						0
+					],
+					[
+						137710.843373494,
+						3,
+						0
+					],
+					[
+						137891.56626506,
+						0,
+						0
+					],
+					[
+						138072.289156627,
+						3,
+						0
+					],
+					[
+						138072.289156627,
+						1,
+						0
+					],
+					[
+						138253.012048193,
+						2,
+						0
+					],
+					[
+						138433.734939759,
+						1,
+						0
+					],
+					[
+						138614.457831325,
+						1,
+						0
+					],
+					[
+						137349.397590362,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						137710.843373494,
+						0,
+						0,
+						"Error Note"
+					],
+					[
+						137891.56626506,
+						2,
+						180.722891566265,
+						"Error Note"
+					],
+					[
+						138072.289156627,
+						0,
+						0,
+						"Error Note"
+					],
+					[
+						138253.012048193,
+						1,
+						0,
+						"Error Note"
+					],
+					[
+						138433.734939759,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						138614.457831325,
+						0,
+						0,
+						"Error Note"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						138975.903614458,
+						3,
+						0
+					],
+					[
+						139066.265060241,
+						3,
+						0
+					],
+					[
+						139156.626506024,
+						1,
+						0
+					],
+					[
+						139156.626506024,
+						0,
+						90.3614457831325
+					],
+					[
+						139337.349397591,
+						2,
+						0
+					],
+					[
+						139427.710843374,
+						2,
+						0
+					],
+					[
+						139518.072289157,
+						1,
+						0
+					],
+					[
+						139698.795180723,
+						0,
+						0
+					],
+					[
+						138795.180722892,
+						2,
+						90.3614457831325
+					],
+					[
+						139879.518072289,
+						3,
+						0
+					],
+					[
+						140060.240963856,
+						3,
+						0
+					],
+					[
+						139608.43373494,
+						3,
+						0
+					],
+					[
+						138795.180722892,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						138795.180722892,
+						1,
+						0,
+						"Error Note"
+					],
+					[
+						139156.626506024,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						139518.072289157,
+						0,
+						0,
+						"Error Note"
+					],
+					[
+						139879.518072289,
+						2,
+						0,
+						"Error Note"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						140240.963855422,
+						1,
+						0
+					],
+					[
+						140331.325301205,
+						0,
+						0
+					],
+					[
+						140421.686746988,
+						2,
+						0
+					],
+					[
+						140512.048192771,
+						1,
+						0
+					],
+					[
+						140602.409638554,
+						3,
+						0
+					],
+					[
+						140783.132530121,
+						0,
+						0
+					],
+					[
+						140963.855421687,
+						2,
+						271.084337349398
+					],
+					[
+						141325.301204819,
+						0,
+						271.084337349398
+					],
+					[
+						140240.963855422,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						140602.409638554,
+						0,
+						0,
+						"Error Note"
+					],
+					[
+						140692.771084337,
+						1,
+						271.084337349398,
+						"Error Note"
+					],
+					[
+						140963.855421687,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						141144.578313253,
+						1,
+						0,
+						"Error Note"
+					],
+					[
+						141325.301204819,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						141506.024096386,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						140963.855421687,
+						6,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						140963.855421687,
+						7,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						141144.578313253,
+						5,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						141325.301204819,
+						4,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						141325.301204819,
+						6,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						141506.024096386,
+						7,
+						0,
+						"Mal Must Miss These"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						141686.746987952,
+						2,
+						273,
+						"Mal Must Miss These"
+					],
+					[
+						142048.192771084,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						142093.373493976,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						142138.554216868,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						142185.993975904,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						142228.915662651,
+						2,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						142409.638554217,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						142500,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						142590.361445783,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						142680.722891566,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						142771.084337349,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						142818.524096386,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						142861.445783133,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						142951.807228916,
+						2,
+						91,
+						"Mal Must Miss These"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						143132.530120482,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						143132.530120482,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						143222.891566265,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						143313.253012048,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						143313.253012048,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						143403.614457831,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						143493.975903615,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						143493.975903615,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						143584.337349398,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						143629.518072289,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						143674.698795181,
+						2,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						143855.421686747,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						143945.78313253,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						144036.144578313,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						144126.506024096,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						144216.86746988,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						144262.048192771,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						144307.228915663,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						144397.590361446,
+						3,
+						91,
+						"Mal Must Miss These"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						144578.313253012,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						144578.313253012,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						144668.674698795,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						144759.036144578,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						144849.397590362,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						144849.397590362,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						144939.759036145,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						145030.120481928,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						144984.939759036,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						144894.578313253,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						145120.481927711,
+						2,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						145301.204819277,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						145391.56626506,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						145481.927710843,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						145572.289156627,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						145662.65060241,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						145753.012048193,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						145843.373493976,
+						2,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						145710.090361446,
+						2,
+						0,
+						"Mal Must Miss These"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						146024.096385542,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						146024.096385542,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						146114.457831325,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						146204.819277108,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						146204.819277108,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						146295.180722892,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						146385.542168675,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						146475.903614458,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						146566.265060241,
+						2,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						146432.981927711,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						146746.987951807,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						146837.34939759,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						146927.710843374,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						147018.072289157,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						147108.43373494,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						147108.43373494,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						147198.795180723,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						147289.156626506,
+						2,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						147155.873493976,
+						2,
+						0,
+						"Mal Must Miss These"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						147469.879518072,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						147560.240963855,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						147560.240963855,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						147650.602409639,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						147740.963855422,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						147831.325301205,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						147921.686746988,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						148012.048192771,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						148102.409638554,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						148192.771084337,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						148283.132530121,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						148373.493975904,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						148463.855421687,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						148554.21686747,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						148601.656626506,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						148644.578313253,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						148734.939759036,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						148825.301204819,
+						0,
+						0,
+						"Mal Must Miss These"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						148915.662650602,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						149006.024096386,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						149096.385542169,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						149186.746987952,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						149277.108433735,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						149367.469879518,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						149457.831325301,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						149548.192771084,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						149638.554216867,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						149728.915662651,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						149819.277108434,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						149909.638554217,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						150000,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						150000,
+						2,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						150180.722891566,
+						3,
+						91,
+						"Mal Must Miss These"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						150361.445783133,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						150451.807228916,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						150542.168674699,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						150632.530120482,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						150722.891566265,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						150813.253012048,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						150903.614457831,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						150993.975903614,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						151084.337349398,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						151174.698795181,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						151265.060240964,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						151355.421686747,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						151445.78313253,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						151536.144578313,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						151626.506024096,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						151716.86746988,
+						2,
+						0,
+						"Mal Must Miss These"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						151807.228915663,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						151897.590361446,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						151987.951807229,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						152078.313253012,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						152168.674698795,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						152259.036144578,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						152349.397590361,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						152439.759036145,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						152530.120481928,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						152620.481927711,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						152710.843373494,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						152801.204819277,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						152891.56626506,
+						2,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						153072.289156627,
+						0,
+						91,
+						"Mal Must Miss These"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						153253.012048193,
+						2,
+						271.084337349398
+					],
+					[
+						153975.903614458,
+						1,
+						0
+					],
+					[
+						154066.265060241,
+						2,
+						0
+					],
+					[
+						154156.626506024,
+						3,
+						0
+					],
+					[
+						154246.987951807,
+						1,
+						0
+					],
+					[
+						154518.072289157,
+						2,
+						90.3614457831325
+					],
+					[
+						153614.457831325,
+						3,
+						90.3614457831325
+					],
+					[
+						153795.180722892,
+						0,
+						90.3614457831325
+					],
+					[
+						154337.34939759,
+						3,
+						90.3614457831325
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						154698.795180723,
+						1,
+						0
+					],
+					[
+						154698.795180723,
+						0,
+						0
+					],
+					[
+						154789.156626506,
+						2,
+						0
+					],
+					[
+						154879.518072289,
+						1,
+						0
+					],
+					[
+						154879.518072289,
+						3,
+						0
+					],
+					[
+						154969.879518072,
+						0,
+						0
+					],
+					[
+						155240.963855422,
+						2,
+						90.3614457831325
+					],
+					[
+						155421.686746988,
+						3,
+						0
+					],
+					[
+						155512.048192771,
+						2,
+						0
+					],
+					[
+						155602.409638554,
+						0,
+						0
+					],
+					[
+						155692.771084337,
+						1,
+						0
+					],
+					[
+						155963.855421687,
+						3,
+						90.3614457831325
+					],
+					[
+						155060.240963855,
+						3,
+						90.3614457831325
+					],
+					[
+						155783.13253012,
+						0,
+						90.3614457831325
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						156144.578313253,
+						1,
+						0
+					],
+					[
+						156144.578313253,
+						2,
+						0
+					],
+					[
+						156234.939759036,
+						3,
+						0
+					],
+					[
+						156325.301204819,
+						0,
+						0
+					],
+					[
+						156415.662650602,
+						1,
+						0
+					],
+					[
+						156415.662650602,
+						2,
+						0
+					],
+					[
+						156686.746987952,
+						2,
+						90.3614457831325
+					],
+					[
+						156867.469879518,
+						3,
+						0
+					],
+					[
+						156957.831325301,
+						1,
+						0
+					],
+					[
+						157048.192771084,
+						0,
+						0
+					],
+					[
+						157138.554216868,
+						2,
+						0
+					],
+					[
+						157409.638554217,
+						2,
+						90.3614457831325
+					],
+					[
+						156506.024096386,
+						3,
+						90.3614457831325
+					],
+					[
+						157228.915662651,
+						3,
+						90.3614457831325
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						157590.361445783,
+						3,
+						0
+					],
+					[
+						157590.361445783,
+						0,
+						0
+					],
+					[
+						157680.722891566,
+						1,
+						0
+					],
+					[
+						157771.084337349,
+						2,
+						0
+					],
+					[
+						157771.084337349,
+						3,
+						0
+					],
+					[
+						157861.445783133,
+						1,
+						0
+					],
+					[
+						158132.530120482,
+						2,
+						90.3614457831325
+					],
+					[
+						158313.253012048,
+						0,
+						0
+					],
+					[
+						158403.614457831,
+						1,
+						0
+					],
+					[
+						158493.975903615,
+						3,
+						0
+					],
+					[
+						158584.337349398,
+						2,
+						0
+					],
+					[
+						157951.807228916,
+						0,
+						90.3614457831325
+					],
+					[
+						158674.698795181,
+						0,
+						90.3614457831325
+					],
+					[
+						158855.421686747,
+						3,
+						90.3614457831325
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						159036.144578313,
+						1,
+						0
+					],
+					[
+						159126.506024096,
+						0,
+						0
+					],
+					[
+						159126.506024096,
+						3,
+						0
+					],
+					[
+						159216.86746988,
+						2,
+						0
+					],
+					[
+						159307.228915663,
+						1,
+						0
+					],
+					[
+						159397.590361446,
+						0,
+						0
+					],
+					[
+						159487.951807229,
+						3,
+						0
+					],
+					[
+						159578.313253012,
+						1,
+						0
+					],
+					[
+						159668.674698795,
+						3,
+						0
+					],
+					[
+						159759.036144578,
+						2,
+						0
+					],
+					[
+						159849.397590361,
+						0,
+						0
+					],
+					[
+						159939.759036145,
+						2,
+						0
+					],
+					[
+						160030.120481928,
+						1,
+						0
+					],
+					[
+						160120.481927711,
+						2,
+						0
+					],
+					[
+						160210.843373494,
+						3,
+						0
+					],
+					[
+						160301.204819277,
+						2,
+						0
+					],
+					[
+						160391.56626506,
+						0,
+						0
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						160481.927710843,
+						2,
+						0
+					],
+					[
+						160572.289156627,
+						3,
+						0
+					],
+					[
+						160662.65060241,
+						1,
+						0
+					],
+					[
+						160753.012048193,
+						2,
+						0
+					],
+					[
+						160843.373493976,
+						3,
+						0
+					],
+					[
+						160933.734939759,
+						1,
+						0
+					],
+					[
+						161024.096385542,
+						0,
+						0
+					],
+					[
+						161114.457831325,
+						1,
+						0
+					],
+					[
+						161204.819277108,
+						3,
+						0
+					],
+					[
+						161295.180722892,
+						1,
+						0
+					],
+					[
+						161385.542168675,
+						2,
+						0
+					],
+					[
+						161475.903614458,
+						3,
+						0
+					],
+					[
+						161566.265060241,
+						2,
+						90.3614457831325
+					],
+					[
+						161566.265060241,
+						1,
+						0
+					],
+					[
+						161746.987951807,
+						3,
+						90.3614457831325
+					],
+					[
+						160481.927710843,
+						1,
+						0,
+						"Error Note"
+					],
+					[
+						160843.373493976,
+						0,
+						0,
+						"Error Note"
+					],
+					[
+						161204.819277108,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						161566.265060241,
+						0,
+						0,
+						"Error Note"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						161927.710843373,
+						6,
+						0
+					],
+					[
+						162018.072289157,
+						4,
+						0
+					],
+					[
+						162108.43373494,
+						6,
+						0
+					],
+					[
+						162198.795180723,
+						4,
+						0
+					],
+					[
+						162289.156626506,
+						6,
+						0
+					],
+					[
+						162379.518072289,
+						7,
+						0
+					],
+					[
+						162469.879518072,
+						5,
+						0
+					],
+					[
+						162560.240963855,
+						6,
+						0
+					],
+					[
+						162650.602409639,
+						7,
+						0
+					],
+					[
+						162740.963855422,
+						5,
+						0
+					],
+					[
+						162831.325301205,
+						6,
+						0
+					],
+					[
+						162921.686746988,
+						4,
+						0
+					],
+					[
+						163012.048192771,
+						7,
+						0
+					],
+					[
+						163102.409638554,
+						6,
+						0
+					],
+					[
+						163192.771084337,
+						4,
+						0
+					],
+					[
+						163283.13253012,
+						6,
+						0
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						163373.493975904,
+						5,
+						0
+					],
+					[
+						163463.855421687,
+						7,
+						0
+					],
+					[
+						163554.21686747,
+						6,
+						0
+					],
+					[
+						163644.578313253,
+						4,
+						0
+					],
+					[
+						163734.939759036,
+						6,
+						0
+					],
+					[
+						163825.301204819,
+						4,
+						0
+					],
+					[
+						163915.662650602,
+						7,
+						0
+					],
+					[
+						164006.024096386,
+						5,
+						0
+					],
+					[
+						164096.385542169,
+						6,
+						0
+					],
+					[
+						164186.746987952,
+						7,
+						0
+					],
+					[
+						164277.108433735,
+						5,
+						0
+					],
+					[
+						164367.469879518,
+						7,
+						0
+					],
+					[
+						164457.831325301,
+						6,
+						90.3614457831325
+					],
+					[
+						164638.554216867,
+						4,
+						90.3614457831325
+					],
+					[
+						163373.493975904,
+						4,
+						0,
+						"Error Note"
+					],
+					[
+						163734.939759036,
+						5,
+						0,
+						"Error Note"
+					],
+					[
+						164096.385542169,
+						4,
+						0,
+						"Error Note"
+					],
+					[
+						164457.831325301,
+						5,
+						0,
+						"Error Note"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						164819.277108434,
+						2,
+						273,
+						"Mal Must Miss These"
+					],
+					[
+						165180.722891566,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						165271.084337349,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						165361.445783132,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						165451.807228916,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						165542.168674699,
+						1,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						165903.614457831,
+						3,
+						273,
+						"Mal Must Miss These"
+					],
+					[
+						166084.337349397,
+						1,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						165722.891566265,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						165813.253012048,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						165858.43373494,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						165768.072289157,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						167349.397590361,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						166265.060240964,
+						2,
+						273,
+						"Mal Must Miss These"
+					],
+					[
+						166626.506024096,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						166716.867469879,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						166807.228915663,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						166897.590361446,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						166987.951807229,
+						1,
+						273,
+						"Mal Must Miss These"
+					],
+					[
+						167349.397590361,
+						2,
+						273,
+						"Mal Must Miss These"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						167710.843373494,
+						1,
+						273,
+						"Mal Must Miss These"
+					],
+					[
+						168072.289156626,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						168162.650602409,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						168162.650602409,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						168253.012048193,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						168343.373493976,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						168433.734939759,
+						1,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						168795.180722891,
+						3,
+						273,
+						"Mal Must Miss These"
+					],
+					[
+						168975.903614458,
+						1,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						168614.457831325,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						168704.819277108,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						168754.518072289,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						168661.897590361,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						169156.626506024,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						169337.34939759,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						169518.072289156,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						169698.795180723,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						169879.518072289,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						170060.240963855,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						170240.963855422,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						170421.686746988,
+						3,
+						0,
+						"Mal Must Miss These"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						170873.493975903,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						170602.409638554,
+						2,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						170783.13253012,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						170963.855421687,
+						3,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						171144.578313253,
+						1,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						171325.301204819,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						171415.662650602,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						171506.024096385,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						171686.746987952,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						171867.469879518,
+						2,
+						0,
+						"Mal Must Miss These"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						172409.638554217,
+						1,
+						91,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						173132.530120482,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						172048.192771084,
+						3,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						172228.91566265,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						172319.277108434,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						172590.361445783,
+						0,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						172771.084337349,
+						2,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						172861.445783132,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						172951.807228916,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						173313.253012048,
+						1,
+						0,
+						"Mal Must Miss These"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						173674.698795181,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						173855.421686747,
+						2,
+						91,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						174216.867469879,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						174307.228915662,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						174759.036144578,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						173493.975903614,
+						3,
+						91,
+						"Mal Must Miss These"
+					],
+					[
+						173765.060240964,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						174036.144578313,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						174126.506024096,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						174397.590361446,
+						3,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						174578.313253012,
+						2,
+						0,
+						"Mal Must Miss These"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						175030.120481928,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						175120.481927711,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						175301.204819277,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						175662.650602409,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						175843.373493976,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						176024.096385542,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						176204.819277108,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						174939.759036144,
+						1,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						175210.843373494,
+						0,
+						0,
+						"Mal Must Miss These"
+					],
+					[
+						175481.927710843,
+						1,
+						0,
+						"Mal Must Miss These"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						176385.542168675,
+						2,
+						271.084337349398
+					],
+					[
+						176746.987951807,
+						3,
+						0
+					],
+					[
+						176837.34939759,
+						0,
+						0
+					],
+					[
+						176927.710843373,
+						2,
+						0
+					],
+					[
+						177018.072289157,
+						3,
+						0
+					],
+					[
+						177108.43373494,
+						1,
+						90.3614457831325
+					],
+					[
+						177289.156626506,
+						3,
+						0
+					],
+					[
+						177334.337349397,
+						0,
+						0
+					],
+					[
+						177379.518072289,
+						3,
+						0
+					],
+					[
+						177424.698795181,
+						0,
+						0
+					],
+					[
+						177469.879518072,
+						3,
+						271.084337349398
+					],
+					[
+						177650.602409638,
+						1,
+						90.3614457831325
+					],
+					[
+						176385.542168674,
+						1,
+						0,
+						"Error Note"
+					],
+					[
+						176566.265060241,
+						0,
+						0,
+						"Error Note"
+					],
+					[
+						176746.987951807,
+						1,
+						0,
+						"Error Note"
+					],
+					[
+						176927.710843373,
+						1,
+						0,
+						"Error Note"
+					],
+					[
+						177108.43373494,
+						0,
+						0,
+						"Error Note"
+					],
+					[
+						177289.156626506,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						177469.879518072,
+						1,
+						0,
+						"Error Note"
+					],
+					[
+						177650.602409638,
+						0,
+						361.44578313253,
+						"Error Note"
+					],
+					[
+						176385.542168674,
+						5,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						176385.542168674,
+						7,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						176385.542168674,
+						6,
+						546,
+						"Mal Must Miss These (Error Edition)"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						177831.325301205,
+						2,
+						271.084337349398
+					],
+					[
+						178192.771084337,
+						1,
+						0
+					],
+					[
+						178283.13253012,
+						3,
+						0
+					],
+					[
+						178373.493975903,
+						2,
+						0
+					],
+					[
+						178463.855421687,
+						0,
+						0
+					],
+					[
+						178554.21686747,
+						1,
+						271.084337349398
+					],
+					[
+						178915.662650602,
+						2,
+						271.084337349398
+					],
+					[
+						178915.662650602,
+						3,
+						0
+					],
+					[
+						177831.325301205,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						178012.048192771,
+						1,
+						0,
+						"Error Note"
+					],
+					[
+						178192.771084337,
+						0,
+						0,
+						"Error Note"
+					],
+					[
+						178373.493975903,
+						1,
+						0,
+						"Error Note"
+					],
+					[
+						178554.21686747,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						178734.939759036,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						178915.662650602,
+						0,
+						0,
+						"Error Note"
+					],
+					[
+						179096.385542168,
+						3,
+						0,
+						"Error Note"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						179277.108433735,
+						1,
+						271.084337349398
+					],
+					[
+						179638.554216867,
+						2,
+						0
+					],
+					[
+						179728.91566265,
+						0,
+						0
+					],
+					[
+						179728.91566265,
+						1,
+						0
+					],
+					[
+						179819.277108434,
+						2,
+						0
+					],
+					[
+						179909.638554217,
+						3,
+						0
+					],
+					[
+						180000,
+						1,
+						90.3614457831325
+					],
+					[
+						180180.722891566,
+						3,
+						0
+					],
+					[
+						180225.903614458,
+						1,
+						0
+					],
+					[
+						180271.084337349,
+						0,
+						0
+					],
+					[
+						180316.265060241,
+						2,
+						0
+					],
+					[
+						180361.445783132,
+						3,
+						271.084337349398
+					],
+					[
+						180542.168674699,
+						1,
+						90.3614457831325
+					],
+					[
+						179277.108433735,
+						0,
+						271.084337349398,
+						"Error Note"
+					],
+					[
+						179277.108433735,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						179457.831325301,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						179638.554216867,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						179819.277108434,
+						0,
+						0,
+						"Error Note"
+					],
+					[
+						180000,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						180180.722891566,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						180451.807228915,
+						0,
+						0,
+						"Error Note"
+					],
+					[
+						180542.168674699,
+						2,
+						0,
+						"Error Note"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						180722.891566265,
+						2,
+						0
+					],
+					[
+						180903.614457831,
+						2,
+						0
+					],
+					[
+						181084.337349397,
+						0,
+						0
+					],
+					[
+						181265.060240964,
+						2,
+						0
+					],
+					[
+						181445.78313253,
+						1,
+						0
+					],
+					[
+						181626.506024096,
+						3,
+						0
+					],
+					[
+						181807.228915663,
+						0,
+						0
+					],
+					[
+						181987.951807229,
+						3,
+						0
+					],
+					[
+						180722.891566265,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						180903.614457831,
+						1,
+						0,
+						"Error Note"
+					],
+					[
+						181084.337349397,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						181265.060240964,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						181445.78313253,
+						0,
+						0,
+						"Error Note"
+					],
+					[
+						181626.506024096,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						181807.228915662,
+						1,
+						0,
+						"Error Note"
+					],
+					[
+						181987.951807229,
+						0,
+						0,
+						"Error Note"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						182168.674698795,
+						2,
+						90.3614457831325
+					],
+					[
+						182349.397590361,
+						1,
+						0
+					],
+					[
+						182439.759036144,
+						1,
+						0
+					],
+					[
+						182530.120481928,
+						3,
+						90.3614457831325
+					],
+					[
+						182710.843373494,
+						1,
+						90.3614457831325
+					],
+					[
+						182891.56626506,
+						0,
+						0
+					],
+					[
+						182981.927710843,
+						1,
+						0
+					],
+					[
+						183072.289156626,
+						3,
+						0
+					],
+					[
+						183253.012048193,
+						2,
+						0
+					],
+					[
+						183433.734939759,
+						2,
+						0
+					],
+					[
+						182168.674698795,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						182349.397590361,
+						0,
+						0,
+						"Error Note"
+					],
+					[
+						182530.120481927,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						182710.843373494,
+						0,
+						0,
+						"Error Note"
+					],
+					[
+						182891.56626506,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						183072.289156626,
+						1,
+						0,
+						"Error Note"
+					],
+					[
+						183253.012048193,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						183433.734939759,
+						0,
+						0,
+						"Error Note"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						183614.457831325,
+						3,
+						90.3614457831325
+					],
+					[
+						183795.180722891,
+						0,
+						0
+					],
+					[
+						183885.542168675,
+						0,
+						0
+					],
+					[
+						183975.903614458,
+						1,
+						90.3614457831325
+					],
+					[
+						184156.626506024,
+						0,
+						90.3614457831325
+					],
+					[
+						184337.34939759,
+						2,
+						0
+					],
+					[
+						184427.710843373,
+						3,
+						0
+					],
+					[
+						184518.072289156,
+						0,
+						0
+					],
+					[
+						184698.795180723,
+						1,
+						0
+					],
+					[
+						184879.518072289,
+						1,
+						0
+					],
+					[
+						183614.457831325,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						183795.180722891,
+						1,
+						0,
+						"Error Note"
+					],
+					[
+						183975.903614458,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						184156.626506024,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						184337.34939759,
+						1,
+						0,
+						"Error Note"
+					],
+					[
+						184518.072289156,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						184698.795180723,
+						0,
+						0,
+						"Error Note"
+					],
+					[
+						184879.518072289,
+						2,
+						0,
+						"Error Note"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						185060.240963855,
+						3,
+						90.3614457831325
+					],
+					[
+						185240.963855421,
+						0,
+						0
+					],
+					[
+						185331.325301205,
+						0,
+						0
+					],
+					[
+						185421.686746988,
+						2,
+						90.3614457831325
+					],
+					[
+						185602.409638554,
+						3,
+						0
+					],
+					[
+						185692.771084337,
+						1,
+						0
+					],
+					[
+						185783.13253012,
+						0,
+						0
+					],
+					[
+						185873.493975903,
+						2,
+						0
+					],
+					[
+						185963.855421687,
+						3,
+						0
+					],
+					[
+						186144.578313253,
+						2,
+						0
+					],
+					[
+						186325.301204819,
+						2,
+						0
+					],
+					[
+						185060.240963855,
+						1,
+						0,
+						"Error Note"
+					],
+					[
+						185240.963855421,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						185421.686746988,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						185602.409638554,
+						0,
+						0,
+						"Error Note"
+					],
+					[
+						185783.13253012,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						185963.855421686,
+						1,
+						0,
+						"Error Note"
+					],
+					[
+						186144.578313253,
+						0,
+						0,
+						"Error Note"
+					],
+					[
+						186325.301204819,
+						3,
+						0,
+						"Error Note"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						186506.024096385,
+						1,
+						0
+					],
+					[
+						186596.385542168,
+						3,
+						0
+					],
+					[
+						186686.746987952,
+						2,
+						0
+					],
+					[
+						186777.108433735,
+						0,
+						0
+					],
+					[
+						186867.469879518,
+						3,
+						0
+					],
+					[
+						187048.192771084,
+						1,
+						0
+					],
+					[
+						187228.91566265,
+						2,
+						0
+					],
+					[
+						187409.638554217,
+						2,
+						0
+					],
+					[
+						187590.361445783,
+						3,
+						0
+					],
+					[
+						187771.084337349,
+						0,
+						0
+					],
+					[
+						186506.024096385,
+						0,
+						0,
+						"Error Note"
+					],
+					[
+						186686.746987952,
+						1,
+						0,
+						"Error Note"
+					],
+					[
+						186867.469879518,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						187048.192771084,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						187228.91566265,
+						0,
+						0,
+						"Error Note"
+					],
+					[
+						187409.638554217,
+						1,
+						0,
+						"Error Note"
+					],
+					[
+						187590.361445783,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						187771.084337349,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						187228.91566265,
+						6,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						187228.91566265,
+						7,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						187409.638554217,
+						5,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						187590.361445783,
+						4,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						187590.361445783,
+						6,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						187771.084337349,
+						7,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						187951.807228915,
+						7,
+						0
+					],
+					[
+						187951.807228915,
+						6,
+						0
+					],
+					[
+						188132.530120482,
+						4,
+						0
+					],
+					[
+						188313.253012048,
+						5,
+						0
+					],
+					[
+						188313.253012048,
+						7,
+						0
+					],
+					[
+						188313.253012048,
+						6,
+						271.084337349398
+					],
+					[
+						188855.421686747,
+						7,
+						0
+					],
+					[
+						188674.69879518,
+						5,
+						0
+					],
+					[
+						188855.421686747,
+						4,
+						0
+					],
+					[
+						189036.144578313,
+						5,
+						0
+					],
+					[
+						189036.144578313,
+						6,
+						271.084337349398
+					],
+					[
+						188313.253012048,
+						4,
+						271.084337349398,
+						"Error Note"
+					],
+					[
+						188855.421686747,
+						5,
+						0,
+						"Error Note"
+					],
+					[
+						189036.144578313,
+						4,
+						180.722891566265,
+						"Error Note"
+					],
+					[
+						187951.807228915,
+						2,
+						637,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						188313.253012048,
+						1,
+						273,
+						"Mal Must Miss These (Error Edition)"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						189397.590361445,
+						7,
+						0
+					],
+					[
+						189578.313253012,
+						5,
+						0
+					],
+					[
+						189578.313253012,
+						6,
+						0
+					],
+					[
+						189759.036144578,
+						4,
+						0
+					],
+					[
+						189939.759036144,
+						7,
+						0
+					],
+					[
+						189939.759036144,
+						5,
+						0
+					],
+					[
+						190120.481927711,
+						4,
+						0
+					],
+					[
+						190301.204819277,
+						6,
+						0
+					],
+					[
+						190301.204819277,
+						7,
+						0
+					],
+					[
+						190481.927710843,
+						4,
+						271.084337349398
+					],
+					[
+						190481.927710843,
+						5,
+						0
+					],
+					[
+						189397.590361445,
+						4,
+						0,
+						"Error Note"
+					],
+					[
+						189578.313253012,
+						7,
+						0,
+						"Error Note"
+					],
+					[
+						190301.204819277,
+						4,
+						0,
+						"Error Note"
+					],
+					[
+						189759.036144578,
+						1,
+						273,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						189397.590361445,
+						3,
+						637,
+						"Mal Must Miss These (Error Edition)"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						190843.373493976,
+						7,
+						0
+					],
+					[
+						191024.096385542,
+						6,
+						0
+					],
+					[
+						190843.373493976,
+						5,
+						0
+					],
+					[
+						191204.819277108,
+						4,
+						271.084337349398
+					],
+					[
+						191204.819277108,
+						7,
+						0
+					],
+					[
+						191566.265060241,
+						5,
+						0
+					],
+					[
+						191746.987951807,
+						7,
+						0
+					],
+					[
+						191566.265060241,
+						6,
+						0
+					],
+					[
+						191927.710843373,
+						5,
+						0
+					],
+					[
+						191204.819277108,
+						5,
+						0
+					],
+					[
+						191927.710843373,
+						4,
+						0
+					],
+					[
+						191927.710843373,
+						6,
+						271.084337349398
+					],
+					[
+						191204.819277108,
+						6,
+						180.722891566265,
+						"Error Note"
+					],
+					[
+						191746.987951807,
+						5,
+						0,
+						"Error Note"
+					],
+					[
+						191204.819277108,
+						1,
+						273,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						190843.373493976,
+						0,
+						637,
+						"Mal Must Miss These (Error Edition)"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						192289.156626506,
+						7,
+						0
+					],
+					[
+						192289.156626506,
+						4,
+						0
+					],
+					[
+						192469.879518072,
+						5,
+						0
+					],
+					[
+						192650.602409638,
+						6,
+						0
+					],
+					[
+						192650.602409638,
+						7,
+						0
+					],
+					[
+						192831.325301204,
+						5,
+						0
+					],
+					[
+						193012.048192771,
+						4,
+						0
+					],
+					[
+						193012.048192771,
+						6,
+						0
+					],
+					[
+						193192.771084337,
+						5,
+						0
+					],
+					[
+						193373.493975903,
+						7,
+						271.084337349398
+					],
+					[
+						193373.493975903,
+						6,
+						0
+					],
+					[
+						193373.493975903,
+						4,
+						0
+					],
+					[
+						192469.879518072,
+						4,
+						271.084337349398,
+						"Error Note"
+					],
+					[
+						193192.771084337,
+						4,
+						0,
+						"Error Note"
+					],
+					[
+						193373.493975903,
+						5,
+						180.722891566265,
+						"Error Note"
+					],
+					[
+						192650.602409638,
+						1,
+						273,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						192289.156626506,
+						2,
+						637,
+						"Mal Must Miss These (Error Edition)"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						193734.939759036,
+						0,
+						0
+					],
+					[
+						193915.662650602,
+						3,
+						0
+					],
+					[
+						194096.385542168,
+						2,
+						0
+					],
+					[
+						194277.108433735,
+						0,
+						0
+					],
+					[
+						194457.831325301,
+						3,
+						0
+					],
+					[
+						194638.554216867,
+						1,
+						0
+					],
+					[
+						194819.277108433,
+						3,
+						271.084337349398
+					],
+					[
+						194096.385542168,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						194457.831325301,
+						0,
+						0,
+						"Error Note"
+					],
+					[
+						194819.277108433,
+						2,
+						271.084337349398,
+						"Error Note"
+					],
+					[
+						193734.939759036,
+						7,
+						637,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						194096.385542168,
+						5,
+						273,
+						"Mal Must Miss These (Error Edition)"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						195180.722891566,
+						1,
+						0
+					],
+					[
+						195361.445783132,
+						3,
+						0
+					],
+					[
+						195361.445783132,
+						0,
+						0
+					],
+					[
+						195542.168674698,
+						1,
+						0
+					],
+					[
+						195722.891566265,
+						3,
+						0
+					],
+					[
+						195903.614457831,
+						0,
+						0
+					],
+					[
+						196265.060240964,
+						3,
+						0
+					],
+					[
+						195903.614457831,
+						2,
+						0
+					],
+					[
+						196084.337349397,
+						1,
+						0
+					],
+					[
+						196445.78313253,
+						3,
+						0
+					],
+					[
+						195361.445783132,
+						1,
+						0,
+						"Error Note"
+					],
+					[
+						196084.337349397,
+						0,
+						361.44578313253,
+						"Error Note"
+					],
+					[
+						195542.168674698,
+						5,
+						273,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						195180.722891566,
+						6,
+						637,
+						"Mal Must Miss These (Error Edition)"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						196626.506024096,
+						2,
+						0
+					],
+					[
+						196807.228915662,
+						0,
+						0
+					],
+					[
+						196987.951807229,
+						2,
+						0
+					],
+					[
+						197168.674698795,
+						3,
+						0
+					],
+					[
+						197349.397590361,
+						2,
+						0
+					],
+					[
+						197530.120481927,
+						0,
+						0
+					],
+					[
+						197710.843373494,
+						2,
+						271.084337349398
+					],
+					[
+						196626.506024096,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						196987.951807229,
+						1,
+						0,
+						"Error Note"
+					],
+					[
+						197530.120481927,
+						3,
+						0,
+						"Error Note"
+					],
+					[
+						197710.843373494,
+						0,
+						90.3614457831325,
+						"Error Note"
+					],
+					[
+						196626.506024096,
+						4,
+						637,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						196987.951807229,
+						5,
+						273,
+						"Mal Must Miss These (Error Edition)"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						198072.289156626,
+						3,
+						0
+					],
+					[
+						198253.012048192,
+						0,
+						0
+					],
+					[
+						198433.734939759,
+						3,
+						0
+					],
+					[
+						198614.457831325,
+						1,
+						0
+					],
+					[
+						198795.180722891,
+						2,
+						0
+					],
+					[
+						198795.180722891,
+						3,
+						0
+					],
+					[
+						198975.903614457,
+						0,
+						0
+					],
+					[
+						199156.626506024,
+						1,
+						0
+					],
+					[
+						199337.34939759,
+						1,
+						0
+					],
+					[
+						198253.012048192,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						198614.457831325,
+						2,
+						0,
+						"Error Note"
+					],
+					[
+						198795.180722891,
+						1,
+						0,
+						"Error Note"
+					],
+					[
+						198433.734939759,
+						5,
+						273,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						198072.289156626,
+						7,
+						637,
+						"Mal Must Miss These (Error Edition)"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						199698.795180722,
+						7,
+						0
+					],
+					[
+						199879.518072289,
+						5,
+						0
+					],
+					[
+						200060.240963855,
+						6,
+						0
+					],
+					[
+						200421.686746988,
+						6,
+						0
+					],
+					[
+						200602.409638554,
+						5,
+						271.084337349398
+					],
+					[
+						200240.963855421,
+						4,
+						90.3614457831325
+					],
+					[
+						199518.072289156,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						199879.518072289,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						200240.963855421,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						200331.325301204,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						200421.686746988,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						200512.048192771,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						200602.409638554,
+						1,
+						91,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						200602.409638554,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						200783.13253012,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						200783.13253012,
+						3,
+						91,
+						"Mal Must Miss These (Error Edition)"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						200963.855421686,
+						7,
+						0
+					],
+					[
+						201144.578313253,
+						7,
+						0
+					],
+					[
+						201325.301204819,
+						5,
+						90.3614457831325
+					],
+					[
+						201506.024096385,
+						6,
+						0
+					],
+					[
+						201506.024096385,
+						4,
+						0
+					],
+					[
+						201686.746987951,
+						7,
+						0
+					],
+					[
+						201867.469879518,
+						6,
+						0
+					],
+					[
+						202048.192771084,
+						4,
+						271.084337349398
+					],
+					[
+						202048.192771084,
+						7,
+						0
+					],
+					[
+						202048.192771084,
+						5,
+						0
+					],
+					[
+						200963.855421686,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						201325.301204819,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						201686.746987951,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						201777.108433735,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						201867.469879518,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						201957.831325301,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						202048.192771084,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						202048.192771084,
+						1,
+						91,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						202228.91566265,
+						2,
+						91,
+						"Mal Must Miss These (Error Edition)"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						202590.361445783,
+						6,
+						0
+					],
+					[
+						202771.084337349,
+						5,
+						0
+					],
+					[
+						202951.807228915,
+						7,
+						0
+					],
+					[
+						203132.530120482,
+						4,
+						90.3614457831325
+					],
+					[
+						203313.253012048,
+						6,
+						0
+					],
+					[
+						203493.975903614,
+						5,
+						271.084337349398
+					],
+					[
+						202409.638554216,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						202771.084337349,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						203132.530120482,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						203493.975903614,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						203674.69879518,
+						1,
+						91,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						203403.614457831,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						203313.253012048,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						203222.891566265,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						203493.975903614,
+						3,
+						91,
+						"Mal Must Miss These (Error Edition)"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						204036.144578313,
+						6,
+						0
+					],
+					[
+						204216.867469879,
+						7,
+						0
+					],
+					[
+						204397.590361445,
+						4,
+						0
+					],
+					[
+						204397.590361445,
+						5,
+						0
+					],
+					[
+						204578.313253012,
+						7,
+						0
+					],
+					[
+						204759.036144578,
+						5,
+						0
+					],
+					[
+						204939.759036144,
+						6,
+						271.084337349398
+					],
+					[
+						204939.759036144,
+						7,
+						0
+					],
+					[
+						204939.759036144,
+						4,
+						0
+					],
+					[
+						203855.421686747,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						204216.867469879,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						204578.313253012,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						204668.674698795,
+						0,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						204759.036144578,
+						3,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						204849.397590361,
+						2,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						204939.759036144,
+						1,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						204939.759036144,
+						0,
+						91,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						205120.48192771,
+						3,
+						91,
+						"Mal Must Miss These (Error Edition)"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						205481.927710843,
+						3,
+						0
+					],
+					[
+						205662.650602409,
+						1,
+						0
+					],
+					[
+						205843.373493976,
+						2,
+						0
+					],
+					[
+						206204.819277108,
+						2,
+						0
+					],
+					[
+						206385.542168674,
+						1,
+						271.084337349398
+					],
+					[
+						206024.096385542,
+						0,
+						90.3614457831325
+					],
+					[
+						205301.204819277,
+						6,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						205662.650602409,
+						6,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						206024.096385542,
+						6,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						206114.457831325,
+						7,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						206204.819277108,
+						5,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						206295.180722891,
+						4,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						206385.542168674,
+						6,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						206385.542168674,
+						5,
+						91,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						206566.265060241,
+						4,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						206566.265060241,
+						7,
+						91,
+						"Mal Must Miss These (Error Edition)"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						206746.987951807,
+						3,
+						0
+					],
+					[
+						206927.710843373,
+						3,
+						0
+					],
+					[
+						207108.433734939,
+						1,
+						90.3614457831325
+					],
+					[
+						207289.156626506,
+						2,
+						0
+					],
+					[
+						207289.156626506,
+						0,
+						0
+					],
+					[
+						207469.879518072,
+						3,
+						0
+					],
+					[
+						207650.602409638,
+						2,
+						0
+					],
+					[
+						207831.325301204,
+						0,
+						271.084337349398
+					],
+					[
+						207831.325301204,
+						3,
+						0
+					],
+					[
+						207831.325301204,
+						1,
+						0
+					],
+					[
+						206746.987951807,
+						5,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						207108.433734939,
+						5,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						207469.879518072,
+						5,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						207560.240963855,
+						7,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						207650.602409638,
+						6,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						207740.963855421,
+						4,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						207831.325301204,
+						7,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						207831.325301204,
+						5,
+						91,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						208012.048192771,
+						6,
+						91,
+						"Mal Must Miss These (Error Edition)"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						208373.493975903,
+						2,
+						0
+					],
+					[
+						208554.216867469,
+						1,
+						0
+					],
+					[
+						208734.939759036,
+						3,
+						0
+					],
+					[
+						208915.662650602,
+						0,
+						90.3614457831325
+					],
+					[
+						209096.385542168,
+						2,
+						0
+					],
+					[
+						209277.108433735,
+						1,
+						271.084337349398
+					],
+					[
+						208192.771084337,
+						4,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						208554.216867469,
+						4,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						208915.662650602,
+						4,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						209006.024096385,
+						7,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						209096.385542168,
+						6,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						209186.746987951,
+						4,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						209277.108433734,
+						6,
+						0,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						209277.108433734,
+						7,
+						91,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						209457.831325301,
+						5,
+						91,
+						"Mal Must Miss These (Error Edition)"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						209819.277108433,
+						6,
+						0
+					],
+					[
+						210000,
+						7,
+						0
+					],
+					[
+						210180.722891566,
+						4,
+						0
+					],
+					[
+						210180.722891566,
+						5,
+						0
+					],
+					[
+						210361.445783132,
+						7,
+						0
+					],
+					[
+						210542.168674698,
+						5,
+						0
+					],
+					[
+						210722.891566265,
+						6,
+						271.084337349398
+					],
+					[
+						210722.891566265,
+						7,
+						0
+					],
+					[
+						210722.891566265,
+						4,
+						0
+					],
+					[
+						209638.554216867,
+						2,
+						1355.42168674699,
+						"Mal Must Miss These (Error Edition)"
+					],
+					[
+						210361.445783132,
+						1,
+						632.530120481928,
+						"Mal Must Miss These (Error Edition)"
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						211084.337349397,
+						0,
+						2168.67469879518
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [
+					[
+						212530.120481927,
+						1,
+						1355.42168674699
+					]
+				],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": false,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"bpm": 166,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"bpm": 166,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"bpm": 166,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"bpm": 166,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"bpm": 166,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"bpm": 166,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"bpm": 166,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"bpm": 166,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"sectionBeats": 4,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 166,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"sectionBeats": 4,
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"gfSection": false,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionBeats": 4,
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"gfSection": false,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"sectionBeats": 4,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 166,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"sectionBeats": 4,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 166,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"sectionBeats": 4,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 166,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"sectionBeats": 4,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 166,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"sectionBeats": 4,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 166,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"sectionBeats": 4,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 166,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"sectionBeats": 4,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 166,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"sectionBeats": 4,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 166,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"sectionBeats": 4,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 166,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"sectionBeats": 4,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 166,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"sectionBeats": 4,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 166,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"sectionBeats": 4,
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"gfSection": false,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionBeats": 4,
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"gfSection": false,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"sectionBeats": 4,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 166,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"sectionBeats": 4,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 166,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"sectionBeats": 4,
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"gfSection": false,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionBeats": 4,
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"gfSection": false,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionBeats": 4,
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"gfSection": false,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionBeats": 4,
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"gfSection": false,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionBeats": 4,
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"gfSection": false,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionBeats": 4,
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"gfSection": false,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"sectionBeats": 4,
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"gfSection": false,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 166
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"sectionBeats": 4,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 166,
+				"changeBPM": false,
+				"mustHitSection": true
+			}
+		],
+		"gfVersion": "gf",
+		"player2": "malsquareIsPissedAtYou",
+		"splashSkin": "noteSplashes",
+		"song": "Malfunction",
+		"voiceSfx1": "BF",
+		"needsVoices": true,
+		"validScore": true,
+		"stage": "grassNation",
+		"voiceSfx2": "Malsquare",
+		"bpm": 166,
+		"speed": 3,
+		"assetModifier": "pixel"
+	}
+}';
 }

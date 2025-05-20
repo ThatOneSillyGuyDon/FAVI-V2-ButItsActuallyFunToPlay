@@ -2635,6 +2635,11 @@ class PlayState extends MusicBeatState
 							}
 							camZooming = true;
 
+							if (daNote.noteType == "Mal Must Miss These" || daNote.noteType == "Mal Must Miss These (Error Edition)")
+							{
+								opponentVocals.volume = 0;
+							}
+
 							if(!daNote.blockHit && daNote.mustPress && cpuControlled && daNote.canBeHit) {
 								if(daNote.isSustainNote) {
 									if(daNote.canBeHit) {
