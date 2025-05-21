@@ -856,7 +856,9 @@ class PlayState extends MusicBeatState
 			fancyBarOverlay.flipY = true;
 		}
 		fancyBarOverlay.visible = SONG.song.toLowerCase() != 'cycled sins';
-		uiGroup.add(fancyBarOverlay);
+		if (!CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-legacy'))
+			uiGroup.add(fancyBarOverlay);
+
 		healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 5, (SONG.song == "Devilish Deal" ? LEFT_TO_RIGHT : RIGHT_TO_LEFT), Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 7), this,
 			'healthLerp', 0, 2);
 		healthBar.scrollFactor.set();
@@ -890,14 +892,14 @@ class PlayState extends MusicBeatState
 		reloadHealthBarColors();
 
 		scoreTxt = new FlxText(0, ((curStage == "menuSongs" || curStage == "waltRoom") ? (ClientPrefs.data.downScroll ? 15 : 675) : healthBarBG.y + 36), FlxG.width, "", 20);
-		scoreTxt.setFormat(Paths.font("DisneyFont.ttf"), (CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-legacy') || CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-old') || CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-beta')  ? 28 : 20), FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		scoreTxt.setFormat(Paths.font("DisneyFont.ttf"), (CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-legacy')  ? 28 : 20), FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
 		scoreTxt.borderSize = 1.25;
 		scoreTxt.visible = !ClientPrefs.data.hideHud;
 		updateScore(false);
 		uiGroup.add(scoreTxt);
 
-		if (CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-legacy') || CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-old') || CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-beta'))
+		if (CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-legacy'))
 		{
 		#if desktop
 			var peWatermark:FlxText = new FlxText(5, FlxG.height - 29, 0, "", 16);
@@ -948,7 +950,7 @@ class PlayState extends MusicBeatState
 		watermarkTxt.setBorderStyle(OUTLINE, FlxColor.BLACK, 2);
 		if (ClientPrefs.data.downScroll) watermarkTxt.setPosition(0, 655); else watermarkTxt.setPosition(0, 8);
 		watermarkTxt.screenCenter(X);
-		if (!CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-legacy') || !CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-old') || !CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-beta'))
+		if (!CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-legacy'))
 			uiGroup.add(watermarkTxt);
 
 		songTxt = new FlxText(watermarkTxt.x, watermarkTxt.y + 30, 1280, (SONG.song == "Dont Cross" ? "Don't Cross!" : '$infoDisplay'));
@@ -956,7 +958,7 @@ class PlayState extends MusicBeatState
 		songTxt.setBorderStyle(OUTLINE, FlxColor.BLACK, 2);
 		songTxt.alpha = 0.6;
 		songTxt.screenCenter(X);
-		if (!CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-legacy') || !CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-old') || !CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-beta'))
+		if (!CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-legacy'))
 			uiGroup.add(songTxt);
 
 		if (curStage == "menuSongs")
@@ -1814,7 +1816,7 @@ class PlayState extends MusicBeatState
 		if (ret == LuaUtils.Function_Stop)
 			return;
 
-		if (CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-legacy') || CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-old') || CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-beta'))
+		if (CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-legacy'))
 			scoreTxt.text = 'Score: ' + songScore + ' | Misses: ' + songMisses + ' | Accuracy: ' + CoolUtil.floorDecimal(ratingPercent * 100, 2) + '% ' + ' [' + (ratingName != '?' ? '$ratingFC' : '?') + ']';//peeps wanted no integer rating
 		else
 			scoreTxt.text = 'Score: ' + songScore + ' | Combo Breaks: ' + songMisses + ' | Rank: ' + (ratingName != '?' ? '$ratingFC (${CoolUtil.floorDecimal(ratingPercent * 100, 2)}%)' : '?');
@@ -3975,6 +3977,15 @@ class PlayState extends MusicBeatState
 			pixelShitPart2 = '-pixel';
 		}
 
+		if (CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-legacy'))
+		{
+			pixelShitPart1 = 'legacyUI/';
+			if (isPixelStage)
+				pixelShitPart2 = '-pixel';
+			else 
+				pixelShitPart2 = '';
+		}
+
 		rating.loadGraphic(Paths.image(pixelShitPart1 + (((ratingPercent == 1 || cpuControlled) && SONG.song != "Cycled Sins") ? "marvelous" : daRating.image) + (SONG.song == "Malfunction" ? '-mal' : '') + pixelShitPart2));
 		rating.scale.set(0.4, 0.4);
 		rating.screenCenter();
@@ -3988,7 +3999,7 @@ class PlayState extends MusicBeatState
 			rating.y += 495 + (SONG.song == "Malfunction" ? ((daRating.image == "sick" && ratingPercent != 1) ? -50 : -35) : 0);
 		if (SONG.song == "War Dilemma" && !ClientPrefs.data.downScroll)
 			rating.y -= 120;
-
+		
 		var comboSpr:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'combo' + pixelShitPart2));
 		comboSpr.screenCenter();
 		comboSpr.x = coolText.x;
@@ -4061,7 +4072,7 @@ class PlayState extends MusicBeatState
 			numScore.x = (32 * daLoop) - 90;
 			numScore.x += FlxG.width * 0.92;
 			numScore.y = rating.y + (SONG.song == "Malfunction" ? ((daRating.image == "sick" && ratingPercent != 1) ? 80 : 56) : 45);
-			
+
 			if (!ClientPrefs.data.comboStacking)
 				lastScore.push(numScore);
 

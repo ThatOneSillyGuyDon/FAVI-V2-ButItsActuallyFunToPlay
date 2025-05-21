@@ -161,7 +161,7 @@ class ModchartFuncs
     public static function loadHaxeFunctions(#if (PSYCH && LUA_ALLOWED) funkin:FunkinLua #end)
         {
             #if (PSYCH && PSYCHVERSION >= "0.7")
-            #if HSCRIPT_ALLOWED
+            #if (HSCRIPT_ALLOWED && LUA_ALLOWED)
             FunkinHScript.initHaxeModule(funkin);
     
             if (funkin.hscript != null)
