@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				590,
+				640
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "Mickey3 Idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				560,
+				644
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "Mickey3 Left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				530,
+				630
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "Mickey3 Up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				460,
+				642
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "Mickey3 Down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				470,
+				640
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "Mickey3 Right",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/mickey-delusional-unused/Mickey3",
+	"position": [
+		-150,
+		120
+	],
+	"healthicon": "deluold",
+	"flip_x": false,
+	"healthbar_colors": [
+		136,
+		136,
+		136
+	],
+	"camera_position": [
+		-290,
+		-320
+	],
+	"sing_duration": 6.1,
+	"scale": 0.7
+}

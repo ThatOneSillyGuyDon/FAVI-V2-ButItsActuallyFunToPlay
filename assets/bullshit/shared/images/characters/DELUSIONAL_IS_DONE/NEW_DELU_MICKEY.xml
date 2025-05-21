@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="NEW DELU MICKEY.png">
+	<!-- Created with Adobe Animate version 23.0.0.407 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Mickey down0000" x="15" y="15" width="1148" height="868" frameX="-154" frameY="0" frameWidth="1330" frameHeight="868"/>
+	<SubTexture name="Mickey down0001" x="1178" y="15" width="1199" height="803" frameX="-102" frameY="-65" frameWidth="1330" frameHeight="868"/>
+	<SubTexture name="Mickey down0002" x="2392" y="15" width="1276" height="622" frameX="-12" frameY="-246" frameWidth="1330" frameHeight="868"/>
+	<SubTexture name="Mickey down0003" x="3683" y="15" width="1288" height="612" frameX="0" frameY="-256" frameWidth="1330" frameHeight="868"/>
+	<SubTexture name="Mickey down0004" x="4986" y="15" width="1298" height="564" frameX="-28" frameY="-304" frameWidth="1330" frameHeight="868"/>
+	<SubTexture name="Mickey down0005" x="4986" y="15" width="1298" height="564" frameX="-28" frameY="-304" frameWidth="1330" frameHeight="868"/>
+	<SubTexture name="Mickey down0006" x="6299" y="15" width="1116" height="617" frameX="-214" frameY="-251" frameWidth="1330" frameHeight="868"/>
+	<SubTexture name="Mickey down0007" x="6299" y="15" width="1116" height="617" frameX="-214" frameY="-251" frameWidth="1330" frameHeight="868"/>
+	<SubTexture name="Mickey down0008" x="15" y="898" width="1112" height="623" frameX="-218" frameY="-245" frameWidth="1330" frameHeight="868"/>
+	<SubTexture name="Mickey down0009" x="15" y="898" width="1112" height="623" frameX="-218" frameY="-245" frameWidth="1330" frameHeight="868"/>
+	<SubTexture name="Mickey down0010" x="1142" y="898" width="1111" height="623" frameX="-218" frameY="-245" frameWidth="1330" frameHeight="868"/>
+	<SubTexture name="Mickey down0011" x="1142" y="898" width="1111" height="623" frameX="-218" frameY="-245" frameWidth="1330" frameHeight="868"/>
+	<SubTexture name="Mickey down0012" x="2268" y="898" width="1111" height="623" frameX="-218" frameY="-245" frameWidth="1330" frameHeight="868"/>
+	<SubTexture name="Mickey down0013" x="2268" y="898" width="1111" height="623" frameX="-218" frameY="-245" frameWidth="1330" frameHeight="868"/>
+	<SubTexture name="Mickey down0014" x="2268" y="898" width="1111" height="623" frameX="-218" frameY="-245" frameWidth="1330" frameHeight="868"/>
+	<SubTexture name="Mickey down0015" x="2268" y="898" width="1111" height="623" frameX="-218" frameY="-245" frameWidth="1330" frameHeight="868"/>
+	<SubTexture name="Mickey down0016" x="2268" y="898" width="1111" height="623" frameX="-218" frameY="-245" frameWidth="1330" frameHeight="868"/>
+	<SubTexture name="Mickey down0017" x="2268" y="898" width="1111" height="623" frameX="-218" frameY="-245" frameWidth="1330" frameHeight="868"/>
+	<SubTexture name="Mickey down0018" x="2268" y="898" width="1111" height="623" frameX="-218" frameY="-245" frameWidth="1330" frameHeight="868"/>
+	<SubTexture name="Mickey down0019" x="2268" y="898" width="1111" height="623" frameX="-218" frameY="-245" frameWidth="1330" frameHeight="868"/>
+	<SubTexture name="Mickey down0020" x="2268" y="898" width="1111" height="623" frameX="-218" frameY="-245" frameWidth="1330" frameHeight="868"/>
+	<SubTexture name="Mickey down0021" x="2268" y="898" width="1111" height="623" frameX="-218" frameY="-245" frameWidth="1330" frameHeight="868"/>
+	<SubTexture name="Mickey down0022" x="2268" y="898" width="1111" height="623" frameX="-218" frameY="-245" frameWidth="1330" frameHeight="868"/>
+	<SubTexture name="Mickey down0023" x="2268" y="898" width="1111" height="623" frameX="-218" frameY="-245" frameWidth="1330" frameHeight="868"/>
+	<SubTexture name="Mickey down0024" x="2268" y="898" width="1111" height="623" frameX="-218" frameY="-245" frameWidth="1330" frameHeight="868"/>
+	<SubTexture name="Mickey down0025" x="2268" y="898" width="1111" height="623" frameX="-218" frameY="-245" frameWidth="1330" frameHeight="868"/>
+	<SubTexture name="Mickey down0026" x="2268" y="898" width="1111" height="623" frameX="-218" frameY="-245" frameWidth="1330" frameHeight="868"/>
+	<SubTexture name="Mickey down0027" x="2268" y="898" width="1111" height="623" frameX="-218" frameY="-245" frameWidth="1330" frameHeight="868"/>
+	<SubTexture name="Mickey idle dance0000" x="3394" y="898" width="914" height="851" frameX="-38" frameY="-252" frameWidth="952" frameHeight="1106"/>
+	<SubTexture name="Mickey idle dance0001" x="4323" y="898" width="940" height="1104" frameX="-6" frameY="-2" frameWidth="952" frameHeight="1106"/>
+	<SubTexture name="Mickey idle dance0002" x="5278" y="898" width="951" height="1104" frameX="0" frameY="0" frameWidth="952" frameHeight="1106"/>
+	<SubTexture name="Mickey idle dance0003" x="6244" y="898" width="778" height="1026" frameX="-169" frameY="-80" frameWidth="952" frameHeight="1106"/>
+	<SubTexture name="Mickey idle dance0004" x="7037" y="898" width="718" height="907" frameX="-232" frameY="-198" frameWidth="952" frameHeight="1106"/>
+	<SubTexture name="Mickey idle dance0005" x="15" y="2017" width="739" height="806" frameX="-210" frameY="-298" frameWidth="952" frameHeight="1106"/>
+	<SubTexture name="Mickey idle dance0006" x="769" y="2017" width="752" height="812" frameX="-197" frameY="-293" frameWidth="952" frameHeight="1106"/>
+	<SubTexture name="Mickey idle dance0007" x="1536" y="2017" width="754" height="812" frameX="-195" frameY="-293" frameWidth="952" frameHeight="1106"/>
+	<SubTexture name="Mickey idle dance0008" x="2305" y="2017" width="773" height="821" frameX="-176" frameY="-284" frameWidth="952" frameHeight="1106"/>
+	<SubTexture name="Mickey idle dance0009" x="3093" y="2017" width="776" height="820" frameX="-173" frameY="-285" frameWidth="952" frameHeight="1106"/>
+	<SubTexture name="Mickey idle dance0010" x="3884" y="2017" width="777" height="832" frameX="-171" frameY="-273" frameWidth="952" frameHeight="1106"/>
+	<SubTexture name="Mickey idle dance0011" x="4676" y="2017" width="777" height="832" frameX="-171" frameY="-273" frameWidth="952" frameHeight="1106"/>
+	<SubTexture name="Mickey idle dance0012" x="5468" y="2017" width="777" height="832" frameX="-171" frameY="-273" frameWidth="952" frameHeight="1106"/>
+	<SubTexture name="Mickey idle dance0013" x="6260" y="2017" width="777" height="832" frameX="-171" frameY="-273" frameWidth="952" frameHeight="1106"/>
+	<SubTexture name="Mickey idle dance0014" x="7052" y="2017" width="777" height="833" frameX="-171" frameY="-272" frameWidth="952" frameHeight="1106"/>
+	<SubTexture name="Mickey idle dance0015" x="5468" y="2017" width="777" height="832" frameX="-171" frameY="-273" frameWidth="952" frameHeight="1106"/>
+	<SubTexture name="Mickey idle dance0016" x="6260" y="2017" width="777" height="832" frameX="-171" frameY="-273" frameWidth="952" frameHeight="1106"/>
+	<SubTexture name="Mickey idle dance0017" x="7052" y="2017" width="777" height="833" frameX="-171" frameY="-272" frameWidth="952" frameHeight="1106"/>
+	<SubTexture name="Mickey idle dance0018" x="5468" y="2017" width="777" height="832" frameX="-171" frameY="-273" frameWidth="952" frameHeight="1106"/>
+	<SubTexture name="Mickey idle dance0019" x="6260" y="2017" width="777" height="832" frameX="-171" frameY="-273" frameWidth="952" frameHeight="1106"/>
+	<SubTexture name="Mickey idle dance0020" x="7052" y="2017" width="777" height="833" frameX="-171" frameY="-272" frameWidth="952" frameHeight="1106"/>
+	<SubTexture name="Mickey idle dance0021" x="5468" y="2017" width="777" height="832" frameX="-171" frameY="-273" frameWidth="952" frameHeight="1106"/>
+	<SubTexture name="Mickey idle dance0022" x="6260" y="2017" width="777" height="832" frameX="-171" frameY="-273" frameWidth="952" frameHeight="1106"/>
+	<SubTexture name="Mickey idle dance0023" x="7052" y="2017" width="777" height="833" frameX="-171" frameY="-272" frameWidth="952" frameHeight="1106"/>
+	<SubTexture name="Mickey idle dance0024" x="5468" y="2017" width="777" height="832" frameX="-171" frameY="-273" frameWidth="952" frameHeight="1106"/>
+	<SubTexture name="Mickey idle dance0025" x="6260" y="2017" width="777" height="832" frameX="-171" frameY="-273" frameWidth="952" frameHeight="1106"/>
+	<SubTexture name="Mickey idle dance0026" x="7052" y="2017" width="777" height="833" frameX="-171" frameY="-272" frameWidth="952" frameHeight="1106"/>
+	<SubTexture name="Mickey idle dance0027" x="5468" y="2017" width="777" height="832" frameX="-171" frameY="-273" frameWidth="952" frameHeight="1106"/>
+	<SubTexture name="Mickey left0000" x="15" y="2865" width="954" height="783" frameX="-492" frameY="-234" frameWidth="1467" frameHeight="1017"/>
+	<SubTexture name="Mickey left0001" x="984" y="2865" width="1172" height="786" frameX="-295" frameY="-231" frameWidth="1467" frameHeight="1017"/>
+	<SubTexture name="Mickey left0002" x="2171" y="2865" width="1173" height="789" frameX="-118" frameY="-228" frameWidth="1467" frameHeight="1017"/>
+	<SubTexture name="Mickey left0003" x="3359" y="2865" width="1290" height="948" frameX="0" frameY="-69" frameWidth="1467" frameHeight="1017"/>
+	<SubTexture name="Mickey left0004" x="4664" y="2865" width="1084" height="1017" frameX="-226" frameY="0" frameWidth="1467" frameHeight="1017"/>
+	<SubTexture name="Mickey left0005" x="4664" y="2865" width="1084" height="1017" frameX="-226" frameY="0" frameWidth="1467" frameHeight="1017"/>
+	<SubTexture name="Mickey left0006" x="5763" y="2865" width="973" height="878" frameX="-354" frameY="-139" frameWidth="1467" frameHeight="1017"/>
+	<SubTexture name="Mickey left0007" x="5763" y="2865" width="973" height="878" frameX="-354" frameY="-139" frameWidth="1467" frameHeight="1017"/>
+	<SubTexture name="Mickey left0008" x="6751" y="2865" width="914" height="799" frameX="-412" frameY="-218" frameWidth="1467" frameHeight="1017"/>
+	<SubTexture name="Mickey left0009" x="6751" y="2865" width="914" height="799" frameX="-412" frameY="-218" frameWidth="1467" frameHeight="1017"/>
+	<SubTexture name="Mickey left0010" x="15" y="3897" width="838" height="798" frameX="-488" frameY="-219" frameWidth="1467" frameHeight="1017"/>
+	<SubTexture name="Mickey left0011" x="15" y="3897" width="838" height="798" frameX="-488" frameY="-219" frameWidth="1467" frameHeight="1017"/>
+	<SubTexture name="Mickey left0012" x="868" y="3897" width="838" height="798" frameX="-488" frameY="-219" frameWidth="1467" frameHeight="1017"/>
+	<SubTexture name="Mickey left0013" x="868" y="3897" width="838" height="798" frameX="-488" frameY="-219" frameWidth="1467" frameHeight="1017"/>
+	<SubTexture name="Mickey left0014" x="868" y="3897" width="838" height="798" frameX="-488" frameY="-219" frameWidth="1467" frameHeight="1017"/>
+	<SubTexture name="Mickey left0015" x="868" y="3897" width="838" height="798" frameX="-488" frameY="-219" frameWidth="1467" frameHeight="1017"/>
+	<SubTexture name="Mickey left0016" x="868" y="3897" width="838" height="798" frameX="-488" frameY="-219" frameWidth="1467" frameHeight="1017"/>
+	<SubTexture name="Mickey left0017" x="868" y="3897" width="838" height="798" frameX="-488" frameY="-219" frameWidth="1467" frameHeight="1017"/>
+	<SubTexture name="Mickey left0018" x="868" y="3897" width="838" height="798" frameX="-488" frameY="-219" frameWidth="1467" frameHeight="1017"/>
+	<SubTexture name="Mickey left0019" x="868" y="3897" width="838" height="798" frameX="-488" frameY="-219" frameWidth="1467" frameHeight="1017"/>
+	<SubTexture name="Mickey left0020" x="868" y="3897" width="838" height="798" frameX="-488" frameY="-219" frameWidth="1467" frameHeight="1017"/>
+	<SubTexture name="Mickey left0021" x="868" y="3897" width="838" height="798" frameX="-488" frameY="-219" frameWidth="1467" frameHeight="1017"/>
+	<SubTexture name="Mickey left0022" x="868" y="3897" width="838" height="798" frameX="-488" frameY="-219" frameWidth="1467" frameHeight="1017"/>
+	<SubTexture name="Mickey left0023" x="868" y="3897" width="838" height="798" frameX="-488" frameY="-219" frameWidth="1467" frameHeight="1017"/>
+	<SubTexture name="Mickey left0024" x="868" y="3897" width="838" height="798" frameX="-488" frameY="-219" frameWidth="1467" frameHeight="1017"/>
+	<SubTexture name="Mickey left0025" x="868" y="3897" width="838" height="798" frameX="-488" frameY="-219" frameWidth="1467" frameHeight="1017"/>
+	<SubTexture name="Mickey left0026" x="868" y="3897" width="838" height="798" frameX="-488" frameY="-219" frameWidth="1467" frameHeight="1017"/>
+	<SubTexture name="Mickey left0027" x="868" y="3897" width="838" height="798" frameX="-488" frameY="-219" frameWidth="1467" frameHeight="1017"/>
+	<SubTexture name="Mickey right0000" x="1721" y="3897" width="1691" height="667" frameX="-88" frameY="-12" frameWidth="1801" frameHeight="679"/>
+	<SubTexture name="Mickey right0001" x="3427" y="3897" width="1710" height="671" frameX="-91" frameY="-8" frameWidth="1801" frameHeight="679"/>
+	<SubTexture name="Mickey right0002" x="5152" y="3897" width="1733" height="675" frameX="-33" frameY="-4" frameWidth="1801" frameHeight="679"/>
+	<SubTexture name="Mickey right0003" x="5152" y="3897" width="1733" height="675" frameX="-33" frameY="-4" frameWidth="1801" frameHeight="679"/>
+	<SubTexture name="Mickey right0004" x="15" y="4710" width="1758" height="679" frameX="0" frameY="0" frameWidth="1801" frameHeight="679"/>
+	<SubTexture name="Mickey right0005" x="15" y="4710" width="1758" height="679" frameX="0" frameY="0" frameWidth="1801" frameHeight="679"/>
+	<SubTexture name="Mickey right0006" x="1788" y="4710" width="1744" height="677" frameX="-6" frameY="-2" frameWidth="1801" frameHeight="679"/>
+	<SubTexture name="Mickey right0007" x="1788" y="4710" width="1744" height="677" frameX="-6" frameY="-2" frameWidth="1801" frameHeight="679"/>
+	<SubTexture name="Mickey right0008" x="3547" y="4710" width="1720" height="678" frameX="-33" frameY="-1" frameWidth="1801" frameHeight="679"/>
+	<SubTexture name="Mickey right0009" x="3547" y="4710" width="1720" height="678" frameX="-33" frameY="-1" frameWidth="1801" frameHeight="679"/>
+	<SubTexture name="Mickey right0010" x="5282" y="4710" width="1732" height="678" frameX="-23" frameY="-1" frameWidth="1801" frameHeight="679"/>
+	<SubTexture name="Mickey right0011" x="5282" y="4710" width="1732" height="678" frameX="-23" frameY="-1" frameWidth="1801" frameHeight="679"/>
+	<SubTexture name="Mickey right0012" x="15" y="5404" width="1732" height="678" frameX="-23" frameY="-1" frameWidth="1801" frameHeight="679"/>
+	<SubTexture name="Mickey right0013" x="15" y="5404" width="1732" height="678" frameX="-23" frameY="-1" frameWidth="1801" frameHeight="679"/>
+	<SubTexture name="Mickey right0014" x="15" y="5404" width="1732" height="678" frameX="-23" frameY="-1" frameWidth="1801" frameHeight="679"/>
+	<SubTexture name="Mickey right0015" x="15" y="5404" width="1732" height="678" frameX="-23" frameY="-1" frameWidth="1801" frameHeight="679"/>
+	<SubTexture name="Mickey right0016" x="15" y="5404" width="1732" height="678" frameX="-23" frameY="-1" frameWidth="1801" frameHeight="679"/>
+	<SubTexture name="Mickey right0017" x="15" y="5404" width="1732" height="678" frameX="-23" frameY="-1" frameWidth="1801" frameHeight="679"/>
+	<SubTexture name="Mickey right0018" x="15" y="5404" width="1732" height="678" frameX="-23" frameY="-1" frameWidth="1801" frameHeight="679"/>
+	<SubTexture name="Mickey right0019" x="15" y="5404" width="1732" height="678" frameX="-23" frameY="-1" frameWidth="1801" frameHeight="679"/>
+	<SubTexture name="Mickey right0020" x="15" y="5404" width="1732" height="678" frameX="-23" frameY="-1" frameWidth="1801" frameHeight="679"/>
+	<SubTexture name="Mickey right0021" x="15" y="5404" width="1732" height="678" frameX="-23" frameY="-1" frameWidth="1801" frameHeight="679"/>
+	<SubTexture name="Mickey right0022" x="15" y="5404" width="1732" height="678" frameX="-23" frameY="-1" frameWidth="1801" frameHeight="679"/>
+	<SubTexture name="Mickey right0023" x="15" y="5404" width="1732" height="678" frameX="-23" frameY="-1" frameWidth="1801" frameHeight="679"/>
+	<SubTexture name="Mickey right0024" x="15" y="5404" width="1732" height="678" frameX="-23" frameY="-1" frameWidth="1801" frameHeight="679"/>
+	<SubTexture name="Mickey right0025" x="15" y="5404" width="1732" height="678" frameX="-23" frameY="-1" frameWidth="1801" frameHeight="679"/>
+	<SubTexture name="Mickey right0026" x="15" y="5404" width="1732" height="678" frameX="-23" frameY="-1" frameWidth="1801" frameHeight="679"/>
+	<SubTexture name="Mickey right0027" x="15" y="5404" width="1732" height="678" frameX="-23" frameY="-1" frameWidth="1801" frameHeight="679"/>
+	<SubTexture name="Mickey up0000" x="1762" y="5404" width="806" height="1091" frameX="-91" frameY="0" frameWidth="909" frameHeight="1091"/>
+	<SubTexture name="Mickey up0001" x="2583" y="5404" width="825" height="1087" frameX="-66" frameY="-4" frameWidth="909" frameHeight="1091"/>
+	<SubTexture name="Mickey up0002" x="3423" y="5404" width="870" height="1071" frameX="-31" frameY="-19" frameWidth="909" frameHeight="1091"/>
+	<SubTexture name="Mickey up0003" x="4308" y="5404" width="884" height="1071" frameX="-17" frameY="-19" frameWidth="909" frameHeight="1091"/>
+	<SubTexture name="Mickey up0004" x="5207" y="5404" width="909" height="1061" frameX="0" frameY="-28" frameWidth="909" frameHeight="1091"/>
+	<SubTexture name="Mickey up0005" x="5207" y="5404" width="909" height="1061" frameX="0" frameY="-28" frameWidth="909" frameHeight="1091"/>
+	<SubTexture name="Mickey up0006" x="6131" y="5404" width="857" height="1056" frameX="-46" frameY="-32" frameWidth="909" frameHeight="1091"/>
+	<SubTexture name="Mickey up0007" x="6131" y="5404" width="857" height="1056" frameX="-46" frameY="-32" frameWidth="909" frameHeight="1091"/>
+	<SubTexture name="Mickey up0008" x="7003" y="5404" width="857" height="1053" frameX="-43" frameY="-35" frameWidth="909" frameHeight="1091"/>
+	<SubTexture name="Mickey up0009" x="7003" y="5404" width="857" height="1053" frameX="-43" frameY="-35" frameWidth="909" frameHeight="1091"/>
+	<SubTexture name="Mickey up0010" x="15" y="6510" width="858" height="1053" frameX="-43" frameY="-35" frameWidth="909" frameHeight="1091"/>
+	<SubTexture name="Mickey up0011" x="15" y="6510" width="858" height="1053" frameX="-43" frameY="-35" frameWidth="909" frameHeight="1091"/>
+	<SubTexture name="Mickey up0012" x="888" y="6510" width="858" height="1052" frameX="-43" frameY="-36" frameWidth="909" frameHeight="1091"/>
+	<SubTexture name="Mickey up0013" x="888" y="6510" width="858" height="1052" frameX="-43" frameY="-36" frameWidth="909" frameHeight="1091"/>
+	<SubTexture name="Mickey up0014" x="888" y="6510" width="858" height="1052" frameX="-43" frameY="-36" frameWidth="909" frameHeight="1091"/>
+	<SubTexture name="Mickey up0015" x="888" y="6510" width="858" height="1052" frameX="-43" frameY="-36" frameWidth="909" frameHeight="1091"/>
+	<SubTexture name="Mickey up0016" x="888" y="6510" width="858" height="1052" frameX="-43" frameY="-36" frameWidth="909" frameHeight="1091"/>
+	<SubTexture name="Mickey up0017" x="888" y="6510" width="858" height="1052" frameX="-43" frameY="-36" frameWidth="909" frameHeight="1091"/>
+	<SubTexture name="Mickey up0018" x="888" y="6510" width="858" height="1052" frameX="-43" frameY="-36" frameWidth="909" frameHeight="1091"/>
+	<SubTexture name="Mickey up0019" x="888" y="6510" width="858" height="1052" frameX="-43" frameY="-36" frameWidth="909" frameHeight="1091"/>
+	<SubTexture name="Mickey up0020" x="888" y="6510" width="858" height="1052" frameX="-43" frameY="-36" frameWidth="909" frameHeight="1091"/>
+	<SubTexture name="Mickey up0021" x="888" y="6510" width="858" height="1052" frameX="-43" frameY="-36" frameWidth="909" frameHeight="1091"/>
+	<SubTexture name="Mickey up0022" x="888" y="6510" width="858" height="1052" frameX="-43" frameY="-36" frameWidth="909" frameHeight="1091"/>
+	<SubTexture name="Mickey up0023" x="888" y="6510" width="858" height="1052" frameX="-43" frameY="-36" frameWidth="909" frameHeight="1091"/>
+	<SubTexture name="Mickey up0024" x="888" y="6510" width="858" height="1052" frameX="-43" frameY="-36" frameWidth="909" frameHeight="1091"/>
+	<SubTexture name="Mickey up0025" x="888" y="6510" width="858" height="1052" frameX="-43" frameY="-36" frameWidth="909" frameHeight="1091"/>
+	<SubTexture name="Mickey up0026" x="888" y="6510" width="858" height="1052" frameX="-43" frameY="-36" frameWidth="909" frameHeight="1091"/>
+	<SubTexture name="Mickey up0027" x="888" y="6510" width="858" height="1052" frameX="-43" frameY="-36" frameWidth="909" frameHeight="1091"/>
+</TextureAtlas>

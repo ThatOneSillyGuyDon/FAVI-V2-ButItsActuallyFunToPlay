@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Rain.png">
+	<!-- Created with Adobe Animate version 23.0.0.407 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Rain full0000" x="15" y="15" width="2472" height="1635" frameX="-541" frameY="-84" frameWidth="3091" frameHeight="2016"/>
+	<SubTexture name="Rain full0001" x="2502" y="15" width="2604" height="1674" frameX="-464" frameY="-185" frameWidth="3091" frameHeight="2016"/>
+	<SubTexture name="Rain full0002" x="5121" y="15" width="2320" height="1521" frameX="-669" frameY="-304" frameWidth="3091" frameHeight="2016"/>
+	<SubTexture name="Rain full0003" x="15" y="1704" width="2428" height="1777" frameX="-563" frameY="-83" frameWidth="3091" frameHeight="2016"/>
+	<SubTexture name="Rain full0004" x="2458" y="1704" width="2604" height="1702" frameX="-487" frameY="-48" frameWidth="3091" frameHeight="2016"/>
+	<SubTexture name="Rain full0005" x="5077" y="1704" width="2863" height="1907" frameX="0" frameY="0" frameWidth="3091" frameHeight="2016"/>
+	<SubTexture name="Rain full0006" x="15" y="3626" width="2390" height="1776" frameX="-394" frameY="-101" frameWidth="3091" frameHeight="2016"/>
+	<SubTexture name="Rain full0007" x="2420" y="3626" width="2537" height="1796" frameX="-302" frameY="-220" frameWidth="3091" frameHeight="2016"/>
+	<SubTexture name="Rain full0008" x="4972" y="3626" width="2578" height="1693" frameX="-183" frameY="-83" frameWidth="3091" frameHeight="2016"/>
+	<SubTexture name="Rain full0009" x="15" y="5437" width="2686" height="1583" frameX="-76" frameY="-184" frameWidth="3091" frameHeight="2016"/>
+</TextureAtlas>

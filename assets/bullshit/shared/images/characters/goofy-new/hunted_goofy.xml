@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="hunted goofy.png">
+	<!-- Created with Adobe Animate version 21.0.6.41649 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="DownHuntedGoofy0000" x="0" y="0" width="462" height="677" frameX="-10" frameY="0" frameWidth="472" frameHeight="677"/>
+	<SubTexture name="DownHuntedGoofy0001" x="0" y="0" width="462" height="677" frameX="-10" frameY="0" frameWidth="472" frameHeight="677"/>
+	<SubTexture name="DownHuntedGoofy0002" x="0" y="0" width="462" height="677" frameX="-10" frameY="0" frameWidth="472" frameHeight="677"/>
+	<SubTexture name="DownHuntedGoofy0003" x="462" y="0" width="436" height="675" frameX="0" frameY="-2" frameWidth="472" frameHeight="677"/>
+	<SubTexture name="DownHuntedGoofy0004" x="462" y="0" width="436" height="675" frameX="0" frameY="-2" frameWidth="472" frameHeight="677"/>
+	<SubTexture name="DownHuntedGoofy0005" x="462" y="0" width="436" height="675" frameX="0" frameY="-2" frameWidth="472" frameHeight="677"/>
+	<SubTexture name="DownHuntedGoofy0006" x="898" y="0" width="423" height="665" frameX="-10" frameY="-12" frameWidth="472" frameHeight="677"/>
+	<SubTexture name="DownHuntedGoofy0007" x="898" y="0" width="423" height="665" frameX="-10" frameY="-12" frameWidth="472" frameHeight="677"/>
+	<SubTexture name="DownHuntedGoofy0008" x="898" y="0" width="423" height="665" frameX="-10" frameY="-12" frameWidth="472" frameHeight="677"/>
+	<SubTexture name="DownHuntedGoofy0009" x="1321" y="0" width="422" height="664" frameX="-11" frameY="-13" frameWidth="472" frameHeight="677"/>
+	<SubTexture name="DownHuntedGoofy0010" x="1321" y="0" width="422" height="664" frameX="-11" frameY="-13" frameWidth="472" frameHeight="677"/>
+	<SubTexture name="DownHuntedGoofy0011" x="1321" y="0" width="422" height="664" frameX="-11" frameY="-13" frameWidth="472" frameHeight="677"/>
+	<SubTexture name="DownHuntedGoofy0012" x="1321" y="0" width="422" height="664" frameX="-11" frameY="-13" frameWidth="472" frameHeight="677"/>
+	<SubTexture name="DownHuntedGoofy0013" x="1321" y="0" width="422" height="664" frameX="-11" frameY="-13" frameWidth="472" frameHeight="677"/>
+	<SubTexture name="DownHuntedGoofy0014" x="1321" y="0" width="422" height="664" frameX="-11" frameY="-13" frameWidth="472" frameHeight="677"/>
+	<SubTexture name="DownHuntedGoofy0015" x="1321" y="0" width="422" height="664" frameX="-11" frameY="-13" frameWidth="472" frameHeight="677"/>
+	<SubTexture name="IdleHuntedGoofy0000" x="1743" y="0" width="396" height="673" frameX="0" frameY="-37" frameWidth="400" frameHeight="711"/>
+	<SubTexture name="IdleHuntedGoofy0001" x="1743" y="0" width="396" height="673" frameX="0" frameY="-37" frameWidth="400" frameHeight="711"/>
+	<SubTexture name="IdleHuntedGoofy0002" x="1743" y="0" width="396" height="673" frameX="0" frameY="-37" frameWidth="400" frameHeight="711"/>
+	<SubTexture name="IdleHuntedGoofy0003" x="2139" y="0" width="393" height="696" frameX="-5" frameY="-14" frameWidth="400" frameHeight="711"/>
+	<SubTexture name="IdleHuntedGoofy0004" x="2139" y="0" width="393" height="696" frameX="-5" frameY="-14" frameWidth="400" frameHeight="711"/>
+	<SubTexture name="IdleHuntedGoofy0005" x="2139" y="0" width="393" height="696" frameX="-5" frameY="-14" frameWidth="400" frameHeight="711"/>
+	<SubTexture name="IdleHuntedGoofy0006" x="2532" y="0" width="390" height="708" frameX="-10" frameY="-3" frameWidth="400" frameHeight="711"/>
+	<SubTexture name="IdleHuntedGoofy0007" x="2532" y="0" width="390" height="708" frameX="-10" frameY="-3" frameWidth="400" frameHeight="711"/>
+	<SubTexture name="IdleHuntedGoofy0008" x="2532" y="0" width="390" height="708" frameX="-10" frameY="-3" frameWidth="400" frameHeight="711"/>
+	<SubTexture name="IdleHuntedGoofy0009" x="2922" y="0" width="390" height="710" frameX="-10" frameY="-1" frameWidth="400" frameHeight="711"/>
+	<SubTexture name="IdleHuntedGoofy0010" x="2922" y="0" width="390" height="710" frameX="-10" frameY="-1" frameWidth="400" frameHeight="711"/>
+	<SubTexture name="IdleHuntedGoofy0011" x="2922" y="0" width="390" height="710" frameX="-10" frameY="-1" frameWidth="400" frameHeight="711"/>
+	<SubTexture name="IdleHuntedGoofy0012" x="2922" y="0" width="390" height="710" frameX="-10" frameY="0" frameWidth="400" frameHeight="711"/>
+	<SubTexture name="IdleHuntedGoofy0013" x="2922" y="0" width="390" height="710" frameX="-10" frameY="0" frameWidth="400" frameHeight="711"/>
+	<SubTexture name="IdleHuntedGoofy0014" x="2922" y="0" width="390" height="710" frameX="-10" frameY="0" frameWidth="400" frameHeight="711"/>
+	<SubTexture name="IdleHuntedGoofy0015" x="2922" y="0" width="390" height="710" frameX="-10" frameY="0" frameWidth="400" frameHeight="711"/>
+	<SubTexture name="IdleHuntedGoofy0016" x="2922" y="0" width="390" height="710" frameX="-10" frameY="0" frameWidth="400" frameHeight="711"/>
+	<SubTexture name="IdleHuntedGoofy0017" x="2922" y="0" width="390" height="710" frameX="-10" frameY="0" frameWidth="400" frameHeight="711"/>
+	<SubTexture name="IdleHuntedGoofy0018" x="3312" y="0" width="392" height="698" frameX="-5" frameY="-13" frameWidth="400" frameHeight="711"/>
+	<SubTexture name="LeftHuntedGoofy0000" x="0" y="710" width="481" height="717"/>
+	<SubTexture name="LeftHuntedGoofy0001" x="0" y="710" width="481" height="717"/>
+	<SubTexture name="LeftHuntedGoofy0002" x="0" y="710" width="481" height="717"/>
+	<SubTexture name="LeftHuntedGoofy0003" x="481" y="710" width="475" height="712" frameX="-6" frameY="-5" frameWidth="481" frameHeight="717"/>
+	<SubTexture name="LeftHuntedGoofy0004" x="481" y="710" width="475" height="712" frameX="-6" frameY="-5" frameWidth="481" frameHeight="717"/>
+	<SubTexture name="LeftHuntedGoofy0005" x="481" y="710" width="475" height="712" frameX="-6" frameY="-5" frameWidth="481" frameHeight="717"/>
+	<SubTexture name="LeftHuntedGoofy0006" x="956" y="710" width="475" height="710" frameX="-6" frameY="-7" frameWidth="481" frameHeight="717"/>
+	<SubTexture name="LeftHuntedGoofy0007" x="956" y="710" width="475" height="710" frameX="-6" frameY="-7" frameWidth="481" frameHeight="717"/>
+	<SubTexture name="LeftHuntedGoofy0008" x="956" y="710" width="475" height="710" frameX="-6" frameY="-7" frameWidth="481" frameHeight="717"/>
+	<SubTexture name="LeftHuntedGoofy0009" x="956" y="710" width="475" height="710" frameX="-6" frameY="-7" frameWidth="481" frameHeight="717"/>
+	<SubTexture name="LeftHuntedGoofy0010" x="956" y="710" width="475" height="710" frameX="-6" frameY="-7" frameWidth="481" frameHeight="717"/>
+	<SubTexture name="LeftHuntedGoofy0011" x="956" y="710" width="475" height="710" frameX="-6" frameY="-7" frameWidth="481" frameHeight="717"/>
+	<SubTexture name="LeftHuntedGoofy0012" x="956" y="710" width="475" height="710" frameX="-6" frameY="-7" frameWidth="481" frameHeight="717"/>
+	<SubTexture name="LeftHuntedGoofy0013" x="956" y="710" width="475" height="710" frameX="-6" frameY="-7" frameWidth="481" frameHeight="717"/>
+	<SubTexture name="LeftHuntedGoofy0014" x="956" y="710" width="475" height="710" frameX="-6" frameY="-7" frameWidth="481" frameHeight="717"/>
+	<SubTexture name="RightHuntedGoofy0000" x="1431" y="710" width="501" height="596" frameX="0" frameY="-2" frameWidth="519" frameHeight="600"/>
+	<SubTexture name="RightHuntedGoofy0001" x="1431" y="710" width="501" height="596" frameX="0" frameY="-2" frameWidth="519" frameHeight="600"/>
+	<SubTexture name="RightHuntedGoofy0002" x="1431" y="710" width="501" height="596" frameX="0" frameY="-2" frameWidth="519" frameHeight="600"/>
+	<SubTexture name="RightHuntedGoofy0003" x="1932" y="710" width="492" height="598" frameX="-1" frameY="0" frameWidth="519" frameHeight="600"/>
+	<SubTexture name="RightHuntedGoofy0004" x="1932" y="710" width="492" height="598" frameX="-1" frameY="0" frameWidth="519" frameHeight="600"/>
+	<SubTexture name="RightHuntedGoofy0005" x="1932" y="710" width="492" height="598" frameX="-1" frameY="0" frameWidth="519" frameHeight="600"/>
+	<SubTexture name="RightHuntedGoofy0006" x="2424" y="710" width="493" height="598" frameX="0" frameY="0" frameWidth="519" frameHeight="600"/>
+	<SubTexture name="RightHuntedGoofy0007" x="2424" y="710" width="493" height="598" frameX="0" frameY="0" frameWidth="519" frameHeight="600"/>
+	<SubTexture name="RightHuntedGoofy0008" x="2424" y="710" width="493" height="598" frameX="0" frameY="0" frameWidth="519" frameHeight="600"/>
+	<SubTexture name="RightHuntedGoofy0009" x="2424" y="710" width="493" height="598" frameX="0" frameY="0" frameWidth="519" frameHeight="600"/>
+	<SubTexture name="RightHuntedGoofy0010" x="2424" y="710" width="493" height="598" frameX="0" frameY="0" frameWidth="519" frameHeight="600"/>
+	<SubTexture name="RightHuntedGoofy0011" x="2424" y="710" width="493" height="598" frameX="0" frameY="0" frameWidth="519" frameHeight="600"/>
+	<SubTexture name="RightHuntedGoofy0012" x="2424" y="710" width="493" height="598" frameX="0" frameY="0" frameWidth="519" frameHeight="600"/>
+	<SubTexture name="RightHuntedGoofy0013" x="2424" y="710" width="493" height="598" frameX="0" frameY="0" frameWidth="519" frameHeight="600"/>
+	<SubTexture name="RightHuntedGoofy0014" x="2424" y="710" width="493" height="598" frameX="0" frameY="0" frameWidth="519" frameHeight="600"/>
+	<SubTexture name="RightHuntedGoofy0015" x="2424" y="710" width="493" height="598" frameX="0" frameY="0" frameWidth="519" frameHeight="600"/>
+	<SubTexture name="RightHuntedGoofy0016" x="2917" y="710" width="511" height="554" frameX="-8" frameY="-46" frameWidth="519" frameHeight="600"/>
+	<SubTexture name="RightHuntedGoofy0017" x="2917" y="710" width="511" height="554" frameX="-8" frameY="-46" frameWidth="519" frameHeight="600"/>
+	<SubTexture name="RightHuntedGoofy0018" x="3428" y="710" width="506" height="555" frameX="-10" frameY="-45" frameWidth="519" frameHeight="600"/>
+	<SubTexture name="UpGoofyHunted0000" x="0" y="1427" width="332" height="693" frameX="-38" frameY="0" frameWidth="388" frameHeight="693"/>
+	<SubTexture name="UpGoofyHunted0001" x="0" y="1427" width="332" height="693" frameX="-38" frameY="0" frameWidth="388" frameHeight="693"/>
+	<SubTexture name="UpGoofyHunted0002" x="0" y="1427" width="332" height="693" frameX="-38" frameY="0" frameWidth="388" frameHeight="693"/>
+	<SubTexture name="UpGoofyHunted0003" x="332" y="1427" width="366" height="670" frameX="-18" frameY="-23" frameWidth="388" frameHeight="693"/>
+	<SubTexture name="UpGoofyHunted0004" x="332" y="1427" width="366" height="670" frameX="-18" frameY="-23" frameWidth="388" frameHeight="693"/>
+	<SubTexture name="UpGoofyHunted0005" x="332" y="1427" width="366" height="670" frameX="-18" frameY="-23" frameWidth="388" frameHeight="693"/>
+	<SubTexture name="UpGoofyHunted0006" x="698" y="1427" width="369" height="670" frameX="-16" frameY="-23" frameWidth="388" frameHeight="693"/>
+	<SubTexture name="UpGoofyHunted0007" x="698" y="1427" width="369" height="670" frameX="-16" frameY="-23" frameWidth="388" frameHeight="693"/>
+	<SubTexture name="UpGoofyHunted0008" x="698" y="1427" width="369" height="670" frameX="-16" frameY="-23" frameWidth="388" frameHeight="693"/>
+	<SubTexture name="UpGoofyHunted0009" x="1067" y="1427" width="365" height="669" frameX="-18" frameY="-24" frameWidth="388" frameHeight="693"/>
+	<SubTexture name="UpGoofyHunted0010" x="1067" y="1427" width="365" height="669" frameX="-18" frameY="-24" frameWidth="388" frameHeight="693"/>
+	<SubTexture name="UpGoofyHunted0011" x="1067" y="1427" width="365" height="669" frameX="-18" frameY="-24" frameWidth="388" frameHeight="693"/>
+	<SubTexture name="UpGoofyHunted0012" x="1067" y="1427" width="365" height="669" frameX="-18" frameY="-24" frameWidth="388" frameHeight="693"/>
+	<SubTexture name="UpGoofyHunted0013" x="1067" y="1427" width="365" height="669" frameX="-18" frameY="-24" frameWidth="388" frameHeight="693"/>
+	<SubTexture name="UpGoofyHunted0014" x="1067" y="1427" width="365" height="669" frameX="-18" frameY="-24" frameWidth="388" frameHeight="693"/>
+	<SubTexture name="UpGoofyHunted0015" x="1067" y="1427" width="365" height="669" frameX="-18" frameY="-24" frameWidth="388" frameHeight="693"/>
+	<SubTexture name="UpGoofyHunted0016" x="1067" y="1427" width="365" height="669" frameX="-18" frameY="-24" frameWidth="388" frameHeight="693"/>
+	<SubTexture name="UpGoofyHunted0017" x="1432" y="1427" width="388" height="670" frameX="0" frameY="-23" frameWidth="388" frameHeight="693"/>
+</TextureAtlas>

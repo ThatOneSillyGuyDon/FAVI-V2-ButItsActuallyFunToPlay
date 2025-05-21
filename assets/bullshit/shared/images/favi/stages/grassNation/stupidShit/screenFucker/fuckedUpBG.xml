@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="fuckedUpBG.png">
+<SubTexture name="bg20000" x="0" y="0" width="1500" height="658" frameX="0" frameY="0" frameWidth="1500" frameHeight="658" />
+<SubTexture name="bg30000" x="0" y="658" width="1500" height="658" frameX="0" frameY="0" frameWidth="1500" frameHeight="658" />
+<SubTexture name="bg40000" x="1500" y="0" width="1500" height="658" frameX="0" frameY="0" frameWidth="1500" frameHeight="658" />
+<SubTexture name="bg10000" x="1500" y="658" width="1500" height="658" frameX="0" frameY="0" frameWidth="1500" frameHeight="658" />
+</TextureAtlas>

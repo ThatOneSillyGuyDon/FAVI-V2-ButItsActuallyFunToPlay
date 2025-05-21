@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				94,
+				-2
+			],
+			"indices": [],
+			"fps": 10,
+			"anim": "idle",
+			"loop": false,
+			"name": "WhisleMick Idle"
+		},
+		{
+			"offsets": [
+				95,
+				-19
+			],
+			"indices": [],
+			"fps": 10,
+			"anim": "singUP",
+			"loop": false,
+			"name": "WhisleMick UpPose"
+		},
+		{
+			"offsets": [
+				95,
+				0
+			],
+			"indices": [],
+			"fps": 10,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "WhisleMick DownPose"
+		},
+		{
+			"offsets": [
+				104,
+				6
+			],
+			"indices": [],
+			"fps": 10,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "WhisleMick RightPose"
+		},
+		{
+			"offsets": [
+				93,
+				0
+			],
+			"indices": [],
+			"fps": 10,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "WhisleMick LeftPose"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/WhisleMick",
+	"position": [
+		320,
+		520
+	],
+	"healthicon": "avier",
+	"flip_x": false,
+	"healthbar_colors": [
+		216,
+		216,
+		216
+	],
+	"camera_position": [
+		315,
+		320
+	],
+	"sing_duration": 6.1,
+	"scale": 0.6
+}

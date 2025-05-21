@@ -890,12 +890,28 @@ class PlayState extends MusicBeatState
 		reloadHealthBarColors();
 
 		scoreTxt = new FlxText(0, ((curStage == "menuSongs" || curStage == "waltRoom") ? (ClientPrefs.data.downScroll ? 15 : 675) : healthBarBG.y + 36), FlxG.width, "", 20);
-		scoreTxt.setFormat(Paths.font("DisneyFont.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		scoreTxt.setFormat(Paths.font("DisneyFont.ttf"), (CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-legacy') || CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-old') || CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-beta')  ? 28 : 20), FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
 		scoreTxt.borderSize = 1.25;
 		scoreTxt.visible = !ClientPrefs.data.hideHud;
 		updateScore(false);
 		uiGroup.add(scoreTxt);
+
+		if (CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-legacy') || CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-old') || CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-beta'))
+		{
+		#if desktop
+			var peWatermark:FlxText = new FlxText(5, FlxG.height - 29, 0, "", 16);
+			peWatermark.setFormat(Paths.font("DisneyFont.ttf"), 28, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			peWatermark.scrollFactor.set();
+			peWatermark.text = 'Funkin.avi | $curSong (Hard)';
+			peWatermark.cameras = [camOther];
+			add(peWatermark);
+		#end
+			var SCALEdebugText:FlxText = new FlxText(10,10,200,"Default scale mode (ratio)");
+			SCALEdebugText.scrollFactor.set(0,0);
+			SCALEdebugText.cameras = [camOther];
+			add(SCALEdebugText);
+		}
 
 		if (curStage == 'vaultRoom') iconP2.blend = ADD;
 
@@ -932,14 +948,16 @@ class PlayState extends MusicBeatState
 		watermarkTxt.setBorderStyle(OUTLINE, FlxColor.BLACK, 2);
 		if (ClientPrefs.data.downScroll) watermarkTxt.setPosition(0, 655); else watermarkTxt.setPosition(0, 8);
 		watermarkTxt.screenCenter(X);
-		uiGroup.add(watermarkTxt);
+		if (!CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-legacy') || !CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-old') || !CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-beta'))
+			uiGroup.add(watermarkTxt);
 
 		songTxt = new FlxText(watermarkTxt.x, watermarkTxt.y + 30, 1280, (SONG.song == "Dont Cross" ? "Don't Cross!" : '$infoDisplay'));
 		songTxt.setFormat(Paths.font('DisneyFont.ttf'), 22, FlxColor.WHITE, CENTER);
 		songTxt.setBorderStyle(OUTLINE, FlxColor.BLACK, 2);
 		songTxt.alpha = 0.6;
 		songTxt.screenCenter(X);
-		uiGroup.add(songTxt);
+		if (!CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-legacy') || !CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-old') || !CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-beta'))
+			uiGroup.add(songTxt);
 
 		if (curStage == "menuSongs")
 		{
@@ -1796,9 +1814,10 @@ class PlayState extends MusicBeatState
 		if (ret == LuaUtils.Function_Stop)
 			return;
 
-		scoreTxt.text = 'Score: ' + songScore
-		+ ' | Combo Breaks: ' + songMisses
-		+ ' | Rank: ' + (ratingName != '?' ? '$ratingFC (${CoolUtil.floorDecimal(ratingPercent * 100, 2)}%)' : '?');
+		if (CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-legacy') || CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-old') || CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-beta'))
+			scoreTxt.text = 'Score: ' + songScore + ' | Misses: ' + songMisses + ' | Accuracy: ' + CoolUtil.floorDecimal(ratingPercent * 100, 2) + '% ' + ' [' + (ratingName != '?' ? '$ratingFC' : '?') + ']';//peeps wanted no integer rating
+		else
+			scoreTxt.text = 'Score: ' + songScore + ' | Combo Breaks: ' + songMisses + ' | Rank: ' + (ratingName != '?' ? '$ratingFC (${CoolUtil.floorDecimal(ratingPercent * 100, 2)}%)' : '?');
 
 		if (!miss && !cpuControlled)
 			doScoreBop();

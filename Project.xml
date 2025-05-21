@@ -74,6 +74,9 @@
 	<library name="videos"        preload="true" if="VIDEOS_ALLOWED"/>
 	<library name="songs"         preload="true" />
 
+	<assets path="assets/bullshit/shared" rename="assets/shared" embed='true'/> 
+	<assets path="assets/bullshit/songs" rename="assets/songs" library="songs" embed='true'/>
+
 	<define name="CHECK_FOR_UPDATES" if="desktop officialBuild"/>
 
 	<assets path='art/readme.txt' rename='do NOT readme.txt' />

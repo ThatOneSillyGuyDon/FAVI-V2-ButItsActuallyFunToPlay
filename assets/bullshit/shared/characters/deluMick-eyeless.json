@@ -1,0 +1,96 @@
+{
+	"animations": [
+		{
+			"loop": true,
+			"offsets": [
+				-88,
+				-29
+			],
+			"anim": "idle-loop",
+			"fps": 20,
+			"name": "Mickey idle dance",
+			"indices": [
+				10,
+				11,
+				12,
+				13,
+				14,
+				15
+			]
+		},
+		{
+			"loop": false,
+			"offsets": [
+				174,
+				-92
+			],
+			"anim": "singLEFT",
+			"fps": 20,
+			"name": "Mickey left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-184,
+				-46
+			],
+			"anim": "singUP",
+			"fps": 20,
+			"name": "Mickey up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-20,
+				-434
+			],
+			"anim": "singRIGHT",
+			"fps": 20,
+			"name": "Mickey right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-87,
+				-30
+			],
+			"anim": "idle",
+			"fps": 20,
+			"name": "Mickey idle dance",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				20,
+				-250
+			],
+			"anim": "singDOWN",
+			"fps": 20,
+			"name": "Mickey down",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/NEW_DELU_EYELESS",
+	"position": [
+		-450,
+		-280
+	],
+	"healthicon": "deluavier",
+	"flip_x": false,
+	"healthbar_colors": [
+		61,
+		61,
+		61
+	],
+	"camera_position": [
+		110,
+		150
+	],
+	"sing_duration": 6.1,
+	"scale": 1
+}

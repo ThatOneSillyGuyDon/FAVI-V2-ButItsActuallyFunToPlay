@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "idle",
+			"fps": 13,
+			"name": "mouse idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singLEFT",
+			"fps": 13,
+			"name": "mouse left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singDOWN",
+			"fps": 13,
+			"name": "mouse down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singUP",
+			"fps": 13,
+			"name": "mouse up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singRIGHT",
+			"fps": 13,
+			"name": "mouse right",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/literal-mouse/mouse",
+	"position": [
+		-550,
+		30
+	],
+	"healthicon": "mouse",
+	"flip_x": true,
+	"healthbar_colors": [
+		93,
+		109,
+		152
+	],
+	"camera_position": [
+		450,
+		350
+	],
+	"sing_duration": 6.1,
+	"scale": 0.4
+}

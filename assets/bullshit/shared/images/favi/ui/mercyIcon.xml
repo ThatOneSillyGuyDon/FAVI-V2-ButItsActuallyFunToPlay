@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="mercyIcon.png">
+<SubTexture name="full0000" x="480" y="127" width="115" height="125" frameX="-25" frameY="-14" frameWidth="156" frameHeight="138" />
+<SubTexture name="full0001" x="480" y="252" width="117" height="125" frameX="-26" frameY="-13" frameWidth="156" frameHeight="138" />
+<SubTexture name="full0002" x="361" y="129" width="117" height="127" frameX="-24" frameY="-12" frameWidth="156" frameHeight="138" />
+<SubTexture name="hmm0000" x="243" y="132" width="115" height="125" frameX="-25" frameY="-14" frameWidth="156" frameHeight="138" />
+<SubTexture name="hmm0001" x="361" y="262" width="117" height="125" frameX="-26" frameY="-13" frameWidth="156" frameHeight="138" />
+<SubTexture name="hmm0002" x="242" y="262" width="119" height="127" frameX="-24" frameY="-12" frameWidth="156" frameHeight="138" />
+<SubTexture name="halfway0000" x="480" y="0" width="121" height="127" frameX="-22" frameY="-12" frameWidth="156" frameHeight="138" />
+<SubTexture name="halfway0001" x="122" y="132" width="121" height="129" frameX="-23" frameY="-9" frameWidth="156" frameHeight="138" />
+<SubTexture name="halfway0002" x="0" y="132" width="122" height="130" frameX="-20" frameY="-9" frameWidth="156" frameHeight="138" />
+<SubTexture name="thatsBad0000" x="361" y="0" width="119" height="129" frameX="-23" frameY="-10" frameWidth="156" frameHeight="138" />
+<SubTexture name="thatsBad0001" x="0" y="262" width="121" height="129" frameX="-22" frameY="-9" frameWidth="156" frameHeight="138" />
+<SubTexture name="thatsBad0002" x="119" y="0" width="123" height="131" frameX="-22" frameY="-8" frameWidth="156" frameHeight="138" />
+<SubTexture name="almostOut0000" x="0" y="0" width="119" height="132" frameX="-24" frameY="-8" frameWidth="156" frameHeight="138" />
+<SubTexture name="almostOut0001" x="121" y="262" width="121" height="128" frameX="-23" frameY="-10" frameWidth="156" frameHeight="138" />
+<SubTexture name="almostOut0002" x="242" y="0" width="119" height="131" frameX="-23" frameY="-9" frameWidth="156" frameHeight="138" />
+<SubTexture name="empty0000" x="259" y="391" width="129" height="122" frameX="-19" frameY="-17" frameWidth="156" frameHeight="138" />
+<SubTexture name="empty0001" x="130" y="391" width="129" height="125" frameX="-19" frameY="-15" frameWidth="156" frameHeight="138" />
+<SubTexture name="empty0002" x="0" y="391" width="130" height="126" frameX="-20" frameY="-15" frameWidth="156" frameHeight="138" />
+</TextureAtlas>

@@ -1,0 +1,281 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-400,
+				-160
+			],
+			"loop": false,
+			"fps": 6,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "left1"
+		},
+		{
+			"offsets": [
+				-400,
+				-160
+			],
+			"loop": false,
+			"fps": 6,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down1"
+		},
+		{
+			"offsets": [
+				-400,
+				-160
+			],
+			"loop": false,
+			"fps": 6,
+			"anim": "singUP",
+			"indices": [],
+			"name": "up1"
+		},
+		{
+			"offsets": [
+				-400,
+				-160
+			],
+			"loop": false,
+			"fps": 6,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right1"
+		},
+		{
+			"offsets": [
+				-400,
+				-160
+			],
+			"loop": false,
+			"fps": 5,
+			"anim": "laughter",
+			"indices": [],
+			"name": "laugh"
+		},
+		{
+			"offsets": [
+				-400,
+				-160
+			],
+			"loop": false,
+			"fps": 9,
+			"anim": "leSpin",
+			"indices": [],
+			"name": "transition"
+		},
+		{
+			"offsets": [
+				-400,
+				-160
+			],
+			"loop": false,
+			"fps": 6,
+			"anim": "singLEFT-alt",
+			"indices": [],
+			"name": "left2"
+		},
+		{
+			"offsets": [
+				-400,
+				-160
+			],
+			"loop": false,
+			"fps": 6,
+			"anim": "singDOWN-alt",
+			"indices": [],
+			"name": "down2"
+		},
+		{
+			"offsets": [
+				-400,
+				-160
+			],
+			"loop": false,
+			"fps": 6,
+			"anim": "singRIGHT-alt",
+			"indices": [],
+			"name": "right2"
+		},
+		{
+			"offsets": [
+				-400,
+				-160
+			],
+			"loop": false,
+			"fps": 6,
+			"anim": "singUP-alt",
+			"indices": [],
+			"name": "up2"
+		},
+		{
+			"offsets": [
+				-400,
+				-160
+			],
+			"loop": false,
+			"fps": 6,
+			"anim": "sittingDown",
+			"indices": [],
+			"name": "introDialogue"
+		},
+		{
+			"offsets": [
+				-400,
+				-160
+			],
+			"loop": false,
+			"fps": 6,
+			"anim": "satDown",
+			"indices": [],
+			"name": "idleDialogue"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-400,
+				-160
+			],
+			"anim": "attack",
+			"fps": 9,
+			"name": "shoot",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-400,
+				-160
+			],
+			"anim": "laughterFast",
+			"fps": 10,
+			"name": "laugh",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-400,
+				-160
+			],
+			"anim": "dialogueLaughFast",
+			"fps": 11,
+			"name": "dialogueLaugh",
+			"indices": []
+		},
+		{
+			"offsets": [
+				-400,
+				-160
+			],
+			"loop": false,
+			"fps": 6,
+			"anim": "grinning",
+			"indices": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				3,
+				4,
+				5,
+				6,
+				3,
+				4,
+				5,
+				6,
+				3,
+				4,
+				5,
+				6
+			],
+			"name": "grinDialogue"
+		},
+		{
+			"loop": true,
+			"offsets": [
+				-400,
+				-160
+			],
+			"anim": "idle",
+			"fps": 5,
+			"name": "idle1",
+			"indices": []
+		},
+		{
+			"loop": true,
+			"offsets": [
+				-400,
+				-160
+			],
+			"anim": "idle-talk",
+			"fps": 6,
+			"name": "idleDialogue",
+			"indices": [
+				1,
+				2,
+				3,
+				4,
+				5
+			]
+		},
+		{
+			"offsets": [
+				-400,
+				-160
+			],
+			"indices": [
+				0,
+				1,
+				2,
+				3
+			],
+			"fps": 5,
+			"anim": "idle-alt",
+			"loop": true,
+			"name": "idle2"
+		},
+		{
+			"offsets": [
+				-400,
+				-160
+			],
+			"indices": [
+				0,
+				1,
+				1,
+				1,
+				1,
+				1
+			],
+			"fps": 6,
+			"anim": "dialogueLaugh",
+			"loop": false,
+			"name": "dialogueLaugh"
+		}
+	],
+	"no_antialiasing": true,
+	"image": "characters/relapseNew",
+	"position": [
+		-80,
+		180
+	],
+	"healthicon": "relapseNEW-pixel",
+	"flip_x": false,
+	"healthbar_colors": [
+		0,
+		0,
+		0
+	],
+	"camera_position": [
+		-20,
+		-440
+	],
+	"sing_duration": 6.1,
+	"scale": 6
+}

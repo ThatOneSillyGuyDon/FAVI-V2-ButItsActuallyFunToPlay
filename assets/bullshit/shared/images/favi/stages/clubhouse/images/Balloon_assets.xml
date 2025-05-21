@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Free texture packer v0.6.7 http://free-tex-packer.com
+-->
+<TextureAtlas imagePath="Balloon_assets.png" width="3710" height="4613">
+  <SubTexture name="idle00010.png" x="0" y="0"  width="821" height="1540" frameX="-260" frameY="-261" frameWidth="1358" frameHeight="1840"/>
+  <SubTexture name="idle00011.png" x="0" y="1540"  width="871" height="1540" frameX="-260" frameY="-261" frameWidth="1358" frameHeight="1840"/>
+  <SubTexture name="idle0009.png" x="0" y="3080"  width="821" height="1533" frameX="-260" frameY="-268" frameWidth="1358" frameHeight="1840"/>
+  <SubTexture name="idle00015.png" x="821" y="0"  width="741" height="1520" frameX="-260" frameY="-281" frameWidth="1358" frameHeight="1840"/>
+  <SubTexture name="idle00016.png" x="821" y="3080"  width="738" height="1520" frameX="-260" frameY="-281" frameWidth="1358" frameHeight="1840"/>
+  <SubTexture name="idle00013.png" x="1562" y="0"  width="882" height="1498" frameX="-260" frameY="-303" frameWidth="1358" frameHeight="1840"/>
+  <SubTexture name="idle00014.png" x="871" y="1520"  width="851" height="1496" frameX="-260" frameY="-305" frameWidth="1358" frameHeight="1840"/>
+  <SubTexture name="idle0007.png" x="2444" y="0"  width="711" height="1496" frameX="-260" frameY="-305" frameWidth="1358" frameHeight="1840"/>
+  <SubTexture name="idle0008.png" x="1559" y="3016"  width="711" height="1496" frameX="-260" frameY="-305" frameWidth="1358" frameHeight="1840"/>
+  <SubTexture name="idle0001.png" x="2444" y="1496"  width="555" height="1492" frameX="-239" frameY="-309" frameWidth="1358" frameHeight="1840"/>
+  <SubTexture name="idle0002.png" x="3155" y="0"  width="555" height="1492" frameX="-239" frameY="-309" frameWidth="1358" frameHeight="1840"/>
+  <SubTexture name="idle0003.png" x="2999" y="1496"  width="551" height="1477" frameX="-202" frameY="-326" frameWidth="1358" frameHeight="1840"/>
+  <SubTexture name="idle0005.png" x="1722" y="1498"  width="550" height="1465" frameX="-206" frameY="-336" frameWidth="1358" frameHeight="1840"/>
+  <SubTexture name="idle00012.png" x="0" y="1540"  width="871" height="1540" frameX="-260" frameY="-261" frameWidth="1358" frameHeight="1840"/>
+  <SubTexture name="idle0004.png" x="2999" y="1496"  width="551" height="1477" frameX="-202" frameY="-326" frameWidth="1358" frameHeight="1840"/>
+  <SubTexture name="idle0006.png" x="1722" y="1498"  width="550" height="1465" frameX="-206" frameY="-336" frameWidth="1358" frameHeight="1840"/>
+</TextureAtlas>

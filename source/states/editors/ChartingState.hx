@@ -427,10 +427,7 @@ class ChartingState extends MusicBeatState
 
 		var reloadSongJson:FlxButton = new FlxButton(reloadSong.x, saveButton.y + 30, "Reload JSON", function()
 		{
-			openSubState(new Prompt('This action will clear current progress.\n\nProceed?', 0, function() {
-				loadJson(_song.song.toLowerCase());
-			},
-			null, ignoreWarnings));
+			openSubState(new Prompt('This action will clear all unsaved progress or data here.\n\nProceed?', 0, function(){loadJson(_song.song.toLowerCase()); }, null,ignoreWarnings));
 		});
 
 		var loadAutosaveBtn:FlxButton = new FlxButton(reloadSongJson.x, reloadSongJson.y + 30, 'Load Autosave', function()
@@ -3125,17 +3122,18 @@ class ChartingState extends MusicBeatState
 	var missingTextTimer:FlxTimer;
 	function loadJson(song:String):Void
 	{
-		//shitty null fix, i fucking hate it when this happens
-		//make it look sexier if possible
 		try {
-			if (Difficulty.getString() != Difficulty.getDefault()) {
-				if(Difficulty.getString() == null){
+			//shitty null fix, i fucking hate it when this happens
+			//make it look sexier if possible
+			if (Difficulty.difficulties[PlayState.storyDifficulty] != Difficulty.defaultDifficulty) {
+				if(Difficulty.difficulties[PlayState.storyDifficulty] == null){
 					PlayState.SONG = Song.loadFromJson(song.toLowerCase(), song.toLowerCase());
 				}else{
-					PlayState.SONG = Song.loadFromJson(song.toLowerCase() + "-" + Difficulty.getString(), song.toLowerCase());
+					PlayState.SONG = Song.loadFromJson(song.toLowerCase() + "-" + Difficulty.difficulties[PlayState.storyDifficulty], song.toLowerCase());
 				}
+			}else{
+			PlayState.SONG = Song.loadFromJson(song.toLowerCase(), song.toLowerCase());
 			}
-			else PlayState.SONG = Song.loadFromJson(song.toLowerCase(), song.toLowerCase());
 			MusicBeatState.resetState();
 		}
 		catch(e)

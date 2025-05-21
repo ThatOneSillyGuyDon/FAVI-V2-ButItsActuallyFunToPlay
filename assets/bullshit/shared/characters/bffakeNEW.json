@@ -1,0 +1,122 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singLEFT",
+			"fps": 17,
+			"name": "FaviBf Left0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "idle",
+			"fps": 17,
+			"name": "FaviBf Idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-2,
+				2
+			],
+			"anim": "singDOWN",
+			"fps": 20,
+			"name": "FaviBf Down0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				20,
+				-4
+			],
+			"anim": "singUP",
+			"fps": 18,
+			"name": "FaviBf Up0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				6,
+				-2
+			],
+			"anim": "singRIGHT",
+			"fps": 19,
+			"name": "FaviBf Right0",
+			"indices": []
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": true,
+			"fps": 80,
+			"anim": "singLEFTmiss",
+			"indices": [],
+			"name": "FaviBf LeftMiss"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": true,
+			"fps": 80,
+			"anim": "singDOWNmiss",
+			"indices": [],
+			"name": "FaviBf DownMiss"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": true,
+			"fps": 70,
+			"anim": "singUPmiss",
+			"indices": [],
+			"name": "FaviBf UpMiss"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": true,
+			"fps": 90,
+			"anim": "singRIGHTmiss",
+			"indices": [],
+			"name": "FaviBf RightMiss"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/bffakeNEW/FaviBf",
+	"position": [
+		-240,
+		-80
+	],
+	"healthicon": "bfgrey",
+	"flip_x": true,
+	"healthbar_colors": [
+		217,
+		217,
+		217
+	],
+	"camera_position": [
+		260,
+		230
+	],
+	"sing_duration": 6.1,
+	"scale": 0.6
+}

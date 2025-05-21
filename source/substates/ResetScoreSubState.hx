@@ -30,7 +30,7 @@ class ResetScoreSubState extends MusicBeatSubstate
 		if(week > -1) {
 			name = WeekData.weeksLoaded.get(WeekData.weeksList[week]).weekName;
 		}
-		name += ' (' + Difficulty.difficulties[difficulty] + ')?';
+		name += '?';
 
 		bg = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		bg.alpha = 0;
@@ -48,7 +48,7 @@ class ResetScoreSubState extends MusicBeatSubstate
 
 		var tooLong:Float = (name.length > 18) ? 0.8 : 1; //Fucking Winter Horrorland
 		var text:FlxTextAlphabet = new FlxTextAlphabet(0, 180, "Reset the score of", true);
-		text.setFormat(Paths.font("VanillaExtractRegular.ttf"), 70, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		text.setFormat(Paths.font("newFreeplayFont.ttf"), 70, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		text.screenCenter(X);
 		alphabetArray.push(text);
 		text.alpha = 0;
@@ -56,7 +56,7 @@ class ResetScoreSubState extends MusicBeatSubstate
 		add(text);
 		var text:FlxTextAlphabet = new FlxTextAlphabet(0, text.y + 90, name, true);
 		text.scale.x = tooLong;
-		text.setFormat(Paths.font("VanillaExtractRegular.ttf"), 70, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		text.setFormat(Paths.font("newFreeplayFont.ttf"), 70, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		text.camera = optionsCam;
 		text.screenCenter(X);
 		if(week == -1) text.x += 60 * tooLong;
@@ -76,13 +76,13 @@ class ResetScoreSubState extends MusicBeatSubstate
 		yesText = new FlxTextAlphabet(0, text.y + 150, 'Yes', true);
 		yesText.screenCenter(X);
 		yesText.camera = optionsCam;
-		yesText.setFormat(Paths.font("VanillaExtractRegular.ttf"), 70, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		yesText.setFormat(Paths.font("newFreeplayFont.ttf"), 70, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		yesText.x -= 200;
 		add(yesText);
 		noText = new FlxTextAlphabet(0, text.y + 150, 'No', true);
 		noText.screenCenter(X);
 		noText.camera = optionsCam;
-		noText.setFormat(Paths.font("VanillaExtractRegular.ttf"), 70, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		noText.setFormat(Paths.font("newFreeplayFont.ttf"), 70, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		noText.x += 200;
 		add(noText);
 		updateOptions();

@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="MinnieDevDeal.png">
+<SubTexture name="MinnieDevDeal UpPose0000" x="0" y="0" width="645" height="1156" frameX="-435" frameY="-237" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="MinnieDevDeal UpPose0001" x="645" y="0" width="691" height="1150" frameX="-406" frameY="-246" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="MinnieDevDeal DownPose0000" x="3849" y="0" width="866" height="1004" frameX="-346" frameY="-392" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="MinnieDevDeal DownPose0001" x="720" y="1156" width="810" height="1072" frameX="-365" frameY="-328" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="MinnieDevDeal LeftPose0000" x="0" y="2229" width="848" height="1042" frameX="-309" frameY="-335" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="MinnieDevDeal LeftPose0001" x="1607" y="2229" width="855" height="1032" frameX="-343" frameY="-345" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="MinnieDevDeal RightPose0000" x="1336" y="0" width="895" height="1077" frameX="-394" frameY="-318" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="MinnieDevDeal RightPose0001" x="2231" y="0" width="897" height="1076" frameX="-376" frameY="-319" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="MinnieDevDeal Idle0000" x="2462" y="2229" width="756" height="1032" frameX="-375" frameY="-338" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="MinnieDevDeal Idle0001" x="848" y="2229" width="759" height="1040" frameX="-380" frameY="-332" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="MinnieDevDeal Idle0002" x="3128" y="1066" width="721" height="1054" frameX="-418" frameY="-320" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="MinnieDevDeal Idle0003" x="3128" y="0" width="721" height="1066" frameX="-416" frameY="-308" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="MinnieDevDeal Idle0004" x="2250" y="1156" width="721" height="1071" frameX="-414" frameY="-303" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="MinnieDevDeal Idle0005" x="1530" y="1156" width="720" height="1072" frameX="-414" frameY="-302" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="MinnieDevDeal Idle0006" x="0" y="1156" width="720" height="1073" frameX="-414" frameY="-301" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="MinnieDevDeal Idle0007" x="0" y="1156" width="720" height="1073" frameX="-414" frameY="-301" frameWidth="1650" frameHeight="1400" />
+</TextureAtlas>
