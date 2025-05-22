@@ -4,7 +4,7 @@ import states.stages.objects.*;
 
 class LaughyTracky extends BaseStage
 {
-	//Laughy Taffys are goated as fuck why are they hated so much?
+	//Laffy Taffys are goated as fuck why are they hated so much?
 	var circusPath:String = 'favi/stages/circus/e/';
 	
 	override function create()
