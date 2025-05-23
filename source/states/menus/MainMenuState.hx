@@ -393,17 +393,6 @@ class MainMenuState extends MusicBeatState
 		if (ClientPrefs.data.flashing)
 			flashValue = 0.2;
 
-		menuItems.members[curSelected].scale.set(.75, .75);
-		for (sillies in [arrow, menuItems.members[Math.floor(curSelected)]])
-		{
-			if (sillies != null)
-			{
-				sillies.setColorTransform(1, 1, 1, 1, 255, 255, 255, 255);
-				FlxTween.tween(sillies.colorTransform, {redOffset: 0, greenOffset: 0, blueOffset: 0}, 1);
-			}
-		}
-		FlxG.sound.play(Paths.sound('funkinAVI/menu/selectSfx'));
-
 		if (daChoice == "freeplay")
 		{
 			if (GameData.episode1FPLock == "unlocked")
@@ -423,6 +412,7 @@ class MainMenuState extends MusicBeatState
 					}
 					else
 					{
+						menuItems.members[curSelected].scale.set(.75, .75);
 						FlxFlicker.flicker(spr, 1, flashValue, false, false, function(flick:FlxFlicker)
 						{
 							MusicBeatState.switchState(new GeneralMenu());
@@ -431,6 +421,15 @@ class MainMenuState extends MusicBeatState
 						});
 					}
 				});
+				for (sillies in [arrow, menuItems.members[Math.floor(curSelected)]])
+				{
+					if (sillies != null)
+					{
+						sillies.setColorTransform(1, 1, 1, 1, 255, 255, 255, 255);
+						FlxTween.tween(sillies.colorTransform, {redOffset: 0, greenOffset: 0, blueOffset: 0}, 1);
+					}
+				}
+				FlxG.sound.play(Paths.sound('funkinAVI/menu/selectSfx'));
 			}
 			else
 			{
@@ -456,6 +455,7 @@ class MainMenuState extends MusicBeatState
 				{
 					if (!selectedSomethin)
 					{
+						menuItems.members[curSelected].scale.set(.75, .75);
 						FlxFlicker.flicker(spr, 1, flashValue, false, false, function(flick:FlxFlicker)
 						{
 							switch (daChoice)
@@ -472,10 +472,19 @@ class MainMenuState extends MusicBeatState
 							}
 						});
 					}
+					for (sillies in [arrow, menuItems.members[Math.floor(curSelected)]])
+					{
+						if (sillies != null)
+						{
+							sillies.setColorTransform(1, 1, 1, 1, 255, 255, 255, 255);
+							FlxTween.tween(sillies.colorTransform, {redOffset: 0, greenOffset: 0, blueOffset: 0}, 1);
+						}
+					}
+					FlxG.sound.play(Paths.sound('funkinAVI/menu/selectSfx'));
+					selectedSomethin = true;
 				}
 			});
 		}
-		selectedSomethin = true;
 	}
 
 	function coolMenuEvents(getEvent:Int)
