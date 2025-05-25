@@ -220,6 +220,7 @@ class ShotgunMick extends BaseStage
 							warningTxt.screenCenter();
 							warningTxt.cameras = [game.camOther];
 							add(warningTxt);
+							game.uiGroup.add(relapseIconLol);
 							for (i in [warningTxt, dodgeWarning])
 								FlxTween.tween(i, {alpha: 1}, 1.5, {onComplete: function(twn:FlxTween)
 								{
@@ -234,6 +235,12 @@ class ShotgunMick extends BaseStage
 						case 46:
 							//tweenCamera(0.6, 0.6, 'sineInOut');
 							FlxTween.tween(camHUD, {alpha: 1}, 0.8, {ease: FlxEase.circInOut});
+						case 174:
+							autoRelapseGimmick(0.7, 0.3);
+						case 176:
+							FlxTween.tween(game.iconP2, {alpha: 0}, 1, {ease: FlxEase.sineOut});
+							FlxTween.tween(relapseIconLol, {alpha: 1}, 1, {ease: FlxEase.sineOut});
+							camGame.fade(FlxColor.RED, 1, true);
 						case 366:
 							FlxTween.tween(camHUD, {alpha: 0}, 1);
 
@@ -459,6 +466,30 @@ class ShotgunMick extends BaseStage
 					shootin = false;
 					dodgeWarning.color = FlxColor.WHITE;
 				}
+			});
+		});
+	}
+
+	public function autoRelapseGimmick(reactionTime:Float = 2, damageAmount:Float = 0.4, ?doubleBarrel:Bool = false)
+	{
+		dodged = true;
+		shootin = true;
+		FlxG.sound.play(Paths.sound('funkinAVI/relapseMechs/Reload'), 0.4);
+		if (PlayState.SONG.song == "Cycled Sins Legacy") game.dad.playAnim("reload", true);
+		game.dad.specialAnim = true;
+		
+		new FlxTimer().start(reactionTime, function(tmr:FlxTimer)
+		{
+			FlxG.sound.play(Paths.sound('funkinAVI/relapseMechs/Shoot'), 0.4);
+			game.dad.playAnim("attack", true);
+			game.dad.specialAnim = true;
+			//checkCamPosition();
+			new FlxTimer().start(0.1, function(tmr:FlxTimer)
+			{
+				game.boyfriend.playAnim('dodge');
+				
+				dodged = false;
+				shootin = false;
 			});
 		});
 	}
