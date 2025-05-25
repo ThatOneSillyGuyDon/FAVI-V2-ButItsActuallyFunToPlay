@@ -312,6 +312,7 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
     #end
     var generatedMusic:Bool = false;
     
+    var _song:SwagSong;
 
     private var grid:FlxBackdrop;
     private var line:FlxSprite;
@@ -384,7 +385,27 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
         }
         #end
 
-		if (PlayState.SONG == null) PlayState.SONG = Song.loadFromJson('tutorial');
+		if (PlayState.SONG != null)
+			_song = PlayState.SONG;
+		else
+		{
+			Difficulty.resetList();
+			_song = {
+				song: 'Test',
+				notes: [],
+				events: [],
+				bpm: 150.0,
+				needsVoices: true,
+				composer: "Unknown",
+				player1: 'bf',
+				player2: 'dad',
+				gfVersion: 'gf',
+				speed: 1,
+				stage: 'stage'
+			};
+			PlayState.SONG = _song;
+		}
+
 		Conductor.mapBPMChanges(PlayState.SONG);
         #if (PSYCH && PSYCHVERSION >= "0.7")
 		Conductor.bpm = PlayState.SONG.bpm;

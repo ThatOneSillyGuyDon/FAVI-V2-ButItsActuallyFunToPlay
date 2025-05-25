@@ -758,7 +758,10 @@ class PlayState extends MusicBeatState
 
 		Conductor.songPosition = -5000 / Conductor.songPosition;
 
-		middlescroll = SONG.song.toLowerCase() == 'cycled sins' || ClientPrefs.data.middleScroll || curStage == "menuSongs";
+		if (!ClientPrefs.data.middleScroll)
+			middlescroll = SONG.song.toLowerCase() == 'cycled sins' || curStage == "menuSongs";
+		else
+			middlescroll = true;
 
 		var showTime:Bool = (ClientPrefs.data.timeBarType != 'Disabled');
 		timeTxt = new FlxText(STRUM_X + (FlxG.width / 2) - 248, 19, 400, "", 32);

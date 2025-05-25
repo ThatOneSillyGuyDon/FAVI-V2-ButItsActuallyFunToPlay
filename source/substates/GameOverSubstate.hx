@@ -565,6 +565,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		{
 			Conductor.songPosition = FlxG.sound.music.time;
 		}
+
 		PlayState.instance.callOnLuas('onUpdatePost', [elapsed]);
 	}
 
@@ -672,8 +673,8 @@ class GameOverSubstate extends MusicBeatSubstate
 	{
 		switch (PlayState.SONG.song)
 		{
-			case "Isolated" | "Lunacy" | "Delusional": FlxG.sound.playMusic(Paths.music("aviOST/gameOver/yourFinalBow", 'shared'), volume);
-			default: FlxG.sound.playMusic(Paths.music("aviOST/gameOver/amIReal", 'shared'), volume);
+			case "Isolated" | "Lunacy" | "Delusional": FlxG.sound.playMusic(Paths.music("aviOST/gameOver/yourFinalBow"), volume);
+			default: FlxG.sound.playMusic(Paths.music("aviOST/gameOver/amIReal"), volume);
 		}
 		FlxG.sound.music.fadeIn(2, 0, 1);
 		if (!boyfriend.visible)
@@ -703,7 +704,7 @@ class GameOverSubstate extends MusicBeatSubstate
 			}
 			boyfriend.playAnim('deathConfirm', true);
 			FlxG.sound.music.stop();
-			FlxG.sound.play(Paths.music(endSoundName, 'shared'));
+			FlxG.sound.play(Paths.music(endSoundName));
 			PlayState.pauseCountEnabled = false;
 			new FlxTimer().start(0.7, function(tmr:FlxTimer)
 			{
@@ -803,7 +804,7 @@ class ManiaLoseSubstate extends MusicBeatSubstate
 			FlxG.sound.music.stop();
 			FlxG.sound.music.volume = 0;
 			PlayState.instance.inst.stop();
-			FlxG.sound.playMusic(Paths.music('aviOST/gameOver/mistfulWind', 'shared'));
+			FlxG.sound.playMusic(Paths.music('aviOST/gameOver/mistfulWind'));
 			FlxG.sound.music.fadeIn(2, 0, 1);
 			canUseCtrls = true;
 		});
@@ -841,7 +842,7 @@ class ManiaLoseSubstate extends MusicBeatSubstate
 					PlayState.instance.camOther.fade(FlxColor.BLACK, 2, false, function()
 					{
 						MusicBeatState.switchState(new FreeplayState());
-						FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom', 'shared'));
+						FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
 					});
 				}
 			}
