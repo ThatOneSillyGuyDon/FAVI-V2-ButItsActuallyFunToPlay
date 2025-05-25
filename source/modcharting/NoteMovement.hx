@@ -95,7 +95,6 @@ class NoteMovement
             var strum = game.strumLineNotes.members[i];
             defaultStrumX.push(strum.x);
             defaultStrumY.push(strum.y);
-            var localKeyCount = (i < keyCount ? keyCount : playerKeyCount);
             var s = 0.7;
              // SUPER shitty fix so the scales aren't wonky
              switch (PlayState.SONG.song)
