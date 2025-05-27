@@ -12,6 +12,7 @@ haxelib set flixel-tools 1.5.1
 haxelib set SScript 7.7.0
 haxelib git hxCodec https://github.com/polybiusproxy/hxCodec
 haxelib set tjson 1.4.0
+haxelib remove flxanimate
 haxelib git flxanimate https://github.com/ShadowMario/flxanimate dev
 haxelib git linc_luajit https://github.com/superpowers04/linc_luajit
 haxelib set hxdiscord_rpc 1.2.4
