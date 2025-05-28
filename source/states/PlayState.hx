@@ -3371,6 +3371,10 @@ class PlayState extends MusicBeatState
 		}
 	}
 
+	//For 'Camera Event'
+	var camTwn:FlxTween;
+	var camFollowTwn:FlxTween;
+
 	public function triggerEvent(eventName:String, value1:String, value2:String, strumTime:Float) {
 		var flValue1:Null<Float> = Std.parseFloat(value1);
 		var flValue2:Null<Float> = Std.parseFloat(value2);
@@ -3410,15 +3414,6 @@ class PlayState extends MusicBeatState
 				if(flValue1 == null || flValue1 < 1) flValue1 = 1;
 				gfSpeed = Math.round(flValue1);
 
-			case 'Add Camera Zoom':
-				if(ClientPrefs.data.camZooms && FlxG.camera.zoom < 1.35) {
-					if(flValue1 == null) flValue1 = 0.015;
-					if(flValue2 == null) flValue2 = 0.03;
-
-					FlxG.camera.zoom += flValue1;
-					camHUD.zoom += flValue2;
-				}
-
 			case 'Play Animation':
 				//trace('Anim to play: ' + value1);
 				var char:Character = dad;
@@ -3439,22 +3434,6 @@ class PlayState extends MusicBeatState
 				{
 					char.playAnim(value1, true);
 					char.specialAnim = true;
-				}
-
-			case 'Camera Follow Pos':
-				if(camFollow != null)
-				{
-					var val1:Float = Std.parseFloat(value1);
-					var val2:Float = Std.parseFloat(value2);
-					if(Math.isNaN(val1)) val1 = 0;
-					if(Math.isNaN(val2)) val2 = 0;
-
-					isCameraOnForcedPos = false;
-					if(!Math.isNaN(Std.parseFloat(value1)) || !Math.isNaN(Std.parseFloat(value2))) {
-						camFollow.x = val1;
-						camFollow.y = val2;
-						isCameraOnForcedPos = true;
-					}
 				}
 
 			case 'Alt Idle Animation':
@@ -3479,24 +3458,6 @@ class PlayState extends MusicBeatState
 					char.idleSuffix = value2;
 					char.recalculateDanceIdle();
 				}
-
-			case 'Screen Shake':
-				var valuesArray:Array<String> = [value1, value2];
-				var targetsArray:Array<FlxCamera> = [camGame, camHUD];
-				for (i in 0...targetsArray.length) {
-					var split:Array<String> = valuesArray[i].split(',');
-					var duration:Float = 0;
-					var intensity:Float = 0;
-					if(split[0] != null) duration = Std.parseFloat(split[0].trim());
-					if(split[1] != null) intensity = Std.parseFloat(split[1].trim());
-					if(Math.isNaN(duration)) duration = 0;
-					if(Math.isNaN(intensity)) intensity = 0;
-
-					if(duration > 0 && intensity != 0) {
-						targetsArray[i].shake(intensity, duration);
-					}
-				}
-
 
 			case 'Change Character':
 				var charType:Int = 0;
@@ -3605,55 +3566,75 @@ class PlayState extends MusicBeatState
 					#end
 				}
 
-			case 'Tween Camera Zoom':
-				var zoom:Float = Std.parseFloat(value1);
-				var time:Float = Std.parseFloat(value2);
-				if(Math.isNaN(time) || time <= 0) time = 0;
-	
-				if ((time) > 0) {
-					modchartTweens.set("TweenCamZoom", FlxTween.tween(FlxG.camera, {zoom: (zoom)}, (time), {
-						ease: FlxEase.quadInOut,
-						onComplete: function(twn:FlxTween)
+			case 'Camera Event':
+				var triggerInfo:Array<String> = value2.split(',');
+				switch (value1.toLowerCase())
+				{
+					case "shake":
+						if (triggerInfo[2] == "hud")
+							camHUD.shake(Std.parseFloat(triggerInfo[0]), Std.parseFloat(triggerInfo[1]));
+						else
+							camGame.shake(Std.parseFloat(triggerInfo[0]), Std.parseFloat(triggerInfo[1]));
+
+					case "smoothzoom" | "smooth zoom":
+						if (camTwn != null)
+							camTwn.cancel();
+
+						camTwn = FlxTween.tween(camGame, {zoom: Std.parseFloat(triggerInfo[0])}, Std.parseFloat(triggerInfo[1]), {ease: returnTweenEase(triggerInfo[2]), onComplete: function(twn:FlxTween)
 						{
-							defaultCamZoom = (zoom);
+							defaultCamZoom = Std.parseFloat(triggerInfo[0]);
+							camTwn = null;
+						}});
+
+					case "change zoom" | "changezoom":
+						defaultCamZoom = Std.parseFloat(triggerInfo[0]);
+
+					case "staticzoom" | "static zoom":
+						defaultCamZoom = Std.parseFloat(triggerInfo[0]);
+						camGame.zoom = Std.parseFloat(triggerInfo[0]);
+
+					case "changepos" | "change pos" | "set position" | "setposition":
+						if(camFollow != null)
+						{
+							isCameraOnForcedPos = false;
+							if(triggerInfo[0] != null || triggerInfo[1] != null)
+							{
+								isCameraOnForcedPos = true;
+								if(triggerInfo[0] == null) triggerInfo[0] = "0";
+								if(triggerInfo[1] == null) triggerInfo[1] = "0";
+								camFollow.x = Std.parseFloat(triggerInfo[0]);
+								camFollow.y = Std.parseFloat(triggerInfo[1]);
+							}
 						}
-					}));	
-				} else {
-					defaultCamZoom = (zoom);
+
+					case "tweenpos" | "tween pos" | "tweenposition" | "tween position":
+						if (camFollow != null)
+						{
+							if (camFollowTwn != null)
+								camFollowTwn.cancel();
+
+							isCameraOnForcedPos = false;
+							if(triggerInfo[0] != null || triggerInfo[1] != null)
+							{
+								isCameraOnForcedPos = true;
+								if(triggerInfo[0] == null) triggerInfo[0] = "0";
+								if(triggerInfo[1] == null) triggerInfo[1] = "0";
+								camFollowTwn = FlxTween.tween(camFollow, {x: Std.parseFloat(triggerInfo[0]), y: Std.parseFloat(triggerInfo[1])}, Std.parseFloat(triggerInfo[2]), {ease: returnTweenEase(triggerInfo[3]), onComplete: function(twn:FlxTween)
+								{
+									camFollowTwn = null;
+								}});
+							}
+						}
+
+					case "addzoom" | "add zoom":
+						if(ClientPrefs.data.camZooms && FlxG.camera.zoom < 1.35) {
+							if(triggerInfo[0] == null) triggerInfo[0] = "0.015";
+							if(triggerInfo[1] == null) triggerInfo[1] = "0.03";
+
+							FlxG.camera.zoom += Std.parseFloat(triggerInfo[0]);
+							camHUD.zoom += Std.parseFloat(triggerInfo[1]);
+						}	
 				}
-			case 'Tween Camera Pos':
-				var split = value1.split("%%");
-
-				var xxx:Float = 0;
-				var yyy:Float = 0;
-
-				if(split[0] != null) xxx = Std.parseFloat(split[0].trim());
-				if(split[1] != null) yyy = Std.parseFloat(split[1].trim());
-				if(Math.isNaN(xxx)) xxx = 0;
-				if(Math.isNaN(yyy)) yyy = 0;
-
-				var time:Float = Std.parseFloat(value2);
-
-				if(Math.isNaN(time) || time <= 0) time = 0;
-	
-				if ((time) > 0) {
-					modchartTweens.set("TweenCamX", FlxTween.tween(camFollow, {x: xxx}, (time), {
-						ease: FlxEase.quadInOut,
-						onComplete: function(twn:FlxTween)
-						{
-							camFollow.x = xxx;
-						}
-					}));	
-					modchartTweens.set("TweenCamY", FlxTween.tween(camFollow, {y: yyy}, (time), {
-						ease: FlxEase.quadInOut,
-						onComplete: function(twn:FlxTween)
-						{
-							camFollow.y = yyy;
-						}
-					}));
-				} else {
-					camFollow.x = (yyy);
-				}	
 
 			case 'Play Sound':
 				if(flValue2 == null) flValue2 = 1;
