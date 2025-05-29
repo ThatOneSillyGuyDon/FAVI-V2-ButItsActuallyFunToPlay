@@ -250,6 +250,10 @@ class PlayState extends MusicBeatState
 	public var camVideo:FlxCamera;
 	public var cameraSpeed:Float = 1;
 
+	var flashSprite:FlxSprite;
+	var flashSpeed:Float = 0.0;
+	var camTwn:Array<FlxTween> = [];
+
 	public var songScore:Int = 0;
 	public var songHits:Int = 0;
 	public var songMisses:Int = 0;
@@ -358,6 +362,7 @@ class PlayState extends MusicBeatState
 	public static var curEpisode:String;
 
 	var stageBGFlash:FlxSprite;
+	var stageBGDark:FlxSprite;
 	var BGFlashTween:FlxTween;
 
 	public var globalGradient:FlxSprite;
@@ -599,6 +604,14 @@ class PlayState extends MusicBeatState
 			case 'forbiddenRealm': new states.stages.legacyStages.LegForbiddenRealm(); //Malfunction Legacy
 		}
 
+		stageBGDark = new FlxSprite().makeGraphic(1, 1, 0xFFFFFFFF);
+		stageBGDark.scale.set(FlxG.width * 5, FlxG.height * 5);
+		stageBGDark.alpha = 0.0001; // it's at this value so the game doesn't lag when it becomes visible
+		stageBGDark.x -= 750;
+		stageBGDark.y -= 450;
+		stageBGDark.scrollFactor.set();
+		add(stageBGDark);
+
 		stageBGFlash = new FlxSprite().makeGraphic(1, 1, 0xFFFFFFFF);
 		stageBGFlash.scale.set(FlxG.width * 5, FlxG.height * 5);
 		stageBGFlash.alpha = 0.0001; // it's at this value so the game doesn't lag when it becomes visible
@@ -733,6 +746,13 @@ class PlayState extends MusicBeatState
 				gf.visible = false;
 		}
 		stagesFunc(function(stage:BaseStage) stage.createPost());
+
+		flashSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.WHITE);
+		flashSprite.scale.set(3, 3);
+		flashSprite.screenCenter();
+		flashSprite.alpha = 0.001;
+		add(flashSprite);
+		flashSprite.cameras = [camHUD];
 
 		comboGroup = new FlxSpriteGroup();
 		add(comboGroup);
@@ -2389,6 +2409,8 @@ class PlayState extends MusicBeatState
 	override public function update(elapsed:Float)
 	{
 		callOnScripts('onUpdate', [elapsed]);
+
+		flashSprite.alpha = FlxMath.lerp(0, flashSprite.alpha, Math.exp(-elapsed * flashSpeed));
 		
 		// shitty system for the camera to stay updated
 		var wn_r:Float = 70;
@@ -2950,20 +2972,20 @@ class PlayState extends MusicBeatState
 					});
 
 				case BG_DARK:
-					if (stageBGFlash != null)
+					if (stageBGDark != null)
 					{
 						if (BGFlashTween != null)
 							BGFlashTween.cancel();
 
-						if (stageBGFlash.blend != NORMAL)
-							stageBGFlash.blend = NORMAL;
+						if (stageBGDark.blend != NORMAL)
+							stageBGDark.blend = NORMAL;
 
 						if (settings.timer <= 0)
 							settings.timer = 1;
 
-						stageBGFlash.color = FlxColor.BLACK; // hardcoded to be black
+						stageBGDark.color = FlxColor.BLACK; // hardcoded to be black
 
-						BGFlashTween = FlxTween.tween(stageBGFlash, {alpha: settings.alpha}, settings.timer, {
+						BGFlashTween = FlxTween.tween(stageBGDark, {alpha: settings.alpha}, settings.timer, {
 							ease: settings.ease,
 							onComplete: function(twn:FlxTween)
 							{
@@ -3371,10 +3393,6 @@ class PlayState extends MusicBeatState
 		}
 	}
 
-	//For 'Camera Event'
-	var camTwn:FlxTween;
-	var camFollowTwn:FlxTween;
-
 	public function triggerEvent(eventName:String, value1:String, value2:String, strumTime:Float) {
 		var flValue1:Null<Float> = Std.parseFloat(value1);
 		var flValue2:Null<Float> = Std.parseFloat(value2);
@@ -3565,33 +3583,164 @@ class PlayState extends MusicBeatState
 					FlxG.log.warn('ERROR ("Set Property" Event) - ' + e.message.substr(0, len));
 					#end
 				}
-
-			case 'Camera Event':
+			
+			case 'Background Controls':
 				var triggerInfo:Array<String> = value2.split(',');
 				switch (value1.toLowerCase())
 				{
+					case 'flash':
+						camFlashSystem(BG_FLASH, {
+							timer: Std.parseFloat(triggerInfo[0]), 
+							ease: returnTweenEase(triggerInfo[1]), 
+							alpha: Std.parseFloat(triggerInfo[2]), 
+							colors: [Std.parseInt(triggerInfo[3]), Std.parseInt(triggerInfo[4]), Std.parseInt(triggerInfo[5])]
+						});
+					case 'darken' | 'dark':
+						camFlashSystem(BG_DARK, {
+							alpha: Std.parseFloat(triggerInfo[0]), 
+							timer: Std.parseFloat(triggerInfo[1]), 
+							ease: returnTweenEase(triggerInfo[2])});
+				}
+
+			case 'Camera Event':	
+				var triggerInfo:Array<String> = value2.split(',');
+				switch (value1.toLowerCase())
+				{
+					case "tweenvalue" | "tween value":
+						switch (triggerInfo[0].toLowerCase())
+						{
+							case "zoom":
+								if (camTwn[0] != null)
+									camTwn[0].cancel();
+
+								camTwn[0] = FlxTween.tween(camGame, {zoom: Std.parseFloat(triggerInfo[1])}, Std.parseFloat(triggerInfo[2]), {ease: returnTweenEase(triggerInfo[3]), onComplete: function(twn:FlxTween)
+								{
+									defaultCamZoom = Std.parseFloat(triggerInfo[1]);
+									camTwn[0] = null;
+								}});
+							
+							case "cameraspeed" | "camera speed" | "cam speed" | "camspeed" | "speed":
+								if (camTwn[1] != null)
+									camTwn[1].cancel();
+
+								camTwn[1] = FlxTween.tween(this, {cameraSpeed: Std.parseFloat(triggerInfo[1])}, Std.parseFloat(triggerInfo[2]), {ease: returnTweenEase(triggerInfo[3]), onComplete: function(twn:FlxTween)
+								{
+									camTwn[1] = null;
+								}});
+
+							case "alpha":
+								if (camTwn[2] != null)
+									camTwn[2].cancel();
+
+								if (Std.parseFloat(triggerInfo[1]) > 1 || Std.parseFloat(triggerInfo[1]) < 0)
+									triggerInfo[1] = "1";
+
+								camTwn[2] = FlxTween.tween(camGame, {alpha: Std.parseFloat(triggerInfo[1])}, Std.parseFloat(triggerInfo[2]), {ease: returnTweenEase(triggerInfo[3]), onComplete: function(twn:FlxTween)
+								{
+									camTwn[2] = null;
+								}});
+
+							case "hudalpha" | "hud alpha":
+								if (camTwn[3] != null)
+									camTwn[3].cancel();
+
+								if (Std.parseFloat(triggerInfo[1]) > 1 || Std.parseFloat(triggerInfo[1]) < 0)
+									triggerInfo[1] = "1";
+
+								camTwn[3] = FlxTween.tween(camHUD, {alpha: Std.parseFloat(triggerInfo[1])}, Std.parseFloat(triggerInfo[2]), {ease: returnTweenEase(triggerInfo[3]), onComplete: function(twn:FlxTween)
+								{
+									camTwn[3] = null;
+								}});
+
+							case "angle":
+								if (camTwn[4] != null)
+									camTwn[4].cancel();
+
+								camTwn[4] = FlxTween.tween(camGame, {angle: Std.parseFloat(triggerInfo[1])}, Std.parseFloat(triggerInfo[2]), {ease: returnTweenEase(triggerInfo[3]), onComplete: function(twn:FlxTween)
+								{
+									camTwn[4] = null;
+								}});
+
+							case "hudangle" | "hud angle":
+								if (camTwn[5] != null)
+									camTwn[5].cancel();
+
+								camTwn[5] = FlxTween.tween(camHUD, {angle: Std.parseFloat(triggerInfo[1])}, Std.parseFloat(triggerInfo[2]), {ease: returnTweenEase(triggerInfo[3]), onComplete: function(twn:FlxTween)
+								{
+									camTwn[5] = null;
+								}});
+
+							default:
+								#if (LUA_ALLOWED || HSCRIPT_ALLOWED)
+								addTextToDebug('ERROR ("Camera Event" Event) - Value data type does not exist!', FlxColor.RED);
+								#else
+								FlxG.log.warn('ERROR ("Camera Event" Event) - Value data type does not exist!');
+								#end
+						}
+
+					case "changevalue" | "change value":
+						switch (triggerInfo[0].toLowerCase())
+						{
+							case "staticzoom" | "static zoom": camGame.zoom = defaultCamZoom = Std.parseFloat(triggerInfo[1]);
+							case "addzoom" | "add zoom": camGame.zoom += Std.parseFloat(triggerInfo[1]);
+							case "addhudzoom" | "add hud zoom": camHUD.zoom += Std.parseFloat(triggerInfo[1]);
+							case "defaultcamzoom" | "default cam zoom" | "default camera zoom": defaultCamZoom = Std.parseFloat(triggerInfo[1]);
+							case "alpha": camGame.alpha = Std.parseFloat(triggerInfo[1]);
+							case "cameraspeed" | "cam speed" | "camspeed" | "camera speed" | "speed": cameraSpeed = Std.parseFloat(triggerInfo[1]);
+							case "hudalpha" | "hud alpha": camHUD.alpha = Std.parseFloat(triggerInfo[1]);
+							case "angle": camGame.angle = Std.parseFloat(triggerInfo[1]);
+							case "hudangle" | "hud angle": camHUD.angle = Std.parseFloat(triggerInfo[1]);
+							default:
+								#if (LUA_ALLOWED || HSCRIPT_ALLOWED)
+								addTextToDebug('ERROR ("Camera Event" Event) - Value data type does not exist!', FlxColor.RED);
+								#else
+								FlxG.log.warn('ERROR ("Camera Event" Event) - Value data type does not exist!');
+								#end
+						}
+
 					case "shake":
 						if (triggerInfo[2] == "hud")
 							camHUD.shake(Std.parseFloat(triggerInfo[0]), Std.parseFloat(triggerInfo[1]));
 						else
 							camGame.shake(Std.parseFloat(triggerInfo[0]), Std.parseFloat(triggerInfo[1]));
 
-					case "smoothzoom" | "smooth zoom":
-						if (camTwn != null)
-							camTwn.cancel();
-
-						camTwn = FlxTween.tween(camGame, {zoom: Std.parseFloat(triggerInfo[0])}, Std.parseFloat(triggerInfo[1]), {ease: returnTweenEase(triggerInfo[2]), onComplete: function(twn:FlxTween)
+					case "flash":
+						if (ClientPrefs.data.flashing)
 						{
-							defaultCamZoom = Std.parseFloat(triggerInfo[0]);
-							camTwn = null;
-						}});
+							if (triggerInfo[0] == null) triggerInfo[0] = "255";
+							if (triggerInfo[1] == null) triggerInfo[1] = "255";
+							if (triggerInfo[2] == null) triggerInfo[2] = "255";
+							if (triggerInfo[3] == null) triggerInfo[3] = "1";
+							if (triggerInfo[4] == null) triggerInfo[4] = "1";
+							if (triggerInfo[5] == null) triggerInfo[5] = "false";
 
-					case "change zoom" | "changezoom":
-						defaultCamZoom = Std.parseFloat(triggerInfo[0]);
+							flashSprite.color = FlxColor.fromRGB(Std.parseInt(triggerInfo[0]), Std.parseInt(triggerInfo[1]), Std.parseInt(triggerInfo[2]));
+							flashSpeed = Std.parseFloat(triggerInfo[3]);
+							flashSprite.alpha = Std.parseFloat(triggerInfo[4]);
+							if (triggerInfo[5].toLowerCase() == "true")
+								flashSprite.blend = ADD;
+							else
+								flashSprite.blend = NORMAL;
+						}
 
-					case "staticzoom" | "static zoom":
-						defaultCamZoom = Std.parseFloat(triggerInfo[0]);
-						camGame.zoom = Std.parseFloat(triggerInfo[0]);
+					case "fade":
+						if (ClientPrefs.data.flashing) //technically, this can still cause potential epilepic seizures if used a certain way
+						{
+							if (triggerInfo[0] == null) triggerInfo[0] = "0";
+							if (triggerInfo[1] == null) triggerInfo[1] = "0";
+							if (triggerInfo[2] == null) triggerInfo[2] = "0";
+							if (triggerInfo[3] == null) triggerInfo[3] = "1";
+							if (triggerInfo[4] == null) triggerInfo[4] = "1";
+							if (triggerInfo[5] == null) triggerInfo[5] = "false";
+
+							@:privateAccess
+							{
+								camGame._fxFadeColor = FlxColor.fromRGB(Std.parseInt(triggerInfo[0]), Std.parseInt(triggerInfo[1]), Std.parseInt(triggerInfo[2]));
+								camGame._fxFadeDuration = Std.parseFloat(triggerInfo[3]);
+								camGame._fxFadeAlpha = Std.parseFloat(triggerInfo[4]);
+								camGame._fxFadeIn = triggerInfo[5] == "true" ? true : false;
+							}
+						}
 
 					case "changepos" | "change pos" | "set position" | "setposition":
 						if(camFollow != null)
@@ -3610,8 +3759,8 @@ class PlayState extends MusicBeatState
 					case "tweenpos" | "tween pos" | "tweenposition" | "tween position":
 						if (camFollow != null)
 						{
-							if (camFollowTwn != null)
-								camFollowTwn.cancel();
+							if (camTwn[6] != null)
+								camTwn[6].cancel();
 
 							isCameraOnForcedPos = false;
 							if(triggerInfo[0] != null || triggerInfo[1] != null)
@@ -3619,23 +3768,14 @@ class PlayState extends MusicBeatState
 								isCameraOnForcedPos = true;
 								if(triggerInfo[0] == null) triggerInfo[0] = "0";
 								if(triggerInfo[1] == null) triggerInfo[1] = "0";
-								camFollowTwn = FlxTween.tween(camFollow, {x: Std.parseFloat(triggerInfo[0]), y: Std.parseFloat(triggerInfo[1])}, Std.parseFloat(triggerInfo[2]), {ease: returnTweenEase(triggerInfo[3]), onComplete: function(twn:FlxTween)
+								camTwn[6] = FlxTween.tween(camFollow, {x: Std.parseFloat(triggerInfo[0]), y: Std.parseFloat(triggerInfo[1])}, Std.parseFloat(triggerInfo[2]), {ease: returnTweenEase(triggerInfo[3]), onComplete: function(twn:FlxTween)
 								{
-									camFollowTwn = null;
+									camTwn[6] = null;
 								}});
 							}
 						}
-
-					case "addzoom" | "add zoom":
-						if(ClientPrefs.data.camZooms && FlxG.camera.zoom < 1.35) {
-							if(triggerInfo[0] == null) triggerInfo[0] = "0.015";
-							if(triggerInfo[1] == null) triggerInfo[1] = "0.03";
-
-							FlxG.camera.zoom += Std.parseFloat(triggerInfo[0]);
-							camHUD.zoom += Std.parseFloat(triggerInfo[1]);
-						}	
 				}
-
+			
 			case 'Play Sound':
 				if(flValue2 == null) flValue2 = 1;
 				FlxG.sound.play(Paths.sound(value1), flValue2);

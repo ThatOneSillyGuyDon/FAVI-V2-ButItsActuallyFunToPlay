@@ -74,7 +74,8 @@ class ChartingState extends MusicBeatState
 		['Change Character', "Value 1: Character to change (Dad, BF, GF)\nValue 2: New character's name"],
 		['Change Scroll Speed', "Value 1: Scroll Speed Multiplier (1 is default)\nValue 2: Time it takes to change fully in seconds."],
 		['Set Property', "Value 1: Variable name\nValue 2: New value"],
-		['Camera Event', "A series of customizers and event types that\nchanges the camera behavior!\n\nValue 1: Name of event you want\nValue 2: Controls the event\n\nShake - Intensity, Duration, Game or HUD\nSmooth Zoom - Zoom value, Duration, Ease type\nChange Zoom - Zoom value\nStatic Zoom - Zoom value\nChange Pos/Set Position - X Pos, Y Pos\nTween Position: X Pos, Y Pos, Duration, Ease type\nAdd Zoom - Game Zoom, HUD Zoom"],
+		['Camera Event', "A series of customizers and event types that\nchanges the camera behavior!\n\nValue 1: Name of event you want\nValue 2: Controls the event\n\nChange Value - Value Name, Value Input\nTween Value - Value Name, Value Input, Duration, Ease type\nShake - Intensity, Duration, Game or HUD\nFade - R, G, B, Duration, Alpha, Fade In Bool Toggle\nFlash - R, G, B, Duration, Alpha, Blend Bool Toggle\nChange Pos/Set Position - X Pos, Y Pos\nTween Position: X Pos, Y Pos, Duration, Ease type\n\n(Please refer to documentation or code that comes with this for\nvalid value names for \"Tween Value\" & \"Change Value\")"],
+		['Background Controls', "A series of customizers and event types that\nchanges the background's behavior!\n\nValue 1: Name of event you want\nValue 2: Controls the event\n\nFlash - Time, Ease type, Visibility, Colors (IN RGB FORM!!!)\nDarken - Visibility, Time, Ease type"],
 		['Static Event', "Value 1: Determines what this triggers\nValue 2: Additional value input if needed\n\nValue 1 Inputs available:\n- togglevis\n- setalpha\n- twnalpha\n- settime"],
 		['Change Mal BG', "Value 1: Determines what this triggers\nValue 2: Additional value input if needed\n\nValue 1 Inputs available:\n- togglevis\n- setalpha\n- changebg"],
 		['No Signal Event', "Value 1: Determines what this triggers\nValue 2: Additional value input if needed\n\nValue 1 Inputs available:\n- togglevis\n- setalpha\n- changebg"],
@@ -1824,12 +1825,12 @@ class ChartingState extends MusicBeatState
 					opponentVocals.pause();
 					opponentVocals.volume = 0;
 				}
-
+				
 				autosaveSong();
 				playtesting = true;
 				playtestingTime = Conductor.songPosition;
 				playtestingOnComplete = FlxG.sound.music.onComplete;
-				openSubState(new states.editors.EditorPlayState(playbackSpeed));
+				LoadingState.loadAndSwitchState(new states.editors.EditorPlayState(sectionStartTime()));
 			}
 			else if (FlxG.keys.justPressed.ENTER)
 			{
