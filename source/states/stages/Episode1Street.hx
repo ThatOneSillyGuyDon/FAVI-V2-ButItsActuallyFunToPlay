@@ -277,8 +277,6 @@ class Episode1Street extends BaseStage
 	{
 		switch (PlayState.SONG.song)
 		{
-			//case 'Isolated' | 'Lunacy':
-			//	camHUD.alpha = 0.001;
 			case "Delusional":
 				deluSing = new VideoSprite(false);
 				deluSing.visible = false;
@@ -589,71 +587,7 @@ class Episode1Street extends BaseStage
 					}
 				}
 
-			case 'Lunacy':
-				var beatArray1:Array<Int> = [38, 40, 46, 48, 54, 56, 62];
-				var beatArray2:Array<Int> = [70, 72, 78, 80, 86, 88];
-				var beatArray3:Array<Int> = [224, 230, 240, 248, 256, 262, 272, 280, 288, 296, 304, 312, 320, 328, 336, 344];
-				var beatArray4:Array<Int> = [228, 238, 244, 252, 260, 270, 276, 284, 292, 300, 308, 316, 324, 332, 340, 348];
-
-				if (curBeat == 1)
-					{
-						game.cinematicBarControls("add", 0.0001, 'linear', 0);
-						game.cinematicBarControls("moveboth", 0.0001, 'linear', 60);
-					}
-					if (curBeat == 32)
-						game.cinematicBarControls("moveboth", 1.2, "circOut", 120);
-					if (curBeat == 64)
-						game.cinematicBarControls("moveboth", 1.2, "circOut", 190);
-					if (curBeat == 90)
-						game.cinematicBarControls("moveboth", 2, "circInOut", 0);
-					for (i in 0...beatArray1.length)
-						if (curBeat == beatArray1[i])
-							game.cinematicBarControls("bopboth", 0.5, "quartOut", 100, 20);
-					for (i in 0...beatArray2.length)
-						if (curBeat == beatArray2[i])
-							game.cinematicBarControls("bopboth", 0.5, "quartOut", 170, 20);
-					if (curBeat == 156)
-						game.cinematicBarControls("moveboth", 0.4, "circOut", 120);
-					if (curBeat == 160)
-						game.cinematicBarControls("moveboth", 1, "circOut", 80);
-					if (curBeat == 192)
-						game.cinematicBarControls("moveboth", 10, "circInOut", 180);
-					for (i in 0...beatArray3.length)
-						if (curBeat == beatArray3[i])
-							game.cinematicBarControls("moveboth", 0.5, "circOut", 60);
-					for (i in 0...beatArray4.length)
-						if (curBeat == beatArray4[i])
-							game.cinematicBarControls("moveboth", 0.15, "circOut", 130);
-					if (curBeat == 352)
-						game.cinematicBarControls("moveboth", 2, "circOut", 50);
-					if (curBeat == 480)
-						game.cinematicBarControls("moveboth", 0.0001, 'linear', 110);
-
-				if (curBeat == 100 || curBeat == 108 || curBeat == 116 || curBeat == 124 || curBeat == 132 || curBeat == 140 || curBeat == 148)
-				{
-					game.camFlashSystem(BG_FLASH, {alpha: 0.5, timer: 0.5, ease: FlxEase.sineOut});
-				}
-
-				if (curBeat == 160 || curBeat == 230 || curBeat == 240 || curBeat == 248 || curBeat == 256 || curBeat == 262 || curBeat == 272
-					|| curBeat == 280 || curBeat == 280 || curBeat == 288 || curBeat == 296 || curBeat == 304 || curBeat == 312 || curBeat == 320
-					|| curBeat == 328 || curBeat == 336 || curBeat == 344 || curBeat == 352)
-				{
-					game.camFlashSystem(BG_DARK, {alpha: 0, timer: 0.5, ease: FlxEase.quadOut});
-				}
-
-				// Darkens BG
-				if (curBeat == 156 || curBeat == 228 || curBeat == 238 || curBeat == 244 || curBeat == 252 || curBeat == 260 || curBeat == 270
-					|| curBeat == 276 || curBeat == 284 || curBeat == 292 || curBeat == 300 || curBeat == 308 || curBeat == 316 || curBeat == 324
-					|| curBeat == 332 || curBeat == 340 || curBeat == 348)
-				{
-					game.camFlashSystem(BG_DARK, {alpha: 0.77, timer: 0.5, ease: FlxEase.quadOut});
-				}
-
-				if (curBeat == 424 || curBeat == 432 || curBeat == 440 || curBeat == 448 || curBeat == 456 || curBeat == 464 || curBeat == 472)
-				{
-					game.camFlashSystem(BG_FLASH, {alpha: 0.65, timer: 0.6, ease: FlxEase.sineOut});
-				}
-
+			case 'Lunacy':	
 				if (curBeat == 32 || curBeat == 64)
 				{
 					if (game.chromTween != null)
@@ -973,119 +907,10 @@ class Episode1Street extends BaseStage
 				{
 					// I'm NOT gonna have a fun time recoding all this for the BG dimming in and out later lmao
 
-					case 16: game.camBars.fade(FlxColor.BLACK, 3, true);
-
-					case 32:
-						if (ClientPrefs.data.flashing) game.camBars.flash(FlxColor.BLACK, 1.5);
-						//game.tweenCamera(game.camGame.zoom + .5, 16.5, 'sineInOut');
-
-					case 64:
-						if (ClientPrefs.data.flashing)
-							game.camBars.flash(FlxColor.BLACK, 0.9);
-
-					case 88:
-						game.tweenCamera(.75, 2.2, 'sineInOut');
-
-						FlxTween.tween(camHUD, {alpha: 1}, 5, {ease: FlxEase.sineOut});
-
-					case 96:
-						game.defaultCamZoom = 0.75;
-						if (ClientPrefs.data.flashing)
-							game.camBars.flash(FlxColor.WHITE, 1.5);
-
-					case 128 | 256:
-						if (ClientPrefs.data.flashing) game.camBars.flash(FlxColor.WHITE, 1.5);
-
-					case 156:
-						game.defaultCamZoom = 1.05;
-
-					case 160:
-						game.boundValue = 1.25;
-						game.drainValue = 0.015;
-						game.defaultCamZoom = 0.7;
-						if (ClientPrefs.data.flashing) game.camBars.flash(FlxColor.BLACK, 1.5);
-
-					case 192:
-						game.defaultCamZoom = 0.75;
-					case 200 | 238 | 270 | 316 | 332 | 344:
-						game.defaultCamZoom = 0.8;
-					case 208:
-						game.defaultCamZoom = 0.85;
-					case 216 | 252 | 284:
-						game.defaultCamZoom = 0.9;
-					case 220:
-						game.defaultCamZoom = 0.95;
-					case 222 | 267 | 239 | 271 | 334:
-						game.defaultCamZoom = 1;
-
-					case 224 | 288:
-						game.defaultCamZoom = 0.75;
-						if (ClientPrefs.data.flashing)
-							game.camBars.flash(FlxColor.WHITE, 1.5);
-						FlxTween.tween(camHUD, {alpha: 0}, 3, {ease: FlxEase.sineInOut});
-
-					case 228 | 260 | 292 | 286:
-						game.defaultCamZoom = 1.1;
-
-					case 230 | 262 | 296 | 312 | 236 | 268:
-						game.defaultCamZoom = 0.65;
-
-					case 232 | 264:
-						if (ClientPrefs.data.flashing)
-							game.camBars.flash(FlxColor.WHITE, 1.5);
-						game.defaultCamZoom = 0.7;
-
-					case 412 | 240 | 272 | 300 | 304 | 336 | 248 | 280 | 328:
-						game.defaultCamZoom = 0.7;
-
-					case 320:
-						if (ClientPrefs.data.flashing)
-							game.camBars.flash(FlxColor.WHITE, 1.5);
-						game.defaultCamZoom = 0.7;
-
-					case 254:
-						game.defaultCamZoom = 1.1;
-						FlxTween.tween(camHUD, {alpha: 1}, 1, {ease: FlxEase.sineInOut});
-
-					case 318:
-						game.defaultCamZoom = 1.25;
-						FlxTween.tween(camHUD, {alpha: 1}, 1, {ease: FlxEase.sineInOut});
-
-					case 310 | 342 | 350:
-						game.defaultCamZoom = 1.25;
-
 					case 352:
-						game.defaultCamZoom = 0.65;
-						FlxTween.tween(camHUD, {alpha: 0.25}, 8, {ease: FlxEase.sineInOut});
 						FlxTween.tween(game, {healthThing: 0.01}, 20);
 						if (game.globalGradient != null)
 							FlxTween.tween(game.globalGradient, {alpha: 0.8}, 10);
-						FlxTween.tween(FlxG.camera, {zoom: 1.1}, 18, {startDelay: 2});
-
-					case 408:
-						game.defaultCamZoom = 0.9;
-						FlxTween.tween(camHUD, {alpha: 0.36}, 4, {ease: FlxEase.sineInOut});
-
-					case 416: if (ClientPrefs.data.flashing) game.camBars.flash(FlxColor.WHITE, 1.5);
-
-					case 480:
-						game.boundValue = 1;
-						game.drainValue = 0.02;
-						if (ClientPrefs.data.flashing)
-							game.camBars.flash(FlxColor.BLACK, 1.5);
-						camHUD.alpha = 0;
-
-					case 481:
-						game.camFollow.x += 100;
-	
-					case 506:
-						FlxTween.tween(camHUD, {alpha: 0.5}, 4, {ease: FlxEase.sineInOut});
-
-					case 536:
-						FlxTween.tween(camHUD, {alpha: 0}, 2, {ease: FlxEase.sineInOut});
-
-					case 540:
-						game.camBars.fade(FlxColor.BLACK, 5);
 				}
 
 				if (!ClientPrefs.data.lowQuality)
