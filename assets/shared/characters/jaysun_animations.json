@@ -1,0 +1,39 @@
+{
+	"animations": [
+		{
+			"offsets": [0, 7],
+			"indices": [],
+			"fps": 24,
+			"anim": "talk",
+			"loop": true,
+			"name": "talk"
+		},
+		{
+			"offsets": [0, 0],
+			"indices": [],
+			"fps": 24,
+			"anim": "laugh",
+			"loop": true,
+			"name": "laugh"
+		},
+		{
+			"offsets": [0, -20],
+			"indices": [],
+			"fps": 24,
+			"anim": "frustated",
+			"loop": true,
+			"name": "frustated"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "Funkin_avi/jaysun/jaysunAnims",
+	"position": [-260, -210],
+	"healthicon": "face",
+	"flip_x": false,
+	"healthbar_colors": [161, 161, 161],
+	"camera_position": [0, 0],
+	"sing_duration": 4,
+	"scale": 0.7,
+	"_editor_isPlayer": false
+}

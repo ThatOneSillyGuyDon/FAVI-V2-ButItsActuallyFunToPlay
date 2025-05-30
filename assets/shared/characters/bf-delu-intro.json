@@ -1,0 +1,130 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				-20
+			],
+			"anim": "idle",
+			"fps": 14,
+			"name": "Bf idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				210,
+				-13
+			],
+			"anim": "singLEFT",
+			"fps": 12,
+			"name": "Bf note left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				11,
+				-103
+			],
+			"anim": "singDOWN-alt",
+			"fps": 12,
+			"name": "Bf note down demon",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-8,
+				33
+			],
+			"anim": "singUP-alt",
+			"fps": 24,
+			"name": "Bf note up Demon",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				-10
+			],
+			"anim": "singRIGHT",
+			"fps": 12,
+			"name": "Bf note right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				11,
+				-101
+			],
+			"anim": "singDOWN",
+			"fps": 12,
+			"name": "Bf note down",
+			"indices": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13
+			]
+		},
+		{
+			"loop": false,
+			"offsets": [
+				2,
+				33
+			],
+			"anim": "singUP",
+			"fps": 12,
+			"name": "Bf note up",
+			"indices": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13
+			]
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/bf-delu-intro/bf-delu-intro",
+	"position": [
+		720,
+		500
+	],
+	"healthicon": "evilpredelu",
+	"flip_x": true,
+	"healthbar_colors": [
+		81,
+		81,
+		81
+	],
+	"camera_position": [
+		80,
+		20
+	],
+	"sing_duration": 6.1,
+	"scale": 0.9
+}

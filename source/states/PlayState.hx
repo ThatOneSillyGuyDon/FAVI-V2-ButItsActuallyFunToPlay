@@ -3583,6 +3583,16 @@ class PlayState extends MusicBeatState
 					FlxG.log.warn('ERROR ("Set Property" Event) - ' + e.message.substr(0, len));
 					#end
 				}
+
+			case 'Cinematic Bar Controls':
+				var triggerInfo:Array<String> = value2.split(',');
+				
+				cinematicBarControls(
+					value1.toLowerCase(), //Type of event for the bars
+					Std.parseFloat(triggerInfo[0]), //Time
+					triggerInfo[1], //Ease type
+					Std.parseFloat(triggerInfo[2]), //Position
+					Std.parseFloat(triggerInfo[3])); //Bop Value (ONLY WORKS WITH BOP EVENTS)
 			
 			case 'Background Controls':
 				var triggerInfo:Array<String> = value2.split(',');
@@ -3726,20 +3736,7 @@ class PlayState extends MusicBeatState
 					case "fade":
 						if (ClientPrefs.data.flashing) //technically, this can still cause potential epilepic seizures if used a certain way
 						{
-							if (triggerInfo[0] == null) triggerInfo[0] = "0";
-							if (triggerInfo[1] == null) triggerInfo[1] = "0";
-							if (triggerInfo[2] == null) triggerInfo[2] = "0";
-							if (triggerInfo[3] == null) triggerInfo[3] = "1";
-							if (triggerInfo[4] == null) triggerInfo[4] = "1";
-							if (triggerInfo[5] == null) triggerInfo[5] = "false";
-
-							@:privateAccess
-							{
-								camGame._fxFadeColor = FlxColor.fromRGB(Std.parseInt(triggerInfo[0]), Std.parseInt(triggerInfo[1]), Std.parseInt(triggerInfo[2]));
-								camGame._fxFadeDuration = Std.parseFloat(triggerInfo[3]);
-								camGame._fxFadeAlpha = Std.parseFloat(triggerInfo[4]);
-								camGame._fxFadeIn = triggerInfo[5] == "true" ? true : false;
-							}
+							camBars.fade(FlxColor.fromRGB(Std.parseInt(triggerInfo[0]), Std.parseInt(triggerInfo[1]), Std.parseInt(triggerInfo[2])), Std.parseFloat(triggerInfo[3]), triggerInfo[5] == "true" ? true : false);
 						}
 
 					case "changepos" | "change pos" | "set position" | "setposition":

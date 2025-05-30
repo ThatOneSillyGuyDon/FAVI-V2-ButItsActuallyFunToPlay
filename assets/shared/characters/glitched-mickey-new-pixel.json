@@ -1,0 +1,178 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				51,
+				60
+			],
+			"loop": true,
+			"fps": 26,
+			"anim": "idle",
+			"indices": [],
+			"name": "idle"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				51,
+				60
+			],
+			"anim": "MODCHARTS RAH",
+			"fps": 20,
+			"name": "YouFinnaDead",
+			"indices": []
+		},
+		{
+			"offsets": [
+				50,
+				60
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down0"
+		},
+		{
+			"offsets": [
+				50,
+				60
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "up0"
+		},
+		{
+			"offsets": [
+				50,
+				60
+			],
+			"loop": false,
+			"fps": 30,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right0"
+		},
+		{
+			"offsets": [
+				50,
+				60
+			],
+			"loop": false,
+			"fps": 28,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "left0"
+		},
+		{
+			"offsets": [
+				51,
+				54
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN-alt",
+			"indices": [
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9
+			],
+			"name": "downAlt"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				79,
+				36
+			],
+			"anim": "singUP-alt",
+			"fps": 24,
+			"name": "upAlt",
+			"indices": [
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9
+			]
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-310,
+				60
+			],
+			"anim": "singRIGHT-alt",
+			"fps": 30,
+			"name": "rightAlt",
+			"indices": [
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9
+			]
+		},
+		{
+			"loop": false,
+			"offsets": [
+				450,
+				10
+			],
+			"anim": "singLEFT-alt",
+			"fps": 28,
+			"name": "leftAlt",
+			"indices": [
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9
+			]
+		},
+		{
+			"offsets": [
+				61,
+				66
+			],
+			"indices": [],
+			"fps": 19,
+			"anim": "laughing",
+			"loop": false,
+			"name": "laugh"
+		}
+	],
+	"no_antialiasing": true,
+	"image": "characters/malsquare-faceless",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "malNEW-pixel",
+	"flip_x": false,
+	"healthbar_colors": [
+		0,
+		0,
+		0
+	],
+	"camera_position": [
+		-520,
+		-650
+	],
+	"sing_duration": 6.1,
+	"scale": 5.99999999999999
+}

@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				-6,
+				0
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "BF idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				5,
+				-32
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "BF note down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-43,
+				40
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "BF note up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-50,
+				0
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "BF note right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				24,
+				0
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "BF note left",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/DEFAULT_BF_REMAKE",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "everettmodern",
+	"flip_x": true,
+	"healthbar_colors": [
+		28,
+		151,
+		255
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"sing_duration": 6.1,
+	"scale": 1
+}

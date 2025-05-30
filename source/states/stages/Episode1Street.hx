@@ -277,9 +277,8 @@ class Episode1Street extends BaseStage
 	{
 		switch (PlayState.SONG.song)
 		{
-			case 'Isolated' | 'Lunacy':
-				game.camBars.fade(FlxColor.BLACK, 0.0001);
-				camHUD.alpha = 0.001;
+			//case 'Isolated' | 'Lunacy':
+			//	camHUD.alpha = 0.001;
 			case "Delusional":
 				deluSing = new VideoSprite(false);
 				deluSing.visible = false;
@@ -534,20 +533,7 @@ class Episode1Street extends BaseStage
 			default: game.boyfriend.setPosition(275, 50);
 		}
 	}
-
-	override function stepHit()
-	{
-		switch (PlayState.SONG.song)
-		{
-			case 'Isolated': 
-				switch (curStep)
-				{
-					case 1150: 
-						game.defaultCamZoom = camGame.zoom = 1.2;
-						game.cinematicBarControls('moveboth', 0.0001, 'linear', 155);
-				}
-		}
-	}
+	
 	override function beatHit()
 	{
 		if (PlayState.SONG.song == "Isolated")
@@ -593,157 +579,7 @@ class Episode1Street extends BaseStage
 		switch (PlayState.SONG.song)
 		{
 			case 'Isolated':
-				var beatBopArray:Array<Int> = [32, 36, 40, 44, 48, 52, 56, 60, 64, 68, 72, 76, 80, 84, 88, 92];
-				var beatBopArray2:Array<Int> = [168, 172, 176, 184, 188];
-				var beatBopArray3:Array<Int> = [194, 196, 198, 200, 202, 204, 206, 208, 210, 212, 214, 216, 217, 218, 219, 220, 221, 222, 223];
-
-				switch (curBeat)
-				{
-					case 12: game.camBars.fade(FlxColor.BLACK, 3, true);
-
-					case 30:
-						FlxTween.tween(camHUD, {alpha: 1}, 3, {ease: FlxEase.quadOut});
-
-					case 88: 
-						game.tweenCamera(1.4, 3, 'sineInOut');
-						game.camFlashSystem(BG_FLASH, {alpha: 0.32, timer: 1.2, colors: [194, 194, 194]});
-
-					case 95: 
-						game.cameraSpeed += 3;
-						game.isCameraOnForcedPos = true;
-						game.camFollow.x -= 950;
-						//updateSectionCamera('dad', false);
-
-					case 96:
-						game.isCameraOnForcedPos = false;
-						game.cameraSpeed -= 3;
-						game.defaultCamZoom = 0.85;
-						game.tweenCamera(0.85, 0.4, 'expoOut');
-
-						if (ClientPrefs.data.flashing)
-							camGame.flash(FlxColor.WHITE, 1.5);
-						game.camFlashSystem(BG_FLASH, {alpha: 0.4, timer: 0.35});
-					
-						case 160: 
-						game.tweenCamera(1.3, 2, 'sineInOut');
-						game.camFlashSystem(BG_DARK, {alpha: 0.85, timer: 0.5, ease: FlxEase.quartOut});
-					case 184:
-						game.camFlashSystem(BG_DARK, {alpha: 0.77, timer: 0.5, ease: FlxEase.quartOut});
-
-					case 188:
-						game.camFlashSystem(BG_DARK, {alpha: 0.6, timer: 0.5, ease: FlxEase.quartOut});
-
-					case 192: 
-						if (ClientPrefs.data.flashing)
-							camGame.flash(FlxColor.WHITE, 1.5);
-						game.camFlashSystem(BG_FLASH, {alpha: 0.32, timer: 0.35, colors: [194, 194, 194]});
-						
-						game.defaultCamZoom = 1.25;
-
-					// same as dad
-					// case 199: updateSectionCamera('bf', true);
-
-					// update after testing without the cam thing they rarely still stunned so idk what to do lmao
-
-					case 220: 
-						game.tweenCamera(0.85, 2, 'sineInOut');
-						game.camFlashSystem(BG_FLASH, {alpha: 0.32, timer: 0.1, colors: [194, 194, 194]});
-
-					case 288:
-						game.defaultCamZoom = 0.85;
-
-						if (ClientPrefs.data.flashing)
-							camGame.flash(FlxColor.WHITE, 1.5);
-						game.camFlashSystem(BG_FLASH, {alpha: 0.4, timer: 0.35, colors: [194, 194, 194]});
-
-					case 352:
-						game.camFlashSystem(BG_DARK, {alpha: 0.85, timer: 0.5, ease: FlxEase.quartOut});
-						game.tweenCamera(1.07, 5, 'quadInOut');
-						game.cameraSpeed -= 0.25;
-
-					case 376:
-						game.camFlashSystem(BG_DARK, {alpha: 0, timer: 4, ease: FlxEase.quartInOut});
-
-					case 36 | 40 | 44 | 52 | 56 | 60 | 64 | 68 | 72 | 76 | 80 | 84 | 92:
-						game.camFlashSystem(BG_FLASH, {alpha: 0.32, timer: 1.2, colors: [194, 194, 194]});
-
-					case 100 | 104 | 108 | 116 | 120 | 124 | 132 | 136 | 140 | 148 | 152 | 156 | 228 | 232 | 236 | 240 | 244 | 252 | 260 | 264 | 268 | 276 |
-						280 | 284 | 292 | 296 | 300 | 308 | 312 | 316 | 324 | 328 | 332 | 340 | 344 | 348:
-						game.camFlashSystem(BG_FLASH, {alpha: 0.2, timer: 0.35, colors: [194, 194, 194]});
-
-					case 98 | 102 | 106 | 110 | 114 | 118 | 122 | 126 | 130 | 134 | 138 | 142 | 146 | 150 | 154 | 158 | 226 | 230 | 234 | 238 | 242 | 246 |
-						250 | 254 | 258 | 262 | 266 | 270 | 274 | 278 | 282 | 286 | 290 | 294 | 298 | 302 | 306 | 310 | 314 | 318 | 322 | 326 | 330 | 334 |
-						338 | 342 | 346 | 350:
-						game.camFlashSystem(BG_FLASH, {alpha: 0.55, timer: 0.35, colors: [194, 194, 194]});
-
-					case 194 | 196 | 198 | 200 | 202 | 204 | 206 | 210 | 212 | 214 | 222:
-						game.camFlashSystem(BG_FLASH, {alpha: 0.32, timer: 0.35, colors: [194, 194, 194]});
-
-					case 216 | 217 | 218 | 219:
-						game.camFlashSystem(BG_FLASH, {alpha: 0.32, timer: 0.1, colors: [194, 194, 194]});
-						camHUD.zoom += 0.04;
-
-					case 128 | 256:
-						if (ClientPrefs.data.flashing)
-							camGame.flash(FlxColor.WHITE, 1.5);
-						game.camFlashSystem(BG_FLASH, {alpha: 0.4, timer: 0.35, colors: [194, 194, 194]});
-
-					case 48 | 336 | 304 | 272 | 112 | 144:
-						if (ClientPrefs.data.flashing)
-							camGame.flash(FlxColor.BLACK, 1.5);
-						game.camFlashSystem(BG_FLASH, {alpha: 0.32, timer: 1.2, colors: [194, 194, 194]});
-
-					case 32:
-						if (ClientPrefs.data.flashing) camGame.flash(FlxColor.WHITE, 1.5);
-
-					case 416:
-						camGame.visible = false;
-						camHUD.visible = false;
-
-					case 224:
-						game.camFlashSystem(BG_FLASH, {alpha: 0.4, timer: 0.35, colors: [194, 194, 194]});
-						if (ClientPrefs.data.flashing) camGame.flash(FlxColor.WHITE, 1.5);
-
-					case 320:
-						game.camFlashSystem(BG_FLASH, {alpha: 0.4, timer: 0.35, colors: [194, 194, 194]});
-						if (ClientPrefs.data.flashing) camGame.flash(FlxColor.WHITE, 1.5);
-				}
-
-				if (curBeat == 1)
-				{
-					game.cinematicBarControls("add", 0.0001, 'linear', 0);
-					game.cinematicBarControls("moveboth", 0.0001, 'linear', 130);
-				}
-				if (curBeat == 28)
-					game.cinematicBarControls("moveboth", 1, 'circInOut', 65);
-				for (i in 0...beatBopArray.length)
-					if (curBeat == beatBopArray[i])
-						game.cinematicBarControls('bopboth', 1, 'quartOut', 32, 33);
-				if (curBeat == 96)
-					game.cinematicBarControls('moveboth', 0.3, 'sineOut', 0);
-				if (curBeat == 160 || curBeat == 352)
-					game.cinematicBarControls('moveboth', 1, 'circOut', 140);
-				if (curBeat == 164 || curBeat == 180)
-					game.cinematicBarControls('bopboth', 0.85, 'quartOut', 125, 15);
-				for (i in 0...beatBopArray2.length)
-					if (curBeat == beatBopArray2[i])
-						game.cinematicBarControls('bopboth', 1, 'quartOut', 90, 60);
-				if (curBeat == 192)
-					game.cinematicBarControls('moveboth', 0.7, 'sineOut', 85);
-				for (i in 0...beatBopArray3.length)
-					if (curBeat == beatBopArray3[i])
-						game.cinematicBarControls('bopboth', 0.3, 'sineOut', 40, 45);
-				if (curBeat == 224)
-					game.cinematicBarControls('moveboth', 0.3, 'quartOut', 0);
-				if (curBeat == 287)
-					game.cinematicBarControls('moveboth', 0.0001, 'linear', 100);
-				if (curBeat == 288)
-					game.cinematicBarControls('moveboth', 0.75, 'circOut', 0);
-				if (curBeat == 376)
-					game.cinematicBarControls('moveboth', 3, 'sineInOut', 0);
-				if (curBeat == 415)
-					game.cinematicBarControls('moveboth', 0.63, 'circInOut', 600);
-
+				
 				if ((curBeat > 96 && curBeat < 160) || (curBeat > 224 && curBeat < 352))
 				{
 					if (curBeat % 2 == 0)

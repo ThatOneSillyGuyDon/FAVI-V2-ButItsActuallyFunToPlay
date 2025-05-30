@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="WhisleMick.png">
+<SubTexture name="WhisleMick Idle0000" x="1410" y="1326" width="807" height="1044" frameX="-329" frameY="-313" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="WhisleMick UpPose0000" x="1037" y="0" width="687" height="1169" frameX="-446" frameY="-180" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="WhisleMick UpPose0001" x="1724" y="0" width="746" height="1145" frameX="-411" frameY="-202" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="WhisleMick DownPose0000" x="0" y="3447" width="1055" height="1022" frameX="-214" frameY="-355" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="WhisleMick DownPose0001" x="0" y="0" width="1037" height="1326" frameX="-238" frameY="-51" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="WhisleMick LeftPose0000" x="680" y="1326" width="730" height="1062" frameX="-341" frameY="-309" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="WhisleMick LeftPose0001" x="0" y="1326" width="680" height="1082" frameX="-393" frameY="-288" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="WhisleMick RightPose0000" x="1745" y="2408" width="943" height="1032" frameX="-347" frameY="-340" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="WhisleMick RightPose0001" x="0" y="2408" width="936" height="1039" frameX="-348" frameY="-333" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="WhisleMick Idle0001" x="2688" y="2408" width="814" height="1028" frameX="-327" frameY="-326" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="WhisleMick Idle0002" x="1055" y="3447" width="827" height="1021" frameX="-317" frameY="-332" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="WhisleMick Idle0003" x="4085" y="0" width="815" height="1027" frameX="-327" frameY="-328" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="WhisleMick Idle0004" x="936" y="2408" width="809" height="1036" frameX="-329" frameY="-320" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="WhisleMick Idle0005" x="3277" y="0" width="808" height="1041" frameX="-329" frameY="-316" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="WhisleMick Idle0006" x="2470" y="1044" width="807" height="1043" frameX="-329" frameY="-314" frameWidth="1650" frameHeight="1400" />
+<SubTexture name="WhisleMick Idle0007" x="2470" y="0" width="807" height="1044" frameX="-329" frameY="-313" frameWidth="1650" frameHeight="1400" />
+</TextureAtlas>

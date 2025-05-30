@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Delu intro mickey.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Mickey idle0000" x="0" y="0" width="369" height="593"/>
+	<SubTexture name="Mickey idle0001" x="0" y="0" width="369" height="593"/>
+	<SubTexture name="Mickey idle0002" x="384" y="0" width="369" height="593"/>
+	<SubTexture name="Mickey idle0003" x="384" y="0" width="369" height="593"/>
+	<SubTexture name="Mickey idle0004" x="768" y="0" width="369" height="593"/>
+	<SubTexture name="Mickey idle0005" x="768" y="0" width="369" height="593"/>
+	<SubTexture name="Mickey idle0006" x="1152" y="0" width="369" height="593"/>
+	<SubTexture name="Mickey idle0007" x="1152" y="0" width="369" height="593"/>
+	<SubTexture name="Mickey idle0008" x="1536" y="0" width="369" height="593"/>
+	<SubTexture name="Mickey idle0009" x="1536" y="0" width="369" height="593"/>
+	<SubTexture name="Mickey idle0010" x="0" y="608" width="369" height="593"/>
+	<SubTexture name="Mickey idle0011" x="0" y="608" width="369" height="593"/>
+	<SubTexture name="Mickey idle0012" x="0" y="608" width="369" height="593"/>
+	<SubTexture name="Mickey idle0013" x="0" y="608" width="369" height="593"/>
+	<SubTexture name="Mickey note down0000" x="384" y="608" width="398" height="484"/>
+	<SubTexture name="Mickey note down0001" x="384" y="608" width="398" height="484"/>
+	<SubTexture name="Mickey note down0002" x="797" y="608" width="398" height="484"/>
+	<SubTexture name="Mickey note down0003" x="797" y="608" width="398" height="484"/>
+	<SubTexture name="Mickey note down0004" x="1210" y="608" width="398" height="484"/>
+	<SubTexture name="Mickey note down0005" x="1210" y="608" width="398" height="484"/>
+	<SubTexture name="Mickey note down0006" x="1623" y="608" width="398" height="484"/>
+	<SubTexture name="Mickey note down0007" x="1623" y="608" width="398" height="484"/>
+	<SubTexture name="Mickey note down0008" x="1623" y="608" width="398" height="484"/>
+	<SubTexture name="Mickey note down0009" x="1623" y="608" width="398" height="484"/>
+	<SubTexture name="Mickey note down0010" x="1623" y="608" width="398" height="484"/>
+	<SubTexture name="Mickey note down0011" x="1623" y="608" width="398" height="484"/>
+	<SubTexture name="Mickey note down0012" x="1623" y="608" width="398" height="484"/>
+	<SubTexture name="Mickey note down0013" x="1623" y="608" width="398" height="484"/>
+	<SubTexture name="Mickey note left0000" x="0" y="1216" width="371" height="592"/>
+	<SubTexture name="Mickey note left0001" x="0" y="1216" width="371" height="592"/>
+	<SubTexture name="Mickey note left0002" x="386" y="1216" width="371" height="592"/>
+	<SubTexture name="Mickey note left0003" x="386" y="1216" width="371" height="592"/>
+	<SubTexture name="Mickey note left0004" x="772" y="1216" width="371" height="592"/>
+	<SubTexture name="Mickey note left0005" x="772" y="1216" width="371" height="592"/>
+	<SubTexture name="Mickey note left0006" x="1158" y="1216" width="371" height="592"/>
+	<SubTexture name="Mickey note left0007" x="1158" y="1216" width="371" height="592"/>
+	<SubTexture name="Mickey note left0008" x="1158" y="1216" width="371" height="592"/>
+	<SubTexture name="Mickey note left0009" x="1158" y="1216" width="371" height="592"/>
+	<SubTexture name="Mickey note left0010" x="1158" y="1216" width="371" height="592"/>
+	<SubTexture name="Mickey note left0011" x="1158" y="1216" width="371" height="592"/>
+	<SubTexture name="Mickey note left0012" x="1158" y="1216" width="371" height="592"/>
+	<SubTexture name="Mickey note left0013" x="1158" y="1216" width="371" height="592"/>
+	<SubTexture name="Mickey note right0000" x="1544" y="1216" width="497" height="597"/>
+	<SubTexture name="Mickey note right0001" x="1544" y="1216" width="497" height="597"/>
+	<SubTexture name="Mickey note right0002" x="0" y="1828" width="497" height="597"/>
+	<SubTexture name="Mickey note right0003" x="0" y="1828" width="497" height="597"/>
+	<SubTexture name="Mickey note right0004" x="512" y="1828" width="497" height="597"/>
+	<SubTexture name="Mickey note right0005" x="512" y="1828" width="497" height="597"/>
+	<SubTexture name="Mickey note right0006" x="1024" y="1828" width="497" height="597"/>
+	<SubTexture name="Mickey note right0007" x="1024" y="1828" width="497" height="597"/>
+	<SubTexture name="Mickey note right0008" x="1024" y="1828" width="497" height="597"/>
+	<SubTexture name="Mickey note right0009" x="1024" y="1828" width="497" height="597"/>
+	<SubTexture name="Mickey note right0010" x="1024" y="1828" width="497" height="597"/>
+	<SubTexture name="Mickey note right0011" x="1024" y="1828" width="497" height="597"/>
+	<SubTexture name="Mickey note right0012" x="1024" y="1828" width="497" height="597"/>
+	<SubTexture name="Mickey note right0013" x="1024" y="1828" width="497" height="597"/>
+	<SubTexture name="Mickey note up0000" x="1536" y="1828" width="361" height="681"/>
+	<SubTexture name="Mickey note up0001" x="1536" y="1828" width="361" height="681"/>
+	<SubTexture name="Mickey note up0002" x="0" y="2524" width="361" height="681"/>
+	<SubTexture name="Mickey note up0003" x="0" y="2524" width="361" height="681"/>
+	<SubTexture name="Mickey note up0004" x="376" y="2524" width="361" height="681"/>
+	<SubTexture name="Mickey note up0005" x="376" y="2524" width="361" height="681"/>
+	<SubTexture name="Mickey note up0006" x="752" y="2524" width="361" height="681"/>
+	<SubTexture name="Mickey note up0007" x="752" y="2524" width="361" height="681"/>
+	<SubTexture name="Mickey note up0008" x="752" y="2524" width="361" height="681"/>
+	<SubTexture name="Mickey note up0009" x="752" y="2524" width="361" height="681"/>
+	<SubTexture name="Mickey note up0010" x="752" y="2524" width="361" height="681"/>
+	<SubTexture name="Mickey note up0011" x="752" y="2524" width="361" height="681"/>
+	<SubTexture name="Mickey note up0012" x="752" y="2524" width="361" height="681"/>
+	<SubTexture name="Mickey note up0013" x="752" y="2524" width="361" height="681"/>
+</TextureAtlas>

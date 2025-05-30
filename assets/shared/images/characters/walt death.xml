@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="walt death.png">
+<SubTexture name="walt death dead0000" x="0" y="0" width="1293" height="4136" frameX="-701" frameY="-147" frameWidth="3000" frameHeight="5000" />
+<SubTexture name="walt death dead0001" x="1293" y="0" width="1317" height="4096" frameX="-687" frameY="-190" frameWidth="3000" frameHeight="5000" />
+<SubTexture name="walt death dead0002" x="0" y="0" width="1293" height="4136" frameX="-701" frameY="-147" frameWidth="3000" frameHeight="5000" />
+<SubTexture name="walt death dead0003" x="1293" y="0" width="1317" height="4096" frameX="-687" frameY="-190" frameWidth="3000" frameHeight="5000" />
+<SubTexture name="walt death dead0004" x="0" y="0" width="1293" height="4136" frameX="-701" frameY="-147" frameWidth="3000" frameHeight="5000" />
+<SubTexture name="walt death dead0005" x="1293" y="0" width="1317" height="4096" frameX="-687" frameY="-190" frameWidth="3000" frameHeight="5000" />
+<SubTexture name="walt death dead0006" x="2610" y="0" width="1317" height="3957" frameX="-681" frameY="-321" frameWidth="3000" frameHeight="5000" />
+<SubTexture name="walt death dead0007" x="3927" y="0" width="1317" height="3723" frameX="-673" frameY="-568" frameWidth="3000" frameHeight="5000" />
+<SubTexture name="walt death dead0008" x="6579" y="0" width="1376" height="3333" frameX="-631" frameY="-965" frameWidth="3000" frameHeight="5000" />
+<SubTexture name="walt death dead0009" x="5244" y="0" width="1335" height="3394" frameX="-651" frameY="-905" frameWidth="3000" frameHeight="5000" />
+<SubTexture name="walt death dead0010" x="6579" y="0" width="1376" height="3333" frameX="-631" frameY="-965" frameWidth="3000" frameHeight="5000" />
+<SubTexture name="walt death dead0011" x="5244" y="0" width="1335" height="3394" frameX="-651" frameY="-905" frameWidth="3000" frameHeight="5000" />
+<SubTexture name="walt death dead0012" x="6579" y="0" width="1376" height="3333" frameX="-631" frameY="-965" frameWidth="3000" frameHeight="5000" />
+<SubTexture name="walt death dead0013" x="5244" y="0" width="1335" height="3394" frameX="-651" frameY="-905" frameWidth="3000" frameHeight="5000" />
+<SubTexture name="walt death dead0014" x="6579" y="0" width="1376" height="3333" frameX="-631" frameY="-965" frameWidth="3000" frameHeight="5000" />
+<SubTexture name="walt death dead0015" x="5244" y="0" width="1335" height="3394" frameX="-651" frameY="-905" frameWidth="3000" frameHeight="5000" />
+<SubTexture name="walt death dead0016" x="0" y="4136" width="1285" height="3294" frameX="-719" frameY="-1004" frameWidth="3000" frameHeight="5000" />
+<SubTexture name="walt death dead0017" x="1285" y="4136" width="1153" height="3005" frameX="-876" frameY="-1284" frameWidth="3000" frameHeight="5000" />
+<SubTexture name="walt death dead0018" x="7955" y="4363" width="1068" height="1983" frameX="-960" frameY="-2298" frameWidth="3000" frameHeight="5000" />
+<SubTexture name="walt death dead0019" x="2002" y="7430" width="1403" height="1699" frameX="-820" frameY="-2577" frameWidth="3000" frameHeight="5000" />
+<SubTexture name="walt death dead0020" x="5091" y="7430" width="1702" height="1552" frameX="-645" frameY="-2812" frameWidth="3000" frameHeight="5000" />
+<SubTexture name="walt death dead0021" x="3405" y="7430" width="1686" height="1569" frameX="-657" frameY="-2768" frameWidth="3000" frameHeight="5000" />
+<SubTexture name="walt death dead0022" x="7955" y="2271" width="1677" height="2092" frameX="-595" frameY="-2241" frameWidth="3000" frameHeight="5000" />
+<SubTexture name="walt death dead0023" x="4514" y="4136" width="2121" height="2288" frameX="-413" frameY="-2077" frameWidth="3000" frameHeight="5000" />
+<SubTexture name="walt death dead0024" x="2438" y="4136" width="2076" height="2324" frameX="-428" frameY="-2055" frameWidth="3000" frameHeight="5000" />
+<SubTexture name="walt death dead-loop0000" x="7955" y="0" width="1997" height="2271" frameX="-454" frameY="-2105" frameWidth="3000" frameHeight="5000" />
+<SubTexture name="walt death dead-loop0001" x="0" y="7430" width="2002" height="2265" frameX="-461" frameY="-2111" frameWidth="3000" frameHeight="5000" />
+</TextureAtlas>

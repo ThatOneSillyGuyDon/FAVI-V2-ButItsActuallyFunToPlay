@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				590,
+				640
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "Mickeyphase2 Idle"
+		},
+		{
+			"offsets": [
+				570,
+				654
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "Mickeyphase2 Left"
+		},
+		{
+			"offsets": [
+				570,
+				630
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "Mickeyphase2 Up"
+		},
+		{
+			"offsets": [
+				590,
+				642
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "Mickeyphase2 Down"
+		},
+		{
+			"offsets": [
+				540,
+				640
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Mickeyphase2 Right"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/mickey-lunacy-legacy/Mickeyphase2",
+	"position": [
+		0,
+		200
+	],
+	"healthicon": "lunaold",
+	"flip_x": false,
+	"healthbar_colors": [
+		176,
+		176,
+		176
+	],
+	"camera_position": [
+		-290,
+		-320
+	],
+	"sing_duration": 6.1,
+	"scale": 0.7
+}

@@ -1,0 +1,111 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "idle",
+			"fps": 10,
+			"name": "Bf Idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singLEFT",
+			"fps": 11,
+			"name": "Bf Left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singDOWN",
+			"fps": 11,
+			"name": "Bf Down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singUP",
+			"fps": 11,
+			"name": "Bf Up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singRIGHT",
+			"fps": 11,
+			"name": "Bf Right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "dodge",
+			"fps": 11,
+			"name": "Bf Dodge",
+			"indices": []
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 10,
+			"anim": "firstDeath",
+			"indices": [],
+			"name": "Bf Death"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 11,
+			"anim": "deathConfirm",
+			"indices": [],
+			"name": "Bf Retry"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/bf-relapsed-pixel/Bf-relapsed",
+	"position": [
+		50,
+		180
+	],
+	"healthicon": "relapseeverett-pixel",
+	"flip_x": true,
+	"healthbar_colors": [
+		172,
+		170,
+		170
+	],
+	"camera_position": [
+		80,
+		-280
+	],
+	"sing_duration": 6.1,
+	"scale": 1.4
+}

@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="Mickeystoppedworking.png"><SubTexture name="Mickeystoppedworking Idle0000" x="687" y="1728" width="695" height="826" frameX="-405" frameY="-652" frameWidth="1650" frameHeight="1500" />
+<SubTexture name="Mickeystoppedworking Idle0001" x="2647" y="0" width="701" height="824" frameX="-402" frameY="-654" frameWidth="1650" frameHeight="1500" />
+<SubTexture name="Mickeystoppedworking Idle0002" x="1382" y="1728" width="693" height="826" frameX="-406" frameY="-652" frameWidth="1650" frameHeight="1500" />
+<SubTexture name="Mickeystoppedworking Idle0003" x="0" y="1728" width="687" height="828" frameX="-409" frameY="-650" frameWidth="1650" frameHeight="1500" />
+<SubTexture name="Mickeystoppedworking Idle0004" x="1966" y="0" width="681" height="834" frameX="-412" frameY="-645" frameWidth="1650" frameHeight="1500" />
+<SubTexture name="Mickeystoppedworking Idle0005" x="0" y="891" width="681" height="837" frameX="-412" frameY="-642" frameWidth="1650" frameHeight="1500" />
+<SubTexture name="Mickeystoppedworking Idle0006" x="681" y="891" width="681" height="837" frameX="-412" frameY="-642" frameWidth="1650" frameHeight="1500" />
+<SubTexture name="Mickeystoppedworking Idle0007" x="0" y="891" width="681" height="837" frameX="-412" frameY="-642" frameWidth="1650" frameHeight="1500" />
+<SubTexture name="Mickeystoppedworking Left0000" x="2647" y="824" width="677" height="821" frameX="-402" frameY="-657" frameWidth="1650" frameHeight="1500" />
+<SubTexture name="Mickeystoppedworking Left0001" x="2647" y="1645" width="688" height="821" frameX="-394" frameY="-657" frameWidth="1650" frameHeight="1500" />
+<SubTexture name="Mickeystoppedworking Left0002" x="3348" y="0" width="693" height="821" frameX="-390" frameY="-657" frameWidth="1650" frameHeight="1500" />
+<SubTexture name="Mickeystoppedworking Right0000" x="0" y="2556" width="712" height="767" frameX="-426" frameY="-711" frameWidth="1650" frameHeight="1500" />
+<SubTexture name="Mickeystoppedworking Right0001" x="712" y="2556" width="718" height="767" frameX="-425" frameY="-711" frameWidth="1650" frameHeight="1500" />
+<SubTexture name="Mickeystoppedworking Right0002" x="1430" y="2556" width="721" height="767" frameX="-424" frameY="-711" frameWidth="1650" frameHeight="1500" />
+<SubTexture name="Mickeystoppedworking Up0000" x="1304" y="0" width="662" height="871" frameX="-426" frameY="-606" frameWidth="1650" frameHeight="1500" />
+<SubTexture name="Mickeystoppedworking Up0001" x="650" y="0" width="654" height="887" frameX="-430" frameY="-592" frameWidth="1650" frameHeight="1500" />
+<SubTexture name="Mickeystoppedworking Up0002" x="0" y="0" width="650" height="891" frameX="-432" frameY="-589" frameWidth="1650" frameHeight="1500" />
+<SubTexture name="Mickeystoppedworking Down0000" x="2151" y="2556" width="723" height="759" frameX="-390" frameY="-719" frameWidth="1650" frameHeight="1500" />
+<SubTexture name="Mickeystoppedworking Down0001" x="2874" y="2556" width="742" height="746" frameX="-380" frameY="-730" frameWidth="1650" frameHeight="1500" />
+<SubTexture name="Mickeystoppedworking Down0002" x="4041" y="0" width="746" height="744" frameX="-378" frameY="-732" frameWidth="1650" frameHeight="1500" />
+</TextureAtlas>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Free texture packer v0.6.7 http://free-tex-packer.com
+-->
+<TextureAtlas imagePath="Muckney.png" width="1551" height="4509">
+  <SubTexture name="idle0001.png" x="0" y="0"  width="743" height="961" frameX="-273" frameY="-203" frameWidth="1280" frameHeight="1230"/>
+  <SubTexture name="left0001.png" x="0" y="961"  width="798" height="913" frameX="-39" frameY="-227" frameWidth="1280" frameHeight="1230"/>
+  <SubTexture name="left0002.png" x="743" y="0"  width="801" height="912" frameX="-61" frameY="-226" frameWidth="1280" frameHeight="1230"/>
+  <SubTexture name="up0002.png" x="0" y="1874"  width="832" height="910" frameX="-262" frameY="-16" frameWidth="1280" frameHeight="1230"/>
+  <SubTexture name="idle0002.png" x="798" y="912"  width="717" height="899" frameX="-273" frameY="-235" frameWidth="1280" frameHeight="1230"/>
+  <SubTexture name="right0002.png" x="0" y="2784"  width="751" height="865" frameX="-384" frameY="-260" frameWidth="1280" frameHeight="1230"/>
+  <SubTexture name="right0001.png" x="0" y="3649"  width="731" height="860" frameX="-403" frameY="-260" frameWidth="1280" frameHeight="1230"/>
+  <SubTexture name="up0001.png" x="731" y="3649"  width="768" height="813" frameX="-251" frameY="-29" frameWidth="1280" frameHeight="1230"/>
+  <SubTexture name="down0002.png" x="751" y="2784"  width="800" height="809" frameX="-287" frameY="-331" frameWidth="1280" frameHeight="1230"/>
+  <SubTexture name="down0001.png" x="832" y="1811"  width="701" height="788" frameX="-291" frameY="-351" frameWidth="1280" frameHeight="1230"/>
+</TextureAtlas>

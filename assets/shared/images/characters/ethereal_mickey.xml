@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="ethereal_mickey.png">
+<SubTexture name="ethereal_mickey Idle0000" x="4890" y="5372" width="1654" height="1758" frameX="-108" frameY="-41" frameWidth="1800" frameHeight="1800" />
+<SubTexture name="ethereal_mickey Idle0001" x="3232" y="5372" width="1658" height="1765" frameX="-103" frameY="-33" frameWidth="1800" frameHeight="1800" />
+<SubTexture name="ethereal_mickey Idle0002" x="0" y="5372" width="1634" height="1773" frameX="-106" frameY="-26" frameWidth="1800" frameHeight="1800" />
+<SubTexture name="ethereal_mickey Idle0003" x="6197" y="0" width="1620" height="1781" frameX="-111" frameY="-18" frameWidth="1800" frameHeight="1800" />
+<SubTexture name="ethereal_mickey Idle0004" x="1468" y="1800" width="1614" height="1785" frameX="-113" frameY="-14" frameWidth="1800" frameHeight="1800" />
+<SubTexture name="ethereal_mickey Idle0005" x="4583" y="0" width="1614" height="1785" frameX="-113" frameY="-14" frameWidth="1800" frameHeight="1800" />
+<SubTexture name="ethereal_mickey Idle0006" x="4583" y="1785" width="1614" height="1785" frameX="-113" frameY="-14" frameWidth="1800" frameHeight="1800" />
+<SubTexture name="ethereal_mickey Idle0007" x="0" y="3587" width="1614" height="1785" frameX="-113" frameY="-14" frameWidth="1800" frameHeight="1800" />
+<SubTexture name="ethereal_mickey Up0000" x="1541" y="0" width="1523" height="1791" frameX="-130" frameY="-9" frameWidth="1800" frameHeight="1800" />
+<SubTexture name="ethereal_mickey Up0001" x="3064" y="0" width="1519" height="1791" frameX="-130" frameY="-9" frameWidth="1800" frameHeight="1800" />
+<SubTexture name="ethereal_mickey Up0002" x="0" y="0" width="1541" height="1800" frameX="-119" frameY="0" frameWidth="1800" frameHeight="1800" />
+<SubTexture name="ethereal_mickey Down0000" x="0" y="7145" width="1617" height="1667" frameX="-132" frameY="-130" frameWidth="1800" frameHeight="1800" />
+<SubTexture name="ethereal_mickey Down0001" x="7817" y="0" width="1610" height="1690" frameX="-126" frameY="-108" frameWidth="1800" frameHeight="1800" />
+<SubTexture name="ethereal_mickey Down0002" x="7817" y="1690" width="1610" height="1690" frameX="-126" frameY="-108" frameWidth="1800" frameHeight="1800" />
+<SubTexture name="ethereal_mickey Right0000" x="0" y="1800" width="1468" height="1787" frameX="-317" frameY="-12" frameWidth="1800" frameHeight="1800" />
+<SubTexture name="ethereal_mickey Right0001" x="1614" y="3587" width="1525" height="1784" frameX="-273" frameY="-15" frameWidth="1800" frameHeight="1800" />
+<SubTexture name="ethereal_mickey Right0002" x="3139" y="3587" width="1526" height="1784" frameX="-273" frameY="-15" frameWidth="1800" frameHeight="1800" />
+<SubTexture name="ethereal_mickey Left0000" x="1634" y="5372" width="1598" height="1769" frameX="-15" frameY="-30" frameWidth="1800" frameHeight="1800" />
+<SubTexture name="ethereal_mickey Left0001" x="6197" y="1781" width="1594" height="1775" frameX="-23" frameY="-24" frameWidth="1800" frameHeight="1800" />
+<SubTexture name="ethereal_mickey Left0002" x="6197" y="3556" width="1594" height="1775" frameX="-23" frameY="-24" frameWidth="1800" frameHeight="1800" />
+</TextureAtlas>
