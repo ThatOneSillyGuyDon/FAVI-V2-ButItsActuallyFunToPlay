@@ -14,6 +14,8 @@ class SmileStage extends BaseStage
 
 	public var shaderAnim:Float = 0;
 
+	var funiLight:FlxSprite;
+
 	override function create()
 	{
 		game.defaultCamZoom = 0.75;
@@ -37,7 +39,7 @@ class SmileStage extends BaseStage
 	
 	override function createPost()
 	{
-		var funiLight:FlxSprite = new FlxSprite(-500, -300).loadGraphic(Paths.image(PlayState.pathway + 'light'));
+		funiLight = new FlxSprite(-500, -300).loadGraphic(Paths.image(PlayState.pathway + 'light'));
 		funiLight.antialiasing = true;
 		funiLight.scrollFactor.set(1, 1);
 		funiLight.alpha = 0.6;
@@ -79,11 +81,19 @@ class SmileStage extends BaseStage
 				switch (value1.toLowerCase())
 				{
 					case 'add':
-						game.boyfriend.shader = outline;
-						game.dad.shader = outline;	
+						funiLight.alpha = 0.0001;
+						if (ClientPrefs.data.shaders)
+						{
+							game.boyfriend.shader = outline;
+							game.dad.shader = outline;
+						}
 					case 'remove':
-						game.boyfriend.shader = null;
-						game.dad.shader = null;	
+						funiLight.alpha = 0.6;
+						if (ClientPrefs.data.shaders)
+						{
+							game.boyfriend.shader = null;
+							game.dad.shader = null;	
+						}
 				}
 				
 		}
