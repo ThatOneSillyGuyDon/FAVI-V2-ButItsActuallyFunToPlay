@@ -81,19 +81,21 @@ class SmileStage extends BaseStage
 				switch (value1.toLowerCase())
 				{
 					case 'add':
-						funiLight.alpha = 0.0001;
 						if (ClientPrefs.data.shaders)
 						{
 							game.boyfriend.shader = outline;
 							game.dad.shader = outline;
 						}
 					case 'remove':
-						funiLight.alpha = 0.6;
 						if (ClientPrefs.data.shaders)
 						{
 							game.boyfriend.shader = null;
 							game.dad.shader = null;	
 						}
+					case 'addlight':
+						funiLight.alpha = 0.6;
+					case 'killlight':
+						funiLight.alpha = 0.0001;
 				}
 				
 		}

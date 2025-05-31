@@ -95605,6 +95605,11 @@ enum abstract Chart(String) from String to String {
 						"Trigger TG shader shi",
 						"Add",
 						""
+					],
+					[
+						"Trigger TG shader shi",
+						"Killlight",
+						""
 					]
 				]
 			],
@@ -95825,6 +95830,11 @@ enum abstract Chart(String) from String to String {
 						"Set Property",
 						"gfGroup.alpha",
 						"1"
+					],
+					[
+						"Trigger TG shader shi",
+						"AddLight",
+						""
 					]
 				]
 			],
@@ -95859,12 +95869,42 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
-				98571,
+				98035.7142857143,
+				[
+					[
+						"Trigger TG shader shi",
+						"KillLight",
+						""
+					]
+				]
+			],
+			[
+				99428.5714285714,
+				[
+					[
+						"Set Property",
+						"uiGroup.alpha",
+						"0"
+					],
+					[
+						"Set Property",
+						"comboGroup.alpha",
+						"0"
+					],
+					[
+						"Camera Event",
+						"Flash",
+						"255,255,255,2,1,true"
+					]
+				]
+			],
+			[
+				99429,
 				[
 					[
 						"Camera Event",
 						"Fade",
-						"0,0,0,1,1,true"
+						"0,0,0,0.0001,1,true"
 					],
 					[
 						"Background Controls",
@@ -95889,7 +95929,232 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
-				99428.5714285714,
+				126857.142857143,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,0.85"
+					]
+				]
+			],
+			[
+				127714.285714286,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,0.9"
+					]
+				]
+			],
+			[
+				128035.714285714,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,0.95"
+					]
+				]
+			],
+			[
+				128357.142857143,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,1"
+					]
+				]
+			],
+			[
+				128571.428571428,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.75"
+					]
+				]
+			],
+			[
+				134571.428571428,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,0.8"
+					]
+				]
+			],
+			[
+				137571.428571428,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,0.85"
+					]
+				]
+			],
+			[
+				139071.428571428,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,0.9"
+					]
+				]
+			],
+			[
+				139633.928571428,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,0.95"
+					]
+				]
+			],
+			[
+				140196.428571428,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,1"
+					],
+					[
+						"Set Property",
+						"dad.shader",
+						"null"
+					]
+				]
+			],
+			[
+				140566.741071428,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,0.75"
+					]
+				]
+			],
+			[
+				140572,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,0.75"
+					],
+					[
+						"Set Property",
+						"isCameraOnForcedPos",
+						"false"
+					],
+					[
+						"Camera Event",
+						"Fade",
+						"255,255,255,1,0,true"
+					],
+					[
+						"Background Controls",
+						"Darken",
+						"0,0.0001,linear"
+					],
+					[
+						"Cinematic Bar Controls",
+						"moveboth",
+						"1.3,expoOut,0"
+					],
+					[
+						"Set Property",
+						"uiGroup.alpha",
+						"1"
+					],
+					[
+						"Set Property",
+						"comboGroup.alpha",
+						"1"
+					],
+					[
+						"Set Property",
+						"timeTxt.alpha",
+						"0"
+					],
+					[
+						"Set Property",
+						"gfGroup.alpha",
+						"1"
+					],
+					[
+						"Trigger TG shader shi",
+						"AddLight",
+						""
+					],
+					[
+						"Set Property",
+						"boyfriend.shader",
+						"null"
+					]
+				]
+			],
+			[
+				190071.428571428,
+				[
+					[
+						"Camera Event",
+						"Fade",
+						"255,255,255,2,1,true"
+					],
+					[
+						"Background Controls",
+						"Darken",
+						"1,0.0001,linear"
+					],
+					[
+						"Set Property",
+						"gfGroup.alpha",
+						"0"
+					],
+					[
+						"Trigger TG shader shi",
+						"Add",
+						""
+					],
+					[
+						"Trigger TG shader shi",
+						"KillLight",
+						""
+					],
+					[
+						"Cinematic Bar Controls",
+						"moveboth",
+						"0.0001,linear,600"
+					],
+					[
+						"Camera Event",
+						"Change Pos",
+						"700,700"
+					],
+					[
+						"Camera Event",
+						"Change Value",
+						"hudalpha,0"
+					],
+					[
+						"Camera Event",
+						"Change Value",
+						"alpha,0"
+					]
+				]
+			],
+			[
+				193540.178571428,
 				[
 					[
 						"Set Property",
@@ -95903,8 +96168,93 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						"Camera Event",
-						"Flash",
-						"255,255,255,2,1,true"
+						"Change Value",
+						"alpha,1"
+					]
+				]
+			],
+			[
+				194571.428571428,
+				[
+					[
+						"Cinematic Bar Controls",
+						"moveboth",
+						"6,expoOut,80"
+					]
+				]
+			],
+			[
+				198977.678571428,
+				[
+					[
+						"Manage Lyrics",
+						"smile",
+						"You think you have won?,disneyFreeplayFont.ttf,30,4,sineInOut,0.1"
+					]
+				]
+			],
+			[
+				202352.678571428,
+				[
+					[
+						"Manage Lyrics",
+						"smile",
+						"No...,disneyFreeplayFont.ttf,30,2,sineInOut,0.07"
+					]
+				]
+			],
+			[
+				203566.741071428,
+				[
+					[
+						"Manage Lyrics",
+						"smile",
+						"YOU'VE ALREADY LOST!,disneyFreeplayFont.ttf,30,4,sineInOut,0.1"
+					]
+				]
+			],
+			[
+				203571.428571428,
+				[
+					[
+						"Camera Event",
+						"Change Pos",
+						"1250,900"
+					],
+					[
+						"Cinematic Bar Controls",
+						"moveboth",
+						"1.3,expoOut,0"
+					],
+					[
+						"Background Controls",
+						"Darken",
+						"0,0.0001,linear"
+					],
+					[
+						"Camera Event",
+						"Fade",
+						"255,255,255,1.3,1,true"
+					],
+					[
+						"Trigger TG shader shi",
+						"Remove",
+						""
+					],
+					[
+						"Trigger TG shader shi",
+						"AddLight",
+						""
+					]
+				]
+			],
+			[
+				207321.428571428,
+				[
+					[
+						"Camera Event",
+						"Fade",
+						"0,0,0,2,1,false"
 					]
 				]
 			]
