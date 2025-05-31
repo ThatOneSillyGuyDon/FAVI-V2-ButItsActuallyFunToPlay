@@ -72,7 +72,6 @@ class GiveMeTheFiles extends BaseStage
 			mickey.updateHitbox();
 			add(mickey);
 		}
-		camHUD.alpha = 0.001;
 	}
 	
 	override function createPost()
@@ -90,80 +89,6 @@ class GiveMeTheFiles extends BaseStage
 			fore.x -= 80;
 			fore.updateHitbox();
 			add(fore);
-		}
-
-		game.cinematicBarControls("create", 1);
-		game.cinematicBarControls("moveboth", 0.0001, 'linear', 420);
-		camHUD.alpha = 0.001;
-	}
-
-	var cinematicValue:Float = 0;
-	override function stepHit()
-	{
-		switch (curStep)
-		{
-			case 1:
-				game.defaultCamZoom += 0.5;
-				game.cinematicBarControls("moveboth", 2, "backOut", 180);
-				if (!ClientPrefs.data.downScroll && ClientPrefs.data.mechanics) 
-				{
-					for (ui in [game.healthBar, game.healthBarBG, game.scoreTxt, game.iconP1, game.iconP2])
-						FlxTween.tween(ui, {y: ui.y - 120, "scale.x": 0.7, "scale.y": 0.7}, 1, {ease: FlxEase.backOut});
-					FlxTween.tween(game.fancyBarOverlay, {y: game.fancyBarOverlay.y - 103, "scale.x": 0.7, "scale.y": 0.7}, 1, {ease: FlxEase.backOut});
-				}
-				if (ClientPrefs.data.downScroll && ClientPrefs.data.mechanics)
-				{
-					for (ui in [game.healthBar, game.healthBarBG, game.scoreTxt, game.iconP1, game.iconP2])
-						FlxTween.tween(ui, {"scale.x": 0.7, "scale.y": 0.7}, 1, {ease: FlxEase.backOut});
-					FlxTween.tween(game.fancyBarOverlay, {y: game.fancyBarOverlay.y - 15, "scale.x": 0.7, "scale.y": 0.7}, 1, {ease: FlxEase.backOut});
-				}
-				FlxTween.tween(camHUD, {alpha: 1}, 1, {ease: FlxEase.sineOut});
-		}
-	}
-	override function beatHit()
-	{
-		switch (curBeat)
-		{
-			case 16:
-				if (!ClientPrefs.data.downScroll && ClientPrefs.data.mechanics)
-				{
-					for (ui in [game.healthBar, game.healthBarBG, game.fancyBarOverlay, game.scoreTxt, game.iconP1, game.iconP2])
-						FlxTween.tween(ui, {y: ui.y + 120}, 5, {ease: FlxEase.sineOut});
-				}
-				game.defaultCamZoom -= 0.5;
-				game.cinematicBarControls("moveboth", 1, "circOut", 50);
-				cinematicValue = 50;
-			case 48 | 56 | 64 | 72:
-				game.defaultCamZoom += 0.1;
-				game.cinematicBarControls("moveboth", 1.5, "circOut", cinematicValue + 20);
-				cinematicValue += 20;
-			case 80:
-				game.defaultCamZoom -= 0.4;
-				game.cinematicBarControls("moveboth", 2, "backOut", 50);
-				cinematicValue = 0;
-			case 176:
-				game.camBars.flash(FlxColor.BLACK, 8);
-				for (cam in [camHUD])
-					cam.alpha = 0;
-			case 208:
-				for (hudShit in [camHUD])
-					FlxTween.tween(hudShit, {alpha: 1}, 2, {ease: FlxEase.quartOut});
-			case 272 | 276 | 280 | 284:
-				game.defaultCamZoom += .05;
-			case 288:
-				game.defaultCamZoom -= .2;
-		}
-
-		if (curBeat >= 240 && curBeat < 288 && curBeat % 2 == 0)
-		{
-			camGame.zoom += 0.015;
-			camHUD.zoom += 0.03;
-		}
-
-		if (curBeat >= 288 && curBeat < 352)
-		{
-			camGame.zoom += 0.015;
-			camHUD.zoom += 0.03;
 		}
 	}
 }

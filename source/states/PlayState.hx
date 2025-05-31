@@ -752,7 +752,7 @@ class PlayState extends MusicBeatState
 		flashSprite.screenCenter();
 		flashSprite.alpha = 0.001;
 		add(flashSprite);
-		flashSprite.cameras = [camHUD];
+		flashSprite.cameras = [camBars];
 
 		comboGroup = new FlxSpriteGroup();
 		add(comboGroup);
@@ -3432,6 +3432,16 @@ class PlayState extends MusicBeatState
 				if(flValue1 == null || flValue1 < 1) flValue1 = 1;
 				gfSpeed = Math.round(flValue1);
 
+			case 'Add Camera Zoom':
+				if(ClientPrefs.data.camZooms && FlxG.camera.zoom < 1.35) {
+					var camZoom:Float = Std.parseFloat(value1);
+					var hudZoom:Float = Std.parseFloat(value2);
+					if(Math.isNaN(camZoom)) camZoom = 0.015;
+					if(Math.isNaN(hudZoom)) hudZoom = 0.03;
+
+					FlxG.camera.zoom += camZoom;
+					camHUD.zoom += hudZoom;
+				}
 			case 'Play Animation':
 				//trace('Anim to play: ' + value1);
 				var char:Character = dad;
@@ -3587,23 +3597,23 @@ class PlayState extends MusicBeatState
 			case 'Manage Lyrics':
 				var triggerInfo:Array<String> = value2.split(',');
 				manageLyrics(
-					value1.toLowerCase(), 			   //Character Speaking
-					triggerInfo[0],      			   // Text
-					triggerInfo[1],     			   // Font
-					Std.parseInt(triggerInfo[2]),    // Size
+					value1.toLowerCase(), 			       //Character Speaking
+					triggerInfo[0],      			      // Text
+					triggerInfo[1],     			     // Font
+					Std.parseInt(triggerInfo[2]),       // Size
 					Std.parseFloat(triggerInfo[3]),    // Duration
-					triggerInfo[4],                    // Tween Type
-					Std.parseFloat(triggerInfo[5])     // Text Delay
+					triggerInfo[4],                   // Tween Type
+					Std.parseFloat(triggerInfo[5])   // Text Delay
 				);
 
 			case 'Cinematic Bar Controls':
 				var triggerInfo:Array<String> = value2.split(',');
 				
 				cinematicBarControls(
-					value1.toLowerCase(), //Type of event for the bars
-					Std.parseFloat(triggerInfo[0]), //Time
-					triggerInfo[1], //Ease type
-					Std.parseFloat(triggerInfo[2]), //Position
+					value1.toLowerCase(),                //Type of event for the bars
+					Std.parseFloat(triggerInfo[0]),     //Time
+					triggerInfo[1],                    //Ease type
+					Std.parseFloat(triggerInfo[2]),   //Position
 					Std.parseFloat(triggerInfo[3])); //Bop Value (ONLY WORKS WITH BOP EVENTS)
 			
 			case 'Background Controls':
