@@ -1,5 +1,8 @@
 package states.menus;
 
+import lime.ui.MouseCursor;
+import openfl.ui.Mouse;
+import openfl.events.MouseEvent;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.effects.FlxFlicker;
 import lime.app.Application;
@@ -126,8 +129,6 @@ class MainMenuState extends MusicBeatState
 		#if desktop
 		DiscordClient.changePresence('Main Menu', 'Browsing...', 'icon', 'mouse');
 		#end
-		FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
-		if (!FlxG.mouse.visible) FlxG.mouse.visible = true;
 		openfl.Lib.application.window.title = "Funkin.avi - " + windowShit[FlxG.random.int(0, windowShit.length - 1)];
 		if (openfl.Lib.application.window.title.contains('10 Seconds before I shut your fucking game again >:('))
 		{
@@ -246,8 +247,15 @@ class MainMenuState extends MusicBeatState
 		if (FlxG.stage.window.title.contains('*cantaloupe jumpscare*'))
 			coolMenuEvents(4);
 
+		FlxG.stage.addEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
+
 		changeSelection(0);
 		super.create();
+
+		FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+
+		if (!FlxG.mouse.visible)
+			FlxG.mouse.visible = true;
 	}
 
 	override function update(elapsed:Float)
@@ -337,6 +345,12 @@ class MainMenuState extends MusicBeatState
 			}
 		}
 		super.update(elapsed);
+	}
+
+	override function destroy() {
+		super.destroy();
+
+		FlxG.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
 	}
 
 	function changeSelection(selection:Int)
@@ -430,6 +444,7 @@ class MainMenuState extends MusicBeatState
 					}
 				}
 				FlxG.sound.play(Paths.sound('funkinAVI/menu/selectSfx'));
+				FlxG.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
 			}
 			else
 			{
@@ -482,6 +497,7 @@ class MainMenuState extends MusicBeatState
 					}
 					FlxG.sound.play(Paths.sound('funkinAVI/menu/selectSfx'));
 					selectedSomethin = true;
+					FlxG.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
 				}
 			});
 		}
@@ -571,5 +587,17 @@ class MainMenuState extends MusicBeatState
 					messenger.sendMessage('Something has unlocked!', 'Check freeplay to see what has been unlocked.');
 				}
 		}
+	}
+
+	function onMouseMove(r)
+	{
+		for (items in menuItems)
+			if (FlxG.mouse.overlaps(items))
+			{
+				Mouse.cursor = BUTTON;
+				return;
+			}
+
+		Mouse.cursor = AUTO;
 	}
 }

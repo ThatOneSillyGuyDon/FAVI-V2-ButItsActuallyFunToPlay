@@ -500,6 +500,9 @@ class ModchartFile
                     else
                         json = {modifiers: [], events: [], playfields: 1};
 
+                case "Twisted Grins":
+                    json = cast Json.parse(Modchart.tg);
+
                 case "Cycled Sins":
                     json = cast Json.parse(Modchart.cycledShit);
 

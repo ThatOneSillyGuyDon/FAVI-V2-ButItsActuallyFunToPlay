@@ -130,8 +130,7 @@ class Song
 			case "laugh-track": chartFile = Chart.laughTrack;
 			case "twisted-grins-legacy": chartFile = Chart.twistedGrinsLegacy;
 			case "cycled-sins": chartFile = Chart.cycledSins;
-			case "twisted-grins": 
-				chartFile = Chart.twistedGrins;
+			case "twisted-grins": chartFile = Chart.twistedGrins;
 
 			case "dont-cross":
 				if (!ClientPrefs.data.mechanics)

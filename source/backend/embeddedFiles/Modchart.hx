@@ -36421,4 +36421,47 @@ var dontcrossModchartMD:String = '{
 		]
 	]
 }';
+
+	var tg:String = '{
+	"modifiers": [
+		[
+			"StealthAll",
+			"StealthModifier",
+			"All",
+			-1,
+			-1
+		]
+	],
+	"playfields": 1,
+	"events": [
+		[
+			"ease",
+			[
+				0,
+				1,
+				"cubeInOut",
+				"1,StealthAll"
+			],
+			[
+				false,
+				1,
+				1
+			]
+		],
+		[
+			"ease",
+			[
+				12,
+				"5",
+				"sineInOut",
+				"0,StealthAll"
+			],
+			[
+				false,
+				1,
+				1
+			]
+		]
+	]
+}';
 }

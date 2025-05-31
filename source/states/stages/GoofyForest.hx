@@ -92,88 +92,67 @@ class GoofyForest extends BaseStage
 		}
 	}
 
-	
-	override function beatHit()
+	// For events
+	override function eventCalled(eventName:String, value1:String, value2:String, flValue1:Null<Float>, flValue2:Null<Float>, strumTime:Float)
 	{
-		if (curBeat == 176) 
+		switch(eventName)
 		{
-			game.tweenCamera(1.1, 4.1, 'sineInOut');
-		}
-		if (curBeat == 184)
-			game.defaultCamZoom = 1.4;
-		if (curBeat == 190)
-			game.defaultCamZoom = 0.65;
-		if (curBeat == 192)
-		{
-			//camHudMoves = true;
-			if (ClientPrefs.data.flashing)
-				camGame.flash(FlxColor.WHITE, 1.5);
-			if (ClientPrefs.data.shaders)
-			{
-				if (!ClientPrefs.data.lowQuality)
+			case 'Trigger Hunted Stuffs':
+				switch (value1.toLowerCase())
 				{
-					camGame.setFilters([
-						new ShaderFilter(redVignette),
-						new ShaderFilter(dramaticCamMovement),
-						new ShaderFilter(monitorFilter),
-					]);
-				}
-				else
-				{
-					camGame.setFilters([new ShaderFilter(redVignette), new ShaderFilter(monitorFilter)]);
-				}
-			}
-		}
-		if (curBeat == 256)
-		{
-			//camHudMoves = false;
-			game.camBars.flash(FlxColor.BLACK, 2);
-			if (ClientPrefs.data.shaders)
-			{
-				if (!ClientPrefs.data.lowQuality)
-				{
-					camGame.setFilters([
-						new ShaderFilter(dramaticCamMovement),
-						new ShaderFilter(monitorFilter),
-					]);
-				}
-				else
-				{
-					camGame.setFilters([new ShaderFilter(monitorFilter)]);
-				}
-			}
-		}
+					case 'weeblewobble':
+						//camHudMoves = true;
+						if (ClientPrefs.data.flashing)
+							camGame.flash(FlxColor.WHITE, 1.5);
+						if (ClientPrefs.data.shaders)
+						{
+							if (!ClientPrefs.data.lowQuality)
+							{
+								camGame.setFilters([
+									new ShaderFilter(redVignette),
+									new ShaderFilter(dramaticCamMovement),
+									new ShaderFilter(monitorFilter),
+								]);
+							}
+							else
+							{
+								camGame.setFilters([new ShaderFilter(redVignette), new ShaderFilter(monitorFilter)]);
+							}
 
-		if (((curBeat >= 64 && curBeat < 128) && curBeat % 2 == 0) || (curBeat >= 128 && curBeat < 256))
-		{
-			FlxG.camera.zoom += ((curBeat > 176 && curBeat < 184) ? 0 : .05);
-			camHUD.zoom += .04;
-		}
+							if(!ClientPrefs.data.lowQuality && goofyBG != null && treesFront != null)
+							{
+								goofyBG.shader = wobblyBG;
+								goofyStreet.shader = wobblyBG;
+								treesBack.shader = wobblyBG;
+								otherBack.shader = wobblyBG;
+								treesFront.shader = wobblyBG;
+							}
+						}
+					case 'no more weeblewobble':
+						game.camBars.flash(FlxColor.BLACK, 2);
+						if (ClientPrefs.data.shaders)
+						{
+							if (!ClientPrefs.data.lowQuality)
+							{
+								camGame.setFilters([
+									new ShaderFilter(dramaticCamMovement),
+									new ShaderFilter(monitorFilter),
+								]);
+							}
+							else
+							{
+								camGame.setFilters([new ShaderFilter(monitorFilter)]);
+							}
+						}
 
-		if (ClientPrefs.data.shaders)
-		{
-			if (curBeat == 192)
-			{	
-				if(!ClientPrefs.data.lowQuality && goofyBG != null && treesFront != null)
-					{
-						goofyBG.shader = wobblyBG;
-						goofyStreet.shader = wobblyBG;
-						treesBack.shader = wobblyBG;
-						otherBack.shader = wobblyBG;
-						treesFront.shader = wobblyBG;
-					}
-			}
-		}
-
-		if (curBeat == 256)
-		{
-			if(!ClientPrefs.data.lowQuality && treesFront != null && goofyBG != null)
-				{
-					goofyBG.shader = null;
-					goofyStreet.shader = null;
-					treesBack.shader = null;
-					otherBack.shader = null;
-					treesFront.shader = null;
+						if(!ClientPrefs.data.lowQuality && treesFront != null && goofyBG != null)
+						{
+							goofyBG.shader = null;
+							goofyStreet.shader = null;
+							treesBack.shader = null;
+							otherBack.shader = null;
+							treesFront.shader = null;
+						}
 				}
 		}
 	}

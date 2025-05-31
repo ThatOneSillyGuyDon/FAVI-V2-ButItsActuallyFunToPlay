@@ -85,6 +85,7 @@ class ChartingState extends MusicBeatState
 		['Mania BG Flash', "Value 1 Info: Customizer for how the flash will work\nValue 2 Info: Whether only the sky or the whole BG will flash\n\nValue 1: timer, ease, alpha, red value, green value, blue value\nValue 2: sky or all"],
 		['Mercy Transition', "too lazy to put a description here"],
 		['Trigger TG shader shi', "Add - Adds the shader\nRemove - Removes the shader"],
+		['Trigger Hunted Stuffs', ''],
 		['Play Sound', "Value 1: Sound file name\nValue 2: Volume (Default: 1), ranges from 0 to 1"]
 	];
 
