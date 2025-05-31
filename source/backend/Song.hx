@@ -133,8 +133,6 @@ class Song
 			case "twisted-grins": 
 				chartFile = Chart.twistedGrins;
 
-				if (jsonInput == 'events')
-					chartFile = Event.twistedGrinsNoteSpeed;
 			case "dont-cross":
 				if (!ClientPrefs.data.mechanics)
 				{

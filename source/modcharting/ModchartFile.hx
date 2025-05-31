@@ -500,25 +500,6 @@ class ModchartFile
                     else
                         json = {modifiers: [], events: [], playfields: 1};
 
-                case "Twisted Grins":
-                    if (ClientPrefs.data.mechanics) 
-                    {
-                        //Upscroll
-                        if (!ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
-                            json = cast Json.parse(Modchart.tgModchartU);
-                        //Downscroll
-                        else if (ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
-                            json = cast Json.parse(Modchart.tgModchartD);
-                        //Middle-Upscroll
-                        else if (!ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
-                            json = cast Json.parse(Modchart.twistedGrinMidUp);
-                        //Middle-Downscroll
-                        else if (ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
-                            json = cast Json.parse(Modchart.twistedGrinMidDown);
-                    }
-                    else
-                        json = {modifiers: [], events: [], playfields: 1};
-
                 case "Cycled Sins":
                     json = cast Json.parse(Modchart.cycledShit);
 

@@ -170,6 +170,36 @@ void mainImage()
 }
 	";
 
+	var tGOutline = 
+	"
+	 #pragma header
+	vec2 uv = openfl_TextureCoordv.xy;
+    vec2 fragCoord = openfl_TextureCoordv*openfl_TextureSize;
+    vec2 iResolution = openfl_TextureSize;
+    uniform float iTime;
+    #define iChannel0 bitmap
+    #define iChannel1 bitmap
+    #define iChannel2 bitmap
+    #define iChannelResolution bitmap
+    #define texture flixel_texture2D
+    #define fragColor gl_FragColor
+    #define mainImage main
+    uniform float uTime;
+    uniform vec4 iMouse;
+	
+	void mainImage()
+	{
+		vec2 uv = fragCoord.xy / iResolution.xy;
+		vec4 img = texture(iChannel0,uv);
+		vec4 color = fwidth(img);
+		fragColor = color*2.;
+		//fragColor = .005/color; //inverted
+		//fragColor = vec4(1.-3.*min(.9,length(color)))*length(img)/1.2; //pencil
+		//fragColor = vec4(1.-3.*min(.9,length(color)))*length(img)/1.2*vec4(ivec4(8.*img))/8.;  //couloured pencil
+		//fragColor = img*.05/color; // same... but different
+	}
+	";
+
     /**
      * Aberration shader
      * 

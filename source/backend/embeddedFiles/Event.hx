@@ -1,7 +1,7 @@
 package backend.embeddedFiles;
 
 enum abstract Event(String) from String to String {
-	var twistedGrinsNoteSpeed:String = '{
+	/*var twistedGrinsNoteSpeed:String = '{
 	"song": {
 		"events": [
 			[
@@ -86,7 +86,7 @@ enum abstract Event(String) from String to String {
 			]
 		]
 	}
-}';
+}';*/
     var dontCrossAnimatedShit:String = '{
 	"song": {
 		"events": [

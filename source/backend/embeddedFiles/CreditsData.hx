@@ -10,7 +10,7 @@ enum abstract CreditsData(String) from String to String {
     var isolated:String = '{
 	"settings":
 	[
-		"Art: Domingo & Moe\n\nChart: Purg\n\nCode: Jason & ThatOneSillyGuy\n\nMusic: obscurity.", 0, -5
+		"Art: Domingo & Moe\n\nChart: Purg\n\nCode: Jason, ThatOneSillyGuy, & Goober Man\n\nMusic: obscurity.", 0, -5
 	]
 }';
     var lunacy:String = '{
@@ -91,7 +91,7 @@ enum abstract CreditsData(String) from String to String {
     var twistedGrins:String = '{
 	"settings":
 	[
-		"Art: AustinWProduction,\nTeelbe & TrellXD\n\nChart: Purg\n\nCode: ThatOneSillyGuy\n\nMusic: PualTheUnTruest\n\nVoice Actor: AustinWProductions", -68, -23
+		"Art: AustinWProduction,\nTeelbe & TrellXD\n\nChart: Purg\n\nCode: Goober Man\n\nMusic: PualTheUnTruest\n\nVoice Actor: AustinWProductions", -68, -23
 	]
 }';
 	// cough cough health drain mechanic cough cough

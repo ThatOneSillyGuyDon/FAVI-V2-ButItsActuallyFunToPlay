@@ -10,6 +10,8 @@ class SmileStage extends BaseStage
 {
 	public static var staticEffect:FlxRuntimeShader = new FlxRuntimeShader(Shaders.tvStatic, null, 120);
 
+	public static var outline:FlxRuntimeShader = new FlxRuntimeShader(Shaders.tGOutline, null, 120);
+
 	public var shaderAnim:Float = 0;
 
 	override function create()
@@ -65,5 +67,25 @@ class SmileStage extends BaseStage
 		
 		staticEffect.setFloat('uTime', shaderAnim);
 		staticEffect.setFloat('iTime', shaderAnim);
+	}
+
+	var skyTwn:FlxTween;
+	// For events
+	override function eventCalled(eventName:String, value1:String, value2:String, flValue1:Null<Float>, flValue2:Null<Float>, strumTime:Float)
+	{
+		switch(eventName)
+		{
+			case "Trigger TG shader shi":
+				switch (value1.toLowerCase())
+				{
+					case 'add':
+						game.boyfriend.shader = outline;
+						game.dad.shader = outline;	
+					case 'remove':
+						game.boyfriend.shader = null;
+						game.dad.shader = null;	
+				}
+				
+		}
 	}
 }
