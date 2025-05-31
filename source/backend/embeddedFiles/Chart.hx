@@ -96402,49 +96402,870 @@ enum abstract Chart(String) from String to String {
 				"bpm": 140
 			},
 			{
-				"gfSection": false,
-				"altAnim": false,
 				"typeOfSection": 0,
 				"sectionNotes": [],
-				"bpm": 140,
 				"sectionBeats": 4,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 140,
 				"changeBPM": false,
 				"mustHitSection": true
 			},
 			{
-				"gfSection": false,
-				"altAnim": false,
 				"typeOfSection": 0,
 				"sectionNotes": [],
-				"bpm": 140,
 				"sectionBeats": 4,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 140,
 				"changeBPM": false,
 				"mustHitSection": true
 			},
 			{
-				"gfSection": false,
-				"altAnim": false,
 				"typeOfSection": 0,
 				"sectionNotes": [],
-				"bpm": 140,
 				"sectionBeats": 4,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 140,
 				"changeBPM": false,
 				"mustHitSection": true
 			},
 			{
-				"gfSection": false,
-				"altAnim": false,
 				"typeOfSection": 0,
 				"sectionNotes": [],
-				"bpm": 140,
 				"sectionBeats": 4,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 140,
 				"changeBPM": false,
 				"mustHitSection": true
 			}
 		],
-		"events": [],
+		"events": [
+			[
+				-5000,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"hudalpha,0"
+					],
+					[
+						"Camera Event",
+						"Change Value",
+						"addhudzoom,5"
+					],
+					[
+						"Camera Event",
+						"Fade",
+						"0,0,0,0.0001,1,false"
+					]
+				]
+			],
+			[
+				428.571428571429,
+				[
+					[
+						"Camera Event",
+						"Fade",
+						"0,0,0,2,1,true"
+					],
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1"
+					],
+					[
+						"Manage Lyrics",
+						"smile",
+						"Give me your smile!,disneyFreeplayFont.ttf,30,3.5,sineInOut,0.08"
+					]
+				]
+			],
+			[
+				3428.57142857143,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.75"
+					],
+					[
+						"Camera Event",
+						"Change Value",
+						"hudalpha,1"
+					],
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.75"
+					]
+				]
+			],
+			[
+				8571.42857142857,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.85"
+					]
+				]
+			],
+			[
+				10285.7142857143,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.75"
+					]
+				]
+			],
+			[
+				13714.2857142857,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.85"
+					]
+				]
+			],
+			[
+				15428.5714285714,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.95"
+					]
+				]
+			],
+			[
+				17142.8571428571,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.75"
+					]
+				]
+			],
+			[
+				22285.7142857143,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.85"
+					]
+				]
+			],
+			[
+				24000,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.75"
+					]
+				]
+			],
+			[
+				27428.5714285714,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.85"
+					]
+				]
+			],
+			[
+				29142.8571428571,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.95"
+					]
+				]
+			],
+			[
+				30857.1428571429,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.75"
+					]
+				]
+			],
+			[
+				43714.2857142857,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.85"
+					]
+				]
+			],
+			[
+				44571.4285714286,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.75"
+					]
+				]
+			],
+			[
+				51428.5714285715,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.85"
+					]
+				]
+			],
+			[
+				54857.1428571429,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.95"
+					]
+				]
+			],
+			[
+				56571.4285714286,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1.05"
+					]
+				]
+			],
+			[
+				58285.7142857143,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.75"
+					],
+					[
+						"Camera Event",
+						"Tween Value",
+						"hudalpha,0,1.5,sineInOut"
+					]
+				]
+			],
+			[
+				61285.7142857143,
+				[
+					[
+						"Camera Event",
+						"Tween Value",
+						"hudalpha,1,0.8,sineInOut"
+					]
+				]
+			],
+			[
+				61714.2857142858,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.81"
+					]
+				]
+			],
+			[
+				65142.8571428572,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.87"
+					]
+				]
+			],
+			[
+				68571.4285714286,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.75"
+					]
+				]
+			],
+			[
+				73714.2857142858,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.95"
+					]
+				]
+			],
+			[
+				75428.5714285715,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.65"
+					]
+				]
+			],
+			[
+				78857.1428571429,
+				[
+					[
+						"Camera Event",
+						"Tween Value",
+						"zoom,1.35,5,sineInOut"
+					]
+				]
+			],
+			[
+				89142.8571428571,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"speed,0.5"
+					],
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.75"
+					]
+				]
+			],
+			[
+				106285.714285714,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.95"
+					]
+				]
+			],
+			[
+				108000,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1.05"
+					]
+				]
+			],
+			[
+				109714.285714286,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.75"
+					]
+				]
+			],
+			[
+				114857.142857143,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.95"
+					]
+				]
+			],
+			[
+				116571.428571429,
+				[
+					[
+						"Set Property",
+						"cameraSpeed",
+						"100"
+					],
+					[
+						"Set Property",
+						"camHUD.alpha",
+						"0"
+					],
+					[
+						"Set Property",
+						"camGame.alpha",
+						"0"
+					],
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.75"
+					]
+				]
+			],
+			[
+				120000,
+				[
+					[
+						"Set Property",
+						"camGame.alpha",
+						"1"
+					],
+					[
+						"Set Property",
+						"camHUD.alpha",
+						"1"
+					]
+				]
+			],
+			[
+				120857.142857143,
+				[
+					[
+						"Set Property",
+						"cameraSpeed",
+						"2.5"
+					]
+				]
+			],
+			[
+				130285.714285714,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.85"
+					]
+				]
+			],
+			[
+				132000,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.95"
+					]
+				]
+			],
+			[
+				133714.285714286,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.75"
+					]
+				]
+			],
+			[
+				138857.142857143,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1.05"
+					]
+				]
+			],
+			[
+				140571.428571428,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.85"
+					]
+				]
+			],
+			[
+				144000,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.95"
+					]
+				]
+			],
+			[
+				145714.285714286,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1.05"
+					]
+				]
+			],
+			[
+				147428.571428571,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.95"
+					]
+				]
+			],
+			[
+				154285.714285714,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1.05"
+					]
+				]
+			],
+			[
+				156000,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1.15"
+					]
+				]
+			],
+			[
+				157714.285714286,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1.25"
+					]
+				]
+			],
+			[
+				159428.571428571,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1.35"
+					]
+				]
+			],
+			[
+				159857.142857143,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1.25"
+					]
+				]
+			],
+			[
+				160285.714285714,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1.15"
+					]
+				]
+			],
+			[
+				160714.285714286,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1.05"
+					]
+				]
+			],
+			[
+				169714.285714286,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1.25"
+					]
+				]
+			],
+			[
+				173142.857142857,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1.35"
+					]
+				]
+			],
+			[
+				174857.142857143,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.75"
+					],
+					[
+						"Set Property",
+						"cameraSpeed",
+						"4"
+					],
+					[
+						"Manage Lyrics",
+						"smile",
+						"Grrrrrrrrrrr,disneyFreeplayFont.ttf,30,2.5,sineInOut,0.08"
+					]
+				]
+			],
+			[
+				176142.857142857,
+				[
+					[
+						"Manage Lyrics",
+						"smile",
+						"Keep it DOWN you runt!,disneyFreeplayFont.ttf,30,2.5,sineInOut,0.08"
+					]
+				]
+			],
+			[
+				176571.428571428,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.95"
+					]
+				]
+			],
+			[
+				177428.571428571,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1.05"
+					]
+				]
+			],
+			[
+				178285.714285714,
+				[
+					[
+						"Set Property",
+						"cameraSpeed",
+						"1.65"
+					],
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.75"
+					]
+				]
+			],
+			[
+				192000,
+				[
+					[
+						"Camera Event",
+						"Tween Value",
+						"zoom,1.3,10,expoInOut"
+					],
+					[
+						"Background Controls",
+						"Darken",
+						"0.9,12,5,expoInOut"
+					]
+				]
+			],
+			[
+				205714.285714285,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0,1,expoOut"
+					],
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.75"
+					]
+				]
+			],
+			[
+				212571.428571428,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1.05"
+					]
+				]
+			],
+			[
+				214285.714285714,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.75"
+					]
+				]
+			],
+			[
+				217714.285714285,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.85"
+					]
+				]
+			],
+			[
+				219428.571428571,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1.05"
+					]
+				]
+			],
+			[
+				221142.857142857,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.75"
+					]
+				]
+			],
+			[
+				226285.714285714,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.85"
+					]
+				]
+			],
+			[
+				228000,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.75"
+					]
+				]
+			],
+			[
+				231428.571428571,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.95"
+					]
+				]
+			],
+			[
+				233142.857142857,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1.05"
+					]
+				]
+			],
+			[
+				234857.142857143,
+				[
+					[
+						"Camera Event",
+						"Tween Value",
+						"hudalpha,0,3,expoInOut"
+					],
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.75"
+					]
+				]
+			],
+			[
+				236142.857142857,
+				[
+					[
+						"Manage Lyrics",
+						"smile",
+						"You might think you have won..,disneyFreeplayFont.ttf,30,4,sineInOut,0.1"
+					]
+				]
+			],
+			[
+				239571.428571428,
+				[
+					[
+						"Manage Lyrics",
+						"smile",
+						"But in reality...,disneyFreeplayFont.ttf,30,4,sineInOut,0.07"
+					]
+				]
+			],
+			[
+				241714.285714285,
+				[
+					[
+						"Manage Lyrics",
+						"smile",
+						"heh...,disneyFreeplayFont.ttf,30,2,sineInOut,0.12"
+					]
+				]
+			],
+			[
+				243000,
+				[
+					[
+						"Manage Lyrics",
+						"smile",
+						"..YOU LOST.,disneyFreeplayFont.ttf,30,2,sineInOut,0.12"
+					]
+				]
+			],
+			[
+				252000,
+				[
+					[
+						"Camera Event",
+						"Fade",
+						"0,0,0,5,1,false"
+					]
+				]
+			]
+		],
 		"player2": "mr-smiles-new",
-		"splashSkin": "noteSplashes",
+		"splashSkin": "NOTE_splashesCartoon",
 		"song": "Twisted Grins",
 		"needsVoices": true,
 		"voiceSfx1": "Everett",

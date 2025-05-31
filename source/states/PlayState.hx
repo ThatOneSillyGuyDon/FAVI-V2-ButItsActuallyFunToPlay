@@ -3584,6 +3584,18 @@ class PlayState extends MusicBeatState
 					#end
 				}
 
+			case 'Manage Lyrics':
+				var triggerInfo:Array<String> = value2.split(',');
+				manageLyrics(
+					value1.toLowerCase(), 			   //Character Speaking
+					triggerInfo[0],      			   // Text
+					triggerInfo[1],     			   // Font
+					Std.parseInt(triggerInfo[2]),    // Size
+					Std.parseFloat(triggerInfo[3]),    // Duration
+					triggerInfo[4],                    // Tween Type
+					Std.parseFloat(triggerInfo[5])     // Text Delay
+				);
+
 			case 'Cinematic Bar Controls':
 				var triggerInfo:Array<String> = value2.split(',');
 				
