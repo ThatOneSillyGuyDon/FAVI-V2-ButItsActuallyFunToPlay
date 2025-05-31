@@ -97348,9 +97348,9 @@ enum abstract Chart(String) from String to String {
 						"0,0,0,6.04,1,true"
 					],
 					[
-						"Set Property",
-						"defaultCamZoom",
-						"0.65"
+						"Camera Event",
+						"Change Value",
+						"staticzoom,0.55"
 					]
 				]
 			],
@@ -97366,6 +97366,16 @@ enum abstract Chart(String) from String to String {
 			],
 			[
 				42000,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,0.65"
+					]
+				]
+			],
+			[
+				44997.65625,
 				[
 					[
 						"Camera Event",
@@ -97495,12 +97505,32 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
+				96000,
+				[
+					[
+						"Camera Event",
+						"Tween Value",
+						"hudalpha,0,1,sineInOut"
+					]
+				]
+			],
+			[
 				96107.1428571429,
 				[
 					[
 						"Manage Lyrics",
 						"smile",
 						"GRRRRR,disneyFreeplayFont.ttf,30,2.5,sineInOut,0.08"
+					]
+				]
+			],
+			[
+				97178.5714285714,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"alpha,0"
 					]
 				]
 			],
@@ -97525,6 +97555,31 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
+				98571.4285714286,
+				[
+					[
+						"Set Property",
+						"cameraSpeed",
+						"0.5"
+					],
+					[
+						"Camera Event",
+						"Change Pos",
+						"700,700"
+					]
+				]
+			],
+			[
+				99427,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"alpha,1"
+					]
+				]
+			],
+			[
 				99428.5714285714,
 				[
 					[
@@ -97541,6 +97596,11 @@ enum abstract Chart(String) from String to String {
 						"Camera Event",
 						"Flash",
 						"255,255,255,2,1,true"
+					],
+					[
+						"Camera Event",
+						"Change Value",
+						"hudalpha,1"
 					]
 				]
 			],
@@ -97571,6 +97631,21 @@ enum abstract Chart(String) from String to String {
 						"Set Property",
 						"gfGroup.alpha",
 						"0"
+					]
+				]
+			],
+			[
+				113142.857142857,
+				[
+					[
+						"Camera Event",
+						"Tween Position",
+						"1750,900,5,expoInOut"
+					],
+					[
+						"Camera Event",
+						"Tween Value",
+						"zoom,0.75,5,expoInOut"
 					]
 				]
 			],
@@ -97615,12 +97690,42 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
+				128464.285714286,
+				[
+					[
+						"Set Property",
+						"cameraSpeed",
+						"100"
+					]
+				]
+			],
+			[
 				128571.428571428,
 				[
 					[
 						"Set Property",
 						"defaultCamZoom",
 						"0.75"
+					]
+				]
+			],
+			[
+				128571.428571428,
+				[
+					[
+						"Camera Event",
+						"Change Pos",
+						"700,700"
+					]
+				]
+			],
+			[
+				131571.428571428,
+				[
+					[
+						"Camera Event",
+						"Change Pos",
+						"1750,900"
 					]
 				]
 			],
@@ -97641,6 +97746,16 @@ enum abstract Chart(String) from String to String {
 						"Camera Event",
 						"Change Value",
 						"staticzoom,0.85"
+					]
+				]
+			],
+			[
+				137571.428571428,
+				[
+					[
+						"Camera Event",
+						"Change Pos",
+						"700,700"
 					]
 				]
 			],
@@ -97746,6 +97861,16 @@ enum abstract Chart(String) from String to String {
 						"Set Property",
 						"boyfriend.shader",
 						"null"
+					],
+					[
+						"Set Property",
+						"isCameraOnForcedPos",
+						"false"
+					],
+					[
+						"Set Property",
+						"cameraSpeed",
+						"2.5"
 					]
 				]
 			],
@@ -97816,6 +97941,11 @@ enum abstract Chart(String) from String to String {
 						"Camera Event",
 						"Change Value",
 						"alpha,1"
+					],
+					[
+						"Set Property",
+						"cameraSpeed",
+						"100"
 					]
 				]
 			],
