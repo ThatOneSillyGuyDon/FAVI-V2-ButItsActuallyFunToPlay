@@ -98,7 +98,8 @@ class PlayfieldRenderer extends FlxSprite //extending flxsprite just so i can ed
         eventManager = new ModchartEventManager(this);
         modifierTable = new ModTable(instance, this);
         addNewPlayfield(0,0,0);
-        modchart = new ModchartFile(this);
+        if (!Std.isOfType(instance, states.editors.EditorPlayState))
+            modchart = new ModchartFile(this);
     }
 
 
@@ -493,14 +494,17 @@ class PlayfieldRenderer extends FlxSprite //extending flxsprite just so i can ed
 
     override public function destroy()
     {
-        if (modchart != null)
+        if (!Std.isOfType(instance, states.editors.EditorPlayState))
         {
-            #if hscript
-            for (customMod in modchart.customModifiers)
+            if (modchart != null)
             {
-                customMod.destroy(); //make sure the interps are dead
+                #if hscript
+                for (customMod in modchart.customModifiers)
+                {
+                    customMod.destroy(); //make sure the interps are dead
+                }
+                #end
             }
-            #end
         }
         super.destroy();
     }

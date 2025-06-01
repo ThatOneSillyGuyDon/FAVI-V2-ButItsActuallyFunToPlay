@@ -4859,6 +4859,8 @@ class PlayState extends MusicBeatState
 				}
 			case 'Birthday':
 				if (states.stages.Birtbhday.spawnNotes['muckney'] && !note.isSustainNote) birthdayParticles(dadGroup);
+			case 'Isolated':
+				if (dad.curCharacter == "avier-whistle" && !note.isSustainNote) whistleNotes(dadGroup);
 		}
 		
 		var result:Dynamic = callOnLuas('opponentNoteHit', [notes.members.indexOf(note), Math.abs(note.noteData), note.noteType, note.isSustainNote]);
@@ -5067,18 +5069,41 @@ class PlayState extends MusicBeatState
 		particleNote.setGraphicSize(Std.int(particleNote.width * 0.7));
 		particleNote.updateHitbox();
 		particleNote.x = FlxG.random.int(Std.int(targetGroup.x - (targetGroup == boyfriendGroup ? 0 : 150)), Std.int(targetGroup.x + (targetGroup == boyfriendGroup ? 500 : 300)));
-		particleNote.y = targetGroup.y;// - 170; - why?
+		particleNote.y = targetGroup.y + 170;
 		particleNote.velocity.y += targetGroup.y - 400;
 		particleNote.acceleration.y = 400 * playbackRate;
 		particleNote.angle = FlxG.random.int(0, 360);
 		
-		FlxTween.tween(particleNote, {alpha: 0}, 3, {
+		FlxTween.tween(particleNote, {alpha: 0.0001}, 3, {
 			onComplete: function(tween:FlxTween)
 			{
 				particleNote.destroy();
 			}
 		});
 		add(particleNote);
+	}
+
+	public function whistleNotes(targetGroup:FlxSpriteGroup) {
+		var path:String = 'favi/ui/bdaynotes';
+		var particleNote:FlxSprite = new FlxSprite().loadGraphic(Paths.image('$path/note_${FlxG.random.int(1, 3)}'));
+		particleNote.setGraphicSize(Std.int(particleNote.width * 0.5));
+		particleNote.updateHitbox();
+		particleNote.setColorTransform(-1, -1, -1, 1, 128, 128, 128, 0);
+		particleNote.x = targetGroup.x - 175;
+		particleNote.y = targetGroup.y + 375;
+		particleNote.alpha = 0.0001;
+		particleNote.velocity.x -= targetGroup.y - 475;
+		FlxTween.tween(particleNote, {alpha: 1}, .5, {ease: FlxEase.sineInOut});
+		
+		FlxTween.tween(particleNote, {y: particleNote.y - 70}, FlxG.random.float(0.5, 2), {ease: FlxEase.sineInOut, type: 4});
+
+		FlxTween.tween(particleNote, {alpha: 0.0001}, 1, {ease: FlxEase.sineInOut, startDelay: 0.75,
+			onComplete: function(tween:FlxTween)
+			{
+				particleNote.destroy();
+			}
+		});
+		addBehindDad(particleNote);
 	}
 
 	public function invalidateNote(note:Note):Void {

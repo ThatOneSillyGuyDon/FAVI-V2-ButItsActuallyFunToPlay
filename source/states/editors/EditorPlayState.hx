@@ -20,6 +20,12 @@ import flixel.input.keyboard.FlxKey;
 import openfl.events.KeyboardEvent;
 import objects.NoteSplash;
 
+import modcharting.PlayfieldRenderer;
+
+import haxe.Json;
+import objects.Character;
+import openfl.utils.Assets as OpenFlAssets;
+
 using StringTools;
 
 class EditorPlayState extends MusicBeatState
@@ -37,6 +43,7 @@ class EditorPlayState extends MusicBeatState
 
 	var generatedMusic:Bool = false;
 	var vocals:FlxSound;
+	var opponentVocals:FlxSound;
 
 	var startOffset:Float = 0;
 	var startPos:Float = 0;
@@ -85,7 +92,11 @@ class EditorPlayState extends MusicBeatState
 		tiles.alpha = 0.3;
 		add(tiles);
 
-		var underlay:FlxSprite = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/editor/chart/playtestUnderlays'));
+		var underlay:FlxSprite = new FlxSprite();
+		if (ClientPrefs.data.middleScroll)
+			underlay.loadGraphic(Paths.image('Funkin_avi/editor/chart/playtestUnderlaysMiddle'));
+		else
+			underlay.loadGraphic(Paths.image('Funkin_avi/editor/chart/playtestUnderlays'));
 		underlay.scrollFactor.set();
 		add(underlay);
 
@@ -110,7 +121,6 @@ class EditorPlayState extends MusicBeatState
 		}*/
 		
 		grpNoteSplashes = new FlxTypedGroup<NoteSplash>();
-		add(grpNoteSplashes);
 
 		var splash:NoteSplash = new NoteSplash(100, 100, 0);
 		grpNoteSplashes.add(splash);
@@ -122,6 +132,10 @@ class EditorPlayState extends MusicBeatState
 			vocals = new FlxSound();
 
 		generateSong(PlayState.SONG.song);
+
+		playfieldRenderer = new PlayfieldRenderer(strumLineNotes, notes, this);
+		add(playfieldRenderer);
+		add(grpNoteSplashes);
 		
 		noteTypeMap.clear();
 		noteTypeMap = null;
@@ -192,6 +206,9 @@ class EditorPlayState extends MusicBeatState
 	var startingSong:Bool = true;
 	private function generateSong(dataPath:String):Void
 	{
+		var songData = PlayState.SONG;
+		Conductor.bpm = songData.bpm;
+		
 		switch (PlayState.SONG.song)
 		{
 			case "Rotten Petals":
@@ -217,11 +234,31 @@ class EditorPlayState extends MusicBeatState
 		}
 		FlxG.sound.music.pause();
 		FlxG.sound.music.onComplete = endSong;
-		vocals.pause();
-		vocals.volume = 0;
+		var boyfriendVocals:String = loadCharacterFile(PlayState.SONG.player1).vocals_file;
+		var dadVocals:String = loadCharacterFile(PlayState.SONG.player2).vocals_file;
 
-		var songData = PlayState.SONG;
-		Conductor.bpm = songData.bpm;
+		vocals = new FlxSound();
+		opponentVocals = new FlxSound();
+		try
+		{
+			if (songData.needsVoices)
+			{
+				var playerVocals = Paths.voices(songData.song, (boyfriendVocals == null || boyfriendVocals.length < 1) ? 'Player' : boyfriendVocals);
+				vocals.loadEmbedded(playerVocals != null ? playerVocals : Paths.voices(songData.song));
+				
+				var oppVocals = Paths.voices(songData.song, (dadVocals == null || dadVocals.length < 1) ? 'Opponent' : dadVocals);
+				if(oppVocals != null) opponentVocals.loadEmbedded(oppVocals);
+			}
+		}
+		catch(e:Dynamic) {}
+
+		vocals.volume = 0;
+		vocals.pause();
+		opponentVocals.volume = 0;
+		opponentVocals.pause();
+
+		FlxG.sound.list.add(vocals);
+		FlxG.sound.list.add(opponentVocals);
 		
 		notes = new FlxTypedGroup<Note>();
 		add(notes);
@@ -331,6 +368,9 @@ class EditorPlayState extends MusicBeatState
 		vocals.volume = 1;
 		vocals.time = startPos;
 		vocals.play();
+		opponentVocals.volume = 1;
+		opponentVocals.time = startPos;
+		opponentVocals.play();
 	}
 
 	function sortByShit(Obj1:Note, Obj2:Note):Int
@@ -339,6 +379,10 @@ class EditorPlayState extends MusicBeatState
 	}
 
 	private function endSong() {
+		vocals.pause();
+		vocals.destroy();
+		opponentVocals.pause();
+		opponentVocals.destroy();
 		LoadingState.loadAndSwitchState(new states.editors.ChartingState());
 	}
 
@@ -349,6 +393,7 @@ class EditorPlayState extends MusicBeatState
 		{
 			FlxG.sound.music.pause();
 			vocals.pause();
+			opponentVocals.pause();
 			LoadingState.loadAndSwitchState(new states.editors.ChartingState());
 		}
 
@@ -470,7 +515,7 @@ class EditorPlayState extends MusicBeatState
 
 				if (!daNote.mustPress && daNote.wasGoodHit && !daNote.hitByOpponent && !daNote.ignoreNote)
 				{
-					if (PlayState.SONG.needsVoices)
+					if (PlayState.SONG.needsVoices && opponentVocals.length <= 0)
 						vocals.volume = 1;
 
 					var time:Float = 0.15;
@@ -481,11 +526,7 @@ class EditorPlayState extends MusicBeatState
 					daNote.hitByOpponent = true;
 
 					if (!daNote.isSustainNote)
-					{
-						daNote.kill();
-						notes.remove(daNote, true);
-						daNote.destroy();
-					}
+						invalidateNote(daNote);
 				}
 
 				if (Conductor.songPosition > (noteKillOffset / PlayState.SONG.speed) + daNote.strumTime)
@@ -510,12 +551,8 @@ class EditorPlayState extends MusicBeatState
 						}
 					}
 
-					daNote.active = false;
-					daNote.visible = false;
-
-					daNote.kill();
-					notes.remove(daNote, true);
-					daNote.destroy();
+					daNote.active = daNote.visible = false;
+					invalidateNote(daNote);
 				}
 			});
 		}
@@ -531,6 +568,7 @@ class EditorPlayState extends MusicBeatState
 	override public function onFocus():Void
 	{
 		vocals.play();
+		opponentVocals.play();
 
 		super.onFocus();
 	}
@@ -538,6 +576,7 @@ class EditorPlayState extends MusicBeatState
 	override public function onFocusLost():Void
 	{
 		vocals.pause();
+		opponentVocals.pause();
 
 		super.onFocusLost();
 	}
@@ -552,13 +591,26 @@ class EditorPlayState extends MusicBeatState
 		}
 	}
 
+	var lastStepHit:Int = -1;
 	override function stepHit()
 	{
-		super.stepHit();
-		if (FlxG.sound.music.time > Conductor.songPosition + 20 || FlxG.sound.music.time < Conductor.songPosition - 20)
+		if (PlayState.SONG.needsVoices && FlxG.sound.music.time >= -ClientPrefs.data.noteOffset)
 		{
-			resyncVocals();
+			var timeSub:Float = Conductor.songPosition - Conductor.offset;
+			var syncTime:Float = 20;
+			if (Math.abs(FlxG.sound.music.time - timeSub) > syncTime ||
+			(vocals.length > 0 && Math.abs(vocals.time - timeSub) > syncTime) ||
+			(opponentVocals.length > 0 && Math.abs(opponentVocals.time - timeSub) > syncTime))
+			{
+				resyncVocals();
+			}
 		}
+		super.stepHit();
+
+		if(curStep == lastStepHit) {
+			return;
+		}
+		lastStepHit = curStep;
 	}
 
 	function resyncVocals():Void
@@ -569,6 +621,8 @@ class EditorPlayState extends MusicBeatState
 		Conductor.songPosition = FlxG.sound.music.time;
 		vocals.time = Conductor.songPosition;
 		vocals.play();
+		opponentVocals.time = Conductor.songPosition;
+		opponentVocals.play();
 	}
 	private function onKeyPress(event:KeyboardEvent):Void
 	{
@@ -628,7 +682,11 @@ class EditorPlayState extends MusicBeatState
 					}
 				}
 				else if (canMiss && ClientPrefs.data.ghostTapping) {
-					noteMiss();
+					for (epicNote in sortedNotesList)
+					{
+						if (!epicNote.isSustainNote)
+							noteMiss(epicNote);
+					}
 				}
 
 				//more accurate hit time for the ratings? part 2 (Now that the calculations are done, go back to the time it was before for not causing a note stutter)
@@ -700,7 +758,7 @@ class EditorPlayState extends MusicBeatState
 		{
 			switch(note.noteType) {
 				case 'Hurt Note': //Hurt note
-					noteMiss();
+					noteMiss(note);
 					--songMisses;
 					if(!note.isSustainNote) {
 						if(!note.noteSplashDisabled) {
@@ -712,11 +770,7 @@ class EditorPlayState extends MusicBeatState
 					vocals.volume = 0;
 
 					if (!note.isSustainNote)
-					{
-						note.kill();
-						notes.remove(note, true);
-						note.destroy();
-					}
+						invalidateNote(note);
 					return;
 			}
 
@@ -740,22 +794,44 @@ class EditorPlayState extends MusicBeatState
 			vocals.volume = 1;
 
 			if (!note.isSustainNote)
-			{
-				note.kill();
-				notes.remove(note, true);
-				note.destroy();
-			}
+				invalidateNote(note);
 		}
 	}
 
-	function noteMiss():Void
-	{
+	function noteMiss(daNote:Note):Void { //You didn't hit the key and let it go offscreen, also used by Hurt Notes
+		//Dupe note remove
+		notes.forEachAlive(function(note:Note) {
+			if (daNote != note && daNote.mustPress && daNote.noteData == note.noteData && daNote.isSustainNote == note.isSustainNote && Math.abs(daNote.strumTime - note.strumTime) < 1)
+				invalidateNote(daNote);
+		});
+
+		if (daNote != null && daNote.parent == null) {
+			if(daNote.tail.length > 0) {
+				daNote.alpha = 0.35;
+				for(childNote in daNote.tail) {
+					childNote.alpha = daNote.alpha;
+					childNote.canBeHit = false;
+					childNote.ignoreNote = true;
+					childNote.tooLate = true;
+				}
+				daNote.canBeHit = false;
+			}
+		}
+
+		if (daNote != null && daNote.parent != null && daNote.isSustainNote) {
+			var parentNote:Note = daNote.parent;
+			if (parentNote.wasGoodHit && parentNote.tail.length > 0) {
+				for (child in parentNote.tail) if (child != daNote) {
+					child.canBeHit = false;
+					child.ignoreNote = true;
+					child.tooLate = true;
+				}
+			}
+		}
+
+		// score and data
 		combo = 0;
-
-		//songScore -= 10;
 		songMisses++;
-
-		FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
 		vocals.volume = 0;
 	}
 
@@ -981,6 +1057,11 @@ class EditorPlayState extends MusicBeatState
 		}
 	}
 
+	public function invalidateNote(note:Note):Void {
+		note.kill();
+		notes.remove(note, true);
+		note.destroy();
+	}
 
 	// Note splash shit, duh
 	function spawnNoteSplashOnNote(note:Note) {
@@ -1016,5 +1097,30 @@ class EditorPlayState extends MusicBeatState
 			FlxG.stage.removeEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
 		}
 		super.destroy();
+	}
+
+	function loadCharacterFile(char:String):CharacterFile {
+		var characterPath:String = 'characters/' + char + '.json';
+		#if MODS_ALLOWED
+		var path:String = Paths.modFolders(characterPath);
+		if (!FileSystem.exists(path)) {
+			path = Paths.getSharedPath(characterPath);
+		}
+
+		if (!FileSystem.exists(path))
+		#else
+		var path:String = Paths.getSharedPath(characterPath);
+		if (!OpenFlAssets.exists(path))
+		#end
+		{
+			path = Paths.getSharedPath('characters/' + Character.DEFAULT_CHARACTER + '.json'); //If a character couldn't be found, change him to BF just to prevent a crash
+		}
+
+		#if MODS_ALLOWED
+		var rawJson = File.getContent(path);
+		#else
+		var rawJson = OpenFlAssets.getText(path);
+		#end
+		return cast Json.parse(rawJson);
 	}
 }
