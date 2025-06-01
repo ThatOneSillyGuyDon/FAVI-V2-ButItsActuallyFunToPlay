@@ -2184,6 +2184,12 @@ class PlayState extends MusicBeatState
 
 			case 'Play Sound':
 				Paths.sound(event.value1); //Precache sound
+			case "Camera Event":
+				if (event.value1.toLowerCase().trim() == "starthidden" || event.value1.toLowerCase().trim() == "start hidden")
+				{
+					camHUD.alpha = 0.001;
+					camBars.fade(FlxColor.BLACK, 0.001);
+				}
 		}
 		stagesFunc(function(stage:BaseStage) stage.eventPushedUnique(event));
 	}
@@ -3722,6 +3728,9 @@ class PlayState extends MusicBeatState
 								#end
 						}
 
+					case "starthidden" | "start hidden":
+						//do nothing cause it's already doing something
+
 					case "changevalue" | "change value":
 						switch (triggerInfo[0].toLowerCase())
 						{
@@ -5058,7 +5067,7 @@ class PlayState extends MusicBeatState
 		particleNote.setGraphicSize(Std.int(particleNote.width * 0.7));
 		particleNote.updateHitbox();
 		particleNote.x = FlxG.random.int(Std.int(targetGroup.x - (targetGroup == boyfriendGroup ? 0 : 150)), Std.int(targetGroup.x + (targetGroup == boyfriendGroup ? 500 : 300)));
-		particleNote.y = targetGroup.y - 170;
+		particleNote.y = targetGroup.y;// - 170; - why?
 		particleNote.velocity.y += targetGroup.y - 400;
 		particleNote.acceleration.y = 400 * playbackRate;
 		particleNote.angle = FlxG.random.int(0, 360);
