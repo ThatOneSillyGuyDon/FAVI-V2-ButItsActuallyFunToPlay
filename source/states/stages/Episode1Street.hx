@@ -223,7 +223,6 @@ class Episode1Street extends BaseStage
 					blackParticle.animation.play('idle');
 					blackParticle.antialiasing = ClientPrefs.data.antialiasing;
 					blackParticle.exists = false;
-					//blackParticle.animation.curAnim.curFrame = FlxG.random.int(0, 9);
 					ashParticle.add(blackParticle);
 				}
 			ashParticle.launchMode = SQUARE;
@@ -980,101 +979,7 @@ class Episode1Street extends BaseStage
 					}
 				}
 			case 'Delusional':
-				var beatShit1:Array<Int> = [752, 760, 768, 772, 776, 784, 792, 800, 804, 808, 824, 836, 856, 868];
-				var beatShit2:Array<Int> = [812, 828, 844, 860];
-				var beatShit3:Array<Int> = [816, 832, 848, 864];
-				if (curBeat == 1)
-				{
-					game.cinematicBarControls("create", 1);
-					game.cinematicBarControls("moveboth", 0.0001, 'linear', 100);
-				}
-				if (curBeat == 32)
-					game.cinematicBarControls("moveboth", 2, 'circOut', 120);
-				if (curBeat == 64)
-					game.cinematicBarControls("moveboth", 2, 'circInOut', 75);
-				if (curBeat ==128 || curBeat == 1072)
-					game.cinematicBarControls("moveboth", 1, "circOut", 90);
-				if (curBeat == 132)
-					game.cinematicBarControls("moveboth", 2, "circOut", 180);
-				if (curBeat == 144)
-					game.cinematicBarControls("moveboth", 0.0001, 'linear', 70);
-				if (curBeat == 152 || curBeat == 168)
-					game.cinematicBarControls("moveboth", 0.5, 'circOut', 80);
-				if (curBeat == 154 || curBeat == 172)
-					game.cinematicBarControls("moveboth", 0.5, 'circOut', 90);
-				if (curBeat == 156 || curBeat == 288 || curBeat == 320)
-					game.cinematicBarControls("moveboth", 0.5, 'circOut', 100);
-				if (curBeat == 158 || curBeat == 296 || curBeat == 328)
-					game.cinematicBarControls("moveboth", 0.5, 'circOut', 110);
-				if (curBeat == 160)
-					game.cinematicBarControls("moveboth", 1, 'circOut', 70);
-				if (curBeat == 176)
-					game.cinematicBarControls("moveboth", 2, 'circOut', 0);
-				if (curBeat == 280 || curBeat == 312)
-					game.cinematicBarControls("moveboth", 1.5, 'circOut', 90);
-				if (curBeat == 304 || curBeat == 336 || curBeat == 356 || curBeat == 388)
-					game.cinematicBarControls("moveboth", 0.5, 'circOut', 120);
-				if (curBeat == 308 || curBeat == 358 || curBeat == 390)
-					game.cinematicBarControls("moveboth", 0.5, 'circOut', 130);
-				if (curBeat == 338)
-					game.cinematicBarControls("moveboth", 1, 'circOut', 80);
-				if (curBeat == 344 || curBeat == 360 || curBeat == 392)
-					game.cinematicBarControls("moveboth", 1, 'circOut', 100);
-				if (curBeat == 408)
-					game.cinematicBarControls("moveboth", 2, 'circOut', 140);
-				if (curBeat == 470)
-					game.cinematicBarControls("moveboth", 0.65, 'backIn', 380);
-				if (curBeat == 480)
-					game.cinematicBarControls("moveboth", 10, 'linear', 70);
-				if (curBeat == 744)
-					game.cinematicBarControls("moveboth", 0.0001, 'linear', 120);
-				for (bounceYouStupidBitch in 0...beatShit1.length)
-					if (curBeat == beatShit1[bounceYouStupidBitch])
-						game.cinematicBarControls("bopboth", 0.5, "circOut", 90, 30);
-				for (helloEverybodyMyNameIsMarkiplierAndWelcomeToFiveNightsAtFreddysAnIndieHorrorGameThatYouGuysSuggestedInMassAndISawYamimashPlayedItAndHeSaidItWasReallyReallyGoodSoImEagerToSeeWhatIsUp in 0...beatShit2.length)
-					if (curBeat == beatShit2[helloEverybodyMyNameIsMarkiplierAndWelcomeToFiveNightsAtFreddysAnIndieHorrorGameThatYouGuysSuggestedInMassAndISawYamimashPlayedItAndHeSaidItWasReallyReallyGoodSoImEagerToSeeWhatIsUp])
-						game.cinematicBarControls("moveboth", 0.8, "circIn", 185);
-				for (youreCringe in 0...beatShit3.length)
-					if (curBeat == beatShit3[youreCringe])
-						game.cinematicBarControls("moveboth", 0.8, "circOut", 120);
-				if (curBeat == 872)
-					game.cinematicBarControls("moveboth", 2.5, "circInOut", 180);
-				if (curBeat == 880 || curBeat == 1040)
-					game.cinematicBarControls("moveboth", 1, "circOut", 100);
-				if (curBeat == 944 || curBeat == 1056)
-					game.cinematicBarControls("moveboth", 1.5, "circOut", 120);
-				if (curBeat == 1008 || curBeat == 1064)
-					game.cinematicBarControls("moveboth", 1, "circOut", 140);
-				if (curBeat == 1024)
-					game.cinematicBarControls("moveboth", 1, "circOut", 80);
-				if (curBeat == 1030)
-					game.cinematicBarControls("moveboth", 1, "circOut", 100);
-				if (curBeat == 1136)
-					game.cinematicBarControls("kill", 0);
-
-				if (curBeat == 146)
-					game.manageLyrics('evilpredelu', 'Count the minutes...', 'disneyFreeplayFont.ttf', 30, 1.1, 'sineInOut', .05);
-				if (curBeat == 150)
-					game.manageLyrics('evilpredelu', "...of how long...", 'disneyFreeplayFont.ttf', 30, 1, 'sineInOut', 0.04);
-				if (curBeat == 154)
-					game.manageLyrics('evilpredelu', "...this show will play!", 'disneyFreeplayFont.ttf', 30, 2.2, 'quartInOut', .07);
-				if (curBeat == 162)
-					game.manageLyrics('evilpredelu', "And remind yourself...", 'disneyFreeplayFont.ttf', 30, 1.3, 'sineInOut', .05);
-				if (curBeat == 167)
-					game.manageLyrics('evilpredelu', "...no matter what's in...", 'disneyFreeplayFont.ttf', 30, 2, 'sineInOut', .06);
-				if (curBeat == 174)
-					game.manageLyrics('evildelu', "...THE WAY!", 'disneyFreeplayFont.ttf', 30, 1, 'circOut', .035);
-				if (curBeat == 178)
-					game.manageLyrics('evildelu', "All your dreams...", 'disneyFreeplayFont.ttf', 30, 1, 'sineInOut', .04);
-				if (curBeat == 182)
-					game.manageLyrics('evildelu', "...ARE SO FAR OUT OF REACH!", 'disneyFreeplayFont.ttf', 30, 4, 'quartInOut', .055);
-				if (curBeat == 190)
-					game.manageLyrics('evildelu', "But if YOUR delusions...", 'disneyFreeplayFont.ttf', 30, 2.2, 'sineInOut', .045);
-				if (curBeat == 196)
-					game.manageLyrics('evildelu', "...still surround ya.", 'disneyFreeplayFont.ttf', 30, 1.3, "quartOut", .045);
-				if (curBeat == 200)
-					game.manageLyrics('evildelu', "Let's LOOP 'ROUND ONCE MORE.", 'disneyFreeplayFont.ttf', 30, 3, "sineInOut", .065);
-
+				
 				switch (curBeat)
 				{
 					case 1: 
@@ -1101,8 +1006,6 @@ class Episode1Street extends BaseStage
 						game.camFlashSystem(BG_DARK, {alpha: 1, timer: 0.3, ease: FlxEase.quartInOut});
 						game.defaultCamZoom = 1.2;
 						game.camFollow.x -= 100;
-						//game.boyfriend.alpha = 0.0001;
-						//FlxTween.tween(game.boyfriend, {alpha: 1}, 6, {ease: game.returnTweenEase('sineInOut')});
 						FlxTween.tween(game.camFollow, {x: game.camFollow.x + 100}, 12, {ease: FlxEase.sineInOut});
 					case 176:
 						game.camFlashSystem(BG_DARK, {alpha: 0, timer: 0.3, ease: FlxEase.quartInOut});
@@ -1202,7 +1105,6 @@ class Episode1Street extends BaseStage
 						game.defaultCamZoom = 0.8;
 						game.chromTween = FlxTween.tween(game, {chromEffect: 0.1}, 0.6, {ease: FlxEase.quadOut});
 					case 472:
-						//game.useFakeDeluName = true;
 						if (isStoryMode)
 						{
 							PlayState.detailsText = "Episode 1 - Regret (PEACEFUL)";
@@ -1467,7 +1369,6 @@ class Episode1Street extends BaseStage
 			if (curBeat == 312 && !ClientPrefs.data.lowQuality)
 			{
 				FlxTween.tween(fireThing, {alpha: 1}, 1);
-				//smokeParticles.emitting = true;
 			} 
 			if (curBeat == 336)
 			{
@@ -1488,7 +1389,6 @@ class Episode1Street extends BaseStage
 				colorsOrSmthElse.kill();
 				colorsOrSmthElse.destroy();
 				colorsOrSmthElse = null;
-				//smokeParticles.emitting = false;
 				floor.kill();
 				floor.destroy();
 				floor = null;
@@ -1535,8 +1435,6 @@ class Episode1Street extends BaseStage
 
 			if (curBeat == 740) // go back to the street in a even more decayed state
 			{
-				//smokeParticles.emitting = true;
-				//fireParticles.emitting = true;
 				if (!ClientPrefs.data.lowQuality)
 				{
 					smokeShit.forEach(function(spr:FlxSprite)
@@ -1699,10 +1597,8 @@ class Episode1Street extends BaseStage
 			isolatedIntro = null;
 			game.camVideo.visible = false;
 			camGame.visible = true;
-			//finishedScene = true;
 			game.camBars.fade(FlxColor.BLACK, 0.001);
 			startCountdown();
-			//canSkip = false;
 		});
 	}
 
@@ -1724,8 +1620,6 @@ class Episode1Street extends BaseStage
 			game.camVideo.visible = false;
 			game.camBars.visible = true;
 			camGame.visible = true;
-			//finishedScene = true;
-			//canSkip = false;
 			game.camBars.fade(FlxColor.BLACK, 0.0001);
 			startCountdown();
 			trace("video gone");
