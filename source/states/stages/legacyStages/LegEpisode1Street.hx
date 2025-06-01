@@ -132,33 +132,10 @@ class LegEpisode1Street extends BaseStage
 		}
 	}
 
-	
 	override function stepHit()
 	{
 		switch (PlayState.SONG.song)
 		{
-			case 'Isolated Old':
-				switch (curStep)
-				{
-					case 1: game.tweenCamera(0.7, 0.5, "sineInOut");
-					case 16 | 144: game.tweenCamera(1.2, 10, "sineInOut");
-					case 96: game.tweenCamera(0.8, 0.3, "sineInOut");
-					case 120: game.tweenCamera(1.5, 0.5, "sineInOut");
-					case 128: game.tweenCamera(0.8, 0.5, "sineInOut");
-					case 192: game.tweenCamera(0.85, 5, "sineInOut");
-					case 256: game.tweenCamera(1.2, 8, "sineInOut");
-					case 304: game.tweenCamera(0.8, 4, "sineInOut");
-					case 336: game.tweenCamera(1.4, 9, "sineInOut");
-					case 384 | 704: game.tweenCamera(0.8, 2, "sineInOut");
-					case 576: game.tweenCamera(1.5, 12, "sineInOut");
-					case 640: game.tweenCamera(0.85, 2, "sineInOut");
-					case 656: game.tweenCamera(1.2, 9, "sineInOut");
-					case 768: game.tweenCamera(1.5, 20, "sineInOut");
-					case 896: game.tweenCamera(0.8, 5, "sineInOut");
-					case 1024: game.tweenCamera(0.1, 1, "sineInOut");
-					case 1040: game.tweenCamera(1.5, 30, "sineInOut");
-					case 1280: game.tweenCamera(0.85, 1, "sineInOut");
-				}
 			case 'Isolated Beta':
 				// why tf did this version have so much fucking zoom events?????
 				switch (curStep)
@@ -181,6 +158,7 @@ class LegEpisode1Street extends BaseStage
 				}
 		}
 	}
+
 	override function beatHit()
 	{
 		switch (PlayState.SONG.song)
@@ -360,54 +338,6 @@ class LegEpisode1Street extends BaseStage
 					case 404:
 						FlxTween.tween(camGame, {alpha: 0}, 1.5, {ease: FlxEase.quartInOut});
 						FlxTween.tween(camHUD, {alpha: 0}, 1.5, {ease: FlxEase.quartInOut});
-				}
-		}
-	}
-	
-	// For events
-	override function eventCalled(eventName:String, value1:String, value2:String, flValue1:Null<Float>, flValue2:Null<Float>, strumTime:Float)
-	{
-		switch(eventName)
-		{
-			case "My Event":
-		}
-	}
-	override function eventPushed(event:objects.Note.EventNote)
-	{
-		// used for preloading assets used on events that doesn't need different assets based on its values
-		switch(event.event)
-		{
-			case "My Event":
-				//precacheImage('myImage') //preloads images/myImage.png
-				//precacheSound('mySound') //preloads sounds/mySound.ogg
-				//precacheMusic('myMusic') //preloads music/myMusic.ogg
-		}
-	}
-	override function eventPushedUnique(event:objects.Note.EventNote)
-	{
-		// used for preloading assets used on events where its values affect what assets should be preloaded
-		switch(event.event)
-		{
-			case "My Event":
-				switch(event.value1)
-				{
-					// If value 1 is "blah blah", it will preload these assets:
-					case 'blah blah':
-						//precacheImage('myImageOne') //preloads images/myImageOne.png
-						//precacheSound('mySoundOne') //preloads sounds/mySoundOne.ogg
-						//precacheMusic('myMusicOne') //preloads music/myMusicOne.ogg
-
-					// If value 1 is "coolswag", it will preload these assets:
-					case 'coolswag':
-						//precacheImage('myImageTwo') //preloads images/myImageTwo.png
-						//precacheSound('mySoundTwo') //preloads sounds/mySoundTwo.ogg
-						//precacheMusic('myMusicTwo') //preloads music/myMusicTwo.ogg
-					
-					// If value 1 is not "blah blah" or "coolswag", it will preload these assets:
-					default:
-						//precacheImage('myImageThree') //preloads images/myImageThree.png
-						//precacheSound('mySoundThree') //preloads sounds/mySoundThree.ogg
-						//precacheMusic('myMusicThree') //preloads music/myMusicThree.ogg
 				}
 		}
 	}
