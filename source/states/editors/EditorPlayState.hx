@@ -72,10 +72,22 @@ class EditorPlayState extends MusicBeatState
 	{
 		instance = this;
 
-		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
+		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/editor/chart/playtestBG'));
 		bg.scrollFactor.set();
 		bg.color = FlxColor.fromHSB(FlxG.random.int(0, 359), FlxG.random.float(0, 0.8), FlxG.random.float(0.3, 1));
 		add(bg);
+
+		var tiles:FlxBackdrop = new FlxBackdrop(Paths.image("Funkin_avi/editor/chart/arrowTile"), XY, 0, 0);
+		tiles.scrollFactor.set();
+		tiles.velocity.set(-80, 30);
+		tiles.blend = ADD;
+		tiles.color = bg.color;
+		tiles.alpha = 0.3;
+		add(tiles);
+
+		var underlay:FlxSprite = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/editor/chart/playtestUnderlays'));
+		underlay.scrollFactor.set();
+		add(underlay);
 
 		strumLine = new FlxSprite(ClientPrefs.data.middleScroll ? PlayState.STRUM_X_MIDDLESCROLL : PlayState.STRUM_X, 50).makeGraphic(FlxG.width, 10);
 		if(ClientPrefs.data.downScroll) strumLine.y = FlxG.height - 150;
@@ -180,7 +192,29 @@ class EditorPlayState extends MusicBeatState
 	var startingSong:Bool = true;
 	private function generateSong(dataPath:String):Void
 	{
-		FlxG.sound.playMusic(Paths.inst(PlayState.SONG.song), 0, false);
+		switch (PlayState.SONG.song)
+		{
+			case "Rotten Petals":
+				FlxG.sound.playMusic(Paths.music("aviOST/rottenPetals"), 0, false);
+			case "Seeking Freedom":
+				FlxG.sound.playMusic(Paths.music("aviOST/seekingFreedom"), 0, false);
+			case "Curtain Call":
+				FlxG.sound.playMusic(Paths.music("aviOST/curtainCall"), 0, false);
+			case "A True Monster":
+				FlxG.sound.playMusic(Paths.music("aviOST/aTrueMonster"), 0, false);
+			case "Am I Real?":
+				FlxG.sound.playMusic(Paths.music("aviOST/gameOver/amIReal"), 0, false);
+			case "Your Final Bow":
+				FlxG.sound.playMusic(Paths.music("aviOST/gameOver/yourFinalBow"), 0, false);
+			case "The Wretched Tilezones (Simple Life)":
+				FlxG.sound.playMusic(Paths.music("aviOST/pause/theWretchedTilezones"), 0, false);
+			case "Ahh the Scary (Somber Night)":
+				FlxG.sound.playMusic(Paths.music("aviOST/pause/somberNight"), 0, false);
+			case "Ship the Fart Yay Hooray <3 (Distant Stars)":
+				FlxG.sound.playMusic(Paths.music("aviOST/pause/shipTheFartYayHoorayv3v"), 0, false);
+			default:
+				FlxG.sound.playMusic(Paths.inst(PlayState.SONG.song), 0, false);
+		}
 		FlxG.sound.music.pause();
 		FlxG.sound.music.onComplete = endSong;
 		vocals.pause();
