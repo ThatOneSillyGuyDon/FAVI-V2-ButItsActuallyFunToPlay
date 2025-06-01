@@ -3684,6 +3684,18 @@ class PlayState extends MusicBeatState
 									camTwn[3] = null;
 								}});
 
+							case "vidalpha" | "vid alpha":
+								if (camTwn[3] != null)
+									camTwn[3].cancel();
+
+								if (Std.parseFloat(triggerInfo[1]) > 1 || Std.parseFloat(triggerInfo[1]) < 0)
+									triggerInfo[1] = "1";
+
+								camTwn[3] = FlxTween.tween(camVideo, {alpha: Std.parseFloat(triggerInfo[1])}, Std.parseFloat(triggerInfo[2]), {ease: returnTweenEase(triggerInfo[3]), onComplete: function(twn:FlxTween)
+								{
+									camTwn[3] = null;
+								}});
+
 							case "angle":
 								if (camTwn[4] != null)
 									camTwn[4].cancel();
@@ -3720,6 +3732,7 @@ class PlayState extends MusicBeatState
 							case "alpha": camGame.alpha = Std.parseFloat(triggerInfo[1]);
 							case "cameraspeed" | "cam speed" | "camspeed" | "camera speed" | "speed": cameraSpeed = Std.parseFloat(triggerInfo[1]);
 							case "hudalpha" | "hud alpha": camHUD.alpha = Std.parseFloat(triggerInfo[1]);
+							case "vidalpha" | "vid alpha": camVideo.alpha = Std.parseFloat(triggerInfo[1]);
 							case "angle": camGame.angle = Std.parseFloat(triggerInfo[1]);
 							case "hudangle" | "hud angle": camHUD.angle = Std.parseFloat(triggerInfo[1]);
 							default:
