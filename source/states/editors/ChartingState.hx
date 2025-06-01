@@ -75,6 +75,7 @@ class ChartingState extends MusicBeatState
 		['Change Character', "Value 1: Character to change (Dad, BF, GF)\nValue 2: New character's name"],
 		['Change Scroll Speed', "Value 1: Scroll Speed Multiplier (1 is default)\nValue 2: Time it takes to change fully in seconds."],
 		['Set Property', "Value 1: Variable name\nValue 2: New value"],
+		['Tween Chromatic Abberation', 'Value 1 - Name of the event\nValue 2 - Event Data\n\nTween - Intensity, Duration\nZoom - Intensity, Duration\nSet - Intensity'],
 		['Manage Lyrics', "Value 1: Charactr speaking\nValue 2: Text, Font, Size, Duration, Tween Type, Text Delay."],
 		['Camera Event', "A series of customizers and event types that\nchanges the camera behavior!\n\nValue 1: Name of event you want\nValue 2: Controls the event\n\nStart Hidden - makes the song start off hidden no matter where you place the event!\nChange Value - Value Name, Value Input\nTween Value - Value Name, Value Input, Duration, Ease type\nShake - Intensity, Duration, Game or HUD\nFade - R, G, B, Duration, Alpha, Fade In Bool Toggle\nFlash - R, G, B, Duration, Alpha, Blend Bool Toggle\nChange Pos/Set Position - X Pos, Y Pos\nTween Position: X Pos, Y Pos, Duration, Ease type\n\n(Please refer to documentation or code that comes with this for\nvalid value names for \"Tween Value\" & \"Change Value\")"],
 		['Background Controls', "A series of customizers and event types that\nchanges the background's behavior!\n\nValue 1: Name of event you want\nValue 2: Controls the event\n\nFlash - Time, Ease type, Visibility, Colors (IN RGB FORM!!!)\nDarken - Visibility, Time, Ease type"],
@@ -84,6 +85,11 @@ class ChartingState extends MusicBeatState
 		['No Signal Event', "Value 1: Determines what this triggers\nValue 2: Additional value input if needed\n\nValue 1 Inputs available:\n- togglevis\n- setalpha\n- changebg"],
 		['Mania BG Flash', "Value 1 Info: Customizer for how the flash will work\nValue 2 Info: Whether only the sky or the whole BG will flash\n\nValue 1: timer, ease, alpha, red value, green value, blue value\nValue 2: sky or all"],
 		['Mercy Transition', "too lazy to put a description here"],
+		['Mercy Stuff idk', "Value 1: Event you want\nValue 2: Leave empty\n\nTween Icons - Tweens the mechanic icons shown\nTween Walt Goop - Tweens the goop at the end of Mercy"],
+		['Remove Health', "Value 1: How much health to remove"],
+		['Lunacy Event Thing idk', "it just tweens the gradient idk. I'm to bored rn to care lmao"],
+		['Fire Handler', 'Handles the Fire in Lunacy/Delusional\n\nValue 1 - Visibility, Y, Time\nValue 2 - Ease type.'],
+		['Rain Handler', 'Handles the Rain in Lunacy/Delusional\n\nValue 1 - Visibility, Time\nValue 2 - Ease type.'],
 		['Trigger TG shader shi', "Add - Adds the shader\nRemove - Removes the shader"],
 		['Trigger Hunted Stuffs', ''],
 		['Play Sound', "Value 1: Sound file name\nValue 2: Volume (Default: 1), ranges from 0 to 1"]
@@ -504,7 +510,8 @@ class ChartingState extends MusicBeatState
 				tempArray.push(character);
 		}
 
-		#if MODS_ALLOWED
+		//Small fix that allows all characters to appear as options in chart editor
+		//#if MODS_ALLOWED
 		for (i in 0...directories.length) {
 			var directory:String = directories[i];
 			if(FileSystem.exists(directory)) {
@@ -520,7 +527,7 @@ class ChartingState extends MusicBeatState
 				}
 			}
 		}
-		#end
+		//#end
 		tempArray = [];
 
 		var player1DropDown = new FlxUIDropDownMenu(10, stepperSpeed.y + 45, FlxUIDropDownMenu.makeStrIdLabelArray(characters, true), function(character:String)

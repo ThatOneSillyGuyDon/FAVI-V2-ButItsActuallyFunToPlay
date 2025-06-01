@@ -412,30 +412,24 @@ class Episode1Street extends BaseStage
 		{
 			demonBFIcon = new HealthIcon('evilcy', true, false, true, false);
 			demonBFIcon.visible = false;
-			add(demonBFIcon);
 		
 			demonBFScary = new HealthIcon('evildelu', true, false, true, false);
 			demonBFScary.animation.curAnim.curFrame = 1;
 			demonBFScary.visible = false;
-			add(demonBFScary);
 		
 			fakeBFLosingFrame = new HealthIcon('evilrett', true, false, true, false);
 			fakeBFLosingFrame.animation.curAnim.curFrame = 1;
 			fakeBFLosingFrame.visible = false;
-			add(fakeBFLosingFrame);
 		
 			isolatedHappy = new HealthIcon('lunaavier', false, false, false, true);
 			isolatedHappy.animation.curAnim.curFrame = 2;
 			isolatedHappy.visible = false;
-			add(isolatedHappy);
 			
 			lunacyIcon = new HealthIcon('lunaavier', false, false, true, false);
 			lunacyIcon.visible = false;
-			add(lunacyIcon);
 			
 			delusionalIcon = new HealthIcon('deluavier', false, false, true, false);
 			delusionalIcon.visible = false;
-			add(delusionalIcon);
 
 			demonBFIcon.cameras = [camHUD];
 			demonBFScary.cameras = [camHUD];
@@ -541,443 +535,46 @@ class Episode1Street extends BaseStage
 					isolatedHappy.visible = true;
 					FlxTween.tween(isolatedHappy, {alpha: 0}, 1);
 					FlxTween.tween(game.iconP2, {alpha: 1}, 0.6);
-
+					add(isolatedHappy);
+			
 				case 168:
 					lunacyIcon.visible = true;
 					game.iconP2.alpha = 0;
 					FlxTween.tween(lunacyIcon, {alpha: 0}, 1);
 					FlxTween.tween(game.iconP2, {alpha: 1}, 0.6);
+					add(lunacyIcon);
 
 				case 172:
 					delusionalIcon.visible = true;
 					game.iconP2.alpha = 0;
 					FlxTween.tween(delusionalIcon, {alpha: 0}, 1);
 					FlxTween.tween(game.iconP2, {alpha: 1}, 0.6);
+					add(delusionalIcon);
 
 				case 176:
 					fakeBFLosingFrame.visible = true;
 					game.iconP1.alpha = 0;
 					FlxTween.tween(fakeBFLosingFrame, {alpha: 0}, 1);
 					FlxTween.tween(game.iconP1, {alpha: 1}, 0.6);
+					add(fakeBFLosingFrame);
 
 				case 184:
 					demonBFIcon.visible = true;
 					game.iconP1.alpha = 0;
 					FlxTween.tween(demonBFIcon, {alpha: 0}, 1);
 					FlxTween.tween(game.iconP1, {alpha: 1}, 0.6);
-
+					add(demonBFIcon);
+		
 				case 188:
 					demonBFScary.visible = true;
 					game.iconP1.alpha = 0;
 					FlxTween.tween(demonBFScary, {alpha: 0}, 1);
 					FlxTween.tween(game.iconP1, {alpha: 1}, 0.6);
+					add(demonBFScary);
 			}
 		
 		switch (PlayState.SONG.song)
 		{
-			case 'Isolated':
-				
-				if ((curBeat > 96 && curBeat < 160) || (curBeat > 224 && curBeat < 352))
-				{
-					if (curBeat % 2 == 0)
-					{
-						camGame.zoom += 0.05;
-						camHUD.zoom += 0.06;
-					}
-				}
-
-			case 'Lunacy':	
-				if (curBeat == 32 || curBeat == 64)
-				{
-					if (game.chromTween != null)
-						game.chromTween.cancel();
-
-					game.chromEffect = 0.27;
-
-					game.chromTween = FlxTween.tween(game, {
-						chromEffect: 0.0001
-					}, 1.5, {
-						ease: FlxEase.sineOut,
-						onComplete: function(twn:FlxTween)
-						{
-							game.chromTween = null;
-						}
-					});
-				}
-
-				if (curBeat == 38 || curBeat == 40 || curBeat == 46 || curBeat == 48 || curBeat == 54 || curBeat == 56 || curBeat == 62 || curBeat == 70
-					|| curBeat == 72 || curBeat == 78 || curBeat == 80 || curBeat == 86 || curBeat == 88 || curBeat == 102 || curBeat == 110
-					|| curBeat == 118 || curBeat == 126 || curBeat == 134 || curBeat == 142 || curBeat == 150)
-				{
-					if (game.chromTween != null)
-						game.chromTween.cancel();
-
-					game.chromEffect = 0.12;
-
-					game.chromTween = FlxTween.tween(game, {
-						chromEffect: 0.0001
-					}, 0.3, {
-						ease: FlxEase.sineOut,
-						onComplete: function(twn:FlxTween)
-						{
-							game.chromTween = null;
-						}
-					});
-				}
-
-				if (curBeat == 96 || curBeat == 104 || curBeat == 112 || curBeat == 120 || curBeat == 128 || curBeat == 136 || curBeat == 144 || curBeat == 152)
-				{
-					if (game.chromTween != null)
-						game.chromTween.cancel();
-
-					game.chromEffect = 0.32;
-
-					game.chromTween = FlxTween.tween(game, {
-						chromEffect: 0.0001
-					}, 2.1, {
-						ease: FlxEase.sineOut,
-						onComplete: function(twn:FlxTween)
-						{
-							game.chromTween = null;
-						}
-					});
-				}
-
-				if (curBeat == 100 || curBeat == 108 || curBeat == 116 || curBeat == 124 || curBeat == 132 || curBeat == 140 || curBeat == 148)
-				{
-					if (game.chromTween != null)
-						game.chromTween.cancel();
-	
-					game.chromEffect = 0.4;
-	
-					game.chromTween = FlxTween.tween(game, {
-						chromEffect: 0.0001
-					}, 1, {
-						ease: FlxEase.sineOut,
-						onComplete: function(twn:FlxTween)
-						{
-							game.chromTween = null;
-						}
-					});
-				}
-
-				if (curBeat == 156)
-				{
-					if (game.chromTween != null)
-						game.chromTween.cancel();
-
-					game.chromTween = FlxTween.tween(game, {
-						chromEffect: 0.33
-					}, 0.2, {
-						ease: FlxEase.sineOut,
-						onComplete: function(twn:FlxTween)
-						{
-							game.chromTween = null;
-						}
-					});
-				}
-
-				if (curBeat == 158)
-				{
-					if (game.chromTween != null)
-						game.chromTween.cancel();
-
-					game.chromEffect = 0.4;
-
-					game.chromTween = FlxTween.tween(game, {
-						chromEffect: 0.0001
-					}, 0.2, {
-						ease: FlxEase.sineOut,
-						onComplete: function(twn:FlxTween)
-						{
-							game.chromTween = null;
-						}
-					});
-				}
-
-				if (curBeat == 160 || curBeat == 168 || curBeat == 176 || curBeat == 184 || curBeat == 192 || curBeat == 200 || curBeat == 208
-					|| curBeat == 216 || curBeat == 224 || curBeat == 232 || curBeat == 240 || curBeat == 248 || curBeat == 256 || curBeat == 264
-					|| curBeat == 272 || curBeat == 280 || curBeat == 288 || curBeat == 296 || curBeat == 304 || curBeat == 312 || curBeat == 320
-					|| curBeat == 328 || curBeat == 336 || curBeat == 344)
-				{
-					if (game.chromTween != null)
-						game.chromTween.cancel();
-
-					game.chromEffect = 0.55;
-
-					game.chromTween = FlxTween.tween(game, {
-						chromEffect: 0.0001
-					}, 0.6, {
-						ease: FlxEase.sineOut,
-						onComplete: function(twn:FlxTween)
-						{
-							game.chromTween = null;
-						}
-					});
-				}
-
-				if (curBeat == 162 || curBeat == 170 || curBeat == 178 || curBeat == 186 || curBeat == 194 || curBeat == 202 || curBeat == 210
-					|| curBeat == 218 || curBeat == 226 || curBeat == 234 || curBeat == 242 || curBeat == 250 || curBeat == 258 || curBeat == 266
-					|| curBeat == 274 || curBeat == 282 || curBeat == 290 || curBeat == 298 || curBeat == 306 || curBeat == 314 || curBeat == 322
-					|| curBeat == 330 || curBeat == 338 || curBeat == 346)
-				{
-					if (game.chromTween != null)
-						game.chromTween.cancel();
-
-					game.chromEffect = 0.6;
-
-					game.chromTween = FlxTween.tween(game, {
-						chromEffect: 0.0001
-					}, 0.25, {
-						ease: FlxEase.sineOut,
-						onComplete: function(twn:FlxTween)
-						{
-							game.chromTween = null;
-						}
-					});
-				}
-
-				if (curBeat == 163 || curBeat == 171 || curBeat == 179 || curBeat == 187 || curBeat == 195 || curBeat == 203 || curBeat == 211
-					|| curBeat == 219 || curBeat == 227 || curBeat == 235 || curBeat == 243 || curBeat == 251 || curBeat == 259 || curBeat == 267
-					|| curBeat == 275 || curBeat == 283 || curBeat == 291 || curBeat == 299 || curBeat == 307 || curBeat == 315 || curBeat == 323
-					|| curBeat == 331 || curBeat == 339 || curBeat == 347)
-				{
-					if (game.chromTween != null)
-						game.chromTween.cancel();
-
-					game.chromTween = FlxTween.tween(game, {
-						chromEffect: 0.5
-					}, 0.22, {
-						ease: FlxEase.sineOut,
-						onComplete: function(twn:FlxTween)
-						{
-							game.chromTween = null;
-							game.chromEffect = 0.00001;
-						}
-					});
-				}
-
-				if (curBeat == 165 || curBeat == 173 || curBeat == 181 || curBeat == 189 || curBeat == 197 || curBeat == 205 || curBeat == 213
-					|| curBeat == 221)
-				{
-					if (game.chromTween != null)
-						game.chromTween.cancel();
-
-					game.chromTween = FlxTween.tween(game, {
-						chromEffect: 0.35
-					}, 0.2, {
-						ease: FlxEase.sineOut,
-						onComplete: function(twn:FlxTween)
-						{
-							game.chromTween = null;
-							game.chromEffect = 0.00001;
-						}
-					});
-				}
-
-				if (curBeat == 166 || curBeat == 174 || curBeat == 182 || curBeat == 190 || curBeat == 198 || curBeat == 206 || curBeat == 214
-					|| curBeat == 222)
-				{
-					if (game.chromTween != null)
-						game.chromTween.cancel();
-
-					game.chromEffect = 0.45;
-
-					game.chromTween = FlxTween.tween(game, {
-						chromEffect: 0.0001
-					}, 0.2, {
-						ease: FlxEase.sineOut,
-						onComplete: function(twn:FlxTween)
-						{
-							game.chromTween = null;
-						}
-					});
-				}
-
-				if (curBeat == 167 || curBeat == 175 || curBeat == 183 || curBeat == 191 || curBeat == 199 || curBeat == 207 || curBeat == 215
-					|| curBeat == 223)
-				{
-					if (game.chromTween != null)
-						game.chromTween.cancel();
-
-					game.chromEffect = 0.56;
-
-					game.chromTween = FlxTween.tween(game, {
-						chromEffect: 0.0001
-					}, 0.2, {
-						ease: FlxEase.sineOut,
-						onComplete: function(twn:FlxTween)
-						{
-							game.chromTween = null;
-						}
-					});
-				}
-
-				if (curBeat >= 228 && curBeat <= 231 || curBeat >= 236 && curBeat <= 239 || curBeat >= 244 && curBeat <= 247 || curBeat >= 252
-					&& curBeat <= 255 || curBeat >= 260 && curBeat <= 263 || curBeat >= 168 && curBeat <= 171 || curBeat >= 276 && curBeat <= 279
-					|| curBeat >= 284 && curBeat <= 287 || curBeat >= 292 && curBeat <= 295 || curBeat >= 300 && curBeat <= 303 || curBeat >= 308
-					&& curBeat <= 311 || curBeat >= 316 && curBeat <= 319 || curBeat >= 324 && curBeat <= 327 || curBeat >= 332 && curBeat <= 335
-					|| curBeat >= 340 && curBeat <= 343 || curBeat >= 348 && curBeat <= 351)
-				{
-					if (game.chromTween != null)
-						game.chromTween.cancel();
-
-					game.chromEffect = 0.32;
-
-					game.chromTween = FlxTween.tween(game, {
-						chromEffect: 0.00001
-					}, 0.22, {
-						ease: FlxEase.sineOut,
-						onComplete: function(twn:FlxTween)
-						{
-							game.chromTween = null;
-						}
-					});
-				}
-
-				if (curBeat == 352 || curBeat == 354 || curBeat == 356 || curBeat == 358 || curBeat == 360 || curBeat == 362 || curBeat == 364
-					|| curBeat == 366 || curBeat == 368 || curBeat == 370 || curBeat == 372 || curBeat == 374 || curBeat == 376 || curBeat == 378
-					|| curBeat == 380 || curBeat == 382 || curBeat == 384 || curBeat == 386 || curBeat == 388 || curBeat == 390 || curBeat == 392
-					|| curBeat == 394 || curBeat == 396 || curBeat == 398 || curBeat == 400 || curBeat == 402 || curBeat == 404 || curBeat == 406
-					|| curBeat == 408 || curBeat == 410 || curBeat == 416 || curBeat == 418 || curBeat == 420 || curBeat == 422 || curBeat == 424
-					|| curBeat == 426 || curBeat == 428 || curBeat == 430 || curBeat == 432 || curBeat == 434 || curBeat == 436 || curBeat == 438
-					|| curBeat == 440 || curBeat == 442 || curBeat == 444 || curBeat == 446 || curBeat == 448 || curBeat == 450 || curBeat == 452
-					|| curBeat == 454 || curBeat == 456 || curBeat == 458 || curBeat == 460 || curBeat == 462 || curBeat == 464 || curBeat == 466
-					|| curBeat == 468 || curBeat == 470 || curBeat == 472 || curBeat == 474)
-				{
-					if (game.chromTween != null)
-						game.chromTween.cancel();
-
-					game.chromEffect = 0.3;
-
-					game.chromTween = FlxTween.tween(game, {
-						chromEffect: 0.00001
-					}, 0.5, {
-						ease: FlxEase.sineOut,
-						onComplete: function(twn:FlxTween)
-						{
-							game.chromTween = null;
-						}
-					});
-				}
-
-				if (curBeat == 412)
-				{
-					if (game.chromTween != null)
-						game.chromTween.cancel();
-
-					game.chromEffect = 0.36;
-
-					game.chromTween = FlxTween.tween(game, {
-						chromEffect: 0.00001
-					}, 1, {
-						ease: FlxEase.sineOut,
-						onComplete: function(twn:FlxTween)
-						{
-							game.chromTween = null;
-						}
-					});
-				}
-
-				if (curBeat == 476)
-				{
-					if (game.chromTween != null)
-						game.chromTween.cancel();
-
-					game.chromTween = FlxTween.tween(game, {
-						chromEffect: 0.85
-					}, 1.6, {
-						ease: FlxEase.sineOut,
-						onComplete: function(twn:FlxTween)
-						{
-							game.chromTween = null;
-						}
-					});
-				}
-
-				if (curBeat == 480)
-				{
-					game.chromTween.cancel();
-
-					game.chromEffect = 0.00001;
-				}
-
-				switch (curBeat)
-				{
-					// I'm NOT gonna have a fun time recoding all this for the BG dimming in and out later lmao
-
-					case 352:
-						FlxTween.tween(game, {healthThing: 0.01}, 20);
-						if (game.globalGradient != null)
-							FlxTween.tween(game.globalGradient, {alpha: 0.8}, 10);
-				}
-
-				if (!ClientPrefs.data.lowQuality)
-				{
-					if (curBeat == 228 || curBeat == 238 || curBeat == 244 || curBeat == 252 || curBeat == 260 || curBeat == 270 || curBeat == 276 || curBeat == 284 || curBeat == 292 || curBeat == 300 || curBeat == 308 || curBeat == 316 || curBeat == 324 || curBeat == 332 || curBeat == 340 || curBeat == 248)
-					{
-						if (fireTweenHandler != null)
-							fireTweenHandler.cancel();
-						if (rainTween != null)
-							rainTween.cancel();
-		
-						if (rain != null)
-							rainTween = FlxTween.tween(rain, {alpha: 0.5}, 0.35, {ease: FlxEase.sineOut, onComplete: function(twn:FlxTween)
-							{
-								rainTween = null;
-							}});
-
-						fireTweenHandler = FlxTween.tween(fireThing, {alpha: 0.75, y: -250}, 0.35, {ease: FlxEase.sineOut, onComplete: function(twn:FlxTween)
-							{
-								fireTweenHandler = null;
-							}
-						});
-					}
-					if (curBeat == 230 || curBeat == 240 || curBeat == 248 || curBeat == 256 || curBeat == 262 || curBeat == 272 || curBeat == 280 || curBeat == 288 || curBeat == 296 || curBeat == 304 || curBeat == 312 || curBeat == 320 || curBeat == 328 || curBeat == 336 || curBeat == 344 || curBeat == 352)
-					{
-						if (fireTweenHandler != null)
-							fireTweenHandler.cancel();
-						if (rainTween != null)
-							rainTween.cancel();
-		
-						fireTweenHandler = FlxTween.tween(fireThing, {alpha: 0.0001, y: -80}, 0.35, {ease: FlxEase.sineOut, onComplete: function(twn:FlxTween)
-							{
-								fireTweenHandler = null;
-							}
-						});
-
-						if (rain != null)
-							rainTween = FlxTween.tween(rain, {alpha: 0.0001}, 0.35, {ease: FlxEase.sineOut, onComplete: function(twn:FlxTween)
-								{
-									rainTween = null;
-								}});
-					}
-					if (curBeat == 416)
-					{
-						if (fireTweenHandler != null)
-							fireTweenHandler.cancel();
-		
-						fireTweenHandler = FlxTween.tween(fireThing, {alpha: 1, y: -350}, 19.5, {ease: FlxEase.sineInOut, onComplete: function(twn:FlxTween)
-							{
-								fireTweenHandler = null;
-							}
-						});
-					}
-					if (curBeat == 480)
-					{
-						if (rain != null) rain.alpha = 1;
-						fireThing.alpha = 0.35;
-						fireThing.y = -120;
-					}
-					if (curBeat == 536)
-					{
-						fireTweenHandler = FlxTween.tween(fireThing, {alpha: 0, y: 0}, 1, {ease: FlxEase.sineOut, onComplete: function(twn:FlxTween)
-							{
-								fireTweenHandler = null;
-							}
-						});
-					}
-				}
 			case 'Delusional':
 				
 				switch (curBeat)
@@ -1726,5 +1323,163 @@ class Episode1Street extends BaseStage
 			lightningFore.animation.play('boom2');
 		}
 		new FlxTimer().start(1.5, function(tmr:FlxTimer) {lightningFore.alpha = 0;});
+	}
+
+	// For events
+	override function eventCalled(eventName:String, value1:String, value2:String, flValue1:Null<Float>, flValue2:Null<Float>, strumTime:Float)
+	{
+		switch(eventName)
+		{
+			case 'Tween Chromatic Abberation':
+				var triggerInfo:Array<String> = value2.split(',');
+				switch (value1.toLowerCase())
+				{
+					case 'tween':
+						if (game.chromTween != null)
+							game.chromTween.cancel();
+
+						game.chromEffect = Std.parseFloat(triggerInfo[0]);
+
+						game.chromTween = FlxTween.tween(game, {
+							chromEffect: 0.0001
+						}, Std.parseFloat(triggerInfo[1]), {
+							ease: FlxEase.sineOut,
+							onComplete: function(twn:FlxTween)
+							{
+								game.chromTween = null;
+							}
+						});
+					case 'zoom':
+						if (game.chromTween != null)
+							game.chromTween.cancel();
+
+						game.chromTween = FlxTween.tween(game, {
+							chromEffect: Std.parseFloat(triggerInfo[0])
+						}, Std.parseFloat(triggerInfo[1]), {
+							ease: FlxEase.sineOut,
+							onComplete: function(twn:FlxTween)
+							{
+								game.chromTween = null;
+							}
+						});
+					case 'set':
+						game.chromEffect = Std.parseFloat(triggerInfo[0]);
+				}
+			case 'Lunacy Event Thing idk':
+				FlxTween.tween(game, {healthThing: 0.01}, 20);
+				if (game.globalGradient != null)
+					FlxTween.tween(game.globalGradient, {alpha: 0.8}, 10);
+			case 'Fire Handler':
+				var triggerInfo:Array<String> = value1.split(',');
+				if (!ClientPrefs.data.lowQuality)
+				{
+					if (fireTweenHandler != null)
+						fireTweenHandler.cancel();
+
+					fireTweenHandler = FlxTween.tween(fireThing, {alpha: Std.parseFloat(triggerInfo[0]), y: Std.parseFloat(triggerInfo[1])}, Std.parseFloat(triggerInfo[2]), {ease: returnTweenEase(value2), onComplete: function(twn:FlxTween)
+						{
+							fireTweenHandler = null;
+						}
+					});
+				}
+
+			case 'Rain Handler':
+				var triggerInfo:Array<String> = value1.split(',');
+				if (!ClientPrefs.data.lowQuality)
+				{
+					if (rainTween != null)
+						rainTween.cancel();
+
+					if (rain != null)
+					{
+						rainTween = FlxTween.tween(rain, {alpha: Std.parseFloat(triggerInfo[0])}, Std.parseFloat(triggerInfo[1]), {ease: returnTweenEase(value2), onComplete: function(twn:FlxTween)
+						{
+							rainTween = null;
+						}});
+					}
+				}
+		}
+	}
+
+	public static function returnTweenEase(ease:String = '')
+	{
+		switch (ease.toLowerCase())
+		{
+			case 'linear':
+				return FlxEase.linear;
+			case 'backin':
+				return FlxEase.backIn;
+			case 'backinout':
+				return FlxEase.backInOut;
+			case 'backout':
+				return FlxEase.backOut;
+			case 'bouncein':
+				return FlxEase.bounceIn;
+			case 'bounceinout':
+				return FlxEase.bounceInOut;
+			case 'bounceout':
+				return FlxEase.bounceOut;
+			case 'circin':
+				return FlxEase.circIn;
+			case 'circinout':
+				return FlxEase.circInOut;
+			case 'circout':
+				return FlxEase.circOut;
+			case 'cubein':
+				return FlxEase.cubeIn;
+			case 'cubeinout':
+				return FlxEase.cubeInOut;
+			case 'cubeout':
+				return FlxEase.cubeOut;
+			case 'elasticin':
+				return FlxEase.elasticIn;
+			case 'elasticinout':
+				return FlxEase.elasticInOut;
+			case 'elasticout':
+				return FlxEase.elasticOut;
+			case 'expoin':
+				return FlxEase.expoIn;
+			case 'expoinout':
+				return FlxEase.expoInOut;
+			case 'expoout':
+				return FlxEase.expoOut;
+			case 'quadin':
+				return FlxEase.quadIn;
+			case 'quadinout':
+				return FlxEase.quadInOut;
+			case 'quadout':
+				return FlxEase.quadOut;
+			case 'quartin':
+				return FlxEase.quartIn;
+			case 'quartinout':
+				return FlxEase.quartInOut;
+			case 'quartout':
+				return FlxEase.quartOut;
+			case 'quintin':
+				return FlxEase.quintIn;
+			case 'quintinout':
+				return FlxEase.quintInOut;
+			case 'quintout':
+				return FlxEase.quintOut;
+			case 'sinein':
+				return FlxEase.sineIn;
+			case 'sineinout':
+				return FlxEase.sineInOut;
+			case 'sineout':
+				return FlxEase.sineOut;
+			case 'smoothstepin':
+				return FlxEase.smoothStepIn;
+			case 'smoothstepinout':
+				return FlxEase.smoothStepInOut;
+			case 'smoothstepout':
+				return FlxEase.smoothStepInOut;
+			case 'smootherstepin':
+				return FlxEase.smootherStepIn;
+			case 'smootherstepinout':
+				return FlxEase.smootherStepInOut;
+			case 'smootherstepout':
+				return FlxEase.smootherStepOut;
+		}
+		return FlxEase.linear;
 	}
 }

@@ -104,7 +104,11 @@ class Song
 	{
 		switch(folder)
 		{
-			case "isolated": chartFile = Chart.isolated;
+			case "isolated":
+				chartFile = Chart.isolated;
+
+				if (jsonInput == 'events')
+					chartFile = Event.isolatedEvents;
 			case "isolated-beta": chartFile = Chart.isolatedBeta;
 			case "isolated-old": chartFile = Chart.isolatedOld;
 			case "isolated-legacy": chartFile = Chart.isolatedLegacy;

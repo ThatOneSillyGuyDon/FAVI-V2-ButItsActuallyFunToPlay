@@ -197,20 +197,21 @@ class WaltStage extends BaseStage
 					initialCount = limitThing;
 				}
 		}
-
-
-		switch (game.dad.curCharacter)
-		{
-			case 'walt-new':
-				game.dad.setPosition(220, -50);
-			default:
-				game.dad.setPosition(0, 0);
-		}
-		game.boyfriend.setPosition(330, 300);
 	}
 
 	override function update(elapsed:Float)
 	{
+		switch (game.dad.curCharacter)
+		{
+			case 'walt-new':
+				game.dad.setPosition(220, -50);
+			case 'walt-true':
+				game.dad.setPosition(240, -200);
+			default:
+				game.dad.setPosition(0, 0);
+		}
+		game.boyfriend.setPosition(330, 300);
+		
 		shaderAnim = Conductor.songPosition / 1000;
 		
 		waltStatic.setFloat('time', shaderAnim);
@@ -320,126 +321,6 @@ class WaltStage extends BaseStage
 		}
 	}
 
-	
-	override function beatHit()
-	{
-		switch (PlayState.SONG.song)
-		{
-			case "Mercy":
-				// Cam Stuff Handler
-				switch (curBeat)
-				{
-					case 1:
-						if (ClientPrefs.data.mechanics)
-						{
-							add(mercyBoostIcon);
-							add(spaceBarCounter);
-							FlxTween.tween(mercyBoostIcon, {alpha: 1}, 2, {ease: FlxEase.sineInOut});
-							FlxTween.tween(spaceBarCounter, {alpha: 1}, 3, {ease: FlxEase.sineInOut});
-						}
-					case 16:
-						FlxTween.tween(camGame, {alpha: 1}, 5, {ease: FlxEase.sineInOut});
-						FlxTween.tween(camHUD, {alpha: 1}, 5, {ease: FlxEase.sineInOut, startDelay: 1.5});
-						game.defaultCamZoom = 1.3;
-
-					case 32: game.defaultCamZoom = 1.2;
-					case 40: game.defaultCamZoom = 1.1;
-					case 48: game.defaultCamZoom = 1;
-					case 56: game.defaultCamZoom = 0.9;
-					case 64: game.defaultCamZoom = 0.75;
-
-					case 128: game.tweenCamera(1.1, 9.7, 'quadInOut');
-
-					// Very Spooky Phase 2 Walt (real)
-					case 256:
-						FlxTween.tween(camHUD, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
-
-					case 468:
-						//FlxTween.tween(bfStrums, {alpha: 0}, 4, {ease: FlxEase.sineInOut});
-						FlxTween.tween(camHUD, {alpha: 0}, 4, {ease: FlxEase.sineInOut});
-						game.dad.setPosition(0, 0);
-
-					case 480:
-						FlxTween.tween(game.dad, {alpha: 0}, 5);
-						FlxTween.tween(waltGoop, {alpha: 1}, 5);
-
-					// Final Stretch
-					case 498:
-						camGame.alpha = 0;
-						camOther.flash(FlxColor.WHITE, 3);
-				}
-
-				if (ClientPrefs.data.mechanics && !disabledDrain)
-				{
-					// Health Drain Shit
-					if (curBeat >= 0 && curBeat <= 63)
-						game.healthThing -= 0.005;
-					else if (curBeat >= 64 && curBeat <= 79)
-						game.healthThing -= 0.025;
-					else if (curBeat >= 80 && curBeat <= 87)
-						game.healthThing -= 0.055;
-					else if (curBeat >= 88 && curBeat <= 95)
-						game.healthThing -= 0.015;
-					else if (curBeat >= 96 && curBeat <= 127)
-						game.healthThing -= 0.036;
-					else if (curBeat >= 128 && curBeat <= 159)
-						game.healthThing -= 0.14;
-					else if (curBeat >= 160 && curBeat <= 191)
-						game.healthThing -= 0.031;
-					else if (curBeat >= 192 && curBeat <= 207)
-						game.healthThing -= 0.015;
-					else if (curBeat >= 208 && curBeat <= 239)
-						game.healthThing -= 0.03;
-					else if (curBeat >= 240 && curBeat <= 255)
-						game.healthThing -= 0.005;
-					else if (curBeat >= 256 && curBeat <= 291)
-						game.healthThing -= 0.02;
-					else if (curBeat >= 292 && curBeat <= 307)
-						game.healthThing -= 0.03;
-					else if (curBeat >= 308 && curBeat <= 339)
-						game.healthThing -= 0.04;
-					else if (curBeat >= 340 && curBeat <= 371)
-						game.healthThing -= 0.055;
-					else if (curBeat >= 372 && curBeat <= 387)
-						game.healthThing -= 0.078;
-					else if (curBeat >= 388 && curBeat <= 403)
-						game.healthThing -= 0.09;
-					else if (curBeat >= 404 && curBeat <= 451)
-						game.healthThing -= 0.1;
-					else if (curBeat >= 452 && curBeat <= 467)
-						game.healthThing -= 0.115;
-				}
-			case 'Mercy Legacy':
-				switch (curBeat)
-				{
-					case 1:
-						if (ClientPrefs.data.mechanics)
-						{
-							add(mercyBoostIcon);
-							add(spaceBarCounter);
-							FlxTween.tween(mercyBoostIcon, {alpha: 1}, 2, {ease: FlxEase.sineInOut});
-							FlxTween.tween(spaceBarCounter, {alpha: 1}, 3, {ease: FlxEase.sineInOut});
-						}
-				}
-				if (ClientPrefs.data.mechanics)
-				{
-					if (curBeat >= 0 && curBeat <= 63)
-						game.healthThing -= 0.02;
-					else if (curBeat >= 64 && curBeat <= 95)
-						game.healthThing -= 0.2;
-					else if (curBeat >= 96 && curBeat <= 127)
-						game.healthThing -= 0.06;
-					else if (curBeat >= 128 && curBeat <= 191)
-						game.healthThing -= 0.16;
-					else if (curBeat >= 192 && curBeat <= 255)
-						game.healthThing -= 0.1;
-					else if (curBeat >= 256 && curBeat <= 319)
-						game.healthThing -= 0.18;
-					else if (curBeat >= 320)
-						game.healthThing -= 0.01;
-				}
-		}
-	}
 	/**
 	* The better and simplified Walt gimmick
 	*
@@ -478,6 +359,24 @@ class WaltStage extends BaseStage
 						FlxTween.tween(sameAsAdobe, {alpha: 0}, 0.25, {ease: FlxEase.sineOut});
 						FlxTween.tween(camHUD, {alpha: 1}, 0.31, {ease: FlxEase.sineInOut});
 				}
+			case 'Mercy Stuff idk':
+				switch (value1.toLowerCase())
+				{
+					case 'tweenicons' | 'tween icons':
+						if (ClientPrefs.data.mechanics)
+						{
+							add(mercyBoostIcon);
+							add(spaceBarCounter);
+							FlxTween.tween(mercyBoostIcon, {alpha: 1}, 2, {ease: FlxEase.sineInOut});
+							FlxTween.tween(spaceBarCounter, {alpha: 1}, 3, {ease: FlxEase.sineInOut});
+						}
+					case 'tweenwaltgoop' | 'tween walt goop':
+						FlxTween.tween(game.dad, {alpha: 0}, 5);
+						FlxTween.tween(waltGoop, {alpha: 1}, 5);
+				}
+			case 'Remove Health':
+				if (ClientPrefs.data.mechanics && !disabledDrain)
+					game.healthThing -= Std.parseFloat(value1);
 		}
 	}
 }
