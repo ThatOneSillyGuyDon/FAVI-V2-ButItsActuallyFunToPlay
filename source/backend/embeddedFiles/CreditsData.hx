@@ -10,7 +10,7 @@ enum abstract CreditsData(String) from String to String {
     var isolated:String = '{
 	"settings":
 	[
-		"Art: Domingo & Moe\n\nChart: Purg\n\nCode: Jason, ThatOneSillyGuy, & Goober Man\n\nMusic: obscurity.", 0, -5
+		"Art: Domingo & Moe\n\nChart: Purg\n\nCode: Jason, ThatOneSillyGuy,\n& Goober Man\n\nMusic: obscurity.", 0, -5
 	]
 }';
     var lunacy:String = '{

@@ -1332,38 +1332,41 @@ class Episode1Street extends BaseStage
 		{
 			case 'Tween Chromatic Abberation':
 				var triggerInfo:Array<String> = value2.split(',');
-				switch (value1.toLowerCase())
+				if (ClientPrefs.data.shaders)
 				{
-					case 'tween':
-						if (game.chromTween != null)
-							game.chromTween.cancel();
+					switch (value1.toLowerCase())
+					{
+						case 'tween':
+							if (game.chromTween != null)
+								game.chromTween.cancel();
 
-						game.chromEffect = Std.parseFloat(triggerInfo[0]);
+							game.chromEffect = Std.parseFloat(triggerInfo[0]);
 
-						game.chromTween = FlxTween.tween(game, {
-							chromEffect: 0.0001
-						}, Std.parseFloat(triggerInfo[1]), {
-							ease: FlxEase.sineOut,
-							onComplete: function(twn:FlxTween)
-							{
-								game.chromTween = null;
-							}
-						});
-					case 'zoom':
-						if (game.chromTween != null)
-							game.chromTween.cancel();
+							game.chromTween = FlxTween.tween(game, {
+								chromEffect: 0.0001
+							}, Std.parseFloat(triggerInfo[1]), {
+								ease: FlxEase.sineOut,
+								onComplete: function(twn:FlxTween)
+								{
+									game.chromTween = null;
+								}
+							});
+						case 'zoom':
+							if (game.chromTween != null)
+								game.chromTween.cancel();
 
-						game.chromTween = FlxTween.tween(game, {
-							chromEffect: Std.parseFloat(triggerInfo[0])
-						}, Std.parseFloat(triggerInfo[1]), {
-							ease: FlxEase.sineOut,
-							onComplete: function(twn:FlxTween)
-							{
-								game.chromTween = null;
-							}
-						});
-					case 'set':
-						game.chromEffect = Std.parseFloat(triggerInfo[0]);
+							game.chromTween = FlxTween.tween(game, {
+								chromEffect: Std.parseFloat(triggerInfo[0])
+							}, Std.parseFloat(triggerInfo[1]), {
+								ease: FlxEase.sineOut,
+								onComplete: function(twn:FlxTween)
+								{
+									game.chromTween = null;
+								}
+							});
+						case 'set':
+							game.chromEffect = Std.parseFloat(triggerInfo[0]);
+					}
 				}
 			case 'Lunacy Event Thing idk':
 				FlxTween.tween(game, {healthThing: 0.01}, 20);
