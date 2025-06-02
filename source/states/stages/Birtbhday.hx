@@ -49,6 +49,9 @@ class Birtbhday extends BaseStage
 		vignette.scrollFactor.set();
 		vignette.active = false;
 		add(vignette);
+
+		spawnNotes['bf'] = false;
+		spawnNotes['muckney'] = false;
 	}
 	
 	override function createPost()
@@ -77,6 +80,7 @@ class Birtbhday extends BaseStage
 				game.dad.setPosition(-240, 0);
 			default:
 				game.dad.setPosition(-240, -260);
+				spawnNotes['muckney'] = false;
 		}
 		switch (game.boyfriend.curCharacter)
 		{
@@ -87,101 +91,127 @@ class Birtbhday extends BaseStage
 		}
 		game.gf.setPosition(280, -410);
 	}
-
-	override function stepHit()
+	// For events
+	override function eventCalled(eventName:String, value1:String, value2:String, flValue1:Null<Float>, flValue2:Null<Float>, strumTime:Float)
 	{
-		switch (curStep)
+		switch(eventName)
 		{
-			case 1407:
-				FlxTween.tween(game.dadGroup, {'scale.x': 1, 'scale.y': 1}, 0.3, {ease: FlxEase.quartOut});
+			case 'Tween Char Scale':
+				switch (value1.toLowerCase())
+					{
+						case 'dad1':
+							game.dadGroup.scale.y = 0.6;
+							game.dadGroup.scale.x = 0.6;
+							FlxTween.tween(game.dadGroup, {'scale.x': 0}, 0.3, {ease: FlxEase.quartInOut});
+						case 'dad2':
+							FlxTween.tween(game.dadGroup, {'scale.x': 1, 'scale.y': 1}, 0.3, {ease: FlxEase.quartOut});
+							spawnNotes['muckney'] = true;
+						case 'dad3':
+							FlxTween.tween(game.dadGroup, {'scale.x': 0}, 0.3, {ease: FlxEase.quartInOut, onComplete: function(twn:FlxTween)
+							{
+								game.dadGroup.scale.y = 0.6;
+								FlxTween.tween(game.dadGroup, {'scale.x': 0.6}, 0.3, {ease: FlxEase.quartOut});
+							}});
+							spawnNotes['muckney'] = false;
+						case 'bf1':
+							game.boyfriendGroup.scale.x = 0.9;
+							game.boyfriendGroup.scale.y = 0.9;
+							FlxTween.tween(game.boyfriendGroup, {'scale.y': 0}, 0.5, {ease: FlxEase.quartInOut, onComplete: function(twn:FlxTween)
+							{
+								game.boyfriendGroup.scale.x = 0.7;
+								FlxTween.tween(game.boyfriendGroup, {'scale.y': 0.7}, 0.5, {ease: FlxEase.quartOut});
+							}});
+							spawnNotes['bf'] = true;
+						case 'bf2':
+							FlxTween.tween(game.boyfriendGroup, {'scale.x': 0}, 0.7, {ease: FlxEase.quartInOut, onComplete: function(twn:FlxTween)
+							{
+								game.boyfriendGroup.scale.y = 0.9;
+								FlxTween.tween(game.boyfriendGroup, {'scale.x': 0.9}, 0.7, {ease: FlxEase.quartOut});
+							}});
+							spawnNotes['bf'] = false;
+					}
 		}
 	}
-	override function beatHit()
+
+	public static function returnTweenEase(ease:String = '')
 	{
-		switch (curBeat)
+		switch (ease.toLowerCase())
 		{
-			case 2: game.camBars.fade(FlxColor.BLACK, 3, true);
-			case 32: game.defaultCamZoom = 1.18;
-			case 60:
-				game.cameraSpeed = 0.5;
-				game.defaultCamZoom = 0.85;
-				FlxTween.tween(camHUD, {alpha: 1}, 3);
-			case 64:
-				camGame.flash(FlxColor.WHITE, 1);
-				game.cameraSpeed = 1;
-			case 128:
-				game.defaultCamZoom = 0.73;
-			case 192:
-				game.camFlashSystem(BG_FLASH, {alpha: 0.7, timer: 1, colors: [66, 224, 245]});
-				FlxG.camera.zoom += 0.09;
-				camHUD.zoom += 0.08;
-				game.defaultCamZoom = 1;
-				game.cameraSpeed = 0.7;
-			case 204 | 205 | 221 | 222 | 223 | 236 | 237 | 253 | 254 | 255: game.defaultCamZoom += 0.1;
-			case 206 | 238: game.defaultCamZoom = 1;
-			case 224:
-				game.defaultCamZoom = 1;
-				game.camFlashSystem(BG_FLASH, {alpha: 0.7, timer: 1, colors: [119, 247, 96]});
-				FlxG.camera.zoom += 0.09;
-				camHUD.zoom += 0.08;
-			case 256: game.defaultCamZoom = 0.85;
-			case 320: game.tweenCamera(1, 1.5, 'sineInOut');
-			case 336:
-				game.tweenCamera(1.3, 2.8, 'quartInOut');
-				offsetTwn = FlxTween.tween(game.camFollow, {x: game.camFollow.x - 150}, 3, {ease: FlxEase.sineInOut, onComplete: function(twn:FlxTween)
-				{
-					offsetTwn = null;
-				}});
-			case 348:
-				if (offsetTwn != null)
-					offsetTwn.cancel();
-				game.tweenCamera(0.75, 1.2, 'quartInOut');
-				offsetTwn = FlxTween.tween(game.camFollow, {x: game.camFollow.x + 100}, 1.2, {ease: FlxEase.sineInOut, onComplete: function(twn:FlxTween)
-					{
-						offsetTwn = null;
-					}});
-			case 350: 
-				game.dadGroup.scale.y = 0.6;
-				game.dadGroup.scale.x = 0.6;
-				FlxTween.tween(game.dadGroup, {'scale.x': 0}, 0.3, {ease: FlxEase.quartInOut});
-			case 352:
-				spawnNotes['muckney'] = true;
-			case 416: 
-				game.boyfriendGroup.scale.x = 0.9;
-				game.boyfriendGroup.scale.y = 0.9;
-				FlxTween.tween(game.boyfriendGroup, {'scale.y': 0}, 0.5, {ease: FlxEase.quartInOut, onComplete: function(twn:FlxTween)
-				{
-					game.boyfriendGroup.scale.x = 0.7;
-					FlxTween.tween(game.boyfriendGroup, {'scale.y': 0.7}, 0.5, {ease: FlxEase.quartOut});
-				}});
-			case 418:
-				spawnNotes['bf'] = true;
-			case 476: game.tweenCamera(0.85, 2, 'quartInOut');
-			case 477: FlxTween.tween(game.dadGroup, {'scale.x': 0}, 0.3, {ease: FlxEase.quartInOut, onComplete: function(twn:FlxTween)
-				{
-					game.dadGroup.scale.y = 0.6;
-					FlxTween.tween(game.dadGroup, {'scale.x': 0.6}, 0.3, {ease: FlxEase.quartOut});
-				}});
-			case 479:
-				spawnNotes['muckney'] = false;
-			case 481: 
-				FlxTween.tween(game.boyfriendGroup, {'scale.x': 0}, 0.7, {ease: FlxEase.quartInOut, onComplete: function(twn:FlxTween)
-				{
-					game.boyfriendGroup.scale.y = 0.9;
-					FlxTween.tween(game.boyfriendGroup, {'scale.x': 0.9}, 0.7, {ease: FlxEase.quartOut});
-				}});
-				spawnNotes['bf'] = false;
-			case 536 | 540 | 544: game.defaultCamZoom += 0.18;
-			case 548: game.tweenCamera(0.8, 2, 'sineOut');
-			case 552:
-				camGame.visible = false;
-				camHUD.visible = false;
-				game.camOther.flash(FlxColor.WHITE, 3);
+			case 'linear':
+				return FlxEase.linear;
+			case 'backin':
+				return FlxEase.backIn;
+			case 'backinout':
+				return FlxEase.backInOut;
+			case 'backout':
+				return FlxEase.backOut;
+			case 'bouncein':
+				return FlxEase.bounceIn;
+			case 'bounceinout':
+				return FlxEase.bounceInOut;
+			case 'bounceout':
+				return FlxEase.bounceOut;
+			case 'circin':
+				return FlxEase.circIn;
+			case 'circinout':
+				return FlxEase.circInOut;
+			case 'circout':
+				return FlxEase.circOut;
+			case 'cubein':
+				return FlxEase.cubeIn;
+			case 'cubeinout':
+				return FlxEase.cubeInOut;
+			case 'cubeout':
+				return FlxEase.cubeOut;
+			case 'elasticin':
+				return FlxEase.elasticIn;
+			case 'elasticinout':
+				return FlxEase.elasticInOut;
+			case 'elasticout':
+				return FlxEase.elasticOut;
+			case 'expoin':
+				return FlxEase.expoIn;
+			case 'expoinout':
+				return FlxEase.expoInOut;
+			case 'expoout':
+				return FlxEase.expoOut;
+			case 'quadin':
+				return FlxEase.quadIn;
+			case 'quadinout':
+				return FlxEase.quadInOut;
+			case 'quadout':
+				return FlxEase.quadOut;
+			case 'quartin':
+				return FlxEase.quartIn;
+			case 'quartinout':
+				return FlxEase.quartInOut;
+			case 'quartout':
+				return FlxEase.quartOut;
+			case 'quintin':
+				return FlxEase.quintIn;
+			case 'quintinout':
+				return FlxEase.quintInOut;
+			case 'quintout':
+				return FlxEase.quintOut;
+			case 'sinein':
+				return FlxEase.sineIn;
+			case 'sineinout':
+				return FlxEase.sineInOut;
+			case 'sineout':
+				return FlxEase.sineOut;
+			case 'smoothstepin':
+				return FlxEase.smoothStepIn;
+			case 'smoothstepinout':
+				return FlxEase.smoothStepInOut;
+			case 'smoothstepout':
+				return FlxEase.smoothStepInOut;
+			case 'smootherstepin':
+				return FlxEase.smootherStepIn;
+			case 'smootherstepinout':
+				return FlxEase.smootherStepInOut;
+			case 'smootherstepout':
+				return FlxEase.smootherStepOut;
 		}
-		if ((curBeat >= 64 && curBeat <= 191) || (curBeat >= 256 && curBeat <= 319 && curBeat % 2 == 0))
-		{
-			FlxG.camera.zoom += 0.015;
-			camHUD.zoom += 0.03;
-		}
+		return FlxEase.linear;
 	}
 }

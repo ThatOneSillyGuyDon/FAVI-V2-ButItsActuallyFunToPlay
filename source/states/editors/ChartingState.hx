@@ -92,6 +92,7 @@ class ChartingState extends MusicBeatState
 		['Rain Handler', 'Handles the Rain in Lunacy/Delusional\n\nValue 1 - Visibility, Time\nValue 2 - Ease type.'],
 		['Trigger TG shader shi', "Add - Adds the shader\nRemove - Removes the shader"],
 		['Trigger Hunted Stuffs', ''],
+		['Tween Char Scale', 'Too lazy to put a desc here.'],
 		['Play Sound', "Value 1: Sound file name\nValue 2: Volume (Default: 1), ranges from 0 to 1"]
 	];
 

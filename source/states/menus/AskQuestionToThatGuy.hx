@@ -175,7 +175,7 @@ class AskQuestionToThatGuy extends MusicBeatState
             askQuestion(box.text);
         }
 
-        super.update(elapsed);
+        //super.update(elapsed);
 
         var lerpVal:Float = CoolUtil.boundTo(elapsed * 2.4, 0, 1);
 		camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x, lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal));

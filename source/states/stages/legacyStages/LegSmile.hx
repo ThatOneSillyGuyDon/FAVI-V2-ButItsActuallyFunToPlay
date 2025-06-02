@@ -59,7 +59,7 @@ class LegSmile extends BaseStage
 		}
 	}
 
-	
+
 	override function beatHit()
 	{
 		switch (curBeat)
