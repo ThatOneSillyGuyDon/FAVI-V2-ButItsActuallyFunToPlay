@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="lot.png">
+<SubTexture name="lot Idle0000" x="0" y="0" width="307" height="517" frameX="-125" frameY="-76" frameWidth="640" frameHeight="640" />
+<SubTexture name="lot up0000" x="307" y="0" width="256" height="514" frameX="-177" frameY="-67" frameWidth="640" frameHeight="640" />
+<SubTexture name="lot up0001" x="563" y="0" width="260" height="512" frameX="-173" frameY="-73" frameWidth="640" frameHeight="640" />
+<SubTexture name="lot right0000" x="489" y="517" width="467" height="503" frameX="-107" frameY="-58" frameWidth="640" frameHeight="640" />
+<SubTexture name="lot right0001" x="0" y="1022" width="483" height="481" frameX="-98" frameY="-80" frameWidth="640" frameHeight="640" />
+<SubTexture name="lot down0000" x="1287" y="0" width="342" height="491" frameX="-123" frameY="-103" frameWidth="640" frameHeight="640" />
+<SubTexture name="lot down0001" x="956" y="517" width="327" height="499" frameX="-124" frameY="-95" frameWidth="640" frameHeight="640" />
+<SubTexture name="lot left0000" x="0" y="517" width="489" height="505" frameX="-57" frameY="-90" frameWidth="640" frameHeight="640" />
+<SubTexture name="lot left0001" x="823" y="0" width="464" height="509" frameX="-64" frameY="-86" frameWidth="640" frameHeight="640" />
+</TextureAtlas>
