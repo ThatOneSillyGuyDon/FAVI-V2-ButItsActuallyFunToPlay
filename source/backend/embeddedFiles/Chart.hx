@@ -511,7 +511,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"255,255,255,1.5,1,true"
 					],
 					[
@@ -851,7 +851,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"255,255,255,1.5,1,true"
 					]
 				]
@@ -1361,7 +1361,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"255,255,255,1.5,1,true"
 					],
 					[
@@ -1761,7 +1761,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"255,255,255,1.5,1,true"
 					]
 				]
@@ -2081,7 +2081,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"255,255,255,1.5,1,true"
 					]
 				]
@@ -2411,7 +2411,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"255,255,255,1.5,1,true"
 					],
 					[
@@ -2791,7 +2791,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"255,255,255,1.5,1,true"
 					]
 				]
@@ -2971,7 +2971,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"0,0,0,1.5,1,true"
 					],
 					[
@@ -12654,7 +12654,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"0,0,0,1.5,1,true"
 					]
 				]
@@ -12819,7 +12819,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"0,0,0,0.9,1,true"
 					]
 				]
@@ -13019,7 +13019,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"255,255,255,1.5,1,true"
 					]
 				]
@@ -13184,7 +13184,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"255,255,255,1.5,1,true"
 					]
 				]
@@ -13199,7 +13199,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"255,255,255,1.5,1,true"
 					]
 				]
@@ -13409,7 +13409,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"0,0,0,1.5,1,true"
 					]
 				]
@@ -14054,7 +14054,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"255,255,255,1.5,1,true"
 					],
 					[
@@ -14249,7 +14249,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"255,255,255,1.5,1,true"
 					]
 				]
@@ -14769,7 +14769,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"255,255,255,1.5,1,true"
 					]
 				]
@@ -14994,7 +14994,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"255,255,255,1.5,1,true"
 					],
 					[
@@ -16349,7 +16349,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"255,255,255,1.5,1,true"
 					],
 					[
@@ -17514,7 +17514,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"255,255,255,1.5,1,true"
 					]
 				]
@@ -17939,7 +17939,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"0,0,0,1.5,1,true"
 					],
 					[
@@ -46775,10 +46775,13 @@ enum abstract Chart(String) from String to String {
 }';
     var lunacyLegacy:String = '{
 	"song": {
-		"composer": "obscurity",
 		"player1": "bf-fake-legacy",
+		"composer": "obscurity",
+		"player2": "mickey-legacy",
 		"notes": [
 			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						0,
@@ -46786,15 +46789,15 @@ enum abstract Chart(String) from String to String {
 						1250
 					]
 				],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"gfSection": false,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 150,
 				"changeBPM": false,
-				"bpm": 150
+				"mustHitSection": false
 			},
 			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						1333.33333333333,
@@ -46802,15 +46805,15 @@ enum abstract Chart(String) from String to String {
 						1250
 					]
 				],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"gfSection": false,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 150,
 				"changeBPM": false,
-				"bpm": 150
+				"mustHitSection": false
 			},
 			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						2666.66666666667,
@@ -46818,15 +46821,15 @@ enum abstract Chart(String) from String to String {
 						1250
 					]
 				],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"gfSection": false,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 150,
 				"changeBPM": false,
-				"bpm": 150
+				"mustHitSection": false
 			},
 			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						4000,
@@ -46839,15 +46842,15 @@ enum abstract Chart(String) from String to String {
 						583.333333333333
 					]
 				],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"gfSection": false,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 180,
 				"changeBPM": false,
-				"bpm": 180
+				"mustHitSection": false
 			},
 			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						5333.33333333333,
@@ -46855,15 +46858,15 @@ enum abstract Chart(String) from String to String {
 						1250
 					]
 				],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"gfSection": false,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 180,
 				"changeBPM": false,
-				"bpm": 180
+				"mustHitSection": false
 			},
 			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						6666.66666666667,
@@ -46871,15 +46874,15 @@ enum abstract Chart(String) from String to String {
 						1250
 					]
 				],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"gfSection": false,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 180,
 				"changeBPM": false,
-				"bpm": 180
+				"mustHitSection": false
 			},
 			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						8000,
@@ -46892,15 +46895,15 @@ enum abstract Chart(String) from String to String {
 						583.333333333333
 					]
 				],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"gfSection": false,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 180,
 				"changeBPM": false,
-				"bpm": 180
+				"mustHitSection": false
 			},
 			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						9333.33333333333,
@@ -46908,15 +46911,15 @@ enum abstract Chart(String) from String to String {
 						1250
 					]
 				],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"gfSection": false,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 180,
 				"changeBPM": false,
-				"bpm": 180
+				"mustHitSection": false
 			},
 			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						11666.6666666667,
@@ -46949,15 +46952,15 @@ enum abstract Chart(String) from String to String {
 						1250
 					]
 				],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"gfSection": false,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 180,
 				"changeBPM": false,
-				"bpm": 180
+				"mustHitSection": true
 			},
 			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						12000,
@@ -47000,15 +47003,15 @@ enum abstract Chart(String) from String to String {
 						1250
 					]
 				],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"gfSection": false,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 180,
 				"changeBPM": false,
-				"bpm": 180
+				"mustHitSection": true
 			},
 			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						13666.6666666667,
@@ -47036,15 +47039,15 @@ enum abstract Chart(String) from String to String {
 						1250
 					]
 				],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"gfSection": false,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 180,
 				"changeBPM": false,
-				"bpm": 180
+				"mustHitSection": true
 			},
 			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						14666.6666666667,
@@ -47077,15 +47080,15 @@ enum abstract Chart(String) from String to String {
 						583.333333333333
 					]
 				],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"gfSection": false,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 180,
 				"changeBPM": false,
-				"bpm": 180
+				"mustHitSection": true
 			},
 			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						16000,
@@ -47118,15 +47121,15 @@ enum abstract Chart(String) from String to String {
 						1250
 					]
 				],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"gfSection": false,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 180,
 				"changeBPM": false,
-				"bpm": 180
+				"mustHitSection": true
 			},
 			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						17333.3333333333,
@@ -47169,15 +47172,15 @@ enum abstract Chart(String) from String to String {
 						1250
 					]
 				],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"gfSection": false,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 180,
 				"changeBPM": false,
-				"bpm": 180
+				"mustHitSection": true
 			},
 			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						18666.6666666667,
@@ -47205,15 +47208,15 @@ enum abstract Chart(String) from String to String {
 						1250
 					]
 				],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"gfSection": false,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 180,
 				"changeBPM": false,
-				"bpm": 180
+				"mustHitSection": true
 			},
 			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						20000,
@@ -47241,15 +47244,15 @@ enum abstract Chart(String) from String to String {
 						1250
 					]
 				],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"gfSection": false,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 180,
 				"changeBPM": false,
-				"bpm": 180
+				"mustHitSection": true
 			},
 			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						21333.3333333333,
@@ -47282,15 +47285,15 @@ enum abstract Chart(String) from String to String {
 						1250
 					]
 				],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"gfSection": false,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 180,
 				"changeBPM": false,
-				"bpm": 180
+				"mustHitSection": false
 			},
 			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						22666.6666666667,
@@ -47338,15 +47341,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"gfSection": false,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 180,
 				"changeBPM": false,
-				"bpm": 180
+				"mustHitSection": false
 			},
 			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						24000,
@@ -47409,15 +47412,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"gfSection": false,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 180,
 				"changeBPM": false,
-				"bpm": 180
+				"mustHitSection": true
 			},
 			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						25333.3333333333,
@@ -47465,15 +47468,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"gfSection": false,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 180,
 				"changeBPM": false,
-				"bpm": 180
+				"mustHitSection": true
 			},
 			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						26666.6666666667,
@@ -47496,15 +47499,15 @@ enum abstract Chart(String) from String to String {
 						583.333333333333
 					]
 				],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"gfSection": false,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 180,
 				"changeBPM": false,
-				"bpm": 180
+				"mustHitSection": false
 			},
 			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						28000,
@@ -47527,15 +47530,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"gfSection": false,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 180,
 				"changeBPM": false,
-				"bpm": 180
+				"mustHitSection": false
 			},
 			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						29333.3333333333,
@@ -47548,15 +47551,15 @@ enum abstract Chart(String) from String to String {
 						1250
 					]
 				],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"gfSection": false,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 180,
 				"changeBPM": false,
-				"bpm": 180
+				"mustHitSection": true
 			},
 			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						30666.6666666667,
@@ -47579,15 +47582,15 @@ enum abstract Chart(String) from String to String {
 						583.333333333333
 					]
 				],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"gfSection": false,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 180,
 				"changeBPM": false,
-				"bpm": 180
+				"mustHitSection": true
 			},
 			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						33000,
@@ -47620,15 +47623,15 @@ enum abstract Chart(String) from String to String {
 						2250
 					]
 				],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"gfSection": false,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 180,
 				"changeBPM": false,
-				"bpm": 180
+				"mustHitSection": false
 			},
 			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						33333.3333333333,
@@ -47676,15 +47679,15 @@ enum abstract Chart(String) from String to String {
 						250
 					]
 				],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"gfSection": false,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 180,
 				"changeBPM": false,
-				"bpm": 180
+				"mustHitSection": false
 			},
 			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						34666.6666666667,
@@ -47732,15 +47735,15 @@ enum abstract Chart(String) from String to String {
 						2250
 					]
 				],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"gfSection": false,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 180,
 				"changeBPM": false,
-				"bpm": 180
+				"mustHitSection": false
 			},
 			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						36000,
@@ -47778,15 +47781,15 @@ enum abstract Chart(String) from String to String {
 						250
 					]
 				],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"gfSection": false,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 180,
 				"changeBPM": false,
-				"bpm": 180
+				"mustHitSection": false
 			},
 			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						37333.3333333333,
@@ -47824,15 +47827,15 @@ enum abstract Chart(String) from String to String {
 						2250
 					]
 				],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"gfSection": false,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 180,
 				"changeBPM": false,
-				"bpm": 180
+				"mustHitSection": false
 			},
 			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						38666.6666666667,
@@ -47875,15 +47878,15 @@ enum abstract Chart(String) from String to String {
 						250
 					]
 				],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"gfSection": false,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 180,
 				"changeBPM": false,
-				"bpm": 180
+				"mustHitSection": false
 			},
 			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						40000,
@@ -47916,15 +47919,15 @@ enum abstract Chart(String) from String to String {
 						250
 					]
 				],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"gfSection": false,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 180,
 				"changeBPM": false,
-				"bpm": 180
+				"mustHitSection": false
 			},
 			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						41333.3333333333,
@@ -47962,15 +47965,15 @@ enum abstract Chart(String) from String to String {
 						250
 					]
 				],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"gfSection": false,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 180,
 				"changeBPM": false,
-				"bpm": 180
+				"mustHitSection": false
 			},
 			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						42666.6666666667,
@@ -48018,15 +48021,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"gfSection": false,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 180,
 				"changeBPM": false,
-				"bpm": 180
+				"mustHitSection": false
 			},
 			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						44000,
@@ -48059,15 +48062,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"gfSection": false,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 180,
 				"changeBPM": false,
-				"bpm": 180
+				"mustHitSection": false
 			},
 			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						45333.3333333333,
@@ -48120,15 +48123,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"gfSection": false,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 180,
 				"changeBPM": false,
-				"bpm": 180
+				"mustHitSection": false
 			},
 			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						46666.6666666667,
@@ -48161,15 +48164,15 @@ enum abstract Chart(String) from String to String {
 						250
 					]
 				],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"gfSection": false,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 180,
 				"changeBPM": false,
-				"bpm": 180
+				"mustHitSection": false
 			},
 			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						48000,
@@ -48212,15 +48215,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"gfSection": false,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 180,
 				"changeBPM": false,
-				"bpm": 180
+				"mustHitSection": false
 			},
 			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						49333.3333333334,
@@ -48248,17 +48251,13 @@ enum abstract Chart(String) from String to String {
 						250
 					]
 				],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"gfSection": false,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 180,
 				"changeBPM": false,
-				"bpm": 180
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						50666.6666666667,
@@ -48301,15 +48300,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": false,
 				"changeBPM": false,
-				"mustHitSection": false
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						52000,
@@ -48332,15 +48331,15 @@ enum abstract Chart(String) from String to String {
 						583.333333333333
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": false,
 				"changeBPM": false,
-				"mustHitSection": false
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						53333.3333333334,
@@ -48393,15 +48392,15 @@ enum abstract Chart(String) from String to String {
 						1250
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": true,
 				"changeBPM": false,
-				"mustHitSection": true
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						54666.6666666667,
@@ -48434,15 +48433,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": true,
 				"changeBPM": false,
-				"mustHitSection": true
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						56000,
@@ -48495,15 +48494,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": true,
 				"changeBPM": false,
-				"mustHitSection": true
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						57333.3333333333,
@@ -48536,15 +48535,15 @@ enum abstract Chart(String) from String to String {
 						250
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": true,
 				"changeBPM": false,
-				"mustHitSection": true
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						58666.6666666667,
@@ -48587,15 +48586,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": true,
 				"changeBPM": false,
-				"mustHitSection": true
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						60000,
@@ -48623,15 +48622,15 @@ enum abstract Chart(String) from String to String {
 						250
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": true,
 				"changeBPM": false,
-				"mustHitSection": true
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						61333.3333333334,
@@ -48674,15 +48673,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": true,
 				"changeBPM": false,
-				"mustHitSection": true
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						62666.6666666667,
@@ -48705,15 +48704,15 @@ enum abstract Chart(String) from String to String {
 						583.333333333333
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": true,
 				"changeBPM": false,
-				"mustHitSection": true
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						64000,
@@ -48756,15 +48755,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": false,
 				"changeBPM": false,
-				"mustHitSection": false
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						65833.3333333334,
@@ -48837,15 +48836,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": false,
 				"changeBPM": false,
-				"mustHitSection": false
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						66666.6666666667,
@@ -48898,15 +48897,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": false,
 				"changeBPM": false,
-				"mustHitSection": false
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						68000,
@@ -48954,15 +48953,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": false,
 				"changeBPM": false,
-				"mustHitSection": false
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						69333.3333333334,
@@ -49005,15 +49004,15 @@ enum abstract Chart(String) from String to String {
 						500
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": true,
 				"changeBPM": false,
-				"mustHitSection": true
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						71166.6666666667,
@@ -49081,15 +49080,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": true,
 				"changeBPM": false,
-				"mustHitSection": true
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						72000,
@@ -49137,15 +49136,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": true,
 				"changeBPM": false,
-				"mustHitSection": true
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						73333.3333333334,
@@ -49193,15 +49192,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": true,
 				"changeBPM": false,
-				"mustHitSection": true
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						74666.6666666667,
@@ -49229,15 +49228,15 @@ enum abstract Chart(String) from String to String {
 						583.333333333333
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": false,
 				"changeBPM": false,
-				"mustHitSection": false
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						76000,
@@ -49280,15 +49279,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": false,
 				"changeBPM": false,
-				"mustHitSection": false
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						77333.3333333333,
@@ -49316,15 +49315,15 @@ enum abstract Chart(String) from String to String {
 						583.333333333333
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": false,
 				"changeBPM": false,
-				"mustHitSection": false
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						78666.6666666667,
@@ -49367,15 +49366,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": false,
 				"changeBPM": false,
-				"mustHitSection": false
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						81000,
@@ -49418,15 +49417,15 @@ enum abstract Chart(String) from String to String {
 						583.333333333333
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": true,
 				"changeBPM": false,
-				"mustHitSection": true
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						81333.3333333333,
@@ -49509,15 +49508,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": false,
 				"changeBPM": false,
-				"mustHitSection": false
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						83666.6666666667,
@@ -49560,15 +49559,15 @@ enum abstract Chart(String) from String to String {
 						583.333333333333
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": true,
 				"changeBPM": false,
-				"mustHitSection": true
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						84000,
@@ -49651,15 +49650,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": false,
 				"changeBPM": false,
-				"mustHitSection": false
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						85333.3333333333,
@@ -49712,15 +49711,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": false,
 				"changeBPM": false,
-				"mustHitSection": false
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						86666.6666666666,
@@ -49788,15 +49787,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": false,
 				"changeBPM": false,
-				"mustHitSection": false
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						88000,
@@ -49844,15 +49843,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": false,
 				"changeBPM": false,
-				"mustHitSection": false
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						89333.3333333333,
@@ -49900,15 +49899,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": false,
 				"changeBPM": false,
-				"mustHitSection": false
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						90666.6666666666,
@@ -49956,15 +49955,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": false,
 				"changeBPM": false,
-				"mustHitSection": false
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						92000,
@@ -50002,15 +50001,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": false,
 				"changeBPM": false,
-				"mustHitSection": false
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						93333.3333333333,
@@ -50063,15 +50062,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": false,
 				"changeBPM": false,
-				"mustHitSection": false
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						94666.6666666666,
@@ -50104,15 +50103,15 @@ enum abstract Chart(String) from String to String {
 						250
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": false,
 				"changeBPM": false,
-				"mustHitSection": false
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						95999.9999999999,
@@ -50170,15 +50169,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": true,
 				"changeBPM": false,
-				"mustHitSection": true
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						97333.3333333333,
@@ -50246,15 +50245,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": true,
 				"changeBPM": false,
-				"mustHitSection": true
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						98666.6666666666,
@@ -50302,15 +50301,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": true,
 				"changeBPM": false,
-				"mustHitSection": true
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						100000,
@@ -50358,15 +50357,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": true,
 				"changeBPM": false,
-				"mustHitSection": true
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						101333.333333333,
@@ -50414,15 +50413,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": true,
 				"changeBPM": false,
-				"mustHitSection": true
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						102666.666666667,
@@ -50460,15 +50459,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": true,
 				"changeBPM": false,
-				"mustHitSection": true
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						104000,
@@ -50521,15 +50520,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": true,
 				"changeBPM": false,
-				"mustHitSection": true
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						105333.333333333,
@@ -50562,15 +50561,15 @@ enum abstract Chart(String) from String to String {
 						250
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": true,
 				"changeBPM": false,
-				"mustHitSection": true
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						106666.666666667,
@@ -50578,25 +50577,25 @@ enum abstract Chart(String) from String to String {
 						1250
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": true,
 				"changeBPM": false,
-				"mustHitSection": true
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": true,
 				"changeBPM": false,
-				"mustHitSection": true
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						109333.333333333,
@@ -50619,25 +50618,25 @@ enum abstract Chart(String) from String to String {
 						166.666666666667
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": true,
 				"changeBPM": false,
-				"mustHitSection": true
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": true,
 				"changeBPM": false,
-				"mustHitSection": true
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						112000,
@@ -50650,15 +50649,15 @@ enum abstract Chart(String) from String to String {
 						583.333333333333
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": false,
 				"changeBPM": false,
-				"mustHitSection": false
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						113333.333333333,
@@ -50671,15 +50670,15 @@ enum abstract Chart(String) from String to String {
 						583.333333333333
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": false,
 				"changeBPM": false,
-				"mustHitSection": false
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						114666.666666667,
@@ -50692,15 +50691,15 @@ enum abstract Chart(String) from String to String {
 						583.333333333333
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": false,
 				"changeBPM": false,
-				"mustHitSection": false
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						116000,
@@ -50713,15 +50712,15 @@ enum abstract Chart(String) from String to String {
 						583.333333333333
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": false,
 				"changeBPM": false,
-				"mustHitSection": false
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						117333.333333333,
@@ -50734,15 +50733,15 @@ enum abstract Chart(String) from String to String {
 						583.333333333333
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": false,
 				"changeBPM": false,
-				"mustHitSection": false
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						118666.666666667,
@@ -50755,15 +50754,15 @@ enum abstract Chart(String) from String to String {
 						583.333333333333
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": false,
 				"changeBPM": false,
-				"mustHitSection": false
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						120000,
@@ -50776,15 +50775,15 @@ enum abstract Chart(String) from String to String {
 						583.333333333333
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": false,
 				"changeBPM": false,
-				"mustHitSection": false
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						121333.333333333,
@@ -50797,15 +50796,15 @@ enum abstract Chart(String) from String to String {
 						583.333333333333
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": false,
 				"changeBPM": false,
-				"mustHitSection": false
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						122666.666666667,
@@ -50823,15 +50822,15 @@ enum abstract Chart(String) from String to String {
 						583.333333333333
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": true,
 				"changeBPM": false,
-				"mustHitSection": true
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						124000,
@@ -50844,15 +50843,15 @@ enum abstract Chart(String) from String to String {
 						583.333333333333
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": true,
 				"changeBPM": false,
-				"mustHitSection": true
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						125333.333333333,
@@ -50865,15 +50864,15 @@ enum abstract Chart(String) from String to String {
 						583.333333333333
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": true,
 				"changeBPM": false,
-				"mustHitSection": true
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						126666.666666667,
@@ -50886,15 +50885,15 @@ enum abstract Chart(String) from String to String {
 						583.333333333333
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": true,
 				"changeBPM": false,
-				"mustHitSection": true
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						128000,
@@ -50907,15 +50906,15 @@ enum abstract Chart(String) from String to String {
 						583.333333333333
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": true,
 				"changeBPM": false,
-				"mustHitSection": true
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						129333.333333333,
@@ -50928,15 +50927,15 @@ enum abstract Chart(String) from String to String {
 						583.333333333333
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": true,
 				"changeBPM": false,
-				"mustHitSection": true
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						130666.666666667,
@@ -50949,15 +50948,15 @@ enum abstract Chart(String) from String to String {
 						583.333333333333
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": true,
 				"changeBPM": false,
-				"mustHitSection": true
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						132000,
@@ -50970,15 +50969,15 @@ enum abstract Chart(String) from String to String {
 						583.333333333333
 					]
 				],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": true,
 				"changeBPM": false,
-				"mustHitSection": true
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						133333.333333333,
@@ -50991,44 +50990,6 @@ enum abstract Chart(String) from String to String {
 						666.666666666667
 					]
 				],
-				"altAnim": false,
-				"gfSection": false,
-				"bpm": 180,
-				"changeBPM": false,
-				"mustHitSection": true
-			},
-			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
-				"sectionNotes": [],
-				"altAnim": false,
-				"gfSection": false,
-				"bpm": 180,
-				"changeBPM": false,
-				"mustHitSection": true
-			},
-			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
-				"sectionNotes": [],
-				"altAnim": false,
-				"gfSection": false,
-				"bpm": 180,
-				"changeBPM": false,
-				"mustHitSection": true
-			},
-			{
-				"sectionNotes": [],
-				"typeOfSection": 0,
-				"lengthInSteps": 16,
-				"gfSection": false,
-				"altAnim": false,
-				"mustHitSection": true,
-				"changeBPM": false,
-				"bpm": 180
-			},
-			{
-				"sectionNotes": [],
 				"typeOfSection": 0,
 				"lengthInSteps": 16,
 				"gfSection": false,
@@ -51098,24 +51059,24 @@ enum abstract Chart(String) from String to String {
 				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": true,
 				"changeBPM": false,
-				"mustHitSection": true
+				"bpm": 180
 			},
 			{
-				"lengthInSteps": 16,
-				"typeOfSection": 0,
 				"sectionNotes": [],
-				"altAnim": false,
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
-				"bpm": 180,
+				"altAnim": false,
+				"mustHitSection": true,
 				"changeBPM": false,
-				"mustHitSection": true
+				"bpm": 180
 			},
 			{
 				"sectionNotes": [],
@@ -51138,22 +51099,61 @@ enum abstract Chart(String) from String to String {
 				"bpm": 180
 			},
 			{
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
 				"gfSection": false,
 				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 180
+			},
+			{
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"lengthInSteps": 16,
+				"gfSection": false,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 180
+			},
+			{
+				"lengthInSteps": 16,
 				"typeOfSection": 0,
 				"sectionNotes": [],
+				"altAnim": false,
+				"gfSection": false,
 				"bpm": 180,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 180,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
 				"sectionBeats": 4,
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"gfSection": false,
+				"altAnim": false,
+				"mustHitSection": true,
 				"changeBPM": false,
-				"mustHitSection": true
+				"bpm": 180
 			}
 		],
-		"player2": "mickey-legacy",
 		"player3": null,
 		"splashSkin": "noteSplashes",
 		"song": "Lunacy Legacy",
-		"arrowSkin": "",
 		"validScore": true,
+		"arrowSkin": "",
 		"speed": 2.9,
 		"events": [
 			[
@@ -51167,12 +51167,87 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
+				1333.33333333333,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,0.1"
+					]
+				]
+			],
+			[
+				2666.66666666667,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,0.1"
+					]
+				]
+			],
+			[
+				4000,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,0.1"
+					]
+				]
+			],
+			[
+				4666.66666666667,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,0.1"
+					]
+				]
+			],
+			[
+				5333.33333333333,
+				[
+					[
+						"Add Camera Zoom",
+						"0",
+						"0.02"
+					],
+					[
+						"Camera Event",
+						"Change Value",
+						"defaultCamZoom,0.9"
+					]
+				]
+			],
+			[
+				6666.66666666667,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,0.2"
+					]
+				]
+			],
+			[
 				8000,
 				[
 					[
-						"Screen Fade",
-						"1",
-						""
+						"Camera Event",
+						"Tween Value",
+						"zoom,0.7,2,quartInOut"
+					],
+					[
+						"Camera Event",
+						"Tween Value",
+						"alpha,0,1.5,quartInOut"
+					],
+					[
+						"Camera Event",
+						"Tween Value",
+						"hudalpha,0.015,2,quartInOut"
 					]
 				]
 			],
@@ -51330,19 +51405,64 @@ enum abstract Chart(String) from String to String {
 				10666.6666666667,
 				[
 					[
-						"Set Cam Zoom",
-						"1.2",
+						"Camera Event",
+						"Flash",
+						"255,255,255,1.5,1,true"
+					],
+					[
+						"Set Property",
+						"camGame.alpha",
 						"1"
 					],
 					[
-						"Flash Screen",
-						"0",
-						""
+						"Set Property",
+						"camHUD.alpha",
+						"1"
 					],
 					[
-						"Screen Fade",
+						"Camera Event",
+						"Change Value",
+						"defaultCamZoom,0.9"
+					],
+					[
+						"Add Camera Zoom",
 						"0",
-						""
+						"0.02"
+					]
+				]
+			],
+			[
+				13333.3333333333,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,0.1"
+					]
+				]
+			],
+			[
+				14666.6666666667,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,0.2"
+					]
+				]
+			],
+			[
+				16000,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"defaultCamZoom,0.9"
+					],
+					[
+						"Add Camera Zoom",
+						"0",
+						"0.02"
 					]
 				]
 			],
@@ -51353,6 +51473,26 @@ enum abstract Chart(String) from String to String {
 						"Set Cam Zoom",
 						"0.8",
 						"5"
+					]
+				]
+			],
+			[
+				18666.6666666667,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,0.1"
+					]
+				]
+			],
+			[
+				20000,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,0.2"
 					]
 				]
 			],
@@ -51372,12 +51512,52 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
+				22666.6666666667,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,-0.1"
+					]
+				]
+			],
+			[
+				24000,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,-0.15"
+					]
+				]
+			],
+			[
+				25333.3333333333,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,-0.1"
+					]
+				]
+			],
+			[
 				26666.6666666667,
 				[
 					[
-						"Set Cam Zoom",
-						"0.8",
-						"10"
+						"Camera Event",
+						"Change Value",
+						"defaultCamZoom,1.1"
+					]
+				]
+			],
+			[
+				29333.3333333333,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"defaultCamZoom,0.8"
 					]
 				]
 			],
@@ -51392,17 +51572,112 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
+				34666.6666666667,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,0.1"
+					]
+				]
+			],
+			[
+				37333.3333333333,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,0.1"
+					]
+				]
+			],
+			[
+				40000,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,0.1"
+					]
+				]
+			],
+			[
+				41333.3333333333,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,0.1"
+					]
+				]
+			],
+			[
+				42000,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,0.1"
+					]
+				]
+			],
+			[
 				42666.6666666667,
 				[
 					[
-						"Set Cam Zoom",
-						"2.4",
-						"50"
+						"Camera Event",
+						"Change Value",
+						"defaultCamZoom,0.78"
 					],
 					[
-						"Flash Screen",
-						"0",
-						"True"
+						"Camera Event",
+						"Flash",
+						"255,255,255,1.5,1,true"
+					],
+					[
+						"Set Property",
+						"camHUD.alpha",
+						"0.0001"
+					]
+				]
+			],
+			[
+				44000,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,0.2"
+					]
+				]
+			],
+			[
+				44666.6666666667,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,-0.15"
+					]
+				]
+			],
+			[
+				47333.3333333333,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,0.2"
+					]
+				]
+			],
+			[
+				48000,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,-0.15"
 					]
 				]
 			],
@@ -51417,127 +51692,67 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
-				52062.5,
+				52000,
 				[
 					[
-						"Screen Fade",
-						"0",
-						""
-					]
-				]
-			],
-			[
-				52333.3333333334,
-				[
-					[
-						"Screen Fade",
-						"3",
-						""
-					]
-				]
-			],
-			[
-				52375,
-				[
-					[
-						"Screen Fade",
-						"0",
-						""
-					]
-				]
-			],
-			[
-				52406.25,
-				[
-					[
-						"Screen Fade",
-						"3",
-						""
-					]
-				]
-			],
-			[
-				52468.75,
-				[
-					[
-						"Screen Fade",
-						"0",
-						""
-					]
-				]
-			],
-			[
-				52666.6666666667,
-				[
-					[
-						"Screen Fade",
-						"3",
-						""
-					]
-				]
-			],
-			[
-				52750,
-				[
-					[
-						"Screen Fade",
-						"0",
-						""
-					]
-				]
-			],
-			[
-				52854.1666666667,
-				[
-					[
-						"Screen Fade",
-						"3",
-						""
-					]
-				]
-			],
-			[
-				52895.8333333334,
-				[
-					[
-						"Screen Fade",
-						"0",
-						""
-					]
-				]
-			],
-			[
-				52937.5,
-				[
-					[
-						"Screen Fade",
-						"3",
-						""
+						"Camera Event",
+						"Tween Value",
+						"zoom,1,1,sineInOut"
 					],
 					[
-						"Flash Screen",
-						"3",
-						"Falsw"
+						"Camera Event",
+						"Tween Value",
+						"hudalpha,1,1.5,quartInOut"
 					]
 				]
 			],
 			[
-				52979.1666666667,
+				53333.3333333334,
 				[
 					[
-						"Flash Screen",
-						"3",
-						"False"
+						"Camera Event",
+						"Flash",
+						"0,0,0,1.5,1,true"
 					]
 				]
 			],
 			[
-				53020.8333333334,
+				54666.6666666667,
 				[
 					[
-						"Screen Fade",
-						"0",
-						""
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,0.2"
+					]
+				]
+			],
+			[
+				55333.3333333334,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"defaultCamZoom,0.8"
+					]
+				]
+			],
+			[
+				58000,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,0.2"
+					]
+				]
+			],
+			[
+				58666.6666666667,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,-0.1"
 					]
 				]
 			],
@@ -51553,6 +51768,16 @@ enum abstract Chart(String) from String to String {
 						"Flash Screen",
 						"3",
 						""
+					]
+				]
+			],
+			[
+				64000,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,0.25"
 					]
 				]
 			],
@@ -51615,9 +51840,9 @@ enum abstract Chart(String) from String to String {
 				74666.6666666667,
 				[
 					[
-						"Set Cam Zoom",
-						"0.8",
-						"1"
+						"Camera Event",
+						"Change Value",
+						"defaultCamZoom,0.8"
 					]
 				]
 			],
@@ -51633,6 +51858,41 @@ enum abstract Chart(String) from String to String {
 						"Flash Screen",
 						"0",
 						""
+					]
+				]
+			],
+			[
+				85333.3333333333,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"defaultCamZoom,0.78"
+					],
+					[
+						"Camera Event",
+						"Flash",
+						"255,255,255,1.5,1,true"
+					],
+					[
+						"Set Property",
+						"camHUD.alpha",
+						"0.0001"
+					]
+				]
+			],
+			[
+				94666.6666666667,
+				[
+					[
+						"Camera Event",
+						"Tween Value",
+						"zoom,1,1,sineInOut"
+					],
+					[
+						"Camera Event",
+						"Tween Value",
+						"hudalpha,1,1.5,quartInOut"
 					]
 				]
 			],
@@ -51655,14 +51915,19 @@ enum abstract Chart(String) from String to String {
 				106666.666666667,
 				[
 					[
-						"Set Cam Zoom",
-						"1.8",
-						"1"
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,0.2"
 					],
 					[
-						"Flash Screen",
-						"0",
-						""
+						"Camera Event",
+						"Flash",
+						"0,0,0,1,1,true"
+					],
+					[
+						"Background Controls",
+						"Darken",
+						"0.85,1,quartInOut"
 					]
 				]
 			],
@@ -51690,14 +51955,9 @@ enum abstract Chart(String) from String to String {
 				112000,
 				[
 					[
-						"Set Cam Zoom",
-						"0.8",
-						"1"
-					],
-					[
-						"Flash Screen",
-						"3",
-						""
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,-0.35"
 					]
 				]
 			],
@@ -51715,14 +51975,9 @@ enum abstract Chart(String) from String to String {
 				122666.666666667,
 				[
 					[
-						"Set Cam Zoom",
-						"0.8",
-						"1"
-					],
-					[
-						"Flash Screen",
-						"3",
-						""
+						"Camera Event",
+						"Tween Value",
+						"zoom,1.3,8,quartInOut"
 					]
 				]
 			],
@@ -51752,12 +52007,32 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
+				133333.333333333,
+				[
+					[
+						"Camera Event",
+						"Flash",
+						"0,0,0,1.5,1,true"
+					],
+					[
+						"Background Controls",
+						"Darken",
+						"0,1,sineOut"
+					]
+				]
+			],
+			[
 				134666.666666667,
 				[
 					[
-						"Screen Fade",
-						"1",
-						""
+						"Camera Event",
+						"Tween Value",
+						"alpha,0,1.5,quartInOut"
+					],
+					[
+						"Camera Event",
+						"Tween Value",
+						"hudalpha,0,1.5,quartInOut"
 					]
 				]
 			],
@@ -51957,8 +52232,8 @@ enum abstract Chart(String) from String to String {
 		"voiceSfx1": "Player",
 		"stage": "theLoop",
 		"needsVoices": true,
-		"voiceSfx2": "Opponent",
-		"bpm": 180
+		"bpm": 180,
+		"voiceSfx2": "Opponent"
 	}
 }';
     var delusionalLegacy:String = '{
@@ -51970,9 +52245,9 @@ enum abstract Chart(String) from String to String {
 				10378.3783783784,
 				[
 					[
-						"Flash Screen",
-						"3",
-						""
+						"Camera Event",
+						"Flash",
+						"255,255,255,3,1,true"
 					]
 				]
 			],
@@ -51980,14 +52255,24 @@ enum abstract Chart(String) from String to String {
 				15567.5675675676,
 				[
 					[
-						"Flash Screen",
-						"3",
-						""
+						"Camera Event",
+						"Fade",
+						"0,0,0,3,1,true"
 					]
 				]
 			],
 			[
 				20756.7567567568,
+				[
+					[
+						"Camera Event",
+						"Flash",
+						"255,255,255,3,1,true"
+					]
+				]
+			],
+			[
+				25945.9459459459,
 				[
 					[
 						"Flash Screen",
@@ -52000,9 +52285,9 @@ enum abstract Chart(String) from String to String {
 				25945.9459459459,
 				[
 					[
-						"Flash Screen",
-						"3",
-						""
+						"Camera Event",
+						"Fade",
+						"0,0,0,3,1,true"
 					]
 				]
 			],
@@ -52018,6 +52303,26 @@ enum abstract Chart(String) from String to String {
 						"Flash Screen",
 						"3",
 						"true"
+					]
+				]
+			],
+			[
+				31135.1351351351,
+				[
+					[
+						"Camera Event",
+						"Fade",
+						"0,0,0,6,1,true"
+					],
+					[
+						"Set Property",
+						"camHUD.alpha",
+						"0"
+					],
+					[
+						"Camera Event",
+						"Tween Value",
+						"zoom,1.35,6.2,circInOut"
 					]
 				]
 			],
@@ -52042,12 +52347,102 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
+				37621.6216216216,
+				[
+					[
+						"Camera Event",
+						"Flash",
+						"255,255,255,3,1,true"
+					],
+					[
+						"Set Property",
+						"camHUD.alpha",
+						"1"
+					],
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.9"
+					]
+				]
+			],
+			[
+				41513.5135135135,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,0.1"
+					]
+				]
+			],
+			[
+				42162.1621621622,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,0.1"
+					]
+				]
+			],
+			[
+				42810.8108108108,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,-0.2"
+					]
+				]
+			],
+			[
+				46702.7027027027,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,0.1"
+					]
+				]
+			],
+			[
+				47351.3513513514,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,0.1"
+					]
+				]
+			],
+			[
 				48000,
 				[
 					[
 						"Scroll Type",
 						"Flip",
 						"Default"
+					]
+				]
+			],
+			[
+				48000,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,-0.2"
+					]
+				]
+			],
+			[
+				57729.7297297298,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,0.2"
 					]
 				]
 			],
@@ -52067,72 +52462,17 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
-				58388.5135135136,
+				58378.3783783784,
 				[
 					[
-						"Scroll Type",
-						"Default",
-						"Left"
-					]
-				]
-			],
-			[
-				58398.6486486487,
-				[
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,-0.2"
+					],
 					[
-						"Scroll Type",
-						"Default",
-						"Left"
-					]
-				]
-			],
-			[
-				58408.7837837838,
-				[
-					[
-						"Scroll Type",
-						"Default",
-						"Left"
-					]
-				]
-			],
-			[
-				58418.918918919,
-				[
-					[
-						"Scroll Type",
-						"Default",
-						"Left"
-					]
-				]
-			],
-			[
-				58429.0540540541,
-				[
-					[
-						"Scroll Type",
-						"Default",
-						"Left"
-					]
-				]
-			],
-			[
-				58439.1891891892,
-				[
-					[
-						"Scroll Type",
-						"Default",
-						"Left"
-					]
-				]
-			],
-			[
-				58449.3243243244,
-				[
-					[
-						"Scroll Type",
-						"Default",
-						"Left"
+						"Camera Event",
+						"Flash",
+						"255,255,255,3,1,true"
 					]
 				]
 			],
@@ -52140,9 +52480,9 @@ enum abstract Chart(String) from String to String {
 				77837.8378378379,
 				[
 					[
-						"Scroll Type",
-						"",
-						"Default"
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,0.2"
 					]
 				]
 			],
@@ -52163,6 +52503,21 @@ enum abstract Chart(String) from String to String {
 						"Screen Fade",
 						"1",
 						""
+					]
+				]
+			],
+			[
+				79135.1351351351,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,-0.2"
+					],
+					[
+						"Camera Event",
+						"Flash",
+						"255,255,255,3,1,true"
 					]
 				]
 			],
@@ -54737,6 +55092,16 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
+				99891.8918918918,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1.3"
+					]
+				]
+			],
+			[
 				99972.9729729729,
 				[
 					[
@@ -54810,9 +55175,39 @@ enum abstract Chart(String) from String to String {
 				105081.081081081,
 				[
 					[
-						"Set Cam Zoom",
-						"0.85",
-						"1"
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,-0.1"
+					]
+				]
+			],
+			[
+				106378.378378378,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,-0.1"
+					]
+				]
+			],
+			[
+				107675.675675676,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,-0.1"
+					]
+				]
+			],
+			[
+				108972.972972973,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,-0.1"
 					]
 				]
 			],
@@ -54827,6 +55222,16 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
+				110270.27027027,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1.3"
+					]
+				]
+			],
+			[
 				120648.648648649,
 				[
 					[
@@ -54835,14 +55240,14 @@ enum abstract Chart(String) from String to String {
 						"mickey-hopeless-unused"
 					],
 					[
-						"Flash Screen",
-						"0",
-						"True"
+						"Camera Event",
+						"Flash",
+						"255,255,255,3,1,true"
 					],
 					[
-						"Screen Fade",
-						"1",
-						""
+						"Set Property",
+						"camHUD.alpha",
+						"0"
 					]
 				]
 			],
@@ -55057,6 +55462,26 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
+				128432.432432432,
+				[
+					[
+						"Set Property",
+						"camHUD.alpha",
+						"1"
+					],
+					[
+						"Camera Event",
+						"Fade",
+						"0,0,0,2,1,true"
+					],
+					[
+						"Set Property",
+						"camHUD.alpha",
+						"1"
+					]
+				]
+			],
+			[
 				128513.513513513,
 				[
 					[
@@ -55243,6 +55668,21 @@ enum abstract Chart(String) from String to String {
 						"Screen Fade",
 						"2",
 						""
+					]
+				]
+			],
+			[
+				182918.918918919,
+				[
+					[
+						"Camera Event",
+						"Fade",
+						"0,0,0,2,1,true"
+					],
+					[
+						"Set Property",
+						"camHUD.alpha",
+						"0"
 					]
 				]
 			],
@@ -55547,12 +55987,32 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
+				203675.675675676,
+				[
+					[
+						"Set Property",
+						"camHUD.alpha",
+						"1"
+					],
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.9"
+					],
+					[
+						"Camera Event",
+						"Flash",
+						"255,255,255,3,1,true"
+					]
+				]
+			],
+			[
 				206270.270270271,
 				[
 					[
-						"Set Cam Zoom",
-						"0.8",
-						"10"
+						"Camera Event",
+						"Tween Value",
+						"zoom,1.2,10,quartInOut"
 					]
 				]
 			],
@@ -55560,9 +56020,9 @@ enum abstract Chart(String) from String to String {
 				214054.054054055,
 				[
 					[
-						"Set Cam Zoom",
-						"1.2",
-						"20"
+						"Camera Event",
+						"Tween Value",
+						"zoom,0.9,2,expoOut"
 					]
 				]
 			],
@@ -55575,9 +56035,9 @@ enum abstract Chart(String) from String to String {
 						"mickey-lunacy-legacy"
 					],
 					[
-						"Set Cam Zoom",
-						"0.8",
-						"1"
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,0.2"
 					]
 				]
 			],
@@ -55592,12 +56052,22 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
+				234810.810810811,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,-0.2"
+					]
+				]
+			],
+			[
 				245189.18918919,
 				[
 					[
-						"Set Cam Zoom",
-						"0.9",
-						"0.5"
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,0.1"
 					]
 				]
 			],
@@ -55620,9 +56090,9 @@ enum abstract Chart(String) from String to String {
 						"mickey-lunacy-legacy"
 					],
 					[
-						"Set Cam Zoom",
-						"1.1",
-						"0.5"
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,-0.2"
 					]
 				]
 			],
@@ -55633,6 +56103,16 @@ enum abstract Chart(String) from String to String {
 						"Set Cam Zoom",
 						"1.2",
 						"0.5"
+					]
+				]
+			],
+			[
+				246486.486486487,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addDefaultCamZoom,-0.2"
 					]
 				]
 			],
@@ -55655,9 +56135,14 @@ enum abstract Chart(String) from String to String {
 				247783.783783785,
 				[
 					[
-						"Flash Screen",
-						"0",
-						""
+						"Camera Event",
+						"Flash",
+						"255,255,255,3,1,true"
+					],
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.9"
 					]
 				]
 			],
@@ -55665,19 +56150,9 @@ enum abstract Chart(String) from String to String {
 				258162.162162163,
 				[
 					[
-						"Screen Fade",
-						"1",
-						""
-					],
-					[
-						"Scroll Type",
-						"",
-						"Left"
-					],
-					[
-						"Flash Screen",
-						"0",
-						""
+						"Camera Event",
+						"Tween Value",
+						"zoom,1.3,15,expoInOut"
 					]
 				]
 			],
@@ -59525,9 +60000,9 @@ enum abstract Chart(String) from String to String {
 						"mickey-legacy"
 					],
 					[
-						"Screen Fade",
-						"2",
-						""
+						"Camera Event",
+						"Tween Value",
+						"zoom,0.8,2,expoIn"
 					]
 				]
 			],
@@ -59642,6 +60117,21 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
+				290594.594594595,
+				[
+					[
+						"Camera Event",
+						"Flash",
+						"255,255,255,3,1,true"
+					],
+					[
+						"Set Property",
+						"camHUD.alpha",
+						"0"
+					]
+				]
+			],
+			[
 				291891.891891892,
 				[
 					[
@@ -59663,6 +60153,31 @@ enum abstract Chart(String) from String to String {
 						"Set Cam Zoom",
 						"1.3",
 						"15"
+					]
+				]
+			],
+			[
+				298378.378378379,
+				[
+					[
+						"Set Property",
+						"camHUD.alpha",
+						"1"
+					],
+					[
+						"Camera Event",
+						"Change Pos",
+						"200,300"
+					],
+					[
+						"Set Property",
+						"boyfriend.visible",
+						"false"
+					],
+					[
+						"Background Controls",
+						"Darken",
+						"1,0.001,linear"
 					]
 				]
 			],
@@ -59875,14 +60390,9 @@ enum abstract Chart(String) from String to String {
 				311351.351351352,
 				[
 					[
-						"Flash Screen",
-						"3",
-						"True"
-					],
-					[
-						"Set Cam Zoom",
-						"0.75",
-						"5"
+						"Camera Event",
+						"Tween Value",
+						"zoom,0.2,5,sineInOut"
 					]
 				]
 			],
@@ -73893,11 +74403,11 @@ enum abstract Chart(String) from String to String {
 				"bpm": 185
 			},
 			{
-				"gfSection": false,
 				"lengthInSteps": 16,
-				"altAnim": false,
 				"typeOfSection": 0,
 				"sectionNotes": [],
+				"altAnim": false,
+				"gfSection": false,
 				"bpm": 185,
 				"changeBPM": false,
 				"mustHitSection": true
@@ -73906,7 +74416,7 @@ enum abstract Chart(String) from String to String {
 		"player2": "mickey-lunacy-legacy",
 		"player3": null,
 		"charter": "Noppz",
-		"splashSkin": null,
+		"splashSkin": "noteSplashes",
 		"song": "Delusional Legacy",
 		"arrowSkin": "",
 		"stage": "theLoop",
@@ -79713,7 +80223,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"255,255,255,1,1,true"
 					],
 					[
@@ -81703,7 +82213,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"255,255,255,3,1,true"
 					]
 				]
@@ -104885,7 +105395,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"255,255,255,1,0,true"
 					],
 					[
@@ -105026,6 +105536,11 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Fade",
+						"0,0,0,0.0001,1,true"
+					],
+					[
+						"Camera Event",
+						"Flash",
 						"255,255,255,2,1,true"
 					],
 					[
@@ -105250,7 +105765,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"255,255,255,1,0,true"
 					],
 					[
@@ -105310,7 +105825,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"255,255,255,2,1,true"
 					],
 					[
@@ -105440,7 +105955,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"255,255,255,1.3,1,true"
 					],
 					[
@@ -121228,7 +121743,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"255,255,255,1.5,1,true"
 					],
 					[
@@ -121593,7 +122108,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"255,255,255,0.7,1,true"
 					],
 					[
@@ -122623,7 +123138,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"0,0,0,2,1,true"
 					],
 					[
@@ -123518,7 +124033,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"255,255,255,0.25,0.7,true"
 					],
 					[
@@ -123888,7 +124403,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"255,255,255,0.7,1,true"
 					],
 					[
@@ -124813,7 +125328,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"255,255,255,0.7,1,true"
 					],
 					[
@@ -125008,7 +125523,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"0,0,0,2,1,true"
 					],
 					[
@@ -125848,7 +126363,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"255,255,255,2,1,true"
 					],
 					[
@@ -126518,7 +127033,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"0,0,0,3,1,true"
 					],
 					[
@@ -127208,7 +127723,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"255,255,255,2,1,true"
 					],
 					[
@@ -147742,7 +148257,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"255,255,255,1.2,0.85,true"
 					],
 					[
@@ -147757,7 +148272,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"255,0,0,1.2,0.85,true"
 					]
 				]
@@ -147767,7 +148282,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"255,255,255,1.2,0.85,true"
 					],
 					[
@@ -149802,7 +150317,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"0,0,0,8,0,true"
 					],
 					[
@@ -197950,7 +198465,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"255,255,255,1.5,1,true"
 					]
 				]
@@ -198530,7 +199045,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"255,255,255,1.5,1,true"
 					],
 					[
@@ -202700,7 +203215,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"255,255,255,1,0.6,true"
 					],
 					[
@@ -203555,7 +204070,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"255,255,255,1,0.6,true"
 					]
 				]
@@ -203775,7 +204290,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"255,255,255,0.3,true"
 					],
 					[
@@ -204010,7 +204525,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"255,255,255,0.3,true"
 					],
 					[
@@ -204975,7 +205490,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"0,0,0,1,1,true"
 					],
 					[
@@ -205065,7 +205580,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						"Camera Event",
-						"Fade",
+						"Flash",
 						"255,255,255,1,0.6,true"
 					]
 				]

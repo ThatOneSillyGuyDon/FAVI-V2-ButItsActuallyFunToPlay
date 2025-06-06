@@ -2954,36 +2954,39 @@ class PlayState extends MusicBeatState
 		// out of the zooms this has to exist in cases of emergency   - jason the silly !!
 		// stageBGFlash.setPosition(-FlxG.width * FlxG.camera.zoom, -FlxG.height * FlxG.camera.zoom);
 
-		if (ClientPrefs.data.flashing && stageBGFlash != null)
+		if (stageBGFlash != null)
 		{
 			switch (flashType)
 			{
 				case BG_FLASH:
-					if (settings.alpha > 1 || settings.alpha < 0) // prevents a crash from making a dumb mistake
-						stageBGFlash.alpha = 0.5;
-					else
-						stageBGFlash.alpha = settings.alpha;
+					if (ClientPrefs.data.flashing)
+					{
+						if (settings.alpha > 1 || settings.alpha < 0) // prevents a crash from making a dumb mistake
+							stageBGFlash.alpha = 0.5;
+						else
+							stageBGFlash.alpha = settings.alpha;
 
-					if (settings.timer <= 0) // another check to prevent a crash
-						settings.timer = 1;
+						if (settings.timer <= 0) // another check to prevent a crash
+							settings.timer = 1;
 
-					if (settings.colors[0] == 0 && settings.colors[1] == 0 && settings.colors[2] == 0) // blend check cause it makes it look cool
-						stageBGFlash.blend = NORMAL;
-					else
-						stageBGFlash.blend = ADD;
+						if (settings.colors[0] == 0 && settings.colors[1] == 0 && settings.colors[2] == 0) // blend check cause it makes it look cool
+							stageBGFlash.blend = NORMAL;
+						else
+							stageBGFlash.blend = ADD;
 
-					stageBGFlash.color = FlxColor.fromRGB(settings.colors[0], settings.colors[1], settings.colors[2], 255);
+						stageBGFlash.color = FlxColor.fromRGB(settings.colors[0], settings.colors[1], settings.colors[2], 255);
 
-					if (BGFlashTween != null) // makes it so it won't look wonky, visually
-						BGFlashTween.cancel();
+						if (BGFlashTween != null) // makes it so it won't look wonky, visually
+							BGFlashTween.cancel();
 
-					BGFlashTween = FlxTween.tween(stageBGFlash, {alpha: 0}, settings.timer, {
-						ease: settings.ease,
-						onComplete: function(twn:FlxTween)
-						{
-							BGFlashTween = null;
-						}
-					});
+						BGFlashTween = FlxTween.tween(stageBGFlash, {alpha: 0}, settings.timer, {
+							ease: settings.ease,
+							onComplete: function(twn:FlxTween)
+							{
+								BGFlashTween = null;
+							}
+						});
+					}
 
 				case BG_DARK:
 					if (stageBGDark != null)
@@ -3009,33 +3012,36 @@ class PlayState extends MusicBeatState
 					}
 				
 				case CAM_FLASH_FANCY:
-					if (blendFlash != null)
+					if (ClientPrefs.data.flashing)
 					{
-						if (settings.alpha > 1 || settings.alpha < 0) // prevents a crash from making a dumb mistake
-							blendFlash.alpha = 0.5;
-						else
-							blendFlash.alpha = settings.alpha;
+						if (blendFlash != null)
+						{
+							if (settings.alpha > 1 || settings.alpha < 0) // prevents a crash from making a dumb mistake
+								blendFlash.alpha = 0.5;
+							else
+								blendFlash.alpha = settings.alpha;
 
-						if (settings.timer <= 0) // another check to prevent a crash
-							settings.timer = 1;
+							if (settings.timer <= 0) // another check to prevent a crash
+								settings.timer = 1;
 
-						if (settings.colors[0] == 0 && settings.colors[1] == 0 && settings.colors[2] == 0) // turn it to white, cause I can
-							blendFlash.blend = NORMAL;
-						else
-							blendFlash.blend = ADD;
+							if (settings.colors[0] == 0 && settings.colors[1] == 0 && settings.colors[2] == 0) // turn it to white, cause I can
+								blendFlash.blend = NORMAL;
+							else
+								blendFlash.blend = ADD;
 
-						if (flashTween != null)
-							flashTween.cancel();
+							if (flashTween != null)
+								flashTween.cancel();
 
-						blendFlash.color = FlxColor.fromRGB(settings.colors[0], settings.colors[1], settings.colors[2], 255);
+							blendFlash.color = FlxColor.fromRGB(settings.colors[0], settings.colors[1], settings.colors[2], 255);
 
-						flashTween = FlxTween.tween(blendFlash, {alpha: 0}, settings.timer, {
-							ease: settings.ease,
-							onComplete: function(twn:FlxTween)
-							{
-								flashTween = null;
-							}
-						});
+							flashTween = FlxTween.tween(blendFlash, {alpha: 0}, settings.timer, {
+								ease: settings.ease,
+								onComplete: function(twn:FlxTween)
+								{
+									flashTween = null;
+								}
+							});
+						}
 					}
 			}
 		}
@@ -3770,27 +3776,22 @@ class PlayState extends MusicBeatState
 					case "flash":
 						if (ClientPrefs.data.flashing)
 						{
-							if (triggerInfo[0] == null) triggerInfo[0] = "255";
-							if (triggerInfo[1] == null) triggerInfo[1] = "255";
-							if (triggerInfo[2] == null) triggerInfo[2] = "255";
-							if (triggerInfo[3] == null) triggerInfo[3] = "1";
-							if (triggerInfo[4] == null) triggerInfo[4] = "1";
-							if (triggerInfo[5] == null) triggerInfo[5] = "false";
-
-							flashSprite.color = FlxColor.fromRGB(Std.parseInt(triggerInfo[0]), Std.parseInt(triggerInfo[1]), Std.parseInt(triggerInfo[2]));
-							flashSpeed = Std.parseFloat(triggerInfo[3]);
-							flashSprite.alpha = Std.parseFloat(triggerInfo[4]);
-							if (triggerInfo[5].toLowerCase() == "true")
-								flashSprite.blend = ADD;
-							else
-								flashSprite.blend = NORMAL;
+							camBars.flash(
+								FlxColor.fromRGB(
+									Std.parseInt(triggerInfo[0]), 
+									Std.parseInt(triggerInfo[1]), 
+									Std.parseInt(triggerInfo[2])), 
+								Std.parseFloat(triggerInfo[3]));
 						}
 
 					case "fade":
-						if (ClientPrefs.data.flashing) //technically, this can still cause potential epilepic seizures if used a certain way
-						{
-							camBars.fade(FlxColor.fromRGB(Std.parseInt(triggerInfo[0]), Std.parseInt(triggerInfo[1]), Std.parseInt(triggerInfo[2])), Std.parseFloat(triggerInfo[3]), triggerInfo[5] == "true" ? true : false);
-						}
+						camBars.fade(
+							FlxColor.fromRGB(
+								Std.parseInt(triggerInfo[0]),
+								 Std.parseInt(triggerInfo[1]), 
+								 Std.parseInt(triggerInfo[2])), 
+							Std.parseFloat(triggerInfo[3]), 
+							triggerInfo[5] == "true" ? true : false);
 
 					case "changepos" | "change pos" | "set position" | "setposition":
 						if(camFollow != null)

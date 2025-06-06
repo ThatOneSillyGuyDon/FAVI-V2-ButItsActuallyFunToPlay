@@ -136,11 +136,57 @@ class LegEpisode1Street extends BaseStage
 		{
 			switch (PlayState.SONG.song)
 			{
+				case 'Delusional Legacy':
+					switch (curBeat)
+					{
+						case 180:
+							FlxTween.tween(waltScreenThing, {alpha: 0.7}, 18z, {ease: FlxEase.sineInOut});
+						case 240:
+							FlxTween.tween(waltScreenThing, {alpha: 0.0001}, 1, {ease: FlxEase.sineOut});
+						case 372:
+							FlxTween.tween(waltScreenThing, {alpha: 1}, 2, {ease: FlxEase.expoOut});
+						case 396:
+							FlxTween.tween(waltScreenThing, {alpha: 0.001}, 4, {ease: FlxEase.quartInOut});
+						case 592:
+							FlxTween.tween(waltScreenThing, {alpha: 1}, 8, {ease: FlxEase.expoInOut});
+						case 628:
+							waltScreenThing.alpha = 0.001;
+
+						case 796:
+							FlxTween.tween(waltScreenThing, {alpha: 0.75}, 28, {ease: FlxEase.quartInOut});
+						case 892:
+							FlxTween.tween(waltScreenThing, {alpha: 0}, 1, {ease: FlxEase.sineOut});
+						case 896:
+							FlxTween.tween(waltScreenThing, {alpha: 1}, 5, {ease: FlxEase.expoOut});
+						case 920:
+							FlxTween.tween(waltScreenThing, {alpha: 0}, 3);
+						case 960:
+							FlxTween.tween(waltScreenThing, {alpha: 1}, 5, {ease: FlxEase.expoOut});
+					}
+				/*
 				case 'Isolated Legacy':
 					switch (curBeat)
 					{
-						case 101 | 109 | 117 | 125 | 133 | 141 | 149 | 157 | 229 | 237 | 245 | 253 | 
-							 261 | 269 | 277 | 285 | 293 | 301 | 309 | 317 | 325 | 333 | 341 | 349:
+						case 1 | 16 | 352 | 368: game.tweenCamera(1.3, 5, 'sineInOut');
+						case 14 | 30 | 46 | 64 | 80 | 84: game.defaultCamZoom = 0.9;
+						case 32 | 48: game.tweenCamera(1.2, 3, 'sineInOut');
+						case 40 | 42 | 44 | 56 | 58 | 60 | 62 | 82: game.defaultCamZoom += 0.12;
+						case 66 | 86: game.defaultCamZoom += 0.2;
+						case 68 | 88: game.defaultCamZoom -= 0.15;
+						case 72 | 74 | 76 | 78 | 90 | 92 | 94: game.defaultCamZoom += 0.09;
+						case 96 | 224:
+							game.camFlashSystem(BG_DARK, {alpha: 0, timer: 0.001, ease: FlxEase.sineInOut});
+							if (ClientPrefs.data.flashing) camGame.flash(FlxColor.WHITE, 1);
+							game.defaultCamZoom = 0.9;
+						case 98 | 106 | 114 | 122 | 130 | 138 | 146 | 154 | 226 | 234 | 242 | 250 | 258 | 266 | 274 | 282 | 290 | 298 | 306 | 314 | 322 | 330 | 338 | 346:
+							game.camFlashSystem(BG_FLASH, {alpha: 0.75, timer: 0.5, ease: FlxEase.circOut});
+							FlxG.camera.zoom += 0.2;
+							camHUD.zoom += 0.23;
+						case 99 | 107 | 115 | 123 | 131 | 139 | 147 | 155 | 227 | 235 | 243 | 251 | 259 | 267 | 275 | 283 | 291 | 299 | 307 | 315 | 323 | 331 | 339 | 347:
+							game.camFlashSystem(BG_FLASH, {alpha: 0.3, timer: 0.5, ease: FlxEase.circOut});
+							FlxG.camera.zoom += 0.08;
+							camHUD.zoom += 0.11;
+						case 101 | 109 | 117 | 125 | 133 | 141 | 149 | 157 | 229 | 237 | 245 | 253 | 261 | 269 | 277 | 285 | 293 | 301 | 309 | 317 | 325 | 333 | 341 | 349:
 							game.camFlashSystem(BG_FLASH, {alpha: 0.4, timer: 0.5, ease: FlxEase.circOut});
 							FlxG.camera.zoom += 0.1;
 							camHUD.zoom += 0.13;
@@ -170,148 +216,8 @@ class LegEpisode1Street extends BaseStage
 							game.noteGroup.visible = false;
 							game.comboGroup.visible = false;
 					}
-				case 'Lunacy Legacy':
-					switch (curBeat)
-					{
-						case 4 | 8 | 12 | 14 | 40 | 56 | 104 | 112 | 120 | 124 | 126: game.defaultCamZoom += 0.1;
-						case 16 | 48: 
-							game.defaultCamZoom = 0.9;
-							camHUD.zoom += 0.02;
-						case 20 | 44 | 60 | 132 | 142 | 164 | 174: game.defaultCamZoom += 0.2;
-						case 24:
-							game.tweenCamera(0.7, 2, "quartInOut");
-							FlxTween.tween(camGame, {alpha: 0}, 1.5, {ease: FlxEase.quartInOut});
-							FlxTween.tween(camHUD, {alpha: 0.15}, 2, {ease: FlxEase.quartInOut});
-						case 32:
-							camGame.alpha = 1;
-							if (ClientPrefs.data.flashing) camGame.flash(FlxColor.WHITE, 1.5);
-							camHUD.alpha = 1;
-							camHUD.zoom += 0.02;
-							game.defaultCamZoom = 0.9;
-						case 68 | 76 | 176: game.defaultCamZoom -= 0.1;
-						case 72 | 134 | 144: game.defaultCamZoom -= 0.15;
-						case 80: game.defaultCamZoom = 1.1;
-						case 88 | 166 | 224: game.defaultCamZoom = 0.8;
-						case 128 | 256:
-							game.defaultCamZoom = 0.78;
-							if (ClientPrefs.data.flashing) camGame.flash(FlxColor.WHITE, 1.5);
-							camHUD.alpha = 0.0001;
-						case 156 | 284:
-							game.tweenCamera(1, 1, "sineInOut");
-							FlxTween.tween(camHUD, {alpha: 1}, 1.5, {ease: FlxEase.quartInOut});
-						case 160: if (ClientPrefs.data.flashing) camGame.fade(FlxColor.BLACK, 1.5, true);
-						case 192: game.defaultCamZoom += 0.25;
-						case 320:
-							if (ClientPrefs.data.flashing) camGame.fade(FlxColor.BLACK, 1, true);
-							game.camFlashSystem(BG_DARK, {alpha: 0.85, timer: 1, ease: FlxEase.quartInOut});
-							game.defaultCamZoom += 0.2;
-						case 336: game.defaultCamZoom -= 0.35;
-						case 368: game.tweenCamera(1.3, 8, "quartInOut");
-						case 400:
-							if (ClientPrefs.data.flashing) camGame.fade(FlxColor.BLACK, 1.5, true);
-							game.camFlashSystem(BG_DARK, {alpha: 0, timer: 1, ease: FlxEase.sineOut});
-						case 404:
-							FlxTween.tween(camGame, {alpha: 0}, 1.5, {ease: FlxEase.quartInOut});
-							FlxTween.tween(camHUD, {alpha: 0}, 1.5, {ease: FlxEase.quartInOut});
-					}
-				case 'Delusional Legacy':
-					switch (curBeat)
-					{
-						case 32 | 64: 
-							camGame.flash(FlxColor.WHITE, 3);
-						case 48 | 80:
-							game.camBars.fade(FlxColor.BLACK, 3, true);
-						case 96:
-							game.camBars.fade(FlxColor.BLACK, 6, true);
-							game.uiGroup.visible = false;
-							game.noteGroup.visible = false;
-							game.comboGroup.visible = false;
-							game.tweenCamera(1.35, 6.2, "circInOut");
-						case 116:
-							camGame.flash(FlxColor.WHITE, 3);
-							game.uiGroup.visible = true;
-							game.noteGroup.visible = true;
-							game.comboGroup.visible = true;
-							game.defaultCamZoom = 0.9;
-						case 128 | 130 | 144 | 146 | 756:
-							game.defaultCamZoom += 0.1;
-						case 132 | 148 | 724 | 758 | 760:
-							game.defaultCamZoom -= 0.2;
-						case 178 | 692:
-							game.defaultCamZoom += 0.2;
-						case 180:
-							game.defaultCamZoom -= 0.2;
-							FlxTween.tween(waltScreenThing, {alpha: 0.7}, 18, {ease: FlxEase.sineInOut});
-							camGame.flash(FlxColor.WHITE, 3);
-						case 240:
-							FlxTween.tween(waltScreenThing, {alpha: 0.0001}, 1, {ease: FlxEase.sineOut});
-							game.defaultCamZoom += 0.2;
-						case 244:
-							game.defaultCamZoom -= 0.2;
-							camGame.flash(FlxColor.WHITE, 3);
-						case 308 | 340:
-							game.defaultCamZoom = 1.3;
-						case 324 | 328 | 332 | 336:
-							game.defaultCamZoom -= 0.1;
-						case 372:
-							camGame.flash(FlxColor.WHITE, 3);
-							FlxTween.tween(waltScreenThing, {alpha: 1}, 2, {ease: FlxEase.expoOut});
-							game.uiGroup.visible = false;
-							game.noteGroup.visible = false;
-							game.comboGroup.visible = false;
-						case 396:
-							game.tweenCamera(0.85, 4, "quartInOut");
-							FlxTween.tween(waltScreenThing, {alpha: 0.001}, 4, {ease: FlxEase.quartInOut});
-							game.uiGroup.visible = true;
-							game.noteGroup.visible = true;
-							game.comboGroup.visible = true;
-						case 564:
-							game.camBars.fade(FlxColor.BLACK, 2, true);
-							game.uiGroup.visible = false;
-							game.noteGroup.visible = false;
-							game.comboGroup.visible = false;
-						case 592:
-							FlxTween.tween(waltScreenThing, {alpha: 1}, 8, {ease: FlxEase.expoInOut});
-						case 628:
-							camGame.flash(FlxColor.WHITE, 3);
-							waltScreenThing.alpha = 0.001;
-							game.uiGroup.visible = true;
-							game.noteGroup.visible = true;
-							game.comboGroup.visible = true;
-							game.defaultCamZoom = 0.9;
-						case 636:
-							game.tweenCamera(1.2, 10, "quartInOut");
-						case 660:
-							game.tweenCamera(0.9, 2, "expoOut");
-						case 764:
-							camGame.flash(FlxColor.WHITE, 3);
-							game.defaultCamZoom = 0.9;
-						case 796:
-							game.tweenCamera(1.3, 15, "expoInOut");
-							FlxTween.tween(waltScreenThing, {alpha: 0.75}, 28, {ease: FlxEase.quartInOut});
-						case 892:
-							game.tweenCamera(0.8, 2, "expoIn");
-							FlxTween.tween(waltScreenThing, {alpha: 0}, 1, {ease: FlxEase.sineOut});
-						case 896:
-							camGame.flash(FlxColor.WHITE, 3);
-							FlxTween.tween(waltScreenThing, {alpha: 1}, 5, {ease: FlxEase.expoOut});
-							game.uiGroup.visible = false;
-							game.noteGroup.visible = false;
-							game.comboGroup.visible = false;
-						case 920:
-							FlxTween.tween(waltScreenThing, {alpha: 0}, 3);
-							game.camFlashSystem(BG_DARK, {alpha: 1, timer: 0.001});
-							game.uiGroup.visible = true;
-							game.noteGroup.visible = true;
-							game.comboGroup.visible = true;
-							game.isCameraOnForcedPos = true;
-							game.camFollow.x = 200;
-							game.camFollow.y = 300;
-							game.boyfriend.visible = false;
-						case 960:
-							game.tweenCamera(0.2, 5, "sineInOut");
-							FlxTween.tween(waltScreenThing, {alpha: 1}, 5, {ease: FlxEase.expoOut});
-					}
+				*/
 		}
 	}
+
 }
