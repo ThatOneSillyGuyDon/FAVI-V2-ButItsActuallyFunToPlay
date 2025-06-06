@@ -418,6 +418,8 @@ class PlayState extends MusicBeatState
 
 	var sinsEnd:Bool = false;
 
+	public var canBopCam:Bool = false;
+
 	override public function create()
 	{
 		//trace('Playback Rate: ' + playbackRate);
@@ -918,7 +920,7 @@ class PlayState extends MusicBeatState
 		scoreTxt.setFormat(Paths.font("DisneyFont.ttf"), (CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-legacy')  ? 28 : 20), FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
 		scoreTxt.borderSize = 1.25;
-		scoreTxt.visible = !ClientPrefs.data.hideHud;
+		scoreTxt.visible = (!ClientPrefs.data.hideHud || !cpuControlled);
 		updateScore(false);
 		uiGroup.add(scoreTxt);
 
@@ -999,13 +1001,14 @@ class PlayState extends MusicBeatState
 		}
 
 		botplayTxt = new FlxText(400, timeBar.y + 55, FlxG.width - 800, "BOTPLAY", 32);
-		botplayTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		botplayTxt.setFormat(Paths.font("disneyFont.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		botplayTxt.scrollFactor.set();
 		botplayTxt.borderSize = 1.25;
-		botplayTxt.visible = cpuControlled;
-		uiGroup.add(botplayTxt);
-		if(ClientPrefs.data.downScroll)
+		botplayTxt.visible = false;
+		add(botplayTxt);
+		if(ClientPrefs.data.downScroll) {
 			botplayTxt.y = timeBar.y - 78;
+		}
 
 		if (ClientPrefs.data.downScroll)
 		{
@@ -1501,7 +1504,7 @@ class PlayState extends MusicBeatState
 		var introAlts:Array<String> = introAssets.get('default');
 		switch (SONG.song)
 		{
-			case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Laugh Track" |  "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Birthday" | "Rotten Petals" | "Curtain Call" | "Seeking Freedom" | "A True Monster" | "Am I Real?" | "Your Final Bow" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "The Wretched Tilezones (Simple Life)" | "Ahh the Scary (Somber Night)":
+			case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Twisted Grins Legacy" | "Laugh Track" |  "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Birthday" | "Rotten Petals" | "Curtain Call" | "Seeking Freedom" | "A True Monster" | "Am I Real?" | "Your Final Bow" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "The Wretched Tilezones (Simple Life)" | "Ahh the Scary (Somber Night)":
 				introAlts = introAssets.get('cartoon');
 			case "Cycled Sins Legacy" | "Cycled Sins":
 				introAlts = introAssets.get('sins');
@@ -1599,7 +1602,7 @@ class PlayState extends MusicBeatState
 				var antialias:Bool = ClientPrefs.data.antialiasing;
 				switch (SONG.song)
 				{
-					case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Laugh Track" |  "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Birthday" | "Rotten Petals" | "Curtain Call" | "Seeking Freedom" | "A True Monster" | "Am I Real?" | "Your Final Bow" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "The Wretched Tilezones (Simple Life)" | "Ahh the Scary (Somber Night)":
+					case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Twisted Grins Legacy" | "Laugh Track" |  "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Birthday" | "Rotten Petals" | "Curtain Call" | "Seeking Freedom" | "A True Monster" | "Am I Real?" | "Your Final Bow" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "The Wretched Tilezones (Simple Life)" | "Ahh the Scary (Somber Night)":
 						introAlts = introAssets.get('cartoon');
 					case "Cycled Sins Legacy" | "Cycled Sins":
 						introAlts = introAssets.get('sins');
@@ -2450,6 +2453,11 @@ class PlayState extends MusicBeatState
 		updateHealthBar();
 
 		super.update(elapsed);
+
+		if (cpuControlled)
+		{
+			scoreTxt.visible = false;
+		}
 
 		//Shitty thing so that the camera doesn't bug in some instances.
 		if (generatedMusic && !endingSong && !isCameraOnForcedPos)
@@ -3744,6 +3752,7 @@ class PlayState extends MusicBeatState
 							case "vidalpha" | "vid alpha": camVideo.alpha = Std.parseFloat(triggerInfo[1]);
 							case "angle": camGame.angle = Std.parseFloat(triggerInfo[1]);
 							case "hudangle" | "hud angle": camHUD.angle = Std.parseFloat(triggerInfo[1]);
+							case "adddefaultcamzoom" | "add default cam zoom" | "add default camera zoom": defaultCamZoom += Std.parseFloat(triggerInfo[1]);
 							default:
 								#if (LUA_ALLOWED || HSCRIPT_ALLOWED)
 								addTextToDebug('ERROR ("Camera Event" Event) - Value data type does not exist!', FlxColor.RED);
@@ -5213,8 +5222,6 @@ class PlayState extends MusicBeatState
 	}
 
 	var lastBeatHit:Int = -1;
-
-	var canBopCam:Bool = false;
 
 	override function beatHit()
 	{

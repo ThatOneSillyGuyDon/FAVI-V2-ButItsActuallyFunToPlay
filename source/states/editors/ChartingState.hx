@@ -92,6 +92,7 @@ class ChartingState extends MusicBeatState
 		['Rain Handler', 'Handles the Rain in Lunacy/Delusional\n\nValue 1 - Visibility, Time\nValue 2 - Ease type.'],
 		['Trigger TG shader shi', "Add - Adds the shader\nRemove - Removes the shader"],
 		['Trigger Hunted Stuffs', ''],
+		['Bless Events', ''],
 		['Tween Char Scale', 'Too lazy to put a desc here.'],
 		['Play Sound', "Value 1: Sound file name\nValue 2: Volume (Default: 1), ranges from 0 to 1"]
 	];
@@ -1871,12 +1872,13 @@ class ChartingState extends MusicBeatState
 
 
 			if (FlxG.keys.justPressed.BACKSPACE) {
-				// Protect against lost data when quickly leaving the chart editor.
-				autosaveSong();
 				PlayState.chartingMode = false;
-				MusicBeatState.switchState(new states.editors.MasterEditorMenu());
-				FlxG.sound.playMusic(Paths.music('freakyMenu'));
-				FlxG.mouse.visible = false;
+				openSubState(new Prompt('Upon leaving the editor, you will lose all current progress that hasn\'t been saved here.\n\nProceed?', 0, function(){
+					MusicBeatState.switchState(new MainMenuState()); 
+					FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
+					FlxG.mouse.visible = true;
+					AppIcon.changeIcon("newIcon");
+				}, null,ignoreWarnings));
 				return;
 			}
 

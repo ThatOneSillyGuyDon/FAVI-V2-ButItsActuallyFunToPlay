@@ -132,40 +132,6 @@ class LegEpisode1Street extends BaseStage
 		}
 	}
 
-	override function stepHit()
-	{
-		switch (PlayState.SONG.song)
-		{
-			case 'Isolated Beta':
-				// why tf did this version have so much fucking zoom events?????
-				switch (curStep)
-				{
-					case 96 | 112 | 160 | 176 | 208 | 224 | 240 | 304 
-					| 336 | 352 | 368 | 387 | 388 | 434 | 436 | 440 
-					| 444 | 451 | 452 | 496 | 500 | 504 | 508 | 528 
-					| 532 | 536 | 540 | 592 | 596 | 600 | 604 | 642 
-					| 643 | 644 | 688 | 692 | 696 | 700 | 706 | 707 
-					| 708 | 752 | 756 | 760 | 764 | 784 | 788 | 792 
-					| 796 | 848 | 852 | 956 | 860 | 1056 | 1072 | 1088 
-					| 1104 | 1120 | 1136 | 1152 | 1184 | 1200 | 1216 | 1232 | 1248 | 1264:
-						game.defaultCamZoom += 0.1;
-					case 64 | 192 | 390 | 416 | 424 | 454 | 480 | 488 | 672 | 680 | 736 | 744:
-						game.defaultCamZoom -= 0.2;
-					case 120:
-						game.defaultCamZoom = 1.5;
-					case 128 | 256 | 320 | 384 | 448 | 512 | 544 | 608 | 646 | 704 | 710 | 768 | 800 | 864 | 1280:
-						game.defaultCamZoom = 0.8;
-					case 412 | 420 | 476 | 484 | 668 | 676 | 732 | 740:
-						game.defaultCamZoom += 0.2;
-					case 896:
-						//fuck you, i am NOT doing the rest of those fuck ass zoom events
-						game.tweenCamera(1.6, 15, "sineInOut");
-					case 1024:
-						game.defaultCamZoom = 0.2;
-				}
-		}
-	}
-	
 	override function beatHit()
 		{
 			switch (PlayState.SONG.song)
@@ -173,26 +139,8 @@ class LegEpisode1Street extends BaseStage
 				case 'Isolated Legacy':
 					switch (curBeat)
 					{
-						case 1 | 16 | 352 | 368: game.tweenCamera(1.3, 5, 'sineInOut');
-						case 14 | 30 | 46 | 64 | 80 | 84: game.defaultCamZoom = 0.9;
-						case 32 | 48: game.tweenCamera(1.2, 3, 'sineInOut');
-						case 40 | 42 | 44 | 56 | 58 | 60 | 62 | 82: game.defaultCamZoom += 0.12;
-						case 66 | 86: game.defaultCamZoom += 0.2;
-						case 68 | 88: game.defaultCamZoom -= 0.15;
-						case 72 | 74 | 76 | 78 | 90 | 92 | 94: game.defaultCamZoom += 0.09;
-						case 96 | 224:
-							game.camFlashSystem(BG_DARK, {alpha: 0, timer: 0.001, ease: FlxEase.sineInOut});
-							if (ClientPrefs.data.flashing) camGame.flash(FlxColor.WHITE, 1);
-							game.defaultCamZoom = 0.9;
-						case 98 | 106 | 114 | 122 | 130 | 138 | 146 | 154 | 226 | 234 | 242 | 250 | 258 | 266 | 274 | 282 | 290 | 298 | 306 | 314 | 322 | 330 | 338 | 346:
-							game.camFlashSystem(BG_FLASH, {alpha: 0.75, timer: 0.5, ease: FlxEase.circOut});
-							FlxG.camera.zoom += 0.2;
-							camHUD.zoom += 0.23;
-						case 99 | 107 | 115 | 123 | 131 | 139 | 147 | 155 | 227 | 235 | 243 | 251 | 259 | 267 | 275 | 283 | 291 | 299 | 307 | 315 | 323 | 331 | 339 | 347:
-							game.camFlashSystem(BG_FLASH, {alpha: 0.3, timer: 0.5, ease: FlxEase.circOut});
-							FlxG.camera.zoom += 0.08;
-							camHUD.zoom += 0.11;
-						case 101 | 109 | 117 | 125 | 133 | 141 | 149 | 157 | 229 | 237 | 245 | 253 | 261 | 269 | 277 | 285 | 293 | 301 | 309 | 317 | 325 | 333 | 341 | 349:
+						case 101 | 109 | 117 | 125 | 133 | 141 | 149 | 157 | 229 | 237 | 245 | 253 | 
+							 261 | 269 | 277 | 285 | 293 | 301 | 309 | 317 | 325 | 333 | 341 | 349:
 							game.camFlashSystem(BG_FLASH, {alpha: 0.4, timer: 0.5, ease: FlxEase.circOut});
 							FlxG.camera.zoom += 0.1;
 							camHUD.zoom += 0.13;
