@@ -64,11 +64,32 @@ import psychlua.HScript;
 import tea.SScript;
 #end
 
+enum CinematicControls
+{
+	MOVE;
+	FLASH;
+	ANGLE;
+	ALPHA;
+	COLOR;
+	BOP;
+}
+
 enum FlashType
 {
 	BG_FLASH;
 	BG_DARK;
 	CAM_FLASH_FANCY;
+}
+
+typedef CinematicSettings =
+{
+	@:optional var valueInput:Float;
+
+	@:optional var timer:Float;
+
+	@:optional var ease:String;
+
+	@:optional var colors:Array<Int>;
 }
 
 typedef FlashingSettings = 
@@ -3129,102 +3150,171 @@ class PlayState extends MusicBeatState
 		return FlxEase.linear;
 	}
 
-	public var topBarTwn:FlxTween;
-	public var bottomBarTwn:FlxTween;
-
-	public function cinematicBarControls(controlType:String = "add", speed:Float, ease:String = "circInOut", position:Float = 0, bopValue:Float = 0)
+	var shittyTwns:Array<FlxTween> = [];
+	public function cinematicBarControls(controlType:CinematicControls, settings:CinematicSettings)
 	{
-		switch (controlType.toLowerCase())
-		{
-			case "add" | "create":
-				// idk if i should change this cus i dont wanna fuck up and i lazy to test them lol -sylinpix (jason)
+		// null checkes
+		if (settings.colors == null) settings.colors = [0, 0, 0];
+		if (settings.timer == null) settings.timer = 3;
+		if (settings.ease == null) settings.ease = "linear";
+		if (settings.valueInput == null) settings.valueInput = 50;
+
+		switch (controlType)
+		{		
+			case MOVE:
 				if (cinematicBars["top"] == null)
 				{
-					cinematicBars["top"] = new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
+					cinematicBars["top"] = new FlxSprite(0, 0).makeGraphic(FlxG.width*3, FlxG.height, FlxColor.WHITE);
 					cinematicBars["top"].screenCenter(X);
 					cinematicBars["top"].cameras = [camBars];
 					cinematicBars["top"].y = 0 - cinematicBars["top"].height; // offscreen
 					add(cinematicBars["top"]);
+					cinematicBars["top"].color = FlxColor.BLACK;
 				}
-
+		
 				if (cinematicBars["bottom"] == null)
 				{
-					cinematicBars["bottom"] = new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
+					cinematicBars["bottom"] = new FlxSprite(0, 0).makeGraphic(FlxG.width*3, FlxG.height, FlxColor.WHITE);
 					cinematicBars["bottom"].screenCenter(X);
 					cinematicBars["bottom"].cameras = [camBars];
 					cinematicBars["bottom"].y = FlxG.height; // offscreen
 					add(cinematicBars["bottom"]);
+					cinematicBars["bottom"].color = FlxColor.BLACK;
 				}
+
+				if (shittyTwns[0] != null)
+					shittyTwns[0].cancel();
+				if (shittyTwns[1] != null)
+					shittyTwns[1].cancel();
+
+				shittyTwns[0] = FlxTween.tween(cinematicBars["top"], {y: settings.valueInput - FlxG.height}, settings.timer, {ease: returnTweenEase(settings.ease.toLowerCase().trim()), onComplete: function(twn:FlxTween)
+				{
+					shittyTwns[0] = null;
+				}});
+				shittyTwns[1] = FlxTween.tween(cinematicBars["bottom"], {y: FlxG.height - settings.valueInput}, settings.timer, {ease: returnTweenEase(settings.ease.toLowerCase().trim()), onComplete: function(twn:FlxTween)
+				{
+					shittyTwns[1] = null;
+				}});
+						
+			case BOP:
+				if (cinematicBars["top"] != null && cinematicBars["bottom"] != null)
+				{
+					if (shittyTwns[2] != null)
+						shittyTwns[2].cancel();
+					if (shittyTwns[3] != null)
+						shittyTwns[3].cancel();
+		
+					cinematicBars["top"].y -= settings.valueInput;
+					cinematicBars["bottom"].y += settings.valueInput;
+					shittyTwns[2] = FlxTween.tween(cinematicBars["top"], {y: cinematicBars["top"].y + settings.valueInput}, settings.timer, {ease: returnTweenEase(settings.ease.toLowerCase().trim()), onComplete: function(twn:FlxTween)
+					{
+						shittyTwns[2] = null;
+					}});
+					shittyTwns[3] = FlxTween.tween(cinematicBars["bottom"], {y: cinematicBars["bottom"].y - settings.valueInput}, settings.timer, {ease: returnTweenEase(settings.ease.toLowerCase().trim()), onComplete: function(twn:FlxTween)
+					{
+						shittyTwns[3] = null;
+					}});
+				}
+
+			case FLASH:
+				if (cinematicBars["top"] != null && cinematicBars["bottom"] != null)
+				{
+					if (shittyTwns[4] != null)
+						shittyTwns[4].cancel();
+					if (shittyTwns[5] != null)
+						shittyTwns[5].cancel();
+
+					var lastColor:FlxColor = cinematicBars["top"].color;
+					cinematicBars["top"].color = FlxColor.fromRGB(settings.colors[0], settings.colors[1], settings.colors[2]);
+					cinematicBars["bottom"].color = FlxColor.fromRGB(settings.colors[0], settings.colors[1], settings.colors[2]);
+
+					shittyTwns[4] = FlxTween.color(cinematicBars["top"], settings.timer, FlxColor.fromRGB(settings.colors[0], settings.colors[1], settings.colors[2]), lastColor, {ease: returnTweenEase(settings.ease.toLowerCase().trim()), onComplete: function(twn:FlxTween)
+					{
+						shittyTwns[4] = null;
+					}});
+					shittyTwns[5] = FlxTween.color(cinematicBars["bottom"], settings.timer, FlxColor.fromRGB(settings.colors[0], settings.colors[1], settings.colors[2]), lastColor, {ease: returnTweenEase(settings.ease.toLowerCase().trim()), onComplete: function(twn:FlxTween)
+					{
+						shittyTwns[5] = null;
+					}});
+				}
+
+			case ANGLE:
+				if (cinematicBars["top"] != null && cinematicBars["bottom"] != null)
+				{
+					if (shittyTwns[6] != null)
+						shittyTwns[6].cancel();
+
+					shittyTwns[6] = FlxTween.tween(camBars, {angle: settings.valueInput}, settings.timer, {ease: returnTweenEase(settings.ease.toLowerCase().trim()), onComplete: function(twn:FlxTween)
+					{
+						shittyTwns[6] = null;
+					}});
+				}
+
+			case COLOR:
+				if (cinematicBars["top"] != null && cinematicBars["bottom"] != null)
+				{
+					if (shittyTwns[7] != null)
+						shittyTwns[7].cancel();
+					if (shittyTwns[8] != null)
+						shittyTwns[8].cancel();
+
+					shittyTwns[7] = FlxTween.color(cinematicBars["top"], settings.timer, cinematicBars["top"].color, FlxColor.fromRGB(settings.colors[0], settings.colors[1], settings.colors[2]), {ease: returnTweenEase(settings.ease.toLowerCase().trim()), onComplete: function(twn:FlxTween)
+					{
+						shittyTwns[7] = null;
+					}});
+					shittyTwns[8] = FlxTween.color(cinematicBars["bottom"], settings.timer, cinematicBars["bottom"].color, FlxColor.fromRGB(settings.colors[0], settings.colors[1], settings.colors[2]), {ease: returnTweenEase(settings.ease.toLowerCase().trim()), onComplete: function(twn:FlxTween)
+					{
+						shittyTwns[8] = null;
+					}});
+				}
+					
+			case ALPHA:
+				if (cinematicBars["top"] != null && cinematicBars["bottom"] != null)
+				{
+					if (settings.valueInput > 1 || settings.valueInput < 0)
+						settings.valueInput = 1;
+
+					if (shittyTwns[9] != null)
+						shittyTwns[9].cancel();
+
+					shittyTwns[9] = FlxTween.tween(camBars, {alpha: settings.valueInput}, settings.timer, {ease: returnTweenEase(settings.ease.toLowerCase().trim()), onComplete: function(twn:FlxTween)
+					{
+						shittyTwns[9] = null;
+					}});
+				}
+		}
+	}
+
+	public function cinematicBarControlsOld(controlType:String = "add", speed:Float, ease:String = "circInOut", position:Float = 0, bopValue:Float = 0)
+	{
+		switch (controlType.toLowerCase())
+		{
+			case "add" | "create":
+				cinematicBarControls(MOVE, {valueInput: 0, timer: 0.001, ease: "linear"});
+				trace('This event is now outdated! Please use "Cinematic Event" for future event usage!');
 				
 			case "remove" | "kill" | "delete":
-				if (cinematicBars["top"] != null)
-				{
-					cinematicBars["top"].kill();
-					cinematicBars["top"] = null;
-				}
-				if (cinematicBars["bottom"] != null)
-				{
-					cinematicBars["bottom"].kill();
-					cinematicBars["bottom"] = null;
-				}
+				trace("function is deprecated!");
 				
 			case "movetop" | "move top":
-				if (topBarTwn != null)
-					topBarTwn.cancel();
-
-				topBarTwn = FlxTween.tween(cinematicBars["top"], {y: position - FlxG.height}, speed, {ease: returnTweenEase(ease), onComplete: function(twn:FlxTween)
-				{
-					topBarTwn = null;
-				}});
+				trace("function is deprecated!");
 				
 			case "movebottom" | "move bottom":
-				if (bottomBarTwn != null)
-					bottomBarTwn.cancel();
-
-				bottomBarTwn = FlxTween.tween(cinematicBars["bottom"], {y: FlxG.height - position}, speed, {ease: returnTweenEase(ease), onComplete: function(twn:FlxTween)
-				{
-					bottomBarTwn = null;
-				}});
+				trace("function is deprecated!");
 				
 			case "moveboth" | "move both":
-				if (topBarTwn != null)
-					topBarTwn.cancel();
-				if (bottomBarTwn != null)
-					bottomBarTwn.cancel();
-
-				topBarTwn = FlxTween.tween(cinematicBars["top"], {y: position - FlxG.height}, speed, {ease: returnTweenEase(ease), onComplete: function(twn:FlxTween)
-				{
-					topBarTwn = null;
-				}});
-				bottomBarTwn = FlxTween.tween(cinematicBars["bottom"], {y: FlxG.height - position}, speed, {ease: returnTweenEase(ease), onComplete: function(twn:FlxTween)
-				{
-					bottomBarTwn = null;
-				}});
+				cinematicBarControls(MOVE, {valueInput: position, timer: speed, ease: ease});
+				trace('This event is now outdated! Please use "Cinematic Event" for future event usage!');
 				
 			case "boptop" | "bop top":
-				cinematicBars["top"].y = position - FlxG.height;
-				FlxTween.tween(cinematicBars["top"], {y: (position - FlxG.height) + bopValue}, speed, {ease: returnTweenEase(ease)});
+				trace("function is deprecated!");
 				
 			case "bopbottom" | "bop bottom":
-				cinematicBars["bottom"].y = FlxG.height - position;
-				FlxTween.tween(cinematicBars["bottom"], {y: (FlxG.height - position) - bopValue}, speed, {ease: returnTweenEase(ease)});
+				trace("function is deprecated!");
 				
 			case "bopboth" | "bop both":
-				if (topBarTwn != null)
-					topBarTwn.cancel();
-				if (bottomBarTwn != null)
-					bottomBarTwn.cancel();
-
-				cinematicBars["top"].y = position - FlxG.height;
-				cinematicBars["bottom"].y = FlxG.height - position;
-				topBarTwn = FlxTween.tween(cinematicBars["top"], {y: (position - FlxG.height) + bopValue}, speed, {ease: returnTweenEase(ease), onComplete: function(twn:FlxTween)
-				{
-					topBarTwn = null;
-				}});
-				bottomBarTwn = FlxTween.tween(cinematicBars["bottom"], {y: (FlxG.height - position) - bopValue}, speed, {ease: returnTweenEase(ease), onComplete: function(twn:FlxTween)
-				{
-					bottomBarTwn = null;
-				}});
+				cinematicBarControls(BOP, {valueInput: position, timer: speed, ease: ease});
+				trace('This event is now outdated! Please use "Cinematic Event" for future event usage!');
 		}
 	}
 
@@ -3629,7 +3719,7 @@ class PlayState extends MusicBeatState
 			case 'Cinematic Bar Controls':
 				var triggerInfo:Array<String> = value2.split(',');
 				
-				cinematicBarControls(
+				cinematicBarControlsOld(
 					value1.toLowerCase(),                //Type of event for the bars
 					Std.parseFloat(triggerInfo[0]),     //Time
 					triggerInfo[1],                    //Ease type
@@ -3652,6 +3742,64 @@ class PlayState extends MusicBeatState
 							alpha: Std.parseFloat(triggerInfo[0]), 
 							timer: Std.parseFloat(triggerInfo[1]), 
 							ease: returnTweenEase(triggerInfo[2])});
+				}
+
+			case 'Cinematic Event':
+				var triggerInfo:Array<String> = value2.split(',');
+				switch (value1.toLowerCase().trim())
+				{
+					case "move": 
+						cinematicBarControls(MOVE, 
+						{
+							thickness: Std.parseFloat(triggerInfo[0]), //Thickness of the bars
+							timer: Std.parseFloat(triggerInfo[1]), //Duration
+							ease: triggerInfo[2] //Ease name
+						});
+					case "angle": 
+						cinematicBarControls(ANGLE, 
+						{
+							thickness: Std.parseFloat(triggerInfo[0]), //Camera angle of the bars
+							timer: Std.parseFloat(triggerInfo[1]), //Duration
+							ease: triggerInfo[2] //Ease name
+						});
+					case "color": 
+						cinematicBarControls(COLOR, 
+						{
+							colors: //Color the bars change to
+							[
+								Std.parseInt(triggerInfo[0]), //R
+								Std.parseInt(triggerInfo[1]), //G
+								Std.parseInt(triggerInfo[2]) //B
+							], 
+							timer: Std.parseFloat(triggerInfo[3]), //Duration
+							ease: triggerInfo[4] //Ease name
+						});
+					case "flash": 
+						cinematicBarControls(FLASH, 
+							{
+								colors: //Flash color of the bars
+								[
+									Std.parseInt(triggerInfo[0]), //R
+									Std.parseInt(triggerInfo[1]), //G
+									Std.parseInt(triggerInfo[2]) //B
+								], 
+								timer: Std.parseFloat(triggerInfo[3]), //Duration
+								ease: triggerInfo[4] //Ease name
+							});
+					case "alpha": 
+						cinematicBarControls(ALPHA, 
+							{
+								thickness: Std.parseFloat(triggerInfo[0]), //Alpha value of the camera the bars are on
+								timer: Std.parseFloat(triggerInfo[1]), //Duration
+								ease: triggerInfo[2] //Ease name
+							});
+					case "bop": 
+							cinematicBarControls(BOP, 
+							{
+								thickness: Std.parseFloat(triggerInfo[0]), //How intense the bars will bop
+								timer: Std.parseFloat(triggerInfo[1]), //Duration
+								ease: triggerInfo[2] //Ease name
+							});
 				}
 
 			case 'Camera Event':	
