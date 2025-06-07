@@ -87,12 +87,17 @@ class ChartingState extends MusicBeatState
 		['Mercy Transition', "too lazy to put a description here"],
 		['Mercy Stuff idk', "Value 1: Event you want\nValue 2: Leave empty\n\nTween Icons - Tweens the mechanic icons shown\nTween Walt Goop - Tweens the goop at the end of Mercy"],
 		['Remove Health', "Value 1: How much health to remove"],
+		['Devilish Events', ''],
+		['Icon Handler', ''],
 		['Lunacy Event Thing idk', "it just tweens the gradient idk. I'm to bored rn to care lmao"],
 		['Fire Handler', 'Handles the Fire in Lunacy/Delusional\n\nValue 1 - Visibility, Y, Time\nValue 2 - Ease type.'],
 		['Rain Handler', 'Handles the Rain in Lunacy/Delusional\n\nValue 1 - Visibility, Time\nValue 2 - Ease type.'],
 		['Trigger TG shader shi', "Add - Adds the shader\nRemove - Removes the shader"],
 		['Trigger Hunted Stuffs', ''],
 		['Bless Events', ''],
+		['Relapse Gimmick', 'Value 1 -  Reaction Time, Damage Amount\nValue 2 - Double Barrel'],
+		['Relapse Events', ''],
+		['Change Screen Dimming', 'Value 1 - Visibility and Time\nValue 2 - ease type.\n(THIS EVENT CAN ONLY CAN BE USED IN DELUSIONAL LEGACY)'],
 		['Tween Char Scale', 'Too lazy to put a desc here.'],
 		['Play Sound', "Value 1: Sound file name\nValue 2: Volume (Default: 1), ranges from 0 to 1"]
 	];

@@ -205,61 +205,13 @@ class DevilishStage extends BaseStage
 		// me when zoom gets higher or whatever -jason
 		if(curBeat >= 64 && curBeat < 95)
 		{
-			FlxG.camera.zoom += 0.025;
-			camHUD.zoom += 0.042;
 			FlxTween.tween(gradient, {alpha: 0.3}, 2);
 		}
 
 		if(curBeat >= 96 && curBeat < 111)
 		{
-			FlxG.camera.zoom += 0.04;
-			camHUD.zoom += 0.053;
 			FlxTween.tween(gradient, {alpha: 0.6}, 2);
 		}
-
-		if(curBeat == 112)
-		{
-			game.isCameraOnForcedPos = true;
-			FlxTween.tween(game.camFollow, {x: game.camFollow.x - 150, y: 1380}, 14, {ease: FlxEase.sineInOut});
-			FlxTween.tween(FlxG.camera, {zoom: 2}, 14, {ease: FlxEase.sineInOut});
-			FlxTween.tween(gradient, {alpha: 0.9}, 2);
-		}
-
-		if(curBeat >= 112) // doesn't make sense to but a "&& curBeat < idk"
-		{
-			// not including camGame cus it bugs out
-			camHUD.zoom += 0.053;
-		}
-
-		switch (curBeat)
-		{
-			case 1:
-				minnieIcon.visible = true;
-				satanIcon.visible = true;
-				game.iconP1.visible = false;
-				game.iconP2.visible = false;
-				game.uiGroup.add(minnieIcon);
-				game.uiGroup.add(satanIcon);
-				game.uiGroup.add(satanIconPulse);
-			case 62: satanIcon.animation.curAnim.curFrame = 2;
-			case 63: minnieIcon.animation.curAnim.curFrame = 1;
-			case 64:
-				satanIconPulse.visible = true;
-				satanIconPulse.alpha = 0.001;
-			case 96: minnieIcon.animation.curAnim.curFrame = 2;
-			case 112: minnieIcon.animation.curAnim.curFrame = 0;
-			case 128:
-				game.healthBar.visible = false;
-				game.healthBarBG.visible = false;
-				minnieIcon.visible = false;
-				satanIcon.visible = false;
-				game.noteGroup.visible = false;
-				game.fancyBarOverlay.visible = false;
-				game.scoreTxt.visible = false;
-				game.watermarkTxt.visible = false;
-				game.songTxt.visible = false;
-		}
-
 		if (curBeat >= 64 && curBeat <= 79)
 		{
 			if (iconPulseTween != null)
@@ -349,179 +301,108 @@ class DevilishStage extends BaseStage
 			});
 		}
 		
-		switch (curBeat)
-		{
-			// Intro
-			case 1: 
-				devilishGaming.play();
-				devilishGaming.visible = true;
-			
-			case 8: FlxTween.tween(game.camGame, {alpha: 1}, 4.5, {ease: FlxEase.sineOut});
-
-			case 16:
-				FlxTween.tween(game.camVideo, {alpha: 0}, 3, {ease: FlxEase.sineOut});
-				game.defaultCamZoom = 1.3;
-				game.manageLyrics('satanddNEW', 'In the rain...', 'betterSatanFont.ttf', 30, 2, 'sineInOut', 0.1);
-
-			case 20:
-				game.manageLyrics('satanddNEW', '...Looking so blue...', 'betterSatanFont.ttf', 30, 3.2, 'sineInOut', 0.08);
-
-			case 26:
-				game.manageLyrics('satanddNEW', '...SPEAK...', 'betterSatanFont.ttf', 30, 0.7, 'sineInOut', 0.05);
-
-			case 28:
-				game.defaultCamZoom = 0.55;
-				game.manageLyrics('satanddNEW', '...What is on your mind?', 'betterSatanFont.ttf', 30, 2.5, 'sineInOut', 0.06);
-
-			case 30:
-				FlxTween.tween(game.camHUD, {alpha: 1}, 2, {ease: FlxEase.sineOut});
-
-			case 32 | 34 | 36 | 38 | 40 | 42 | 44 | 46 | 48 | 50 | 52 | 54 | 56 | 58:
-					if (ClientPrefs.data.shaders)
-					{
-						if (game.chromTween != null)
-							game.chromTween.cancel();
-
-						game.chromEffect = 0.32;
-
-						game.chromTween = FlxTween.tween(game, {
-							chromEffect: 0.0001
-						}, 1.2, {
-							ease: FlxEase.sineOut,
-							onComplete: function(twn:FlxTween)
-							{
-								game.chromTween = null;
-							}
-						});
-					}
-
-			case 60:
-				game.defaultCamZoom = 1.2;
-				FlxTween.tween(game.camHUD, {alpha: 0.4}, 0.75, {ease: FlxEase.quartInOut});
-				FlxTween.tween(game.dad.colorTransform, {redMultiplier: 1, blueMultiplier: 1, greenMultiplier: 1}, 2, {ease: FlxEase.circInOut});
-				if (ClientPrefs.data.shaders)
-				{
-					if (game.chromTween != null)
-						game.chromTween.cancel();
-
-					game.chromEffect = 0.15;
-
-					game.chromTween = FlxTween.tween(game, {
-						chromEffect: 0.00001
-					}, 1.2, {
-						ease: FlxEase.sineOut,
-						onComplete: function(twn:FlxTween)
-						{
-							game.chromTween = null;
-						}
-					});
-				}
-
-			case 62:
-				if (ClientPrefs.data.shaders)
-				{
-					if (game.chromTween != null)
-						game.chromTween.cancel();
-
-					game.chromEffect = 0.15;
-
-					game.chromTween = FlxTween.tween(game, {
-						chromEffect: 0.00001
-					}, 2, {
-						ease: FlxEase.sineOut,
-						onComplete: function(twn:FlxTween)
-						{
-							game.chromTween = null;
-						}
-					});
-				}
-
-			case 64:
-				game.defaultCamZoom = 0.55;
-				FlxTween.tween(game.camHUD, {alpha: 1}, 1.2, {ease: FlxEase.quartInOut});
-
-			case 128:
-				camGame.visible = false;
-				if (ClientPrefs.data.flashing)
-					camOther.flash(FlxColor.WHITE, 1);
-				if (ClientPrefs.data.shaders)
-				{
-					if (game.chromTween != null)
-						game.chromTween.cancel();
-
-					game.chromEffect = 0.4;
-
-					game.chromTween = FlxTween.tween(game, {
-						chromEffect: 0.00001
-					}, 2.3, {
-						ease: FlxEase.sineOut,
-						onComplete: function(twn:FlxTween)
-						{
-							game.chromTween = null;
-						}
-					});
-				}
-		}
-
-		if (curBeat >= 64 && curBeat <= 95 && ClientPrefs.data.shaders)
-		{
-			if (game.chromTween != null)
-				game.chromTween.cancel();
-
-			game.chromEffect = 0.23;
-
-			game.chromTween = FlxTween.tween(game, {
-				chromEffect: 0.00001
-			}, 1.5, {
-				ease: FlxEase.sineOut,
-				onComplete: function(twn:FlxTween)
-				{
-					game.chromTween = null;
-				}
-			});
-		}
-
-		if (curBeat >= 96 && curBeat <= 111 && ClientPrefs.data.shaders)
-		{
-			if (game.chromTween != null)
-				game.chromTween.cancel();
-
-			game.chromEffect = 0.27;
-
-			game.chromTween = FlxTween.tween(game, {
-				chromEffect: 0.0001
-			}, 1.5, {
-				ease: FlxEase.sineOut,
-				onComplete: function(twn:FlxTween)
-				{
-					game.chromTween = null;
-				}
-			});
-		}
-
-		if (curBeat >= 112 && curBeat <= 127 && ClientPrefs.data.shaders)
-		{
-			if (game.chromTween != null)
-				game.chromTween.cancel();
-
-			game.chromEffect = 0.32;
-
-			game.chromTween = FlxTween.tween(game, {
-				chromEffect: 0.00001
-			}, 1.5, {
-				ease: FlxEase.sineOut,
-				onComplete: function(twn:FlxTween)
-				{
-					game.chromTween = null;
-				}
-			});
-		}
-
 		minnieIcon.scale.set(1.2, 1.2);
 		minnieIcon.updateHitbox();
 
 		satanIconPulse.scale.set(1.35, 1.35);
 		satanIconPulse.updateHitbox();
+	}
+	// For events
+	override function eventCalled(eventName:String, value1:String, value2:String, flValue1:Null<Float>, flValue2:Null<Float>, strumTime:Float)
+	{
+		switch(eventName)
+		{
+			case 'Change Screen Dimming':
+				var triggerInfo:Array<String> = value1.split(',');
+				FlxTween.tween(gradient, {alpha: Std.parseFloat(triggerInfo[0])}, Std.parseFloat(triggerInfo[1]));
+			case 'Devilish Events':
+				var eventData:Float = Std.parseFloat(value1);
+				switch (eventData)
+				{
+					case 1:
+						devilishGaming.play();
+						devilishGaming.visible = true;
+						minnieIcon.visible = true;
+						satanIcon.visible = true;
+						game.iconP1.visible = false;
+						game.iconP2.visible = false;
+						game.uiGroup.add(minnieIcon);
+						game.uiGroup.add(satanIcon);
+						game.uiGroup.add(satanIconPulse);
+					case 2:
+						game.manageLyrics('satanddNEW', 'In the rain...', 'betterSatanFont.ttf', 30, 2, 'sineInOut', 0.1);
+					case 3:
+						game.manageLyrics('satanddNEW', '...Looking so blue...', 'betterSatanFont.ttf', 30, 3.2, 'sineInOut', 0.08);
+					case 4:
+						game.manageLyrics('satanddNEW', '...SPEAK...', 'betterSatanFont.ttf', 30, 0.7, 'sineInOut', 0.05);
+					case 5:
+						game.manageLyrics('satanddNEW', '...What is on your mind?', 'betterSatanFont.ttf', 30, 2.5, 'sineInOut', 0.06);
+					case 6:
+						FlxTween.tween(game.dad.colorTransform, {redMultiplier: 1, blueMultiplier: 1, greenMultiplier: 1}, 2, {ease: FlxEase.circInOut});
+				}
+			case 'Icon Handler':
+				var eventData:Float = Std.parseFloat(value1);
+				switch (eventData)
+				{
+					case 1: satanIcon.animation.curAnim.curFrame = 2;
+					case 2: minnieIcon.animation.curAnim.curFrame = 1;
+					case 3:
+						satanIconPulse.visible = true;
+						satanIconPulse.alpha = 0.001;
+					case 4: minnieIcon.animation.curAnim.curFrame = 2;
+					case 5: minnieIcon.animation.curAnim.curFrame = 0;
+					case 6:
+						game.healthBar.visible = false;
+						game.healthBarBG.visible = false;
+						minnieIcon.visible = false;
+						satanIcon.visible = false;
+						game.noteGroup.visible = false;
+						game.fancyBarOverlay.visible = false;
+						game.scoreTxt.visible = false;
+						game.watermarkTxt.visible = false;
+						game.songTxt.visible = false;
+					case 7:
+						FlxTween.tween(game.dad.colorTransform, {redMultiplier: 1, blueMultiplier: 1, greenMultiplier: 1}, 2, {ease: FlxEase.circInOut});
+				}
+			case 'Tween Chromatic Abberation':
+				var triggerInfo:Array<String> = value2.split(',');
+				if (ClientPrefs.data.shaders)
+				{
+					switch (value1.toLowerCase())
+					{
+						case 'tween':
+							if (game.chromTween != null)
+								game.chromTween.cancel();
+
+							game.chromEffect = Std.parseFloat(triggerInfo[0]);
+
+							game.chromTween = FlxTween.tween(game, {
+								chromEffect: 0.0001
+							}, Std.parseFloat(triggerInfo[1]), {
+								ease: FlxEase.sineOut,
+								onComplete: function(twn:FlxTween)
+								{
+									game.chromTween = null;
+								}
+							});
+						case 'zoom':
+							if (game.chromTween != null)
+								game.chromTween.cancel();
+
+							game.chromTween = FlxTween.tween(game, {
+								chromEffect: Std.parseFloat(triggerInfo[0])
+							}, Std.parseFloat(triggerInfo[1]), {
+								ease: FlxEase.sineOut,
+								onComplete: function(twn:FlxTween)
+								{
+									game.chromTween = null;
+								}
+							});
+						case 'set':
+							game.chromEffect = Std.parseFloat(triggerInfo[0]);
+					}
+				}
+		}
 	}
 
 	// Substates for pausing/resuming tweens and timers
@@ -569,5 +450,87 @@ class DevilishStage extends BaseStage
 			chromNormalShader.setFloat('bOffset', -game.chromEffect / 70);
 			dramaticCamMovement.setFloat('time', shaderAnim);
 		}
+	}
+
+	public static function returnTweenEase(ease:String = '')
+	{
+		switch (ease.toLowerCase())
+		{
+			case 'linear':
+				return FlxEase.linear;
+			case 'backin':
+				return FlxEase.backIn;
+			case 'backinout':
+				return FlxEase.backInOut;
+			case 'backout':
+				return FlxEase.backOut;
+			case 'bouncein':
+				return FlxEase.bounceIn;
+			case 'bounceinout':
+				return FlxEase.bounceInOut;
+			case 'bounceout':
+				return FlxEase.bounceOut;
+			case 'circin':
+				return FlxEase.circIn;
+			case 'circinout':
+				return FlxEase.circInOut;
+			case 'circout':
+				return FlxEase.circOut;
+			case 'cubein':
+				return FlxEase.cubeIn;
+			case 'cubeinout':
+				return FlxEase.cubeInOut;
+			case 'cubeout':
+				return FlxEase.cubeOut;
+			case 'elasticin':
+				return FlxEase.elasticIn;
+			case 'elasticinout':
+				return FlxEase.elasticInOut;
+			case 'elasticout':
+				return FlxEase.elasticOut;
+			case 'expoin':
+				return FlxEase.expoIn;
+			case 'expoinout':
+				return FlxEase.expoInOut;
+			case 'expoout':
+				return FlxEase.expoOut;
+			case 'quadin':
+				return FlxEase.quadIn;
+			case 'quadinout':
+				return FlxEase.quadInOut;
+			case 'quadout':
+				return FlxEase.quadOut;
+			case 'quartin':
+				return FlxEase.quartIn;
+			case 'quartinout':
+				return FlxEase.quartInOut;
+			case 'quartout':
+				return FlxEase.quartOut;
+			case 'quintin':
+				return FlxEase.quintIn;
+			case 'quintinout':
+				return FlxEase.quintInOut;
+			case 'quintout':
+				return FlxEase.quintOut;
+			case 'sinein':
+				return FlxEase.sineIn;
+			case 'sineinout':
+				return FlxEase.sineInOut;
+			case 'sineout':
+				return FlxEase.sineOut;
+			case 'smoothstepin':
+				return FlxEase.smoothStepIn;
+			case 'smoothstepinout':
+				return FlxEase.smoothStepInOut;
+			case 'smoothstepout':
+				return FlxEase.smoothStepInOut;
+			case 'smootherstepin':
+				return FlxEase.smootherStepIn;
+			case 'smootherstepinout':
+				return FlxEase.smootherStepInOut;
+			case 'smootherstepout':
+				return FlxEase.smootherStepOut;
+		}
+		return FlxEase.linear;
 	}
 }

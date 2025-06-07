@@ -131,93 +131,97 @@ class LegEpisode1Street extends BaseStage
 			}
 		}
 	}
-
-	override function beatHit()
+	
+	// For events
+	override function eventCalled(eventName:String, value1:String, value2:String, flValue1:Null<Float>, flValue2:Null<Float>, strumTime:Float)
+	{
+		switch(eventName)
 		{
-			switch (PlayState.SONG.song)
-			{
-				case 'Delusional Legacy':
-					switch (curBeat)
-					{
-						case 180:
-							FlxTween.tween(waltScreenThing, {alpha: 0.7}, 18, {ease: FlxEase.sineInOut});
-						case 240:
-							FlxTween.tween(waltScreenThing, {alpha: 0.0001}, 1, {ease: FlxEase.sineOut});
-						case 372:
-							FlxTween.tween(waltScreenThing, {alpha: 1}, 2, {ease: FlxEase.expoOut});
-						case 396:
-							FlxTween.tween(waltScreenThing, {alpha: 0.001}, 4, {ease: FlxEase.quartInOut});
-						case 592:
-							FlxTween.tween(waltScreenThing, {alpha: 1}, 8, {ease: FlxEase.expoInOut});
-						case 628:
-							waltScreenThing.alpha = 0.001;
-
-						case 796:
-							FlxTween.tween(waltScreenThing, {alpha: 0.75}, 28, {ease: FlxEase.quartInOut});
-						case 892:
-							FlxTween.tween(waltScreenThing, {alpha: 0}, 1, {ease: FlxEase.sineOut});
-						case 896:
-							FlxTween.tween(waltScreenThing, {alpha: 1}, 5, {ease: FlxEase.expoOut});
-						case 920:
-							FlxTween.tween(waltScreenThing, {alpha: 0}, 3);
-						case 960:
-							FlxTween.tween(waltScreenThing, {alpha: 1}, 5, {ease: FlxEase.expoOut});
-					}
-				/*
-				case 'Isolated Legacy':
-					switch (curBeat)
-					{
-						case 1 | 16 | 352 | 368: game.tweenCamera(1.3, 5, 'sineInOut');
-						case 14 | 30 | 46 | 64 | 80 | 84: game.defaultCamZoom = 0.9;
-						case 32 | 48: game.tweenCamera(1.2, 3, 'sineInOut');
-						case 40 | 42 | 44 | 56 | 58 | 60 | 62 | 82: game.defaultCamZoom += 0.12;
-						case 66 | 86: game.defaultCamZoom += 0.2;
-						case 68 | 88: game.defaultCamZoom -= 0.15;
-						case 72 | 74 | 76 | 78 | 90 | 92 | 94: game.defaultCamZoom += 0.09;
-						case 96 | 224:
-							game.camFlashSystem(BG_DARK, {alpha: 0, timer: 0.001, ease: FlxEase.sineInOut});
-							if (ClientPrefs.data.flashing) camGame.flash(FlxColor.WHITE, 1);
-							game.defaultCamZoom = 0.9;
-						case 98 | 106 | 114 | 122 | 130 | 138 | 146 | 154 | 226 | 234 | 242 | 250 | 258 | 266 | 274 | 282 | 290 | 298 | 306 | 314 | 322 | 330 | 338 | 346:
-							game.camFlashSystem(BG_FLASH, {alpha: 0.75, timer: 0.5, ease: FlxEase.circOut});
-							FlxG.camera.zoom += 0.2;
-							camHUD.zoom += 0.23;
-						case 99 | 107 | 115 | 123 | 131 | 139 | 147 | 155 | 227 | 235 | 243 | 251 | 259 | 267 | 275 | 283 | 291 | 299 | 307 | 315 | 323 | 331 | 339 | 347:
-							game.camFlashSystem(BG_FLASH, {alpha: 0.3, timer: 0.5, ease: FlxEase.circOut});
-							FlxG.camera.zoom += 0.08;
-							camHUD.zoom += 0.11;
-						case 101 | 109 | 117 | 125 | 133 | 141 | 149 | 157 | 229 | 237 | 245 | 253 | 261 | 269 | 277 | 285 | 293 | 301 | 309 | 317 | 325 | 333 | 341 | 349:
-							game.camFlashSystem(BG_FLASH, {alpha: 0.4, timer: 0.5, ease: FlxEase.circOut});
-							FlxG.camera.zoom += 0.1;
-							camHUD.zoom += 0.13;
-						case 102 | 110 | 118 | 126 | 134 | 142 | 150 | 230 | 238 | 246 | 254 | 262 | 270 | 278 | 286 | 294 | 302 | 310 | 318 | 326 | 334 | 342 | 350:
-							game.camFlashSystem(BG_FLASH, {alpha: 0.55, timer: 0.5, ease: FlxEase.circOut});
-							FlxG.camera.zoom += 0.12;
-							camHUD.zoom += 0.15;
-						case 104 | 112 | 120 | 128 | 136 | 144 | 152 | 232 | 240 | 248 | 256 | 264 | 272 | 280 | 288 | 296 | 304 | 312 | 320 | 328 | 336 | 344:
-							game.camFlashSystem(BG_FLASH, {alpha: 0.3, timer: 0.5, ease: FlxEase.circOut});
-							FlxG.camera.zoom += 0.23;
-							camHUD.zoom += 0.26;
-						case 158:
-							game.camFlashSystem(BG_DARK, {alpha: 0.85, timer: 1.2, ease: FlxEase.sineInOut});
-							FlxG.camera.zoom += 0.23;
-							camHUD.zoom += 0.26;
-						case 192 | 200 | 208 | 216:
-							game.defaultCamZoom += 0.1;
-						case 366 | 382:
-							game.defaultCamZoom -= 0.1;
-						case 367 | 383:
-							game.defaultCamZoom -= 0.25;
-						case 412:
-							game.tweenCamera(2, 2, "sineIn");
-						case 416:
-							camGame.visible = false;
-							game.uiGroup.visible = false;
-							game.noteGroup.visible = false;
-							game.comboGroup.visible = false;
-					}
-				*/
+			case 'Change Screen Dimming':
+				var triggerInfo:Array<String> = value1.split(',');
+				FlxTween.tween(waltScreenThing, {alpha: Std.parseFloat(triggerInfo[0])}, Std.parseFloat(triggerInfo[1]), {ease: returnTweenEase(value2)});
 		}
 	}
 
+	public static function returnTweenEase(ease:String = '')
+	{
+		switch (ease.toLowerCase())
+		{
+			case 'linear':
+				return FlxEase.linear;
+			case 'backin':
+				return FlxEase.backIn;
+			case 'backinout':
+				return FlxEase.backInOut;
+			case 'backout':
+				return FlxEase.backOut;
+			case 'bouncein':
+				return FlxEase.bounceIn;
+			case 'bounceinout':
+				return FlxEase.bounceInOut;
+			case 'bounceout':
+				return FlxEase.bounceOut;
+			case 'circin':
+				return FlxEase.circIn;
+			case 'circinout':
+				return FlxEase.circInOut;
+			case 'circout':
+				return FlxEase.circOut;
+			case 'cubein':
+				return FlxEase.cubeIn;
+			case 'cubeinout':
+				return FlxEase.cubeInOut;
+			case 'cubeout':
+				return FlxEase.cubeOut;
+			case 'elasticin':
+				return FlxEase.elasticIn;
+			case 'elasticinout':
+				return FlxEase.elasticInOut;
+			case 'elasticout':
+				return FlxEase.elasticOut;
+			case 'expoin':
+				return FlxEase.expoIn;
+			case 'expoinout':
+				return FlxEase.expoInOut;
+			case 'expoout':
+				return FlxEase.expoOut;
+			case 'quadin':
+				return FlxEase.quadIn;
+			case 'quadinout':
+				return FlxEase.quadInOut;
+			case 'quadout':
+				return FlxEase.quadOut;
+			case 'quartin':
+				return FlxEase.quartIn;
+			case 'quartinout':
+				return FlxEase.quartInOut;
+			case 'quartout':
+				return FlxEase.quartOut;
+			case 'quintin':
+				return FlxEase.quintIn;
+			case 'quintinout':
+				return FlxEase.quintInOut;
+			case 'quintout':
+				return FlxEase.quintOut;
+			case 'sinein':
+				return FlxEase.sineIn;
+			case 'sineinout':
+				return FlxEase.sineInOut;
+			case 'sineout':
+				return FlxEase.sineOut;
+			case 'smoothstepin':
+				return FlxEase.smoothStepIn;
+			case 'smoothstepinout':
+				return FlxEase.smoothStepInOut;
+			case 'smoothstepout':
+				return FlxEase.smoothStepInOut;
+			case 'smootherstepin':
+				return FlxEase.smootherStepIn;
+			case 'smootherstepinout':
+				return FlxEase.smootherStepInOut;
+			case 'smootherstepout':
+				return FlxEase.smootherStepOut;
+		}
+		return FlxEase.linear;
+	}
 }
