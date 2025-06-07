@@ -140,7 +140,7 @@ class LegEpisode1Street extends BaseStage
 					switch (curBeat)
 					{
 						case 180:
-							FlxTween.tween(waltScreenThing, {alpha: 0.7}, 18z, {ease: FlxEase.sineInOut});
+							FlxTween.tween(waltScreenThing, {alpha: 0.7}, 18, {ease: FlxEase.sineInOut});
 						case 240:
 							FlxTween.tween(waltScreenThing, {alpha: 0.0001}, 1, {ease: FlxEase.sineOut});
 						case 372:
