@@ -3751,14 +3751,14 @@ class PlayState extends MusicBeatState
 					case "move": 
 						cinematicBarControls(MOVE, 
 						{
-							thickness: Std.parseFloat(triggerInfo[0]), //Thickness of the bars
+							valueInput: Std.parseFloat(triggerInfo[0]), //Thickness of the bars
 							timer: Std.parseFloat(triggerInfo[1]), //Duration
 							ease: triggerInfo[2] //Ease name
 						});
 					case "angle": 
 						cinematicBarControls(ANGLE, 
 						{
-							thickness: Std.parseFloat(triggerInfo[0]), //Camera angle of the bars
+							valueInput: Std.parseFloat(triggerInfo[0]), //Camera angle of the bars
 							timer: Std.parseFloat(triggerInfo[1]), //Duration
 							ease: triggerInfo[2] //Ease name
 						});
@@ -3789,14 +3789,14 @@ class PlayState extends MusicBeatState
 					case "alpha": 
 						cinematicBarControls(ALPHA, 
 							{
-								thickness: Std.parseFloat(triggerInfo[0]), //Alpha value of the camera the bars are on
+								valueInput: Std.parseFloat(triggerInfo[0]), //Alpha value of the camera the bars are on
 								timer: Std.parseFloat(triggerInfo[1]), //Duration
 								ease: triggerInfo[2] //Ease name
 							});
 					case "bop": 
 							cinematicBarControls(BOP, 
 							{
-								thickness: Std.parseFloat(triggerInfo[0]), //How intense the bars will bop
+								valueInput: Std.parseFloat(triggerInfo[0]), //How intense the bars will bop
 								timer: Std.parseFloat(triggerInfo[1]), //Duration
 								ease: triggerInfo[2] //Ease name
 							});
