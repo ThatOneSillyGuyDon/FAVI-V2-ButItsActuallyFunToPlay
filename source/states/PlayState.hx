@@ -2068,7 +2068,8 @@ class PlayState extends MusicBeatState
 		var file:String = Paths.json((SONG.song == "Dont Cross" ? fuckYou : songName) + '/events');
 		var eventsData:Array<Dynamic>;
 
-		if (OpenFlAssets.exists(file) || SONG.song == "Dont Cross" || (SONG.song == "Twisted Grins" && ClientPrefs.data.mechanics)) {
+		if (OpenFlAssets.exists(file) || SONG.song == "Dont Cross" || (SONG.song == "Twisted Grins" && ClientPrefs.data.mechanics)) 
+		{
 			eventsData = Song.loadFromJson('events', (SONG.song == "Dont Cross" ? fuckYou : songName) ).events;
 			for (event in eventsData) //Event Notes
 			{
