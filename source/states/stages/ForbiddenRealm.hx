@@ -261,34 +261,21 @@ class ForbiddenRealm extends BaseStage
 			}
 		}
 	}
-
-	override function beatHit()
+	
+	var staticTwn:FlxTween;
+	var staticTmr:Float = 1;
+	
+	override function eventCalled(eventName:String, value1:String, value2:String, flValue1:Null<Float>, flValue2:Null<Float>, strumTime:Float)
 	{
-		switch (curBeat)
+		switch(eventName)
 		{
-			// Intro Cam Stuff
-			case 1:
-				game.camBars.fade(FlxColor.BLACK, 5, true);
-			case 16: game.tweenCamera(1.2, 5, 'quartInOut');
-			case 32:
-				game.defaultCamZoom = 0.8;
-				FlxTween.tween(camHUD, {alpha: 1}, 0.5, {ease: FlxEase.sineOut});
-			case 39 | 48 | 64 | 72 | 88 | 96 | 103 | 113 | 128 | 192: game.defaultCamZoom = 0.8;
-			case 38 | 102: game.tweenCamera(1.5, 0.25, 'sineInOut');
-			case 45 | 61 | 110 | 126 | 187: game.defaultCamZoom = 0.9;
-			case 46 | 62 | 67 | 76 | 83 | 92 | 111 | 127 | 158 | 190: game.defaultCamZoom = 1;
-			case 47 | 63 | 68 | 84 | 112 | 159: game.defaultCamZoom = 1.3;
-			case 69 | 85: game.defaultCamZoom = 1.1;
-			case 160: 
-				game.defaultCamZoom = 0.75;
-				whiteBG.alpha = 1;
-				FlxTween.tween(whiteBG, {alpha: 0}, 2);
-				game.camFlashSystem(BG_DARK, {alpha: 1, timer: 5, ease: FlxEase.expoInOut});
-			case 164: game.tweenCamera(1.5, 6, 'sineInOut');
-			case 184:
-				game.defaultCamZoom = 0.8;
-				game.camFlashSystem(BG_DARK, {alpha: 0, timer: 1, ease: FlxEase.sineOut});
-			case 191:
+			case 'Change Dads Cam Offset':
+				if (!game.cpuControlled)
+				{
+					game.opponentCameraOffset[0] += flValue1;
+					game.opponentCameraOffset[1] += flValue2;
+				}
+			case 'Add Mal Shaders':
 				if (ClientPrefs.data.shaders)
 				{
 					if (!ClientPrefs.data.lowQuality && ClientPrefs.data.epilepsy)
@@ -301,158 +288,74 @@ class ForbiddenRealm extends BaseStage
 						camHUD.setFilters([new ShaderFilter(chromNormalShader), new ShaderFilter(blurShader)]);
 					}
 				}
-			case 252:
-				game.defaultCamZoom += 0.15;
-			case 256:
-				game.defaultCamZoom -= 0.15;
-			case 320:
-				FlxTween.tween(camHUD, {alpha: 0}, 0.5);
-			case 324:
-				var count:FlxSprite = new FlxSprite().loadGraphic(Paths.image('UI/funkinAVI/intro/mal-prepare'));
-				count.scrollFactor.set();
-				count.updateHitbox();
-				count.setGraphicSize(Std.int(count.width * 6));
-				count.antialiasing = false;
-				count.screenCenter();
-				add(count);
-				FlxTween.tween(count, {y: count.y += 50, alpha: 0}, Conductor.crochet / 1000, {
-					ease: FlxEase.cubeInOut,
-					onComplete: function(twn:FlxTween)
-					{
-						count.destroy();
-					}
-				});
-				FlxG.sound.play(Paths.sound('intro3-glitch'), 2);
-			case 325:
-				var count:FlxSprite = new FlxSprite().loadGraphic(Paths.image('UI/funkinAVI/intro/mal-ready'));
-				count.scrollFactor.set();
-				count.updateHitbox();
-				count.setGraphicSize(Std.int(count.width * 6));
-				count.screenCenter();
-				count.antialiasing = false;
-				add(count);
-				FlxTween.tween(count, {y: count.y += 50, alpha: 0}, Conductor.crochet / 1000, {
-					ease: FlxEase.cubeInOut,
-					onComplete: function(twn:FlxTween)
-					{
-						count.destroy();
-					}
-				});
-				FlxG.sound.play(Paths.sound('intro2-glitch'), 2);
-			case 326:
-				var count:FlxSprite = new FlxSprite().loadGraphic(Paths.image('UI/funkinAVI/intro/mal-set'));
-				count.scrollFactor.set();
-				count.updateHitbox();
-				count.setGraphicSize(Std.int(count.width * 6));
-				count.screenCenter();
-				count.antialiasing = false;
-				add(count);
-				FlxTween.tween(count, {y: count.y += 50, alpha: 0}, Conductor.crochet / 1000, {
-					ease: FlxEase.cubeInOut,
-					onComplete: function(twn:FlxTween)
-					{
-						count.destroy();
-					}
-				});
-				FlxG.sound.play(Paths.sound('intro1-glitch'), 2);
-			case 327:
-				var count:FlxSprite = new FlxSprite().loadGraphic(Paths.image('UI/funkinAVI/intro/mal-go'));
-				count.scrollFactor.set();
-				count.updateHitbox();
-				count.setGraphicSize(Std.int(count.width * 6));
-				count.screenCenter();
-				count.antialiasing = false;
-				add(count);
-				FlxTween.tween(count, {y: count.y += 50, alpha: 0}, Conductor.crochet / 1000, {
-					ease: FlxEase.cubeInOut,
-					onComplete: function(twn:FlxTween)
-					{
-						count.destroy();
-					}
-				});
-				FlxG.sound.play(Paths.sound('introGo-glitch'), 2);
-			case 328:
-				FlxTween.tween(camHUD, {alpha: 1}, 0.5);
-			case 360:
-				game.camFlashSystem(BG_DARK, {alpha: 0.3, timer: 0.25, ease: FlxEase.sineOut});
-				if (!game.cpuControlled)
-					game.opponentCameraOffset[0] -= 90;
-				game.defaultCamZoom += 0.05;
-			case 362:
-				game.camFlashSystem(BG_DARK, {alpha: 0.6, timer: 0.25, ease: FlxEase.sineOut});
-				if (!game.cpuControlled)
-					game.opponentCameraOffset[0] -= 105;
-				game.defaultCamZoom += 0.1;
-			case 364:
-				game.camFlashSystem(BG_DARK, {alpha: 0, timer: 0.5, ease: FlxEase.sineOut});
-				if (!game.cpuControlled)
-					game.opponentCameraOffset[0] += 195;
-				game.defaultCamZoom -= 0.15;
-				game.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.85, timer: 1.5, ease: FlxEase.quartOut, colors: [255, 0, 0]});
-			case 378:
-				game.boyfriendCameraOffset[0] += 80;
-				game.defaultCamZoom += 0.1;
-			case 380:
-				game.defaultCamZoom += 0.1;
-			case 384:
-				game.boyfriendCameraOffset[0] -= 80;
-				game.defaultCamZoom -= 0.2;
-				game.camFlashSystem(BG_FLASH, {alpha: 0.85, timer: 1.5, ease: FlxEase.quartOut, colors: [66, 215, 245]});
-			case 390 | 391:
-				FlxG.camera.zoom += 0.1;
-			case 392:
-				game.camFlashSystem(BG_DARK, {alpha: 0.75, timer: 0.35, ease: FlxEase.sineOut});
-				if (!game.cpuControlled)
-					game.opponentCameraOffset[0] -= 200;
-				game.defaultCamZoom += 0.15;
-			case 394:
-				game.camFlashSystem(BG_FLASH, {alpha: 0.85, timer: 1.5, ease: FlxEase.quartOut, colors: [255, 0, 0]});
-				if (!game.cpuControlled)
-					game.opponentCameraOffset[0] += 200;
-				game.defaultCamZoom -= 0.15;
-			case 396 | 397 | 398 | 399 | 404 | 405 | 406 | 407 | 412 | 413 | 414 | 415 | 420 | 421 | 422 | 444 | 445 | 446 | 447 | 452 | 453 | 454 | 455:
-				game.camFlashSystem(BG_FLASH, {alpha: 0.15, timer: 0.3, ease: FlxEase.quartOut, colors: [255, 0, 0]});
-				FlxG.camera.zoom += 0.1;
-			case 456:
-				game.camFlashSystem(BG_DARK, {alpha: 0.75, timer: 5, ease: FlxEase.sineInOut});
-				game.tweenCamera(1.35, 7, "sineInOut");
-				if (!game.cpuControlled)
-					game.opponentCameraOffset[0] -= 25;
-			case 460 | 464 | 468 | 472 | 476 | 480 | 484:
-				if (!game.cpuControlled)
-					game.opponentCameraOffset[0] -= 25;
-			case 488:
-				game.camFlashSystem(BG_FLASH, {alpha: 0.85, timer: 2, ease: FlxEase.sineOut, colors: [255, 255, 255]});
-				game.defaultCamZoom = 0.9;
-				if (!game.cpuControlled)
-					game.opponentCameraOffset[0] += 200;
-			case 504:
-				FlxTween.tween(game.camFollow, {x: game.camFollow.x + 150}, 5, {ease: FlxEase.sineInOut});
-			case 520 | 524 | 528 | 532 | 536 | 540 | 544 | 548:
-				FlxG.camera.zoom += 0.16;
-				game.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.7, timer: 1, ease: FlxEase.expoOut, colors: [FlxG.random.int(0, 255), FlxG.random.int(0, 255), FlxG.random.int(0, 255)]});
-			case 552:
-				game.canBopCam = true;
-			case 584:
-				game.canBopCam = false;
-				FlxG.camera.zoom += 0.23;
-				FlxTween.tween(camHUD, {alpha: 0}, 4.45, {ease: FlxEase.quartInOut});
-			case 616:
-				camGame.visible = false;
-		}
-	}
-	override function sectionHit()
-	{
-		// Code here
-	}
-
-	var staticTwn:FlxTween;
-	var staticTmr:Float = 1;
-	
-	override function eventCalled(eventName:String, value1:String, value2:String, flValue1:Null<Float>, flValue2:Null<Float>, strumTime:Float)
-	{
-		switch(eventName)
-		{
+			case 'Malfunction Countdown':
+				switch(flValue1)
+				{
+					case 3:
+						var count:FlxSprite = new FlxSprite().loadGraphic(Paths.image('UI/funkinAVI/intro/mal-prepare'));
+						count.scrollFactor.set();
+						count.updateHitbox();
+						count.setGraphicSize(Std.int(count.width * 6));
+						count.antialiasing = false;
+						count.screenCenter();
+						add(count);
+						FlxTween.tween(count, {y: count.y += 50, alpha: 0}, Conductor.crochet / 1000, {
+							ease: FlxEase.cubeInOut,
+							onComplete: function(twn:FlxTween)
+							{
+								count.destroy();
+							}
+						});
+						FlxG.sound.play(Paths.sound('intro3-glitch'), 2);
+					case 2:
+						var count:FlxSprite = new FlxSprite().loadGraphic(Paths.image('UI/funkinAVI/intro/mal-ready'));
+						count.scrollFactor.set();
+						count.updateHitbox();
+						count.setGraphicSize(Std.int(count.width * 6));
+						count.screenCenter();
+						count.antialiasing = false;
+						add(count);
+						FlxTween.tween(count, {y: count.y += 50, alpha: 0}, Conductor.crochet / 1000, {
+							ease: FlxEase.cubeInOut,
+							onComplete: function(twn:FlxTween)
+							{
+								count.destroy();
+							}
+						});
+						FlxG.sound.play(Paths.sound('intro2-glitch'), 2);
+					case 1:
+						var count:FlxSprite = new FlxSprite().loadGraphic(Paths.image('UI/funkinAVI/intro/mal-set'));
+						count.scrollFactor.set();
+						count.updateHitbox();
+						count.setGraphicSize(Std.int(count.width * 6));
+						count.screenCenter();
+						count.antialiasing = false;
+						add(count);
+						FlxTween.tween(count, {y: count.y += 50, alpha: 0}, Conductor.crochet / 1000, {
+							ease: FlxEase.cubeInOut,
+							onComplete: function(twn:FlxTween)
+							{
+								count.destroy();
+							}
+						});
+						FlxG.sound.play(Paths.sound('intro1-glitch'), 2);
+					case 0:
+						var count:FlxSprite = new FlxSprite().loadGraphic(Paths.image('UI/funkinAVI/intro/mal-go'));
+						count.scrollFactor.set();
+						count.updateHitbox();
+						count.setGraphicSize(Std.int(count.width * 6));
+						count.screenCenter();
+						count.antialiasing = false;
+						add(count);
+						FlxTween.tween(count, {y: count.y += 50, alpha: 0}, Conductor.crochet / 1000, {
+							ease: FlxEase.cubeInOut,
+							onComplete: function(twn:FlxTween)
+							{
+								count.destroy();
+							}
+						});
+						FlxG.sound.play(Paths.sound('introGo-glitch'), 2);
+				}
 			case 'Static Event':
 				if (ClientPrefs.data.epilepsy)
 				{
