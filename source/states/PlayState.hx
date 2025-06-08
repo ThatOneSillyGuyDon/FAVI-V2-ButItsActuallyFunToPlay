@@ -3165,9 +3165,10 @@ class PlayState extends MusicBeatState
 			case MOVE:
 				if (cinematicBars["top"] == null)
 				{
-					cinematicBars["top"] = new FlxSprite(0, 0).makeGraphic(FlxG.width*3, FlxG.height, FlxColor.WHITE);
+					cinematicBars["top"] = new FlxSprite(0, 0).makeGraphic(1, 1, FlxColor.WHITE);
 					cinematicBars["top"].screenCenter(X);
 					cinematicBars["top"].cameras = [camBars];
+					cinematicBars["top"].setGraphicSize(FlxG.width * 3, FlxG.height);
 					cinematicBars["top"].y = 0 - cinematicBars["top"].height; // offscreen
 					add(cinematicBars["top"]);
 					cinematicBars["top"].color = FlxColor.BLACK;
@@ -3175,9 +3176,10 @@ class PlayState extends MusicBeatState
 		
 				if (cinematicBars["bottom"] == null)
 				{
-					cinematicBars["bottom"] = new FlxSprite(0, 0).makeGraphic(FlxG.width*3, FlxG.height, FlxColor.WHITE);
+					cinematicBars["bottom"] = new FlxSprite(0, 0).makeGraphic(1, 1, FlxColor.WHITE);
 					cinematicBars["bottom"].screenCenter(X);
 					cinematicBars["bottom"].cameras = [camBars];
+					cinematicBars["bottom"].setGraphicSize(FlxG.width * 3, FlxG.height);
 					cinematicBars["bottom"].y = FlxG.height; // offscreen
 					add(cinematicBars["bottom"]);
 					cinematicBars["bottom"].color = FlxColor.BLACK;
@@ -3320,6 +3322,8 @@ class PlayState extends MusicBeatState
 	}
 
 	public var dumbCamTwn:FlxTween;
+
+	// i hate this code its useless lolol
 	/**
 	* ## Camera Zoom Tween Fix
 	* 
