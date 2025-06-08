@@ -12,7 +12,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Fade",
-						"0,0,0,0.0001,1,false"
+						"0,0,0,0.0001,false"
 					],
 					[
 						"Camera Event",
@@ -62,7 +62,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Fade",
-						"0,0,0,3,0,true"
+						"0,0,0,3,true"
 					],
 					[
 						"Camera Event",
@@ -110953,7 +110953,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Fade",
-						"0,0,0,0.0001,1,false"
+						"0,0,0,0.0001,false"
 					],
 					[
 						"Cinematic Bar Controls",
@@ -111018,7 +111018,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Fade",
-						"0,0,0,3,0,true"
+						"0,0,0,3,true"
 					]
 				]
 			],
@@ -111208,7 +111208,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Flash",
-						"255,255,255,1,0,true"
+						"255,255,255,1,1,true"
 					],
 					[
 						"Background Controls",
@@ -111253,7 +111253,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Fade",
-						"0,0,0,1,1,false"
+						"0,0,0,1,false"
 					]
 				]
 			],
@@ -111348,7 +111348,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Fade",
-						"0,0,0,0.0001,1,true"
+						"0,0,0,0.0001,true"
 					],
 					[
 						"Camera Event",
@@ -111368,7 +111368,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Fade",
-						"0,0,0,0.0001,1,true"
+						"0,0,0,0.0001,true"
 					],
 					[
 						"Background Controls",
@@ -111578,7 +111578,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Flash",
-						"255,255,255,1,0,true"
+						"255,255,255,1,1,true"
 					],
 					[
 						"Background Controls",
@@ -111788,7 +111788,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Fade",
-						"0,0,0,2,1,false"
+						"0,0,0,2,false"
 					]
 				]
 			]
