@@ -775,7 +775,7 @@ class PlayState extends MusicBeatState
 		flashSprite.screenCenter();
 		flashSprite.alpha = 0.001;
 		add(flashSprite);
-		flashSprite.cameras = [camBars];
+		flashSprite.cameras = [camHUD];
 
 		comboGroup = new FlxSpriteGroup();
 		add(comboGroup);
@@ -3924,22 +3924,40 @@ class PlayState extends MusicBeatState
 					case "flash":
 						if (ClientPrefs.data.flashing)
 						{
-							camBars.flash(
-								FlxColor.fromRGB(
-									Std.parseInt(triggerInfo[0]), 
-									Std.parseInt(triggerInfo[1]), 
-									Std.parseInt(triggerInfo[2])), 
-								Std.parseFloat(triggerInfo[3]));
+							if (triggerInfo[0] == null) triggerInfo[0] = "255";
+							if (triggerInfo[1] == null) triggerInfo[1] = "255";
+							if (triggerInfo[2] == null) triggerInfo[2] = "255";
+							if (triggerInfo[3] == null) triggerInfo[3] = "1";
+							if (triggerInfo[4] == null) triggerInfo[4] = "1";
+							if (triggerInfo[5] == null) triggerInfo[5] = "false";
+				
+							var boolShit:Bool = false;
+				
+							if (triggerInfo[5].toLowerCase().trim() == "true")
+								boolShit = true;
+				
+							flashSprite.color = FlxColor.fromRGB(Std.parseInt(triggerInfo[0]), Std.parseInt(triggerInfo[1]), Std.parseInt(triggerInfo[2]));
+							flashSpeed = Std.parseFloat(triggerInfo[3]);
+							flashSprite.alpha = Std.parseFloat(triggerInfo[4]);
+							flashSprite.blend = (boolShit ? ADD : NORMAL);
 						}
 
 					case "fade":
-						camBars.fade(
-							FlxColor.fromRGB(
-								Std.parseInt(triggerInfo[0]),
-								 Std.parseInt(triggerInfo[1]), 
-								 Std.parseInt(triggerInfo[2])), 
-							Std.parseFloat(triggerInfo[3]), 
-							triggerInfo[5] == "true" ? true : false);
+						if (ClientPrefs.data.flashing) //technically, this can still cause potential epilepic seizures if used a certain way
+						{
+							if (triggerInfo[0] == null) triggerInfo[0] = "0";
+							if (triggerInfo[1] == null) triggerInfo[1] = "0";
+							if (triggerInfo[2] == null) triggerInfo[2] = "0";
+							if (triggerInfo[3] == null) triggerInfo[3] = "1";
+							if (triggerInfo[4] == null) triggerInfo[4] = "false";
+
+							var boolShit:Bool = false;
+			
+							if (triggerInfo[4].toLowerCase().trim() == "true")
+								boolShit = true;
+
+							camBars.fade(FlxColor.fromRGB(Std.parseInt(triggerInfo[0]), Std.parseInt(triggerInfo[1]), Std.parseInt(triggerInfo[2])), Std.parseFloat(triggerInfo[3]), boolShit);
+						}
 
 					case "changepos" | "change pos" | "set position" | "setposition":
 						if(camFollow != null)
