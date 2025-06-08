@@ -775,7 +775,7 @@ class PlayState extends MusicBeatState
 		flashSprite.screenCenter();
 		flashSprite.alpha = 0.001;
 		add(flashSprite);
-		flashSprite.cameras = [camHUD];
+		flashSprite.cameras = [camBars];
 
 		comboGroup = new FlxSpriteGroup();
 		add(comboGroup);
