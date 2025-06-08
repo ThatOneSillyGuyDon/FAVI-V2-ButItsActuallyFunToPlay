@@ -3981,8 +3981,8 @@ class PlayState extends MusicBeatState
 					case "tweenpos" | "tween pos" | "tweenposition" | "tween position":
 						if (camFollow != null)
 						{
-							if (camTwn[6] != null)
-								camTwn[6].cancel();
+							if (camTwn[7] != null)
+								camTwn[7].cancel();
 
 							isCameraOnForcedPos = false;
 							if(triggerInfo[0] != null || triggerInfo[1] != null)
@@ -3990,9 +3990,9 @@ class PlayState extends MusicBeatState
 								isCameraOnForcedPos = true;
 								if(triggerInfo[0] == null) triggerInfo[0] = "0";
 								if(triggerInfo[1] == null) triggerInfo[1] = "0";
-								camTwn[6] = FlxTween.tween(camFollow, {x: Std.parseFloat(triggerInfo[0]), y: Std.parseFloat(triggerInfo[1])}, Std.parseFloat(triggerInfo[2]), {ease: returnTweenEase(triggerInfo[3]), onComplete: function(twn:FlxTween)
+								camTwn[7] = FlxTween.tween(camFollow, {x: Std.parseFloat(triggerInfo[0]), y: Std.parseFloat(triggerInfo[1])}, Std.parseFloat(triggerInfo[2]), {ease: returnTweenEase(triggerInfo[3]), onComplete: function(twn:FlxTween)
 								{
-									camTwn[6] = null;
+									camTwn[7] = null;
 								}});
 							}
 						}
