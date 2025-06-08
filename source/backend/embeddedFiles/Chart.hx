@@ -142,7 +142,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Flash",
-						"255,255,255,1.5,1,false"
+						"255,255,255,0.85,1,false"
 					]
 				]
 			],
@@ -512,7 +512,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Flash",
-						"255,255,255,1.5,1,true"
+						"255,255,255,0.85,1,true"
 					],
 					[
 						"Background Controls",
@@ -852,7 +852,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Flash",
-						"255,255,255,1.5,1,true"
+						"255,255,255,0.85,1,true"
 					]
 				]
 			],
@@ -1362,7 +1362,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Flash",
-						"255,255,255,1.5,1,true"
+						"255,255,255,0.85,1,true"
 					],
 					[
 						"Set Property",
@@ -1762,7 +1762,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Flash",
-						"255,255,255,1.5,1,true"
+						"255,255,255,0.85,1,true"
 					]
 				]
 			],
@@ -2082,7 +2082,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Flash",
-						"255,255,255,1.5,1,true"
+						"255,255,255,0.85,1,true"
 					]
 				]
 			],
@@ -2412,7 +2412,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Flash",
-						"255,255,255,1.5,1,true"
+						"255,255,255,0.85,1,true"
 					],
 					[
 						"Background Controls",
@@ -2792,7 +2792,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Flash",
-						"255,255,255,1.5,1,true"
+						"255,255,255,0.85,1,true"
 					]
 				]
 			],
@@ -2972,7 +2972,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Flash",
-						"0,0,0,1.5,1,true"
+						"0,0,0,0.85,1,true"
 					],
 					[
 						"Background Controls",
@@ -12655,7 +12655,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Flash",
-						"0,0,0,1.5,1,true"
+						"0,0,0,0.85,1,false"
 					]
 				]
 			],
@@ -12820,7 +12820,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Flash",
-						"0,0,0,0.9,1,true"
+						"0,0,0,1.2,1,false"
 					]
 				]
 			],
@@ -13020,7 +13020,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Flash",
-						"255,255,255,1.5,1,true"
+						"255,255,255,0.85,1,true"
 					]
 				]
 			],
@@ -13185,7 +13185,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Flash",
-						"255,255,255,1.5,1,true"
+						"255,255,255,0.85,1,true"
 					]
 				]
 			],
@@ -13200,7 +13200,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Flash",
-						"255,255,255,1.5,1,true"
+						"255,255,255,0.85,1,true"
 					]
 				]
 			],
@@ -13410,7 +13410,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Flash",
-						"0,0,0,1.5,1,true"
+						"0,0,0,0.85,1,false"
 					]
 				]
 			],
@@ -14055,7 +14055,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Flash",
-						"255,255,255,1.5,1,true"
+						"255,255,255,0.85,1,true"
 					],
 					[
 						"Camera Event",
@@ -14250,7 +14250,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Flash",
-						"255,255,255,1.5,1,true"
+						"255,255,255,0.85,1,true"
 					]
 				]
 			],
@@ -14770,7 +14770,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Flash",
-						"255,255,255,1.5,1,true"
+						"255,255,255,0.85,1,true"
 					]
 				]
 			],
@@ -14995,7 +14995,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Flash",
-						"255,255,255,1.5,1,true"
+						"255,255,255,0.85,1,true"
 					],
 					[
 						"Set Property",
@@ -16350,7 +16350,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Flash",
-						"255,255,255,1.5,1,true"
+						"255,255,255,0.85,1,true"
 					],
 					[
 						"Set Property",
@@ -17515,7 +17515,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Flash",
-						"255,255,255,1.5,1,true"
+						"255,255,255,0.8,1,true"
 					]
 				]
 			],
@@ -17940,7 +17940,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Flash",
-						"0,0,0,1.5,1,true"
+						"0,0,0,0.9,1,false"
 					],
 					[
 						"Set Property",
@@ -34049,7 +34049,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Flash",
-						"255,255,255,1,1,true"
+						"255,255,255,1.6,1,true"
 					],
 					[
 						"Tween Chromatic Abberation",
@@ -42155,7 +42155,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Flash",
-						"255,255,255,1,1,true"
+						"255,255,255,1.6,1,true"
 					],
 					[
 						"Background Controls",
@@ -43050,7 +43050,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Flash",
-						"255,255,255,1,1,true"
+						"255,255,255,1.6,1,true"
 					],
 					[
 						"Background Controls",
@@ -70036,7 +70036,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Flash",
-						"255,255,255,3,1,true"
+						"255,255,255,1,1,true"
 					]
 				]
 			],
@@ -70056,7 +70056,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Flash",
-						"255,255,255,3,1,true"
+						"255,255,255,1,1,true"
 					]
 				]
 			],
@@ -70141,7 +70141,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Flash",
-						"255,255,255,3,1,true"
+						"255,255,255,1,1,true"
 					],
 					[
 						"Set Property",
@@ -70261,7 +70261,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Flash",
-						"255,255,255,3,1,true"
+						"255,255,255,1,1,true"
 					]
 				]
 			],
@@ -70321,7 +70321,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Flash",
-						"255,255,255,3,1,true"
+						"255,255,255,1,1,true"
 					]
 				]
 			],
@@ -73046,7 +73046,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Flash",
-						"255,255,255,3,1,true"
+						"255,255,255,1,1,true"
 					],
 					[
 						"Set Property",
@@ -73831,7 +73831,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Flash",
-						"255,255,255,3,1,true"
+						"255,255,255,1,1,true"
 					]
 				]
 			],
@@ -73976,7 +73976,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Flash",
-						"255,255,255,3,1,true"
+						"255,255,255,1,1,true"
 					],
 					[
 						"Set Property",
@@ -133917,7 +133917,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Flash",
-						"0,0,0,3,1,true"
+						"0,0,0,1,1,true"
 					],
 					[
 						"Background Controls",
@@ -211174,7 +211174,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Flash",
-						"255,255,255,0.3,true"
+						"255,255,255,3,1,true"
 					],
 					[
 						"Camera Event",
@@ -211409,7 +211409,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Flash",
-						"255,255,255,0.3,true"
+						"255,255,255,3,1,true"
 					],
 					[
 						"Camera Event",
