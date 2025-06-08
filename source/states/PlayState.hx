@@ -917,6 +917,15 @@ class PlayState extends MusicBeatState
 
 		iconP1 = new HealthIcon((SONG.song == "Mercy" ? "everettmercy" : boyfriend.healthIcon), (SONG.song == "Mercy" ? false : true));
 		iconP1.y = healthBar.y - 75;
+
+		// reposition specific icons on the healthbar properly
+		switch (boyfriend.healthIcon)
+		{
+			case "everett" | "maleverett-pixel": iconP1.y -= 20;
+			case "everettmodern": iconP1.y -= 10;
+			case "everettb": iconP1.y -= 5;
+		}
+		
 		iconP1.visible = !ClientPrefs.data.hideHud;
 		iconP1.alpha = ClientPrefs.data.healthBarAlpha;
 		uiGroup.add(iconP1);
