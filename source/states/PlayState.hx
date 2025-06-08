@@ -3313,7 +3313,7 @@ class PlayState extends MusicBeatState
 				trace("function is deprecated!");
 				
 			case "bopboth" | "bop both":
-				cinematicBarControls(BOP, {valueInput: position, timer: speed, ease: ease});
+				cinematicBarControls(BOP, {valueInput: bopValue, timer: speed, ease: ease});
 				trace('This event is now outdated! Please use "Cinematic Event" for future event usage!');
 		}
 	}
