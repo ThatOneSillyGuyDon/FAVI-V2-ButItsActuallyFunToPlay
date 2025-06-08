@@ -86332,7 +86332,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Fade",
-						"0,0,0,5,1,true"
+						"0,0,0,5,true"
 					]
 				]
 			],
