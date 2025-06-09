@@ -185,6 +185,19 @@ class PlayfieldRenderer extends FlxSprite //extending flxsprite just so i can ed
             strumScaleX = 1*PlayState.daPixelZoom;
             strumScaleY = 1*PlayState.daPixelZoom;
         }
+        if (PlayState.curStage == "menuSongs")
+        {
+            switch (i)
+            {
+                case 0 | 1 | 2 | 3:
+                    strumX = -9999999;
+                    strumY = 9999999;
+                case 4 | 5 | 6 | 7:
+                    strumX += 11;
+                    strumY += 10;
+                    strumZ -= 25;
+            }
+        }
         var strumData:NotePositionData = NotePositionData.get();
         strumData.setupStrum(strumX, strumY, strumZ, i, strumScaleX, strumScaleY, strumSkewX, strumSkewY, pf);
         playfields[pf].applyOffsets(strumData);
