@@ -189,14 +189,26 @@ void mainImage()
 	
 	void mainImage()
 	{
-		vec2 uv = fragCoord.xy / iResolution.xy;
-		vec4 img = texture(iChannel0,uv);
-		vec4 color = fwidth(img);
-		fragColor = color*2.;
-		//fragColor = .005/color; //inverted
-		//fragColor = vec4(1.-3.*min(.9,length(color)))*length(img)/1.2; //pencil
-		//fragColor = vec4(1.-3.*min(.9,length(color)))*length(img)/1.2*vec4(ivec4(8.*img))/8.;  //couloured pencil
-		//fragColor = img*.05/color; // same... but different
+
+
+		vec2 uv = fragCoord/iResolution.xy;
+		
+		vec2 off = 4.5 / iResolution.xy;
+
+		
+		vec4 col = vec4(0.);;
+
+		vec4 c1 = texture(iChannel0, uv);
+		vec4 c2 = texture(iChannel0, uv + vec2(off.x, 0.));
+		vec4 c3 = texture(iChannel0, uv + vec2(0., off.y));
+
+		
+		col = vec4(length((c1 - c2) + (c1 - c3)));
+		
+		
+		
+		
+		fragColor = col;
 	}
 	";
 
