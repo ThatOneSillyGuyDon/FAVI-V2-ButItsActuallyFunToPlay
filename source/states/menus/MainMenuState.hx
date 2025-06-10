@@ -322,10 +322,10 @@ class MainMenuState extends MusicBeatState
 			if (FlxG.mouse.justPressed && !selectedSomethin)
 				if (FlxG.mouse.overlaps(menuItems.members[curSelected]))
 					enterSelection();
-			if (FlxG.keys.justPressed.SEVEN)
+			if (controls.justPressed('debug_1'))
 			{
-				FlxG.sound.play(Paths.sound('cancelMenu'));
-				messenger.sendMessage('Sorry, debug access is not allowed!', 'We will open it back up in a later update however...');
+				selectedSomethin = true;
+				MusicBeatState.switchState(new MasterEditorMenu());
 			}	
 			if (FlxG.keys.justPressed.ONE && Main.debug)
 			{

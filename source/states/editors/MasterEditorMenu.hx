@@ -37,6 +37,14 @@ class MasterEditorMenu extends MusicBeatState
 		bg.color = 0xFF222222;
 		add(bg);
 
+		var tiles:FlxBackdrop = new FlxBackdrop(Paths.image("Funkin_avi/editor/chart/arrowTile"), XY, 0, 0);
+		tiles.scrollFactor.set();
+		tiles.velocity.set(-80, 30);
+		tiles.blend = ADD;
+		tiles.color = bg.color;
+		tiles.alpha = 0.3;
+		add(tiles);
+
 		grpTexts = new FlxTypedGroup<Alphabet>();
 		add(grpTexts);
 

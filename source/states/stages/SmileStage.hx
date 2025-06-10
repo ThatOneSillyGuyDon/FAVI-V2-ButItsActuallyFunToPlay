@@ -11,6 +11,7 @@ class SmileStage extends BaseStage
 	public static var staticEffect:FlxRuntimeShader = new FlxRuntimeShader(Shaders.tvStatic, null, 120);
 
 	public static var outline:FlxRuntimeShader = new FlxRuntimeShader(Shaders.tGOutline, null, 120);
+	public static var noteOutline:FlxRuntimeShader = new FlxRuntimeShader(Shaders.tGNoteOutline, null, 120);
 
 	public var shaderAnim:Float = 0;
 
@@ -85,17 +86,25 @@ class SmileStage extends BaseStage
 						{
 							game.boyfriend.shader = outline;
 							game.dad.shader = outline;
+							camHUD.setFilters([
+								new ShaderFilter(noteOutline)
+							]);
 						}
 					case 'remove':
 						if (ClientPrefs.data.shaders)
 						{
 							game.boyfriend.shader = null;
 							game.dad.shader = null;	
+							camHUD.setFilters([]);
 						}
 					case 'addlight':
 						funiLight.alpha = 0.6;
+						camHUD.setFilters([]);
 					case 'killlight':
 						funiLight.alpha = 0.0001;
+						camHUD.setFilters([
+							new ShaderFilter(noteOutline)
+						]);
 				}
 				
 		}
