@@ -5,6 +5,7 @@ import states.stages.objects.*;
 #if !flash 
 import openfl.filters.ShaderFilter;
 #end
+import shaders.OutlineEffect;
 
 class SmileStage extends BaseStage
 {
