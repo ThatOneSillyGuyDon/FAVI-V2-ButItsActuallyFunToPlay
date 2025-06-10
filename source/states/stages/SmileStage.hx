@@ -10,8 +10,8 @@ class SmileStage extends BaseStage
 {
 	public static var staticEffect:FlxRuntimeShader = new FlxRuntimeShader(Shaders.tvStatic, null, 120);
 
-	public static var outline:FlxRuntimeShader = new FlxRuntimeShader(Shaders.tGOutline, null, 120);
-	public static var noteOutline:FlxRuntimeShader = new FlxRuntimeShader(Shaders.tGNoteOutline, null, 120);
+	public static var outline:OutlineEffect = new OutlineEffect();
+	public static var noteOutline:OutlineEffect = new OutlineEffect();
 
 	public var shaderAnim:Float = 0;
 
@@ -21,6 +21,9 @@ class SmileStage extends BaseStage
 	{
 		game.defaultCamZoom = 0.75;
 		game.cameraSpeed = 2.5;
+
+		outline.thickness = 4.5;
+		noteOutline.thickness = 2.25;
 
 		var office:FlxSprite = new FlxSprite(-500, -300).loadGraphic(Paths.image(PlayState.pathway + 'office'));
 		office.antialiasing = true;
@@ -82,29 +85,17 @@ class SmileStage extends BaseStage
 				switch (value1.toLowerCase())
 				{
 					case 'add':
-						if (ClientPrefs.data.shaders)
-						{
-							game.boyfriend.shader = outline;
-							game.dad.shader = outline;
-							camHUD.setFilters([
-								new ShaderFilter(noteOutline)
-							]);
-						}
+						game.boyfriend.shader = outline.shader;
+						game.dad.shader = outline.shader;
 					case 'remove':
-						if (ClientPrefs.data.shaders)
-						{
-							game.boyfriend.shader = null;
-							game.dad.shader = null;	
-							camHUD.setFilters([]);
-						}
+						game.boyfriend.shader = null;
+						game.dad.shader = null;	
 					case 'addlight':
 						funiLight.alpha = 0.6;
 						camHUD.setFilters([]);
 					case 'killlight':
 						funiLight.alpha = 0.0001;
-						camHUD.setFilters([
-							new ShaderFilter(noteOutline)
-						]);
+						camHUD.setFilters([new ShaderFilter(noteOutline.shader)]);
 				}
 				
 		}
