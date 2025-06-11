@@ -573,576 +573,16 @@ class Episode1Street extends BaseStage
 					add(demonBFScary);
 			}
 		
-		switch (PlayState.SONG.song)
-		{
-			case 'Delusional':
-				
-				switch (curBeat)
-				{
-					case 1: 
-						game.boundValue = 1;
-						game.drainValue = 0.02;
-						game.camBars.fade(FlxColor.BLACK, 2, true);
-					case 132: game.defaultCamZoom = 1.3;
-					case 136:
-						game.camBars.fade(FlxColor.BLACK, 0.6);
-						for (daUIs in [camHUD])
-							FlxTween.tween(daUIs, {alpha: 0}, 3);
-					// BF Starts Singing Some Lyrics
-					case 143:
-						game.camVideo.fade(FlxColor.BLACK, 5, true);
-						game.camVideo.visible = true;
-						deluSing.visible = true;
-						deluSing.setVideoTime(0);
-						deluSing.resume();
-						//it's bugged :(
-						//if (game.vocals.volume != 1) game.vocals.volume = 1; // it should be fixed then
-					case 144:
-						game.defaultCamZoom = 0.8;
-						game.camBars.fade(0x000000, 5, true);
-						game.camFlashSystem(BG_DARK, {alpha: 1, timer: 0.3, ease: FlxEase.quartInOut});
-						game.defaultCamZoom = 1.2;
-						game.camFollow.x -= 100;
-						FlxTween.tween(game.camFollow, {x: game.camFollow.x + 100}, 12, {ease: FlxEase.sineInOut});
-					case 176:
-						game.camFlashSystem(BG_DARK, {alpha: 0, timer: 0.3, ease: FlxEase.quartInOut});
-						game.defaultCamZoom = 0.75;
-						game.camGame.flash(FlxColor.WHITE, 1);
-
-						// today in super r slur shit we have this cus i hate my life
-						FlxTween.tween(game.camFollow, {y: game.camFollow.y - 300}, .00000001, {onComplete: bensonFromRegularShow -> {
-							FlxTween.tween(game.camFollow, {y: game.camFollow.y + 300}, 7, {ease: FlxEase.sineInOut});
-						}});
-					case 180 | 188 | 196:
-						camGame.zoom += 0.3;
-						game.camFlashSystem(BG_FLASH, {alpha: 0.5, timer: 0.35});
-					case 184 | 192 | 200:
-						camGame.zoom += 0.15;
-						game.camFlashSystem(BG_FLASH, {alpha: 0.25, timer: 0.35});
-					case 204: game.defaultCamZoom = 1;
-					case 208:
-						game.camBars.fade(0x00000, .000001);
-						game.defaultCamZoom = 1.3;
-
-					// Mickey Screams Like A Bitch
-					case 212:
-						game.camVideo.visible = false;
-						game.boundValue = 0.6;
-						game.drainValue = 0.025;
-						game.chromEffect = 0.3;
-						game.chromTween = FlxTween.tween(game, {chromEffect: 1}, 1.2);
-						game.camBars.fade(0x00000, .000001, true);
-						game.defaultCamZoom = 0.75;
-						camGame.shake(0.01, 1.2);
-						camGame.visible = true;
-						camGame.alpha = 1;
-					// The Drop Starts
-					case 216:
-						FlxTween.tween(camHUD, {alpha: 1}, 1, {ease: FlxEase.quadOut});
-						if (game.chromTween != null) game.chromTween.cancel();
-						game.chromTween = FlxTween.tween(game, {chromEffect: 0.18}, 0.6, {ease: FlxEase.sineOut});
-						if (ClientPrefs.data.flashing)
-							camGame.flash(FlxColor.WHITE, 0.5);
-						if (ClientPrefs.data.shaders)
-						{
-                            if (!ClientPrefs.data.lowQuality)
-                            {
-                                camGame.setFilters([
-                                    new ShaderFilter(dramaticCamMovement),
-                                    new ShaderFilter(monitorFilter),
-                                    new ShaderFilter(chromZoomShader),
-                                    new ShaderFilter(chromNormalShader),
-                                    new ShaderFilter(delusionalShift)
-                                ]);
-                                camHUD.setFilters([
-									new ShaderFilter(grayScale),
-									new ShaderFilter(chromNormalShader), 
-									new ShaderFilter(delusionalShift)]);
-                            }
-                            else
-                            {
-                                camGame.setFilters([
-                                    new ShaderFilter(monitorFilter),
-                                    new ShaderFilter(chromZoomShader),
-                                    new ShaderFilter(chromNormalShader),
-                                    new ShaderFilter(delusionalShift)
-                                ]);
-                                camHUD.setFilters([
-									new ShaderFilter(grayScale),
-									new ShaderFilter(chromNormalShader), 
-									new ShaderFilter(delusionalShift)]);
-                            }
-						}
-					case 228:
-						game.chromTween = null;
-						game.defaultCamZoom = 0.85;
-					case 230: game.defaultCamZoom = 1;
-					case 232: game.defaultCamZoom = 0.75;
-					case 278: game.defaultCamZoom = 1;
-					case 280 | 312 | 344: game.defaultCamZoom = 0.7;
-					case 288 | 296 | 304 | 320 | 328 | 336: game.defaultCamZoom += 0.1;
-					case 308: game.defaultCamZoom += 0.2;
-					case 340: game.defaultCamZoom += 0.3;
-					case 356 | 388: game.defaultCamZoom = 1.2;
-					case 358 | 390: game.defaultCamZoom = 1.3;
-					case 360: game.defaultCamZoom = 0.75;
-					case 375:
-						game.chromTween = FlxTween.tween(game, {chromEffect: 1}, 0.1, {ease: FlxEase.sineInOut});
-						game.tweenCamera(1.5, 0.1, 'sineInOut');
-					case 376:
-						if (game.chromTween != null) game.chromTween.cancel();
-						game.chromTween = null;
-						camGame.visible = false;
-						game.uiGroup.visible = false;
-					case 377:
-						camGame.visible = true;
-						game.uiGroup.visible = true;
-						if (ClientPrefs.data.flashing)
-							camGame.flash(FlxColor.WHITE, 1);
-						game.defaultCamZoom = 0.8;
-						game.chromTween = FlxTween.tween(game, {chromEffect: 0.1}, 0.6, {ease: FlxEase.quadOut});
-					case 472:
-						if (isStoryMode)
-						{
-							PlayState.detailsText = "Episode 1 - Regret (PEACEFUL)";
-						}
-						else
-						{
-							PlayState.detailsText = "Freeplay - Regret (PEACEFUL)";
-						}
-						PlayState.useFakeDeluName = true;
-						PlayState.windowName = "...";
-						DiscordClient.changePresence("Do you have any idea...", "", (PlayState.useFakeDeluName ? "regret" : CoolUtil.spaceToDash(game.SONG.song).toLowerCase()), "idkMan");
-						lime.app.Application.current.window.title = PlayState.windowName;
-						game.boundValue = 2;
-						game.drainValue = 0;
-						camGame.visible = false;
-						game.uiGroup.visible = false;
-						game.noteGroup.visible = false;
-						if (!ClientPrefs.data.lowQuality)
-						{
-							atmosphereParticle.visible = false;
-							ashParticle.visible = false;
-						}
-					case 473:
-						if (ClientPrefs.data.shaders)
-						{
-                            if (!ClientPrefs.data.lowQuality)
-                            {
-                                camGame.setFilters([
-                                    new ShaderFilter(dramaticCamMovement),
-                                    new ShaderFilter(monitorFilter),
-                                    new ShaderFilter(chromZoomShader),
-                                    new ShaderFilter(chromNormalShader)
-                                ]);
-                               camHUD.setFilters([new ShaderFilter(chromNormalShader)]);
-                            }
-                            else
-                            {
-                                camGame.setFilters([
-                                    new ShaderFilter(monitorFilter),
-                                    new ShaderFilter(chromZoomShader),
-                                    new ShaderFilter(chromNormalShader)
-                                ]);
-                                camHUD.setFilters([new ShaderFilter(chromNormalShader)]);
-                            }
-						}
-						game.chromEffect = 0.00001;
-						game.defaultCamZoom = 0.85;
-					case 476:
-						PlayState.windowName = "Where am I...?";
-						DiscordClient.changePresence("Do you have any idea...", "...what you're dealing with?", (PlayState.useFakeDeluName ? "regret" : CoolUtil.spaceToDash(PlayState.SONG.song).toLowerCase()), "idkMan");
-						lime.app.Application.current.window.title = PlayState.windowName;
-					case 480:
-						DiscordClient.changePresence(PlayState.detailsText, game.scoreTxt.text, (PlayState.useFakeDeluName ? "regret" : CoolUtil.spaceToDash(PlayState.SONG.song).toLowerCase()), "idkMan");
-						PlayState.windowName = "Funkin.avi - " + (isStoryMode ? PlayState.curEpisode + " - " : "Freeplay - ") + "Regret [________]";
-						lime.app.Application.current.window.title = PlayState.windowName;
-						camGame.visible = true;
-						game.noteGroup.visible = true;
-						game.comboGroup.visible = false;
-						game.boyfriend.x += 1000;
-					case 484:
-						PlayState.windowName = "Funkin.avi - " + (isStoryMode ? PlayState.curEpisode + " - " : "Freeplay - ") + "Regret [P_______]";
-						lime.app.Application.current.window.title = PlayState.windowName;
-					case 488:
-						PlayState.windowName = "Funkin.avi - " + (isStoryMode ? PlayState.curEpisode + " - " : "Freeplay - ") + "Regret [PE______]";
-						lime.app.Application.current.window.title = PlayState.windowName;
-					case 492:
-						PlayState.windowName = "Funkin.avi - " + (isStoryMode ? PlayState.curEpisode + " - " : "Freeplay - ") + "Regret [PEA_____]";
-						lime.app.Application.current.window.title = PlayState.windowName;
-					case 496:
-						PlayState.windowName = "Funkin.avi - " + (isStoryMode ? PlayState.curEpisode + " - " : "Freeplay - ") + "Regret [PEAC____]";
-						lime.app.Application.current.window.title = PlayState.windowName;
-					case 500:
-						PlayState.windowName = "Funkin.avi - " + (isStoryMode ? PlayState.curEpisode + " - " : "Freeplay - ") + "Regret [PEACE___]";
-						lime.app.Application.current.window.title = PlayState.windowName;
-					case 504:
-						PlayState.windowName = "Funkin.avi - " + (isStoryMode ? PlayState.curEpisode + " - " : "Freeplay - ") + "Regret [PEACEF__]";
-						lime.app.Application.current.window.title = PlayState.windowName;
-					case 508:
-						PlayState.windowName = "Funkin.avi - " + (isStoryMode ? PlayState.curEpisode + " - " : "Freeplay - ") + "Regret [PEACEFU_]";
-						lime.app.Application.current.window.title = PlayState.windowName;
-						FlxTween.tween(game.boyfriend, {alpha: 0.45}, 2.5, {ease: FlxEase.expoOut});
-					case 512:
-						PlayState.windowName = "Funkin.avi - " + (isStoryMode ? PlayState.curEpisode + " - " : "Freeplay - ") + "Regret [PEACEFUL]";
-						lime.app.Application.current.window.title = PlayState.windowName;
-					case 672:
-						game.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.38, timer: 0.85, colors: [255, 255, 255]});
-						minnieJumpscare.resume();
-						minnieJumpscare.visible = true;
-					case 720:
-						FlxTween.tween(camGame, {alpha: 0.0001}, 5, {ease: FlxEase.quartInOut});
-					case 728:
-						PlayState.windowName = "...";
-						lime.app.Application.current.window.title = PlayState.windowName;
-					case 736:
-						PlayState.windowName = "Welcome back.... Little mouse.";
-						lime.app.Application.current.window.title = PlayState.windowName;
-						PlayState.blendFlash.cameras = [camGame];
-					case 740:
-						game.isCameraOnForcedPos = false;
-						game.boundValue = 0.45;
-						game.drainValue = 0.032;
-						game.boyfriend.alpha = 1;
-						game.camFollow.x = 0;
-						game.camFollow.y = 0;
-						if (!ClientPrefs.data.lowQuality)
-						{
-							atmosphereParticle.visible = true;
-							ashParticle.visible = true;
-						}
-						game.uiGroup.visible = false;
-						camGame.alpha = 1;
-					case 744:
-						PlayState.useFakeDeluName = false;
-						if (isStoryMode)
-						{
-							PlayState.detailsText = "Episode 1 - " + PlayState.SONG.song + " (" + FreeplayState.getDiffRank() + ")";
-						}
-						else
-						{
-							PlayState.detailsText = "Freeplay - " + PlayState.SONG.song + " (" + FreeplayState.getDiffRank() + ")";
-						}
-						PlayState.windowName = "Funkin.avi - " + (isStoryMode ? PlayState.curEpisode + " - " : "Freeplay - ") + PlayState.SONG.song + " [" + FreeplayState.getDiffRank() + "]";
-						DiscordClient.changePresence(PlayState.detailsText, game.scoreTxt.text, (PlayState.useFakeDeluName ? "regret" : CoolUtil.spaceToDash(PlayState.SONG.song).toLowerCase()), "idkMan");
-						lime.app.Application.current.window.title = PlayState.windowName;
-						game.camVideo.visible = false;
-						camGame.alpha = 1;
-						game.uiGroup.visible = true;
-						game.noteGroup.visible = true;
-						game.comboGroup.visible = true;
-						game.defaultCamZoom = 0.9;
-						game.chromEffect = 0.1;
-						if (ClientPrefs.data.flashing)
-							camGame.flash(FlxColor.WHITE, 0.5);
-						if (ClientPrefs.data.shaders)
-						{
-                            if (!ClientPrefs.data.lowQuality)
-                            {
-                                camGame.setFilters([
-                                    new ShaderFilter(dramaticCamMovement),
-									new ShaderFilter(heatWaveEffect),
-                                    new ShaderFilter(monitorFilter),
-                                    new ShaderFilter(chromZoomShader),
-                                    new ShaderFilter(chromNormalShader),
-                                    new ShaderFilter(delusionalShift)
-                                ]);
-                                camHUD.setFilters([new ShaderFilter(grayScale), new ShaderFilter(chromNormalShader), new ShaderFilter(delusionalShift)]);
-                            }
-                            else
-                            {
-                                camGame.setFilters([
-                                    new ShaderFilter(monitorFilter),
-                                    new ShaderFilter(chromZoomShader),
-                                    new ShaderFilter(chromNormalShader),
-                                    new ShaderFilter(delusionalShift)
-                                ]);
-                                camHUD.setFilters([new ShaderFilter(grayScale), new ShaderFilter(chromNormalShader), new ShaderFilter(delusionalShift)]);
-                            }
-						}
-					case 880 | 884 | 888 | 892 | 896 | 900 | 904 | 908 | 913 | 916 | 920 | 924 | 929 | 933 | 936 | 940 | 944 | 948 | 952 | 956 | 960 | 964 | 968 | 972 | 976 | 980 | 984 | 988 | 993 | 997 | 1000 | 1004:
-						game.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.135, timer: 0.85, colors: [255, 0, 0]});
-					// The part where shit gets serious, Evilrette/Satan starts the solo
-					case 1008:
-						game.boundValue = 1.5;
-						game.drainValue = 0.01;
-						game.tweenCamera(1.35, 7, "quartInOut");
-						game.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.4, timer: 2, colors: [255, 0, 0]});
-						game.camFlashSystem(BG_DARK, {alpha: 0.8, timer: 6, ease: FlxEase.quartInOut});
-						game.isCameraOnForcedPos = true;
-						FlxTween.tween(game.camFollow, {x: game.camFollow.x + 150, y: game.camFollow.y + 50}, 4.3, {ease: FlxEase.quartInOut});
-					// camera moves over to Mickey realizing he was never gonna win
-					case 1024:
-						FlxTween.tween(game.camFollow, {x: game.camFollow.x - 950, y: game.camFollow.y - 70}, 1.5, {ease: FlxEase.circInOut});
-					case 1040:
-						game.camFollow.x = 440;
-						game.camFollow.y = 360;
-						FlxTween.tween(mickeySpirit, {alpha: 0.6}, 2, {ease: FlxEase.sineOut});
-						game.defaultCamZoom = 0.5;
-						game.camFlashSystem(BG_DARK, {alpha: 0, timer: 1, ease: FlxEase.circOut});
-					case 1072:
-						FlxTween.tween(mickeySpirit, {alpha: 0}, 4, {ease: FlxEase.quartOut});
-						game.isCameraOnForcedPos = false;
-						game.defaultCamZoom = 0.9;
-					case 1082:
-						FlxTween.tween(camGame, {zoom: 1.6}, 1, {ease: FlxEase.sineInOut});
-						game.camVideo.visible = true;
-						game.camVideo.fade(FlxColor.BLACK, 0.7);
-					case 1086:
-						camGame.visible = false;
-						FlxTween.tween(camHUD, {alpha: 0}, 2);
-						game.camVideo.zoom += 0.3;
-						game.camVideo.fade(FlxColor.BLACK, 0.2, true);
-						FlxTween.tween(game.camVideo, {zoom: 1}, 0.5, {ease: FlxEase.sineOut});
-						game.camFlashSystem(BG_DARK, {timer: 5});
-						death.setVideoTime(0);
-						death.resume();
-						death.visible = true;
-					case 1134:
-						game.camFlashSystem(BG_DARK, {alpha: 1, timer: 0.5, ease: FlxEase.sineOut});
-					case 1136:
-						game.camFlashSystem(BG_FLASH, {alpha: 1, timer: 0.3, ease: FlxEase.sineOut});
-						if (ClientPrefs.data.shaders)
-							{
-								if (!ClientPrefs.data.lowQuality)
-								{
-									camGame.setFilters([
-										new ShaderFilter(dramaticCamMovement),
-										new ShaderFilter(monitorFilter)
-									]);
-								}
-								else
-								{
-									camGame.setFilters([
-										new ShaderFilter(monitorFilter)
-									]);
-								}
-							}
-					case 1144:
-						FlxTween.tween(game.camVideo, {alpha: 0}, 4);
-				}
-
-			if ((curBeat >= 216 && curBeat < 340) || (curBeat >= 344 && curBeat < 356) || (curBeat >= 360 && curBeat < 388) || 
-				(curBeat >= 392 && curBeat < 408) || (curBeat >= 880 && curBeat < 1072))
+			switch (PlayState.SONG.song)
 			{
-				FlxG.camera.zoom += .015;
-				for (mridk in [camHUD]) mridk.zoom += .03;
-			}
-
-			if (curBeat == 1)
-			{
-				if (rain != null) rain.alpha = 1;
-			}
-			if (curBeat == 64)
-			{
-				FlxTween.tween(fakeLightOfHope, {alpha: 0.001}, 1.7);
-				if (!ClientPrefs.data.lowQuality) FlxTween.tween(stageFront, {alpha: 1}, 1.5);
-			}
-			if (curBeat == 176)
-			{
-				if (rain != null) 
-				{
-					rain.kill();
-					rain.destroy();
-					rain = null;
-				}
-				if (heavyRain != null && !ClientPrefs.data.lowQuality)
-					heavyRain.alpha = 0.34;
-			}
-			if (curBeat == 280)
-			{
-				if (!ClientPrefs.data.lowQuality)
-				{
-					smokeShit.forEach(function(spr:FlxSprite)
+				case 'Delusional':
+					if ((curBeat >= 216 && curBeat < 340) || (curBeat >= 344 && curBeat < 356) || (curBeat >= 360 && curBeat < 388) || 
+						(curBeat >= 392 && curBeat < 408) || (curBeat >= 880 && curBeat < 1072))
 					{
-						FlxTween.tween(spr, {alpha: 0.55}, 1.5);
-					});
-					smokeFore.forEach(function(spr:FlxSprite)
-						{
-							FlxTween.tween(spr, {alpha: 0.55}, 1.5);
-					});
-				}
+						FlxG.camera.zoom += .015;
+						for (mridk in [camHUD]) mridk.zoom += .03;
+					}
 			}
-			if (curBeat == 312 && !ClientPrefs.data.lowQuality)
-			{
-				FlxTween.tween(fireThing, {alpha: 1}, 1);
-			} 
-			if (curBeat == 336)
-			{
-				if (!ClientPrefs.data.lowQuality)
-				{
-					smokeShit.forEach(function(spr:FlxSprite)
-					{
-						FlxTween.tween(spr, {alpha: 0.25}, 1.5);
-					});
-					smokeFore.forEach(function(spr:FlxSprite)
-					{
-							FlxTween.tween(spr, {alpha: 0.25}, 1.5);
-					});
-				}
-			}
-			if (curBeat == 474) // load daytime street assets
-			{
-				colorsOrSmthElse.kill();
-				colorsOrSmthElse.destroy();
-				colorsOrSmthElse = null;
-				floor.kill();
-				floor.destroy();
-				floor = null;
-				if (!ClientPrefs.data.lowQuality)
-				{
-					fireThing.kill();
-					fireThing.destroy();
-					fireThing = null;
-					smokeShit.forEach(function(spr:FlxSprite)
-						{
-							spr.alpha = 0;
-						});
-						smokeFore.forEach(function(spr:FlxSprite)
-						{
-							spr.alpha = 0;
-						});
-					heavyRain.visible = false;
-					totallyanoriginalname.visible = true;
-					stageCurtains.visible = false;
-					stageFront.kill();
-					stageFront.destroy();
-					stageFront = null;
-				}
-				minnieBackground.visible = true;
-			}
-
-			if (curBeat == 679 && !ClientPrefs.data.lowQuality)
-			{
-				stageCurtains.alpha = 0.0001;
-				stageCurtains.visible = true;
-			}
-
-			if (curBeat == 680 || curBeat == 688 || curBeat == 696 || curBeat == 700 || curBeat == 704 || curBeat == 712 || curBeat == 720)
-			{
-				if (!ClientPrefs.data.lowQuality)
-				{
-					stageCurtains.alpha = 1;
-					FlxTween.tween(stageCurtains, {alpha: 0}, 1, {ease: FlxEase.circOut});
-				}
-			}
-
-			if (curBeat == 728 && !ClientPrefs.data.lowQuality)
-				FlxTween.tween(stageCurtains, {alpha: 1}, 5);
-
-			if (curBeat == 740) // go back to the street in a even more decayed state
-			{
-				if (!ClientPrefs.data.lowQuality)
-				{
-					smokeShit.forEach(function(spr:FlxSprite)
-						{
-							spr.alpha = 0.7;
-						});
-						smokeFore.forEach(function(spr:FlxSprite)
-						{
-							spr.alpha = 0.74;
-						});
-					heavyRain.visible = true;
-					totallyanoriginalname.kill();
-					totallyanoriginalname.destroy();
-					totallyanoriginalname = null;
-				}
-				streetRuins.visible = true;
-				fakeLightOfHope.alpha = 0.5;
-				minnieBackground.kill();
-				minnieBackground.destroy();
-				minnieBackground = null;
-			}
-			if (curBeat == 744 || curBeat == 752 || curBeat == 760 || curBeat == 768 || curBeat == 772 || curBeat == 776 || curBeat == 784 || curBeat == 792 || curBeat == 800 || curBeat == 804 ||
-				curBeat == 808 || curBeat == 816 || curBeat == 824 || curBeat == 832 || curBeat == 836 || curBeat == 840 || curBeat == 848 || curBeat == 856 || curBeat == 864 || curBeat == 868 ||
-				curBeat == 880 || curBeat == 884 || curBeat == 888 || curBeat == 892 || curBeat == 896 || curBeat == 900 || curBeat == 904 || curBeat == 908 || curBeat == 913 || curBeat == 916 ||
-				curBeat == 920 || curBeat == 924 || curBeat == 929 || curBeat == 933 || curBeat == 936 || curBeat == 940 || curBeat == 944 || curBeat == 948 || curBeat == 952 || curBeat == 956 ||
-				curBeat == 960 || curBeat == 964 || curBeat == 968 || curBeat == 972 || curBeat == 976 || curBeat == 980 || curBeat == 984 || curBeat == 988 || curBeat == 993 || curBeat == 997 ||
-				curBeat == 1000 || curBeat == 1004)
-			{
-				fakeLightOfHope.alpha = 1;
-				FlxTween.tween(fakeLightOfHope, {alpha: 0.5}, 0.85);
-			}
-			if (curBeat == 872)
-			{
-				FlxTween.tween(fakeLightOfHope, {alpha: 1, color: FlxColor.RED}, 2, {ease: FlxEase.circInOut});
-				if (!ClientPrefs.data.lowQuality) FlxTween.tween(fireThing2, {color: FlxColor.RED}, 2, {ease: FlxEase.circInOut});
-				FlxTween.tween(streetRuins, {color: FlxColor.RED}, 2, {ease: FlxEase.circInOut});
-				if (!ClientPrefs.data.lowQuality)
-				{
-					FlxTween.tween(fireForeground, {color: FlxColor.RED}, 2, {ease: FlxEase.circInOut});
-					FlxTween.tween(heavyRain, {color: FlxColor.RED}, 2, {ease: FlxEase.circInOut});
-					smokeShit.forEach(function(spr:FlxSprite)
-					{
-						FlxTween.tween(spr, {color: FlxColor.RED}, 2, {ease: FlxEase.circInOut});
-					});
-					smokeFore.forEach(function(spr:FlxSprite)
-					{
-						FlxTween.tween(spr, {color: FlxColor.RED}, 2, {ease: FlxEase.circInOut});
-					});
-				}
-			}
-			if (curBeat == 880)
-			{
-				FlxTween.tween(fakeLightOfHope, {color: FlxColor.WHITE}, 0.5, {ease: FlxEase.circOut});
-				if (!ClientPrefs.data.lowQuality) FlxTween.tween(fireThing2, {color: FlxColor.WHITE, alpha: 0.75}, 1.2, {ease: FlxEase.circOut});
-				FlxTween.tween(streetRuins, {color: FlxColor.WHITE}, 0.5, {ease: FlxEase.circOut});
-				if (!ClientPrefs.data.lowQuality)
-				{
-					lightningStrike();
-					lightningStrikeFore();
-					FlxTween.tween(fireForeground, {color: FlxColor.WHITE, alpha: 0.6}, 2, {ease: FlxEase.circOut});
-					FlxTween.tween(heavyRain, {color: FlxColor.fromRGB(252, 141, 141)}, 0.5, {ease: FlxEase.circOut});
-					smokeShit.forEach(function(spr:FlxSprite)
-					{
-						FlxTween.tween(spr, {color: FlxColor.WHITE}, 0.5, {ease: FlxEase.circOut});
-					});
-					smokeFore.forEach(function(spr:FlxSprite)
-					{
-						FlxTween.tween(spr, {color: FlxColor.WHITE}, 0.5, {ease: FlxEase.circOut});
-					});
-				}
-			}
-			if (curBeat == 1008)
-			{
-				FlxTween.tween(fakeLightOfHope, {alpha: 0}, 2);
-				if (!ClientPrefs.data.lowQuality) FlxTween.tween(fireThing2, {alpha: 1}, 2);
-			}
-			if (curBeat == 1087)
-			{
-				if (!ClientPrefs.data.lowQuality)
-				{
-					fireForeground.kill();
-					fireForeground.destroy();
-					fireForeground = null;
-					smokeShit.forEach(function(spr:FlxSprite)
-						{
-							spr.kill();
-							spr.destroy();
-							spr = null;
-						});
-						smokeFore.forEach(function(spr:FlxSprite)
-						{
-							spr.kill();
-							spr.destroy();
-							spr = null;
-						});
-					fireThing2.kill();
-					fireThing2.destroy();
-					fireThing2 = null;
-					heavyRain.kill();
-					heavyRain.destroy();
-					heavyRain = null;
-					stageCurtains.visible = true;
-				}
-				streetRuins.kill();
-				streetRuins.destroy();
-				streetRuins = null;
-				fakeLightOfHope.kill();
-				fakeLightOfHope.destroy();
-				fakeLightOfHope = null;
-			}
-		}
 
 		if (!ClientPrefs.data.lowQuality)
 		{
@@ -1400,6 +840,537 @@ class Episode1Street extends BaseStage
 							rainTween = null;
 						}});
 					}
+				}
+			case 'Delusional Events':
+				var eventData:Float = Std.parseFloat(value1);
+				switch (eventData)
+				{
+					case 1: 
+						game.boundValue = 1;
+						game.drainValue = 0.02;
+						game.camBars.fade(FlxColor.BLACK, 2, true);
+						if (rain != null) rain.alpha = 1;
+					case 2: game.defaultCamZoom = 1.3;
+					case 3:
+						game.camBars.fade(FlxColor.BLACK, 0.6);
+						for (daUIs in [camHUD])
+							FlxTween.tween(daUIs, {alpha: 0}, 3);
+					// BF Starts Singing Some Lyrics
+					case 4:
+						game.camVideo.fade(FlxColor.BLACK, 5, true);
+						game.camVideo.visible = true;
+						deluSing.visible = true;
+						deluSing.setVideoTime(0);
+						deluSing.resume();
+						//it's bugged :(
+						//if (game.vocals.volume != 1) game.vocals.volume = 1; // it should be fixed then
+					case 5:
+						game.defaultCamZoom = 0.8;
+						game.camBars.fade(0x000000, 5, true);
+						game.camFlashSystem(BG_DARK, {alpha: 1, timer: 0.3, ease: FlxEase.quartInOut});
+						game.defaultCamZoom = 1.2;
+						game.camFollow.x -= 100;
+						FlxTween.tween(game.camFollow, {x: game.camFollow.x + 100}, 12, {ease: FlxEase.sineInOut});
+					case 6:
+						game.camFlashSystem(BG_DARK, {alpha: 0, timer: 0.3, ease: FlxEase.quartInOut});
+						game.defaultCamZoom = 0.75;
+						game.camGame.flash(FlxColor.WHITE, 1);
+
+						// today in super r slur shit we have this cus i hate my life
+						FlxTween.tween(game.camFollow, {y: game.camFollow.y - 300}, .00000001, {onComplete: bensonFromRegularShow -> {
+							FlxTween.tween(game.camFollow, {y: game.camFollow.y + 300}, 7, {ease: FlxEase.sineInOut});
+						}});
+						
+						//Stuff For the Rain
+						if (rain != null) 
+						{
+							rain.kill();
+							rain.destroy();
+							rain = null;
+						}
+						if (heavyRain != null && !ClientPrefs.data.lowQuality)
+							heavyRain.alpha = 0.34;
+					case 7:
+						camGame.zoom += 0.3;
+						game.camFlashSystem(BG_FLASH, {alpha: 0.5, timer: 0.35});
+					case 8:
+						camGame.zoom += 0.15;
+						game.camFlashSystem(BG_FLASH, {alpha: 0.25, timer: 0.35});
+					case 9: game.defaultCamZoom = 1;
+					case 10:
+						game.camBars.fade(0x00000, .000001);
+						game.defaultCamZoom = 1.3;
+
+					// Mickey Screams Like A Bitch
+					case 11:
+						game.camVideo.visible = false;
+						game.boundValue = 0.6;
+						game.drainValue = 0.025;
+						game.chromEffect = 0.3;
+						game.chromTween = FlxTween.tween(game, {chromEffect: 1}, 1.2);
+						game.camBars.fade(0x00000, .000001, true);
+						game.defaultCamZoom = 0.75;
+						camGame.shake(0.01, 1.2);
+						camGame.visible = true;
+						camGame.alpha = 1;
+					// The Drop Starts
+					case 12:
+						FlxTween.tween(camHUD, {alpha: 1}, 1, {ease: FlxEase.quadOut});
+						if (game.chromTween != null) game.chromTween.cancel();
+						game.chromTween = FlxTween.tween(game, {chromEffect: 0.18}, 0.6, {ease: FlxEase.sineOut});
+						if (ClientPrefs.data.flashing)
+							camGame.flash(FlxColor.WHITE, 0.5);
+						if (ClientPrefs.data.shaders)
+						{
+                            if (!ClientPrefs.data.lowQuality)
+                            {
+                                camGame.setFilters([
+                                    new ShaderFilter(dramaticCamMovement),
+                                    new ShaderFilter(monitorFilter),
+                                    new ShaderFilter(chromZoomShader),
+                                    new ShaderFilter(chromNormalShader),
+                                    new ShaderFilter(delusionalShift)
+                                ]);
+                                camHUD.setFilters([
+									new ShaderFilter(grayScale),
+									new ShaderFilter(chromNormalShader), 
+									new ShaderFilter(delusionalShift)]);
+                            }
+                            else
+                            {
+                                camGame.setFilters([
+                                    new ShaderFilter(monitorFilter),
+                                    new ShaderFilter(chromZoomShader),
+                                    new ShaderFilter(chromNormalShader),
+                                    new ShaderFilter(delusionalShift)
+                                ]);
+                                camHUD.setFilters([
+									new ShaderFilter(grayScale),
+									new ShaderFilter(chromNormalShader), 
+									new ShaderFilter(delusionalShift)]);
+                            }
+						}
+					case 13:
+						game.chromTween = null;
+						game.defaultCamZoom = 0.85;
+					case 14: game.defaultCamZoom = 1;
+					case 15: game.defaultCamZoom = 0.75;
+					case 16: game.defaultCamZoom = 1;
+					case 17: game.defaultCamZoom = 0.7;
+					case 18: game.defaultCamZoom += 0.1;
+					case 19: game.defaultCamZoom += 0.2;
+					case 20: game.defaultCamZoom += 0.3;
+					case 21: game.defaultCamZoom = 1.2;
+					case 22: game.defaultCamZoom = 1.3;
+					case 23: game.defaultCamZoom = 0.75;
+					case 24:
+						game.chromTween = FlxTween.tween(game, {chromEffect: 1}, 0.1, {ease: FlxEase.sineInOut});
+						game.tweenCamera(1.5, 0.1, 'sineInOut');
+					case 25:
+						if (game.chromTween != null) game.chromTween.cancel();
+						game.chromTween = null;
+						camGame.visible = false;
+						game.uiGroup.visible = false;
+					case 26:
+						camGame.visible = true;
+						game.uiGroup.visible = true;
+						if (ClientPrefs.data.flashing)
+							camGame.flash(FlxColor.WHITE, 1);
+						game.defaultCamZoom = 0.8;
+						game.chromTween = FlxTween.tween(game, {chromEffect: 0.1}, 0.6, {ease: FlxEase.quadOut});
+					case 27:
+						if (isStoryMode)
+						{
+							PlayState.detailsText = "Episode 1 - Regret (PEACEFUL)";
+						}
+						else
+						{
+							PlayState.detailsText = "Freeplay - Regret (PEACEFUL)";
+						}
+						PlayState.useFakeDeluName = true;
+						PlayState.windowName = "...";
+						DiscordClient.changePresence("Do you have any idea...", "", (PlayState.useFakeDeluName ? "regret" : CoolUtil.spaceToDash(game.SONG.song).toLowerCase()), "idkMan");
+						lime.app.Application.current.window.title = PlayState.windowName;
+						game.boundValue = 2;
+						game.drainValue = 0;
+						camGame.visible = false;
+						game.uiGroup.visible = false;
+						game.noteGroup.visible = false;
+						if (!ClientPrefs.data.lowQuality)
+						{
+							atmosphereParticle.visible = false;
+							ashParticle.visible = false;
+						}
+					case 28:
+						if (ClientPrefs.data.shaders)
+						{
+                            if (!ClientPrefs.data.lowQuality)
+                            {
+                                camGame.setFilters([
+                                    new ShaderFilter(dramaticCamMovement),
+                                    new ShaderFilter(monitorFilter),
+                                    new ShaderFilter(chromZoomShader),
+                                    new ShaderFilter(chromNormalShader)
+                                ]);
+                               camHUD.setFilters([new ShaderFilter(chromNormalShader)]);
+                            }
+                            else
+                            {
+                                camGame.setFilters([
+                                    new ShaderFilter(monitorFilter),
+                                    new ShaderFilter(chromZoomShader),
+                                    new ShaderFilter(chromNormalShader)
+                                ]);
+                                camHUD.setFilters([new ShaderFilter(chromNormalShader)]);
+                            }
+						}
+						game.chromEffect = 0.00001;
+						game.defaultCamZoom = 0.85;
+					case 29:
+						PlayState.windowName = "Where am I...?";
+						DiscordClient.changePresence("Do you have any idea...", "...what you're dealing with?", (PlayState.useFakeDeluName ? "regret" : CoolUtil.spaceToDash(PlayState.SONG.song).toLowerCase()), "idkMan");
+						lime.app.Application.current.window.title = PlayState.windowName;
+					case 30:
+						DiscordClient.changePresence(PlayState.detailsText, game.scoreTxt.text, (PlayState.useFakeDeluName ? "regret" : CoolUtil.spaceToDash(PlayState.SONG.song).toLowerCase()), "idkMan");
+						PlayState.windowName = "Funkin.avi - " + (isStoryMode ? PlayState.curEpisode + " - " : "Freeplay - ") + "Regret [________]";
+						lime.app.Application.current.window.title = PlayState.windowName;
+						camGame.visible = true;
+						game.noteGroup.visible = true;
+						game.comboGroup.visible = false;
+						game.boyfriend.x += 1000;
+					case 31:
+						PlayState.windowName = "Funkin.avi - " + (isStoryMode ? PlayState.curEpisode + " - " : "Freeplay - ") + "Regret [P_______]";
+						lime.app.Application.current.window.title = PlayState.windowName;
+					case 32:
+						PlayState.windowName = "Funkin.avi - " + (isStoryMode ? PlayState.curEpisode + " - " : "Freeplay - ") + "Regret [PE______]";
+						lime.app.Application.current.window.title = PlayState.windowName;
+					case 33:
+						PlayState.windowName = "Funkin.avi - " + (isStoryMode ? PlayState.curEpisode + " - " : "Freeplay - ") + "Regret [PEA_____]";
+						lime.app.Application.current.window.title = PlayState.windowName;
+					case 34:
+						PlayState.windowName = "Funkin.avi - " + (isStoryMode ? PlayState.curEpisode + " - " : "Freeplay - ") + "Regret [PEAC____]";
+						lime.app.Application.current.window.title = PlayState.windowName;
+					case 35:
+						PlayState.windowName = "Funkin.avi - " + (isStoryMode ? PlayState.curEpisode + " - " : "Freeplay - ") + "Regret [PEACE___]";
+						lime.app.Application.current.window.title = PlayState.windowName;
+					case 36:
+						PlayState.windowName = "Funkin.avi - " + (isStoryMode ? PlayState.curEpisode + " - " : "Freeplay - ") + "Regret [PEACEF__]";
+						lime.app.Application.current.window.title = PlayState.windowName;
+					case 37:
+						PlayState.windowName = "Funkin.avi - " + (isStoryMode ? PlayState.curEpisode + " - " : "Freeplay - ") + "Regret [PEACEFU_]";
+						lime.app.Application.current.window.title = PlayState.windowName;
+						FlxTween.tween(game.boyfriend, {alpha: 0.45}, 2.5, {ease: FlxEase.expoOut});
+					case 38:
+						PlayState.windowName = "Funkin.avi - " + (isStoryMode ? PlayState.curEpisode + " - " : "Freeplay - ") + "Regret [PEACEFUL]";
+						lime.app.Application.current.window.title = PlayState.windowName;
+					case 39:
+						game.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.38, timer: 0.85, colors: [255, 255, 255]});
+						minnieJumpscare.resume();
+						minnieJumpscare.visible = true;
+					case 40:
+						FlxTween.tween(camGame, {alpha: 0.0001}, 5, {ease: FlxEase.quartInOut});
+					case 41:
+						PlayState.windowName = "...";
+						lime.app.Application.current.window.title = PlayState.windowName;
+					case 42:
+						PlayState.windowName = "Welcome back.... Little mouse.";
+						lime.app.Application.current.window.title = PlayState.windowName;
+						PlayState.blendFlash.cameras = [camGame];
+					case 43:
+						game.isCameraOnForcedPos = false;
+						game.boundValue = 0.45;
+						game.drainValue = 0.032;
+						game.boyfriend.alpha = 1;
+						game.camFollow.x = 0;
+						game.camFollow.y = 0;
+						if (!ClientPrefs.data.lowQuality)
+						{
+							atmosphereParticle.visible = true;
+							ashParticle.visible = true;
+						}
+						game.uiGroup.visible = false;
+						camGame.alpha = 1;
+					case 44:
+						PlayState.useFakeDeluName = false;
+						if (isStoryMode)
+						{
+							PlayState.detailsText = "Episode 1 - " + PlayState.SONG.song + " (" + FreeplayState.getDiffRank() + ")";
+						}
+						else
+						{
+							PlayState.detailsText = "Freeplay - " + PlayState.SONG.song + " (" + FreeplayState.getDiffRank() + ")";
+						}
+						PlayState.windowName = "Funkin.avi - " + (isStoryMode ? PlayState.curEpisode + " - " : "Freeplay - ") + PlayState.SONG.song + " [" + FreeplayState.getDiffRank() + "]";
+						DiscordClient.changePresence(PlayState.detailsText, game.scoreTxt.text, (PlayState.useFakeDeluName ? "regret" : CoolUtil.spaceToDash(PlayState.SONG.song).toLowerCase()), "idkMan");
+						lime.app.Application.current.window.title = PlayState.windowName;
+						game.camVideo.visible = false;
+						camGame.alpha = 1;
+						game.uiGroup.visible = true;
+						game.noteGroup.visible = true;
+						game.comboGroup.visible = true;
+						game.defaultCamZoom = 0.9;
+						game.chromEffect = 0.1;
+						if (ClientPrefs.data.flashing)
+							camGame.flash(FlxColor.WHITE, 0.5);
+						if (ClientPrefs.data.shaders)
+						{
+                            if (!ClientPrefs.data.lowQuality)
+                            {
+                                camGame.setFilters([
+                                    new ShaderFilter(dramaticCamMovement),
+									new ShaderFilter(heatWaveEffect),
+                                    new ShaderFilter(monitorFilter),
+                                    new ShaderFilter(chromZoomShader),
+                                    new ShaderFilter(chromNormalShader),
+                                    new ShaderFilter(delusionalShift)
+                                ]);
+                                camHUD.setFilters([new ShaderFilter(grayScale), new ShaderFilter(chromNormalShader), new ShaderFilter(delusionalShift)]);
+                            }
+                            else
+                            {
+                                camGame.setFilters([
+                                    new ShaderFilter(monitorFilter),
+                                    new ShaderFilter(chromZoomShader),
+                                    new ShaderFilter(chromNormalShader),
+                                    new ShaderFilter(delusionalShift)
+                                ]);
+                                camHUD.setFilters([new ShaderFilter(grayScale), new ShaderFilter(chromNormalShader), new ShaderFilter(delusionalShift)]);
+                            }
+						}
+					case 45:
+						game.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.135, timer: 0.85, colors: [255, 0, 0]});
+					// The part where shit gets serious, Evilrette/Satan starts the solo
+					case 46:
+						game.boundValue = 1.5;
+						game.drainValue = 0.01;
+						game.tweenCamera(1.35, 7, "quartInOut");
+						game.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.4, timer: 2, colors: [255, 0, 0]});
+						game.camFlashSystem(BG_DARK, {alpha: 0.8, timer: 6, ease: FlxEase.quartInOut});
+						game.isCameraOnForcedPos = true;
+						FlxTween.tween(game.camFollow, {x: game.camFollow.x + 150, y: game.camFollow.y + 50}, 4.3, {ease: FlxEase.quartInOut});
+					// camera moves over to Mickey realizing he was never gonna win
+					case 47:
+						FlxTween.tween(game.camFollow, {x: game.camFollow.x - 950, y: game.camFollow.y - 70}, 1.5, {ease: FlxEase.circInOut});
+					case 48:
+						game.camFollow.x = 440;
+						game.camFollow.y = 360;
+						FlxTween.tween(mickeySpirit, {alpha: 0.6}, 2, {ease: FlxEase.sineOut});
+						game.defaultCamZoom = 0.5;
+						game.camFlashSystem(BG_DARK, {alpha: 0, timer: 1, ease: FlxEase.circOut});
+					case 49:
+						FlxTween.tween(mickeySpirit, {alpha: 0}, 4, {ease: FlxEase.quartOut});
+						game.isCameraOnForcedPos = false;
+						game.defaultCamZoom = 0.9;
+					case 50:
+						FlxTween.tween(camGame, {zoom: 1.6}, 1, {ease: FlxEase.sineInOut});
+						game.camVideo.visible = true;
+						game.camVideo.fade(FlxColor.BLACK, 0.7);
+					case 51:
+						camGame.visible = false;
+						FlxTween.tween(camHUD, {alpha: 0}, 2);
+						game.camVideo.zoom += 0.3;
+						game.camVideo.fade(FlxColor.BLACK, 0.2, true);
+						FlxTween.tween(game.camVideo, {zoom: 1}, 0.5, {ease: FlxEase.sineOut});
+						game.camFlashSystem(BG_DARK, {timer: 5});
+						death.setVideoTime(0);
+						death.resume();
+						death.visible = true;
+					case 52:
+						game.camFlashSystem(BG_DARK, {alpha: 1, timer: 0.5, ease: FlxEase.sineOut});
+					case 53:
+						game.camFlashSystem(BG_FLASH, {alpha: 1, timer: 0.3, ease: FlxEase.sineOut});
+						if (ClientPrefs.data.shaders)
+							{
+								if (!ClientPrefs.data.lowQuality)
+								{
+									camGame.setFilters([
+										new ShaderFilter(dramaticCamMovement),
+										new ShaderFilter(monitorFilter)
+									]);
+								}
+								else
+								{
+									camGame.setFilters([
+										new ShaderFilter(monitorFilter)
+									]);
+								}
+							}
+					case 54:
+						FlxTween.tween(game.camVideo, {alpha: 0}, 4);
+
+					case 55:
+						FlxTween.tween(fakeLightOfHope, {alpha: 0.001}, 1.7);
+						if (!ClientPrefs.data.lowQuality) FlxTween.tween(stageFront, {alpha: 1}, 1.5);
+					
+					case 56:
+						if (!ClientPrefs.data.lowQuality)
+						{
+							smokeShit.forEach(function(spr:FlxSprite)
+							{
+								FlxTween.tween(spr, {alpha: 0.55}, 1.5);
+							});
+							smokeFore.forEach(function(spr:FlxSprite)
+								{
+									FlxTween.tween(spr, {alpha: 0.55}, 1.5);
+							});
+						}
+
+					case 57:
+						if (!ClientPrefs.data.lowQuality)
+						{
+							FlxTween.tween(fireThing, {alpha: 1}, 1);
+						}
+					case 58:
+						if (!ClientPrefs.data.lowQuality)
+						{
+							smokeShit.forEach(function(spr:FlxSprite)
+							{
+								FlxTween.tween(spr, {alpha: 0.25}, 1.5);
+							});
+							smokeFore.forEach(function(spr:FlxSprite)
+							{
+									FlxTween.tween(spr, {alpha: 0.25}, 1.5);
+							});
+						}
+					case 59:
+						colorsOrSmthElse.kill();
+						colorsOrSmthElse.destroy();
+						colorsOrSmthElse = null;
+						floor.kill();
+						floor.destroy();
+						floor = null;
+						if (!ClientPrefs.data.lowQuality)
+						{
+							fireThing.kill();
+							fireThing.destroy();
+							fireThing = null;
+							smokeShit.forEach(function(spr:FlxSprite)
+								{
+									spr.alpha = 0;
+								});
+								smokeFore.forEach(function(spr:FlxSprite)
+								{
+									spr.alpha = 0;
+								});
+							heavyRain.visible = false;
+							totallyanoriginalname.visible = true;
+							stageCurtains.visible = false;
+							stageFront.kill();
+							stageFront.destroy();
+							stageFront = null;
+						}
+						minnieBackground.visible = true;
+					case 60:
+						if (!ClientPrefs.data.lowQuality)
+						{
+							stageCurtains.alpha = 0.0001;
+							stageCurtains.visible = true;
+						}
+					case 61:
+						if (!ClientPrefs.data.lowQuality)
+						{
+							stageCurtains.alpha = 1;
+							FlxTween.tween(stageCurtains, {alpha: 0}, 1, {ease: FlxEase.circOut});
+						}
+					case 62:
+						if (!ClientPrefs.data.lowQuality)
+							FlxTween.tween(stageCurtains, {alpha: 1}, 5);
+					case 63:
+						if (!ClientPrefs.data.lowQuality)
+						{
+							smokeShit.forEach(function(spr:FlxSprite)
+								{
+									spr.alpha = 0.7;
+								});
+								smokeFore.forEach(function(spr:FlxSprite)
+								{
+									spr.alpha = 0.74;
+								});
+							heavyRain.visible = true;
+							totallyanoriginalname.kill();
+							totallyanoriginalname.destroy();
+							totallyanoriginalname = null;
+						}
+						streetRuins.visible = true;
+						fakeLightOfHope.alpha = 0.5;
+						minnieBackground.kill();
+						minnieBackground.destroy();
+						minnieBackground = null;
+					case 64:
+						fakeLightOfHope.alpha = 1;
+						FlxTween.tween(fakeLightOfHope, {alpha: 0.5}, 0.85);
+					case 65:
+						FlxTween.tween(fakeLightOfHope, {alpha: 1, color: FlxColor.RED}, 2, {ease: FlxEase.circInOut});
+						if (!ClientPrefs.data.lowQuality) 
+							FlxTween.tween(fireThing2, {color: FlxColor.RED}, 2, {ease: FlxEase.circInOut});
+						FlxTween.tween(streetRuins, {color: FlxColor.RED}, 2, {ease: FlxEase.circInOut});
+						if (!ClientPrefs.data.lowQuality)
+						{
+							FlxTween.tween(fireForeground, {color: FlxColor.RED}, 2, {ease: FlxEase.circInOut});
+							FlxTween.tween(heavyRain, {color: FlxColor.RED}, 2, {ease: FlxEase.circInOut});
+							smokeShit.forEach(function(spr:FlxSprite)
+							{
+								FlxTween.tween(spr, {color: FlxColor.RED}, 2, {ease: FlxEase.circInOut});
+							});
+							smokeFore.forEach(function(spr:FlxSprite)
+							{
+								FlxTween.tween(spr, {color: FlxColor.RED}, 2, {ease: FlxEase.circInOut});
+							});
+						}
+					case 66:
+						FlxTween.tween(fakeLightOfHope, {color: FlxColor.WHITE}, 0.5, {ease: FlxEase.circOut});
+						if (!ClientPrefs.data.lowQuality) FlxTween.tween(fireThing2, {color: FlxColor.WHITE, alpha: 0.75}, 1.2, {ease: FlxEase.circOut});
+						FlxTween.tween(streetRuins, {color: FlxColor.WHITE}, 0.5, {ease: FlxEase.circOut});
+						if (!ClientPrefs.data.lowQuality)
+						{
+							lightningStrike();
+							lightningStrikeFore();
+							FlxTween.tween(fireForeground, {color: FlxColor.WHITE, alpha: 0.6}, 2, {ease: FlxEase.circOut});
+							FlxTween.tween(heavyRain, {color: FlxColor.fromRGB(252, 141, 141)}, 0.5, {ease: FlxEase.circOut});
+							smokeShit.forEach(function(spr:FlxSprite)
+							{
+								FlxTween.tween(spr, {color: FlxColor.WHITE}, 0.5, {ease: FlxEase.circOut});
+							});
+							smokeFore.forEach(function(spr:FlxSprite)
+							{
+								FlxTween.tween(spr, {color: FlxColor.WHITE}, 0.5, {ease: FlxEase.circOut});
+							});
+						}
+					case 67:
+						FlxTween.tween(fakeLightOfHope, {alpha: 0}, 2);
+						if (!ClientPrefs.data.lowQuality) FlxTween.tween(fireThing2, {alpha: 1}, 2);
+					case 68:
+						if (!ClientPrefs.data.lowQuality)
+						{
+							fireForeground.kill();
+							fireForeground.destroy();
+							fireForeground = null;
+							smokeShit.forEach(function(spr:FlxSprite)
+								{
+									spr.kill();
+									spr.destroy();
+									spr = null;
+								});
+								smokeFore.forEach(function(spr:FlxSprite)
+								{
+									spr.kill();
+									spr.destroy();
+									spr = null;
+								});
+							fireThing2.kill();
+							fireThing2.destroy();
+							fireThing2 = null;
+							heavyRain.kill();
+							heavyRain.destroy();
+							heavyRain = null;
+							stageCurtains.visible = true;
+						}
+						streetRuins.kill();
+						streetRuins.destroy();
+						streetRuins = null;
+						fakeLightOfHope.kill();
+						fakeLightOfHope.destroy();
+						fakeLightOfHope = null;
 				}
 		}
 	}
