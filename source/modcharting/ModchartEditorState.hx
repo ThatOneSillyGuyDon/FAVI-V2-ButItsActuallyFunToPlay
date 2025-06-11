@@ -356,13 +356,6 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
 	Paths.clearStoredMemory();
 	Paths.clearUnusedMemory();
 	#end
-        #if (PSYCH && PSYCHVERSION >= "0.7.3")
-        camGame = initPsychCamera();
-		camHUD = new FlxCamera();
-		camHUD.bgColor.alpha = 0;
-
-		FlxG.cameras.add(camHUD, false);
-        #else
         camGame = new FlxCamera();
         camHUD = new FlxCamera();
 		camHUD.bgColor.alpha = 0;
@@ -371,9 +364,8 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
 		FlxG.cameras.add(camHUD, false);
 
         FlxG.cameras.setDefaultDrawTarget(camGame, true);
-        #end
-
-		persistentUpdate = true;
+        
+        persistentUpdate = true;
 		persistentDraw = true;
 
         #if PSYCH

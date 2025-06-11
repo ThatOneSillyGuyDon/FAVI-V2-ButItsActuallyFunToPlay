@@ -3,7 +3,6 @@ package backend;
 import flixel.addons.ui.FlxUIState;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.FlxState;
-import backend.PsychCamera;
 
 class MusicBeatState extends modcharting.ModchartMusicBeatState
 {
@@ -32,15 +31,6 @@ class MusicBeatState extends modcharting.ModchartMusicBeatState
 		}
 		FlxTransitionableState.skipNextTransOut = false;
 		timePassedOnState = 0;
-	}
-
-	public function initPsychCamera():PsychCamera
-	{
-		var camera = new PsychCamera();
-		FlxG.cameras.reset(camera);
-		FlxG.cameras.setDefaultDrawTarget(camera, true);
-		//trace('initialized psych camera ' + Sys.cpuTime());
-		return camera;
 	}
 
 	public static var timePassedOnState:Float = 0;
