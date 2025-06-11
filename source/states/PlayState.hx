@@ -35,7 +35,6 @@ import states.editors.ChartingState;
 import states.editors.CharacterEditorState;
 
 import substates.PauseSubState;
-import substates.GameOverSubstate;
 
 #if !flash
 import flixel.addons.display.FlxRuntimeShader;
@@ -299,6 +298,7 @@ class PlayState extends MusicBeatState
 	public static var campaignMisses:Int = 0;
 	public static var seenCutscene:Bool = false;
 	public static var deathCounter:Int = 0;
+	public static var malfunctionTrollCounter:Int = 0;
 
 	public var defaultCamZoom:Float = 1.05;
 
@@ -548,7 +548,6 @@ class PlayState extends MusicBeatState
 		detailsPausedText = "Paused - " + detailsText;
 		#end
 
-		GameOverSubstate.resetVariables();
 		songName = Paths.formatToSongPath(SONG.song);
 		if(SONG.stage == null || SONG.stage.length < 1) {
 			SONG.stage = StageData.vanillaSongStage(songName);
@@ -925,7 +924,7 @@ class PlayState extends MusicBeatState
 			case "everettmodern": iconP1.y -= 10;
 			case "everettb": iconP1.y -= 5;
 		}
-		
+
 		iconP1.visible = !ClientPrefs.data.hideHud;
 		iconP1.alpha = ClientPrefs.data.healthBarAlpha;
 		uiGroup.add(iconP1);
@@ -3436,6 +3435,9 @@ class PlayState extends MusicBeatState
 				boyfriend.stunned = true;
 				deathCounter++;
 
+				if (SONG.song == "Malfunction")
+					malfunctionTrollCounter++;
+
 				// kills any stuff that may cause lag during the process
 				for (cams in [camGame, camHUD])
 					cams.setFilters([]); // kills the shaders if any exists
@@ -3465,7 +3467,28 @@ class PlayState extends MusicBeatState
 					modchartTimers.clear();
 					modchartTweens.clear();
 
-					openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x - boyfriend.positionArray[0], boyfriend.getScreenPosition().y - boyfriend.positionArray[1], camFollowPos.x, camFollowPos.y));
+					switch (SONG.song)
+					{
+						case "War Dilemma":
+							openSubState(new WarGameOver());
+						case "Malfunction":
+							//if (malfunctionTrollCounter >= 10 && FlxG.random.bool(15))
+							//	openSubState(new MalsquareTrollScreen());
+							//else
+								openSubState(new MalsquareDeath());
+						case "Birthday":
+							openSubState(new WompWompSadMan());
+						case "Hunted" | "Laugh Track" | "Cycled Sins" | "Twisted Grins":
+							openSubState(new EverettBaseDeath());
+						case "Dont Cross":
+							openSubState(new EpicFailLmao());
+						case "Delusional":
+							openSubState(new DelusionalDeath());
+						case "Isolated" | "Lunacy":
+							openSubState(new Episode1Death());
+						default:
+							openSubState(new BaseGameOver());
+					}
 				}
 				else
 				{
@@ -3481,7 +3504,7 @@ class PlayState extends MusicBeatState
 						modchartTweens.clear();
 					}});
 
-					openSubState(new ManiaLoseSubstate(boyfriend.getScreenPosition().x - boyfriend.positionArray[0], boyfriend.getScreenPosition().y - boyfriend.positionArray[1], camFollowPos.x, camFollowPos.y));
+					openSubState(new ManiaLoseScreen());
 				}
 
 				#if DISCORD_ALLOWED

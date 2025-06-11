@@ -322,10 +322,14 @@ class MainMenuState extends MusicBeatState
 			if (FlxG.mouse.justPressed && !selectedSomethin)
 				if (FlxG.mouse.overlaps(menuItems.members[curSelected]))
 					enterSelection();
-			if (controls.justPressed('debug_1'))
+			if (FlxG.keys.justPressed.SEVEN)
 			{
-				selectedSomethin = true;
-				MusicBeatState.switchState(new MasterEditorMenu());
+				if (Main.debug)
+					MusicBeatState.switchState(new MasterEditorMenu());
+				else {
+					FlxG.sound.play(Paths.sound('cancelMenu'));
+					messenger.sendMessage('ACCESS DENIED!', 'Perhaps there is a code to access this?');
+				}
 			}	
 			if (FlxG.keys.justPressed.ONE && Main.debug)
 			{
@@ -334,6 +338,7 @@ class MainMenuState extends MusicBeatState
 			}		
 			if (FlxG.keys.justPressed.TWO && Main.debug)
 			{
+				FlxG.sound.play(Paths.sound('funkinAVI/easterEggSound'));
 				GameData.episode1FPLock = "unlocked";
 				GameData.saveShit();
 			}
@@ -549,8 +554,7 @@ class MainMenuState extends MusicBeatState
 			case 4:
 				var cantaloupe = new FlxSprite(-200, -100).loadGraphic(Paths.image('Funkin_avi/cantaloupe'));
 				cantaloupe.scale.set(0.05, 0.05);
-				cantaloupe.screenCenter(XY).x -= 700;
-				cantaloupe.y -= 300;
+				cantaloupe.screenCenter();
 				FlxTween.tween(cantaloupe.scale, {x: 2, y: 2}, 3, {ease: FlxEase.bounceOut, onComplete: _ -> FlxTween.tween(cantaloupe, {alpha: 0}, 2)});
 				cantaloupe.shake(.05, 0, 5);
 				add(cantaloupe);

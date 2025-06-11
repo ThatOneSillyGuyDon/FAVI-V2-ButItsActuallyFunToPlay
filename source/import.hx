@@ -32,6 +32,18 @@ import states.options.*;
 import states.menus.*;
 import states.menus.freeplay.*;
 
+//import game over screens
+import substates.GameOverScreens.BaseGameOver; //default fnf screen
+import substates.GameOverScreens.ManiaLoseScreen; //mania charts only
+import substates.GameOverScreens.Episode1Death; //Episode 1
+import substates.GameOverScreens.DelusionalDeath; //Delusional Exclusive
+import substates.GameOverScreens.EpicFailLmao; //Don't Cross Ragebait
+import substates.GameOverScreens.EverettBaseDeath; //Default Everett Death
+import substates.GameOverScreens.WarGameOver; //War Dilemma Exclusive
+import substates.GameOverScreens.WompWompSadMan; //Birthday Exclusive
+import substates.GameOverScreens.MalsquareDeath; //Malfunction Exclusive
+import substates.GameOverScreens.MalsquareTrollScreen; //Least Annoying Thing in the mod
+
 // import specific menus and objects to prevent compile errors
 #if desktop
 import backend.Discord;
@@ -56,6 +68,7 @@ import shaders.ColorSwap;
 import shaders.BlendModeEffect;
 import shaders.WiggleEffect;
 import shaders.WiggleEffect.WiggleEffectType;
+import shaders.OutlineEffect;
 
 // stuff that won't let you compile unless they're being used
 #if VIDEOS_ALLOWED
