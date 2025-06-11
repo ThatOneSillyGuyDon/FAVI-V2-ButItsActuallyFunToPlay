@@ -95,6 +95,7 @@ class ChartingState extends MusicBeatState
 		['Lunacy Event Thing idk', "it just tweens the gradient idk. I'm to bored rn to care lmao"],
 		['Fire Handler', 'Handles the Fire in Lunacy/Delusional\n\nValue 1 - Visibility, Y, Time\nValue 2 - Ease type.'],
 		['Rain Handler', 'Handles the Rain in Lunacy/Delusional\n\nValue 1 - Visibility, Time\nValue 2 - Ease type.'],
+		['Delusional Events', ""],
 		['Trigger TG shader shi', "Add - Adds the shader\nRemove - Removes the shader"],
 		['Trigger Hunted Stuffs', ''],
 		['Bless Events', ''],
