@@ -1551,9 +1551,15 @@ class MalsquareDeath extends MusicBeatSubstate {
 class MalsquareTrollScreen extends MusicBeatSubstate {
 	public static var instance:MalsquareTrollScreen;
 	var stupidAssCam:FlxCamera;
-	var selector:FlxText;
 	var currentFPS:Int;
 	var isEnding:Bool = false;
+
+	//da sprite
+	var bg:FlxSprite;
+	var tiles:FlxBackdrop;
+	var jerk:FlxSprite;
+	var insult:FlxText;
+	var selector:FlxText;
 
 	override function create()
 	{
@@ -1564,7 +1570,7 @@ class MalsquareTrollScreen extends MusicBeatSubstate {
 
 		stupidAssCam = new FlxCamera();
 		FlxG.cameras.add(stupidAssCam);
-		stupidAssCam.fade(FlxColor.BLACK, 0.55, true);
+		//stupidAssCam.fade(FlxColor.BLACK, 0.55, true);
 
 		currentFPS = ClientPrefs.data.framerate;
 		ClientPrefs.data.framerate = 20; //least annoying gimmick
@@ -1573,54 +1579,65 @@ class MalsquareTrollScreen extends MusicBeatSubstate {
 
 		Conductor.songPosition = 0;
 
-		var bg = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/malfunction/troll/trollBG"));
-		bg.screenCenter();
+		bg = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/malfunction/troll/trollBG"));
 		bg.antialiasing = false;
+		bg.screenCenter();
 		bg.alpha = 0.35;
 		bg.cameras = [stupidAssCam];
 		add(bg);
-		FlxTween.tween(bg, {angle: 360}, 4.5, {type: LOOPING});
 
-		var tiles = new FlxBackdrop(Paths.image("favi/ui/gameOvers/malfunction/troll/trollTiles"), XY, 0, 0);
+		tiles = new FlxBackdrop(Paths.image("favi/ui/gameOvers/malfunction/troll/trollTiles")/*, XY, 0, 0*/);
 		tiles.antialiasing = false;
-		tiles.velocity.set(40, -40);
-		tiles.alpha = 0.65;
+		tiles.velocity.set(0, 0);
+		tiles.scale.set(0.1, 0.1);
+		tiles.alpha = 0;
 		tiles.cameras = [stupidAssCam];
 		add(tiles);
 
-		var jerk = new FlxSprite();
+		jerk = new FlxSprite();
 		jerk.frames = Paths.getSparrowAtlas("favi/ui/gameOvers/malfunction/troll/asshole");
 		jerk.animation.addByPrefix("idle", "idle", 24, true);
-		jerk.animation.play("idle");
 		jerk.screenCenter();
+		jerk.scale.set(1.5, 1.5);
 		jerk.cameras = [stupidAssCam];
 		add(jerk);
 
-		var insult = new FlxText(0, 15, 1280, "Holy shit you're bad lmao!", 0);
-		insult.setFormat(Paths.font("Retro Gaming.ttf"), 10, FlxColor.BLACK, OUTLINE, FlxColor.WHITE);
+		insult = new FlxText(0, 15, 1280, "Holy shit you're bad lmao!", 0);
+		insult.setFormat(Paths.font("Retro Gaming.ttf"), 70, FlxColor.BLACK, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);
+		insult.screenCenter(X);
 		insult.borderSize = 3;
+		insult.visible = false;
 		insult.cameras = [stupidAssCam];
 		add(insult);
 
-		selector = new FlxText(0, 650, 1280, "<  Suffer More!  >", 0);
-		selector.setFormat(Paths.font("Retro Gaming.ttf"), 15, FlxColor.BLACK, OUTLINE, FlxColor.WHITE);
+		selector = new FlxText(0, 550, 1280, "<  Suffer More!  >", 0);
+		selector.setFormat(Paths.font("Retro Gaming.ttf"), 75, FlxColor.BLACK, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.WHITE);
+		selector.screenCenter(X);
 		selector.cameras = [stupidAssCam];
 		selector.borderSize = 3;
 		selector.visible = false;
 		add(selector);
 
-		FlxG.sound.playMusic(Paths.music("CarnivalSonicMusicLmfao"), 1);
+		super.create();
 
+		stupidAssCam.fade(FlxColor.BLACK, 3, true);
 		new FlxTimer().start(3, function(tmr:FlxTimer)
 		{
 			selector.visible = true;
+			FlxG.sound.playMusic(Paths.music("CarnivalSonicMusicLmfao"), 1);
+			jerk.animation.play("idle");
+			tiles.velocity.set(40, -40);
+			insult.visible = true;
+			bg.screenCenter();
+			FlxTween.tween(tiles, {alpha: 0.65}, 1);
+			FlxTween.tween(bg, {angle: 360}, 4.5, {type: LOOPING});
 		});
-
-		super.create();
 	}
 
 	override function update(elapsed:Float)
 	{
+		super.update(elapsed);
+		
 		if (FlxG.sound.music.playing)
 		{
 			Conductor.songPosition = FlxG.sound.music.time;
@@ -1631,30 +1648,28 @@ class MalsquareTrollScreen extends MusicBeatSubstate {
 			if (controls.UI_LEFT_P || controls.UI_RIGHT_P)
 			{
 				if (selector.text == "<  Suffer More!  >")
-					selector.text = "< Ragequit Lmao! >";
+					selector.text = "<  Ragequit Lmao!  >";
 				else
 					selector.text = "<  Suffer More!  >";
 
-				//FlxG.sound.play(Paths.sound("some sound whenever I feel like it"));
+				FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
 			}
 
 			if (controls.ACCEPT)
 			{
 				//stupidAssCam.visible = false;
 				FlxG.sound.music.stop();
-				//FlxG.sound.play(Paths.music('Some sound whenever I feel like it'));
+				FlxG.sound.play(Paths.music('aviOST/gameOver/bellToll'));
 				PlayState.pauseCountEnabled = false;
 				PlayState.malfunctionTrollCounter = 0;
-				ClientPrefs.data.framerate = currentFPS; //changes back to normal
-				FlxG.updateFramerate = ClientPrefs.data.framerate;
-				FlxG.drawFramerate = ClientPrefs.data.framerate;
 
+				stupidAssCam.fade(FlxColor.BLACK, 3, false);
 				new FlxTimer().start(3, function(tmr:FlxTimer)
 				{
 					if (selector.text == "<  Suffer More!  >")
 					{
 						MusicBeatState.resetState();
-						PlayState.instance.callOnLuas('onGameOverConfirm', [true]);
+						PlayState.instance.callOnScripts('onGameOverConfirm', [true]);
 					}
 					else 
 					{
@@ -1679,9 +1694,23 @@ class MalsquareTrollScreen extends MusicBeatSubstate {
 						FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
 						PlayState.instance.callOnLuas('onGameOverConfirm', [false]);
 					}
+					remove(bg);
+					remove(tiles);
+					remove(jerk);
+					remove(insult);
+					remove(selector);
 					isEnding = true;
+					ClientPrefs.data.framerate = currentFPS; //changes back to normal
+					FlxG.updateFramerate = ClientPrefs.data.framerate;
+					FlxG.drawFramerate = ClientPrefs.data.framerate;
 				});
 			}
 		}
+	}
+
+	override function destroy()
+	{
+		instance = null;
+		super.destroy();
 	}
 }
