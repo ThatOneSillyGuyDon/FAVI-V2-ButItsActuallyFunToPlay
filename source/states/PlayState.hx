@@ -441,6 +441,9 @@ class PlayState extends MusicBeatState
 
 	public var canBopCam:Bool = false;
 
+	var discordIcon:String;
+	var discordTxt:Array<String> = [];
+
 	override public function create()
 	{
 		//trace('Playback Rate: ' + playbackRate);
@@ -1921,7 +1924,12 @@ class PlayState extends MusicBeatState
 		});
 
 		// Updating Discord Rich Presence (with Time Left)
-		DiscordClient.changePresence(detailsText, scoreTxt.text, (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(SONG.song).toLowerCase()), "random", true, songLength - Conductor.songPosition - ClientPrefs.data.noteOffset);
+		if (autoUpdateRPC)
+			switch (SONG.song)
+			{
+				case "Joygrim" | "Neglection" | "Scrapped": DiscordClient.changePresence("Playing a song", "It's a secret...", "icon", "random", true, songLength - Conductor.songPosition - ClientPrefs.data.noteOffset);
+				default: DiscordClient.changePresence(discordTxt[0], discordTxt[1], (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(discordIcon)), "random", true, songLength - Conductor.songPosition - ClientPrefs.data.noteOffset);
+			}
 	}
 
 	public function setSongTime(time:Float)
@@ -1985,7 +1993,12 @@ class PlayState extends MusicBeatState
 
 		#if DISCORD_ALLOWED
 		// Updating Discord Rich Presence (with Time Left)
-		if(autoUpdateRPC) DiscordClient.changePresence(detailsText, scoreTxt.text, (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(SONG.song).toLowerCase()), 'something so the game doesnt freak tf out', true, songLength);
+		if(autoUpdateRPC) 
+			switch (SONG.song)
+			{
+				case "Joygrim" | "Neglection" | "Scrapped": DiscordClient.changePresence("Playing a song", "It's a secret...", "icon", "random", true, songLength);
+				default: DiscordClient.changePresence(discordTxt[0], discordTxt[1], (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(discordIcon)), "random", true, songLength);
+			}
 		#end
 		setOnScripts('songLength', songLength);
 		callOnScripts('onSongStart');
@@ -2387,7 +2400,12 @@ class PlayState extends MusicBeatState
 	override public function onFocusLost():Void
 	{
 		#if DISCORD_ALLOWED
-		if (healthThing > 0 && !paused && autoUpdateRPC) DiscordClient.changePresence(detailsPausedText, scoreTxt.text, (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(SONG.song).toLowerCase()), "idkMan");
+		if (healthThing > 0 && !paused && autoUpdateRPC)
+			switch (SONG.song)
+			{
+				case "Joygrim" | "Neglection" | "Scrapped": DiscordClient.changePresence("PAUSED", "It's a secret...", "icon", "random", true, songLength - Conductor.songPosition - ClientPrefs.data.noteOffset);
+				default: DiscordClient.changePresence("PAUSED", "Unfocused...", (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(discordIcon)), "random", true, songLength - Conductor.songPosition - ClientPrefs.data.noteOffset);
+			}
 		#end
 
 		super.onFocusLost();
@@ -2397,13 +2415,38 @@ class PlayState extends MusicBeatState
 	public var autoUpdateRPC:Bool = true; //performance setting for custom RPC things
 	function resetRPC(?showTime:Bool = false)
 	{
+		if (discordIcon == null)
+		{
+			discordIcon = SONG.song.toLowerCase().trim();
+
+			if (FreeplayState.freeplayMenuList == 3)
+				discordIcon = "volume2";
+			
+			if (FreeplayState.freeplayMenuList == 2)
+				discordIcon = "volume1";
+		}
+
+		if (discordTxt[0] == null)
+			discordTxt[0] = detailsText;
+
+		if (discordTxt[1] == null)
+			discordTxt[1] = scoreTxt.text;
+
 		#if DISCORD_ALLOWED
 		if(!autoUpdateRPC) return;
 
 		if (showTime)
-			DiscordClient.changePresence(detailsText, scoreTxt.text, (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(SONG.song).toLowerCase()), "idkMan", true, songLength - Conductor.songPosition - ClientPrefs.data.noteOffset);
+			switch (SONG.song)
+			{
+				case "Joygrim" | "Neglection" | "Scrapped": DiscordClient.changePresence("Playing a song", "It's a secret...", "icon", "random", true, songLength - Conductor.songPosition - ClientPrefs.data.noteOffset);
+				default: DiscordClient.changePresence(discordTxt[0], discordTxt[1], (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(discordIcon)), "random", true, songLength - Conductor.songPosition - ClientPrefs.data.noteOffset);
+			}
 		else
-			DiscordClient.changePresence(detailsText, scoreTxt.text, (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(SONG.song).toLowerCase()), "idkMan");
+			switch (SONG.song)
+			{
+				case "Joygrim" | "Neglection" | "Scrapped": DiscordClient.changePresence("Playing a song", "It's a secret...", "icon", "random");
+				default: DiscordClient.changePresence(discordTxt[0], discordTxt[1], (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(discordIcon)), "random");
+			}
 		#end
 	}
 
@@ -3376,7 +3419,12 @@ class PlayState extends MusicBeatState
 		openSubState((SONG.song.toLowerCase().endsWith('legacy') || SONG.song == "Isolated Beta" || SONG.song == "Isolated Old" ? new PauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y) : (FreeplayState.freeplayMenuList != 3 ? new FAVIPauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y) : new PauseManiaSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y))));
 
 		#if DISCORD_ALLOWED
-		if(autoUpdateRPC) DiscordClient.changePresence(detailsPausedText, scoreTxt.text, (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(SONG.song).toLowerCase()), "idkMan");
+		if(autoUpdateRPC) 
+			switch (SONG.song)
+			{
+				case "Joygrim" | "Neglection" | "Scrapped": DiscordClient.changePresence("Playing a song", "It's a secret...", "icon", "random");
+				default: DiscordClient.changePresence(discordTxt[0], discordTxt[1], (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(discordIcon)), "random");
+			}
 		#end
 	}
 
@@ -3509,7 +3557,12 @@ class PlayState extends MusicBeatState
 
 				#if DISCORD_ALLOWED
 				// Game Over doesn't get his its variable because it's only used here
-				if(autoUpdateRPC) DiscordClient.changePresence("Game Over - " + detailsText, 'Deaths: ${deathCounter}', (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(SONG.song).toLowerCase()), "idkMan");
+				if(autoUpdateRPC)
+					switch (SONG.song)
+					{
+						case "Joygrim" | "Neglection" | "Scrapped": DiscordClient.changePresence("Game Over", 'Deaths: ${deathCounter}', "icon", "random");
+						default: DiscordClient.changePresence("Game Over - " + discordTxt[0], 'Deaths: ${deathCounter}', (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(discordIcon)), "random");
+					}
 				#end
 				isDead = true;
 				return true;
@@ -3835,6 +3888,41 @@ class PlayState extends MusicBeatState
 								timer: Std.parseFloat(triggerInfo[1]), //Duration
 								ease: triggerInfo[2] //Ease name
 							});
+				}
+
+			case "Change Discord RPC":
+				var triggerInfo:Array<String> = value1.split(',');
+				
+				if (triggerInfo[0].trim() != null)
+					discordTxt[0] = triggerInfo[0].trim();
+
+				if (triggerInfo[1].trim() != null)
+					discordTxt[1] = triggerInfo[1].trim();
+
+				if (triggerInfo[2].toLowerCase().trim() != null)
+					discordIcon = triggerInfo[2].toLowerCase().trim();
+
+				if (triggerInfo[0].toLowerCase().trim() == "default") //this is by far the worst way I have ever improvised for a stupid null check not working (don)
+					discordTxt[0] = detailsText;
+
+				if (triggerInfo[1].toLowerCase().trim() == "default")
+					discordTxt[1] = scoreTxt.text;
+
+				if (triggerInfo[2].toLowerCase().trim() == "default")
+				{
+					discordIcon = SONG.song.toLowerCase().trim();
+
+					if (FreeplayState.freeplayMenuList == 3)
+						discordIcon = "volume2";
+					
+					if (FreeplayState.freeplayMenuList == 2)
+						discordIcon = "volume1";
+				}
+
+				switch (SONG.song)
+				{
+					case "Joygrim" | "Neglection" | "Scrapped": DiscordClient.changePresence("Playing a song", "It's a secret...", "icon", "random", true, songLength - Conductor.songPosition - ClientPrefs.data.noteOffset);
+					default: DiscordClient.changePresence(discordTxt[0], discordTxt[1], (useFakeDeluName ? "regret" : CoolUtil.spaceToDash(discordIcon)), "random", true, songLength - Conductor.songPosition - ClientPrefs.data.noteOffset);
 				}
 
 			case 'Camera Event':	
