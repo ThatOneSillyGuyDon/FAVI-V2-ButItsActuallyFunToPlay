@@ -1573,7 +1573,7 @@ class MalsquareTrollScreen extends MusicBeatSubstate {
 		//stupidAssCam.fade(FlxColor.BLACK, 0.55, true);
 
 		currentFPS = ClientPrefs.data.framerate;
-		ClientPrefs.data.framerate = 20; //least annoying gimmick
+		ClientPrefs.data.framerate = 15; //least annoying gimmick
 		FlxG.updateFramerate = ClientPrefs.data.framerate;
 		FlxG.drawFramerate = ClientPrefs.data.framerate;
 
@@ -1582,7 +1582,7 @@ class MalsquareTrollScreen extends MusicBeatSubstate {
 		bg = new FlxSprite().loadGraphic(Paths.image("favi/ui/gameOvers/malfunction/troll/trollBG"));
 		bg.antialiasing = false;
 		bg.screenCenter();
-		bg.alpha = 0.35;
+		bg.alpha = 0.001;
 		bg.cameras = [stupidAssCam];
 		add(bg);
 
@@ -1596,9 +1596,12 @@ class MalsquareTrollScreen extends MusicBeatSubstate {
 
 		jerk = new FlxSprite();
 		jerk.frames = Paths.getSparrowAtlas("favi/ui/gameOvers/malfunction/troll/asshole");
-		jerk.animation.addByPrefix("idle", "idle", 24, true);
+		jerk.animation.addByIndices("static", "idle", [1], "", 24, true); //to make him look like he's waiting to pull the biggest troll ever
+		jerk.animation.addByPrefix("idle", "idle", 45, true);
+		jerk.antialiasing = false;
 		jerk.screenCenter();
-		jerk.scale.set(1.5, 1.5);
+		jerk.y += 1200;
+		jerk.scale.set(2.1, 2.1);
 		jerk.cameras = [stupidAssCam];
 		add(jerk);
 
@@ -1620,15 +1623,19 @@ class MalsquareTrollScreen extends MusicBeatSubstate {
 
 		super.create();
 
-		stupidAssCam.fade(FlxColor.BLACK, 3, true);
+		jerk.animation.play("static");
+		FlxTween.tween(jerk, {y: jerk.y - 1280}, 1, {ease: FlxEase.sineOut});
+		FlxG.sound.play(Paths.sound("stupidWhooshSfx"));
+
+		FlxTween.tween(bg, {alpha: 0.35}, 3);
 		new FlxTimer().start(3, function(tmr:FlxTimer)
 		{
+			stupidAssCam.flash(FlxColor.WHITE, 1);
 			selector.visible = true;
-			FlxG.sound.playMusic(Paths.music("CarnivalSonicMusicLmfao"), 1);
+			FlxG.sound.playMusic(Paths.music("internetTheme"), 1);
 			jerk.animation.play("idle");
 			tiles.velocity.set(40, -40);
 			insult.visible = true;
-			bg.screenCenter();
 			FlxTween.tween(tiles, {alpha: 0.65}, 1);
 			FlxTween.tween(bg, {angle: 360}, 4.5, {type: LOOPING});
 		});
@@ -1657,7 +1664,6 @@ class MalsquareTrollScreen extends MusicBeatSubstate {
 
 			if (controls.ACCEPT)
 			{
-				//stupidAssCam.visible = false;
 				FlxG.sound.music.stop();
 				FlxG.sound.play(Paths.music('aviOST/gameOver/bellToll'));
 				PlayState.pauseCountEnabled = false;
@@ -1699,11 +1705,11 @@ class MalsquareTrollScreen extends MusicBeatSubstate {
 					remove(jerk);
 					remove(insult);
 					remove(selector);
-					isEnding = true;
 					ClientPrefs.data.framerate = currentFPS; //changes back to normal
 					FlxG.updateFramerate = ClientPrefs.data.framerate;
 					FlxG.drawFramerate = ClientPrefs.data.framerate;
 				});
+				isEnding = true;
 			}
 		}
 	}

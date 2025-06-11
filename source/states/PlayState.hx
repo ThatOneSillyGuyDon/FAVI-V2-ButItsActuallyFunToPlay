@@ -3472,7 +3472,7 @@ class PlayState extends MusicBeatState
 						case "War Dilemma":
 							openSubState(new WarGameOver());
 						case "Malfunction":
-							if (malfunctionTrollCounter >= 10 && FlxG.random.bool(15))
+							if (((malfunctionTrollCounter >= 10 && malfunctionTrollCounter <= 19) && FlxG.random.bool(15)) || (malfunctionTrollCounter >= 20 && FlxG.random.bool(25)))
 								openSubState(new MalsquareTrollScreen());
 							else
 								openSubState(new MalsquareDeath());
