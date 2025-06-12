@@ -34747,7 +34747,7 @@ enum abstract Chart(String) from String to String {
 						[
 							"Meta Event",
 							"Window",
-							"false, Welcome back, little mouse."
+							"false, Welcome back... Little mouse."
 						]
 					]
 				],
