@@ -82,6 +82,29 @@ class ChartingState extends MusicBeatState
 		['Camera Event', "A series of customizers and event types that\nchanges the camera behavior!\n\nValue 1: Name of event you want\nValue 2: Controls the event\n\nStart Hidden - makes the song start off hidden no matter where you place the event!\nChange Value - Value Name, Value Input\nTween Value - Value Name, Value Input, Duration, Ease type\nShake - Intensity, Duration, Game or HUD\nFade - R, G, B, Duration, Alpha, Fade In Bool Toggle\nFlash - R, G, B, Duration, Alpha, Blend Bool Toggle\nChange Pos/Set Position - X Pos, Y Pos\nTween Position: X Pos, Y Pos, Duration, Ease type\nSnap Position: X Pos, Y Pos\n\n(Please refer to documentation or code that comes with this for\nvalid value names for \"Tween Value\" & \"Change Value\")"],
 		['Background Controls', "A series of customizers and event types that\nchanges the background's behavior!\n\nValue 1: Name of event you want\nValue 2: Controls the event\n\nFlash - Time, Ease type, Visibility, Colors (IN RGB FORM!!!)\nDarken - Visibility, Time, Ease type"],
 		['Cinematic Bar Controls', "A series of customizers and event types that\nchanges the black bars' behavior!\n\nValue 1: Name of event you want\nValue 2: Time, Ease type, Position, Bop Value (ONLY WORKS WITH BOP EVENTS)"],
+		['Add Mal Shaders', ''],
+		['Malfunction Countdown', ''],
+		['Static Event', "Value 1: Determines what this triggers\nValue 2: Additional value input if needed\n\nValue 1 Inputs available:\n- togglevis\n- setalpha\n- twnalpha\n- settime"],
+		['Change Mal BG', "Value 1: Determines what this triggers\nValue 2: Additional value input if needed\n\nValue 1 Inputs available:\n- togglevis\n- setalpha\n- changebg"],
+		['No Signal Event', "Value 1: Determines what this triggers\nValue 2: Additional value input if needed\n\nValue 1 Inputs available:\n- togglevis\n- setalpha\n- changebg"],
+		['Mania BG Flash', "Value 1 Info: Customizer for how the flash will work\nValue 2 Info: Whether only the sky or the whole BG will flash\n\nValue 1: timer, ease, alpha, red value, green value, blue value\nValue 2: sky or all"],
+		['Mercy Transition', "too lazy to put a description here"],
+		['Mercy Stuff idk', "Value 1: Event you want\nValue 2: Leave empty\n\nTween Icons - Tweens the mechanic icons shown\nTween Walt Goop - Tweens the goop at the end of Mercy"],
+		['Remove Health', "Value 1: How much health to remove"],
+		['Devilish Events', ''],
+		['Icon Handler', ''],
+		['Lunacy Event Thing idk', "it just tweens the gradient idk. I'm to bored rn to care lmao"],
+		['Fire Handler', 'Handles the Fire in Lunacy/Delusional\n\nValue 1 - Visibility, Y, Time\nValue 2 - Ease type.'],
+		['Rain Handler', 'Handles the Rain in Lunacy/Delusional\n\nValue 1 - Visibility, Time\nValue 2 - Ease type.'],
+		['Delusional Events', ""],
+		['Trigger TG shader shi', "Add - Adds the shader\nRemove - Removes the shader"],
+		['Trigger Hunted Stuffs', ''],
+		['Bless Events', ''],
+		['Change Dads Cam Offset', 'Value 1 - Changes the X offset\nValue 2 - Changes the Y offset'],
+		['Relapse Gimmick', 'Value 1 -  Reaction Time, Damage Amount\nValue 2 - Double Barrel'],
+		['Relapse Events', ''],
+		['Change Screen Dimming', 'Value 1 - Visibility and Time\nValue 2 - ease type.\n(THIS EVENT CAN ONLY CAN BE USED IN DELUSIONAL LEGACY)'],
+		['Tween Char Scale', 'Too lazy to put a desc here.'],
 		['Play Sound', "Value 1: Sound file name\nValue 2: Volume (Default: 1), ranges from 0 to 1"]
 	];
 
@@ -191,6 +214,9 @@ class ChartingState extends MusicBeatState
 	var text:String = "";
 	public static var vortex:Bool = false;
 	public var mouseQuant:Bool = false;
+
+	var backupGpu:Bool;
+
 	override function create()
 	{
 		if (PlayState.SONG != null)
@@ -290,6 +316,9 @@ class ChartingState extends MusicBeatState
 		quant.xAdd = -32;
 		quant.yAdd = 8;
 		add(quant);
+
+		backupGpu = ClientPrefs.data.cacheOnGPU;
+		ClientPrefs.data.cacheOnGPU = false;
 
 		strumLineNotes = new FlxTypedGroup<StrumNote>();
 		for (i in 0...8){
@@ -2230,6 +2259,7 @@ class ChartingState extends MusicBeatState
 	override function destroy()
 	{
 		backend.NoteTypesConfig.clearNoteTypesData();
+		ClientPrefs.data.cacheOnGPU = backupGpu;
 		super.destroy();
 	}
 

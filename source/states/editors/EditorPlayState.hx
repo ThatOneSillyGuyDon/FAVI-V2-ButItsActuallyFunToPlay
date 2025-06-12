@@ -75,6 +75,8 @@ class EditorPlayState extends MusicBeatState
 
 	public static var instance:EditorPlayState;
 
+	var backupGpu:Bool;
+
 	override function create()
 	{
 		instance = this;
@@ -130,6 +132,9 @@ class EditorPlayState extends MusicBeatState
 			vocals = new FlxSound().loadEmbedded(Paths.voices(PlayState.SONG.song));
 		else
 			vocals = new FlxSound();
+
+		backupGpu = ClientPrefs.data.cacheOnGPU;
+		ClientPrefs.data.cacheOnGPU = false;
 
 		generateSong(PlayState.SONG.song);
 
@@ -1096,6 +1101,7 @@ class EditorPlayState extends MusicBeatState
 			FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
 			FlxG.stage.removeEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
 		}
+		ClientPrefs.data.cacheOnGPU = backupGpu;
 		super.destroy();
 	}
 

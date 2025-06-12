@@ -852,7 +852,6 @@ class PlayState extends MusicBeatState
 		noteGroup.add(playfieldRenderer);
 		noteGroup.add(grpNoteSplashes);
 
-
 		camFollow = new FlxPoint();
 		camFollowPos = new FlxObject(0, 0, 1, 1);
 

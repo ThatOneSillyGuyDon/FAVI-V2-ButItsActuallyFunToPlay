@@ -388,17 +388,6 @@ class Episode1Death extends MusicBeatSubstate {
 			FlxTween.tween(deathImage, {alpha: 1}, 3);
 		});
 
-		if (!ClientPrefs.data.lowQuality)
-		{
-			var scratch:FlxSprite = new FlxSprite();
-			scratch.frames = Paths.getSparrowAtlas('favi/filters/scratchShit');
-			scratch.animation.addByPrefix('e', 'scratch thing', 24, true);
-			scratch.animation.play('e');
-			scratch.cameras = [stupidAssCam];
-			scratch.scrollFactor.set(0, 0);
-			add(scratch);
-		}
-
 		stupidAssCam.scroll.set();
 
 		new FlxTimer().start(2.5, function(tmr:FlxTimer)
@@ -410,6 +399,17 @@ class Episode1Death extends MusicBeatSubstate {
 		});
 
 		super.create();
+
+		if (!ClientPrefs.data.lowQuality)
+		{
+			var scratch:FlxSprite = new FlxSprite();
+			scratch.frames = Paths.getSparrowAtlas('favi/filters/scratchShit');
+			scratch.animation.addByPrefix('e', 'scratch thing', 24, true);
+			scratch.animation.play('e');
+			scratch.cameras = [stupidAssCam];
+			scratch.scrollFactor.set(0, 0);
+			add(scratch);
+		}
 	}
 
 	override function update(elapsed:Float)
@@ -563,17 +563,6 @@ class DelusionalDeath extends MusicBeatSubstate {
 		uiArrowDown.x += 50;
 		uiArrowUp.x += 400;
 
-		if (!ClientPrefs.data.lowQuality)
-		{
-			var scratch:FlxSprite = new FlxSprite();
-			scratch.frames = Paths.getSparrowAtlas('favi/filters/scratchShit');
-			scratch.animation.addByPrefix('e', 'scratch thing', 24, true);
-			scratch.animation.play('e');
-			scratch.cameras = [stupidAssCam];
-			scratch.scrollFactor.set(0, 0);
-			add(scratch);
-		}
-
 		stupidAssCam.scroll.set();
 
 		new flixel.util.FlxTimer().start(0.5, function(tmr)
@@ -590,6 +579,17 @@ class DelusionalDeath extends MusicBeatSubstate {
 		});
 
 		super.create();
+
+		if (!ClientPrefs.data.lowQuality)
+		{
+			var scratch:FlxSprite = new FlxSprite();
+			scratch.frames = Paths.getSparrowAtlas('favi/filters/scratchShit');
+			scratch.animation.addByPrefix('e', 'scratch thing', 24, true);
+			scratch.animation.play('e');
+			scratch.cameras = [stupidAssCam];
+			scratch.scrollFactor.set(0, 0);
+			add(scratch);
+		}
 	}
 
 	override function update(elapsed:Float)
@@ -958,17 +958,6 @@ class EverettBaseDeath extends MusicBeatSubstate {
 		uiArrowUp.x += 50;
 		uiArrowUp.y -= 70;
 
-		if (!ClientPrefs.data.lowQuality)
-		{
-			var scratch:FlxSprite = new FlxSprite();
-			scratch.frames = Paths.getSparrowAtlas('favi/filters/scratchShit');
-			scratch.animation.addByPrefix('e', 'scratch thing', 24, true);
-			scratch.animation.play('e');
-			scratch.cameras = [stupidAssCam];
-			scratch.scrollFactor.set(0, 0);
-			add(scratch);
-		}
-
 		stupidAssCam.scroll.set();
 
 		deathImage.alpha = 0.0001;
@@ -986,6 +975,17 @@ class EverettBaseDeath extends MusicBeatSubstate {
 		});
 
 		super.create();
+
+		if (!ClientPrefs.data.lowQuality)
+		{
+			var scratch:FlxSprite = new FlxSprite();
+			scratch.frames = Paths.getSparrowAtlas('favi/filters/scratchShit');
+			scratch.animation.addByPrefix('e', 'scratch thing', 24, true);
+			scratch.animation.play('e');
+			scratch.cameras = [stupidAssCam];
+			scratch.scrollFactor.set(0, 0);
+			add(scratch);
+		}
 	}
 
 	override function update(elapsed:Float)
@@ -1128,17 +1128,6 @@ class WarGameOver extends MusicBeatSubstate {
 			add(warUI);
 		}
 
-		if (!ClientPrefs.data.lowQuality)
-		{
-			var scratch:FlxSprite = new FlxSprite();
-			scratch.frames = Paths.getSparrowAtlas('favi/filters/scratchShit');
-			scratch.animation.addByPrefix('e', 'scratch thing', 24, true);
-			scratch.animation.play('e');
-			scratch.cameras = [stupidAssCam];
-			scratch.scrollFactor.set(0, 0);
-			add(scratch);
-		}
-
 		deathImage.alpha = 0.0001;
 		deathHUD.fade(FlxColor.WHITE, 1, true);
 		FlxG.sound.play(Paths.sound("gunSfx"));
@@ -1156,6 +1145,17 @@ class WarGameOver extends MusicBeatSubstate {
 		});
 
 		super.create();
+
+		if (!ClientPrefs.data.lowQuality)
+		{
+			var scratch:FlxSprite = new FlxSprite();
+			scratch.frames = Paths.getSparrowAtlas('favi/filters/scratchShit');
+			scratch.animation.addByPrefix('e', 'scratch thing', 24, true);
+			scratch.animation.play('e');
+			scratch.cameras = [stupidAssCam];
+			scratch.scrollFactor.set(0, 0);
+			add(scratch);
+		}
 	}
 
 	override function update(elapsed:Float)
@@ -1287,17 +1287,6 @@ class WompWompSadMan extends MusicBeatSubstate {
 			add(bUI);
 		}
 
-		if (!ClientPrefs.data.lowQuality)
-		{
-			var scratch:FlxSprite = new FlxSprite();
-			scratch.frames = Paths.getSparrowAtlas('favi/filters/scratchShit');
-			scratch.animation.addByPrefix('e', 'scratch thing', 24, true);
-			scratch.animation.play('e');
-			scratch.cameras = [stupidAssCam];
-			scratch.scrollFactor.set(0, 0);
-			add(scratch);
-		}
-
 		stupidAssCam.scroll.set();
 
 		deathImage.alpha = 0.0001;
@@ -1316,6 +1305,17 @@ class WompWompSadMan extends MusicBeatSubstate {
 		});
 
 		super.create();
+
+		if (!ClientPrefs.data.lowQuality)
+		{
+			var scratch:FlxSprite = new FlxSprite();
+			scratch.frames = Paths.getSparrowAtlas('favi/filters/scratchShit');
+			scratch.animation.addByPrefix('e', 'scratch thing', 24, true);
+			scratch.animation.play('e');
+			scratch.cameras = [stupidAssCam];
+			scratch.scrollFactor.set(0, 0);
+			add(scratch);
+		}
 	}
 
 	override function update(elapsed:Float)
