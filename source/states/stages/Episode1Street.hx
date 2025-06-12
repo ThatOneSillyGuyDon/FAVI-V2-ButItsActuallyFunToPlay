@@ -273,6 +273,8 @@ class Episode1Street extends BaseStage
 					setStartCallback(isoIntro);
 				case "Lunacy":
 					setStartCallback(lunaIntro);
+				default:
+					startCountdown();
 			}
 		}
 	}
@@ -1059,18 +1061,6 @@ class Episode1Street extends BaseStage
 						game.defaultCamZoom = 0.8;
 						game.chromTween = FlxTween.tween(game, {chromEffect: 0.1}, 0.6, {ease: FlxEase.quadOut});
 					case 27:
-						if (isStoryMode)
-						{
-							PlayState.detailsText = "Episode 1 - Regret (PEACEFUL)";
-						}
-						else
-						{
-							PlayState.detailsText = "Freeplay - Regret (PEACEFUL)";
-						}
-						PlayState.useFakeDeluName = true;
-						PlayState.windowName = "...";
-						DiscordClient.changePresence("Do you have any idea...", "", (PlayState.useFakeDeluName ? "regret" : CoolUtil.spaceToDash(game.SONG.song).toLowerCase()), "idkMan");
-						lime.app.Application.current.window.title = PlayState.windowName;
 						game.boundValue = 2;
 						game.drainValue = 0;
 						camGame.visible = false;
@@ -1106,55 +1096,18 @@ class Episode1Street extends BaseStage
 						}
 						game.chromEffect = 0.00001;
 						game.defaultCamZoom = 0.85;
-					case 29:
-						PlayState.windowName = "Where am I...?";
-						DiscordClient.changePresence("Do you have any idea...", "...what you're dealing with?", (PlayState.useFakeDeluName ? "regret" : CoolUtil.spaceToDash(PlayState.SONG.song).toLowerCase()), "idkMan");
-						lime.app.Application.current.window.title = PlayState.windowName;
 					case 30:
-						DiscordClient.changePresence(PlayState.detailsText, game.scoreTxt.text, (PlayState.useFakeDeluName ? "regret" : CoolUtil.spaceToDash(PlayState.SONG.song).toLowerCase()), "idkMan");
-						PlayState.windowName = "Funkin.avi - " + (isStoryMode ? PlayState.curEpisode + " - " : "Freeplay - ") + "Regret [________]";
-						lime.app.Application.current.window.title = PlayState.windowName;
 						camGame.visible = true;
 						game.noteGroup.visible = true;
 						game.comboGroup.visible = false;
 						game.boyfriend.x += 1000;
-					case 31:
-						PlayState.windowName = "Funkin.avi - " + (isStoryMode ? PlayState.curEpisode + " - " : "Freeplay - ") + "Regret [P_______]";
-						lime.app.Application.current.window.title = PlayState.windowName;
-					case 32:
-						PlayState.windowName = "Funkin.avi - " + (isStoryMode ? PlayState.curEpisode + " - " : "Freeplay - ") + "Regret [PE______]";
-						lime.app.Application.current.window.title = PlayState.windowName;
-					case 33:
-						PlayState.windowName = "Funkin.avi - " + (isStoryMode ? PlayState.curEpisode + " - " : "Freeplay - ") + "Regret [PEA_____]";
-						lime.app.Application.current.window.title = PlayState.windowName;
-					case 34:
-						PlayState.windowName = "Funkin.avi - " + (isStoryMode ? PlayState.curEpisode + " - " : "Freeplay - ") + "Regret [PEAC____]";
-						lime.app.Application.current.window.title = PlayState.windowName;
-					case 35:
-						PlayState.windowName = "Funkin.avi - " + (isStoryMode ? PlayState.curEpisode + " - " : "Freeplay - ") + "Regret [PEACE___]";
-						lime.app.Application.current.window.title = PlayState.windowName;
-					case 36:
-						PlayState.windowName = "Funkin.avi - " + (isStoryMode ? PlayState.curEpisode + " - " : "Freeplay - ") + "Regret [PEACEF__]";
-						lime.app.Application.current.window.title = PlayState.windowName;
-					case 37:
-						PlayState.windowName = "Funkin.avi - " + (isStoryMode ? PlayState.curEpisode + " - " : "Freeplay - ") + "Regret [PEACEFU_]";
-						lime.app.Application.current.window.title = PlayState.windowName;
-						FlxTween.tween(game.boyfriend, {alpha: 0.45}, 2.5, {ease: FlxEase.expoOut});
-					case 38:
-						PlayState.windowName = "Funkin.avi - " + (isStoryMode ? PlayState.curEpisode + " - " : "Freeplay - ") + "Regret [PEACEFUL]";
-						lime.app.Application.current.window.title = PlayState.windowName;
 					case 39:
 						game.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.38, timer: 0.85, colors: [255, 255, 255]});
 						minnieJumpscare.resume();
 						minnieJumpscare.visible = true;
 					case 40:
 						FlxTween.tween(camGame, {alpha: 0.0001}, 5, {ease: FlxEase.quartInOut});
-					case 41:
-						PlayState.windowName = "...";
-						lime.app.Application.current.window.title = PlayState.windowName;
 					case 42:
-						PlayState.windowName = "Welcome back.... Little mouse.";
-						lime.app.Application.current.window.title = PlayState.windowName;
 						PlayState.blendFlash.cameras = [camGame];
 					case 43:
 						game.isCameraOnForcedPos = false;
@@ -1171,18 +1124,6 @@ class Episode1Street extends BaseStage
 						game.uiGroup.visible = false;
 						camGame.alpha = 1;
 					case 44:
-						PlayState.useFakeDeluName = false;
-						if (isStoryMode)
-						{
-							PlayState.detailsText = "Episode 1 - " + PlayState.SONG.song + " (" + FreeplayState.getDiffRank() + ")";
-						}
-						else
-						{
-							PlayState.detailsText = "Freeplay - " + PlayState.SONG.song + " (" + FreeplayState.getDiffRank() + ")";
-						}
-						PlayState.windowName = "Funkin.avi - " + (isStoryMode ? PlayState.curEpisode + " - " : "Freeplay - ") + PlayState.SONG.song + " [" + FreeplayState.getDiffRank() + "]";
-						DiscordClient.changePresence(PlayState.detailsText, game.scoreTxt.text, (PlayState.useFakeDeluName ? "regret" : CoolUtil.spaceToDash(PlayState.SONG.song).toLowerCase()), "idkMan");
-						lime.app.Application.current.window.title = PlayState.windowName;
 						game.camVideo.visible = false;
 						camGame.alpha = 1;
 						game.uiGroup.visible = true;
