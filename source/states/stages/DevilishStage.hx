@@ -16,6 +16,11 @@ class DevilishStage extends BaseStage
 	public static var devilishGaming:VideoSprite;
 	public static var episodeIntro:VideoSprite;
 
+	var skipSceneTxt:FlxText;
+    var skipDial:FlxPieDial;
+    var skipLerp:Float = 0.0;
+    var skipTmr:FlxTimer;
+
 	 // Hardcoded Devilish Deal Icon Frames
 	 public static var minnieIcon:HealthIcon;
 	 public static var satanIcon:HealthIcon;
@@ -54,25 +59,7 @@ class DevilishStage extends BaseStage
 		gradient.alpha = 0;
 		add(gradient);
 
-		if (isStoryMode && !seenCutscene)
-		{
-			setStartCallback(devilIntro);
-		}
-		else if (!isStoryMode)
-		{
-			devilishGaming = new VideoSprite(false);
-			devilishGaming.load(Paths.video("devilishIntro"), [VideoSprite.muted]);
-			add(devilishGaming);
-			devilishGaming.cameras = [game.camVideo];
-			devilishGaming.play();
-			devilishGaming.visible = false;
-			game.camVideo.visible = true;
-			new FlxTimer().start(0.001, function(tmr:FlxTimer)
-			{
-				devilishGaming.pause();
-				devilishGaming.setVideoTime(0);
-			});
-		}
+		setStartCallback(devilIntro);
 	}
 	
 	override function createPost()
@@ -146,58 +133,90 @@ class DevilishStage extends BaseStage
 
 	function devilIntro()
 	{
-		camGame.visible = false;
-		episodeIntro = new VideoSprite(false);
-		episodeIntro.load(Paths.video('episodeStart'));
-		episodeIntro.cameras = [game.camVideo];
-		episodeIntro.play();
-		game.camVideo.visible = true;
-		add(episodeIntro);
-		episodeIntro.addCallback("onStart", () -> {
+		if (isStoryMode && !seenCutscene)
+		{
+			camGame.visible = false;
+			episodeIntro = new VideoSprite(false);
+			episodeIntro.load(Paths.video('episodeStart'));
+			episodeIntro.cameras = [game.camVideo];
+			episodeIntro.play();
 			game.camVideo.visible = true;
-			episodeIntro.visible = true;
-		});
-		episodeIntro.addCallback("onEnd", () -> {
-			if (PlayState.SONG.song == "Devilish Deal" && isStoryMode && GameData.episode1FPLock != "unlocked")
-			{
-				PlayState.windowName = "Funkin.avi - " + 
-				(isStoryMode ? game.curEpisode + " - " : "Freeplay - ") + 
-				(PlayState.SONG.song == "Dont Cross" ? "Don't Cross!" : PlayState.SONG.song) + 
-				" (Composed by: " + FreeplayState.getArtistName() + 
-				") - Chart by: " + Song.getCharterCredits() + 
-				" [" + FreeplayState.getDiffRank() + "]"; // shitty long ass name that credits literally every fucking thing
-				lime.app.Application.current.window.title = PlayState.windowName;
-
-				PlayState.windowTimer = new FlxTimer().start(5, function(tmr:FlxTimer)
+			add(episodeIntro);
+			episodeIntro.addCallback("onStart", () -> {
+				game.camVideo.visible = true;
+				episodeIntro.visible = true;
+			});
+			episodeIntro.addCallback("onEnd", () -> {
+				camHUD.alpha = 0.001;
+				game.camBars.fade(FlxColor.BLACK, 0.001);
+				if (PlayState.SONG.song == "Devilish Deal" && isStoryMode && GameData.episode1FPLock != "unlocked")
 				{
 					PlayState.windowName = "Funkin.avi - " + 
 					(isStoryMode ? game.curEpisode + " - " : "Freeplay - ") + 
 					(PlayState.SONG.song == "Dont Cross" ? "Don't Cross!" : PlayState.SONG.song) + 
-					" [" + FreeplayState.getDiffRank() + "]"; // short version that displays after 5 seconds yayaya
-		
+					" (Composed by: " + FreeplayState.getArtistName() + 
+					") - Chart by: " + Song.getCharterCredits() + 
+					" [" + FreeplayState.getDiffRank() + "]"; // shitty long ass name that credits literally every fucking thing
 					lime.app.Application.current.window.title = PlayState.windowName;
+
+					PlayState.windowTimer = new FlxTimer().start(5, function(tmr:FlxTimer)
+					{
+						PlayState.windowName = "Funkin.avi - " + 
+						(isStoryMode ? game.curEpisode + " - " : "Freeplay - ") + 
+						(PlayState.SONG.song == "Dont Cross" ? "Don't Cross!" : PlayState.SONG.song) + 
+						" [" + FreeplayState.getDiffRank() + "]"; // short version that displays after 5 seconds yayaya
+			
+						lime.app.Application.current.window.title = PlayState.windowName;
+					});
+				}
+				devilishGaming = new VideoSprite(false);
+				devilishGaming.load(Paths.video("devilishIntro"), [VideoSprite.muted]);
+				add(devilishGaming);
+				devilishGaming.cameras = [game.camVideo];
+				devilishGaming.visible = false;
+				game.camVideo.visible = true;
+				camGame.visible = true;
+				new FlxTimer().start(0.001, function(tmr:FlxTimer)
+				{
+					devilishGaming.pause();
+					devilishGaming.setVideoTime(0);
 				});
-			}
-			//finishedScene = true;
+				startCountdown();
+				trace("video gone");
+				remove(episodeIntro);
+				episodeIntro.kill();
+				episodeIntro = null;
+			});
+		}
+		else
+		{
 			devilishGaming = new VideoSprite(false);
 			devilishGaming.load(Paths.video("devilishIntro"), [VideoSprite.muted]);
 			add(devilishGaming);
 			devilishGaming.cameras = [game.camVideo];
+			devilishGaming.play();
 			devilishGaming.visible = false;
 			game.camVideo.visible = true;
-			camGame.visible = true;
 			new FlxTimer().start(0.001, function(tmr:FlxTimer)
 			{
 				devilishGaming.pause();
 				devilishGaming.setVideoTime(0);
 			});
 			startCountdown();
-			//canSkip = false;
-			trace("video gone");
-			remove(episodeIntro);
-			episodeIntro.kill();
-			episodeIntro = null;
-		});
+		}
+
+		skipSceneTxt = new FlxText(0, 25, 1280, "Spam SPACE to skip this cutscene.");
+		skipSceneTxt.setFormat(Paths.font("MagicOwlFont.otf"), 32, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
+		skipSceneTxt.alpha = 0.0001;
+		skipSceneTxt.cameras = [game.camVideo];
+		add(skipSceneTxt);
+
+		skipDial = new FlxPieDial(0, 0, 45, FlxColor.WHITE, 10, CIRCLE, true, 30);
+		skipDial.screenCenter();
+		skipDial.amount = 0.0;
+		skipDial.alpha = 0.0001;
+		skipDial.cameras = [game.camVideo];
+		add(skipDial);
 	}
 
 	override function beatHit()
@@ -450,6 +469,77 @@ class DevilishStage extends BaseStage
 			chromNormalShader.setFloat('bOffset', -game.chromEffect / 70);
 			dramaticCamMovement.setFloat('time', shaderAnim);
 		}
+
+		//Cutscene stuff
+		if (FlxG.keys.justPressed.ANY)
+		{
+			if (skipTmr != null)
+				skipTmr.cancel();
+
+			skipTmr = new FlxTimer().start(2.5, function(tmr) {
+				skipLerp = 0.0;
+				skipDial.amount = 0;
+			});
+			skipLerp = 1.0;
+		}
+
+		if (FlxG.keys.justPressed.SPACE)
+		{
+			skipDial.amount += 0.1;
+		}
+
+		if (skipDial.amount >= 1)
+		{
+			if (episodeIntro != null)
+			{
+				episodeIntro.pause();
+				episodeIntro.visible = false;
+				if (PlayState.SONG.song == "Devilish Deal" && isStoryMode && GameData.episode1FPLock != "unlocked")
+				{
+					PlayState.windowName = "Funkin.avi - " + 
+					(isStoryMode ? game.curEpisode + " - " : "Freeplay - ") + 
+					(PlayState.SONG.song == "Dont Cross" ? "Don't Cross!" : PlayState.SONG.song) + 
+					" (Composed by: " + FreeplayState.getArtistName() + 
+					") - Chart by: " + Song.getCharterCredits() + 
+					" [" + FreeplayState.getDiffRank() + "]"; // shitty long ass name that credits literally every fucking thing
+					lime.app.Application.current.window.title = PlayState.windowName;
+
+					PlayState.windowTimer = new FlxTimer().start(5, function(tmr:FlxTimer)
+					{
+						PlayState.windowName = "Funkin.avi - " + 
+						(isStoryMode ? game.curEpisode + " - " : "Freeplay - ") + 
+						(PlayState.SONG.song == "Dont Cross" ? "Don't Cross!" : PlayState.SONG.song) + 
+						" [" + FreeplayState.getDiffRank() + "]"; // short version that displays after 5 seconds yayaya
+			
+						lime.app.Application.current.window.title = PlayState.windowName;
+					});
+				}
+				devilishGaming = new VideoSprite(false);
+				devilishGaming.load(Paths.video("devilishIntro"), [VideoSprite.muted]);
+				add(devilishGaming);
+				devilishGaming.cameras = [game.camVideo];
+				devilishGaming.visible = false;
+				game.camVideo.visible = true;
+				camGame.visible = true;
+				new FlxTimer().start(0.001, function(tmr:FlxTimer)
+				{
+					devilishGaming.pause();
+					devilishGaming.setVideoTime(0);
+				});
+				startCountdown();
+				trace("video gone");
+				remove(episodeIntro);
+				episodeIntro.kill();
+				episodeIntro = null;
+			}
+			skipDial.visible = false;
+			skipSceneTxt.visible = false;
+			startCountdown();
+		}
+	
+		if (skipSceneTxt != null)
+			for (skipper in [skipSceneTxt, skipDial])
+				skipper.alpha = FlxMath.lerp(skipLerp, skipper.alpha, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
 	}
 
 	public static function returnTweenEase(ease:String = '')

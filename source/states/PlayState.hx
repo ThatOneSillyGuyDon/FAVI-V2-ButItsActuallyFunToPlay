@@ -4110,11 +4110,71 @@ class PlayState extends MusicBeatState
 								}});
 							}
 						}
+					case "snappos" | "snap pos" | "snap position" | "snapposition":
+						if(camFollow != null)
+						{
+							isCameraOnForcedPos = false;
+							if(triggerInfo[0] != null || triggerInfo[1] != null)
+							{
+								isCameraOnForcedPos = true;
+								if(triggerInfo[0] == null) triggerInfo[0] = "0";
+								if(triggerInfo[1] == null) triggerInfo[1] = "0";
+								
+								snapCamFollowToPos(Std.parseFloat(triggerInfo[0]), Std.parseFloat(triggerInfo[1]));
+							}
+						}
 				}
 			
 			case 'Play Sound':
 				if(flValue2 == null) flValue2 = 1;
 				FlxG.sound.play(Paths.sound(value1), flValue2);
+
+			//Stuff for Delusional that doesn't work in Episode1Street.hx
+			case 'Delusional Events':
+				var eventData:Float = Std.parseFloat(value1);
+				if (SONG.song == "Delusional")
+				{
+					switch (eventData)
+					{
+						case 69:
+							camVideo.visible = false;
+							camGame.visible = true;
+							camGame.alpha = 1;
+						case 70:
+							camFollow.x = 630;
+							camFollow.y = 750;
+							isCameraOnForcedPos = true;
+							defaultCamZoom = 0.5;
+							boyfriend.cameras = [camVideo];
+							boyfriend.x += 1000;
+							boyfriend.alpha = 0.0001;
+							camVideo.visible = true;
+							noteGroup.visible = false;
+						case 71:
+							blendFlash.cameras = [camBars];
+							boyfriend.alpha = 0.0001;
+						case 72:
+							blendFlash.cameras = [camGame];
+						case 73:
+							camVideo.visible = false;
+							camGame.alpha = 1;
+							camHUD.visible = true;
+							defaultCamZoom = 0.9;
+							chromEffect = 0.1;
+							if (ClientPrefs.data.flashing)
+								camGame.flash(FlxColor.WHITE, 0.5);
+						case 74:
+							FlxTween.tween(camGame, {zoom: 1.6}, 1, {ease: FlxEase.sineInOut});
+							camVideo.visible = true;
+							camVideo.fade(FlxColor.BLACK, 0.7);
+						case 75:
+							camGame.visible = false;
+							FlxTween.tween(camHUD, {alpha: 0}, 2);
+							camVideo.zoom += 0.3;
+							camVideo.fade(FlxColor.BLACK, 0.2, true);
+							FlxTween.tween(camVideo, {zoom: 1}, 0.5, {ease: FlxEase.sineOut});
+					}
+				}
 		}
 
 		stagesFunc(function(stage:BaseStage) stage.eventCalled(eventName, value1, value2, flValue1, flValue2, strumTime));
@@ -5545,50 +5605,6 @@ class PlayState extends MusicBeatState
 		{
 			camGame.zoom += SONG.song == "Bless" ? 0.06 : 0.15;
 			camHUD.zoom += SONG.song == "Bless" ? 0.02 : 0.1;
-		}
-
-		if (SONG.song == "Delusional")
-		{
-			switch(curBeat)
-			{
-				case 212:
-					camVideo.visible = false;
-					camGame.visible = true;
-					camGame.alpha = 1;
-				case 478:
-					camFollow.x = 630;
-					camFollow.y = 750;
-					isCameraOnForcedPos = true;
-					defaultCamZoom = 0.5;
-					boyfriend.cameras = [camVideo];
-					boyfriend.x += 1000;
-					boyfriend.alpha = 0.0001;
-					camVideo.visible = true;
-					noteGroup.visible = false;
-				case 672:
-					blendFlash.cameras = [camBars];
-					boyfriend.alpha = 0.0001;
-				case 736:
-					blendFlash.cameras = [camGame];
-				case 744:
-					camVideo.visible = false;
-					camGame.alpha = 1;
-					camHUD.visible = true;
-					defaultCamZoom = 0.9;
-					chromEffect = 0.1;
-					if (ClientPrefs.data.flashing)
-						camGame.flash(FlxColor.WHITE, 0.5);
-				case 1082:
-					FlxTween.tween(camGame, {zoom: 1.6}, 1, {ease: FlxEase.sineInOut});
-					camVideo.visible = true;
-					camVideo.fade(FlxColor.BLACK, 0.7);
-				case 1086:
-					camGame.visible = false;
-					FlxTween.tween(camHUD, {alpha: 0}, 2);
-					camVideo.zoom += 0.3;
-					camVideo.fade(FlxColor.BLACK, 0.2, true);
-					FlxTween.tween(camVideo, {zoom: 1}, 0.5, {ease: FlxEase.sineOut});
-			}
 		}
 
 		setOnScripts('curBeat', curBeat);

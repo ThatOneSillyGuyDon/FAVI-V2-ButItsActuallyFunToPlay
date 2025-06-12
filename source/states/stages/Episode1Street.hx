@@ -15,6 +15,11 @@ class Episode1Street extends BaseStage
 	var isolatedIntro:VideoSprite;
 	var minnieJumpscare:VideoSprite;
 
+	var skipSceneTxt:FlxText;
+    var skipDial:FlxPieDial;
+    var skipLerp:Float = 0.0;
+    var skipTmr:FlxTimer;
+
 		 //MICKEY STAGE ASSETS
 	 public static var colorsOrSmthElse:FlxSprite;
 	 public static var floor:FlxSprite;
@@ -268,6 +273,8 @@ class Episode1Street extends BaseStage
 					setStartCallback(isoIntro);
 				case "Lunacy":
 					setStartCallback(lunaIntro);
+				default:
+					startCountdown();
 			}
 		}
 	}
@@ -439,6 +446,116 @@ class Episode1Street extends BaseStage
 			delusionalIcon.cameras = [camHUD];
 		}
 	}
+	
+	override function beatHit()
+	{
+		if (!ClientPrefs.data.lowQuality)
+		{
+			if (PlayState.SONG.song == "Delusional" && FlxG.random.bool(3) && tumbleWeed == null && curBeat < 474)
+				summonWeedMakerLmfao();
+			else if (PlayState.SONG.song != "Delusional" && FlxG.random.bool(3) && tumbleWeed == null)
+				summonWeedMakerLmfao();
+
+			if (PlayState.SONG.song == "Delusional" && curBeat > 880 && !ClientPrefs.data.lowQuality)
+			{
+				if (FlxG.random.bool(45)) lightningStrike();
+				if (FlxG.random.bool(36)) lightningStrikeFore();
+			}
+		}
+
+		if (PlayState.SONG.song == "Isolated")
+		{
+			lunacyIcon.scale.set(1.2, 1.2);
+			lunacyIcon.updateHitbox();
+
+			isolatedHappy.scale.set(1.2, 1.2);
+			isolatedHappy.updateHitbox();
+
+			demonBFIcon.scale.set(1.2, 1.2);
+			demonBFIcon.updateHitbox();
+
+			fakeBFLosingFrame.scale.set(1.2, 1.2);
+			fakeBFLosingFrame.updateHitbox();
+		}
+	}
+	
+	function isoIntro()
+	{
+		camGame.visible = false;
+		isolatedIntro = new VideoSprite(false);
+		isolatedIntro.load(Paths.video('isolatedIntro'));
+		isolatedIntro.cameras = [game.camOther];
+		isolatedIntro.play();
+		add(isolatedIntro);
+		game.camVideo.visible = true;
+		isolatedIntro.addCallback("onStart", () -> {
+			game.camVideo.visible = true;
+			isolatedIntro.visible = true;
+		});
+		isolatedIntro.addCallback("onEnd", () -> {
+			trace("video gone");
+			remove(isolatedIntro);
+			isolatedIntro.kill();
+			isolatedIntro = null;
+			game.camVideo.visible = false;
+			camGame.visible = true;
+			game.camBars.fade(FlxColor.BLACK, 0.001);
+			startCountdown();
+		});
+
+		skipSceneTxt = new FlxText(0, 25, 1280, "Spam SPACE to skip this cutscene.");
+		skipSceneTxt.setFormat(Paths.font("MagicOwlFont.otf"), 32, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
+		skipSceneTxt.alpha = 0.0001;
+		skipSceneTxt.cameras = [game.camOther];
+		add(skipSceneTxt);
+
+		skipDial = new FlxPieDial(0, 0, 45, FlxColor.WHITE, 10, CIRCLE, true, 30);
+		skipDial.screenCenter();
+		skipDial.amount = 0.0;
+		skipDial.alpha = 0.0001;
+		skipDial.cameras = [game.camOther];
+		add(skipDial);
+	}
+
+	function lunaIntro()
+	{
+		camGame.visible = false;
+		lununuIntro = new VideoSprite(false);
+		lununuIntro.load(Paths.video("lunacyIntro"));
+		lununuIntro.cameras = [game.camOther];
+		lununuIntro.play();
+		game.camVideo.visible = true;
+		add(lununuIntro);
+		lununuIntro.addCallback("onStart", () -> {
+			game.camVideo.visible = true;
+			lununuIntro.visible = true;
+			game.camBars.visible = false;
+		});
+		lununuIntro.addCallback("onEnd", () -> {
+			game.camVideo.visible = false;
+			game.camBars.visible = true;
+			camGame.visible = true;
+			game.camBars.fade(FlxColor.BLACK, 0.0001);
+			startCountdown();
+			trace("video gone");
+			remove(lununuIntro);
+			lununuIntro.kill();
+			lununuIntro = null;
+		});
+
+		skipSceneTxt = new FlxText(0, 25, 1280, "Spam SPACE to skip this cutscene.");
+		skipSceneTxt.setFormat(Paths.font("MagicOwlFont.otf"), 32, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
+		skipSceneTxt.alpha = 0.0001;
+		skipSceneTxt.cameras = [game.camOther];
+		add(skipSceneTxt);
+
+		skipDial = new FlxPieDial(0, 0, 45, FlxColor.WHITE, 10, CIRCLE, true, 30);
+		skipDial.screenCenter();
+		skipDial.amount = 0.0;
+		skipDial.alpha = 0.0001;
+		skipDial.cameras = [game.camOther];
+		add(skipDial);
+	}
 
 	override function update(elapsed:Float)
 	{
@@ -523,147 +640,62 @@ class Episode1Street extends BaseStage
 			case 'Mickey-Bedroom': game.boyfriend.setPosition(575, 50);
 			default: game.boyfriend.setPosition(275, 50);
 		}
-	}
-	
-	override function beatHit()
-	{
-		if (PlayState.SONG.song == "Isolated")
-			switch (curBeat)
-			{
-				case 160:
-					game.iconP2.alpha = 0;
-					isolatedHappy.visible = true;
-					FlxTween.tween(isolatedHappy, {alpha: 0}, 1);
-					FlxTween.tween(game.iconP2, {alpha: 1}, 0.6);
-					add(isolatedHappy);
-			
-				case 168:
-					lunacyIcon.visible = true;
-					game.iconP2.alpha = 0;
-					FlxTween.tween(lunacyIcon, {alpha: 0}, 1);
-					FlxTween.tween(game.iconP2, {alpha: 1}, 0.6);
-					add(lunacyIcon);
 
-				case 172:
-					delusionalIcon.visible = true;
-					game.iconP2.alpha = 0;
-					FlxTween.tween(delusionalIcon, {alpha: 0}, 1);
-					FlxTween.tween(game.iconP2, {alpha: 1}, 0.6);
-					add(delusionalIcon);
-
-				case 176:
-					fakeBFLosingFrame.visible = true;
-					game.iconP1.alpha = 0;
-					FlxTween.tween(fakeBFLosingFrame, {alpha: 0}, 1);
-					FlxTween.tween(game.iconP1, {alpha: 1}, 0.6);
-					add(fakeBFLosingFrame);
-
-				case 184:
-					demonBFIcon.visible = true;
-					game.iconP1.alpha = 0;
-					FlxTween.tween(demonBFIcon, {alpha: 0}, 1);
-					FlxTween.tween(game.iconP1, {alpha: 1}, 0.6);
-					add(demonBFIcon);
-		
-				case 188:
-					demonBFScary.visible = true;
-					game.iconP1.alpha = 0;
-					FlxTween.tween(demonBFScary, {alpha: 0}, 1);
-					FlxTween.tween(game.iconP1, {alpha: 1}, 0.6);
-					add(demonBFScary);
-			}
-		
-			switch (PlayState.SONG.song)
-			{
-				case 'Delusional':
-					if ((curBeat >= 216 && curBeat < 340) || (curBeat >= 344 && curBeat < 356) || (curBeat >= 360 && curBeat < 388) || 
-						(curBeat >= 392 && curBeat < 408) || (curBeat >= 880 && curBeat < 1072))
-					{
-						FlxG.camera.zoom += .015;
-						for (mridk in [camHUD]) mridk.zoom += .03;
-					}
-			}
-
-		if (!ClientPrefs.data.lowQuality)
+		if (isStoryMode && !seenCutscene)
 		{
-			if (PlayState.SONG.song == "Delusional" && FlxG.random.bool(3) && tumbleWeed == null && curBeat < 474)
-				summonWeedMakerLmfao();
-			else if (PlayState.SONG.song != "Delusional" && FlxG.random.bool(3) && tumbleWeed == null)
-				summonWeedMakerLmfao();
-
-			if (PlayState.SONG.song == "Delusional" && curBeat > 880 && !ClientPrefs.data.lowQuality)
+			if (FlxG.keys.justPressed.ANY)
 			{
-				if (FlxG.random.bool(45)) lightningStrike();
-				if (FlxG.random.bool(36)) lightningStrikeFore();
+				if (skipTmr != null)
+					skipTmr.cancel();
+
+				skipTmr = new FlxTimer().start(2.5, function(tmr) {
+					skipLerp = 0.0;
+					skipDial.amount = 0;
+				});
+				skipLerp = 1.0;
 			}
+
+			if (FlxG.keys.justPressed.SPACE)
+			{
+				skipDial.amount += 0.1;
+			}
+
+			if (skipDial.amount >= 1)
+			{
+				if (isolatedIntro != null)
+				{
+					isolatedIntro.pause();
+					isolatedIntro.visible = false;
+					game.camVideo.visible = false;
+					camGame.visible = true;
+					game.camBars.fade(FlxColor.BLACK, 0.001);
+					trace("video gone");
+					remove(isolatedIntro);
+					isolatedIntro.kill();
+					isolatedIntro = null;
+				}
+				if (lununuIntro != null)
+				{
+					lununuIntro.pause();
+					lununuIntro.visible = false;
+					game.camVideo.visible = false;
+					game.camBars.visible = true;
+					camGame.visible = true;
+					game.camBars.fade(FlxColor.BLACK, 0.0001);
+					trace("video gone");
+					remove(lununuIntro);
+					lununuIntro.kill();
+					lununuIntro = null;
+				}
+				skipDial.visible = false;
+				skipSceneTxt.visible = false;
+				startCountdown();
+			}
+
+			if (skipSceneTxt != null)
+				for (skipper in [skipSceneTxt, skipDial])
+					skipper.alpha = FlxMath.lerp(skipLerp, skipper.alpha, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
 		}
-
-		if (PlayState.SONG.song == "Isolated")
-		{
-			lunacyIcon.scale.set(1.2, 1.2);
-			lunacyIcon.updateHitbox();
-
-			isolatedHappy.scale.set(1.2, 1.2);
-			isolatedHappy.updateHitbox();
-
-			demonBFIcon.scale.set(1.2, 1.2);
-			demonBFIcon.updateHitbox();
-
-			fakeBFLosingFrame.scale.set(1.2, 1.2);
-			fakeBFLosingFrame.updateHitbox();
-		}
-	}
-	
-	function isoIntro()
-	{
-		camGame.visible = false;
-		isolatedIntro = new VideoSprite(false);
-		isolatedIntro.load(Paths.video('isolatedIntro'));
-		isolatedIntro.cameras = [game.camOther];
-		isolatedIntro.play();
-		add(isolatedIntro);
-		game.camVideo.visible = true;
-		isolatedIntro.addCallback("onStart", () -> {
-			game.camVideo.visible = true;
-			isolatedIntro.visible = true;
-		});
-		isolatedIntro.addCallback("onEnd", () -> {
-			trace("video gone");
-			remove(isolatedIntro);
-			isolatedIntro.kill();
-			isolatedIntro = null;
-			game.camVideo.visible = false;
-			camGame.visible = true;
-			game.camBars.fade(FlxColor.BLACK, 0.001);
-			startCountdown();
-		});
-	}
-
-	function lunaIntro()
-	{
-		camGame.visible = false;
-		lununuIntro = new VideoSprite(false);
-		lununuIntro.load(Paths.video("lunacyIntro"));
-		lununuIntro.cameras = [game.camOther];
-		lununuIntro.play();
-		game.camVideo.visible = true;
-		add(lununuIntro);
-		lununuIntro.addCallback("onStart", () -> {
-			game.camVideo.visible = true;
-			lununuIntro.visible = true;
-			game.camBars.visible = false;
-		});
-		lununuIntro.addCallback("onEnd", () -> {
-			game.camVideo.visible = false;
-			game.camBars.visible = true;
-			camGame.visible = true;
-			game.camBars.fade(FlxColor.BLACK, 0.0001);
-			startCountdown();
-			trace("video gone");
-			remove(lununuIntro);
-			lununuIntro.kill();
-			lununuIntro = null;
-		});
 	}
 
 	// Substates for pausing/resuming tweens and timers
@@ -770,6 +802,56 @@ class Episode1Street extends BaseStage
 	{
 		switch(eventName)
 		{
+			case 'Icon Handler':
+				var eventData:Float = Std.parseFloat(value1);
+				if (PlayState.SONG.song == "Isolated")
+				{
+					switch (eventData)
+					{
+						case 1:
+							game.iconP2.alpha = 0;
+							isolatedHappy.visible = true;
+							FlxTween.tween(isolatedHappy, {alpha: 0}, 1);
+							FlxTween.tween(game.iconP2, {alpha: 1}, 0.6);
+							add(isolatedHappy);
+					
+						case 2:
+							lunacyIcon.visible = true;
+							game.iconP2.alpha = 0;
+							FlxTween.tween(lunacyIcon, {alpha: 0}, 1);
+							FlxTween.tween(game.iconP2, {alpha: 1}, 0.6);
+							add(lunacyIcon);
+
+						case 3:
+							delusionalIcon.visible = true;
+							game.iconP2.alpha = 0;
+							FlxTween.tween(delusionalIcon, {alpha: 0}, 1);
+							FlxTween.tween(game.iconP2, {alpha: 1}, 0.6);
+							add(delusionalIcon);
+
+						case 4:
+							fakeBFLosingFrame.visible = true;
+							game.iconP1.alpha = 0;
+							FlxTween.tween(fakeBFLosingFrame, {alpha: 0}, 1);
+							FlxTween.tween(game.iconP1, {alpha: 1}, 0.6);
+							add(fakeBFLosingFrame);
+
+						case 5:
+							demonBFIcon.visible = true;
+							game.iconP1.alpha = 0;
+							FlxTween.tween(demonBFIcon, {alpha: 0}, 1);
+							FlxTween.tween(game.iconP1, {alpha: 1}, 0.6);
+							add(demonBFIcon);
+				
+						case 188:
+							demonBFScary.visible = true;
+							game.iconP1.alpha = 0;
+							FlxTween.tween(demonBFScary, {alpha: 0}, 1);
+							FlxTween.tween(game.iconP1, {alpha: 1}, 0.6);
+							add(demonBFScary);
+					}
+				}
+			
 			case 'Tween Chromatic Abberation':
 				var triggerInfo:Array<String> = value2.split(',');
 				if (ClientPrefs.data.shaders)
@@ -965,7 +1047,7 @@ class Episode1Street extends BaseStage
 					case 23: game.defaultCamZoom = 0.75;
 					case 24:
 						game.chromTween = FlxTween.tween(game, {chromEffect: 1}, 0.1, {ease: FlxEase.sineInOut});
-						game.tweenCamera(1.5, 0.1, 'sineInOut');
+						//game.tweenCamera(1.5, 0.1, 'sineInOut');
 					case 25:
 						if (game.chromTween != null) game.chromTween.cancel();
 						game.chromTween = null;
@@ -1143,7 +1225,7 @@ class Episode1Street extends BaseStage
 					case 46:
 						game.boundValue = 1.5;
 						game.drainValue = 0.01;
-						game.tweenCamera(1.35, 7, "quartInOut");
+						//game.tweenCamera(1.35, 7, "quartInOut");
 						game.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.4, timer: 2, colors: [255, 0, 0]});
 						game.camFlashSystem(BG_DARK, {alpha: 0.8, timer: 6, ease: FlxEase.quartInOut});
 						game.isCameraOnForcedPos = true;
