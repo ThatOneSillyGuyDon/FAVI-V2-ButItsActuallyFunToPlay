@@ -8445,251 +8445,252 @@ enum abstract Chart(String) from String to String {
 }';
     var lunacy:String = '{
 	"song": {
-		"player1": "bf-fake-new",
 		"composer": "obscurity",
+		"player1": "bf-fake-new",
+		"player2": "mickey-FINAL-HOLYSHI",
 		"notes": [
 			{
-				"lengthInSteps": 16,
-				"sectionNotes": [],
 				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 150,
 				"changeBPM": false,
-				"bpm": 150
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
-				"sectionNotes": [],
 				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 150,
 				"changeBPM": false,
-				"bpm": 150
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
-				"sectionNotes": [],
 				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
-				"sectionNotes": [],
 				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
-				"sectionNotes": [],
 				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
-				"sectionNotes": [],
 				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
-				"sectionNotes": [],
 				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
-				"sectionNotes": [],
 				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
-				"sectionNotes": [],
 				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
-				"sectionNotes": [],
 				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
-				"sectionNotes": [],
 				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
-				"sectionNotes": [],
 				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
-				"sectionNotes": [],
 				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
-				"sectionNotes": [],
 				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
-				"sectionNotes": [],
 				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
-				"sectionNotes": [],
 				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
-				"sectionNotes": [],
 				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
-				"sectionNotes": [],
 				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
-				"sectionNotes": [],
 				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
-				"sectionNotes": [],
 				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
-				"sectionNotes": [],
 				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
-				"sectionNotes": [],
 				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
-				"sectionNotes": [],
 				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
-				"sectionNotes": [],
 				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						30638.2978723404,
@@ -8702,15 +8703,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						31914.8936170213,
@@ -8738,15 +8739,15 @@ enum abstract Chart(String) from String to String {
 						79.7872340425532
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						33191.4893617021,
@@ -8759,15 +8760,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						34468.085106383,
@@ -8790,15 +8791,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						35744.6808510638,
@@ -8831,15 +8832,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						37021.2765957447,
@@ -8867,15 +8868,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						38297.8723404255,
@@ -8888,15 +8889,15 @@ enum abstract Chart(String) from String to String {
 						558.510638297872
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						39574.4680851064,
@@ -8904,15 +8905,15 @@ enum abstract Chart(String) from String to String {
 						1196.8085106383
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						40851.0638297872,
@@ -8945,15 +8946,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						42127.6595744681,
@@ -8996,15 +8997,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						43404.2553191489,
@@ -9032,15 +9033,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						44680.8510638298,
@@ -9073,15 +9074,15 @@ enum abstract Chart(String) from String to String {
 						558.510638297872
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						45957.4468085106,
@@ -9114,15 +9115,15 @@ enum abstract Chart(String) from String to String {
 						1196.8085106383
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						47234.0425531915,
@@ -9160,15 +9161,15 @@ enum abstract Chart(String) from String to String {
 						1196.8085106383
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						48510.6382978724,
@@ -9196,15 +9197,15 @@ enum abstract Chart(String) from String to String {
 						1196.8085106383
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						49787.2340425532,
@@ -9232,15 +9233,15 @@ enum abstract Chart(String) from String to String {
 						1196.8085106383
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						51063.8297872341,
@@ -9273,15 +9274,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						52340.4255319149,
@@ -9329,15 +9330,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						53617.0212765958,
@@ -9400,15 +9401,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						54893.6170212766,
@@ -9456,15 +9457,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						56170.2127659575,
@@ -9487,15 +9488,15 @@ enum abstract Chart(String) from String to String {
 						1196.8085106383
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						57446.8085106383,
@@ -9518,15 +9519,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						58723.4042553192,
@@ -9539,15 +9540,15 @@ enum abstract Chart(String) from String to String {
 						1196.8085106383
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						60000,
@@ -9570,15 +9571,15 @@ enum abstract Chart(String) from String to String {
 						1196.8085106383
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						61276.5957446809,
@@ -9611,15 +9612,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						63510.6382978724,
@@ -9667,15 +9668,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						64148.9361702128,
@@ -9723,15 +9724,15 @@ enum abstract Chart(String) from String to String {
 						2154.25531914894
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						65106.3829787234,
@@ -9764,15 +9765,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						66382.9787234043,
@@ -9810,15 +9811,15 @@ enum abstract Chart(String) from String to String {
 						2154.25531914894
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						67659.5744680851,
@@ -9871,15 +9872,15 @@ enum abstract Chart(String) from String to String {
 						79.7872340425532
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						68936.170212766,
@@ -9907,15 +9908,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						70212.7659574468,
@@ -9948,15 +9949,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						71489.3617021277,
@@ -10004,15 +10005,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						72765.9574468085,
@@ -10055,15 +10056,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						74042.5531914894,
@@ -10116,15 +10117,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						75319.1489361702,
@@ -10157,15 +10158,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						76595.7446808511,
@@ -10208,15 +10209,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						77872.3404255319,
@@ -10244,15 +10245,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						79148.9361702128,
@@ -10295,15 +10296,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						80425.5319148936,
@@ -10326,15 +10327,15 @@ enum abstract Chart(String) from String to String {
 						558.510638297872
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						81702.1276595745,
@@ -10387,15 +10388,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						82978.7234042553,
@@ -10438,15 +10439,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						84734.0425531915,
@@ -10499,15 +10500,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						85531.914893617,
@@ -10540,15 +10541,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						86808.5106382978,
@@ -10591,15 +10592,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						88085.1063829787,
@@ -10627,15 +10628,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						89361.7021276596,
@@ -10678,15 +10679,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						90638.2978723404,
@@ -10709,15 +10710,15 @@ enum abstract Chart(String) from String to String {
 						558.510638297872
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						91914.8936170212,
@@ -10770,15 +10771,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						93191.4893617021,
@@ -10801,15 +10802,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						94468.0851063829,
@@ -10857,15 +10858,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						95744.6808510638,
@@ -10883,15 +10884,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						97021.2765957446,
@@ -10934,15 +10935,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						98297.8723404255,
@@ -10970,15 +10971,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						99574.4680851063,
@@ -11021,15 +11022,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						100851.063829787,
@@ -11052,15 +11053,15 @@ enum abstract Chart(String) from String to String {
 						558.510638297872
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						102127.659574468,
@@ -11113,15 +11114,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						103404.255319149,
@@ -11144,15 +11145,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						104680.85106383,
@@ -11200,15 +11201,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						105957.446808511,
@@ -11226,15 +11227,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						107234.042553191,
@@ -11277,15 +11278,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						108510.638297872,
@@ -11313,15 +11314,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						110106.382978723,
@@ -11364,15 +11365,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						111063.829787234,
@@ -11395,15 +11396,15 @@ enum abstract Chart(String) from String to String {
 						0
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						112340.425531915,
@@ -11431,15 +11432,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						113617.021276596,
@@ -11467,15 +11468,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						114893.617021276,
@@ -11498,15 +11499,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						116170.212765957,
@@ -11529,15 +11530,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						117446.808510638,
@@ -11560,15 +11561,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						118723.404255319,
@@ -11591,15 +11592,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						120000,
@@ -11622,15 +11623,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						121276.595744681,
@@ -11653,15 +11654,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						122872.340425532,
@@ -11684,15 +11685,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						123829.787234042,
@@ -11715,15 +11716,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						125106.382978723,
@@ -11751,15 +11752,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						126382.978723404,
@@ -11782,15 +11783,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						127659.574468085,
@@ -11813,15 +11814,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						128936.170212766,
@@ -11844,15 +11845,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						130212.765957447,
@@ -11860,15 +11861,15 @@ enum abstract Chart(String) from String to String {
 						1196.8085106383
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						131489.361702127,
@@ -11876,15 +11877,15 @@ enum abstract Chart(String) from String to String {
 						1196.8085106383
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						132765.957446808,
@@ -11907,15 +11908,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						134042.553191489,
@@ -11943,15 +11944,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						135319.14893617,
@@ -11974,15 +11975,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						136595.744680851,
@@ -12005,15 +12006,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						137872.340425532,
@@ -12036,15 +12037,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						139148.936170213,
@@ -12067,15 +12068,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						140425.531914893,
@@ -12098,15 +12099,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						142021.276595744,
@@ -12129,15 +12130,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						142978.723404255,
@@ -12160,15 +12161,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						144255.319148936,
@@ -12191,15 +12192,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						145851.063829787,
@@ -12227,15 +12228,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						146808.510638298,
@@ -12258,15 +12259,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						148085.106382978,
@@ -12289,15 +12290,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						149361.702127659,
@@ -12322,15 +12323,15 @@ enum abstract Chart(String) from String to String {
 						239.36170212766
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						150638.29787234,
@@ -12338,15 +12339,15 @@ enum abstract Chart(String) from String to String {
 						1196.8085106383
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						151914.893617021,
@@ -12354,15 +12355,15 @@ enum abstract Chart(String) from String to String {
 						1196.8085106383
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						153191.489361702,
@@ -12370,25 +12371,25 @@ enum abstract Chart(String) from String to String {
 						1196.8085106383
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						155744.680851064,
@@ -12396,25 +12397,25 @@ enum abstract Chart(String) from String to String {
 						1196.8085106383
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						158297.872340425,
@@ -12422,25 +12423,25 @@ enum abstract Chart(String) from String to String {
 						1196.8085106383
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						160851.063829787,
@@ -12448,25 +12449,25 @@ enum abstract Chart(String) from String to String {
 						1196.8085106383
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": false
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						163404.255319149,
@@ -12474,25 +12475,25 @@ enum abstract Chart(String) from String to String {
 						1196.8085106383
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						165957.44680851,
@@ -12500,25 +12501,25 @@ enum abstract Chart(String) from String to String {
 						1196.8085106383
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						168510.638297872,
@@ -12526,25 +12527,25 @@ enum abstract Chart(String) from String to String {
 						1196.8085106383
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
+				"typeOfSection": 0,
 				"sectionNotes": [
 					[
 						171063.829787234,
@@ -12561,62 +12562,62 @@ enum abstract Chart(String) from String to String {
 						""
 					]
 				],
-				"typeOfSection": 0,
-				"gfSection": false,
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
-				"sectionNotes": [],
 				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
-				"sectionNotes": [],
 				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
-				"sectionNotes": [],
 				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
-				"sectionNotes": [],
 				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
-				"lengthInSteps": 16,
-				"sectionNotes": [],
 				"typeOfSection": 0,
-				"gfSection": false,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": true,
+				"gfSection": false,
+				"bpm": 188,
 				"changeBPM": false,
-				"bpm": 188
+				"mustHitSection": true
 			},
 			{
 				"sectionBeats": 4,
@@ -12626,8 +12627,8 @@ enum abstract Chart(String) from String to String {
 				"lengthInSteps": 16,
 				"typeOfSection": 0,
 				"sectionNotes": [],
-				"changeBPM": false,
-				"bpm": 188
+				"bpm": 188,
+				"changeBPM": false
 			},
 			{
 				"sectionBeats": 4,
@@ -12637,18 +12638,8 @@ enum abstract Chart(String) from String to String {
 				"lengthInSteps": 16,
 				"typeOfSection": 0,
 				"sectionNotes": [],
-				"changeBPM": false,
-				"bpm": 188
-			},
-			{
-				"sectionBeats": 4,
-				"sectionNotes": [],
-				"typeOfSection": 0,
-				"gfSection": false,
-				"altAnim": false,
-				"mustHitSection": true,
-				"changeBPM": false,
-				"bpm": 188
+				"bpm": 188,
+				"changeBPM": false
 			},
 			{
 				"typeOfSection": 0,
@@ -12659,9 +12650,18 @@ enum abstract Chart(String) from String to String {
 				"bpm": 188,
 				"changeBPM": false,
 				"mustHitSection": true
+			},
+			{
+				"sectionBeats": 4,
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"gfSection": false,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 188
 			}
 		],
-		"player2": "mickey-FINAL-HOLYSHI",
 		"splashSkin": "NOTE_splashesCartoon",
 		"song": "Lunacy",
 		"validScore": true,
@@ -12681,6 +12681,16 @@ enum abstract Chart(String) from String to String {
 						"Camera Event",
 						"Change Value",
 						"hudalpha,0"
+					]
+				]
+			],
+			[
+				0,
+				[
+					[
+						"Camera Event",
+						"Snap Position",
+						"400,525"
 					]
 				]
 			],
@@ -12706,6 +12716,16 @@ enum abstract Chart(String) from String to String {
 						"Camera Event",
 						"Fade",
 						"0,0,0,3,true"
+					]
+				]
+			],
+			[
+				9574.46808510638,
+				[
+					[
+						"Camera Event",
+						"Tween Position",
+						"-100,475,0.7,circIn"
 					]
 				]
 			],
@@ -12736,6 +12756,11 @@ enum abstract Chart(String) from String to String {
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.27,1.5"
+					],
+					[
+						"Set Property",
+						"isCameraOnForcedPos",
+						"false"
 					]
 				]
 			],
@@ -12871,6 +12896,11 @@ enum abstract Chart(String) from String to String {
 						"Cinematic Bar Controls",
 						"bopboth",
 						"0.5,quartOut,100,20"
+					],
+					[
+						"Camera Event",
+						"Tween Position",
+						"525,525,0.7,circIn"
 					]
 				]
 			],
@@ -12901,6 +12931,11 @@ enum abstract Chart(String) from String to String {
 						"Cinematic Bar Controls",
 						"moveboth",
 						"1.2,circOut,190"
+					],
+					[
+						"Set Property",
+						"isCameraOnForcedPos",
+						"false"
 					]
 				]
 			],
@@ -13056,6 +13091,11 @@ enum abstract Chart(String) from String to String {
 						"Cinematic Bar Controls",
 						"bopboth",
 						"0.5,quartOut,170,20"
+					],
+					[
+						"Camera Event",
+						"Tween Position",
+						"400,525,0.7,circOut"
 					]
 				]
 			],
@@ -13091,6 +13131,16 @@ enum abstract Chart(String) from String to String {
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.32,2.1"
+					]
+				]
+			],
+			[
+				30638.2978723404,
+				[
+					[
+						"Set Property",
+						"isCameraOnForcedPos",
+						"false"
 					]
 				]
 			],
@@ -13275,6 +13325,16 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
+				40851.0638297872,
+				[
+					[
+						"Camera Event",
+						"Change Pos",
+						"400,525"
+					]
+				]
+			],
+			[
 				42127.6595744681,
 				[
 					[
@@ -13395,6 +13455,16 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
+				49148.9361702128,
+				[
+					[
+						"Camera Event",
+						"Tween Position",
+						"875,575,0.7,circInOut"
+					]
+				]
+			],
+			[
 				49787.2340425532,
 				[
 					[
@@ -13491,6 +13561,11 @@ enum abstract Chart(String) from String to String {
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.55,0.6"
+					],
+					[
+						"Camera Event",
+						"Snap Pos",
+						"210,460"
 					]
 				]
 			],
@@ -13561,6 +13636,11 @@ enum abstract Chart(String) from String to String {
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.55,0.6"
+					],
+					[
+						"Set Property",
+						"isCameraOnForcedPos",
+						"false"
 					]
 				]
 			],
@@ -14095,6 +14175,16 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
+				71010.6382978724,
+				[
+					[
+						"Camera Event",
+						"Tween Value",
+						"zoom,2,0.53,backIn"
+					]
+				]
+			],
+			[
 				71170.2127659575,
 				[
 					[
@@ -14121,6 +14211,11 @@ enum abstract Chart(String) from String to String {
 						"Camera Event",
 						"Tween Value",
 						"hudalpha,0,3,sineInOut"
+					],
+					[
+						"Camera Event",
+						"Tween Value",
+						"zoom,0.75,0.0001,linear"
 					]
 				]
 			],
@@ -17566,6 +17661,11 @@ enum abstract Chart(String) from String to String {
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.3,0.5"
+					],
+					[
+						"Camera Event",
+						"Tween Position",
+						"875,575,0.7,circIn"
 					]
 				]
 			],
@@ -17596,6 +17696,16 @@ enum abstract Chart(String) from String to String {
 						"Fire Handler",
 						"1,-350,19.5",
 						"sineInOut"
+					]
+				]
+			],
+			[
+				132765.957446808,
+				[
+					[
+						"Set Property",
+						"isCameraOnForcedPos",
+						"false"
 					]
 				]
 			],
@@ -18021,6 +18131,11 @@ enum abstract Chart(String) from String to String {
 						"Fire Handler",
 						"0.35,-120,0.0001",
 						"linear"
+					],
+					[
+						"Camera Event",
+						"Tween Value",
+						"zoom,0.85,0.0001,linear"
 					]
 				]
 			],
@@ -18073,14 +18188,24 @@ enum abstract Chart(String) from String to String {
 						"0,0,0,5,1,false"
 					]
 				]
+			],
+			[
+				172978.723404255,
+				[
+					[
+						"Camera Event",
+						"Tween Value",
+						"zoom,0.55,10,circInOut"
+					]
+				]
 			]
 		],
 		"charter": "Purg",
 		"needsVoices": true,
 		"stage": "abandonedStreet",
 		"voiceSfx1": "Player",
-		"bpm": 188,
-		"voiceSfx2": "Opponent"
+		"voiceSfx2": "Opponent",
+		"bpm": 188
 	}
 }';
     var delusional:String = '{
@@ -31520,7137 +31645,7138 @@ enum abstract Chart(String) from String to String {
 					"mustHitSection": true
 				}
 			],
-			"events": [[
-				342.857142857143,
+			"events": [
 				[
+					342.857142857143,
 					[
-						"Cinematic Event",
-						"Move",
-						"100,0.0001,linear"
+						[
+							"Cinematic Event",
+							"Move",
+							"100,0.0001,linear"
+						]
 					]
-				]
-			],
-			[
-				10971.4285714286,
+				],
 				[
+					10971.4285714286,
 					[
-						"Cinematic Event",
-						"Move",
-						"120,2,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"120,2,circOut"
+						]
 					]
-				]
-			],
-			[
-				21942.8571428571,
+				],
 				[
+					21942.8571428571,
 					[
-						"Cinematic Event",
-						"Move",
-						"75,2,circInOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"75,2,circInOut"
+						]
 					]
-				]
-			],
-			[
-				43885.7142857143,
+				],
 				[
+					43885.7142857143,
 					[
-						"Cinematic Event",
-						"Move",
-						"90,1,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"90,1,circOut"
+						]
 					]
-				]
-			],
-			[
-				45257.1428571429,
+				],
 				[
+					45257.1428571429,
 					[
-						"Cinematic Event",
-						"Move",
-						"180,2,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"180,2,circOut"
+						]
 					]
-				]
-			],
-			[
-				49297.2972972973,
+				],
 				[
+					49297.2972972973,
 					[
-						"Cinematic Event",
-						"Move",
-						"70,0.0001,linear"
+						[
+							"Cinematic Event",
+							"Move",
+							"70,0.0001,linear"
+						]
 					]
-				]
-			],
-			[
-				51891.8918918919,
+				],
 				[
+					51891.8918918919,
 					[
-						"Cinematic Event",
-						"Move",
-						"80,0.5,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"80,0.5,circOut"
+						]
 					]
-				]
-			],
-			[
-				52540.5405405406,
+				],
 				[
+					52540.5405405406,
 					[
-						"Cinematic Event",
-						"Move",
-						"90,0.5,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"90,0.5,circOut"
+						]
 					]
-				]
-			],
-			[
-				53189.1891891892,
+				],
 				[
+					53189.1891891892,
 					[
-						"Cinematic Event",
-						"Move",
-						"100,0.5,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"100,0.5,circOut"
+						]
 					]
-				]
-			],
-			[
-				53837.8378378379,
+				],
 				[
+					53837.8378378379,
 					[
-						"Cinematic Event",
-						"Move",
-						"110,0.5,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"110,0.5,circOut"
+						]
 					]
-				]
-			],
-			[
-				54486.4864864865,
+				],
 				[
+					54486.4864864865,
 					[
-						"Cinematic Event",
-						"Move",
-						"70,1,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"70,1,circOut"
+						]
 					]
-				]
-			],
-			[
-				57081.0810810811,
+				],
 				[
+					57081.0810810811,
 					[
-						"Cinematic Event",
-						"Move",
-						"80,0.5,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"80,0.5,circOut"
+						]
 					]
-				]
-			],
-			[
-				58378.3783783784,
+				],
 				[
+					58378.3783783784,
 					[
-						"Cinematic Event",
-						"Move",
-						"90,0.5,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"90,0.5,circOut"
+						]
 					]
-				]
-			],
-			[
-				59675.6756756757,
+				],
 				[
+					59675.6756756757,
 					[
-						"Cinematic Event",
-						"Move",
-						"0,2,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"0,2,circOut"
+						]
 					]
-				]
-			],
-			[
-				93405.4054054054,
+				],
 				[
+					93405.4054054054,
 					[
-						"Cinematic Event",
-						"Move",
-						"90,1.5,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"90,1.5,circOut"
+						]
 					]
-				]
-			],
-			[
-				96000,
+				],
 				[
+					96000,
 					[
-						"Cinematic Event",
-						"Move",
-						"100,0.5,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"100,0.5,circOut"
+						]
 					]
-				]
-			],
-			[
-				98594.5945945945,
+				],
 				[
+					98594.5945945945,
 					[
-						"Cinematic Event",
-						"Move",
-						"110,0.5,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"110,0.5,circOut"
+						]
 					]
-				]
-			],
-			[
-				101189.189189189,
+				],
 				[
+					101189.189189189,
 					[
-						"Cinematic Event",
-						"Move",
-						"120,0.5,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"120,0.5,circOut"
+						]
 					]
-				]
-			],
-			[
-				102486.486486486,
+				],
 				[
+					102486.486486486,
 					[
-						"Cinematic Event",
-						"Move",
-						"130,0.5,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"130,0.5,circOut"
+						]
 					]
-				]
-			],
-			[
-				103783.783783784,
+				],
 				[
+					103783.783783784,
 					[
-						"Cinematic Event",
-						"Move",
-						"90,1.5,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"90,1.5,circOut"
+						]
 					]
-				]
-			],
-			[
-				106378.378378378,
+				],
 				[
+					106378.378378378,
 					[
-						"Cinematic Event",
-						"Move",
-						"100,0.5,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"100,0.5,circOut"
+						]
 					]
-				]
-			],
-			[
-				108972.972972973,
+				],
 				[
+					108972.972972973,
 					[
-						"Cinematic Event",
-						"Move",
-						"110,0.5,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"110,0.5,circOut"
+						]
 					]
-				]
-			],
-			[
-				111567.567567567,
+				],
 				[
+					111567.567567567,
 					[
-						"Cinematic Event",
-						"Move",
-						"120,0.5,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"120,0.5,circOut"
+						]
 					]
-				]
-			],
-			[
-				112216.216216216,
+				],
 				[
+					112216.216216216,
 					[
-						"Cinematic Event",
-						"Move",
-						"80,1,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"80,1,circOut"
+						]
 					]
-				]
-			],
-			[
-				114162.162162162,
+				],
 				[
+					114162.162162162,
 					[
-						"Cinematic Event",
-						"Move",
-						"100,1,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"100,1,circOut"
+						]
 					]
-				]
-			],
-			[
-				118054.054054054,
+				],
 				[
+					118054.054054054,
 					[
-						"Cinematic Event",
-						"Move",
-						"120,0.5,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"120,0.5,circOut"
+						]
 					]
-				]
-			],
-			[
-				118702.702702703,
+				],
 				[
+					118702.702702703,
 					[
-						"Cinematic Event",
-						"Move",
-						"130,0.5,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"130,0.5,circOut"
+						]
 					]
-				]
-			],
-			[
-				119351.351351351,
+				],
 				[
+					119351.351351351,
 					[
-						"Cinematic Event",
-						"Move",
-						"100,1,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"100,1,circOut"
+						]
 					]
-				]
-			],
-			[
-				128432.432432432,
+				],
 				[
+					128432.432432432,
 					[
-						"Cinematic Event",
-						"Move",
-						"120,0.5,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"120,0.5,circOut"
+						]
 					]
-				]
-			],
-			[
-				129081.081081081,
+				],
 				[
+					129081.081081081,
 					[
-						"Cinematic Event",
-						"Move",
-						"130,0.5,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"130,0.5,circOut"
+						]
 					]
-				]
-			],
-			[
-				129729.72972973,
+				],
 				[
+					129729.72972973,
 					[
-						"Cinematic Event",
-						"Move",
-						"100,1,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"100,1,circOut"
+						]
 					]
-				]
-			],
-			[
-				134918.918918919,
+				],
 				[
+					134918.918918919,
 					[
-						"Cinematic Event",
-						"Move",
-						"140,2,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"140,2,circOut"
+						]
 					]
-				]
-			],
-			[
-				155027.027027027,
+				],
 				[
+					155027.027027027,
 					[
-						"Cinematic Event",
-						"Move",
-						"380,0.65,backIn"
+						[
+							"Cinematic Event",
+							"Move",
+							"380,0.65,backIn"
+						]
 					]
-				]
-			],
-			[
-				158427.518427518,
+				],
 				[
+					158427.518427518,
 					[
-						"Cinematic Event",
-						"Move",
-						"70,10,linear"
+						[
+							"Cinematic Event",
+							"Move",
+							"70,10,linear"
+						]
 					]
-				]
-			],
-			[
-				256245.113735436,
+				],
 				[
+					256245.113735436,
 					[
-						"Cinematic Event",
-						"Move",
-						"120,0.0001,linear"
+						[
+							"Cinematic Event",
+							"Move",
+							"120,0.0001,linear"
+						]
 					]
-				]
-			],
-			[
-				258839.70833003,
+				],
 				[
+					258839.70833003,
 					[
-						"Cinematic Event",
-						"Bop",
-						"30,0.5,circOut"
+						[
+							"Cinematic Event",
+							"Bop",
+							"30,0.5,circOut"
+						]
 					]
-				]
-			],
-			[
-				261434.302924625,
+				],
 				[
+					261434.302924625,
 					[
-						"Cinematic Event",
-						"Bop",
-						"30,0.5,circOut"
+						[
+							"Cinematic Event",
+							"Bop",
+							"30,0.5,circOut"
+						]
 					]
-				]
-			],
-			[
-				264028.897519219,
+				],
 				[
+					264028.897519219,
 					[
-						"Cinematic Event",
-						"Bop",
-						"30,0.5,circOut"
+						[
+							"Cinematic Event",
+							"Bop",
+							"30,0.5,circOut"
+						]
 					]
-				]
-			],
-			[
-				265326.194816517,
+				],
 				[
+					265326.194816517,
 					[
-						"Cinematic Event",
-						"Bop",
-						"30,0.5,circOut"
+						[
+							"Cinematic Event",
+							"Bop",
+							"30,0.5,circOut"
+						]
 					]
-				]
-			],
-			[
-				266623.492113814,
+				],
 				[
+					266623.492113814,
 					[
-						"Cinematic Event",
-						"Bop",
-						"30,0.5,circOut"
+						[
+							"Cinematic Event",
+							"Bop",
+							"30,0.5,circOut"
+						]
 					]
-				]
-			],
-			[
-				269218.086708409,
+				],
 				[
+					269218.086708409,
 					[
-						"Cinematic Event",
-						"Bop",
-						"30,0.5,circOut"
+						[
+							"Cinematic Event",
+							"Bop",
+							"30,0.5,circOut"
+						]
 					]
-				]
-			],
-			[
-				271812.681303003,
+				],
 				[
+					271812.681303003,
 					[
-						"Cinematic Event",
-						"Bop",
-						"30,0.5,circOut"
+						[
+							"Cinematic Event",
+							"Bop",
+							"30,0.5,circOut"
+						]
 					]
-				]
-			],
-			[
-				274407.275897598,
+				],
 				[
+					274407.275897598,
 					[
-						"Cinematic Event",
-						"Bop",
-						"30,0.5,circOut"
+						[
+							"Cinematic Event",
+							"Bop",
+							"30,0.5,circOut"
+						]
 					]
-				]
-			],
-			[
-				275704.573194895,
+				],
 				[
+					275704.573194895,
 					[
-						"Cinematic Event",
-						"Bop",
-						"30,0.5,circOut"
+						[
+							"Cinematic Event",
+							"Bop",
+							"30,0.5,circOut"
+						]
 					]
-				]
-			],
-			[
-				277001.870492192,
+				],
 				[
+					277001.870492192,
 					[
-						"Cinematic Event",
-						"Bop",
-						"30,0.5,circOut"
+						[
+							"Cinematic Event",
+							"Bop",
+							"30,0.5,circOut"
+						]
 					]
-				]
-			],
-			[
-				278299.167789489,
+				],
 				[
+					278299.167789489,
 					[
-						"Cinematic Event",
-						"Move",
-						"185,0.8,circIn"
+						[
+							"Cinematic Event",
+							"Move",
+							"185,0.8,circIn"
+						]
 					]
-				]
-			],
-			[
-				279596.465086787,
+				],
 				[
+					279596.465086787,
 					[
-						"Cinematic Event",
-						"Move",
-						"120,0.8,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"120,0.8,circOut"
+						]
 					]
-				]
-			],
-			[
-				282191.059681381,
+				],
 				[
+					282191.059681381,
 					[
-						"Cinematic Event",
-						"Bop",
-						"30,0.5,circOut"
+						[
+							"Cinematic Event",
+							"Bop",
+							"30,0.5,circOut"
+						]
 					]
-				]
-			],
-			[
-				283488.356978679,
+				],
 				[
+					283488.356978679,
 					[
-						"Cinematic Event",
-						"Move",
-						"185,0.8,circIn"
+						[
+							"Cinematic Event",
+							"Move",
+							"185,0.8,circIn"
+						]
 					]
-				]
-			],
-			[
-				284785.654275976,
+				],
 				[
+					284785.654275976,
 					[
-						"Cinematic Event",
-						"Move",
-						"120,0.8,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"120,0.8,circOut"
+						]
 					]
-				]
-			],
-			[
-				286082.951573273,
+				],
 				[
+					286082.951573273,
 					[
-						"Cinematic Event",
-						"Bop",
-						"30,0.5,circOut"
+						[
+							"Cinematic Event",
+							"Bop",
+							"30,0.5,circOut"
+						]
 					]
-				]
-			],
-			[
-				288677.546167868,
+				],
 				[
+					288677.546167868,
 					[
-						"Cinematic Event",
-						"Move",
-						"185,0.8,circIn"
+						[
+							"Cinematic Event",
+							"Move",
+							"185,0.8,circIn"
+						]
 					]
-				]
-			],
-			[
-				289974.843465165,
+				],
 				[
+					289974.843465165,
 					[
-						"Cinematic Event",
-						"Move",
-						"120,0.8,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"120,0.8,circOut"
+						]
 					]
-				]
-			],
-			[
-				292569.43805976,
+				],
 				[
+					292569.43805976,
 					[
-						"Cinematic Event",
-						"Bop",
-						"30,0.5,circOut"
+						[
+							"Cinematic Event",
+							"Bop",
+							"30,0.5,circOut"
+						]
 					]
-				]
-			],
-			[
-				293866.735357057,
+				],
 				[
+					293866.735357057,
 					[
-						"Cinematic Event",
-						"Move",
-						"185,0.8,circIn"
+						[
+							"Cinematic Event",
+							"Move",
+							"185,0.8,circIn"
+						]
 					]
-				]
-			],
-			[
-				295164.032654354,
+				],
 				[
+					295164.032654354,
 					[
-						"Cinematic Event",
-						"Move",
-						"120,0.8,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"120,0.8,circOut"
+						]
 					]
-				]
-			],
-			[
-				296461.329951651,
+				],
 				[
+					296461.329951651,
 					[
-						"Cinematic Event",
-						"Bop",
-						"30,0.5,circOut"
+						[
+							"Cinematic Event",
+							"Bop",
+							"30,0.5,circOut"
+						]
 					]
-				]
-			],
-			[
-				297758.627248949,
+				],
 				[
+					297758.627248949,
 					[
-						"Cinematic Event",
-						"Move",
-						"180,2.5,circInOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"180,2.5,circInOut"
+						]
 					]
-				]
-			],
-			[
-				300353.221843543,
+				],
 				[
+					300353.221843543,
 					[
-						"Cinematic Event",
-						"Move",
-						"100,1,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"100,1,circOut"
+						]
 					]
-				]
-			],
-			[
-				321109.9786003,
+				],
 				[
+					321109.9786003,
 					[
-						"Cinematic Event",
-						"Move",
-						"120,1.5,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"120,1.5,circOut"
+						]
 					]
-				]
-			],
-			[
-				341866.735357056,
+				],
 				[
+					341866.735357056,
 					[
-						"Cinematic Event",
-						"Move",
-						"140,1,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"140,1,circOut"
+						]
 					]
-				]
-			],
-			[
-				347055.924546245,
+				],
 				[
+					347055.924546245,
 					[
-						"Cinematic Event",
-						"Move",
-						"80,1,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"80,1,circOut"
+						]
 					]
-				]
-			],
-			[
-				349001.870492191,
+				],
 				[
+					349001.870492191,
 					[
-						"Cinematic Event",
-						"Move",
-						"100,1,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"100,1,circOut"
+						]
 					]
-				]
-			],
-			[
-				352245.113735434,
+				],
 				[
+					352245.113735434,
 					[
-						"Cinematic Event",
-						"Move",
-						"100,1,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"100,1,circOut"
+						]
 					]
-				]
-			],
-			[
-				357434.302924623,
+				],
 				[
+					357434.302924623,
 					[
-						"Cinematic Event",
-						"Move",
-						"120,1.5,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"120,1.5,circOut"
+						]
 					]
-				]
-			],
-			[
-				360028.897519218,
+				],
 				[
+					360028.897519218,
 					[
-						"Cinematic Event",
-						"Move",
-						"140,1,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"140,1,circOut"
+						]
 					]
-				]
-			],
-			[
-				362623.492113813,
+				],
 				[
+					362623.492113813,
 					[
-						"Cinematic Event",
-						"Move",
-						"90,1,circOut"
+						[
+							"Cinematic Event",
+							"Move",
+							"90,1,circOut"
+						]
 					]
-				]
-			],
-			[
-				383380.248870569,
+				],
 				[
+					383380.248870569,
 					[
-						"Cinematic Event",
-						"Move",
-						"0,0.0001,linear"
+						[
+							"Cinematic Event",
+							"Move",
+							"0,0.0001,linear"
+						]
 					]
-				]
-			],
-			[
-				342.857142857143,
+				],
 				[
+					342.857142857143,
 					[
-						"Delusional Events",
-						"1",
-						""
+						[
+							"Delusional Events",
+							"1",
+							""
+						]
 					]
-				]
-			],
-			[
-				21942.8571428571,
+				],
 				[
+					21942.8571428571,
 					[
-						"Delusional Events",
-						"55",
-						""
+						[
+							"Delusional Events",
+							"55",
+							""
+						]
 					]
-				]
-			],
-			[
-				45257.1428571429,
+				],
 				[
+					45257.1428571429,
 					[
-						"Delusional Events",
-						"2",
-						""
+						[
+							"Delusional Events",
+							"2",
+							""
+						]
 					]
-				]
-			],
-			[
-				46628.5714285714,
+				],
 				[
+					46628.5714285714,
 					[
-						"Delusional Events",
-						"3",
-						""
+						[
+							"Delusional Events",
+							"3",
+							""
+						]
 					]
-				]
-			],
-			[
-				48972.972972973,
+				],
 				[
+					48972.972972973,
 					[
-						"Delusional Events",
-						"4",
-						""
+						[
+							"Delusional Events",
+							"4",
+							""
+						]
 					]
-				]
-			],
-			[
-				49297.2972972973,
+				],
 				[
+					49297.2972972973,
 					[
-						"Delusional Events",
-						"5",
-						""
+						[
+							"Delusional Events",
+							"5",
+							""
+						]
 					]
-				]
-			],
-			[
-				49945.945945946,
+				],
 				[
+					49945.945945946,
 					[
-						"Manage Lyrics",
-						"evilpredelu",
-						"Count the minutes...,disneyFreeplayFont.ttf,30,1.1,sineInOut,.05"
+						[
+							"Manage Lyrics",
+							"evilpredelu",
+							"Count the minutes...,disneyFreeplayFont.ttf,30,1.1,sineInOut,.05"
+						]
 					]
-				]
-			],
-			[
-				51243.2432432433,
+				],
 				[
+					51243.2432432433,
 					[
-						"Manage Lyrics",
-						"evilpredelu",
-						"...of how long...,disneyFreeplayFont.ttf,30,1,sineInOut,0.04"
+						[
+							"Manage Lyrics",
+							"evilpredelu",
+							"...of how long...,disneyFreeplayFont.ttf,30,1,sineInOut,0.04"
+						]
 					]
-				]
-			],
-			[
-				52540.5405405406,
+				],
 				[
+					52540.5405405406,
 					[
-						"Manage Lyrics",
-						"evilpredelu",
-						"...this show will play!,disneyFreeplayFont.ttf,30,2.2,quartInOut,.07"
+						[
+							"Manage Lyrics",
+							"evilpredelu",
+							"...this show will play!,disneyFreeplayFont.ttf,30,2.2,quartInOut,.07"
+						]
 					]
-				]
-			],
-			[
-				55135.1351351352,
+				],
 				[
+					55135.1351351352,
 					[
-						"Manage Lyrics",
-						"evilpredelu",
-						"And remind yourself...,disneyFreeplayFont.ttf,30,1.3,sineInOut,.05"
+						[
+							"Manage Lyrics",
+							"evilpredelu",
+							"And remind yourself...,disneyFreeplayFont.ttf,30,1.3,sineInOut,.05"
+						]
 					]
-				]
-			],
-			[
-				56756.7567567568,
+				],
 				[
+					56756.7567567568,
 					[
-						"Manage Lyrics",
-						"evilpredelu",
-						"...no matter what is in...,disneyFreeplayFont.ttf,30,2,sineInOut,.06"
+						[
+							"Manage Lyrics",
+							"evilpredelu",
+							"...no matter what is in...,disneyFreeplayFont.ttf,30,2,sineInOut,.06"
+						]
 					]
-				]
-			],
-			[
-				59027.0270270271,
+				],
 				[
+					59027.0270270271,
 					[
-						"Manage Lyrics",
-						"evildelu",
-						"...THE WAY!,disneyFreeplayFont.ttf,30,1,circOut,.035"
+						[
+							"Manage Lyrics",
+							"evildelu",
+							"...THE WAY!,disneyFreeplayFont.ttf,30,1,circOut,.035"
+						]
 					]
-				]
-			],
-			[
-				59675.6756756757,
+				],
 				[
+					59675.6756756757,
 					[
-						"Delusional Events",
-						"6",
-						""
+						[
+							"Delusional Events",
+							"6",
+							""
+						]
 					]
-				]
-			],
-			[
-				60324.3243243244,
+				],
 				[
+					60324.3243243244,
 					[
-						"Manage Lyrics",
-						"evildelu",
-						"All your dreams...,disneyFreeplayFont.ttf,30,1,sineInOut,.04"
+						[
+							"Manage Lyrics",
+							"evildelu",
+							"All your dreams...,disneyFreeplayFont.ttf,30,1,sineInOut,.04"
+						]
 					]
-				]
-			],
-			[
-				60972.972972973,
+				],
 				[
+					60972.972972973,
 					[
-						"Delusional Events",
-						"7",
-						""
+						[
+							"Delusional Events",
+							"7",
+							""
+						]
 					]
-				]
-			],
-			[
-				61621.6216216217,
+				],
 				[
+					61621.6216216217,
 					[
-						"Manage Lyrics",
-						"evildelu",
-						"...ARE SO FAR OUT OF REACH!,disneyFreeplayFont.ttf,30,4,quartInOut,.055"
+						[
+							"Manage Lyrics",
+							"evildelu",
+							"...ARE SO FAR OUT OF REACH!,disneyFreeplayFont.ttf,30,4,quartInOut,.055"
+						]
 					]
-				]
-			],
-			[
-				62270.2702702703,
+				],
 				[
+					62270.2702702703,
 					[
-						"Delusional Events",
-						"8",
-						""
+						[
+							"Delusional Events",
+							"8",
+							""
+						]
 					]
-				]
-			],
-			[
-				63567.5675675676,
+				],
 				[
+					63567.5675675676,
 					[
-						"Delusional Events",
-						"7",
-						""
+						[
+							"Delusional Events",
+							"7",
+							""
+						]
 					]
-				]
-			],
-			[
-				64216.2162162163,
+				],
 				[
+					64216.2162162163,
 					[
-						"Manage Lyrics",
-						"evildelu",
-						"But if YOUR delusions...,disneyFreeplayFont.ttf,30,2.2,sineInOut,.045"
+						[
+							"Manage Lyrics",
+							"evildelu",
+							"But if YOUR delusions...,disneyFreeplayFont.ttf,30,2.2,sineInOut,.045"
+						]
 					]
-				]
-			],
-			[
-				64864.8648648649,
+				],
 				[
+					64864.8648648649,
 					[
-						"Delusional Events",
-						"8",
-						""
+						[
+							"Delusional Events",
+							"8",
+							""
+						]
 					]
-				]
-			],
-			[
-				66162.1621621622,
+				],
 				[
+					66162.1621621622,
 					[
-						"Manage Lyrics",
-						"evildelu",
-						"...still surround ya.,disneyFreeplayFont.ttf,30,1.3,quartOut,.045"
+						[
+							"Manage Lyrics",
+							"evildelu",
+							"...still surround ya.,disneyFreeplayFont.ttf,30,1.3,quartOut,.045"
+						]
 					]
-				]
-			],
-			[
-				66162.1621621622,
+				],
 				[
+					66162.1621621622,
 					[
-						"Delusional Events",
-						"7",
-						""
+						[
+							"Delusional Events",
+							"7",
+							""
+						]
 					]
-				]
-			],
-			[
-				67459.4594594595,
+				],
 				[
+					67459.4594594595,
 					[
-						"Manage Lyrics",
-						"evildelu",
-						"Let us LOOP AROUND ONCE MORE.,disneyFreeplayFont.ttf,30,3,sineInOut,.065"
+						[
+							"Manage Lyrics",
+							"evildelu",
+							"Let us LOOP AROUND ONCE MORE.,disneyFreeplayFont.ttf,30,3,sineInOut,.065"
+						]
 					]
-				]
-			],
-			[
-				67459.4594594595,
+				],
 				[
+					67459.4594594595,
 					[
-						"Delusional Events",
-						"8",
-						""
+						[
+							"Delusional Events",
+							"8",
+							""
+						]
 					]
-				]
-			],
-			[
-				68756.7567567568,
+				],
 				[
+					68756.7567567568,
 					[
-						"Delusional Events",
-						"9",
-						""
+						[
+							"Delusional Events",
+							"9",
+							""
+						]
 					]
-				]
-			],
-			[
-				70054.0540540541,
+				],
 				[
+					70054.0540540541,
 					[
-						"Delusional Events",
-						"10",
-						""
+						[
+							"Delusional Events",
+							"10",
+							""
+						]
 					]
-				]
-			],
-			[
-				71027.0270270271,
+				],
 				[
+					71027.0270270271,
 					[
-						"Change Character",
-						"dad",
-						"delumickey"
-					],
-					[
-						"Change Character",
-						"bf",
-						"bf-demon"
+						[
+							"Change Character",
+							"dad",
+							"delumickey"
+						],
+						[
+							"Change Character",
+							"bf",
+							"bf-demon"
+						]
 					]
-				]
-			],
-			[
-				71351.3513513514,
+				],
 				[
-					[
-						"Play Animation",
-						"singUP",
-						"dad"
-					],
+					71351.3513513514,
 					[
-						"Delusional Events",
-						"11",
-						""
-					],
-					[
-						"Delusional Events",
-						"69",
-						""
+						[
+							"Play Animation",
+							"singUP",
+							"dad"
+						],
+						[
+							"Delusional Events",
+							"11",
+							""
+						],
+						[
+							"Delusional Events",
+							"69",
+							""
+						]
 					]
-				]
-			],
-			[
-				71432.4324324325,
+				],
 				[
+					71432.4324324325,
 					[
-						"Play Animation",
-						"singUP",
-						"dad"
+						[
+							"Play Animation",
+							"singUP",
+							"dad"
+						]
 					]
-				]
-			],
-			[
-				71513.5135135135,
+				],
 				[
+					71513.5135135135,
 					[
-						"Play Animation",
-						"singUP",
-						"dad"
+						[
+							"Play Animation",
+							"singUP",
+							"dad"
+						]
 					]
-				]
-			],
-			[
-				71594.5945945946,
+				],
 				[
+					71594.5945945946,
 					[
-						"Play Animation",
-						"singUP",
-						"dad"
+						[
+							"Play Animation",
+							"singUP",
+							"dad"
+						]
 					]
-				]
-			],
-			[
-				71675.6756756757,
+				],
 				[
+					71675.6756756757,
 					[
-						"Play Animation",
-						"singUP",
-						"dad"
+						[
+							"Play Animation",
+							"singUP",
+							"dad"
+						]
 					]
-				]
-			],
-			[
-				71756.7567567568,
+				],
 				[
+					71756.7567567568,
 					[
-						"Play Animation",
-						"singUP",
-						"dad"
+						[
+							"Play Animation",
+							"singUP",
+							"dad"
+						]
 					]
-				]
-			],
-			[
-				71837.8378378379,
+				],
 				[
+					71837.8378378379,
 					[
-						"Play Animation",
-						"singUP",
-						"dad"
+						[
+							"Play Animation",
+							"singUP",
+							"dad"
+						]
 					]
-				]
-			],
-			[
-				71918.918918919,
+				],
 				[
+					71918.918918919,
 					[
-						"Play Animation",
-						"singUP",
-						"dad"
+						[
+							"Play Animation",
+							"singUP",
+							"dad"
+						]
 					]
-				]
-			],
-			[
-				72000,
+				],
 				[
+					72000,
 					[
-						"Play Animation",
-						"singUP",
-						"dad"
+						[
+							"Play Animation",
+							"singUP",
+							"dad"
+						]
 					]
-				]
-			],
-			[
-				72081.0810810811,
+				],
 				[
+					72081.0810810811,
 					[
-						"Play Animation",
-						"singUP",
-						"dad"
+						[
+							"Play Animation",
+							"singUP",
+							"dad"
+						]
 					]
-				]
-			],
-			[
-				72162.1621621622,
+				],
 				[
+					72162.1621621622,
 					[
-						"Play Animation",
-						"singUP",
-						"dad"
+						[
+							"Play Animation",
+							"singUP",
+							"dad"
+						]
 					]
-				]
-			],
-			[
-				72243.2432432433,
+				],
 				[
+					72243.2432432433,
 					[
-						"Play Animation",
-						"singUP",
-						"dad"
+						[
+							"Play Animation",
+							"singUP",
+							"dad"
+						]
 					]
-				]
-			],
-			[
-				72648.6486486487,
+				],
 				[
+					72648.6486486487,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				72648.6486486487,
+				],
 				[
+					72648.6486486487,
 					[
-						"Delusional Events",
-						"12",
-						""
+						[
+							"Delusional Events",
+							"12",
+							""
+						]
 					]
-				]
-			],
-			[
-				72972.972972973,
+				],
 				[
+					72972.972972973,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				73297.2972972973,
+				],
 				[
+					73297.2972972973,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				73621.6216216217,
+				],
 				[
+					73621.6216216217,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				73945.945945946,
+				],
 				[
+					73945.945945946,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				74270.2702702703,
+				],
 				[
+					74270.2702702703,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				74594.5945945946,
+				],
 				[
+					74594.5945945946,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				74918.9189189189,
+				],
 				[
+					74918.9189189189,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				75243.2432432433,
+				],
 				[
+					75243.2432432433,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				75567.5675675676,
+				],
 				[
+					75567.5675675676,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				75891.8918918919,
+				],
 				[
+					75891.8918918919,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				76216.2162162162,
+				],
 				[
+					76216.2162162162,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				76540.5405405406,
+				],
 				[
+					76540.5405405406,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				76540.5405405406,
+				],
 				[
+					76540.5405405406,
 					[
-						"Delusional Events",
-						"13",
-						""
+						[
+							"Delusional Events",
+							"13",
+							""
+						]
 					]
-				]
-			],
-			[
-				76864.8648648649,
+				],
 				[
+					76864.8648648649,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				77189.1891891892,
+				],
 				[
+					77189.1891891892,
 					[
-						"Delusional Events",
-						"14",
-						""
+						[
+							"Delusional Events",
+							"14",
+							""
+						]
 					]
-				]
-			],
-			[
-				77189.1891891892,
+				],
 				[
+					77189.1891891892,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				77513.5135135135,
+				],
 				[
+					77513.5135135135,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				77837.8378378379,
+				],
 				[
+					77837.8378378379,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				77837.8378378379,
+				],
 				[
+					77837.8378378379,
 					[
-						"Delusional Events",
-						"15",
-						""
+						[
+							"Delusional Events",
+							"15",
+							""
+						]
 					]
-				]
-			],
-			[
-				78162.1621621622,
+				],
 				[
+					78162.1621621622,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				78486.4864864865,
+				],
 				[
+					78486.4864864865,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				78810.8108108108,
+				],
 				[
+					78810.8108108108,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				79135.1351351352,
+				],
 				[
+					79135.1351351352,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				79459.4594594595,
+				],
 				[
+					79459.4594594595,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				79783.7837837838,
+				],
 				[
+					79783.7837837838,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				80108.1081081081,
+				],
 				[
+					80108.1081081081,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				80432.4324324325,
+				],
 				[
+					80432.4324324325,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				80756.7567567568,
+				],
 				[
+					80756.7567567568,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				81081.0810810811,
+				],
 				[
+					81081.0810810811,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				81405.4054054054,
+				],
 				[
+					81405.4054054054,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				81729.7297297298,
+				],
 				[
+					81729.7297297298,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				82054.0540540541,
+				],
 				[
+					82054.0540540541,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				82378.3783783784,
+				],
 				[
+					82378.3783783784,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				82702.7027027027,
+				],
 				[
+					82702.7027027027,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				83027.0270270271,
+				],
 				[
+					83027.0270270271,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				83351.3513513514,
+				],
 				[
+					83351.3513513514,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				83675.6756756757,
+				],
 				[
+					83675.6756756757,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				84000,
+				],
 				[
+					84000,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				84324.3243243243,
+				],
 				[
+					84324.3243243243,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				84648.6486486487,
+				],
 				[
+					84648.6486486487,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				84972.972972973,
+				],
 				[
+					84972.972972973,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				85297.2972972973,
+				],
 				[
+					85297.2972972973,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				85621.6216216217,
+				],
 				[
+					85621.6216216217,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				85945.945945946,
+				],
 				[
+					85945.945945946,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				86270.2702702703,
+				],
 				[
+					86270.2702702703,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				86594.5945945946,
+				],
 				[
+					86594.5945945946,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				86918.9189189189,
+				],
 				[
+					86918.9189189189,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				87243.2432432433,
+				],
 				[
+					87243.2432432433,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				87567.5675675676,
+				],
 				[
+					87567.5675675676,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				87891.8918918919,
+				],
 				[
+					87891.8918918919,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				88216.2162162162,
+				],
 				[
+					88216.2162162162,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				88540.5405405406,
+				],
 				[
+					88540.5405405406,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				88864.8648648649,
+				],
 				[
+					88864.8648648649,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				89189.1891891892,
+				],
 				[
+					89189.1891891892,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				89513.5135135135,
+				],
 				[
+					89513.5135135135,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				89837.8378378379,
+				],
 				[
+					89837.8378378379,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				90162.1621621622,
+				],
 				[
+					90162.1621621622,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				90486.4864864865,
+				],
 				[
+					90486.4864864865,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				90810.8108108108,
+				],
 				[
+					90810.8108108108,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				91135.1351351352,
+				],
 				[
+					91135.1351351352,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				91459.4594594595,
+				],
 				[
+					91459.4594594595,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				91783.7837837838,
+				],
 				[
+					91783.7837837838,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				92108.1081081081,
+				],
 				[
+					92108.1081081081,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				92432.4324324325,
+				],
 				[
+					92432.4324324325,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				92756.7567567567,
+				],
 				[
+					92756.7567567567,
 					[
-						"Delusional Events",
-						"16",
-						""
+						[
+							"Delusional Events",
+							"16",
+							""
+						]
 					]
-				]
-			],
-			[
-				92756.7567567568,
+				],
 				[
+					92756.7567567568,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				93081.0810810811,
+				],
 				[
+					93081.0810810811,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				93405.4054054054,
+				],
 				[
+					93405.4054054054,
 					[
-						"Delusional Events",
-						"17",
-						""
-					],
-					[
-						"Delusional Events",
-						"56",
-						""
+						[
+							"Delusional Events",
+							"17",
+							""
+						],
+						[
+							"Delusional Events",
+							"56",
+							""
+						]
 					]
-				]
-			],
-			[
-				93405.4054054054,
+				],
 				[
+					93405.4054054054,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				93729.7297297298,
+				],
 				[
+					93729.7297297298,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				94054.0540540541,
+				],
 				[
+					94054.0540540541,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				94378.3783783784,
+				],
 				[
+					94378.3783783784,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				94702.7027027027,
+				],
 				[
+					94702.7027027027,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				95027.0270270271,
+				],
 				[
+					95027.0270270271,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				95351.3513513514,
+				],
 				[
+					95351.3513513514,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				95675.6756756757,
+				],
 				[
+					95675.6756756757,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				95997.9729729729,
+				],
 				[
+					95997.9729729729,
 					[
-						"Delusional Events",
-						"18",
-						""
+						[
+							"Delusional Events",
+							"18",
+							""
+						]
 					]
-				]
-			],
-			[
-				96000,
+				],
 				[
+					96000,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				96324.3243243243,
+				],
 				[
+					96324.3243243243,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				96648.6486486487,
+				],
 				[
+					96648.6486486487,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				96972.972972973,
+				],
 				[
+					96972.972972973,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				97297.2972972973,
+				],
 				[
+					97297.2972972973,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				97621.6216216216,
+				],
 				[
+					97621.6216216216,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				97945.945945946,
+				],
 				[
+					97945.945945946,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				98270.2702702703,
+				],
 				[
+					98270.2702702703,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				98594.5945945945,
+				],
 				[
+					98594.5945945945,
 					[
-						"Delusional Events",
-						"18",
-						""
+						[
+							"Delusional Events",
+							"18",
+							""
+						]
 					]
-				]
-			],
-			[
-				98594.5945945946,
+				],
 				[
+					98594.5945945946,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				98918.9189189189,
+				],
 				[
+					98918.9189189189,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				99243.2432432433,
+				],
 				[
+					99243.2432432433,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				99567.5675675676,
+				],
 				[
+					99567.5675675676,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				99891.8918918919,
+				],
 				[
+					99891.8918918919,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				100216.216216216,
+				],
 				[
+					100216.216216216,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				100540.540540541,
+				],
 				[
+					100540.540540541,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				100864.864864865,
+				],
 				[
+					100864.864864865,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				101189.189189189,
+				],
 				[
+					101189.189189189,
 					[
-						"Delusional Events",
-						"18",
-						""
+						[
+							"Delusional Events",
+							"18",
+							""
+						]
 					]
-				]
-			],
-			[
-				101189.189189189,
+				],
 				[
+					101189.189189189,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				101513.513513514,
+				],
 				[
+					101513.513513514,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				101837.837837838,
+				],
 				[
+					101837.837837838,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				102162.162162162,
+				],
 				[
+					102162.162162162,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				102486.486486486,
+				],
 				[
+					102486.486486486,
 					[
-						"Delusional Events",
-						"19",
-						""
+						[
+							"Delusional Events",
+							"19",
+							""
+						]
 					]
-				]
-			],
-			[
-				102486.486486487,
+				],
 				[
+					102486.486486487,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				102810.810810811,
+				],
 				[
+					102810.810810811,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				103135.135135135,
+				],
 				[
+					103135.135135135,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				103459.459459459,
+				],
 				[
+					103459.459459459,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				103781.756756757,
+				],
 				[
+					103781.756756757,
 					[
-						"Delusional Events",
-						"57",
-						""
+						[
+							"Delusional Events",
+							"57",
+							""
+						]
 					]
-				]
-			],
-			[
-				103783.783783784,
+				],
 				[
+					103783.783783784,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				103783.783783784,
+				],
 				[
+					103783.783783784,
 					[
-						"Delusional Events",
-						"17",
-						""
+						[
+							"Delusional Events",
+							"17",
+							""
+						]
 					]
-				]
-			],
-			[
-				104108.108108108,
+				],
 				[
+					104108.108108108,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				104432.432432432,
+				],
 				[
+					104432.432432432,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				104756.756756757,
+				],
 				[
+					104756.756756757,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				105081.081081081,
+				],
 				[
+					105081.081081081,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				105405.405405405,
+				],
 				[
+					105405.405405405,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				105729.72972973,
+				],
 				[
+					105729.72972973,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				106054.054054054,
+				],
 				[
+					106054.054054054,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				106378.378378378,
+				],
 				[
+					106378.378378378,
 					[
-						"Delusional Events",
-						"18",
-						""
+						[
+							"Delusional Events",
+							"18",
+							""
+						]
 					]
-				]
-			],
-			[
-				106378.378378378,
+				],
 				[
+					106378.378378378,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				106702.702702703,
+				],
 				[
+					106702.702702703,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				107027.027027027,
+				],
 				[
+					107027.027027027,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				107351.351351351,
+				],
 				[
+					107351.351351351,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				107675.675675676,
+				],
 				[
+					107675.675675676,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				108000,
+				],
 				[
+					108000,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				108324.324324324,
+				],
 				[
+					108324.324324324,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				108648.648648649,
+				],
 				[
+					108648.648648649,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				108970.945945946,
+				],
 				[
+					108970.945945946,
 					[
-						"Delusional Events",
-						"18",
-						""
+						[
+							"Delusional Events",
+							"18",
+							""
+						]
 					]
-				]
-			],
-			[
-				108972.972972973,
+				],
 				[
+					108972.972972973,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				109297.297297297,
+				],
 				[
+					109297.297297297,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				109621.621621622,
+				],
 				[
+					109621.621621622,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				109945.945945946,
+				],
 				[
+					109945.945945946,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				110270.27027027,
+				],
 				[
+					110270.27027027,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				110594.594594595,
+				],
 				[
+					110594.594594595,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				110918.918918919,
+				],
 				[
+					110918.918918919,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				111243.243243243,
+				],
 				[
+					111243.243243243,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				111567.567567567,
+				],
 				[
+					111567.567567567,
 					[
-						"Delusional Events",
-						"18",
-						""
-					],
+						[
+							"Delusional Events",
+							"18",
+							""
+						],
+						[
+							"Delusional Events",
+							"58",
+							""
+						]
+					]
+				],
+				[
+					111567.567567568,
 					[
-						"Delusional Events",
-						"58",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				111567.567567568,
+				],
 				[
+					111891.891891892,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				111891.891891892,
+				],
 				[
+					112216.216216216,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				112216.216216216,
+				],
 				[
+					112540.540540541,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				112540.540540541,
+				],
 				[
+					112864.864864865,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"20",
+							""
+						]
 					]
-				]
-			],
-			[
-				112864.864864865,
+				],
 				[
+					114162.162162162,
 					[
-						"Delusional Events",
-						"20",
-						""
+						[
+							"Delusional Events",
+							"17",
+							""
+						]
 					]
-				]
-			],
-			[
-				114162.162162162,
+				],
 				[
+					114162.162162162,
 					[
-						"Delusional Events",
-						"17",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				114162.162162162,
+				],
 				[
+					114486.486486487,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				114486.486486487,
+				],
 				[
+					114810.810810811,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				114810.810810811,
+				],
 				[
+					115135.135135135,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				115135.135135135,
+				],
 				[
+					115459.459459459,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				115459.459459459,
+				],
 				[
+					115783.783783784,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				115783.783783784,
+				],
 				[
+					116108.108108108,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				116108.108108108,
+				],
 				[
+					116432.432432432,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				116432.432432432,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				116756.756756757,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				117081.081081081,
+				],
 				[
+					116756.756756757,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				117405.405405405,
+				],
 				[
+					117081.081081081,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				117729.72972973,
+				],
 				[
+					117405.405405405,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				118052.027027027,
+				],
 				[
+					117729.72972973,
 					[
-						"Delusional Events",
-						"21",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				118054.054054054,
+				],
 				[
+					118052.027027027,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"21",
+							""
+						]
 					]
-				]
-			],
-			[
-				118378.378378378,
+				],
 				[
+					118054.054054054,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				118702.702702703,
+				],
 				[
+					118378.378378378,
 					[
-						"Delusional Events",
-						"22",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				119351.351351351,
+				],
 				[
+					118702.702702703,
 					[
-						"Delusional Events",
-						"23",
-						""
+						[
+							"Delusional Events",
+							"22",
+							""
+						]
 					]
-				]
-			],
-			[
-				119351.351351351,
+				],
 				[
+					119351.351351351,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"23",
+							""
+						]
 					]
-				]
-			],
-			[
-				119675.675675676,
+				],
 				[
+					119351.351351351,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				120000,
+				],
 				[
+					119675.675675676,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				120324.324324324,
+				],
 				[
+					120000,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				120648.648648649,
+				],
 				[
+					120324.324324324,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				120972.972972973,
+				],
 				[
+					120648.648648649,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				121297.297297297,
+				],
 				[
+					120972.972972973,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				121621.621621622,
+				],
 				[
+					121297.297297297,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				121945.945945946,
+				],
 				[
+					121621.621621622,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				122270.27027027,
+				],
 				[
+					121945.945945946,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				122594.594594595,
+				],
 				[
+					122270.27027027,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				122918.918918919,
+				],
 				[
+					122594.594594595,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				123243.243243243,
+				],
 				[
+					122918.918918919,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				123567.567567568,
+				],
 				[
+					123243.243243243,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				123891.891891892,
+				],
 				[
+					123567.567567568,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				124216.216216216,
+				],
 				[
-					[
-						"Delusional Events",
-						"24",
-						""
-					],
+					123891.891891892,
 					[
-						"Camera Event",
-						"Tween Value",
-						"zoom,1.5,0.1,sineInOut"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				124216.216216216,
+				],
 				[
+					124216.216216216,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"24",
+							""
+						],
+						[
+							"Camera Event",
+							"Tween Value",
+							"zoom,1.5,0.1,sineInOut"
+						]
 					]
-				]
-			],
-			[
-				124540.54054054,
+				],
 				[
+					124216.216216216,
 					[
-						"Delusional Events",
-						"25",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				124540.540540541,
+				],
 				[
+					124540.54054054,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"25",
+							""
+						]
 					]
-				]
-			],
-			[
-				124864.864864865,
+				],
 				[
+					124540.540540541,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				124864.864864865,
+				],
 				[
+					124864.864864865,
 					[
-						"Delusional Events",
-						"26",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				125189.189189189,
+				],
 				[
+					124864.864864865,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"26",
+							""
+						]
 					]
-				]
-			],
-			[
-				125513.513513514,
+				],
 				[
+					125189.189189189,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				125837.837837838,
+				],
 				[
+					125513.513513514,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				126162.162162162,
+				],
 				[
+					125837.837837838,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				126486.486486487,
+				],
 				[
+					126162.162162162,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				126810.810810811,
+				],
 				[
+					126486.486486487,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				127135.135135135,
+				],
 				[
+					126810.810810811,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				127459.459459459,
+				],
 				[
+					127135.135135135,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				127783.783783784,
+				],
 				[
+					127459.459459459,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				128108.108108108,
+				],
 				[
+					127783.783783784,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				128432.432432432,
+				],
 				[
+					128108.108108108,
 					[
-						"Delusional Events",
-						"21",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				128432.432432432,
+				],
 				[
+					128432.432432432,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"21",
+							""
+						]
 					]
-				]
-			],
-			[
-				128756.756756757,
+				],
 				[
+					128432.432432432,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				129081.081081081,
+				],
 				[
+					128756.756756757,
 					[
-						"Delusional Events",
-						"22",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				129729.72972973,
+				],
 				[
+					129081.081081081,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"22",
+							""
+						]
 					]
-				]
-			],
-			[
-				130054.054054054,
+				],
 				[
+					129729.72972973,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				130378.378378378,
+				],
 				[
+					130054.054054054,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				130702.702702703,
+				],
 				[
+					130378.378378378,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				131027.027027027,
+				],
 				[
+					130702.702702703,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				131351.351351351,
+				],
 				[
+					131027.027027027,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				131675.675675676,
+				],
 				[
+					131351.351351351,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				132000,
+				],
 				[
+					131675.675675676,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				132324.324324324,
+				],
 				[
+					132000,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				132648.648648649,
+				],
 				[
+					132324.324324324,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				132972.972972973,
+				],
 				[
+					132648.648648649,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				133297.297297297,
+				],
 				[
+					132972.972972973,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				133621.621621622,
+				],
 				[
+					133297.297297297,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				133945.945945946,
+				],
 				[
+					133621.621621622,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				134270.27027027,
+				],
 				[
+					133945.945945946,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				134594.594594595,
+				],
 				[
+					134270.27027027,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				155675.675675676,
+				],
 				[
-					[
-						"Delusional Events",
-						"27",
-						""
-					],
+					134594.594594595,
 					[
-						"Meta Event",
-						"Window",
-						"false, ..."
-					],
-					[
-						"Meta Event",
-						"Discord",
-						"Do you have any idea..., ..., regret"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				156000,
+				],
 				[
+					155675.675675676,
 					[
-						"Delusional Events",
-						"28",
-						""
+						[
+							"Delusional Events",
+							"27",
+							""
+						],
+						[
+							"Meta Event",
+							"Window",
+							"false, ..."
+						],
+						[
+							"Meta Event",
+							"Discord",
+							"Do you have any idea..., ..., regret"
+						]
 					]
-				]
-			],
-			[
-				156324.324324324,
+				],
 				[
+					156000,
 					[
-						"Delusional Events",
-						"59",
-						""
+						[
+							"Delusional Events",
+							"28",
+							""
+						]
 					]
-				]
-			],
-			[
-				156972.972972973,
+				],
 				[
+					156324.324324324,
 					[
-						"Meta Event",
-						"Window",
-						"false, Where am I...?"
-					],
-					[
-						"Meta Event",
-						"Discord",
-						"Do you have any idea..., ...what you are dealing with?, regret"
+						[
+							"Delusional Events",
+							"59",
+							""
+						]
 					]
-				]
-			],
-			[
-				157245.7002457,
+				],
 				[
+					156972.972972973,
 					[
-						"Change Character",
-						"dad",
-						"Minnie-Bedroom"
-					],
-					[
-						"Change Character",
-						"bf",
-						"Mickey-Bedroom"
+						[
+							"Meta Event",
+							"Window",
+							"false, Where am I...?"
+						],
+						[
+							"Meta Event",
+							"Discord",
+							"Do you have any idea..., ...what you are dealing with?, regret"
+						]
 					]
-				]
-			],
-			[
-				157700.245700246,
+				],
 				[
+					157245.7002457,
 					[
-						"Delusional Events",
-						"70",
-						""
+						[
+							"Change Character",
+							"dad",
+							"Minnie-Bedroom"
+						],
+						[
+							"Change Character",
+							"bf",
+							"Mickey-Bedroom"
+						]
 					]
-				]
-			],
-			[
-				158427.518427518,
+				],
 				[
-					[
-						"Meta Event",
-						"Discord",
-						"Regret (PEACEFUL), default, regret"
-					],
+					157700.245700246,
 					[
-						"Meta Event",
-						"Window",
-						"true, Funkin.avi - , Regret [________]"
-					],
-					[
-						"Delusional Events",
-						"30",
-						""
-					],
-					[
-						"Delusional Events",
-						"70",
-						""
+						[
+							"Delusional Events",
+							"70",
+							""
+						]
 					]
-				]
-			],
-			[
-				159882.063882064,
+				],
 				[
+					158427.518427518,
 					[
-						"Meta Event",
-						"Window",
-						"true, Funkin.avi - , Regret [P_______]"
+						[
+							"Meta Event",
+							"Discord",
+							"Regret (PEACEFUL), default, regret"
+						],
+						[
+							"Meta Event",
+							"Window",
+							"true, Funkin.avi - , Regret [________]"
+						],
+						[
+							"Delusional Events",
+							"30",
+							""
+						],
+						[
+							"Delusional Events",
+							"70",
+							""
+						]
 					]
-				]
-			],
-			[
-				161336.609336609,
+				],
 				[
+					159882.063882064,
 					[
-						"Meta Event",
-						"Window",
-						"true, Funkin.avi - , Regret [PE______]"
+						[
+							"Meta Event",
+							"Window",
+							"true, Funkin.avi - , Regret [P_______]"
+						]
 					]
-				]
-			],
-			[
-				162791.154791155,
+				],
 				[
+					161336.609336609,
 					[
-						"Meta Event",
-						"Window",
-						"true, Funkin.avi - , Regret [PEA_____]"
+						[
+							"Meta Event",
+							"Window",
+							"true, Funkin.avi - , Regret [PE______]"
+						]
 					]
-				]
-			],
-			[
-				164245.7002457,
+				],
 				[
+					162791.154791155,
 					[
-						"Meta Event",
-						"Window",
-						"true, Funkin.avi - , Regret [PEAC____]"
+						[
+							"Meta Event",
+							"Window",
+							"true, Funkin.avi - , Regret [PEA_____]"
+						]
 					]
-				]
-			],
-			[
-				165700.245700246,
+				],
 				[
+					164245.7002457,
 					[
-						"Meta Event",
-						"Window",
-						"true, Funkin.avi - , Regret [PEACE___]"
+						[
+							"Meta Event",
+							"Window",
+							"true, Funkin.avi - , Regret [PEAC____]"
+						]
 					]
-				]
-			],
-			[
-				167154.791154791,
+				],
 				[
+					165700.245700246,
 					[
-						"Meta Event",
-						"Window",
-						"true, Funkin.avi - , Regret [PEACEF__]"
+						[
+							"Meta Event",
+							"Window",
+							"true, Funkin.avi - , Regret [PEACE___]"
+						]
 					]
-				]
-			],
-			[
-				168609.336609337,
+				],
 				[
+					167154.791154791,
 					[
-						"Meta Event",
-						"Window",
-						"true, Funkin.avi - , Regret [PEACEFU_]"
+						[
+							"Meta Event",
+							"Window",
+							"true, Funkin.avi - , Regret [PEACEF__]"
+						]
 					]
-				]
-			],
-			[
-				170063.882063882,
+				],
 				[
-					[
-						"Meta Event",
-						"Window",
-						"true, Funkin.avi - , Regret [PEACEFUL]"
-					],
+					168609.336609337,
 					[
-						"Delusional Events",
-						"76",
-						""
+						[
+							"Meta Event",
+							"Window",
+							"true, Funkin.avi - , Regret [PEACEFU_]"
+						],
+						[
+							"Delusional Events",
+							"76",
+							""
+						]
 					]
-				]
-			],
-			[
-				181700.245700246,
+				],
 				[
+					170063.882063882,
 					[
-						"Meta Event",
-						"Window",
-						"true, Funkin.avi - , Regret [PEACEFUL] - What happened to us..."
+						[
+							"Meta Event",
+							"Window",
+							"true, Funkin.avi - , Regret [PEACEFUL]"
+						]
 					]
-				]
-			],
-			[
-				184609.336609336,
+				],
 				[
+					181700.245700246,
 					[
-						"Meta Event",
-						"Window",
-						"true, Funkin.avi - , Regret [PEACEFUL] - Where did it all go wrong..."
+						[
+							"Meta Event",
+							"Window",
+							"true, Funkin.avi - , Regret [PEACEFUL] - What happened to us..."
+						]
 					]
-				]
-			],
-			[
-				187518.427518427,
+				],
 				[
+					184609.336609336,
 					[
-						"Meta Event",
-						"Window",
-						"true, Funkin.avi - , Regret [PEACEFUL] - Why is this happening..."
+						[
+							"Meta Event",
+							"Window",
+							"true, Funkin.avi - , Regret [PEACEFUL] - Where did it all go wrong..."
+						]
 					]
-				]
-			],
-			[
-				190427.518427518,
+				],
 				[
+					187518.427518427,
 					[
-						"Meta Event",
-						"Window",
-						"true, Funkin.avi - , Regret [PEACEFUL] - Will someone hear my cries..."
+						[
+							"Meta Event",
+							"Window",
+							"true, Funkin.avi - , Regret [PEACEFUL] - Why is this happening..."
+						]
 					]
-				]
-			],
-			[
-				193336.609336609,
+				],
 				[
+					190427.518427518,
 					[
-						"Meta Event",
-						"Window",
-						"true, Funkin.avi - , Regret [PEACEFUL] - Is any of this real..."
+						[
+							"Meta Event",
+							"Window",
+							"true, Funkin.avi - , Regret [PEACEFUL] - Will someone hear my cries..."
+						]
 					]
-				]
-			],
-			[
-				196245.7002457,
+				],
 				[
+					193336.609336609,
 					[
-						"Meta Event",
-						"Window",
-						"true, Funkin.avi - , Regret [PEACEFUL] - I wish I could take it back..."
+						[
+							"Meta Event",
+							"Window",
+							"true, Funkin.avi - , Regret [PEACEFUL] - Is any of this real..."
+						]
 					]
-				]
-			],
-			[
-				199154.791154791,
+				],
 				[
+					196245.7002457,
 					[
-						"Meta Event",
-						"Window",
-						"true, Funkin.avi - , Regret [PEACEFUL] - But it is too late for that..."
+						[
+							"Meta Event",
+							"Window",
+							"true, Funkin.avi - , Regret [PEACEFUL] - I wish I could take it back..."
+						]
 					]
-				]
-			],
-			[
-				202063.882063882,
+				],
 				[
+					199154.791154791,
 					[
-						"Meta Event",
-						"Window",
-						"true, Funkin.avi - , Regret [PEACEFUL] - Right?"
+						[
+							"Meta Event",
+							"Window",
+							"true, Funkin.avi - , Regret [PEACEFUL] - But it is too late for that..."
+						]
 					]
-				]
-			],
-			[
-				204972.972972973,
+				],
 				[
+					202063.882063882,
 					[
-						"Meta Event",
-						"Window",
-						"true, Funkin.avi - , Regret [PEACEFUL]"
+						[
+							"Meta Event",
+							"Window",
+							"true, Funkin.avi - , Regret [PEACEFUL] - Right?"
+						]
 					]
-				]
-			],
-			[
-				228245.7002457,
+				],
 				[
-					[
-						"Delusional Events",
-						"39",
-						""
-					],
+					204972.972972973,
 					[
-						"Delusional Events",
-						"71",
-						""
+						[
+							"Meta Event",
+							"Window",
+							"true, Funkin.avi - , Regret [PEACEFUL]"
+						]
 					]
-				]
-			],
-			[
-				230791.154791154,
+				],
 				[
+					228245.7002457,
 					[
-						"Delusional Events",
-						"60",
-						""
+						[
+							"Delusional Events",
+							"39",
+							""
+						],
+						[
+							"Delusional Events",
+							"71",
+							""
+						]
 					]
-				]
-			],
-			[
-				231154.791154791,
+				],
 				[
+					230791.154791154,
 					[
-						"Delusional Events",
-						"61",
-						""
+						[
+							"Delusional Events",
+							"60",
+							""
+						]
 					]
-				]
-			],
-			[
-				234154.791154791,
+				],
 				[
+					231154.791154791,
 					[
-						"Delusional Events",
-						"61",
-						""
+						[
+							"Delusional Events",
+							"61",
+							""
+						]
 					]
-				]
-			],
-			[
-				237251.565348339,
+				],
 				[
+					234154.791154791,
 					[
-						"Delusional Events",
-						"61",
-						""
+						[
+							"Delusional Events",
+							"61",
+							""
+						]
 					]
-				]
-			],
-			[
-				238799.952445113,
+				],
 				[
+					237251.565348339,
 					[
-						"Delusional Events",
-						"61",
-						""
+						[
+							"Delusional Events",
+							"61",
+							""
+						]
 					]
-				]
-			],
-			[
-				243445.113735436,
+				],
 				[
+					238799.952445113,
 					[
-						"Delusional Events",
-						"61",
-						""
+						[
+							"Delusional Events",
+							"61",
+							""
+						]
 					]
-				]
-			],
-			[
-				246642.613735436,
+				],
 				[
+					243445.113735436,
 					[
-						"Delusional Events",
-						"61",
-						""
+						[
+							"Delusional Events",
+							"61",
+							""
+						]
 					]
-				]
-			],
-			[
-				246645.113735436,
+				],
 				[
+					246642.613735436,
 					[
-						"Delusional Events",
-						"40",
-						""
+						[
+							"Delusional Events",
+							"61",
+							""
+						]
 					]
-				]
-			],
-			[
-				249842.613735436,
+				],
 				[
+					246645.113735436,
 					[
-						"Delusional Events",
-						"62",
-						""
+						[
+							"Delusional Events",
+							"40",
+							""
+						]
 					]
-				]
-			],
-			[
-				249845.113735436,
+				],
 				[
+					249842.613735436,
 					[
-						"Meta Event",
-						"Window",
-						"false, ..."
+						[
+							"Delusional Events",
+							"62",
+							""
+						]
 					]
-				]
-			],
-			[
-				253042.613735436,
+				],
 				[
+					249845.113735436,
 					[
-						"Delusional Events",
-						"72",
-						""
+						[
+							"Meta Event",
+							"Window",
+							"false, ..."
+						]
 					]
-				]
-			],
-			[
-				253045.113735436,
+				],
 				[
+					253042.613735436,
 					[
-						"Meta Event",
-						"Window",
-						"false, Welcome back... Little mouse."
+						[
+							"Delusional Events",
+							"72",
+							""
+						]
 					]
-				]
-			],
-			[
-				254642.613735436,
+				],
 				[
+					253045.113735436,
 					[
-						"Delusional Events",
-						"63",
-						""
+						[
+							"Meta Event",
+							"Window",
+							"false, Welcome back... Little mouse."
+						]
 					]
-				]
-			],
-			[
-				254645.113735436,
+				],
 				[
+					254642.613735436,
 					[
-						"Delusional Events",
-						"43",
-						""
+						[
+							"Delusional Events",
+							"63",
+							""
+						]
 					]
-				]
-			],
-			[
-				255545.113735436,
+				],
 				[
+					254645.113735436,
 					[
-						"Change Character",
-						"bf",
-						"bf-demon"
-					],
-					[
-						"Change Character",
-						"dad",
-						"deluMick-eyeless"
+						[
+							"Delusional Events",
+							"43",
+							""
+						]
 					]
-				]
-			],
-			[
-				256242.613735436,
+				],
 				[
+					255545.113735436,
 					[
-						"Delusional Events",
-						"44",
-						""
-					],
-					[
-						"Delusional Events",
-						"73",
-						""
+						[
+							"Change Character",
+							"bf",
+							"bf-demon"
+						],
+						[
+							"Change Character",
+							"dad",
+							"deluMick-eyeless"
+						]
 					]
-				]
-			],
-			[
-				256245.113735436,
+				],
 				[
+					256242.613735436,
 					[
-						"Delusional Events",
-						"64",
-						""
-					],
-					[
-						"Meta Event",
-						"Discord",
-						"default, default, default"
-					],
-					[
-						"Meta Event",
-						"Window",
-						"true, Funkin.avi - , Delusional [INSANE]"
+						[
+							"Delusional Events",
+							"44",
+							""
+						],
+						[
+							"Delusional Events",
+							"73",
+							""
+						]
 					]
-				]
-			],
-			[
-				258839.70833003,
+				],
 				[
+					256245.113735436,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						],
+						[
+							"Meta Event",
+							"Discord",
+							"default, default, default"
+						],
+						[
+							"Meta Event",
+							"Window",
+							"true, Funkin.avi - , Delusional [INSANE]"
+						]
 					]
-				]
-			],
-			[
-				261432.275897598,
+				],
 				[
+					258839.70833003,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				264028.897519219,
+				],
 				[
+					261432.275897598,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				265322.140762463,
+				],
 				[
+					264028.897519219,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				266621.465086787,
+				],
 				[
+					265322.140762463,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				269216.059681382,
+				],
 				[
+					266621.465086787,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				271812.681303003,
+				],
 				[
+					269216.059681382,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				274405.248870571,
+				],
 				[
+					271812.681303003,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				275702.546167868,
+				],
 				[
+					274405.248870571,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				277001.870492192,
+				],
 				[
+					275702.546167868,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				279594.43805976,
+				],
 				[
+					277001.870492192,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				282191.059681381,
+				],
 				[
+					279594.43805976,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				284783.627248949,
+				],
 				[
+					282191.059681381,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				286082.951573273,
+				],
 				[
+					284783.627248949,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				287380.24887057,
+				],
 				[
+					286082.951573273,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				289972.816438138,
+				],
 				[
+					287380.24887057,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				292565.384005706,
+				],
 				[
+					289972.816438138,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				295164.032654354,
+				],
 				[
+					292565.384005706,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				296461.329951651,
+				],
 				[
+					295164.032654354,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				297756.600221922,
+				],
 				[
+					296461.329951651,
 					[
-						"Delusional Events",
-						"65",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				300349.167789489,
+				],
 				[
+					297756.600221922,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"65",
+							""
+						]
 					]
-				]
-			],
-			[
-				300353,
+				],
 				[
+					300349.167789489,
 					[
-						"Delusional Events",
-						"66",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				300353.221843543,
+				],
 				[
+					300353,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Delusional Events",
+							"66",
+							""
+						]
 					]
-				]
-			],
-			[
-				300353.221843543,
+				],
 				[
+					300353.221843543,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				300677.546167868,
+				],
 				[
+					300353.221843543,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				301001.870492192,
+				],
 				[
+					300677.546167868,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				301326.194816516,
+				],
 				[
+					301001.870492192,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				301646.465086787,
+				],
 				[
+					301326.194816516,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				301650.519140841,
+				],
 				[
+					301646.465086787,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				301650.519140841,
+				],
 				[
+					301650.519140841,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				301974.843465165,
+				],
 				[
+					301650.519140841,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				302299.167789489,
+				],
 				[
+					301974.843465165,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				302623.492113813,
+				],
 				[
+					302299.167789489,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				302943.762384084,
+				],
 				[
+					302623.492113813,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				302945.789411111,
+				],
 				[
+					302943.762384084,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				302947.816438138,
+				],
 				[
+					302945.789411111,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				302947.816438138,
+				],
 				[
+					302947.816438138,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				302947.816438138,
+				],
 				[
+					302947.816438138,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				303272.140762462,
+				],
 				[
+					302947.816438138,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				303596.465086786,
+				],
 				[
+					303272.140762462,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				303920.789411111,
+				],
 				[
+					303596.465086786,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				304241.059681382,
+				],
 				[
+					303920.789411111,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				304243.086708408,
+				],
 				[
+					304241.059681382,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				304245.113735435,
+				],
 				[
+					304243.086708408,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				304245.113735435,
+				],
 				[
+					304245.113735435,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				304245.113735435,
+				],
 				[
+					304245.113735435,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				304569.438059759,
+				],
 				[
+					304245.113735435,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				304893.762384084,
+				],
 				[
+					304569.438059759,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				305218.086708408,
+				],
 				[
+					304893.762384084,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				305538.356978679,
+				],
 				[
+					305218.086708408,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				305540.384005705,
+				],
 				[
+					305538.356978679,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				305542.411032732,
+				],
 				[
+					305540.384005705,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				305542.411032732,
+				],
 				[
+					305542.411032732,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				305542.411032732,
+				],
 				[
+					305542.411032732,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				305866.735357057,
+				],
 				[
+					305542.411032732,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				306191.059681381,
+				],
 				[
+					305866.735357057,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				306515.384005705,
+				],
 				[
+					306191.059681381,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				306835.654275976,
+				],
 				[
+					306515.384005705,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				306837.681303003,
+				],
 				[
+					306835.654275976,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				306839.70833003,
+				],
 				[
+					306837.681303003,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				306839.70833003,
+				],
 				[
+					306839.70833003,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				306839.70833003,
+				],
 				[
+					306839.70833003,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				307164.032654354,
+				],
 				[
+					306839.70833003,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				307488.356978678,
+				],
 				[
+					307164.032654354,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				307812.681303003,
+				],
 				[
+					307488.356978678,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				308132.951573274,
+				],
 				[
+					307812.681303003,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				308134.9786003,
+				],
 				[
+					308132.951573274,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				308137.005627327,
+				],
 				[
+					308134.9786003,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				308137.005627327,
+				],
 				[
+					308137.005627327,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				308137.005627327,
+				],
 				[
+					308137.005627327,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				308461.329951651,
+				],
 				[
+					308137.005627327,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				308785.654275976,
+				],
 				[
+					308461.329951651,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				309109.9786003,
+				],
 				[
+					308785.654275976,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				309430.248870571,
+				],
 				[
+					309109.9786003,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				309432.275897597,
+				],
 				[
+					309430.248870571,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				309434.302924624,
+				],
 				[
+					309432.275897597,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				309434.302924624,
+				],
 				[
+					309434.302924624,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				309758.627248949,
+				],
 				[
+					309434.302924624,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				310082.951573273,
+				],
 				[
+					309758.627248949,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				310407.275897597,
+				],
 				[
+					310082.951573273,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				310727.546167868,
+				],
 				[
+					310407.275897597,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				310731.600221922,
+				],
 				[
+					310727.546167868,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				310731.600221922,
+				],
 				[
+					310731.600221922,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				311055,
+				],
 				[
+					310731.600221922,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				311055.924546246,
+				],
 				[
+					311055,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				311055.924546246,
+				],
 				[
+					311055.924546246,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				311380.24887057,
+				],
 				[
+					311055.924546246,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				311704.573194895,
+				],
 				[
+					311380.24887057,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				312024.843465165,
+				],
 				[
+					311704.573194895,
 					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				312026.870492192,
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
+					]
+				],
 				[
+					312024.843465165,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				312028.897519219,
+				],
 				[
+					312026.870492192,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				312028.897519219,
+				],
 				[
+					312028.897519219,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				312028.897519219,
+				],
 				[
+					312028.897519219,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				312353.221843543,
+				],
 				[
+					312028.897519219,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				312677.546167868,
+				],
 				[
+					312353.221843543,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				313001.870492192,
+				],
 				[
+					312677.546167868,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				313322.140762463,
+				],
 				[
+					313001.870492192,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				313324.167789489,
+				],
 				[
+					313322.140762463,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				313326.194816516,
+				],
 				[
+					313324.167789489,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				313326.194816516,
+				],
 				[
+					313326.194816516,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				313326.194816516,
+				],
 				[
+					313326.194816516,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				313650.519140841,
+				],
 				[
+					313326.194816516,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				313974.843465165,
+				],
 				[
+					313650.519140841,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				314299.167789489,
+				],
 				[
+					313974.843465165,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				314619.43805976,
+				],
 				[
+					314299.167789489,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				314621.465086786,
+				],
 				[
+					314619.43805976,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				314623.492113813,
+				],
 				[
+					314621.465086786,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				314623.492113814,
+				],
 				[
+					314623.492113813,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				314947.816438138,
+				],
 				[
+					314623.492113814,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				315272.140762462,
+				],
 				[
+					314947.816438138,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				315596.465086786,
+				],
 				[
+					315272.140762462,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				315916.735357057,
+				],
 				[
+					315596.465086786,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				315920.789411111,
+				],
 				[
+					315916.735357057,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				316245,
+				],
 				[
+					315920.789411111,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				316245.113735435,
+				],
 				[
+					316245,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				316245.113735435,
+				],
 				[
+					316245.113735435,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				316569.438059759,
+				],
 				[
+					316245.113735435,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				316893.762384084,
+				],
 				[
+					316569.438059759,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				317214.032654355,
+				],
 				[
+					316893.762384084,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				317218.086708408,
+				],
 				[
+					317214.032654355,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				317542,
+				],
 				[
+					317218.086708408,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				317542.411032732,
+				],
 				[
+					317542,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				317542.411032732,
+				],
 				[
+					317542.411032732,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				317866.735357057,
+				],
 				[
+					317542.411032732,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				318191.059681381,
+				],
 				[
+					317866.735357057,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				318511.329951652,
+				],
 				[
+					318191.059681381,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				318513.356978678,
+				],
 				[
+					318511.329951652,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				318515.384005705,
+				],
 				[
+					318513.356978678,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				318515.384005705,
+				],
 				[
+					318515.384005705,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				318839.70833003,
+				],
 				[
+					318515.384005705,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				319164.032654354,
+				],
 				[
+					318839.70833003,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				319488.356978678,
+				],
 				[
+					319164.032654354,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				319808.627248949,
+				],
 				[
+					319488.356978678,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				319810.654275976,
+				],
 				[
+					319808.627248949,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				319812.681303002,
+				],
 				[
+					319810.654275976,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				319812.681303003,
+				],
 				[
+					319812.681303002,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				320137.005627327,
+				],
 				[
+					319812.681303003,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				320461.329951651,
+				],
 				[
+					320137.005627327,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				320785.654275976,
+				],
 				[
+					320461.329951651,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				321105.924546246,
+				],
 				[
+					320785.654275976,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				321107,
+				],
 				[
+					321105.924546246,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				321107.951573273,
+				],
 				[
+					321107,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				321109.9786003,
+				],
 				[
+					321107.951573273,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				321434.302924624,
+				],
 				[
+					321109.9786003,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				321758.627248949,
+				],
 				[
+					321434.302924624,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				322082.951573273,
+				],
 				[
+					321758.627248949,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				322403.221843544,
+				],
 				[
+					322082.951573273,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				322405.24887057,
+				],
 				[
+					322403.221843544,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				322407.275897597,
+				],
 				[
+					322405.24887057,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				322407.275897597,
+				],
 				[
+					322407.275897597,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				322731.600221922,
+				],
 				[
+					322407.275897597,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				323055.924546246,
+				],
 				[
+					322731.600221922,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				323380.24887057,
+				],
 				[
+					323055.924546246,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				323700.519140841,
+				],
 				[
+					323380.24887057,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				323702.546167867,
+				],
 				[
+					323700.519140841,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				323704.573194894,
+				],
 				[
+					323702.546167867,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				323704.573194895,
+				],
 				[
+					323704.573194894,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				324028.897519219,
+				],
 				[
+					323704.573194895,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				324353.221843543,
+				],
 				[
+					324028.897519219,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				324677.546167868,
+				],
 				[
+					324353.221843543,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				324997.816438138,
+				],
 				[
+					324677.546167868,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				324999.843465165,
+				],
 				[
+					324997.816438138,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				325001.870492192,
+				],
 				[
+					324999.843465165,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				325001.870492192,
+				],
 				[
+					325001.870492192,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				325326.194816516,
+				],
 				[
+					325001.870492192,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				325650.519140841,
+				],
 				[
+					325326.194816516,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				325974.843465165,
+				],
 				[
+					325650.519140841,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				326295.113735436,
+				],
 				[
+					325974.843465165,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				326297.140762462,
+				],
 				[
+					326295.113735436,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				326299.167789489,
+				],
 				[
+					326297.140762462,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				326299.167789489,
+				],
 				[
+					326299.167789489,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				326623.492113814,
+				],
 				[
+					326299.167789489,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				326947.816438138,
+				],
 				[
+					326623.492113814,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				327272.140762462,
+				],
 				[
+					326947.816438138,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				327592.411032733,
+				],
 				[
+					327272.140762462,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				327594.438059759,
+				],
 				[
+					327592.411032733,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				327596.465086786,
+				],
 				[
+					327594.438059759,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				327596.465086786,
+				],
 				[
+					327596.465086786,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				327920.789411111,
+				],
 				[
+					327596.465086786,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				328245.113735435,
+				],
 				[
+					327920.789411111,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				328569.438059759,
+				],
 				[
+					328245.113735435,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				328889.70833003,
+				],
 				[
+					328569.438059759,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				328891.735357056,
+				],
 				[
+					328889.70833003,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				328893.762384083,
+				],
 				[
+					328891.735357056,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				328893.762384084,
+				],
 				[
+					328893.762384083,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				329218.086708408,
+				],
 				[
+					328893.762384084,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				329542.411032732,
+				],
 				[
+					329218.086708408,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				329866.735357057,
+				],
 				[
+					329542.411032732,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				330187.005627327,
+				],
 				[
+					329866.735357057,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				330187.005627328,
+				],
 				[
+					330187.005627327,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				330191.059681381,
+				],
 				[
+					330187.005627328,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				330191.059681381,
+				],
 				[
+					330191.059681381,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				330515.384005705,
+				],
 				[
+					330191.059681381,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				330839.70833003,
+				],
 				[
+					330515.384005705,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				331164.032654354,
+				],
 				[
+					330839.70833003,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				331484.302924625,
+				],
 				[
+					331164.032654354,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				331486.329951651,
+				],
 				[
+					331484.302924625,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				331488.356978678,
+				],
 				[
+					331486.329951651,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				331488.356978678,
+				],
 				[
+					331488.356978678,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				331812.681303003,
+				],
 				[
+					331488.356978678,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				332137.005627327,
+				],
 				[
+					331812.681303003,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				332461.329951651,
+				],
 				[
+					332137.005627327,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				332781.600221922,
+				],
 				[
+					332461.329951651,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				332783.627248948,
+				],
 				[
+					332781.600221922,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				332785.654275975,
+				],
 				[
+					332783.627248948,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				332785.654275976,
+				],
 				[
+					332785.654275975,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				333109.9786003,
+				],
 				[
+					332785.654275976,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				333434.302924624,
+				],
 				[
+					333109.9786003,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				333758.627248949,
+				],
 				[
+					333434.302924624,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				334078.897519219,
+				],
 				[
+					333758.627248949,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				334080.924546245,
+				],
 				[
+					334078.897519219,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				334082.951573272,
+				],
 				[
+					334080.924546245,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				334082.951573273,
+				],
 				[
+					334082.951573272,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				334407.275897597,
+				],
 				[
+					334082.951573273,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				334731.600221922,
+				],
 				[
+					334407.275897597,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				335055.924546246,
+				],
 				[
+					334731.600221922,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				335376.194816517,
+				],
 				[
+					335055.924546246,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				335378.221843543,
+				],
 				[
+					335376.194816517,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				335380.24887057,
+				],
 				[
+					335378.221843543,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				335380.24887057,
+				],
 				[
+					335380.24887057,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				335704.573194895,
+				],
 				[
+					335380.24887057,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				336028.897519219,
+				],
 				[
+					335704.573194895,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				336353.221843543,
+				],
 				[
+					336028.897519219,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				336673.492113814,
+				],
 				[
+					336353.221843543,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				336677.546167868,
+				],
 				[
+					336673.492113814,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				337001,
+				],
 				[
+					336677.546167868,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				337001.870492191,
+				],
 				[
+					337001,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				337001.870492192,
+				],
 				[
+					337001.870492191,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				337326.194816516,
+				],
 				[
+					337001.870492192,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				337650.519140841,
+				],
 				[
+					337326.194816516,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				337970.789411111,
+				],
 				[
+					337650.519140841,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				337974.843465165,
+				],
 				[
+					337970.789411111,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				338299,
+				],
 				[
+					337974.843465165,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				338299.167789489,
+				],
 				[
+					338299,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				338299.167789489,
+				],
 				[
+					338299.167789489,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				338623.492113813,
+				],
 				[
+					338299.167789489,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				338947.816438138,
+				],
 				[
+					338623.492113813,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				339268.086708409,
+				],
 				[
+					338947.816438138,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				339270.113735435,
+				],
 				[
+					339268.086708409,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				339272.140762462,
+				],
 				[
+					339270.113735435,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				339272.140762462,
+				],
 				[
+					339272.140762462,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				339596.465086786,
+				],
 				[
+					339272.140762462,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				339920.789411111,
+				],
 				[
+					339596.465086786,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				340245.113735435,
+				],
 				[
+					339920.789411111,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				340565.384005706,
+				],
 				[
+					340245.113735435,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				340567.411032732,
+				],
 				[
+					340565.384005706,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				340569.438059759,
+				],
 				[
+					340567.411032732,
 					[
-						"Delusional Events",
-						"45",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				340569.438059759,
+				],
 				[
+					340569.438059759,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"45",
+							""
+						]
 					]
-				]
-			],
-			[
-				340893.762384084,
+				],
 				[
+					340569.438059759,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				341218.086708408,
+				],
 				[
+					340893.762384084,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				341542.411032732,
+				],
 				[
+					341218.086708408,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				341862.681303003,
+				],
 				[
+					341542.411032732,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				341866,
+				],
 				[
+					341862.681303003,
 					[
-						"Delusional Events",
-						"67",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				341866.735357056,
+				],
 				[
+					341866,
 					[
-						"Delusional Events",
-						"46",
-						""
-					],
-					[
-						"Camera Event",
-						"Tween Value",
-						"zoom,1.35,7,quartInOut"
+						[
+							"Delusional Events",
+							"67",
+							""
+						]
 					]
-				]
-			],
-			[
-				341866.735357057,
+				],
 				[
+					341866.735357056,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"46",
+							""
+						],
+						[
+							"Camera Event",
+							"Tween Value",
+							"zoom,1.35,7,quartInOut"
+						]
 					]
-				]
-			],
-			[
-				342191.059681381,
+				],
 				[
+					341866.735357057,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				342515.384005705,
+				],
 				[
+					342191.059681381,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				342839.70833003,
+				],
 				[
+					342515.384005705,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				343159.9786003,
+				],
 				[
+					342839.70833003,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				343164.032654353,
+				],
 				[
+					343159.9786003,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				343488.356978678,
+				],
 				[
+					343164.032654353,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				343812.681303002,
+				],
 				[
+					343488.356978678,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				344137.005627326,
+				],
 				[
+					343812.681303002,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				344457.275897598,
+				],
 				[
+					344137.005627326,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				344461.329951651,
+				],
 				[
+					344457.275897598,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				344785.654275975,
+				],
 				[
+					344461.329951651,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				345109.978600299,
+				],
 				[
+					344785.654275975,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				345434.302924624,
+				],
 				[
+					345109.978600299,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				345754.573194895,
+				],
 				[
+					345434.302924624,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				345754.573194895,
+				],
 				[
+					345754.573194895,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				345758.627248948,
+				],
 				[
+					345754.573194895,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				346082.951573272,
+				],
 				[
+					345758.627248948,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				346407.275897597,
+				],
 				[
+					346082.951573272,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				346731.600221921,
+				],
 				[
+					346407.275897597,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				347055,
+				],
 				[
+					346731.600221921,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				347055,
+				],
 				[
+					347055,
 					[
-						"Delusional Events",
-						"47",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				347055.924546245,
+				],
 				[
+					347055,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"47",
+							""
+						]
 					]
-				]
-			],
-			[
-				347380.24887057,
+				],
 				[
+					347055.924546245,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				347704.573194894,
+				],
 				[
+					347380.24887057,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				348028.897519218,
+				],
 				[
+					347704.573194894,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				348349.16778949,
+				],
 				[
+					348028.897519218,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				348353.221843543,
+				],
 				[
+					348349.16778949,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				348677.546167867,
+				],
 				[
+					348353.221843543,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				349001,
+				],
 				[
+					348677.546167867,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				349326.194816515,
+				],
 				[
+					349001,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				349646.465086787,
+				],
 				[
+					349326.194816515,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				349650.519140841,
+				],
 				[
+					349646.465086787,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				349974.843465165,
+				],
 				[
+					349650.519140841,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				350299.167789489,
+				],
 				[
+					349974.843465165,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				350623.492113813,
+				],
 				[
+					350299.167789489,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				350943.762384084,
+				],
 				[
+					350623.492113813,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				350947.816438138,
+				],
 				[
+					350943.762384084,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				351272.140762462,
+				],
 				[
+					350947.816438138,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				351596.465086786,
+				],
 				[
+					351272.140762462,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				351920.789411111,
+				],
 				[
+					351596.465086786,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				352241.059681382,
+				],
 				[
+					351920.789411111,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				352245.113735434,
+				],
 				[
+					352241.059681382,
 					[
-						"Delusional Events",
-						"48",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				352245.113735435,
+				],
 				[
+					352245.113735434,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"48",
+							""
+						]
 					]
-				]
-			],
-			[
-				352569.438059759,
+				],
 				[
+					352245.113735435,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				352893.762384084,
+				],
 				[
+					352569.438059759,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				353218.086708408,
+				],
 				[
+					352893.762384084,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				353538.356978679,
+				],
 				[
+					353218.086708408,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				353542.411032732,
+				],
 				[
+					353538.356978679,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				353866.735357057,
+				],
 				[
+					353542.411032732,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				354191.059681381,
+				],
 				[
+					353866.735357057,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				354515.384005705,
+				],
 				[
+					354191.059681381,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				354835.654275976,
+				],
 				[
+					354515.384005705,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				354839.70833003,
+				],
 				[
+					354835.654275976,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				355164.032654354,
+				],
 				[
+					354839.70833003,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				355488.356978678,
+				],
 				[
+					355164.032654354,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				355812.681303003,
+				],
 				[
+					355488.356978678,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				356132.951573274,
+				],
 				[
+					355812.681303003,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				356137.005627327,
+				],
 				[
+					356132.951573274,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				356461.329951651,
+				],
 				[
+					356137.005627327,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				356785.654275976,
+				],
 				[
+					356461.329951651,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				357109.9786003,
+				],
 				[
+					356785.654275976,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				357430.248870571,
+				],
 				[
+					357109.9786003,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				357434.302924624,
+				],
 				[
+					357430.248870571,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				357758.627248949,
+				],
 				[
+					357434.302924624,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				358082.951573273,
+				],
 				[
+					357758.627248949,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				358407.275897597,
+				],
 				[
+					358082.951573273,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				358727.546167868,
+				],
 				[
+					358407.275897597,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				358731.600221922,
+				],
 				[
+					358727.546167868,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				359055.924546246,
+				],
 				[
+					358731.600221922,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				359380.24887057,
+				],
 				[
+					359055.924546246,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				359704.573194895,
+				],
 				[
+					359380.24887057,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				360024.843465165,
+				],
 				[
+					359704.573194895,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				360028.897519219,
+				],
 				[
+					360024.843465165,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				360353.221843543,
+				],
 				[
+					360028.897519219,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				360677.546167868,
+				],
 				[
+					360353.221843543,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				361001.870492192,
+				],
 				[
+					360677.546167868,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				361322.140762463,
+				],
 				[
+					361001.870492192,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				361326.194816516,
+				],
 				[
+					361322.140762463,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				361650.519140841,
+				],
 				[
+					361326.194816516,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				361974.843465165,
+				],
 				[
+					361650.519140841,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				362299.167789489,
+				],
 				[
+					361974.843465165,
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				362619.43805976,
+				],
 				[
+					362299.167789489,
 					[
-						"Delusional Events",
-						"64",
-						""
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						]
 					]
-				]
-			],
-			[
-				362621.465086786,
+				],
 				[
+					362619.43805976,
 					[
-						"Delusional Events",
-						"49",
-						""
+						[
+							"Delusional Events",
+							"64",
+							""
+						]
 					]
-				]
-			],
-			[
-				365866.735357056,
+				],
 				[
-					[
-						"Delusional Events",
-						"50",
-						""
-					],
+					362621.465086786,
 					[
-						"Delusional Events",
-						"74",
-						""
+						[
+							"Delusional Events",
+							"49",
+							""
+						]
 					]
-				]
-			],
-			[
-				367164.032654353,
+				],
 				[
+					365866.735357056,
 					[
-						"Delusional Events",
-						"51",
-						""
-					],
+						[
+							"Delusional Events",
+							"50",
+							""
+						],
+						[
+							"Delusional Events",
+							"74",
+							""
+						]
+					]
+				],
+				[
+					367164.032654353,
 					[
-						"Delusional Events",
-						"75",
-						""
+						[
+							"Delusional Events",
+							"51",
+							""
+						],
+						[
+							"Delusional Events",
+							"75",
+							""
+						]
 					]
-				]
-			],
-			[
-				367488.356978677,
+				],
 				[
+					367488.356978677,
 					[
-						"Delusional Events",
-						"68",
-						""
+						[
+							"Delusional Events",
+							"68",
+							""
+						]
 					]
-				]
-			],
-			[
-				382731.60022192,
+				],
 				[
+					382731.60022192,
 					[
-						"Delusional Events",
-						"52",
-						""
+						[
+							"Delusional Events",
+							"52",
+							""
+						]
 					]
-				]
-			],
-			[
-				383380.248870569,
+				],
 				[
+					383380.248870569,
 					[
-						"Delusional Events",
-						"53",
-						""
+						[
+							"Delusional Events",
+							"53",
+							""
+						]
 					]
-				]
-			],
-			[
-				385974.843465164,
+				],
 				[
+					385974.843465164,
 					[
-						"Delusional Events",
-						"54",
-						""
+						[
+							"Delusional Events",
+							"54",
+							""
+						]
 					]
 				]
-			]
-		],
+			],
 			"player2": "mickey-delu-intro",
 			"splashSkin": "NOTE_splashesCartoon",
 			"song": "Delusional",

@@ -4183,7 +4183,7 @@ class PlayState extends MusicBeatState
 							camVideo.fade(FlxColor.BLACK, 0.2, true);
 							FlxTween.tween(camVideo, {zoom: 1}, 0.5, {ease: FlxEase.sineOut});
 						case 76:
-							FlxTween.tween(boyfriend, {alpha: 0.35}, 1, {ease: FlxEase.sineOut});
+							FlxTween.tween(boyfriend, {alpha: 0.45}, 2.5, {ease: FlxEase.expoOut});
 					}
 				}
 		}
