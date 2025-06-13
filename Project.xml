@@ -79,8 +79,6 @@
 
 	<define name="CHECK_FOR_UPDATES" if="desktop officialBuild"/>
 
-	<assets path='art/readme.txt' rename='do NOT readme.txt' />
-
 	<!-- _______________________________ Libraries ______________________________ -->
 
 	<haxelib name="flixel" />
