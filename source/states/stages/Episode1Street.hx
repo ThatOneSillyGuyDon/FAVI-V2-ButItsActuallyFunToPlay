@@ -273,8 +273,6 @@ class Episode1Street extends BaseStage
 					setStartCallback(isoIntro);
 				case "Lunacy":
 					setStartCallback(lunaIntro);
-				default:
-					startCountdown();
 			}
 		}
 	}
