@@ -3370,32 +3370,6 @@ class PlayState extends MusicBeatState
 		}
 	}
 
-	public var dumbCamTwn:FlxTween;
-
-	// i hate this code its useless lolol
-	/**
-	* ## Camera Zoom Tween Fix
-	* 
-	* Don't know why, but this was NEEDED to fix the zooming from breaking, smh.
-	*
-	* @param zoom - Sets the zoom value of the camera
-	* @param time - How long you want the tween to take
-	* @param ease - I suggest reading the HaxeFlixel API on this one, this uses FlxEase's library components if you don't know how to use this
-	*
-	* @author JustJasonLol
-	*/
-	public function tweenCamera(zoom:Float = 0.9, time:Float = 0.6, ease:Null<String>):Void
-	{
-		if (dumbCamTwn != null)
-			dumbCamTwn.cancel();
-		
-		dumbCamTwn = FlxTween.tween(camGame, {zoom: zoom}, time, {ease: returnTweenEase(ease), onComplete: function(twn:FlxTween)
-		{
-			defaultCamZoom = zoom;
-			dumbCamTwn = null;
-		}});
-	}
-
 	function openPauseMenu()
 	{
 		persistentUpdate = false;
@@ -4352,6 +4326,8 @@ class PlayState extends MusicBeatState
 					{
 						//hasEndingScene = true;
 						GameData.episode1FPLock = "unlocked";
+						GameData.deluluSong = "beaten";
+						GameData.storySong = "Delusional";
 						GameData.saveShit();
 					}
 					if (SONG.song == "Birthday")
@@ -4379,6 +4355,28 @@ class PlayState extends MusicBeatState
 				{
 					var difficulty:String = Difficulty.getFilePath();
 
+					if (SONG.song == "Devilish Deal")
+					{
+						//hasEndingScene = true;
+						GameData.devilSong = "beaten";
+						GameData.storySong = "Isolated";
+						GameData.saveShit();
+					}
+					if (SONG.song == "Isolated")
+					{
+						//hasEndingScene = true;
+						GameData.isoSong = "beaten";
+						GameData.storySong = "Lunacy";
+						GameData.saveShit();
+					}
+					if (SONG.song == "Lunacy")
+					{
+						//hasEndingScene = true;
+						GameData.lunaSong = "beaten";
+						GameData.storySong = "Delusional";
+						GameData.saveShit();
+					}
+
 					trace('LOADING NEXT SONG');
 					trace(Paths.formatToSongPath(storyPlaylist[0]) + difficulty);
 
@@ -4390,7 +4388,10 @@ class PlayState extends MusicBeatState
 
 					var songLowercase:String = Paths.formatToSongPath(storyPlaylist[0]);
 
-					SONG = Song.loadFromJson(storyPlaylist[0] + difficulty, songLowercase);
+					if (GameData.devilSong == "uncompleted")
+						SONG = Song.loadFromJson(storyPlaylist[0] + difficulty, songLowercase);
+					else
+						SONG = Song.loadFromJson(GameData.storySong.toLowerCase() + difficulty, GameData.storySong.toLowerCase());
 					FlxG.sound.music.stop();
 
 					LoadingState.loadAndSwitchState(new PlayState());

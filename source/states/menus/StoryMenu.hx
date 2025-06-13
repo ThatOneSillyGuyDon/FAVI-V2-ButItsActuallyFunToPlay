@@ -306,7 +306,13 @@ class StoryMenu extends MusicBeatState
 	
 				PlayState.storyDifficulty = curDifficulty;
 	
-				PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + diffic, songLowercase);
+				if (GameData.devilSong == "uncompleted")
+				{
+					GameData.storySong = "Devilish Deal";
+					PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + diffic, songLowercase);
+				}
+				else if (GameData.devilSong == "beaten")
+					PlayState.SONG = Song.loadFromJson(GameData.storySong.toLowerCase() + diffic, GameData.storySong.toLowerCase());
 				PlayState.campaignScore = 0;
 				PlayState.campaignMisses = 0;
 				new FlxTimer().start(1, function(tmr:FlxTimer)

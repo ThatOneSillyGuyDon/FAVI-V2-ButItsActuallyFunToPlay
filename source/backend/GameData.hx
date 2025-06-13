@@ -22,7 +22,12 @@ private enum DATA_CHECK_TYPE
 class GameData
 {
 	// Progression Shit
+	public static var storySong:String = "Devilish Deal";
 	public static var episode1FPLock:String = 'locked';
+	public static var devilSong:String = 'uncompleted';
+	public static var isoSong:String = 'uncompleted';
+	public static var lunaSong:String = 'uncompleted';
+	public static var deluluSong:String = 'uncompleted';
 
 	public static var episodeSFPLock:String = 'locked';
 	public static var episodeWFPLock:String = 'locked';
@@ -72,8 +77,18 @@ class GameData
 		var progression:FlxSave = new FlxSave();
 		progression.bind("gameProgression", CoolUtil.getSavePath());
 
+		if (progression.data.storySong == null)
+			progression.data.storySong = "Devilish Deal";
 		if (progression.data.episode1FPLock == null)
 			progression.data.episode1FPLock = 'locked';
+		if (progression.data.devilSong == null)
+			progression.data.devilSong = 'uncompleted';
+		if (progression.data.isoSong == null)
+			progression.data.isoSong = 'uncompleted';
+		if (progression.data.lunaSong == null)
+			progression.data.lunaSong = 'uncompleted';
+		if (progression.data.deluluSong == null)
+			progression.data.deluluSong = 'uncompleted';
 
 		if (progression.data.huntedLock == null)
 			progression.data.huntedLock = 'locked';
@@ -151,7 +166,13 @@ class GameData
 		progression.bind("gameProgression", CoolUtil.getSavePath());
 		trace('saving data');
 
+		progression.data.storySong = storySong;
 		progression.data.episode1FPLock = episode1FPLock;
+
+		progression.data.devilSong = devilSong;
+		progression.data.isoSong = isoSong;
+		progression.data.lunaSong = lunaSong;
+		progression.data.deluluSong = deluluSong;
 
 		progression.data.episodeSFPLock = episodeSFPLock;
 		progression.data.episodeWFPLock = episodeWFPLock;
@@ -201,7 +222,13 @@ class GameData
 
 		trace('loading data');
 
+		storySong = progression.data.storySong;
 		episode1FPLock = progression.data.episode1FPLock;
+
+		devilSong = progression.data.devilSong;
+		isoSong = progression.data.isoSong;
+		lunaSong = progression.data.lunaSong;
+		deluluSong = progression.data.deluluSong;
 
 		//episodeSFPLock = progression.data.episodeSFPLock;
 		//episodeWFPLock = progression.data.episodeWFPLock;
@@ -249,7 +276,13 @@ class GameData
 		var progression:FlxSave = new FlxSave();
 		progression.bind("gameProgression", CoolUtil.getSavePath());
 
+		storySong = "Delusional";
 		episode1FPLock = 'unlocked';
+
+		devilSong = 'beaten';
+		isoSong = 'beaten';
+		lunaSong = 'beaten';
+		deluluSong = 'beaten';
 
 		episodeSFPLock = 'unlocked';
 		episodeWFPLock = 'unlocked';
@@ -494,6 +527,11 @@ class GameData
 		{
 			case 'delusional':
 				episode1FPLock = 'unlocked';
+				devilSong = 'beaten';
+				isoSong = 'beaten';
+				lunaSong = 'beaten';
+				deluluSong = 'beaten';
+				storySong = "Delusional";
 			case 'mortiferum risus':
 				episodeSFPLock = 'unlocked';
 			case 'affliction':
