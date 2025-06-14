@@ -639,7 +639,7 @@ class Episode1Street extends BaseStage
 			default: game.boyfriend.setPosition(275, 50);
 		}
 
-		if (isStoryMode && !seenCutscene)
+		if (isStoryMode && !seenCutscene && PlayState.SONG.song != "Delusional")
 		{
 			if (FlxG.keys.justPressed.ANY)
 			{
@@ -703,8 +703,6 @@ class Episode1Street extends BaseStage
 		{
 			if (isolatedIntro != null && isolatedIntro.visible)
 				isolatedIntro.resume();
-			if (lununuIntro != null && lununuIntro.visible)
-				lununuIntro.resume();
 			if (lununuIntro != null && lununuIntro.visible)
 				lununuIntro.resume();
 			if (minnieJumpscare != null && minnieJumpscare.visible)

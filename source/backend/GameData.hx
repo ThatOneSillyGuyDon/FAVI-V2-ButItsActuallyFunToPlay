@@ -24,10 +24,10 @@ class GameData
 	// Progression Shit
 	public static var storySong:String = "Devilish Deal";
 	public static var episode1FPLock:String = 'locked';
-	public static var devilSong:String = 'uncompleted';
-	public static var isoSong:String = 'uncompleted';
-	public static var lunaSong:String = 'uncompleted';
-	public static var deluluSong:String = 'uncompleted';
+	public static var devilSong:Bool = false;
+	public static var isoSong:Bool = false;
+	public static var lunaSong:Bool = false;
+	public static var deluluSong:Bool = false;
 
 	public static var episodeSFPLock:String = 'locked';
 	public static var episodeWFPLock:String = 'locked';
@@ -82,13 +82,13 @@ class GameData
 		if (progression.data.episode1FPLock == null)
 			progression.data.episode1FPLock = 'locked';
 		if (progression.data.devilSong == null)
-			progression.data.devilSong = 'uncompleted';
+			progression.data.devilSong = false;
 		if (progression.data.isoSong == null)
-			progression.data.isoSong = 'uncompleted';
+			progression.data.isoSong = false;
 		if (progression.data.lunaSong == null)
-			progression.data.lunaSong = 'uncompleted';
+			progression.data.lunaSong = false;
 		if (progression.data.deluluSong == null)
-			progression.data.deluluSong = 'uncompleted';
+			progression.data.deluluSong = false;
 
 		if (progression.data.huntedLock == null)
 			progression.data.huntedLock = 'locked';
@@ -276,13 +276,13 @@ class GameData
 		var progression:FlxSave = new FlxSave();
 		progression.bind("gameProgression", CoolUtil.getSavePath());
 
-		storySong = "Delusional";
+		storySong = "Devilish-Deal";
 		episode1FPLock = 'unlocked';
 
-		devilSong = 'beaten';
-		isoSong = 'beaten';
-		lunaSong = 'beaten';
-		deluluSong = 'beaten';
+		devilSong = true;
+		isoSong = true;
+		lunaSong = true;
+		deluluSong = true;
 
 		episodeSFPLock = 'unlocked';
 		episodeWFPLock = 'unlocked';
@@ -527,10 +527,10 @@ class GameData
 		{
 			case 'delusional':
 				episode1FPLock = 'unlocked';
-				devilSong = 'beaten';
-				isoSong = 'beaten';
-				lunaSong = 'beaten';
-				deluluSong = 'beaten';
+				devilSong = true;
+				isoSong = true;
+				lunaSong = true;
+				deluluSong = true;
 				storySong = "Delusional";
 			case 'mortiferum risus':
 				episodeSFPLock = 'unlocked';

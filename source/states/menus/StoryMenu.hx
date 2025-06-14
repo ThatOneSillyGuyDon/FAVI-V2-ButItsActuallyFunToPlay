@@ -53,6 +53,8 @@ class StoryMenu extends MusicBeatState
 	var defaultShader2:FlxRuntimeShader;
 	var blur:FlxRuntimeShader;
 
+	var boyplaytext:FlxText;
+
 	override function create()
 	{
 		super.create();
@@ -132,6 +134,17 @@ class StoryMenu extends MusicBeatState
 
 		//add(yellowBG);
 		add(grpWeekCharacters);
+
+		var textBG:FlxSprite = new FlxSprite(0, FlxG.height - 26).makeGraphic(FlxG.width, 26, 0xFF000000);
+		textBG.alpha = 0.6;
+		add(textBG);
+
+		var leText:String = 'Press B to toggle Botplay. Botplay: ${ClientPrefs.data.gameplaySettings["botplay"] == true ? 'ON' : 'OFF'}';
+		var size:Int = 18;
+		boyplaytext = new FlxText(textBG.x, textBG.y + 4, FlxG.width, leText, size);
+		boyplaytext.setFormat(Paths.font("vcr.ttf"), size, FlxColor.WHITE, CENTER);
+		boyplaytext.scrollFactor.set();
+		add(boyplaytext);
 
 		if(!ClientPrefs.data.lowQuality) 
 		{
@@ -251,6 +264,10 @@ class StoryMenu extends MusicBeatState
 				}
 			}
 
+			if (FlxG.keys.justPressed.B) {
+				changeBotPlay();
+			}
+
 			if (controls.ACCEPT)
 			{
 				selectWeek();
@@ -273,53 +290,55 @@ class StoryMenu extends MusicBeatState
 
 	function selectWeek()
 	{
-				if (stopspamming == false)
-				{
-					FlxG.sound.play(Paths.sound('funkinAVI/menu/confirmEpisode'));
-					stopspamming = true;
+		if (stopspamming == false)
+		{
+			FlxG.sound.play(Paths.sound('funkinAVI/menu/confirmEpisode'));
+			stopspamming = true;
 
-					@:privateAccess
-					{
-						FlxG.camera._fxFlashColor = FlxColor.WHITE;
-						FlxG.camera._fxFlashDuration = .5;
-						FlxG.camera._fxFlashAlpha = .5;
-					}
-					new FlxTimer().start(.25, d -> FlxG.camera.fade(0x000000, .75));
-				}
-	
-				// We can't use Dynamic Array .copy() because that crashes HTML5, here's a workaround.
-				var songArray:Array<String> = [];
-				var leWeek:Array<Dynamic> = loadedWeeks[curWeek].songs;
-				for (i in 0...leWeek.length) {
-					songArray.push(leWeek[i][0]);
-				}
-	
-				// Nevermind that's stupid lmao
-				PlayState.storyPlaylist = songArray;
-				PlayState.isStoryMode = true;
-				selectedWeek = true;
+			@:privateAccess
+			{
+				FlxG.camera._fxFlashColor = FlxColor.WHITE;
+				FlxG.camera._fxFlashDuration = .5;
+				FlxG.camera._fxFlashAlpha = .5;
+			}
+			new FlxTimer().start(.25, d -> FlxG.camera.fade(0x000000, .75));
+		}
 
-				var songLowercase:String = Paths.formatToSongPath(PlayState.storyPlaylist[0]);
-	
-				var diffic = Difficulty.getFilePath(curDifficulty);
-				if(diffic == null) diffic = '';
-	
-				PlayState.storyDifficulty = curDifficulty;
-	
-				if (GameData.devilSong == "uncompleted")
-				{
-					GameData.storySong = "Devilish Deal";
-					PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + diffic, songLowercase);
-				}
-				else if (GameData.devilSong == "beaten")
-					PlayState.SONG = Song.loadFromJson(GameData.storySong.toLowerCase() + diffic, GameData.storySong.toLowerCase());
-				PlayState.campaignScore = 0;
-				PlayState.campaignMisses = 0;
-				new FlxTimer().start(1, function(tmr:FlxTimer)
-				{
-					LoadingState.loadAndSwitchState(new PlayState(), true);
-					FreeplayState.destroyFreeplayVocals();
-				});
+		// We can't use Dynamic Array .copy() because that crashes HTML5, here's a workaround.
+		var songArray:Array<String> = [];
+		var leWeek:Array<Dynamic> = loadedWeeks[curWeek].songs;
+		for (i in 0...leWeek.length) {
+			songArray.push(leWeek[i][0]);
+		}
+
+		// Nevermind that's stupid lmao
+		PlayState.storyPlaylist = songArray;
+		PlayState.isStoryMode = true;
+		selectedWeek = true;
+
+		var songLowercase:String = Paths.formatToSongPath(PlayState.storyPlaylist[0]);
+
+		var diffic = Difficulty.getFilePath(curDifficulty);
+		if(diffic == null) diffic = '';
+
+		PlayState.storyDifficulty = curDifficulty;
+
+		if (!GameData.devilSong)
+		{
+			GameData.storySong = "Devilish-Deal";
+			PlayState.SONG = Song.loadFromJson(GameData.storySong.toLowerCase(), GameData.storySong.toLowerCase());
+		}
+		else if (GameData.devilSong)
+		{
+			PlayState.SONG = Song.loadFromJson(GameData.storySong.toLowerCase(), GameData.storySong.toLowerCase());
+		}
+		PlayState.campaignScore = 0;
+		PlayState.campaignMisses = 0;
+		new FlxTimer().start(1, function(tmr:FlxTimer)
+		{
+			LoadingState.loadAndSwitchState(new PlayState(), true);
+			FreeplayState.destroyFreeplayVocals();
+		});
 	}
 
 	var difficultyTween:FlxTween;
@@ -382,6 +401,16 @@ class StoryMenu extends MusicBeatState
 	function weekIsLocked(name:String):Bool {
 		var leWeek:WeekData = WeekData.weeksLoaded.get(name);
 		return (!leWeek.startUnlocked && leWeek.weekBefore.length > 0 && (!weekCompleted.exists(leWeek.weekBefore) || !weekCompleted.get(leWeek.weekBefore)));
+	}
+
+	function changeBotPlay()
+	{
+		ClientPrefs.data.gameplaySettings["botplay"] = (ClientPrefs.data.gameplaySettings["botplay"] == true) ? false : true;
+
+		if (ClientPrefs.data.gameplaySettings["botplay"] == true)
+			boyplaytext.text = 'Press B to toggle Botplay. Botplay: ON';
+		else
+			boyplaytext.text = 'Press B to toggle Botplay. Botplay: OFF';
 	}
 	
 	function updateText()

@@ -152,7 +152,7 @@ class DevilishStage extends BaseStage
 				if (PlayState.SONG.song == "Devilish Deal" && isStoryMode && GameData.episode1FPLock != "unlocked")
 				{
 					PlayState.windowName = "Funkin.avi - " + 
-					(isStoryMode ? game.curEpisode + " - " : "Freeplay - ") + 
+					(isStoryMode ? "Episode 1" + " - " : "Freeplay - ") + 
 					(PlayState.SONG.song == "Dont Cross" ? "Don't Cross!" : PlayState.SONG.song) + 
 					" (Composed by: " + FreeplayState.getArtistName() + 
 					") - Chart by: " + Song.getCharterCredits() + 
@@ -162,7 +162,7 @@ class DevilishStage extends BaseStage
 					PlayState.windowTimer = new FlxTimer().start(5, function(tmr:FlxTimer)
 					{
 						PlayState.windowName = "Funkin.avi - " + 
-						(isStoryMode ? game.curEpisode + " - " : "Freeplay - ") + 
+						(isStoryMode ? "Episode 1" + " - " : "Freeplay - ") + 
 						(PlayState.SONG.song == "Dont Cross" ? "Don't Cross!" : PlayState.SONG.song) + 
 						" [" + FreeplayState.getDiffRank() + "]"; // short version that displays after 5 seconds yayaya
 			

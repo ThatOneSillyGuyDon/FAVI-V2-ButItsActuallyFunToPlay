@@ -1135,13 +1135,7 @@ class PlayState extends MusicBeatState
 
 		windowTimer = new FlxTimer().start(5, function(tmr:FlxTimer)
 		{
-			if (GameData.episode1FPLock != "unlocked")
-				windowName = "Funkin.avi - Episode 1 - Isolated [NORMAL]"
-			else
-				windowName = "Funkin.avi - " + 
-				(isStoryMode ? curEpisode + " - " : "Freeplay - ") + 
-				(SONG.song == "Dont Cross" ? "Don't Cross!" : SONG.song) + 
-				" [" + FreeplayState.getDiffRank() + "]"; // short version that displays after 5 seconds yayaya
+			windowName = "Funkin.avi - " + (isStoryMode ? curEpisode + " - " : "Freeplay - ") + (SONG.song == "Dont Cross" ? "Don't Cross!" : SONG.song) + " [" + FreeplayState.getDiffRank() + "]"; // short version that displays after 5 seconds yayaya
 
 			lime.app.Application.current.window.title = windowName;
 		});
@@ -4326,8 +4320,8 @@ class PlayState extends MusicBeatState
 					{
 						//hasEndingScene = true;
 						GameData.episode1FPLock = "unlocked";
-						GameData.deluluSong = "beaten";
-						GameData.storySong = "Delusional";
+						GameData.deluluSong = true;
+						GameData.storySong = "Devilish-Deal";
 						GameData.saveShit();
 					}
 					if (SONG.song == "Birthday")
@@ -4358,43 +4352,70 @@ class PlayState extends MusicBeatState
 					if (SONG.song == "Devilish Deal")
 					{
 						//hasEndingScene = true;
-						GameData.devilSong = "beaten";
+						GameData.devilSong = true;
 						GameData.storySong = "Isolated";
 						GameData.saveShit();
 					}
 					if (SONG.song == "Isolated")
 					{
 						//hasEndingScene = true;
-						GameData.isoSong = "beaten";
+						GameData.isoSong = true;
 						GameData.storySong = "Lunacy";
 						GameData.saveShit();
 					}
 					if (SONG.song == "Lunacy")
 					{
 						//hasEndingScene = true;
-						GameData.lunaSong = "beaten";
+						GameData.lunaSong = true;
 						GameData.storySong = "Delusional";
 						GameData.saveShit();
 					}
+					if (SONG.song == "Delusional")
+					{
+						//hasEndingScene = true;
+						GameData.episode1FPLock = "unlocked";
+						GameData.deluluSong = true;
+						GameData.storySong = "Devilish-Deal";
+						GameData.saveShit();
 
-					trace('LOADING NEXT SONG');
-					trace(Paths.formatToSongPath(storyPlaylist[0]) + difficulty);
+						Mods.loadTopMod();
+						FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
+						#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
 
-					FlxTransitionableState.skipNextTransIn = true;
-					FlxTransitionableState.skipNextTransOut = true;
-					
-					prevCamFollow = camFollow;
-					prevCamFollowPos = camFollowPos;
+						MusicBeatState.switchState(new StoryMenu());
 
-					var songLowercase:String = Paths.formatToSongPath(storyPlaylist[0]);
+						// if ()
+						if(!ClientPrefs.getGameplaySetting('practice') && !ClientPrefs.getGameplaySetting('botplay')) {
+							StoryMenu.weekCompleted.set(WeekData.weeksList[storyWeek], true);
+							Highscore.saveWeekScore(WeekData.getWeekFileName(), campaignScore, storyDifficulty);
 
-					if (GameData.devilSong == "uncompleted")
-						SONG = Song.loadFromJson(storyPlaylist[0] + difficulty, songLowercase);
-					else
-						SONG = Song.loadFromJson(GameData.storySong.toLowerCase() + difficulty, GameData.storySong.toLowerCase());
-					FlxG.sound.music.stop();
+							FlxG.save.data.weekCompleted = StoryMenu.weekCompleted;
+							FlxG.save.flush();
+						}
+						changedDifficulty = false;
+					}
 
-					LoadingState.loadAndSwitchState(new PlayState());
+					if (SONG.song != "Delusional")
+					{
+						trace('LOADING NEXT SONG');
+						trace(Paths.formatToSongPath(storyPlaylist[0]) + difficulty);
+
+						FlxTransitionableState.skipNextTransIn = true;
+						FlxTransitionableState.skipNextTransOut = true;
+						
+						prevCamFollow = camFollow;
+						prevCamFollowPos = camFollowPos;
+
+						var songLowercase:String = Paths.formatToSongPath(storyPlaylist[0]);
+
+						if (!GameData.devilSong)
+							SONG = Song.loadFromJson(storyPlaylist[0], songLowercase);
+						else if (GameData.devilSong)
+							SONG = Song.loadFromJson(GameData.storySong.toLowerCase(), GameData.storySong.toLowerCase());
+						FlxG.sound.music.stop();
+
+						LoadingState.loadAndSwitchState(new PlayState());
+					}
 				}
 			}
 			else
