@@ -53,8 +53,6 @@ class StoryMenu extends MusicBeatState
 	var defaultShader2:FlxRuntimeShader;
 	var blur:FlxRuntimeShader;
 
-	var boyplaytext:FlxText;
-
 	override function create()
 	{
 		super.create();
@@ -134,17 +132,6 @@ class StoryMenu extends MusicBeatState
 
 		//add(yellowBG);
 		add(grpWeekCharacters);
-
-		var textBG:FlxSprite = new FlxSprite(0, FlxG.height - 26).makeGraphic(FlxG.width, 26, 0xFF000000);
-		textBG.alpha = 0.6;
-		add(textBG);
-
-		var leText:String = 'Press B to toggle Botplay. Botplay: ${ClientPrefs.data.gameplaySettings["botplay"] == true ? 'ON' : 'OFF'}';
-		var size:Int = 18;
-		boyplaytext = new FlxText(textBG.x, textBG.y + 4, FlxG.width, leText, size);
-		boyplaytext.setFormat(Paths.font("vcr.ttf"), size, FlxColor.WHITE, CENTER);
-		boyplaytext.scrollFactor.set();
-		add(boyplaytext);
 
 		if(!ClientPrefs.data.lowQuality) 
 		{
@@ -262,10 +249,6 @@ class StoryMenu extends MusicBeatState
 					openSubState(new ResetScoreSubState('', curDifficulty, '', curWeek));
 					//FlxG.sound.play(Paths.sound('scrollMenu'));
 				}
-			}
-
-			if (FlxG.keys.justPressed.B) {
-				changeBotPlay();
 			}
 
 			if (controls.ACCEPT)
@@ -403,16 +386,6 @@ class StoryMenu extends MusicBeatState
 		return (!leWeek.startUnlocked && leWeek.weekBefore.length > 0 && (!weekCompleted.exists(leWeek.weekBefore) || !weekCompleted.get(leWeek.weekBefore)));
 	}
 
-	function changeBotPlay()
-	{
-		ClientPrefs.data.gameplaySettings["botplay"] = (ClientPrefs.data.gameplaySettings["botplay"] == true) ? false : true;
-
-		if (ClientPrefs.data.gameplaySettings["botplay"] == true)
-			boyplaytext.text = 'Press B to toggle Botplay. Botplay: ON';
-		else
-			boyplaytext.text = 'Press B to toggle Botplay. Botplay: OFF';
-	}
-	
 	function updateText()
 	{	
 		booksimage.loadGraphic(Paths.image('Funkin_avi/storymenu/art$curWeek' + (GameData.episode1FPLock == "unlocked" ? "-evil" : "")));
