@@ -169,6 +169,7 @@ class DevilishStage extends BaseStage
 						lime.app.Application.current.window.title = PlayState.windowName;
 					});
 				}
+				startCountdown();
 				devilishGaming = new VideoSprite(false);
 				devilishGaming.load(Paths.video("devilishIntro"), [VideoSprite.muted]);
 				add(devilishGaming);
@@ -181,7 +182,6 @@ class DevilishStage extends BaseStage
 					devilishGaming.pause();
 					devilishGaming.setVideoTime(0);
 				});
-				startCountdown();
 				trace("video gone");
 				remove(episodeIntro);
 				episodeIntro.kill();
@@ -190,6 +190,7 @@ class DevilishStage extends BaseStage
 		}
 		else
 		{
+			startCountdown();
 			devilishGaming = new VideoSprite(false);
 			devilishGaming.load(Paths.video("devilishIntro"), [VideoSprite.muted]);
 			add(devilishGaming);
@@ -202,21 +203,22 @@ class DevilishStage extends BaseStage
 				devilishGaming.pause();
 				devilishGaming.setVideoTime(0);
 			});
-			startCountdown();
 		}
 
 		skipSceneTxt = new FlxText(0, 25, 1280, "Spam SPACE to skip this cutscene.");
 		skipSceneTxt.setFormat(Paths.font("MagicOwlFont.otf"), 32, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
 		skipSceneTxt.alpha = 0.0001;
 		skipSceneTxt.cameras = [game.camVideo];
-		add(skipSceneTxt);
+		if (isStoryMode && !seenCutscene)
+			add(skipSceneTxt);
 
 		skipDial = new FlxPieDial(0, 0, 45, FlxColor.WHITE, 10, CIRCLE, true, 30);
 		skipDial.screenCenter();
 		skipDial.amount = 0.0;
 		skipDial.alpha = 0.0001;
 		skipDial.cameras = [game.camVideo];
-		add(skipDial);
+		if (isStoryMode && !seenCutscene)
+			add(skipDial);
 	}
 
 	override function beatHit()
@@ -497,7 +499,7 @@ class DevilishStage extends BaseStage
 				if (PlayState.SONG.song == "Devilish Deal" && isStoryMode && GameData.episode1FPLock != "unlocked")
 				{
 					PlayState.windowName = "Funkin.avi - " + 
-					(isStoryMode ? game.curEpisode + " - " : "Freeplay - ") + 
+					(isStoryMode ? "Episode 1" + " - " : "Freeplay - ") + 
 					(PlayState.SONG.song == "Dont Cross" ? "Don't Cross!" : PlayState.SONG.song) + 
 					" (Composed by: " + FreeplayState.getArtistName() + 
 					") - Chart by: " + Song.getCharterCredits() + 
@@ -507,7 +509,7 @@ class DevilishStage extends BaseStage
 					PlayState.windowTimer = new FlxTimer().start(5, function(tmr:FlxTimer)
 					{
 						PlayState.windowName = "Funkin.avi - " + 
-						(isStoryMode ? game.curEpisode + " - " : "Freeplay - ") + 
+						(isStoryMode ? "Episode 1" + " - " : "Freeplay - ") + 
 						(PlayState.SONG.song == "Dont Cross" ? "Don't Cross!" : PlayState.SONG.song) + 
 						" [" + FreeplayState.getDiffRank() + "]"; // short version that displays after 5 seconds yayaya
 			

@@ -72,8 +72,11 @@ class SmileStage extends BaseStage
 	{
 		shaderAnim = Conductor.songPosition / 1000;
 		
-		staticEffect.setFloat('uTime', shaderAnim);
-		staticEffect.setFloat('iTime', shaderAnim);
+		if (ClientPrefs.data.shaders)
+		{
+			staticEffect.setFloat('uTime', shaderAnim);
+			staticEffect.setFloat('iTime', shaderAnim);
+		}
 	}
 
 	var skyTwn:FlxTween;

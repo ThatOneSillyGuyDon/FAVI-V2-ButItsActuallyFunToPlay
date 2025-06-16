@@ -3804,11 +3804,6 @@ enum abstract Chart(String) from String to String {
 						126181.818181818,
 						1,
 						0
-					],
-					[
-						126188.454545455,
-						2,
-						0
 					]
 				],
 				"typeOfSection": 0,
@@ -31647,12 +31642,47 @@ enum abstract Chart(String) from String to String {
 			],
 			"events": [
 				[
+					-5000,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"600,0.0001,circOut"
+						]
+					]
+				],
+				[
+					-5000,
+					[
+						[
+							"Set Property",
+							"defaultCamZoom",
+							"2"
+						]
+					]
+				],
+				[
+					342.857142857143,
+					[
+						[
+							"Delusional Events",
+							"1",
+							""
+						]
+					]
+				],
+				[
 					342.857142857143,
 					[
 						[
 							"Cinematic Event",
 							"Move",
-							"100,0.0001,linear"
+							"100,1,circOut"
+						],
+						[
+							"Set Property",
+							"defaultCamZoom",
+							"0.85"
 						]
 					]
 				],
@@ -31663,6 +31693,16 @@ enum abstract Chart(String) from String to String {
 							"Cinematic Event",
 							"Move",
 							"120,2,circOut"
+						]
+					]
+				],
+				[
+					21942.8571428571,
+					[
+						[
+							"Delusional Events",
+							"55",
+							""
 						]
 					]
 				],
@@ -31690,658 +31730,8 @@ enum abstract Chart(String) from String to String {
 					45257.1428571429,
 					[
 						[
-							"Cinematic Event",
-							"Move",
-							"180,2,circOut"
-						]
-					]
-				],
-				[
-					49297.2972972973,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"70,0.0001,linear"
-						]
-					]
-				],
-				[
-					51891.8918918919,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"80,0.5,circOut"
-						]
-					]
-				],
-				[
-					52540.5405405406,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"90,0.5,circOut"
-						]
-					]
-				],
-				[
-					53189.1891891892,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"100,0.5,circOut"
-						]
-					]
-				],
-				[
-					53837.8378378379,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"110,0.5,circOut"
-						]
-					]
-				],
-				[
-					54486.4864864865,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"70,1,circOut"
-						]
-					]
-				],
-				[
-					57081.0810810811,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"80,0.5,circOut"
-						]
-					]
-				],
-				[
-					58378.3783783784,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"90,0.5,circOut"
-						]
-					]
-				],
-				[
-					59675.6756756757,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"0,2,circOut"
-						]
-					]
-				],
-				[
-					93405.4054054054,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"90,1.5,circOut"
-						]
-					]
-				],
-				[
-					96000,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"100,0.5,circOut"
-						]
-					]
-				],
-				[
-					98594.5945945945,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"110,0.5,circOut"
-						]
-					]
-				],
-				[
-					101189.189189189,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"120,0.5,circOut"
-						]
-					]
-				],
-				[
-					102486.486486486,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"130,0.5,circOut"
-						]
-					]
-				],
-				[
-					103783.783783784,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"90,1.5,circOut"
-						]
-					]
-				],
-				[
-					106378.378378378,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"100,0.5,circOut"
-						]
-					]
-				],
-				[
-					108972.972972973,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"110,0.5,circOut"
-						]
-					]
-				],
-				[
-					111567.567567567,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"120,0.5,circOut"
-						]
-					]
-				],
-				[
-					112216.216216216,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"80,1,circOut"
-						]
-					]
-				],
-				[
-					114162.162162162,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"100,1,circOut"
-						]
-					]
-				],
-				[
-					118054.054054054,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"120,0.5,circOut"
-						]
-					]
-				],
-				[
-					118702.702702703,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"130,0.5,circOut"
-						]
-					]
-				],
-				[
-					119351.351351351,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"100,1,circOut"
-						]
-					]
-				],
-				[
-					128432.432432432,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"120,0.5,circOut"
-						]
-					]
-				],
-				[
-					129081.081081081,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"130,0.5,circOut"
-						]
-					]
-				],
-				[
-					129729.72972973,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"100,1,circOut"
-						]
-					]
-				],
-				[
-					134918.918918919,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"140,2,circOut"
-						]
-					]
-				],
-				[
-					155027.027027027,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"380,0.65,backIn"
-						]
-					]
-				],
-				[
-					158427.518427518,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"70,10,linear"
-						]
-					]
-				],
-				[
-					256245.113735436,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"120,0.0001,linear"
-						]
-					]
-				],
-				[
-					258839.70833003,
-					[
-						[
-							"Cinematic Event",
-							"Bop",
-							"30,0.5,circOut"
-						]
-					]
-				],
-				[
-					261434.302924625,
-					[
-						[
-							"Cinematic Event",
-							"Bop",
-							"30,0.5,circOut"
-						]
-					]
-				],
-				[
-					264028.897519219,
-					[
-						[
-							"Cinematic Event",
-							"Bop",
-							"30,0.5,circOut"
-						]
-					]
-				],
-				[
-					265326.194816517,
-					[
-						[
-							"Cinematic Event",
-							"Bop",
-							"30,0.5,circOut"
-						]
-					]
-				],
-				[
-					266623.492113814,
-					[
-						[
-							"Cinematic Event",
-							"Bop",
-							"30,0.5,circOut"
-						]
-					]
-				],
-				[
-					269218.086708409,
-					[
-						[
-							"Cinematic Event",
-							"Bop",
-							"30,0.5,circOut"
-						]
-					]
-				],
-				[
-					271812.681303003,
-					[
-						[
-							"Cinematic Event",
-							"Bop",
-							"30,0.5,circOut"
-						]
-					]
-				],
-				[
-					274407.275897598,
-					[
-						[
-							"Cinematic Event",
-							"Bop",
-							"30,0.5,circOut"
-						]
-					]
-				],
-				[
-					275704.573194895,
-					[
-						[
-							"Cinematic Event",
-							"Bop",
-							"30,0.5,circOut"
-						]
-					]
-				],
-				[
-					277001.870492192,
-					[
-						[
-							"Cinematic Event",
-							"Bop",
-							"30,0.5,circOut"
-						]
-					]
-				],
-				[
-					278299.167789489,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"185,0.8,circIn"
-						]
-					]
-				],
-				[
-					279596.465086787,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"120,0.8,circOut"
-						]
-					]
-				],
-				[
-					282191.059681381,
-					[
-						[
-							"Cinematic Event",
-							"Bop",
-							"30,0.5,circOut"
-						]
-					]
-				],
-				[
-					283488.356978679,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"185,0.8,circIn"
-						]
-					]
-				],
-				[
-					284785.654275976,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"120,0.8,circOut"
-						]
-					]
-				],
-				[
-					286082.951573273,
-					[
-						[
-							"Cinematic Event",
-							"Bop",
-							"30,0.5,circOut"
-						]
-					]
-				],
-				[
-					288677.546167868,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"185,0.8,circIn"
-						]
-					]
-				],
-				[
-					289974.843465165,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"120,0.8,circOut"
-						]
-					]
-				],
-				[
-					292569.43805976,
-					[
-						[
-							"Cinematic Event",
-							"Bop",
-							"30,0.5,circOut"
-						]
-					]
-				],
-				[
-					293866.735357057,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"185,0.8,circIn"
-						]
-					]
-				],
-				[
-					295164.032654354,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"120,0.8,circOut"
-						]
-					]
-				],
-				[
-					296461.329951651,
-					[
-						[
-							"Cinematic Event",
-							"Bop",
-							"30,0.5,circOut"
-						]
-					]
-				],
-				[
-					297758.627248949,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"180,2.5,circInOut"
-						]
-					]
-				],
-				[
-					300353.221843543,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"100,1,circOut"
-						]
-					]
-				],
-				[
-					321109.9786003,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"120,1.5,circOut"
-						]
-					]
-				],
-				[
-					341866.735357056,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"140,1,circOut"
-						]
-					]
-				],
-				[
-					347055.924546245,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"80,1,circOut"
-						]
-					]
-				],
-				[
-					349001.870492191,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"100,1,circOut"
-						]
-					]
-				],
-				[
-					352245.113735434,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"100,1,circOut"
-						]
-					]
-				],
-				[
-					357434.302924623,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"120,1.5,circOut"
-						]
-					]
-				],
-				[
-					360028.897519218,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"140,1,circOut"
-						]
-					]
-				],
-				[
-					362623.492113813,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"90,1,circOut"
-						]
-					]
-				],
-				[
-					383380.248870569,
-					[
-						[
-							"Cinematic Event",
-							"Move",
-							"0,0.0001,linear"
-						]
-					]
-				],
-				[
-					342.857142857143,
-					[
-						[
 							"Delusional Events",
-							"1",
-							""
-						]
-					]
-				],
-				[
-					21942.8571428571,
-					[
-						[
-							"Delusional Events",
-							"55",
+							"2",
 							""
 						]
 					]
@@ -32350,9 +31740,24 @@ enum abstract Chart(String) from String to String {
 					45257.1428571429,
 					[
 						[
-							"Delusional Events",
-							"2",
-							""
+							"Cinematic Event",
+							"Move",
+							"180,2,circOut"
+						],
+						[
+							"Background Controls",
+							"Darken",
+							"1,2,linear"
+						]
+					]
+				],
+				[
+					46457.1428571429,
+					[
+						[
+							"Camera Event",
+							"Tween Value",
+							"zoom,0.55,3,cubeInOut"
 						]
 					]
 				],
@@ -32387,6 +31792,16 @@ enum abstract Chart(String) from String to String {
 					]
 				],
 				[
+					49297.2972972973,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"70,0.0001,linear"
+						]
+					]
+				],
+				[
 					49945.945945946,
 					[
 						[
@@ -32407,12 +31822,72 @@ enum abstract Chart(String) from String to String {
 					]
 				],
 				[
+					51891.8918918919,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"80,0.5,circOut"
+						]
+					]
+				],
+				[
 					52540.5405405406,
 					[
 						[
 							"Manage Lyrics",
 							"evilpredelu",
 							"...this show will play!,disneyFreeplayFont.ttf,30,2.2,quartInOut,.07"
+						]
+					]
+				],
+				[
+					52540.5405405406,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"90,0.5,circOut"
+						]
+					]
+				],
+				[
+					53027.027027027,
+					[
+						[
+							"Background Controls",
+							"Darken",
+							"0,2,linear"
+						]
+					]
+				],
+				[
+					53189.1891891892,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"100,0.5,circOut"
+						]
+					]
+				],
+				[
+					53837.8378378379,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"110,0.5,circOut"
+						]
+					]
+				],
+				[
+					54486.4864864865,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"70,1,circOut"
 						]
 					]
 				],
@@ -32437,6 +31912,26 @@ enum abstract Chart(String) from String to String {
 					]
 				],
 				[
+					57081.0810810811,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"80,0.5,circOut"
+						]
+					]
+				],
+				[
+					58378.3783783784,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"90,0.5,circOut"
+						]
+					]
+				],
+				[
 					59027.0270270271,
 					[
 						[
@@ -32453,6 +31948,16 @@ enum abstract Chart(String) from String to String {
 							"Delusional Events",
 							"6",
 							""
+						]
+					]
+				],
+				[
+					59675.6756756757,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"0,2,circOut"
 						]
 					]
 				],
@@ -32602,6 +32107,26 @@ enum abstract Chart(String) from String to String {
 					]
 				],
 				[
+					71189.1891891892,
+					[
+						[
+							"Play Animation",
+							"singUP",
+							"dad"
+						]
+					]
+				],
+				[
+					71270.2702702703,
+					[
+						[
+							"Play Animation",
+							"singUP",
+							"dad"
+						]
+					]
+				],
+				[
 					71351.3513513514,
 					[
 						[
@@ -32723,6 +32248,46 @@ enum abstract Chart(String) from String to String {
 				],
 				[
 					72243.2432432433,
+					[
+						[
+							"Play Animation",
+							"singUP",
+							"dad"
+						]
+					]
+				],
+				[
+					72324.3243243244,
+					[
+						[
+							"Play Animation",
+							"singUP",
+							"dad"
+						]
+					]
+				],
+				[
+					72405.4054054054,
+					[
+						[
+							"Play Animation",
+							"singUP",
+							"dad"
+						]
+					]
+				],
+				[
+					72486.4864864865,
+					[
+						[
+							"Play Animation",
+							"singUP",
+							"dad"
+						]
+					]
+				],
+				[
+					72567.5675675676,
 					[
 						[
 							"Play Animation",
@@ -33433,6 +32998,16 @@ enum abstract Chart(String) from String to String {
 							"Delusional Events",
 							"56",
 							""
+						],
+						[
+							"Camera Event",
+							"Tween Position",
+							"440,360,1,circInOut"
+						],
+						[
+							"Camera Event",
+							"Tween Value",
+							"zoom,0.6,1,circInOut"
 						]
 					]
 				],
@@ -33443,6 +33018,16 @@ enum abstract Chart(String) from String to String {
 							"Add Camera Zoom",
 							"0.015",
 							"0.03"
+						]
+					]
+				],
+				[
+					93405.4054054054,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"90,1.5,circOut"
 						]
 					]
 				],
@@ -33537,6 +33122,16 @@ enum abstract Chart(String) from String to String {
 					]
 				],
 				[
+					96000,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"100,0.5,circOut"
+						]
+					]
+				],
+				[
 					96324.3243243243,
 					[
 						[
@@ -33613,6 +33208,16 @@ enum abstract Chart(String) from String to String {
 							"Delusional Events",
 							"18",
 							""
+						]
+					]
+				],
+				[
+					98594.5945945945,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"110,0.5,circOut"
 						]
 					]
 				],
@@ -33717,6 +33322,16 @@ enum abstract Chart(String) from String to String {
 					]
 				],
 				[
+					101189.189189189,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"120,0.5,circOut"
+						]
+					]
+				],
+				[
 					101513.513513514,
 					[
 						[
@@ -33753,6 +33368,16 @@ enum abstract Chart(String) from String to String {
 							"Delusional Events",
 							"19",
 							""
+						]
+					]
+				],
+				[
+					102486.486486486,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"130,0.5,circOut"
 						]
 					]
 				],
@@ -33810,19 +33435,24 @@ enum abstract Chart(String) from String to String {
 					103783.783783784,
 					[
 						[
-							"Add Camera Zoom",
-							"0.015",
-							"0.03"
-						]
-					]
-				],
-				[
-					103783.783783784,
-					[
-						[
 							"Delusional Events",
 							"17",
 							""
+						],
+						[
+							"Add Camera Zoom",
+							"0.015",
+							"0.03"
+						],
+						[
+							"Cinematic Event",
+							"Move",
+							"90,1.5,circOut"
+						],
+						[
+							"Camera Event",
+							"Change Value",
+							"adddefaultcamzoom,-0.2"
 						]
 					]
 				],
@@ -33917,6 +33547,16 @@ enum abstract Chart(String) from String to String {
 					]
 				],
 				[
+					106378.378378378,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"100,0.5,circOut"
+						]
+					]
+				],
+				[
 					106702.702702703,
 					[
 						[
@@ -34007,6 +33647,16 @@ enum abstract Chart(String) from String to String {
 					]
 				],
 				[
+					108972.972972973,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"110,0.5,circOut"
+						]
+					]
+				],
+				[
 					109297.297297297,
 					[
 						[
@@ -34092,6 +33742,16 @@ enum abstract Chart(String) from String to String {
 					]
 				],
 				[
+					111567.567567567,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"120,0.5,circOut"
+						]
+					]
+				],
+				[
 					111567.567567568,
 					[
 						[
@@ -34122,6 +33782,16 @@ enum abstract Chart(String) from String to String {
 					]
 				],
 				[
+					112216.216216216,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"80,1,circOut"
+						]
+					]
+				],
+				[
 					112540.540540541,
 					[
 						[
@@ -34138,16 +33808,21 @@ enum abstract Chart(String) from String to String {
 							"Delusional Events",
 							"20",
 							""
+						],
+						[
+							"Set Property",
+							"isCameraOnForcedPos",
+							"false"
 						]
 					]
 				],
 				[
-					114162.162162162,
+					113675.675675676,
 					[
 						[
-							"Delusional Events",
-							"17",
-							""
+							"Camera Event",
+							"Tween Value",
+							"zoom,2,0.53,backIn"
 						]
 					]
 				],
@@ -34158,6 +33833,31 @@ enum abstract Chart(String) from String to String {
 							"Add Camera Zoom",
 							"0.015",
 							"0.03"
+						]
+					]
+				],
+				[
+					114162.162162162,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"100,1,circOut"
+						],
+						[
+							"Delusional Events",
+							"17",
+							""
+						],
+						[
+							"Camera Event",
+							"Tween Value",
+							"zoom,0.7,1,expoOut"
+						],
+						[
+							"Camera Event",
+							"Flash",
+							"195,195,195,3,1,true"
 						]
 					]
 				],
@@ -34292,6 +33992,16 @@ enum abstract Chart(String) from String to String {
 					]
 				],
 				[
+					118054.054054054,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"120,0.5,circOut"
+						]
+					]
+				],
+				[
 					118378.378378378,
 					[
 						[
@@ -34312,6 +34022,16 @@ enum abstract Chart(String) from String to String {
 					]
 				],
 				[
+					118702.702702703,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"130,0.5,circOut"
+						]
+					]
+				],
+				[
 					119351.351351351,
 					[
 						[
@@ -34328,6 +34048,16 @@ enum abstract Chart(String) from String to String {
 							"Add Camera Zoom",
 							"0.015",
 							"0.03"
+						]
+					]
+				],
+				[
+					119351.351351351,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"100,1,circOut"
 						]
 					]
 				],
@@ -34483,12 +34213,7 @@ enum abstract Chart(String) from String to String {
 							"Camera Event",
 							"Tween Value",
 							"zoom,1.5,0.1,sineInOut"
-						]
-					]
-				],
-				[
-					124216.216216216,
-					[
+						],
 						[
 							"Add Camera Zoom",
 							"0.015",
@@ -34657,6 +34382,16 @@ enum abstract Chart(String) from String to String {
 					]
 				],
 				[
+					128432.432432432,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"120,0.5,circOut"
+						]
+					]
+				],
+				[
 					128756.756756757,
 					[
 						[
@@ -34677,12 +34412,32 @@ enum abstract Chart(String) from String to String {
 					]
 				],
 				[
+					129081.081081081,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"130,0.5,circOut"
+						]
+					]
+				],
+				[
 					129729.72972973,
 					[
 						[
 							"Add Camera Zoom",
 							"0.015",
 							"0.03"
+						]
+					]
+				],
+				[
+					129729.72972973,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"100,1,circOut"
 						]
 					]
 				],
@@ -34837,6 +34592,36 @@ enum abstract Chart(String) from String to String {
 					]
 				],
 				[
+					134918.918918919,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"140,2,circOut"
+						],
+						[
+							"Set Property",
+							"defaultCamZoom",
+							"0.85"
+						]
+					]
+				],
+				[
+					155027.027027027,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"380,0.65,backIn"
+						],
+						[
+							"Camera Event",
+							"Tween Value",
+							"zoom,2,0.65,backIn"
+						]
+					]
+				],
+				[
 					155675.675675676,
 					[
 						[
@@ -34938,6 +34723,16 @@ enum abstract Chart(String) from String to String {
 							"Delusional Events",
 							"70",
 							""
+						]
+					]
+				],
+				[
+					158427.518427518,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"70,10,linear"
 						]
 					]
 				],
@@ -35212,6 +35007,16 @@ enum abstract Chart(String) from String to String {
 					]
 				],
 				[
+					247745.113735436,
+					[
+						[
+							"Set Property",
+							"defaultCamZoom",
+							"2"
+						]
+					]
+				],
+				[
 					249842.613735436,
 					[
 						[
@@ -35322,12 +35127,32 @@ enum abstract Chart(String) from String to String {
 					]
 				],
 				[
+					256245.113735436,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"120,0.0001,linear"
+						]
+					]
+				],
+				[
 					258839.70833003,
 					[
 						[
 							"Delusional Events",
 							"64",
 							""
+						]
+					]
+				],
+				[
+					258839.70833003,
+					[
+						[
+							"Cinematic Event",
+							"Bop",
+							"30,0.5,circOut"
 						]
 					]
 				],
@@ -35342,12 +35167,32 @@ enum abstract Chart(String) from String to String {
 					]
 				],
 				[
+					261434.302924625,
+					[
+						[
+							"Cinematic Event",
+							"Bop",
+							"30,0.5,circOut"
+						]
+					]
+				],
+				[
 					264028.897519219,
 					[
 						[
 							"Delusional Events",
 							"64",
 							""
+						]
+					]
+				],
+				[
+					264028.897519219,
+					[
+						[
+							"Cinematic Event",
+							"Bop",
+							"30,0.5,circOut"
 						]
 					]
 				],
@@ -35362,12 +35207,32 @@ enum abstract Chart(String) from String to String {
 					]
 				],
 				[
+					265326.194816517,
+					[
+						[
+							"Cinematic Event",
+							"Bop",
+							"30,0.5,circOut"
+						]
+					]
+				],
+				[
 					266621.465086787,
 					[
 						[
 							"Delusional Events",
 							"64",
 							""
+						]
+					]
+				],
+				[
+					266623.492113814,
+					[
+						[
+							"Cinematic Event",
+							"Bop",
+							"30,0.5,circOut"
 						]
 					]
 				],
@@ -35382,12 +35247,32 @@ enum abstract Chart(String) from String to String {
 					]
 				],
 				[
+					269218.086708409,
+					[
+						[
+							"Cinematic Event",
+							"Bop",
+							"30,0.5,circOut"
+						]
+					]
+				],
+				[
 					271812.681303003,
 					[
 						[
 							"Delusional Events",
 							"64",
 							""
+						]
+					]
+				],
+				[
+					271812.681303003,
+					[
+						[
+							"Cinematic Event",
+							"Bop",
+							"30,0.5,circOut"
 						]
 					]
 				],
@@ -35402,12 +35287,32 @@ enum abstract Chart(String) from String to String {
 					]
 				],
 				[
+					274407.275897598,
+					[
+						[
+							"Cinematic Event",
+							"Bop",
+							"30,0.5,circOut"
+						]
+					]
+				],
+				[
 					275702.546167868,
 					[
 						[
 							"Delusional Events",
 							"64",
 							""
+						]
+					]
+				],
+				[
+					275704.573194895,
+					[
+						[
+							"Cinematic Event",
+							"Bop",
+							"30,0.5,circOut"
 						]
 					]
 				],
@@ -35422,12 +35327,62 @@ enum abstract Chart(String) from String to String {
 					]
 				],
 				[
+					277001.870492192,
+					[
+						[
+							"Cinematic Event",
+							"Bop",
+							"30,0.5,circOut"
+						]
+					]
+				],
+				[
+					278299.167789489,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"185,0.8,circIn"
+						],
+						[
+							"Camera Event",
+							"Tween Value",
+							"zoom,1.2,0.8,circIn"
+						],
+						[
+							"Background Controls",
+							"Darken",
+							"0.75,0.8,circIn"
+						]
+					]
+				],
+				[
 					279594.43805976,
 					[
 						[
 							"Delusional Events",
 							"64",
 							""
+						]
+					]
+				],
+				[
+					279596.465086787,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"120,0.8,circOut"
+						],
+						[
+							"Set Property",
+							"defaultCamZoom",
+							"0.9"
+						],
+						[
+							"Background Controls",
+							"Darken",
+							"0,0.8,circOut"
 						]
 					]
 				],
@@ -35442,12 +35397,62 @@ enum abstract Chart(String) from String to String {
 					]
 				],
 				[
+					282191.059681381,
+					[
+						[
+							"Cinematic Event",
+							"Bop",
+							"30,0.5,circOut"
+						]
+					]
+				],
+				[
+					283488.356978679,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"185,0.8,circIn"
+						],
+						[
+							"Camera Event",
+							"Tween Value",
+							"zoom,1.2,0.8,circIn"
+						],
+						[
+							"Background Controls",
+							"Darken",
+							"0.75,0.8,circIn"
+						]
+					]
+				],
+				[
 					284783.627248949,
 					[
 						[
 							"Delusional Events",
 							"64",
 							""
+						]
+					]
+				],
+				[
+					284785.654275976,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"120,0.8,circOut"
+						],
+						[
+							"Set Property",
+							"defaultCamZoom",
+							"0.9"
+						],
+						[
+							"Background Controls",
+							"Darken",
+							"0,0.8,circOut"
 						]
 					]
 				],
@@ -35462,12 +35467,32 @@ enum abstract Chart(String) from String to String {
 					]
 				],
 				[
+					286082.951573273,
+					[
+						[
+							"Cinematic Event",
+							"Bop",
+							"30,0.5,circOut"
+						]
+					]
+				],
+				[
 					287380.24887057,
 					[
 						[
 							"Delusional Events",
 							"64",
 							""
+						]
+					]
+				],
+				[
+					288677.546167868,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"185,0.8,circIn"
 						]
 					]
 				],
@@ -35482,12 +35507,42 @@ enum abstract Chart(String) from String to String {
 					]
 				],
 				[
+					289974.843465165,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"120,0.8,circOut"
+						]
+					]
+				],
+				[
 					292565.384005706,
 					[
 						[
 							"Delusional Events",
 							"64",
 							""
+						]
+					]
+				],
+				[
+					292569.43805976,
+					[
+						[
+							"Cinematic Event",
+							"Bop",
+							"30,0.5,circOut"
+						]
+					]
+				],
+				[
+					293866.735357057,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"185,0.8,circIn"
 						]
 					]
 				],
@@ -35502,6 +35557,16 @@ enum abstract Chart(String) from String to String {
 					]
 				],
 				[
+					295164.032654354,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"120,0.8,circOut"
+						]
+					]
+				],
+				[
 					296461.329951651,
 					[
 						[
@@ -35512,12 +35577,77 @@ enum abstract Chart(String) from String to String {
 					]
 				],
 				[
+					296461.329951651,
+					[
+						[
+							"Cinematic Event",
+							"Bop",
+							"30,0.5,circOut"
+						]
+					]
+				],
+				[
 					297756.600221922,
 					[
 						[
 							"Delusional Events",
 							"65",
 							""
+						]
+					]
+				],
+				[
+					297758.627248949,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"180,2.5,circInOut"
+						],
+						[
+							"Camera Event",
+							"Change Value",
+							"addDefaultCamZoom,0.1"
+						]
+					]
+				],
+				[
+					298407.275897597,
+					[
+						[
+							"Camera Event",
+							"Change Value",
+							"addDefaultCamZoom,0.1"
+						]
+					]
+				],
+				[
+					299055.924546246,
+					[
+						[
+							"Camera Event",
+							"Change Value",
+							"addDefaultCamZoom,0.1"
+						]
+					]
+				],
+				[
+					299704.573194895,
+					[
+						[
+							"Camera Event",
+							"Change Value",
+							"addDefaultCamZoom,0.1"
+						]
+					]
+				],
+				[
+					300028.897519219,
+					[
+						[
+							"Camera Event",
+							"Tween Value",
+							"zoom,2,0.53,backIn"
 						]
 					]
 				],
@@ -35558,6 +35688,41 @@ enum abstract Chart(String) from String to String {
 							"Add Camera Zoom",
 							"0.015",
 							"0.03"
+						]
+					]
+				],
+				[
+					300353.221843543,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"100,1,circOut"
+						]
+					]
+				],
+				[
+					300353.221843543,
+					[
+						[
+							"Camera Event",
+							"Change Value",
+							"addDefaultCamZoom,-0.4"
+						]
+					]
+				],
+				[
+					300353.221843543,
+					[
+						[
+							"Camera Event",
+							"Tween Value",
+							"zoom,0.85,0.0001,backIn"
+						],
+						[
+							"Camera Event",
+							"Flash",
+							"194,194,194,3,1,true"
 						]
 					]
 				],
@@ -36118,6 +36283,11 @@ enum abstract Chart(String) from String to String {
 							"Add Camera Zoom",
 							"0.015",
 							"0.03"
+						],
+						[
+							"Camera Event",
+							"Tween Value",
+							"zoom,1.5,0.1,sineInOut"
 						]
 					]
 				],
@@ -36148,6 +36318,11 @@ enum abstract Chart(String) from String to String {
 							"Delusional Events",
 							"45",
 							""
+						],
+						[
+							"Delusional Events",
+							"25",
+							""
 						]
 					]
 				],
@@ -36177,6 +36352,11 @@ enum abstract Chart(String) from String to String {
 						[
 							"Delusional Events",
 							"45",
+							""
+						],
+						[
+							"Delusional Events",
+							"26",
 							""
 						]
 					]
@@ -36748,6 +36928,16 @@ enum abstract Chart(String) from String to String {
 							"Add Camera Zoom",
 							"0.015",
 							"0.03"
+						]
+					]
+				],
+				[
+					321109.9786003,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"120,1.5,circOut"
 						]
 					]
 				],
@@ -37867,6 +38057,16 @@ enum abstract Chart(String) from String to String {
 					]
 				],
 				[
+					341866.735357056,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"140,1,circOut"
+						]
+					]
+				],
+				[
 					341866.735357057,
 					[
 						[
@@ -38097,6 +38297,16 @@ enum abstract Chart(String) from String to String {
 					]
 				],
 				[
+					347055.924546245,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"80,1,circOut"
+						]
+					]
+				],
+				[
 					347380.24887057,
 					[
 						[
@@ -38163,6 +38373,16 @@ enum abstract Chart(String) from String to String {
 							"Add Camera Zoom",
 							"0.015",
 							"0.03"
+						]
+					]
+				],
+				[
+					349001.870492191,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"100,1,circOut"
 						]
 					]
 				],
@@ -38293,6 +38513,16 @@ enum abstract Chart(String) from String to String {
 							"Delusional Events",
 							"48",
 							""
+						]
+					]
+				],
+				[
+					352245.113735434,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"100,1,circOut"
 						]
 					]
 				],
@@ -38497,6 +38727,16 @@ enum abstract Chart(String) from String to String {
 					]
 				],
 				[
+					357434.302924623,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"120,1.5,circOut"
+						]
+					]
+				],
+				[
 					357434.302924624,
 					[
 						[
@@ -38593,6 +38833,16 @@ enum abstract Chart(String) from String to String {
 							"Delusional Events",
 							"64",
 							""
+						]
+					]
+				],
+				[
+					360028.897519218,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"140,1,circOut"
 						]
 					]
 				],
@@ -38707,6 +38957,16 @@ enum abstract Chart(String) from String to String {
 					]
 				],
 				[
+					362623.492113813,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"90,1,circOut"
+						]
+					]
+				],
+				[
 					365866.735357056,
 					[
 						[
@@ -38767,6 +39027,16 @@ enum abstract Chart(String) from String to String {
 					]
 				],
 				[
+					383380.248870569,
+					[
+						[
+							"Cinematic Event",
+							"Move",
+							"0,0.0001,linear"
+						]
+					]
+				],
+				[
 					385974.843465164,
 					[
 						[
@@ -38797,7 +39067,7 @@ enum abstract Chart(String) from String to String {
 				"sectionBeats": 4,
 				"sectionNotes": [
 					[
-						0,
+						21166.6666666667,
 						4,
 						0,
 						"No Animation"
@@ -40213,6 +40483,16 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
+				9333.33333333333,
+				[
+					[
+						"Camera Event",
+						"Tween Position",
+						"2200,1400,2,circInOut"
+					]
+				]
+			],
+			[
 				9833.33333333333,
 				[
 					[
@@ -40231,9 +40511,9 @@ enum abstract Chart(String) from String to String {
 						"vidalpha,0,3,sineOut"
 					],
 					[
-						"Set Property",
-						"defaultCamZoom",
-						"1.3"
+						"Camera Event",
+						"Tween Value",
+						"zoom,1.3,0.0001,linear"
 					],
 					[
 						"Devilish Events",
@@ -40276,14 +40556,19 @@ enum abstract Chart(String) from String to String {
 				18666.6666666667,
 				[
 					[
-						"Set Property",
-						"defaultCamZoom",
-						"0.55"
+						"Camera Event",
+						"Tween Value",
+						"zoom,0.55,2,circInOut"
 					],
 					[
 						"Devilish Events",
 						"5",
 						""
+					],
+					[
+						"Camera Event",
+						"Tween Position",
+						"1200,1400,2,circInOut"
 					]
 				]
 			],
@@ -40451,14 +40736,24 @@ enum abstract Chart(String) from String to String {
 						"hudalpha,0.4,0.75,quartInOut"
 					],
 					[
-						"Set Property",
-						"defaultCamZoom",
-						"1.2"
+						"Camera Event",
+						"Tween Value",
+						"zoom,1.2,1.5,circInOut"
 					],
 					[
 						"Devilish Events",
 						"6",
 						""
+					],
+					[
+						"Camera Event",
+						"Tween Position",
+						"2200,1400,1.5,circInOut"
+					],
+					[
+						"Cinematic Event",
+						"Move",
+						"45,2,circInOut"
 					]
 				]
 			],
@@ -40484,6 +40779,16 @@ enum abstract Chart(String) from String to String {
 						"Icon Handler",
 						"2",
 						""
+					]
+				]
+			],
+			[
+				42666.6666666667,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
 					]
 				]
 			],
@@ -40519,6 +40824,16 @@ enum abstract Chart(String) from String to String {
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.23,1.5"
+					],
+					[
+						"Camera Event",
+						"Tween Position",
+						"1700,1400,1.5,circOut"
+					],
+					[
+						"Camera Event",
+						"Tween Value",
+						"zoom,0.55,1.5,circOut"
 					]
 				]
 			],
@@ -40529,16 +40844,16 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0.025",
 						"0.042"
-					]
-				]
-			],
-			[
-				43333.3333333333,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.23,1.5"
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
 					]
 				]
 			],
@@ -40549,16 +40864,16 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0.025",
 						"0.042"
-					]
-				]
-			],
-			[
-				44000,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.23,1.5"
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
 					]
 				]
 			],
@@ -40566,15 +40881,15 @@ enum abstract Chart(String) from String to String {
 				44666.6666666667,
 				[
 					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
+					],
+					[
 						"Add Camera Zoom",
 						"0.025",
 						"0.042"
-					]
-				]
-			],
-			[
-				44666.6666666667,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
@@ -40589,16 +40904,16 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0.025",
 						"0.042"
-					]
-				]
-			],
-			[
-				45333.3333333333,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.23,1.5"
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
 					]
 				]
 			],
@@ -40609,16 +40924,16 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0.025",
 						"0.042"
-					]
-				]
-			],
-			[
-				46000,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.23,1.5"
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
 					]
 				]
 			],
@@ -40626,15 +40941,15 @@ enum abstract Chart(String) from String to String {
 				46666.6666666667,
 				[
 					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
+					],
+					[
 						"Add Camera Zoom",
 						"0.025",
 						"0.042"
-					]
-				]
-			],
-			[
-				46666.6666666667,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
@@ -40649,16 +40964,16 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0.025",
 						"0.042"
-					]
-				]
-			],
-			[
-				47333.3333333333,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.23,1.5"
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
 					]
 				]
 			],
@@ -40666,15 +40981,15 @@ enum abstract Chart(String) from String to String {
 				48000,
 				[
 					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
+					],
+					[
 						"Add Camera Zoom",
 						"0.025",
 						"0.042"
-					]
-				]
-			],
-			[
-				48000,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
@@ -40686,15 +41001,15 @@ enum abstract Chart(String) from String to String {
 				48666.6666666667,
 				[
 					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
+					],
+					[
 						"Add Camera Zoom",
 						"0.025",
 						"0.042"
-					]
-				]
-			],
-			[
-				48666.6666666667,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
@@ -40709,42 +41024,37 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0.025",
 						"0.042"
-					]
-				]
-			],
-			[
-				49333.3333333333,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.23,1.5"
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
 					]
 				]
 			],
 			[
 				50000,
 				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
+					],
 					[
 						"Add Camera Zoom",
 						"0.025",
 						"0.042"
-					]
-				]
-			],
-			[
-				50000,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.23,1.5"
-					]
-				]
-			],
-			[
-				50666.6666666667,
-				[
+					],
 					[
 						"Add Camera Zoom",
 						"0.025",
@@ -40759,6 +41069,16 @@ enum abstract Chart(String) from String to String {
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.23,1.5"
+					],
+					[
+						"Camera Event",
+						"Tween Position",
+						"1200,1400,14,sineInOut"
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
 					]
 				]
 			],
@@ -40769,16 +41089,16 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0.025",
 						"0.042"
-					]
-				]
-			],
-			[
-				51333.3333333333,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.23,1.5"
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
 					]
 				]
 			],
@@ -40789,16 +41109,16 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0.025",
 						"0.042"
-					]
-				]
-			],
-			[
-				52000,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.23,1.5"
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
 					]
 				]
 			],
@@ -40806,15 +41126,15 @@ enum abstract Chart(String) from String to String {
 				52666.6666666667,
 				[
 					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
+					],
+					[
 						"Add Camera Zoom",
 						"0.025",
 						"0.042"
-					]
-				]
-			],
-			[
-				52666.6666666667,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
@@ -40829,16 +41149,16 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0.025",
 						"0.042"
-					]
-				]
-			],
-			[
-				53333.3333333333,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.23,1.5"
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
 					]
 				]
 			],
@@ -40849,16 +41169,16 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0.025",
 						"0.042"
-					]
-				]
-			],
-			[
-				54000,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.23,1.5"
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
 					]
 				]
 			],
@@ -40866,15 +41186,15 @@ enum abstract Chart(String) from String to String {
 				54666.6666666667,
 				[
 					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
+					],
+					[
 						"Add Camera Zoom",
 						"0.025",
 						"0.042"
-					]
-				]
-			],
-			[
-				54666.6666666667,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
@@ -40889,16 +41209,16 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0.025",
 						"0.042"
-					]
-				]
-			],
-			[
-				55333.3333333333,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.23,1.5"
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
 					]
 				]
 			],
@@ -40906,15 +41226,15 @@ enum abstract Chart(String) from String to String {
 				56000,
 				[
 					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
+					],
+					[
 						"Add Camera Zoom",
 						"0.025",
 						"0.042"
-					]
-				]
-			],
-			[
-				56000,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
@@ -40926,15 +41246,15 @@ enum abstract Chart(String) from String to String {
 				56666.6666666667,
 				[
 					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
+					],
+					[
 						"Add Camera Zoom",
 						"0.025",
 						"0.042"
-					]
-				]
-			],
-			[
-				56666.6666666667,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
@@ -40949,16 +41269,16 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0.025",
 						"0.042"
-					]
-				]
-			],
-			[
-				57333.3333333333,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.23,1.5"
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
 					]
 				]
 			],
@@ -40966,15 +41286,15 @@ enum abstract Chart(String) from String to String {
 				58000,
 				[
 					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
+					],
+					[
 						"Add Camera Zoom",
 						"0.025",
 						"0.042"
-					]
-				]
-			],
-			[
-				58000,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
@@ -40986,15 +41306,15 @@ enum abstract Chart(String) from String to String {
 				58666.6666666667,
 				[
 					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
+					],
+					[
 						"Add Camera Zoom",
 						"0.025",
 						"0.042"
-					]
-				]
-			],
-			[
-				58666.6666666667,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
@@ -41009,16 +41329,16 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0.025",
 						"0.042"
-					]
-				]
-			],
-			[
-				59333.3333333333,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.23,1.5"
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
 					]
 				]
 			],
@@ -41029,16 +41349,16 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0.025",
 						"0.042"
-					]
-				]
-			],
-			[
-				60000,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.23,1.5"
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
 					]
 				]
 			],
@@ -41046,15 +41366,15 @@ enum abstract Chart(String) from String to String {
 				60666.6666666667,
 				[
 					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
+					],
+					[
 						"Add Camera Zoom",
 						"0.025",
 						"0.042"
-					]
-				]
-			],
-			[
-				60666.6666666667,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
@@ -41069,16 +41389,16 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0.025",
 						"0.042"
-					]
-				]
-			],
-			[
-				61333.3333333333,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.23,1.5"
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
 					]
 				]
 			],
@@ -41089,16 +41409,16 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0.025",
 						"0.042"
-					]
-				]
-			],
-			[
-				62000,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.23,1.5"
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
 					]
 				]
 			],
@@ -41106,15 +41426,15 @@ enum abstract Chart(String) from String to String {
 				62666.6666666667,
 				[
 					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
+					],
+					[
 						"Add Camera Zoom",
 						"0.025",
 						"0.042"
-					]
-				]
-			],
-			[
-				62666.6666666667,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
@@ -41129,22 +41449,27 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0.025",
 						"0.042"
-					]
-				]
-			],
-			[
-				63333.3333333333,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.23,1.5"
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
 					]
 				]
 			],
 			[
 				64000,
 				[
+					[
+						"Cinematic Event",
+						"Move",
+						"75,0.6,circOut"
+					],
 					[
 						"Add Camera Zoom",
 						"0.04",
@@ -41154,12 +41479,7 @@ enum abstract Chart(String) from String to String {
 						"Icon Handler",
 						"4",
 						""
-					]
-				]
-			],
-			[
-				64000,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
@@ -41174,12 +41494,12 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0.04",
 						"0.053"
-					]
-				]
-			],
-			[
-				64666.6666666667,
-				[
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
@@ -41194,16 +41514,16 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0.04",
 						"0.053"
-					]
-				]
-			],
-			[
-				65333.3333333333,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.27,1.5"
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
 					]
 				]
 			],
@@ -41214,16 +41534,16 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0.04",
 						"0.053"
-					]
-				]
-			],
-			[
-				66000,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.27,1.5"
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
 					]
 				]
 			],
@@ -41234,12 +41554,12 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0.04",
 						"0.053"
-					]
-				]
-			],
-			[
-				66666.6666666667,
-				[
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
@@ -41254,16 +41574,16 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0.04",
 						"0.053"
-					]
-				]
-			],
-			[
-				67333.3333333333,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.27,1.5"
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
 					]
 				]
 			],
@@ -41274,16 +41594,16 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0.04",
 						"0.053"
-					]
-				]
-			],
-			[
-				68000,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.27,1.5"
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
 					]
 				]
 			],
@@ -41294,12 +41614,12 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0.04",
 						"0.053"
-					]
-				]
-			],
-			[
-				68666.6666666667,
-				[
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
@@ -41314,16 +41634,16 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0.04",
 						"0.053"
-					]
-				]
-			],
-			[
-				69333.3333333333,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.27,1.5"
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
 					]
 				]
 			],
@@ -41331,15 +41651,15 @@ enum abstract Chart(String) from String to String {
 				70000,
 				[
 					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
+					],
+					[
 						"Add Camera Zoom",
 						"0.04",
 						"0.053"
-					]
-				]
-			],
-			[
-				70000,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
@@ -41354,12 +41674,12 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0.04",
 						"0.053"
-					]
-				]
-			],
-			[
-				70666.6666666667,
-				[
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
@@ -41374,16 +41694,16 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0.04",
 						"0.053"
-					]
-				]
-			],
-			[
-				71333.3333333333,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.27,1.5"
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
 					]
 				]
 			],
@@ -41394,16 +41714,16 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0.04",
 						"0.053"
-					]
-				]
-			],
-			[
-				72000,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.27,1.5"
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
 					]
 				]
 			],
@@ -41414,12 +41734,12 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0.04",
 						"0.053"
-					]
-				]
-			],
-			[
-				72666.6666666667,
-				[
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
@@ -41434,16 +41754,16 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0.04",
 						"0.053"
-					]
-				]
-			],
-			[
-				73333.3333333333,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.27,1.5"
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
 					]
 				]
 			],
@@ -41454,21 +41774,21 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0.04",
 						"0.053"
-					]
-				]
-			],
-			[
-				74000,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.27,1.5"
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"-15,0.6,circOut"
 					]
 				]
 			],
 			[
-				74662.5,
+				74666.6666666667,
 				[
 					[
 						"Camera Event",
@@ -41479,12 +41799,12 @@ enum abstract Chart(String) from String to String {
 						"Camera Event",
 						"Tween Value",
 						"zoom,2,14,sineInOut"
-					]
-				]
-			],
-			[
-				74666.6666666667,
-				[
+					],
+					[
+						"Cinematic Event",
+						"Move",
+						"100,0.6,circOut"
+					],
 					[
 						"Add Camera Zoom",
 						"0",
@@ -41494,12 +41814,7 @@ enum abstract Chart(String) from String to String {
 						"Icon Handler",
 						"5",
 						""
-					]
-				]
-			],
-			[
-				74666.6666666667,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
@@ -41519,16 +41834,16 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0",
 						"0.053"
-					]
-				]
-			],
-			[
-				75333.3333333333,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.32,1.5"
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"15,0.6,circOut"
 					]
 				]
 			],
@@ -41539,16 +41854,16 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0",
 						"0.053"
-					]
-				]
-			],
-			[
-				76000,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.32,1.5"
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"15,0.6,circOut"
 					]
 				]
 			],
@@ -41556,15 +41871,15 @@ enum abstract Chart(String) from String to String {
 				76666.6666666667,
 				[
 					[
+						"Cinematic Event",
+						"Bop",
+						"15,0.6,circOut"
+					],
+					[
 						"Add Camera Zoom",
 						"0",
 						"0.053"
-					]
-				]
-			],
-			[
-				76666.6666666667,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
@@ -41579,16 +41894,16 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0",
 						"0.053"
-					]
-				]
-			],
-			[
-				77333.3333333333,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.32,1.5"
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"15,0.6,circOut"
 					]
 				]
 			],
@@ -41596,15 +41911,15 @@ enum abstract Chart(String) from String to String {
 				78000,
 				[
 					[
+						"Cinematic Event",
+						"Bop",
+						"15,0.6,circOut"
+					],
+					[
 						"Add Camera Zoom",
 						"0",
 						"0.053"
-					]
-				]
-			],
-			[
-				78000,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
@@ -41616,15 +41931,15 @@ enum abstract Chart(String) from String to String {
 				78666.6666666667,
 				[
 					[
+						"Cinematic Event",
+						"Bop",
+						"15,0.6,circOut"
+					],
+					[
 						"Add Camera Zoom",
 						"0",
 						"0.053"
-					]
-				]
-			],
-			[
-				78666.6666666667,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
@@ -41639,16 +41954,16 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0",
 						"0.053"
-					]
-				]
-			],
-			[
-				79333.3333333333,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.32,1.5"
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"15,0.6,circOut"
 					]
 				]
 			],
@@ -41659,16 +41974,16 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0",
 						"0.053"
-					]
-				]
-			],
-			[
-				80000,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.32,1.5"
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"15,0.6,circOut"
 					]
 				]
 			],
@@ -41676,15 +41991,15 @@ enum abstract Chart(String) from String to String {
 				80666.6666666667,
 				[
 					[
+						"Cinematic Event",
+						"Bop",
+						"15,0.6,circOut"
+					],
+					[
 						"Add Camera Zoom",
 						"0",
 						"0.053"
-					]
-				]
-			],
-			[
-				80666.6666666667,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
@@ -41699,16 +42014,16 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0",
 						"0.053"
-					]
-				]
-			],
-			[
-				81333.3333333333,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.32,1.5"
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"15,0.6,circOut"
 					]
 				]
 			],
@@ -41719,16 +42034,16 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0",
 						"0.053"
-					]
-				]
-			],
-			[
-				82000,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.32,1.5"
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"15,0.6,circOut"
 					]
 				]
 			],
@@ -41736,15 +42051,15 @@ enum abstract Chart(String) from String to String {
 				82666.6666666667,
 				[
 					[
+						"Cinematic Event",
+						"Bop",
+						"15,0.6,circOut"
+					],
+					[
 						"Add Camera Zoom",
 						"0",
 						"0.053"
-					]
-				]
-			],
-			[
-				82666.6666666667,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
@@ -41759,26 +42074,16 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0",
 						"0.053"
-					]
-				]
-			],
-			[
-				83333.3333333333,
-				[
+					],
 					[
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.32,1.5"
-					]
-				]
-			],
-			[
-				84000,
-				[
+					],
 					[
-						"Add Camera Zoom",
-						"0",
-						"0.053"
+						"Cinematic Event",
+						"Bop",
+						"15,0.6,circOut"
 					]
 				]
 			],
@@ -41789,12 +42094,12 @@ enum abstract Chart(String) from String to String {
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.32,1.5"
-					]
-				]
-			],
-			[
-				84666.6666666667,
-				[
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"15,0.6,circOut"
+					],
 					[
 						"Add Camera Zoom",
 						"0",
@@ -41809,6 +42114,26 @@ enum abstract Chart(String) from String to String {
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.32,1.5"
+					],
+					[
+						"Add Camera Zoom",
+						"0",
+						"0.053"
+					],
+					[
+						"Cinematic Event",
+						"Bop",
+						"15,0.6,circOut"
+					]
+				]
+			],
+			[
+				85000,
+				[
+					[
+						"Camera Event",
+						"Tween Value",
+						"zoom,4,0.3,backIn"
 					]
 				]
 			],
@@ -41819,12 +42144,7 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0",
 						"0.053"
-					]
-				]
-			],
-			[
-				85333.3333333333,
-				[
+					],
 					[
 						"Icon Handler",
 						"6",
@@ -41844,6 +42164,11 @@ enum abstract Chart(String) from String to String {
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.4,2.3"
+					],
+					[
+						"Cinematic Event",
+						"Move",
+						"0.001,0.001,linear"
 					]
 				]
 			],
@@ -41859,176 +42184,6 @@ enum abstract Chart(String) from String to String {
 			],
 			[
 				86666.6666666667,
-				[
-					[
-						"Add Camera Zoom",
-						"0",
-						"0.053"
-					]
-				]
-			],
-			[
-				87333.3333333333,
-				[
-					[
-						"Add Camera Zoom",
-						"0",
-						"0.053"
-					]
-				]
-			],
-			[
-				88000,
-				[
-					[
-						"Add Camera Zoom",
-						"0",
-						"0.053"
-					]
-				]
-			],
-			[
-				88666.6666666667,
-				[
-					[
-						"Add Camera Zoom",
-						"0",
-						"0.053"
-					]
-				]
-			],
-			[
-				89333.3333333333,
-				[
-					[
-						"Add Camera Zoom",
-						"0",
-						"0.053"
-					]
-				]
-			],
-			[
-				90000,
-				[
-					[
-						"Add Camera Zoom",
-						"0",
-						"0.053"
-					]
-				]
-			],
-			[
-				90666.6666666667,
-				[
-					[
-						"Add Camera Zoom",
-						"0",
-						"0.053"
-					]
-				]
-			],
-			[
-				91333.3333333333,
-				[
-					[
-						"Add Camera Zoom",
-						"0",
-						"0.053"
-					]
-				]
-			],
-			[
-				92000,
-				[
-					[
-						"Add Camera Zoom",
-						"0",
-						"0.053"
-					]
-				]
-			],
-			[
-				92666.6666666667,
-				[
-					[
-						"Add Camera Zoom",
-						"0",
-						"0.053"
-					]
-				]
-			],
-			[
-				93333.3333333333,
-				[
-					[
-						"Add Camera Zoom",
-						"0",
-						"0.053"
-					]
-				]
-			],
-			[
-				94000,
-				[
-					[
-						"Add Camera Zoom",
-						"0",
-						"0.053"
-					]
-				]
-			],
-			[
-				94666.6666666667,
-				[
-					[
-						"Add Camera Zoom",
-						"0",
-						"0.053"
-					]
-				]
-			],
-			[
-				95333.3333333333,
-				[
-					[
-						"Add Camera Zoom",
-						"0",
-						"0.053"
-					]
-				]
-			],
-			[
-				96000,
-				[
-					[
-						"Add Camera Zoom",
-						"0",
-						"0.053"
-					]
-				]
-			],
-			[
-				96666.6666666667,
-				[
-					[
-						"Add Camera Zoom",
-						"0",
-						"0.053"
-					]
-				]
-			],
-			[
-				97333.3333333333,
-				[
-					[
-						"Add Camera Zoom",
-						"0",
-						"0.053"
-					]
-				]
-			],
-			[
-				98000,
 				[
 					[
 						"Add Camera Zoom",
@@ -163595,8 +163750,8 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Camera Event",
-						"Flash",
-						"0,0,0,8,0,false"
+						"Fade",
+						"0,0,0,8,true"
 					],
 					[
 						"Set Property",

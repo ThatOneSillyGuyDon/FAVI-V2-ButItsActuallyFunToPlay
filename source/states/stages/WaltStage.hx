@@ -214,8 +214,11 @@ class WaltStage extends BaseStage
 		
 		shaderAnim = Conductor.songPosition / 1000;
 		
-		waltStatic.setFloat('time', shaderAnim);
-		dramaticCamMovement.setFloat('time', shaderAnim);
+		if (ClientPrefs.data.shaders)
+		{
+			waltStatic.setFloat('time', shaderAnim);
+			dramaticCamMovement.setFloat('time', shaderAnim);
+		}
 
 		pissOfGlory.alpha = FlxMath.lerp(pissOfGlory.alpha, FlxG.random.float(0.01, .37), .2);
 		greaterPiss.alpha = FlxMath.lerp(greaterPiss.alpha, FlxG.random.float(0.01, .37), .2);

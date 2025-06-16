@@ -150,6 +150,10 @@ class MainMenuState extends MusicBeatState
 
 		datBook = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/menu/book'));
 		datBook.screenCenter().x -= 220;
+		if (GameData.malfunctionLock != "beaten")
+			datBook.setColorTransform(0.5, 0.5, 0.5, 0.75, 0, 0, 0, 0);
+		else if (GameData.malfunctionLock == "beaten")
+			datBook.setColorTransform(1, 1, 1, 1, 0, 0, 0, 0);
 		
 		discordButton = new FlxSprite(1120, 610).loadGraphic(Paths.image("Funkin_avi/menu/discordIcon"));
 		discordButton.scale.set(0.14, 0.14);

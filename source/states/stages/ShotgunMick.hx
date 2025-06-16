@@ -131,10 +131,13 @@ class ShotgunMick extends BaseStage
 		switch (PlayState.SONG.song)
 		{
 			case 'Cycled Sins Legacy':
-				redVignette.setFloat('time', shaderAnim);
-				dramaticCamMovement.setFloat('time', shaderAnim);
-				staticEffect.setFloat('uTime', shaderAnim);
-				staticEffect.setFloat('iTime', shaderAnim);
+				if (ClientPrefs.data.shaders)
+				{
+					redVignette.setFloat('time', shaderAnim);
+					dramaticCamMovement.setFloat('time', shaderAnim);
+					staticEffect.setFloat('uTime', shaderAnim);
+					staticEffect.setFloat('iTime', shaderAnim);
+				}
 		}
 
 		if (PlayState.SONG.song == "Cycled Sins Legacy") game.gf.visible = false;

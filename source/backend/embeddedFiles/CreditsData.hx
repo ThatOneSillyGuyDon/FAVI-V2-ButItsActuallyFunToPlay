@@ -4,7 +4,7 @@ enum abstract CreditsData(String) from String to String {
     var devilishDeal:String = '{
 	"settings":
 	[
-		"Art: Domingo, Moe, Oyxz,\n& SkylarFilm\n\nChart: Purg\n\nCode: ThatOneSillyGuy & Jason\n\nMusic: obscurity.", -40, -5
+		"Art: Domingo, Moe, Oyxz,\n& SkylarFilm\n\nChart: Purg\n\nCode: ThatOneSillyGuy & Jason,\n\nMusic: obscurity.", -40, -5
 	]
 }';
     var isolated:String = '{
@@ -16,13 +16,13 @@ enum abstract CreditsData(String) from String to String {
     var lunacy:String = '{
 	"settings":
 	[
-		"Art: Domingo & Moe\n\nChart: Purg\n\nCode: Jason & ThatOneSillyGuy\n\nMusic: obscurity.", 25, -5
+		"Art: Domingo & Moe\n\nChart: Purg\n\nCode: Jason, ThatOneSillyGuy,\n& Goober Man\n\nMusic: obscurity.", 25, -5
 	]
 }';
     var delusional:String = '{
 	"settings":
 	[
-		"Art: Domingo, Moe, BladzAMC_Emerald,\nTeelbe, Oyxz, GreyDoodlez,\nAustinWProductions\n& ThatOneSillyGuy\n\nChart: Dreupy\n\nCode: Jason, MalyPlus\n& ThatOneSillyGuy\n\nMusic: FR3SHMoure\n\nVoice Actor: BonoanAnything", -21, -43
+		"Art: Domingo, Moe, BladzAMC_Emerald,\nTeelbe, Oyxz, GreyDoodlez,\nAustinWProductions\n& ThatOneSillyGuy\n\nChart: Dreupy\n\nCode: Jason, MalyPlus,\nThatOneSillyGuy\n& Goober Man\n\nMusic: FR3SHMoure\n\nVoice Actor: BonoanAnything", -21, -43
 	]
 }';
     var regret:String = '{

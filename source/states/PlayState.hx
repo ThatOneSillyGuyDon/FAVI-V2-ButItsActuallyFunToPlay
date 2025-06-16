@@ -385,6 +385,7 @@ class PlayState extends MusicBeatState
 	var stageBGFlash:FlxSprite;
 	var stageBGDark:FlxSprite;
 	var BGFlashTween:FlxTween;
+	var BGDarkTween:FlxTween;
 
 	public var globalGradient:FlxSprite;
 
@@ -1658,8 +1659,10 @@ class PlayState extends MusicBeatState
 						countdownIntro.antialiasing = antialias;
 						switch (SONG.song)
 						{
-							case "War Dilemma" | "Dont Cross" | "Bless" | "Mercy" | "Mercy Legacy" | "Delutrance":
+							case "Delusional":
 								//nothing
+							case "War Dilemma" | "Dont Cross" | "Bless" | "Mercy" | "Mercy Legacy" | "Delutrance":
+								count3.play();
 							default:
 								add(countdownIntro);
 								FlxTween.tween(countdownIntro, {alpha: 0}, Conductor.crochet / 1000, {
@@ -1670,92 +1673,156 @@ class PlayState extends MusicBeatState
 										countdownIntro.destroy();
 									}
 								});
+								count3.play();
 						}
-						count3.play();
 					case 1:
 						switch (SONG.song)
 						{
+							case "Delusional":
+								//nothing
 							case "War Dilemma" | "Dont Cross" | "Bless" | "Mercy" | "Mercy Legacy" | "Delutrance":
 								countdownReady = new FlxSprite().loadGraphic(Paths.image(introAlts[0]));
+								countdownReady.cameras = [camOther];
+								countdownReady.scrollFactor.set();
+								countdownReady.updateHitbox();
+
+								if (isPixelStage)
+									countdownReady.setGraphicSize(Std.int(countdownReady.width * daPixelZoom));
+
+								countdownReady.screenCenter();
+								countdownReady.antialiasing = antialias;
+								add(countdownReady);
+								FlxTween.tween(countdownReady, {/*y: countdownReady.y + 100,*/ alpha: 0}, Conductor.crochet / 1000, {
+									ease: FlxEase.cubeInOut,
+									onComplete: function(twn:FlxTween)
+									{
+										remove(countdownReady);
+										countdownReady.destroy();
+									}
+								});
+								count2.play();
 							default:
 								countdownReady = new FlxSprite().loadGraphic(Paths.image(introAlts[1]));
+								countdownReady.cameras = [camOther];
+								countdownReady.scrollFactor.set();
+								countdownReady.updateHitbox();
+
+								if (isPixelStage)
+									countdownReady.setGraphicSize(Std.int(countdownReady.width * daPixelZoom));
+
+								countdownReady.screenCenter();
+								countdownReady.antialiasing = antialias;
+								add(countdownReady);
+								FlxTween.tween(countdownReady, {/*y: countdownReady.y + 100,*/ alpha: 0}, Conductor.crochet / 1000, {
+									ease: FlxEase.cubeInOut,
+									onComplete: function(twn:FlxTween)
+									{
+										remove(countdownReady);
+										countdownReady.destroy();
+									}
+								});
+								count2.play();
 						}
-						countdownReady.cameras = [camOther];
-						countdownReady.scrollFactor.set();
-						countdownReady.updateHitbox();
-
-						if (isPixelStage)
-							countdownReady.setGraphicSize(Std.int(countdownReady.width * daPixelZoom));
-
-						countdownReady.screenCenter();
-						countdownReady.antialiasing = antialias;
-						add(countdownReady);
-						FlxTween.tween(countdownReady, {/*y: countdownReady.y + 100,*/ alpha: 0}, Conductor.crochet / 1000, {
-							ease: FlxEase.cubeInOut,
-							onComplete: function(twn:FlxTween)
-							{
-								remove(countdownReady);
-								countdownReady.destroy();
-							}
-						});
-						count2.play();
 					case 2:
 						switch (SONG.song)
 						{
+							case "Delusional":
+								//nothing
 							case "War Dilemma" | "Dont Cross" | "Bless" | "Mercy" | "Mercy Legacy" | "Delutrance":
 								countdownSet = new FlxSprite().loadGraphic(Paths.image(introAlts[1]));
+								countdownSet.cameras = [camOther];
+								countdownSet.scrollFactor.set();
+
+								if (isPixelStage)
+									countdownSet.setGraphicSize(Std.int(countdownSet.width * daPixelZoom));
+
+								countdownSet.screenCenter();
+								countdownSet.antialiasing = antialias;
+								insert(members.indexOf(notes), countdownSet);
+								add(countdownSet);
+								FlxTween.tween(countdownSet, {/*y: countdownSet.y + 100,*/ alpha: 0}, Conductor.crochet / 1000, {
+									ease: FlxEase.cubeInOut,
+									onComplete: function(twn:FlxTween)
+									{
+										remove(countdownSet);
+										countdownSet.destroy();
+									}
+								});
+								count1.play();
 							default:
 								countdownSet = new FlxSprite().loadGraphic(Paths.image(introAlts[2]));
+								countdownSet.cameras = [camOther];
+								countdownSet.scrollFactor.set();
+
+								if (isPixelStage)
+									countdownSet.setGraphicSize(Std.int(countdownSet.width * daPixelZoom));
+
+								countdownSet.screenCenter();
+								countdownSet.antialiasing = antialias;
+								insert(members.indexOf(notes), countdownSet);
+								add(countdownSet);
+								FlxTween.tween(countdownSet, {/*y: countdownSet.y + 100,*/ alpha: 0}, Conductor.crochet / 1000, {
+									ease: FlxEase.cubeInOut,
+									onComplete: function(twn:FlxTween)
+									{
+										remove(countdownSet);
+										countdownSet.destroy();
+									}
+								});
+								count1.play();
 						}
-						
-						countdownSet.cameras = [camOther];
-						countdownSet.scrollFactor.set();
-
-						if (isPixelStage)
-							countdownSet.setGraphicSize(Std.int(countdownSet.width * daPixelZoom));
-
-						countdownSet.screenCenter();
-						countdownSet.antialiasing = antialias;
-						insert(members.indexOf(notes), countdownSet);
-						add(countdownSet);
-						FlxTween.tween(countdownSet, {/*y: countdownSet.y + 100,*/ alpha: 0}, Conductor.crochet / 1000, {
-							ease: FlxEase.cubeInOut,
-							onComplete: function(twn:FlxTween)
-							{
-								remove(countdownSet);
-								countdownSet.destroy();
-							}
-						});
-						count1.play();
 					case 3:
 						switch (SONG.song)
 						{
+							case "Delusional":
+								//nothing
 							case "War Dilemma" | "Dont Cross" | "Bless" | "Mercy" | "Mercy Legacy" | "Delutrance":
 								countdownGo = new FlxSprite().loadGraphic(Paths.image(introAlts[2]));
+								countdownGo.cameras = [camOther];
+								countdownGo.scrollFactor.set();
+
+								if (isPixelStage)
+									countdownGo.setGraphicSize(Std.int(countdownGo.width * daPixelZoom));
+
+								countdownGo.updateHitbox();
+
+								countdownGo.screenCenter();
+								countdownGo.antialiasing = antialias;
+								insert(members.indexOf(notes), countdownGo);
+								add(countdownGo);
+								FlxTween.tween(countdownGo, {/*y: countdownGo.y + 100,*/ alpha: 0}, Conductor.crochet / 1000, {
+									ease: FlxEase.cubeInOut,
+									onComplete: function(twn:FlxTween)
+									{
+										remove(countdownGo);
+										countdownGo.destroy();
+									}
+								});
+								countGo.play();
 							default:
 								countdownGo = new FlxSprite().loadGraphic(Paths.image(introAlts[3]));
+								countdownGo.cameras = [camOther];
+								countdownGo.scrollFactor.set();
+
+								if (isPixelStage)
+									countdownGo.setGraphicSize(Std.int(countdownGo.width * daPixelZoom));
+
+								countdownGo.updateHitbox();
+
+								countdownGo.screenCenter();
+								countdownGo.antialiasing = antialias;
+								insert(members.indexOf(notes), countdownGo);
+								add(countdownGo);
+								FlxTween.tween(countdownGo, {/*y: countdownGo.y + 100,*/ alpha: 0}, Conductor.crochet / 1000, {
+									ease: FlxEase.cubeInOut,
+									onComplete: function(twn:FlxTween)
+									{
+										remove(countdownGo);
+										countdownGo.destroy();
+									}
+								});
+								countGo.play();
 						}
-						countdownGo.cameras = [camOther];
-						countdownGo.scrollFactor.set();
-
-						if (isPixelStage)
-							countdownGo.setGraphicSize(Std.int(countdownGo.width * daPixelZoom));
-
-						countdownGo.updateHitbox();
-
-						countdownGo.screenCenter();
-						countdownGo.antialiasing = antialias;
-						insert(members.indexOf(notes), countdownGo);
-						add(countdownGo);
-						FlxTween.tween(countdownGo, {/*y: countdownGo.y + 100,*/ alpha: 0}, Conductor.crochet / 1000, {
-							ease: FlxEase.cubeInOut,
-							onComplete: function(twn:FlxTween)
-							{
-								remove(countdownGo);
-								countdownGo.destroy();
-							}
-						});
-						countGo.play();
 					case 4:
 						if (ClientPrefs.data.pauseCountdown)
 							pauseCountEnabled = true;
@@ -1787,30 +1854,6 @@ class PlayState extends MusicBeatState
 			}, 5);
 		}
 		return true;
-	}
-
-	inline private function createCountdownSprite(image:String, antialias:Bool):FlxSprite
-	{
-		var spr:FlxSprite = new FlxSprite().loadGraphic(Paths.image(image));
-		spr.cameras = [camOther];
-		spr.scrollFactor.set();
-		spr.updateHitbox();
-
-		if (PlayState.isPixelStage)
-			spr.setGraphicSize(Std.int(spr.width * daPixelZoom));
-
-		spr.screenCenter();
-		spr.antialiasing = antialias;
-		insert(members.indexOf(noteGroup), spr);
-		FlxTween.tween(spr, {/*y: spr.y + 100,*/ alpha: 0}, Conductor.crochet / 1000, {
-			ease: FlxEase.cubeInOut,
-			onComplete: function(twn:FlxTween)
-			{
-				remove(spr);
-				spr.destroy();
-			}
-		});
-		return spr;
 	}
 
 	public function addBehindGF(obj:FlxBasic)
@@ -3058,8 +3101,8 @@ class PlayState extends MusicBeatState
 				case BG_DARK:
 					if (stageBGDark != null)
 					{
-						if (BGFlashTween != null)
-							BGFlashTween.cancel();
+						if (BGDarkTween != null)
+							BGDarkTween.cancel();
 
 						if (stageBGDark.blend != NORMAL)
 							stageBGDark.blend = NORMAL;
@@ -3069,11 +3112,11 @@ class PlayState extends MusicBeatState
 
 						stageBGDark.color = FlxColor.BLACK; // hardcoded to be black
 
-						BGFlashTween = FlxTween.tween(stageBGDark, {alpha: settings.alpha}, settings.timer, {
+						BGDarkTween = FlxTween.tween(stageBGDark, {alpha: settings.alpha}, settings.timer, {
 							ease: settings.ease,
 							onComplete: function(twn:FlxTween)
 							{
-								BGFlashTween = null;
+								BGDarkTween = null;
 							}
 						});
 					}
@@ -3754,11 +3797,7 @@ class PlayState extends MusicBeatState
 				{
 					var len:Int = e.message.indexOf('\n') + 1;
 					if(len <= 0) len = e.message.length;
-					#if (LUA_ALLOWED || HSCRIPT_ALLOWED)
 					addTextToDebug('ERROR ("Set Property" Event) - ' + e.message.substr(0, len), FlxColor.RED);
-					#else
-					FlxG.log.warn('ERROR ("Set Property" Event) - ' + e.message.substr(0, len));
-					#end
 				}
 
 			case 'Manage Lyrics':
@@ -4043,7 +4082,6 @@ class PlayState extends MusicBeatState
 							flashSprite.alpha = Std.parseFloat(triggerInfo[4]);
 							flashSprite.blend = (boolShit ? ADD : NORMAL);
 						}
-
 					case "fade":
 						if (triggerInfo[0] == null) triggerInfo[0] = "0";
 						if (triggerInfo[1] == null) triggerInfo[1] = "0";
@@ -5535,7 +5573,11 @@ class PlayState extends MusicBeatState
 		}
 		var splash:NoteSplash = grpNoteSplashes.recycle(NoteSplash);
 		splash.setupNoteSplash(x + offsetX, y + offsetY, data, skin, 0, 0, 0);
-			splash.setColorTransform(1, 1, 1, 1, 0, 0, 0, 0);
+		if (states.stages.YouveBeenBlessed.lightI != null)
+			if (states.stages.YouveBeenBlessed.lightI.visible) 
+				splash.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0); 
+			else 
+				splash.setColorTransform(1, 1, 1, 1, 0, 0, 0, 0);
 		if (isPixelStage && ClientPrefs.data.shaders)
 			splash.shader = pixelizeUI;
 		grpNoteSplashes.add(splash);

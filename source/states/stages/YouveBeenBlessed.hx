@@ -113,7 +113,8 @@ class YouveBeenBlessed extends BaseStage
 	{
 		shaderAnim = Conductor.songPosition / 1000;
 		
-		othershader.setFloat('iTime', shaderAnim);
+		if (ClientPrefs.data.shaders)
+			othershader.setFloat('iTime', shaderAnim);
 	}
 
 	// For events

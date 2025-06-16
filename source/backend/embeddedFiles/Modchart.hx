@@ -12772,6 +12772,20 @@ enum abstract Modchart(String) from String to String {
 			"Lane",
 			-1,
 			3
+		],
+		[
+			"SpinMeRightRound",
+			"ConfusionModifier",
+			"All",
+			-1,
+			-1
+		],
+		[
+			"SpinMeRightRoundY",
+			"YModifier",
+			"All",
+			-1,
+			-1
 		]
 	],
 	"playfields": 1,
@@ -12796,7 +12810,7 @@ enum abstract Modchart(String) from String to String {
 				132,
 				"12",
 				"expoInOut",
-				"-1200,Z,1 ,Alpha"
+				"-1200,Z,1 ,Alpha,360,SpinMeRightRound,1300,SpinMeRightRoundY"
 			],
 			[
 				false,
@@ -12810,7 +12824,7 @@ enum abstract Modchart(String) from String to String {
 				152,
 				"0",
 				"expoInOut",
-				"-1200,Z,0,Z"
+				"-1200,Z,0,Z,,SpinMeRightRound,,SpinMeRightRoundY"
 			],
 			[
 				false,
@@ -13654,6 +13668,20 @@ enum abstract Modchart(String) from String to String {
 			"Lane",
 			-1,
 			3
+		],
+		[
+			"SpinMeRightRound",
+			"ConfusionModifier",
+			"All",
+			-1,
+			-1
+		],
+		[
+			"SpinMeRightRoundY",
+			"YModifier",
+			"All",
+			-1,
+			-1
 		]
 	],
 	"events": [
@@ -13677,7 +13705,7 @@ enum abstract Modchart(String) from String to String {
 				132,
 				"12",
 				"expoInOut",
-				"-1200,Z,1 ,Alpha"
+				"-1200,Z,1 ,Alpha,360,SpinMeRightRound,1300,SpinMeRightRoundY"
 			],
 			[
 				false,
@@ -13691,7 +13719,7 @@ enum abstract Modchart(String) from String to String {
 				152,
 				"0",
 				"expoInOut",
-				"-1200,Z,0,Z"
+				"-1200,Z,0,Z,,SpinMeRightRound,,SpinMeRightRoundY"
 			],
 			[
 				false,
@@ -19859,6 +19887,20 @@ var deluluMidDown:String = '{
 			"Lane",
 			-1,
 			3
+		],
+		[
+			"SpinMeRightRound",
+			"ConfusionModifier",
+			"All",
+			-1,
+			-1
+		],
+		[
+			"SpinMeRightRoundY",
+			"YModifier",
+			"All",
+			-1,
+			-1
 		]
 	],
 	"playfields": 1,
@@ -19883,7 +19925,7 @@ var deluluMidDown:String = '{
 				132,
 				"12",
 				"expoInOut",
-				"-1200,Z,1 ,Alpha"
+				"-1200,Z,1 ,Alpha,360,SpinMeRightRound,1300,SpinMeRightRoundY"
 			],
 			[
 				false,
@@ -19897,7 +19939,7 @@ var deluluMidDown:String = '{
 				152,
 				"0",
 				"expoInOut",
-				"-1200,Z,0,Z"
+				"-1200,Z,0,Z,,SpinMeRightRound,,SpinMeRightRoundY"
 			],
 			[
 				false,
@@ -20777,9 +20819,22 @@ var deluluMidUp:String = '{
 			"Lane",
 			-1,
 			3
+		],
+		[
+			"SpinMeRightRound",
+			"ConfusionModifier",
+			"All",
+			-1,
+			-1
+		],
+		[
+			"SpinMeRightRoundY",
+			"YModifier",
+			"All",
+			-1,
+			-1
 		]
 	],
-	"playfields": 1,
 	"events": [
 		[
 			"ease",
@@ -20801,7 +20856,7 @@ var deluluMidUp:String = '{
 				132,
 				"12",
 				"expoInOut",
-				"-1200,Z,1 ,Alpha"
+				"-1200,Z,1 ,Alpha,360,SpinMeRightRound,1300,SpinMeRightRoundY"
 			],
 			[
 				false,
@@ -20815,7 +20870,7 @@ var deluluMidUp:String = '{
 				152,
 				"0",
 				"expoInOut",
-				"-1200,Z,0,Z"
+				"-1200,Z,0,Z,,SpinMeRightRound,,SpinMeRightRoundY"
 			],
 			[
 				false,
@@ -21369,7 +21424,8 @@ var deluluMidUp:String = '{
 				1
 			]
 		]
-	]
+	],
+	"playfields": 1
 }';
 
 var devilDealMidDown:String = '{
@@ -35872,555 +35928,174 @@ var malLegacyModMD:String = '{
 	]
 }';
 
-var dontcrossModchartU:String = '{
-	"events": [
-		[
-			"ease",
+	var dontcrossModchart:String = '{
+		"modifiers": [
 			[
-				1.25,
-				"3",
-				"cubeInOut",
-				"1,hideMick,-300,ZPlayerAll,-120,YPlayerAll,1,ReversePlayfield4,1,ReversePlayfield5,1,ReversePlayfield6,200,YP4,200,YP5,200,YP6,-340,XP1,-340,XP4,140,XP2,140,XP5,-800,XP3,-800,XP6,1,Invert"
+				"SpinMeRightRoundBabyRightRoundLikeARecordBabyRightRoundRoundRound",
+				"ConfusionModifier",
+				"All",
+				-1,
+				-1
 			],
 			[
-				false,
-				1,
-				1
-			]
-		]
-	],
-	"modifiers": [
-		[
-			"ReversePlayfield4",
-			"ReverseModifier",
-			"Player",
-			3,
-			-1
-		],
-		[
-			"ReversePlayfield5",
-			"ReverseModifier",
-			"Player",
-			4,
-			-1
-		],
-		[
-			"ReversePlayfield6",
-			"ReverseModifier",
-			"Player",
-			5,
-			-1
-		],
-		[
-			"hideMick",
-			"StealthModifier",
-			"Opponent",
-			-1,
-			-1
-		],
-		[
-			"ZPlayerAll",
-			"ZModifier",
-			"Player",
-			-1,
-			-1
-		],
-		[
-			"YPlayerAll",
-			"YModifier",
-			"Player",
-			-1,
-			-1
-		],
-		[
-			"YP4",
-			"YModifier",
-			"Player",
-			3,
-			-1
-		],
-		[
-			"YP5",
-			"YModifier",
-			"Player",
-			4,
-			-1
-		],
-		[
-			"YP6",
-			"YModifier",
-			"Player",
-			5,
-			-1
-		],
-		[
-			"XP1",
-			"XModifier",
-			"Player",
-			0,
-			-1
-		],
-		[
-			"XP2",
-			"XModifier",
-			"Player",
-			1,
-			-1
-		],
-		[
-			"XP3",
-			"XModifier",
-			"Player",
-			2,
-			-1
-		],
-		[
-			"XP4",
-			"XModifier",
-			"Player",
-			3,
-			-1
-		],
-		[
-			"XP5",
-			"XModifier",
-			"Player",
-			4,
-			-1
-		],
-		[
-			"XP6",
-			"XModifier",
-			"Player",
-			5,
-			-1
-		],
-		[
-			"Invert",
-			"InvertModifier",
-			"Player",
-			-1,
-			-1
-		]
-	],
-	"playfields": 6
-}';
-
-var dontcrossModchartMU:String = '{
-	"modifiers": [
-		[
-			"ReversePlayfield4",
-			"ReverseModifier",
-			"Player",
-			3,
-			-1
-		],
-		[
-			"ReversePlayfield5",
-			"ReverseModifier",
-			"Player",
-			4,
-			-1
-		],
-		[
-			"ReversePlayfield6",
-			"ReverseModifier",
-			"Player",
-			5,
-			-1
-		],
-		[
-			"hideMick",
-			"StealthModifier",
-			"Opponent",
-			-1,
-			-1
-		],
-		[
-			"ZPlayerAll",
-			"ZModifier",
-			"Player",
-			-1,
-			-1
-		],
-		[
-			"YPlayerAll",
-			"YModifier",
-			"Player",
-			-1,
-			-1
-		],
-		[
-			"YP4",
-			"YModifier",
-			"Player",
-			3,
-			-1
-		],
-		[
-			"YP5",
-			"YModifier",
-			"Player",
-			4,
-			-1
-		],
-		[
-			"YP6",
-			"YModifier",
-			"Player",
-			5,
-			-1
-		],
-		[
-			"XP1",
-			"XModifier",
-			"Player",
-			0,
-			-1
-		],
-		[
-			"XP2",
-			"XModifier",
-			"Player",
-			1,
-			-1
-		],
-		[
-			"XP3",
-			"XModifier",
-			"Player",
-			2,
-			-1
-		],
-		[
-			"XP4",
-			"XModifier",
-			"Player",
-			3,
-			-1
-		],
-		[
-			"XP5",
-			"XModifier",
-			"Player",
-			4,
-			-1
-		],
-		[
-			"XP6",
-			"XModifier",
-			"Player",
-			5,
-			-1
-		],
-		[
-			"Invert",
-			"InvertModifier",
-			"Player",
-			-1,
-			-1
-		],
-		[
-			"XToCancelMidscroll",
-			"XModifier",
-			"Player",
-			-1,
-			-1
-		]
-	],
-	"playfields": 6,
-	"events": [
-		[
-			"ease",
-			[
-				1.25,
-				"3",
-				"cubeInOut",
-				"1,hideMick,-300,ZPlayerAll,-120,YPlayerAll,1,ReversePlayfield4,1,ReversePlayfield5,1,ReversePlayfield6,200,YP4,200,YP5,200,YP6,-340,XP1,-340,XP4,140,XP2,140,XP5,-800,XP3,-800,XP6,1,Invert,340,XToCancelMidscroll"
+				"CrossEm",
+				"CrossModifier",
+				"All",
+				-1,
+				-1
 			],
 			[
-				false,
-				1,
-				1
-			]
-		]
-	]
-}';
-
-var dontcrossModchartD:String = '{
-	"modifiers": [
-		[
-			"ReversePlayfield4",
-			"ReverseModifier",
-			"Player",
-			3,
-			-1
-		],
-		[
-			"ReversePlayfield5",
-			"ReverseModifier",
-			"Player",
-			4,
-			-1
-		],
-		[
-			"ReversePlayfield6",
-			"ReverseModifier",
-			"Player",
-			5,
-			-1
-		],
-		[
-			"hideMick",
-			"StealthModifier",
-			"Opponent",
-			-1,
-			-1
-		],
-		[
-			"ZPlayerAll",
-			"ZModifier",
-			"Player",
-			-1,
-			-1
-		],
-		[
-			"YPlayerAll",
-			"YModifier",
-			"Player",
-			-1,
-			-1
-		],
-		[
-			"YP4",
-			"YModifier",
-			"Player",
-			3,
-			-1
-		],
-		[
-			"YP5",
-			"YModifier",
-			"Player",
-			4,
-			-1
-		],
-		[
-			"YP6",
-			"YModifier",
-			"Player",
-			5,
-			-1
-		],
-		[
-			"XP1",
-			"XModifier",
-			"Player",
-			0,
-			-1
-		],
-		[
-			"XP2",
-			"XModifier",
-			"Player",
-			1,
-			-1
-		],
-		[
-			"XP3",
-			"XModifier",
-			"Player",
-			2,
-			-1
-		],
-		[
-			"XP4",
-			"XModifier",
-			"Player",
-			3,
-			-1
-		],
-		[
-			"XP5",
-			"XModifier",
-			"Player",
-			4,
-			-1
-		],
-		[
-			"XP6",
-			"XModifier",
-			"Player",
-			5,
-			-1
-		],
-		[
-			"Invert",
-			"InvertModifier",
-			"Player",
-			-1,
-			-1
-		]
-	],
-	"playfields": 6,
-	"events": [
-		[
-			"ease",
-			[
-				1.25,
-				"3",
-				"cubeInOut",
-				"1,hideMick,-300,ZPlayerAll,120,YPlayerAll,1,ReversePlayfield4,1,ReversePlayfield5,1,ReversePlayfield6,-200,YP4,-200,YP5,-200,YP6,-340,XP1,-340,XP4,140,XP2,140,XP5,-800,XP3,-800,XP6,1,Invert"
+				"CurveZ",
+				"EaseCurveZModifier",
+				"All",
+				-1,
+				-1
 			],
 			[
-				false,
-				1,
-				1
-			]
-		]
-	]
-}';
-
-var dontcrossModchartMD:String = '{
-	"modifiers": [
-		[
-			"ReversePlayfield4",
-			"ReverseModifier",
-			"Player",
-			3,
-			-1
-		],
-		[
-			"ReversePlayfield5",
-			"ReverseModifier",
-			"Player",
-			4,
-			-1
-		],
-		[
-			"ReversePlayfield6",
-			"ReverseModifier",
-			"Player",
-			5,
-			-1
-		],
-		[
-			"hideMick",
-			"StealthModifier",
-			"Opponent",
-			-1,
-			-1
-		],
-		[
-			"ZPlayerAll",
-			"ZModifier",
-			"Player",
-			-1,
-			-1
-		],
-		[
-			"YPlayerAll",
-			"YModifier",
-			"Player",
-			-1,
-			-1
-		],
-		[
-			"YP4",
-			"YModifier",
-			"Player",
-			3,
-			-1
-		],
-		[
-			"YP5",
-			"YModifier",
-			"Player",
-			4,
-			-1
-		],
-		[
-			"YP6",
-			"YModifier",
-			"Player",
-			5,
-			-1
-		],
-		[
-			"XP1",
-			"XModifier",
-			"Player",
-			0,
-			-1
-		],
-		[
-			"XP2",
-			"XModifier",
-			"Player",
-			1,
-			-1
-		],
-		[
-			"XP3",
-			"XModifier",
-			"Player",
-			2,
-			-1
-		],
-		[
-			"XP4",
-			"XModifier",
-			"Player",
-			3,
-			-1
-		],
-		[
-			"XP5",
-			"XModifier",
-			"Player",
-			4,
-			-1
-		],
-		[
-			"XP6",
-			"XModifier",
-			"Player",
-			5,
-			-1
-		],
-		[
-			"Invert",
-			"InvertModifier",
-			"Player",
-			-1,
-			-1
-		],
-		[
-			"XCancelMidscroll",
-			"XModifier",
-			"Player",
-			-1,
-			-1
-		]
-	],
-	"playfields": 6,
-	"events": [
-		[
-			"ease",
-			[
-				1.25,
-				"3",
-				"cubeInOut",
-				"1,hideMick,-300,ZPlayerAll,120,YPlayerAll,1,ReversePlayfield4,1,ReversePlayfield5,1,ReversePlayfield6,-200,YP4,-200,YP5,-200,YP6,-340,XP1,-340,XP4,140,XP2,140,XP5,-800,XP3,-800,XP6,1,Invert,340,XCancelMidscroll"
+				"Boomerang",
+				"BoomerangModifier",
+				"All",
+				-1,
+				-1
 			],
 			[
-				false,
-				1,
-				1
+				"HideDaOpps",
+				"StealthModifier",
+				"Opponent",
+				-1,
+				-1
+			],
+			[
+				"Alternate",
+				"AlternateModifier",
+				"All",
+				-1,
+				-1
+			],
+			[
+				"HideDemAll",
+				"StealthModifier",
+				"All",
+				-1,
+				-1
+			]
+		],
+		"playfields": 1,
+		"events": [
+			[
+				"ease",
+				[
+					4,
+					"4",
+					"expoOut",
+					"360,SpinMeRightRoundBabyRightRoundLikeARecordBabyRightRoundRoundRound,1,CrossEm:VarA"
+				],
+				[
+					false,
+					1,
+					1
+				]
+			],
+			[
+				"ease",
+				[
+					65,
+					"2",
+					"circInOut",
+					"900,CurveZ,0,CrossEm:VarA,1,CrossEm:VarB"
+				],
+				[
+					false,
+					1,
+					1
+				]
+			],
+			[
+				"ease",
+				[
+					198,
+					"2",
+					"circInOut",
+					"1,Boomerang,,CurveZ,,SpinMeRightRoundBabyRightRoundLikeARecordBabyRightRoundRoundRound,,CrossEm:VarB"
+				],
+				[
+					false,
+					1,
+					1
+				]
+			],
+			[
+				"ease",
+				[
+					264,
+					"2",
+					"circOut",
+					"1,HideDaOpps,0,Boomerang,,CrossEm"
+				],
+				[
+					false,
+					1,
+					1
+				]
+			],
+			[
+				"ease",
+				[
+					268,
+					"2",
+					"circOut",
+					"1,HideDaOpps,0,Boomerang,,CrossEm,1,Alternate:VarA"
+				],
+				[
+					false,
+					1,
+					1
+				]
+			],
+			[
+				"ease",
+				[
+					332,
+					"2",
+					"circOut",
+					"0,HideDaOpps,0,Boomerang,,CrossEm,0,Alternate:VarA"
+				],
+				[
+					false,
+					1,
+					1
+				]
+			],
+			[
+				"ease",
+				[
+					400,
+					"14",
+					"sineInOut",
+					"1,HideDemAll"
+				],
+				[
+					false,
+					1,
+					1
+				]
+			],
+			[
+				"ease",
+				[
+					430,
+					"1",
+					"sineInOut",
+					"0,HideDemAll"
+				],
+				[
+					false,
+					1,
+					1
+				]
 			]
 		]
-	]
-}';
+	}';
 
 	var tg:String = '{
 	"modifiers": [

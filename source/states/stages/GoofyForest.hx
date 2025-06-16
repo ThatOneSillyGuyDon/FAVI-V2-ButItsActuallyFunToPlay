@@ -22,10 +22,13 @@ class GoofyForest extends BaseStage
 
 	override function create()
 	{
-		// Literally what Goofy is seeing right about now lmfao
-		wobblyBG.setFloat('uSpeed', 1.0);
-		wobblyBG.setFloat('uFrequency', 1.0);
-		wobblyBG.setFloat('uWaveAmplitude', 0.5);
+		if (ClientPrefs.data.shaders)
+		{
+			// Literally what Goofy is seeing right about now lmfao
+			wobblyBG.setFloat('uSpeed', 1.0);
+			wobblyBG.setFloat('uFrequency', 1.0);
+			wobblyBG.setFloat('uWaveAmplitude', 0.5);
+		}
 
 		game.cameraSpeed = 0.9;
 		game.defaultCamZoom = 0.65;

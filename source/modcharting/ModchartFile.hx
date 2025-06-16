@@ -465,18 +465,7 @@ class ModchartFile
                     if (ClientPrefs.data.mechanics && FlxG.random.bool(15))
                     {
                         trace('Fuck you, die.');
-                        //Upscroll
-                        if (!ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
-                            json = cast Json.parse(Modchart.dontcrossModchartU);
-                        //Downscroll
-                        else if (ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
-                            json = cast Json.parse(Modchart.dontcrossModchartD);
-                        //Middle-Upscroll
-                        else if (!ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
-                            json = cast Json.parse(Modchart.dontcrossModchartMU);
-                        //Middle-Downscroll
-                        else if (ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
-                            json = cast Json.parse(Modchart.dontcrossModchartMD);
+                        json = cast Json.parse(Modchart.dontcrossModchart);
                     }
                     else
                         json = {modifiers: [], events: [], playfields: 1};

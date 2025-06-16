@@ -562,16 +562,19 @@ class Episode1Street extends BaseStage
 		switch (PlayState.SONG.song)
 		{
 			case 'Isolated' | 'Lunacy' | 'Delusional':
-				chromZoomShader.setFloat('aberration', game.chromEffect);
-				chromZoomShader.setFloat('effectTime', game.chromEffect);
-				chromNormalShader.setFloat('rOffset', game.chromEffect / 45);
-				chromNormalShader.setFloat('bOffset', -game.chromEffect / 45);
-				dramaticCamMovement.setFloat('time', shaderAnim);
-				if (PlayState.SONG.song == "Delusional")
+				if (ClientPrefs.data.shaders)
 				{
-					delusionalShift.setFloat('iTime', shaderAnim);
-					delusionalShift.setFloat('uTime', shaderAnim);
-					heatWaveEffect.setFloat("iTime", shaderAnim);
+					chromZoomShader.setFloat('aberration', game.chromEffect);
+					chromZoomShader.setFloat('effectTime', game.chromEffect);
+					chromNormalShader.setFloat('rOffset', game.chromEffect / 45);
+					chromNormalShader.setFloat('bOffset', -game.chromEffect / 45);
+					dramaticCamMovement.setFloat('time', shaderAnim);
+					if (PlayState.SONG.song == "Delusional")
+					{
+						delusionalShift.setFloat('iTime', shaderAnim);
+						delusionalShift.setFloat('uTime', shaderAnim);
+						heatWaveEffect.setFloat("iTime", shaderAnim);
+					}
 				}
 		}
 
@@ -940,8 +943,8 @@ class Episode1Street extends BaseStage
 						deluSing.visible = true;
 						deluSing.setVideoTime(0);
 						deluSing.resume();
-						//it's bugged :(
-						//if (game.vocals.volume != 1) game.vocals.volume = 1; // it should be fixed then
+						//I FIXED IT!!!!!!!!!!!!!!!!!! :)
+						if (PlayState.instance.vocals.volume != 1) PlayState.instance.vocals.volume = 1; // it should be fixed then
 					case 5:
 						game.defaultCamZoom = 0.8;
 						game.camBars.fade(0x000000, 5, true);
@@ -1183,15 +1186,15 @@ class Episode1Street extends BaseStage
 						game.camVideo.visible = true;
 						game.camVideo.fade(FlxColor.BLACK, 0.7);
 					case 51:
+						death.setVideoTime(0);
+						death.resume();
+						death.visible = true;
 						camGame.visible = false;
 						FlxTween.tween(camHUD, {alpha: 0}, 2);
 						game.camVideo.zoom += 0.3;
 						game.camVideo.fade(FlxColor.BLACK, 0.2, true);
 						FlxTween.tween(game.camVideo, {zoom: 1}, 0.5, {ease: FlxEase.sineOut});
 						game.camFlashSystem(BG_DARK, {timer: 5});
-						death.setVideoTime(0);
-						death.resume();
-						death.visible = true;
 					case 52:
 						game.camFlashSystem(BG_DARK, {alpha: 1, timer: 0.5, ease: FlxEase.sineOut});
 					case 53:

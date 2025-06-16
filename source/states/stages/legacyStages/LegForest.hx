@@ -22,27 +22,30 @@ class LegForest extends BaseStage
 	
 	override function createPost()
 	{
-		blurShader.setFloat('bluramount', 0.6);
-		blurShaderHUD.setFloat('bluramount', 0.1);
-		andromeda.setFloat('glitchModifier', 0.2);
-		andromeda.setBool('perspectiveOn', true);
-		andromeda.setBool('vignetteMoving', true);
-		if (!ClientPrefs.data.lowQuality)
+		if (ClientPrefs.data.shaders)
 		{
-			camGame.setFilters([
-				new ShaderFilter(grayScale),
-				new ShaderFilter(blurShader),
-			]);
-			camHUD.setFilters([
-				new ShaderFilter(grayScale),
-				new ShaderFilter(blurShaderHUD),
-				new ShaderFilter(andromeda)
-			]);
-		}
-		else
-		{
-			camGame.setFilters([new ShaderFilter(grayScale)]);
-			camHUD.setFilters([new ShaderFilter(grayScale)]);
+			blurShader.setFloat('bluramount', 0.6);
+			blurShaderHUD.setFloat('bluramount', 0.1);
+			andromeda.setFloat('glitchModifier', 0.2);
+			andromeda.setBool('perspectiveOn', true);
+			andromeda.setBool('vignetteMoving', true);
+			if (!ClientPrefs.data.lowQuality)
+			{
+				camGame.setFilters([
+					new ShaderFilter(grayScale),
+					new ShaderFilter(blurShader),
+				]);
+				camHUD.setFilters([
+					new ShaderFilter(grayScale),
+					new ShaderFilter(blurShaderHUD),
+					new ShaderFilter(andromeda)
+				]);
+			}
+			else
+			{
+				camGame.setFilters([new ShaderFilter(grayScale)]);
+				camHUD.setFilters([new ShaderFilter(grayScale)]);
+			}
 		}
 
 		game.dad.setPosition(0, 0);
