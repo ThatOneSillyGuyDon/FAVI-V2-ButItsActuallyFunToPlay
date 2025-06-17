@@ -4,7 +4,7 @@ enum abstract CreditsData(String) from String to String {
     var devilishDeal:String = '{
 	"settings":
 	[
-		"Art: Domingo, Moe, Oyxz,\n& SkylarFilm\n\nChart: Purg\n\nCode: ThatOneSillyGuy & Jason,\n\nMusic: obscurity.", -40, -5
+		"Art: Domingo, Moe, Oyxz,\n& SkylarFilm\n\nChart: Purg\n\nCode: ThatOneSillyGuy, Jason & Goober Man,\n\nMusic: obscurity.", -40, -5
 	]
 }';
     var isolated:String = '{

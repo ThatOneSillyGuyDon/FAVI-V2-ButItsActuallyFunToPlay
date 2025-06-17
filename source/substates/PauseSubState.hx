@@ -11,12 +11,18 @@ import flixel.text.FlxText.FlxTextFormat;
 import flixel.text.FlxText.FlxTextFormatMarkerPair;
 
 /**
- * Pause Menu Data
- */
- typedef PauseData =
- {
-	 var settings:Array<Dynamic>;
- }
+* Pause Menu Data
+*/
+
+typedef PauseData =
+{
+	var settings:Array<Dynamic>;
+}
+
+/**
+* The Actual Menu
+*/
+
 class PauseSubState extends MusicBeatSubstate
 {
 	var grpMenuShit:FlxTypedGroup<Alphabet>;
