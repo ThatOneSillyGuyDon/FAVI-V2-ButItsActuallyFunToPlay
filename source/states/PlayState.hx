@@ -177,8 +177,11 @@ class PlayState extends MusicBeatState
 	public var GF_Y:Float = 130;
 
 	// WINDOW VARS
-	var winX:Int = 320;
-	var winY:Int = 180;
+	@:isVar var winX(default, set):Int;
+	@:isVar var winY(default, set):Int;
+
+	@:noCompletion function set_winX(x:Int):Int return Lib.application.window.x = x;
+	@:noCompletion function set_winY(y:Int):Int return Lib.application.window.y = y;
 
 	public var songSpeedTween:FlxTween;
 	public var songSpeed(default, set):Float = 1;
@@ -1222,6 +1225,9 @@ class PlayState extends MusicBeatState
 		lyricsIcon.visible = false;
 		lyricsIcon.cameras = [camOther];
 		add(lyricsIcon);
+
+		Lib.application.window.x = Std.int((Lib.application.window.display.bounds.width - Lib.application.window.width) * 0.5);
+		Lib.application.window.y = Std.int((Lib.application.window.display.bounds.height - Lib.application.window.height) * 0.5);
 
 		super.create();
 		Paths.clearUnusedMemory();
@@ -2729,8 +2735,6 @@ class PlayState extends MusicBeatState
 			FlxG.camera.zoom = FlxMath.lerp(defaultCamZoom, FlxG.camera.zoom, Math.exp(-elapsed * 3.125 * camZoomingDecay * playbackRate));
 			camHUD.zoom = FlxMath.lerp(1, camHUD.zoom, Math.exp(-elapsed * 3.125 * camZoomingDecay * playbackRate));
 		}
-
-		Lib.application.window.move(winX, winY);
 
 		FlxG.watch.addQuick("secShit", curSection);
 		FlxG.watch.addQuick("beatShit", curBeat);
