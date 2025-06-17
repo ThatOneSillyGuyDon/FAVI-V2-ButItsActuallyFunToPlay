@@ -176,6 +176,10 @@ class PlayState extends MusicBeatState
 	public var GF_X:Float = 400;
 	public var GF_Y:Float = 130;
 
+	// WINDOW VARS
+	var winX:Int = 320;
+	var winY:Int = 180;
+
 	public var songSpeedTween:FlxTween;
 	public var songSpeed(default, set):Float = 1;
 	public var songSpeedType:String = "multiplicative";
@@ -2726,6 +2730,8 @@ class PlayState extends MusicBeatState
 			camHUD.zoom = FlxMath.lerp(1, camHUD.zoom, Math.exp(-elapsed * 3.125 * camZoomingDecay * playbackRate));
 		}
 
+		Lib.application.window.move(winX, winY);
+
 		FlxG.watch.addQuick("secShit", curSection);
 		FlxG.watch.addQuick("beatShit", curBeat);
 		FlxG.watch.addQuick("stepShit", curStep);
@@ -3908,6 +3914,12 @@ class PlayState extends MusicBeatState
 
 						windowName = triggerInfo[1] + (checkExtraText ? (isStoryMode ? PlayState.curEpisode + " - " : "Freeplay - ") + triggerInfo[2].trim() : "");
 						Application.current.window.title = windowName;
+
+					case "windowposition" | "window position" | "windowpos" | "window pos":
+						FlxTween.tween(this, {winX: Std.parseInt(triggerInfo[0]), winY: Std.parseInt(triggerInfo[1])}, Std.parseFloat(triggerInfo[2]), //Time
+							{
+								ease: returnTweenEase(triggerInfo[3]) //Ease
+							});
 
 					case "discord" | "richpresence" | "rich presence" | "activity":
 						if (triggerInfo[0].trim() != null)
@@ -5611,6 +5623,8 @@ class PlayState extends MusicBeatState
 		FlxG.animationTimeScale = 1;
 		#if FLX_PITCH FlxG.sound.music.pitch = 1; #end
 		ClientPrefs.data.cacheOnGPU = backupGpu;
+		Lib.application.window.resize(1280, 720);
+		Lib.application.window.move(320, 180);
 		backend.NoteTypesConfig.clearNoteTypesData();
 		instance = null;
 		super.destroy();
