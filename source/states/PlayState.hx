@@ -3384,39 +3384,6 @@ class PlayState extends MusicBeatState
 		}
 	}
 
-	public function cinematicBarControlsOld(controlType:String = "add", speed:Float, ease:String = "circInOut", position:Float = 0, bopValue:Float = 0)
-	{
-		switch (controlType.toLowerCase())
-		{
-			case "add" | "create":
-				cinematicBarControls(MOVE, {valueInput: 0, timer: 0.001, ease: "linear"});
-				trace('This event is now outdated! Please use "Cinematic Event" for future event usage!');
-				
-			case "remove" | "kill" | "delete":
-				trace("function is deprecated!");
-				
-			case "movetop" | "move top":
-				trace("function is deprecated!");
-				
-			case "movebottom" | "move bottom":
-				trace("function is deprecated!");
-				
-			case "moveboth" | "move both":
-				cinematicBarControls(MOVE, {valueInput: position, timer: speed, ease: ease});
-				trace('This event is now outdated! Please use "Cinematic Event" for future event usage!');
-				
-			case "boptop" | "bop top":
-				trace("function is deprecated!");
-				
-			case "bopbottom" | "bop bottom":
-				trace("function is deprecated!");
-				
-			case "bopboth" | "bop both":
-				cinematicBarControls(BOP, {valueInput: bopValue, timer: speed, ease: ease});
-				trace('This event is now outdated! Please use "Cinematic Event" for future event usage!');
-		}
-	}
-
 	function openPauseMenu()
 	{
 		persistentUpdate = false;
@@ -3822,16 +3789,6 @@ class PlayState extends MusicBeatState
 					Std.parseFloat(triggerInfo[5])   // Text Delay
 				);
 
-			case 'Cinematic Bar Controls':
-				var triggerInfo:Array<String> = value2.split(',');
-				
-				cinematicBarControlsOld(
-					value1.toLowerCase(),                //Type of event for the bars
-					Std.parseFloat(triggerInfo[0]),     //Time
-					triggerInfo[1],                    //Ease type
-					Std.parseFloat(triggerInfo[2]),   //Position
-					Std.parseFloat(triggerInfo[3])); //Bop Value (ONLY WORKS WITH BOP EVENTS)
-			
 			case 'Background Controls':
 				var triggerInfo:Array<String> = value2.split(',');
 				switch (value1.toLowerCase())

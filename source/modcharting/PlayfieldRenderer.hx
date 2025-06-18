@@ -185,6 +185,15 @@ class PlayfieldRenderer extends FlxSprite //extending flxsprite just so i can ed
             strumScaleX = 1*PlayState.daPixelZoom;
             strumScaleY = 1*PlayState.daPixelZoom;
         }
+        if (Std.isOfType(instance, states.editors.EditorPlayState) && ClientPrefs.data.middleScroll)
+        {
+            switch (i)
+            {
+                case 0 | 1 | 2 | 3:
+                    strumX = -9999999;
+                    strumY = 9999999;
+            }
+        }
         if (PlayState.curStage == "menuSongs")
         {
             switch (i)
@@ -237,6 +246,28 @@ class PlayfieldRenderer extends FlxSprite //extending flxsprite just so i can ed
             //work on pixel stages
             noteScaleX = 1*PlayState.daPixelZoom;
             noteScaleY = 1*PlayState.daPixelZoom;
+        }
+        if (Std.isOfType(instance, states.editors.EditorPlayState) && ClientPrefs.data.middleScroll)
+        {
+            switch (noteIndex)
+            {
+                case 0 | 1 | 2 | 3:
+                    noteX = -9999999;
+                    noteY = 9999999;
+            }
+        }
+        if (PlayState.curStage == "menuSongs")
+        {
+            switch (noteIndex)
+            {
+                case 0 | 1 | 2 | 3:
+                    noteX = -9999999;
+                    noteY = 9999999;
+                case 4 | 5 | 6 | 7:
+                    noteX += 11;
+                    noteY += 10;
+                    noteZ -= 25;
+            }
         }
 
         var noteData:NotePositionData = NotePositionData.get();

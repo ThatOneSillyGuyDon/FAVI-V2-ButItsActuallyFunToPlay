@@ -4855,14 +4855,9 @@ enum abstract Chart(String) from String to String {
 				363.636363636364,
 				[
 					[
-						"Cinematic Bar Controls",
-						"add",
-						"0.0001,linear,0"
-					],
-					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.0001,linear,130"
+						"Cinematic Event",
+						"Move",
+						"130,0.0001,linear"
 					]
 				]
 			],
@@ -4895,9 +4890,9 @@ enum abstract Chart(String) from String to String {
 				10181.8181818182,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"1,circInOut,65"
+						"Cinematic Event",
+						"Move",
+						"65,1,circInOut"
 					]
 				]
 			],
@@ -4960,19 +4955,19 @@ enum abstract Chart(String) from String to String {
 				11636.3636363636,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"1,quartOut,32,33"
-					]
+						"Cinematic Event",
+						"Bop",
+						"33,1,quartOut"
+					]	
 				]
 			],
 			[
 				13088.6363636364,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"1,quartOut,32,33"
+						"Cinematic Event",
+						"Bop",
+						"33,1,quartOut"
 					]
 				]
 			],
@@ -5000,9 +4995,9 @@ enum abstract Chart(String) from String to String {
 				14545.4545454545,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"1,quartOut,32,33"
+						"Cinematic Event",
+						"Bop",
+						"33,1,quartOut"
 					]
 				]
 			],
@@ -5010,9 +5005,9 @@ enum abstract Chart(String) from String to String {
 				15997.7272727273,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"1,quartOut,32,33"
+						"Cinematic Event",
+						"Bop",
+						"33,1,quartOut"
 					]
 				]
 			],
@@ -5030,9 +5025,9 @@ enum abstract Chart(String) from String to String {
 				17454.5454545455,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"1,quartOut,32,33"
+						"Cinematic Event",
+						"Bop",
+						"33,1,quartOut"
 					]
 				]
 			],
@@ -5050,9 +5045,9 @@ enum abstract Chart(String) from String to String {
 				18909.0909090909,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"1,quartOut,32,33"
+						"Cinematic Event",
+						"Bop",
+						"33,1,quartOut"
 					]
 				]
 			],
@@ -5060,9 +5055,9 @@ enum abstract Chart(String) from String to String {
 				20361.3636363636,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"1,quartOut,32,33"
+						"Cinematic Event",
+						"Bop",
+						"33,1,quartOut"
 					]
 				]
 			],
@@ -5090,9 +5085,9 @@ enum abstract Chart(String) from String to String {
 				21818.1818181818,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"1,quartOut,32,33"
+						"Cinematic Event",
+						"Bop",
+						"33,1,quartOut"
 					]
 				]
 			],
@@ -5100,9 +5095,9 @@ enum abstract Chart(String) from String to String {
 				23270.4545454545,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"1,quartOut,32,33"
+						"Cinematic Event",
+						"Bop",
+						"33,1,quartOut"
 					]
 				]
 			],
@@ -5130,9 +5125,9 @@ enum abstract Chart(String) from String to String {
 				24727.2727272727,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"1,quartOut,32,33"
+						"Cinematic Event",
+						"Bop",
+						"33,1,quartOut"
 					]
 				]
 			],
@@ -5140,9 +5135,9 @@ enum abstract Chart(String) from String to String {
 				26175,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"1,quartOut,32,33"
+						"Cinematic Event",
+						"Bop",
+						"33,1,quartOut"
 					]
 				]
 			],
@@ -5170,9 +5165,9 @@ enum abstract Chart(String) from String to String {
 				27636.3636363636,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"1,quartOut,32,33"
+						"Cinematic Event",
+						"Bop",
+						"33,1,quartOut"
 					]
 				]
 			],
@@ -5180,9 +5175,9 @@ enum abstract Chart(String) from String to String {
 				29086.3636363636,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"1,quartOut,32,33"
+						"Cinematic Event",
+						"Bop",
+						"33,1,quartOut"
 					]
 				]
 			],
@@ -5200,9 +5195,9 @@ enum abstract Chart(String) from String to String {
 				30538.6363636364,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"1,quartOut,32,33"
+						"Cinematic Event",
+						"Bop",
+						"33,1,quartOut"
 					]
 				]
 			],
@@ -5245,9 +5240,9 @@ enum abstract Chart(String) from String to String {
 				32000,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"1,quartOut,32,33"
+						"Cinematic Event",
+						"Bop",
+						"33,1,quartOut"
 					]
 				]
 			],
@@ -5255,9 +5250,9 @@ enum abstract Chart(String) from String to String {
 				33452.2727272727,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"1,quartOut,32,33"
+						"Cinematic Event",
+						"Bop",
+						"33,1,quartOut"
 					]
 				]
 			],
@@ -5335,9 +5330,9 @@ enum abstract Chart(String) from String to String {
 				34909.0909090909,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.3,sineOut,0"
+						"Cinematic Event",
+						"Move",
+						"0,0.3,sineOut"
 					]
 				]
 			],
@@ -5995,9 +5990,9 @@ enum abstract Chart(String) from String to String {
 				58181.8181818182,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"1,circOut,140"
+						"Cinematic Event",
+						"Move",
+						"140,1,circOut"
 					]
 				]
 			],
@@ -6015,9 +6010,9 @@ enum abstract Chart(String) from String to String {
 				59636.3636363637,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"0.85,quartOut,125,15"
+						"Cinematic Event",
+						"Bop",
+						"15,0.85,quartOut"
 					]
 				]
 			],
@@ -6025,9 +6020,9 @@ enum abstract Chart(String) from String to String {
 				61090.9090909091,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"1,quartOut,90,60"
+						"Cinematic Event",
+						"Bop",
+						"60,1,quartOut"
 					]
 				]
 			],
@@ -6055,9 +6050,9 @@ enum abstract Chart(String) from String to String {
 				62545.4545454546,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"1,quartOut,90,60"
+						"Cinematic Event",
+						"Bop",
+						"60,1,quartOut"
 					]
 				]
 			],
@@ -6075,9 +6070,9 @@ enum abstract Chart(String) from String to String {
 				64000,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"1,quartOut,90,60"
+						"Cinematic Event",
+						"Bop",
+						"60,1,quartOut"
 					]
 				]
 			],
@@ -6105,9 +6100,9 @@ enum abstract Chart(String) from String to String {
 				65454.5454545455,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"0.85,quartOut,125,15"
+						"Cinematic Event",
+						"Bop",
+						"15,0.85,quartOut"
 					]
 				]
 			],
@@ -6140,9 +6135,9 @@ enum abstract Chart(String) from String to String {
 				66909.0909090909,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"1,quartOut,90,60"
+						"Cinematic Event",
+						"Bop",
+						"60,1,quartOut"
 					]
 				]
 			],
@@ -6160,9 +6155,9 @@ enum abstract Chart(String) from String to String {
 				68361.3636363637,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"1,quartOut,90,60"
+						"Cinematic Event",
+						"Bop",
+						"60,1,quartOut"
 					]
 				]
 			],
@@ -6205,9 +6200,9 @@ enum abstract Chart(String) from String to String {
 				69815.9090909091,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.7,sineOut,85"
+						"Cinematic Event",
+						"Move",
+						"85,0.7,sineOut"
 					]
 				]
 			],
@@ -6245,9 +6240,9 @@ enum abstract Chart(String) from String to String {
 				70545,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"0.3,sineOut,40,45"
+						"Cinematic Event",
+						"Bop",
+						"45,0.3,sineOut"
 					]
 				]
 			],
@@ -6275,9 +6270,9 @@ enum abstract Chart(String) from String to String {
 				71272.7272727273,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"0.3,sineOut,40,45"
+						"Cinematic Event",
+						"Bop",
+						"45,0.3,sineOut"
 					]
 				]
 			],
@@ -6295,9 +6290,9 @@ enum abstract Chart(String) from String to String {
 				72000,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"0.3,sineOut,40,45"
+						"Cinematic Event",
+						"Bop",
+						"45,0.3,sineOut"
 					]
 				]
 			],
@@ -6305,9 +6300,9 @@ enum abstract Chart(String) from String to String {
 				72725,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"0.3,sineOut,40,45"
+						"Cinematic Event",
+						"Bop",
+						"45,0.3,sineOut"
 					]
 				]
 			],
@@ -6325,9 +6320,9 @@ enum abstract Chart(String) from String to String {
 				73454,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"0.3,sineOut,40,45"
+						"Cinematic Event",
+						"Bop",
+						"45,0.3,sineOut"
 					]
 				]
 			],
@@ -6355,9 +6350,9 @@ enum abstract Chart(String) from String to String {
 				74181.8181818182,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"0.3,sineOut,40,45"
+						"Cinematic Event",
+						"Bop",
+						"45,0.3,sineOut"
 					]
 				]
 			],
@@ -6365,9 +6360,9 @@ enum abstract Chart(String) from String to String {
 				74909,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"0.3,sineOut,40,45"
+						"Cinematic Event",
+						"Bop",
+						"45,0.3,sineOut"
 					]
 				]
 			],
@@ -6385,9 +6380,9 @@ enum abstract Chart(String) from String to String {
 				75636.3636363637,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"0.3,sineOut,40,45"
+						"Cinematic Event",
+						"Bop",
+						"45,0.3,sineOut"
 					]
 				]
 			],
@@ -6395,9 +6390,9 @@ enum abstract Chart(String) from String to String {
 				76363,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"0.3,sineOut,40,45"
+						"Cinematic Event",
+						"Bop",
+						"45,0.3,sineOut"
 					]
 				]
 			],
@@ -6425,9 +6420,9 @@ enum abstract Chart(String) from String to String {
 				77090.9090909091,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"0.3,sineOut,40,45"
+						"Cinematic Event",
+						"Bop",
+						"45,0.3,sineOut"
 					]
 				]
 			],
@@ -6435,9 +6430,9 @@ enum abstract Chart(String) from String to String {
 				77818,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"0.3,sineOut,40,45"
+						"Cinematic Event",
+						"Bop",
+						"45,0.3,sineOut"
 					]
 				]
 			],
@@ -6455,9 +6450,9 @@ enum abstract Chart(String) from String to String {
 				78543.1818181819,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"0.3,sineOut,40,45"
+						"Cinematic Event",
+						"Bop",
+						"45,0.3,sineOut"
 					]
 				]
 			],
@@ -6555,9 +6550,9 @@ enum abstract Chart(String) from String to String {
 				80000,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"0.3,sineOut,40,45"
+						"Cinematic Event",
+						"Bop",
+						"45,0.3,sineOut"
 					]
 				]
 			],
@@ -6565,9 +6560,9 @@ enum abstract Chart(String) from String to String {
 				80363.6363636364,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"0.3,sineOut,40,45"
+						"Cinematic Event",
+						"Bop",
+						"45,0.3,sineOut"
 					]
 				]
 			],
@@ -6575,9 +6570,9 @@ enum abstract Chart(String) from String to String {
 				80727,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"0.3,sineOut,40,45"
+						"Cinematic Event",
+						"Bop",
+						"45,0.3,sineOut"
 					]
 				]
 			],
@@ -6595,9 +6590,9 @@ enum abstract Chart(String) from String to String {
 				81090.9090909091,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"0.3,sineOut,40,45"
+						"Cinematic Event",
+						"Bop",
+						"45,0.3,sineOut"
 					]
 				]
 			],
@@ -6605,9 +6600,9 @@ enum abstract Chart(String) from String to String {
 				81452.2727272728,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.3,quartOut,0"
+						"Cinematic Event",
+						"Move",
+						"0,0.3,quartOut"
 					]
 				]
 			],
@@ -7255,9 +7250,9 @@ enum abstract Chart(String) from String to String {
 						"staticzoom,1.2"
 					],
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.001,linear,100"
+						"Cinematic Event",
+						"Move",
+						"100,0.001,linear"
 					]
 				]
 			],
@@ -7290,9 +7285,9 @@ enum abstract Chart(String) from String to String {
 						"0.35,linear,0.4,194,194,194"
 					],
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.75,circOut,0"
+						"Cinematic Event",
+						"Move",
+						"0,0.75,circOut"
 					]
 				]
 			],
@@ -8011,7 +8006,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						"Camera Event",
-						"Twen Value",
+						"Tween Value",
 						"zoom,1.07,5,quadInOut"
 					],
 					[
@@ -8025,9 +8020,9 @@ enum abstract Chart(String) from String to String {
 				128000,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"1,circOut,140"
+						"Cinematic Event",
+						"Move",
+						"140,1,circOut"
 					]
 				]
 			],
@@ -8045,9 +8040,9 @@ enum abstract Chart(String) from String to String {
 				136722.727272727,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"3,sineInOut,0"
+						"Cinematic Event",
+						"Move",
+						"0,3,sineInOut"
 					]
 				]
 			],
@@ -8085,9 +8080,9 @@ enum abstract Chart(String) from String to String {
 						"zoom,1,0.63,circInOut"
 					],
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.63,circInOut,600"
+						"Cinematic Event",
+						"Move",
+						"600,0.63,circInOut"
 					]
 				]
 			],
@@ -12693,14 +12688,9 @@ enum abstract Chart(String) from String to String {
 				319.148936170213,
 				[
 					[
-						"Cinematic Bar Controls",
-						"add",
-						"0.001,linear,0"
-					],
-					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.001,linear,60"
+						"Cinematic Event",
+						"Move",
+						"60,0.001,linear"
 					]
 				]
 			],
@@ -12738,9 +12728,9 @@ enum abstract Chart(String) from String to String {
 				10212.7659574468,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"1.2,circOut,120"
+						"Cinematic Event",
+						"Move",
+						"120,1.2,circOut"
 					]
 				]
 			],
@@ -12763,9 +12753,9 @@ enum abstract Chart(String) from String to String {
 				12127.6595744681,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"0.5,quartOut,100,20"
+						"Cinematic Event",
+						"Bop",
+						"20,0.5,quartOut"
 					],
 					[
 						"Tween Chromatic Abberation",
@@ -12778,9 +12768,9 @@ enum abstract Chart(String) from String to String {
 				12765.9574468085,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"0.5,quartOut,100,20"
+						"Cinematic Event",
+						"Bop",
+						"20,0.5,quartOut"
 					]
 				]
 			],
@@ -12808,9 +12798,9 @@ enum abstract Chart(String) from String to String {
 				14680.8510638298,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"0.5,quartOut,100,20"
+						"Cinematic Event",
+						"Bop",
+						"20,0.5,quartOut"
 					]
 				]
 			],
@@ -12818,9 +12808,9 @@ enum abstract Chart(String) from String to String {
 				15319.1489361702,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"0.5,quartOut,100,20"
+						"Cinematic Event",
+						"Bop",
+						"20,0.5,quartOut"
 					]
 				]
 			],
@@ -12848,9 +12838,9 @@ enum abstract Chart(String) from String to String {
 				17234.0425531915,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"0.5,quartOut,100,20"
+						"Cinematic Event",
+						"Bop",
+						"20,0.5,quartOut"
 					]
 				]
 			],
@@ -12868,9 +12858,9 @@ enum abstract Chart(String) from String to String {
 				17872.3404255319,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"0.5,quartOut,100,20"
+						"Cinematic Event",
+						"Bop",
+						"20,0.5,quartOut"
 					]
 				]
 			],
@@ -12888,9 +12878,9 @@ enum abstract Chart(String) from String to String {
 				19787.2340425532,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"0.5,quartOut,100,20"
+						"Cinematic Event",
+						"Bop",
+						"20,0.5,quartOut"
 					],
 					[
 						"Camera Event",
@@ -12923,9 +12913,9 @@ enum abstract Chart(String) from String to String {
 				20425.5319148936,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"1.2,circOut,190"
+						"Cinematic Event",
+						"Move",
+						"190,1.2,circOut"
 					],
 					[
 						"Set Property",
@@ -12968,9 +12958,9 @@ enum abstract Chart(String) from String to String {
 				22340.4255319149,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"0.5,quartOut,170,20"
+						"Cinematic Event",
+						"Bop",
+						"20,0.5,quartOut"
 					]
 				]
 			],
@@ -12988,9 +12978,9 @@ enum abstract Chart(String) from String to String {
 				22978.7234042553,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"0.5,quartOut,170,20"
+						"Cinematic Event",
+						"Bop",
+						"20,0.5,quartOut"
 					]
 				]
 			],
@@ -12998,9 +12988,9 @@ enum abstract Chart(String) from String to String {
 				24893.6170212766,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"0.5,quartOut,170,20"
+						"Cinematic Event",
+						"Bop",
+						"20,0.5,quartOut"
 					]
 				]
 			],
@@ -13028,9 +13018,9 @@ enum abstract Chart(String) from String to String {
 				25531.914893617,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"0.5,quartOut,170,20"
+						"Cinematic Event",
+						"Bop",
+						"20,0.5,quartOut"
 					]
 				]
 			],
@@ -13038,9 +13028,9 @@ enum abstract Chart(String) from String to String {
 				27446.8085106383,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"0.5,quartOut,170,20"
+						"Cinematic Event",
+						"Bop",
+						"20,0.5,quartOut"
 					]
 				]
 			],
@@ -13083,9 +13073,9 @@ enum abstract Chart(String) from String to String {
 				28085.1063829787,
 				[
 					[
-						"Cinematic Bar Controls",
-						"bopboth",
-						"0.5,quartOut,170,20"
+						"Cinematic Event",
+						"Bop",
+						"20,0.5,quartOut"
 					],
 					[
 						"Camera Event",
@@ -13098,9 +13088,9 @@ enum abstract Chart(String) from String to String {
 				28723.4042553191,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"2,circInOut,0"
+						"Cinematic Event",
+						"Move",
+						"0,2,circInOut"
 					]
 				]
 			],
@@ -13483,9 +13473,9 @@ enum abstract Chart(String) from String to String {
 						"0.77,0.5,quadOut"
 					],
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.4,circOut,120"
+						"Cinematic Event",
+						"Move",
+						"120,0.4,circOut"
 					]
 				]
 			],
@@ -13513,9 +13503,9 @@ enum abstract Chart(String) from String to String {
 				51061.835106383,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"1,circOut,80"
+						"Cinematic Event",
+						"Move",
+						"80,1,circOut"
 					],
 					[
 						"Set Property",
@@ -13893,9 +13883,9 @@ enum abstract Chart(String) from String to String {
 				61276.5957446809,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"10,circOut,180"
+						"Cinematic Event",
+						"Move",
+						"180,10,circOut"
 					]
 				]
 			],
@@ -14218,9 +14208,9 @@ enum abstract Chart(String) from String to String {
 				71489.3617021277,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.5,circOut,60"
+						"Cinematic Event",
+						"Move",
+						"60,0.5,circOut"
 					]
 				]
 			],
@@ -14288,9 +14278,9 @@ enum abstract Chart(String) from String to String {
 				72765.9574468085,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.15,circOut,130"
+						"Cinematic Event",
+						"Move",
+						"130,0.15,circOut"
 					]
 				]
 			],
@@ -14333,9 +14323,9 @@ enum abstract Chart(String) from String to String {
 				73404.255319149,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.15,circOut,130"
+						"Cinematic Event",
+						"Move",
+						"130,0.15,circOut"
 					],
 					[
 						"Background Controls",
@@ -14498,9 +14488,9 @@ enum abstract Chart(String) from String to String {
 				75957.4468085106,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.15,circOut,130"
+						"Cinematic Event",
+						"Move",
+						"130,0.15,circOut"
 					],
 					[
 						"Fire Handler",
@@ -14568,9 +14558,9 @@ enum abstract Chart(String) from String to String {
 				76595.7446808511,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.5,circOut,60"
+						"Cinematic Event",
+						"Move",
+						"60,0.5,circOut"
 					],
 					[
 						"Fire Handler",
@@ -14628,9 +14618,9 @@ enum abstract Chart(String) from String to String {
 				77872.3404255319,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.15,circOut,130"
+						"Cinematic Event",
+						"Move",
+						"130,0.15,circOut"
 					]
 				]
 			],
@@ -14723,9 +14713,9 @@ enum abstract Chart(String) from String to String {
 				79148.9361702128,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.5,circOut,60"
+						"Cinematic Event",
+						"Move",
+						"60,0.5,circOut"
 					]
 				]
 			],
@@ -14798,9 +14788,9 @@ enum abstract Chart(String) from String to String {
 				80425.5319148936,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.15,circOut,130"
+						"Cinematic Event",
+						"Move",
+						"130,0.15,circOut"
 					]
 				]
 			],
@@ -14938,9 +14928,9 @@ enum abstract Chart(String) from String to String {
 				81702.1276595745,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.5,circOut,60"
+						"Cinematic Event",
+						"Move",
+						"60,0.5,circOut"
 					],
 					[
 						"Fire Handler",
@@ -15008,9 +14998,9 @@ enum abstract Chart(String) from String to String {
 				82978.7234042553,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.15,circOut,130"
+						"Cinematic Event",
+						"Move",
+						"130,0.15,circOut"
 					]
 				]
 			],
@@ -15073,9 +15063,9 @@ enum abstract Chart(String) from String to String {
 				83617.0212765957,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.5,circOut,60"
+						"Cinematic Event",
+						"Move",
+						"60,0.5,circOut"
 					]
 				]
 			],
@@ -15238,9 +15228,9 @@ enum abstract Chart(String) from String to String {
 				86170.2127659574,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.15,circOut,130"
+						"Cinematic Event",
+						"Move",
+						"130,0.15,circOut"
 					],
 					[
 						"Fire Handler",
@@ -15288,9 +15278,9 @@ enum abstract Chart(String) from String to String {
 				86808.5106382978,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.5,circOut,60"
+						"Cinematic Event",
+						"Move",
+						"60,0.5,circOut"
 					]
 				]
 			],
@@ -15363,9 +15353,9 @@ enum abstract Chart(String) from String to String {
 				88085.1063829787,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.15,circOut,130"
+						"Cinematic Event",
+						"Move",
+						"130,0.15,circOut"
 					]
 				]
 			],
@@ -15478,9 +15468,9 @@ enum abstract Chart(String) from String to String {
 				89361.7021276595,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.5,circOut,60"
+						"Cinematic Event",
+						"Move",
+						"60,0.5,circOut"
 					]
 				]
 			],
@@ -15563,9 +15553,9 @@ enum abstract Chart(String) from String to String {
 				90638.2978723404,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.15,circOut,130"
+						"Cinematic Event",
+						"Move",
+						"130,0.15,circOut"
 					]
 				]
 			],
@@ -15678,9 +15668,9 @@ enum abstract Chart(String) from String to String {
 				91914.8936170212,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.5,circOut,60"
+						"Cinematic Event",
+						"Move",
+						"60,0.5,circOut"
 					]
 				]
 			],
@@ -15763,9 +15753,9 @@ enum abstract Chart(String) from String to String {
 				93191.4893617021,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.15,circOut,130"
+						"Cinematic Event",
+						"Move",
+						"130,0.15,circOut"
 					]
 				]
 			],
@@ -15878,9 +15868,9 @@ enum abstract Chart(String) from String to String {
 				94468.0851063829,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.5,circOut,60"
+						"Cinematic Event",
+						"Move",
+						"60,0.5,circOut"
 					]
 				]
 			],
@@ -15963,9 +15953,9 @@ enum abstract Chart(String) from String to String {
 				95744.6808510638,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.15,circOut,130"
+						"Cinematic Event",
+						"Move",
+						"130,0.15,circOut"
 					]
 				]
 			],
@@ -16078,9 +16068,9 @@ enum abstract Chart(String) from String to String {
 				97021.2765957446,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.5,circOut,60"
+						"Cinematic Event",
+						"Move",
+						"60,0.5,circOut"
 					]
 				]
 			],
@@ -16153,9 +16143,9 @@ enum abstract Chart(String) from String to String {
 				98297.8723404255,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.15,circOut,130"
+						"Cinematic Event",
+						"Move",
+						"130,0.15,circOut"
 					]
 				]
 			],
@@ -16288,9 +16278,9 @@ enum abstract Chart(String) from String to String {
 				99574.4680851063,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.5,circOut,60"
+						"Cinematic Event",
+						"Move",
+						"60,0.5,circOut"
 					]
 				]
 			],
@@ -16363,9 +16353,9 @@ enum abstract Chart(String) from String to String {
 				100851.063829787,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.15,circOut,130"
+						"Cinematic Event",
+						"Move",
+						"130,0.15,circOut"
 					]
 				]
 			],
@@ -16493,9 +16483,9 @@ enum abstract Chart(String) from String to String {
 				102127.659574468,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.5,circOut,60"
+						"Cinematic Event",
+						"Move",
+						"60,0.5,circOut"
 					],
 					[
 						"Camera Event",
@@ -16568,9 +16558,9 @@ enum abstract Chart(String) from String to String {
 				103404.255319149,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.15,circOut,130"
+						"Cinematic Event",
+						"Move",
+						"130,0.15,circOut"
 					]
 				]
 			],
@@ -16698,9 +16688,9 @@ enum abstract Chart(String) from String to String {
 				104680.85106383,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.5,circOut,60"
+						"Cinematic Event",
+						"Move",
+						"60,0.5,circOut"
 					]
 				]
 			],
@@ -16768,9 +16758,9 @@ enum abstract Chart(String) from String to String {
 				105957.446808511,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.15,circOut,130"
+						"Cinematic Event",
+						"Move",
+						"130,0.15,circOut"
 					]
 				]
 			],
@@ -16893,9 +16883,9 @@ enum abstract Chart(String) from String to String {
 				107234.042553191,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.5,circOut,60"
+						"Cinematic Event",
+						"Move",
+						"60,0.5,circOut"
 					]
 				]
 			],
@@ -16968,9 +16958,9 @@ enum abstract Chart(String) from String to String {
 				108510.638297872,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.15,circOut,130"
+						"Cinematic Event",
+						"Move",
+						"130,0.15,circOut"
 					]
 				]
 			],
@@ -17093,9 +17083,9 @@ enum abstract Chart(String) from String to String {
 				109787.234042553,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.5,circOut,60"
+						"Cinematic Event",
+						"Move",
+						"60,0.5,circOut"
 					]
 				]
 			],
@@ -17168,9 +17158,9 @@ enum abstract Chart(String) from String to String {
 				111063.829787234,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.15,circOut,130"
+						"Cinematic Event",
+						"Move",
+						"130,0.15,circOut"
 					]
 				]
 			],
@@ -17293,9 +17283,9 @@ enum abstract Chart(String) from String to String {
 				112340.425531915,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"2,circOut,50"
+						"Cinematic Event",
+						"Move",
+						"50,2,circOut"
 					],
 					[
 						"Tween Chromatic Abberation",
@@ -18078,9 +18068,9 @@ enum abstract Chart(String) from String to String {
 				153189.494680851,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.0001,linear,110"
+						"Cinematic Event",
+						"Move",
+						"110,0.0001,linear"
 					]
 				]
 			],
@@ -111365,14 +111355,9 @@ enum abstract Chart(String) from String to String {
 						"0,0,0,0.0001,false"
 					],
 					[
-						"Cinematic Bar Controls",
-						"add",
-						"0.0001,linear,80"
-					],
-					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.0001,linear,80"
+						"Cinematic Event",
+						"Move",
+						"80,0.0001,linear"
 					],
 					[
 						"Camera Event",
@@ -111625,9 +111610,9 @@ enum abstract Chart(String) from String to String {
 						"0,0.0001,linear"
 					],
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"1.3,expoOut,0"
+						"Cinematic Event",
+						"Move",
+						"0,1.3,expoOut"
 					],
 					[
 						"Set Property",
@@ -111790,9 +111775,9 @@ enum abstract Chart(String) from String to String {
 						""
 					],
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"1,expoOut,80"
+						"Cinematic Event",
+						"Move",
+						"80,1,expoOut"
 					],
 					[
 						"Set Property",
@@ -111995,9 +111980,9 @@ enum abstract Chart(String) from String to String {
 						"0,0.0001,linear"
 					],
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"1.3,expoOut,0"
+						"Cinematic Event",
+						"Move",
+						"0,1.3,expoOut"
 					],
 					[
 						"Set Property",
@@ -112070,9 +112055,9 @@ enum abstract Chart(String) from String to String {
 						""
 					],
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.0001,linear,600"
+						"Cinematic Event",
+						"Move",
+						"600,0.0001,linear"
 					],
 					[
 						"Camera Event",
@@ -112120,9 +112105,9 @@ enum abstract Chart(String) from String to String {
 				194571.428571428,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"6,expoOut,80"
+						"Cinematic Event",
+						"Move",
+						"80,6,expoOut"
 					]
 				]
 			],
@@ -112165,9 +112150,9 @@ enum abstract Chart(String) from String to String {
 						"1250,900"
 					],
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"1.3,expoOut,0"
+						"Cinematic Event",
+						"Move",
+						"0,1.3,expoOut"
 					],
 					[
 						"Background Controls",
@@ -134735,11 +134720,6 @@ enum abstract Chart(String) from String to String {
 				342.857142857143,
 				[
 					[
-						"Cinematic Bar Controls",
-						"create",
-						"1"
-					],
-					[
 						"Camera Event",
 						"Tween Value",
 						"alpha,1,2"
@@ -135885,9 +135865,9 @@ enum abstract Chart(String) from String to String {
 						"0.02"
 					],
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"2,circOut,90"
+						"Cinematic Event",
+						"Move",
+						"90,2,circOut"
 					],
 					[
 						"Camera Event",
@@ -136565,9 +136545,9 @@ enum abstract Chart(String) from String to String {
 						"0.5"
 					],
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"1.2,expoOut,130"
+						"Cinematic Event",
+						"Move",
+						"130,1.2,expoOut"
 					],
 					[
 						"Camera Event",
@@ -137470,9 +137450,9 @@ enum abstract Chart(String) from String to String {
 						"255,255,255,0.25,0.7,true"
 					],
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"1.2,expoOut,0"
+						"Cinematic Event",
+						"Move",
+						"0,1.2,expoOut"
 					],
 					[
 						"Camera Event",
@@ -138960,9 +138940,9 @@ enum abstract Chart(String) from String to String {
 						"0,0,0,2,1,false"
 					],
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"1.5,sineOut,130"
+						"Cinematic Event",
+						"Move",
+						"130,1.5,sineOut"
 					]
 				]
 			],
@@ -139745,9 +139725,9 @@ enum abstract Chart(String) from String to String {
 				186514.285714286,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"2.5,circOut,0"
+						"Cinematic Event",
+						"Move",
+						"0,2.5,circOut"
 					],
 					[
 						"Bless Events",
@@ -140480,9 +140460,9 @@ enum abstract Chart(String) from String to String {
 						"0.6"
 					],
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"1.5,sineOut,60"
+						"Cinematic Event",
+						"Move",
+						"60,1.5,sineOut"
 					],
 					[
 						"Bless Events",
@@ -161754,14 +161734,9 @@ enum abstract Chart(String) from String to String {
 				-5000,
 				[
 					[
-						"Cinematic Bar Controls",
-						"create",
-						"1"
-					],
-					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"0.0001,linear,420"
+						"Cinematic Event",
+						"Move",
+						"420,0.0001,linear"
 					],
 					[
 						"Set Property",
@@ -161789,9 +161764,9 @@ enum abstract Chart(String) from String to String {
 						"1.1"
 					],
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"2,backOut,180"
+						"Cinematic Event",
+						"Move",
+						"180,2,backOut"
 					],
 					[
 						"Camera Event",
@@ -161884,9 +161859,9 @@ enum abstract Chart(String) from String to String {
 						"0.6"
 					],
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"1,circOut,50"
+						"Cinematic Event",
+						"Move",
+						"50,1,circOut"
 					]
 				]
 			],
@@ -162209,9 +162184,9 @@ enum abstract Chart(String) from String to String {
 						"0.07"
 					],
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"1.5,circOut,40"
+						"Cinematic Event",
+						"Move",
+						"40,1.5,circOut"
 					],
 					[
 						"Set Property",
@@ -162294,9 +162269,9 @@ enum abstract Chart(String) from String to String {
 				20995.3125,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"1.5,circOut,80"
+						"Cinematic Event",
+						"Move",
+						"80,1.5,circOut"
 					],
 					[
 						"Set Property",
@@ -162389,9 +162364,9 @@ enum abstract Chart(String) from String to String {
 				23997.65625,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"1.5,circOut,100"
+						"Cinematic Event",
+						"Move",
+						"100,1.5,circOut"
 					],
 					[
 						"Set Property",
@@ -162484,9 +162459,9 @@ enum abstract Chart(String) from String to String {
 				26997.65625,
 				[
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"1.5,circOut,120"
+						"Cinematic Event",
+						"Move",
+						"120,1.5,circOut"
 					],
 					[
 						"Set Property",
@@ -162589,9 +162564,9 @@ enum abstract Chart(String) from String to String {
 						"0.6"
 					],
 					[
-						"Cinematic Bar Controls",
-						"moveboth",
-						"2,backOut,50"
+						"Cinematic Event",
+						"Move",
+						"50,2,backOut"
 					]
 				]
 			],

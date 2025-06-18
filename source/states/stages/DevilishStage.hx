@@ -11,7 +11,9 @@ class DevilishStage extends BaseStage
 	//Stage vars
 	var gradient:FlxSprite;
 	var bg:FlxSprite;
+	var whiteBG:FlxSprite;
 	var overlay:FlxSprite;
+	var lightingSound:FlxSound;
 
 	public static var devilishGaming:VideoSprite;
 	public static var episodeIntro:VideoSprite;
@@ -43,6 +45,14 @@ class DevilishStage extends BaseStage
 		bg.scrollFactor.set(0.8, 0.8);
 		add(bg);
 
+		whiteBG = new FlxSprite().makeGraphic(1, 1, 0xFFFFFFFF);
+		whiteBG.scale.set(FlxG.width*5, FlxG.height*5);
+		whiteBG.scrollFactor.set(0, 0);
+		whiteBG.screenCenter();
+		whiteBG.alpha = 0.001;
+		whiteBG.active = false;
+		add(whiteBG);
+
 		var buildings:FlxSprite = new FlxSprite(-600, 130).loadGraphic(Paths.image(PlayState.pathway + "back-buildings"));
 		buildings.scale.set(0.84, 0.84);
 		buildings.scrollFactor.set(0.9, 0.9);
@@ -60,6 +70,9 @@ class DevilishStage extends BaseStage
 		add(gradient);
 
 		setStartCallback(devilIntro);
+
+		lightingSound = new FlxSound();
+		FlxG.sound.list.add(lightingSound);
 	}
 	
 	override function createPost()
@@ -321,6 +334,19 @@ class DevilishStage extends BaseStage
 				}
 			});
 		}
+
+		//Cool thunderstorm thing cuz it rains like crazy in Devilish Deal
+		if (!ClientPrefs.data.lowQuality && curBeat >= 32 && curBeat <= 128)
+		{
+			if (FlxG.random.bool(5))
+			{
+				lightingSound.loadEmbedded(Paths.soundRandom('lightning/Lightning', 1, 3));
+				lightingSound.volume = 0.25;
+				lightingSound.play();
+				whiteBG.alpha = 0.75;
+				FlxTween.tween(whiteBG, {alpha: 0.0001}, FlxG.random.float(1, 3), {ease: FlxEase.circOut});
+			}
+		}
 		
 		minnieIcon.scale.set(1.2, 1.2);
 		minnieIcon.updateHitbox();
@@ -328,6 +354,7 @@ class DevilishStage extends BaseStage
 		satanIconPulse.scale.set(1.35, 1.35);
 		satanIconPulse.updateHitbox();
 	}
+
 	// For events
 	override function eventCalled(eventName:String, value1:String, value2:String, flValue1:Null<Float>, flValue2:Null<Float>, strumTime:Float)
 	{

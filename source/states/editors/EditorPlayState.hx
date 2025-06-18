@@ -96,7 +96,10 @@ class EditorPlayState extends MusicBeatState
 
 		var underlay:FlxSprite = new FlxSprite();
 		if (ClientPrefs.data.middleScroll)
+		{
 			underlay.loadGraphic(Paths.image('Funkin_avi/editor/chart/playtestUnderlaysMiddle'));
+			underlay.screenCenter(X);
+		}
 		else
 			underlay.loadGraphic(Paths.image('Funkin_avi/editor/chart/playtestUnderlays'));
 		underlay.scrollFactor.set();
