@@ -210,6 +210,11 @@ class CharacterMenu extends MusicBeatState
         descText.text = charArray[curSelected][5];
         name.y -= 10;
 
+        if (curSelected == 13)
+            descText.setFormat(Paths.font('DaLotFont.ttf'), 16, FlxColor.WHITE, LEFT, OUTLINE, FlxColor.BLACK);
+        else
+            descText.setFormat(Paths.font('Oceanic_Cocktail_Demo.otf'), 23, FlxColor.WHITE, LEFT, OUTLINE, FlxColor.BLACK);
+
         #if DISCORD_RPC
         #if DEV_BUILD
         DiscordClient.changePresence('???????? ??????', 'Stop checking here for leaks fool.', 'icon', 'mouse');
