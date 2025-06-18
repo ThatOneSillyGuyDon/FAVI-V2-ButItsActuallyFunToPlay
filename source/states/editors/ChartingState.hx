@@ -37,7 +37,7 @@ import objects.HealthIcon;
 import objects.AttachedSprite;
 import objects.Character;
 import substates.Prompt;
-
+import lime.app.Application;
 
 #if sys
 import flash.media.Sound;
@@ -77,7 +77,7 @@ class ChartingState extends MusicBeatState
 		['Set Property', "Value 1: Variable name\nValue 2: New value"],
 		['Tween Chromatic Abberation', 'Value 1 - Name of the event\nValue 2 - Event Data\n\nTween - Intensity, Duration\nZoom - Intensity, Duration\nSet - Intensity'],
 		['Manage Lyrics', "Value 1: Charactr speaking\nValue 2: Text, Font, Size, Duration, Tween Type, Text Delay."],
-		['Meta Event', 'Handles 4th wall breaking elements!\n\nValue 1: Meta Value\nValue 2: Meta Data\n\nDiscord - Details Txt, State Txt, Icon Name\nWindow Title - Bool Check for Extra Text, Main Text, Extra Text\nWindow Position - X, Y, Time, Ease Type (Default Position is 320 X 180)'],
+		['Meta Event', 'Handles 4th wall breaking elements!\n\nValue 1: Meta Value\nValue 2: Meta Data\n\nDiscord - Details Txt, State Txt, Icon Name\nWindow Title - Bool Check for Extra Text, Main Text, Extra Text\nWindow Position - X Pos, Y Pos, Timer, Ease\nToggle Fullscreen - Bool Value\nToggle Fake Closeout - Bool Value\nToggle Window Transparency - Bool Value\nShake Window - Intensity, Duration in milliseconds'],
 		['Cinematic Event', "Creates a cinematic visual in-game\n\nValue 1: Action Type you want\nValue 2: Control inputs for action\n\nMove - Thickness, Duration, Ease name\nBop - Intensity, Speed, Ease name\nAngle - Angle, Duration, Ease name\nFlash - R, G, B, Duration, Ease name\nColor - R, G, B, Duration, Ease name\nAlpha - Visibility, Duration, Ease name\n\n(You must use the \"Move\" action type first before\nusing any other action! Move creates the bars!)"],
 		['Camera Event', "A series of customizers and event types that\nchanges the camera behavior!\n\nValue 1: Name of event you want\nValue 2: Controls the event\n\nStart Hidden - makes the song start off hidden no matter where you place the event!\nChange Value - Value Name, Value Input\nTween Value - Value Name, Value Input, Duration, Ease type\nShake - Intensity, Duration, Game or HUD\nFade - R, G, B, Duration, Alpha, Fade In Bool Toggle\nFlash - R, G, B, Duration, Alpha, Blend Bool Toggle\nChange Pos/Set Position - X Pos, Y Pos\nTween Position: X Pos, Y Pos, Duration, Ease type\nSnap Position: X Pos, Y Pos\n\n(Please refer to documentation or code that comes with this for\nvalid value names for \"Tween Value\" & \"Change Value\")"],
 		['Background Controls', "A series of customizers and event types that\nchanges the background's behavior!\n\nValue 1: Name of event you want\nValue 2: Controls the event\n\nFlash - Time, Ease type, Visibility, Colors (IN RGB FORM!!!)\nDarken - Visibility, Time, Ease type"],
@@ -216,10 +216,16 @@ class ChartingState extends MusicBeatState
 
 		// Paths.clearMemory();
 
+		AppIcon.changeIcon("debugicon");
 		#if DISCORD_ALLOWED
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("Chart Editor", StringTools.replace(_song.song, '-', ' '));
+		switch (_song.song.toLowerCase())
+		{
+			case "joygrim" | "dentophobia" | "scrapped" | "neglection": DiscordClient.changePresence("Chart Editor", "Charting a song", "icon");
+			default: DiscordClient.changePresence("Chart Editor", StringTools.replace(_song.song, '-', ' '), "icon");
+		}
 		#end
+		Application.current.window.title = "Funkin.avi - Chart Editor - Editing for: " + _song.song;
 
 		vortex = FlxG.save.data.chart_vortex;
 		ignoreWarnings = FlxG.save.data.ignoreWarnings;
@@ -1487,14 +1493,40 @@ class ChartingState extends MusicBeatState
 
 			#if DISCORD_ALLOWED
 			// Updating Discord Rich Presence
-			DiscordClient.changePresence("Chart Editor", StringTools.replace(_song.song, '-', ' '));
+			switch (_song.song.toLowerCase())
+			{
+				case "joygrim" | "dentophobia" | "scrapped" | "neglection": DiscordClient.changePresence("Chart Editor", "Charting a song", "icon");
+				default: DiscordClient.changePresence("Chart Editor", StringTools.replace(_song.song, '-', ' '), "icon");
+			}
 			#end
 		}
 		super.closeSubState();
 	}
 
 	function generateSong() {
-		FlxG.sound.playMusic(Paths.inst(currentSongName), 0.6/*, false*/);
+		switch (_song.song)
+		{
+			case "Rotten Petals":
+				FlxG.sound.playMusic(Paths.music("aviOST/rottenPetals"));
+			case "Seeking Freedom":
+				FlxG.sound.playMusic(Paths.music("aviOST/seekingFreedom"));
+			case "Curtain Call":
+				FlxG.sound.playMusic(Paths.music("aviOST/curtainCall"));
+			case "A True Monster":
+				FlxG.sound.playMusic(Paths.music("aviOST/aTrueMonster"));
+			case "Am I Real?":
+				FlxG.sound.playMusic(Paths.music("aviOST/gameOver/amIReal"));
+			case "Your Final Bow":
+				FlxG.sound.playMusic(Paths.music("aviOST/gameOver/yourFinalBow"));
+			case "The Wretched Tilezones (Simple Life)":
+				FlxG.sound.playMusic(Paths.music("aviOST/pause/theWretchedTilezones"));
+			case "Ahh the Scary (Somber Night)":
+				FlxG.sound.playMusic(Paths.music("aviOST/pause/somberNight"));
+			case "Ship the Fart Yay Hooray <3 (Distant Stars)":
+				FlxG.sound.playMusic(Paths.music("aviOST/pause/shipTheFartYayHoorayv3v"));
+			default:
+				FlxG.sound.playMusic(Paths.inst(currentSongName), 0.6/*, false*/);
+		}
 		FlxG.sound.music.autoDestroy = false;
 		if (instVolume != null) FlxG.sound.music.volume = instVolume.value;
 		if (check_mute_inst != null && check_mute_inst.checked) FlxG.sound.music.volume = 0;
@@ -2237,7 +2269,7 @@ class ChartingState extends MusicBeatState
 	var columns:Int = 9;
 	function reloadGridLayer() {
 		gridLayer.clear();
-		gridBG = FlxGridOverlay.create(1, 1, columns, Std.int(getSectionBeats() * 4 * zoomList[curZoom]));
+		gridBG = FlxGridOverlay.create(1, 1, columns, Std.int(getSectionBeats() * 4 * zoomList[curZoom]), true, FlxColor.fromRGB(16, 16, 16), FlxColor.fromRGB(32, 32, 32));
 		gridBG.antialiasing = false;
 		gridBG.scale.set(GRID_SIZE, GRID_SIZE);
 		gridBG.updateHitbox();
@@ -2252,7 +2284,7 @@ class ChartingState extends MusicBeatState
 		var foundNextSec:Bool = false;
 		if(sectionStartTime(1) <= FlxG.sound.music.length)
 		{
-			nextGridBG = FlxGridOverlay.create(1, 1, columns, Std.int(getSectionBeats(curSec + 1) * 4 * zoomList[curZoom]));
+			nextGridBG = FlxGridOverlay.create(1, 1, columns, Std.int(getSectionBeats(curSec + 1) * 4 * zoomList[curZoom]), true, FlxColor.fromRGB(16, 16, 16), FlxColor.fromRGB(32, 32, 32));
 			nextGridBG.antialiasing = false;
 			nextGridBG.scale.set(GRID_SIZE, GRID_SIZE);
 			nextGridBG.updateHitbox();

@@ -25,8 +25,10 @@ class MasterEditorMenu extends MusicBeatState
 		FlxG.camera.bgColor = FlxColor.BLACK;
 		#if desktop
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("Editors Main Menu", null);
+		DiscordClient.changePresence("Editors Main Menu", null, "icon");
 		#end
+
+		AppIcon.changeIcon("debugicon");
 
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/editor/chart/chartEditorBG'));
 		bg.scrollFactor.set();

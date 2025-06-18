@@ -126,6 +126,7 @@ class MainMenuState extends MusicBeatState
 		FlxG.cameras.add(camHUD, false);
 		FlxG.cameras.setDefaultDrawTarget(camGame, true);
 
+		AppIcon.changeIcon("newIcon");
 		#if desktop
 		DiscordClient.changePresence('Main Menu', 'Browsing...', 'icon', 'mouse');
 		#end
