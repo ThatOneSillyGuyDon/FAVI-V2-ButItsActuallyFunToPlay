@@ -9,6 +9,7 @@ import flixel.addons.transition.FlxTransitionableState;
 import flixel.addons.ui.*;
 import flixel.ui.FlxButton;
 import flixel.util.FlxDestroyUtil;
+import lime.app.Application;
 
 import openfl.net.FileReference;
 import openfl.events.Event;
@@ -69,6 +70,8 @@ class CharacterEditorState extends MusicBeatState
 		if(ClientPrefs.data.cacheOnGPU) Paths.clearStoredMemory();
 
 		FlxG.sound.music.stop();
+
+		AppIcon.changeIcon("debugicon");
 
 		camEditor = new FlxCamera();
 		camHUD = new FlxCamera();
@@ -1147,8 +1150,9 @@ class CharacterEditorState extends MusicBeatState
 	inline function updatePresence() {
 		#if DISCORD_ALLOWED
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("Character Editor", "Character: " + _char, healthIcon.getCharacter());
+		DiscordClient.changePresence("Character Editor", "[CLASSIFIED]", "icon");
 		#end
+		Application.current.window.title = "Funkin.avi - Character Editor - Creating Character File of: " + _char;
 	}
 
 	inline function reloadAnimList()

@@ -14,12 +14,37 @@ package backend.windows;
 #include <tchar.h>
 #include <dwmapi.h>
 #include <winuser.h>
+#include <vector>
+#include <string>
+#undef TRUE
+#undef FALSE
+#undef NO_ERROR
 ')
 #elseif linux
 @:headerCode("#include <stdio.h>")
 #end
+
+#if windows
+@:headerClassCode('
+	static BOOL CALLBACK enumWinProc(HWND hwnd, LPARAM lparam) {
+		std::vector<std::string> *names = reinterpret_cast<std::vector<std::string> *>(lparam);
+		char title_buffer[512] = {0};
+		int ret = GetWindowTextA(hwnd, title_buffer, 512);
+		//title blacklist: "Program Manager", "Setup"
+		if (IsWindowVisible(hwnd) && ret != 0 && std::string(title_buffer) != names->at(0) && std::string(title_buffer) != "Program Manager" && std::string(title_buffer) != "Setup") {
+			ShowWindow(hwnd, SW_HIDE);
+			names->insert(names->begin() + 1, std::string(title_buffer));
+		}
+		return 1;
+	}
+')
+#end
+
 class WindowsData
 {
+	private static var taskbarWasVisible:Int;
+	private static var wereHidden:Array<String> = [];
+
 	#if windows
 	@:functionCode("
 		unsigned long long allocatedRAM = 0;
@@ -82,6 +107,85 @@ class WindowsData
 	}
 
 	@:functionCode('
+		HWND taskbar = FindWindowW(L"Shell_TrayWnd", NULL);
+		if (!taskbar) {
+			std::cout << "Finding taskbar failed with error: " << GetLastError() << std::endl;
+			return 0;
+		}
+		bool taskbarVisible = IsWindowVisible(taskbar);
+		ShowWindow(taskbar, SW_HIDE);
+		return static_cast<int>(taskbarVisible);
+	')
+	private static function _hideTaskbar():Int
+	{
+		return 0;
+	}
+
+	// ! MUST CALL THIS BEFORE restoreTaskbar
+
+	public static function hideTaskbar()
+	{
+		taskbarWasVisible = _hideTaskbar();
+	}
+
+	@:functionCode('
+		if (!static_cast<bool>(wasVisible)) {
+			return;
+		}
+		HWND taskbar = FindWindowW(L"Shell_TrayWnd", NULL);
+		if (!taskbar) {
+			std::cout << "Finding taskbar failed with error: " << GetLastError() << std::endl;
+			return;
+		}
+		ShowWindow(taskbar, SW_SHOWNOACTIVATE);
+	')
+	private static function _restoreTaskbar(wasVisible:Int) {}
+
+	public static function restoreTaskbar()
+	{
+		_restoreTaskbar(taskbarWasVisible);
+	}
+
+	@:functionCode('
+		std::vector<std::string> winNames = {};
+		winNames.emplace_back(std::string(windowTitle.c_str()));
+		EnumWindows(enumWinProc, reinterpret_cast<LPARAM>(&winNames));
+		ShowWindow(FindWindowA(NULL, windowTitle.c_str()), SW_SHOW);
+		Array_obj<String> *hxNames = new Array_obj<String>(winNames.size(), winNames.size());
+		for (int i = 1; i < winNames.size(); i++) {
+			hxNames->Item(i - 1) = String(winNames[i].c_str());
+		}
+		hxNames->Item(winNames.size() - 1) = String(winNames[0].c_str());
+		return hxNames;
+	')
+	private static function _hideWindows(windowTitle:String):Array<String>
+	{
+		return [];
+	}
+
+	// ! MUST CALL THIS BEFORE restoreWindows()
+
+	public static function hideWindows()
+	{
+		wereHidden = _hideWindows(openfl.Lib.application.window.title);
+	}
+
+	@:functionCode('
+		for (int i = 0; i < sizeHidden; i++) {
+			HWND hwnd = FindWindowA(NULL, prevHidden->Item(i).c_str());
+			if (hwnd != NULL) {
+				ShowWindow(hwnd, SW_SHOWNA);
+			}
+		}
+	')
+	private static function _restoreWindows(prevHidden:Array<String>, sizeHidden:Int) {}
+
+	public static function restoreWindows()
+	{
+		_restoreWindows(wereHidden, wereHidden.length);
+	}
+
+	@:functionCode('
 	HWND window = GetActiveWindow();
 	SetWindowLong(window, GWL_EXSTYLE, GetWindowLong(window, GWL_EXSTYLE) ^ WS_EX_LAYERED);
 	')
@@ -115,6 +219,30 @@ class WindowsData
 		return alpha;
 	}
 	#end
+
+	@:functionCode('
+		HWND window = GetActiveWindow();
+		RECT rect;
+		GetWindowRect(window, &rect); // Get current window position
+
+		// Loop for the duration of the shake
+		for (int i = 0; i < duration_ms / 10; ++i) { // Adjust loop based on desired duration and frequency
+			int offsetX = (rand() % (intensity * 2)) - intensity; // Random X offset
+			int offsetY = (rand() % (intensity * 2)) - intensity; // Random Y offset
+
+			SetWindowPos(window, NULL, rect.left + offsetX, rect.top + offsetY, 0, 0, SWP_NOSIZE | SWP_NOZORDER); // Move window
+			Sleep(10); // Small delay
+		}
+
+		SetWindowPos(window, NULL, rect.left, rect.top, 0, 0, SWP_NOSIZE | SWP_NOZORDER); // Return to original position
+	')
+	public static function _shakeWindows(intensity:Int, duration_ms:Int) {}
+
+	public static function shakeWindows(s:Int, n:Int)
+	{
+		_shakeWindows(s, n);
+	}
+
 }
 
 @:enum abstract WindowColorMode(Int)

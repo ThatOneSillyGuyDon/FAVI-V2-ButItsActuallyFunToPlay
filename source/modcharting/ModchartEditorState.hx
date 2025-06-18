@@ -40,6 +40,7 @@ import flixel.addons.ui.FlxUITabMenu;
 import flixel.util.FlxDestroyUtil;
 import flixel.addons.transition.FlxTransitionableState;
 
+import lime.app.Application;
 
 #if LEATHER
 import states.PlayState;
@@ -356,6 +357,7 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
 	Paths.clearStoredMemory();
 	Paths.clearUnusedMemory();
 	#end
+
         camGame = new FlxCamera();
         camHUD = new FlxCamera();
 		camHUD.bgColor.alpha = 0;
@@ -404,6 +406,16 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
         #else
         Conductor.changeBPM(PlayState.SONG.bpm);
         #end
+
+        switch (_song.song)
+        {
+            case "Joygrim" | "Dentophobia" | "Neglection" | "Scrapped": DiscordClient.changePresence("Modchart Editor", "Modcharting a song", "icon");
+            default: DiscordClient.changePresence("Modchart Editor", StringTools.replace(_song.song, '-', ' '), "icon");
+        }
+
+        AppIcon.changeIcon("debugicon");
+
+        Application.current.window.title = "Funkin.avi - Modchart Editor - Editing for: " + _song.song;
 
 	if(FlxG.sound.music != null)
 		FlxG.sound.music.stop();
@@ -1150,7 +1162,29 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
 
         inst = new FlxSound();
         try {
-            inst.loadEmbedded(Paths.inst(PlayState.SONG.song));
+            switch (PlayState.SONG.song)
+            {
+                case "Rotten Petals":
+                    inst.loadEmbedded(Paths.music("aviOST/rottenPetals"));
+                case "Seeking Freedom":
+                    inst.loadEmbedded(Paths.music("aviOST/seekingFreedom"));
+                case "Curtain Call":
+                    inst.loadEmbedded(Paths.music("aviOST/curtainCall"));
+                case "A True Monster":
+                    inst.loadEmbedded(Paths.music("aviOST/aTrueMonster"));
+                case "Am I Real?":
+                    inst.loadEmbedded(Paths.music("aviOST/gameOver/amIReal"));
+                case "Your Final Bow":
+                    inst.loadEmbedded(Paths.music("aviOST/gameOver/yourFinalBow"));
+                case "The Wretched Tilezones (Simple Life)":
+                    inst.loadEmbedded(Paths.music("aviOST/pause/theWretchedTilezones"));
+                case "Ahh the Scary (Somber Night)":
+                    inst.loadEmbedded(Paths.music("aviOST/pause/somberNight"));
+                case "Ship the Fart Yay Hooray <3 (Distant Stars)":
+                    inst.loadEmbedded(Paths.music("aviOST/pause/shipTheFartYayHoorayv3v"));
+                default:
+                    inst.loadEmbedded(Paths.inst(PlayState.SONG.song));
+            }
 		}
         FlxG.sound.list.add(inst);
 

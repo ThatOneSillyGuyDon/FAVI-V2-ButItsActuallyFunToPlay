@@ -176,13 +176,6 @@ class PlayState extends MusicBeatState
 	public var GF_X:Float = 400;
 	public var GF_Y:Float = 130;
 
-	// WINDOW VARS
-	@:isVar var winX(default, set):Int;
-	@:isVar var winY(default, set):Int;
-
-	@:noCompletion function set_winX(x:Int):Int return Lib.application.window.x = x;
-	@:noCompletion function set_winY(y:Int):Int return Lib.application.window.y = y;
-
 	public var songSpeedTween:FlxTween;
 	public var songSpeed(default, set):Float = 1;
 	public var songSpeedType:String = "multiplicative";
@@ -449,8 +442,24 @@ class PlayState extends MusicBeatState
 
 	public var canBopCam:Bool = false;
 
+	//META EVENT VARIABLES
 	var discordIcon:String;
 	var discordTxt:Array<String> = [];
+
+	var winX(default, set):Int;
+	var winY(default, set):Int;
+
+	@:noCompletion function set_winX(x:Int):Int { 
+		winX = x;
+		Lib.application.window.x = winX;
+		return x; 
+	}
+
+	@:noCompletion function set_winY(y:Int):Int {
+		winY = y;
+		Lib.application.window.y = winY;
+		return y; 
+	}
 
 	override public function create()
 	{
@@ -635,6 +644,7 @@ class PlayState extends MusicBeatState
 			case 'forestOld': new states.stages.legacyStages.LegForest(); //Hunted Legacy
 			case 'smilesOffice': new states.stages.legacyStages.LegSmile(); //Twisted Grins Legacy
 			case 'forbiddenRealm': new states.stages.legacyStages.LegForbiddenRealm(); //Malfunction Legacy
+			case 'testingArea': new states.stages.TestStage(); //test area
 		}
 
 		stageBGDark = new FlxSprite().makeGraphic(1, 1, 0xFFFFFFFF);
@@ -1109,7 +1119,7 @@ class PlayState extends MusicBeatState
 		{
 			switch (curStage)
 			{
-				case 'stage' | 'desktop' | 'waltRoom' | 'apartment' | 'treasureIsland' | 'forbiddenRealm' | 'fuckingLine' | 'staticVoid' | 'vaultRoom' | 'war' | 'grassNation':
+				case 'stage' | 'desktop' | 'waltRoom' | 'apartment' | 'treasureIsland' | 'forbiddenRealm' | 'fuckingLine' | 'staticVoid' | 'vaultRoom' | 'war' | 'grassNation' | 'testingArea':
 				// don't add scratch assets
 
 				case 'theLoop':
@@ -1225,9 +1235,6 @@ class PlayState extends MusicBeatState
 		lyricsIcon.visible = false;
 		lyricsIcon.cameras = [camOther];
 		add(lyricsIcon);
-
-		Lib.application.window.x = Std.int((Lib.application.window.display.bounds.width - Lib.application.window.width) * 0.5);
-		Lib.application.window.y = Std.int((Lib.application.window.display.bounds.height - Lib.application.window.height) * 0.5);
 
 		super.create();
 		Paths.clearUnusedMemory();
@@ -1579,6 +1586,9 @@ class PlayState extends MusicBeatState
 			generateStaticArrows(1);
 
 			NoteMovement.getDefaultStrumPos(this);
+
+			winX = Std.int((Lib.application.window.display.bounds.width - Lib.application.window.width) * 0.5);
+			winY = Std.int((Lib.application.window.display.bounds.height - Lib.application.window.height) * 0.5);
 
 			count3 = new FlxSound().loadEmbedded(Paths.sound('intro3' + introSoundsSuffix));
 			count2 = new FlxSound().loadEmbedded(Paths.sound('intro2' + introSoundsSuffix));
@@ -3913,17 +3923,44 @@ class PlayState extends MusicBeatState
 
 				switch (value1.toLowerCase().trim())
 				{
-					case "windowtitle" | "window title" | "window":
+					case "windowtitle" | "window title":
 						var checkExtraText:Bool = triggerInfo[0].toLowerCase().trim() == "true";
 
 						windowName = triggerInfo[1] + (checkExtraText ? (isStoryMode ? PlayState.curEpisode + " - " : "Freeplay - ") + triggerInfo[2].trim() : "");
 						Application.current.window.title = windowName;
 
+					case "shakewindow" | "shake window":
+						CppAPI.shakeWindows(Std.parseInt(triggerInfo[0]), Std.parseInt(triggerInfo[1]));
+
+					case "togglewindowtransparency" | "toggle window transparency":
+						var checkToggle:Bool = triggerInfo[0].toLowerCase().trim() == "true";
+
+						if(checkToggle)
+							Transparency.getWindowsTransparent();
+						else
+							Transparency.getWindowsbackward();
+
+					case "togglefakecloseout" | "toggle fake closeout":
+						var checkclosefakeout:Bool = triggerInfo[0].toLowerCase().trim() == "true";
+
+						if (checkclosefakeout)
+							CppAPI.hideWindows();
+						else
+							CppAPI.restoreWindows();
+
+					case "toggle fullscreen" | "togglefullscreen":
+						var checkFullscreen:Bool = triggerInfo[0].toLowerCase().trim() == "true";
+
+						if (checkFullscreen)
+							FlxG.fullscreen = true;
+						else
+							FlxG.fullscreen = false;
+
 					case "windowposition" | "window position" | "windowpos" | "window pos":
-						FlxTween.tween(this, {winX: Std.parseInt(triggerInfo[0]), winY: Std.parseInt(triggerInfo[1])}, Std.parseFloat(triggerInfo[2]), //Time
-							{
-								ease: returnTweenEase(triggerInfo[3]) //Ease
-							});
+						FlxTween.tween(this, {winX: Std.int((Lib.application.window.display.bounds.width - Lib.application.window.width) * 0.5) + Std.parseInt(triggerInfo[0]), winY: Std.int((Lib.application.window.display.bounds.height - Lib.application.window.height) * 0.5) + Std.parseInt(triggerInfo[1])}, Std.parseFloat(triggerInfo[2]), //Time
+						{
+							ease: returnTweenEase(triggerInfo[3].toLowerCase().trim()) //Ease
+						});
 
 					case "discord" | "richpresence" | "rich presence" | "activity":
 						if (triggerInfo[0].trim() != null)
@@ -4098,6 +4135,7 @@ class PlayState extends MusicBeatState
 							flashSprite.alpha = Std.parseFloat(triggerInfo[4]);
 							flashSprite.blend = (boolShit ? ADD : NORMAL);
 						}
+
 					case "fade":
 						if (triggerInfo[0] == null) triggerInfo[0] = "0";
 						if (triggerInfo[1] == null) triggerInfo[1] = "0";
@@ -5627,8 +5665,11 @@ class PlayState extends MusicBeatState
 		FlxG.animationTimeScale = 1;
 		#if FLX_PITCH FlxG.sound.music.pitch = 1; #end
 		ClientPrefs.data.cacheOnGPU = backupGpu;
+		Lib.application.window.x = Std.int((Lib.application.window.display.bounds.width - Lib.application.window.width) * 0.5);
+		Lib.application.window.y = Std.int((Lib.application.window.display.bounds.height - Lib.application.window.height) * 0.5);
 		Lib.application.window.resize(1280, 720);
-		Lib.application.window.move(320, 180);
+		//if (!ClientPrefs.data.fullscreen)
+			FlxG.fullscreen = false;
 		backend.NoteTypesConfig.clearNoteTypesData();
 		instance = null;
 		super.destroy();

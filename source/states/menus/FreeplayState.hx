@@ -892,34 +892,39 @@ class FreeplayState extends MusicBeatState
 			curSelected = 0;
 
 		var songName:String = songs[curSelected].songName;
+		var categoryName:String = "???";
 		songArtist = songs[curSelected].composer;
 
 		switch (freeplayMenuList)
 		{
 			case 0: 
 				{
-					lime.app.Application.current.window.title = "Funkin.avi - Freeplay: Story Menu- " + songName + ' - Composed by: ' + songArtist;
+					lime.app.Application.current.window.title = "Funkin.avi - Freeplay: Story Menu - " + songName + ' - Composed by: ' + songArtist;
+					categoryName = "Story Songs";
 				}
 			case 1:
 				{
 					lime.app.Application.current.window.title = "Funkin.avi - Freeplay: Extras Menu - " + songName + " - Composed by: " + songArtist;
+					categoryName = "Extra Songs";
 				}
 			case 2:
 				{
 					lime.app.Application.current.window.title = "Funkin.avi - Freeplay: Legacy Menu - " + songName + " - Composed by: " + songArtist;
+					categoryName = "Legacy Songs";
 				}
 			case 3:
 				{
 					lime.app.Application.current.window.title = "Funkin.avi - Freeplay: Mania Menu - " + songName + " - Composed by: " + songArtist;
+					categoryName = "Mania Songs";
 				}
 		}
 
 		#if DISCORD_ALLOWED
-		#if DEV_BUILD
-		DiscordClient.changePresence("Freeplay Menu", "It's a secret...", "icon", "disc-player");
-		#else
-		DiscordClient.changePresence("Freeplay Menu", "Picking Song: " + songs[curSelected].songName, "icon", "disc-player");
-		#end
+		switch (songs[curSelected].songName)
+		{
+			case "Joygrim" | "Dentophobia" | "Scrapped" | "Neglection": DiscordClient.changePresence("Freeplay Menu", "It's a secret...", "icon", "disc-player");
+			default: DiscordClient.changePresence("Freeplay Menu: " + categoryName, "Picking Song: " + songs[curSelected].songName, "icon", "disc-player");
+		}
 		#end
 			
 		var newColor:Int = songs[curSelected].color;

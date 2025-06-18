@@ -203,18 +203,20 @@ class Paths
 		return file;
 	}
 
-	inline static public function voices(song:String, postfix:String = null):Any
+	inline static public function voices(song:String, postfix:String = null, diff:String = null):Any
 	{
 		var songKey:String = '${formatToSongPath(song)}/Voices';
 		if(postfix != null) songKey += '-' + postfix;
+		if(diff != null) songKey += '-' + diff;
 		//trace('songKey test: $songKey');
 		var voices = returnSound(null, songKey, 'songs');
 		return voices;
 	}
 
-	inline static public function inst(song:String):Any
+	inline static public function inst(song:String, diff:String = null):Any
 	{
 		var songKey:String = '${formatToSongPath(song)}/Inst';
+		if(diff != null) songKey += '-' + diff;
 		var inst = returnSound(null, songKey, 'songs');
 		return inst;
 	}
