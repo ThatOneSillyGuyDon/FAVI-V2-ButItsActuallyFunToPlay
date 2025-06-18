@@ -5627,7 +5627,6 @@ class PlayState extends MusicBeatState
 		FlxG.animationTimeScale = 1;
 		#if FLX_PITCH FlxG.sound.music.pitch = 1; #end
 		ClientPrefs.data.cacheOnGPU = backupGpu;
-		Lib.application.window.resize(1280, 720);
 		Lib.application.window.move(320, 180);
 		backend.NoteTypesConfig.clearNoteTypesData();
 		instance = null;

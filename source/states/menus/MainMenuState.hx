@@ -453,6 +453,7 @@ class MainMenuState extends MusicBeatState
 					}
 				}
 				FlxG.sound.play(Paths.sound('funkinAVI/menu/selectSfx'));
+				selectedSomethin = true;
 				FlxG.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
 			}
 			else
@@ -489,6 +490,7 @@ class MainMenuState extends MusicBeatState
 									MusicBeatState.switchState(new StoryMenu());
 								case 'credits':
 									FlxG.mouse.visible = false;
+									FlxG.sound.music.fadeOut(0.8);
 									MusicBeatState.switchState(new CreditsMenu());
 								case 'options':
 									LoadingState.loadAndSwitchState(new options.OptionsState());
