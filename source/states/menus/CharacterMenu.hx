@@ -55,8 +55,7 @@ class CharacterMenu extends MusicBeatState
         bg.antialiasing = ClientPrefs.data.antialiasing;
         add(bg);
 
-        character = new FlxSprite(340, 360).loadGraphic(Paths.image(path + 'characters/isolatedMick'));
-        //character.screenCenter().x -= 300;
+        character = new FlxSprite(340, 360).loadGraphic(Paths.image(path + 'characters/avierNew'));
         character.setGraphicSize(Std.int(character.width * .75));
         character.angle = 6;
         character.antialiasing = ClientPrefs.data.antialiasing;
@@ -185,7 +184,6 @@ class CharacterMenu extends MusicBeatState
                     });
                 }
                 changeSelection((checkNewHold - checkLastHold));
-                //changeDiff();
             }
         }
 
@@ -210,6 +208,7 @@ class CharacterMenu extends MusicBeatState
         descText.text = charArray[curSelected][5];
         name.y -= 10;
 
+        //Changes the font when hovering over LOT
         if (curSelected == 13)
             descText.setFormat(Paths.font('DaLotFont.ttf'), 16, FlxColor.WHITE, LEFT, OUTLINE, FlxColor.BLACK);
         else

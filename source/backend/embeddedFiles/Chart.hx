@@ -111638,6 +111638,21 @@ enum abstract Chart(String) from String to String {
 						"Trigger TG shader shi",
 						"AddLight",
 						""
+					],
+					[
+						"Change Scroll Speed",
+						"1.2",
+						"0"
+					]
+				]
+			],
+			[
+				72000,
+				[
+					[
+						"Change Scroll Speed",
+						"1.4",
+						"1"
 					]
 				]
 			],
@@ -111688,6 +111703,16 @@ enum abstract Chart(String) from String to String {
 						"Manage Lyrics",
 						"smile",
 						"Keep it DOWN you runt!,disneyFreeplayFont.ttf,30,2.5,sineInOut,0.08"
+					]
+				]
+			],
+			[
+				97714.2857142857,
+				[
+					[
+						"Change Scroll Speed",
+						"1",
+						"0"
 					]
 				]
 			],
@@ -112023,6 +112048,66 @@ enum abstract Chart(String) from String to String {
 						"Set Property",
 						"cameraSpeed",
 						"2.5"
+					],
+					[
+						"Change Scroll Speed",
+						"1.4",
+						"0"
+					]
+				]
+			],
+			[
+				164571.428571428,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,0.85"
+					]
+				]
+			],
+			[
+				164946.428571428,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,0.95"
+					]
+				]
+			],
+			[
+				165321.428571428,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,1.05"
+					]
+				]
+			],
+			[
+				165696.428571428,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,1.15"
+					]
+				]
+			],
+			[
+				166071.428571428,
+				[
+					[
+						"Change Scroll Speed",
+						"1",
+						"0"
+					],
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,0.75"
 					]
 				]
 			],
