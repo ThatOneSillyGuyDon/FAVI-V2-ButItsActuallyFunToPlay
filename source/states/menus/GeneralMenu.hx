@@ -167,25 +167,25 @@ class GeneralMenu extends MusicBeatState {
         FlxTween.tween(frame, {alpha: 0.25}, 3, {ease: FlxEase.quartInOut, type: 4});
 
         if(!ClientPrefs.data.lowQuality)
-			{
-				var scratchStuff:FlxSprite = new FlxSprite();
-				scratchStuff.frames = Paths.getSparrowAtlas('Funkin_avi/filters/scratchShit');
-				scratchStuff.animation.addByPrefix('idle', 'scratch thing 1', 24, true);
-				scratchStuff.animation.play('idle');
-				scratchStuff.screenCenter();
-				scratchStuff.scale.x = 1.1;
-				scratchStuff.scale.y = 1.1;
-				add(scratchStuff);
-	
-				var grain:FlxSprite = new FlxSprite();
-				grain.frames = Paths.getSparrowAtlas('Funkin_avi/filters/Grainshit');
-				grain.animation.addByPrefix('idle', 'grains 1', 24, true);
-				grain.animation.play('idle');
-				grain.screenCenter();
-				grain.scale.x = 1.1;
-				grain.scale.y = 1.1;
-				add(grain);
-            }
+        {
+            var scratchStuff:FlxSprite = new FlxSprite();
+            scratchStuff.frames = Paths.getSparrowAtlas('Funkin_avi/filters/scratchShit');
+            scratchStuff.animation.addByPrefix('idle', 'scratch thing 1', 24, true);
+            scratchStuff.animation.play('idle');
+            scratchStuff.screenCenter();
+            scratchStuff.scale.x = 1.1;
+            scratchStuff.scale.y = 1.1;
+            add(scratchStuff);
+
+            var grain:FlxSprite = new FlxSprite();
+            grain.frames = Paths.getSparrowAtlas('Funkin_avi/filters/Grainshit');
+            grain.animation.addByPrefix('idle', 'grains 1', 24, true);
+            grain.animation.play('idle');
+            grain.screenCenter();
+            grain.scale.x = 1.1;
+            grain.scale.y = 1.1;
+            add(grain);
+        }
 
         super.create();
         updateSelection();
@@ -193,6 +193,8 @@ class GeneralMenu extends MusicBeatState {
     }
 
     override function update(elapsed:Float) {
+        super.update(elapsed);
+
         if (controls.UI_LEFT_P) {
             allowInputs = true;
             mouseOnButtons = false;
@@ -215,7 +217,6 @@ class GeneralMenu extends MusicBeatState {
         }
 
         checkMousePosition();
-        super.update(elapsed);
     }
 
     function checkMousePosition():Void {

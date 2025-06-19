@@ -65,7 +65,7 @@ class CreditsMenu extends MusicBeatState
 		
 		DiscordClient.changePresence('Credits', 'Look at all these cool people!', 'icon', 'book');
 
-		FlxG.sound.playMusic(Paths.music('aviOST/curtainCall'));
+		//FlxG.sound.playMusic(Paths.music('aviOST/curtainCall'));
 
 		//Conductor.bpm = (164);
 

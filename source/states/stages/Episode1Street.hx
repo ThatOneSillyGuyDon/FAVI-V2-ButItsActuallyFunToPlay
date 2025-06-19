@@ -402,8 +402,11 @@ class Episode1Street extends BaseStage
 
 		if (PlayState.SONG.song == "Delusional")
 		{
-			stageFront.y -= 250;
-			stageFront.alpha = 0.001;
+			if (!ClientPrefs.data.lowQuality)
+			{
+				stageFront.y -= 250;
+				stageFront.alpha = 0.001;
+			}
 			game.camBars.fade(0x000000, .0001);
 		}
 
@@ -842,6 +845,7 @@ class Episode1Street extends BaseStage
 							FlxTween.tween(game.iconP1, {alpha: 1}, 0.6);
 							add(demonBFIcon);
 				
+						//Made a typo and never fixed it soooo, oops?
 						case 188:
 							demonBFScary.visible = true;
 							game.iconP1.alpha = 0;

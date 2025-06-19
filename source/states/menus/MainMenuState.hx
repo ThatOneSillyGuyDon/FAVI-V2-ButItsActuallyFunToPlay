@@ -463,6 +463,44 @@ class MainMenuState extends MusicBeatState
 				messenger.sendMessage('Freeplay is locked!', 'Complete Episode 1 to Unlock this menu.');
 			}
 		}
+		else if (daChoice == "credits")
+		{
+			FlxG.sound.music.fadeOut(0.8);
+			menuItems.forEach(function(spr:FlxSprite)
+			{
+				if (curSelected != spr.ID)
+				{
+					FlxTween.tween(spr, {x: spr.x + 250, alpha: 0}, 0.4, {
+						ease: FlxEase.quadOut,
+						onComplete: function(twn:FlxTween)
+						{
+							spr.kill();
+						}
+					});
+				}
+				else
+				{
+					menuItems.members[curSelected].scale.set(.75, .75);
+					FlxFlicker.flicker(spr, 1, flashValue, false, false, function(flick:FlxFlicker)
+					{
+						FlxG.sound.music.fadeIn(0.5, 0, 1);
+						FlxG.sound.playMusic(Paths.music('aviOST/curtainCall'));
+						MusicBeatState.switchState(new CreditsMenu());
+					});
+				}
+			});
+			for (sillies in [arrow, menuItems.members[Math.floor(curSelected)]])
+			{
+				if (sillies != null)
+				{
+					sillies.setColorTransform(1, 1, 1, 1, 255, 255, 255, 255);
+					FlxTween.tween(sillies.colorTransform, {redOffset: 0, greenOffset: 0, blueOffset: 0}, 1);
+				}
+			}
+			FlxG.sound.play(Paths.sound('funkinAVI/menu/selectSfx'));
+			selectedSomethin = true;
+			FlxG.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
+		}
 		else
 		{
 			menuItems.forEach(function(spr:FlxSprite)
@@ -489,10 +527,6 @@ class MainMenuState extends MusicBeatState
 								case 'story_mode':
 									FlxG.mouse.visible = false;
 									MusicBeatState.switchState(new StoryMenu());
-								case 'credits':
-									FlxG.mouse.visible = false;
-									FlxG.sound.music.fadeOut(0.8);
-									MusicBeatState.switchState(new CreditsMenu());
 								case 'options':
 									LoadingState.loadAndSwitchState(new options.OptionsState());
 									options.OptionsState.onPlayState = false;

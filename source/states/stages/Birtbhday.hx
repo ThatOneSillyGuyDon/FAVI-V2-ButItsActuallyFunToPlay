@@ -98,38 +98,38 @@ class Birtbhday extends BaseStage
 		{
 			case 'Tween Char Scale':
 				switch (value1.toLowerCase())
-					{
-						case 'dad1':
+				{
+					case 'dad1':
+						game.dadGroup.scale.y = 0.6;
+						game.dadGroup.scale.x = 0.6;
+						FlxTween.tween(game.dadGroup, {'scale.x': 0}, 0.3, {ease: FlxEase.quartInOut});
+					case 'dad2':
+						FlxTween.tween(game.dadGroup, {'scale.x': 1, 'scale.y': 1}, 0.3, {ease: FlxEase.quartOut});
+						spawnNotes['muckney'] = true;
+					case 'dad3':
+						FlxTween.tween(game.dadGroup, {'scale.x': 0}, 0.3, {ease: FlxEase.quartInOut, onComplete: function(twn:FlxTween)
+						{
 							game.dadGroup.scale.y = 0.6;
-							game.dadGroup.scale.x = 0.6;
-							FlxTween.tween(game.dadGroup, {'scale.x': 0}, 0.3, {ease: FlxEase.quartInOut});
-						case 'dad2':
-							FlxTween.tween(game.dadGroup, {'scale.x': 1, 'scale.y': 1}, 0.3, {ease: FlxEase.quartOut});
-							spawnNotes['muckney'] = true;
-						case 'dad3':
-							FlxTween.tween(game.dadGroup, {'scale.x': 0}, 0.3, {ease: FlxEase.quartInOut, onComplete: function(twn:FlxTween)
-							{
-								game.dadGroup.scale.y = 0.6;
-								FlxTween.tween(game.dadGroup, {'scale.x': 0.6}, 0.3, {ease: FlxEase.quartOut});
-							}});
-							spawnNotes['muckney'] = false;
-						case 'bf1':
-							game.boyfriendGroup.scale.x = 0.9;
+							FlxTween.tween(game.dadGroup, {'scale.x': 0.6}, 0.3, {ease: FlxEase.quartOut});
+						}});
+						spawnNotes['muckney'] = false;
+					case 'bf1':
+						game.boyfriendGroup.scale.x = 0.9;
+						game.boyfriendGroup.scale.y = 0.9;
+						FlxTween.tween(game.boyfriendGroup, {'scale.y': 0}, 0.5, {ease: FlxEase.quartInOut, onComplete: function(twn:FlxTween)
+						{
+							game.boyfriendGroup.scale.x = 0.7;
+							FlxTween.tween(game.boyfriendGroup, {'scale.y': 0.7}, 0.5, {ease: FlxEase.quartOut});
+						}});
+						spawnNotes['bf'] = true;
+					case 'bf2':
+						FlxTween.tween(game.boyfriendGroup, {'scale.x': 0}, 0.7, {ease: FlxEase.quartInOut, onComplete: function(twn:FlxTween)
+						{
 							game.boyfriendGroup.scale.y = 0.9;
-							FlxTween.tween(game.boyfriendGroup, {'scale.y': 0}, 0.5, {ease: FlxEase.quartInOut, onComplete: function(twn:FlxTween)
-							{
-								game.boyfriendGroup.scale.x = 0.7;
-								FlxTween.tween(game.boyfriendGroup, {'scale.y': 0.7}, 0.5, {ease: FlxEase.quartOut});
-							}});
-							spawnNotes['bf'] = true;
-						case 'bf2':
-							FlxTween.tween(game.boyfriendGroup, {'scale.x': 0}, 0.7, {ease: FlxEase.quartInOut, onComplete: function(twn:FlxTween)
-							{
-								game.boyfriendGroup.scale.y = 0.9;
-								FlxTween.tween(game.boyfriendGroup, {'scale.x': 0.9}, 0.7, {ease: FlxEase.quartOut});
-							}});
-							spawnNotes['bf'] = false;
-					}
+							FlxTween.tween(game.boyfriendGroup, {'scale.x': 0.9}, 0.7, {ease: FlxEase.quartOut});
+						}});
+						spawnNotes['bf'] = false;
+				}
 		}
 	}
 
