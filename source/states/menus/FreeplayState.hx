@@ -55,6 +55,8 @@ class FreeplayState extends MusicBeatState
 	var disc:FlxSprite;
 	var arrows:FlxSprite;
 
+	var selectedSomethin:Bool = false;
+
 	var camGame:FlxCamera; // Main camera (including shaders n shit)
 	var camHUD:FlxCamera; // Objects
 	var camOther:FlxCamera; // Gameplay Changers + Fade transitions
@@ -609,7 +611,7 @@ class FreeplayState extends MusicBeatState
 			disc.angle += Conductor.crochet / 1000 * 2;
 		}
 
-		if (FlxG.keys.justPressed.B) {
+		if (FlxG.keys.justPressed.B && !selectedSomethin) {
 			changeBotPlay();
 		}
 
@@ -668,122 +670,126 @@ class FreeplayState extends MusicBeatState
 		var shiftMult:Int = 1;
 		if(FlxG.keys.pressed.SHIFT) shiftMult = 3;
 
-		if(songs.length > 1)
+		if (!selectedSomethin)
 		{
-			if (upP)
+			if(songs.length > 1)
 			{
-				changeSelection(-shiftMult);
-				holdTime = 0;
-			}
-			if (downP)
-			{
-				changeSelection(shiftMult);
-				holdTime = 0;
-			}
-
-			if((freeplayMenuList == 2 ? controls.UI_UP : controls.UI_LEFT) || (freeplayMenuList == 2 ? controls.UI_DOWN : controls.UI_RIGHT))
-			{
-				var checkLastHold:Int = Math.floor((holdTime - 0.5) * 10);
-				holdTime += elapsed;
-				var checkNewHold:Int = Math.floor((holdTime - 0.5) * 10);
-
-				if(holdTime > 0.5 && checkNewHold - checkLastHold > 0)
+				if (upP)
 				{
-					changeSelection((checkNewHold - checkLastHold) * ((freeplayMenuList == 2 ? controls.UI_UP : controls.UI_LEFT) ? -shiftMult : shiftMult));
+					changeSelection(-shiftMult);
+					holdTime = 0;
+				}
+				if (downP)
+				{
+					changeSelection(shiftMult);
+					holdTime = 0;
+				}
+
+				if((freeplayMenuList == 2 ? controls.UI_UP : controls.UI_LEFT) || (freeplayMenuList == 2 ? controls.UI_DOWN : controls.UI_RIGHT))
+				{
+					var checkLastHold:Int = Math.floor((holdTime - 0.5) * 10);
+					holdTime += elapsed;
+					var checkNewHold:Int = Math.floor((holdTime - 0.5) * 10);
+
+					if(holdTime > 0.5 && checkNewHold - checkLastHold > 0)
+					{
+						changeSelection((checkNewHold - checkLastHold) * ((freeplayMenuList == 2 ? controls.UI_UP : controls.UI_LEFT) ? -shiftMult : shiftMult));
+						changeDiff();
+					}
+				}
+
+				if(FlxG.mouse.wheel != 0)
+				{
+					FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'), 0.2);
+					changeSelection(-shiftMult * FlxG.mouse.wheel, false);
 					changeDiff();
 				}
 			}
 
-			if(FlxG.mouse.wheel != 0)
+			if (controls.BACK)
 			{
-				FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'), 0.2);
-				changeSelection(-shiftMult * FlxG.mouse.wheel, false);
-				changeDiff();
+				persistentUpdate = false;
+				if(colorTween != null) {
+					colorTween.cancel();
+				}
+				FlxG.sound.play(Paths.sound('cancelMenu'));
+				MusicBeatState.switchState(new GeneralMenu());
+				FlxG.mouse.visible = true;
 			}
-		}
 
-		if (controls.BACK)
-		{
-			persistentUpdate = false;
-			if(colorTween != null) {
-				colorTween.cancel();
-			}
-			FlxG.sound.play(Paths.sound('cancelMenu'));
-			MusicBeatState.switchState(new GeneralMenu());
-			FlxG.mouse.visible = true;
-		}
-
-		if(ctrl && maniaSkinSpr != null)
-		{
-			if (maniaSkin == 2)
-				maniaSkin = 0;
-			else
-				maniaSkin += 1;
-			maniaSkinSpr.loadGraphic(Paths.image('$path/maniaSkins/skin$maniaSkin'));
-		}
-		else if(space && freeplayMenuList != 3)
-		{
-			if(instPlaying != curSelected && !disableSpace)
+			if(ctrl && maniaSkinSpr != null)
 			{
-				if (songs[curSelected].songName == "Don't Cross!")
-					FlxG.sound.playMusic(Paths.inst("dont-cross"/*, Difficulty.difficulties[curDifficulty]*/));
+				if (maniaSkin == 2)
+					maniaSkin = 0;
 				else
-					FlxG.sound.playMusic(Paths.inst(songs[curSelected].songName/*, Difficulty.difficulties[curDifficulty]*/));
-
-				if (FlxG.sound.music.fadeTween != null)
-					FlxG.sound.music.fadeTween.cancel();
-
-				FlxG.sound.music.volume = 0.0;
-				FlxG.sound.music.fadeIn(1.0, 0.0, 0.7);
-				songInstPlaying = true;
-				getBPM();
-				FlxTween.num(Conductor.bpm, bpm, 2, null, shitshitfuckfuck -> Conductor.bpm = shitshitfuckfuck);
-				instPlaying = curSelected;
+					maniaSkin += 1;
+				maniaSkinSpr.loadGraphic(Paths.image('$path/maniaSkins/skin$maniaSkin'));
 			}
-		}
-
-		else if (accepted)
-		{
-			songInstPlaying = false;
-			persistentUpdate = false;
-			var songLowercase:String = Paths.formatToSongPath(songs[curSelected].songName);
-			if (isDontCross) // I've been suffering trying to get the randomizer to work with hardcoded charts only to find out this piece of shit was causing the crash oh my FUCKING GOD I'M GONNA RIP MY FUCKING HEAD OFF!!!!! (don)
-				songLowercase = "dont-cross";
-			var poop:String = Highscore.formatSong(songLowercase, curDifficulty); //fuck fuck fuck fuck fuck fuck
-			trace(poop);
-
-			PlayState.SONG = Song.loadFromJson(poop, songLowercase, crossRandom);
-			PlayState.isStoryMode = false;
-			PlayState.storyDifficulty = curDifficulty;
-
-			for (icon in iconArray) if (freeplayMenuList != 2) icon.scale.set(1.25, 1.25);
-
-			trace('CURRENT WEEK: ' + WeekData.getWeekFileName());
-			if(colorTween != null) {
-				colorTween.cancel();
-			}
-
-			if (freeplayMenuList == 2)
+			else if(space && freeplayMenuList != 3)
 			{
-				FlxG.sound.music.stop();
-				LoadingState.loadAndSwitchState(new PlayState());
-			} else {
-				FlxG.sound.music.fadeOut(2.3, 0, tw -> LoadingState.loadAndSwitchState(new PlayState()));
-				FlxG.camera.shake(.005, 5);
-				FlxG.camera.zoom += .25;
-				FlxTween.tween(FlxG.camera, {zoom: 1}, .35, {ease: FlxEase.cubeOut});
-				camOther.fade(FlxColor.BLACK, 2);
-				confirmSound.play(false, 0, 4);
-				confirmSound.fadeOut(4);
+				if(instPlaying != curSelected && !disableSpace)
+				{
+					if (songs[curSelected].songName == "Don't Cross!")
+						FlxG.sound.playMusic(Paths.inst("dont-cross"/*, Difficulty.difficulties[curDifficulty]*/));
+					else
+						FlxG.sound.playMusic(Paths.inst(songs[curSelected].songName/*, Difficulty.difficulties[curDifficulty]*/));
+
+					if (FlxG.sound.music.fadeTween != null)
+						FlxG.sound.music.fadeTween.cancel();
+
+					FlxG.sound.music.volume = 0.0;
+					FlxG.sound.music.fadeIn(1.0, 0.0, 0.7);
+					songInstPlaying = true;
+					getBPM();
+					FlxTween.num(Conductor.bpm, bpm, 2, null, shitshitfuckfuck -> Conductor.bpm = shitshitfuckfuck);
+					instPlaying = curSelected;
+				}
 			}
 
-			FlxG.sound.music.volume = 0;
-		}
-		else if(controls.RESET)
-		{
-			persistentUpdate = false;
-			openSubState(new ResetScoreSubState(songs[curSelected].songName, curDifficulty, songs[curSelected].songCharacter));
-			FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
+			else if (accepted)
+			{
+				songInstPlaying = false;
+				persistentUpdate = false;
+				selectedSomethin = true;
+				var songLowercase:String = Paths.formatToSongPath(songs[curSelected].songName);
+				if (isDontCross) // I've been suffering trying to get the randomizer to work with hardcoded charts only to find out this piece of shit was causing the crash oh my FUCKING GOD I'M GONNA RIP MY FUCKING HEAD OFF!!!!! (don)
+					songLowercase = "dont-cross";
+				var poop:String = Highscore.formatSong(songLowercase, curDifficulty); //fuck fuck fuck fuck fuck fuck
+				trace(poop);
+
+				PlayState.SONG = Song.loadFromJson(poop, songLowercase, crossRandom);
+				PlayState.isStoryMode = false;
+				PlayState.storyDifficulty = curDifficulty;
+
+				for (icon in iconArray) if (freeplayMenuList != 2) icon.scale.set(1.25, 1.25);
+
+				trace('CURRENT WEEK: ' + WeekData.getWeekFileName());
+				if(colorTween != null) {
+					colorTween.cancel();
+				}
+
+				if (freeplayMenuList == 2)
+				{
+					FlxG.sound.music.stop();
+					LoadingState.loadAndSwitchState(new PlayState());
+				} else {
+					FlxG.sound.music.fadeOut(2.3, 0, tw -> LoadingState.loadAndSwitchState(new PlayState()));
+					FlxG.camera.shake(.005, 5);
+					FlxG.camera.zoom += .25;
+					FlxTween.tween(FlxG.camera, {zoom: 1}, .35, {ease: FlxEase.cubeOut});
+					camOther.fade(FlxColor.BLACK, 2);
+					confirmSound.play(false, 0, 4);
+					confirmSound.fadeOut(4);
+				}
+
+				FlxG.sound.music.volume = 0;
+			}
+			else if(controls.RESET)
+			{
+				persistentUpdate = false;
+				openSubState(new ResetScoreSubState(songs[curSelected].songName, curDifficulty, songs[curSelected].songCharacter));
+				FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
+			}
 		}
 		super.update(elapsed);
 	}

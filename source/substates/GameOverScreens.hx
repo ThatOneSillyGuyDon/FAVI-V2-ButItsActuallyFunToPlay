@@ -323,6 +323,8 @@ class Episode1Death extends MusicBeatSubstate {
 
 	var isEnding:Bool = false;
 
+	var scratch:FlxSprite;
+
 	override function create()
 	{
 		instance = this;
@@ -402,7 +404,7 @@ class Episode1Death extends MusicBeatSubstate {
 
 		if (!ClientPrefs.data.lowQuality)
 		{
-			var scratch:FlxSprite = new FlxSprite();
+			scratch = new FlxSprite();
 			scratch.frames = Paths.getSparrowAtlas('favi/filters/scratchShit');
 			scratch.animation.addByPrefix('e', 'scratch thing', 24, true);
 			scratch.animation.play('e');
@@ -507,6 +509,8 @@ class DelusionalDeath extends MusicBeatSubstate {
 
 	var isEnding:Bool = false;
 
+	var scratch:FlxSprite;
+
 	override function create()
 	{
 		instance = this;
@@ -582,7 +586,7 @@ class DelusionalDeath extends MusicBeatSubstate {
 
 		if (!ClientPrefs.data.lowQuality)
 		{
-			var scratch:FlxSprite = new FlxSprite();
+			scratch = new FlxSprite();
 			scratch.frames = Paths.getSparrowAtlas('favi/filters/scratchShit');
 			scratch.animation.addByPrefix('e', 'scratch thing', 24, true);
 			scratch.animation.play('e');
@@ -912,6 +916,8 @@ class EverettBaseDeath extends MusicBeatSubstate {
 
 	var isEnding:Bool = false;
 
+	var scratch:FlxSprite;
+
 	override function create()
 	{
 		instance = this;
@@ -978,7 +984,7 @@ class EverettBaseDeath extends MusicBeatSubstate {
 
 		if (!ClientPrefs.data.lowQuality)
 		{
-			var scratch:FlxSprite = new FlxSprite();
+			scratch = new FlxSprite();
 			scratch.frames = Paths.getSparrowAtlas('favi/filters/scratchShit');
 			scratch.animation.addByPrefix('e', 'scratch thing', 24, true);
 			scratch.animation.play('e');
@@ -1085,6 +1091,8 @@ class WarGameOver extends MusicBeatSubstate {
 
 	var isEnding:Bool = false;
 
+	var scratch:FlxSprite;
+
 	override function create()
 	{
 		instance = this;
@@ -1148,7 +1156,7 @@ class WarGameOver extends MusicBeatSubstate {
 
 		if (!ClientPrefs.data.lowQuality)
 		{
-			var scratch:FlxSprite = new FlxSprite();
+			scratch = new FlxSprite();
 			scratch.frames = Paths.getSparrowAtlas('favi/filters/scratchShit');
 			scratch.animation.addByPrefix('e', 'scratch thing', 24, true);
 			scratch.animation.play('e');
@@ -1251,6 +1259,8 @@ class WompWompSadMan extends MusicBeatSubstate {
 
 	var isEnding:Bool = false;
 
+	var scratch:FlxSprite;
+
 	override function create()
 	{
 		instance = this;
@@ -1308,7 +1318,7 @@ class WompWompSadMan extends MusicBeatSubstate {
 
 		if (!ClientPrefs.data.lowQuality)
 		{
-			var scratch:FlxSprite = new FlxSprite();
+			scratch = new FlxSprite();
 			scratch.frames = Paths.getSparrowAtlas('favi/filters/scratchShit');
 			scratch.animation.addByPrefix('e', 'scratch thing', 24, true);
 			scratch.animation.play('e');

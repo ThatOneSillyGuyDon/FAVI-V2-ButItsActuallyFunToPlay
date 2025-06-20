@@ -2451,6 +2451,14 @@ class PlayState extends MusicBeatState
 	{
 		if (healthThing > 0 && !paused) resetRPC(Conductor.songPosition > 0.0);
 
+		if (SONG.song == "Devilish Deal")
+		{
+			if (states.stages.DevilishStage.devilishGaming != null && states.stages.DevilishStage.devilishGaming.visible)
+				states.stages.DevilishStage.devilishGaming.resume();
+			if (states.stages.DevilishStage.episodeIntro != null && states.stages.DevilishStage.episodeIntro.visible)
+				states.stages.DevilishStage.episodeIntro.resume();
+		}
+
 		super.onFocus();
 	}
 
@@ -2464,6 +2472,14 @@ class PlayState extends MusicBeatState
 				default: DiscordClient.changePresence("PAUSED", "Unfocused...", CoolUtil.spaceToDash(discordIcon), "random", true, songLength - Conductor.songPosition - ClientPrefs.data.noteOffset);
 			}
 		#end
+
+		if (SONG.song == "Devilish Deal")
+		{
+			if (states.stages.DevilishStage.devilishGaming != null && states.stages.DevilishStage.devilishGaming.visible)
+				states.stages.DevilishStage.devilishGaming.pause();
+			if (states.stages.DevilishStage.episodeIntro != null && states.stages.DevilishStage.episodeIntro.visible)
+				states.stages.DevilishStage.episodeIntro.pause();
+		}
 
 		super.onFocusLost();
 	}
