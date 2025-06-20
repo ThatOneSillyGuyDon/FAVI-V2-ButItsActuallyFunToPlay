@@ -1,11 +1,7 @@
 package states.menus;
 
-import lime.ui.MouseCursor;
-import openfl.ui.Mouse;
-import openfl.events.MouseEvent;
 import lime.app.Application;
 import flash.system.System;
-import flixel.input.mouse.FlxMouseEvent;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.effects.FlxFlicker;
 import flixel.graphics.frames.FlxAtlasFrames;
@@ -47,10 +43,9 @@ class GeneralMenu extends MusicBeatState {
 	];
 
     private static var curSelected:Int = 0;
-    private static var allowInputs:Bool;
-    private var mouseOnButtons:Bool = false;
-
-    override function create() {
+    
+    override function create() 
+    {
 
         camMain = new FlxCamera();
         FlxG.cameras.reset(camMain);
@@ -63,10 +58,7 @@ class GeneralMenu extends MusicBeatState {
 
 		Application.current.window.title = "Funkin.avi - Freeplay: Category Menu";
 
-        if (!FlxG.mouse.visible)
-			FlxG.mouse.visible = true;
-
-		AppIcon.changeIcon("newIcon");
+        AppIcon.changeIcon("newIcon");
 		
 		defaultShader2 = new FlxRuntimeShader(Shaders.monitorFilter, null, 140);
 		FlxG.camera.setFilters(
@@ -129,9 +121,6 @@ class GeneralMenu extends MusicBeatState {
                     itemSprite.x += 70;
                     itemSprite.y -= 50;
             }
-            #if desktop
-            FlxMouseEvent.add(itemSprite, onClick, null, mouseHandlerOver, mouseHandlerOut, true, true, true);
-            #end
         }
 
         bottom = new FlxSprite(0, 0).loadGraphic(Paths.image('Funkin_avi/category/bottom'));
@@ -189,20 +178,20 @@ class GeneralMenu extends MusicBeatState {
 
         super.create();
         updateSelection();
+
         FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+
+		if (!FlxG.mouse.visible)
+			FlxG.mouse.visible = true;
     }
 
     override function update(elapsed:Float) {
         super.update(elapsed);
 
         if (controls.UI_LEFT_P) {
-            allowInputs = true;
-            mouseOnButtons = false;
             changeItem(-1);
         }
         if (controls.UI_RIGHT_P) {
-            allowInputs = true;
-            mouseOnButtons = false;
             changeItem(1);
         }
 		if (controls.BACK) {
@@ -212,36 +201,10 @@ class GeneralMenu extends MusicBeatState {
 			MusicBeatState.switchState(new MainMenuState());
 			FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 		}
+
         if (controls.ACCEPT) {
             selectItem(curSelected);
         }
-
-        checkMousePosition();
-    }
-
-    function checkMousePosition():Void {
-        if (FlxG.mouse.justMoved) {
-            for (i in 0...itemGroup.members.length) {
-                var spr:FlxSprite = itemGroup.members[i];
-                if (i == curSelected && !FlxG.mouse.overlaps(spr) || !mouseOnButtons) {
-                    spr.loadGraphic(Paths.image('Funkin_avi/category/item/' + item[i] + '0'));
-                }
-            }
-        }
-    }
-
-    function mouseHandlerOver(object:FlxSprite) {
-        mouseOnButtons = true;
-        curSelected = object.ID;
-        updateSelection();
-    }
-
-    function mouseHandlerOut(object:FlxSprite) {
-        mouseOnButtons = false;
-    }
-
-    function onClick(object:FlxSprite) {
-        selectItem(object.ID);
     }
 
     function selectItem(id:Int) {
@@ -268,5 +231,4 @@ class GeneralMenu extends MusicBeatState {
         catTitle.resetText(catDescInfo[curSelected][0]);
         catTitle.start(0.017, true);
     }
-
 }

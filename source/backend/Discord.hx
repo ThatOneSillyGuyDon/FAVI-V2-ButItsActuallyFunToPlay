@@ -12,10 +12,16 @@ class DiscordClient
 	public static var clientID(default, set):String = _defaultID;
 	private static var presence:DiscordRichPresence = DiscordRichPresence.create();
 	public static var discordName:String = "None";
+
+	public static function check()
+	{
+		if(ClientPrefs.data.discordRPC) initialize();
+		else if(isInitialized) shutdown();
+	}
 	
 	public static function prepare()
 	{
-		if (!isInitialized)
+		if (!isInitialized && ClientPrefs.data.discordRPC)
 			initialize();
 
 		Application.current.window.onClose.add(function() {

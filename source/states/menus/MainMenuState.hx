@@ -82,6 +82,7 @@ class MainMenuState extends MusicBeatState
 		"It's about drive, it's about power, we stay hungry, we devour.",
 		"Peter, the horse is here.",
 		"*horse walks in*",
+		"When she Isolated on my Lunacy til I Delusional.",
 		"Anyone here watch Yahiamice?",
 		"*cantaloupe jumpscare*",
 		"Prank 'em John",

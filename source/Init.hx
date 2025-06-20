@@ -47,12 +47,7 @@ class Init extends FlxState
         FlxG.sound.soundTray.silent = true; // removes that annoying ass "BEEP" sound when you change the volume
 
         #if DISCORD_ALLOWED
-        DiscordClient.initialize();
-
-        
-        Lib.application.window.onClose.add(function() {
-            DiscordClient.shutdown();
-        });
+		DiscordClient.prepare();
 		#end
 
         FlxG.mouse.visible = true;
