@@ -922,7 +922,7 @@ class PlayState extends MusicBeatState
 			fancyBarOverlay.flipY = true;
 		}
 		fancyBarOverlay.visible = SONG.song.toLowerCase() != 'cycled sins';
-		if (!CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-legacy'))
+		if (FreeplayState.freeplayMenuList != 2)
 			uiGroup.add(fancyBarOverlay);
 
 		healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 5, (SONG.song == "Devilish Deal" ? LEFT_TO_RIGHT : RIGHT_TO_LEFT), Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 7), this,
@@ -967,14 +967,14 @@ class PlayState extends MusicBeatState
 		reloadHealthBarColors();
 
 		scoreTxt = new FlxText(0, ((curStage == "menuSongs" || curStage == "waltRoom") ? (ClientPrefs.data.downScroll ? 15 : 675) : healthBarBG.y + 36), FlxG.width, "", 20);
-		scoreTxt.setFormat(Paths.font("DisneyFont.ttf"), (CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-legacy')  ? 28 : 20), FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		scoreTxt.setFormat(Paths.font("DisneyFont.ttf"), (FreeplayState.freeplayMenuList == 2  ? 28 : 20), FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
 		scoreTxt.borderSize = 1.25;
 		scoreTxt.visible = (!ClientPrefs.data.hideHud || !cpuControlled);
 		updateScore(false);
 		uiGroup.add(scoreTxt);
 
-		if (CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-legacy'))
+		if (FreeplayState.freeplayMenuList == 2)
 		{
 		#if desktop
 			var peWatermark:FlxText = new FlxText(5, FlxG.height - 29, 0, "", 16);
@@ -1025,7 +1025,7 @@ class PlayState extends MusicBeatState
 		watermarkTxt.setBorderStyle(OUTLINE, FlxColor.BLACK, 2);
 		if (ClientPrefs.data.downScroll) watermarkTxt.setPosition(0, 655); else watermarkTxt.setPosition(0, 8);
 		watermarkTxt.screenCenter(X);
-		if (!CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-legacy'))
+		if (FreeplayState.freeplayMenuList != 2)
 			uiGroup.add(watermarkTxt);
 
 		songTxt = new FlxText(watermarkTxt.x, watermarkTxt.y + 30, 1280, (SONG.song == "Dont Cross" ? "Don't Cross!" : '$infoDisplay'));
@@ -1033,7 +1033,7 @@ class PlayState extends MusicBeatState
 		songTxt.setBorderStyle(OUTLINE, FlxColor.BLACK, 2);
 		songTxt.alpha = 0.6;
 		songTxt.screenCenter(X);
-		if (!CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-legacy'))
+		if (FreeplayState.freeplayMenuList != 2)
 			uiGroup.add(songTxt);
 
 		if (curStage == "menuSongs")
@@ -1931,7 +1931,7 @@ class PlayState extends MusicBeatState
 		if (ret == LuaUtils.Function_Stop)
 			return;
 
-		if (CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-legacy'))
+		if (FreeplayState.freeplayMenuList == 2)
 			scoreTxt.text = 'Score: ' + songScore + ' | Misses: ' + songMisses + ' | Accuracy: ' + CoolUtil.floorDecimal(ratingPercent * 100, 2) + '% ' + ' [' + (ratingName != '?' ? '$ratingFC' : '?') + ']';//peeps wanted no integer rating
 		else
 			scoreTxt.text = 'Score: ' + songScore + ' | Combo Breaks: ' + songMisses + ' | Rank: ' + (ratingName != '?' ? '$ratingFC (${CoolUtil.floorDecimal(ratingPercent * 100, 2)}%)' : '?');
@@ -2957,11 +2957,11 @@ class PlayState extends MusicBeatState
 
 				case 'RIGHT' | 'RIGHT-alt' | 'RIGHTmiss':
 					camOffset[0] += 40;
-					if (!CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-legacy')) camOffset[2] += 1.3;
+					if (FreeplayState.freeplayMenuList != 2) camOffset[2] += 1.3;
 
 				case 'LEFT' | 'LEFT-alt' | 'LEFTmiss':
 					camOffset[0] -= 40;
-					if (!CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-legacy')) camOffset[2] -= 1.3;
+					if (FreeplayState.freeplayMenuList != 2) camOffset[2] -= 1.3;
 
 				case 'DOWN' | 'DOWN-alt' | 'DOWNmiss':
 					camOffset[1] += 40;
@@ -3414,7 +3414,7 @@ class PlayState extends MusicBeatState
 					note.resetAnim = 0;
 				}
 		}
-		openSubState((SONG.song.toLowerCase().endsWith('legacy') || SONG.song == "Isolated Beta" || SONG.song == "Isolated Old" ? new PauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y) : (FreeplayState.freeplayMenuList != 3 ? new FAVIPauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y) : new PauseManiaSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y))));
+		openSubState((FreeplayState.freeplayMenuList == 2 ? new PauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y) : (FreeplayState.freeplayMenuList != 3 ? new FAVIPauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y) : new PauseManiaSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y))));
 
 		#if DISCORD_ALLOWED
 		if(autoUpdateRPC) 
@@ -4579,7 +4579,7 @@ class PlayState extends MusicBeatState
 			pixelShitPart2 = '-pixel';
 		}
 
-		if (CoolUtil.spaceToDash(SONG.song.toLowerCase()).endsWith('-legacy'))
+		if (FreeplayState.freeplayMenuList == 2)
 		{
 			pixelShitPart1 = 'legacyUI/';
 			if (isPixelStage)

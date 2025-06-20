@@ -47737,6 +47737,16 @@ enum abstract Chart(String) from String to String {
 						"Trigger Hunted Stuffs",
 						"weeblewobble",
 						""
+					],
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,0.65"
+					],
+					[
+						"Camera Event",
+						"Snap Position",
+						"500,300"
 					]
 				]
 			],
@@ -47777,6 +47787,11 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0",
 						".04"
+					],
+					[
+						"Camera Event",
+						"Tween Value",
+						"zoom,0.85,22.61,sineInOut"
 					]
 				]
 			],
@@ -48377,6 +48392,16 @@ enum abstract Chart(String) from String to String {
 						"Trigger Hunted Stuffs",
 						"no more weeblewobble",
 						""
+					],
+					[
+						"Set Property",
+						"isCameraOnForcedPos",
+						"false"
+					],
+					[
+						"Camera Event",
+						"Tween Value",
+						"zoom,0.65,0.0001,linear"
 					]
 				]
 			]
