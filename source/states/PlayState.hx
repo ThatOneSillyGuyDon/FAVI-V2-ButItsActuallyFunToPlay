@@ -135,6 +135,8 @@ class PlayState extends MusicBeatState
 	//Split Screen Event Vars
 	var camLeft:FlxCamera;
 	var camRight:FlxCamera;
+	var leftEdge:FlxCamera;
+	var rightEdge:FlxCamera;
 	var camFollowDad:FlxObject;
 	var camFollowBf:FlxObject;
 
@@ -523,7 +525,18 @@ class PlayState extends MusicBeatState
 		camOther.bgColor.alpha = 0;
 		fakeCam.bgColor.alpha = 0;
 
+		leftEdge = new FlxCamera();
+		leftEdge.width = 640;
+		leftEdge.color = FlxColor.BLACK;
+
+		rightEdge = new FlxCamera();
+		rightEdge.x = FlxG.width/2;
+		rightEdge.color = FlxColor.BLACK;
+		rightEdge.width = 640;
+
 		FlxG.cameras.reset(camGame);
+		FlxG.cameras.add(leftEdge, false);
+    	FlxG.cameras.add(rightEdge, false);
 		FlxG.cameras.add(camLeft, false);
     	FlxG.cameras.add(camRight, false);
 		FlxG.cameras.add(camVideo, false);
@@ -931,7 +944,10 @@ class PlayState extends MusicBeatState
 		camLeft.x = -(FlxG.width/2);
 		camRight.x = (FlxG.width/2)*2;
 
-		uhhdumbassline1 = new FlxSprite(-100).makeGraphic(10, 720, FlxColor.BLACK);
+		leftEdge.x = -(FlxG.width/2);
+		rightEdge.x = (FlxG.width/2)*2;
+
+		uhhdumbassline1 = new FlxSprite(-10).makeGraphic(10, 720, FlxColor.BLACK);
 		uhhdumbassline1.cameras = [camBars];
 		add(uhhdumbassline1);
 
@@ -2669,7 +2685,11 @@ class PlayState extends MusicBeatState
 
 		//Shitty thing so that the camera doesn't bug in some instances.
 		if (generatedMusic && !endingSong && !isCameraOnForcedPos)
+		{
 			moveCameraSection();
+			splitCameraPos(true);
+			splitCameraPos(false);
+		}
 
 		setOnScripts('curDecStep', curDecStep);
 		setOnScripts('curDecBeat', curDecBeat);
@@ -3887,11 +3907,20 @@ class PlayState extends MusicBeatState
 				switch (value1.toLowerCase())
 				{
 					case "addboth" | "createboth" | "add both" | "create both":
+						FlxTween.tween(leftEdge, {x: 0}, Std.parseFloat(triggerInfo[0]),
+						{
+							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
+						});
 						FlxTween.tween(camLeft, {x: 0}, Std.parseFloat(triggerInfo[0]),
 						{
 							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
 						});
+
 						FlxTween.tween(camRight, {x: FlxG.width/2}, Std.parseFloat(triggerInfo[0]),
+						{
+							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
+						});
+						FlxTween.tween(rightEdge, {x: FlxG.width/2}, Std.parseFloat(triggerInfo[0]),
 						{
 							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
 						});
@@ -3905,6 +3934,10 @@ class PlayState extends MusicBeatState
 							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
 						});
 					case "removeboth" | "killboth" | "remove both" | "kill both":
+						FlxTween.tween(leftEdge, {x: -(FlxG.width/2)}, Std.parseFloat(triggerInfo[0]),
+						{
+							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
+						});
 						FlxTween.tween(camLeft, {x: -(FlxG.width/2)}, Std.parseFloat(triggerInfo[0]),
 						{
 							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
@@ -3913,7 +3946,11 @@ class PlayState extends MusicBeatState
 						{
 							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
 						});
-						FlxTween.tween(uhhdumbassline1, {x: -100}, Std.parseFloat(triggerInfo[0]),
+						FlxTween.tween(rightEdge, {x: (FlxG.width/2)*2}, Std.parseFloat(triggerInfo[0]),
+						{
+							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
+						});
+						FlxTween.tween(uhhdumbassline1, {x: -10}, Std.parseFloat(triggerInfo[0]),
 						{
 							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
 						});
@@ -3923,6 +3960,10 @@ class PlayState extends MusicBeatState
 						});
 
 					case "addleft" | "createleft" | "add left" | "create left":
+						FlxTween.tween(leftEdge, {x: 0}, Std.parseFloat(triggerInfo[0]),
+						{
+							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
+						});
 						FlxTween.tween(camLeft, {x: 0}, Std.parseFloat(triggerInfo[0]),
 						{
 							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
@@ -3937,6 +3978,10 @@ class PlayState extends MusicBeatState
 						{
 							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
 						});
+						FlxTween.tween(rightEdge, {x: FlxG.width/2}, Std.parseFloat(triggerInfo[0]),
+						{
+							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
+						});
 						FlxTween.tween(uhhdumbassline2, {x: 640}, Std.parseFloat(triggerInfo[0]),
 						{
 							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
@@ -3947,13 +3992,21 @@ class PlayState extends MusicBeatState
 						{
 							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
 						});
-						FlxTween.tween(uhhdumbassline1, {x: -100}, Std.parseFloat(triggerInfo[0]),
+						FlxTween.tween(leftEdge, {x: -(FlxG.width/2)}, Std.parseFloat(triggerInfo[0]),
+						{
+							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
+						});
+						FlxTween.tween(uhhdumbassline1, {x: -10}, Std.parseFloat(triggerInfo[0]),
 						{
 							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
 						});
 
 					case "removeright" | "killright" | "remove right" | "kill right":
 						FlxTween.tween(camRight, {x: (FlxG.width/2)*2}, Std.parseFloat(triggerInfo[0]),
+						{
+							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
+						});
+						FlxTween.tween(rightEdge, {x: (FlxG.width/2)*2}, Std.parseFloat(triggerInfo[0]),
 						{
 							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
 						});
