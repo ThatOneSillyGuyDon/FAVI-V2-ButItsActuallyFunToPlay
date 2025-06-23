@@ -34621,7 +34621,7 @@ enum abstract Chart(String) from String to String {
 						],
 						[
 							"Meta Event",
-							"Window",
+							"Window Title",
 							"false, ..."
 						],
 						[
@@ -34656,7 +34656,7 @@ enum abstract Chart(String) from String to String {
 					[
 						[
 							"Meta Event",
-							"Window",
+							"Window Title",
 							"false, Where am I...?"
 						],
 						[
@@ -34701,7 +34701,7 @@ enum abstract Chart(String) from String to String {
 						],
 						[
 							"Meta Event",
-							"Window",
+							"Window Title",
 							"true, Funkin.avi - , Regret [________]"
 						],
 						[
@@ -34731,7 +34731,7 @@ enum abstract Chart(String) from String to String {
 					[
 						[
 							"Meta Event",
-							"Window",
+							"Window Title",
 							"true, Funkin.avi - , Regret [P_______]"
 						]
 					]
@@ -34741,7 +34741,7 @@ enum abstract Chart(String) from String to String {
 					[
 						[
 							"Meta Event",
-							"Window",
+							"Window Title",
 							"true, Funkin.avi - , Regret [PE______]"
 						]
 					]
@@ -34751,7 +34751,7 @@ enum abstract Chart(String) from String to String {
 					[
 						[
 							"Meta Event",
-							"Window",
+							"Window Title",
 							"true, Funkin.avi - , Regret [PEA_____]"
 						]
 					]
@@ -34761,7 +34761,7 @@ enum abstract Chart(String) from String to String {
 					[
 						[
 							"Meta Event",
-							"Window",
+							"Window Title",
 							"true, Funkin.avi - , Regret [PEAC____]"
 						]
 					]
@@ -34771,7 +34771,7 @@ enum abstract Chart(String) from String to String {
 					[
 						[
 							"Meta Event",
-							"Window",
+							"Window Title",
 							"true, Funkin.avi - , Regret [PEACE___]"
 						]
 					]
@@ -34781,7 +34781,7 @@ enum abstract Chart(String) from String to String {
 					[
 						[
 							"Meta Event",
-							"Window",
+							"Window Title",
 							"true, Funkin.avi - , Regret [PEACEF__]"
 						]
 					]
@@ -34791,7 +34791,7 @@ enum abstract Chart(String) from String to String {
 					[
 						[
 							"Meta Event",
-							"Window",
+							"Window Title",
 							"true, Funkin.avi - , Regret [PEACEFU_]"
 						],
 						[
@@ -34806,7 +34806,7 @@ enum abstract Chart(String) from String to String {
 					[
 						[
 							"Meta Event",
-							"Window",
+							"Window Title",
 							"true, Funkin.avi - , Regret [PEACEFUL]"
 						]
 					]
@@ -34816,7 +34816,7 @@ enum abstract Chart(String) from String to String {
 					[
 						[
 							"Meta Event",
-							"Window",
+							"Window Title",
 							"true, Funkin.avi - , Regret [PEACEFUL] - What happened to us..."
 						]
 					]
@@ -34826,7 +34826,7 @@ enum abstract Chart(String) from String to String {
 					[
 						[
 							"Meta Event",
-							"Window",
+							"Window Title",
 							"true, Funkin.avi - , Regret [PEACEFUL] - Where did it all go wrong..."
 						]
 					]
@@ -34836,7 +34836,7 @@ enum abstract Chart(String) from String to String {
 					[
 						[
 							"Meta Event",
-							"Window",
+							"Window Title",
 							"true, Funkin.avi - , Regret [PEACEFUL] - Why is this happening..."
 						]
 					]
@@ -34846,7 +34846,7 @@ enum abstract Chart(String) from String to String {
 					[
 						[
 							"Meta Event",
-							"Window",
+							"Window Title",
 							"true, Funkin.avi - , Regret [PEACEFUL] - Will someone hear my cries..."
 						]
 					]
@@ -34856,7 +34856,7 @@ enum abstract Chart(String) from String to String {
 					[
 						[
 							"Meta Event",
-							"Window",
+							"Window Title",
 							"true, Funkin.avi - , Regret [PEACEFUL] - Is any of this real..."
 						]
 					]
@@ -34866,7 +34866,7 @@ enum abstract Chart(String) from String to String {
 					[
 						[
 							"Meta Event",
-							"Window",
+							"Window Title",
 							"true, Funkin.avi - , Regret [PEACEFUL] - I wish I could take it back..."
 						]
 					]
@@ -34876,7 +34876,7 @@ enum abstract Chart(String) from String to String {
 					[
 						[
 							"Meta Event",
-							"Window",
+							"Window Title",
 							"true, Funkin.avi - , Regret [PEACEFUL] - But it is too late for that..."
 						]
 					]
@@ -34886,7 +34886,7 @@ enum abstract Chart(String) from String to String {
 					[
 						[
 							"Meta Event",
-							"Window",
+							"Window Title",
 							"true, Funkin.avi - , Regret [PEACEFUL] - Right?"
 						]
 					]
@@ -34896,7 +34896,7 @@ enum abstract Chart(String) from String to String {
 					[
 						[
 							"Meta Event",
-							"Window",
+							"Window Title",
 							"true, Funkin.avi - , Regret [PEACEFUL]"
 						]
 					]
@@ -35021,7 +35021,7 @@ enum abstract Chart(String) from String to String {
 					[
 						[
 							"Meta Event",
-							"Window",
+							"Window Title",
 							"false, ..."
 						]
 					]
@@ -35041,7 +35041,7 @@ enum abstract Chart(String) from String to String {
 					[
 						[
 							"Meta Event",
-							"Window",
+							"Window Title",
 							"false, Welcome back... Little mouse."
 						]
 					]
@@ -35111,7 +35111,7 @@ enum abstract Chart(String) from String to String {
 						],
 						[
 							"Meta Event",
-							"Window",
+							"Window Title",
 							"true, Funkin.avi - , Delusional [INSANE]"
 						]
 					]

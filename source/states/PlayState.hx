@@ -5854,6 +5854,7 @@ class PlayState extends MusicBeatState
 		Lib.application.window.x = Std.int((Lib.application.window.display.bounds.width - Lib.application.window.width) * 0.5);
 		Lib.application.window.y = Std.int((Lib.application.window.display.bounds.height - Lib.application.window.height) * 0.5);
 		Lib.application.window.resize(1280, 720);
+		Transparency.getWindowsbackward();
 		//if (!ClientPrefs.data.fullscreen)
 			FlxG.fullscreen = false;
 		backend.NoteTypesConfig.clearNoteTypesData();

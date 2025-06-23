@@ -6,7 +6,7 @@ import states.stages.objects.*;
 class TestStage extends BaseStage {
     override function create()
     {
-        var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.fromRGB(1, 1, 1));
+        var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.fromRGB(19, 19, 19));
         if (game.defaultCamZoom < 1)
         {
             bg.scale.scale(1 / game.defaultCamZoom);

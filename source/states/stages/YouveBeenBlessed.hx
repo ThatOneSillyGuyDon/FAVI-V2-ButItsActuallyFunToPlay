@@ -46,13 +46,13 @@ class YouveBeenBlessed extends BaseStage
 
 		light = new FlxSprite(-200, -100).loadGraphic(Paths.image(PlayState.pathway + 'lightSource'));
 		light.blend = DIFFERENCE;
-		light.alpha = 0.37;
+		light.alpha = 0.001;
 		light.scrollFactor.set(0.95, 1);
 		light.scale.set(2.45, 2.3);
 
 		flair = new FlxSprite(-200, -100).loadGraphic(Paths.image(PlayState.pathway + 'lightFlair'));
 		flair.blend = SCREEN;
-		flair.alpha = 0.6;
+		flair.alpha = 0.001;
 		flair.scrollFactor.set(1.4, 1.25);
 		flair.scale.set(2.5, 2.4);
 
