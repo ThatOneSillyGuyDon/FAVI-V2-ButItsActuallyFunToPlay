@@ -658,7 +658,7 @@ class FreeplayState extends MusicBeatState
 		if (freeplayMenuList == 2)
 			scoreText.text = 'PERSONAL BEST: ' + lerpScore + ' (' + ratingSplit.join('.') + '%)';
 		else
-			scoreText.text = "Score: " + lerpScore;
+			scoreText.text = "Score: " + FlxStringUtil.formatMoney(lerpScore, false, true);
 		positionHighscore();
 
 		var upP = freeplayMenuList == 2 ? controls.UI_UP_P : controls.UI_LEFT_P;

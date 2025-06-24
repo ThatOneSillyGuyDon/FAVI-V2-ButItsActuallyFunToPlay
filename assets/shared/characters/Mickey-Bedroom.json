@@ -1,61 +1,62 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
 				950,
 				250
 			],
-			"anim": "idle",
+			"loop": false,
 			"fps": 7,
-			"name": "BedroomMick idle",
-			"indices": []
+			"anim": "idle",
+			"indices": [],
+			"name": "BedroomMick idle"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				950,
 				250
 			],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 6,
-			"name": "BedroomMick right",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "BedroomMick right"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				952,
 				249
 			],
-			"anim": "singLEFT",
+			"loop": false,
 			"fps": 9,
-			"name": "BedroomMick left",
-			"indices": []
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "BedroomMick left"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				951,
 				250
 			],
-			"anim": "singDOWN",
+			"loop": false,
 			"fps": 9,
-			"name": "BedroomMick down",
-			"indices": []
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "BedroomMick down"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				958,
 				250
 			],
-			"anim": "singUP",
+			"loop": false,
 			"fps": 9,
-			"name": "BedroomMick up",
-			"indices": []
+			"anim": "singUP",
+			"indices": [],
+			"name": "BedroomMick up"
 		}
 	],
+	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/DELUSIONAL_IS_DONE/BedroomMick",
 	"position": [
@@ -63,7 +64,7 @@
 		0
 	],
 	"healthicon": "f_avi/episode1/mickey",
-	"flip_x": true,
+	"flip_x": false,
 	"healthbar_colors": [
 		216,
 		216,
@@ -74,5 +75,6 @@
 		100
 	],
 	"sing_duration": 6.1,
-	"scale": 1.1
+	"scale": 1.1,
+	"_editor_isPlayer": false
 }

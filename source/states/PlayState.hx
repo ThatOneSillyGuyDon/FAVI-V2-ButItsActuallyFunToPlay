@@ -2011,8 +2011,9 @@ class PlayState extends MusicBeatState
 
 		if (FreeplayState.freeplayMenuList == 2)
 			scoreTxt.text = 'Score: ' + songScore + ' | Misses: ' + songMisses + ' | Accuracy: ' + CoolUtil.floorDecimal(ratingPercent * 100, 2) + '% ' + ' [' + (ratingName != '?' ? '$ratingFC' : '?') + ']';//peeps wanted no integer rating
+		//This basically now makes the score/misses look like this: 1,000 instead of this: 1000
 		else
-			scoreTxt.text = 'Score: ' + songScore + ' | Combo Breaks: ' + songMisses + ' | Rank: ' + (ratingName != '?' ? '$ratingFC (${CoolUtil.floorDecimal(ratingPercent * 100, 2)}%)' : '?');
+			scoreTxt.text = 'Score: ' + FlxStringUtil.formatMoney(songScore, false, true) + ' | Combo Breaks: ' + FlxStringUtil.formatMoney(songMisses, false, true) + ' | Rank: ' + (ratingName != '?' ? '$ratingFC (${CoolUtil.floorDecimal(ratingPercent * 100, 2)}%)' : '?');
 
 		if (!miss && !cpuControlled)
 			doScoreBop();
@@ -4402,7 +4403,6 @@ class PlayState extends MusicBeatState
 							camFollow.y = 750;
 							isCameraOnForcedPos = true;
 							defaultCamZoom = 0.5;
-							boyfriend.cameras = [camVideo];
 							boyfriend.alpha = 0.0001;
 							camVideo.visible = true;
 						case 71:
@@ -4428,8 +4428,6 @@ class PlayState extends MusicBeatState
 							camVideo.zoom += 0.3;
 							camVideo.fade(FlxColor.BLACK, 0.2, true);
 							FlxTween.tween(camVideo, {zoom: 1}, 0.5, {ease: FlxEase.sineOut});
-						case 76:
-							FlxTween.tween(boyfriend, {alpha: 0.45}, 2.5, {ease: FlxEase.expoOut});
 					}
 				}
 		}
@@ -5679,6 +5677,12 @@ class PlayState extends MusicBeatState
 						char.heyTimer = 0.6;
 					}
 				}
+
+				if(states.stages.Episode1Street.memoryMickey != null && SONG.song == "Delusional")
+				{
+					states.stages.Episode1Street.memoryMickey.playAnim(animToPlay, true);
+					states.stages.Episode1Street.memoryMickey.holdTimer = 0;
+				}
 			}
 		}
 
@@ -5940,6 +5944,9 @@ class PlayState extends MusicBeatState
 			boyfriend.dance();
 		if (dad != null && beat % dad.danceEveryNumBeats == 0 && !dad.getAnimationName().startsWith('sing') && !dad.stunned)
 			dad.dance();
+
+		if (states.stages.Episode1Street.memoryMickey != null && beat % states.stages.Episode1Street.memoryMickey.danceEveryNumBeats == 0 && !states.stages.Episode1Street.memoryMickey.getAnimationName().startsWith('sing') && !states.stages.Episode1Street.memoryMickey.stunned)
+			states.stages.Episode1Street.memoryMickey.dance();
 	}
 
 	public function playerDance():Void

@@ -45,6 +45,7 @@ class Episode1Street extends BaseStage
 	 public static var rainTween:FlxTween;
 	 public static var fireParticle:FlxEmitter;
 	 public static var mickeySpirit:Character;
+	 public static var memoryMickey:Character;
 	 public static var smokeShit:FlxTypedGroup<FlxSprite>;
 	 public static var smokeFore:FlxTypedGroup<FlxSprite>;
 	 public static var spriteShit:Array<String> = ['smokeBBack', 'smokeTBack'];
@@ -146,6 +147,11 @@ class Episode1Street extends BaseStage
 			mickeySpirit = new Character(-200, -700, "avier-bg");
 			mickeySpirit.alpha = 0.0001;
 			add(mickeySpirit);
+
+			memoryMickey = new Character(575, 50, "Mickey-Bedroom");
+			memoryMickey.alpha = 0.0001;
+			memoryMickey.cameras = [game.camVideo];
+			add(memoryMickey);
 
 			streetRuins = new FlxSprite(-20, 200).loadGraphic(Paths.image(PlayState.pathway + 'streetDestroyed'));
 			streetRuins.antialiasing = ClientPrefs.data.antialiasing;
@@ -1117,6 +1123,7 @@ class Episode1Street extends BaseStage
 						game.boundValue = 0.45;
 						game.drainValue = 0.032;
 						game.boyfriend.alpha = 1;
+						memoryMickey.alpha = 0.0001;
 						game.camFollow.x = 0;
 						game.camFollow.y = 0;
 						if (!ClientPrefs.data.lowQuality)
@@ -1395,6 +1402,8 @@ class Episode1Street extends BaseStage
 						fakeLightOfHope.kill();
 						fakeLightOfHope.destroy();
 						fakeLightOfHope = null;
+					case 76:
+						FlxTween.tween(memoryMickey, {alpha: 0.45}, 2.5, {ease: FlxEase.expoOut});
 				}
 		}
 	}
