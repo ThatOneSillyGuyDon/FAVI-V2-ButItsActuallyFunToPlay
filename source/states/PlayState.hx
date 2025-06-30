@@ -203,6 +203,7 @@ class PlayState extends MusicBeatState
 	public static var curStage:String = '';
 	public static var stageUI:String = "normal";
 	public static var isPixelStage(get, never):Bool;
+	public static var isGreyscale:Bool = false;
 
 	@:noCompletion
 	static function get_isPixelStage():Bool
@@ -386,9 +387,6 @@ class PlayState extends MusicBeatState
 
 	public var cinematicBars:Map<String, FlxSprite> = ["top" => null, "bottom" => null];
 
-	//Shaders n' shit
-	public static var pixelizeUI:FlxRuntimeShader = new FlxRuntimeShader(Shaders.unregisteredHyperCam2Quality, null, 140);
-
 	public var chromTween:FlxTween;
 	public var chromEffect:Float = 0.0001;
 
@@ -557,8 +555,6 @@ class PlayState extends MusicBeatState
 		Conductor.mapBPMChanges(SONG);
 		Conductor.bpm = SONG.bpm;
 
-		pixelizeUI.setFloat('size', 5);
-
 		if (!isStoryMode) 
 			GameData.setFreeplayData();
 		else
@@ -608,7 +604,7 @@ class PlayState extends MusicBeatState
 		curStage = SONG.stage;
 
 		pathway = 'favi/stages/' + curStage + (SONG.song == "Malfunction" ? '/stupidShit/' : '/images/');
-		if (SONG.song == "Cycled Sins")
+		if (SONG.song != "Malfunction Legacy")
 			daPixelZoom = 5;
 		else
 			daPixelZoom = 6;
@@ -653,6 +649,8 @@ class PlayState extends MusicBeatState
 		boyfriendGroup = new FlxSpriteGroup(BF_X, BF_Y);
 		dadGroup = new FlxSpriteGroup(DAD_X, DAD_Y);
 		gfGroup = new FlxSpriteGroup(GF_X, GF_Y);
+
+		isGreyscale = false;
 
 		if (curStage != "waltRoom") healthThing = 0.5;
 
@@ -887,7 +885,7 @@ class PlayState extends MusicBeatState
 			timeTxt.y += 3;
 		}
 
-		var splash:NoteSplash = new NoteSplash(100, 100, 0);
+		var splash:NoteSplash = new NoteSplash(100, 100);
 		grpNoteSplashes.add(splash);
 		splash.alpha = 0.000001;
 
@@ -2954,7 +2952,7 @@ class PlayState extends MusicBeatState
 										daNote.y += 10.5 * (fakeCrochet / 400) * 1.5 * songSpeed + (46 * (songSpeed - 1));
 										daNote.y -= 46 * (1 - (fakeCrochet / 600)) * songSpeed;
 										if(isPixelStage) {
-											daNote.y += 8 + (6 - daNote.originalHeightForCalcs) * daPixelZoom;
+											daNote.y += 8 + (6 - daNote.originalHeight) * daPixelZoom;
 										} else {
 											daNote.y -= 19;
 										}
@@ -4782,7 +4780,7 @@ class PlayState extends MusicBeatState
 		note.rating = daRating.name;
 		score = daRating.score;
 
-		if(daRating.noteSplash && !note.noteSplashDisabled && curStage != "menuSongs")
+		if(daRating.noteSplash && !note.noteSplashData.disabled && curStage != "menuSongs")
 		{
 			spawnNoteSplashOnNote(note);
 		}
@@ -5241,6 +5239,13 @@ class PlayState extends MusicBeatState
 		var result:Dynamic = callOnLuas('opponentNoteHitPre', [notes.members.indexOf(note), Math.abs(note.noteData), note.noteType, note.isSustainNote]);
 		if(result != LuaUtils.Function_Stop && result != LuaUtils.Function_StopHScript && result != LuaUtils.Function_StopAll) callOnHScript('opponentNoteHitPre', [note]);
 
+		if (ClientPrefs.data.quantization && !isGreyscale)
+		{
+			opponentStrums.members[note.noteData].rgbShader.r = note.rgbShader.r;
+			opponentStrums.members[note.noteData].rgbShader.g = note.rgbShader.g;
+			opponentStrums.members[note.noteData].rgbShader.b = note.rgbShader.b;
+		}
+
 		if (songName != 'tutorial')
 			camZooming = true;
 
@@ -5549,6 +5554,13 @@ class PlayState extends MusicBeatState
 
 		note.wasGoodHit = true;
 
+		if (ClientPrefs.data.quantization && !isGreyscale)
+		{
+			playerStrums.members[note.noteData].rgbShader.r = note.rgbShader.r;
+			playerStrums.members[note.noteData].rgbShader.g = note.rgbShader.g;
+			playerStrums.members[note.noteData].rgbShader.b = note.rgbShader.b;
+		}
+
 		if (ClientPrefs.data.hitsoundVolume > 0 && !note.hitsoundDisabled)
 		{
 			FlxG.sound.play(Paths.sound('hitsound'), ClientPrefs.data.hitsoundVolume);
@@ -5647,7 +5659,7 @@ class PlayState extends MusicBeatState
 			}
 
 			noteMiss(note);
-			if(!note.noteSplashDisabled && !note.isSustainNote) {
+			if(!note.noteSplashData.disabled && !note.isSustainNote) {
 				spawnNoteSplashOnNote(note);
 			}
 			if(!note.isSustainNote) invalidateNote(note);
@@ -5795,35 +5807,19 @@ class PlayState extends MusicBeatState
 		var skin:String = 'noteSplashes';
 		switch (SONG.song)
 		{
-			case "Devilish Deal" | "Isolated" | "Lunacy" | "Delusional" | "Hunted" | "Laugh Track" | "Twisted Grins" | "Rotten Petals" | "Seeking Freedom" | "Am I Real?" | "Your Final Bow" | "The Wretched Tilezones (Simple Life)" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "Ahh the Scary (Somber Night)" | "Curtain Call": SONG.splashSkin = "NOTE_splashesCartoon";
-			case "Mercy": SONG.splashSkin = "NOTE_splashWalt";
-			case "Birthday": SONG.splashSkin = "Birthday_splash";
-			default: SONG.splashSkin = "noteSplashes";
+			case "Devilish Deal" | "Isolated" | "Lunacy" | "Delusional" | "Hunted" | "Laugh Track" | "Twisted Grins" | "Rotten Petals" | "Seeking Freedom" | "Am I Real?" | "Your Final Bow" | "The Wretched Tilezones (Simple Life)" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "Ahh the Scary (Somber Night)" | "Curtain Call": SONG.splashSkin = "noteSplashes/noteSplashes-sparkles";
+			case "Mercy": SONG.splashSkin = "noteSplashes/noteSplashes-diamond";
+			case "Birthday": SONG.splashSkin = "noteSplashes/noteSplashes-birthday";
+			default: SONG.splashSkin = "noteSplashes/noteSplashes";
 		}
-
 		skin = SONG.splashSkin;
-
-		var offsetX:Int;
-		var offsetY:Int;
-
-		switch (skin)
-		{
-			case "noteSplashes":
-				offsetX = 0;
-				offsetY = 0;
-			default:
-				offsetX = 25;
-				offsetY = 40;
-		}
 		var splash:NoteSplash = grpNoteSplashes.recycle(NoteSplash);
-		splash.setupNoteSplash(x + offsetX, y + offsetY, data, skin, 0, 0, 0);
+		splash.setupNoteSplash(x, y, data, note);
 		if (states.stages.YouveBeenBlessed.lightI != null)
 			if (states.stages.YouveBeenBlessed.lightI.visible) 
 				splash.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0); 
 			else 
 				splash.setColorTransform(1, 1, 1, 1, 0, 0, 0, 0);
-		if (isPixelStage && ClientPrefs.data.shaders)
-			splash.shader = pixelizeUI;
 		grpNoteSplashes.add(splash);
 	}
 
