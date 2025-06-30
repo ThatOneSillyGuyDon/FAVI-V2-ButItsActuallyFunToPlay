@@ -32,6 +32,7 @@ class ShotgunMick extends BaseStage
 	{
 		game.defaultCamZoom = PlayState.SONG.song == "Cycled Sins" ? 0.46 : 0.6;
 		game.cameraSpeed = 0.9;
+		PlayState.isGreyscale = true;
 
 		//Phase 2 shaders
 		glitchBG = new FlxRuntimeShader(Shaders.vignetteGlitch, null, 130);

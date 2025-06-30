@@ -32,6 +32,7 @@ class GoofyForest extends BaseStage
 
 		game.cameraSpeed = 0.9;
 		game.defaultCamZoom = 0.65;
+		PlayState.isGreyscale = true;
 
 		if(!ClientPrefs.data.lowQuality)
 		{

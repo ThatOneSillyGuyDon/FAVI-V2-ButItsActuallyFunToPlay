@@ -10,6 +10,7 @@ class LaughyTracky extends BaseStage
 	override function create()
 	{
 		game.defaultCamZoom = 2.1;
+		PlayState.isGreyscale = true;
 	
 		var sky = new FlxSprite(-1280 * .25,  -720 * .2, Paths.image(circusPath + 'sky'));
 		sky.scrollFactor.set(.05, .05);

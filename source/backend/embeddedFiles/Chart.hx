@@ -8422,7 +8422,6 @@ enum abstract Chart(String) from String to String {
 			]
 		],
 		"player3": null,
-		"splashSkin": "NOTE_splashesCartoon",
 		"song": "Isolated",
 		"voiceSfx1": "Evilrett",
 		"validScore": true,
@@ -12652,7 +12651,6 @@ enum abstract Chart(String) from String to String {
 				"bpm": 188
 			}
 		],
-		"splashSkin": "NOTE_splashesCartoon",
 		"song": "Lunacy",
 		"validScore": true,
 		"arrowSkin": "",
@@ -39038,7 +39036,6 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			"player2": "mickey-delu-intro",
-			"splashSkin": "NOTE_splashesCartoon",
 			"song": "Delusional",
 			"needsVoices": true,
 			"arrowSkin": "",
@@ -42184,7 +42181,6 @@ enum abstract Chart(String) from String to String {
 			]
 		],
 		"player2": "satandd",
-		"splashSkin": "NOTE_splashesCartoon",
 		"song": "Devilish Deal",
 		"voiceSfx1": "Player",
 		"needsVoices": true,
@@ -48407,7 +48403,6 @@ enum abstract Chart(String) from String to String {
 			]
 		],
 		"player2": "goofy-new",
-		"splashSkin": "NOTE_splashesCartoon",
 		"song": "Hunted",
 		"needsVoices": true,
 		"voiceSfx1": "Player",
@@ -57340,7 +57335,6 @@ enum abstract Chart(String) from String to String {
 		"player2": "mickey-legacy",
 		"player3": null,
 		"charter": "DEMOLITIONDON96",
-		"splashSkin": "noteSplashes",
 		"song": "Isolated Legacy",
 		"arrowSkin": "",
 		"stage": "theLoop",
@@ -61727,7 +61721,6 @@ enum abstract Chart(String) from String to String {
 			}
 		],
 		"player3": null,
-		"splashSkin": "noteSplashes",
 		"song": "Lunacy Legacy",
 		"validScore": true,
 		"arrowSkin": "",
@@ -85073,7 +85066,6 @@ enum abstract Chart(String) from String to String {
 		],
 		"player3": null,
 		"charter": "Noppz",
-		"splashSkin": "noteSplashes",
 		"song": "Delusional Legacy",
 		"validScore": true,
 		"needsVoices": true,
@@ -92878,7 +92870,6 @@ enum abstract Chart(String) from String to String {
 		],
 		"player2": "muckney",
 		"charter": "Dreupy",
-		"splashSkin": "Birthday_splash",
 		"song": "Birthday",
 		"needsVoices": true,
 		"stage": "clubhouse",
@@ -118439,7 +118430,6 @@ enum abstract Chart(String) from String to String {
 			}
 		],
 		"gfVersion": "lilith",
-		"splashSkin": "NOTE_splashesCartoon",
 		"song": "Twisted Grins",
 		"needsVoices": true,
 		"stage": "trueGrinsOfSins",
@@ -126600,7 +126590,6 @@ enum abstract Chart(String) from String to String {
 			]
 		],
 		"player3": null,
-		"splashSkin": "noteSplashes",
 		"song": "Cycled Sins",
 		"validScore": true,
 		"needsVoices": true,
@@ -133890,7 +133879,6 @@ enum abstract Chart(String) from String to String {
 			}
 		],
 		"player3": null,
-		"splashSkin": "noteSplashes",
 		"song": "Cycled Sins Legacy",
 		"validScore": true,
 		"arrowSkin": "",
@@ -149885,7 +149873,6 @@ enum abstract Chart(String) from String to String {
 			}
 		],
 		"gfVersion": "gf",
-		"splashSkin": "noteSplashes",
 		"song": "Bless",
 		"validScore": true,
 		"stage": "vaultRoom",
@@ -161824,7 +161811,6 @@ enum abstract Chart(String) from String to String {
 		"player2": "glitched-mickey-legacy-pixel",
 		"player3": null,
 		"charter": "DEMOLITIONDON96",
-		"splashSkin": "noteSplashes",
 		"song": "Malfunction Legacy",
 		"needsVoices": true,
 		"arrowSkin": "",
@@ -171258,7 +171244,6 @@ enum abstract Chart(String) from String to String {
 			}
 		],
 		"gfVersion": "gf",
-		"splashSkin": "noteSplashes",
 		"song": "War Dilemma",
 		"stage": "war",
 		"validScore": true,
@@ -177155,7 +177140,6 @@ enum abstract Chart(String) from String to String {
 		],
 		"player3": null,
 		"charter": "DEMOLITIONDON96",
-		"splashSkin": "noteSplashes",
 		"song": "Isolated Beta",
 		"validScore": true,
 		"needsVoices": true,
@@ -182072,7 +182056,6 @@ enum abstract Chart(String) from String to String {
 		],
 		"player3": null,
 		"charter": "DEMOLITIONDON96",
-		"splashSkin": "noteSplashes",
 		"song": "Isolated Old",
 		"validScore": true,
 		"needsVoices": true,
@@ -192721,7 +192704,6 @@ enum abstract Chart(String) from String to String {
 			]
 		],
 		"player2": "walt-new",
-		"splashSkin": "NOTE_splashWalt",
 		"song": "Mercy",
 		"voiceSfx1": "Player",
 		"needsVoices": true,
@@ -201646,7 +201628,6 @@ enum abstract Chart(String) from String to String {
 		],
 		"player3": null,
 		"charter": "DEMOLITIONDON96",
-		"splashSkin": "noteSplashes",
 		"song": "Mercy Legacy",
 		"validScore": true,
 		"needsVoices": true,
@@ -211932,7 +211913,6 @@ enum abstract Chart(String) from String to String {
 		],
 		"player2": "mr-smiles",
 		"player3": null,
-		"splashSkin": "noteSplashes",
 		"song": "Twisted Grins Legacy",
 		"validScore": true,
 		"speed": 1.6,
@@ -216526,7 +216506,6 @@ enum abstract Chart(String) from String to String {
 		"gfVersion": "gf",
 		"player3": null,
 		"charter": "Noppz",
-		"splashSkin": null,
 		"song": "Hunted Legacy",
 		"stage": "forestOld",
 		"validScore": true,
@@ -234746,7 +234725,6 @@ enum abstract Chart(String) from String to String {
 			}
 		],
 		"gfVersion": "lilith",
-		"splashSkin": "NOTE_splashesCartoon",
 		"song": "Laugh Track",
 		"voiceSfx1": "Everett",
 		"validScore": true,
@@ -242577,7 +242555,6 @@ enum abstract Chart(String) from String to String {
 		],
 		"events": [],
 		"player2": "dctl-mickey",
-		"splashSkin": "noteSplashes",
 		"song": "Dont Cross",
 		"voiceSfx1": "Everett",
 		"needsVoices": true,
@@ -257586,7 +257563,6 @@ enum abstract Chart(String) from String to String {
 				"mustHitSection": true
 			}
 		],
-		"splashSkin": "noteSplashes",
 		"validScore": false,
 		"gfVersion": "gf",
 		"bpm": 140,
@@ -269661,7 +269637,6 @@ enum abstract Chart(String) from String to String {
 		],
 		"events": [],
 		"player2": "dctl-mickey",
-		"splashSkin": "noteSplashes",
 		"song": "Dont Cross",
 		"voiceSfx1": "Everett",
 		"needsVoices": true,
@@ -273251,7 +273226,6 @@ enum abstract Chart(String) from String to String {
 			]
 		],
 		"player2": "dctl-mickey",
-		"splashSkin": "noteSplashes",
 		"song": "Dont Cross",
 		"voiceSfx1": "Everett",
 		"needsVoices": true,
@@ -298188,7 +298162,6 @@ enum abstract Chart(String) from String to String {
 			}
 		],
 		"gfVersion": "gf",
-		"splashSkin": "noteSplashes",
 		"song": "Dont Cross",
 		"stage": "fuckingLine",
 		"validScore": true,
@@ -306049,7 +306022,6 @@ enum abstract Chart(String) from String to String {
 			}
 		],
 		"gfVersion": "gf",
-		"splashSkin": "noteSplashes",
 		"song": "Dont Cross",
 		"stage": "fuckingLine",
 		"validScore": true,
@@ -325160,7 +325132,6 @@ enum abstract Chart(String) from String to String {
 		],
 		"events": [],
 		"player2": "dctl-mickey",
-		"splashSkin": "noteSplashes",
 		"song": "Dont Cross",
 		"voiceSfx1": "Everett",
 		"needsVoices": true,
@@ -336843,7 +336814,6 @@ enum abstract Chart(String) from String to String {
 			}
 		],
 		"gfVersion": "gf",
-		"splashSkin": "noteSplashes",
 		"song": "Dont Cross",
 		"stage": "fuckingLine",
 		"validScore": true,
@@ -341338,7 +341308,6 @@ enum abstract Chart(String) from String to String {
 		],
 		"player2": "relapseNEW",
 		"player3": null,
-		"splashSkin": "NOTE_splashesCartoon",
 		"song": "Ahh the Scary (Somber Night)",
 		"voiceSfx1": "Player",
 		"stage": "menuSongs",
@@ -353486,7 +353455,6 @@ enum abstract Chart(String) from String to String {
 		],
 		"player2": "relapseNEW",
 		"player3": null,
-		"splashSkin": "NOTE_splashesCartoon",
 		"song": "Rotten Petals",
 		"arrowSkin": "",
 		"voiceSfx1": "Player",
@@ -359566,7 +359534,6 @@ enum abstract Chart(String) from String to String {
 			],
 			"player2": "relapseNEW",
 			"player3": null,
-			"splashSkin": "NOTE_splashesCartoon",
 			"song": "The Wretched Tilezones (Simple Life)",
 			"voiceSfx1": "Player",
 			"stage": "menuSongs",
@@ -378503,7 +378470,6 @@ enum abstract Chart(String) from String to String {
 		],
 		"gfVersion": "gf",
 		"player2": "malsquareIsPissedAtYou",
-		"splashSkin": "noteSplashes",
 		"song": "Malfunction",
 		"voiceSfx1": "BF",
 		"needsVoices": true,

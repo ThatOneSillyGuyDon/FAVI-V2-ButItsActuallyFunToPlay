@@ -22,6 +22,7 @@ class SmileStage extends BaseStage
 	{
 		game.defaultCamZoom = 0.75;
 		game.cameraSpeed = 2.5;
+		PlayState.isGreyscale = true;
 
 		outline.thickness = 4.5;
 		noteOutline.thickness = 2.25;

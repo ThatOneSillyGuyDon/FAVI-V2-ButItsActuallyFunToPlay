@@ -1,7 +1,18 @@
 package objects;
 
-import flixel.graphics.frames.FlxAtlasFrames;
+import backend.animation.PsychAnimationController;
+import backend.NoteTypesConfig;
+
 import flixel.addons.effects.FlxSkewedSprite;
+
+import shaders.RGBPalette;
+import shaders.RGBPalette.RGBShaderReference;
+
+import objects.StrumNote;
+
+import flixel.math.FlxRect;
+
+using StringTools;
 
 typedef EventNote = {
 	strumTime:Float,
@@ -10,12 +21,63 @@ typedef EventNote = {
 	value2:String
 }
 
+typedef NoteSplashData = {
+	disabled:Bool,
+	texture:String,
+	useGlobalShader:Bool, //breaks r/g/b/a but makes it copy default colors for your custom note
+	useRGBShader:Bool,
+	antialiasing:Bool,
+	r:FlxColor,
+	g:FlxColor,
+	b:FlxColor,
+	a:Float
+}
+
 class Note extends FlxSkewedSprite
 {
-	public var mesh:modcharting.SustainStrip = null;
-	public var z:Float = 0;
-	
 	public var extraData:Map<String,Dynamic> = [];
+
+	public static var quants:Array<Int> = [
+		4,
+		8,
+		12,
+		16,
+		20,
+		24,
+		32,
+		48,
+		64,
+		96,
+		192
+	];
+	public var quant:Int = 4;
+	public static var quantS:Int = 4; // i hate static function i hate static function
+
+	//why am i stupid? good question!
+	public var arrowRGBQuants:Array<Array<FlxColor>> = [
+		[0xFFF9393F, 0xFFFFFFFF, 0xFF651038],
+		[0xFF00FFFF, 0xFFFFFFFF, 0xFF1542B7],
+		[0xFFC24B99, 0xFFFFFFFF, 0xFF3C1F56],
+		[0xFFF0E342, 0xFFFFFFFF, 0xFF554320],
+		[0xFFED36AD, 0xFFFFFFFF, 0xFF5C185A],
+		[0xFFE98F16, 0xFFFFFFFF, 0xFF3F2D12],
+		[0xFF4769B8, 0xFFFFFFFF, 0xFF161B27],
+		[0xFF12FA05, 0xFFFFFFFF, 0xFF0A4447],
+		[0xFF008080, 0xFFFFFFFF, 0xFF004D4D],
+		[0xFF8a8a8a, 0xFFFFFFFF, 0xff3a3a3a],
+		[0xFFbab86c, 0xFFFFFFFF, 0xff505a1f]
+	];
+
+	//hardcoded greyscale color palette
+	public var arrowRGBGreyscale:Array<Array<FlxColor>> = [
+		[0xFF505050, 0xFFFFFFFF, 0xFF1B1B1B],
+		[0xFF747474, 0xFFFFFFFF, 0xFF353535],
+		[0xFFA2A2A2, 0xFFFFFFFF, 0xFF424242],
+		[0xFF1D1D1D, 0xFFFFFFFF, 0xFF000000]
+	];
+
+	public var mesh:modcharting.SustainStrip = null;
+  	public var z:Float = 0;
 
 	public var strumTime:Float = 0;
 	public var mustPress:Bool = false;
@@ -44,7 +106,8 @@ class Note extends FlxSkewedSprite
 	public var eventVal1:String = '';
 	public var eventVal2:String = '';
 
-	public var colorSwap:ColorSwap;
+	public var rgbShader:RGBShaderReference;
+	public static var globalRgbShaders:Array<RGBPalette> = [];
 	public var inEditor:Bool = false;
 
 	public var animSuffix:String = '';
@@ -58,12 +121,19 @@ class Note extends FlxSkewedSprite
 	public static var colArray:Array<String> = ['purple', 'blue', 'green', 'red'];
 	private var pixelInt:Array<Int> = [0, 1, 2, 3];
 
-	// Lua shit
-	public var noteSplashDisabled:Bool = false;
-	public var noteSplashTexture:String = null;
-	public var noteSplashHue:Float = 0;
-	public var noteSplashSat:Float = 0;
-	public var noteSplashBrt:Float = 0;
+	public static var defaultNoteSkin(default, never):String = 'noteSkins/NOTE_assets';
+
+	public var noteSplashData:NoteSplashData = {
+		disabled: false,
+		texture: null,
+		antialiasing: !PlayState.isPixelStage,
+		useGlobalShader: false,
+		useRGBShader: (PlayState.SONG != null) ? !(PlayState.SONG.disableNoteRGB == true) : true,
+		r: -1,
+		g: -1,
+		b: -1,
+		a: ClientPrefs.data.splashAlpha
+	};
 
 	public var offsetX:Float = 0;
 	public var offsetY:Float = 0;
@@ -90,6 +160,18 @@ class Note extends FlxSkewedSprite
 	public var distance:Float = 2000; //plan on doing scroll directions soon -bb
 
 	public var hitsoundDisabled:Bool = false;
+	public var hitsoundChartEditor:Bool = true;
+	public var hitsound:String = 'hitsound';
+
+	public static function getQuant(beat:Float){
+		var row = Conductor.beatToNoteRow(beat);
+		for(data in quants){
+			if(row%(Conductor.ROWS_PER_MEASURE/data) == 0){
+				return data;
+			}
+		}
+		return quants[quants.length-1]; // invalid
+	}
 
 	private function set_multSpeed(value:Float):Float {
 		resizeByRatio(value / multSpeed);
@@ -100,7 +182,7 @@ class Note extends FlxSkewedSprite
 
 	public function resizeByRatio(ratio:Float) //haha funny twitter shit
 	{
-		if(isSustainNote && !animation.curAnim.name.endsWith('end'))
+		if(isSustainNote && animation.curAnim != null && !animation.curAnim.name.endsWith('end'))
 		{
 			scale.y *= ratio;
 			updateHitbox();
@@ -115,41 +197,67 @@ class Note extends FlxSkewedSprite
 		return value;
 	}
 
-	private function set_noteType(value:String):String {
-		noteSplashTexture = PlayState.SONG.splashSkin;
-		switch (PlayState.SONG.song)
+	public function defaultRGB()
+	{
+		var arr:Array<FlxColor> = ClientPrefs.data.arrowRGB[noteData];
+		if(PlayState.isPixelStage) arr = ClientPrefs.data.arrowRGBPixel[noteData];
+		if(PlayState.curStage == "menuSongs") arr = [0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF];
+
+		if (ClientPrefs.data.quantization)
 		{
-			case "Devilish Deal" | "Isolated" | "Lunacy" | "Delusional" | "Hunted" | "Laugh Track" | "Twisted Grins" | "Rotten Petals" | "Seeking Freedom" | "Am I Real?" | "Your Final Bow" | "The Wretched Tilezones (Simple Life)" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "Ahh the Scary (Somber Night)" | "Curtain Call": noteSplashTexture = "NOTE_splashesCartoon";
-			case "Mercy": noteSplashTexture = "NOTE_splashWalt";
-			case "Birthday": noteSplashTexture = "Birthday_splash";
-			default: noteSplashTexture = "noteSplashes";
+			var idx = quants.indexOf(quant);
+			arr = arrowRGBQuants[idx];
 		}
+
+		if(PlayState.isGreyscale) arr = arrowRGBGreyscale[noteData];
+
+		if (noteData > -1 && noteData <= arr.length)
+		{
+			rgbShader.r = arr[0];
+			rgbShader.g = arr[1];
+			rgbShader.b = arr[2];
+		}
+	}
+
+	private function set_noteType(value:String):String {
+		noteSplashData.texture = PlayState.SONG != null ? PlayState.SONG.splashSkin : 'noteSplashes';
+		defaultRGB();
 
 		if(noteData > -1 && noteType != value) {
 			switch(value) {
-				case 'Error Note':
-					ignoreNote = mustPress;
-					reloadNote('ERROR');
-					noteSplashTexture = null;
-					colorSwap.hue = FlxG.random.int(0, 120);
-					colorSwap.saturation = 0;
-					colorSwap.brightness = 0;
-					lowPriority = true;
 				case 'Hurt Note':
 					ignoreNote = mustPress;
-					reloadNote('HURT');
-					noteSplashTexture = 'HURTnoteSplashes';
-					colorSwap.hue = 0;
-					colorSwap.saturation = 0;
-					colorSwap.brightness = 0;
-					lowPriority = true;
+					//reloadNote('HURTNOTE_assets');
+					//this used to change the note texture to HURTNOTE_assets.png,
+					//but i've changed it to something more optimized with the implementation of RGBPalette:
 
-					if(isSustainNote) {
-						missHealth = 0.1;
-					} else {
-						missHealth = 0.3;
-					}
+					// note colors
+					rgbShader.r = 0xFF101010;
+					rgbShader.g = 0xFFFF0000;
+					rgbShader.b = 0xFF990022;
+
+					// splash data and colors
+					noteSplashData.r = 0xFFFF0000;
+					noteSplashData.g = 0xFF101010;
+					noteSplashData.texture = 'noteSplashes/noteSplashes-electric';
+
+					// gameplay data
+					lowPriority = true;
+					missHealth = isSustainNote ? 0.25 : 0.1;
 					hitCausesMiss = true;
+					hitsound = 'cancelMenu';
+					hitsoundChartEditor = false;
+				case 'Error Note':
+					ignoreNote = mustPress;
+					if (PlayState.SONG.song == "Malfunction Legacy")
+					{
+						reloadNote('faviNotes/ERRORNOTE_assets');
+						rgbShader.r = 0xFFFF0000;
+						rgbShader.b = 0x00EEFF;
+					}
+					else
+						reloadNote('faviNotes/ERROR_NOTE');
+					lowPriority = true;
 				case 'Alt Animation':
 					animSuffix = '-alt';
 				case 'No Animation':
@@ -163,17 +271,24 @@ class Note extends FlxSkewedSprite
 					hitCausesMiss = false;
 					ignoreNote = true;
 				case 'Mal Must Miss These (Error Edition)':
-					reloadNote('ERROR');
+					if (PlayState.SONG.song == "Malfunction Legacy")
+					{
+						reloadNote('faviNotes/ERRORNOTE_assets');
+						rgbShader.r = 0xFFFF0000;
+						rgbShader.b = 0x00EEFF;
+					}
+					else
+						reloadNote('faviNotes/ERROR_NOTE');
+					
 					noAnimation = true;
 					noMissAnimation = true;
 					hitCausesMiss = false;
 					ignoreNote = true;
 			}
+			if (value != null && value.length > 1) NoteTypesConfig.applyNoteTypeData(this, value);
+			if (hitsound != 'hitsound' && ClientPrefs.data.hitsoundVolume > 0) Paths.sound(hitsound); //precache new sound for being idiot-proof
 			noteType = value;
 		}
-		noteSplashHue = colorSwap.hue;
-		noteSplashSat = colorSwap.saturation;
-		noteSplashBrt = colorSwap.brightness;
 		return value;
 	}
 
@@ -181,7 +296,7 @@ class Note extends FlxSkewedSprite
 	{
 		super();
 
-		clipRectIgnoreScale = true; // fixes holds
+		animation = new PsychAnimationController(this);
 
 		if (prevNote == null)
 			prevNote = this;
@@ -189,6 +304,16 @@ class Note extends FlxSkewedSprite
 		this.prevNote = prevNote;
 		isSustainNote = sustainNote;
 		this.inEditor = inEditor;
+
+		if (ClientPrefs.data.quantization){
+			var beat = Conductor.getBeatInMeasure(strumTime);
+			if(prevNote!=null && isSustainNote)
+				quant = prevNote.quant;
+			else
+				quant = getQuant(beat);
+
+			quantS = quant;
+		}
 
 		x += (ClientPrefs.data.middleScroll ? PlayState.STRUM_X_MIDDLESCROLL : PlayState.STRUM_X) + 50;
 		// MAKE SURE ITS DEFINITELY OFF SCREEN?
@@ -200,9 +325,10 @@ class Note extends FlxSkewedSprite
 
 		if(noteData > -1) {
 			texture = '';
-			colorSwap = new ColorSwap();
-			shader = colorSwap.shader;
 
+			rgbShader = new RGBShaderReference(this, initializeGlobalRGBShader(noteData));
+			if(PlayState.SONG != null && PlayState.SONG.disableNoteRGB) rgbShader.enabled = false;
+			
 			x += swagWidth * (noteData);
 			if(!isSustainNote && noteData > -1 && noteData < 4) { //Doing this 'if' check to fix the warnings on Senpai songs
 				var animToPlay:String = '';
@@ -218,11 +344,8 @@ class Note extends FlxSkewedSprite
 
 		if (isSustainNote && prevNote != null)
 		{
-			if (PlayState.SONG.song != "Bless")
-			{
-				alpha = 0.6;
-				multAlpha = 0.6;
-			}
+			alpha = 0.6;
+			multAlpha = 0.6;
 			hitsoundDisabled = true;
 			if(ClientPrefs.data.downScroll) flipY = true;
 
@@ -266,45 +389,64 @@ class Note extends FlxSkewedSprite
 		x += offsetX;
 	}
 
-	var lastNoteOffsetXForPixelAutoAdjusting:Float = 0;
-	var lastNoteScaleToo:Float = 1;
-	public var originalHeightForCalcs:Float = 6;
-	function reloadNote(?prefix:String = '', ?texture:String = '', ?suffix:String = '') {
-		if(prefix == null) prefix = '';
-		if(texture == null) texture = '';
-		if(suffix == null) suffix = '';
+	public static function initializeGlobalRGBShader(noteData:Int)
+	{
+		if(globalRgbShaders[noteData] == null)
+		{
+			var newRGB:RGBPalette = new RGBPalette();
+			globalRgbShaders[noteData] = newRGB;
 
-		var skin:String = texture;
+			var arr:Array<FlxColor> = (!PlayState.isPixelStage) ? ClientPrefs.data.arrowRGB[noteData] : ClientPrefs.data.arrowRGBPixel[noteData];
+			if (noteData > -1 && noteData <= arr.length)
+			{
+				newRGB.r = arr[0];
+				newRGB.g = arr[1];
+				newRGB.b = arr[2];
+			}
+		}
+		return globalRgbShaders[noteData];
+	}
+
+	var _lastNoteOffX:Float = 0;
+	static var _lastValidChecked:String; //optimization
+	public var originalHeight:Float = 6;
+	public var correctionOffset:Float = 0; //dont mess with this
+	public function reloadNote(texture:String = '', postfix:String = '') {
+		if(texture == null) texture = '';
+		if(postfix == null) postfix = '';
+
+		var skin:String = texture + postfix;
 		if(texture.length < 1) {
-			skin = PlayState.SONG.arrowSkin;
-			if(skin == null || skin.length < 1) {
+			skin = PlayState.SONG != null ? PlayState.SONG.arrowSkin : null;
+			if(skin == null || skin.length < 1)
 				switch (PlayState.SONG.song)
 				{
 					case "Rotten Petals" | "Curtain Call" | "Seeking Freedom" | "A True Monster" | "Am I Real?" | "Your Final Bow" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "The Wretched Tilezones (Simple Life)" | "Ahh the Scary (Somber Night)":
 						switch (FreeplayState.maniaSkin)
 						{
-							case 0: skin = "NOTE_assets-MANIA";
-							case 1: skin = "NOTE_assets-MANIABAR";
-							case 2: skin = "NOTE_assets-MANIACIRCLE";
+							case 0: skin = "faviNotes/NOTE_assets-MANIA";
+							case 1: skin = "faviNotes/NOTE_assets-MANIABAR";
+							case 2: skin = "faviNotes/NOTE_assets-MANIACIRCLE";
 						}
 					case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Laugh Track":
-						skin = "NOTE_assets-CARTOON";
+						skin = "faviNotes/NOTE_assets-CARTOON";
 					case "Mercy":
-						skin = "NOTE_assets-MERCY";
-					case "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Malfunction Legacy" | "Twisted Grins Legacy" | "Cycled Sins Legacy" | "Mercy Legacy" | "Delutrance" | "Malfunction":
+						skin = "faviNotes/NOTE_assets-MERCY";
+					case "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Malfunction Legacy" | "Twisted Grins Legacy" | "Cycled Sins Legacy" | "Mercy Legacy":
 						skin = "NOTE_assets";
 					case "Cycled Sins":
-						skin = "NOTE_assets-SIN";
+						skin = "faviNotes/NOTE_assets-SIN";
 					case "Dont Cross":
-						skin = "NOTE_assets-CROSS";
+						skin = "faviNotes/NOTE_assets-CROSS";
+					case "Malfunction":
+						skin = "faviNotes/NOTE_assets-MALFUNCTION";
 					case "War Dilemma":
-						skin = "NOTE_assets-WAR";
+						skin = "faviNotes/NOTE_assets-WAR";
 					case "Birthday":
-						skin = "NOTE_assets-BIRTHDAY";
+						skin = "faviNotes/NOTE_assets-BIRTHDAY";
 					default:
-						skin = "NOTE_assets-DEFAULTSKIN";
+						skin = "faviNotes/NOTE_assets-DEFAULT";
 				}
-			}
 		}
 
 		var animName:String = null;
@@ -312,45 +454,47 @@ class Note extends FlxSkewedSprite
 			animName = animation.curAnim.name;
 		}
 
-		var arraySkin:Array<String> = skin.split('/');
-		arraySkin[arraySkin.length-1] = prefix + arraySkin[arraySkin.length-1] + suffix;
-
+		var skinPixel:String = skin;
 		var lastScaleY:Float = scale.y;
-		var blahblah:String = arraySkin.join('/');
+		var skinPostfix:String = getNoteSkinPostfix();
+		var customSkin:String = skin + skinPostfix;
+		var path:String = PlayState.isPixelStage ? 'pixelUI/' : '';
+		if(customSkin == _lastValidChecked || Paths.fileExists('images/' + path + customSkin + '.png', IMAGE))
+		{
+			skin = customSkin;
+			_lastValidChecked = customSkin;
+		}
+		else skinPostfix = '';
+
 		if(PlayState.isPixelStage) {
 			if(isSustainNote) {
-				loadGraphic(Paths.image('pixelUI/' + blahblah + 'ENDS'));
-				width = width / 4;
-				height = height / 2;
-				originalHeightForCalcs = height;
-				loadGraphic(Paths.image('pixelUI/' + blahblah + 'ENDS'), true, Math.floor(width), Math.floor(height));
+				var graphic = Paths.image('pixelUI/' + skinPixel + 'ENDS' + skinPostfix);
+				loadGraphic(graphic, true, Math.floor(graphic.width / 4), Math.floor(graphic.height / 2));
+				originalHeight = graphic.height / 2;
 			} else {
-				loadGraphic(Paths.image('pixelUI/' + blahblah));
-				width = width / 4;
-				height = height / 5;
-				loadGraphic(Paths.image('pixelUI/' + blahblah), true, Math.floor(width), Math.floor(height));
+				var graphic = Paths.image('pixelUI/' + skinPixel + skinPostfix);
+				loadGraphic(graphic, true, Math.floor(graphic.width / 4), Math.floor(graphic.height / 5));
 			}
 			setGraphicSize(Std.int(width * PlayState.daPixelZoom));
 			loadPixelNoteAnims();
 			antialiasing = false;
 
 			if(isSustainNote) {
-				offsetX += lastNoteOffsetXForPixelAutoAdjusting;
-				lastNoteOffsetXForPixelAutoAdjusting = (width - (PlayState.SONG.song == "Cycled Sins" ? 9 : 7)) * (PlayState.daPixelZoom / 2);
-				offsetX -= lastNoteOffsetXForPixelAutoAdjusting;
-
-				/*if(animName != null && !animName.endsWith('end'))
-				{
-					lastScaleY /= lastNoteScaleToo;
-					lastNoteScaleToo = (6 / height);
-					lastScaleY *= lastNoteScaleToo;
-				}*/
+				offsetX += _lastNoteOffX;
+				_lastNoteOffX = (width - (skin != "NOTE_assets" ? 9 : 7)) * (PlayState.daPixelZoom / 2);
+				offsetX -= _lastNoteOffX;
 			}
 		} else {
-			frames = Paths.getSparrowAtlas(blahblah);
+			frames = Paths.getSparrowAtlas(skin);
 			loadNoteAnims();
 			antialiasing = ClientPrefs.data.antialiasing;
+			if(!isSustainNote)
+			{
+				centerOffsets();
+				centerOrigin();
+			}
 		}
+
 		if(isSustainNote) {
 			scale.y = lastScaleY;
 		}
@@ -358,44 +502,45 @@ class Note extends FlxSkewedSprite
 
 		if(animName != null)
 			animation.play(animName, true);
+	}
 
-		if(inEditor) {
-			setGraphicSize(ChartingState.GRID_SIZE, ChartingState.GRID_SIZE);
-			updateHitbox();
-		}
+	public static function getNoteSkinPostfix()
+	{
+		var skin:String = '';
+		if(ClientPrefs.data.noteSkin != ClientPrefs.defaultData.noteSkin)
+			skin = '-' + ClientPrefs.data.noteSkin.trim().toLowerCase().replace(' ', '_');
+		return skin;
 	}
 
 	function loadNoteAnims() {
-		animation.addByPrefix(colArray[noteData] + 'Scroll', colArray[noteData] + '0');
-
 		if (isSustainNote)
 		{
-			animation.addByPrefix('purpleholdend', 'pruple end hold'); // ?????
-			animation.addByPrefix(colArray[noteData] + 'holdend', colArray[noteData] + ' hold end');
-			animation.addByPrefix(colArray[noteData] + 'hold', colArray[noteData] + ' hold piece');
+			attemptToAddAnimationByPrefix('purpleholdend', 'pruple end hold', 24, true); // this fixes some retarded typo from the original note .FLA
+			animation.addByPrefix(colArray[noteData] + 'holdend', colArray[noteData] + ' hold end', 24, true);
+			animation.addByPrefix(colArray[noteData] + 'hold', colArray[noteData] + ' hold piece', 24, true);
 		}
+		else animation.addByPrefix(colArray[noteData] + 'Scroll', colArray[noteData] + '0');
 
-		var s = 0.7;
-		switch (PlayState.SONG.song)
-		{
-			case "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Malfunction Legacy" | "Cycled Sins Legacy" | "Mercy Legacy" | "Delutrance" | "Malfunction":
-				s = 0.7;
-			case "Dont Cross" | "Mercy":
-			   s = 0.64;
-			default:
-				s = 0.6;
-		}
-		setGraphicSize(Std.int(width * s));
+		setGraphicSize(Std.int(width * 0.7));
 		updateHitbox();
 	}
 
 	function loadPixelNoteAnims() {
-		if(isSustainNote) {
-			animation.add(colArray[noteData] + 'holdend', [pixelInt[noteData] + 4]);
-			animation.add(colArray[noteData] + 'hold', [pixelInt[noteData]]);
-		} else {
-			animation.add(colArray[noteData] + 'Scroll', [pixelInt[noteData] + 4]);
-		}
+		if(isSustainNote)
+		{
+			animation.add(colArray[noteData] + 'holdend', [noteData + 4], 24, true);
+			animation.add(colArray[noteData] + 'hold', [noteData], 24, true);
+		} else animation.add(colArray[noteData] + 'Scroll', [noteData + 4], 24, true);
+	}
+
+	function attemptToAddAnimationByPrefix(name:String, prefix:String, framerate:Float = 24, doLoop:Bool = true)
+	{
+		var animFrames = [];
+		@:privateAccess
+		animation.findByPrefix(animFrames, prefix); // adds valid frames to animFrames
+		if(animFrames.length < 1) return;
+
+		animation.addByPrefix(name, prefix, framerate, doLoop);
 	}
 
 	override function update(elapsed:Float)

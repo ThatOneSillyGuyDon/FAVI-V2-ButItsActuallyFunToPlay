@@ -40,6 +40,8 @@ class DevilishStage extends BaseStage
 
 	override function create()
 	{	
+		PlayState.isGreyscale = true;
+
 		bg = new FlxSprite(-600, 130).loadGraphic(Paths.image(PlayState.pathway + "sky"));
 		bg.scale.set(0.84, 0.84);
 		bg.scrollFactor.set(0.8, 0.8);

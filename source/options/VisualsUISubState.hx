@@ -25,6 +25,12 @@ class VisualsUISubState extends BaseOptionsMenu
 			'bool',
 			false);
 		addOption(option);
+
+		var option:Option = new Option('Quantization',
+			'If checked, will color code the notes of their placement per beat.',
+			'quantization',
+			'bool');
+		addOption(option);
 		
 		var option:Option = new Option('Flashing Lights',
 			"Uncheck this if you're sensitive to flashing lights!",

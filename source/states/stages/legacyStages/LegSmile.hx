@@ -14,6 +14,7 @@ class LegSmile extends BaseStage
 	{
 		game.defaultCamZoom = 0.9;
 		game.cameraSpeed = 2;
+		PlayState.isGreyscale = true;
 
 		var office:FlxSprite = new FlxSprite(-100, -100).loadGraphic(Paths.image(PlayState.pathway + 'office'));
 		office.scale.set(1, 1);

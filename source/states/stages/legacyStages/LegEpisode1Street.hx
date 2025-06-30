@@ -22,6 +22,7 @@ class LegEpisode1Street extends BaseStage
 	override function create()
 	{
 		game.defaultCamZoom = 0.85;
+		PlayState.isGreyscale = true;
 				
 		var street:FlxSprite = new FlxSprite(-500, -700).loadGraphic(Paths.image(PlayState.pathway + 'Mickeybg'));
 		add(street);

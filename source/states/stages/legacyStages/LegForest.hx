@@ -16,6 +16,8 @@ class LegForest extends BaseStage
 
 	override function create()
 	{
+		PlayState.isGreyscale = true;
+
 		var forest:FlxSprite = new FlxSprite(-180, -350).loadGraphic(Paths.image('favi/stages/forestOld/forest'));
 		add(forest);
 	}

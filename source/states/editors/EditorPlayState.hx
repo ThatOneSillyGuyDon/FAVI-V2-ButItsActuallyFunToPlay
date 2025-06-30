@@ -127,7 +127,7 @@ class EditorPlayState extends MusicBeatState
 		
 		grpNoteSplashes = new FlxTypedGroup<NoteSplash>();
 
-		var splash:NoteSplash = new NoteSplash(100, 100, 0);
+		var splash:NoteSplash = new NoteSplash(100, 100);
 		grpNoteSplashes.add(splash);
 		splash.alpha = 0.0;
 		
@@ -769,7 +769,7 @@ class EditorPlayState extends MusicBeatState
 					noteMiss(note);
 					--songMisses;
 					if(!note.isSustainNote) {
-						if(!note.noteSplashDisabled) {
+						if(!note.noteSplashData.disabled) {
 							spawnNoteSplashOnNote(note);
 						}
 					}
@@ -879,7 +879,7 @@ class EditorPlayState extends MusicBeatState
 			//score = 200;
 		}
 
-		if(daRating == 'sick' && !note.noteSplashDisabled)
+		if(daRating == 'sick' && !note.noteSplashData.disabled)
 		{
 			spawnNoteSplashOnNote(note);
 		}
@@ -1082,15 +1082,8 @@ class EditorPlayState extends MusicBeatState
 	}
 
 	function spawnNoteSplash(x:Float, y:Float, data:Int, ?note:Note = null) {
-		var skin:String = 'noteSplashes';
-		if(PlayState.SONG.splashSkin != null && PlayState.SONG.splashSkin.length > 0) skin = PlayState.SONG.splashSkin;
-		
-		if(note != null) {
-			skin = note.noteSplashTexture;
-		}
-
 		var splash:NoteSplash = grpNoteSplashes.recycle(NoteSplash);
-		splash.setupNoteSplash(x, y, data, skin, 0, 0, 0);
+		splash.setupNoteSplash(x, y, data, note);
 		grpNoteSplashes.add(splash);
 	}
 	

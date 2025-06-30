@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="noteSplashes-birthday.png">
+	<!-- Created with Adobe Animate version 24.0.9.74 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="note splash birthday red 10000" x="694" y="260" width="80" height="67" frameX="-131" frameY="-113" frameWidth="343" frameHeight="292"/>
+	<SubTexture name="note splash birthday red 10001" x="691" y="5" width="207" height="252" frameX="-68" frameY="-20" frameWidth="343" frameHeight="292"/>
+	<SubTexture name="note splash birthday red 10002" x="351" y="5" width="337" height="284" frameX="-3" frameY="-4" frameWidth="343" frameHeight="292"/>
+	<SubTexture name="note splash birthday red 10003" x="351" y="5" width="337" height="284" frameX="-3" frameY="-4" frameWidth="343" frameHeight="292"/>
+	<SubTexture name="note splash birthday red 10004" x="350" y="300" width="341" height="292" frameX="-1" frameY="0" frameWidth="343" frameHeight="292"/>
+	<SubTexture name="note splash birthday red 10005" x="350" y="300" width="341" height="292" frameX="-1" frameY="0" frameWidth="343" frameHeight="292"/>
+	<SubTexture name="note splash birthday red 10006" x="5" y="5" width="343" height="292"/>
+	<SubTexture name="note splash birthday red 10007" x="5" y="5" width="343" height="292"/>
+	<SubTexture name="note splash birthday red 10008" x="5" y="300" width="342" height="292" frameX="0" frameY="0" frameWidth="343" frameHeight="292"/>
+	<SubTexture name="note splash birthday red 10009" x="5" y="300" width="342" height="292" frameX="0" frameY="0" frameWidth="343" frameHeight="292"/>
+
+	<SubTexture name="note splash birthday blue 10000" x="694" y="260" width="80" height="67" frameX="-131" frameY="-113" frameWidth="343" frameHeight="292"/>
+	<SubTexture name="note splash birthday blue 10001" x="691" y="5" width="207" height="252" frameX="-68" frameY="-20" frameWidth="343" frameHeight="292"/>
+	<SubTexture name="note splash birthday blue 10002" x="351" y="5" width="337" height="284" frameX="-3" frameY="-4" frameWidth="343" frameHeight="292"/>
+	<SubTexture name="note splash birthday blue 10003" x="351" y="5" width="337" height="284" frameX="-3" frameY="-4" frameWidth="343" frameHeight="292"/>
+	<SubTexture name="note splash birthday blue 10004" x="350" y="300" width="341" height="292" frameX="-1" frameY="0" frameWidth="343" frameHeight="292"/>
+	<SubTexture name="note splash birthday blue 10005" x="350" y="300" width="341" height="292" frameX="-1" frameY="0" frameWidth="343" frameHeight="292"/>
+	<SubTexture name="note splash birthday blue 10006" x="5" y="5" width="343" height="292"/>
+	<SubTexture name="note splash birthday blue 10007" x="5" y="5" width="343" height="292"/>
+	<SubTexture name="note splash birthday blue 10008" x="5" y="300" width="342" height="292" frameX="0" frameY="0" frameWidth="343" frameHeight="292"/>
+	<SubTexture name="note splash birthday blue 10009" x="5" y="300" width="342" height="292" frameX="0" frameY="0" frameWidth="343" frameHeight="292"/>
+
+	<SubTexture name="note splash birthday green 10000" x="694" y="260" width="80" height="67" frameX="-131" frameY="-113" frameWidth="343" frameHeight="292"/>
+	<SubTexture name="note splash birthday green 10001" x="691" y="5" width="207" height="252" frameX="-68" frameY="-20" frameWidth="343" frameHeight="292"/>
+	<SubTexture name="note splash birthday green 10002" x="351" y="5" width="337" height="284" frameX="-3" frameY="-4" frameWidth="343" frameHeight="292"/>
+	<SubTexture name="note splash birthday green 10003" x="351" y="5" width="337" height="284" frameX="-3" frameY="-4" frameWidth="343" frameHeight="292"/>
+	<SubTexture name="note splash birthday green 10004" x="350" y="300" width="341" height="292" frameX="-1" frameY="0" frameWidth="343" frameHeight="292"/>
+	<SubTexture name="note splash birthday green 10005" x="350" y="300" width="341" height="292" frameX="-1" frameY="0" frameWidth="343" frameHeight="292"/>
+	<SubTexture name="note splash birthday green 10006" x="5" y="5" width="343" height="292"/>
+	<SubTexture name="note splash birthday green 10007" x="5" y="5" width="343" height="292"/>
+	<SubTexture name="note splash birthday green 10008" x="5" y="300" width="342" height="292" frameX="0" frameY="0" frameWidth="343" frameHeight="292"/>
+	<SubTexture name="note splash birthday green 10009" x="5" y="300" width="342" height="292" frameX="0" frameY="0" frameWidth="343" frameHeight="292"/>
+
+	<SubTexture name="note splash birthday purple 10000" x="694" y="260" width="80" height="67" frameX="-131" frameY="-113" frameWidth="343" frameHeight="292"/>
+	<SubTexture name="note splash birthday purple 10001" x="691" y="5" width="207" height="252" frameX="-68" frameY="-20" frameWidth="343" frameHeight="292"/>
+	<SubTexture name="note splash birthday purple 10002" x="351" y="5" width="337" height="284" frameX="-3" frameY="-4" frameWidth="343" frameHeight="292"/>
+	<SubTexture name="note splash birthday purple 10003" x="351" y="5" width="337" height="284" frameX="-3" frameY="-4" frameWidth="343" frameHeight="292"/>
+	<SubTexture name="note splash birthday purple 10004" x="350" y="300" width="341" height="292" frameX="-1" frameY="0" frameWidth="343" frameHeight="292"/>
+	<SubTexture name="note splash birthday purple 10005" x="350" y="300" width="341" height="292" frameX="-1" frameY="0" frameWidth="343" frameHeight="292"/>
+	<SubTexture name="note splash birthday purple 10006" x="5" y="5" width="343" height="292"/>
+	<SubTexture name="note splash birthday purple 10007" x="5" y="5" width="343" height="292"/>
+	<SubTexture name="note splash birthday purple 10008" x="5" y="300" width="342" height="292" frameX="0" frameY="0" frameWidth="343" frameHeight="292"/>
+	<SubTexture name="note splash birthday purple 10009" x="5" y="300" width="342" height="292" frameX="0" frameY="0" frameWidth="343" frameHeight="292"/>
+</TextureAtlas>
