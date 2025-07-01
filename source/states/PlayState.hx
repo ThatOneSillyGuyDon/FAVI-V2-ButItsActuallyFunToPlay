@@ -378,6 +378,7 @@ class PlayState extends MusicBeatState
 	public static var lastScore:Array<FlxSprite> = [];
 
 	var backupGpu:Bool;
+	var backupMiddlescroll:Bool;
 
 	//FUNKIN.AVI V2
 	var drainValue:Float = 0;
@@ -753,6 +754,11 @@ class PlayState extends MusicBeatState
 			(checkMechanics ? ' - Mechanics: ' + (ClientPrefs.data.mechanics ? "Enabled" : "Disabled") : ""); // shitty long ass name that credits literally every fucking thing
 
 
+		if (curStage == "menuSongs")
+		{
+			backupMiddlescroll = ClientPrefs.data.middleScroll;
+			ClientPrefs.data.middleScroll = true;
+		}
 		
 
 		#if (LUA_ALLOWED || HSCRIPT_ALLOWED)
@@ -3898,7 +3904,11 @@ class PlayState extends MusicBeatState
 				{
 					var len:Int = e.message.indexOf('\n') + 1;
 					if(len <= 0) len = e.message.length;
+					#if (LUA_ALLOWED || HSCRIPT_ALLOWED)
 					addTextToDebug('ERROR ("Set Property" Event) - ' + e.message.substr(0, len), FlxColor.RED);
+					#else
+					FlxG.log.warn('ERROR ("Set Property" Event) - ' + e.message.substr(0, len));
+					#end
 				}
 
 			case 'Split Screen':
@@ -5851,9 +5861,11 @@ class PlayState extends MusicBeatState
 		FlxG.animationTimeScale = 1;
 		#if FLX_PITCH FlxG.sound.music.pitch = 1; #end
 		ClientPrefs.data.cacheOnGPU = backupGpu;
+		if (curStage == "menuSongs") 
+			ClientPrefs.data.middleScroll = backupMiddlescroll;
+		Lib.application.window.resize(1280, 720);
 		Lib.application.window.x = Std.int((Lib.application.window.display.bounds.width - Lib.application.window.width) * 0.5);
 		Lib.application.window.y = Std.int((Lib.application.window.display.bounds.height - Lib.application.window.height) * 0.5);
-		Lib.application.window.resize(1280, 720);
 		Transparency.getWindowsbackward();
 		//if (!ClientPrefs.data.fullscreen)
 			FlxG.fullscreen = false;
