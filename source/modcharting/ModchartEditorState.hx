@@ -85,6 +85,8 @@ class ModchartEditorEvent extends FlxSprite
         #if LEATHER 
         frames = Paths.getSparrowAtlas("ui skins/" + utilities.Options.getData("uiSkin") + "/arrows/default", 'shared');
         animation.addByPrefix('note', 'left0');
+        #elseif PSYCH
+        loadGraphic(Paths.image('eventArrow'));
         #else
         frames = Paths.getSparrowAtlas('NOTE_assets');
         animation.addByPrefix('note', 'purple0');
@@ -369,6 +371,11 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
         
         persistentUpdate = true;
 		persistentDraw = true;
+
+        var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/editor/chart/chartEditorBG'));
+		bg.scrollFactor.set();
+		bg.color = 0xFF222222;
+		add(bg);
 
         #if PSYCH
         if (PlayState.isPixelStage) //Skew Kills Pixel Notes (How are you going to stretch already pixelated bit by bit notes?)

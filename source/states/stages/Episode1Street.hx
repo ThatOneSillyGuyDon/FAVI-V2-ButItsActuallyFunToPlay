@@ -79,6 +79,7 @@ class Episode1Street extends BaseStage
 	{
 		game.defaultCamZoom = 0.87;
 		game.cameraSpeed = 1;
+		PlayState.isGreyscale = true;
 		
 		colorsOrSmthElse = new FlxSprite(-990, 1600).loadGraphic(Paths.image(PlayState.pathway + 'randomColors'));
 		colorsOrSmthElse.setGraphicSize(Std.int(colorsOrSmthElse.width * 4));

@@ -5941,7 +5941,7 @@ class PlayState extends MusicBeatState
 		if (dad != null && beat % dad.danceEveryNumBeats == 0 && !dad.getAnimationName().startsWith('sing') && !dad.stunned)
 			dad.dance();
 
-		if (states.stages.Episode1Street.memoryMickey != null && beat % states.stages.Episode1Street.memoryMickey.danceEveryNumBeats == 0 && !states.stages.Episode1Street.memoryMickey.getAnimationName().startsWith('sing') && !states.stages.Episode1Street.memoryMickey.stunned)
+		if (SONG.song == "Delusional" && states.stages.Episode1Street.memoryMickey != null && beat % states.stages.Episode1Street.memoryMickey.danceEveryNumBeats == 0 && !states.stages.Episode1Street.memoryMickey.getAnimationName().startsWith('sing') && !states.stages.Episode1Street.memoryMickey.stunned)
 			states.stages.Episode1Street.memoryMickey.dance();
 	}
 
