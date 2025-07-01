@@ -197,6 +197,7 @@ class PlayfieldRenderer extends FlxSprite //extending flxsprite just so i can ed
                     strumY = 9999999;
             }
         }
+
         if (PlayState.curStage == "menuSongs")
         {
             switch (i)
@@ -208,6 +209,7 @@ class PlayfieldRenderer extends FlxSprite //extending flxsprite just so i can ed
                     //pray this fixes it
             }
         }
+
         var strumData:NotePositionData = NotePositionData.get();
         strumData.setupStrum(strumX, strumY, strumZ, i, strumScaleX, strumScaleY, strumSkewX, strumSkewY, pf);
         playfields[pf].applyOffsets(strumData);
@@ -255,15 +257,6 @@ class PlayfieldRenderer extends FlxSprite //extending flxsprite just so i can ed
                 case 0 | 1 | 2 | 3:
                     noteX = -9999999;
                     noteY = 9999999;
-            }
-        }
-
-        if (ClientPrefs.data.middleScroll)
-        {
-            switch (noteIndex)
-            {
-                case 0 | 1 | 2 | 3:
-                    noteAlpha = 0;
             }
         }
 

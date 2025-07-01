@@ -17,6 +17,7 @@ class Birtbhday extends BaseStage
 	{
 		game.defaultCamZoom = 1.25;
 		game.cameraSpeed = 50;
+		PlayState.isGreyscale = true;
 
 		var clubhouse:FlxSprite = new FlxSprite(-470, -150).loadGraphic(Paths.image(PlayState.pathway + 'clubhouse'));
 		add(clubhouse);
