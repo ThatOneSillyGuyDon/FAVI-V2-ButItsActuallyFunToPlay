@@ -96,6 +96,20 @@ class Note extends FlxSkewedSprite
 		[0xFF69562B, 0xFFA88843, 0xFF000000]
 	];
 
+	public var arrowRGBQuantsGreyscale:Array<Array<FlxColor>> = [
+		[0xFF737373, 0xFFFFFFFF, 0xFF2E2E2E],
+		[0xFFB3B3B3, 0xFFFFFFFF, 0xFF424242],
+		[0xFF777777, 0xFFFFFFFF, 0xFF2E2E2E],
+		[0xFFD4D4D4, 0xFFFFFFFF, 0xFF444444],
+		[0xFF7A7A7A, 0xFFFFFFFF, 0xFF343434],
+		[0xFF9C9C9C, 0xFFFFFFFF, 0xFF2F2F2F],
+		[0xFF686868, 0xFFFFFFFF, 0xFF1B1B1B],
+		[0xFF999999, 0xFFFFFFFF, 0xFF333333],
+		[0xFF5A5A5A, 0xFFFFFFFF, 0xFF363636],
+		[0xFF8a8a8a, 0xFFFFFFFF, 0xff3a3a3a],
+		[0xFFB0B0B0, 0xFFFFFFFF, 0xff505050]
+	];
+
 	//hardcoded greyscale color palette
 	public var arrowRGBGreyscale:Array<Array<FlxColor>> = [
 		[0xFF505050, 0xFFFFFFFF, 0xFF1B1B1B],
@@ -235,6 +249,7 @@ class Note extends FlxSkewedSprite
 		{
 			if(PlayState.curStage == "menuSongs") arr = [0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF];
 			if(PlayState.curStage == "waltRoom") arr = [0xFFFDD577, 0xFFFEEECA, 0xFF6F4F0D];
+			if(PlayState.isGreyscale) arr = arrowRGBGreyscale[noteData];
 
 			if (ClientPrefs.data.quantization && !PlayState.isGreyscale)
 			{
@@ -243,11 +258,9 @@ class Note extends FlxSkewedSprite
 				{
 					case "waltRoom": arr = arrowRGBQuantsMercy[idx];
 					case "menuSongs": arr = arrowRGBQuantsMania[idx];
-					default: arr = arrowRGBQuants[idx];
+					default: arr = PlayState.isGreyscale ? arrowRGBQuantsGreyscale[idx] : arrowRGBQuants[idx];
 				}
 			}
-
-			if(PlayState.isGreyscale) arr = arrowRGBGreyscale[noteData];
 		}
 
 		if (noteData > -1 && noteData <= arr.length)
