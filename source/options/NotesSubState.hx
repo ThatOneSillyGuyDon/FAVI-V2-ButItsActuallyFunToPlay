@@ -639,7 +639,7 @@ class NotesSubState extends MusicBeatSubstate
 		for (i in 0...dataArray.length)
 		{
 			Note.initializeGlobalRGBShader(i);
-			newNote = new StrumNote(150 + (480 / dataArray.length * i), 200, i, 0);
+			newNote = new StrumNote(150 + (480 / dataArray.length * i), 200, i, 0, true);
 			newNote.useRGBShader = true;
 			newNote.set_texture((onPixel ? "faviNotes/NOTE_assets-MALFUNCTION" : "faviNotes/NOTE_assets-DEFAULT"));
 			newNote.setGraphicSize(102);
