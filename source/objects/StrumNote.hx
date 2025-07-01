@@ -53,6 +53,7 @@ class StrumNote extends FlxSkewedSprite
 		if(!inSettings)
 		{
 			if(PlayState.curStage == "menuSongs") arr = [0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF];
+			if(PlayState.curStage == "waltRoom") arr = [0xFFFDD577, 0xFFFEEECA, 0xFF6F4F0D];
 			if(PlayState.isGreyscale) arr = arrowRGBGreyscale[leData];
 		}
 		
