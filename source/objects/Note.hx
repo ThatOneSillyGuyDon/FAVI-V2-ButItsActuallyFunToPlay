@@ -68,6 +68,20 @@ class Note extends FlxSkewedSprite
 		[0xFFbab86c, 0xFFFFFFFF, 0xff505a1f]
 	];
 
+	public var arrowRGBQuantsMania:Array<Array<FlxColor>> = [ //the main ones are too dark for the mania notes so uhhhh
+		[0xFFFFC1C3, 0xFFFFFFFF, 0xFFFFFFFF],
+		[0xFFDAFFFF, 0xFFFFFFFF, 0xFFFFFFFF],
+		[0xFFFFD2EF, 0xFFFFFFFF, 0xFFFFFFFF],
+		[0xFFFFFCCD, 0xFFFFFFFF, 0xFFFFFFFF],
+		[0xFFFCE0F2, 0xFFFFFFFF, 0xFFFFFFFF],
+		[0xFFFCE0BB, 0xFFFFFFFF, 0xFFFFFFFF],
+		[0xFFDBE6FF, 0xFFFFFFFF, 0xFFFFFFFF],
+		[0xFFD9FFD7, 0xFFFFFFFF, 0xFFFFFFFF],
+		[0xFFCBFFFF, 0xFFFFFFFF, 0xFFFFFFFF],
+		[0xffffffff, 0xFFFFFFFF, 0xFFFFFFFF],
+		[0xffe9e7bb, 0xFFFFFFFF, 0xFFFFFFFF]
+	];
+
 	//hardcoded greyscale color palette
 	public var arrowRGBGreyscale:Array<Array<FlxColor>> = [
 		[0xFF505050, 0xFFFFFFFF, 0xFF1B1B1B],
@@ -109,6 +123,7 @@ class Note extends FlxSkewedSprite
 	public var rgbShader:RGBShaderReference;
 	public static var globalRgbShaders:Array<RGBPalette> = [];
 	public var inEditor:Bool = false;
+	public var inSettings:Bool = false;
 
 	public var animSuffix:String = '';
 	public var gfNote:Bool = false;
@@ -121,7 +136,7 @@ class Note extends FlxSkewedSprite
 	public static var colArray:Array<String> = ['purple', 'blue', 'green', 'red'];
 	private var pixelInt:Array<Int> = [0, 1, 2, 3];
 
-	public static var defaultNoteSkin(default, never):String = "NOTE_assets";
+	public static var defaultNoteSkin(default, never):String = "faviNotes/NOTE_assets-DEFAULT";
 
 	public var noteSplashData:NoteSplashData = {
 		disabled: false,
@@ -202,14 +217,18 @@ class Note extends FlxSkewedSprite
 		var arr:Array<FlxColor> = ClientPrefs.data.arrowRGB[noteData];
 		if(PlayState.isPixelStage) arr = ClientPrefs.data.arrowRGBPixel[noteData];
 
-		if (ClientPrefs.data.quantization && !PlayState.isGreyscale)
+		if (!inSettings)
 		{
-			var idx = quants.indexOf(quant);
-			arr = arrowRGBQuants[idx];
-		}
+			if(PlayState.curStage == "menuSongs") arr = [0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF];
 
-		if(PlayState.isGreyscale) arr = arrowRGBGreyscale[noteData];
-		if(PlayState.curStage == "menuSongs") arr = [0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF];
+			if (ClientPrefs.data.quantization && !PlayState.isGreyscale)
+			{
+				var idx = quants.indexOf(quant);
+				arr = PlayState.curStage == "menuSongs" ? arrowRGBQuantsMania[idx] : arrowRGBQuants[idx];
+			}
+
+			if(PlayState.isGreyscale) arr = arrowRGBGreyscale[noteData];
+		}
 
 		if (noteData > -1 && noteData <= arr.length)
 		{
@@ -292,7 +311,7 @@ class Note extends FlxSkewedSprite
 		return value;
 	}
 
-	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false, ?inEditor:Bool = false)
+	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false, ?inEditor:Bool = false, ?inSettings:Bool = false)
 	{
 		super();
 
@@ -304,6 +323,7 @@ class Note extends FlxSkewedSprite
 		this.prevNote = prevNote;
 		isSustainNote = sustainNote;
 		this.inEditor = inEditor;
+		this.inSettings = inSettings;
 
 		if (ClientPrefs.data.quantization){
 			var beat = Conductor.getBeatInMeasure(strumTime);
@@ -450,7 +470,7 @@ class Note extends FlxSkewedSprite
 							skin = "faviNotes/NOTE_assets-DEFAULT";
 					}
 				}
-				else skin = "NOTE_assets";
+				else skin = PlayState.isPixelStage ? "faviNotes/NOTE_assets-MALFUNCTION" : "faviNotes/NOTE_assets-DEFAULT";
 		}
 
 		var animName:String = null;
@@ -471,13 +491,26 @@ class Note extends FlxSkewedSprite
 		else skinPostfix = '';
 
 		if(PlayState.isPixelStage) {
-			if(isSustainNote) {
-				var graphic = Paths.image('pixelUI/' + skinPixel + 'ENDS' + skinPostfix);
-				loadGraphic(graphic, true, Math.floor(graphic.width / 4), Math.floor(graphic.height / 2));
-				originalHeight = graphic.height / 2;
-			} else {
-				var graphic = Paths.image('pixelUI/' + skinPixel + skinPostfix);
-				loadGraphic(graphic, true, Math.floor(graphic.width / 4), Math.floor(graphic.height / 5));
+			if (!inSettings)
+			{
+				if(isSustainNote) {
+					var graphic = Paths.image('pixelUI/' + skinPixel + 'ENDS' + skinPostfix);
+					loadGraphic(graphic, true, Math.floor(graphic.width / 4), Math.floor(graphic.height / 2));
+					originalHeight = graphic.height / 2;
+				} else {
+					var graphic = Paths.image('pixelUI/' + skinPixel + skinPostfix);
+					loadGraphic(graphic, true, Math.floor(graphic.width / 4), Math.floor(graphic.height / 5));
+				}
+			}
+			else {
+				if(isSustainNote) {
+					var graphic = Paths.image('pixelUI/faviNotes/NOTE_assets-MALFUNCTIONENDS');
+					loadGraphic(graphic, true, Math.floor(graphic.width / 4), Math.floor(graphic.height / 2));
+					originalHeight = graphic.height / 2;
+				} else {
+					var graphic = Paths.image('pixelUI/faviNotes/NOTE_assets-MALFUNCTION');
+					loadGraphic(graphic, true, Math.floor(graphic.width / 4), Math.floor(graphic.height / 5));
+				}
 			}
 			setGraphicSize(Std.int(width * PlayState.daPixelZoom));
 			loadPixelNoteAnims();
@@ -489,7 +522,7 @@ class Note extends FlxSkewedSprite
 				offsetX -= _lastNoteOffX;
 			}
 		} else {
-			frames = Paths.getSparrowAtlas(skin);
+			frames = Paths.getSparrowAtlas((inSettings ? "faviNotes/NOTE_assets-DEFAULT" : skin));
 			loadNoteAnims();
 			antialiasing = ClientPrefs.data.antialiasing;
 			if(!isSustainNote)

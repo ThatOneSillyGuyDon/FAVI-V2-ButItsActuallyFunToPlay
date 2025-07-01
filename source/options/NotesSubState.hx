@@ -53,11 +53,16 @@ class NotesSubState extends MusicBeatSubstate
 		#if DISCORD_ALLOWED
 		DiscordClient.changePresence("Note Colors Menu", null);
 		#end
+
+		if(PlayState.isGreyscale)
+			PlayState.isGreyscale = false;
 		
-		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
-		bg.color = 0xFFEA71FD;
+		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/options/background'));
+		bg.setGraphicSize(FlxG.width, FlxG.height);
+		bg.updateHitbox();
 		bg.screenCenter();
 		bg.antialiasing = ClientPrefs.data.antialiasing;
+		bg.setColorTransform(1, 1, 1, 1, 100, 100, 100, 255); // thanks mr color transform kisses
 		add(bg);
 
 		var grid:FlxBackdrop = new FlxBackdrop(FlxGridOverlay.createGrid(80, 80, 160, 160, true, 0x33FFFFFF, 0x0));
@@ -636,15 +641,15 @@ class NotesSubState extends MusicBeatSubstate
 			Note.initializeGlobalRGBShader(i);
 			newNote = new StrumNote(150 + (480 / dataArray.length * i), 200, i, 0);
 			newNote.useRGBShader = true;
-			newNote.set_texture("NOTE_assets");
+			newNote.set_texture((onPixel ? "faviNotes/NOTE_assets-MALFUNCTION" : "faviNotes/NOTE_assets-DEFAULT"));
 			newNote.setGraphicSize(102);
 			newNote.updateHitbox();
 			newNote.ID = i;
 			myNotes.add(newNote);
 		}
 
-		bigNote = new Note(0, 0, false, true);
-		bigNote.reloadNote("NOTE_assets", "");
+		bigNote = new Note(0, 0, false, true, true);
+		bigNote.reloadNote((onPixel ? "faviNotes/NOTE_assets-MALFUNCTION" : "faviNotes/NOTE_assets-DEFAULT"), "");
 		bigNote.setPosition(250, 325);
 		bigNote.setGraphicSize(250);
 		bigNote.updateHitbox();

@@ -26,6 +26,8 @@ class StrumNote extends FlxSkewedSprite
 	];
 	
 	private var player:Int;
+
+	public var inSettings:Bool = false;
 	
 	public var texture(default, set):String = null;
 	public function set_texture(value:String):String {
@@ -37,8 +39,9 @@ class StrumNote extends FlxSkewedSprite
 	}
 
 	public var useRGBShader:Bool = true;
-	public function new(x:Float, y:Float, leData:Int, player:Int) {
+	public function new(x:Float, y:Float, leData:Int, player:Int, ?inSettings:Bool = false) {
 		animation = new PsychAnimationController(this);
+		this.inSettings = inSettings;
 
 		rgbShader = new RGBShaderReference(this, Note.initializeGlobalRGBShader(leData));
 		rgbShader.enabled = false;
@@ -46,7 +49,12 @@ class StrumNote extends FlxSkewedSprite
 		
 		var arr:Array<FlxColor> = ClientPrefs.data.arrowRGB[leData];
 		if(PlayState.isPixelStage) arr = ClientPrefs.data.arrowRGBPixel[leData];
-		if(PlayState.isGreyscale) arr = arrowRGBGreyscale[leData];
+
+		if(!inSettings)
+		{
+			if(PlayState.curStage == "menuSongs") arr = [0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF];
+			if(PlayState.isGreyscale) arr = arrowRGBGreyscale[leData];
+		}
 		
 		if(leData <= arr.length)
 		{
@@ -64,10 +72,10 @@ class StrumNote extends FlxSkewedSprite
 		super(x, y);
 
 		var skin:String = null;
-		if(PlayState.SONG != null && PlayState.SONG.arrowSkin != null && PlayState.SONG.arrowSkin.length > 1) skin = PlayState.SONG.arrowSkin;
+		if(PlayState.SONG != null && PlayState.SONG.arrowSkin != null && PlayState.SONG.arrowSkin.length > 1 && !inSettings) skin = PlayState.SONG.arrowSkin;
 		else skin = Note.defaultNoteSkin;
 
-		if (PlayState.SONG != null)
+		if (PlayState.SONG != null && !inSettings)
 		{
 			switch (PlayState.SONG.song)
 			{
@@ -98,7 +106,7 @@ class StrumNote extends FlxSkewedSprite
 					skin = "faviNotes/NOTE_assets-DEFAULT";
 			}
 		}
-		else skin = "NOTE_assets";
+		else skin = PlayState.isPixelStage ? "faviNotes/NOTE_assets-MALFUNCTION" : "faviNotes/NOTE_assets-DEFAULT";
 
 		var customSkin:String = skin + Note.getNoteSkinPostfix();
 		if(Paths.fileExists('images/$customSkin.png', IMAGE)) skin = customSkin;

@@ -206,7 +206,9 @@ class PlayfieldRenderer extends FlxSprite //extending flxsprite just so i can ed
                     strumX = -9999999;
                     strumY = 9999999;
                 case 4 | 5 | 6 | 7:
-                    //pray this fixes it
+                    strumX += 11;
+                    strumY += 10;
+                    strumZ -= 25;
             }
         }
 
@@ -257,6 +259,17 @@ class PlayfieldRenderer extends FlxSprite //extending flxsprite just so i can ed
                 case 0 | 1 | 2 | 3:
                     noteX = -9999999;
                     noteY = 9999999;
+            }
+        }
+
+        if (PlayState.curStage == "menuSongs")
+        {
+            switch (noteIndex)
+            {
+                case 4 | 5 | 6 | 7:
+                    noteX += 11;
+                    noteY += 10;
+                    noteZ -= 25;
             }
         }
 
