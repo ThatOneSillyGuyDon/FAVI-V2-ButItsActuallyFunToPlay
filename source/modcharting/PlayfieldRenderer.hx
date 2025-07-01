@@ -262,17 +262,6 @@ class PlayfieldRenderer extends FlxSprite //extending flxsprite just so i can ed
             }
         }
 
-        if (PlayState.curStage == "menuSongs")
-        {
-            switch (noteIndex)
-            {
-                case 4 | 5 | 6 | 7:
-                    noteX += 11;
-                    noteY += 10;
-                    noteZ -= 25;
-            }
-        }
-
         var noteData:NotePositionData = NotePositionData.get();
         noteData.setupNote(noteX, noteY, noteZ, lane, noteScaleX, noteScaleY, noteSkewX, noteSkewY, playfieldIndex, noteAlpha, 
             curPos, noteDist, incomingAngle[0], incomingAngle[1], notes.members[noteIndex].strumTime, noteIndex);
