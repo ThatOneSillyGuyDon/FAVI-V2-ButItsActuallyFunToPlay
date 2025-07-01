@@ -207,7 +207,7 @@ class PlayState extends MusicBeatState
 
 	@:noCompletion
 	static function get_isPixelStage():Bool
-		return stageUI == "pixel" || stageUI.endsWith("-pixel") || SONG.song == "Malfunction" || SONG.song == "Malfunction Legacy" || SONG.song == "Cycled Sins" || SONG.song == "Cycled Sins Legacy";
+		return stageUI == "pixel" || stageUI.endsWith("-pixel") || SONG != null && (SONG.song == "Malfunction" || SONG.song == "Malfunction Legacy" || SONG.song == "Cycled Sins" || SONG.song == "Cycled Sins Legacy");
 
 	public static var SONG:SwagSong = null;
 	public static var isStoryMode:Bool = false;

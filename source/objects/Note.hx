@@ -201,15 +201,15 @@ class Note extends FlxSkewedSprite
 	{
 		var arr:Array<FlxColor> = ClientPrefs.data.arrowRGB[noteData];
 		if(PlayState.isPixelStage) arr = ClientPrefs.data.arrowRGBPixel[noteData];
-		if(PlayState.curStage == "menuSongs") arr = [0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF];
 
-		if (ClientPrefs.data.quantization)
+		if (ClientPrefs.data.quantization && !PlayState.isGreyscale)
 		{
 			var idx = quants.indexOf(quant);
 			arr = arrowRGBQuants[idx];
 		}
 
 		if(PlayState.isGreyscale) arr = arrowRGBGreyscale[noteData];
+		if(PlayState.curStage == "menuSongs") arr = [0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF];
 
 		if (noteData > -1 && noteData <= arr.length)
 		{
@@ -417,7 +417,7 @@ class Note extends FlxSkewedSprite
 
 		var skin:String = texture + postfix;
 		if(texture.length < 1) {
-			skin = PlayState.SONG != null ? PlayState.SONG.arrowSkin : null;
+			skin = PlayState.SONG != null ? PlayState.SONG.arrowSkin : "faviNotes/NOTE_assets-CARTOON";
 			if(skin == null || skin.length < 1)
 				switch (PlayState.SONG.song)
 				{
