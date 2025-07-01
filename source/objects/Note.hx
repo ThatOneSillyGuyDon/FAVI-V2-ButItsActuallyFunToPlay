@@ -251,7 +251,7 @@ class Note extends FlxSkewedSprite
 			if(PlayState.curStage == "waltRoom") arr = [0xFFFDD577, 0xFFFEEECA, 0xFF6F4F0D];
 			if(PlayState.isGreyscale) arr = arrowRGBGreyscale[noteData];
 
-			if (ClientPrefs.data.quantization && !PlayState.isGreyscale)
+			if (ClientPrefs.data.quantization)
 			{
 				var idx = quants.indexOf(quant);
 				switch (PlayState.curStage)
