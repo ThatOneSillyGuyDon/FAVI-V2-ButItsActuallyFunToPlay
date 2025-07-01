@@ -8,6 +8,7 @@ import flixel.input.keyboard.FlxKey;
 class OptionsState extends MusicBeatState
 {
 	var options:Array<String> = [
+		'Note Colors', 
 		'Preferences',
 		'Graphics',
 		'Gameplay',
@@ -22,6 +23,8 @@ class OptionsState extends MusicBeatState
 	{
 		switch (label)
 		{
+			case 'Note Colors':
+				openSubState(new options.NotesSubState());
 			case 'Preferences':
 				openSubState(new VisualsUISubState());
 			case 'Controls':
@@ -165,19 +168,19 @@ class OptionsState extends MusicBeatState
 
 		switch (curSelected)
 		{
-			case 0:
+			case 1:
 				art.setPosition(((FlxG.width - art.width) / 2) + 150, ((FlxG.height - art.height) / 2) + 200);
 				art.scale.set(.7, .7);
 				art.updateHitbox();
 				art.screenCenter();
 				art.y += 100;
-			case 1:
+			case 2:
 				art.setPosition(((FlxG.width - art.width) / 2) + 170, ((FlxG.height - art.height) / 2) + 170);
 				art.scale.set(.35, .35);
 				art.updateHitbox();
 				art.screenCenter();
 				art.y += 100;
-			case 2:
+			case 3:
 				art.setPosition(((FlxG.width - art.width) / 2) + 150, ((FlxG.height - art.height) / 2) + 200);
 				art.scale.set(.35, .35);
 				art.updateHitbox();
