@@ -95,6 +95,7 @@ class Note extends FlxSkewedSprite
 		[0xFF69562B, 0xFFA88843, 0xFF000000]
 	];
 
+	//hardcoded greyscale color palettes
 	public var arrowRGBQuantsGreyscale:Array<Array<FlxColor>> = [
 		[0xFF737373, 0xFFFFFFFF, 0xFF2E2E2E],
 		[0xFFB3B3B3, 0xFFFFFFFF, 0xFF424242],
@@ -109,12 +110,42 @@ class Note extends FlxSkewedSprite
 		[0xFFB0B0B0, 0xFFFFFFFF, 0xff505050]
 	];
 
-	//hardcoded greyscale color palette
 	public var arrowRGBGreyscale:Array<Array<FlxColor>> = [
 		[0xFF505050, 0xFFFFFFFF, 0xFF1B1B1B],
 		[0xFF747474, 0xFFFFFFFF, 0xFF353535],
 		[0xFFA2A2A2, 0xFFFFFFFF, 0xFF424242],
 		[0xFF1D1D1D, 0xFFFFFFFF, 0xFF000000]
+	];
+
+	//error note colors shit
+	public var arrowRGBQuantsError:Array<Array<FlxColor>> = [
+		[0xFFF9393F, 0xFF201111, 0xFF180C12],
+		[0xFF00FFFF, 0xFF161D1D, 0xFF0A0C13],
+		[0xFFC24B99, 0xFF1A131B, 0xFF0D0911],
+		[0xFFF0E342, 0xFF14140F, 0xFF110E09],
+		[0xFFED36AD, 0xFF1F151D, 0xFF110911],
+		[0xFFE98F16, 0xFF201B15, 0xFF110E09],
+		[0xFF4769B8, 0xFF12151B, 0xFF090B0F],
+		[0xFF12FA05, 0xFF111811, 0xFF040707],
+		[0xFF008080, 0xFF00151B, 0xFF000A0A],
+		[0xFF8a8a8a, 0xFF131313, 0xff0c0c0c],
+		[0xFFbab86c, 0xFF1B1B15, 0xff0b0c05]
+	];
+
+	public var arrowRGBNewError:Array<Array<FlxColor>> = [
+		[0xD8F01111, 0xFF271818, 0xFF140D0D],
+		[0xFF00FFFF, 0x1C2525, 0x090E0D],
+		[0xD89E11F0, 0xFF241827, 0xFF120D14],
+		[0xFF00FF6A, 0x1C2520, 0x090E0B],
+		[0xFF1100FF, 0x1C1C25, 0x09090E],
+		[0xFFFF00DD, 0x251C22, 0x0E090D]
+	];
+
+	public var arrowRGBOldError:Array<Array<FlxColor>> = [
+		[0xD8F01111, 0xFF271818, 0xFF140D0D],
+		[0xFF00FFFF, 0x1C2525, 0x090E0D],
+		[0xD8F01111, 0xFF271818, 0xFF140D0D],
+		[0xFF00FFFF, 0x1C2525, 0x090E0D]
 	];
 
 	public var mesh:modcharting.SustainStrip = null;
@@ -300,14 +331,33 @@ class Note extends FlxSkewedSprite
 					hitsoundChartEditor = false;
 				case 'Error Note':
 					ignoreNote = mustPress;
+					var arr:Array<FlxColor> = ClientPrefs.data.arrowRGB[noteData];
+
 					if (PlayState.SONG.song == "Malfunction Legacy")
 					{
 						reloadNote('faviNotes/ERRORNOTE_assets');
-						rgbShader.r = 0xFFFF0000;
-						rgbShader.b = 0x00EEFF;
+						arr = arrowRGBOldError[noteData];
 					}
 					else
+					{
 						reloadNote('faviNotes/ERROR_NOTE');
+						var randomInt:Int = FlxG.random.int(0, 5);
+						arr = arrowRGBNewError[randomInt];
+					}
+
+					if (ClientPrefs.data.quantization)
+					{
+						var idx = quants.indexOf(quant);
+						arr = arrowRGBQuantsError[idx];
+					}
+
+					if (noteData > -1 && noteData <= arr.length)
+					{
+						rgbShader.r = arr[0];
+						rgbShader.g = arr[1];
+						rgbShader.b = arr[2];
+					}
+
 					lowPriority = true;
 				case 'Alt Animation':
 					animSuffix = '-alt';
@@ -322,14 +372,32 @@ class Note extends FlxSkewedSprite
 					hitCausesMiss = false;
 					ignoreNote = true;
 				case 'Mal Must Miss These (Error Edition)':
+					var arr:Array<FlxColor> = ClientPrefs.data.arrowRGB[noteData];
+
 					if (PlayState.SONG.song == "Malfunction Legacy")
 					{
 						reloadNote('faviNotes/ERRORNOTE_assets');
-						rgbShader.r = 0xFFFF0000;
-						rgbShader.b = 0x00EEFF;
+						arr = arrowRGBOldError[noteData];
 					}
 					else
+					{
 						reloadNote('faviNotes/ERROR_NOTE');
+						var randomInt:Int = FlxG.random.int(0, 5);
+						arr = arrowRGBNewError[randomInt];
+					}
+
+					if (ClientPrefs.data.quantization)
+					{
+						var idx = quants.indexOf(quant);
+						arr = arrowRGBQuantsError[idx];
+					}
+
+					if (noteData > -1 && noteData <= arr.length)
+					{
+						rgbShader.r = arr[0];
+						rgbShader.g = arr[1];
+						rgbShader.b = arr[2];
+					}
 					
 					noAnimation = true;
 					noMissAnimation = true;

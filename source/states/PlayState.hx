@@ -5038,12 +5038,9 @@ class PlayState extends MusicBeatState
 		var result:Dynamic = callOnLuas('opponentNoteHitPre', [notes.members.indexOf(note), Math.abs(note.noteData), note.noteType, note.isSustainNote]);
 		if(result != LuaUtils.Function_Stop && result != LuaUtils.Function_StopHScript && result != LuaUtils.Function_StopAll) callOnHScript('opponentNoteHitPre', [note]);
 
-		if (ClientPrefs.data.quantization && !isGreyscale)
-		{
-			opponentStrums.members[note.noteData].rgbShader.r = note.rgbShader.r;
-			opponentStrums.members[note.noteData].rgbShader.g = note.rgbShader.g;
-			opponentStrums.members[note.noteData].rgbShader.b = note.rgbShader.b;
-		}
+		opponentStrums.members[note.noteData].rgbShader.r = note.rgbShader.r;
+		opponentStrums.members[note.noteData].rgbShader.g = note.rgbShader.g;
+		opponentStrums.members[note.noteData].rgbShader.b = note.rgbShader.b;
 
 		if (songName != 'tutorial')
 			camZooming = true;
@@ -5353,12 +5350,9 @@ class PlayState extends MusicBeatState
 
 		note.wasGoodHit = true;
 
-		if (ClientPrefs.data.quantization && !isGreyscale)
-		{
-			playerStrums.members[note.noteData].rgbShader.r = note.rgbShader.r;
-			playerStrums.members[note.noteData].rgbShader.g = note.rgbShader.g;
-			playerStrums.members[note.noteData].rgbShader.b = note.rgbShader.b;
-		}
+		playerStrums.members[note.noteData].rgbShader.r = note.rgbShader.r;
+		playerStrums.members[note.noteData].rgbShader.g = note.rgbShader.g;
+		playerStrums.members[note.noteData].rgbShader.b = note.rgbShader.b;
 
 		if (ClientPrefs.data.hitsoundVolume > 0 && !note.hitsoundDisabled)
 		{
