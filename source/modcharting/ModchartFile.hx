@@ -555,6 +555,15 @@ class ModchartFile
                     else
                         json = {modifiers: [], events: [], playfields: 1};
 
+                case "Mercy":
+                    if (ClientPrefs.data.mechanics)
+                    {
+                        if (ClientPrefs.data.middleScroll)
+                            json = cast Json.parse(Modchart.mercyMiddle);
+                        else
+                            json = cast Json.parse(Modchart.mercyThingy);
+                    }
+
                 case "Rotten Petals":
                     if (ClientPrefs.data.mechanics)
                         json = cast Json.parse(Modchart.petalsManiaMod);

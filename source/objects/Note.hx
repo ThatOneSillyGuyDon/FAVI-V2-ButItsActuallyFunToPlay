@@ -51,7 +51,6 @@ class Note extends FlxSkewedSprite
 		192
 	];
 	public var quant:Int = 4;
-	public static var quantS:Int = 4; // i hate static function i hate static function
 
 	//why am i stupid? good question!
 	public var arrowRGBQuants:Array<Array<FlxColor>> = [
@@ -358,6 +357,14 @@ class Note extends FlxSkewedSprite
 		this.inEditor = inEditor;
 		this.inSettings = inSettings;
 
+		if (ClientPrefs.data.quantization){
+			var beat = Conductor.getBeatInMeasure(strumTime);
+			if(prevNote!=null && isSustainNote)
+				quant = prevNote.quant;
+			else
+				quant = getQuant(beat);
+		}
+
 		x += (ClientPrefs.data.middleScroll ? PlayState.STRUM_X_MIDDLESCROLL : PlayState.STRUM_X) + 50;
 		// MAKE SURE ITS DEFINITELY OFF SCREEN?
 		y -= 2000;
@@ -430,16 +437,6 @@ class Note extends FlxSkewedSprite
 			earlyHitMult = 1;
 		}
 		x += offsetX;
-
-		if (ClientPrefs.data.quantization){
-			var beat = Conductor.getBeatInMeasure(strumTime);
-			if(prevNote!=null && isSustainNote)
-				quant = prevNote.quant;
-			else
-				quant = getQuant(beat);
-
-			quantS = quant;
-		}
 	}
 
 	public static function initializeGlobalRGBShader(noteData:Int)
