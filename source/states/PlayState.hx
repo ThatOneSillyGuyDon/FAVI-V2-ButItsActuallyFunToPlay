@@ -1605,6 +1605,28 @@ class PlayState extends MusicBeatState
 				sfx.volume = 0.6;
 			}
 
+			Lib.application.window.onClose.removeAll();
+			Lib.application.window.onClose.add(function() {
+				persistentUpdate = false;
+				persistentDraw = true;
+				paused = true;
+	
+				if(inst != null) {
+					inst.pause();
+					vocals.pause();
+					opponentVocals.pause();
+				}
+	
+				openSubState(new Prompt('Are you sure you want to quit?\n\nYou will lose your unsaved progress.', 0, function(){
+					System.exit(0);
+					DiscordClient.shutdown();
+				}, function(){
+					persistentUpdate = true;
+					persistentDraw = true;
+				},false, camOther));
+				Lib.application.window.onClose.cancel();
+			});
+
 			for (i in 0...playerStrums.length) {
 				setOnScripts('defaultPlayerStrumX' + i, playerStrums.members[i].x);
 				setOnScripts('defaultPlayerStrumY' + i, playerStrums.members[i].y);
@@ -2450,6 +2472,28 @@ class PlayState extends MusicBeatState
 			callOnScripts('onResume');
 			resetRPC(startTimer != null && startTimer.finished);
 		}
+
+		Lib.application.window.onClose.removeAll();
+		Lib.application.window.onClose.add(function() {
+			persistentUpdate = false;
+			persistentDraw = true;
+			instance.paused = true;
+
+			if(inst != null) {
+				inst.pause();
+				vocals.pause();
+				opponentVocals.pause();
+			}
+
+			openSubState(new Prompt('Are you sure you want to quit?\n\nYour data will still save if you do.', 0, function(){
+				System.exit(0);
+				DiscordClient.shutdown();
+			}, function(){
+				persistentUpdate = true;
+				persistentDraw = true;
+			},false, camOther));
+			Lib.application.window.onClose.cancel();
+		});
 	}
 
 	override public function onFocus():Void
@@ -3523,6 +3567,11 @@ class PlayState extends MusicBeatState
 				paused = true;
 				Application.current.window.title = 'Funkin.avi - Game Over - Deaths : ${deathCounter}';
 
+				Lib.application.window.onClose.removeAll(); // goes back to normal hopefully
+				Lib.application.window.onClose.add(function() {
+					DiscordClient.shutdown();
+				});
+
 				if (FreeplayState.freeplayMenuList != 3)
 				{
 					vocals.stop();
@@ -4347,6 +4396,11 @@ class PlayState extends MusicBeatState
 			}
 		}
 		pauseCountEnabled = false;
+
+		Lib.application.window.onClose.removeAll(); // goes back to normal hopefully
+		Lib.application.window.onClose.add(function() {
+			DiscordClient.shutdown();
+		});
 
 		timeBar.visible = false;
 		timeTxt.visible = false;
