@@ -1486,12 +1486,12 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
             var x:Int = 0;
             while (x <= Width)
             {
-                if (timesFilled % 4 == 0)
+                if (timesFilled % 2 == 0)
                     lastColor = Color1;
-                else if (timesFilled % 4 == 2)
+                //else if (timesFilled % 4 == 2)
+                    //lastColor = Color2;
+                else 
                     lastColor = Color2;
-                //else 
-                    //lastColor = Color3;
 
                 grid.fillRect(new Rectangle(x, y, CellWidth, CellHeight), lastColor);
                 timesFilled++;
