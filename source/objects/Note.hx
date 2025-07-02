@@ -52,7 +52,7 @@ class Note extends FlxSkewedSprite
 	];
 	public var quant:Int = 4;
 
-	//why am i stupid? good question!
+	//Quant Colors stuff!!!!!!! (yes i am still stupid)
 	public var arrowRGBQuants:Array<Array<FlxColor>> = [
 		[0xFFF9393F, 0xFFFFFFFF, 0xFF651038],
 		[0xFF00FFFF, 0xFFFFFFFF, 0xFF1542B7],

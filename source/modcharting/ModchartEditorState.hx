@@ -1470,9 +1470,9 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
     public static function createGrid(CellWidth:Int, CellHeight:Int, Width:Int, Height:Int):BitmapData
     {
         // How many cells can we fit into the width/height? (round it UP if not even, then trim back)
-        var Color1 = FlxColor.RED; //quant colors!!!
-        var Color2 = FlxColor.BLUE;
-        var Color3 = FlxColor.LIME;
+        var Color1 = FlxColor.fromRGB(16, 16, 16);
+        var Color2 = FlxColor.fromRGB(32, 32, 32);
+        //var Color3 = FlxColor.LIME;
         var rowColor:Int = Color1;
         var lastColor:Int = Color1;
         var grid:BitmapData = new BitmapData(Width, Height, true);
@@ -1490,8 +1490,8 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
                     lastColor = Color1;
                 else if (timesFilled % 4 == 2)
                     lastColor = Color2;
-                else 
-                    lastColor = Color3;
+                //else 
+                    //lastColor = Color3;
 
                 grid.fillRect(new Rectangle(x, y, CellWidth, CellHeight), lastColor);
                 timesFilled++;
