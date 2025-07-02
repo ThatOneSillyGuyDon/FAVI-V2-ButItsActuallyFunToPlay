@@ -2975,7 +2975,7 @@ class PlayState extends MusicBeatState
 		{
 			switch (char.animation.curAnim.name.substring(4))
 			{
-				case 'UP' | 'UP-alt' | 'UPmiss':
+				case 'UP' | 'UP-alt' | 'UPmiss' | 'endingAnim':
 					camOffset[1] -= 40;
 
 				case 'RIGHT' | 'RIGHT-alt' | 'RIGHTmiss':
