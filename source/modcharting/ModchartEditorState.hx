@@ -521,7 +521,7 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
         updateEventSprites();
 
         line = new FlxSprite().makeGraphic(10, gridSize);
-        line.color = FlxColor.BLACK;
+        line.color = FlxColor.WHITE;
         add(line);
 
         generateStaticArrows(0);
