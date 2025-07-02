@@ -132,20 +132,6 @@ typedef FlashingSettings =
 **/
 class PlayState extends MusicBeatState
 {
-	//Split Screen Event Vars
-	var camLeft:FlxCamera;
-	var camRight:FlxCamera;
-	var leftEdge:FlxCamera;
-	var rightEdge:FlxCamera;
-	var camFollowDad:FlxObject;
-	var camFollowBf:FlxObject;
-
-	var uhhdumbassline1:FlxSprite; //Left line
-	var uhhdumbassline2:FlxSprite; //Right line
-
-	var camLeftOffsets:Array<Float> = [0, 0];
-	var camRightOffsets:Array<Float> = [0, 0];
-	
 	public static var STRUM_X = 42;
 	public static var STRUM_X_MIDDLESCROLL = -278;
 	var middlescroll:Bool = false;
@@ -505,12 +491,6 @@ class PlayState extends MusicBeatState
 		practiceMode = ClientPrefs.getGameplaySetting('practice');
 		cpuControlled = ClientPrefs.getGameplaySetting('botplay');
 
-		camLeft = new FlxCamera();
-		camLeft.width = 640;
-		camRight = new FlxCamera();
-		camRight.x = FlxG.width/2;
-		camRight.width = 640;
-
 		// var gameCam:FlxCamera = FlxG.camera;
 		camGame = new FlxCamera();
 		camHUD = new FlxCamera();
@@ -524,20 +504,7 @@ class PlayState extends MusicBeatState
 		camOther.bgColor.alpha = 0;
 		fakeCam.bgColor.alpha = 0;
 
-		leftEdge = new FlxCamera();
-		leftEdge.width = 640;
-		leftEdge.color = FlxColor.BLACK;
-
-		rightEdge = new FlxCamera();
-		rightEdge.x = FlxG.width/2;
-		rightEdge.color = FlxColor.BLACK;
-		rightEdge.width = 640;
-
 		FlxG.cameras.reset(camGame);
-		FlxG.cameras.add(leftEdge, false);
-    	FlxG.cameras.add(rightEdge, false);
-		FlxG.cameras.add(camLeft, false);
-    	FlxG.cameras.add(camRight, false);
 		FlxG.cameras.add(camVideo, false);
 		FlxG.cameras.add(camBars, false);
 		FlxG.cameras.add(camHUD, false);
@@ -934,31 +901,6 @@ class PlayState extends MusicBeatState
 		FlxG.fixedTimestep = false;
 		moveCameraSection();
 
-		camFollowDad = new FlxObject();
-		splitCameraPos(false);
-		add(camFollowDad);
-
-		camFollowBf = new FlxObject();
-		splitCameraPos(true);
-		add(camFollowBf);
-
-		camLeft.follow(camFollowDad, LOCKON, 0);
-		camRight.follow(camFollowBf, LOCKON, 1);
-
-		camLeft.x = -(FlxG.width/2);
-		camRight.x = (FlxG.width/2)*2;
-
-		leftEdge.x = -(FlxG.width/2);
-		rightEdge.x = (FlxG.width/2)*2;
-
-		uhhdumbassline1 = new FlxSprite(-10).makeGraphic(10, 720, FlxColor.BLACK);
-		uhhdumbassline1.cameras = [camBars];
-		add(uhhdumbassline1);
-
-		uhhdumbassline2 = new FlxSprite(1280).makeGraphic(10, 720, FlxColor.BLACK);
-		uhhdumbassline2.cameras = [camBars];
-		add(uhhdumbassline2);
-
 		healthBarBG = new AttachedSprite('healthBar');
 		healthBarBG.y = FlxG.height * 0.89;
 		healthBarBG.screenCenter(X);
@@ -1344,26 +1286,6 @@ class PlayState extends MusicBeatState
 		playbackRate = 1.0; // ensuring -Crow
 		#end
 		return playbackRate;
-	}
-
-	function splitCameraPos(left, ?x = null, ?y = null)
-	{
-		if (!left)
-		{
-			if (x != null) camLeftOffsets[0] = x;
-			if (y != null) camLeftOffsets[1] = y;
-			camFollowDad.setPosition(dad.getMidpoint().x + 150, dad.getMidpoint().y - 100);
-			camFollowDad.x += dad.cameraPosition[0] + opponentCameraOffset[0] + camLeftOffsets[0];
-			camFollowDad.y += dad.cameraPosition[1] + opponentCameraOffset[1] + camLeftOffsets[1];
-		}
-		else
-		{
-			if (x != null) camRightOffsets[0] = x;
-			if (y != null) camRightOffsets[1] = y;
-			camFollowBf.setPosition(boyfriend.getMidpoint().x - 100, boyfriend.getMidpoint().y - 100);
-			camFollowBf.x -= boyfriend.cameraPosition[0] - boyfriendCameraOffset[0] - camRightOffsets[0];
-			camFollowBf.y += boyfriend.cameraPosition[1] + boyfriendCameraOffset[1] + camRightOffsets[1];
-		}
 	}
 
 	#if (LUA_ALLOWED || HSCRIPT_ALLOWED)
@@ -2692,8 +2614,6 @@ class PlayState extends MusicBeatState
 		if (generatedMusic && !endingSong && !isCameraOnForcedPos)
 		{
 			moveCameraSection();
-			splitCameraPos(true);
-			splitCameraPos(false);
 		}
 
 		setOnScripts('curDecStep', curDecStep);
@@ -2847,23 +2767,9 @@ class PlayState extends MusicBeatState
 		{
 			FlxG.camera.zoom = FlxMath.lerp(defaultCamZoom, FlxG.camera.zoom, Math.exp(-elapsed * 3.125 * camZoomingDecay * playbackRate));
 			camHUD.zoom = FlxMath.lerp(1, camHUD.zoom, Math.exp(-elapsed * 3.125 * camZoomingDecay * playbackRate));
-			camLeft.zoom = FlxMath.lerp(defaultCamZoom, camLeft.zoom, Math.exp(-elapsed * 3.125 * camZoomingDecay * playbackRate));
-        	camRight.zoom = FlxMath.lerp(defaultCamZoom, camRight.zoom, Math.exp(-elapsed * 3.125 * camZoomingDecay * playbackRate));
 		}
 
-		for (shit in instance)
-		{
-			if (shit.camera == camGame && shit.camera != camLeft && shit.camera != camRight)
-				shit.cameras = [camGame, camLeft, camRight];
-		}
-
-		for (cam in [camLeft, camRight])
-		{
-			if (cam.filters != camGame.filters)
-				cam.filters = camGame.filters;
-		}
-
-    	FlxG.watch.addQuick("secShit", curSection);
+		FlxG.watch.addQuick("secShit", curSection);
 		FlxG.watch.addQuick("beatShit", curBeat);
 		FlxG.watch.addQuick("stepShit", curStep);
 
@@ -3755,9 +3661,6 @@ class PlayState extends MusicBeatState
 
 					FlxG.camera.zoom += camZoom;
 					camHUD.zoom += hudZoom;
-
-					camLeft.zoom += camZoom;
-            		camRight.zoom += camZoom;	
 				}
 			case 'Play Animation':
 				//trace('Anim to play: ' + value1);
@@ -3909,120 +3812,6 @@ class PlayState extends MusicBeatState
 					#else
 					FlxG.log.warn('ERROR ("Set Property" Event) - ' + e.message.substr(0, len));
 					#end
-				}
-
-			case 'Split Screen':
-				var triggerInfo:Array<String> = value2.split(',');
-				switch (value1.toLowerCase())
-				{
-					case "addboth" | "createboth" | "add both" | "create both":
-						FlxTween.tween(leftEdge, {x: 0}, Std.parseFloat(triggerInfo[0]),
-						{
-							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
-						});
-						FlxTween.tween(camLeft, {x: 0}, Std.parseFloat(triggerInfo[0]),
-						{
-							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
-						});
-
-						FlxTween.tween(camRight, {x: FlxG.width/2}, Std.parseFloat(triggerInfo[0]),
-						{
-							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
-						});
-						FlxTween.tween(rightEdge, {x: FlxG.width/2}, Std.parseFloat(triggerInfo[0]),
-						{
-							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
-						});
-
-						FlxTween.tween(uhhdumbassline1, {x: 640}, Std.parseFloat(triggerInfo[0]),
-						{
-							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
-						});
-						FlxTween.tween(uhhdumbassline2, {x: 640}, Std.parseFloat(triggerInfo[0]),
-						{
-							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
-						});
-					case "removeboth" | "killboth" | "remove both" | "kill both":
-						FlxTween.tween(leftEdge, {x: -(FlxG.width/2)}, Std.parseFloat(triggerInfo[0]),
-						{
-							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
-						});
-						FlxTween.tween(camLeft, {x: -(FlxG.width/2)}, Std.parseFloat(triggerInfo[0]),
-						{
-							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
-						});
-						FlxTween.tween(camRight, {x: (FlxG.width/2)*2}, Std.parseFloat(triggerInfo[0]),
-						{
-							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
-						});
-						FlxTween.tween(rightEdge, {x: (FlxG.width/2)*2}, Std.parseFloat(triggerInfo[0]),
-						{
-							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
-						});
-						FlxTween.tween(uhhdumbassline1, {x: -10}, Std.parseFloat(triggerInfo[0]),
-						{
-							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
-						});
-						FlxTween.tween(uhhdumbassline2, {x: 1280}, Std.parseFloat(triggerInfo[0]),
-						{
-							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
-						});
-
-					case "addleft" | "createleft" | "add left" | "create left":
-						FlxTween.tween(leftEdge, {x: 0}, Std.parseFloat(triggerInfo[0]),
-						{
-							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
-						});
-						FlxTween.tween(camLeft, {x: 0}, Std.parseFloat(triggerInfo[0]),
-						{
-							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
-						});
-						FlxTween.tween(uhhdumbassline1, {x: 640}, Std.parseFloat(triggerInfo[0]),
-						{
-							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
-						});
-
-					case "addright" | "add right" | "createright" | "create right":
-						FlxTween.tween(camRight, {x: FlxG.width/2}, Std.parseFloat(triggerInfo[0]),
-						{
-							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
-						});
-						FlxTween.tween(rightEdge, {x: FlxG.width/2}, Std.parseFloat(triggerInfo[0]),
-						{
-							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
-						});
-						FlxTween.tween(uhhdumbassline2, {x: 640}, Std.parseFloat(triggerInfo[0]),
-						{
-							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
-						});
-
-					case "removeleft" | "killleft" | "remove left" | "kill left":
-						FlxTween.tween(camLeft, {x: -(FlxG.width/2)}, Std.parseFloat(triggerInfo[0]),
-						{
-							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
-						});
-						FlxTween.tween(leftEdge, {x: -(FlxG.width/2)}, Std.parseFloat(triggerInfo[0]),
-						{
-							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
-						});
-						FlxTween.tween(uhhdumbassline1, {x: -10}, Std.parseFloat(triggerInfo[0]),
-						{
-							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
-						});
-
-					case "removeright" | "killright" | "remove right" | "kill right":
-						FlxTween.tween(camRight, {x: (FlxG.width/2)*2}, Std.parseFloat(triggerInfo[0]),
-						{
-							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
-						});
-						FlxTween.tween(rightEdge, {x: (FlxG.width/2)*2}, Std.parseFloat(triggerInfo[0]),
-						{
-							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
-						});
-						FlxTween.tween(uhhdumbassline2, {x: 1280}, Std.parseFloat(triggerInfo[0]),
-						{
-							ease: returnTweenEase(triggerInfo[1].toLowerCase().trim())
-						});
 				}
 
 			case 'Manage Lyrics':
@@ -5975,9 +5764,6 @@ class PlayState extends MusicBeatState
 			{
 				FlxG.camera.zoom += 0.015 * camZoomingMult;
 				camHUD.zoom += 0.03 * camZoomingMult;
-
-				camLeft.zoom += 0.015 * camZoomingMult;
-        		camRight.zoom += 0.015 * camZoomingMult;
 			}
 
 			if (SONG.notes[curSection].changeBPM)
