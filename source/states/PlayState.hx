@@ -3642,7 +3642,7 @@ class PlayState extends MusicBeatState
 								openSubState(new MalsquareDeath());
 						case "Birthday":
 							openSubState(new WompWompSadMan());
-						case "Hunted" | "Laugh Track" | "Cycled Sins" | "Twisted Grins":
+						case "Hunted" | "Laugh Track" | "Cycled Sins" | "Twisted Grins" | "Mercy":
 							openSubState(new EverettBaseDeath());
 						case "Dont Cross":
 							openSubState(new EpicFailLmao());
