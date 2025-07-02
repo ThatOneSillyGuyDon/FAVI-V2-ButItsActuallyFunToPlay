@@ -5588,7 +5588,7 @@ class PlayState extends MusicBeatState
 	}
 
 	public function spawnNoteSplashOnNote(note:Note) {
-		if(ClientPrefs.data.noteSplashes && note != null) {
+		if(note != null) {
 			var strum:StrumNote = playerStrums.members[note.noteData];
 			if(strum != null) {
 				spawnNoteSplash(strum.x, strum.y, note.noteData, note);
@@ -5603,7 +5603,7 @@ class PlayState extends MusicBeatState
 			case "Devilish Deal" | "Isolated" | "Lunacy" | "Delusional" | "Hunted" | "Laugh Track" | "Twisted Grins" | "Rotten Petals" | "Seeking Freedom" | "Am I Real?" | "Your Final Bow" | "The Wretched Tilezones (Simple Life)" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "Ahh the Scary (Somber Night)" | "Curtain Call": SONG.splashSkin = "noteSplashes/noteSplashes-sparkles";
 			case "Mercy": SONG.splashSkin = "noteSplashes/noteSplashes-diamond";
 			case "Birthday": SONG.splashSkin = "noteSplashes/noteSplashes-birthday";
-			default: SONG.splashSkin = "noteSplashes/noteSplashes";
+			default: SONG.splashSkin = "noteSplashes/noteSplashes" + NoteSplash.getSplashSkinPostfix();
 		}
 		skin = SONG.splashSkin;
 		var splash:NoteSplash = grpNoteSplashes.recycle(NoteSplash);
@@ -5646,12 +5646,15 @@ class PlayState extends MusicBeatState
 		ClientPrefs.data.cacheOnGPU = backupGpu;
 		if (curStage == "menuSongs") 
 			ClientPrefs.data.middleScroll = backupMiddlescroll;
-		Lib.application.window.resize(1280, 720);
-		Lib.application.window.x = Std.int((Lib.application.window.display.bounds.width - Lib.application.window.width) * 0.5);
-		Lib.application.window.y = Std.int((Lib.application.window.display.bounds.height - Lib.application.window.height) * 0.5);
+		
 		Transparency.getWindowsbackward();
-		//if (!ClientPrefs.data.fullscreen)
+		if (!FlxG.fullscreen)
+		{
 			FlxG.fullscreen = false;
+			Lib.application.window.resize(1280, 720);
+			Lib.application.window.x = Std.int((Lib.application.window.display.bounds.width - Lib.application.window.width) * 0.5);
+			Lib.application.window.y = Std.int((Lib.application.window.display.bounds.height - Lib.application.window.height) * 0.5);
+		}
 		backend.NoteTypesConfig.clearNoteTypesData();
 		instance = null;
 		super.destroy();

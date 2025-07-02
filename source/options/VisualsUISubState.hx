@@ -12,13 +12,34 @@ class VisualsUISubState extends BaseOptionsMenu
 		title = 'preferences';
 		rpcTitle = 'Visuals & UI Settings Menu'; //for Discord Rich Presence
 
-		var option:Option = new Option('Note Splashes',
-			"If unchecked, hitting \"Sick!\" notes won't show particles.",
-			'noteSplashes',
-			'bool',
-			true);
+		var noteSplashes:Array<String> = Mods.mergeAllTextsNamed('images/noteSplashes/list.txt');
+		if(noteSplashes.length > 0)
+		{
+			if(!noteSplashes.contains(ClientPrefs.data.splashSkin))
+				ClientPrefs.data.splashSkin = ClientPrefs.defaultData.splashSkin; //Reset to default if saved splashskin couldnt be found
+
+			noteSplashes.insert(0, ClientPrefs.defaultData.splashSkin); //Default skin always comes first
+			var option:Option = new Option('  Note Splash Skin',
+				"Select your prefered Note Splash variation or turn it off.\n^^(THIS WILL NOT APPLY TO MOST SONGS)^^",
+				'splashSkin',
+				'string',
+				ClientPrefs.defaultData.splashSkin,
+				noteSplashes);
+			addOption(option);
+		}
+
+		var option:Option = new Option('Note Splash Opacity',
+			'How much transparent should the Note Splashes be.',
+			'splashAlpha',
+			'percent',
+			0.6);
+		option.scrollSpeed = 1.6;
+		option.minValue = 0.0;
+		option.maxValue = 1;
+		option.changeValue = 0.1;
+		option.decimals = 1;
 		addOption(option);
-		
+
 		var option:Option = new Option('Hide HUD',
 			'If checked, hides most HUD elements.',
 			'hideHud',
@@ -93,7 +114,8 @@ class VisualsUISubState extends BaseOptionsMenu
 		var option:Option = new Option('Discord Rich Presence',
 			"Uncheck this to prevent accidental leaks, it will hide the Application from your \"Playing\" box on Discord",
 			'discordRPC',
-			'bool');
+			'bool',
+			true);
 		addOption(option);
 		#end
 
