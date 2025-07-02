@@ -358,16 +358,6 @@ class Note extends FlxSkewedSprite
 		this.inEditor = inEditor;
 		this.inSettings = inSettings;
 
-		if (ClientPrefs.data.quantization){
-			var beat = Conductor.getBeatInMeasure(strumTime);
-			if(prevNote!=null && isSustainNote)
-				quant = prevNote.quant;
-			else
-				quant = getQuant(beat);
-
-			quantS = quant;
-		}
-
 		x += (ClientPrefs.data.middleScroll ? PlayState.STRUM_X_MIDDLESCROLL : PlayState.STRUM_X) + 50;
 		// MAKE SURE ITS DEFINITELY OFF SCREEN?
 		y -= 2000;
@@ -440,6 +430,16 @@ class Note extends FlxSkewedSprite
 			earlyHitMult = 1;
 		}
 		x += offsetX;
+
+		if (ClientPrefs.data.quantization){
+			var beat = Conductor.getBeatInMeasure(strumTime);
+			if(prevNote!=null && isSustainNote)
+				quant = prevNote.quant;
+			else
+				quant = getQuant(beat);
+
+			quantS = quant;
+		}
 	}
 
 	public static function initializeGlobalRGBShader(noteData:Int)

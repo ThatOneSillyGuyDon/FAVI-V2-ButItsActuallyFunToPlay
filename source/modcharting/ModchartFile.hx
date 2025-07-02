@@ -464,8 +464,16 @@ class ModchartFile
                 case "Dont Cross":
                     if (ClientPrefs.data.mechanics && FlxG.random.bool(15))
                     {
+                        var modchartRandomizer:Int = FlxG.random.int(1, 5);
                         trace('Fuck you, die.');
-                        json = cast Json.parse(Modchart.dontcrossModchart);
+                        switch (modchartRandomizer)
+                        {
+                            case 1: json = cast Json.parse(Modchart.dontcrossModchart1);
+                            case 2: json = cast Json.parse(Modchart.dontcrossModchart2);
+                            case 3: json = cast Json.parse(Modchart.dontcrossModchart3);
+                            case 4: json = cast Json.parse(Modchart.dontcrossModchart4);
+                            case 5: json = cast Json.parse(Modchart.dontcrossModchart4);
+                        }
                     }
                     else
                         json = {modifiers: [], events: [], playfields: 1};
