@@ -24955,7 +24955,7 @@ var isoMidDown:String = '{
 				287,
 				"1",
 				"circOut",
-				"0.85,P2StrumAlpha,320,P2StrumX,-665,CancelMiddlescrollForP2L3,-665,CancelMiddlescrollForP2L4"
+				"0.85,P2StrumAlpha,330,P2StrumX,-665,CancelMiddlescrollForP2L3,-665,CancelMiddlescrollForP2L4"
 			],
 			[
 				false,
@@ -28923,7 +28923,7 @@ var isoMidUp:String = '{
 				287,
 				"1",
 				"circOut",
-				"0.85,P2StrumAlpha,320,P2StrumX,-665,CancelMiddleScrollForP2L3,-665,CancelMiddleScrollForP2L4"
+				"0.85,P2StrumAlpha,330,P2StrumX,-665,CancelMiddleScrollForP2L3,-665,CancelMiddleScrollForP2L4"
 			],
 			[
 				false,

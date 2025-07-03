@@ -198,19 +198,7 @@ class ChartingState extends MusicBeatState
 		else
 		{
 			Difficulty.resetList();
-			_song = {
-				song: 'Test',
-				notes: [],
-				events: [],
-				bpm: 150.0,
-				needsVoices: true,
-				composer: "Unknown",
-				player1: 'bf',
-				player2: 'dad',
-				gfVersion: 'gf',
-				speed: 1,
-				stage: 'stage'
-			};
+			_song = Song.loadFromJson('isolated', 'isolated');
 			addSection();
 			PlayState.SONG = _song;
 		}
