@@ -283,6 +283,7 @@ class ChartingState extends MusicBeatState
 		if(curSec >= _song.notes.length) curSec = _song.notes.length - 1;
 
 		bpmTxt = new FlxText(1000, 50, 0, "", 16);
+		bpmTxt.setFormat(Paths.font("resultsFont.ttf"), 16, FlxColor.WHITE);
 		bpmTxt.scrollFactor.set();
 		add(bpmTxt);
 
@@ -353,7 +354,7 @@ class ChartingState extends MusicBeatState
 		for (i in 0...tipTextArray.length) {
 			var tipText:FlxText = new FlxText(UI_box.x, UI_box.y + UI_box.height + 8, 0, tipTextArray[i], 16);
 			tipText.y += i * 12;
-			tipText.setFormat(Paths.font("vcr.ttf"), 14, FlxColor.WHITE, LEFT/*, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK*/);
+			tipText.setFormat(Paths.font("resultsFont.ttf"), 14, FlxColor.WHITE, LEFT/*, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK*/);
 			//tipText.borderSize = 2;
 			tipText.scrollFactor.set();
 			add(tipText);
@@ -382,6 +383,7 @@ class ChartingState extends MusicBeatState
 		lastSong = currentSongName;
 
 		zoomTxt = new FlxText(10, 10, 0, "Zoom: 1 / 1", 16);
+		zoomTxt.setFormat(Paths.font("resultsFont.ttf"), 16, FlxColor.WHITE);
 		zoomTxt.scrollFactor.set();
 		add(zoomTxt);
 
@@ -403,7 +405,8 @@ class ChartingState extends MusicBeatState
 	#end
 	function addSongUI():Void
 	{
-		UI_songTitle = new FlxUIInputText(10, 10, 70, _song.song, 8);
+		UI_songTitle = new FlxUIInputText(10, 10, 70, _song.song, 8, FlxColor.WHITE, 0xFF333333);
+		UI_songTitle.setFormat(Paths.font("resultsFont/ttf"), 10, FlxColor.WHITE);
 		blockPressWhileTypingOn.push(UI_songTitle);
 
 		var check_voices = new FlxUICheckBox(10, 25, null, null, "Has voice track", 100);
@@ -462,11 +465,17 @@ class ChartingState extends MusicBeatState
 			saveEvents();
 		});
 
+		for (b in [saveButton, reloadSong, reloadSongJson, loadAutosaveBtn, saveEvents, loadEventJson])
+		{
+			b.color = FlxColor.fromRGB(36, 36, 36);
+			b.label.color = FlxColor.WHITE;
+		}
+
 		var clear_events:FlxButton = new FlxButton(320, 310, 'Clear events', function()
 			{
 				openSubState(new Prompt('This action will clear current progress.\n\nProceed?', 0, clearEvents, null,ignoreWarnings));
 			});
-		clear_events.color = FlxColor.RED;
+		clear_events.color = 0xFF210707;
 		clear_events.label.color = FlxColor.WHITE;
 
 		var clear_notes:FlxButton = new FlxButton(320, clear_events.y + 30, 'Clear notes', function()
@@ -478,7 +487,7 @@ class ChartingState extends MusicBeatState
 			}, null,ignoreWarnings));
 
 			});
-		clear_notes.color = FlxColor.RED;
+		clear_notes.color = 0xFF210707;
 		clear_notes.label.color = FlxColor.WHITE;
 
 		var stepperBPM:FlxUINumericStepper = new FlxUINumericStepper(10, 70, 1, 1, 1, 400, 3);
@@ -611,13 +620,26 @@ class ChartingState extends MusicBeatState
 		tab_group_song.add(loadEventJson);
 		tab_group_song.add(stepperBPM);
 		tab_group_song.add(stepperSpeed);
-		tab_group_song.add(new FlxText(stepperBPM.x, stepperBPM.y - 15, 0, 'Song BPM:'));
-		tab_group_song.add(new FlxText(stepperBPM.x + 100, stepperBPM.y - 15, 0, 'Song Offset:'));
-		tab_group_song.add(new FlxText(stepperSpeed.x, stepperSpeed.y - 15, 0, 'Song Speed:'));
-		tab_group_song.add(new FlxText(player2DropDown.x, player2DropDown.y - 15, 0, 'Opponent:'));
-		tab_group_song.add(new FlxText(gfVersionDropDown.x, gfVersionDropDown.y - 15, 0, 'Girlfriend:'));
-		tab_group_song.add(new FlxText(player1DropDown.x, player1DropDown.y - 15, 0, 'Boyfriend:'));
-		tab_group_song.add(new FlxText(stageDropDown.x, stageDropDown.y - 15, 0, 'Stage:'));
+
+		var bpmTxt:FlxText = new FlxText(stepperBPM.x, stepperBPM.y - 15, 0, 'Song BPM:');
+		var offsetTxt:FlxText = new FlxText(stepperBPM.x + 100, stepperBPM.y - 15, 0, 'Song Offset:');
+		var speedTxt:FlxText = new FlxText(stepperSpeed.x, stepperSpeed.y - 15, 0, 'Song Speed:');
+		var oppTxt:FlxText = new FlxText(player2DropDown.x, player2DropDown.y - 15, 0, 'Opponent:');
+		var gfTxt:FlxText = new FlxText(gfVersionDropDown.x, gfVersionDropDown.y - 15, 0, 'Girlfriend:');
+		var bfTxt:FlxText = new FlxText(player1DropDown.x, player1DropDown.y - 15, 0, 'Boyfriend:');
+		var stageTxt:FlxText = new FlxText(stageDropDown.x, stageDropDown.y - 15, 0, 'Stage:');
+
+		for (t in [bpmTxt, offsetTxt, speedTxt, oppTxt, gfTxt, bfTxt, stageTxt])
+			t.setFormat(Paths.font("resultsFont.ttf"), 12, FlxColor.WHITE);
+
+		tab_group_song.add(bpmTxt);
+		tab_group_song.add(offsetTxt);
+		tab_group_song.add(speedTxt);
+		tab_group_song.add(oppTxt);
+		tab_group_song.add(gfTxt);
+		tab_group_song.add(bfTxt);
+		tab_group_song.add(stageTxt);
+
 		tab_group_song.add(player2DropDown);
 		tab_group_song.add(gfVersionDropDown);
 		tab_group_song.add(player1DropDown);
@@ -1894,10 +1916,9 @@ class ChartingState extends MusicBeatState
 			if (FlxG.keys.justPressed.BACKSPACE) {
 				PlayState.chartingMode = false;
 				openSubState(new Prompt('Upon leaving the editor, you will lose all current progress that hasn\'t been saved here.\n\nProceed?', 0, function(){
-					MusicBeatState.switchState(new MainMenuState()); 
+					MusicBeatState.switchState(new MasterEditorMenu()); 
 					FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 					FlxG.mouse.visible = true;
-					AppIcon.changeIcon("newIcon");
 				}, null,ignoreWarnings));
 				return;
 			}

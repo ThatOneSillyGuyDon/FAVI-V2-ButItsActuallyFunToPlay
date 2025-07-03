@@ -71,6 +71,7 @@ class FlxUIDropDownMenu extends FlxUIGroup implements IFlxUIWidget implements IF
 			if (btn != null && btn.name == str)
 			{
 				var item:FlxUIButton = list[i];
+				item.label.color = FlxColor.WHITE;
 				_selectedId = str;
 				if (item.label != null)
 				{
@@ -105,6 +106,7 @@ class FlxUIDropDownMenu extends FlxUIGroup implements IFlxUIWidget implements IF
 			if (btn.label.text == str)
 			{
 				var item:FlxUIButton = list[i];
+				item.label.color = FlxColor.WHITE;
 				_selectedId = item.name;
 				_selectedLabel = str;
 				header.text.text = str;
@@ -179,6 +181,7 @@ class FlxUIDropDownMenu extends FlxUIGroup implements IFlxUIWidget implements IF
 		{
 			var rect = new Rectangle(0, 0, header.background.width, header.background.height);
 			dropPanel = new FlxUI9SliceSprite(0, 0, FlxUIAssets.IMG_BOX, rect, [1, 1, 14, 14]);
+			dropPanel.color = 0xFF333333;
 		}
 
 		if (DataList != null)
@@ -228,6 +231,7 @@ class FlxUIDropDownMenu extends FlxUIGroup implements IFlxUIWidget implements IF
 		var offset = dropPanel.y;
 		for (i in 0...currentScroll) { //Hides buttons that goes before the current scroll
 			var button:FlxUIButton = list[i];
+			button.label.color = FlxColor.WHITE;
 			if(button != null) {
 				button.y = FlxG.height + 250;
 			}
@@ -235,6 +239,7 @@ class FlxUIDropDownMenu extends FlxUIGroup implements IFlxUIWidget implements IF
 		for (i in currentScroll...list.length)
 		{
 			var button:FlxUIButton = list[i];
+			button.label.color = FlxColor.WHITE;
 			if(button != null) {
 				button.y = offset;
 				offset += buttonHeight;
@@ -302,6 +307,7 @@ class FlxUIDropDownMenu extends FlxUIGroup implements IFlxUIWidget implements IF
 					if (i <= list.length - 1)
 					{ // If buttons exist, try to re-use them
 						var btn:FlxUIButton = list[i];
+						btn.label.color = FlxColor.WHITE;
 						if (btn != null)
 						{
 							btn.label.text = data.label; // Set the label
@@ -317,6 +323,7 @@ class FlxUIDropDownMenu extends FlxUIGroup implements IFlxUIWidget implements IF
 				if (!recycled)
 				{ // If we couldn't recycle a button, make a fresh one
 					var t:FlxUIButton = makeListButton(i, data.label, data.name);
+					t.label.color = FlxColor.WHITE;
 					list.push(t);
 					add(t);
 					t.visible = false;
@@ -355,6 +362,7 @@ class FlxUIDropDownMenu extends FlxUIGroup implements IFlxUIWidget implements IF
 	private function makeListButton(i:Int, Label:String, Name:String):FlxUIButton
 	{
 		var t:FlxUIButton = new FlxUIButton(0, 0, Label);
+		t.label.color = FlxColor.WHITE;
 		t.broadcastToFlxUI = false;
 		t.onUp.callback = onClickItem.bind(i);
 
@@ -364,7 +372,7 @@ class FlxUIDropDownMenu extends FlxUIGroup implements IFlxUIWidget implements IF
 			Std.int(header.background.height), [[1, 1, 3, 3], [1, 1, 3, 3], [1, 1, 3, 3]], FlxUI9SliceSprite.TILE_NONE);
 		t.labelOffsets[FlxButton.PRESSED].y -= 1; // turn off the 1-pixel depress on click
 
-		t.up_color = FlxColor.BLACK;
+		t.up_color = FlxColor.WHITE;
 		t.over_color = FlxColor.WHITE;
 		t.down_color = FlxColor.WHITE;
 
@@ -388,6 +396,7 @@ class FlxUIDropDownMenu extends FlxUIGroup implements IFlxUIWidget implements IF
 	public function changeLabelByIndex(i:Int, NewLabel:String):Void
 	{
 		var btn:FlxUIButton = getBtnByIndex(i);
+		btn.label.color = FlxColor.WHITE;
 		if (btn != null && btn.label != null)
 		{
 			btn.label.text = NewLabel;
@@ -397,6 +406,7 @@ class FlxUIDropDownMenu extends FlxUIGroup implements IFlxUIWidget implements IF
 	public function changeLabelById(name:String, NewLabel:String):Void
 	{
 		var btn:FlxUIButton = getBtnById(name);
+		btn.label.color = FlxColor.WHITE;
 		if (btn != null && btn.label != null)
 		{
 			btn.label.text = NewLabel;
@@ -491,6 +501,7 @@ class FlxUIDropDownMenu extends FlxUIGroup implements IFlxUIWidget implements IF
 	private function onClickItem(i:Int):Void
 	{
 		var item:FlxUIButton = list[i];
+		item.label.color = FlxColor.WHITE;
 		selectSomething(item.name, item.label.text);
 		showList(false);
 
@@ -568,6 +579,7 @@ class FlxUIDropDownHeader extends FlxUIGroup
 		if (background == null)
 		{
 			background = new FlxUI9SliceSprite(0, 0, FlxUIAssets.IMG_BOX, new Rectangle(0, 0, Width, 20), [1, 1, 14, 14]);
+			background.color = 0xFF333333;
 		}
 
 		// Button
@@ -576,6 +588,7 @@ class FlxUIDropDownHeader extends FlxUIGroup
 			button = new FlxUISpriteButton(0, 0, new FlxSprite(0, 0, FlxUIAssets.IMG_DROPDOWN));
 			button.loadGraphicSlice9([FlxUIAssets.IMG_BUTTON_THIN], 80, 20, [FlxStringUtil.toIntArray(FlxUIAssets.SLICE9_BUTTON)],
 				FlxUI9SliceSprite.TILE_NONE, -1, false, FlxUIAssets.IMG_BUTTON_SIZE, FlxUIAssets.IMG_BUTTON_SIZE);
+			button.color = 0xFF333333;
 		}
 		button.resize(background.height, background.height);
 		button.x = background.x + background.width - button.width;
@@ -592,7 +605,8 @@ class FlxUIDropDownHeader extends FlxUIGroup
 			text = new FlxUIText(0, 0, Std.int(background.width));
 		}
 		text.setPosition(2, 4);
-		text.color = FlxColor.BLACK;
+		text.color = FlxColor.WHITE;
+		text.setFormat(Paths.font("resultsFont.ttf"), 12, FlxColor.WHITE);
 
 		add(background);
 		add(button);

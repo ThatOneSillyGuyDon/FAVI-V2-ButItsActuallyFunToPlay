@@ -66,17 +66,32 @@ class ModchartFile
     public var useMiddleDownScrollChart:Bool = false;
     public var useMiddleUpScrollChart:Bool = false;
     public var useUpScrollChart:Bool = false;
+    public static var autosaveMod:String = null;
+    public var emptyMod:String = 
+    '{
+        "modifiers": [],
+        "playfields": 1,
+        "events": []
+    }';
+
+    public static var instance:ModchartFile;
+    var autosave:FlxSave;
     
     public function new(renderer:PlayfieldRenderer)
     {
+        autosave = new FlxSave();
+        autosave.bind("dataAutosave", CoolUtil.getSavePath());
+
         data = loadFromJson(PlayState.SONG.song.toLowerCase(), Difficulty.getString().toLowerCase() == null ? Difficulty.defaultList[PlayState.storyDifficulty] : Difficulty.getString().toLowerCase());
 	    this.renderer = renderer;
         renderer.modchart = this;
+        instance = this;
         loadPlayfields();
         loadModifiers();
         loadEvents();
     }
 
+    public var json:String = null;
     public function loadFromJson(folder:String, difficulty:String):ModchartJson //load da shit
     {
         var rawJson = null;
@@ -337,10 +352,9 @@ class ModchartFile
                     rawJson = Assets.getText(filePath).trim();  
                 
         }
-        var json:ModchartJson = null;
         if (rawJson != null)
         {
-            json = cast Json.parse(rawJson);
+            json = rawJson;
             trace('loaded Modchart');
             trace(folderShit);
 
@@ -370,219 +384,234 @@ class ModchartFile
                 case "Devilish Deal":
                     //Upscroll
                     if (!ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
-                        json = cast Json.parse(Modchart.devilishModchart);
+                        json = Modchart.devilishModchart;
                     //Downscroll
                     else if (ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
-                        json = cast Json.parse(Modchart.devilishModchart);
+                        json = Modchart.devilishModchart;
                     //Middle-Upscroll
                     else if (!ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
-                        json = cast Json.parse(Modchart.devilDealMidUp);
+                        json = Modchart.devilDealMidUp;
                     //Middle-Downscroll
                     else if (ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
-                        json = cast Json.parse(Modchart.devilDealMidDown);
+                        json = Modchart.devilDealMidDown;
                 
                 case "Isolated":
                     if (ClientPrefs.data.mechanics) 
                     {
                         //Upscroll
                         if (!ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
-                            json = cast Json.parse(Modchart.isolateModchartU);
+                            json = Modchart.isolateModchartU;
                         //Downscroll
                         else if (ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
-                            json = cast Json.parse(Modchart.isolateModchartD);
+                            json = Modchart.isolateModchartD;
                         //Middle-Upscroll
                         else if (!ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
-                            json = cast Json.parse(Modchart.isoMidUp);
+                            json = Modchart.isoMidUp;
                         else if (ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
-                            json = cast Json.parse(Modchart.isoMidDown);
+                            json = Modchart.isoMidDown;
                     }
                     else
-                        json = {modifiers: [], events: [], playfields: 1};
+                        json = emptyMod;
                     
                 case "Lunacy":
                     if (ClientPrefs.data.mechanics)
-                        json = cast Json.parse(Modchart.lunacyModchart);
+                        json = Modchart.lunacyModchart;
                     else
-                        json = {modifiers: [], events: [], playfields: 1};
+                        json = emptyMod;
 
                 case "Delusional":
                     if (ClientPrefs.data.mechanics) 
                     {
                         //Upscroll
                         if (!ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
-                            json = cast Json.parse(Modchart.deluluModchartU);
+                            json = Modchart.deluluModchartU;
                         //Downscroll
                         else if (ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
-                            json = cast Json.parse(Modchart.deluluModchartD);
+                            json = Modchart.deluluModchartD;
                         //Middle-Upscroll
                         else if (!ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
-                            json = cast Json.parse(Modchart.deluluMidUp);
+                            json = Modchart.deluluMidUp;
                         else if (ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
-                            json = cast Json.parse(Modchart.deluluMidDown);
+                            json = Modchart.deluluMidDown;
                     }
                     else
-                        json = {modifiers: [], events: [], playfields: 1};
+                        json = emptyMod;
 
                 case "Hunted":
                     if (ClientPrefs.data.mechanics)
                     {
                         //Upscroll
                         if (!ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
-                            json = cast Json.parse(Modchart.goofyIsDrunkLmfao);
+                            json = Modchart.goofyIsDrunkLmfao;
                         //Downscroll
                         else if (ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
-                            json = cast Json.parse(Modchart.goofyIsDrunkLmfao);
+                            json = Modchart.goofyIsDrunkLmfao;
                         //Middle-Upscroll
                         else if (!ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
-                            json = cast Json.parse(Modchart.huntedMidUp);
+                            json = Modchart.huntedMidUp;
                         //Middle-Downscroll
                         else if (ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
-                            json = cast Json.parse(Modchart.huntedMidDown);
+                            json = Modchart.huntedMidDown;
                     }
                     else
-                        json = {modifiers: [], events: [], playfields: 1};
+                        json = emptyMod;
 
                 case "Bless":
                     if (ClientPrefs.data.mechanics)
                     {
                         //Upscroll
                         if (!ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
-                            json = cast Json.parse(Modchart.blessUpscroll);
+                            json = Modchart.blessUpscroll;
                         //Downscroll
                         else if (ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
-                            json = cast Json.parse(Modchart.blessDownscroll);
+                            json = Modchart.blessDownscroll;
                         //Middle-Upscroll
                         else if (!ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
-                            json = cast Json.parse(Modchart.blessMidUp);
+                            json = Modchart.blessMidUp;
                         //Middle-Downscroll
                         else if (ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
-                            json = cast Json.parse(Modchart.blessMidDown);
+                            json = Modchart.blessMidDown;
                     }
                     else
-                        json = {modifiers: [], events: [], playfields: 1};
+                        json = emptyMod;
 
                 case "Dont Cross":
                     if (ClientPrefs.data.mechanics && FlxG.random.bool(15))
                     {
-                        var modchartRandomizer:Int = FlxG.random.int(1, 6);
+                        var modchartRandomizer:Int = FlxG.random.int(1, 5);
                         trace('Fuck you, die.');
                         switch (modchartRandomizer)
                         {
-                            case 1: json = cast Json.parse(Modchart.dontcrossModchart1);
-                            case 2: json = cast Json.parse(Modchart.dontcrossModchart2);
-                            case 3: json = cast Json.parse(Modchart.dontcrossModchart3);
-                            case 4: json = cast Json.parse(Modchart.dontcrossModchart4);
-                            case 5: json = cast Json.parse(Modchart.dontcrossModchart5);
-                            case 6: json = cast Json.parse(Modchart.dontcrossModchart6);
+                            case 1: json = Modchart.dontcrossModchart1;
+                            case 2: json = Modchart.dontcrossModchart2;
+                            case 3: json = Modchart.dontcrossModchart3;
+                            case 4: json = Modchart.dontcrossModchart4;
+                            case 5: json = Modchart.dontcrossModchart4;
                         }
                     }
                     else
-                        json = {modifiers: [], events: [], playfields: 1};
+                        json = emptyMod;
 
                 case "War Dilemma":
                     if (ClientPrefs.data.mechanics)
                     {
                         //Upscroll
                         if (!ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
-                            json = cast Json.parse(Modchart.warModchartU);
+                            json = Modchart.warModchartU;
                         //Downscroll
                         else if (ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
-                            json = cast Json.parse(Modchart.warModchartD);
+                            json = Modchart.warModchartD;
                         //Middle-Upscroll
                         else if (!ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
-                            json = cast Json.parse(Modchart.warMidUp);
+                            json = Modchart.warMidUp;
                         //Middle-Downscroll
                         else if (ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
-                            json = cast Json.parse(Modchart.warMidDown);
+                            json = Modchart.warMidDown;
                     }
                     else
-                        json = {modifiers: [], events: [], playfields: 1};
+                        json = emptyMod;
 
                 case "Twisted Grins":
-                    json = cast Json.parse(Modchart.tg);
+                    json = Modchart.tg;
 
                 case "Cycled Sins":
-                    json = cast Json.parse(Modchart.cycledShit);
+                    json = Modchart.cycledShit;
 
                 case "Malfunction":
                     //Upscroll
                     if (!ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
-                        json = cast Json.parse(Modchart.malfunctionModchartU);
+                        json = Modchart.malfunctionModchartU;
                     //Downscroll
                     else if (ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
-                        json = cast Json.parse(Modchart.malfunctionModchartD);
+                        json = Modchart.malfunctionModchartD;
                     //Middle-Upscroll
                     else if (!ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
-                        json = cast Json.parse(Modchart.malfuncMidUp);
+                        json = Modchart.malfuncMidUp;
                     //Middle-Downscroll
                     else if (ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
-                        json = cast Json.parse(Modchart.malfuncMidDown);
+                        json = Modchart.malfuncMidDown;
 
                 case "Delusional Legacy":
                     if (ClientPrefs.data.mechanics)
                     {
                         //Upscroll
                         if (!ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
-                            json = cast Json.parse(Modchart.deluLegModU);
+                            json = Modchart.deluLegModU;
                         //Downscroll
                         else if (ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
-                            json = cast Json.parse(Modchart.deluLegModD);
+                            json = Modchart.deluLegModD;
                         //Middle-Upscroll
                         else if (!ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
-                            json = cast Json.parse(Modchart.deluLegModMU);
+                            json = Modchart.deluLegModMU;
                         //Middle-Downscroll
                         else if (ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
-                            json = cast Json.parse(Modchart.deluLegModMD);
+                            json = Modchart.deluLegModMD;
                     }
                     else
-                        json = {modifiers: [], events: [], playfields: 1};
+                        json = emptyMod;
 
                 case "Malfunction Legacy":
                     if (ClientPrefs.data.mechanics)
                     {
                         //Upscroll
                         if (!ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
-                            json = cast Json.parse(Modchart.malLegacyModU);
+                            json = Modchart.malLegacyModU;
                         //Downscroll
                         else if (ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
-                            json = cast Json.parse(Modchart.malLegacyModD);
+                            json = Modchart.malLegacyModD;
                         //Middle-Upscroll
                         else if (!ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
-                            json = cast Json.parse(Modchart.malLegacyModMU);
+                            json = Modchart.malLegacyModMU;
                         //Middle-Downscroll
                         else if (ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
-                            json = cast Json.parse(Modchart.malLegacyModMD);
+                            json = Modchart.malLegacyModMD;
                     }
                     else
-                        json = {modifiers: [], events: [], playfields: 1};
+                        json = emptyMod;
 
                 case "Mercy":
                     if (ClientPrefs.data.mechanics)
                     {
                         if (ClientPrefs.data.middleScroll)
-                            json = cast Json.parse(Modchart.mercyMiddle);
+                            json = Modchart.mercyMiddle;
                         else
-                            json = cast Json.parse(Modchart.mercyThingy);
+                            json = Modchart.mercyThingy;
                     }
 
                 case "Rotten Petals":
                     if (ClientPrefs.data.mechanics)
-                        json = cast Json.parse(Modchart.petalsManiaMod);
+                        json = Modchart.petalsManiaMod;
                     else
-                        json = {modifiers: [], events: [], playfields: 1};
+                        json = emptyMod;
 
                 case "Ahh the Scary (Somber Night)":
                     if (ClientPrefs.data.mechanics)
-                        json = cast Json.parse(Modchart.nightManiaMod);
+                        json = Modchart.nightManiaMod;
                     else
-                        json = {modifiers: [], events: [], playfields: 1};
+                        json = emptyMod;
 
                 default:
-                    json = {modifiers: [], events: [], playfields: 1};
+                    if (autosaveMod != null)
+                    {
+                        json = autosaveMod;
+                        autosave.data.autosaveModchart = autosaveMod;
+                        autosave.flush();
+                    }
+                    else
+                        json = emptyMod;
+                    autosaveMod = null;
             }
         }
-        return json;
+        var modchartJson:Dynamic = parseModchartBullshit(json);
+        return modchartJson;
     }
+
+    public static function parseModchartBullshit(rawJson:String):ModchartJson
+	{
+		var swagShit:ModchartJson = cast Json.parse(rawJson);
+		return swagShit;
+	}
+
     public function loadEmpty()
     {
         data.modifiers = [];

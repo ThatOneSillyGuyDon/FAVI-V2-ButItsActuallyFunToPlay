@@ -72,6 +72,7 @@ import modcharting.*;
 import modcharting.PlayfieldRenderer.StrumNoteType;
 import modcharting.Modifier;
 import modcharting.ModchartFile;
+import modcharting.ModchartFile.ModchartJson;
 using StringTools;
 
 class ModchartEditorEvent extends FlxSprite
@@ -316,6 +317,9 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
     var generatedMusic:Bool = false;
     
     var _song:SwagSong;
+    var _modchart:ModchartJson;
+
+    var playfieldInstance:ModchartMusicBeatState;
 
     private var grid:FlxBackdrop;
     private var line:FlxSprite;
@@ -482,6 +486,27 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
         playfieldRenderer.inEditor = true;
 		add(playfieldRenderer);
 
+        playfieldInstance = PlayState.instance;
+        if (playfieldRenderer.modchart.data != null)
+            _modchart = playfieldRenderer.modchart.data;
+        else if (playfieldInstance.playfieldRenderer.modchart.data != null)
+            _modchart = playfieldInstance.playfieldRenderer.modchart.data;
+        else {
+            _modchart = {
+                modifiers: [],
+                playfields: 1,
+                events: []
+            };
+        }
+
+        var autosave:FlxSave = new FlxSave();
+        autosave.bind("dataAutosave", CoolUtil.getSavePath());
+        if (autosave.data.autosaveModchart != null)
+        {
+            ModchartFile.autosaveMod = autosave.data.autosaveModchart;
+            //trace('FOUND LAST SAVED MODCHART DATA: ${ModchartFile.autosaveMod}');
+        }
+
         //strumLineNotes.cameras = [camHUD];
 		//notes.cameras = [camHUD];
 
@@ -502,6 +527,7 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
         for (i in 0...12)
         {
             var beatText = new FlxText(-50, gridSize, 0, i+"", 32);
+            beatText.setFormat(Paths.font("resultsFont.ttf"), 32, FlxColor.WHITE);
             add(beatText);
             beatTexts.push(beatText);
         }
@@ -532,6 +558,7 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
         //trace(gridGap);
 
         debugText = new FlxText(0, gridSize*2, 0, "", 16);
+        debugText.setFormat(Paths.font("resultsFont.ttf"), 16, FlxColor.WHITE);
         debugText.alignment = FlxTextAlign.LEFT;
         
 
@@ -566,6 +593,8 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
         hideNotes.scale.y *= 1.5;
         hideNotes.updateHitbox();
         hideNotes.y -= hideNotes.height;
+        hideNotes.color = FlxColor.fromRGB(36, 36, 36);
+        hideNotes.label.color = FlxColor.WHITE;
         add(hideNotes);
         
         var hidenHud:Bool = false;
@@ -583,6 +612,8 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
         });
         hideUI.y -= hideUI.height;
         hideUI.x -= hideUI.width;
+        hideUI.color = FlxColor.fromRGB(36, 36, 36);
+        hideUI.label.color = FlxColor.WHITE;
         add(hideUI);
 
 
@@ -865,7 +896,9 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
                             //trace(stackedHighlightedEvents);
                         }   
                         if (FlxG.keys.justPressed.BACKSPACE)
+                        {
                             deleteEvent();
+                        }
                     }
                 });
                 if (FlxG.mouse.justPressed)
@@ -913,44 +946,60 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
             updateEventSprites();
         }
 
-        if (playfieldRenderer.modchart.data.playfields != playfieldCountStepper.value)
+        if (_modchart.playfields != playfieldCountStepper.value)
         {
-            playfieldRenderer.modchart.data.playfields = Std.int(playfieldCountStepper.value);
+            _modchart.playfields = Std.int(playfieldCountStepper.value);
             playfieldRenderer.modchart.loadPlayfields();
         }
 
+
+        if (FlxG.keys.justPressed.ENTER)
+        {
+            #if (PSYCH && PSYCHVERSION >= "0.7")
+            ClientPrefs.toggleVolumeKeys(true);
+            #elseif (PSYCH && !(PSYCHVERSION >= "0.7"))
+            FlxG.sound.muteKeys = TitleState.muteKeys;
+            FlxG.sound.volumeDownKeys = TitleState.volumeDownKeys;
+            FlxG.sound.volumeUpKeys = TitleState.volumeUpKeys;
+            #end
+            FlxG.mouse.visible = false;
+            inst.stop();
+            if(vocals != null) vocals.stop();
+            #if (PSYCH && PSYCHVERSION >= "0.7.3") if(opponentVocals != null) opponentVocals.stop();  #end
+
+            #if (PSYCH && PSYCHVERSION >= "0.7")
+            backend.StageData.loadDirectory(PlayState.SONG);
+            #elseif (PSYCH && !(PSYCHVERSION >= "0.7"))
+            StageData.loadDirectory(PlayState.SONG);
+            #end
+            if (hasUnsavedChanges)
+                autosaveModchart(this);
+            LoadingState.loadAndSwitchState(new PlayState());
+        }
 
         if (FlxG.keys.justPressed.ESCAPE)
         {
             var exitFunc = function()
             {
-		#if (PSYCH && PSYCHVERSION >= "0.7")
+                #if (PSYCH && PSYCHVERSION >= "0.7")
                 ClientPrefs.toggleVolumeKeys(true);
-	        #elseif (PSYCH && !(PSYCHVERSION >= "0.7"))
-		FlxG.sound.muteKeys = TitleState.muteKeys;
-		FlxG.sound.volumeDownKeys = TitleState.volumeDownKeys;
-		FlxG.sound.volumeUpKeys = TitleState.volumeUpKeys;
-	        #end
-                FlxG.mouse.visible = false;
+                #elseif (PSYCH && !(PSYCHVERSION >= "0.7"))
+                FlxG.sound.muteKeys = TitleState.muteKeys;
+                FlxG.sound.volumeDownKeys = TitleState.volumeDownKeys;
+                FlxG.sound.volumeUpKeys = TitleState.volumeUpKeys;
+                #end
                 inst.stop();
                 if(vocals != null) vocals.stop();
                 #if (PSYCH && PSYCHVERSION >= "0.7.3") if(opponentVocals != null) opponentVocals.stop();  #end
-
-                #if (PSYCH && PSYCHVERSION >= "0.7")
-                    backend.StageData.loadDirectory(PlayState.SONG);
-                #elseif (PSYCH && !(PSYCHVERSION >= "0.7"))
-                    StageData.loadDirectory(PlayState.SONG);
-                #end
-                LoadingState.loadAndSwitchState(new PlayState());
+                if (hasUnsavedChanges)
+                    autosaveModchart(this);
+                MusicBeatState.switchState(new MasterEditorMenu()); 
+				FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
+				FlxG.mouse.visible = true;
+                ModchartFile.autosaveMod = null; //makes it so it won't interfere with anything else upon leaving the editor
             };
-            if (hasUnsavedChanges)
-            {
-                persistentUpdate = false;
-                openSubState(new ModchartEditorExitSubstate(exitFunc));
-            }
-            else 
-                exitFunc();
-
+            persistentUpdate = false;
+            openSubState(new Prompt('This action will clear all unsaved progress or data here.\n\nProceed?', 0, function(){exitFunc();}, null,false, camHUD));
         }
 
         var curBpmChange = getBPMFromSeconds(Conductor.songPosition);
@@ -1010,7 +1059,7 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
             event[EVENT_REPEAT][EVENT_REPEATBEATGAP] = highlightedEvent[EVENT_REPEAT][EVENT_REPEATBEATGAP];
         
         }
-        playfieldRenderer.modchart.data.events.push(event);
+        _modchart.events.push(event);
         hasUnsavedChanges = true;
         return event;
     }
@@ -1020,7 +1069,7 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
         // var i = eventSprites.length - 1;
         // while (i >= 0) {
         //     var daEvent:ModchartEditorEvent = eventSprites.members[i];
-        //     var beat:Float = playfieldRenderer.modchart.data.events[i][1][0];
+        //     var beat:Float = _modchart.events[i][1][0];
         //     if(curBeat < beat-4 && curBeat > beat+16)
         //     {
         //         daEvent.active = false;
@@ -1033,12 +1082,12 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
         //     --i;
         // }
         eventSprites.clear();
-        for (i in 0...playfieldRenderer.modchart.data.events.length)
+        for (i in 0..._modchart.events.length)
         {
-            var beat:Float = playfieldRenderer.modchart.data.events[i][1][0];
+            var beat:Float = _modchart.events[i][1][0];
             if (curBeat > beat-5  && curBeat < beat+5)
             {
-                var daEvent:ModchartEditorEvent = new ModchartEditorEvent(playfieldRenderer.modchart.data.events[i]);
+                var daEvent:ModchartEditorEvent = new ModchartEditorEvent(_modchart.events[i]);
                 eventSprites.add(daEvent);
                 //trace("added event sprite "+beat);
             }
@@ -1049,11 +1098,11 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
     {
         if (highlightedEvent == null)
             return;
-        for (i in 0...playfieldRenderer.modchart.data.events.length)
+        for (i in 0..._modchart.events.length)
         {
-            if (highlightedEvent == playfieldRenderer.modchart.data.events[i])
+            if (highlightedEvent == _modchart.events[i])
             {
-                playfieldRenderer.modchart.data.events.remove(playfieldRenderer.modchart.data.events[i]);
+                _modchart.events.remove(_modchart.events[i]);
                 dirtyUpdateEvents = true;
                 break;
             }
@@ -1518,8 +1567,8 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
     function updateModList()
     {
         mods = [];
-        for (i in 0...playfieldRenderer.modchart.data.modifiers.length)
-            mods.push(playfieldRenderer.modchart.data.modifiers[i][MOD_NAME]);
+        for (i in 0..._modchart.modifiers.length)
+            mods.push(_modchart.modifiers[i][MOD_NAME]);
         if (mods.length == 0)
             mods.push('');
         modifierDropDown.setData(FlxUIDropDownMenu.makeStrIdLabelArray(mods, true));
@@ -1544,8 +1593,8 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
 		tab_group.name = "Modifiers";
 
         
-        for (i in 0...playfieldRenderer.modchart.data.modifiers.length)
-            mods.push(playfieldRenderer.modchart.data.modifiers[i][MOD_NAME]);
+        for (i in 0..._modchart.modifiers.length)
+            mods.push(_modchart.modifiers[i][MOD_NAME]);
 
         if (mods.length == 0)
             mods.push('');
@@ -1553,9 +1602,9 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
         modifierDropDown = new FlxUIDropDownMenu(25, 50, FlxUIDropDownMenu.makeStrIdLabelArray(mods, true), function(mod:String)
         {
             var modName = mods[Std.parseInt(mod)];
-            for (i in 0...playfieldRenderer.modchart.data.modifiers.length)
-                if (playfieldRenderer.modchart.data.modifiers[i][MOD_NAME] == modName)
-                    currentModifier = playfieldRenderer.modchart.data.modifiers[i];
+            for (i in 0..._modchart.modifiers.length)
+                if (_modchart.modifiers[i][MOD_NAME] == modName)
+                    currentModifier = _modchart.modifiers[i];
 
             if (currentModifier != null)
             {
@@ -1575,40 +1624,48 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
         });
         refreshModifiers.scale.y *= 1.5;
         refreshModifiers.updateHitbox();
+        refreshModifiers.color = FlxColor.fromRGB(36, 36, 36);
+        refreshModifiers.label.color = FlxColor.WHITE;
 
         var saveModifier:FlxButton = new FlxButton(refreshModifiers.x, refreshModifiers.y+refreshModifiers.height+20, 'Save Modifier', function ()
         {
             var alreadyExists = false;
-            for (i in 0...playfieldRenderer.modchart.data.modifiers.length)
-                if (playfieldRenderer.modchart.data.modifiers[i][MOD_NAME] == modNameInputText.text)
+            for (i in 0..._modchart.modifiers.length)
+                if (_modchart.modifiers[i][MOD_NAME] == modNameInputText.text)
                 {
-                    playfieldRenderer.modchart.data.modifiers[i] = [modNameInputText.text, modClassInputText.text, 
+                    _modchart.modifiers[i] = [modNameInputText.text, modClassInputText.text, 
                         modTypeInputText.text, playfieldStepper.value, targetLaneStepper.value];
                     alreadyExists = true;
                 }
 
             if (!alreadyExists)
             {
-                playfieldRenderer.modchart.data.modifiers.push([modNameInputText.text, modClassInputText.text, 
+                _modchart.modifiers.push([modNameInputText.text, modClassInputText.text, 
                     modTypeInputText.text, playfieldStepper.value, targetLaneStepper.value]);
             }
             dirtyUpdateModifiers = true;
             updateModList();
             hasUnsavedChanges = true;
+            autosaveModchart(this);
         });
+        saveModifier.color = FlxColor.fromRGB(36, 36, 36);
+        saveModifier.label.color = FlxColor.WHITE;
 
         var removeModifier:FlxButton = new FlxButton(saveModifier.x, saveModifier.y+saveModifier.height+20, 'Remove Modifier', function ()
         {
-            for (i in 0...playfieldRenderer.modchart.data.modifiers.length)
-                if (playfieldRenderer.modchart.data.modifiers[i][MOD_NAME] == modNameInputText.text)
+            for (i in 0..._modchart.modifiers.length)
+                if (_modchart.modifiers[i][MOD_NAME] == modNameInputText.text)
                 {
-                    playfieldRenderer.modchart.data.modifiers.remove(playfieldRenderer.modchart.data.modifiers[i]);
+                    _modchart.modifiers.remove(_modchart.modifiers[i]);
                 }
             dirtyUpdateModifiers = true;
             updateModList();
             hasUnsavedChanges = true;
+            autosaveModchart(this);
         });
         removeModifier.scale.y *= 1.5;
+        removeModifier.color = FlxColor.fromRGB(36, 36, 36);
+        removeModifier.label.color = FlxColor.WHITE;
         removeModifier.updateHitbox();
 
         modNameInputText = new FlxUIInputText(modifierDropDown.x + 300, modifierDropDown.y, 160, '', 8);
@@ -1617,6 +1674,12 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
         modTypeInputText = new FlxUIInputText(modifierDropDown.x + 700, modifierDropDown.y, 160, '', 8);
         playfieldStepper = new FlxUINumericStepper(modifierDropDown.x + 900, modifierDropDown.y, 1, -1, -1, 100, 0);
         targetLaneStepper = new FlxUINumericStepper(modifierDropDown.x + 900, modifierDropDown.y+300, 1, -1, -1, 100, 0);
+
+        for (uiInput in [modNameInputText, modClassInputText, modTypeInputText])
+        {
+            uiInput.backgroundColor = 0xFF333333;
+            uiInput.setFormat(Paths.font("resultsFont.ttf"), 12, FlxColor.WHITE);
+        }
 
         textBlockers.push(modNameInputText);
         textBlockers.push(modClassInputText);
@@ -1650,6 +1713,11 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
 
         activeModifiersText = new FlxText(50, 180);
         tab_group.add(activeModifiersText);
+
+        for (txt in [activeModifiersText, explainText])
+        {
+            txt.setFormat(Paths.font("resultsFont.ttf"), 14, FlxColor.WHITE);
+        }
         
 
         tab_group.add(modNameInputText);
@@ -2037,6 +2105,7 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
                 eventDataInputText.text = highlightedEvent[EVENT_DATA][EVENT_EASEDATA];
                 dirtyUpdateEvents = true;
                 hasUnsavedChanges = true;
+                autosaveModchart(this);
             }
         };
         eventValueInputText = new FlxUIInputText(25 + 200, 50, 160, '', 8);
@@ -2050,6 +2119,7 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
                 eventDataInputText.text = highlightedEvent[EVENT_DATA][EVENT_EASEDATA];
                 dirtyUpdateEvents = true;
                 hasUnsavedChanges = true;
+                autosaveModchart(this);
             }
         };
 
@@ -2072,6 +2142,8 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
             } 
         });
         centerXToObject(stackedEventStepper, addStacked);
+        addStacked.color = FlxColor.fromRGB(36, 36, 36);
+        addStacked.label.color = FlxColor.WHITE;
 
         eventTypeDropDown = new FlxUIDropDownMenu(25 + 500, 50, FlxUIDropDownMenu.makeStrIdLabelArray(eventTypes, true), function(mod:String)
         {
@@ -2094,6 +2166,7 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
             }
             dirtyUpdateEvents = true;
             hasUnsavedChanges = true;
+            autosaveModchart(this);
         });
         eventEaseInputText = new FlxUIInputText(25 + 650, 50+100, 160, '', 8);
         eventTimeInputText = new FlxUIInputText(25 + 650, 50, 160, '', 8);
@@ -2107,6 +2180,7 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
             }
             dirtyUpdateEvents = true;
             hasUnsavedChanges = true;
+            autosaveModchart(this);
         }
         eventTimeInputText.callback = function(str:String, str2:String)
         {
@@ -2118,6 +2192,7 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
             }
             dirtyUpdateEvents = true;
             hasUnsavedChanges = true;
+            autosaveModchart(this);
         }
 
         easeDropDown = new FlxUIDropDownMenu(25, eventEaseInputText.y+30, FlxUIDropDownMenu.makeStrIdLabelArray(easeList, true), function(ease:String)
@@ -2126,6 +2201,7 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
             eventEaseInputText.text = easeStr;
             eventEaseInputText.callback("", ""); //make sure it updates
             hasUnsavedChanges = true;
+            autosaveModchart(this);
         });
         centerXToObject(eventEaseInputText, easeDropDown);
 
@@ -2137,6 +2213,7 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
             updateSubModList(modName);
             eventModInputText.callback("", ""); //make sure it updates
             hasUnsavedChanges = true;
+            autosaveModchart(this);
         });
         centerXToObject(eventModInputText, eventModifierDropDown);
         
@@ -2156,6 +2233,7 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
             
             eventModInputText.callback("", ""); //make sure it updates
             hasUnsavedChanges = true;
+            autosaveModchart(this);
         });
         centerXToObject(eventModInputText, subModDropDown);
 
@@ -2170,6 +2248,7 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
                 highlightedEvent = data; 
                 dirtyUpdateEvents = true;
                 hasUnsavedChanges = true;
+                autosaveModchart(this);
             }
         };
 
@@ -2185,6 +2264,7 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
                 eventValueInputText.text = getEventModData(false);
                 dirtyUpdateEvents = true;
                 hasUnsavedChanges = true;
+                autosaveModchart(this);
             }
         });
         var remove:FlxButton = new FlxButton(0, selectedEventDataStepper.y+50, 'Remove', function ()
@@ -2199,12 +2279,23 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
                 eventValueInputText.text = getEventModData(false);
                 dirtyUpdateEvents = true;
                 hasUnsavedChanges = true;
+                autosaveModchart(this);
             }
         });
         centerXToObject(selectedEventDataStepper, add);
         centerXToObject(selectedEventDataStepper, remove);
+        add.color = FlxColor.fromRGB(36, 36, 36);
+        add.label.color = FlxColor.WHITE;
+        remove.color = FlxColor.fromRGB(36, 36, 36);
+        remove.label.color = FlxColor.WHITE;
         tab_group.add(add);
         tab_group.add(remove);
+
+        for (uiInput in [eventModInputText, eventValueInputText, eventEaseInputText, eventTimeInputText, eventDataInputText])
+        {
+            uiInput.backgroundColor = 0xFF333333;
+            uiInput.setFormat(Paths.font("resultsFont.ttf"), 12, FlxColor.WHITE);
+        }
 
        
         textBlockers.push(eventModInputText);
@@ -2256,11 +2347,11 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
     {
         if (highlightedEvent == null)
             return null;
-        for (i in 0...playfieldRenderer.modchart.data.events.length)
+        for (i in 0..._modchart.events.length)
         {
-            if (playfieldRenderer.modchart.data.events[i] == highlightedEvent)
+            if (_modchart.events[i] == highlightedEvent)
             {
-                return playfieldRenderer.modchart.data.events[i];
+                return _modchart.events[i];
             }
         }
 
@@ -2340,6 +2431,7 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
                         highlightedEvent = data;
                         hasUnsavedChanges = true;
                         dirtyUpdateEvents = true;
+                        autosaveModchart(this);
                     }
                 case "repeatCount": 
                     var data = getCurrentEventInData();
@@ -2349,6 +2441,7 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
                         highlightedEvent = data;
                         hasUnsavedChanges = true;
                         dirtyUpdateEvents = true;
+                        autosaveModchart(this);
                     }
                 case "stackedEvent": 
                     if (highlightedEvent != null)
@@ -2368,7 +2461,7 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
 		tab_group.name = "Playfields";
 
         playfieldCountStepper = new FlxUINumericStepper(25, 50, 1, 1, 1, 100, 0);
-        playfieldCountStepper.value = playfieldRenderer.modchart.data.playfields;
+        playfieldCountStepper.value = _modchart.playfields;
         
         tab_group.add(playfieldCountStepper);
         tab_group.add(makeLabel(playfieldCountStepper, 0, -15, "Playfield Count"));
@@ -2381,14 +2474,14 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
         var tab_group = new FlxUI(null, UI_box);
 		tab_group.name = "Editor";
 
-        sliderRate = new FlxUISlider(this, 'playbackSpeed', 20, 120, 0.1, 3, 250, null, 5, FlxColor.WHITE, FlxColor.BLACK);
+        sliderRate = new FlxUISlider(this, 'playbackSpeed', 20, 120, 0.1, 3, 250, null, 5, 0xFF333333, FlxColor.WHITE);
 		sliderRate.nameLabel.text = 'Playback Rate';
         sliderRate.callback = function(val:Float)
         {
             dirtyUpdateEvents = true;
         };
 
-        var songSlider = new FlxUISlider(inst, 'time', 20, 200, 0, inst.length, 250, null, 5, FlxColor.WHITE, FlxColor.BLACK);
+        var songSlider = new FlxUISlider(inst, 'time', 20, 200, 0, inst.length, 250, null, 5, 0xFF333333, FlxColor.WHITE);
 		songSlider.valueLabel.visible = false;
 		songSlider.maxLabel.visible = false;
 		songSlider.minLabel.visible = false;
@@ -2401,6 +2494,9 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
             dirtyUpdateEvents = true;
             dirtyUpdateNotes = true;
 		};
+
+        for (labels in [sliderRate.nameLabel, sliderRate.minLabel, sliderRate.maxLabel, sliderRate.valueLabel, songSlider.nameLabel, songSlider.minLabel, songSlider.maxLabel, songSlider.valueLabel])
+            labels.setFormat(Paths.font("resultsFont.ttf"), 13, FlxColor.WHITE);
 
         var check_mute_inst = new FlxUICheckBox(10, 20, null, null, "Mute Instrumental (in editor)", 100);
 		check_mute_inst.checked = false;
@@ -2441,13 +2537,34 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
         {
             playbackSpeed = 1.0;
         });
+        resetSpeed.color = FlxColor.fromRGB(36, 36, 36);
+        resetSpeed.label.color = FlxColor.WHITE;
 
-        var saveJson:FlxUIButton = new FlxUIButton(20, 300, 'Save Modchart', function ()
+        var saveJson:FlxButton = new FlxButton(20, 300, 'Save Modchart', function ()
         {
             saveModchartJson(this);
         });
+        saveJson.color = 0xFF152C12;
+        saveJson.label.color = FlxColor.WHITE;
+
+        var getAutosave:FlxButton = new FlxButton(200, 300, 'Load Autosave', function ()
+        {
+            var autosave:FlxSave = new FlxSave();
+            autosave.bind("dataAutosave", CoolUtil.getSavePath());
+
+            if (playfieldInstance != null)
+                playfieldInstance.playfieldRenderer.modchart.data = ModchartFile.parseModchartBullshit(autosave.data.autosaveModchart);
+            else
+                playfieldRenderer.modchart.data = ModchartFile.parseModchartBullshit(autosave.data.autosaveModchart);
+            MusicBeatState.resetState();
+        });
+        getAutosave.color = 0xFF12172C;
+        getAutosave.label.color = FlxColor.WHITE;
+
         addUI(tab_group, "saveJson", saveJson, 'Save Modchart', 'Saves the modchart to a .json file which can be stored and loaded later.');
         //tab_group.addAsset(saveJson, "saveJson");
+        if(FlxG.save.data.autosaveModchart != null)
+            addUI(tab_group, "getAutosave", getAutosave, 'Load Autosave', "Will load any progress the editor last remembered in the case of losing progress to a crash.");
 		tab_group.add(sliderRate);
         addUI(tab_group, "resetSpeed", resetSpeed, 'Reset Speed', 'Resets playback speed to 1.');
         tab_group.add(songSlider);
@@ -2486,6 +2603,7 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
     function makeLabel(obj:FlxSprite, offsetX:Float, offsetY:Float, textStr:String)
     {
         var text = new FlxText(0, obj.y+offsetY, 0, textStr);
+        text.setFormat(Paths.font("resultsFont.ttf"), 12, FlxColor.WHITE);
         centerXToObject(obj, text);
         text.x += offsetX;
         return text;
@@ -2498,7 +2616,11 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
         if (instance == null)
             instance = PlayState.instance;
 
-		var data:String = Json.stringify(instance.playfieldRenderer.modchart.data, "\t");
+        var json = {
+            _modchart;
+        };
+
+		var data:String = Json.stringify(json, "\t");
         //data = data.replace("\n", "");
         //data = data.replace(" ", "");
         #if sys
@@ -2535,6 +2657,41 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
         _file = null;
     }
 
+    function autosaveModchart(?instance:ModchartMusicBeatState = null):Void
+    {
+        if (instance == null)
+            instance = PlayState.instance;
+
+        /*var events:Array<Array<Dynamic>> = [];
+        var modifiers:Array<Array<Dynamic>> = [];
+
+        for (e in 0...instance._modchart.events.length)
+        {
+            events.push(instance._modchart.events[e]);
+        }
+
+        for (m in 0...instance._modchart.modifiers.length)
+        {
+            modifiers.push(instance._modchart.modifiers[m]);
+        }
+
+        var json:ModchartFile.ModchartJson = cast Json.parse(
+            '{
+                "modifiers": ${modifiers},
+                "playfields": ${instance._modchart.playfields},
+                "events": ${events}
+            }'
+        );*/
+
+        var autosave:FlxSave = new FlxSave();
+        autosave.bind("dataAutosave", CoolUtil.getSavePath());
+        autosave.data.autosaveModchart = haxe.Json.stringify({
+			instance.playfieldRenderer.modchart.data;
+		});
+        autosave.flush();
+        ModchartFile.autosaveMod = autosave.data.autosaveModchart;
+    }
+
     /**
      * Called if there is an error while saving the gameplay recording.
      */
@@ -2545,58 +2702,5 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
         _file.removeEventListener(IOErrorEvent.IO_ERROR, onSaveError);
         _file = null;
     }   
-}
-class ModchartEditorExitSubstate extends MusicBeatSubstate
-{
-    var exitFunc:Void->Void;
-    override public function new(funcOnExit:Void->Void)
-    {
-        exitFunc = funcOnExit;
-        super();
-    }
-    
-    override public function create()
-    {
-        super.create();
-
-        var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
-		bg.alpha = 0;
-		bg.scrollFactor.set();
-		add(bg);
-        FlxTween.tween(bg, {alpha: 0.6}, 0.4, {ease: FlxEase.quartInOut});
-
-
-        var warning:FlxText = new FlxText(0, 0, 0, 'You have unsaved changes!\nAre you sure you want to exit?', 48);
-        warning.alignment = CENTER;
-        warning.screenCenter();
-        warning.y -= 150;
-        add(warning);
-
-        var goBackButton:FlxUIButton = new FlxUIButton(0, 500, 'Go Back', function()
-        {
-            close();
-        });
-        goBackButton.scale.set(2.5, 2.5);
-        goBackButton.updateHitbox();
-        goBackButton.label.size = 12;
-        goBackButton.autoCenterLabel();
-        goBackButton.x = (FlxG.width*0.3)-(goBackButton.width*0.5);
-        add(goBackButton);
-        
-        var exit:FlxUIButton = new FlxUIButton(0, 500, 'Exit without saving', function()
-        {
-            exitFunc();
-        });
-        exit.scale.set(2.5, 2.5);
-        exit.updateHitbox();
-        exit.label.size = 12;
-        exit.label.fieldWidth = exit.width;
-        exit.autoCenterLabel();
-        
-        exit.x = (FlxG.width*0.7)-(exit.width*0.5);
-        add(exit);
-
-        cameras = [FlxG.cameras.list[FlxG.cameras.list.length-1]];
-    }
 }
 #end

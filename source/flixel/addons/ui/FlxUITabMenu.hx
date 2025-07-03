@@ -164,17 +164,17 @@ class FlxUITabMenu extends FlxUIGroup implements IResizable implements IFlxUICli
 				for (tdata in tab_names_and_labels_)
 				{
 					// set label and name
-					var fb:FlxUIButton = new FlxUIButton(0, 0, tdata.label);
-
+					var fb:FlxUIButton = new FlxUIButton(0, 0, tdata.label, null, true, false, 0xFF333333);
+					
 					// default style:
-					fb.up_color = 0x242424;
-					fb.down_color = 0x242424;
-					fb.over_color = 0x242424;
-					fb.up_toggle_color = 0x242424;
-					fb.down_toggle_color = 0x242424;
-					fb.over_toggle_color = 0x242424;
+					fb.up_color = 0x000000;
+					fb.down_color = 0x000000;
+					fb.over_color = 0x000000;
+					fb.up_toggle_color = 0xFFFFFF;
+					fb.down_toggle_color = 0xFFFFFF;
+					fb.over_toggle_color = 0xFFFFFF;
 
-					fb.label.color = 0x242424;
+					fb.label.color = 0xFFFFFF;
 					fb.label.setBorderStyle(OUTLINE);
 
 					fb.name = tdata.name;
