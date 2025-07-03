@@ -3,6 +3,7 @@ package backend;
 import flixel.addons.ui.FlxUIState;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.FlxState;
+import openfl.Lib;
 
 class MusicBeatState extends modcharting.ModchartMusicBeatState
 {
@@ -125,6 +126,11 @@ class MusicBeatState extends modcharting.ModchartMusicBeatState
 		if(FlxTransitionableState.skipNextTransIn) FlxG.switchState(nextState);
 		else startTransition(nextState);
 		FlxTransitionableState.skipNextTransIn = false;
+
+		Lib.application.window.onClose.removeAll(); // goes back to normal hopefully
+		Lib.application.window.onClose.add(function() {
+			DiscordClient.shutdown();
+		});
 	}
 
 	public static function resetState() {
