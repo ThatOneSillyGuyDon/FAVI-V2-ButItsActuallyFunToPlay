@@ -29,7 +29,7 @@ class VisualsUISubState extends BaseOptionsMenu
 		}
 
 		var option:Option = new Option('Note Splash Opacity',
-			'How much transparent should the Note Splashes be.',
+			'How transparent should the Note Splashes be.',
 			'splashAlpha',
 			'percent',
 			0.6);
@@ -38,6 +38,13 @@ class VisualsUISubState extends BaseOptionsMenu
 		option.maxValue = 1;
 		option.changeValue = 0.1;
 		option.decimals = 1;
+		addOption(option);
+
+		var option:Option = new Option('Hold Splashes',
+			'if unchecked, hides the splash effect when releasing a hold note.',
+			'sustainSplashes',
+			'bool',
+			true);
 		addOption(option);
 
 		var option:Option = new Option('Hide HUD',

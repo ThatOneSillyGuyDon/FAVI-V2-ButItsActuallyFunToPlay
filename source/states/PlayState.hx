@@ -63,6 +63,8 @@ import psychlua.HScript;
 import tea.SScript;
 #end
 
+//import objects.StrumNote.SustainSplash;
+
 enum CinematicControls
 {
 	MOVE;
@@ -225,6 +227,7 @@ class PlayState extends MusicBeatState
 	public var opponentStrums:FlxTypedGroup<StrumNote>;
 	public var playerStrums:FlxTypedGroup<StrumNote>;
 	public var grpNoteSplashes:FlxTypedGroup<NoteSplash>;
+	//public var grpSustainSplashes:FlxTypedGroup<SustainSplash>;
 
 	public var camZooming:Bool = false;
 	public var camZoomingMult:Float = 1;
@@ -513,6 +516,7 @@ class PlayState extends MusicBeatState
 
 		FlxG.cameras.setDefaultDrawTarget(camGame, true);
 		grpNoteSplashes = new FlxTypedGroup<NoteSplash>();
+		//grpSustainSplashes = new FlxTypedGroup<SustainSplash>();
 
 		persistentUpdate = true;
 		persistentDraw = true;
@@ -872,6 +876,7 @@ class PlayState extends MusicBeatState
 
 		playfieldRenderer = new PlayfieldRenderer(strumLineNotes, notes, this);
 		noteGroup.add(playfieldRenderer);
+		//noteGroup.add(grpSustainSplashes);
 		noteGroup.add(grpNoteSplashes);
 
 
@@ -2393,6 +2398,8 @@ class PlayState extends MusicBeatState
 				opponentStrums.add(babyArrow);
 			}
 
+			//grpSustainSplashes.add(babyArrow.sustainSplash);
+
 			strumLineNotes.add(babyArrow);
 			babyArrow.postAddedToGroup();
 		}
@@ -2966,7 +2973,19 @@ class PlayState extends MusicBeatState
 									}
 								}
 							}
-
+/*
+							if (ClientPrefs.data.sustainSplashes && !isPixelStage && curStage != "menuSongs" && FreeplayState.freeplayMenuList != 2) {
+								if (daNote.isSustainNote && daNote.wasGoodHit && !strumGroup.members[daNote.noteData].sustainSplash.updatedThisFrame) {
+									if (daNote.animation.curAnim.name.endsWith("holdend")) {
+										if (Conductor.songPosition >= daNote.strumTime) {
+											strumGroup.members[daNote.noteData].sustainSplash.hide(!daNote.mustPress);
+										}
+									} else {
+										strumGroup.members[daNote.noteData].sustainSplash.show();
+									}
+								}
+							} 
+*/
 							// Kill extremely late notes and cause misses
 							if (Conductor.songPosition > noteKillOffset + daNote.strumTime)
 							{
@@ -2992,6 +3011,15 @@ class PlayState extends MusicBeatState
 						});
 					}
 				}
+/*
+				if (ClientPrefs.data.sustainSplashes && !isPixelStage && curStage != "menuSongs" && FreeplayState.freeplayMenuList != 2) {
+					for (strum in strumLineNotes.members) {
+						if (!strum.sustainSplash.updatedThisFrame) {
+							strum.sustainSplash.hide(true);
+						}
+					}
+				}
+*/
 			}
 			checkEventNote();
 		}
