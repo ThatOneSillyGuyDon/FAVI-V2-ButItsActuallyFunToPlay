@@ -294,7 +294,7 @@ class WaltStage extends BaseStage
 			switch (PlayState.curStage)
 			{
 				case 'waltRoom':
-					if (game.healthThing < 0.3 && limitThing > 0)
+					if (game.healthThing < 0.25 && limitThing > 0)
 					{
 						if (mercyTmr != null)
 							mercyTmr.cancel();
@@ -305,14 +305,14 @@ class WaltStage extends BaseStage
 							disabledDrain = false;
 							mercyTmr = null;
 						});
-						game.healthThing += 1.25;
+						game.healthThing += PlayState.SONG.song == "Mercy" ? 0.13*limitThing : 1.25; //you people wanted a buff, so here ya go lmfao!!!!!
 						limitThing -= 1;
 						var mathShit:Float = limitThing / initialCount;
 						switch (mathShit)
 						{
-							case 0.75: mercyBoostIcon.animation.play("hmm");
+							case 0.75 | 0.8: mercyBoostIcon.animation.play("hmm");
 							case 0.5: mercyBoostIcon.animation.play("halfway");
-							case 0.25: mercyBoostIcon.animation.play("thatsBad");
+							case 0.25 | 0.2: mercyBoostIcon.animation.play("thatsBad");
 							case 0.1 | 0.12: mercyBoostIcon.animation.play("almostOut");
 							case 0: mercyBoostIcon.animation.play("empty");
 						}

@@ -53,6 +53,7 @@ class PauseSubState extends MusicBeatSubstate
 
 		lime.app.Application.current.window.title += " - {Paused}";
 		PlayState.windowTimer.active = false;
+
 		if(PlayState.chartingMode)
 		{
 			menuItemsOG.insert(2, 'Leave Charting Mode');
@@ -67,6 +68,10 @@ class PauseSubState extends MusicBeatSubstate
 			menuItemsOG.insert(4 + num, 'Toggle Practice Mode');
 			menuItemsOG.insert(5 + num, 'Toggle Botplay');
 		}
+
+		if(PlayState.modchartingMode)
+			menuItemsOG.insert(2, 'Leave Modcharting Mode');
+
 		menuItems = menuItemsOG;
 
 		for (i in 0...Difficulty.difficulties.length) {
@@ -126,13 +131,17 @@ class PauseSubState extends MusicBeatSubstate
 		practiceText.visible = PlayState.instance.practiceMode;
 		add(practiceText);
 
-		var chartingText:FlxText = new FlxText(20, 15 + 101, 0, "CHARTING MODE", 32);
+		var isDebugMode:Bool = false;
+		if (PlayState.chartingMode || PlayState.modchartingMode)
+			isDebugMode = true;
+		
+		var chartingText:FlxText = new FlxText(20, 15 + 101, 0, "DEBUGGER MODE", 32);
 		chartingText.scrollFactor.set();
 		chartingText.setFormat(Paths.font('vcr.ttf'), 32);
 		chartingText.x = FlxG.width - (chartingText.width + 20);
 		chartingText.y = FlxG.height - (chartingText.height + 20);
 		chartingText.updateHitbox();
-		chartingText.visible = PlayState.chartingMode;
+		chartingText.visible = isDebugMode;
 		add(chartingText);
 
 		blueballedTxt.alpha = 0;
@@ -249,6 +258,10 @@ class PauseSubState extends MusicBeatSubstate
 				case "Leave Charting Mode":
 					restartSong();
 					PlayState.chartingMode = false;
+				case "Leave Modcharting Mode":
+					restartSong();
+					ModchartFile.autosaveMod = null;
+					PlayState.modchartingMode = false;
 				case 'Skip Time':
 					if(curTime < Conductor.songPosition)
 					{
@@ -273,15 +286,6 @@ class PauseSubState extends MusicBeatSubstate
 					PlayState.instance.botplayTxt.visible = PlayState.instance.cpuControlled;
 					PlayState.instance.botplayTxt.alpha = 1;
 					PlayState.instance.botplaySine = 0;
-				case 'Options':
-					if (PlayState.useFakeDeluName)
-						PlayState.useFakeDeluName = false;
-					PlayState.pauseCountEnabled = false;
-					FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
-					FlxG.mouse.visible = true;
-					MusicBeatState.switchState(new options.OptionsState());
-					options.OptionsState.onPlayState = true;
-					FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 				case "Exit to menu":
 					Lib.application.window.onClose.removeAll(); // goes back to normal hopefully
 					Lib.application.window.onClose.add(function() {

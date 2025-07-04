@@ -599,7 +599,7 @@ class ModchartFile
                     }
                     else
                         json = emptyMod;
-                    autosaveMod = null;
+                    if (!PlayState.modchartingMode) autosaveMod = null;
             }
         }
         var modchartJson:Dynamic = parseModchartBullshit(json);
