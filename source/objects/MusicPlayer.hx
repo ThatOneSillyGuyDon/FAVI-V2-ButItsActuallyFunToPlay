@@ -216,6 +216,7 @@ class MusicPlayer extends FlxGroup
 		var shortName:Bool = length < 5; // Fix for song names like Ugh, Guns
 		if (FreeplayState.freeplayMenuList == 2)
 		{
+			//Bro why tf is the math like this like what crack was ShadowMario Smoking when he made this????
 			songTxt.x = FlxG.width - songTxt.width - 6;
 			if (shortName)
 				songTxt.x -= 10 * length - length;
@@ -230,17 +231,9 @@ class MusicPlayer extends FlxGroup
 		}
 		else
 		{
-			songTxt.x = FlxG.width - songTxt.width - 6;
-			if (shortName)
-				songTxt.x -= 10 * length - length;
-			songBG.scale.x = FlxG.width - songTxt.x + 12;
-			if (shortName) 
-				songBG.scale.x += 6 * length;
-			songBG.x = FlxG.width - (songBG.scale.x / 2);
-			timeTxt.x = Std.int(songBG.x + (songBG.width / 2));
-			timeTxt.x -= timeTxt.width / 2;
-			if (shortName)
-				timeTxt.x -= length - 5;
+			//RAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+			songTxt.screenCenter(X).x += 400;
+			timeTxt.screenCenter(X).x += 400;
 		}
 
 		progressBar.setGraphicSize(Std.int(songTxt.width), 5);

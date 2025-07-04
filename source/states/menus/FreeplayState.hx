@@ -114,6 +114,8 @@ class FreeplayState extends MusicBeatState
 	public static var bf_vocals:FlxSound = null;
 	public static var opp_vocals:FlxSound = null;
 
+	var player:MusicPlayer;
+
 	override function create()
 	{
 		Paths.clearStoredMemory();
@@ -486,6 +488,10 @@ class FreeplayState extends MusicBeatState
 			lastDifficultyName = Difficulty.defaultDifficulty;
 		}
 		curDifficulty = Math.round(Math.max(0, Difficulty.defaultList.indexOf(lastDifficultyName)));
+
+		player = new MusicPlayer(this);
+		player.cameras = [camHUD];
+		add(player);
 		
 		changeSelection();
 		changeDiff();
@@ -541,6 +547,7 @@ class FreeplayState extends MusicBeatState
 		
 		if (!songInstPlaying) 
 			Conductor.bpm = 98;
+
 
 		super.create();
 	}
@@ -655,11 +662,14 @@ class FreeplayState extends MusicBeatState
 			ratingSplit[1] += '0';
 		}
 
-		if (freeplayMenuList == 2)
-			scoreText.text = 'PERSONAL BEST: ' + lerpScore + ' (' + ratingSplit.join('.') + '%)';
-		else
-			scoreText.text = "Score: " + FlxStringUtil.formatMoney(lerpScore, false, true);
-		positionHighscore();
+		if (!player.playingMusic)
+		{
+			if (freeplayMenuList == 2)
+				scoreText.text = 'PERSONAL BEST: ' + lerpScore + ' (' + ratingSplit.join('.') + '%)';
+			else
+				scoreText.text = "Score: " + FlxStringUtil.formatMoney(lerpScore, false, true);
+			positionHighscore();
+		}
 
 		var upP = freeplayMenuList == 2 ? controls.UI_UP_P : controls.UI_LEFT_P;
 		var downP = freeplayMenuList == 2 ? controls.UI_DOWN_P : controls.UI_RIGHT_P;
@@ -672,52 +682,70 @@ class FreeplayState extends MusicBeatState
 
 		if (!selectedSomethin)
 		{
-			if(songs.length > 1)
+			if (!player.playingMusic)
 			{
-				if (upP)
+				if(songs.length > 1)
 				{
-					changeSelection(-shiftMult);
-					holdTime = 0;
-				}
-				if (downP)
-				{
-					changeSelection(shiftMult);
-					holdTime = 0;
-				}
-
-				if((freeplayMenuList == 2 ? controls.UI_UP : controls.UI_LEFT) || (freeplayMenuList == 2 ? controls.UI_DOWN : controls.UI_RIGHT))
-				{
-					var checkLastHold:Int = Math.floor((holdTime - 0.5) * 10);
-					holdTime += elapsed;
-					var checkNewHold:Int = Math.floor((holdTime - 0.5) * 10);
-
-					if(holdTime > 0.5 && checkNewHold - checkLastHold > 0)
+					if (upP)
 					{
-						changeSelection((checkNewHold - checkLastHold) * ((freeplayMenuList == 2 ? controls.UI_UP : controls.UI_LEFT) ? -shiftMult : shiftMult));
+						changeSelection(-shiftMult);
+						holdTime = 0;
+					}
+					if (downP)
+					{
+						changeSelection(shiftMult);
+						holdTime = 0;
+					}
+
+					if((freeplayMenuList == 2 ? controls.UI_UP : controls.UI_LEFT) || (freeplayMenuList == 2 ? controls.UI_DOWN : controls.UI_RIGHT))
+					{
+						var checkLastHold:Int = Math.floor((holdTime - 0.5) * 10);
+						holdTime += elapsed;
+						var checkNewHold:Int = Math.floor((holdTime - 0.5) * 10);
+
+						if(holdTime > 0.5 && checkNewHold - checkLastHold > 0)
+						{
+							changeSelection((checkNewHold - checkLastHold) * ((freeplayMenuList == 2 ? controls.UI_UP : controls.UI_LEFT) ? -shiftMult : shiftMult));
+							changeDiff();
+						}
+					}
+
+					if(FlxG.mouse.wheel != 0)
+					{
+						FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'), 0.2);
+						changeSelection(-shiftMult * FlxG.mouse.wheel, false);
 						changeDiff();
 					}
-				}
-
-				if(FlxG.mouse.wheel != 0)
-				{
-					FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'), 0.2);
-					changeSelection(-shiftMult * FlxG.mouse.wheel, false);
-					changeDiff();
 				}
 			}
 
 			if (controls.BACK)
 			{
-				persistentUpdate = false;
-				if(colorTween != null) {
-					colorTween.cancel();
+				if (player.playingMusic)
+				{
+					FlxG.sound.music.stop();
+					FlxG.sound.music.volume = 0;
+					instPlaying = -1;
+
+					player.playingMusic = false;
+					player.switchPlayMusic();
+
+					FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'), 0);
+					FlxTween.tween(FlxG.sound.music, {volume: 1}, 1);
 				}
-				FlxG.sound.play(Paths.sound('cancelMenu'));
-				MusicBeatState.switchState(new GeneralMenu());
-				FlxG.mouse.visible = true;
+				else
+				{
+					persistentUpdate = false;
+					if(colorTween != null) {
+						colorTween.cancel();
+					}
+					FlxG.sound.play(Paths.sound('cancelMenu'));
+					MusicBeatState.switchState(new GeneralMenu());
+					FlxG.mouse.visible = true;
+				}
 			}
 
-			if(ctrl && maniaSkinSpr != null)
+			if(ctrl && maniaSkinSpr != null && !player.playingMusic)
 			{
 				if (maniaSkin == 2)
 					maniaSkin = 0;
@@ -727,8 +755,12 @@ class FreeplayState extends MusicBeatState
 			}
 			else if(space && freeplayMenuList != 3)
 			{
-				if(instPlaying != curSelected && !disableSpace)
+				if(instPlaying != curSelected && !disableSpace && !player.playingMusic)
 				{
+					FlxG.sound.music.volume = 0;
+					FlxG.sound.music.fadeIn(1.0, 0.0, 0.7);
+					songInstPlaying = true;
+
 					if (songs[curSelected].songName == "Don't Cross!")
 						FlxG.sound.playMusic(Paths.inst("dont-cross"/*, Difficulty.difficulties[curDifficulty]*/));
 					else
@@ -737,16 +769,21 @@ class FreeplayState extends MusicBeatState
 					if (FlxG.sound.music.fadeTween != null)
 						FlxG.sound.music.fadeTween.cancel();
 
-					FlxG.sound.music.volume = 0.0;
-					FlxG.sound.music.fadeIn(1.0, 0.0, 0.7);
-					songInstPlaying = true;
 					getBPM();
 					FlxTween.num(Conductor.bpm, bpm, 2, null, shitshitfuckfuck -> Conductor.bpm = shitshitfuckfuck);
 					instPlaying = curSelected;
+
+					player.playingMusic = true;
+					player.curTime = 0;
+					player.switchPlayMusic();
+				}
+				else if (instPlaying == curSelected && player.playingMusic)
+				{
+					player.pauseOrResume(player.paused);
 				}
 			}
 
-			else if (accepted)
+			else if (accepted && !player.playingMusic)
 			{
 				songInstPlaying = false;
 				persistentUpdate = false;
@@ -784,7 +821,7 @@ class FreeplayState extends MusicBeatState
 
 				FlxG.sound.music.volume = 0;
 			}
-			else if(controls.RESET)
+			else if(controls.RESET && !player.playingMusic)
 			{
 				persistentUpdate = false;
 				openSubState(new ResetScoreSubState(songs[curSelected].songName, curDifficulty, songs[curSelected].songCharacter));
@@ -818,27 +855,13 @@ class FreeplayState extends MusicBeatState
 			}});
 		}
 
-	// i would remove this but too lazy to remove this function from other menus rn so I don't get any compiling errors lol
-	public static function destroyFreeplayVocals() {
-		if(vocals != null) {
-			vocals.stop();
-			vocals.destroy();
-		}
-		if(bf_vocals != null) {
-			bf_vocals.stop();
-			bf_vocals.destroy();
-		}
-		if(opp_vocals != null) {
-			opp_vocals.stop();
-			opp_vocals.destroy();
-		}
-		vocals = null;
-		bf_vocals = null;
-		opp_vocals = null;
-	}
-
+	//There, removed it
+	
 	function changeDiff(change:Int = 0)
 	{
+		if (player.playingMusic)
+			return;
+		
 		curDifficulty += change;
 
 		if (curDifficulty < 0)
@@ -876,6 +899,9 @@ class FreeplayState extends MusicBeatState
 	function changeSelection(change:Int = 0, playSound:Bool = true)
 	{
 		if(playSound) FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'), 0.4);
+
+		if (player.playingMusic)
+			return;
 
 		disableSpace = true;
 

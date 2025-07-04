@@ -481,6 +481,7 @@ class ModchartFile
                     {
                         var modchartRandomizer:Int = FlxG.random.int(1, 8);
                         trace('Fuck you, die.');
+                        //I'm realizing that the modcharts get simpler as you get closer to the latest modcharts.
                         switch (modchartRandomizer)
                         {
                             case 1: json = Modchart.dontcrossModchart1;
