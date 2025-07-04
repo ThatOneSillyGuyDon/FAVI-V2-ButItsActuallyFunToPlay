@@ -110,10 +110,6 @@ class FreeplayState extends MusicBeatState
 	// this is only so it can fade because this fucking shit is 6 seconds long
 	public static var confirmSound:FlxSound;
 
-	public static var vocals:FlxSound = null;
-	public static var bf_vocals:FlxSound = null;
-	public static var opp_vocals:FlxSound = null;
-
 	var player:MusicPlayer;
 
 	override function create()
@@ -726,6 +722,7 @@ class FreeplayState extends MusicBeatState
 					FlxG.sound.music.stop();
 					FlxG.sound.music.volume = 0;
 					instPlaying = -1;
+					songInstPlaying = false;
 
 					player.playingMusic = false;
 					player.switchPlayMusic();
