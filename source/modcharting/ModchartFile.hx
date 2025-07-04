@@ -476,9 +476,10 @@ class ModchartFile
                         json = emptyMod;
 
                 case "Dont Cross":
+                    //So...Many...Goddamn....MODCHARTS....WHYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
                     if (ClientPrefs.data.mechanics && FlxG.random.bool(15))
                     {
-                        var modchartRandomizer:Int = FlxG.random.int(1, 5);
+                        var modchartRandomizer:Int = FlxG.random.int(1, 8);
                         trace('Fuck you, die.');
                         switch (modchartRandomizer)
                         {
@@ -486,7 +487,10 @@ class ModchartFile
                             case 2: json = Modchart.dontcrossModchart2;
                             case 3: json = Modchart.dontcrossModchart3;
                             case 4: json = Modchart.dontcrossModchart4;
-                            case 5: json = Modchart.dontcrossModchart4;
+                            case 5: json = Modchart.dontcrossModchart5;
+                            case 6: json = Modchart.dontcrossModchart6;
+                            case 7: json = Modchart.iNeedSleep;
+                            case 8: json = Modchart.hopefullyTheLastDontCrossModchartCuzTheresSoMany;
                         }
                     }
                     else
