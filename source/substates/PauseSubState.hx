@@ -286,6 +286,16 @@ class PauseSubState extends MusicBeatSubstate
 					PlayState.instance.botplayTxt.visible = PlayState.instance.cpuControlled;
 					PlayState.instance.botplayTxt.alpha = 1;
 					PlayState.instance.botplaySine = 0;
+				case "Options":
+					if (PlayState.useFakeDeluName)
+						PlayState.useFakeDeluName = false;
+					PlayState.pauseCountEnabled = false;
+					toOptions = true;
+					FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+					FlxG.mouse.visible = true;
+					MusicBeatState.switchState(new options.OptionsState());
+					options.OptionsState.onPlayState = true;
+					FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 				case "Exit to menu":
 					Lib.application.window.onClose.removeAll(); // goes back to normal hopefully
 					Lib.application.window.onClose.add(function() {
