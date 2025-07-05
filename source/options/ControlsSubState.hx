@@ -123,7 +123,7 @@ class ControlsSubState extends MusicBeatSubstate {
 				// Reset to Default
 				ClientPrefs.reloadVolumeKeys();
 				close();
-				FlxG.sound.play(Paths.sound('cancelMenu'));
+				FlxG.sound.play(Paths.sound('funkinAVI/menu/selectSfx'));
 			}
 
 			if(controls.ACCEPT && nextAccept <= 0) {
@@ -131,7 +131,7 @@ class ControlsSubState extends MusicBeatSubstate {
 					ClientPrefs.keyBinds = ClientPrefs.defaultKeys.copy();
 					reloadKeys();
 					changeSelection();
-					FlxG.sound.play(Paths.sound('confirmMenu'));
+					FlxG.sound.play(Paths.sound('funkinAVI/menu/selectSfx'));
 				} else if(!unselectableCheck(curSelected)) {
 					bindingTime = 0;
 					rebindingKey = true;
@@ -140,7 +140,7 @@ class ControlsSubState extends MusicBeatSubstate {
 					} else {
 						grpInputs[getInputTextNum()].alpha = 0;
 					}
-					FlxG.sound.play(Paths.sound('scrollMenu'));
+					FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
 				}
 			}
 		} else {
@@ -156,7 +156,7 @@ class ControlsSubState extends MusicBeatSubstate {
 				ClientPrefs.keyBinds.set(optionShit[curSelected][1], keysArray);
 
 				reloadKeys();
-				FlxG.sound.play(Paths.sound('confirmMenu'));
+				FlxG.sound.play(Paths.sound('funkinAVI/menu/selectSfx'));
 				rebindingKey = false;
 			}
 
@@ -167,7 +167,7 @@ class ControlsSubState extends MusicBeatSubstate {
 				} else {
 					grpInputs[curSelected].alpha = 1;
 				}
-				FlxG.sound.play(Paths.sound('scrollMenu'));
+				FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
 				rebindingKey = false;
 				bindingTime = 0;
 			}
@@ -236,7 +236,7 @@ class ControlsSubState extends MusicBeatSubstate {
 				}
 			}
 		}
-		FlxG.sound.play(Paths.sound('scrollMenu'));
+		FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
 	}
 
 	function changeAlt() {
@@ -259,7 +259,7 @@ class ControlsSubState extends MusicBeatSubstate {
 				break;
 			}
 		}
-		FlxG.sound.play(Paths.sound('scrollMenu'));
+		FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
 	}
 
 	private function unselectableCheck(num:Int, ?checkDefaultKey:Bool = false):Bool {

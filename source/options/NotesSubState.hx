@@ -57,26 +57,28 @@ class NotesSubState extends MusicBeatSubstate
 		if(PlayState.isGreyscale)
 			PlayState.isGreyscale = false;
 		
-		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/options/background'));
-		bg.setGraphicSize(FlxG.width, FlxG.height);
-		bg.updateHitbox();
+		var bg:FlxSprite = new FlxSprite(720).loadGraphic(Paths.image("Funkin_avi/options/noteUIBG"));
 		bg.screenCenter();
 		bg.antialiasing = ClientPrefs.data.antialiasing;
-		bg.setColorTransform(1, 1, 1, 1, 100, 100, 100, 255); // thanks mr color transform kisses
 		add(bg);
 
 		var grid:FlxBackdrop = new FlxBackdrop(FlxGridOverlay.createGrid(80, 80, 160, 160, true, 0x33FFFFFF, 0x0));
 		grid.velocity.set(40, 40);
-		grid.alpha = 0;
-		FlxTween.tween(grid, {alpha: 1}, 0.5, {ease: FlxEase.quadOut});
+		grid.alpha = 0.001;
 		add(grid);
+		FlxTween.tween(grid, {alpha: 1}, 0.5, {ease: FlxEase.quadOut});
 
-		modeBG = new FlxSprite(215, 85).makeGraphic(315, 115, FlxColor.BLACK);
+		var bg2:FlxSprite = new FlxSprite(720).loadGraphic(Paths.image("Funkin_avi/options/noteColorBG"));
+		bg2.screenCenter();
+		bg2.antialiasing = ClientPrefs.data.antialiasing;
+		add(bg2);
+
+		modeBG = new FlxSprite(165, 85).makeGraphic(260, 100, FlxColor.BLACK);
 		modeBG.visible = false;
 		modeBG.alpha = 0.4;
 		add(modeBG);
 
-		notesBG = new FlxSprite(140, 190).makeGraphic(480, 125, FlxColor.BLACK);
+		notesBG = new FlxSprite(90, 190).makeGraphic(405, 110, FlxColor.BLACK);
 		notesBG.visible = false;
 		notesBG.alpha = 0.4;
 		add(notesBG);
@@ -87,10 +89,10 @@ class NotesSubState extends MusicBeatSubstate
 		myNotes = new FlxTypedGroup<StrumNote>();
 		add(myNotes);
 
-		var bg:FlxSprite = new FlxSprite(720).makeGraphic(FlxG.width - 720, FlxG.height, FlxColor.BLACK);
+		var bg:FlxSprite = new FlxSprite(720).makeGraphic(FlxG.width - 720, FlxG.height, FlxColor.WHITE);
 		bg.alpha = 0.25;
 		add(bg);
-		var bg:FlxSprite = new FlxSprite(750, 160).makeGraphic(FlxG.width - 780, 540, FlxColor.BLACK);
+		var bg:FlxSprite = new FlxSprite(750, 160).makeGraphic(FlxG.width - 780, 540, FlxColor.WHITE);
 		bg.alpha = 0.25;
 		add(bg);
 		
@@ -147,17 +149,17 @@ class NotesSubState extends MusicBeatSubstate
 
 		spawnNotes();
 		updateNotes(true);
-		FlxG.sound.play(Paths.sound('scrollMenu'), 0.6);
+		FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
 
 		var tipX = 20;
 		var tipY = 660;
 		var tip:FlxText = new FlxText(tipX, tipY, 0, "Press RELOAD to Reset the selected Note Part.", 16);
-		tip.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		tip.setFormat(Paths.font("disneyFreeplayFont.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		tip.borderSize = 2;
 		add(tip);
 
 		tipTxt = new FlxText(tipX, tipY + 24, 0, '', 16);
-		tipTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		tipTxt.setFormat(Paths.font("disneyFreeplayFont.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		tipTxt.borderSize = 2;
 		add(tipTxt);
 		updateTip();
@@ -188,7 +190,7 @@ class NotesSubState extends MusicBeatSubstate
 
 	override function update(elapsed:Float) {
 		if (controls.BACK) {
-			FlxG.sound.play(Paths.sound('cancelMenu'));
+			FlxG.sound.play(Paths.sound('funkinAVI/menu/selectSfx'));
 			close();
 			return;
 		}
@@ -250,7 +252,7 @@ class NotesSubState extends MusicBeatSubstate
 			onPixel = !onPixel;
 			spawnNotes();
 			updateNotes(true);
-			FlxG.sound.play(Paths.sound('scrollMenu'), 0.6);
+			FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
 		}
 
 		if(hexTypeNum > -1)
@@ -296,7 +298,7 @@ class NotesSubState extends MusicBeatSubstate
 					centerHexTypeLine();
 					hexTypeLine.visible = true;
 				}
-				FlxG.sound.play(Paths.sound('scrollMenu'), 0.6);
+				FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
 			}
 			if(!end) hexTypeLine.visible = Math.floor(hexTypeVisibleTimer * 2) % 2 == 0;
 		}
@@ -339,7 +341,7 @@ class NotesSubState extends MusicBeatSubstate
 			if(generalPressed)
 			{
 				Clipboard.text = getShaderColor().toHexString(false, false);
-				FlxG.sound.play(Paths.sound('scrollMenu'), 0.6);
+				FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
 				trace('copied: ' + Clipboard.text);
 			}
 			hexTypeNum = -1;
@@ -355,7 +357,7 @@ class NotesSubState extends MusicBeatSubstate
 				if(newColor != null && formattedText.length == 6)
 				{
 					setShaderColor(newColor);
-					FlxG.sound.play(Paths.sound('scrollMenu'), 0.6);
+					FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
 					_storedColor = getShaderColor();
 					updateColors();
 				}
@@ -378,7 +380,7 @@ class NotesSubState extends MusicBeatSubstate
 						curSelectedMode = note.ID;
 						onModeColumn = true;
 						updateNotes();
-						FlxG.sound.play(Paths.sound('scrollMenu'), 0.6);
+						FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
 					}
 				});
 			}
@@ -393,7 +395,7 @@ class NotesSubState extends MusicBeatSubstate
 						bigNote.rgbShader.parent = Note.globalRgbShaders[note.ID];
 						bigNote.shader = Note.globalRgbShaders[note.ID].shader;
 						updateNotes();
-						FlxG.sound.play(Paths.sound('scrollMenu'), 0.6);
+						FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
 					}
 				});
 			}
@@ -409,7 +411,7 @@ class NotesSubState extends MusicBeatSubstate
 				setShaderColor(colorPalette.pixels.getPixel32(
 					Std.int((pointerX() - colorPalette.x) / colorPalette.scale.x), 
 					Std.int((pointerY() - colorPalette.y) / colorPalette.scale.y)));
-				FlxG.sound.play(Paths.sound('scrollMenu'), 0.6);
+				FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
 				updateColors();
 			}
 			else if (pointerOverlaps(skinNote))
@@ -417,7 +419,7 @@ class NotesSubState extends MusicBeatSubstate
 				onPixel = !onPixel;
 				spawnNotes();
 				updateNotes(true);
-				FlxG.sound.play(Paths.sound('scrollMenu'), 0.6);
+				FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
 			}
 			else if(pointerY() >= hexTypeLine.y && pointerY() < hexTypeLine.y + hexTypeLine.height &&
 					Math.abs(pointerX() - 1000) <= 84)
@@ -442,7 +444,7 @@ class NotesSubState extends MusicBeatSubstate
 				holdingOnObj = null;
 				_storedColor = getShaderColor();
 				updateColors();
-				FlxG.sound.play(Paths.sound('scrollMenu'), 0.6);
+				FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
 			}
 			else if (generalMoved || generalPressed)
 			{
@@ -491,7 +493,7 @@ class NotesSubState extends MusicBeatSubstate
 				}
 			}
 			setShaderColor(!onPixel ? ClientPrefs.defaultData.arrowRGB[curSelectedNote][curSelectedMode] : ClientPrefs.defaultData.arrowRGBPixel[curSelectedNote][curSelectedMode]);
-			FlxG.sound.play(Paths.sound('cancelMenu'), 0.6);
+			FlxG.sound.play(Paths.sound('funkinAVI/menu/selectSfx'));
 			updateColors();
 		}
 	}
@@ -545,7 +547,7 @@ class NotesSubState extends MusicBeatSubstate
 		modeBG.visible = true;
 		notesBG.visible = false;
 		updateNotes();
-		FlxG.sound.play(Paths.sound('scrollMenu'));
+		FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
 	}
 	function changeSelectionNote(change:Int = 0) {
 		curSelectedNote += change;
@@ -559,7 +561,7 @@ class NotesSubState extends MusicBeatSubstate
 		bigNote.rgbShader.parent = Note.globalRgbShaders[curSelectedNote];
 		bigNote.shader = Note.globalRgbShaders[curSelectedNote].shader;
 		updateNotes();
-		FlxG.sound.play(Paths.sound('scrollMenu'));
+		FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
 	}
 
 	// alphabets
@@ -623,9 +625,9 @@ class NotesSubState extends MusicBeatSubstate
 		var res:Int = !onPixel ? 160 : 17;
 		for (i in 0...3)
 		{
-			var newNote:FlxSprite = new FlxSprite(230 + (100 * i), 100).loadGraphic(Paths.image('noteColorMenu/' + (!onPixel ? 'note' : 'notePixel')), true, res, res);
+			var newNote:FlxSprite = new FlxSprite(180 + (80 * i), 100).loadGraphic(Paths.image('noteColorMenu/' + (!onPixel ? 'note' : 'notePixel')), true, res, res);
 			newNote.antialiasing = ClientPrefs.data.antialiasing;
-			newNote.setGraphicSize(85);
+			newNote.setGraphicSize(69);
 			newNote.updateHitbox();
 			newNote.animation.add('anim', [i], 24, true);
 			newNote.animation.play('anim', true);
@@ -638,10 +640,10 @@ class NotesSubState extends MusicBeatSubstate
 		for (i in 0...dataArray.length)
 		{
 			Note.initializeGlobalRGBShader(i);
-			newNote = new StrumNote(150 + (480 / dataArray.length * i), 200, i, 0, true);
+			newNote = new StrumNote(100 + (400 / dataArray.length * i), 200, i, 0, true);
 			newNote.useRGBShader = true;
 			newNote.set_texture((onPixel ? "faviNotes/NOTE_assets-MALFUNCTION" : "faviNotes/NOTE_assets-DEFAULT"));
-			newNote.setGraphicSize(102);
+			newNote.setGraphicSize(86);
 			newNote.updateHitbox();
 			newNote.ID = i;
 			myNotes.add(newNote);
@@ -649,8 +651,8 @@ class NotesSubState extends MusicBeatSubstate
 
 		bigNote = new Note(0, 0, false, true, true);
 		bigNote.reloadNote((onPixel ? "faviNotes/NOTE_assets-MALFUNCTION" : "faviNotes/NOTE_assets-DEFAULT"), "");
-		bigNote.setPosition(250, 325);
-		bigNote.setGraphicSize(250);
+		bigNote.setPosition(200, 325);
+		bigNote.setGraphicSize(200);
 		bigNote.updateHitbox();
 		bigNote.rgbShader.parent = Note.globalRgbShaders[curSelectedNote];
 		bigNote.shader = Note.globalRgbShaders[curSelectedNote].shader;

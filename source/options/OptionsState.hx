@@ -142,7 +142,7 @@ class OptionsState extends MusicBeatState
 
 		if (controls.BACK)
 		{
-			FlxG.sound.play(Paths.sound('cancelMenu'));
+			FlxG.sound.play(Paths.sound('funkinAVI/menu/selectSfx'));
 			if(onPlayState)
 			{
 				StageData.loadDirectory(PlayState.SONG);
@@ -195,6 +195,6 @@ class OptionsState extends MusicBeatState
 				art.y += 100;
 		}
 
-		FlxG.sound.play(Paths.sound('scrollMenu'));
+		FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
 	}
 }

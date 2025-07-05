@@ -201,7 +201,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 
 		if (controls.BACK) {
 			close();
-			FlxG.sound.play(Paths.sound('cancelMenu'));
+			FlxG.sound.play(Paths.sound('funkinAVI/menu/selectSfx'));
 		}
 
 		if(nextAccept <= 0)
