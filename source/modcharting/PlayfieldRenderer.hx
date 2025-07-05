@@ -316,6 +316,7 @@ class PlayfieldRenderer extends FlxSprite //extending flxsprite just so i can ed
         var distance = (Conductor.songPosition - notes.members[noteIndex].strumTime) + strumTimeOffset;
         return distance*getCorrectScrollSpeed();
     }
+    
     private function getLane(noteIndex:Int)
     {
         return (notes.members[noteIndex].mustPress ? notes.members[noteIndex].noteData+NoteMovement.keyCount : notes.members[noteIndex].noteData);

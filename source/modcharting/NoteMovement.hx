@@ -67,6 +67,7 @@ class NoteMovement
         #end
         totalKeyCount = keyCount + playerKeyCount;
     }
+
     public static function getDefaultStrumPosEditor(game:modcharting.ModchartEditorState)
     {
         #if ((PSYCH || LEATHER) && !DISABLE_MODCHART_EDITOR)
@@ -94,6 +95,35 @@ class NoteMovement
         leatherEngineOffsetStuff.clear();
         #end
     }
+
+    public static function getDefaultStrumPosPlaytest(game:EditorPlayState)
+    {
+        #if ((PSYCH || LEATHER) && !DISABLE_MODCHART_EDITOR)
+        defaultStrumX = []; //reset
+        defaultStrumY = []; 
+        defaultSkewX = [];
+        defaultSkewY = [];
+        defaultScale = [];
+        arrowSizes = [];
+        keyCount = game.strumLineNotes.length-game.playerStrums.length; //base game doesnt have opponent strums as group
+        playerKeyCount = game.playerStrums.length;
+
+
+        for (i in 0...game.strumLineNotes.members.length)
+        {
+            var strum = game.strumLineNotes.members[i];
+            defaultStrumX.push(strum.x);
+            defaultStrumY.push(strum.y);
+            var s = 0.7;
+            defaultScale.push(s);
+            arrowSizes.push(160*s);
+        }
+        #end
+        #if LEATHER
+        leatherEngineOffsetStuff.clear();
+        #end
+    }
+
     public static function setNotePath(daNote:Note, lane:Int, scrollSpeed:Float, curPos:Float, noteDist:Float, incomingAngleX:Float, incomingAngleY:Float)
     {
         daNote.x = defaultStrumX[lane];

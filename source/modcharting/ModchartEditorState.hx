@@ -829,6 +829,9 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
                 }
                 spr.playAnim("confirm", true);
                 spr.resetAnim = Conductor.stepCrochet * 1.25 / 1000 / playbackSpeed;
+                spr.rgbShader.r = daNote.rgbShader.r;
+				spr.rgbShader.g = daNote.rgbShader.g;
+				spr.rgbShader.b = daNote.rgbShader.b;
                 #else
                 var strum = strumLineNotes.members[daNote.noteData+(daNote.mustPress ? NoteMovement.keyCount : 0)];
                 strum.playAnim("confirm", true);

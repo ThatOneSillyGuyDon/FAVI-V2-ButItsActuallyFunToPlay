@@ -20,6 +20,8 @@ import flixel.input.keyboard.FlxKey;
 import openfl.events.KeyboardEvent;
 import objects.NoteSplash;
 
+import modcharting.ModchartFuncs;
+import modcharting.NoteMovement;
 import modcharting.PlayfieldRenderer;
 
 import haxe.Json;
@@ -119,6 +121,9 @@ class EditorPlayState extends MusicBeatState
 
 		generateStaticArrows(0);
 		generateStaticArrows(1);
+
+		NoteMovement.getDefaultStrumPosPlaytest(this);
+
 		/*if(ClientPrefs.data.middleScroll) {
 			opponentStrums.forEachAlive(function (note:StrumNote) {
 				note.visible = false;
@@ -530,7 +535,7 @@ class EditorPlayState extends MusicBeatState
 					if(daNote.isSustainNote && !daNote.animation.curAnim.name.endsWith('end')) {
 						time += 0.15;
 					}
-					StrumPlayAnim(true, Std.int(Math.abs(daNote.noteData)) % 4, time);
+					StrumPlayAnim(true, Std.int(Math.abs(daNote.noteData)) % 4, time, daNote);
 					daNote.hitByOpponent = true;
 
 					if (!daNote.isSustainNote)
@@ -795,6 +800,9 @@ class EditorPlayState extends MusicBeatState
 				if (Math.abs(note.noteData) == spr.ID)
 				{
 					spr.playAnim('confirm', true);
+					spr.rgbShader.r = note.rgbShader.r;
+					spr.rgbShader.g = note.rgbShader.g;
+					spr.rgbShader.b = note.rgbShader.b;
 				}
 			});
 
@@ -1051,7 +1059,7 @@ class EditorPlayState extends MusicBeatState
 
 
 	// For Opponent's notes glow
-	function StrumPlayAnim(isDad:Bool, id:Int, time:Float) {
+	function StrumPlayAnim(isDad:Bool, id:Int, time:Float, note:Note) {
 		var spr:StrumNote = null;
 		if(isDad) {
 			spr = strumLineNotes.members[id];
@@ -1061,6 +1069,9 @@ class EditorPlayState extends MusicBeatState
 
 		if(spr != null) {
 			spr.playAnim('confirm', true);
+			spr.rgbShader.r = note.rgbShader.r;
+			spr.rgbShader.g = note.rgbShader.g;
+			spr.rgbShader.b = note.rgbShader.b;
 			spr.resetAnim = time;
 		}
 	}
