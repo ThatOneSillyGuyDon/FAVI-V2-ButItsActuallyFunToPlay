@@ -290,7 +290,7 @@ class PauseSubState extends MusicBeatSubstate
 					if (PlayState.useFakeDeluName)
 						PlayState.useFakeDeluName = false;
 					PlayState.pauseCountEnabled = false;
-					toOptions = true;
+					FAVIPauseSubState.toOptions = true;
 					FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
 					FlxG.mouse.visible = true;
 					MusicBeatState.switchState(new options.OptionsState());
