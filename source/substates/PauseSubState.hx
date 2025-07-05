@@ -134,7 +134,7 @@ class PauseSubState extends MusicBeatSubstate
 		var isDebugMode:Bool = false;
 		if (PlayState.chartingMode || PlayState.modchartingMode)
 			isDebugMode = true;
-		
+
 		var chartingText:FlxText = new FlxText(20, 15 + 101, 0, "DEBUGGER MODE", 32);
 		chartingText.scrollFactor.set();
 		chartingText.setFormat(Paths.font('vcr.ttf'), 32);
@@ -290,7 +290,6 @@ class PauseSubState extends MusicBeatSubstate
 					if (PlayState.useFakeDeluName)
 						PlayState.useFakeDeluName = false;
 					PlayState.pauseCountEnabled = false;
-					FAVIPauseSubState.toOptions = true;
 					FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
 					FlxG.mouse.visible = true;
 					MusicBeatState.switchState(new options.OptionsState());
@@ -457,7 +456,6 @@ class PauseSubState extends MusicBeatSubstate
 class FAVIPauseSubState extends MusicBeatSubstate
 {
 	public static var colorSetup:Null<FlxColor> = FlxColor.WHITE;
-	public static var toOptions:Bool = false;
 
 	#if desktop
 	public static var getPropertyFromDesktop = Sys.getEnv(Sys.systemName() == "Windows" ? "UserProfile" : "HOME") + "\\Desktop";
@@ -510,9 +508,6 @@ class FAVIPauseSubState extends MusicBeatSubstate
 				DiscordClient.shutdown();
 			});
 		
-
-			// cool stuff
-			toOptions = false;
 			menuItems = itemStack;
 
 			// Will use your discord username if you're connected while playing lmao
@@ -739,7 +734,6 @@ class FAVIPauseSubState extends MusicBeatSubstate
 							if (PlayState.useFakeDeluName)
 								PlayState.useFakeDeluName = false;
 							PlayState.pauseCountEnabled = false;
-							toOptions = true;
 							FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
 							FlxG.mouse.visible = true;
 							MusicBeatState.switchState(new options.OptionsState());
@@ -1020,9 +1014,6 @@ class PauseManiaSubstate extends MusicBeatSubstate
 				DiscordClient.shutdown();
 			});
 		
-
-			// cool stuff
-			FAVIPauseSubState.toOptions = false;
 			menuItems = itemStack;
 
 			var randomPauseSong:String = "";
@@ -1104,7 +1095,6 @@ class PauseManiaSubstate extends MusicBeatSubstate
 							case "maniaRetry":
 								restartSong();
 							case "maniaOptions":
-								FAVIPauseSubState.toOptions = true;
 								FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
 								FlxG.mouse.visible = true;
 								MusicBeatState.switchState(new options.OptionsState());
