@@ -188,12 +188,15 @@ class MusicPlayer extends FlxGroup
 
 		if (FlxG.keys.justPressed.V)
 		{
-			toggleVocals = !toggleVocals;
+			if (FreeplayState.vocals != null || FreeplayState.vocalsOpp != null)
+			{
+				toggleVocals = !toggleVocals;
 
-			if (toggleVocals)
-				toggleTxt.color = FlxColor.LIME;
-			else 
-				toggleTxt.color = FlxColor.RED;
+				if (toggleVocals)
+					toggleTxt.color = FlxColor.LIME;
+				else 
+					toggleTxt.color = FlxColor.RED;
+			}
 		}
 
 		if (playing)
@@ -341,6 +344,10 @@ class MusicPlayer extends FlxGroup
 			progressBar.scale.x += length / 2;
 			progressBar.x -= length - 10;
 		}
+
+		if (FreeplayState.vocals == null && FreeplayState.vocalsOpp == null)
+			toggleTxt.visible = false;
+
 	}
 
 	function updateTimeTxt()
