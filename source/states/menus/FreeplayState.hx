@@ -99,6 +99,9 @@ class FreeplayState extends MusicBeatState
 
 	var offandon:FlxSprite;
 
+	public static var vocals:FlxSound = null;
+	public static var vocalsOpp:FlxSound = null;
+
 	//For legacy botplay thingy
 	var boyplaytext:FlxText;
 
@@ -438,13 +441,13 @@ class FreeplayState extends MusicBeatState
 			scoreBG = new FlxSprite(scoreText.x - scoreText.width, 0).makeGraphic(Std.int(FlxG.width * 0.35), 66, 0xFF000000);
 			diffText = new FlxText(scoreText.x, scoreText.y, 500, "", 24);
 			gimmickInfo = new FlxText(30, 510, 290, "Mechanics - None");
-			freeplayCtrlTxt = new FlxText(370, 530, 240, "Left & Right Keybinds - Change Song Choice\n\nESC - Exit Menu\n\nENTER - Play Song", 36);
+			freeplayCtrlTxt = new FlxText(370, 510, 260, "Left & Right Keybinds - Change Song Choice\n\nESC - Exit Menu\n\nENTER - Play Song (Game)\n\nSPACE - Play Song (Music Player)", 36);
 			
 			scoreText.setFormat(Paths.font("newFreeplayFont.ttf"), 32, FlxColor.WHITE, CENTER);
 			gimmickInfo.setFormat(Paths.font("newFreeplayFont.ttf"), 20, FlxColor.BLACK, CENTER);
 			diffText.alignment = CENTER;
 			diffText.font = scoreText.font;
-			freeplayCtrlTxt.setFormat(Paths.font('newFreeplayFont.ttf'), 20, FlxColor.BLACK, LEFT);
+			freeplayCtrlTxt.setFormat(Paths.font('newFreeplayFont.ttf'), 16, FlxColor.BLACK, LEFT);
 
 			freeplayCtrlTxt.antialiasing = ClientPrefs.data.antialiasing;
 			diffText.antialiasing = ClientPrefs.data.antialiasing;
@@ -721,6 +724,23 @@ class FreeplayState extends MusicBeatState
 				{
 					FlxG.sound.music.stop();
 					FlxG.sound.music.volume = 0;
+
+					if(vocals != null) //Sync vocals to Inst
+					{
+						vocals.stop();
+						vocals.volume = 0;
+						vocals.destroy();
+						vocals = null;
+					}
+
+					if (vocalsOpp != null)
+					{
+						vocalsOpp.stop();
+						vocalsOpp.volume = 0;
+						vocalsOpp.destroy();
+						vocalsOpp = null;
+					}
+
 					instPlaying = -1;
 					songInstPlaying = false;
 
@@ -759,9 +779,57 @@ class FreeplayState extends MusicBeatState
 					songInstPlaying = true;
 
 					if (songs[curSelected].songName == "Don't Cross!")
-						FlxG.sound.playMusic(Paths.inst("dont-cross"/*, Difficulty.difficulties[curDifficulty]*/));
+					{
+						FlxG.sound.playMusic(Paths.inst("dont-cross"));
+						vocals = new FlxSound().loadEmbedded(Paths.voices("dont-cross"));
+						FlxG.sound.list.add(vocals);
+						vocals.persist = true;
+						vocals.looped = true;
+					}
 					else
-						FlxG.sound.playMusic(Paths.inst(songs[curSelected].songName/*, Difficulty.difficulties[curDifficulty]*/));
+					{
+						FlxG.sound.playMusic(Paths.inst(songs[curSelected].songName));
+
+						// pasted from ChartingState.hx cause I'm lazy and this code kinda does the job just fine in checking for the file's existence.
+						var file:Dynamic = Paths.voices(songs[curSelected].songName, 'Player');
+						var fileBackup:Dynamic = Paths.voices(songs[curSelected].songName);
+						if (Std.isOfType(file, Sound) || OpenFlAssets.exists(file))
+						{
+							vocals = new FlxSound().loadEmbedded(file);
+							FlxG.sound.list.add(vocals);
+							vocals.persist = true;
+							vocals.looped = true;
+						}
+
+						if (Std.isOfType(fileBackup, Sound) || OpenFlAssets.exists(fileBackup))
+						{
+							vocals = new FlxSound().loadEmbedded(fileBackup);
+							FlxG.sound.list.add(vocals);
+							vocals.persist = true;
+							vocals.looped = true;
+						}
+
+						var file2:Dynamic = Paths.voices(songs[curSelected].songName, 'Opponent');
+						if (Std.isOfType(file2, Sound) || OpenFlAssets.exists(file2))
+						{
+							vocalsOpp = new FlxSound().loadEmbedded(file2);
+							FlxG.sound.list.add(vocalsOpp);
+							vocalsOpp.persist = true;
+							vocalsOpp.looped = true;
+						}
+					}
+
+					if(vocals != null) //Sync vocals to Inst
+					{
+						vocals.play();
+						vocals.volume = 0;
+					}
+
+					if (vocalsOpp != null)
+					{
+						vocalsOpp.play();
+						vocalsOpp.volume = 0;
+					}
 
 					if (FlxG.sound.music.fadeTween != null)
 						FlxG.sound.music.fadeTween.cancel();
@@ -1214,7 +1282,7 @@ class FreeplayState extends MusicBeatState
 		}
 		else
 		{
-			scoreText.x = 830;
+			scoreText.x = 820;
 			scoreText.y = 570;
 			diffText.x = scoreText.x - 20;
 			diffText.y = scoreText.y + 60;

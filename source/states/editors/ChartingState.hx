@@ -1459,13 +1459,22 @@ class ChartingState extends MusicBeatState
 		}
 
 		var file:Dynamic = Paths.voices(currentSongName, (characterData.vocalsP1 == null || characterData.vocalsP1.length < 1) ? 'Player' : characterData.vocalsP1);
+		var fileBackup:Dynamic = Paths.voices(currentSongName);
 		var file2:Dynamic = Paths.voices(currentSongName, (characterData.vocalsP2 == null || characterData.vocalsP2.length < 1) ? 'Opponent' : characterData.vocalsP2);
 		vocals = new FlxSound();
 		opponentVocals = new FlxSound();
 		if (Std.isOfType(file, Sound) || OpenFlAssets.exists(file)) {
 			soundTracksMap.set(
-				((Std.isOfType(file2, Sound) || OpenFlAssets.exists(file2)) ? "Player Vocals" : "Vocals (Classic)"),
+				"Player Vocals",
 				vocals.loadEmbedded(file)
+			);
+			vocals.autoDestroy = false;
+			FlxG.sound.list.add(vocals);
+		}
+		if (Std.isOfType(fileBackup, Sound) || OpenFlAssets.exists(fileBackup)) {
+			soundTracksMap.set(
+				"Vocals",
+				vocals.loadEmbedded(fileBackup)
 			);
 			vocals.autoDestroy = false;
 			FlxG.sound.list.add(vocals);
