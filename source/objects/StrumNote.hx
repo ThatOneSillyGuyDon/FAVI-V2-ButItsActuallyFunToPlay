@@ -38,7 +38,7 @@ class StrumNote extends FlxSkewedSprite
 		return value;
 	}
 
-	public var sustainSplash:SustainSplash;
+//	public var sustainSplash:SustainSplash;
 
 	public var useRGBShader:Bool = true;
 	public function new(x:Float, y:Float, leData:Int, player:Int, ?inSettings:Bool = false) {
@@ -116,7 +116,7 @@ class StrumNote extends FlxSkewedSprite
 
 		texture = skin; //Load texture and anims
 		scrollFactor.set();
-		sustainSplash = new SustainSplash(this);
+//		sustainSplash = new SustainSplash(this);
 	}
 
 	public function reloadNote()
@@ -229,7 +229,7 @@ class StrumNote extends FlxSkewedSprite
 		if(useRGBShader) rgbShader.enabled = (animation.curAnim != null && animation.curAnim.name != 'static');
 	}
 }
-
+/*
 class SustainSplash extends FlxSprite {
 	public var rgbShader:RGBShaderReference;
 	public var strum:StrumNote;
@@ -300,3 +300,4 @@ class SustainSplash extends FlxSprite {
 		y = strum.y + (strum.height/2) - (height/2);
 	}
 }
+*/

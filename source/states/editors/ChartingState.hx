@@ -312,7 +312,6 @@ class ChartingState extends MusicBeatState
 			{name: "Note", label: 'Note'},
 			{name: "Events", label: 'Events'},
 			{name: "Charting", label: 'Charting'},
-			{name: "Data", label: 'Data'},
 		];
 
 		UI_box = new FlxUITabMenu(null, tabs, true);
@@ -352,7 +351,6 @@ class ChartingState extends MusicBeatState
 		addNoteUI();
 		addEventsUI();
 		addChartingUI();
-		addDataUI();
 		updateHeads();
 		updateWaveform();
 		//UI_box.selected_tab = 4;
@@ -1196,7 +1194,6 @@ class ChartingState extends MusicBeatState
 	var mouseScrollingQuant:FlxUICheckBox;
 	var metronomeStepper:FlxUINumericStepper;
 	var metronomeOffsetStepper:FlxUINumericStepper;
-	var disableAutoScrolling:FlxUICheckBox;
 
 	var waveformTrackDropDown:FlxUIDropDownMenu;
 	var waveformTrack:FlxSound;
@@ -1287,14 +1284,6 @@ class ChartingState extends MusicBeatState
 		blockPressWhileTypingOnStepper.push(metronomeStepper);
 		blockPressWhileTypingOnStepper.push(metronomeOffsetStepper);
 
-		disableAutoScrolling = new FlxUICheckBox(metronome.x + 120, metronome.y, null, null, "Disable Autoscroll (Not Recommended)", 120,
-			function() {
-				FlxG.save.data.chart_noAutoScroll = disableAutoScrolling.checked;
-			}
-		);
-		if (FlxG.save.data.chart_noAutoScroll == null) FlxG.save.data.chart_noAutoScroll = false;
-		disableAutoScrolling.checked = FlxG.save.data.chart_noAutoScroll;
-
 		mouseScrollingQuant = new FlxUICheckBox(playSoundBf.x + 250, 190, null, null, "Mouse Scrolling Quantization", 100);
 		if (FlxG.save.data.mouseScrollingQuant == null) FlxG.save.data.mouseScrollingQuant = false;
 		mouseScrollingQuant.checked = FlxG.save.data.mouseScrollingQuant;
@@ -1345,7 +1334,6 @@ class ChartingState extends MusicBeatState
 		tab_group_chart.add(metrononeO);
 		tab_group_chart.add(instTxt);
 		tab_group_chart.add(metronome);
-		tab_group_chart.add(disableAutoScrolling);
 		tab_group_chart.add(metronomeStepper);
 		tab_group_chart.add(metronomeOffsetStepper);
 
@@ -1365,81 +1353,6 @@ class ChartingState extends MusicBeatState
 		trackVolumeTxt.visible = false;
 		trackVolumeStepper.visible = false;
 		muteTrackCheck.visible = false;
-	}
-
-	var gameOverCharacterInputText:FlxUIInputText;
-	var gameOverSoundInputText:FlxUIInputText;
-	var gameOverLoopInputText:FlxUIInputText;
-	var gameOverEndInputText:FlxUIInputText;
-	var noteSkinInputText:FlxUIInputText;
-	var noteSplashesInputText:FlxUIInputText;
-	function addDataUI()
-	{
-		var tab_group_data = new FlxUI(null, UI_box);
-		tab_group_data.name = 'Data';
-
-		//
-		gameOverCharacterInputText = new FlxUIInputText(10, 25, 150, _song.gameOverChar != null ? _song.gameOverChar : '', 8);
-		blockPressWhileTypingOn.push(gameOverCharacterInputText);
-		
-		gameOverSoundInputText = new FlxUIInputText(10, gameOverCharacterInputText.y + 35, 150, _song.gameOverSound != null ? _song.gameOverSound : '', 8);
-		blockPressWhileTypingOn.push(gameOverSoundInputText);
-		
-		gameOverLoopInputText = new FlxUIInputText(10, gameOverSoundInputText.y + 35, 150, _song.gameOverLoop != null ? _song.gameOverLoop : '', 8);
-		blockPressWhileTypingOn.push(gameOverLoopInputText);
-		
-		gameOverEndInputText = new FlxUIInputText(10, gameOverLoopInputText.y + 35, 150, _song.gameOverEnd != null ? _song.gameOverEnd : '', 8);
-		blockPressWhileTypingOn.push(gameOverEndInputText);
-		//
-
-		//
-		noteSkinInputText = new FlxUIInputText(10, 280, 150, _song.arrowSkin != null ? _song.arrowSkin : '', 8);
-		blockPressWhileTypingOn.push(noteSkinInputText);
-
-		noteSplashesInputText = new FlxUIInputText(noteSkinInputText.x, noteSkinInputText.y + 35, 150, _song.splashSkin != null ? _song.splashSkin : '', 8);
-		blockPressWhileTypingOn.push(noteSplashesInputText);
-
-		for (i in [gameOverCharacterInputText, gameOverSoundInputText, gameOverLoopInputText, gameOverEndInputText, noteSkinInputText, noteSplashesInputText])
-		{
-			i.backgroundColor = 0xFF333333;
-			i.setFormat(Paths.font("resultsFont.ttf"), 12, FlxColor.WHITE);
-		}
-
-		var reloadNotesButton:FlxButton = new FlxButton(noteSplashesInputText.x + 5, noteSplashesInputText.y + 20, 'Change Notes', function() {
-			_song.arrowSkin = noteSkinInputText.text;
-			updateGrid();
-		});
-		reloadNotesButton.color = FlxColor.fromRGB(36, 36, 36);
-		reloadNotesButton.label.color = FlxColor.WHITE;
-		//
-		
-		tab_group_data.add(gameOverCharacterInputText);
-		tab_group_data.add(gameOverSoundInputText);
-		tab_group_data.add(gameOverLoopInputText);
-		tab_group_data.add(gameOverEndInputText);
-		
-		tab_group_data.add(reloadNotesButton);
-		tab_group_data.add(noteSkinInputText);
-		tab_group_data.add(noteSplashesInputText);
-
-		var gameC:FlxText = new FlxText(gameOverCharacterInputText.x, gameOverCharacterInputText.y - 15, 0, 'Game Over Character Name:');
-		var gameS:FlxText = new FlxText(gameOverSoundInputText.x, gameOverSoundInputText.y - 15, 0, 'Game Over Death Sound (sounds/):');
-		var gameL:FlxText = new FlxText(gameOverLoopInputText.x, gameOverLoopInputText.y - 15, 0, 'Game Over Loop Music (music/):');
-		var gameE:FlxText = new FlxText(gameOverEndInputText.x, gameOverEndInputText.y - 15, 0, 'Game Over Retry Music (music/):');
-		var noteS:FlxText = new FlxText(noteSkinInputText.x, noteSkinInputText.y - 15, 0, 'Note Texture:');
-		var splashS:FlxText = new FlxText(noteSplashesInputText.x, noteSplashesInputText.y - 15, 0, 'Note Splashes Texture:');
-
-		for (t in [gameC, gameS, gameL, gameE, noteS, splashS])
-			t.setFormat(Paths.font("resultsFont.ttf"), 12, FlxColor.WHITE);
-
-		tab_group_data.add(gameC);
-		tab_group_data.add(gameS);
-		tab_group_data.add(gameL);
-		tab_group_data.add(gameE);
-
-		tab_group_data.add(noteS);
-		tab_group_data.add(splashS);
-		UI_box.addGroup(tab_group_data);
 	}
 
 	function loadSong():Void
@@ -1677,25 +1590,7 @@ class ChartingState extends MusicBeatState
 			}
 		}
 		else if(id == FlxUIInputText.CHANGE_EVENT && (sender is FlxUIInputText)) {
-			if(sender == noteSplashesInputText) {
-				_song.splashSkin = noteSplashesInputText.text;
-			}
-			else if(sender == noteSkinInputText) {
-				_song.arrowSkin = noteSkinInputText.text;
-			}
-			else if(sender == gameOverCharacterInputText) {
-				_song.gameOverChar = gameOverCharacterInputText.text;
-			}
-			else if(sender == gameOverSoundInputText) {
-				_song.gameOverSound = gameOverSoundInputText.text;
-			}
-			else if(sender == gameOverLoopInputText) {
-				_song.gameOverLoop = gameOverLoopInputText.text;
-			}
-			else if(sender == gameOverEndInputText) {
-				_song.gameOverEnd = gameOverEndInputText.text;
-			}
-			else if(curSelectedNote != null)
+			if(curSelectedNote != null)
 			{
 				if(sender == value1InputText) {
 					if(curSelectedNote[1][curEventSelected] != null)
@@ -1776,18 +1671,16 @@ class ChartingState extends MusicBeatState
 
 		FlxG.mouse.visible = true;//cause reasons. trust me
 		camPos.y = strumLine.y;
-		if(!disableAutoScrolling.checked) {
-			if (Math.ceil(strumLine.y) >= gridBG.height)
+		if (Math.ceil(strumLine.y) >= gridBG.height)
+		{
+			if (_song.notes[curSec + 1] == null)
 			{
-				if (_song.notes[curSec + 1] == null)
-				{
-					addSection();
-				}
-
-				changeSection(curSec + 1, false);
-			} else if(strumLine.y < -10) {
-				changeSection(curSec - 1, false);
+				addSection();
 			}
+
+			changeSection(curSec + 1, false);
+		} else if(strumLine.y < -10) {
+			changeSection(curSec - 1, false);
 		}
 		FlxG.watch.addQuick('daBeat', curBeat);
 		FlxG.watch.addQuick('daStep', curStep);
