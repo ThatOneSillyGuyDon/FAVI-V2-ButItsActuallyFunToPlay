@@ -420,7 +420,7 @@ class FreeplayState extends MusicBeatState
 		{
 			AppIcon.changeIcon("legacyIcon");
 			scoreText = new FlxText(FlxG.width * 0.7, 5, 0, "", 32);
-			scoreBG = new FlxSprite(scoreText.x - scoreText.width, 0).makeGraphic(Std.int(FlxG.width * 0.35), 66, 0xFF000000);
+			scoreBG = new FlxSprite(scoreText.x - 6, 0).makeGraphic(1, 66, 0xFF000000);
 			diffText = new FlxText(scoreText.x, scoreText.y + 36, 0, "", 24);
 			scoreText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, RIGHT);
 			scoreBG.alpha = 0.6;
@@ -781,10 +781,15 @@ class FreeplayState extends MusicBeatState
 					if (songs[curSelected].songName == "Don't Cross!")
 					{
 						FlxG.sound.playMusic(Paths.inst("dont-cross"));
-						vocals = new FlxSound().loadEmbedded(Paths.voices("dont-cross"));
+						vocals = new FlxSound().loadEmbedded(Paths.voices("dont-cross", 'Player'));
 						FlxG.sound.list.add(vocals);
 						vocals.persist = true;
 						vocals.looped = true;
+
+						vocalsOpp = new FlxSound().loadEmbedded(Paths.voices("dont-cross", 'Opponent'));
+						FlxG.sound.list.add(vocalsOpp);
+						vocalsOpp.persist = true;
+						vocalsOpp.looped = true;
 					}
 					else
 					{
@@ -1275,10 +1280,11 @@ class FreeplayState extends MusicBeatState
 	private function positionHighscore() {
 		if (freeplayMenuList == 2)
 		{
-			scoreText.x = FlxG.width - scoreText.width - 5;
-			scoreBG.width = scoreText.width + 8;
-			scoreBG.x = FlxG.width - scoreBG.width;
-			diffText.x = scoreBG.x + (scoreBG.width / 2) - (diffText.width / 2);
+			scoreText.x = FlxG.width - scoreText.width - 6;
+			scoreBG.scale.x = FlxG.width - scoreText.x + 6;
+			scoreBG.x = FlxG.width - (scoreBG.scale.x / 2);
+			diffText.x = Std.int(scoreBG.x + (scoreBG.width / 2));
+			diffText.x -= diffText.width / 2;
 		}
 		else
 		{
