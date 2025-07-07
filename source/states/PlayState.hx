@@ -642,6 +642,7 @@ class PlayState extends MusicBeatState
 			case 'apartment': new states.stages.ShotgunMick(); //Cycled Sins
 			case 'grassNation': new states.stages.ForbiddenRealm(); //Malfunction
 			case 'clubhouse': new states.stages.Birtbhday(); //Birthday
+			case 'staticVoid': new states.stages.StaticVoid(); //RS lmao
 			case 'menuSongs': new states.stages.MenuSongs(); //Menu Songs
 			//Legacy is A S S
 			case 'theLoop': new states.stages.legacyStages.LegEpisode1Street(); //Episode 1 legacy songs
@@ -4073,7 +4074,7 @@ class PlayState extends MusicBeatState
 								if (camTwn[0] != null)
 									camTwn[0].cancel();
 
-								camTwn[0] = FlxTween.tween(camGame, {zoom: Std.parseFloat(triggerInfo[1])}, Std.parseFloat(triggerInfo[2]), {ease: returnTweenEase(triggerInfo[3]), onComplete: function(twn:FlxTween)
+								camTwn[0] = FlxTween.tween(camGame, {zoom: Std.parseFloat(triggerInfo[1])}, Std.parseFloat(triggerInfo[2]), {ease: returnTweenEase(triggerInfo[3].trim()), onComplete: function(twn:FlxTween)
 								{
 									defaultCamZoom = Std.parseFloat(triggerInfo[1]);
 									camTwn[0] = null;
@@ -4083,7 +4084,7 @@ class PlayState extends MusicBeatState
 								if (camTwn[1] != null)
 									camTwn[1].cancel();
 
-								camTwn[1] = FlxTween.tween(this, {cameraSpeed: Std.parseFloat(triggerInfo[1])}, Std.parseFloat(triggerInfo[2]), {ease: returnTweenEase(triggerInfo[3]), onComplete: function(twn:FlxTween)
+								camTwn[1] = FlxTween.tween(this, {cameraSpeed: Std.parseFloat(triggerInfo[1])}, Std.parseFloat(triggerInfo[2]), {ease: returnTweenEase(triggerInfo[3].trim()), onComplete: function(twn:FlxTween)
 								{
 									camTwn[1] = null;
 								}});
@@ -4095,7 +4096,7 @@ class PlayState extends MusicBeatState
 								if (Std.parseFloat(triggerInfo[1]) > 1 || Std.parseFloat(triggerInfo[1]) < 0)
 									triggerInfo[1] = "1";
 
-								camTwn[2] = FlxTween.tween(camGame, {alpha: Std.parseFloat(triggerInfo[1])}, Std.parseFloat(triggerInfo[2]), {ease: returnTweenEase(triggerInfo[3]), onComplete: function(twn:FlxTween)
+								camTwn[2] = FlxTween.tween(camGame, {alpha: Std.parseFloat(triggerInfo[1])}, Std.parseFloat(triggerInfo[2]), {ease: returnTweenEase(triggerInfo[3].trim()), onComplete: function(twn:FlxTween)
 								{
 									camTwn[2] = null;
 								}});
@@ -4107,7 +4108,7 @@ class PlayState extends MusicBeatState
 								if (Std.parseFloat(triggerInfo[1]) > 1 || Std.parseFloat(triggerInfo[1]) < 0)
 									triggerInfo[1] = "1";
 
-								camTwn[3] = FlxTween.tween(camHUD, {alpha: Std.parseFloat(triggerInfo[1])}, Std.parseFloat(triggerInfo[2]), {ease: returnTweenEase(triggerInfo[3]), onComplete: function(twn:FlxTween)
+								camTwn[3] = FlxTween.tween(camHUD, {alpha: Std.parseFloat(triggerInfo[1])}, Std.parseFloat(triggerInfo[2]), {ease: returnTweenEase(triggerInfo[3].trim()), onComplete: function(twn:FlxTween)
 								{
 									camTwn[3] = null;
 								}});
@@ -4116,7 +4117,7 @@ class PlayState extends MusicBeatState
 								if (camTwn[4] != null)
 									camTwn[4].cancel();
 
-								camTwn[4] = FlxTween.tween(camGame, {angle: Std.parseFloat(triggerInfo[1])}, Std.parseFloat(triggerInfo[2]), {ease: returnTweenEase(triggerInfo[3]), onComplete: function(twn:FlxTween)
+								camTwn[4] = FlxTween.tween(camGame, {angle: Std.parseFloat(triggerInfo[1])}, Std.parseFloat(triggerInfo[2]), {ease: returnTweenEase(triggerInfo[3].trim()), onComplete: function(twn:FlxTween)
 								{
 									camTwn[4] = null;
 								}});
@@ -4125,7 +4126,7 @@ class PlayState extends MusicBeatState
 								if (camTwn[5] != null)
 									camTwn[5].cancel();
 
-								camTwn[5] = FlxTween.tween(camHUD, {angle: Std.parseFloat(triggerInfo[1])}, Std.parseFloat(triggerInfo[2]), {ease: returnTweenEase(triggerInfo[3]), onComplete: function(twn:FlxTween)
+								camTwn[5] = FlxTween.tween(camHUD, {angle: Std.parseFloat(triggerInfo[1])}, Std.parseFloat(triggerInfo[2]), {ease: returnTweenEase(triggerInfo[3].trim()), onComplete: function(twn:FlxTween)
 								{
 									camTwn[5] = null;
 								}});
@@ -4137,7 +4138,7 @@ class PlayState extends MusicBeatState
 								if (Std.parseFloat(triggerInfo[1]) > 1 || Std.parseFloat(triggerInfo[1]) < 0)
 									triggerInfo[1] = "1";
 
-								camTwn[6] = FlxTween.tween(camVideo, {alpha: Std.parseFloat(triggerInfo[1])}, Std.parseFloat(triggerInfo[2]), {ease: returnTweenEase(triggerInfo[3]), onComplete: function(twn:FlxTween)
+								camTwn[6] = FlxTween.tween(camVideo, {alpha: Std.parseFloat(triggerInfo[1])}, Std.parseFloat(triggerInfo[2]), {ease: returnTweenEase(triggerInfo[3].trim()), onComplete: function(twn:FlxTween)
 								{
 									camTwn[6] = null;
 								}});

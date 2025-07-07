@@ -135,8 +135,10 @@ class Song
 			case "twisted-grins-legacy": chartFile = Chart.twistedGrinsLegacy;
 			case "cycled-sins": chartFile = Chart.cycledSins;
 			case "twisted-grins": chartFile = Chart.twistedGrins;
+			case "scrapped": chartFile = Chart.scrapped;
 
 			case "dont-cross":
+				var eventRandom = FlxG.random.int(1,4);
 				if (!ClientPrefs.data.mechanics)
 				{
 					trace('lmao no, get fucked');
@@ -163,6 +165,14 @@ class Song
 						case 11: chartFile = ClientPrefs.data.gameplaySettings["botplay"] ? Chart.dontCross1 : Chart.dontCross11;
 					}
 				}
+				if (jsonInput == 'events' && FlxG.random.bool(10))
+					switch (eventRandom)
+					{
+						case 1: chartFile = Event.bullshitEvent1;
+						case 2: chartFile = Event.bullshitEvent2;
+						case 3: chartFile = Event.bullshitEvent3;
+						case 4: chartFile = Event.bullshitEvent4;
+					}
 			case "rotten-petals": chartFile = Chart.rottenPetals;
 			case "somber-night": chartFile = Chart.somberNight;
 			case "simple-life": chartFile = Chart.simpleLife;
@@ -228,7 +238,7 @@ class Song
 		switch (PlayState.SONG.song)
 		{
 			case "Devilish Deal" | "Lunacy" | "Hunted" | "War Dilemma" | "Twisted Grins" | "Isolated" | "The Wretched Tilezones (Simple Life)": charter = "Purg";
-			case "Delusional" | "Cycled Sins" | "Birthday" | "Cycled Sins Legacy" | "Twisted Grins Legacy": charter = "Dreupy";
+			case "Delusional" | "Cycled Sins" | "Birthday" | "Cycled Sins Legacy" | "Twisted Grins Legacy" | "Scrapped": charter = "Dreupy";
 			case "Lunacy Legacy": charter = "obscurity.";
 			case "Bless" | "Malfunction" | "Mercy" | "Mercy Legacy" | "Isolated Old" | "Isolated Legacy" | "Isolated Beta" | "Malfunction Legacy" | "Laugh Track" | "Rotten Petals" | "Ahh the Scary (Somber Night)": charter = "ThatOneSillyGuy";
 			case "Delusional Legacy": charter = "Noppz";

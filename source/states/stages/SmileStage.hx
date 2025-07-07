@@ -9,10 +9,10 @@ import shaders.OutlineEffect;
 
 class SmileStage extends BaseStage
 {
-	public static var staticEffect:FlxRuntimeShader = new FlxRuntimeShader(Shaders.tvStatic, null, 120);
+	var staticEffect:FlxRuntimeShader = new FlxRuntimeShader(Shaders.tvStatic, null, 120);
 
-	public static var outline:OutlineEffect = new OutlineEffect();
-	public static var noteOutline:OutlineEffect = new OutlineEffect();
+	var outline:OutlineEffect = new OutlineEffect();
+	var noteOutline:OutlineEffect = new OutlineEffect();
 
 	public var shaderAnim:Float = 0;
 
