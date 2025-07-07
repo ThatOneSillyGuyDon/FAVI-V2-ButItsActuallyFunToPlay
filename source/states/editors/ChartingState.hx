@@ -2107,7 +2107,7 @@ class ChartingState extends MusicBeatState
 		#end
 
 		bpmTxt.text =
-		Std.string(FlxStringUtil.formatTime(Conductor.songPosition / 1000, false) + ' / ' + FlxStringUtil.formatTime(FlxG.sound.music.length / 1000, false)) +
+		Std.string(FlxMath.roundDecimal(Conductor.songPosition / 1000, 2)) + " / " + Std.string(FlxMath.roundDecimal(FlxG.sound.music.length / 1000, 2)) +
 		"\nSection: " + curSec +
 		"\n\nBeat: " + Std.string(curDecBeat).substring(0,4) +
 		"\n\nStep: " + curStep +
