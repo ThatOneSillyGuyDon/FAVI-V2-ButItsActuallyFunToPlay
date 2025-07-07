@@ -1304,7 +1304,7 @@ class FreeplayState extends MusicBeatState
 			case 'lunacy': bpm = 188;
 			case 'delusional' | 'bless': bpm = 175;
 			case 'hunted' | 'malfunction-legacy' | 'war-dilemma' | 'mercy' | 'mercy-legacy' | 'hunted-legacy': bpm = 160;
-			case 'laugh-track' | 'birthday': bpm = 180;
+			case 'laugh-track' | 'birthday' | 'scrapped': bpm = 180;
 			case 'malfunction': bpm = 166;
 			case 'twisted-grins' | "don't-cross!": bpm = 140;
 			case 'cycled-sins': bpm = 161;
@@ -1334,7 +1334,7 @@ class FreeplayState extends MusicBeatState
 			switch (PlayState.SONG.song)
 			{
 				case "Devilish Deal" | "Isolated" | "Lunacy" | "Malfunction" | "Lunacy Legacy" | "Malfunction Legacy" | "Mercy Legacy": songArtist = "obscurity.";
-				case "Delusional" | "Birthday" | "Delusional Legacy" | "A True Monster": songArtist = "FR3SHMoure";
+				case "Delusional" | "Birthday" | "Delusional Legacy" | "A True Monster" | "Scrapped": songArtist = "FR3SHMoure";
 				case "Hunted" | "Hunted Legacy" | "Cycled Sins" | "Cycled Sins Legacy": songArtist = "JBlitz";
 				case "Laugh Track" | "Dont Cross" | "Bless" | "Twisted Grins": songArtist = "PualTheUnTruest";
 				case "Isolated Beta" | "Isolated Old" | "Rotten Petals" | "Seeking Freedom" | "Your Final Bow": songArtist = "Yama Haki/Toko";
