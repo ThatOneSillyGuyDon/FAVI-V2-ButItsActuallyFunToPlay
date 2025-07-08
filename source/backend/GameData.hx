@@ -503,6 +503,7 @@ class GameData
 					&& GameData.tgLock == 'beaten'
 					&& GameData.mercyLock == 'beaten'
 					&& GameData.sinsLock == 'beaten'
+					&& GameData.scrappedLock == 'beaten'
 					&& !GameData.canAddMalfunction);
 
 			case ALL:
@@ -514,6 +515,7 @@ class GameData
 				&& GameData.tgLock == 'beaten'
 				&& GameData.mercyLock == 'beaten'
 				&& GameData.sinsLock == 'beaten'
+				&& GameData.scrappedLock == 'beaten'
 				&& GameData.canAddMalfunction);
 		}
 

@@ -119,5 +119,11 @@ enum abstract CreditsData(String) from String to String {
 			"Art: Teelbe\n\nChart: Dreupy\n\nCode: Jason & ThatOneSillyGuy\n\nMusic: FR3SHMoure", 0, 15
 		]
 	}';
+	var scrapped:String = '{
+	"settings":
+		[
+			"Art: Ms.IDK, & Teelbe\n\nChart: Dreupy\n\nCode: ThatOneSillyGuy\n\nMusic: PualTheUnTruest", 0, 15
+		]
+	}';
 	var creditsMenu:String = '';
 }

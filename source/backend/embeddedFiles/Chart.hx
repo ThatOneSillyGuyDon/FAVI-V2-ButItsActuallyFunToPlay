@@ -378483,8 +378483,8 @@ enum abstract Chart(String) from String to String {
 }';
 	var scrapped:String = '{
 		"song": {
-			"player1": "bf",
-			"composer": "FR3SHMoure",
+			"player1": "everett-modern",
+			"composer": "PualTheUnTruest",
 			"gfVersion": "gf",
 			"notes": [
 				{

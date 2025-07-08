@@ -981,6 +981,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 				case "Cycled Sins": json = CreditsData.cycledSins;
 				case "Malfunction": json = CreditsData.malfunction;
 				case "Birthday": json = CreditsData.birthday;
+				case "Scrapped": json = CreditsData.scrapped;
 			}
 		
 			if (json != null && json.length > 0)

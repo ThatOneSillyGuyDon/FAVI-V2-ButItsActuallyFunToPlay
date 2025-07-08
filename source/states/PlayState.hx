@@ -1714,7 +1714,7 @@ class PlayState extends MusicBeatState
 						{
 							case "Delusional":
 								//nothing
-							case "War Dilemma" | "Dont Cross" | "Bless" | "Mercy" | "Mercy Legacy" | "Delutrance":
+							case "War Dilemma" | "Dont Cross" | "Bless" | "Mercy" | "Mercy Legacy" | "Delutrance" | "Scrapped":
 								count3.play();
 							default:
 								add(countdownIntro);
@@ -1733,7 +1733,7 @@ class PlayState extends MusicBeatState
 						{
 							case "Delusional":
 								//nothing
-							case "War Dilemma" | "Dont Cross" | "Bless" | "Mercy" | "Mercy Legacy" | "Delutrance":
+							case "War Dilemma" | "Dont Cross" | "Bless" | "Mercy" | "Mercy Legacy" | "Delutrance" | "Scrapped":
 								countdownReady = new FlxSprite().loadGraphic(Paths.image(introAlts[0]));
 								countdownReady.cameras = [camOther];
 								countdownReady.scrollFactor.set();
@@ -1781,7 +1781,7 @@ class PlayState extends MusicBeatState
 						{
 							case "Delusional":
 								//nothing
-							case "War Dilemma" | "Dont Cross" | "Bless" | "Mercy" | "Mercy Legacy" | "Delutrance":
+							case "War Dilemma" | "Dont Cross" | "Bless" | "Mercy" | "Mercy Legacy" | "Delutrance" | "Scrapped":
 								countdownSet = new FlxSprite().loadGraphic(Paths.image(introAlts[1]));
 								countdownSet.cameras = [camOther];
 								countdownSet.scrollFactor.set();
@@ -1829,7 +1829,7 @@ class PlayState extends MusicBeatState
 						{
 							case "Delusional":
 								//nothing
-							case "War Dilemma" | "Dont Cross" | "Bless" | "Mercy" | "Mercy Legacy" | "Delutrance":
+							case "War Dilemma" | "Dont Cross" | "Bless" | "Mercy" | "Mercy Legacy" | "Delutrance" | "Scrapped":
 								countdownGo = new FlxSprite().loadGraphic(Paths.image(introAlts[2]));
 								countdownGo.cameras = [camOther];
 								countdownGo.scrollFactor.set();
