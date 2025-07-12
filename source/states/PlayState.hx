@@ -445,6 +445,10 @@ class PlayState extends MusicBeatState
 
 	public var canBopCam:Bool = false;
 
+	var autism:Float = 0.42;
+	var	autisticDesires:Float = 15; //apparently, i needed another value for some decay value bullshit
+	var forceAutismIntoThisNoteLikeAnAverageAmericanDoctor:Float = 0.7;
+
 	//META EVENT VARIABLES
 	var discordIcon:String;
 	var discordTxt:Array<String> = [];
@@ -876,8 +880,11 @@ class PlayState extends MusicBeatState
 
 		generateSong(SONG.song);
 
-		playfieldRenderer = new PlayfieldRenderer(strumLineNotes, notes, this);
-		noteGroup.add(playfieldRenderer);
+		if (SONG.song != "Birthday")
+		{
+			playfieldRenderer = new PlayfieldRenderer(strumLineNotes, notes, this);
+			noteGroup.add(playfieldRenderer);
+		}
 		//noteGroup.add(grpSustainSplashes);
 		noteGroup.add(grpNoteSplashes);
 
@@ -1596,7 +1603,8 @@ class PlayState extends MusicBeatState
 			generateStaticArrows(0);
 			generateStaticArrows(1);
 
-			NoteMovement.getDefaultStrumPos(this);
+			if (SONG.song != "Birthday")
+				NoteMovement.getDefaultStrumPos(this);
 
 			winX = Std.int((Lib.application.window.display.bounds.width - Lib.application.window.width) * 0.5);
 			winY = Std.int((Lib.application.window.display.bounds.height - Lib.application.window.height) * 0.5);
@@ -1714,7 +1722,7 @@ class PlayState extends MusicBeatState
 						{
 							case "Delusional":
 								//nothing
-							case "War Dilemma" | "Dont Cross" | "Bless" | "Mercy" | "Mercy Legacy" | "Delutrance" | "Scrapped":
+							case "War Dilemma" | "Dont Cross" | "Bless" | "Mercy" | "Mercy Legacy" | "Delutrance":
 								count3.play();
 							default:
 								add(countdownIntro);
@@ -3069,6 +3077,12 @@ class PlayState extends MusicBeatState
 			var lerpVal:Float = CoolUtil.boundTo(elapsed * 2.4 * cameraSpeed, 0, 1);
 			camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x + camOffset[0], lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y + camOffset[1], lerpVal));
 			camGame.angle = FlxMath.lerp(camGame.angle, 0 + camOffset[2], CoolUtil.boundTo(CoolUtil.boundTo(elapsed * 2.4 / 0.4, 0, 1) * cameraSpeed , 0, 1));
+		}
+
+		if (startedCountdown && SONG.song == "Birthday") {
+			for (i in 0...8) {
+				strumLineNotes.members[i].scale.set(FlxMath.lerp(strumLineNotes.members[i].scale.x, forceAutismIntoThisNoteLikeAnAverageAmericanDoctor, (autisticDesires * playbackRate) * elapsed), FlxMath.lerp(strumLineNotes.members[i].scale.y,  forceAutismIntoThisNoteLikeAnAverageAmericanDoctor, (autisticDesires * playbackRate) * elapsed));
+			}
 		}
 
 		backend.CamUtils.updateCamera(camGame, elapsed);
@@ -4917,6 +4931,8 @@ class PlayState extends MusicBeatState
 		var spr:StrumNote = playerStrums.members[key];
 		if(strumsBlocked[key] != true && spr != null && spr.animation.curAnim.name != 'confirm')
 		{
+			if (SONG.song == "Birthday")
+				spr.scale.set(forceAutismIntoThisNoteLikeAnAverageAmericanDoctor + autism * forceAutismIntoThisNoteLikeAnAverageAmericanDoctor, forceAutismIntoThisNoteLikeAnAverageAmericanDoctor - autism * forceAutismIntoThisNoteLikeAnAverageAmericanDoctor);
 			spr.playAnim('pressed');
 			spr.resetAnim = 0;
 		}
@@ -4950,6 +4966,8 @@ class PlayState extends MusicBeatState
 		var spr:StrumNote = playerStrums.members[key];
 		if(spr != null)
 		{
+			if(SONG.song == "Birthday")
+				spr.scale.set(forceAutismIntoThisNoteLikeAnAverageAmericanDoctor - (autism * forceAutismIntoThisNoteLikeAnAverageAmericanDoctor / 2), forceAutismIntoThisNoteLikeAnAverageAmericanDoctor + (autism * forceAutismIntoThisNoteLikeAnAverageAmericanDoctor / 2));
 			spr.playAnim('static');
 			spr.resetAnim = 0;
 		}
@@ -5129,6 +5147,9 @@ class PlayState extends MusicBeatState
 		opponentStrums.members[note.noteData].rgbShader.r = note.rgbShader.r;
 		opponentStrums.members[note.noteData].rgbShader.g = note.rgbShader.g;
 		opponentStrums.members[note.noteData].rgbShader.b = note.rgbShader.b;
+
+		if (SONG.song == "Birthday")
+			opponentStrums.members[note.noteData].scale.set(forceAutismIntoThisNoteLikeAnAverageAmericanDoctor + (autism * forceAutismIntoThisNoteLikeAnAverageAmericanDoctor / (!note.isSustainNote ? 2 : 4) + 0.12), forceAutismIntoThisNoteLikeAnAverageAmericanDoctor - (autism * forceAutismIntoThisNoteLikeAnAverageAmericanDoctor / (!note.isSustainNote ? 2 : 4) + 0.12));
 
 		if (songName != 'tutorial')
 			camZooming = true;
@@ -5441,6 +5462,9 @@ class PlayState extends MusicBeatState
 		playerStrums.members[note.noteData].rgbShader.r = note.rgbShader.r;
 		playerStrums.members[note.noteData].rgbShader.g = note.rgbShader.g;
 		playerStrums.members[note.noteData].rgbShader.b = note.rgbShader.b;
+		
+		if(SONG.song == "Birthday")
+			playerStrums.members[note.noteData].scale.set(forceAutismIntoThisNoteLikeAnAverageAmericanDoctor + (!note.isSustainNote ? autism : autism * forceAutismIntoThisNoteLikeAnAverageAmericanDoctor / 2), forceAutismIntoThisNoteLikeAnAverageAmericanDoctor - (!note.isSustainNote ? autism : autism * forceAutismIntoThisNoteLikeAnAverageAmericanDoctor / 2));
 
 		if (ClientPrefs.data.hitsoundVolume > 0 && !note.hitsoundDisabled)
 		{

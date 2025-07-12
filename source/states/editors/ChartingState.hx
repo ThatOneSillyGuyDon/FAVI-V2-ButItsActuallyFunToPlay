@@ -1350,11 +1350,12 @@ class ChartingState extends MusicBeatState
 		tab_group_chart.add(check_warnings);
 		tab_group_chart.add(playSoundBf);
 		tab_group_chart.add(playSoundDad);
-		UI_box.addGroup(tab_group_chart);
 
-		trackVolumeTxt.visible = false;
 		trackVolumeStepper.visible = false;
 		muteTrackCheck.visible = false;
+		trackVolumeTxt.visible = false;
+
+		UI_box.addGroup(tab_group_chart);
 	}
 
 	function loadSong():Void
@@ -2295,8 +2296,9 @@ class ChartingState extends MusicBeatState
 		}
 		waveformPrinted = false;
 
-		if(!FlxG.save.data.chart_waveformInst && !FlxG.save.data.chart_waveformVoices && !FlxG.save.data.chart_waveformOppVoices) {
-			//trace('Epic fail on the waveform lol');
+		if (waveformTrack == null)
+		{
+			//trace("No track selected.");
 			return;
 		}
 
@@ -2309,13 +2311,8 @@ class ChartingState extends MusicBeatState
 		var st:Float = sectionStartTime();
 		var et:Float = st + (Conductor.stepCrochet * steps);
 
-		var sound:FlxSound = FlxG.sound.music;
-		if(FlxG.save.data.chart_waveformVoices)
-			sound = vocals;
-		else if(FlxG.save.data.chart_waveformOppVoices)
-			sound = opponentVocals;
-		
-		if (sound != null && sound._sound != null && sound._sound.__buffer != null) {
+		var sound:FlxSound = waveformTrack;
+		if (sound._sound != null && sound._sound.__buffer != null) {
 			var bytes:Bytes = sound._sound.__buffer.data.toBytes();
 
 			wavData = waveformData(
