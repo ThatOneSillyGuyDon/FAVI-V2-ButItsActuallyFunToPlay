@@ -111,7 +111,7 @@ class Episode1Street extends BaseStage
 		floor.active = false;
 		add(floor);	
 
-		if (PlayState.SONG.song == 'Delusional' || PlayState.SONG.song == 'Delusion')
+		if (PlayState.SONG.song == 'Delusional')
 		{	
 			fakeLightOfHope = new FlxSprite(-990, 1600).loadGraphic(Paths.image(PlayState.pathway + 'falseHope'));
 			fakeLightOfHope.setGraphicSize(Std.int(fakeLightOfHope.width * 4));
@@ -149,7 +149,7 @@ class Episode1Street extends BaseStage
 			mickeySpirit.alpha = 0.0001;
 			add(mickeySpirit);
 
-			memoryMickey = new Character(575, 50, "Mickey-Bedroom");
+			memoryMickey = new Character(575, 50, "Mickey-Bedroom", true);
 			memoryMickey.alpha = 0.0001;
 			memoryMickey.cameras = [game.camVideo];
 			add(memoryMickey);
@@ -329,7 +329,7 @@ class Episode1Street extends BaseStage
 		{
 			switch (PlayState.SONG.song)
 			{
-				case 'Isolated' | 'Lunacy' | 'Delusional' | 'Delusion':
+				case 'Isolated' | 'Lunacy' | 'Delusional':
 					redVignette.setFloat('time', 0.0);
 					if (!ClientPrefs.data.lowQuality)
 					{
@@ -354,7 +354,7 @@ class Episode1Street extends BaseStage
 
 		add(tumbleGrp);
 
-		if (PlayState.SONG.song == 'Delusional' || PlayState.SONG.song == 'Delusion')
+		if (PlayState.SONG.song == 'Delusional')
 		{	
 			if (!ClientPrefs.data.lowQuality)
 			{

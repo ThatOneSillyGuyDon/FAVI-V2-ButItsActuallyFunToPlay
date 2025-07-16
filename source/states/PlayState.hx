@@ -4458,6 +4458,12 @@ class PlayState extends MusicBeatState
 		inCutscene = false;
 		updateTime = false;
 
+		if (GameData.canOverrideCPU)
+		{
+			cpuControlled = false;
+			ClientPrefs.data.gameplaySettings["botplay"] = false;
+		}
+
 		deathCounter = 0;
 		seenCutscene = false;
 
