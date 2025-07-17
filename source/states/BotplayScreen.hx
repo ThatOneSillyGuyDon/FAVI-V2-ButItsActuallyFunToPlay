@@ -17,18 +17,16 @@ class BotplayScreen extends MusicBeatState {
     var flashy:Array<FlxSprite> = [];
     var finishedIntro:Bool = false;
     var pathway:String = 'Funkin_avi/botplayScreen/';
-    var dumbCam:FlxCamera;
     var stupidGraphic:FlxSprite;
+    var light:FlxSprite; //shut up shut up shut up shut up shut up shut up shut up shut up (compiler wouldn't stfu about the variables being missing)
+    var fog:FlxSprite;
+    var flair:FlxSprite;
 
     override public function create() {
         super.create();
 
         FlxG.sound.playMusic(Paths.music("aviOST/gameOver/amIReal", "shared"));
 		FlxG.sound.music.pitch = 0.45;
-
-        dumbCam = new FlxCamera();
-        FlxG.cameras.reset(dumbCam);
-		FlxG.cameras.setDefaultDrawTarget(dumbCam, true);
 
         var bg = new FlxSprite().makeGraphic(1, 1, FlxColor.fromRGB(62, 62, 62));
         var sign = new FlxSprite().loadGraphic(Paths.image(pathway + "sign"));
@@ -39,14 +37,14 @@ class BotplayScreen extends MusicBeatState {
         var darkness = new FlxSprite().loadGraphic(Paths.image(pathway + "darkness"));
         if (!ClientPrefs.data.lowQuality)
         {
-            var light = new FlxSprite().loadGraphic(Paths.image(pathway + "light"));
-            var flair = new FlxSprite().loadGraphic(Paths.image(pathway + "flair"));
-            var fog = new FlxBackdrop(Paths.image(pathway + "fog"), X, 0, 0);
+            light = new FlxSprite().loadGraphic(Paths.image(pathway + "light"));
+            flair = new FlxSprite().loadGraphic(Paths.image(pathway + "flair"));
+            fog = new FlxBackdrop(Paths.image(pathway + "fog"), X, 0, 0);
         }
         stupidGraphic = new FlxSprite().makeGraphic(1, 1, FlxColor.BLACK);
 
         Application.current.window.title = 'Funkin.avi - ${randomMsg[FlxG.random.int(0, randomMsg.length-1)]}';
-        dumbCam.zoom -= 0.2;
+        FlxG.camera.zoom -= 0.2;
         bg.setGraphicSize(FlxG.width*2, FlxG.height*2);
         stupidGraphic.setGraphicSize(FlxG.width*2, FlxG.height*2);
         if (!ClientPrefs.data.lowQuality)
@@ -83,7 +81,7 @@ class BotplayScreen extends MusicBeatState {
         sign.y -= 800;
 
         FlxTween.tween(darkness, {alpha: 0.87}, 3, {ease: FlxEase.expoInOut, type: 4});
-        FlxTween.tween(dumbCam, {zoom: 1}, 3, {ease: FlxEase.expoOut});
+        FlxTween.tween(FlxG.camera, {zoom: 1}, 3, {ease: FlxEase.expoOut});
         FlxTween.tween(sign, {y: -108}, 2, {ease: FlxEase.bounceInOut, startDelay: 0.65, onComplete: function(twn:FlxTween)
         {
             FlxTween.tween(prompt, {alpha: 1}, 1.2, {ease: FlxEase.expoOut, startDelay: 0.2, onComplete: function(twn:FlxTween)
@@ -101,6 +99,7 @@ class BotplayScreen extends MusicBeatState {
 
         if (finishedIntro)
         {
+            // gonna be honest, this could've been done SO MUCH MORE SIMPLER if Flixel wasn't retarded as fuck
             if (FlxG.keys.justPressed.Y)
                 FlxTween.tween(stupidGraphic, {alpha: 1}, 3, {onComplete: function(twn:FlxTween)
                 {
@@ -114,8 +113,8 @@ class BotplayScreen extends MusicBeatState {
             if (FlxG.keys.justPressed.Y || FlxG.keys.justPressed.N)
             {
                 FlxG.sound.play(Paths.sound('funkinAVI/menu/confirmEpisode'));
-                dumbCam.zoom += 0.12;
-                FlxTween.tween(dumbCam, {zoom: 1}, 1.2, {ease: FlxEase.expoOut});
+                FlxG.camera.zoom += 0.12;
+                FlxTween.tween(FlxG.camera, {zoom: 1}, 1.2, {ease: FlxEase.expoOut});
                 if (FlxG.keys.justPressed.Y)
                 {
                     flashy[0].alpha = 1;
