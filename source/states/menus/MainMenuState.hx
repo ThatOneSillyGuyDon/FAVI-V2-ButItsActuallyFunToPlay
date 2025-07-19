@@ -9,6 +9,51 @@ import lime.app.Application;
 import flash.system.System;
 import flixel.input.keyboard.FlxKey;
 
+/*class newMainMenuStateThatWontBeUsedTillItsDone extends MusicBeatState{
+	// now its Dynamic! Yay! Anyways Book and Discord will be used as a part of OptionShit. -- (MalyPlus)
+	var optionShit:Array<Array<Dynamic>> = [
+		// Note to myself.
+		//["ButtonName", "ID/NameThatWouldBeRefrenced like if array[2] == that ID then", offsetX, offsetY, optional Scale (CAN BE NULL)].
+		["story_mode", "story", 0, 0, null],
+		["freeplay", "freeplay", 0, 0, null],
+		["credits", "credits", 0, 0, null],
+		["options", "options", 0, 0, null],
+		["book", "CharacterMenu", 0, 0, null],
+		["discord", "communityServer", 0, 0, null]
+	];
+	var menuItems:FlxTypedGroup<FlxSprite>;
+	var selectedSomethin:Bool = false;
+	var pathToImage:String = "Funkin_avi/menu/";
+
+	override function create(){
+		//if (Save data has the finished week.) optionShit.push(["The Guy That you talk with","FunnyGuy",0,0,null]);
+		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pathToImage + "menuBG"));
+		bg.scrollFactor.set(0,0);
+		bg.antialiasing = ClientPrefs.data.antialiasing;
+		add(bg);
+
+		for (i in 0...optionShit.length){
+			var menuItem:FlxSprite=new FlxSprite();
+			menuItem.loadGraphic(Paths.image(pathToImage +"buttons/"+ optionShit[i][0]));
+			menuItem.scale.set(0.6, 0.6);
+			if (optionShit[i][4] != null) menuItem.scale.set(optionShit[i][4], optionShit[i][4]);
+			menuItem.updateHitbox();
+			menuItem.ID = i;
+			menuItem.screenCenter(X);
+			menuItem.x += 460;
+			menuItem.scrollFactor.set(0,0);
+			menuItem.antialiasing = ClientPrefs.data.antialiasing;
+			if (optionShit[i][2] != null) menuItem.x += optionShit[i][2];
+			if (optionShit[i][3] != null) menuItem.y += optionShit[i][3];
+			if (optionShit[i][1] == "freeplay" && GameData.episode1FPLock != "unlocked") menuItem.loadGraphic(Paths.image('Funkin_avi/menu/buttons/freeplayLocked'));
+			add(menuItem);
+		}
+		
+		super.create();
+	}
+
+}*/
+
 class MainMenuState extends MusicBeatState
 {
 	var camGame:FlxCamera;
