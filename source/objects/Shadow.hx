@@ -6,8 +6,9 @@ import lime.utils.Assets;
 
 typedef ShadowData =
 {
-    //var color:Array<Int>; TODO: make this utilize colorTransform entirely whenever I'm not lazy
+    var color:Array<Int>;
     var alpha:Float;
+    var scaleData:Array<Float>;
     var offsetData:Array<Float>;
     var skewData:Array<Float>;
 }
@@ -31,13 +32,11 @@ class Shadow extends Character // because I'm a lazy piece of shit who loves to 
             rawJson = Assets.getText(filePath).trim();
         else
         {
-            trace('file path: ${filePath} does not exist!');
             hasData = false;
             return;
         }
 
         data = cast Json.parse(rawJson);
         hasData = true;
-        trace('file path: ${filePath} found! parsed data!');
     }
 }
