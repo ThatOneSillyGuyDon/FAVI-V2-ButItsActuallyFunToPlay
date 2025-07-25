@@ -16,5 +16,6 @@ haxelib remove flxanimate
 haxelib git flxanimate https://github.com/ShadowMario/flxanimate dev
 haxelib git linc_luajit https://github.com/superpowers04/linc_luajit
 haxelib set hxdiscord_rpc 1.2.4
+haxelib set hxcpp 4.3.2
 echo Finished!
 pause
