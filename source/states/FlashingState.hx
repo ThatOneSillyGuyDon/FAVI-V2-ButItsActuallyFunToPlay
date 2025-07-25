@@ -18,21 +18,16 @@ class FlashingState extends MusicBeatState
 		FlxG.sound.music.pitch = 0.45;
 
 		var fog:FlxBackdrop = new FlxBackdrop(Paths.image("Funkin_avi/warning/warningFog"), X, 0, 0);
-		fog.velocity.set(100, 0);
-		add(fog);
-
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image("Funkin_avi/warning/warningBG"));
-		add(bg);
-
 		var sign:FlxSprite = new FlxSprite().loadGraphic(Paths.image("Funkin_avi/warning/warningSign"));
-		add(sign);
-
 		warnText = new FlxSprite().loadGraphic(Paths.image("Funkin_avi/warning/warningConfirm"));
-		warnText.visible = false;
-		add(warnText);
-
 		var vignette:FlxSprite = new FlxSprite().loadGraphic(Paths.image("Funkin_avi/warning/warningVignette"));
-		add(vignette);
+
+		fog.velocity.set(100, 0);
+		warnText.visible = false;
+
+		for (i in [fog, bg, sign, warnText, vignette])
+			add(i);
 	}
 
 	override function update(elapsed:Float)

@@ -20,6 +20,7 @@ class SmileStage extends BaseStage
 
 	override function create()
 	{
+		game.spawnShadow[0] = game.spawnShadow[1] = true;
 		game.defaultCamZoom = 0.75;
 		game.cameraSpeed = 2.5;
 		PlayState.isGreyscale = true;

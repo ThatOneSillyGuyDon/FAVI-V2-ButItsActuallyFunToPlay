@@ -1,5 +1,7 @@
 package objects;
 
+import flixel.addons.effects.FlxSkewedSprite;
+
 import backend.animation.PsychAnimationController;
 
 import flixel.util.FlxSort;
@@ -41,7 +43,7 @@ typedef AnimArray = {
 	var offsets:Array<Int>;
 }
 
-class Character extends FlxSprite
+class Character extends FlxSkewedSprite
 {
 	/**
 	 * In case a character is missing, it will use this on its place

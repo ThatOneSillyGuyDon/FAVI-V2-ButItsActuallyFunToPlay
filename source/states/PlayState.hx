@@ -449,6 +449,11 @@ class PlayState extends MusicBeatState
 	var	autisticDesires:Float = 15; //apparently, i needed another value for some decay value bullshit
 	var forceAutismIntoThisNoteLikeAnAverageAmericanDoctor:Float = 0.7;
 
+	public var shadowDad:Shadow;
+	public var shadowBF:Shadow;
+	public var shadowGF:Shadow;
+	public var spawnShadow:Array<Bool> = [false, false, false];
+
 	//META EVENT VARIABLES
 	var discordIcon:String;
 	var discordTxt:Array<String> = [];
@@ -778,6 +783,32 @@ class PlayState extends MusicBeatState
 			gf.scrollFactor.set(0.95, 0.95);
 			gfGroup.add(gf);
 			startCharacterScripts(gf.curCharacter);
+
+			if (spawnShadow[2])
+			{
+				shadowGF = new Shadow(gf);
+				shadowGF.parseData('shadowData-gf');
+				startCharacterPos(shadowGF);
+				shadowGF.scrollFactor.set(0.95, 0.95);
+				if (shadowGF.hasData)
+				{
+					shadowGF.alpha = shadowGF.data.alpha;
+					shadowGF.x += shadowGF.data.offsetData[0];
+					shadowGF.y += shadowGF.data.offsetData[1];
+					shadowGF.skew.x = shadowGF.data.skewData[0];
+					shadowGF.skew.y = shadowGF.data.skewData[1];
+				}
+				else
+				{
+					shadowGF.alpha = 0.001;
+					shadowGF.x += 0;
+					shadowGF.y += 0;
+					shadowGF.skew.x = 0;
+					shadowGF.skew.y = 0;
+				}
+				shadowGF.colorTransform.color = FlxColor.BLACK;
+				addBehindGF(shadowGF);
+			}
 		}
 
 		dad = new Character(0, 0, SONG.player2);
@@ -789,6 +820,56 @@ class PlayState extends MusicBeatState
 		startCharacterPos(boyfriend);
 		boyfriendGroup.add(boyfriend);
 		startCharacterScripts(boyfriend.curCharacter);
+
+		if (spawnShadow[0])
+		{
+			shadowDad = new Shadow(dad);
+			shadowDad.parseData('shadowData-dad');
+			startCharacterPos(shadowDad, true);
+			if (shadowDad.hasData)
+			{
+				shadowDad.alpha = shadowDad.data.alpha;
+				shadowDad.x += shadowDad.data.offsetData[0];
+				shadowDad.y += shadowDad.data.offsetData[1];
+				shadowDad.skew.x = shadowDad.data.skewData[0];
+				shadowDad.skew.y = shadowDad.data.skewData[1];
+			}
+			else
+			{
+				shadowDad.alpha = 0.001;
+				shadowDad.x += 0;
+				shadowDad.y += 0;
+				shadowDad.skew.x = 0;
+				shadowDad.skew.y = 0;
+			}
+			shadowDad.colorTransform.color = FlxColor.BLACK;
+			addBehindDad(shadowDad);
+		}
+
+		if (spawnShadow[1])
+		{
+			shadowBF = new Shadow(boyfriend);
+			shadowBF.parseData('shadowData-bf');
+			startCharacterPos(shadowBF);
+			if (shadowBF.hasData)
+			{
+				shadowBF.alpha = shadowBF.data.alpha;
+				shadowBF.x += shadowBF.data.offsetData[0];
+				shadowBF.y += shadowBF.data.offsetData[1];
+				shadowBF.skew.x = shadowBF.data.skewData[0];
+				shadowBF.skew.y = shadowBF.data.skewData[1];
+			}
+			else
+			{
+				shadowBF.alpha = 0.001;
+				shadowBF.x += 0;
+				shadowBF.y += 0;
+				shadowBF.skew.x = 0;
+				shadowBF.skew.y = 0;
+			}
+			shadowBF.colorTransform.color = FlxColor.BLACK;
+			addBehindBF(shadowBF);
+		}
 
 		var camPos:FlxPoint = FlxPoint.get(girlfriendCameraOffset[0], girlfriendCameraOffset[1]);
 		if(gf != null)
@@ -5190,6 +5271,12 @@ class PlayState extends MusicBeatState
 				states.stages.Episode1Street.mickeySpirit.playAnim(animToPlay, true);
 				states.stages.Episode1Street.mickeySpirit.holdTimer = 0;
 			}
+
+			if (spawnShadow[0] && shadowDad != null)
+			{
+				shadowDad.playAnim(animToPlay, true);
+				shadowDad.holdTimer = 0;
+			}
 		}
 
 		if (sinsEnd && !note.isSustainNote)
@@ -5600,12 +5687,18 @@ class PlayState extends MusicBeatState
 						char.heyTimer = 0.6;
 					}
 				}
+			}
 
-				if(states.stages.Episode1Street.memoryMickey != null && SONG.song == "Delusional")
-				{
-					states.stages.Episode1Street.memoryMickey.playAnim(animToPlay, true);
-					states.stages.Episode1Street.memoryMickey.holdTimer = 0;
-				}
+			if(states.stages.Episode1Street.memoryMickey != null && SONG.song == "Delusional")
+			{
+				states.stages.Episode1Street.memoryMickey.playAnim(animToPlay, true);
+				states.stages.Episode1Street.memoryMickey.holdTimer = 0;
+			}
+
+			if(spawnShadow[1] && shadowBF != null)
+			{
+				shadowBF.playAnim(animToPlay, true);
+				shadowBF.holdTimer = 0;
 			}
 		}
 
@@ -5774,6 +5867,7 @@ class PlayState extends MusicBeatState
 			Lib.application.window.y = Std.int((Lib.application.window.display.bounds.height - Lib.application.window.height) * 0.5);
 		}
 		backend.NoteTypesConfig.clearNoteTypesData();
+		spawnShadow[0] = spawnShadow[1] = spawnShadow[2] = false;
 		instance = null;
 		super.destroy();
 	}
