@@ -226,13 +226,14 @@ class MainMenuState extends MusicBeatState
 			switch (menuItem.ID)
 			{
 				case 0:
+					menuItem.x -= 35;
 					menuItem.y = 130;
 				case 1:
 					if (GameData.episode1FPLock != "unlocked") menuItem.loadGraphic(Paths.image('Funkin_avi/menu/buttons/freeplayLocked'));
-					menuItem.x += 25;
+					menuItem.x += 15;
 					menuItem.y = 240;
 				case 2:
-					menuItem.x += 50;
+					menuItem.x += 40;
 					menuItem.y = 350;
 				case 3:
 					menuItem.x += 75;
@@ -451,7 +452,7 @@ class MainMenuState extends MusicBeatState
 			switch (curSelected)
 			{
 				case 0:
-					arrowX = 560;
+					arrowX = 540;
 					arrowY = 155;
 					arrowA = 1;
 				case 1:
@@ -463,7 +464,7 @@ class MainMenuState extends MusicBeatState
 					arrowY = 360;
 					arrowA = 1;
 				case 3:
-					arrowX = 740;
+					arrowX = 755;
 					arrowY = 470;
 					arrowA = 1;
 				default:
