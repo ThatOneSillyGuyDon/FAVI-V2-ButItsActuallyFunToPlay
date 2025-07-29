@@ -503,7 +503,6 @@ class GameData
 					&& GameData.tgLock == 'beaten'
 					&& GameData.mercyLock == 'beaten'
 					&& GameData.sinsLock == 'beaten'
-					&& GameData.scrappedLock == 'beaten'
 					&& !GameData.canAddMalfunction);
 
 			case ALL:
@@ -515,7 +514,6 @@ class GameData
 				&& GameData.tgLock == 'beaten'
 				&& GameData.mercyLock == 'beaten'
 				&& GameData.sinsLock == 'beaten'
-				&& GameData.scrappedLock == 'beaten'
 				&& GameData.canAddMalfunction);
 		}
 
@@ -541,5 +539,10 @@ class GameData
 					episodeWFPLock = 'unlocked';
 		}
 		saveShit();
+	}
+
+	public static function resetData()
+	{
+		//will make it when I'm not lazy
 	}
 }

@@ -31,6 +31,8 @@ import haxe.Json;
 import cutscenes.CutsceneHandler;
 import cutscenes.DialogueBoxPsych;
 
+import objects.Character.Shadow;
+
 import states.editors.ChartingState;
 import states.editors.CharacterEditorState;
 
@@ -797,6 +799,9 @@ class PlayState extends MusicBeatState
 					shadowGF.y += shadowGF.data.offsetData[1];
 					shadowGF.skew.x = shadowGF.data.skewData[0];
 					shadowGF.skew.y = shadowGF.data.skewData[1];
+					shadowGF.scale.set(shadowGF.data.scaleData[0], shadowGF.data.scaleData[1]);
+					shadowGF.forceIsOnScreen = true;
+					shadowGF.colorTransform.color = FlxColor.fromRGB(shadowGF.data.color[0], shadowGF.data.color[1], shadowGF.data.color[2]);
 				}
 				else
 				{
@@ -805,8 +810,10 @@ class PlayState extends MusicBeatState
 					shadowGF.y += 0;
 					shadowGF.skew.x = 0;
 					shadowGF.skew.y = 0;
+					shadowGF.scale.set(1, 1);
+					shadowGF.forceIsOnScreen = true;
+					shadowGF.colorTransform.color = FlxColor.BLACK;
 				}
-				shadowGF.colorTransform.color = FlxColor.BLACK;
 				addBehindGF(shadowGF);
 			}
 		}
@@ -833,6 +840,9 @@ class PlayState extends MusicBeatState
 				shadowDad.y += shadowDad.data.offsetData[1];
 				shadowDad.skew.x = shadowDad.data.skewData[0];
 				shadowDad.skew.y = shadowDad.data.skewData[1];
+				shadowDad.scale.set(shadowDad.data.scaleData[0], shadowDad.data.scaleData[1]);
+				shadowDad.forceIsOnScreen = true;
+				shadowDad.colorTransform.color = FlxColor.fromRGB(shadowDad.data.color[0], shadowDad.data.color[1], shadowDad.data.color[2]);
 			}
 			else
 			{
@@ -841,8 +851,10 @@ class PlayState extends MusicBeatState
 				shadowDad.y += 0;
 				shadowDad.skew.x = 0;
 				shadowDad.skew.y = 0;
+				shadowDad.scale.set(1, 1);
+				shadowDad.forceIsOnScreen = true;
+				shadowDad.colorTransform.color = FlxColor.BLACK;
 			}
-			shadowDad.colorTransform.color = FlxColor.BLACK;
 			addBehindDad(shadowDad);
 		}
 
@@ -858,6 +870,9 @@ class PlayState extends MusicBeatState
 				shadowBF.y += shadowBF.data.offsetData[1];
 				shadowBF.skew.x = shadowBF.data.skewData[0];
 				shadowBF.skew.y = shadowBF.data.skewData[1];
+				shadowBF.scale.set(shadowBF.data.scaleData[0], shadowBF.data.scaleData[1]);
+				shadowBF.forceIsOnScreen = true;
+				shadowBF.colorTransform.color = FlxColor.fromRGB(shadowBF.data.color[0], shadowBF.data.color[1], shadowBF.data.color[2]);
 			}
 			else
 			{
@@ -866,8 +881,10 @@ class PlayState extends MusicBeatState
 				shadowBF.y += 0;
 				shadowBF.skew.x = 0;
 				shadowBF.skew.y = 0;
+				shadowBF.scale.set(1, 1);
+				shadowBF.forceIsOnScreen = true;
+				shadowBF.colorTransform.color = FlxColor.BLACK;
 			}
-			shadowBF.colorTransform.color = FlxColor.BLACK;
 			addBehindBF(shadowBF);
 		}
 
@@ -1822,7 +1839,7 @@ class PlayState extends MusicBeatState
 						{
 							case "Delusional":
 								//nothing
-							case "War Dilemma" | "Dont Cross" | "Bless" | "Mercy" | "Mercy Legacy" | "Delutrance" | "Scrapped":
+							case "War Dilemma" | "Dont Cross" | "Bless" | "Mercy" | "Mercy Legacy" | "Delutrance":
 								countdownReady = new FlxSprite().loadGraphic(Paths.image(introAlts[0]));
 								countdownReady.cameras = [camOther];
 								countdownReady.scrollFactor.set();
@@ -1870,7 +1887,7 @@ class PlayState extends MusicBeatState
 						{
 							case "Delusional":
 								//nothing
-							case "War Dilemma" | "Dont Cross" | "Bless" | "Mercy" | "Mercy Legacy" | "Delutrance" | "Scrapped":
+							case "War Dilemma" | "Dont Cross" | "Bless" | "Mercy" | "Mercy Legacy" | "Delutrance":
 								countdownSet = new FlxSprite().loadGraphic(Paths.image(introAlts[1]));
 								countdownSet.cameras = [camOther];
 								countdownSet.scrollFactor.set();
@@ -1918,7 +1935,7 @@ class PlayState extends MusicBeatState
 						{
 							case "Delusional":
 								//nothing
-							case "War Dilemma" | "Dont Cross" | "Bless" | "Mercy" | "Mercy Legacy" | "Delutrance" | "Scrapped":
+							case "War Dilemma" | "Dont Cross" | "Bless" | "Mercy" | "Mercy Legacy" | "Delutrance":
 								countdownGo = new FlxSprite().loadGraphic(Paths.image(introAlts[2]));
 								countdownGo.cameras = [camOther];
 								countdownGo.scrollFactor.set();
@@ -5217,6 +5234,11 @@ class PlayState extends MusicBeatState
 			var animToPlay:String = singAnimations[Std.int(Math.abs(Math.min(singAnimations.length-1, direction)))] + 'miss' + suffix;
 			char.playAnim(animToPlay, true);
 
+			if(spawnShadow[1] && shadowBF != null)
+			{
+				shadowBF.playAnim(animToPlay, true);
+			}
+
 			if(char != gf && gf != null && gf.animOffsets.exists('sad'))
 			{
 				gf.playAnim('sad');
@@ -5953,6 +5975,14 @@ class PlayState extends MusicBeatState
 
 		if (SONG.song == "Delusional" && states.stages.Episode1Street.memoryMickey != null && beat % states.stages.Episode1Street.memoryMickey.danceEveryNumBeats == 0 && !states.stages.Episode1Street.memoryMickey.getAnimationName().startsWith('sing') && !states.stages.Episode1Street.memoryMickey.stunned)
 			states.stages.Episode1Street.memoryMickey.dance();
+
+		// literal shadow dancing lmfao
+		if (spawnShadow[0] && shadowDad != null && beat % shadowDad.danceEveryNumBeats == 0 && !shadowDad.getAnimationName().startsWith('sing') && !dad.stunned)
+			shadowDad.dance();
+		if (spawnShadow[1] && shadowBF != null && beat % shadowBF.danceEveryNumBeats == 0 && !shadowBF.getAnimationName().startsWith('sing') && !shadowBF.stunned)
+			shadowBF.dance();
+		if (spawnShadow[2] && shadowGF != null && beat % Math.round(gfSpeed * gf.danceEveryNumBeats) == 0 && !shadowGF.getAnimationName().startsWith('sing') && !shadowGF.stunned)
+			shadowGF.dance();
 	}
 
 	public function playerDance():Void
