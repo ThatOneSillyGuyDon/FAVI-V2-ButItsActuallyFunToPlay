@@ -53,13 +53,13 @@ class ResetSaveDataSubState extends MusicBeatSubstate
 		yesText.screenCenter(X);
 		yesText.setFormat(Paths.font("newFreeplayFont.ttf"), 70, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		yesText.x -= 200;
-		yesText.alpha = 0;
+		yesText.alpha = 0.6;
 		add(yesText);
 		noText = new FlxTextAlphabet(0, desc.y + 150, 'No', true);
 		noText.screenCenter(X);
 		noText.setFormat(Paths.font("newFreeplayFont.ttf"), 70, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		noText.x += 200;
-		noText.alpha = 0;
+		noText.alpha = 1;
 		add(noText);
 		updateOptions();
 	}
@@ -78,13 +78,8 @@ class ResetSaveDataSubState extends MusicBeatSubstate
 		desc.alpha += elapsed * 1.5;
 		if(desc.alpha > 1) desc.alpha = 1;
 
-		yesText.alpha += elapsed * 1.5;
-		if(yesText.alpha > 1) yesText.alpha = 1;
-		noText.alpha += elapsed * 1.5;
-		if(noText.alpha > 1) noText.alpha = 1;
-
 		if(controls.UI_LEFT_P || controls.UI_RIGHT_P) {
-			FlxG.sound.play(Paths.sound('scrollMenu'), 1);
+			FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'), 1);
 			onYes = !onYes;
 			updateOptions();
 		}
