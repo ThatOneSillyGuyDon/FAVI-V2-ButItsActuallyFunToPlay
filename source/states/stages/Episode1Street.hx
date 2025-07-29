@@ -1115,6 +1115,7 @@ class Episode1Street extends BaseStage
 						game.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.38, timer: 0.85, colors: [255, 255, 255]});
 						minnieJumpscare.resume();
 						minnieJumpscare.visible = true;
+						game.boyfriend.alpha = 0.0001;
 					case 40:
 						FlxTween.tween(camGame, {alpha: 0.0001}, 5, {ease: FlxEase.quartInOut});
 					case 42:
@@ -1124,7 +1125,6 @@ class Episode1Street extends BaseStage
 						game.boundValue = 0.45;
 						game.drainValue = 0.032;
 						game.boyfriend.alpha = 1;
-						memoryMickey.alpha = 0.0001;
 						game.camFollow.x = 0;
 						game.camFollow.y = 0;
 						if (!ClientPrefs.data.lowQuality)
@@ -1404,7 +1404,7 @@ class Episode1Street extends BaseStage
 						fakeLightOfHope.destroy();
 						fakeLightOfHope = null;
 					case 76:
-						FlxTween.tween(memoryMickey, {alpha: 0.45}, 2.5, {ease: FlxEase.expoOut});
+						FlxTween.tween(boyfriend, {alpha: 0.45}, 2.5, {ease: FlxEase.expoOut});
 				}
 		}
 	}

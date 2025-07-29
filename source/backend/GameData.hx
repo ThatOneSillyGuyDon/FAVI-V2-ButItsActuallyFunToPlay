@@ -279,10 +279,10 @@ class GameData
 		storySong = "Devilish-Deal";
 		episode1FPLock = 'unlocked';
 
-		devilSong = true;
-		isoSong = true;
-		lunaSong = true;
-		deluluSong = true;
+		devilSong = false;
+		isoSong = false;
+		lunaSong = false;
+		deluluSong = false;
 
 		episodeSFPLock = 'unlocked';
 		episodeWFPLock = 'unlocked';
@@ -543,6 +543,49 @@ class GameData
 
 	public static function resetData()
 	{
-		//will make it when I'm not lazy
+		var progression:FlxSave = new FlxSave();
+		progression.bind("gameProgression", CoolUtil.getSavePath());
+
+		storySong = "Devilish-Deal";
+		episode1FPLock = 'locked';
+
+		devilSong = true;
+		isoSong = true;
+		lunaSong = true;
+		deluluSong = true;
+
+		episodeSFPLock = 'locked';
+		episodeWFPLock = 'locked';
+
+		huntedLock = 'locked';
+		oldisolateLock = 'locked';
+		betaisolateLock = 'locked';
+		malfunctionLock = 'locked';
+		blessLock = 'locked';
+		scrappedLock = 'locked';
+		sinsLock = 'locked';
+		warLock = 'locked';
+		crossinLock = 'locked';
+		mercyLock = 'locked';
+		tgLock = 'locked';
+		pnmLock = 'locked';
+		rickyLock = 'locked';
+
+		legacyILock = 'locked';
+		legacyLLock = 'locked';
+		legacyDLock = 'locked';
+		legacyHLock = 'locked';
+		legacyMLock = 'locked';
+		legacyWLock = 'locked';
+		legacyBLock = 'locked';
+		legacySLock = 'locked';
+		legacyNLock = 'locked';
+		legacyTLock = 'locked';
+		legacyRLock = 'locked';
+
+		canAddMalfunction = false;
+		birthdayLocky = 'uncompleted';
+
+		saveShit();
 	}
 }

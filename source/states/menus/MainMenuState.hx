@@ -512,8 +512,10 @@ class MainMenuState extends MusicBeatState
 		}
 		else if (daChoice == "discordIcon")
 			CoolUtil.browserLoad('https://discord.gg/qTZYpP4hg3');
-		else if (daChoice == "changelog" || daChoice == "reset")
+		else if (daChoice == "reset")
 			coolMenuEvents(6);
+		else if (daChoice == "changelog")
+			coolMenuEvents(9);
 		else
 		{
 			menuItems.forEach(function(spr:FlxSprite)
@@ -647,8 +649,8 @@ class MainMenuState extends MusicBeatState
 					messenger.sendMessage('Something has unlocked!', 'Check freeplay to see what has been unlocked.');
 				}
 			case 6:
-				FlxG.sound.play(Paths.sound('cancelMenu'));
-				messenger.sendMessage('Does nothing for now!', 'It\'s a work in progress...');
+				persistentUpdate = false;
+				openSubState(new ResetSaveDataSubState());
 			case 7:
 				if (GameData.episode1FPLock == "unlocked")
 				{
@@ -735,6 +737,9 @@ class MainMenuState extends MusicBeatState
 				FlxG.sound.play(Paths.sound('funkinAVI/menu/selectSfx'));
 				selectedSomethin = true;
 				FlxG.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
+			case 9:
+				persistentUpdate = false;
+				openSubState(new ChangelogMenu());
 		}
 	}
 

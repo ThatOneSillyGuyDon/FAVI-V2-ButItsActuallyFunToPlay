@@ -2764,6 +2764,11 @@ class PlayState extends MusicBeatState
 
 		super.update(elapsed);
 
+		if (boyfriend.curCharacter == "Mickey-Bedroom")
+			boyfriend.cameras = [camVideo];
+		else
+			boyfriend.cameras = [camGame];
+
 		if (cpuControlled)
 		{
 			scoreTxt.visible = false;
@@ -5711,12 +5716,6 @@ class PlayState extends MusicBeatState
 				}
 			}
 
-			if(states.stages.Episode1Street.memoryMickey != null && SONG.song == "Delusional")
-			{
-				states.stages.Episode1Street.memoryMickey.playAnim(animToPlay, true);
-				states.stages.Episode1Street.memoryMickey.holdTimer = 0;
-			}
-
 			if(spawnShadow[1] && shadowBF != null)
 			{
 				shadowBF.playAnim(animToPlay, true);
@@ -5972,9 +5971,6 @@ class PlayState extends MusicBeatState
 			boyfriend.dance();
 		if (dad != null && beat % dad.danceEveryNumBeats == 0 && !dad.getAnimationName().startsWith('sing') && !dad.stunned)
 			dad.dance();
-
-		if (SONG.song == "Delusional" && states.stages.Episode1Street.memoryMickey != null && beat % states.stages.Episode1Street.memoryMickey.danceEveryNumBeats == 0 && !states.stages.Episode1Street.memoryMickey.getAnimationName().startsWith('sing') && !states.stages.Episode1Street.memoryMickey.stunned)
-			states.stages.Episode1Street.memoryMickey.dance();
 
 		// literal shadow dancing lmfao
 		if (spawnShadow[0] && shadowDad != null && beat % shadowDad.danceEveryNumBeats == 0 && !shadowDad.getAnimationName().startsWith('sing') && !dad.stunned)

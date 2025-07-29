@@ -64,7 +64,7 @@
 		0
 	],
 	"healthicon": "f_avi/episode1/mickey",
-	"flip_x": false,
+	"flip_x": true,
 	"healthbar_colors": [
 		216,
 		216,
