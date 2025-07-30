@@ -58,7 +58,7 @@ class MainMenuState extends MusicBeatState
 {
 	var camGame:FlxCamera;
 	var camHUD:FlxCamera;
-	var selectedSomethin:Bool = false;
+	public static var selectedSomethin:Bool = false;
 	var menuItems:FlxTypedGroup<FlxSprite>;
 	var optionShit:Array<String> = ['story_mode', 'freeplay', 'credits', 'options', 'discordIcon', 'changelog', 'reset', 'book'];
 	public static var curSelected:Int = 0;
@@ -163,6 +163,8 @@ class MainMenuState extends MusicBeatState
 		FlxG.cameras.reset(camGame);
 		FlxG.cameras.add(camHUD, false);
 		FlxG.cameras.setDefaultDrawTarget(camGame, true);
+
+		selectedSomethin = false;
 
 		AppIcon.changeIcon("newIcon");
 		#if desktop
@@ -649,7 +651,7 @@ class MainMenuState extends MusicBeatState
 					messenger.sendMessage('Something has unlocked!', 'Check freeplay to see what has been unlocked.');
 				}
 			case 6:
-				persistentUpdate = false;
+				selectedSomethin = true;
 				openSubState(new ResetSaveDataSubState());
 			case 7:
 				if (GameData.episode1FPLock == "unlocked")
@@ -738,7 +740,7 @@ class MainMenuState extends MusicBeatState
 				selectedSomethin = true;
 				FlxG.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
 			case 9:
-				persistentUpdate = false;
+				selectedSomethin = true;
 				openSubState(new ChangelogMenu());
 		}
 	}

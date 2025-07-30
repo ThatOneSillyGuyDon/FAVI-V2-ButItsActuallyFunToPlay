@@ -41,7 +41,7 @@ class ResetSaveDataSubState extends MusicBeatSubstate
 
 		desc = new FlxTextAlphabet(200, 250, "", true);
 		desc.setFormat(Paths.font("newFreeplayFont.ttf"), 35, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		desc.applyMarkup('You are about to *PERMANETLY DELETE* your save data.\nAre you sure you want to *delete* your save data?',
+		desc.applyMarkup('You are about to *PERMANENTLY DELETE* your save data.\nAre you sure you want to *delete* your save data?',
 			[
 				new FlxTextFormatMarkerPair(new FlxTextFormat(FlxColor.RED), "*")
 			]
@@ -85,6 +85,7 @@ class ResetSaveDataSubState extends MusicBeatSubstate
 		}
 		if(controls.BACK) 
 		{
+			MainMenuState.selectedSomethin = false;
 			FlxG.sound.play(Paths.sound('cancelMenu'), 1);
 			close();
 		} else if(controls.ACCEPT) {
@@ -95,6 +96,9 @@ class ResetSaveDataSubState extends MusicBeatSubstate
 				TitleState.closedState = false;
 				FlxG.sound.music.fadeOut(0.3);
 				FlxG.camera.fade(FlxColor.BLACK, 0.5, false, FlxG.resetGame, false);
+			}
+			else {
+				MainMenuState.selectedSomethin = false;
 			}
 			close();
 		}
