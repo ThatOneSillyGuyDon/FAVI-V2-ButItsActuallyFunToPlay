@@ -13328,7 +13328,7 @@ enum abstract Modchart(String) from String to String {
 				1018,
 				"5",
 				"sineInOut",
-				"-120,MickeyStrum1,-67,SatanY,-250,SatanZ,-330,SatanX,350,fearLmaoY:speed,,"
+				"-120,MickeyStrum1,-67,SatanY,-250,SatanZ,-300,SatanX,350,fearLmaoY:speed,,"
 			],
 			[
 				false,
@@ -13684,6 +13684,7 @@ enum abstract Modchart(String) from String to String {
 			-1
 		]
 	],
+	"playfields": 1,
 	"events": [
 		[
 			"ease",
@@ -14223,7 +14224,7 @@ enum abstract Modchart(String) from String to String {
 				1018,
 				"5",
 				"sineInOut",
-				"-120,MickeyStrum1,67,SatanY,-250,SatanZ,-330,SatanX,350,fearLmaoY:speed,,"
+				"-120,MickeyStrum1,67,SatanY,-250,SatanZ,-300,SatanX,350,fearLmaoY:speed,,"
 			],
 			[
 				false,
@@ -14245,8 +14246,7 @@ enum abstract Modchart(String) from String to String {
 				1
 			]
 		]
-	],
-	"playfields": 1
+	]
 }';
     var malfunctionModchartU:String = '{
 	"modifiers": [

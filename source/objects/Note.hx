@@ -307,6 +307,16 @@ class Note extends FlxSkewedSprite
 
 		if(noteData > -1 && noteType != value) {
 			switch(value) {
+				case 'Evilrett Alt Skin 1':
+					reloadNote('faviNotes/NOTE_assets-LUNACYEVIL');
+				case 'Evilrett Alt Skin 1 No Anim':
+					reloadNote('faviNotes/NOTE_assets-LUNACYEVIL');
+					noAnimation = true;
+					noMissAnimation = true;
+				case 'Evilrett Alt Skin 2':
+					reloadNote('faviNotes/NOTE_assets-EVILINTRO');
+				case 'Evilrett Alt Skin 3':
+					reloadNote('faviNotes/NOTE_assets-SATAN');
 				case 'Hurt Note':
 					ignoreNote = mustPress;
 					//reloadNote('HURTNOTE_assets');

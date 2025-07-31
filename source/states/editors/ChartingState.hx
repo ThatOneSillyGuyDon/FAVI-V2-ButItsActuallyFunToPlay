@@ -58,7 +58,11 @@ class ChartingState extends MusicBeatState
 		'GF Sing',
 		'No Animation',
 		'Mal Must Miss These',
-		'Mal Must Miss These (Error Edition)'
+		'Mal Must Miss These (Error Edition)',
+		'Evilrett Alt Skin 1 No Anim',
+		'Evilrett Alt Skin 1',
+		'Evilrett Alt Skin 2',
+		'Evilrett Alt Skin 3'
 	];
 	public var ignoreWarnings = false;
 	var curNoteTypes:Array<String> = [];
@@ -73,6 +77,7 @@ class ChartingState extends MusicBeatState
 		['Play Animation', "Plays an animation on a Character,\nonce the animation is completed,\nthe animation changes to Idle\n\nValue 1: Animation to play.\nValue 2: Character (Dad, BF, GF)"],
 		['Alt Idle Animation', "Sets a specified suffix after the idle animation name.\nYou can use this to trigger 'idle-alt' if you set\nValue 2 to -alt\n\nValue 1: Character to set (Dad, BF or GF)\nValue 2: New suffix (Leave it blank to disable)"],
 		['Change Character', "Value 1: Character to change (Dad, BF, GF)\nValue 2: New character's name"],
+		['Change Strumline Style', "Value 1: Opponent Note Skin, Player Note Skin\nValue 2: Trigger intro tween?"],
 		['Change Scroll Speed', "Value 1: Scroll Speed Multiplier (1 is default)\nValue 2: Time it takes to change fully in seconds."],
 		['Set Property', "Value 1: Variable name\nValue 2: New value"],
 		['Tween Chromatic Abberation', 'Value 1 - Name of the event\nValue 2 - Event Data\n\nTween - Intensity, Duration\nZoom - Intensity, Duration\nSet - Intensity'],
@@ -214,7 +219,7 @@ class ChartingState extends MusicBeatState
 		// Updating Discord Rich Presence
 		switch (_song.song.toLowerCase())
 		{
-			case "joygrim" | "dentophobia" | "scrapped" | "neglection": DiscordClient.changePresence("Chart Editor", "Charting a song", "icon");
+			case "joygrim" | "dentophobia" | "scrapped" | "neglection" | "whimsical bar blues": DiscordClient.changePresence("Chart Editor", "Charting a song", "icon");
 			default: DiscordClient.changePresence("Chart Editor", StringTools.replace(_song.song, '-', ' '), "icon");
 		}
 		#end

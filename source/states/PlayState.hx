@@ -36,8 +36,6 @@ import objects.Character.Shadow;
 import states.editors.ChartingState;
 import states.editors.CharacterEditorState;
 
-import substates.PauseSubState;
-
 #if !flash
 import flixel.addons.display.FlxRuntimeShader;
 import openfl.filters.ShaderFilter;
@@ -2124,7 +2122,7 @@ class PlayState extends MusicBeatState
 		if (autoUpdateRPC)
 			switch (SONG.song)
 			{
-				case "Joygrim" | "Neglection" | "Scrapped": DiscordClient.changePresence("Playing a song", "It's a secret...", "icon", "random", true, songLength - Conductor.songPosition - ClientPrefs.data.noteOffset);
+				case "Joygrim" | "Neglection" | "Scrapped" | "Whimsical Bar Blues": DiscordClient.changePresence("Playing a song", "It's a secret...", "icon", "random", true, songLength - Conductor.songPosition - ClientPrefs.data.noteOffset);
 				default: DiscordClient.changePresence(discordTxt[0], discordTxt[1], CoolUtil.spaceToDash(discordIcon), "random", true, songLength - Conductor.songPosition - ClientPrefs.data.noteOffset);
 			}
 	}
@@ -2467,8 +2465,9 @@ class PlayState extends MusicBeatState
 	}
 
 	public var skipArrowStartTween:Bool = false; //for lua
-	private function generateStaticArrows(player:Int):Void
+	private function generateStaticArrows(player:Int, ?texture:String = null, ?tween:Bool = true):Void
 	{
+
 		var strumLineX:Float = middlescroll ? STRUM_X_MIDDLESCROLL : STRUM_X;
 		var strumLineY:Float = ClientPrefs.data.downScroll ? (FlxG.height - 150) : 50;
 		for (i in 0...4)
@@ -2482,8 +2481,10 @@ class PlayState extends MusicBeatState
 			}
 
 			var babyArrow:StrumNote = new StrumNote(strumLineX, strumLineY, i, player);
+			if (texture != null)
+				babyArrow.texture = texture;
 			babyArrow.downScroll = ClientPrefs.data.downScroll;
-			if (!isStoryMode && !skipArrowStartTween)
+			if (!isStoryMode && tween)
 			{
 				//babyArrow.y -= 10;
 				babyArrow.alpha = 0;
@@ -3907,6 +3908,38 @@ class PlayState extends MusicBeatState
 					char.recalculateDanceIdle();
 				}
 
+			case 'Change Strumline Style':
+				var getStyle:Array<String> = value1.split(',');
+				if (getStyle[0] == '' || getStyle[0] == null)
+					return;
+
+				var tweenBool:Bool = false;
+				if (value2 == 'true')
+					tweenBool = true;
+
+				remove(playfieldRenderer);
+				playfieldRenderer.destroy();
+				remove(strumLineNotes);
+				strumLineNotes = new FlxTypedGroup<StrumNote>();
+				strumLineNotes.cameras = [camHUD];
+				add(strumLineNotes);
+
+				playerStrums = new FlxTypedGroup<StrumNote>();
+				opponentStrums = new FlxTypedGroup<StrumNote>();
+
+				var i:Int = unspawnNotes.length - 1;
+				if (unspawnNotes[i].mustPress)
+					unspawnNotes[i].texture = getStyle[1].trim();
+				else
+					unspawnNotes[i].texture = getStyle[0].trim();
+
+				playfieldRenderer = new PlayfieldRenderer(strumLineNotes, notes, this);
+				noteGroup.add(playfieldRenderer);
+
+				generateStaticArrows(0, getStyle[0].trim(), tweenBool);
+				generateStaticArrows(1, getStyle[1].trim(), tweenBool);
+				NoteMovement.getDefaultStrumPos(this);
+
 			case 'Change Character':
 				var charType:Int = 0;
 				switch(value1.toLowerCase().trim()) {
@@ -4359,7 +4392,7 @@ class PlayState extends MusicBeatState
 								isCameraOnForcedPos = true;
 								if(triggerInfo[0] == null) triggerInfo[0] = "0";
 								if(triggerInfo[1] == null) triggerInfo[1] = "0";
-								camTwn[7] = FlxTween.tween(camFollow, {x: Std.parseFloat(triggerInfo[0]), y: Std.parseFloat(triggerInfo[1])}, Std.parseFloat(triggerInfo[2]), {ease: returnTweenEase(triggerInfo[3]), onComplete: function(twn:FlxTween)
+								camTwn[7] = FlxTween.tween(camFollow, {x: Std.parseFloat(triggerInfo[0]), y: Std.parseFloat(triggerInfo[1])}, Std.parseFloat(triggerInfo[2]), {ease: returnTweenEase(triggerInfo[3].trim().toLowerCase()), onComplete: function(twn:FlxTween)
 								{
 									camTwn[7] = null;
 								}});

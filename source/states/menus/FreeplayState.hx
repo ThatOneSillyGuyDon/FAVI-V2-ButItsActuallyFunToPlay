@@ -171,7 +171,7 @@ class FreeplayState extends MusicBeatState
 						addSong('Mercy', 3, (GameData.mercyLock != 'beaten' && GameData.mercyLock != 'beaten' ? 'mysteryfp' : 'walt'), FlxColor.fromRGB(176, 169, 116), 'Ophomix24', 'INSANE', FlxColor.fromRGB(255, 110, 110), (GameData.mercyLock == "beaten" || GameData.mercyLock == "unlocked" ? [27, -20] : [25, 0]), "Drains your health until death. Utilizes the SPACEBAR, highly recommend checking your controls setting before playing.");
 						//addSong('Neglection', 3, (GameData.pnmLock != 'unlocked' && GameData.pnmLock != 'beaten' ? 'mysteryfp' : 'pnm'), FlxColor.fromRGB(117, 86, 27), 'AttackPan', 'NORMAL', FlxColor.fromRGB(255, 220, 220));
 						addSong('Cycled Sins', 3, (GameData.sinsLock != 'unlocked' && GameData.sinsLock != 'beaten' ? 'mysteryfp' : 'relapseNEW-pixel'), FlxColor.fromRGB(105, 30, 30), 'JBlitz', 'HARD', FlxColor.fromRGB(255, 187, 187), (GameData.sinsLock == "beaten" || GameData.sinsLock == "unlocked" ? [24, -21] : [25, 0]), "Dodge Relapse Mouse's gunshots. Utilizes the SPACEBAR, highly recommend checking your controls setting before playing."); //messing with the saves for this later
-						//addSong('Whimsical-Bar-Blues', 3, 'mick-isolated-new', FlxColor.fromRGB(133, 190, 255), 'inneaux & Sayan Sama', 'NORMAL', FlxColor.fromRGB(255, 220, 220));
+						addSong('Whimsical Bar Blues', 3, 'mysteryfp', FlxColor.fromRGB(133, 190, 255), 'inneaux & Sayan Sama', 'NORMAL', FlxColor.fromRGB(255, 220, 220), [25, 0], "None");
 					//}
 					/*
 					if (GameData.episode2FPLock == 'unlocked')
@@ -478,7 +478,7 @@ class FreeplayState extends MusicBeatState
 		intendedColor = bg.color;
 
 		//Isn't ported yet, sorry!
-		//FAVIPauseSubState.colorSetup = intendedColor;
+		FAVIPauseSubState.colorSetup = intendedColor;
 
 		if (spectrum != null) spectrum.color = intendedColor;
 
@@ -1024,7 +1024,7 @@ class FreeplayState extends MusicBeatState
 		#if DISCORD_ALLOWED
 		switch (songs[curSelected].songName)
 		{
-			case "Joygrim" | "Dentophobia" | "Scrapped" | "Neglection": DiscordClient.changePresence("Freeplay Menu", "It's a secret...", "icon", "disc-player");
+			case "Joygrim" | "Dentophobia" | "Scrapped" | "Neglection" | "Whimsical Bar Blues": DiscordClient.changePresence("Freeplay Menu", "It's a secret...", "icon", "disc-player");
 			default: DiscordClient.changePresence("Freeplay Menu: " + categoryName, "Picking Song: " + songs[curSelected].songName, "icon", "disc-player");
 		}
 		#end
@@ -1040,7 +1040,7 @@ class FreeplayState extends MusicBeatState
 			intendedColor = newColor;
 
 			//Isn't ported yet, sorry!
-			//FAVIPauseSubState.colorSetup = intendedColor;
+			FAVIPauseSubState.colorSetup = intendedColor;
 
 			if (spectrum != null)
 			{
@@ -1309,6 +1309,7 @@ class FreeplayState extends MusicBeatState
 			case 'twisted-grins' | "don't-cross!": bpm = 140;
 			case 'cycled-sins': bpm = 161;
 			case 'isolated-beta' | 'isolated-old': bpm = 120;
+			case 'whimsical-bar-blues': bpm = 110;
 		}
 		return bpm;
 	}
@@ -1318,7 +1319,7 @@ class FreeplayState extends MusicBeatState
 			switch (CoolUtil.spaceToDash(PlayState.SONG.song.toLowerCase()))
 			{
 				case 'devilish-deal' | 'hunted-legacy' | 'isolated-beta' | 'isolated-old': difficultyRank = 'EASY';
-				case 'isolated' | 'neglection' | 'resentment' | 'lunacy-legacy' | 'hunted' | 'mortiferum-risus' | 'isolated-legacy': difficultyRank = 'NORMAL';
+				case 'isolated' | 'neglection' | 'resentment' | 'lunacy-legacy' | 'hunted' | 'mortiferum-risus' | 'isolated-legacy' | 'whimsical-bar-blues': difficultyRank = 'NORMAL';
 				case 'delusional' | 'mercy' | 'malfunction-legacy': difficultyRank = 'INSANE';
 				case 'malfunction': difficultyRank = 'null';
 				case "dont-cross": difficultyRank = 'GOOD LUCK';
@@ -1343,6 +1344,7 @@ class FreeplayState extends MusicBeatState
 				case "War Dilemma": songArtist = "Sayan Sama & obscurity.";
 				case "Mercy": songArtist = "Ophomix24";
 				case "Ship the Fart Yay Hooray <3 (Distant Stars)" | "Ahh the Scary (Somber Night)" | "The Wretched Tilezones (Simple Life)": songArtist = "ForFurtherNotice";
+				case "Whimsical Bar Blues": songArtist = "inneaux & Sayan Sama";
 				default: songArtist = "Unknown";
 			}
 			return songArtist;

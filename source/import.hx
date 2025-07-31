@@ -44,6 +44,11 @@ import substates.GameOverScreens.WompWompSadMan; //Birthday Exclusive
 import substates.GameOverScreens.MalsquareDeath; //Malfunction Exclusive
 import substates.GameOverScreens.MalsquareTrollScreen; //Least Annoying Thing in the mod
 
+//import pause screens
+import substates.PauseScreens.PauseSubState; //default fnf screen
+import substates.PauseScreens.FAVIPauseSubState; //favi screen
+import substates.PauseScreens.PauseManiaSubstate; //mania screen
+
 // import specific menus and objects to prevent compile errors
 #if desktop
 import backend.Discord;

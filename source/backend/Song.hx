@@ -136,6 +136,7 @@ class Song
 			case "cycled-sins": chartFile = Chart.cycledSins;
 			case "twisted-grins": chartFile = Chart.twistedGrins;
 			case "scrapped": chartFile = Chart.scrapped;
+			case "whimsical-bar-blues": chartFile = Chart.wbb;
 
 			case "dont-cross":
 				var eventRandom = FlxG.random.int(1,4);
@@ -240,7 +241,7 @@ class Song
 			case "Devilish Deal" | "Lunacy" | "Hunted" | "War Dilemma" | "Twisted Grins" | "Isolated" | "The Wretched Tilezones (Simple Life)": charter = "Purg";
 			case "Delusional" | "Cycled Sins" | "Birthday" | "Cycled Sins Legacy" | "Twisted Grins Legacy" | "Scrapped": charter = "Dreupy";
 			case "Lunacy Legacy": charter = "obscurity.";
-			case "Bless" | "Malfunction" | "Mercy" | "Mercy Legacy" | "Isolated Old" | "Isolated Legacy" | "Isolated Beta" | "Malfunction Legacy" | "Laugh Track" | "Rotten Petals" | "Ahh the Scary (Somber Night)": charter = "ThatOneSillyGuy";
+			case "Bless" | "Malfunction" | "Mercy" | "Mercy Legacy" | "Isolated Old" | "Isolated Legacy" | "Isolated Beta" | "Malfunction Legacy" | "Laugh Track" | "Rotten Petals" | "Ahh the Scary (Somber Night)" | "Whimsical Bar Blues": charter = "ThatOneSillyGuy";
 			case "Delusional Legacy": charter = "Noppz";
 			case "Dont Cross":
 				switch (randomizer)
