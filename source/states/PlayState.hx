@@ -3935,6 +3935,7 @@ class PlayState extends MusicBeatState
 
 				playfieldRenderer = new PlayfieldRenderer(strumLineNotes, notes, this);
 				noteGroup.add(playfieldRenderer);
+				noteGroup.add(grpNoteSplashes);
 
 				generateStaticArrows(0, getStyle[0].trim(), tweenBool);
 				generateStaticArrows(1, getStyle[1].trim(), tweenBool);

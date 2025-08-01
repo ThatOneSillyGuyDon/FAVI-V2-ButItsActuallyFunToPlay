@@ -56,14 +56,53 @@
 			"name": "right"
 		},
 		{
+			"loop": false,
 			"offsets": [
 				90,
 				20
 			],
-			"loop": false,
-			"fps": 12,
 			"anim": "transition",
-			"indices": [],
+			"fps": 12,
+			"name": "transition",
+			"indices": [
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23,
+				24,
+				25,
+				26
+			]
+		},
+		{
+			"offsets": [
+				90,
+				20
+			],
+			"indices": [
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7
+			],
+			"fps": 9,
+			"anim": "idle-alt",
+			"loop": false,
 			"name": "transition"
 		}
 	],
