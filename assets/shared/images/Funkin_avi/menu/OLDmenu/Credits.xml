@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="Credits.png">
+<SubTexture name="Credits Idle0000" x="0" y="253" width="945" height="200" frameX="-264" frameY="-20" frameWidth="1440" frameHeight="251" />
+<SubTexture name="Credits Confirm0000" x="0" y="253" width="945" height="200" frameX="-264" frameY="-20" frameWidth="1440" frameHeight="251" />
+<SubTexture name="Credits Confirm0001" x="0" y="0" width="1260" height="253" frameX="-28" frameY="-33" frameWidth="1316" frameHeight="367" />
+<SubTexture name="Credits Confirm0002" x="0" y="253" width="945" height="200" frameX="-264" frameY="-20" frameWidth="1440" frameHeight="251" />
+<SubTexture name="Credits Confirm0003" x="0" y="0" width="1260" height="253" frameX="-28" frameY="-33" frameWidth="1316" frameHeight="367" />
+<SubTexture name="Credits Confirm0004" x="0" y="253" width="945" height="200" frameX="-264" frameY="-20" frameWidth="1440" frameHeight="251" />
+<SubTexture name="Credits Confirm0005" x="0" y="0" width="1260" height="253" frameX="-28" frameY="-33" frameWidth="1316" frameHeight="367" />
+<SubTexture name="Credits Confirm0006" x="0" y="253" width="945" height="200" frameX="-264" frameY="-20" frameWidth="1440" frameHeight="251" />
+<SubTexture name="Credits Confirm0007" x="0" y="0" width="1260" height="253" frameX="-28" frameY="-33" frameWidth="1316" frameHeight="367" />
+</TextureAtlas>

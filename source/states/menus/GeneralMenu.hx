@@ -198,8 +198,16 @@ class GeneralMenu extends MusicBeatState {
             Conductor.bpm = 50;
 			FreeplayState.songInstPlaying = false;
 			FlxG.sound.play(Paths.sound("cancelMenu"));
-			MusicBeatState.switchState(new MainMenuState());
-			FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
+            if (FlxG.random.bool(8))
+			{
+				FlxG.sound.music.fadeOut(0.5);
+				MusicBeatState.switchState(new states.menus.legacy.LegacyMenuState());
+			}
+			else
+            {
+				MusicBeatState.switchState(new MainMenuState());
+			    FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
+            }
 		}
     }
 

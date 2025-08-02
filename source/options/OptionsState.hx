@@ -149,7 +149,16 @@ class OptionsState extends MusicBeatState
 				LoadingState.loadAndSwitchState(new PlayState());
 				FlxG.sound.music.volume = 0;
 			}
-			else MusicBeatState.switchState(new MainMenuState());
+			else 
+			{
+				if (FlxG.random.bool(8))
+				{
+					FlxG.sound.music.fadeOut(0.5);
+					MusicBeatState.switchState(new states.menus.legacy.LegacyMenuState());
+				}
+				else
+					MusicBeatState.switchState(new MainMenuState());
+			}
 		}
 
 		if (controls.ACCEPT)

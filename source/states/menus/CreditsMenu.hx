@@ -218,10 +218,18 @@ class CreditsMenu extends MusicBeatState
 
 		if (controls.BACK)
 		{
-			MusicBeatState.switchState(new MainMenuState());
-			Conductor.bpm = (50); // changes back to titlescreen bpm
-			FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'), 1); // resets music back to menu music
-			FlxG.sound.music.fadeIn();
+			if (FlxG.random.bool(8))
+			{
+				FlxG.sound.music.fadeOut(0.5);
+				MusicBeatState.switchState(new states.menus.legacy.LegacyMenuState());
+			}
+			else
+			{
+				MusicBeatState.switchState(new MainMenuState());
+				Conductor.bpm = (50); // changes back to titlescreen bpm
+				FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'), 1); // resets music back to menu music
+				FlxG.sound.music.fadeIn();
+			}
 		}
 
 		if(FlxG.mouse.wheel != 0)

@@ -124,7 +124,16 @@ class CharacterMenu extends MusicBeatState
 
         name.y = FlxMath.lerp(40, name.y, CoolUtil.boundTo(1 - (elapsed * 15), 0, 1));
 
-        if (controls.BACK) MusicBeatState.switchState(new MainMenuState());
+        if (controls.BACK) 
+        {
+            if (FlxG.random.bool(8))
+			{
+				FlxG.sound.music.fadeOut(0.5);
+				MusicBeatState.switchState(new states.menus.legacy.LegacyMenuState());
+			}
+			else
+				MusicBeatState.switchState(new MainMenuState());
+        }
 
         if (controls.UI_LEFT_P)
         {

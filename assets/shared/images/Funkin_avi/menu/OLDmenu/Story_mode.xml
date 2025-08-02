@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="Story mode.png">
+<SubTexture name="Story mode Idle0000" x="1260" y="0" width="1392" height="214" frameX="-13" frameY="-25" frameWidth="1440" frameHeight="274" />
+<SubTexture name="Story mode Confirm0000" x="1260" y="0" width="1392" height="214" frameX="-13" frameY="-25" frameWidth="1440" frameHeight="274" />
+<SubTexture name="Story mode Confirm0001" x="0" y="0" width="1260" height="253" frameX="-28" frameY="-33" frameWidth="1316" frameHeight="367" />
+<SubTexture name="Story mode Confirm0002" x="1260" y="0" width="1392" height="214" frameX="-13" frameY="-25" frameWidth="1440" frameHeight="274" />
+<SubTexture name="Story mode Confirm0003" x="0" y="0" width="1260" height="253" frameX="-28" frameY="-33" frameWidth="1316" frameHeight="367" />
+<SubTexture name="Story mode Confirm0004" x="1260" y="0" width="1392" height="214" frameX="-13" frameY="-25" frameWidth="1440" frameHeight="274" />
+<SubTexture name="Story mode Confirm0005" x="0" y="0" width="1260" height="253" frameX="-28" frameY="-33" frameWidth="1316" frameHeight="367" />
+<SubTexture name="Story mode Confirm0006" x="1260" y="0" width="1392" height="214" frameX="-13" frameY="-25" frameWidth="1440" frameHeight="274" />
+<SubTexture name="Story mode Confirm0007" x="0" y="0" width="1260" height="253" frameX="-28" frameY="-33" frameWidth="1316" frameHeight="367" />
+</TextureAtlas>
