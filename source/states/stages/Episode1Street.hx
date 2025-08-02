@@ -937,42 +937,17 @@ class Episode1Street extends BaseStage
 				var eventData:Float = Std.parseFloat(value1);
 				switch (eventData)
 				{
-					case 1: 
-						game.boundValue = 1;
-						game.drainValue = 0.02;
-						game.camBars.fade(FlxColor.BLACK, 2, true);
+					case 1:
 						if (rain != null) rain.alpha = 1;
-					case 2: game.defaultCamZoom = 1.3;
-					case 3:
-						game.camBars.fade(FlxColor.BLACK, 0.6);
-						for (daUIs in [camHUD])
-							FlxTween.tween(daUIs, {alpha: 0}, 3);
-					// BF Starts Singing Some Lyrics
-					case 4:
+					case 2:
 						game.camVideo.fade(FlxColor.BLACK, 5, true);
-						game.camVideo.visible = true;
+						game.camVideo.alpha = 1;
 						deluSing.visible = true;
 						deluSing.setVideoTime(0);
 						deluSing.resume();
 						//I FIXED IT!!!!!!!!!!!!!!!!!! :)
 						if (PlayState.instance.vocals.volume != 1) PlayState.instance.vocals.volume = 1; // it should be fixed then
-					case 5:
-						game.defaultCamZoom = 0.8;
-						game.camBars.fade(0x000000, 5, true);
-						game.camFlashSystem(BG_DARK, {alpha: 1, timer: 0.3, ease: FlxEase.quartInOut});
-						game.defaultCamZoom = 1.2;
-						game.camFollow.x -= 100;
-						FlxTween.tween(game.camFollow, {x: game.camFollow.x + 100}, 12, {ease: FlxEase.sineInOut});
-					case 6:
-						game.camFlashSystem(BG_DARK, {alpha: 0, timer: 0.3, ease: FlxEase.quartInOut});
-						game.defaultCamZoom = 0.75;
-						game.camGame.flash(FlxColor.WHITE, 1);
-
-						// today in super r slur shit we have this cus i hate my life
-						FlxTween.tween(game.camFollow, {y: game.camFollow.y - 300}, .00000001, {onComplete: bensonFromRegularShow -> {
-							FlxTween.tween(game.camFollow, {y: game.camFollow.y + 300}, 7, {ease: FlxEase.sineInOut});
-						}});
-						
+					case 3:
 						//Stuff For the Rain
 						if (rain != null) 
 						{
@@ -982,20 +957,8 @@ class Episode1Street extends BaseStage
 						}
 						if (heavyRain != null && !ClientPrefs.data.lowQuality)
 							heavyRain.alpha = 0.34;
-					case 7:
-						camGame.zoom += 0.3;
-						game.camFlashSystem(BG_FLASH, {alpha: 0.5, timer: 0.35});
-					case 8:
-						camGame.zoom += 0.15;
-						game.camFlashSystem(BG_FLASH, {alpha: 0.25, timer: 0.35});
-					case 9: game.defaultCamZoom = 1;
-					case 10:
-						game.camBars.fade(0x00000, .000001);
-						game.defaultCamZoom = 1.3;
-
-					// Mickey Screams Like A Bitch
-					case 11:
-						game.camVideo.visible = false;
+					case 4:
+						game.camVideo.alpha = 0.0001;
 						game.boundValue = 0.6;
 						game.drainValue = 0.025;
 						game.chromEffect = 0.3;
@@ -1005,11 +968,10 @@ class Episode1Street extends BaseStage
 						camGame.shake(0.01, 1.2);
 						camGame.visible = true;
 						camGame.alpha = 1;
-					// The Drop Starts
-					case 12:
-						FlxTween.tween(camHUD, {alpha: 1}, 1, {ease: FlxEase.quadOut});
+					case 5:
 						if (game.chromTween != null) game.chromTween.cancel();
 						game.chromTween = FlxTween.tween(game, {chromEffect: 0.18}, 0.6, {ease: FlxEase.sineOut});
+						game.camVideo.alpha = 0.0001;
 						if (ClientPrefs.data.flashing)
 							camGame.flash(FlxColor.WHITE, 0.5);
 						if (ClientPrefs.data.shaders)
@@ -1040,46 +1002,21 @@ class Episode1Street extends BaseStage
 									new ShaderFilter(delusionalShift)]);
                             }
 						}
-					case 13:
+					case 6:
 						game.chromTween = null;
-						game.defaultCamZoom = 0.85;
-					case 14: game.defaultCamZoom = 1;
-					case 15: game.defaultCamZoom = 0.75;
-					case 16: game.defaultCamZoom = 1;
-					case 17: game.defaultCamZoom = 0.7;
-					case 18: game.defaultCamZoom += 0.1;
-					case 19: game.defaultCamZoom += 0.2;
-					case 20: game.defaultCamZoom += 0.3;
-					case 21: game.defaultCamZoom = 1.2;
-					case 22: game.defaultCamZoom = 1.3;
-					case 23: game.defaultCamZoom = 0.75;
-					case 24:
+					case 7:
 						game.chromTween = FlxTween.tween(game, {chromEffect: 1}, 0.1, {ease: FlxEase.sineInOut});
-						//game.tweenCamera(1.5, 0.1, 'sineInOut');
-					case 25:
+					case 8:
 						if (game.chromTween != null) game.chromTween.cancel();
 						game.chromTween = null;
-						camGame.visible = false;
-						game.uiGroup.visible = false;
-					case 26:
-						camGame.visible = true;
-						game.uiGroup.visible = true;
-						if (ClientPrefs.data.flashing)
-							camGame.flash(FlxColor.WHITE, 1);
-						game.defaultCamZoom = 0.8;
+					case 9:
 						game.chromTween = FlxTween.tween(game, {chromEffect: 0.1}, 0.6, {ease: FlxEase.quadOut});
-					case 27:
-						game.boundValue = 2;
-						game.drainValue = 0;
-						camGame.visible = false;
-						game.uiGroup.visible = false;
-						game.noteGroup.visible = false;
+					case 10:
 						if (!ClientPrefs.data.lowQuality)
 						{
 							atmosphereParticle.visible = false;
 							ashParticle.visible = false;
 						}
-					case 28:
 						if (ClientPrefs.data.shaders)
 						{
                             if (!ClientPrefs.data.lowQuality)
@@ -1103,45 +1040,16 @@ class Episode1Street extends BaseStage
                             }
 						}
 						game.chromEffect = 0.00001;
-						game.defaultCamZoom = 0.85;
-					case 30:
-						camGame.visible = true;
-						game.noteGroup.visible = true;
-						game.comboGroup.visible = false;
 						game.boyfriend.x += 1000;
-					case 39:
-						game.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.38, timer: 0.85, colors: [255, 255, 255]});
+						boyfriend.alpha = 0.0001;
+					case 11:
+						FlxTween.tween(boyfriend, {alpha: 0.45}, 2.5, {ease: FlxEase.expoOut});
+					case 12:
 						minnieJumpscare.resume();
 						minnieJumpscare.visible = true;
-						game.boyfriend.alpha = 0.0001;
-					case 40:
-						FlxTween.tween(camGame, {alpha: 0.0001}, 5, {ease: FlxEase.quartInOut});
-					case 42:
-						PlayState.blendFlash.cameras = [camGame];
-					case 43:
-						game.isCameraOnForcedPos = false;
-						game.boundValue = 0.45;
-						game.drainValue = 0.032;
-						game.boyfriend.alpha = 1;
-						game.camFollow.x = 0;
-						game.camFollow.y = 0;
-						if (!ClientPrefs.data.lowQuality)
-						{
-							atmosphereParticle.visible = true;
-							ashParticle.visible = true;
-						}
-						game.uiGroup.visible = false;
-						camGame.alpha = 1;
-					case 44:
-						game.camVideo.visible = false;
-						camGame.alpha = 1;
-						game.uiGroup.visible = true;
-						game.noteGroup.visible = true;
-						game.comboGroup.visible = true;
-						game.defaultCamZoom = 0.9;
+						game.boyfriend.alpha = 0.0001; 
+					case 13:
 						game.chromEffect = 0.1;
-						if (ClientPrefs.data.flashing)
-							camGame.flash(FlxColor.WHITE, 0.5);
 						if (ClientPrefs.data.shaders)
 						{
                             if (!ClientPrefs.data.lowQuality)
@@ -1167,67 +1075,11 @@ class Episode1Street extends BaseStage
                                 camHUD.setFilters([new ShaderFilter(chromNormalShader), new ShaderFilter(delusionalShift)]);
                             }
 						}
-					case 45:
-						game.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.135, timer: 0.85, colors: [255, 0, 0]});
-					// The part where shit gets serious, Evilrette/Satan starts the solo
-					case 46:
-						game.boundValue = 1.5;
-						game.drainValue = 0.01;
-						//game.tweenCamera(1.35, 7, "quartInOut");
-						game.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.4, timer: 2, colors: [255, 0, 0]});
-						game.camFlashSystem(BG_DARK, {alpha: 0.8, timer: 6, ease: FlxEase.quartInOut});
-						game.isCameraOnForcedPos = true;
-						FlxTween.tween(game.camFollow, {x: game.camFollow.x + 150, y: game.camFollow.y + 50}, 4.3, {ease: FlxEase.quartInOut});
-					// camera moves over to Mickey realizing he was never gonna win
-					case 47:
-						FlxTween.tween(game.camFollow, {x: game.camFollow.x - 950, y: game.camFollow.y - 70}, 1.5, {ease: FlxEase.circInOut});
-					case 48:
-						game.camFollow.x = 440;
-						game.camFollow.y = 360;
+					case 14:
 						FlxTween.tween(mickeySpirit, {alpha: 0.6}, 2, {ease: FlxEase.sineOut});
-						game.defaultCamZoom = 0.5;
-						game.camFlashSystem(BG_DARK, {alpha: 0, timer: 1, ease: FlxEase.circOut});
-					case 49:
+					case 15:
 						FlxTween.tween(mickeySpirit, {alpha: 0}, 4, {ease: FlxEase.quartOut});
-						game.isCameraOnForcedPos = false;
-						game.defaultCamZoom = 0.9;
-					case 50:
-						FlxTween.tween(camGame, {zoom: 1.6}, 1, {ease: FlxEase.sineInOut});
-						game.camVideo.visible = true;
-						game.camVideo.fade(FlxColor.BLACK, 0.7);
-					case 51:
-						death.setVideoTime(0);
-						death.resume();
-						death.visible = true;
-						camGame.visible = false;
-						FlxTween.tween(camHUD, {alpha: 0}, 2);
-						game.camVideo.zoom += 0.3;
-						game.camVideo.fade(FlxColor.BLACK, 0.2, true);
-						FlxTween.tween(game.camVideo, {zoom: 1}, 0.5, {ease: FlxEase.sineOut});
-						game.camFlashSystem(BG_DARK, {timer: 5});
-					case 52:
-						game.camFlashSystem(BG_DARK, {alpha: 1, timer: 0.5, ease: FlxEase.sineOut});
-					case 53:
-						game.camFlashSystem(BG_FLASH, {alpha: 1, timer: 0.3, ease: FlxEase.sineOut});
-						if (ClientPrefs.data.shaders)
-							{
-								if (!ClientPrefs.data.lowQuality)
-								{
-									camGame.setFilters([
-										new ShaderFilter(dramaticCamMovement),
-										new ShaderFilter(monitorFilter)
-									]);
-								}
-								else
-								{
-									camGame.setFilters([
-										new ShaderFilter(monitorFilter)
-									]);
-								}
-							}
-					case 54:
-						FlxTween.tween(game.camVideo, {alpha: 0}, 4);
-
+					
 					case 55:
 						FlxTween.tween(fakeLightOfHope, {alpha: 0.001}, 1.7);
 						if (!ClientPrefs.data.lowQuality) FlxTween.tween(stageFront, {alpha: 1}, 1.5);
@@ -1401,8 +1253,13 @@ class Episode1Street extends BaseStage
 						fakeLightOfHope.kill();
 						fakeLightOfHope.destroy();
 						fakeLightOfHope = null;
-					case 76:
-						FlxTween.tween(boyfriend, {alpha: 0.45}, 2.5, {ease: FlxEase.expoOut});
+					case 69:
+						game.camVideo.zoom += 0.3;
+						game.camVideo.fade(FlxColor.BLACK, 0.2, true);
+						FlxTween.tween(game.camVideo, {zoom: 1}, 0.5, {ease: FlxEase.sineOut});
+						death.setVideoTime(0);
+						death.resume();
+						death.visible = true;
 				}
 		}
 	}

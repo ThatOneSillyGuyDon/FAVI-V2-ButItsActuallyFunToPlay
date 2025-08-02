@@ -18444,19 +18444,14 @@ enum abstract Chart(String) from String to String {
 				-5000,
 				[
 					[
-						"Cinematic Event",
-						"Move",
-						"600,0.0001,circOut"
-					]
-				]
-			],
-			[
-				-5000,
-				[
+						"Add Camera Zoom",
+						"0",
+						"1"
+					],
 					[
-						"Set Property",
-						"defaultCamZoom",
-						"2"
+						"Camera Event",
+						"Start Hidden",
+						""
 					]
 				]
 			],
@@ -18464,61 +18459,29 @@ enum abstract Chart(String) from String to String {
 				0,
 				[
 					[
+						"Camera Event",
+						"Fade",
+						"0,0,0,1,true"
+					],
+					[
+						"Cinematic Event",
+						"Move",
+						"50,0.0001,linear"
+					],
+					[
+						"Camera Event",
+						"Tween Value",
+						"hudalpha,1,1,circOut"
+					],
+					[
 						"Change Strumline Style",
 						"faviNotes/NOTE_assets-CARTOON, faviNotes/NOTE_assets-EVILINTRO",
 						"false"
 					],
 					[
-						"Camera Event",
-						"starthidden",
-						""
-					],
-					[
-						"Add Camera Zoom",
-						"",
-						"5"
-					],
-					[
-						"Camera Event",
-						"tween value",
-						"hud alpha, 1, 1.5, circOut"
-					]
-				],
-				null,
-				"Evilrett Alt Skin 2"
-			],
-			[
-				342.857142857143,
-				[
-					[
 						"Delusional Events",
 						"1",
 						""
-					]
-				]
-			],
-			[
-				342.857142857143,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"100,1,circOut"
-					],
-					[
-						"Set Property",
-						"defaultCamZoom",
-						"0.85"
-					]
-				]
-			],
-			[
-				10971.4285714286,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"120,2,circOut"
 					]
 				]
 			],
@@ -18533,27 +18496,47 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
-				21942.8571428571,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"75,2,circInOut"
-					]
-				]
-			],
-			[
-				43885.7142857143,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"90,1,circOut"
-					]
-				]
-			],
-			[
 				45257.1428571429,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0.85,1,sineInOut"
+					],
+					[
+						"Camera Event",
+						"Change Value",
+						"defaultcamzoom,0.95"
+					]
+				]
+			],
+			[
+				46200,
+				[
+					[
+						"Camera Event",
+						"Tween Value",
+						"zoom,0.65,2,circInOut"
+					],
+					[
+						"Cinematic Event",
+						"Move",
+						"600,2,circInOut"
+					]
+				]
+			],
+			[
+				46628.5714285714,
+				[
+					[
+						"Camera Event",
+						"Tween Value",
+						"hudalpha,0.0001,3,sineInOut"
+					]
+				]
+			],
+			[
+				48972.972972973,
 				[
 					[
 						"Delusional Events",
@@ -18563,67 +18546,17 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
-				45257.1428571429,
+				49298,
 				[
 					[
 						"Cinematic Event",
 						"Move",
-						"180,2,circOut"
+						"80,0.0001,circInOut"
 					],
 					[
-						"Background Controls",
-						"Darken",
-						"1,2,linear"
-					]
-				]
-			],
-			[
-				46457.1428571429,
-				[
-					[
 						"Camera Event",
-						"Tween Value",
-						"zoom,0.55,3,cubeInOut"
-					]
-				]
-			],
-			[
-				46628.5714285714,
-				[
-					[
-						"Delusional Events",
-						"3",
-						""
-					]
-				]
-			],
-			[
-				48972.972972973,
-				[
-					[
-						"Delusional Events",
-						"4",
-						""
-					]
-				]
-			],
-			[
-				49297.2972972973,
-				[
-					[
-						"Delusional Events",
-						"5",
-						""
-					]
-				]
-			],
-			[
-				49297.2972972973,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"70,0.0001,linear"
+						"Fade",
+						"0,0,0,0.0001,false"
 					]
 				]
 			],
@@ -18631,19 +18564,9 @@ enum abstract Chart(String) from String to String {
 				49945.945945946,
 				[
 					[
-						"Manage Lyrics",
-						"evilpredelu",
-						"Count the minutes...,disneyFreeplayFont.ttf,30,1.1,sineInOut,.05"
-					]
-				]
-			],
-			[
-				51243.2432432433,
-				[
-					[
-						"Manage Lyrics",
-						"evilpredelu",
-						"...of how long...,disneyFreeplayFont.ttf,30,1,sineInOut,0.04"
+						"Camera Event",
+						"Fade",
+						"0,0,0,2,true"
 					]
 				]
 			],
@@ -18651,269 +18574,9 @@ enum abstract Chart(String) from String to String {
 				51891.8918918919,
 				[
 					[
-						"Cinematic Event",
-						"Move",
-						"80,0.5,circOut"
-					]
-				]
-			],
-			[
-				52540.5405405406,
-				[
-					[
-						"Manage Lyrics",
-						"evilpredelu",
-						"...this show will play!,disneyFreeplayFont.ttf,30,2.2,quartInOut,.07"
-					]
-				]
-			],
-			[
-				52540.5405405406,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"90,0.5,circOut"
-					]
-				]
-			],
-			[
-				53027.027027027,
-				[
-					[
 						"Background Controls",
 						"Darken",
-						"0,2,linear"
-					]
-				]
-			],
-			[
-				53189.1891891892,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"100,0.5,circOut"
-					]
-				]
-			],
-			[
-				53837.8378378379,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"110,0.5,circOut"
-					]
-				]
-			],
-			[
-				54486.4864864865,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"70,1,circOut"
-					]
-				]
-			],
-			[
-				55135.1351351352,
-				[
-					[
-						"Manage Lyrics",
-						"evilpredelu",
-						"And remind yourself...,disneyFreeplayFont.ttf,30,1.3,sineInOut,.05"
-					]
-				]
-			],
-			[
-				56756.7567567568,
-				[
-					[
-						"Manage Lyrics",
-						"evilpredelu",
-						"...no matter what is in...,disneyFreeplayFont.ttf,30,2,sineInOut,.06"
-					]
-				]
-			],
-			[
-				57081.0810810811,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"80,0.5,circOut"
-					]
-				]
-			],
-			[
-				58378.3783783784,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"90,0.5,circOut"
-					]
-				]
-			],
-			[
-				59027.0270270271,
-				[
-					[
-						"Manage Lyrics",
-						"evildelu",
-						"...THE WAY!,disneyFreeplayFont.ttf,30,1,circOut,.035"
-					]
-				]
-			],
-			[
-				59675.6756756757,
-				[
-					[
-						"Delusional Events",
-						"6",
-						""
-					]
-				]
-			],
-			[
-				59675.6756756757,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"0,2,circOut"
-					]
-				]
-			],
-			[
-				60324.3243243244,
-				[
-					[
-						"Manage Lyrics",
-						"evildelu",
-						"All your dreams...,disneyFreeplayFont.ttf,30,1,sineInOut,.04"
-					]
-				]
-			],
-			[
-				60972.972972973,
-				[
-					[
-						"Delusional Events",
-						"7",
-						""
-					]
-				]
-			],
-			[
-				61621.6216216217,
-				[
-					[
-						"Manage Lyrics",
-						"evildelu",
-						"...ARE SO FAR OUT OF REACH!,disneyFreeplayFont.ttf,30,4,quartInOut,.055"
-					]
-				]
-			],
-			[
-				62270.2702702703,
-				[
-					[
-						"Delusional Events",
-						"8",
-						""
-					]
-				]
-			],
-			[
-				63567.5675675676,
-				[
-					[
-						"Delusional Events",
-						"7",
-						""
-					]
-				]
-			],
-			[
-				64216.2162162163,
-				[
-					[
-						"Manage Lyrics",
-						"evildelu",
-						"But if YOUR delusions...,disneyFreeplayFont.ttf,30,2.2,sineInOut,.045"
-					]
-				]
-			],
-			[
-				64864.8648648649,
-				[
-					[
-						"Delusional Events",
-						"8",
-						""
-					]
-				]
-			],
-			[
-				66162.1621621622,
-				[
-					[
-						"Manage Lyrics",
-						"evildelu",
-						"...still surround ya.,disneyFreeplayFont.ttf,30,1.3,quartOut,.045"
-					]
-				]
-			],
-			[
-				66162.1621621622,
-				[
-					[
-						"Delusional Events",
-						"7",
-						""
-					]
-				]
-			],
-			[
-				67459.4594594595,
-				[
-					[
-						"Manage Lyrics",
-						"evildelu",
-						"Let us LOOP AROUND ONCE MORE.,disneyFreeplayFont.ttf,30,3,sineInOut,.065"
-					]
-				]
-			],
-			[
-				67459.4594594595,
-				[
-					[
-						"Delusional Events",
-						"8",
-						""
-					]
-				]
-			],
-			[
-				68756.7567567568,
-				[
-					[
-						"Delusional Events",
-						"9",
-						""
-					]
-				]
-			],
-			[
-				69729.7297297298,
-				[
-					[
-						"Change Strumline Style",
-						"faviNotes/NOTE_assets-LUNACYEVIL, faviNotes/NOTE_assets-SATAN",
-						"false"
+						"0,0.0001,linear"
 					]
 				]
 			],
@@ -18921,64 +18584,54 @@ enum abstract Chart(String) from String to String {
 				70054.0540540541,
 				[
 					[
-						"Delusional Events",
-						"10",
-						""
+						"Set Property",
+						"defaultCamZoom",
+						"0.85"
 					]
 				]
 			],
 			[
-				71027.0270270271,
+				71352,
 				[
 					[
+						"Change Strumline Style",
+						"faviNotes/NOTE_assets-LUNACYEVIL, faviNotes/NOTE_assets-SATAN",
+						"false"
+					],
+					[
+						"Delusional Events",
+						"3",
+						""
+					],
+					[
+						"Delusional Events",
+						"4",
+						""
+					],
+					[
 						"Change Character",
-						"dad",
+						"Dad",
 						"delumickey"
 					],
 					[
+						"Play Animation",
+						"singUP",
+						"Dad"
+					],
+					[
+						"Camera Event",
+						"Fade",
+						"0,0,0,0.0001,true"
+					],
+					[
+						"Camera Event",
+						"Change Value",
+						"vidalpha,0"
+					],
+					[
 						"Change Character",
-						"bf",
+						"BF",
 						"bf-demon"
-					]
-				]
-			],
-			[
-				71189.1891891892,
-				[
-					[
-						"Play Animation",
-						"singUP",
-						"dad"
-					]
-				]
-			],
-			[
-				71270.2702702703,
-				[
-					[
-						"Play Animation",
-						"singUP",
-						"dad"
-					]
-				]
-			],
-			[
-				71351.3513513514,
-				[
-					[
-						"Play Animation",
-						"singUP",
-						"dad"
-					],
-					[
-						"Delusional Events",
-						"11",
-						""
-					],
-					[
-						"Delusional Events",
-						"69",
-						""
 					]
 				]
 			],
@@ -18988,7 +18641,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Play Animation",
 						"singUP",
-						"dad"
+						"Dad"
 					]
 				]
 			],
@@ -18998,7 +18651,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Play Animation",
 						"singUP",
-						"dad"
+						"Dad"
 					]
 				]
 			],
@@ -19008,7 +18661,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Play Animation",
 						"singUP",
-						"dad"
+						"Dad"
 					]
 				]
 			],
@@ -19018,7 +18671,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Play Animation",
 						"singUP",
-						"dad"
+						"Dad"
 					]
 				]
 			],
@@ -19028,7 +18681,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Play Animation",
 						"singUP",
-						"dad"
+						"Dad"
 					]
 				]
 			],
@@ -19038,7 +18691,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Play Animation",
 						"singUP",
-						"dad"
+						"Dad"
 					]
 				]
 			],
@@ -19048,7 +18701,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Play Animation",
 						"singUP",
-						"dad"
+						"Dad"
 					]
 				]
 			],
@@ -19058,7 +18711,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Play Animation",
 						"singUP",
-						"dad"
+						"Dad"
 					]
 				]
 			],
@@ -19068,7 +18721,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Play Animation",
 						"singUP",
-						"dad"
+						"Dad"
 					]
 				]
 			],
@@ -19078,7 +18731,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Play Animation",
 						"singUP",
-						"dad"
+						"Dad"
 					]
 				]
 			],
@@ -19088,7 +18741,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Play Animation",
 						"singUP",
-						"dad"
+						"Dad"
 					]
 				]
 			],
@@ -19098,7 +18751,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Play Animation",
 						"singUP",
-						"dad"
+						"Dad"
 					]
 				]
 			],
@@ -19108,7 +18761,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Play Animation",
 						"singUP",
-						"dad"
+						"Dad"
 					]
 				]
 			],
@@ -19118,7 +18771,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Play Animation",
 						"singUP",
-						"dad"
+						"Dad"
 					]
 				]
 			],
@@ -19128,17 +18781,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Play Animation",
 						"singUP",
-						"dad"
-					]
-				]
-			],
-			[
-				72648.6486486487,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						"Dad"
 					]
 				]
 			],
@@ -19147,38 +18790,13 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Delusional Events",
-						"12",
+						"5",
 						""
-					]
-				]
-			],
-			[
-				72972.972972973,
-				[
+					],
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				73297.2972972973,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				73621.6216216217,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						"Camera Event",
+						"Tween Value",
+						"hudalpha,1,1,circOut"
 					]
 				]
 			],
@@ -19186,1083 +18804,18 @@ enum abstract Chart(String) from String to String {
 				73945.945945946,
 				[
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				74270.2702702703,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				74594.5945945946,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				74918.9189189189,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				75243.2432432433,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				75567.5675675676,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				75891.8918918919,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				76216.2162162162,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				76540.5405405406,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				76540.5405405406,
-				[
-					[
 						"Delusional Events",
-						"13",
+						"6",
 						""
-					]
-				]
-			],
-			[
-				76864.8648648649,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				77189.1891891892,
-				[
-					[
-						"Delusional Events",
-						"14",
-						""
-					]
-				]
-			],
-			[
-				77189.1891891892,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				77513.5135135135,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				77837.8378378379,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				77837.8378378379,
-				[
-					[
-						"Delusional Events",
-						"15",
-						""
-					]
-				]
-			],
-			[
-				78162.1621621622,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				78486.4864864865,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				78810.8108108108,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				79135.1351351352,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				79459.4594594595,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				79783.7837837838,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				80108.1081081081,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				80432.4324324325,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				80756.7567567568,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				81081.0810810811,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				81405.4054054054,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				81729.7297297298,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				82054.0540540541,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				82378.3783783784,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				82702.7027027027,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				83027.0270270271,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				83351.3513513514,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				83675.6756756757,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				84000,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				84324.3243243243,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				84648.6486486487,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				84972.972972973,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				85297.2972972973,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				85621.6216216217,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				85945.945945946,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				86270.2702702703,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				86594.5945945946,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				86918.9189189189,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				87243.2432432433,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				87567.5675675676,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				87891.8918918919,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				88216.2162162162,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				88540.5405405406,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				88864.8648648649,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				89189.1891891892,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				89513.5135135135,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				89837.8378378379,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				90162.1621621622,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				90486.4864864865,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				90810.8108108108,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				91135.1351351352,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				91459.4594594595,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				91783.7837837838,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				92108.1081081081,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				92432.4324324325,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				92756.7567567567,
-				[
-					[
-						"Delusional Events",
-						"16",
-						""
-					]
-				]
-			],
-			[
-				92756.7567567568,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				93081.0810810811,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
 					]
 				]
 			],
 			[
 				93405.4054054054,
 				[
-					[
-						"Delusional Events",
-						"17",
-						""
-					],
 					[
 						"Delusional Events",
 						"56",
-						""
-					],
-					[
-						"Camera Event",
-						"Tween Position",
-						"440,360,1,circInOut"
-					],
-					[
-						"Camera Event",
-						"Tween Value",
-						"zoom,0.6,1,circInOut"
-					]
-				]
-			],
-			[
-				93405.4054054054,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				93405.4054054054,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"90,1.5,circOut"
-					]
-				]
-			],
-			[
-				93729.7297297298,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				94054.0540540541,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				94378.3783783784,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				94702.7027027027,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				95027.0270270271,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				95351.3513513514,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				95675.6756756757,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				95997.9729729729,
-				[
-					[
-						"Delusional Events",
-						"18",
-						""
-					]
-				]
-			],
-			[
-				96000,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				96000,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"100,0.5,circOut"
-					]
-				]
-			],
-			[
-				96324.3243243243,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				96648.6486486487,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				96972.972972973,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				97297.2972972973,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				97621.6216216216,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				97945.945945946,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				98270.2702702703,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				98594.5945945945,
-				[
-					[
-						"Delusional Events",
-						"18",
-						""
-					]
-				]
-			],
-			[
-				98594.5945945945,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"110,0.5,circOut"
-					]
-				]
-			],
-			[
-				98594.5945945946,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				98918.9189189189,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				99243.2432432433,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				99567.5675675676,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				99891.8918918919,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				100216.216216216,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				100540.540540541,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				100864.864864865,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				101189.189189189,
-				[
-					[
-						"Delusional Events",
-						"18",
-						""
-					]
-				]
-			],
-			[
-				101189.189189189,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				101189.189189189,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"120,0.5,circOut"
-					]
-				]
-			],
-			[
-				101513.513513514,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				101837.837837838,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				102162.162162162,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				102486.486486486,
-				[
-					[
-						"Delusional Events",
-						"19",
-						""
-					]
-				]
-			],
-			[
-				102486.486486486,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"130,0.5,circOut"
-					]
-				]
-			],
-			[
-				102486.486486487,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				102810.810810811,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				103135.135135135,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				103459.459459459,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				103781.756756757,
-				[
-					[
-						"Delusional Events",
-						"57",
 						""
 					]
 				]
@@ -20272,304 +18825,14 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Delusional Events",
-						"17",
+						"57",
 						""
-					],
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					],
-					[
-						"Cinematic Event",
-						"Move",
-						"90,1.5,circOut"
-					],
-					[
-						"Camera Event",
-						"Change Value",
-						"adddefaultcamzoom,-0.2"
-					]
-				]
-			],
-			[
-				104108.108108108,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				104432.432432432,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				104756.756756757,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				105081.081081081,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				105405.405405405,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				105729.72972973,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				106054.054054054,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				106378.378378378,
-				[
-					[
-						"Delusional Events",
-						"18",
-						""
-					]
-				]
-			],
-			[
-				106378.378378378,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				106378.378378378,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"100,0.5,circOut"
-					]
-				]
-			],
-			[
-				106702.702702703,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				107027.027027027,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				107351.351351351,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				107675.675675676,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				108000,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				108324.324324324,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				108648.648648649,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				108970.945945946,
-				[
-					[
-						"Delusional Events",
-						"18",
-						""
-					]
-				]
-			],
-			[
-				108972.972972973,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				108972.972972973,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"110,0.5,circOut"
-					]
-				]
-			],
-			[
-				109297.297297297,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				109621.621621622,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				109945.945945946,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				110270.27027027,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				110594.594594595,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				110918.918918919,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				111243.243243243,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
 					]
 				]
 			],
 			[
 				111567.567567567,
 				[
-					[
-						"Delusional Events",
-						"18",
-						""
-					],
 					[
 						"Delusional Events",
 						"58",
@@ -20578,482 +18841,12 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
-				111567.567567567,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"120,0.5,circOut"
-					]
-				]
-			],
-			[
-				111567.567567568,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				111891.891891892,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				112216.216216216,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				112216.216216216,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"80,1,circOut"
-					]
-				]
-			],
-			[
-				112540.540540541,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				112864.864864865,
-				[
-					[
-						"Delusional Events",
-						"20",
-						""
-					],
-					[
-						"Set Property",
-						"isCameraOnForcedPos",
-						"false"
-					]
-				]
-			],
-			[
-				113675.675675676,
-				[
-					[
-						"Camera Event",
-						"Tween Value",
-						"zoom,2,0.53,backIn"
-					]
-				]
-			],
-			[
-				114162.162162162,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				114162.162162162,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"100,1,circOut"
-					],
-					[
-						"Delusional Events",
-						"17",
-						""
-					],
-					[
-						"Camera Event",
-						"Tween Value",
-						"zoom,0.7,1,expoOut"
-					],
-					[
-						"Camera Event",
-						"Flash",
-						"195,195,195,3,1,true"
-					]
-				]
-			],
-			[
-				114486.486486487,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				114810.810810811,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				115135.135135135,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				115459.459459459,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				115783.783783784,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				116108.108108108,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				116432.432432432,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				116756.756756757,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				117081.081081081,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				117405.405405405,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				117729.72972973,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				118052.027027027,
-				[
-					[
-						"Delusional Events",
-						"21",
-						""
-					]
-				]
-			],
-			[
-				118054.054054054,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				118054.054054054,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"120,0.5,circOut"
-					]
-				]
-			],
-			[
-				118378.378378378,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				118702.702702703,
-				[
-					[
-						"Delusional Events",
-						"22",
-						""
-					]
-				]
-			],
-			[
-				118702.702702703,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"130,0.5,circOut"
-					]
-				]
-			],
-			[
-				119351.351351351,
-				[
-					[
-						"Delusional Events",
-						"23",
-						""
-					]
-				]
-			],
-			[
-				119351.351351351,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				119351.351351351,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"100,1,circOut"
-					]
-				]
-			],
-			[
-				119675.675675676,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				120000,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				120324.324324324,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				120648.648648649,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				120972.972972973,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				121297.297297297,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				121621.621621622,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				121945.945945946,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				122270.27027027,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				122594.594594595,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				122918.918918919,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				123243.243243243,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				123567.567567568,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				123891.891891892,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
 				124216.216216216,
 				[
 					[
 						"Delusional Events",
-						"24",
+						"7",
 						""
-					],
-					[
-						"Camera Event",
-						"Tween Value",
-						"zoom,1.5,0.1,sineInOut"
-					],
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
 					]
 				]
 			],
@@ -21062,28 +18855,8 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Delusional Events",
-						"25",
+						"8",
 						""
-					]
-				]
-			],
-			[
-				124540.540540541,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				124864.864864865,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
 					]
 				]
 			],
@@ -21092,379 +18865,14 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Delusional Events",
-						"26",
+						"9",
 						""
-					]
-				]
-			],
-			[
-				125189.189189189,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				125513.513513514,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				125837.837837838,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				126162.162162162,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				126486.486486487,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				126810.810810811,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				127135.135135135,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				127459.459459459,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				127783.783783784,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				128108.108108108,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				128432.432432432,
-				[
-					[
-						"Delusional Events",
-						"21",
-						""
-					]
-				]
-			],
-			[
-				128432.432432432,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				128432.432432432,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"120,0.5,circOut"
-					]
-				]
-			],
-			[
-				128756.756756757,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				129081.081081081,
-				[
-					[
-						"Delusional Events",
-						"22",
-						""
-					]
-				]
-			],
-			[
-				129081.081081081,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"130,0.5,circOut"
-					]
-				]
-			],
-			[
-				129729.72972973,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				129729.72972973,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"100,1,circOut"
-					]
-				]
-			],
-			[
-				130054.054054054,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				130378.378378378,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				130702.702702703,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				131027.027027027,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				131351.351351351,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				131675.675675676,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				132000,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				132324.324324324,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				132648.648648649,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				132972.972972973,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				133297.297297297,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				133621.621621622,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				133945.945945946,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				134270.27027027,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				134594.594594595,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				134918.918918919,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"140,2,circOut"
-					],
-					[
-						"Set Property",
-						"defaultCamZoom",
-						"0.85"
-					]
-				]
-			],
-			[
-				155027.027027027,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"380,0.65,backIn"
-					],
-					[
-						"Camera Event",
-						"Tween Value",
-						"zoom,2,0.65,backIn"
 					]
 				]
 			],
 			[
 				155675.675675676,
 				[
-					[
-						"Delusional Events",
-						"27",
-						""
-					],
 					[
 						"Meta Event",
 						"Window Title",
@@ -21474,26 +18882,6 @@ enum abstract Chart(String) from String to String {
 						"Meta Event",
 						"Discord",
 						"Do you have any idea..., ..., regret"
-					],
-					[
-						"Change Strumline Style",
-						"faviNotes/NOTE_assets-CARTOON, faviNotes/NOTE_assets-CARTOON",
-						"false"
-					],
-					[
-						"Delusional Events",
-						"76",
-						""
-					]
-				]
-			],
-			[
-				156000,
-				[
-					[
-						"Delusional Events",
-						"28",
-						""
 					]
 				]
 			],
@@ -21511,6 +18899,16 @@ enum abstract Chart(String) from String to String {
 				156972.972972973,
 				[
 					[
+						"Change Strumline Style",
+						"faviNotes/NOTE_assets-CARTOON, faviNotes/NOTE_assets-CARTOON",
+						"false"
+					],
+					[
+						"Delusional Events",
+						"10",
+						""
+					],
+					[
 						"Meta Event",
 						"Window Title",
 						"false, Where am I...?"
@@ -21523,33 +18921,33 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
-				157245.7002457,
+				158427.518427518,
 				[
 					[
 						"Change Character",
-						"dad",
+						"Dad",
 						"Minnie-Bedroom"
 					],
 					[
 						"Change Character",
-						"bf",
+						"BF",
 						"Mickey-Bedroom"
-					]
-				]
-			],
-			[
-				157700.245700246,
-				[
+					],
 					[
-						"Delusional Events",
-						"70",
-						""
-					]
-				]
-			],
-			[
-				158427.518427518,
-				[
+						"Camera Event",
+						"Snap Position",
+						"630,750"
+					],
+					[
+						"Camera Event",
+						"Tween Value",
+						"zoom,0.5,0.0001,linear"
+					],
+					[
+						"Camera Event",
+						"Change Value",
+						"vidalpha,1"
+					],
 					[
 						"Meta Event",
 						"Discord",
@@ -21559,26 +18957,6 @@ enum abstract Chart(String) from String to String {
 						"Meta Event",
 						"Window Title",
 						"true, Funkin.avi - , Regret [________]"
-					],
-					[
-						"Delusional Events",
-						"30",
-						""
-					],
-					[
-						"Delusional Events",
-						"70",
-						""
-					]
-				]
-			],
-			[
-				158427.518427518,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"70,10,linear"
 					]
 				]
 			],
@@ -21646,14 +19024,14 @@ enum abstract Chart(String) from String to String {
 				168609.336609337,
 				[
 					[
+						"Delusional Events",
+						"11",
+						""
+					],
+					[
 						"Meta Event",
 						"Window Title",
 						"true, Funkin.avi - , Regret [PEACEFU_]"
-					],
-					[
-						"Delusional Events",
-						"76",
-						""
 					]
 				]
 			],
@@ -21721,14 +19099,14 @@ enum abstract Chart(String) from String to String {
 				196245.7002457,
 				[
 					[
-						"Meta Event",
-						"Window Title",
-						"true, Funkin.avi - , Regret [PEACEFUL] - I wish I could take it back..."
-					],
-					[
 						"Change Strumline Style",
 						"faviNotes/NOTE_assets-LUNACYEVIL, faviNotes/NOTE_assets-CARTOON",
 						"false"
+					],
+					[
+						"Meta Event",
+						"Window Title",
+						"true, Funkin.avi - , Regret [PEACEFUL] - I wish I could take it back..."
 					]
 				]
 			],
@@ -21777,12 +19155,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Delusional Events",
-						"39",
-						""
-					],
-					[
-						"Delusional Events",
-						"71",
+						"12",
 						""
 					]
 				]
@@ -21808,102 +19181,17 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
-				234154.791154791,
-				[
-					[
-						"Delusional Events",
-						"61",
-						""
-					]
-				]
-			],
-			[
-				237251.565348339,
-				[
-					[
-						"Delusional Events",
-						"61",
-						""
-					]
-				]
-			],
-			[
-				238799.952445113,
-				[
-					[
-						"Delusional Events",
-						"61",
-						""
-					]
-				]
-			],
-			[
-				243445.113735436,
-				[
-					[
-						"Delusional Events",
-						"61",
-						""
-					]
-				]
-			],
-			[
-				246642.613735436,
-				[
-					[
-						"Delusional Events",
-						"61",
-						""
-					]
-				]
-			],
-			[
-				246645.113735436,
-				[
-					[
-						"Delusional Events",
-						"40",
-						""
-					]
-				]
-			],
-			[
-				247745.113735436,
-				[
-					[
-						"Set Property",
-						"defaultCamZoom",
-						"2"
-					]
-				]
-			],
-			[
-				249842.613735436,
+				249845.113735436,
 				[
 					[
 						"Delusional Events",
 						"62",
 						""
-					]
-				]
-			],
-			[
-				249845.113735436,
-				[
+					],
 					[
 						"Meta Event",
 						"Window Title",
 						"false, ..."
-					]
-				]
-			],
-			[
-				253042.613735436,
-				[
-					[
-						"Delusional Events",
-						"72",
-						""
 					]
 				]
 			],
@@ -21918,62 +19206,32 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
-				254642.613735436,
-				[
-					[
-						"Delusional Events",
-						"63",
-						""
-					]
-				]
-			],
-			[
 				254645.113735436,
-				[
-					[
-						"Delusional Events",
-						"43",
-						""
-					]
-				]
-			],
-			[
-				255545.113735436,
-				[
-					[
-						"Change Character",
-						"bf",
-						"bf-demon"
-					],
-					[
-						"Change Character",
-						"dad",
-						"deluMick-eyeless"
-					]
-				]
-			],
-			[
-				256232.613735436,
 				[
 					[
 						"Change Strumline Style",
 						"faviNotes/NOTE_assets-LUNACYEVIL, faviNotes/NOTE_assets-SATAN",
 						"false"
-					]
-				]
-			],
-			[
-				256242.613735436,
-				[
-					[
-						"Delusional Events",
-						"44",
-						""
 					],
 					[
 						"Delusional Events",
-						"73",
+						"63",
 						""
+					],
+					[
+						"Change Character",
+						"Dad",
+						"deluMick-eyeless"
+					],
+					[
+						"Change Character",
+						"BF",
+						"bf-demon"
+					],
+					[
+						"Set Property",
+						"isCameraOnForcedPos",
+						"false"
 					]
 				]
 			],
@@ -21982,58 +19240,28 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Delusional Events",
-						"64",
+						"13",
 						""
 					],
 					[
-						"Meta Event",
-						"Discord",
-						"default, default, default"
+						"Delusional Events",
+						"64",
+						""
 					],
 					[
 						"Meta Event",
 						"Window Title",
 						"true, Funkin.avi - , Delusional [INSANE]"
-					]
-				]
-			],
-			[
-				256245.113735436,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"120,0.0001,linear"
 					],
 					[
-						"Delusional Events",
-						"76",
-						""
+						"Meta Event",
+						"Discord",
+						"default, default, default"
 					]
 				]
 			],
 			[
 				258839.70833003,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				258839.70833003,
-				[
-					[
-						"Cinematic Event",
-						"Bop",
-						"30,0.5,circOut"
-					]
-				]
-			],
-			[
-				261432.275897598,
 				[
 					[
 						"Delusional Events",
@@ -22046,16 +19274,6 @@ enum abstract Chart(String) from String to String {
 				261434.302924625,
 				[
 					[
-						"Cinematic Event",
-						"Bop",
-						"30,0.5,circOut"
-					]
-				]
-			],
-			[
-				264028.897519219,
-				[
-					[
 						"Delusional Events",
 						"64",
 						""
@@ -22064,36 +19282,6 @@ enum abstract Chart(String) from String to String {
 			],
 			[
 				264028.897519219,
-				[
-					[
-						"Cinematic Event",
-						"Bop",
-						"30,0.5,circOut"
-					]
-				]
-			],
-			[
-				265322.140762463,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				265326.194816517,
-				[
-					[
-						"Cinematic Event",
-						"Bop",
-						"30,0.5,circOut"
-					]
-				]
-			],
-			[
-				266621.465086787,
 				[
 					[
 						"Delusional Events",
@@ -22106,16 +19294,6 @@ enum abstract Chart(String) from String to String {
 				266623.492113814,
 				[
 					[
-						"Cinematic Event",
-						"Bop",
-						"30,0.5,circOut"
-					]
-				]
-			],
-			[
-				269216.059681382,
-				[
-					[
 						"Delusional Events",
 						"64",
 						""
@@ -22126,16 +19304,6 @@ enum abstract Chart(String) from String to String {
 				269218.086708409,
 				[
 					[
-						"Cinematic Event",
-						"Bop",
-						"30,0.5,circOut"
-					]
-				]
-			],
-			[
-				271812.681303003,
-				[
-					[
 						"Delusional Events",
 						"64",
 						""
@@ -22144,16 +19312,6 @@ enum abstract Chart(String) from String to String {
 			],
 			[
 				271812.681303003,
-				[
-					[
-						"Cinematic Event",
-						"Bop",
-						"30,0.5,circOut"
-					]
-				]
-			],
-			[
-				274405.248870571,
 				[
 					[
 						"Delusional Events",
@@ -22166,36 +19324,6 @@ enum abstract Chart(String) from String to String {
 				274407.275897598,
 				[
 					[
-						"Cinematic Event",
-						"Bop",
-						"30,0.5,circOut"
-					]
-				]
-			],
-			[
-				275702.546167868,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				275704.573194895,
-				[
-					[
-						"Cinematic Event",
-						"Bop",
-						"30,0.5,circOut"
-					]
-				]
-			],
-			[
-				277001.870492192,
-				[
-					[
 						"Delusional Events",
 						"64",
 						""
@@ -22204,36 +19332,6 @@ enum abstract Chart(String) from String to String {
 			],
 			[
 				277001.870492192,
-				[
-					[
-						"Cinematic Event",
-						"Bop",
-						"30,0.5,circOut"
-					]
-				]
-			],
-			[
-				278299.167789489,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"185,0.8,circIn"
-					],
-					[
-						"Camera Event",
-						"Tween Value",
-						"zoom,1.2,0.8,circIn"
-					],
-					[
-						"Background Controls",
-						"Darken",
-						"0.75,0.8,circIn"
-					]
-				]
-			],
-			[
-				279594.43805976,
 				[
 					[
 						"Delusional Events",
@@ -22246,26 +19344,6 @@ enum abstract Chart(String) from String to String {
 				279596.465086787,
 				[
 					[
-						"Cinematic Event",
-						"Move",
-						"120,0.8,circOut"
-					],
-					[
-						"Set Property",
-						"defaultCamZoom",
-						"0.9"
-					],
-					[
-						"Background Controls",
-						"Darken",
-						"0,0.8,circOut"
-					]
-				]
-			],
-			[
-				282191.059681381,
-				[
-					[
 						"Delusional Events",
 						"64",
 						""
@@ -22273,37 +19351,7 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
-				282191.059681381,
-				[
-					[
-						"Cinematic Event",
-						"Bop",
-						"30,0.5,circOut"
-					]
-				]
-			],
-			[
-				283488.356978679,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"185,0.8,circIn"
-					],
-					[
-						"Camera Event",
-						"Tween Value",
-						"zoom,1.2,0.8,circIn"
-					],
-					[
-						"Background Controls",
-						"Darken",
-						"0.75,0.8,circIn"
-					]
-				]
-			],
-			[
-				284783.627248949,
+				282191.059681382,
 				[
 					[
 						"Delusional Events",
@@ -22316,26 +19364,6 @@ enum abstract Chart(String) from String to String {
 				284785.654275976,
 				[
 					[
-						"Cinematic Event",
-						"Move",
-						"120,0.8,circOut"
-					],
-					[
-						"Set Property",
-						"defaultCamZoom",
-						"0.9"
-					],
-					[
-						"Background Controls",
-						"Darken",
-						"0,0.8,circOut"
-					]
-				]
-			],
-			[
-				286082.951573273,
-				[
-					[
 						"Delusional Events",
 						"64",
 						""
@@ -22343,37 +19371,7 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
-				286082.951573273,
-				[
-					[
-						"Cinematic Event",
-						"Bop",
-						"30,0.5,circOut"
-					]
-				]
-			],
-			[
-				287380.24887057,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				288677.546167868,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"185,0.8,circIn"
-					]
-				]
-			],
-			[
-				289972.816438138,
+				287380.248870571,
 				[
 					[
 						"Delusional Events",
@@ -22386,16 +19384,6 @@ enum abstract Chart(String) from String to String {
 				289974.843465165,
 				[
 					[
-						"Cinematic Event",
-						"Move",
-						"120,0.8,circOut"
-					]
-				]
-			],
-			[
-				292565.384005706,
-				[
-					[
 						"Delusional Events",
 						"64",
 						""
@@ -22406,26 +19394,6 @@ enum abstract Chart(String) from String to String {
 				292569.43805976,
 				[
 					[
-						"Cinematic Event",
-						"Bop",
-						"30,0.5,circOut"
-					]
-				]
-			],
-			[
-				293866.735357057,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"185,0.8,circIn"
-					]
-				]
-			],
-			[
-				295164.032654354,
-				[
-					[
 						"Delusional Events",
 						"64",
 						""
@@ -22433,41 +19401,11 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
-				295164.032654354,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"120,0.8,circOut"
-					]
-				]
-			],
-			[
-				296461.329951651,
+				295164.032654355,
 				[
 					[
 						"Delusional Events",
 						"64",
-						""
-					]
-				]
-			],
-			[
-				296461.329951651,
-				[
-					[
-						"Cinematic Event",
-						"Bop",
-						"30,0.5,circOut"
-					]
-				]
-			],
-			[
-				297756.600221922,
-				[
-					[
-						"Delusional Events",
-						"65",
 						""
 					]
 				]
@@ -22476,70 +19414,25 @@ enum abstract Chart(String) from String to String {
 				297758.627248949,
 				[
 					[
-						"Cinematic Event",
-						"Move",
-						"180,2.5,circInOut"
-					],
-					[
-						"Camera Event",
-						"Change Value",
-						"addDefaultCamZoom,0.1"
-					]
-				]
-			],
-			[
-				298407.275897597,
-				[
-					[
-						"Camera Event",
-						"Change Value",
-						"addDefaultCamZoom,0.1"
-					]
-				]
-			],
-			[
-				299055.924546246,
-				[
-					[
-						"Camera Event",
-						"Change Value",
-						"addDefaultCamZoom,0.1"
-					]
-				]
-			],
-			[
-				299704.573194895,
-				[
-					[
-						"Camera Event",
-						"Change Value",
-						"addDefaultCamZoom,0.1"
-					]
-				]
-			],
-			[
-				300028.897519219,
-				[
-					[
-						"Camera Event",
-						"Tween Value",
-						"zoom,2,0.53,backIn"
-					]
-				]
-			],
-			[
-				300349.167789489,
-				[
-					[
 						"Delusional Events",
 						"64",
+						""
+					],
+					[
+						"Delusional Events",
+						"65",
 						""
 					]
 				]
 			],
 			[
-				300353,
+				300353.221843544,
 				[
+					[
+						"Delusional Events",
+						"64",
+						""
+					],
 					[
 						"Delusional Events",
 						"66",
@@ -22548,165 +19441,10 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
-				300353.221843543,
-				[
-					[
-						"Delusional Events",
-						"45",
-						""
-					]
-				]
-			],
-			[
-				300353.221843543,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				300353.221843543,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"100,1,circOut"
-					]
-				]
-			],
-			[
-				300353.221843543,
-				[
-					[
-						"Camera Event",
-						"Change Value",
-						"addDefaultCamZoom,-0.4"
-					]
-				]
-			],
-			[
-				300353.221843543,
-				[
-					[
-						"Camera Event",
-						"Tween Value",
-						"zoom,0.85,0.0001,backIn"
-					],
-					[
-						"Camera Event",
-						"Flash",
-						"194,194,194,3,1,true"
-					]
-				]
-			],
-			[
-				300677.546167868,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				301001.870492192,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				301326.194816516,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				301646.465086787,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				301650.519140841,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
 				301650.519140841,
 				[
 					[
 						"Delusional Events",
-						"45",
-						""
-					]
-				]
-			],
-			[
-				301974.843465165,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				302299.167789489,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				302623.492113813,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				302943.762384084,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				302945.789411111,
-				[
-					[
-						"Delusional Events",
 						"64",
 						""
 					]
@@ -22716,64 +19454,14 @@ enum abstract Chart(String) from String to String {
 				302947.816438138,
 				[
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				302947.816438138,
-				[
-					[
 						"Delusional Events",
-						"45",
+						"64",
 						""
 					]
 				]
 			],
 			[
-				302947.816438138,
-				[
-					[
-						"Delusional Events",
-						"45",
-						""
-					]
-				]
-			],
-			[
-				303272.140762462,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				303596.465086786,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				303920.789411111,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				304241.059681382,
+				304245.113735436,
 				[
 					[
 						"Delusional Events",
@@ -22783,167 +19471,7 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
-				304243.086708408,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				304245.113735435,
-				[
-					[
-						"Delusional Events",
-						"45",
-						""
-					]
-				]
-			],
-			[
-				304245.113735435,
-				[
-					[
-						"Delusional Events",
-						"45",
-						""
-					]
-				]
-			],
-			[
-				304245.113735435,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				304569.438059759,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				304893.762384084,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				305218.086708408,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				305538.356978679,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				305540.384005705,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				305542.411032732,
-				[
-					[
-						"Delusional Events",
-						"45",
-						""
-					]
-				]
-			],
-			[
-				305542.411032732,
-				[
-					[
-						"Delusional Events",
-						"45",
-						""
-					]
-				]
-			],
-			[
-				305542.411032732,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				305866.735357057,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				306191.059681381,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				306515.384005705,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				306835.654275976,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				306837.681303003,
+				305542.411032733,
 				[
 					[
 						"Delusional Events",
@@ -22956,64 +19484,14 @@ enum abstract Chart(String) from String to String {
 				306839.70833003,
 				[
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				306839.70833003,
-				[
-					[
 						"Delusional Events",
-						"45",
+						"64",
 						""
 					]
 				]
 			],
 			[
-				306839.70833003,
-				[
-					[
-						"Delusional Events",
-						"45",
-						""
-					]
-				]
-			],
-			[
-				307164.032654354,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				307488.356978678,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				307812.681303003,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				308132.951573274,
+				308137.005627328,
 				[
 					[
 						"Delusional Events",
@@ -23023,152 +19501,7 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
-				308134.9786003,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				308137.005627327,
-				[
-					[
-						"Delusional Events",
-						"45",
-						""
-					]
-				]
-			],
-			[
-				308137.005627327,
-				[
-					[
-						"Delusional Events",
-						"45",
-						""
-					]
-				]
-			],
-			[
-				308137.005627327,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				308461.329951651,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				308785.654275976,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				309109.9786003,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				309430.248870571,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				309432.275897597,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				309434.302924624,
-				[
-					[
-						"Delusional Events",
-						"45",
-						""
-					]
-				]
-			],
-			[
-				309434.302924624,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				309758.627248949,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				310082.951573273,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				310407.275897597,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					],
-					[
-						"Camera Event",
-						"Tween Value",
-						"zoom,1.5,0.1,sineInOut"
-					]
-				]
-			],
-			[
-				310727.546167868,
+				309434.302924625,
 				[
 					[
 						"Delusional Events",
@@ -23181,96 +19514,6 @@ enum abstract Chart(String) from String to String {
 				310731.600221922,
 				[
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				310731.600221922,
-				[
-					[
-						"Delusional Events",
-						"45",
-						""
-					],
-					[
-						"Delusional Events",
-						"25",
-						""
-					]
-				]
-			],
-			[
-				311055,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				311055.924546246,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				311055.924546246,
-				[
-					[
-						"Delusional Events",
-						"45",
-						""
-					],
-					[
-						"Delusional Events",
-						"26",
-						""
-					]
-				]
-			],
-			[
-				311380.24887057,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				311704.573194895,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				312024.843465165,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				312026.870492192,
-				[
-					[
 						"Delusional Events",
 						"64",
 						""
@@ -23281,66 +19524,6 @@ enum abstract Chart(String) from String to String {
 				312028.897519219,
 				[
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				312028.897519219,
-				[
-					[
-						"Delusional Events",
-						"45",
-						""
-					]
-				]
-			],
-			[
-				312028.897519219,
-				[
-					[
-						"Delusional Events",
-						"45",
-						""
-					]
-				]
-			],
-			[
-				312353.221843543,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				312677.546167868,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				313001.870492192,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				313322.140762463,
-				[
-					[
 						"Delusional Events",
 						"64",
 						""
@@ -23348,147 +19531,17 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
-				313324.167789489,
+				313326.194816517,
 				[
 					[
 						"Delusional Events",
 						"64",
-						""
-					]
-				]
-			],
-			[
-				313326.194816516,
-				[
-					[
-						"Delusional Events",
-						"45",
-						""
-					]
-				]
-			],
-			[
-				313326.194816516,
-				[
-					[
-						"Delusional Events",
-						"45",
-						""
-					]
-				]
-			],
-			[
-				313326.194816516,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				313650.519140841,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				313974.843465165,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				314299.167789489,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				314619.43805976,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				314621.465086786,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				314623.492113813,
-				[
-					[
-						"Delusional Events",
-						"45",
 						""
 					]
 				]
 			],
 			[
 				314623.492113814,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				314947.816438138,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				315272.140762462,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				315596.465086786,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				315916.735357057,
 				[
 					[
 						"Delusional Events",
@@ -23501,14 +19554,14 @@ enum abstract Chart(String) from String to String {
 				315920.789411111,
 				[
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						"Delusional Events",
+						"64",
+						""
 					]
 				]
 			],
 			[
-				316245,
+				317218.086708409,
 				[
 					[
 						"Delusional Events",
@@ -23518,211 +19571,11 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
-				316245.113735435,
-				[
-					[
-						"Delusional Events",
-						"45",
-						""
-					]
-				]
-			],
-			[
-				316245.113735435,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				316569.438059759,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				316893.762384084,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				317214.032654355,
+				318515.384005706,
 				[
 					[
 						"Delusional Events",
 						"64",
-						""
-					]
-				]
-			],
-			[
-				317218.086708408,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				317542,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				317542.411032732,
-				[
-					[
-						"Delusional Events",
-						"45",
-						""
-					]
-				]
-			],
-			[
-				317542.411032732,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				317866.735357057,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				318191.059681381,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				318511.329951652,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				318513.356978678,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				318515.384005705,
-				[
-					[
-						"Delusional Events",
-						"45",
-						""
-					]
-				]
-			],
-			[
-				318515.384005705,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				318839.70833003,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				319164.032654354,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				319488.356978678,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				319808.627248949,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				319810.654275976,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				319812.681303002,
-				[
-					[
-						"Delusional Events",
-						"45",
 						""
 					]
 				]
@@ -23731,68 +19584,8 @@ enum abstract Chart(String) from String to String {
 				319812.681303003,
 				[
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				320137.005627327,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				320461.329951651,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				320785.654275976,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				321105.924546246,
-				[
-					[
 						"Delusional Events",
 						"64",
-						""
-					]
-				]
-			],
-			[
-				321107,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				321107.951573273,
-				[
-					[
-						"Delusional Events",
-						"45",
 						""
 					]
 				]
@@ -23801,56 +19594,6 @@ enum abstract Chart(String) from String to String {
 				321109.9786003,
 				[
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				321109.9786003,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"120,1.5,circOut"
-					]
-				]
-			],
-			[
-				321434.302924624,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				321758.627248949,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				322082.951573273,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				322403.221843544,
-				[
-					[
 						"Delusional Events",
 						"64",
 						""
@@ -23858,91 +19601,11 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
-				322405.24887057,
+				322407.275897598,
 				[
 					[
 						"Delusional Events",
 						"64",
-						""
-					]
-				]
-			],
-			[
-				322407.275897597,
-				[
-					[
-						"Delusional Events",
-						"45",
-						""
-					]
-				]
-			],
-			[
-				322407.275897597,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				322731.600221922,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				323055.924546246,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				323380.24887057,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				323700.519140841,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				323702.546167867,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				323704.573194894,
-				[
-					[
-						"Delusional Events",
-						"45",
 						""
 					]
 				]
@@ -23951,56 +19614,6 @@ enum abstract Chart(String) from String to String {
 				323704.573194895,
 				[
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				324028.897519219,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				324353.221843543,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				324677.546167868,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				324997.816438138,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				324999.843465165,
-				[
-					[
 						"Delusional Events",
 						"64",
 						""
@@ -24011,54 +19624,14 @@ enum abstract Chart(String) from String to String {
 				325001.870492192,
 				[
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				325001.870492192,
-				[
-					[
 						"Delusional Events",
-						"45",
+						"64",
 						""
 					]
 				]
 			],
 			[
-				325326.194816516,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				325650.519140841,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				325974.843465165,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				326295.113735436,
+				326299.16778949,
 				[
 					[
 						"Delusional Events",
@@ -24068,161 +19641,11 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
-				326297.140762462,
+				327596.465086787,
 				[
 					[
 						"Delusional Events",
 						"64",
-						""
-					]
-				]
-			],
-			[
-				326299.167789489,
-				[
-					[
-						"Delusional Events",
-						"45",
-						""
-					]
-				]
-			],
-			[
-				326299.167789489,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				326623.492113814,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				326947.816438138,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				327272.140762462,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				327592.411032733,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				327594.438059759,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				327596.465086786,
-				[
-					[
-						"Delusional Events",
-						"45",
-						""
-					]
-				]
-			],
-			[
-				327596.465086786,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				327920.789411111,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				328245.113735435,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				328569.438059759,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				328889.70833003,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				328891.735357056,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				328893.762384083,
-				[
-					[
-						"Delusional Events",
-						"45",
 						""
 					]
 				]
@@ -24231,44 +19654,14 @@ enum abstract Chart(String) from String to String {
 				328893.762384084,
 				[
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						"Delusional Events",
+						"64",
+						""
 					]
 				]
 			],
 			[
-				329218.086708408,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				329542.411032732,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				329866.735357057,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				330187.005627327,
+				330191.059681382,
 				[
 					[
 						"Delusional Events",
@@ -24278,161 +19671,11 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
-				330187.005627328,
+				331488.356978679,
 				[
 					[
 						"Delusional Events",
 						"64",
-						""
-					]
-				]
-			],
-			[
-				330191.059681381,
-				[
-					[
-						"Delusional Events",
-						"45",
-						""
-					]
-				]
-			],
-			[
-				330191.059681381,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				330515.384005705,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				330839.70833003,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				331164.032654354,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				331484.302924625,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				331486.329951651,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				331488.356978678,
-				[
-					[
-						"Delusional Events",
-						"45",
-						""
-					]
-				]
-			],
-			[
-				331488.356978678,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				331812.681303003,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				332137.005627327,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				332461.329951651,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				332781.600221922,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				332783.627248948,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				332785.654275975,
-				[
-					[
-						"Delusional Events",
-						"45",
 						""
 					]
 				]
@@ -24441,68 +19684,8 @@ enum abstract Chart(String) from String to String {
 				332785.654275976,
 				[
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				333109.9786003,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				333434.302924624,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				333758.627248949,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				334078.897519219,
-				[
-					[
 						"Delusional Events",
 						"64",
-						""
-					]
-				]
-			],
-			[
-				334080.924546245,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				334082.951573272,
-				[
-					[
-						"Delusional Events",
-						"45",
 						""
 					]
 				]
@@ -24511,46 +19694,6 @@ enum abstract Chart(String) from String to String {
 				334082.951573273,
 				[
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				334407.275897597,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				334731.600221922,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				335055.924546246,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				335376.194816517,
-				[
-					[
 						"Delusional Events",
 						"64",
 						""
@@ -24558,67 +19701,7 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
-				335378.221843543,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				335380.24887057,
-				[
-					[
-						"Delusional Events",
-						"45",
-						""
-					]
-				]
-			],
-			[
-				335380.24887057,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				335704.573194895,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				336028.897519219,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				336353.221843543,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				336673.492113814,
+				335380.248870571,
 				[
 					[
 						"Delusional Events",
@@ -24631,66 +19714,6 @@ enum abstract Chart(String) from String to String {
 				336677.546167868,
 				[
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				337001,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				337001.870492191,
-				[
-					[
-						"Delusional Events",
-						"45",
-						""
-					]
-				]
-			],
-			[
-				337001.870492192,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				337326.194816516,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				337650.519140841,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				337970.789411111,
-				[
-					[
 						"Delusional Events",
 						"64",
 						""
@@ -24701,14 +19724,14 @@ enum abstract Chart(String) from String to String {
 				337974.843465165,
 				[
 					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
+						"Delusional Events",
+						"64",
+						""
 					]
 				]
 			],
 			[
-				338299,
+				339272.140762463,
 				[
 					[
 						"Delusional Events",
@@ -24718,47 +19741,7 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
-				338299.167789489,
-				[
-					[
-						"Delusional Events",
-						"45",
-						""
-					]
-				]
-			],
-			[
-				338299.167789489,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				338623.492113813,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				338947.816438138,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				339268.086708409,
+				340569.43805976,
 				[
 					[
 						"Delusional Events",
@@ -24768,417 +19751,12 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
-				339270.113735435,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				339272.140762462,
-				[
-					[
-						"Delusional Events",
-						"45",
-						""
-					]
-				]
-			],
-			[
-				339272.140762462,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				339596.465086786,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				339920.789411111,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				340245.113735435,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				340565.384005706,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				340567.411032732,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				340569.438059759,
-				[
-					[
-						"Delusional Events",
-						"45",
-						""
-					]
-				]
-			],
-			[
-				340569.438059759,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				340893.762384084,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				341218.086708408,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				341542.411032732,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				341862.681303003,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				341866,
+				341866.735357056,
 				[
 					[
 						"Delusional Events",
 						"67",
 						""
-					]
-				]
-			],
-			[
-				341866.735357056,
-				[
-					[
-						"Delusional Events",
-						"46",
-						""
-					],
-					[
-						"Camera Event",
-						"Tween Value",
-						"zoom,1.35,7,quartInOut"
-					]
-				]
-			],
-			[
-				341866.735357056,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"140,1,circOut"
-					]
-				]
-			],
-			[
-				341866.735357057,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				342191.059681381,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				342515.384005705,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				342839.70833003,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				343159.9786003,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				343164.032654353,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				343488.356978678,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				343812.681303002,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				344137.005627326,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				344457.275897598,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				344461.329951651,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				344785.654275975,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				345109.978600299,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				345434.302924624,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				345754.573194895,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				345754.573194895,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				345758.627248948,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				346082.951573272,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				346407.275897597,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				346731.600221921,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				347055,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				347055,
-				[
-					[
-						"Delusional Events",
-						"47",
-						""
-					]
-				]
-			],
-			[
-				347055.924546245,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				347055.924546245,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"80,1,circOut"
 					]
 				]
 			],
@@ -25193,651 +19771,11 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
-				347380.24887057,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				347704.573194894,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				348028.897519218,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				348349.16778949,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				348353.221843543,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				348677.546167867,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				349001,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				349001.870492191,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"100,1,circOut"
-					]
-				]
-			],
-			[
-				349326.194816515,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				349646.465086787,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				349650.519140841,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				349974.843465165,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				350299.167789489,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				350623.492113813,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				350943.762384084,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				350947.816438138,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				351272.140762462,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				351596.465086786,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				351920.789411111,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				352241.059681382,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
 				352245.113735434,
 				[
 					[
 						"Delusional Events",
-						"48",
-						""
-					]
-				]
-			],
-			[
-				352245.113735434,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"100,1,circOut"
-					]
-				]
-			],
-			[
-				352245.113735435,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				352569.438059759,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				352893.762384084,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				353218.086708408,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				353538.356978679,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				353542.411032732,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				353866.735357057,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				354191.059681381,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				354515.384005705,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				354835.654275976,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				354839.70833003,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				355164.032654354,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				355488.356978678,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				355812.681303003,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				356132.951573274,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				356137.005627327,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				356461.329951651,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				356785.654275976,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				357109.9786003,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				357430.248870571,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				357434.302924623,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"120,1.5,circOut"
-					]
-				]
-			],
-			[
-				357434.302924624,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				357758.627248949,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				358082.951573273,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				358407.275897597,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				358727.546167868,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				358731.600221922,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				359055.924546246,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				359380.24887057,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				359704.573194895,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				360024.843465165,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				360028.897519218,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"140,1,circOut"
-					]
-				]
-			],
-			[
-				360028.897519219,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				360353.221843543,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				360677.546167868,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				361001.870492192,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				361322.140762463,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				361326.194816516,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				361650.519140841,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				361974.843465165,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				362299.167789489,
-				[
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.03"
-					]
-				]
-			],
-			[
-				362619.43805976,
-				[
-					[
-						"Delusional Events",
-						"64",
-						""
-					]
-				]
-			],
-			[
-				362621.465086786,
-				[
-					[
-						"Delusional Events",
-						"49",
+						"14",
 						""
 					]
 				]
@@ -25846,23 +19784,8 @@ enum abstract Chart(String) from String to String {
 				362623.492113813,
 				[
 					[
-						"Cinematic Event",
-						"Move",
-						"90,1,circOut"
-					]
-				]
-			],
-			[
-				365866.735357056,
-				[
-					[
 						"Delusional Events",
-						"50",
-						""
-					],
-					[
-						"Delusional Events",
-						"74",
+						"15",
 						""
 					]
 				]
@@ -25872,12 +19795,7 @@ enum abstract Chart(String) from String to String {
 				[
 					[
 						"Delusional Events",
-						"51",
-						""
-					],
-					[
-						"Delusional Events",
-						"75",
+						"69",
 						""
 					]
 				]
@@ -25888,46 +19806,6 @@ enum abstract Chart(String) from String to String {
 					[
 						"Delusional Events",
 						"68",
-						""
-					]
-				]
-			],
-			[
-				382731.60022192,
-				[
-					[
-						"Delusional Events",
-						"52",
-						""
-					]
-				]
-			],
-			[
-				383380.248870569,
-				[
-					[
-						"Delusional Events",
-						"53",
-						""
-					]
-				]
-			],
-			[
-				383380.248870569,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"0,0.0001,linear"
-					]
-				]
-			],
-			[
-				385974.843465164,
-				[
-					[
-						"Delusional Events",
-						"54",
 						""
 					]
 				]

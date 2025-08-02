@@ -262,9 +262,6 @@ class PlayState extends MusicBeatState
 	public var cpuControlled:Bool = false;
 	public var practiceMode:Bool = false;
 
-	public var botplaySine:Float = 0;
-	public var botplayTxt:FlxText;
-
 	public var iconP1:HealthIcon;
 	public var iconP2:HealthIcon;
 	public var camHUD:FlxCamera;
@@ -1162,16 +1159,6 @@ class PlayState extends MusicBeatState
 			scoreTxt.x -= 270;
 			iconP1.visible = false;
 			iconP2.visible = false;
-		}
-
-		botplayTxt = new FlxText(400, timeBar.y + 55, FlxG.width - 800, "BOTPLAY", 32);
-		botplayTxt.setFormat(Paths.font("disneyFont.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		botplayTxt.scrollFactor.set();
-		botplayTxt.borderSize = 1.25;
-		botplayTxt.visible = false;
-		add(botplayTxt);
-		if(ClientPrefs.data.downScroll) {
-			botplayTxt.y = timeBar.y - 78;
 		}
 
 		if (ClientPrefs.data.downScroll)
@@ -2783,11 +2770,6 @@ class PlayState extends MusicBeatState
 
 		setOnScripts('curDecStep', curDecStep);
 		setOnScripts('curDecBeat', curDecBeat);
-
-		if(botplayTxt != null && botplayTxt.visible) {
-			botplaySine += 180 * elapsed;
-			botplayTxt.alpha = 1 - Math.sin((Math.PI * botplaySine) / 180);
-		}
 
 		if (controls.PAUSE && startedCountdown && canPause)
 		{
@@ -4417,52 +4399,6 @@ class PlayState extends MusicBeatState
 			case 'Play Sound':
 				if(flValue2 == null) flValue2 = 1;
 				FlxG.sound.play(Paths.sound(value1), flValue2);
-
-			//Stuff for Delusional that doesn't work in Episode1Street.hx
-			case 'Delusional Events':
-				var eventData:Float = Std.parseFloat(value1);
-				if (SONG.song == "Delusional")
-				{
-					switch (eventData)
-					{
-						case 69:
-							camVideo.visible = false;
-							camGame.visible = true;
-							camGame.alpha = 1;
-						case 70:
-							camFollow.x = 630;
-							camFollow.y = 750;
-							isCameraOnForcedPos = true;
-							defaultCamZoom = 0.5;
-							boyfriend.alpha = 0.0001;
-							camVideo.visible = true;
-						case 71:
-							blendFlash.cameras = [camBars];
-							boyfriend.alpha = 0.0001;
-						case 72:
-							blendFlash.cameras = [camGame];
-						case 73:
-							camVideo.visible = false;
-							camGame.alpha = 1;
-							camHUD.visible = true;
-							defaultCamZoom = 0.9;
-							chromEffect = 0.1;
-							if (ClientPrefs.data.flashing)
-								camGame.flash(FlxColor.WHITE, 0.5);
-						case 74:
-							FlxTween.tween(camGame, {zoom: 1.6}, 1, {ease: FlxEase.sineInOut});
-							camVideo.visible = true;
-							camVideo.fade(FlxColor.BLACK, 0.7);
-						case 75:
-							camGame.visible = false;
-							FlxTween.tween(camHUD, {alpha: 0}, 2);
-							camVideo.zoom += 0.3;
-							camVideo.fade(FlxColor.BLACK, 0.2, true);
-							FlxTween.tween(camVideo, {zoom: 1}, 0.5, {ease: FlxEase.sineOut});
-						case 76:
-							useFakeDeluName = !useFakeDeluName;
-					}
-				}
 		}
 
 		stagesFunc(function(stage:BaseStage) stage.eventCalled(eventName, value1, value2, flValue1, flValue2, strumTime));

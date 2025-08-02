@@ -84,6 +84,7 @@ class ChartingState extends MusicBeatState
 		['Tween Blur', 'Value 1 - Name of the event\nValue 2 - Event Data\n\nTween - Intensity, Duration\nZoom - Intensity, Duration\nSet - Intensity'],
 		['Tween Dad', 'too lazy to make a fucking thing lmao'],
 		['Toggle TV', 'duh'],
+		['Delusional Events', 'GO FUCK YOURSELF'],
 		['Manage Lyrics', "Value 1: Charactr speaking\nValue 2: Text, Font, Size, Duration, Tween Type, Text Delay."],
 		['Meta Event', 'Handles 4th wall breaking elements!\n\nValue 1: Meta Value\nValue 2: Meta Data\n\nDiscord - Details Txt, State Txt, Icon Name\nWindow Title - Bool Check for Extra Text, Main Text, Extra Text\nWindow Position - X Pos, Y Pos, Timer, Ease\nToggle Fullscreen - Bool Value\nToggle Fake Closeout - Bool Value\nToggle Window Transparency - Bool Value\nShake Window - Intensity, Duration in milliseconds'],
 		['Cinematic Event', "Creates a cinematic visual in-game\n\nValue 1: Action Type you want\nValue 2: Control inputs for action\n\nMove - Thickness, Duration, Ease name\nBop - Intensity, Speed, Ease name\nAngle - Angle, Duration, Ease name\nFlash - R, G, B, Duration, Ease name\nColor - R, G, B, Duration, Ease name\nAlpha - Visibility, Duration, Ease name\n\n(You must use the \"Move\" action type first before\nusing any other action! Move creates the bars!)"],
