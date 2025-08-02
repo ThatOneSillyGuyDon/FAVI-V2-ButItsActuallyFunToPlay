@@ -126,7 +126,7 @@ class CharacterMenu extends MusicBeatState
 
         if (controls.BACK) 
         {
-            if (FlxG.random.bool(8))
+            if (FlxG.random.bool(8) && GameData.episode1FPLock = "unlocked")
 			{
 				FlxG.sound.music.fadeOut(0.5);
 				MusicBeatState.switchState(new states.menus.legacy.LegacyMenuState());
