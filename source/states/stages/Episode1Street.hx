@@ -1039,6 +1039,7 @@ class Episode1Street extends BaseStage
                                 camHUD.setFilters([new ShaderFilter(chromNormalShader)]);
                             }
 						}
+						PlayState.useFakeDeluName = true;
 						game.chromEffect = 0.00001;
 						game.boyfriend.x += 1000;
 						boyfriend.alpha = 0.0001;
@@ -1050,6 +1051,7 @@ class Episode1Street extends BaseStage
 						game.boyfriend.alpha = 0.0001; 
 					case 13:
 						game.chromEffect = 0.1;
+						PlayState.useFakeDeluName = false;
 						if (ClientPrefs.data.shaders)
 						{
                             if (!ClientPrefs.data.lowQuality)
