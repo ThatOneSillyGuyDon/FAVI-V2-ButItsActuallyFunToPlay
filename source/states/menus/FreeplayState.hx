@@ -189,6 +189,7 @@ class FreeplayState extends MusicBeatState
 					{
 						addSong('Birthday', 3, 'muckney', FlxColor.fromRGB(84, 255, 181), 'FR3SHMoure', 'PARTY', FlxColor.fromRGB(250, 234, 92), [15, -5], "Don't leave his party, you'll make him sad.");
 					}
+
 				}
 			case 2: // Legacy Menu
 				{

@@ -1024,7 +1024,6 @@ class Episode1Street extends BaseStage
                                     new ShaderFilter(delusionalShift)
                                 ]);
                                 camHUD.setFilters([
-									new ShaderFilter(grayScale),
 									new ShaderFilter(chromNormalShader), 
 									new ShaderFilter(delusionalShift)]);
                             }
@@ -1037,7 +1036,6 @@ class Episode1Street extends BaseStage
                                     new ShaderFilter(delusionalShift)
                                 ]);
                                 camHUD.setFilters([
-									new ShaderFilter(grayScale),
 									new ShaderFilter(chromNormalShader), 
 									new ShaderFilter(delusionalShift)]);
                             }
@@ -1156,7 +1154,7 @@ class Episode1Street extends BaseStage
                                     new ShaderFilter(chromNormalShader),
                                     new ShaderFilter(delusionalShift)
                                 ]);
-                                camHUD.setFilters([new ShaderFilter(grayScale), new ShaderFilter(chromNormalShader), new ShaderFilter(delusionalShift)]);
+                                camHUD.setFilters([new ShaderFilter(chromNormalShader), new ShaderFilter(delusionalShift)]);
                             }
                             else
                             {
@@ -1166,7 +1164,7 @@ class Episode1Street extends BaseStage
                                     new ShaderFilter(chromNormalShader),
                                     new ShaderFilter(delusionalShift)
                                 ]);
-                                camHUD.setFilters([new ShaderFilter(grayScale), new ShaderFilter(chromNormalShader), new ShaderFilter(delusionalShift)]);
+                                camHUD.setFilters([new ShaderFilter(chromNormalShader), new ShaderFilter(delusionalShift)]);
                             }
 						}
 					case 45:

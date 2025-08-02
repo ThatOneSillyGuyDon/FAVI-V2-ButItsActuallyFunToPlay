@@ -21479,6 +21479,11 @@ enum abstract Chart(String) from String to String {
 						"Change Strumline Style",
 						"faviNotes/NOTE_assets-CARTOON, faviNotes/NOTE_assets-CARTOON",
 						"false"
+					],
+					[
+						"Delusional Events",
+						"76",
+						""
 					]
 				]
 			],
@@ -21999,6 +22004,11 @@ enum abstract Chart(String) from String to String {
 						"Cinematic Event",
 						"Move",
 						"120,0.0001,linear"
+					],
+					[
+						"Delusional Events",
+						"76",
+						""
 					]
 				]
 			],
@@ -25933,24 +25943,24 @@ enum abstract Chart(String) from String to String {
 						0
 					],
 					[
-						0,
-						0,
-						257.142857142857
-					],
-					[
-						685.714285714286,
-						3,
-						257.142857142857
-					],
-					[
 						1028.57142857143,
 						1,
 						257.142857142857
 					],
 					[
 						342.857142857143,
-						3,
+						2,
 						0
+					],
+					[
+						685.714285714286,
+						2,
+						258
+					],
+					[
+						0,
+						0,
+						258
 					]
 				],
 				"lengthInSteps": 16,
@@ -25965,18 +25975,18 @@ enum abstract Chart(String) from String to String {
 				"sectionNotes": [
 					[
 						1371.42857142857,
-						2,
-						600
+						3,
+						602
+					],
+					[
+						2400,
+						0,
+						258
 					],
 					[
 						2057.14285714286,
 						1,
-						257.142857142857
-					],
-					[
-						2400,
-						3,
-						257.142857142857
+						258
 					]
 				],
 				"lengthInSteps": 16,
@@ -25990,28 +26000,28 @@ enum abstract Chart(String) from String to String {
 				"typeOfSection": 0,
 				"sectionNotes": [
 					[
-						2742.85714285714,
-						2,
-						0
-					],
-					[
 						2914.28571428571,
 						1,
 						0
 					],
 					[
-						3085.71428571429,
-						0,
-						257.142857142857
+						2742.85714285714,
+						2,
+						0
 					],
 					[
-						3428.57142857143,
+						3085.71428571429,
 						3,
 						258
 					],
 					[
+						3428.57142857143,
+						0,
+						258
+					],
+					[
 						3771.42857142857,
-						1,
+						3,
 						258
 					]
 				],
@@ -26173,32 +26183,32 @@ enum abstract Chart(String) from String to String {
 				"typeOfSection": 0,
 				"sectionNotes": [
 					[
-						10114.2857142857,
-						1,
-						0,
-						"Evilrett Alt Skin 2"
-					],
-					[
 						9600,
 						2,
 						430,
 						"Evilrett Alt Skin 2"
 					],
 					[
-						10285.7142857143,
-						2,
-						172,
+						10114.2857142857,
+						1,
+						0,
 						"Evilrett Alt Skin 2"
 					],
 					[
-						10628.5714285714,
-						0,
+						10285.7142857143,
+						2,
 						258,
 						"Evilrett Alt Skin 2"
 					],
 					[
 						10628.5714285714,
 						1,
+						261,
+						"Evilrett Alt Skin 2"
+					],
+					[
+						10628.5714285714,
+						0,
 						258,
 						"Evilrett Alt Skin 2"
 					]
@@ -26219,8 +26229,18 @@ enum abstract Chart(String) from String to String {
 						257.142857142857
 					],
 					[
+						12171.4285714286,
+						1,
+						258
+					],
+					[
 						11314.2857142857,
 						0,
+						0
+					],
+					[
+						11828.5714285714,
+						3,
 						0
 					],
 					[
@@ -26234,24 +26254,14 @@ enum abstract Chart(String) from String to String {
 						0
 					],
 					[
-						11828.5714285714,
-						3,
-						0
-					],
-					[
 						12000,
 						0,
 						0
 					],
 					[
-						12171.4285714286,
-						1,
-						257.142857142857
-					],
-					[
 						10971.4285714286,
 						7,
-						774,
+						776,
 						"Evilrett Alt Skin 2"
 					]
 				],
@@ -26872,7 +26882,7 @@ enum abstract Chart(String) from String to String {
 					[
 						32571.4285714286,
 						1,
-						258,
+						259,
 						"Evilrett Alt Skin 2"
 					]
 				],
@@ -26887,6 +26897,11 @@ enum abstract Chart(String) from String to String {
 				"typeOfSection": 0,
 				"sectionNotes": [
 					[
+						32914.2857142857,
+						3,
+						428.571428571429
+					],
+					[
 						33600,
 						0,
 						257.142857142857
@@ -26900,11 +26915,6 @@ enum abstract Chart(String) from String to String {
 						33428.5714285714,
 						2,
 						0
-					],
-					[
-						32914.2857142857,
-						3,
-						430
 					]
 				],
 				"lengthInSteps": 16,
@@ -26995,11 +27005,6 @@ enum abstract Chart(String) from String to String {
 						0
 					],
 					[
-						37371.4285714286,
-						3,
-						0
-					],
-					[
 						37542.8571428572,
 						1,
 						0
@@ -27013,6 +27018,11 @@ enum abstract Chart(String) from String to String {
 						38057.1428571429,
 						0,
 						258
+					],
+					[
+						37371.4285714286,
+						3,
+						0
 					]
 				],
 				"lengthInSteps": 16,
@@ -27028,7 +27038,7 @@ enum abstract Chart(String) from String to String {
 					[
 						38400,
 						3,
-						428.571428571429,
+						430,
 						"Evilrett Alt Skin 2"
 					],
 					[
@@ -27062,19 +27072,19 @@ enum abstract Chart(String) from String to String {
 				"sectionNotes": [
 					[
 						39771.4285714286,
-						1,
+						0,
 						430,
 						"Evilrett Alt Skin 2"
 					],
 					[
 						40285.7142857143,
-						3,
+						1,
 						0,
 						"Evilrett Alt Skin 2"
 					],
 					[
 						40457.1428571429,
-						0,
+						3,
 						258,
 						"Evilrett Alt Skin 2"
 					],
@@ -27122,7 +27132,7 @@ enum abstract Chart(String) from String to String {
 					[
 						41828.5714285714,
 						2,
-						430,
+						258,
 						"Evilrett Alt Skin 2"
 					],
 					[
@@ -27186,7 +27196,7 @@ enum abstract Chart(String) from String to String {
 					[
 						43885.7142857143,
 						1,
-						1290,
+						1285.71428571429,
 						"Evilrett Alt Skin 2"
 					]
 				],
@@ -27203,25 +27213,25 @@ enum abstract Chart(String) from String to String {
 					[
 						45257.1428571429,
 						2,
-						2323,
+						2400,
 						"Evilrett Alt Skin 2"
 					],
 					[
 						46200,
 						1,
-						1376,
+						1457.14285714286,
 						"Evilrett Alt Skin 2"
 					],
 					[
 						46457.1428571429,
 						0,
-						1119,
+						1200,
 						"Evilrett Alt Skin 2"
 					],
 					[
 						46457.1428571429,
 						3,
-						1118,
+						1200,
 						"Evilrett Alt Skin 2"
 					]
 				],
@@ -27538,37 +27548,37 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						74756.7567567568,
-						2,
+						1,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						74837.8378378379,
-						1,
+						0,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						74918.9189189189,
-						0,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						75000,
 						2,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
+						75000,
+						1,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
 						75081.0810810811,
-						3,
+						2,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						75162.1621621622,
-						1,
+						3,
 						0,
 						"Evilrett Alt Skin 1"
 					]
@@ -27864,37 +27874,37 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						79945.945945946,
-						2,
+						1,
 						0,
 						"Evilrett Alt Skin 3"
 					],
 					[
 						80027.027027027,
-						1,
+						0,
 						0,
 						"Evilrett Alt Skin 3"
 					],
 					[
 						80108.1081081081,
-						0,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						80189.1891891892,
 						2,
 						0,
 						"Evilrett Alt Skin 3"
 					],
 					[
+						80189.1891891892,
+						1,
+						0,
+						"Evilrett Alt Skin 3"
+					],
+					[
 						80270.2702702703,
-						3,
+						2,
 						0,
 						"Evilrett Alt Skin 3"
 					],
 					[
 						80351.3513513514,
-						1,
+						3,
 						0,
 						"Evilrett Alt Skin 3"
 					]
@@ -28100,12 +28110,6 @@ enum abstract Chart(String) from String to String {
 						"Evilrett Alt Skin 1"
 					],
 					[
-						83189.1891891892,
-						0,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
 						83270.2702702703,
 						3,
 						0,
@@ -28125,25 +28129,31 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						83594.5945945946,
-						1,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						83675.6756756757,
 						3,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
-						83756.7567567568,
+						83675.6756756757,
 						2,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
-						83837.8378378378,
+						83756.7567567568,
 						0,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						83189.1891891892,
+						0,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						83837.8378378378,
+						3,
 						0,
 						"Evilrett Alt Skin 1"
 					],
@@ -28155,7 +28165,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						84081.0810810811,
-						3,
+						0,
 						0,
 						"Evilrett Alt Skin 1"
 					],
@@ -28214,7 +28224,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						85135.1351351351,
-						2,
+						0,
 						0,
 						"Evilrett Alt Skin 1"
 					],
@@ -28332,7 +28342,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						87162.1621621621,
-						3,
+						2,
 						0,
 						"Evilrett Alt Skin 1"
 					],
@@ -28433,43 +28443,43 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						88783.7837837838,
-						1,
+						3,
 						0,
 						"Evilrett Alt Skin 3"
 					],
 					[
 						88864.8648648649,
-						3,
+						2,
 						0,
 						"Evilrett Alt Skin 3"
 					],
 					[
 						88945.9459459459,
-						2,
+						0,
 						0,
 						"Evilrett Alt Skin 3"
 					],
 					[
 						89027.027027027,
-						0,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						89189.1891891892,
-						1,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						89270.2702702703,
 						3,
 						0,
 						"Evilrett Alt Skin 3"
 					],
 					[
-						89351.3513513513,
+						89189.1891891892,
 						2,
+						0,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						89270.2702702703,
+						0,
+						0,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						89351.3513513513,
+						1,
 						0,
 						"Evilrett Alt Skin 3"
 					]
@@ -28522,7 +28532,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						90324.3243243243,
-						2,
+						0,
 						0,
 						"Evilrett Alt Skin 3"
 					],
@@ -28640,7 +28650,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						92351.3513513513,
-						3,
+						2,
 						0,
 						"Evilrett Alt Skin 3"
 					],
@@ -28704,6 +28714,12 @@ enum abstract Chart(String) from String to String {
 				"typeOfSection": 0,
 				"sectionNotes": [
 					[
+						93405.4054054056,
+						2,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
 						93405.4054054054,
 						7,
 						0,
@@ -28750,12 +28766,6 @@ enum abstract Chart(String) from String to String {
 						5,
 						246,
 						"Evilrett Alt Skin 3"
-					],
-					[
-						93405.4054054054,
-						2,
-						0,
-						"Evilrett Alt Skin 1"
 					],
 					[
 						93567.5675675675,
@@ -28849,7 +28859,7 @@ enum abstract Chart(String) from String to String {
 					[
 						95675.6756756756,
 						5,
-						246,
+						249,
 						"Evilrett Alt Skin 3"
 					],
 					[
@@ -28908,13 +28918,13 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						95837.8378378378,
-						2,
+						3,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						95918.9189189189,
-						3,
+						2,
 						0,
 						"Evilrett Alt Skin 1"
 					]
@@ -29027,13 +29037,13 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						96972.9729729729,
-						0,
+						2,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						97135.1351351351,
-						3,
+						0,
 						246,
 						"Evilrett Alt Skin 1"
 					]
@@ -29056,20 +29066,20 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						97621.6216216216,
-						7,
+						4,
 						0,
 						"Evilrett Alt Skin 3"
 					],
 					[
 						97783.7837837837,
-						5,
+						7,
 						0,
 						"Evilrett Alt Skin 3"
 					],
 					[
 						97945.9459459459,
 						6,
-						246,
+						247,
 						"Evilrett Alt Skin 3"
 					],
 					[
@@ -29080,13 +29090,13 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						98270.2702702702,
-						7,
+						5,
 						246,
 						"Evilrett Alt Skin 3"
 					],
 					[
 						98270.2702702702,
-						5,
+						7,
 						246,
 						"Evilrett Alt Skin 3"
 					],
@@ -29579,8 +29589,14 @@ enum abstract Chart(String) from String to String {
 						"Evilrett Alt Skin 1"
 					],
 					[
-						102810.810810811,
+						102729.72972973,
 						4,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						102810.810810811,
+						6,
 						0,
 						"Evilrett Alt Skin 1"
 					],
@@ -29598,7 +29614,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						103297.297297297,
-						6,
+						4,
 						0,
 						"Evilrett Alt Skin 1"
 					],
@@ -29788,13 +29804,13 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						106216.216216216,
-						2,
+						3,
 						0,
 						"Evilrett Alt Skin 3"
 					],
 					[
 						106297.297297297,
-						3,
+						2,
 						0,
 						"Evilrett Alt Skin 3"
 					],
@@ -29818,26 +29834,26 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						105729.72972973,
-						6,
+						7,
 						246,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						105729.72972973,
-						7,
+						6,
 						246,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						106054.054054054,
 						5,
-						248,
+						249,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						106054.054054054,
 						4,
-						246,
+						247,
 						"Evilrett Alt Skin 1"
 					]
 				],
@@ -29972,48 +29988,6 @@ enum abstract Chart(String) from String to String {
 				"sectionNotes": [
 					[
 						107837.837837838,
-						4,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						108000,
-						7,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						108162.162162162,
-						5,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						108324.324324324,
-						4,
-						246,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						108324.324324324,
-						6,
-						246,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						108648.648648649,
-						5,
-						250,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						108648.648648649,
-						7,
-						246,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						107837.837837838,
 						1,
 						0,
 						"Evilrett Alt Skin 3"
@@ -30083,6 +30057,48 @@ enum abstract Chart(String) from String to String {
 						0,
 						0,
 						"Evilrett Alt Skin 3"
+					],
+					[
+						107837.837837838,
+						4,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						108000,
+						4,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						108162.162162162,
+						7,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						108324.324324324,
+						6,
+						246,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						108324.324324324,
+						4,
+						246,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						108648.648648649,
+						5,
+						246,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						108648.648648649,
+						7,
+						246,
+						"Evilrett Alt Skin 1"
 					]
 				],
 				"lengthInSteps": 16,
@@ -30095,54 +30111,6 @@ enum abstract Chart(String) from String to String {
 			{
 				"typeOfSection": 0,
 				"sectionNotes": [
-					[
-						108972.972972973,
-						4,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						109135.135135135,
-						5,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						109297.297297297,
-						7,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						109459.459459459,
-						6,
-						246,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						109459.459459459,
-						5,
-						246,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						109783.783783784,
-						4,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						109945.945945946,
-						4,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						110108.108108108,
-						5,
-						246,
-						"Evilrett Alt Skin 1"
-					],
 					[
 						108972.972972973,
 						3,
@@ -30202,6 +30170,54 @@ enum abstract Chart(String) from String to String {
 						3,
 						246,
 						"Evilrett Alt Skin 3"
+					],
+					[
+						108972.972972973,
+						4,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						109135.135135135,
+						5,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						109297.297297297,
+						7,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						109459.459459459,
+						6,
+						246,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						109459.459459459,
+						5,
+						246,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						109783.783783784,
+						4,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						109945.945945946,
+						4,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						110108.108108108,
+						5,
+						246,
+						"Evilrett Alt Skin 1"
 					]
 				],
 				"lengthInSteps": 16,
@@ -30214,48 +30230,6 @@ enum abstract Chart(String) from String to String {
 			{
 				"typeOfSection": 0,
 				"sectionNotes": [
-					[
-						110432.432432432,
-						7,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						110594.594594594,
-						7,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						110756.756756757,
-						4,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						110918.918918919,
-						5,
-						248,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						110918.918918919,
-						6,
-						246,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						111243.243243243,
-						7,
-						246,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						111243.243243243,
-						4,
-						246,
-						"Evilrett Alt Skin 1"
-					],
 					[
 						110432.432432432,
 						1,
@@ -30321,6 +30295,48 @@ enum abstract Chart(String) from String to String {
 						1,
 						0,
 						"Evilrett Alt Skin 3"
+					],
+					[
+						110432.432432432,
+						7,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						110594.594594594,
+						7,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						110756.756756757,
+						4,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						110918.918918919,
+						6,
+						246,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						110918.918918919,
+						5,
+						246,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						111243.243243243,
+						7,
+						246,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						111243.243243243,
+						4,
+						246,
+						"Evilrett Alt Skin 1"
 					]
 				],
 				"lengthInSteps": 16,
@@ -30333,48 +30349,6 @@ enum abstract Chart(String) from String to String {
 			{
 				"typeOfSection": 0,
 				"sectionNotes": [
-					[
-						111567.567567567,
-						6,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						111729.72972973,
-						5,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						111891.891891892,
-						7,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						112054.054054054,
-						4,
-						246,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						112378.378378378,
-						5,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						112540.54054054,
-						6,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						112702.702702703,
-						7,
-						0,
-						"Evilrett Alt Skin 1"
-					],
 					[
 						111567.567567567,
 						0,
@@ -30428,6 +30402,48 @@ enum abstract Chart(String) from String to String {
 						1,
 						0,
 						"Evilrett Alt Skin 3"
+					],
+					[
+						111567.567567567,
+						6,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						111729.72972973,
+						5,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						111891.891891892,
+						7,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						112054.054054054,
+						4,
+						246,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						112378.378378378,
+						5,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						112540.54054054,
+						6,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						112702.702702703,
+						7,
+						246,
+						"Evilrett Alt Skin 1"
 					]
 				],
 				"lengthInSteps": 16,
@@ -30501,67 +30517,67 @@ enum abstract Chart(String) from String to String {
 				"sectionNotes": [
 					[
 						114162.162162162,
-						3,
-						0,
+						2,
+						82,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						114324.324324324,
+						1,
+						82,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						114486.486486486,
 						2,
-						0,
+						84,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						114648.648648649,
-						2,
-						0,
+						1,
+						82,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						114810.810810811,
-						1,
+						3,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						114891.891891892,
-						3,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						114486.486486486,
 						0,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						114972.972972973,
-						0,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						115054.054054054,
 						2,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
-						115135.135135135,
+						115054.054054054,
 						3,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
-						115297.297297297,
+						115135.135135135,
 						1,
+						82,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						115297.297297297,
+						3,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						115378.378378378,
-						1,
+						2,
 						0,
 						"Evilrett Alt Skin 1"
 					]
@@ -30590,7 +30606,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						115783.783783784,
-						2,
+						1,
 						0,
 						"Evilrett Alt Skin 1"
 					],
@@ -30725,33 +30741,15 @@ enum abstract Chart(String) from String to String {
 				"typeOfSection": 0,
 				"sectionNotes": [
 					[
-						118054.054054054,
-						2,
-						410,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						118540.54054054,
-						0,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						118621.621621622,
-						1,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
 						118702.702702703,
 						3,
-						410,
+						405.405405405405,
 						"Evilrett Alt Skin 3"
 					],
 					[
-						119189.189189189,
+						118054.054054054,
 						2,
-						246,
+						405.405405405405,
 						"Evilrett Alt Skin 3"
 					],
 					[
@@ -30807,6 +30805,24 @@ enum abstract Chart(String) from String to String {
 						6,
 						0,
 						"Evilrett Alt Skin 1"
+					],
+					[
+						118540.54054054,
+						0,
+						0,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						118621.621621622,
+						1,
+						0,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						119189.189189189,
+						2,
+						246,
+						"Evilrett Alt Skin 3"
 					]
 				],
 				"lengthInSteps": 16,
@@ -30819,42 +30835,6 @@ enum abstract Chart(String) from String to String {
 			{
 				"typeOfSection": 0,
 				"sectionNotes": [
-					[
-						119513.513513513,
-						5,
-						246,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						119837.837837838,
-						4,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						120000,
-						5,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						120162.162162162,
-						7,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						120324.324324324,
-						6,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						120486.486486486,
-						6,
-						246,
-						"Evilrett Alt Skin 3"
-					],
 					[
 						119351.351351351,
 						0,
@@ -30902,6 +30882,42 @@ enum abstract Chart(String) from String to String {
 						0,
 						0,
 						"Evilrett Alt Skin 1"
+					],
+					[
+						119513.513513513,
+						5,
+						246,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						119837.837837838,
+						4,
+						0,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						120000,
+						5,
+						0,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						120162.162162162,
+						7,
+						0,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						120324.324324324,
+						6,
+						0,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						120486.486486486,
+						6,
+						246,
+						"Evilrett Alt Skin 3"
 					]
 				],
 				"lengthInSteps": 16,
@@ -30915,58 +30931,10 @@ enum abstract Chart(String) from String to String {
 				"typeOfSection": 0,
 				"sectionNotes": [
 					[
-						120810.810810811,
-						4,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						120972.972972973,
-						7,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						121135.135135135,
-						6,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						121297.297297297,
-						5,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						121459.459459459,
-						4,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						121621.621621621,
-						7,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
 						121783.783783784,
-						4,
-						246,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						121783.783783784,
-						5,
-						246,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						121783.783783784,
-						6,
-						246,
-						"Evilrett Alt Skin 3"
+						2,
+						324.324324324324,
+						"Evilrett Alt Skin 1"
 					],
 					[
 						120648.648648649,
@@ -31023,10 +30991,58 @@ enum abstract Chart(String) from String to String {
 						"Evilrett Alt Skin 1"
 					],
 					[
+						120810.810810811,
+						4,
+						0,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						120972.972972973,
+						4,
+						0,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						121135.135135135,
+						7,
+						0,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						121297.297297297,
+						4,
+						0,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						121459.459459459,
+						5,
+						0,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						121621.621621621,
+						7,
+						0,
+						"Evilrett Alt Skin 3"
+					],
+					[
 						121783.783783784,
-						2,
-						328,
-						"Evilrett Alt Skin 1"
+						6,
+						246,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						121783.783783784,
+						5,
+						246,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						121783.783783784,
+						4,
+						246,
+						"Evilrett Alt Skin 3"
 					]
 				],
 				"lengthInSteps": 16,
@@ -31039,42 +31055,6 @@ enum abstract Chart(String) from String to String {
 			{
 				"typeOfSection": 0,
 				"sectionNotes": [
-					[
-						122108.108108108,
-						7,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						122270.27027027,
-						6,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						122432.432432432,
-						5,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						122594.594594594,
-						4,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						122756.756756757,
-						6,
-						246,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						123081.081081081,
-						5,
-						246,
-						"Evilrett Alt Skin 3"
-					],
 					[
 						122189.189189189,
 						0,
@@ -31128,6 +31108,42 @@ enum abstract Chart(String) from String to String {
 						3,
 						0,
 						"Evilrett Alt Skin 1"
+					],
+					[
+						122108.108108108,
+						7,
+						0,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						122270.27027027,
+						6,
+						0,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						122432.432432432,
+						5,
+						0,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						122594.594594594,
+						4,
+						0,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						122756.756756757,
+						6,
+						246,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						123081.081081081,
+						5,
+						246,
+						"Evilrett Alt Skin 3"
 					]
 				],
 				"lengthInSteps": 16,
@@ -31140,48 +31156,6 @@ enum abstract Chart(String) from String to String {
 			{
 				"typeOfSection": 0,
 				"sectionNotes": [
-					[
-						123405.405405405,
-						7,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						123567.567567567,
-						4,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						123729.72972973,
-						6,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						123891.891891892,
-						7,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						124054.054054054,
-						5,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						124216.216216216,
-						4,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						124378.378378378,
-						7,
-						0,
-						"Evilrett Alt Skin 3"
-					],
 					[
 						123243.243243243,
 						0,
@@ -31235,6 +31209,48 @@ enum abstract Chart(String) from String to String {
 						3,
 						0,
 						"Evilrett Alt Skin 1"
+					],
+					[
+						123405.405405405,
+						7,
+						0,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						123567.567567567,
+						4,
+						0,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						123729.72972973,
+						6,
+						0,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						123891.891891892,
+						7,
+						0,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						124054.054054054,
+						5,
+						0,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						124216.216216216,
+						4,
+						0,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						124378.378378378,
+						7,
+						0,
+						"Evilrett Alt Skin 3"
 					]
 				],
 				"lengthInSteps": 16,
@@ -31247,6 +31263,12 @@ enum abstract Chart(String) from String to String {
 			{
 				"typeOfSection": 0,
 				"sectionNotes": [
+					[
+						124540.54054054,
+						4,
+						567.567567567568,
+						"Evilrett Alt Skin 1"
+					],
 					[
 						124540.54054054,
 						2,
@@ -31312,12 +31334,6 @@ enum abstract Chart(String) from String to String {
 						2,
 						0,
 						"Evilrett Alt Skin 3"
-					],
-					[
-						124540.54054054,
-						4,
-						574,
-						"Evilrett Alt Skin 1"
 					]
 				],
 				"lengthInSteps": 16,
@@ -31473,6 +31489,18 @@ enum abstract Chart(String) from String to String {
 				"typeOfSection": 0,
 				"sectionNotes": [
 					[
+						129081.081081081,
+						3,
+						405.405405405405,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						128432.432432432,
+						2,
+						410,
+						"Evilrett Alt Skin 1"
+					],
+					[
 						128432.432432432,
 						4,
 						0,
@@ -31527,12 +31555,6 @@ enum abstract Chart(String) from String to String {
 						"Evilrett Alt Skin 3"
 					],
 					[
-						128432.432432432,
-						2,
-						410,
-						"Evilrett Alt Skin 1"
-					],
-					[
 						128918.918918919,
 						0,
 						0,
@@ -31542,12 +31564,6 @@ enum abstract Chart(String) from String to String {
 						129000,
 						1,
 						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						129081.081081081,
-						3,
-						410,
 						"Evilrett Alt Skin 1"
 					],
 					[
@@ -31648,7 +31664,7 @@ enum abstract Chart(String) from String to String {
 					[
 						130864.864864865,
 						6,
-						328,
+						246,
 						"Evilrett Alt Skin 1"
 					]
 				],
@@ -31730,25 +31746,25 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						131351.351351351,
-						7,
+						4,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						131513.513513513,
-						6,
+						7,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						131675.675675676,
-						5,
+						4,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						131837.837837838,
-						4,
+						5,
 						0,
 						"Evilrett Alt Skin 1"
 					],
@@ -31773,7 +31789,7 @@ enum abstract Chart(String) from String to String {
 					[
 						132162.162162162,
 						4,
-						246,
+						247,
 						"Evilrett Alt Skin 1"
 					]
 				],
@@ -32004,13 +32020,13 @@ enum abstract Chart(String) from String to String {
 					[
 						134918.918918919,
 						1,
-						1230,
+						1216.21621621622,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						135405.405405405,
 						2,
-						738,
+						729.72972972973,
 						"Evilrett Alt Skin 1"
 					]
 				],
@@ -32086,13 +32102,13 @@ enum abstract Chart(String) from String to String {
 					[
 						137513.513513513,
 						1,
-						1230,
+						1216.21621621622,
 						"Evilrett Alt Skin 3"
 					],
 					[
 						138000,
 						3,
-						738,
+						729.72972972973,
 						"Evilrett Alt Skin 3"
 					]
 				],
@@ -32168,7 +32184,7 @@ enum abstract Chart(String) from String to String {
 					[
 						140108.108108108,
 						5,
-						1230,
+						1216.21621621622,
 						"Evilrett Alt Skin 3"
 					],
 					[
@@ -32185,13 +32201,13 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						140432.432432432,
-						3,
+						1,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						140594.594594594,
-						0,
+						3,
 						0,
 						"Evilrett Alt Skin 1"
 					],
@@ -32203,7 +32219,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						141081.081081081,
-						3,
+						0,
 						0,
 						"Evilrett Alt Skin 1"
 					],
@@ -32227,24 +32243,24 @@ enum abstract Chart(String) from String to String {
 					[
 						141405.405405405,
 						7,
-						1230,
+						1216.21621621622,
 						"Evilrett Alt Skin 3"
 					],
 					[
 						142378.378378378,
 						4,
-						246,
+						243.243243243243,
 						"Evilrett Alt Skin 3"
 					],
 					[
 						141567.567567567,
-						1,
+						3,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						141729.72972973,
-						1,
+						3,
 						0,
 						"Evilrett Alt Skin 1"
 					],
@@ -32280,7 +32296,7 @@ enum abstract Chart(String) from String to String {
 					[
 						142702.702702703,
 						6,
-						1230,
+						1216.21621621622,
 						"Evilrett Alt Skin 3"
 					],
 					[
@@ -32333,13 +32349,13 @@ enum abstract Chart(String) from String to String {
 					[
 						144000,
 						5,
-						574,
+						567.567567567568,
 						"Evilrett Alt Skin 3"
 					],
 					[
 						144648.648648649,
 						7,
-						574,
+						567.567567567568,
 						"Evilrett Alt Skin 3"
 					],
 					[
@@ -32386,13 +32402,13 @@ enum abstract Chart(String) from String to String {
 					[
 						145297.297297297,
 						1,
-						1230,
+						1216.21621621622,
 						"Evilrett Alt Skin 3"
 					],
 					[
 						145783.783783784,
 						2,
-						738,
+						729.72972972973,
 						"Evilrett Alt Skin 3"
 					]
 				],
@@ -32468,13 +32484,13 @@ enum abstract Chart(String) from String to String {
 					[
 						147891.891891892,
 						1,
-						1230,
+						1216.21621621622,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						148378.378378378,
 						0,
-						738,
+						729.72972972973,
 						"Evilrett Alt Skin 1"
 					]
 				],
@@ -32549,6 +32565,12 @@ enum abstract Chart(String) from String to String {
 				"sectionNotes": [
 					[
 						150486.486486486,
+						4,
+						1216.21621621622,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						150486.486486486,
 						0,
 						0,
 						"Evilrett Alt Skin 3"
@@ -32588,12 +32610,6 @@ enum abstract Chart(String) from String to String {
 						0,
 						246,
 						"Evilrett Alt Skin 3"
-					],
-					[
-						150486.486486486,
-						4,
-						1230,
-						"Evilrett Alt Skin 1"
 					]
 				],
 				"lengthInSteps": 16,
@@ -32606,6 +32622,18 @@ enum abstract Chart(String) from String to String {
 			{
 				"typeOfSection": 0,
 				"sectionNotes": [
+					[
+						151783.783783784,
+						7,
+						1230,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						152756.756756757,
+						4,
+						246,
+						"Evilrett Alt Skin 1"
+					],
 					[
 						151945.945945946,
 						2,
@@ -32639,20 +32667,8 @@ enum abstract Chart(String) from String to String {
 					[
 						152918.918918919,
 						0,
-						83,
+						82,
 						"Evilrett Alt Skin 3"
-					],
-					[
-						151783.783783784,
-						7,
-						1230,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						152756.756756757,
-						4,
-						246,
-						"Evilrett Alt Skin 1"
 					]
 				],
 				"lengthInSteps": 16,
@@ -32670,6 +32686,12 @@ enum abstract Chart(String) from String to String {
 						3,
 						0,
 						"Evilrett Alt Skin 3"
+					],
+					[
+						153081.081081081,
+						5,
+						904,
+						"Evilrett Alt Skin 1"
 					],
 					[
 						153243.243243243,
@@ -32706,12 +32728,6 @@ enum abstract Chart(String) from String to String {
 						0,
 						246,
 						"Evilrett Alt Skin 3"
-					],
-					[
-						153081.081081081,
-						5,
-						902,
-						"Evilrett Alt Skin 1"
 					]
 				],
 				"lengthInSteps": 16,
@@ -32724,6 +32740,18 @@ enum abstract Chart(String) from String to String {
 			{
 				"typeOfSection": 0,
 				"sectionNotes": [
+					[
+						155027.027027027,
+						4,
+						567.567567567568,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						154378.378378378,
+						6,
+						574,
+						"Evilrett Alt Skin 1"
+					],
 					[
 						154540.540540541,
 						1,
@@ -32753,18 +32781,6 @@ enum abstract Chart(String) from String to String {
 						1,
 						246,
 						"Evilrett Alt Skin 3"
-					],
-					[
-						154378.378378378,
-						6,
-						574,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						155027.027027027,
-						4,
-						574,
-						"Evilrett Alt Skin 1"
 					]
 				],
 				"lengthInSteps": 16,
@@ -32977,8 +32993,8 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						170063.882063882,
-						2,
-						1363.63636363636
+						3,
+						1365
 					]
 				],
 				"lengthInSteps": 16,
@@ -32993,7 +33009,7 @@ enum abstract Chart(String) from String to String {
 				"sectionNotes": [
 					[
 						172609.336609337,
-						3,
+						2,
 						273
 					]
 				],
@@ -33375,11 +33391,6 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						190245.7002457,
-						3,
-						454.545454545455
-					],
-					[
-						190245.7002457,
 						5,
 						0
 					],
@@ -33387,6 +33398,16 @@ enum abstract Chart(String) from String to String {
 						188972.972972973,
 						6,
 						1183
+					],
+					[
+						190245.7002457,
+						3,
+						0
+					],
+					[
+						190336.609336609,
+						3,
+						364
 					]
 				],
 				"typeOfSection": 0,
@@ -33403,11 +33424,6 @@ enum abstract Chart(String) from String to String {
 						190427.518427518,
 						7,
 						1363.63636363636
-					],
-					[
-						190427.518427518,
-						2,
-						272.727272727273
 					],
 					[
 						190791.154791155,
@@ -33433,6 +33449,11 @@ enum abstract Chart(String) from String to String {
 						191700.245700245,
 						3,
 						272.727272727273
+					],
+					[
+						190427.518427518,
+						2,
+						273
 					]
 				],
 				"typeOfSection": 0,
@@ -33556,6 +33577,12 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						196245.7002457,
+						5,
+						1363.63636363636,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						196245.7002457,
 						3,
 						273
 					],
@@ -33583,12 +33610,6 @@ enum abstract Chart(String) from String to String {
 						197518.427518427,
 						3,
 						273
-					],
-					[
-						196245.7002457,
-						5,
-						1365,
-						"Evilrett Alt Skin 1"
 					]
 				],
 				"typeOfSection": 0,
@@ -33601,6 +33622,12 @@ enum abstract Chart(String) from String to String {
 			{
 				"lengthInSteps": 16,
 				"sectionNotes": [
+					[
+						197700.245700245,
+						7,
+						1363.63636363636,
+						"Evilrett Alt Skin 1"
+					],
 					[
 						197882.063882064,
 						2,
@@ -33635,12 +33662,6 @@ enum abstract Chart(String) from String to String {
 						198791.154791155,
 						0,
 						0
-					],
-					[
-						197700.245700245,
-						7,
-						1365,
-						"Evilrett Alt Skin 1"
 					]
 				],
 				"typeOfSection": 0,
@@ -33655,13 +33676,20 @@ enum abstract Chart(String) from String to String {
 				"sectionNotes": [
 					[
 						199154.791154791,
+						4,
+						1363.63636363636,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						199154.791154791,
 						2,
 						454.545454545455
 					],
 					[
 						200245.7002457,
-						3,
-						272.727272727273
+						7,
+						273,
+						"Evilrett Alt Skin 1"
 					],
 					[
 						199700.245700245,
@@ -33669,16 +33697,9 @@ enum abstract Chart(String) from String to String {
 						455
 					],
 					[
-						199154.791154791,
-						4,
-						1365,
-						"Evilrett Alt Skin 1"
-					],
-					[
 						200245.7002457,
-						7,
-						273,
-						"Evilrett Alt Skin 1"
+						1,
+						273
 					]
 				],
 				"typeOfSection": 0,
@@ -33697,28 +33718,8 @@ enum abstract Chart(String) from String to String {
 						272.727272727273
 					],
 					[
-						200972.972972973,
-						1,
-						0
-					],
-					[
-						201154.791154791,
-						3,
-						0
-					],
-					[
-						201336.609336609,
-						0,
-						0
-					],
-					[
 						201518.427518427,
 						2,
-						0
-					],
-					[
-						201700.245700245,
-						1,
 						0
 					],
 					[
@@ -33731,6 +33732,26 @@ enum abstract Chart(String) from String to String {
 						6,
 						1183,
 						"Evilrett Alt Skin 1"
+					],
+					[
+						200972.972972973,
+						3,
+						0
+					],
+					[
+						201154.791154791,
+						0,
+						0
+					],
+					[
+						201336.609336609,
+						1,
+						0
+					],
+					[
+						201700.245700245,
+						0,
+						0
 					],
 					[
 						201882.063882064,
@@ -33749,6 +33770,12 @@ enum abstract Chart(String) from String to String {
 			{
 				"lengthInSteps": 16,
 				"sectionNotes": [
+					[
+						202063.882063882,
+						7,
+						1363.63636363636,
+						"Evilrett Alt Skin 1"
+					],
 					[
 						202063.882063882,
 						2,
@@ -33778,12 +33805,6 @@ enum abstract Chart(String) from String to String {
 						203336.609336609,
 						3,
 						272.727272727273
-					],
-					[
-						202063.882063882,
-						7,
-						1365,
-						"Evilrett Alt Skin 1"
 					]
 				],
 				"typeOfSection": 0,
@@ -33796,6 +33817,18 @@ enum abstract Chart(String) from String to String {
 			{
 				"lengthInSteps": 16,
 				"sectionNotes": [
+					[
+						203518.427518427,
+						5,
+						636.363636363636,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						204245.7002457,
+						6,
+						636.363636363636,
+						"Evilrett Alt Skin 1"
+					],
 					[
 						203882.063882064,
 						0,
@@ -33812,26 +33845,14 @@ enum abstract Chart(String) from String to String {
 						0
 					],
 					[
-						204245.7002457,
-						3,
-						0
-					],
-					[
 						204427.518427518,
 						1,
 						456
 					],
 					[
-						203518.427518427,
-						5,
-						637,
-						"Evilrett Alt Skin 1"
-					],
-					[
 						204245.7002457,
-						6,
-						637,
-						"Evilrett Alt Skin 1"
+						3,
+						0
 					]
 				],
 				"typeOfSection": 0,
@@ -33857,13 +33878,13 @@ enum abstract Chart(String) from String to String {
 					[
 						204972.972972973,
 						0,
-						637,
+						636.363636363636,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						205700.245700245,
 						1,
-						637,
+						636.363636363636,
 						"Evilrett Alt Skin 1"
 					]
 				],
@@ -33952,6 +33973,18 @@ enum abstract Chart(String) from String to String {
 				"lengthInSteps": 16,
 				"sectionNotes": [
 					[
+						207882.063882063,
+						3,
+						636.363636363636,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						208609.336609336,
+						2,
+						636.363636363636,
+						"Evilrett Alt Skin 1"
+					],
+					[
 						208791.154791154,
 						6,
 						0
@@ -33962,21 +33995,9 @@ enum abstract Chart(String) from String to String {
 						183
 					],
 					[
-						207882.063882063,
-						3,
-						637,
-						"Evilrett Alt Skin 1"
-					],
-					[
 						208427.518427518,
 						0,
 						91,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						208609.336609336,
-						2,
-						638,
 						"Evilrett Alt Skin 1"
 					]
 				],
@@ -34092,25 +34113,25 @@ enum abstract Chart(String) from String to String {
 					[
 						210791.154791154,
 						3,
-						637,
+						636.363636363636,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						210791.154791154,
 						1,
-						637,
+						636.363636363636,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						211518.427518427,
 						2,
-						637,
+						636.363636363636,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						211518.427518427,
 						0,
-						637,
+						636.363636363636,
 						"Evilrett Alt Skin 1"
 					]
 				],
@@ -34214,26 +34235,26 @@ enum abstract Chart(String) from String to String {
 						454.545454545455
 					],
 					[
-						214791.154791154,
-						5,
-						91
-					],
-					[
 						213700.245700245,
 						2,
-						637,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						214245.7002457,
-						1,
-						91,
+						636.363636363636,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						214427.518427518,
 						3,
-						637,
+						636.363636363636,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						214791.154791154,
+						5,
+						91
+					],
+					[
+						214245.7002457,
+						1,
+						91,
 						"Evilrett Alt Skin 1"
 					]
 				],
@@ -34333,6 +34354,18 @@ enum abstract Chart(String) from String to String {
 				"sectionNotes": [
 					[
 						216609.336609336,
+						4,
+						636.363636363636,
+						"Evilrett Alt Skin 2"
+					],
+					[
+						217336.609336609,
+						6,
+						636.363636363636,
+						"Evilrett Alt Skin 2"
+					],
+					[
+						216609.336609336,
 						0,
 						636.363636363636
 					],
@@ -34340,18 +34373,6 @@ enum abstract Chart(String) from String to String {
 						217336.609336609,
 						1,
 						636.363636363636
-					],
-					[
-						216609.336609336,
-						4,
-						637,
-						"Evilrett Alt Skin 2"
-					],
-					[
-						217336.609336609,
-						6,
-						637,
-						"Evilrett Alt Skin 2"
 					]
 				],
 				"typeOfSection": 0,
@@ -34364,6 +34385,24 @@ enum abstract Chart(String) from String to String {
 			{
 				"lengthInSteps": 16,
 				"sectionNotes": [
+					[
+						218063.882063882,
+						5,
+						636.363636363636,
+						"Evilrett Alt Skin 2"
+					],
+					[
+						218791.154791154,
+						6,
+						454.545454545455,
+						"Evilrett Alt Skin 2"
+					],
+					[
+						219336.609336609,
+						7,
+						727.272727272727,
+						"Evilrett Alt Skin 2"
+					],
 					[
 						218063.882063882,
 						3,
@@ -34403,24 +34442,6 @@ enum abstract Chart(String) from String to String {
 						219336.609336609,
 						2,
 						0
-					],
-					[
-						218063.882063882,
-						5,
-						637,
-						"Evilrett Alt Skin 2"
-					],
-					[
-						218791.154791154,
-						6,
-						455,
-						"Evilrett Alt Skin 2"
-					],
-					[
-						219336.609336609,
-						7,
-						820,
-						"Evilrett Alt Skin 2"
 					]
 				],
 				"typeOfSection": 0,
@@ -34554,6 +34575,18 @@ enum abstract Chart(String) from String to String {
 				"sectionNotes": [
 					[
 						222427.518427518,
+						5,
+						636.363636363636,
+						"Evilrett Alt Skin 2"
+					],
+					[
+						223154.791154791,
+						6,
+						636.363636363636,
+						"Evilrett Alt Skin 2"
+					],
+					[
+						222427.518427518,
 						3,
 						636.363636363636
 					],
@@ -34573,21 +34606,9 @@ enum abstract Chart(String) from String to String {
 						636.363636363636
 					],
 					[
-						222427.518427518,
-						5,
-						637,
-						"Evilrett Alt Skin 2"
-					],
-					[
 						222972.972972972,
 						7,
 						91,
-						"Evilrett Alt Skin 2"
-					],
-					[
-						223154.791154791,
-						6,
-						637,
 						"Evilrett Alt Skin 2"
 					]
 				],
@@ -34601,6 +34622,18 @@ enum abstract Chart(String) from String to String {
 			{
 				"lengthInSteps": 16,
 				"sectionNotes": [
+					[
+						223882.063882063,
+						4,
+						454.545454545455,
+						"Evilrett Alt Skin 2"
+					],
+					[
+						224427.518427518,
+						6,
+						454.545454545455,
+						"Evilrett Alt Skin 2"
+					],
 					[
 						223882.063882063,
 						3,
@@ -34642,27 +34675,15 @@ enum abstract Chart(String) from String to String {
 						0
 					],
 					[
-						223882.063882063,
-						4,
-						455,
-						"Evilrett Alt Skin 2"
-					],
-					[
-						224427.518427518,
-						6,
-						455,
+						224972.972972972,
+						5,
+						0,
 						"Evilrett Alt Skin 2"
 					],
 					[
 						225154.791154791,
 						7,
 						455,
-						"Evilrett Alt Skin 2"
-					],
-					[
-						224972.972972972,
-						5,
-						0,
 						"Evilrett Alt Skin 2"
 					]
 				],
@@ -34676,6 +34697,12 @@ enum abstract Chart(String) from String to String {
 			{
 				"lengthInSteps": 16,
 				"sectionNotes": [
+					[
+						226063.882063882,
+						6,
+						454.545454545455,
+						"Evilrett Alt Skin 2"
+					],
 					[
 						225882.063882063,
 						1,
@@ -34694,13 +34721,7 @@ enum abstract Chart(String) from String to String {
 					[
 						225700.245700245,
 						6,
-						182,
-						"Evilrett Alt Skin 2"
-					],
-					[
-						226063.882063881,
-						6,
-						455,
+						183,
 						"Evilrett Alt Skin 2"
 					],
 					[
@@ -34809,8 +34830,8 @@ enum abstract Chart(String) from String to String {
 					[
 						228245.7002457,
 						6,
-						1365,
-						"Evilrett Alt Skin 2"
+						1363.63636363636,
+						"Evilrett Alt Skin 3"
 					]
 				],
 				"typeOfSection": 0,
@@ -35154,19 +35175,19 @@ enum abstract Chart(String) from String to String {
 				"sectionNotes": [
 					[
 						260299.16778949,
-						2,
+						3,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						260461.329951652,
-						2,
+						3,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						260623.492113814,
-						1,
+						0,
 						0,
 						"Evilrett Alt Skin 1"
 					],
@@ -35178,8 +35199,8 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						261109.9786003,
-						0,
-						0,
+						2,
+						246,
 						"Evilrett Alt Skin 1"
 					],
 					[
@@ -35190,8 +35211,8 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						261109.9786003,
-						2,
-						246,
+						0,
+						0,
 						"Evilrett Alt Skin 1"
 					]
 				],
@@ -35343,13 +35364,13 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						265001.870492192,
-						3,
+						2,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						265164.032654355,
-						2,
+						3,
 						246,
 						"Evilrett Alt Skin 1"
 					]
@@ -35400,22 +35421,22 @@ enum abstract Chart(String) from String to String {
 				"lengthInSteps": 16,
 				"sectionNotes": [
 					[
-						266623.492113814,
-						0,
-						243.243243243243,
-						"Evilrett Alt Skin 3"
+						266785.654275976,
+						6,
+						810.810810810811,
+						"Evilrett Alt Skin 1"
 					],
 					[
 						266623.492113814,
 						4,
-						984,
+						972.972972972973,
 						"Evilrett Alt Skin 1"
 					],
 					[
-						266785.654275976,
-						6,
-						821,
-						"Evilrett Alt Skin 1"
+						266623.492113814,
+						0,
+						243.243243243243,
+						"Evilrett Alt Skin 3"
 					],
 					[
 						266947.816438138,
@@ -35550,7 +35571,7 @@ enum abstract Chart(String) from String to String {
 					[
 						270028.897519219,
 						2,
-						246,
+						248,
 						"Evilrett Alt Skin 3"
 					],
 					[
@@ -35596,8 +35617,8 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						271488.356978679,
-						0,
-						0,
+						2,
+						246,
 						"Evilrett Alt Skin 3"
 					],
 					[
@@ -35608,8 +35629,8 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						271488.356978679,
-						2,
-						246,
+						0,
+						0,
 						"Evilrett Alt Skin 3"
 					]
 				],
@@ -35636,14 +35657,14 @@ enum abstract Chart(String) from String to String {
 						"Evilrett Alt Skin 3"
 					],
 					[
-						272218.086708408,
-						2,
+						272137.005627327,
+						3,
 						0,
 						"Evilrett Alt Skin 3"
 					],
 					[
-						272137.005627327,
-						3,
+						272218.086708408,
+						2,
 						0,
 						"Evilrett Alt Skin 3"
 					],
@@ -35761,13 +35782,13 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						275380.248870571,
-						3,
-						82,
+						2,
+						0,
 						"Evilrett Alt Skin 3"
 					],
 					[
 						275542.411032733,
-						2,
+						3,
 						246,
 						"Evilrett Alt Skin 3"
 					]
@@ -35818,26 +35839,26 @@ enum abstract Chart(String) from String to String {
 				"lengthInSteps": 16,
 				"sectionNotes": [
 					[
-						277001.870492192,
-						4,
-						1148,
-						"Evilrett Alt Skin 3"
-					],
-					[
 						277082.951573273,
 						6,
-						1066,
+						1054.05405405405,
 						"Evilrett Alt Skin 3"
 					],
 					[
 						277001.870492192,
-						2,
-						0,
+						4,
+						1135.13513513513,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						277001.870492192,
+						3,
+						246,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						277326.194816517,
-						3,
+						2,
 						0,
 						"Evilrett Alt Skin 1"
 					],
@@ -35849,7 +35870,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						277488.356978679,
-						3,
+						2,
 						0,
 						"Evilrett Alt Skin 1"
 					],
@@ -35862,6 +35883,12 @@ enum abstract Chart(String) from String to String {
 					[
 						277812.681303003,
 						2,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						277974.843465165,
+						1,
 						0,
 						"Evilrett Alt Skin 1"
 					],
@@ -35902,7 +35929,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						278785.654275976,
-						1,
+						0,
 						0,
 						"Evilrett Alt Skin 1"
 					],
@@ -35914,19 +35941,19 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						279109.9786003,
-						0,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						279272.140762462,
 						2,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
+						279272.140762462,
+						0,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
 						279434.302924625,
-						3,
+						2,
 						0,
 						"Evilrett Alt Skin 1"
 					]
@@ -35985,7 +36012,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						280731.600221922,
-						1,
+						2,
 						246,
 						"Evilrett Alt Skin 1"
 					]
@@ -36002,25 +36029,25 @@ enum abstract Chart(String) from String to String {
 				"sectionNotes": [
 					[
 						281055.924546246,
-						0,
+						1,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						281137.005627327,
-						1,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						281218.086708408,
 						3,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
-						281380.248870571,
+						281218.086708408,
 						1,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						281380.248870571,
+						2,
 						0,
 						"Evilrett Alt Skin 1"
 					],
@@ -36032,13 +36059,13 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						281704.573194895,
-						2,
+						3,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						281866.735357057,
-						3,
+						1,
 						0,
 						"Evilrett Alt Skin 1"
 					],
@@ -36061,7 +36088,7 @@ enum abstract Chart(String) from String to String {
 				"sectionNotes": [
 					[
 						282191.059681381,
-						1,
+						3,
 						246,
 						"Evilrett Alt Skin 1"
 					],
@@ -36073,7 +36100,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						282191.059681381,
-						3,
+						1,
 						246,
 						"Evilrett Alt Skin 1"
 					],
@@ -36126,7 +36153,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						283731.600221922,
-						1,
+						3,
 						0,
 						"Evilrett Alt Skin 1"
 					],
@@ -36138,19 +36165,19 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						283974.843465165,
-						3,
+						0,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						284137.005627327,
-						2,
+						1,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						284299.167789489,
-						1,
+						3,
 						0,
 						"Evilrett Alt Skin 1"
 					],
@@ -36231,6 +36258,12 @@ enum abstract Chart(String) from String to String {
 						"Evilrett Alt Skin 1"
 					],
 					[
+						287218.086708408,
+						0,
+						1151,
+						"Evilrett Alt Skin 1"
+					],
+					[
 						286407.275897597,
 						3,
 						0,
@@ -36259,12 +36292,6 @@ enum abstract Chart(String) from String to String {
 						1,
 						0,
 						"Evilrett Alt Skin 1"
-					],
-					[
-						287218.086708408,
-						0,
-						246,
-						"Evilrett Alt Skin 1"
 					]
 				],
 				"typeOfSection": 0,
@@ -36278,20 +36305,26 @@ enum abstract Chart(String) from String to String {
 				"lengthInSteps": 16,
 				"sectionNotes": [
 					[
+						288515.384005706,
+						1,
+						243.243243243243,
+						"Evilrett Alt Skin 3"
+					],
+					[
 						287542.411032733,
 						7,
-						902,
+						820,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						287380.24887057,
-						2,
+						0,
 						246,
 						"Evilrett Alt Skin 3"
 					],
 					[
 						287704.573194895,
-						3,
+						2,
 						0,
 						"Evilrett Alt Skin 3"
 					],
@@ -36303,26 +36336,20 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						287866.735357057,
-						3,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						288028.897519219,
-						0,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						288191.059681381,
 						2,
 						0,
 						"Evilrett Alt Skin 3"
 					],
 					[
-						288515.384005706,
-						1,
-						246,
+						288028.897519219,
+						3,
+						0,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						288191.059681381,
+						0,
+						0,
 						"Evilrett Alt Skin 3"
 					]
 				],
@@ -36344,7 +36371,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						288920.789411111,
-						3,
+						1,
 						0,
 						"Evilrett Alt Skin 3"
 					],
@@ -36356,7 +36383,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						289164.032654354,
-						1,
+						0,
 						0,
 						"Evilrett Alt Skin 3"
 					],
@@ -36368,19 +36395,19 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						289488.356978679,
-						0,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						289650.519140841,
 						2,
 						0,
 						"Evilrett Alt Skin 3"
 					],
 					[
+						289650.519140841,
+						0,
+						0,
+						"Evilrett Alt Skin 3"
+					],
+					[
 						289812.681303003,
-						3,
+						2,
 						0,
 						"Evilrett Alt Skin 3"
 					]
@@ -36461,32 +36488,26 @@ enum abstract Chart(String) from String to String {
 				"lengthInSteps": 16,
 				"sectionNotes": [
 					[
-						292245.113735435,
-						4,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
 						291434.302924624,
-						0,
+						1,
 						0,
 						"Evilrett Alt Skin 3"
 					],
 					[
 						291515.384005706,
-						1,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						291596.465086787,
 						3,
 						0,
 						"Evilrett Alt Skin 3"
 					],
 					[
-						291758.627248949,
+						291596.465086787,
 						1,
+						0,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						291758.627248949,
+						2,
 						0,
 						"Evilrett Alt Skin 3"
 					],
@@ -36498,13 +36519,13 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						292082.951573273,
-						2,
+						3,
 						0,
 						"Evilrett Alt Skin 3"
 					],
 					[
 						292245.113735435,
-						3,
+						1,
 						0,
 						"Evilrett Alt Skin 3"
 					],
@@ -36513,6 +36534,12 @@ enum abstract Chart(String) from String to String {
 						0,
 						0,
 						"Evilrett Alt Skin 3"
+					],
+					[
+						292245.113735435,
+						4,
+						0,
+						"Evilrett Alt Skin 1"
 					],
 					[
 						292407.275897597,
@@ -36533,15 +36560,15 @@ enum abstract Chart(String) from String to String {
 				"sectionNotes": [
 					[
 						292569.43805976,
-						1,
-						246,
-						"Evilrett Alt Skin 3"
+						7,
+						1216.21621621622,
+						"Evilrett Alt Skin 1"
 					],
 					[
 						292569.43805976,
-						7,
-						1230,
-						"Evilrett Alt Skin 1"
+						3,
+						246,
+						"Evilrett Alt Skin 3"
 					],
 					[
 						292569.43805976,
@@ -36551,7 +36578,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						292569.43805976,
-						3,
+						1,
 						246,
 						"Evilrett Alt Skin 3"
 					],
@@ -36596,12 +36623,6 @@ enum abstract Chart(String) from String to String {
 			{
 				"lengthInSteps": 16,
 				"sectionNotes": [
-					[
-						294920.789411111,
-						5,
-						0,
-						"Evilrett Alt Skin 1"
-					],
 					[
 						294028.897519219,
 						2,
@@ -36651,6 +36672,12 @@ enum abstract Chart(String) from String to String {
 						"Evilrett Alt Skin 3"
 					],
 					[
+						294920.789411111,
+						5,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
 						295082.951573273,
 						6,
 						0,
@@ -36669,15 +36696,15 @@ enum abstract Chart(String) from String to String {
 				"sectionNotes": [
 					[
 						295164.032654354,
-						3,
-						243.243243243243,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						295164.032654354,
 						4,
 						1216.21621621622,
 						"Evilrett Alt Skin 1"
+					],
+					[
+						295164.032654354,
+						3,
+						246,
+						"Evilrett Alt Skin 3"
 					],
 					[
 						295488.356978678,
@@ -36721,18 +36748,6 @@ enum abstract Chart(String) from String to String {
 				"lengthInSteps": 16,
 				"sectionNotes": [
 					[
-						296461.329951651,
-						5,
-						567.567567567568,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						297109.9786003,
-						7,
-						567.567567567568,
-						"Evilrett Alt Skin 1"
-					],
-					[
 						296623.492113814,
 						1,
 						0,
@@ -36769,9 +36784,21 @@ enum abstract Chart(String) from String to String {
 						"Evilrett Alt Skin 3"
 					],
 					[
+						296461.329951651,
+						5,
+						574,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						297109.9786003,
+						7,
+						574,
+						"Evilrett Alt Skin 1"
+					],
+					[
 						297596.465086787,
+						1,
 						0,
-						738,
 						"Evilrett Alt Skin 3"
 					]
 				],
@@ -36786,9 +36813,15 @@ enum abstract Chart(String) from String to String {
 				"lengthInSteps": 16,
 				"sectionNotes": [
 					[
-						298245.113735435,
-						3,
-						82,
+						298407.275897597,
+						5,
+						567.567567567568,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						298407.275897597,
+						1,
+						574,
 						"Evilrett Alt Skin 3"
 					],
 					[
@@ -36798,20 +36831,8 @@ enum abstract Chart(String) from String to String {
 						"Evilrett Alt Skin 1"
 					],
 					[
-						298245.113735435,
-						7,
-						83,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						298407.275897597,
-						5,
-						574,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						298407.275897597,
-						1,
+						297758.627248949,
+						0,
 						574,
 						"Evilrett Alt Skin 3"
 					]
@@ -36828,41 +36849,35 @@ enum abstract Chart(String) from String to String {
 				"sectionNotes": [
 					[
 						299055.924546246,
+						6,
+						567.567567567568,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						299055.924546246,
 						2,
 						574,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						299055.924546246,
-						3,
+						4,
 						0,
-						"Evilrett Alt Skin 1"
+						"Evilrett Alt Skin 3"
 					],
 					[
 						299055.924546246,
-						6,
+						7,
+						0,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						299704.573194895,
+						7,
 						574,
 						"Evilrett Alt Skin 3"
 					],
 					[
-						299055.924546246,
-						7,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						299055.924546246,
-						4,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						299704.573194895,
-						7,
-						411,
-						"Evilrett Alt Skin 3"
-					],
-					[
 						299704.573194895,
 						5,
 						0,
@@ -36882,18 +36897,12 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						299055.924546246,
-						0,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						299704.573194895,
-						1,
+						3,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
-						299704.573194895,
+						299055.924546246,
 						0,
 						0,
 						"Evilrett Alt Skin 1"
@@ -36901,13 +36910,25 @@ enum abstract Chart(String) from String to String {
 					[
 						299704.573194895,
 						3,
-						410,
+						574,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						300191.059681381,
 						1,
 						82,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						299704.573194895,
+						1,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						299704.573194895,
+						0,
+						0,
 						"Evilrett Alt Skin 1"
 					]
 				],
@@ -36947,25 +36968,25 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						300839.70833003,
-						3,
+						0,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						301001.870492192,
-						0,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						301164.032654354,
 						1,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
-						301245.113735435,
+						301164.032654354,
 						3,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						301245.113735435,
+						0,
 						0,
 						"Evilrett Alt Skin 1"
 					],
@@ -37060,7 +37081,25 @@ enum abstract Chart(String) from String to String {
 					[
 						302947.816438138,
 						0,
-						246,
+						243.243243243243,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						303434.302924624,
+						2,
+						243.243243243243,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						303758.627248949,
+						1,
+						243.243243243243,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						304082.951573273,
+						3,
+						243.243243243243,
 						"Evilrett Alt Skin 1"
 					],
 					[
@@ -37076,32 +37115,14 @@ enum abstract Chart(String) from String to String {
 						"Evilrett Alt Skin 1"
 					],
 					[
-						303434.302924624,
-						2,
-						246,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						303758.627248949,
-						1,
-						246,
-						"Evilrett Alt Skin 1"
-					],
-					[
 						304082.951573273,
-						3,
-						246,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						304082.951573273,
-						2,
+						0,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						304082.951573273,
-						0,
+						2,
 						0,
 						"Evilrett Alt Skin 1"
 					]
@@ -37237,13 +37258,13 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						306596.465086786,
-						3,
+						1,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						306677.546167867,
-						1,
+						3,
 						0,
 						"Evilrett Alt Skin 1"
 					],
@@ -37314,7 +37335,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						307812.681303003,
-						2,
+						3,
 						0,
 						"Evilrett Alt Skin 1"
 					],
@@ -37343,7 +37364,7 @@ enum abstract Chart(String) from String to String {
 				"sectionNotes": [
 					[
 						308137.005627327,
-						3,
+						0,
 						0,
 						"Evilrett Alt Skin 1"
 					],
@@ -37498,19 +37519,19 @@ enum abstract Chart(String) from String to String {
 					[
 						310731.600221921,
 						6,
-						984,
+						972.972972972973,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						310731.600221921,
 						5,
-						0,
+						985,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						310731.600221921,
 						4,
-						0,
+						985,
 						"Evilrett Alt Skin 1"
 					],
 					[
@@ -37545,13 +37566,13 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						311380.24887057,
-						0,
+						1,
 						0,
 						"Evilrett Alt Skin 3"
 					],
 					[
 						311542.411032732,
-						1,
+						0,
 						0,
 						"Evilrett Alt Skin 3"
 					],
@@ -37586,7 +37607,7 @@ enum abstract Chart(String) from String to String {
 				"sectionNotes": [
 					[
 						312028.897519219,
-						3,
+						0,
 						0,
 						"Evilrett Alt Skin 3"
 					],
@@ -37604,7 +37625,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						312353.221843543,
-						0,
+						3,
 						0,
 						"Evilrett Alt Skin 3"
 					],
@@ -37774,6 +37795,12 @@ enum abstract Chart(String) from String to String {
 						"Evilrett Alt Skin 1"
 					],
 					[
+						317055.924546246,
+						3,
+						0,
+						"Evilrett Alt Skin 3"
+					],
+					[
 						315920.789411111,
 						3,
 						0,
@@ -37835,19 +37862,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						316974.843465165,
-						3,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						317055.924546246,
 						1,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						317137.005627327,
-						0,
 						0,
 						"Evilrett Alt Skin 3"
 					],
@@ -37862,6 +37877,12 @@ enum abstract Chart(String) from String to String {
 						4,
 						0,
 						"Evilrett Alt Skin 1"
+					],
+					[
+						317137.005627327,
+						0,
+						0,
+						"Evilrett Alt Skin 3"
 					]
 				],
 				"typeOfSection": 0,
@@ -37876,18 +37897,6 @@ enum abstract Chart(String) from String to String {
 				"sectionNotes": [
 					[
 						317218.086708408,
-						7,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						317380.24887057,
-						7,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						317461.329951651,
 						7,
 						0,
 						"Evilrett Alt Skin 1"
@@ -37942,7 +37951,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						318191.059681381,
-						2,
+						3,
 						0,
 						"Evilrett Alt Skin 3"
 					],
@@ -37957,6 +37966,18 @@ enum abstract Chart(String) from String to String {
 						1,
 						0,
 						"Evilrett Alt Skin 3"
+					],
+					[
+						317380.24887057,
+						7,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						317461.329951651,
+						7,
+						0,
+						"Evilrett Alt Skin 1"
 					]
 				],
 				"typeOfSection": 0,
@@ -37971,15 +37992,27 @@ enum abstract Chart(String) from String to String {
 				"sectionNotes": [
 					[
 						318515.384005705,
+						0,
+						0,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						318515.384005705,
 						5,
 						410,
 						"Evilrett Alt Skin 1"
 					],
 					[
-						318515.384005705,
-						0,
-						0,
-						"Evilrett Alt Skin 3"
+						319001.870492192,
+						4,
+						410,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						319488.356978678,
+						6,
+						246,
+						"Evilrett Alt Skin 1"
 					],
 					[
 						318677.546167867,
@@ -38028,18 +38061,6 @@ enum abstract Chart(String) from String to String {
 						2,
 						0,
 						"Evilrett Alt Skin 3"
-					],
-					[
-						319001.870492192,
-						4,
-						410,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						319488.356978678,
-						6,
-						246,
-						"Evilrett Alt Skin 1"
 					]
 				],
 				"typeOfSection": 0,
@@ -38052,6 +38073,12 @@ enum abstract Chart(String) from String to String {
 			{
 				"lengthInSteps": 16,
 				"sectionNotes": [
+					[
+						319812.681303002,
+						5,
+						0,
+						"Evilrett Alt Skin 1"
+					],
 					[
 						319812.681303002,
 						1,
@@ -38131,12 +38158,6 @@ enum abstract Chart(String) from String to String {
 						"Evilrett Alt Skin 3"
 					],
 					[
-						319812.681303002,
-						5,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
 						319974.843465165,
 						7,
 						0,
@@ -38144,25 +38165,25 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						320137.005627327,
-						6,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						320299.167789489,
 						5,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
-						320461.329951651,
+						320299.167789489,
 						6,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
-						320623.492113813,
+						320461.329951651,
 						4,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						320623.492113813,
+						7,
 						0,
 						"Evilrett Alt Skin 1"
 					],
@@ -38174,7 +38195,7 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						320947.816438138,
-						7,
+						6,
 						0,
 						"Evilrett Alt Skin 1"
 					]
@@ -38192,20 +38213,20 @@ enum abstract Chart(String) from String to String {
 					[
 						321109.9786003,
 						6,
-						984,
+						810.810810810811,
 						"Evilrett Alt Skin 3"
 					],
 					[
-						321109.9786003,
-						5,
+						321353.221843543,
 						0,
-						"Evilrett Alt Skin 3"
+						0,
+						"Evilrett Alt Skin 1"
 					],
 					[
-						321109.9786003,
-						4,
-						0,
-						"Evilrett Alt Skin 3"
+						322245.113735435,
+						2,
+						243.243243243243,
+						"Evilrett Alt Skin 1"
 					],
 					[
 						321109.9786003,
@@ -38220,15 +38241,21 @@ enum abstract Chart(String) from String to String {
 						"Evilrett Alt Skin 1"
 					],
 					[
-						321353.221843543,
+						321109.9786003,
+						5,
 						0,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						321109.9786003,
+						4,
 						0,
-						"Evilrett Alt Skin 1"
+						"Evilrett Alt Skin 3"
 					],
 					[
 						321434.302924624,
 						2,
-						82,
+						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
@@ -38257,19 +38284,13 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						322245.113735435,
-						2,
-						246,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						322245.113735435,
-						1,
+						3,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						322245.113735435,
-						3,
+						1,
 						0,
 						"Evilrett Alt Skin 1"
 					]
@@ -38304,25 +38325,25 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						322893.762384083,
-						1,
+						2,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						323055.924546246,
-						2,
+						0,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						323218.086708408,
-						0,
+						1,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						323380.24887057,
-						2,
+						0,
 						0,
 						"Evilrett Alt Skin 1"
 					],
@@ -38345,7 +38366,7 @@ enum abstract Chart(String) from String to String {
 				"sectionNotes": [
 					[
 						323704.573194894,
-						1,
+						2,
 						0,
 						"Evilrett Alt Skin 1"
 					],
@@ -38357,13 +38378,13 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						323947.816438137,
-						1,
+						3,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						324028.897519219,
-						3,
+						1,
 						0,
 						"Evilrett Alt Skin 1"
 					],
@@ -38520,12 +38541,6 @@ enum abstract Chart(String) from String to String {
 						0,
 						246,
 						"Evilrett Alt Skin 1"
-					],
-					[
-						327434.302924624,
-						1,
-						246,
-						"Evilrett Alt Skin 1"
 					]
 				],
 				"typeOfSection": 0,
@@ -38551,18 +38566,18 @@ enum abstract Chart(String) from String to String {
 						"Evilrett Alt Skin 1"
 					],
 					[
-						328082.951573273,
-						3,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
 						327920.78941111,
 						2,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
+						328082.951573273,
+						3,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
 						328245.113735435,
 						1,
 						0,
@@ -38594,25 +38609,13 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						328569.438059759,
-						0,
+						1,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						328569.438059759,
-						1,
 						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						328731.600221921,
-						1,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						328731.600221921,
-						2,
 						0,
 						"Evilrett Alt Skin 1"
 					],
@@ -38633,6 +38636,12 @@ enum abstract Chart(String) from String to String {
 			{
 				"lengthInSteps": 16,
 				"sectionNotes": [
+					[
+						330028.897519219,
+						2,
+						243.243243243243,
+						"Evilrett Alt Skin 1"
+					],
 					[
 						328893.762384083,
 						0,
@@ -38692,12 +38701,6 @@ enum abstract Chart(String) from String to String {
 						1,
 						0,
 						"Evilrett Alt Skin 1"
-					],
-					[
-						330028.897519219,
-						2,
-						246,
-						"Evilrett Alt Skin 1"
 					]
 				],
 				"typeOfSection": 0,
@@ -38711,8 +38714,14 @@ enum abstract Chart(String) from String to String {
 				"lengthInSteps": 16,
 				"sectionNotes": [
 					[
+						331326.194816516,
+						1,
+						972.972972972973,
+						"Evilrett Alt Skin 1"
+					],
+					[
 						330353.221843543,
-						0,
+						3,
 						0,
 						"Evilrett Alt Skin 1"
 					],
@@ -38724,19 +38733,19 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						330515.384005705,
-						3,
+						0,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						330677.546167867,
-						2,
+						3,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
 						330839.708330029,
-						0,
+						2,
 						0,
 						"Evilrett Alt Skin 1"
 					],
@@ -38750,12 +38759,6 @@ enum abstract Chart(String) from String to String {
 						331164.032654354,
 						3,
 						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						331326.194816516,
-						1,
-						1078,
 						"Evilrett Alt Skin 1"
 					]
 				],
@@ -38771,15 +38774,21 @@ enum abstract Chart(String) from String to String {
 				"sectionNotes": [
 					[
 						332623.492113813,
-						7,
-						659,
-						"Evilrett Alt Skin 1"
+						2,
+						243.243243243243,
+						"Evilrett Alt Skin 3"
 					],
 					[
 						331488.356978678,
 						1,
 						0,
 						"Evilrett Alt Skin 3"
+					],
+					[
+						332623.492113813,
+						7,
+						659,
+						"Evilrett Alt Skin 1"
 					],
 					[
 						331650.51914084,
@@ -38796,7 +38805,7 @@ enum abstract Chart(String) from String to String {
 					[
 						331812.681303002,
 						2,
-						82,
+						0,
 						"Evilrett Alt Skin 3"
 					],
 					[
@@ -38833,12 +38842,6 @@ enum abstract Chart(String) from String to String {
 						332623.492113813,
 						1,
 						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						332623.492113813,
-						2,
-						246,
 						"Evilrett Alt Skin 3"
 					]
 				],
@@ -38884,25 +38887,25 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						333272.140762462,
-						1,
+						2,
 						0,
 						"Evilrett Alt Skin 3"
 					],
 					[
 						333434.302924624,
-						2,
+						0,
 						0,
 						"Evilrett Alt Skin 3"
 					],
 					[
 						333596.465086786,
-						0,
+						1,
 						0,
 						"Evilrett Alt Skin 3"
 					],
 					[
 						333758.627248948,
-						2,
+						0,
 						0,
 						"Evilrett Alt Skin 3"
 					],
@@ -38924,8 +38927,26 @@ enum abstract Chart(String) from String to String {
 				"lengthInSteps": 16,
 				"sectionNotes": [
 					[
+						334893.762384083,
+						4,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						335218.086708408,
+						6,
+						567.567567567568,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						335218.086708408,
+						2,
+						246,
+						"Evilrett Alt Skin 3"
+					],
+					[
 						334082.951573272,
-						1,
+						2,
 						0,
 						"Evilrett Alt Skin 3"
 					],
@@ -38937,13 +38958,13 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						334326.194816516,
-						1,
+						3,
 						0,
 						"Evilrett Alt Skin 3"
 					],
 					[
 						334407.275897597,
-						3,
+						1,
 						0,
 						"Evilrett Alt Skin 3"
 					],
@@ -38972,27 +38993,9 @@ enum abstract Chart(String) from String to String {
 						"Evilrett Alt Skin 3"
 					],
 					[
-						335218.086708408,
-						2,
-						246,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						334893.762384083,
-						4,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
 						335055.924546245,
 						7,
 						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						335218.086708408,
-						6,
-						574,
 						"Evilrett Alt Skin 1"
 					]
 				],
@@ -39007,44 +39010,14 @@ enum abstract Chart(String) from String to String {
 				"lengthInSteps": 16,
 				"sectionNotes": [
 					[
+						336353.221843543,
+						6,
+						243.243243243243,
+						"Evilrett Alt Skin 1"
+					],
+					[
 						335542.411032732,
 						0,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						335623.492113813,
-						1,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						335704.573194894,
-						3,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						335866.735357056,
-						2,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						336028.897519218,
-						0,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						336191.059681381,
-						1,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						336353.221843543,
-						3,
 						0,
 						"Evilrett Alt Skin 3"
 					],
@@ -39061,10 +39034,40 @@ enum abstract Chart(String) from String to String {
 						"Evilrett Alt Skin 1"
 					],
 					[
+						335623.492113813,
+						0,
+						0,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						335704.573194894,
+						3,
+						0,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						335866.735357056,
+						0,
+						0,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						336028.897519218,
+						2,
+						0,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						336191.059681381,
+						1,
+						0,
+						"Evilrett Alt Skin 3"
+					],
+					[
 						336353.221843543,
-						6,
-						246,
-						"Evilrett Alt Skin 1"
+						3,
+						0,
+						"Evilrett Alt Skin 3"
 					]
 				],
 				"typeOfSection": 0,
@@ -39077,6 +39080,24 @@ enum abstract Chart(String) from String to String {
 			{
 				"lengthInSteps": 16,
 				"sectionNotes": [
+					[
+						337812.681303002,
+						2,
+						243.243243243243,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						336677.546167867,
+						4,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						337812.681303002,
+						5,
+						246,
+						"Evilrett Alt Skin 1"
+					],
 					[
 						336677.546167867,
 						2,
@@ -39126,12 +39147,6 @@ enum abstract Chart(String) from String to String {
 						"Evilrett Alt Skin 3"
 					],
 					[
-						336677.546167867,
-						4,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
 						336839.708330029,
 						5,
 						0,
@@ -39157,39 +39172,15 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						337488.356978678,
-						7,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						337650.51914084,
 						5,
 						0,
 						"Evilrett Alt Skin 1"
 					],
 					[
-						337812.681303002,
+						337650.51914084,
 						7,
-						246,
+						0,
 						"Evilrett Alt Skin 1"
-					],
-					[
-						337812.681303002,
-						6,
-						246,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						337812.681303002,
-						4,
-						246,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						337812.681303002,
-						2,
-						246,
-						"Evilrett Alt Skin 3"
 					],
 					[
 						337812.681303002,
@@ -39202,6 +39193,18 @@ enum abstract Chart(String) from String to String {
 						0,
 						246,
 						"Evilrett Alt Skin 3"
+					],
+					[
+						337812.681303002,
+						6,
+						246,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						337812.681303002,
+						7,
+						246,
+						"Evilrett Alt Skin 1"
 					]
 				],
 				"typeOfSection": 0,
@@ -39219,6 +39222,48 @@ enum abstract Chart(String) from String to String {
 						3,
 						0,
 						"Evilrett Alt Skin 3"
+					],
+					[
+						338137.005627326,
+						4,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						338299.167789489,
+						4,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						338461.329951651,
+						7,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						338623.492113813,
+						4,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						338785.654275975,
+						6,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						338947.816438137,
+						5,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						339109.978600299,
+						6,
+						0,
+						"Evilrett Alt Skin 1"
 					],
 					[
 						338218.086708408,
@@ -39261,48 +39306,6 @@ enum abstract Chart(String) from String to String {
 						0,
 						0,
 						"Evilrett Alt Skin 3"
-					],
-					[
-						338137.005627326,
-						5,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						338299.167789489,
-						4,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						338461.329951651,
-						7,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						338623.492113813,
-						4,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						338785.654275975,
-						6,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						338947.816438137,
-						5,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						339109.978600299,
-						6,
-						0,
-						"Evilrett Alt Skin 1"
 					]
 				],
 				"typeOfSection": 0,
@@ -39315,6 +39318,18 @@ enum abstract Chart(String) from String to String {
 			{
 				"lengthInSteps": 16,
 				"sectionNotes": [
+					[
+						339272.140762462,
+						5,
+						165,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						340407.275897597,
+						3,
+						0,
+						"Evilrett Alt Skin 3"
+					],
 					[
 						339272.140762462,
 						0,
@@ -39358,36 +39373,6 @@ enum abstract Chart(String) from String to String {
 						"Evilrett Alt Skin 3"
 					],
 					[
-						340245.113735435,
-						0,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						340407.275897597,
-						2,
-						246,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						340407.275897597,
-						1,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						340407.275897597,
-						3,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						339272.140762462,
-						5,
-						164,
-						"Evilrett Alt Skin 1"
-					],
-					[
 						339596.465086786,
 						6,
 						0,
@@ -39413,8 +39398,8 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						340407.275897597,
-						4,
-						0,
+						6,
+						246,
 						"Evilrett Alt Skin 1"
 					],
 					[
@@ -39425,9 +39410,27 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						340407.275897597,
-						6,
-						246,
+						4,
+						0,
 						"Evilrett Alt Skin 1"
+					],
+					[
+						340407.275897597,
+						2,
+						246,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						340407.275897597,
+						1,
+						0,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						340245.113735435,
+						0,
+						0,
+						"Evilrett Alt Skin 3"
 					]
 				],
 				"typeOfSection": 0,
@@ -39448,6 +39451,18 @@ enum abstract Chart(String) from String to String {
 					],
 					[
 						340731.600221921,
+						4,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						341704.573194894,
+						5,
+						741,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						340731.600221921,
 						0,
 						0,
 						"Evilrett Alt Skin 3"
@@ -39489,12 +39504,6 @@ enum abstract Chart(String) from String to String {
 						"Evilrett Alt Skin 3"
 					],
 					[
-						340731.600221921,
-						4,
-						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
 						340812.681303002,
 						5,
 						0,
@@ -39528,12 +39537,6 @@ enum abstract Chart(String) from String to String {
 						341542.411032732,
 						7,
 						0,
-						"Evilrett Alt Skin 1"
-					],
-					[
-						341704.573194894,
-						5,
-						1066,
 						"Evilrett Alt Skin 1"
 					]
 				],
@@ -39565,6 +39568,12 @@ enum abstract Chart(String) from String to String {
 				"lengthInSteps": 16,
 				"sectionNotes": [
 					[
+						344299.167789489,
+						3,
+						729.72972972973,
+						"Evilrett Alt Skin 3"
+					],
+					[
 						343164.032654353,
 						0,
 						574,
@@ -39574,12 +39583,6 @@ enum abstract Chart(String) from String to String {
 						343812.681303002,
 						2,
 						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						344299.167789489,
-						3,
-						738,
 						"Evilrett Alt Skin 3"
 					]
 				],
@@ -39672,7 +39675,7 @@ enum abstract Chart(String) from String to String {
 					[
 						347055.924546245,
 						1,
-						567.567567567568,
+						574,
 						"Evilrett Alt Skin 3"
 					],
 					[
@@ -39707,7 +39710,7 @@ enum abstract Chart(String) from String to String {
 					[
 						348353.221843543,
 						2,
-						575,
+						574,
 						"Evilrett Alt Skin 3"
 					]
 				],
@@ -39724,7 +39727,7 @@ enum abstract Chart(String) from String to String {
 					[
 						350461.329951651,
 						3,
-						243.243243243243,
+						246,
 						"Evilrett Alt Skin 3"
 					],
 					[
@@ -39833,12 +39836,6 @@ enum abstract Chart(String) from String to String {
 				"lengthInSteps": 16,
 				"sectionNotes": [
 					[
-						354028.897519218,
-						4,
-						0,
-						"Evilrett Alt Skin 3"
-					],
-					[
 						353542.411032732,
 						1,
 						567.567567567568,
@@ -39847,8 +39844,14 @@ enum abstract Chart(String) from String to String {
 					[
 						354191.05968138,
 						3,
-						567.567567567568,
+						578,
 						"Evilrett Alt Skin 2"
+					],
+					[
+						354028.897519218,
+						4,
+						0,
+						"Evilrett Alt Skin 3"
 					],
 					[
 						354191.05968138,
@@ -39880,16 +39883,16 @@ enum abstract Chart(String) from String to String {
 				"lengthInSteps": 16,
 				"sectionNotes": [
 					[
-						354839.708330029,
-						2,
-						1216.21621621622,
-						"Evilrett Alt Skin 2"
-					],
-					[
 						355001.870492191,
 						7,
 						0,
 						"Evilrett Alt Skin 3"
+					],
+					[
+						354839.708330029,
+						2,
+						1216.21621621622,
+						"Evilrett Alt Skin 2"
 					],
 					[
 						355164.032654353,
@@ -40089,13 +40092,13 @@ enum abstract Chart(String) from String to String {
 					[
 						359704.573194894,
 						0,
-						82,
+						0,
 						"Evilrett Alt Skin 3"
 					],
 					[
 						359866.735357056,
 						2,
-						82,
+						0,
 						"Evilrett Alt Skin 3"
 					]
 				],
@@ -40112,25 +40115,13 @@ enum abstract Chart(String) from String to String {
 					[
 						360028.897519218,
 						5,
-						410,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						360515.384005705,
-						7,
-						410,
-						"Evilrett Alt Skin 3"
-					],
-					[
-						361001.870492191,
-						4,
-						246,
+						405.405405405405,
 						"Evilrett Alt Skin 3"
 					],
 					[
 						360028.897519218,
 						2,
-						902,
+						891.891891891892,
 						"Evilrett Alt Skin 2"
 					],
 					[
@@ -40144,6 +40135,18 @@ enum abstract Chart(String) from String to String {
 						0,
 						0,
 						"Evilrett Alt Skin 2"
+					],
+					[
+						360515.384005705,
+						7,
+						410,
+						"Evilrett Alt Skin 3"
+					],
+					[
+						361001.870492191,
+						4,
+						246,
+						"Evilrett Alt Skin 3"
 					],
 					[
 						361001.870492191,
@@ -40167,30 +40170,6 @@ enum abstract Chart(String) from String to String {
 						6,
 						243.243243243243,
 						"Evilrett Alt Skin 3"
-					],
-					[
-						361326.194816515,
-						2,
-						0,
-						"Evilrett Alt Skin 2"
-					],
-					[
-						361326.194816515,
-						0,
-						0,
-						"Evilrett Alt Skin 2"
-					],
-					[
-						361326.194816515,
-						1,
-						574,
-						"Evilrett Alt Skin 2"
-					],
-					[
-						361974.843465164,
-						0,
-						574,
-						"Evilrett Alt Skin 2"
 					],
 					[
 						361650.51914084,
@@ -40221,6 +40200,30 @@ enum abstract Chart(String) from String to String {
 						6,
 						0,
 						"Evilrett Alt Skin 3"
+					],
+					[
+						361326.194816515,
+						2,
+						0,
+						"Evilrett Alt Skin 2"
+					],
+					[
+						361326.194816515,
+						0,
+						0,
+						"Evilrett Alt Skin 2"
+					],
+					[
+						361326.194816515,
+						1,
+						574,
+						"Evilrett Alt Skin 2"
+					],
+					[
+						361974.843465164,
+						0,
+						574,
+						"Evilrett Alt Skin 2"
 					]
 				],
 				"typeOfSection": 0,
@@ -40236,13 +40239,13 @@ enum abstract Chart(String) from String to String {
 					[
 						362623.492113813,
 						1,
-						1230,
+						1216.21621621622,
 						"Evilrett Alt Skin 2"
 					],
 					[
 						362623.492113813,
 						5,
-						1230,
+						1216.21621621622,
 						"Evilrett Alt Skin 3"
 					]
 				],
@@ -41025,6 +41028,7 @@ enum abstract Chart(String) from String to String {
 			}
 		],
 		"gfVersion": "gf",
+		"splashSkin": "noteSplashes/noteSplashes-sparkles",
 		"song": "Delusional",
 		"validScore": true,
 		"stage": "abandonedStreet",

@@ -13,7 +13,6 @@ class ChangelogMenu extends MusicBeatSubstate
 	var tiles:FlxBackdrop;
 
     var stupidLerp:Array<Float> = [10, 40, 90];
-
     var canScroll:Bool = false;
 
     public function new()

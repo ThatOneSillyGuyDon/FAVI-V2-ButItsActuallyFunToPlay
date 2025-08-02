@@ -52,7 +52,7 @@ class Note extends FlxSkewedSprite
 	];
 	public var quant:Int = 4;
 
-	//Quant Colors stuff!!!!!!! (yes i am still stupid)
+	//Note Color Stuff
 	public var arrowRGBQuants:Array<Array<FlxColor>> = [
 		[0xFFF9393F, 0xFFFFFFFF, 0xFF651038],
 		[0xFF00FFFF, 0xFFFFFFFF, 0xFF1542B7],
@@ -67,7 +67,7 @@ class Note extends FlxSkewedSprite
 		[0xFFbab86c, 0xFFFFFFFF, 0xff505a1f]
 	];
 
-	public var arrowRGBQuantsMania:Array<Array<FlxColor>> = [ //the main ones are too dark for the mania notes so uhhhh
+	public var arrowRGBQuantsMania:Array<Array<FlxColor>> = [
 		[0xFFFFC1C3, 0xFFFFFFFF, 0xFFFFFFFF],
 		[0xFFDAFFFF, 0xFFFFFFFF, 0xFFFFFFFF],
 		[0xFFFFD2EF, 0xFFFFFFFF, 0xFFFFFFFF],
@@ -95,7 +95,6 @@ class Note extends FlxSkewedSprite
 		[0xFF69562B, 0xFFA88843, 0xFF000000]
 	];
 
-	//hardcoded greyscale color palettes
 	public var arrowRGBQuantsGreyscale:Array<Array<FlxColor>> = [
 		[0xFF737373, 0xFFFFFFFF, 0xFF2E2E2E],
 		[0xFFB3B3B3, 0xFFFFFFFF, 0xFF424242],
@@ -110,14 +109,20 @@ class Note extends FlxSkewedSprite
 		[0xFFB0B0B0, 0xFFFFFFFF, 0xff505050]
 	];
 
-	public var arrowRGBGreyscale:Array<Array<FlxColor>> = [
-		[0xFF505050, 0xFFFFFFFF, 0xFF1B1B1B],
-		[0xFF747474, 0xFFFFFFFF, 0xFF353535],
-		[0xFFA2A2A2, 0xFFFFFFFF, 0xFF424242],
-		[0xFF1D1D1D, 0xFFFFFFFF, 0xFF000000]
+	public var arrowRGBSatanQuants:Array<Array<FlxColor>> = [
+		[0xFFC40F0F, 0xFFDF7373, 0xFF7F1A1A],
+		[0xFF9B1212, 0xFF9B3838, 0xFF6C0A0A],
+		[0xFF792222, 0xFFA54242, 0xFF561414],
+		[0xFF723434, 0xFF944949, 0xFF3C0B0B],
+		[0xFFA14444, 0xFF9A5D5D, 0xFF441717],
+		[0xFF563838, 0xFF784545, 0xFF381D1D],
+		[0xFF3F2F2F, 0xFF685353, 0xFF241717],
+		[0xFF8F6565, 0xFFCC8080, 0xFF432424],
+		[0xFFD66D6D, 0xFFF29797, 0xFF633838],
+		[0xff340202, 0xFF773030, 0xff110202],
+		[0xff562222, 0xFF643C3C, 0xff1c0707]
 	];
 
-	//error note colors shit
 	public var arrowRGBQuantsError:Array<Array<FlxColor>> = [
 		[0xFFF9393F, 0xFF201111, 0xFF180C12],
 		[0xFF00FFFF, 0xFF161D1D, 0xFF0A0C13],
@@ -130,6 +135,13 @@ class Note extends FlxSkewedSprite
 		[0xFF008080, 0xFF00151B, 0xFF000A0A],
 		[0xFF8a8a8a, 0xFF131313, 0xff0c0c0c],
 		[0xFFbab86c, 0xFF1B1B15, 0xff0b0c05]
+	];
+
+	public var arrowRGBGreyscale:Array<Array<FlxColor>> = [
+		[0xFF505050, 0xFFFFFFFF, 0xFF1B1B1B],
+		[0xFF747474, 0xFFFFFFFF, 0xFF353535],
+		[0xFFA2A2A2, 0xFFFFFFFF, 0xFF424242],
+		[0xFF1D1D1D, 0xFFFFFFFF, 0xFF000000]
 	];
 
 	public var arrowRGBNewError:Array<Array<FlxColor>> = [
@@ -264,9 +276,9 @@ class Note extends FlxSkewedSprite
 
 	private function set_texture(value:String):String {
 		if(texture != value) {
-			reloadNote('', value);
+			texture = value;
+			reloadNote();
 		}
-		texture = value;
 		return value;
 	}
 
@@ -317,6 +329,20 @@ class Note extends FlxSkewedSprite
 					reloadNote('faviNotes/NOTE_assets-EVILINTRO');
 				case 'Evilrett Alt Skin 3':
 					reloadNote('faviNotes/NOTE_assets-SATAN');
+					var arr:Array<FlxColor> = [0xFFBF8282, 0xFFF49999, 0xFFA74141];
+
+					if (ClientPrefs.data.quantization)
+					{
+						var idx = quants.indexOf(quant);
+						arr = arrowRGBSatanQuants[idx];
+					}
+
+					if (noteData > -1 && noteData <= arr.length)
+					{
+						rgbShader.r = arr[0];
+						rgbShader.g = arr[1];
+						rgbShader.b = arr[2];
+					}
 				case 'Hurt Note':
 					ignoreNote = mustPress;
 					//reloadNote('HURTNOTE_assets');
@@ -381,6 +407,7 @@ class Note extends FlxSkewedSprite
 					noMissAnimation = true;
 					hitCausesMiss = false;
 					ignoreNote = true;
+
 				case 'Mal Must Miss These (Error Edition)':
 					var arr:Array<FlxColor> = ClientPrefs.data.arrowRGB[noteData];
 

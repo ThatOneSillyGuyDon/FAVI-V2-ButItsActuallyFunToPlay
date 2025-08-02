@@ -523,6 +523,9 @@ class DelusionalDeath extends MusicBeatSubstate {
 
 		Conductor.songPosition = 0;
 
+		if (PlayState.useFakeDeluName)
+			PlayState.useFakeDeluName = false;
+
 		var deathImage:FlxSprite = new FlxSprite().loadGraphic(Paths.image(Image.DELUSIONAL));
 		deathImage.screenCenter();
 		deathImage.scrollFactor.set(0, 0);

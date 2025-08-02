@@ -9,6 +9,7 @@ import haxe.Json;
 import openfl.Lib;
 import flixel.text.FlxText.FlxTextFormat;
 import flixel.text.FlxText.FlxTextFormatMarkerPair;
+import lime.utils.Assets;
 
 /**
 * Pause Menu Data
@@ -592,11 +593,11 @@ class FAVIPauseSubState extends MusicBeatSubstate
 			tiles = new FlxBackdrop(Paths.image("Funkin_avi/pause/ui/mickeyTiles"), XY, 0, 0);
 			menuHUD = new FlxSprite().loadGraphic(Paths.image("Funkin_avi/pause/ui/selectionBG"));
 			albumHolder = new FlxSprite().loadGraphic(Paths.image("Funkin_avi/pause/ui/albumHolder"));
-			levelInfo = new FlxText(FlxG.width * 0.75 + array[2], 100, 0, "", 32);
+			levelInfo = new FlxText(FlxG.width * 0.75 + array[1], 100 + (array[2] != null ? array[2] : 0), 0, "", 32);
 			songArt = new FlxSprite(780, 110);
 			songArtOutline = new FlxSprite(songArt.x - 20, songArt.y - 20 /*POV: you're lazy to do the math yourself*/).makeGraphic(890, 890, FlxColor.WHITE);
 			disc = new FlxSprite(songArt.x, songArt.y - 12).loadGraphic(Paths.image('Funkin_avi/pause/disc'));
-			songName = new FlxText(FlxG.width * 0.78 + array[1], 10, 0, (PlayState.SONG.song == "Dont Cross" ? "Don't Cross!" : (PlayState.useFakeDeluName ? "Regret" : PlayState.SONG.song)), 32);
+			songName = new FlxText(FlxG.width * 0.78 + -105, 10, 400, (PlayState.SONG.song == "Dont Cross" ? "Don't Cross!" : (PlayState.useFakeDeluName ? "Regret" : PlayState.SONG.song)), 32);
 			daSelector = new FlxSprite().loadGraphic(Paths.image("Funkin_avi/pause/buttonSelector"));
 			countDown = new FlxText(0, 0, 1280, "", 0);
 			satanTxt = new FlxTypeText(0, 25, 1280, "");
@@ -982,6 +983,10 @@ class FAVIPauseSubState extends MusicBeatSubstate
 				case "Malfunction": json = CreditsData.malfunction;
 				case "Birthday": json = CreditsData.birthday;
 				case "Scrapped": json = CreditsData.scrapped;
+				case "Whimsical Bar Blues": json = CreditsData.wbb;
+				default:
+					if (sys.FileSystem.exists('./assets/shared/data/${CoolUtil.spaceToDash(fuckingName.toLowerCase())}/data.json') || Assets.exists('./assets/shared/data/${CoolUtil.spaceToDash(fuckingName.toLowerCase())}/data.json'))
+						json = File.getContent(Paths.getPath('data/${CoolUtil.spaceToDash(fuckingName.toLowerCase())}/data.json', TEXT, null));
 			}
 		
 			if (json != null && json.length > 0)

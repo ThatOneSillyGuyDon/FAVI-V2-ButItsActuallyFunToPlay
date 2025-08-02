@@ -4459,6 +4459,8 @@ class PlayState extends MusicBeatState
 							camVideo.zoom += 0.3;
 							camVideo.fade(FlxColor.BLACK, 0.2, true);
 							FlxTween.tween(camVideo, {zoom: 1}, 0.5, {ease: FlxEase.sineOut});
+						case 76:
+							useFakeDeluName = !useFakeDeluName;
 					}
 				}
 		}
