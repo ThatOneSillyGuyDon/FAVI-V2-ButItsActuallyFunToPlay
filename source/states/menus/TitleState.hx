@@ -443,7 +443,7 @@ class TitleState extends MusicBeatState
 
 				new FlxTimer().start(1.3, function(tmr:FlxTimer){
 					closedState = true;
-					if (FlxG.random.bool(8) && GameData.episode1FPLock = "unlocked")
+					if (FlxG.random.bool(8) && GameData.episode1FPLock == "unlocked")
 					{
 						FlxG.sound.music.fadeOut(0.5);
 						MusicBeatState.switchState(new states.menus.legacy.LegacyMenuState());
