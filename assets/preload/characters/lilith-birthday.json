@@ -1,19 +1,19 @@
 {
 	"animations": [
 		{
-			"loop": true,
 			"offsets": [
 				-60,
 				-550
 			],
-			"anim": "idle",
+			"loop": true,
 			"fps": 12,
-			"name": "lilith",
-			"indices": []
+			"anim": "idle",
+			"indices": [],
+			"name": "lilith"
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/Lilitho",
+	"image": "characters/Lil",
 	"position": [
 		0,
 		0

@@ -13,6 +13,7 @@ import sys.FileSystem;
 import sys.thread.Mutex;
 import sys.thread.Thread;
 import openfl.media.Sound;
+import backend.data.ClientPrefs;
 
 class FreeplayState extends MusicBeatState
 {
@@ -34,9 +35,11 @@ class FreeplayState extends MusicBeatState
 	var freeplayCtrlTxt:FlxText;
 	var menuType:FlxText;
 
-	var path:String = 'Funkin_avi/freeplay/';
+	var path:String = 'Funkin_avi/freeplay';
 
 	private var grpSongs:FlxTypedGroup<Alphabet>;
+
+	private var albumHolder:FlxTypedGroup<FlxSprite>;
 
 	private var songDisplay:Array<FlxText> = [];
 	private var curPlaying:Bool = false;
@@ -44,7 +47,8 @@ class FreeplayState extends MusicBeatState
 	private var iconArray:Array<HealthIcon> = [];
 
 	private var bg:Null<FlxSprite>;
-	private var delutranceBg:Null<FlxSprite>;
+
+	var album:FlxSprite;
 
 	var bgslider:FlxSprite;
 	var musicPlayer:FlxSprite;
@@ -75,12 +79,6 @@ class FreeplayState extends MusicBeatState
 
 	var spectrum:SpectrumWaveform;
 
-	// to prevent lag when playing the inst
-	var songThread:Thread;
-	var threadActive:Bool = true;
-	var mutex:Mutex;
-	var songToPlay:Sound = null;
-
 	public static var freeplayMenuList = 0;
 
 	public static var difficultyRank:String = 'HARD';
@@ -91,8 +89,14 @@ class FreeplayState extends MusicBeatState
 	var spectrumTwn:FlxTween;
 	var crossRandom:Int = FlxG.random.int(1, 11);
 
+	public static var maniaSkin:Int = 0;
+	var maniaSkinSpr:FlxSprite;
+
 	var songText2:FlxText;
 	var songText:Alphabet;
+	var gimmickInfo:FlxText;
+
+	var offandon:FlxSprite;
 
 	// making this a public static var so the disc just doesn't stop moving at all when going in and out of this menu
 	public static var bpm:Float = 1;
@@ -100,7 +104,7 @@ class FreeplayState extends MusicBeatState
 	public static var songInstPlaying:Bool = false;
 
 	// this is only so it can fade because this fucking shit is 6 seconds long
-	private var confirmSound:FlxSound;
+	public static var confirmSound:FlxSound;
 
 	override function create()
 	{
@@ -112,7 +116,7 @@ class FreeplayState extends MusicBeatState
 		/**
 		 * how addSong() function works here:
 		 * 
-		 * Song Name - Week ID - Freeplay Icon Name - BG Color - Composer Name - Rank Name - Rank Color - Freeplay Icon Offset (only applies in the new menu UI)
+		 * Song Name - Week ID - Freeplay Icon Name - BG Color - Composer Name - Rank Name - Rank Color - Freeplay Icon Offset (only applies in the new menu UI, gimmicks description)
 		 */
 
 		// Categories, Shaders, and Songlist Setup
@@ -125,10 +129,10 @@ class FreeplayState extends MusicBeatState
 					chromAberration.setFloat('aberration', 0.07);
 					chromAberration.setFloat('effectTime', 0.005);
 
-					addSong('Devilish Deal', 3, 'satanddNEW', FlxColor.fromRGB(65, 88, 94), 'obscurity', 'EASY', FlxColor.WHITE, [25, -18]);
-					addSong('Isolated', 3, 'avier', FlxColor.fromRGB(60, 60, 60), 'obscurity', 'NORMAL', FlxColor.fromRGB(255, 220, 220), [0, 0]);
-					addSong('Lunacy', 3, 'lunaavier', FlxColor.fromRGB(69, 54, 54), 'obscurity', 'HARD', FlxColor.fromRGB(255, 187, 187), [0, 0]);
-					addSong('Delusional', 3, 'deluavier', FlxColor.fromRGB(79, 32, 32), 'FR3SHMoure', 'INSANE', FlxColor.fromRGB(255, 110, 110), [0, 0]);
+					addSong('Devilish Deal', 3, 'satanddNEW', FlxColor.fromRGB(65, 88, 94), 'obscurity', 'EASY', FlxColor.WHITE, [25, -18], "None");
+					addSong('Isolated', 3, 'avier', FlxColor.fromRGB(60, 60, 60), 'obscurity', 'NORMAL', FlxColor.fromRGB(255, 220, 220), [15, 0], "Modcharts that move notes on occasion.");
+					addSong('Lunacy', 3, 'lunaavier', FlxColor.fromRGB(69, 54, 54), 'obscurity', 'HARD', FlxColor.fromRGB(255, 187, 187), [15, 0], "Modcharts that may cause visual distortion.");
+					addSong('Delusional', 3, 'deluavier', FlxColor.fromRGB(79, 32, 32), 'FR3SHMoure', 'INSANE', FlxColor.fromRGB(255, 110, 110), [15, 0], "Modcharts that may cause visual distortion");
 				}
 			case 1: // Extras Menu
 				{		
@@ -148,63 +152,69 @@ class FreeplayState extends MusicBeatState
 
 					//if (GameData.episode1FPLock == 'unlocked')
 					//{
-						//addSong('Resentment', 3, 'mr-smiles', FlxColor.fromRGB(99, 66, 66), 'obscurity', 'NORMAL', FlxColor.fromRGB(255, 220, 220));
-						//addSong('Mortiferum-Risus', 3, 'mr-smiles', FlxColor.fromRGB(143, 91, 91), 'Sayan Sama', 'NORMAL', FlxColor.fromRGB(255, 220, 220));
-						addSong('Hunted', 3, (GameData.huntedLock != 'unlocked' && GameData.huntedLock != 'beaten' ? 'mysteryfp' : 'goofy'), FlxColor.fromRGB(94, 28, 35), 'JBlitz', 'NORMAL', FlxColor.fromRGB(255, 220, 220), (GameData.huntedLock == "beaten" || GameData.huntedLock == "unlocked" ? [24, -8] : [25, 0]));
-						//addSong('Delusion', 3, 'insanemick', FlxColor.fromRGB(25, 25, 25), 'I forgor', 'NORMAL', FlxColor.fromRGB(255, 220, 220));
-						addSong('Laugh Track', 3, (GameData.rickyLock != 'unlocked' && GameData.rickyLock != 'beaten' ? 'mysteryfp' : 'ricky'), FlxColor.fromRGB(181, 0, 0), 'PualTheUnTruest', 'HARD', FlxColor.fromRGB(255, 187, 187), (GameData.rickyLock == "beaten" || GameData.rickyLock == "unlocked" ? [20, -15] : [25, 0]));
-						addSong('Bless', 3, (GameData.blessLock != 'unlocked' && GameData.blessLock != 'beaten' ? 'mysteryfp' : 'noise'), FlxColor.WHITE, 'PualTheUnTruest', 'HARD', FlxColor.fromRGB(255, 187, 187), (GameData.blessLock == "beaten" || GameData.blessLock == "unlocked" ? [40, -10] : [25, 0]));
+						addSong('Hunted', 3, (GameData.huntedLock != 'unlocked' && GameData.huntedLock != 'beaten' ? 'mysteryfp' : 'goofy'), FlxColor.fromRGB(94, 28, 35), 'JBlitz', 'NORMAL', FlxColor.fromRGB(255, 220, 220), (GameData.huntedLock == "beaten" || GameData.huntedLock == "unlocked" ? [24, -8] : [25, 0]), "Modcharts that may cause visual distortion.");
+						addSong('Laugh Track', 3, (GameData.rickyLock != 'unlocked' && GameData.rickyLock != 'beaten' ? 'mysteryfp' : 'ricky'), FlxColor.fromRGB(181, 0, 0), 'PualTheUnTruest', 'HARD', FlxColor.fromRGB(255, 187, 187), (GameData.rickyLock == "beaten" || GameData.rickyLock == "unlocked" ? [20, -15] : [25, 0]), "None");
+						addSong('Bless', 3, (GameData.blessLock != 'unlocked' && GameData.blessLock != 'beaten' ? 'mysteryfp' : 'noise'), FlxColor.WHITE, 'PualTheUnTruest', 'HARD', FlxColor.fromRGB(255, 187, 187), (GameData.blessLock == "beaten" || GameData.blessLock == "unlocked" ? [30, -10] : [25, 0]), "None");
 						//addSong('Scrapped', 3, (GameData.scrappedLock != 'unlocked' && GameData.scrappedLock != 'beaten' ? 'mysteryfp' : 'rs'), FlxColor.fromRGB(0, 0, 0), 'FR3SHMoure', 'HARD', FlxColor.fromRGB(255, 187, 187));
-						addSong("Don't Cross!", 3, (GameData.crossinLock != 'unlocked' && GameData.crossinLock != 'beaten' ? 'mysteryfp' : 'cross'), FlxColor.fromRGB(255, 0, 0), 'PualTheUnTruest', 'GOOD LUCK', FlxColor.fromRGB(201, 0, 0), (GameData.crossinLock == "beaten" || GameData.crossinLock == "unlocked" ? [23, 0] : [25, 0]));
-						addSong('War Dilemma', 3, (GameData.warLock != 'unlocked' && GameData.warLock != 'beaten' ? 'mysteryfp' : 'ethernalg'), FlxColor.fromRGB(204, 41, 103), 'Sayan Sama & obscurity', 'HARD', FlxColor.fromRGB(255, 187, 187), (GameData.warLock == "beaten" || GameData.warLock == "unlocked" ? [24, 1] : [25, 0]));
-						addSong('Twisted Grins', 3, (GameData.tgLock != 'unlocked' && GameData.tgLock != 'beaten' ? 'mysteryfp' : 'smile'), FlxColor.fromRGB(54, 38, 38), 'PualTheUnTruest', 'HARD', FlxColor.fromRGB(255, 187, 187), (GameData.tgLock == "beaten" || GameData.tgLock == "unlocked" ? [25, 0] : [25, 0]));
-						addSong('Mercy', 3, (GameData.mercyLock != 'beaten' && GameData.mercyLock != 'beaten' ? 'mysteryfp' : 'walt'), FlxColor.fromRGB(176, 169, 116), 'Ophomix24', 'INSANE', FlxColor.fromRGB(255, 110, 110), (GameData.mercyLock == "beaten" || GameData.mercyLock == "unlocked" ? [32, -20] : [25, 0]));
+						addSong("Don't Cross!", 3, (GameData.crossinLock != 'unlocked' && GameData.crossinLock != 'beaten' ? 'mysteryfp' : 'cross'), FlxColor.fromRGB(255, 0, 0), 'PualTheUnTruest', 'GOOD LUCK', FlxColor.fromRGB(201, 0, 0), (GameData.crossinLock == "beaten" || GameData.crossinLock == "unlocked" ? [23, -10] : [25, 0]), "Chart is randomized every attempt.");
+						addSong('War Dilemma', 3, (GameData.warLock != 'unlocked' && GameData.warLock != 'beaten' ? 'mysteryfp' : 'ethernalg'), FlxColor.fromRGB(204, 41, 103), 'Sayan Sama & obscurity', 'HARD', FlxColor.fromRGB(255, 187, 187), (GameData.warLock == "beaten" || GameData.warLock == "unlocked" ? [24, 1] : [25, 0]), "Modcharts that may cause visual distortion.");
+						addSong('Twisted Grins', 3, (GameData.tgLock != 'unlocked' && GameData.tgLock != 'beaten' ? 'mysteryfp' : 'smile'), FlxColor.fromRGB(54, 38, 38), 'PualTheUnTruest', 'HARD', FlxColor.fromRGB(255, 187, 187), (GameData.tgLock == "beaten" || GameData.tgLock == "unlocked" ? [25, -10] : [25, 0]), "Scroll speed changes & Modcharts that may cause visual distortion");
+						addSong('Mercy', 3, (GameData.mercyLock != 'beaten' && GameData.mercyLock != 'beaten' ? 'mysteryfp' : 'walt'), FlxColor.fromRGB(176, 169, 116), 'Ophomix24', 'INSANE', FlxColor.fromRGB(255, 110, 110), (GameData.mercyLock == "beaten" || GameData.mercyLock == "unlocked" ? [27, -20] : [25, 0]), "Drains your health until death. Utilizes the mechanic keybind, highly recommend checking your controls setting before playing.");
 						//addSong('Neglection', 3, (GameData.pnmLock != 'unlocked' && GameData.pnmLock != 'beaten' ? 'mysteryfp' : 'pnm'), FlxColor.fromRGB(117, 86, 27), 'AttackPan', 'NORMAL', FlxColor.fromRGB(255, 220, 220));
-						addSong('Cycled Sins', 3, (GameData.sinsLock != 'unlocked' && GameData.sinsLock != 'beaten' ? 'mysteryfp' : 'relapse-pixel'), FlxColor.fromRGB(105, 30, 30), 'JBlitz', 'HARD', FlxColor.fromRGB(255, 187, 187), (GameData.sinsLock == "beaten" || GameData.sinsLock == "unlocked" ? [24, -21] : [25, 0])); //messing with the saves for this later
+						addSong('Cycled Sins', 3, (GameData.sinsLock != 'unlocked' && GameData.sinsLock != 'beaten' ? 'mysteryfp' : 'relapseNEW-pixel'), FlxColor.fromRGB(105, 30, 30), 'JBlitz', 'HARD', FlxColor.fromRGB(255, 187, 187), (GameData.sinsLock == "beaten" || GameData.sinsLock == "unlocked" ? [24, -21] : [25, 0]), "Dodge Relapse Mouse's gunshots. Utilizes the mechanic keybind, highly recommend checking your controls setting before playing."); //messing with the saves for this later
 						//addSong('Whimsical-Bar-Blues', 3, 'mick-isolated-new', FlxColor.fromRGB(133, 190, 255), 'inneaux & Sayan Sama', 'NORMAL', FlxColor.fromRGB(255, 220, 220));
 					//}
+					/*
+					if (GameData.episode2FPLock == 'unlocked')
+					{
+						addSong('Scrapped', 3, (GameData.scrappedLock != 'unlocked' && GameData.scrappedLock != 'beaten' ? 'mysteryfp' : 'rs'), FlxColor.fromRGB(0, 0, 0), 'FR3SHMoure', 'HARD', FlxColor.fromRGB(255, 187, 187), [0, 0], "None");
+					}
+					*/
 					
 					if (GameData.canAddMalfunction)
 					{
-						addSong('Malfunction', 3, (GameData.malfunctionLock != 'unlocked' && GameData.malfunctionLock != 'beaten' ? 'mysteryfp' : 'mal-pixel'), FlxColor.fromRGB(150, 149, 186), 'obscurity', null, FlxColor.WHITE, (GameData.malfunctionLock == "beaten" || GameData.malfunctionLock == "unlocked" ? [32, 14] : [25, 0])); // Because Malfunction is getting some major upgrades later
+						addSong('Malfunction', 3, (GameData.malfunctionLock != 'unlocked' && GameData.malfunctionLock != 'beaten' ? 'mysteryfp' : 'mal-pixel'), FlxColor.fromRGB(150, 149, 186), 'obscurity', null, FlxColor.WHITE, (GameData.malfunctionLock == "beaten" || GameData.malfunctionLock == "unlocked" ? [27, 0] : [25, 0]), "Contains extreme flashing lights, very unforgiving modcharts, life system & note gimmicks. Mechanics are enabled by default upon playing.\nGood luck."); // Because Malfunction is getting some major upgrades later
 					}
 					
-					if ((GameData.muckneyLock == 'beaten' || GameData.muckneyLock == 'obtained') && GameData.muckneyLock != "uninvited")
+					if ((GameData.birthdayLocky == 'beaten' || GameData.birthdayLocky == 'obtained') && GameData.birthdayLocky != "uninvited")
 					{
-						addSong('Birthday', 3, 'muckney', FlxColor.fromRGB(84, 255, 181), 'FR3SHMoure', 'PARTY', FlxColor.fromRGB(250, 234, 92), [10, 0]);
-					}
-					
-					if (GameData.highOnCrackLock == 'completed' || GameData.highOnCrackLock == "unlocked")
-					{
-						addSong('Delutrance', 3, 'delucrack', FlxColor.fromRGB(0, 16, 245), 'JogadorRetro', 'DELUSIONAL', FlxColor.fromRGB(5, 139, 242), [12, -10]); // It's still gonna force ya to fully play it if you replay the song lmfao
+						addSong('Birthday', 3, 'muckney', FlxColor.fromRGB(84, 255, 181), 'FR3SHMoure', 'PARTY', FlxColor.fromRGB(250, 234, 92), [15, -5], "Don't leave his party, you'll make him sad.");
 					}
 				}
 			case 2: // Legacy Menu
 				{
 					//if (GameData.episode1FPLock == 'unlocked')
 					//{
-						addSong('Isolated Old', 3, (GameData.oldisolateLock != 'unlocked' && GameData.oldisolateLock != 'beaten' ? 'mysteryfp' : 'avierlegacy'), FlxColor.fromRGB(60, 60, 60), 'Toko', 'EASY', FlxColor.WHITE, [0, 0]);
-						addSong('Isolated Beta', 3, (GameData.betaisolateLock != 'unlocked' && GameData.betaisolateLock != 'beaten' ? 'mysteryfp' : 'avierlegacy'), FlxColor.fromRGB(60, 60, 60), 'Toko', 'EASY', FlxColor.WHITE, [0, 0]);
-						addSong('Isolated Legacy', 3, (GameData.legacyILock != 'unlocked' && GameData.legacyILock != 'beaten' ? 'mysteryfp' : 'avierlegacy'), FlxColor.fromRGB(60, 60, 60), 'Toko & obscurity', 'NORMAL', FlxColor.fromRGB(255, 220, 220), [0, 0]);
-						addSong('Lunacy Legacy', 3, (GameData.legacyLLock != 'unlocked' && GameData.legacyLLock != 'beaten' ? 'mysteryfp' : 'lunaold'), FlxColor.fromRGB(60, 60, 60), 'obscurity', 'NORMAL', FlxColor.fromRGB(255, 220, 220), [0, 0]);
-						addSong('Delusional Legacy', 3, (GameData.legacyDLock != 'unlocked' && GameData.legacyDLock != 'beaten' ? 'mysteryfp' : 'deluold'), FlxColor.fromRGB(60, 60, 60), 'FR3SHMoure', 'HARD', FlxColor.fromRGB(255, 187, 187), [0, 0]);
-						addSong('Hunted Legacy', 3, (GameData.legacyHLock != 'unlocked' && GameData.legacyHLock != 'beaten' ? 'mysteryfp' : 'goofyold'), FlxColor.fromRGB(0, 60, 40), 'JBlitz', 'EASY', FlxColor.WHITE, [0, 0]);
-						addSong('Twisted Grins Legacy', 3, (GameData.legacyTLock != 'unlocked' && GameData.legacyTLock != 'beaten' ? 'mysteryfp' : 'smileold'), FlxColor.fromRGB(115, 86, 86), 'Sayan Sama', 'HARD', FlxColor.fromRGB(255, 187, 187), [0, 0]);
+						addSong('Isolated Old', 3, (GameData.oldisolateLock != 'unlocked' && GameData.oldisolateLock != 'beaten' ? 'mysteryfp' : 'avierlegacy'), FlxColor.fromRGB(60, 60, 60), 'Toko', 'EASY', FlxColor.WHITE, [0, 0], "");
+						addSong('Isolated Beta', 3, (GameData.betaisolateLock != 'unlocked' && GameData.betaisolateLock != 'beaten' ? 'mysteryfp' : 'avierlegacy'), FlxColor.fromRGB(60, 60, 60), 'Toko', 'EASY', FlxColor.WHITE, [0, 0], "");
+						addSong('Isolated Legacy', 3, (GameData.legacyILock != 'unlocked' && GameData.legacyILock != 'beaten' ? 'mysteryfp' : 'avierlegacy'), FlxColor.fromRGB(60, 60, 60), 'Toko & obscurity', 'NORMAL', FlxColor.fromRGB(255, 220, 220), [0, 0], "");
+						addSong('Lunacy Legacy', 3, (GameData.legacyLLock != 'unlocked' && GameData.legacyLLock != 'beaten' ? 'mysteryfp' : 'lunaold'), FlxColor.fromRGB(60, 60, 60), 'obscurity', 'NORMAL', FlxColor.fromRGB(255, 220, 220), [0, 0], "");
+						addSong('Delusional Legacy', 3, (GameData.legacyDLock != 'unlocked' && GameData.legacyDLock != 'beaten' ? 'mysteryfp' : 'deluold'), FlxColor.fromRGB(60, 60, 60), 'FR3SHMoure', 'HARD', FlxColor.fromRGB(255, 187, 187), [0, 0], "");
+						addSong('Hunted Legacy', 3, (GameData.legacyHLock != 'unlocked' && GameData.legacyHLock != 'beaten' ? 'mysteryfp' : 'goofyold'), FlxColor.fromRGB(0, 60, 40), 'JBlitz', 'EASY', FlxColor.WHITE, [0, 0], "");
+						addSong('Twisted Grins Legacy', 3, (GameData.legacyTLock != 'unlocked' && GameData.legacyTLock != 'beaten' ? 'mysteryfp' : 'smileold'), FlxColor.fromRGB(115, 86, 86), 'Sayan Sama', 'HARD', FlxColor.fromRGB(255, 187, 187), [0, 0], "");
 						//addSong('Facade', 3, (GameData.legacyRLock != 'unlocked' && GameData.legacyRLock != 'beaten' ? 'mysteryfp' : 'mr-smiles'), FlxColor.fromRGB(115, 86, 86), 'obscurity', 'NORMAL', FlxColor.fromRGB(255, 220, 220));
 						//addSong('Bless-Legacy', 3, (GameData.legacyBLock != 'unlocked' && GameData.legacyBLock != 'beaten' ? 'mysteryfp' : 'white-noise'), FlxColor.WHITE, 'END_SELLA', 'HARD', FlxColor.fromRGB(255, 187, 187));
-						addSong('Mercy Legacy', 3, (GameData.legacyWLock != 'unlocked' && GameData.legacyWLock != 'beaten' ? 'mysteryfp' : 'waltold'), FlxColor.fromRGB(153, 148, 112), 'obscurity', 'HARD', FlxColor.fromRGB(255, 187, 187), [0, 0]);
+						addSong('Mercy Legacy', 3, (GameData.legacyWLock != 'unlocked' && GameData.legacyWLock != 'beaten' ? 'mysteryfp' : 'waltold'), FlxColor.fromRGB(153, 148, 112), 'obscurity', 'HARD', FlxColor.fromRGB(255, 187, 187), [0, 0], "");
 						//addSong('Neglection-Legacy', 3, (GameData.legacyNLock != 'unlocked' && GameData.legacyNLock != 'beaten' ? 'mysteryfp' : 'pnm'), FlxColor.CYAN, 'AttackPan', 'NORMAL', FlxColor.fromRGB(255, 220, 220));
-						addSong('Cycled Sins Legacy', 3, (GameData.legacySLock != 'unlocked' && GameData.legacySLock != 'beaten' ? 'mysteryfp' : 'relapseold-pixel'), FlxColor.fromRGB(115, 86, 86), 'JBlitz', 'HARD', FlxColor.fromRGB(255, 187, 187), [0, 0]);
+						addSong('Cycled Sins Legacy', 3, (GameData.legacySLock != 'unlocked' && GameData.legacySLock != 'beaten' ? 'mysteryfp' : 'relapseold-pixel'), FlxColor.fromRGB(115, 86, 86), 'JBlitz', 'HARD', FlxColor.fromRGB(255, 187, 187), [0, 0], "");
 					//}
 					
 					//if (GameData.canAddMalfunction)
 					//{
-						addSong('Malfunction Legacy', 3, (GameData.legacyMLock != 'unlocked' && GameData.legacyMLock != 'beaten' ? 'mysteryfp' : 'mallegacy-pixel'), FlxColor.fromRGB(140, 120, 180), 'obscurity', 'INSANE', FlxColor.fromRGB(255, 110, 110), [0, 0]);
+						addSong('Malfunction Legacy', 3, (GameData.legacyMLock != 'unlocked' && GameData.legacyMLock != 'beaten' ? 'mysteryfp' : 'mallegacy-pixel'), FlxColor.fromRGB(140, 120, 180), 'obscurity', 'INSANE', FlxColor.fromRGB(255, 110, 110), [0, 0], "");
 					//}
+				}
+			case 3: // Secret Mania Menu
+				{
+					addSong('Rotten Petals', 3, "avier", FlxColor.WHITE, 'Yama Haki/Toko', "MANIA", FlxColor.CYAN, [15, 0], "None");
+					//addSong('Seeking Freedom', 3, "avier", FlxColor.WHITE, 'Yama Haki/Toko', "MANIA", FlxColor.CYAN, [15, 0], "None");
+					//addSong('Curtain Call', 3, "avier", FlxColor.WHITE, 'Sayan Sama', "MANIA", FlxColor.CYAN, [15, 0], "None");
+					//addSong("Distant Stars", 3, "avier", FlxColor.WHITE, 'ForFurtherNotice', "MANIA", FlxColor.CYAN, [15, 0], "None");
+					addSong("Somber Night", 3, "avier", FlxColor.WHITE, 'ForFurtherNotice', "MANIA", FlxColor.CYAN, [15, 0], "None");
+					addSong("Simple Life", 3, "avier", FlxColor.WHITE, 'ForFurtherNotice', "MANIA", FlxColor.CYAN, [15, 0], "None");
 				}
 		}
 
-		mutex = new Mutex();
 		persistentUpdate = true;
 		PlayState.isStoryMode = false;
 		WeekData.reloadWeekFiles(false);
@@ -213,43 +223,6 @@ class FreeplayState extends MusicBeatState
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("Freeplay Menu", "Loading Category...", "icon", "disc-player");
 		#end
-
-		/*for (i in 0...WeekData.weeksList.length) {
-			if(weekIsLocked(WeekData.weeksList[i])) continue;
-
-			var leWeek:WeekData = WeekData.weeksLoaded.get(WeekData.weeksList[i]);
-			var leSongs:Array<String> = [];
-			var leChars:Array<String> = [];
-
-			for (j in 0...leWeek.songs.length)
-			{
-				leSongs.push(leWeek.songs[j][0]);
-				leChars.push(leWeek.songs[j][1]);
-			}
-
-			WeekData.setDirectoryFromWeek(leWeek);
-			for (song in leWeek.songs)
-			{
-				var colors:Array<Int> = song[2];
-				if(colors == null || colors.length < 3)
-				{
-					colors = [146, 113, 253];
-				}
-				addSong(song[0], i, song[1], FlxColor.fromRGB(colors[0], colors[1], colors[2]), song[3], song[4], song[5]);
-			}
-		}
-		WeekData.loadTheFirstEnabledMod();
-
-		/*		//KIND OF BROKEN NOW AND ALSO PRETTY USELESS//
-
-		var initSonglist = CoolUtil.coolTextFile(Paths.txt('freeplaySonglist'));
-		for (i in 0...initSonglist.length)
-		{
-			if(initSonglist[i] != null && initSonglist[i].length > 0) {
-				var songArray:Array<String> = initSonglist[i].split(":");
-				addSong(songArray[0], 0, songArray[1], Std.parseInt(songArray[2]));
-			}
-		}*/
 
 		camGame = new FlxCamera();
 		camHUD = new FlxCamera();
@@ -264,21 +237,14 @@ class FreeplayState extends MusicBeatState
 
 		FlxG.cameras.setDefaultDrawTarget(camGame, true);
 
-		CustomFadeTransition.nextCamera = camHUD;
+		CustomFadeTransition.nextCamera = camOther;
 
 		bg = new FlxSprite();
-		if (freeplayMenuList == 2)
-			bg.loadGraphic(Paths.image(path + 'menuFreeplay'));
+		if (freeplayMenuList != 2)
+			bg.loadGraphic(Paths.image('$path/background'));
 		else
-			bg.loadGraphic(Paths.image(path + 'fp-bg'));
+			bg.loadGraphic(Paths.image(path + '/menuFreeplay'));
 		add(bg);
-
-		delutranceBg = new FlxSprite();
-		delutranceBg.frames = Paths.getSparrowAtlas(path + 'background');
-		delutranceBg.animation.addByPrefix("lmao", "background lmao", 24, true);
-		delutranceBg.scale.set(5, 5);
-		delutranceBg.animation.play("lmao");
-		delutranceBg.antialiasing = ClientPrefs.globalAntialiasing;
 
 		if (freeplayMenuList != 2)
 		{
@@ -286,120 +252,143 @@ class FreeplayState extends MusicBeatState
 			// SORRY IT'S JUST LAGGY AS FUCK LOL :SOB:
 			if (!ClientPrefs.lowQuality)
 			{
-				spectrum = new SpectrumWaveform(-100, FlxG.height + 50, FlxG.sound.music, 780, FlxG.height, FROM_LEFT_TO_RIGHT, ROUNDED, 0xff001aff);
+				spectrum = new SpectrumWaveform(0, 370, FlxG.sound.music, 700, FlxG.height, TO_UP_FROM_DOWN, ROUNDED, 0xff001aff);
 				spectrum.design = ROUNDED;
+				spectrum.roundValue = 30;
 				spectrum.barWidth = 6;
 				spectrum.barSpacing = 9;
 				add(spectrum);
 			}
 
-			bgslider = new FlxSprite().loadGraphic(Paths.image(path + 'foreground-fp'));
-			bgslider.antialiasing = ClientPrefs.globalAntialiasing;
-			add(bgslider);
+			bg.alpha = 0.5;
 
-			musicPlayer = new FlxSprite().loadGraphic(Paths.image(path + 'music-player'));
-			musicPlayer.blend = ADD;
-			musicPlayer.antialiasing = ClientPrefs.globalAntialiasing;
-			add(musicPlayer);
+			final table = new FlxSprite().loadGraphic(Paths.image('$path/table1'));
+			table.updateHitbox();
+			table.setPosition(-130, (FlxG.height * .5) - 10);
+			table.antialiasing = ClientPrefs.globalAntialiasing;
+			add(table);
 
-			musicNotes = new FlxSprite().loadGraphic(Paths.image(path + 'music-notes'));
-			musicNotes.blend = ADD;
-			musicNotes.antialiasing = ClientPrefs.globalAntialiasing;
-			add(musicNotes);
+			final albumCover = new FlxSprite().loadGraphic(Paths.image('$path/albumcoverframe2'));
+			albumCover.scale.set(1.1, 1.1);
+			albumCover.updateHitbox();
+			albumCover.setPosition(50, 80);
+			albumCover.antialiasing = ClientPrefs.globalAntialiasing;
+			add(albumCover);
 
-			arrows = new FlxSprite().loadGraphic(Paths.image(path + 'arrows'));
-			arrows.antialiasing = ClientPrefs.globalAntialiasing;
-			add(arrows);
+			final book = new FlxSprite().loadGraphic(Paths.image('$path/book'));
+			book.scale.set(1.2, 1.2);
+			book.updateHitbox();
+			book.setPosition(-30, FlxG.height - (book.height * .45));
+			book.antialiasing = ClientPrefs.globalAntialiasing;
+			book.cameras = [camHUD];
+			add(book);
 
-			disc = new FlxSprite().loadGraphic(Paths.image(path + 'disc'));
+			final rug = new FlxSprite().loadGraphic(Paths.image('$path/rugthing'));
+			rug.scale.set(2, 2);
+			rug.updateHitbox();
+			rug.setPosition(FlxG.width - (rug.frameWidth * 1.485), -130);
+			rug.antialiasing = ClientPrefs.globalAntialiasing;
+			add(rug);
+
+			final gramo = new FlxSprite().loadGraphic(Paths.image('$path/gramo11'));
+			gramo.scale.set(1.35, 1.35);
+			gramo.updateHitbox();
+			gramo.setPosition(FlxG.width - (gramo.frameWidth * 1.2), -50);
+			gramo.antialiasing = ClientPrefs.globalAntialiasing;
+			add(gramo);
+
+			disc = new FlxSprite().loadGraphic(Paths.image('$path/discfull'));
+			disc.scale.set(1.35, 1.35);
+			disc.updateHitbox();
+			disc.setPosition(FlxG.width * .7, ((gramo.height - disc.height) * .5) + 20);
 			disc.antialiasing = ClientPrefs.globalAntialiasing;
-			add(disc);
+			insert(members.indexOf(gramo), disc);
 
-			bg.scale.set(0.78, 0.78);
-			bgslider.scale.set(0.78, 0.78);
-			musicPlayer.scale.set(0.78, 0.78);
-			musicNotes.scale.set(0.78, 0.78);
-			arrows.scale.set(0.78, 0.78);
-			disc.scale.set(0.78, 0.78);
+			final shade = new FlxSprite().loadGraphic(Paths.image('$path/songtextshade'));
+			shade.scale.set(1.2, 1.2);
+			shade.x = disc.x - 60;
+			shade.y = disc.y + 140;
+			add(shade);
 
-			bg.screenCenter();
-			bgslider.screenCenter();
-			musicPlayer.screenCenter();
-			musicNotes.screenCenter();
-			arrows.screenCenter();
-			disc.screenCenter(Y);
+			final overlay = new FlxSprite().loadGraphic(Paths.image('$path/overlay'));
+			overlay.setGraphicSize(FlxG.width * 1.135, FlxG.height * 1.135);
+			overlay.updateHitbox();
+			overlay.screenCenter();
+			overlay.cameras = [camOther];
+			overlay.antialiasing = ClientPrefs.globalAntialiasing;
+			add(overlay);
 
-			disc.x += 650;
-			if (!ClientPrefs.lowQuality) 
-			{
-				spectrum.x = disc.x - 10;
-				spectrum.y = disc.y - 20;
-			}
+			final boxBot = new FlxSprite().loadGraphic(Paths.image('$path/botplaybox'));
+			add(boxBot);
+			boxBot.antialiasing = ClientPrefs.globalAntialiasing;
+			boxBot.cameras = [camHUD];
 
-			for (obj in [bgslider, musicPlayer, musicNotes, arrows])
-				obj.cameras = [camHUD];
+			offandon = new FlxSprite().loadGraphic(Paths.image('$path/off'));
+			if(ClientPrefs.gameplaySettings["botplay"] == true)  offandon.loadGraphic(Paths.image('$path/on'));
+			add(offandon);
+			offandon.antialiasing = ClientPrefs.globalAntialiasing;
+			offandon.cameras = [camHUD];
 
-			disc.x += 700;
-			arrows.alpha = 0.0001;
-			musicPlayer.x -= 700;
-			musicNotes.x -= 700;
-			bgslider.x -= 700;
-			if (!ClientPrefs.lowQuality) spectrum.x -= 700;
-			bg.alpha = 0.0001;
-
-			FlxTween.tween(bg, {alpha: 1}, 1, {ease: FlxEase.expoOut});
-			FlxTween.tween(disc, {x: disc.x - 700}, 1, {ease: FlxEase.expoOut});
-			FlxTween.tween(arrows, {alpha: 1}, 1);
-			FlxTween.tween(musicPlayer, {x: musicPlayer.x + 700}, 1, {ease: FlxEase.expoOut});
-			FlxTween.tween(musicNotes, {x: musicNotes.x + 700}, 1, {ease: FlxEase.expoOut});
-			FlxTween.tween(bgslider, {x: bgslider.x + 700}, 1, {ease: FlxEase.expoOut});
-			if (!ClientPrefs.lowQuality) FlxTween.tween(spectrum, {x: spectrum.x + 700}, 1, {ease: FlxEase.expoOut});
+			if (!ClientPrefs.lowQuality)
+				for (obj in [spectrum, table, albumCover, book, rug, gramo, disc, shade])
+					obj.cameras = [camHUD];
+			else
+				for (obj in [table, albumCover, book, rug, gramo, disc, shade])
+					obj.cameras = [camHUD];
 		}
 
+		albumHolder = new FlxTypedGroup<FlxSprite>();
+		add(albumHolder);
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);
 
 		confirmSound = new FlxSound();
-		if (freeplayMenuList != 2) confirmSound.loadEmbedded(Paths.sound('funkinAVI/menu/confirmEpisode'), false, true);
+		if (freeplayMenuList != 2) confirmSound.loadEmbedded(Paths.sound('funkinAVI/menu/confirmEpisode'));
 
 		for (i in 0...songs.length)
 		{
-			songText2 = new FlxText(0, 0, 470, songs[i].songName);
+			songText2 = new FlxText(0, 0, 570, songs[i].songName);
 			songText = new Alphabet(100, (43 * i) + 120, songs[i].songName, true);
+			album = new FlxSprite(-130, -160);
+			if (songs[i].songCharacter != "mysteryfp")
+				album.loadGraphic(Paths.imageAlbum((freeplayMenuList == 3 ? "volume2Album" : CoolUtil.spaceToDash(songs[i].songName.toLowerCase()))));
+			else
+				album.loadGraphic(Paths.imageAlbum("unknown-song"));
 		
 			var icon:HealthIcon = new HealthIcon(songs[i].songCharacter);
 
 			if (freeplayMenuList == 2)
 			{
 				songText.isMenuItem = true;
-
-				// I FORGOT THAT SCREENCENTER X EXITS LMFAO - malyplus
 				songText.screenCenter(X); 			
 				songText.changeX = false;
-				
-				//songText.alignment = CENTER; // fuck you haxeflixel your making me suffer ugh
-				
+				album.visible = false;
 				icon.sprTracker = songText;
 			}
 			else 
 			{
 				songText.isMenuItem = true;
 
-				songText2.setFormat(Paths.font("whiteDream.otf"), 65, FlxColor.WHITE);
-				songText2.setBorderStyle(OUTLINE, FlxColor.BLACK, 8);
+				songText2.setFormat(Paths.font("newFreeplayFont.ttf"), 50, FlxColor.WHITE, CENTER);
+				songText2.setBorderStyle(OUTLINE, FlxColor.BLACK, 5);
 
-				icon.x = 880;
+				icon.x = 950;
 				icon.screenCenter(Y);
-				icon.setGraphicSize(Std.int(icon.width * 2.1));
+				icon.setGraphicSize(Std.int(icon.width * 0.8));
 				icon.antialiasing = ClientPrefs.globalAntialiasing;
-				icon.x += 700;
+				icon.y += 150;
+				icon.cameras = [camHUD];
 
-				songText2.x = icon.x - 130;
-				songText2.y = icon.y - 250;
-				songText2.alignment = CENTER;
+				songText2.screenCenter();
+				songText2.x -= 346;
+				songText2.y -= 280;
 				songText2.antialiasing = ClientPrefs.globalAntialiasing;
-				songText2.y -= 300;
 				songText2.cameras = [camHUD];
+
+				album.scale.set(0.31, 0.3);
+				album.antialiasing = ClientPrefs.globalAntialiasing;
+				album.cameras = [camHUD];
+				albumHolder.add(album);
 
 				// really dumb way of fixing the offsets but eh, whetever -demo
 				// i mean, it could be worst but that looks good -jason
@@ -415,13 +404,6 @@ class FreeplayState extends MusicBeatState
 			// using a FlxGroup is too much fuss!
 			iconArray.push(icon);
 			add(icon);
-			// when haces tus momos en geometry dash
-			// la 2.2 es hoy oiste RobTop
-			// but te terminan baneando
-			// ooooh mi FIRE IN THE HOLE
-			FlxTween.tween(icon, {x: icon.x - 700}, 1, {ease: FlxEase.expoOut});
-			FlxTween.tween(songText2, {x: songText2.x - 700}, 1, {ease: FlxEase.expoOut});
-			FlxTween.tween(songText2, {y: songText2.y + 300}, 1, {ease: FlxEase.expoOut});
 		}
 			
 		// Basically an exact replica of the Funkin.avi V1 Freeplay Menu lol
@@ -446,33 +428,40 @@ class FreeplayState extends MusicBeatState
 		else //The Newer, Better, With terrible ass code which i didn't made but can't complain because it works so it's fine, Cooler Menu
 		{
 			scoreText = new FlxText(FlxG.width * 0.7, 5, 450, "", 32);
+			scoreText.x += 350;
 			scoreBG = new FlxSprite(scoreText.x - scoreText.width, 0).makeGraphic(Std.int(FlxG.width * 0.35), 66, 0xFF000000);
-			diffText = new FlxText(scoreText.x, scoreText.y + 36, 500, "", 40);
-			freeplayCtrlTxt = new FlxText(30, 550, 0, "Left & Right Keybinds - Change Song Choice\n\nESC - Exit Menu\n\nENTER - Play Song", 36);
-			scoreText.setFormat(Paths.font("disneyFreeplayFont.ttf"), 45, FlxColor.WHITE, CENTER);
-			scoreText.setBorderStyle(OUTLINE, FlxColor.BLACK, 8);
-			scoreBG.alpha = 0;
-			scoreText.alpha = 0.0001;
-			diffText.alpha = 0.0001;
+			diffText = new FlxText(scoreText.x, scoreText.y, 500, "", 24);
+			gimmickInfo = new FlxText(30, 510, 290, "Mechanics - None");
+			freeplayCtrlTxt = new FlxText(370, 530, 240, "Left & Right Keybinds - Change Song Choice\n\nESC - Exit Menu\n\nENTER - Play Song", 36);
+			
+			scoreText.setFormat(Paths.font("newFreeplayFont.ttf"), 32, FlxColor.WHITE, CENTER);
+			gimmickInfo.setFormat(Paths.font("newFreeplayFont.ttf"), 20, FlxColor.BLACK, CENTER);
 			diffText.alignment = CENTER;
 			diffText.font = scoreText.font;
-			diffText.setBorderStyle(OUTLINE, FlxColor.BLACK, 8);
-			freeplayCtrlTxt.setFormat(Paths.font('whiteDream.otf'), 20, FlxColor.WHITE, LEFT);
-			freeplayCtrlTxt.setBorderStyle(OUTLINE, FlxColor.BLACK, 8);
-			freeplayCtrlTxt.alpha = 0.0001;
+			freeplayCtrlTxt.setFormat(Paths.font('newFreeplayFont.ttf'), 20, FlxColor.BLACK, LEFT);
+
 			freeplayCtrlTxt.antialiasing = ClientPrefs.globalAntialiasing;
 			diffText.antialiasing = ClientPrefs.globalAntialiasing;
 			scoreText.antialiasing = ClientPrefs.globalAntialiasing;
-			add(scoreBG);
+
 			add(diffText);
 			add(scoreText);
 			add(freeplayCtrlTxt);
-			freeplayCtrlTxt.cameras = [camHUD];
-			diffText.cameras = [camHUD];
+			add(gimmickInfo);
 			scoreText.cameras = [camHUD];
-			FlxTween.tween(freeplayCtrlTxt, {alpha: 1}, 1.5, {ease: FlxEase.sineInOut, startDelay: 1});
-			FlxTween.tween(scoreText, {alpha: 1}, 1.5, {ease: FlxEase.sineInOut, startDelay: 1});
-			FlxTween.tween(diffText, {alpha: 1}, 1.5, {ease: FlxEase.sineInOut, startDelay: 1});
+			diffText.cameras = [camHUD];
+			freeplayCtrlTxt.cameras = [camHUD];
+			gimmickInfo.cameras = [camHUD];
+		}
+
+		if (freeplayMenuList == 3)
+		{
+			var maniaTab = new FlxSprite().loadGraphic(Paths.image('$path/maniaSkins/maniaTab'));
+			maniaTab.cameras = [camHUD];
+			add(maniaTab);
+			maniaSkinSpr = new FlxSprite().loadGraphic(Paths.image('$path/maniaSkins/skin$maniaSkin'));
+			maniaSkinSpr.cameras = [camHUD];
+			add(maniaSkinSpr);
 		}
 
 		if(curSelected >= songs.length) curSelected = 0;
@@ -491,23 +480,6 @@ class FreeplayState extends MusicBeatState
 		changeDiff();
 
 		var swag:Alphabet = new Alphabet(1, 0, "swag");
-
-		// JUST DOIN THIS SHIT FOR TESTING!!!
-		/* 
-			var md:String = Markdown.markdownToHtml(Assets.getText('CHANGELOG.md'));
-
-			var texFel:TextField = new TextField();
-			texFel.width = FlxG.width;
-			texFel.height = FlxG.height;
-			// texFel.
-			texFel.htmlText = md;
-
-			FlxG.stage.addChild(texFel);
-
-			// scoreText.textField.htmlText = md;
-
-			trace(md);
-		 */
 
 		var textBG:FlxSprite = new FlxSprite(0, FlxG.height - 26).makeGraphic(FlxG.width, 26, 0xFF000000);
 		textBG.alpha = freeplayMenuList == 2 ? 0.6 : 0;
@@ -553,14 +525,7 @@ class FreeplayState extends MusicBeatState
 					gradient.alpha = .45;
 					gradient.antialiasing = ClientPrefs.globalAntialiasing;
 					add(gradient);
-	
-					coolFilter = new FlxSprite().loadGraphic(Paths.image(path + 'thing'));
-					coolFilter.screenCenter();
-					coolFilter.antialiasing = ClientPrefs.globalAntialiasing;
-					add(coolFilter);
-	
 					gradient.cameras = [camHUD];
-					coolFilter.cameras = [camHUD];
 				}
 	
 				scratchStuff.cameras = [camHUD];
@@ -568,7 +533,7 @@ class FreeplayState extends MusicBeatState
 			}
 		
 		if (!songInstPlaying) 
-			Conductor.bpm = 100;
+			Conductor.bpm = 98;
 
 		super.create();
 	}
@@ -579,31 +544,25 @@ class FreeplayState extends MusicBeatState
 		super.closeSubState();
 	}
 
-	public function addSong(songName:String, weekNum:Int, songCharacter:String, color:Int, composer:String, rankName:String, rankColor:FlxColor, iconOffset:Array<Int>)
+	public function addSong(songName:String, weekNum:Int, songCharacter:String, color:Int, composer:String, rankName:String, rankColor:FlxColor, iconOffset:Array<Int>, gimmick:String)
 	{
-		songs.push(new SongMetadata(songName, weekNum, songCharacter, color, composer, rankName, rankColor, iconOffset));
+		songs.push(new SongMetadata(songName, weekNum, songCharacter, color, composer, rankName, rankColor, iconOffset, gimmick));
 	}
 
 	function weekIsLocked(name:String):Bool {
 		var leWeek:WeekData = WeekData.weeksLoaded.get(name);
-		return (!leWeek.startUnlocked && leWeek.weekBefore.length > 0 && (!StoryMenuState.weekCompleted.exists(leWeek.weekBefore) || !StoryMenuState.weekCompleted.get(leWeek.weekBefore)));
+		return (!leWeek.startUnlocked && leWeek.weekBefore.length > 0 && (!StoryMenu.weekCompleted.exists(leWeek.weekBefore) || !StoryMenu.weekCompleted.get(leWeek.weekBefore)));
 	}
 
-	/*public function addWeek(songs:Array<String>, weekNum:Int, weekColor:Int, ?songCharacters:Array<String>)
-	{
-		if (songCharacters == null)
-			songCharacters = ['bf'];
-
-		var num:Int = 0;
-		for (song in songs)
-		{
-			addSong(song, weekNum, songCharacters[num]);
-			this.songs[this.songs.length-1].color = weekColor;
-
-			if (songCharacters.length != 1)
-				num++;
+	function changeBotPlay(){
+		ClientPrefs.gameplaySettings["botplay"] = (ClientPrefs.gameplaySettings["botplay"] == true) ? false : true;
+		if (ClientPrefs.gameplaySettings["botplay"] == true) {
+			offandon.loadGraphic(Paths.image('$path/on'));
+		} else {
+			offandon.loadGraphic(Paths.image('$path/off'));
 		}
-	}*/
+		return;
+	}
 
 	var instPlaying:Int = -1;
 	var disableSpace:Bool = false;
@@ -622,8 +581,10 @@ class FreeplayState extends MusicBeatState
 
 		if (freeplayMenuList != 2)
 		{
-			for (icon in iconArray) icon.scale.set(FlxMath.lerp(2.1, icon.scale.x, CoolUtil.boundTo(1 - (elapsed * 9.6), 0, 1)), FlxMath.lerp(2.1, icon.scale.y, CoolUtil.boundTo(1 - (elapsed * 9.6), 0, 1)));
+			for (icon in iconArray) icon.scale.set(FlxMath.lerp(0.8, icon.scale.x, CoolUtil.boundTo(1 - (elapsed * 9.6), 0, 1)), FlxMath.lerp(0.8, icon.scale.y, CoolUtil.boundTo(1 - (elapsed * 9.6), 0, 1)));
 		}
+
+		var isDontCross:Bool = songs[curSelected].songName == "Don't Cross!";
 
 		if (musicNotes != null)
 		{
@@ -633,7 +594,11 @@ class FreeplayState extends MusicBeatState
 
 		if (disc != null && songInstPlaying) 
 		{
-			disc.angle += 1.3 * (bpm / 100);
+			disc.angle += Conductor.crochet / 1000 * 2;
+		}
+
+		if (FlxG.keys.justPressed.B) {
+			changeBotPlay();
 		}
 
 		if (ClientPrefs.shaders) // bye bye lag
@@ -704,7 +669,7 @@ class FreeplayState extends MusicBeatState
 				holdTime = 0;
 			}
 
-			if((freeplayMenuList == 2 ? controls.UI_LEFT : controls.UI_DOWN) || (freeplayMenuList == 2 ? controls.UI_DOWN : controls.UI_RIGHT))
+			if((freeplayMenuList == 2 ? controls.UI_UP : controls.UI_LEFT) || (freeplayMenuList == 2 ? controls.UI_DOWN : controls.UI_RIGHT))
 			{
 				var checkLastHold:Int = Math.floor((holdTime - 0.5) * 10);
 				holdTime += elapsed;
@@ -725,47 +690,39 @@ class FreeplayState extends MusicBeatState
 			}
 		}
 
-		/*if (controls.UI_LEFT_P)
-			changeDiff(-1);
-		else if (controls.UI_RIGHT_P)
-			changeDiff(1);
-		else if (upP || downP) changeDiff();*/
-
 		if (controls.BACK)
 		{
 			persistentUpdate = false;
 			if(colorTween != null) {
 				colorTween.cancel();
 			}
-			threadActive = false;
 			FlxG.sound.play(Paths.sound('cancelMenu'));
-			MusicBeatState.switchState(new FreeplayCategories());
+			MusicBeatState.switchState(new GeneralMenu());
 			FlxG.mouse.visible = true;
 		}
 
-		if(ctrl)
+		if(ctrl && maniaSkinSpr != null)
 		{
-			persistentUpdate = false;
-			openSubState(new GameplayChangersSubstate());
+			if (maniaSkin == 2)
+				maniaSkin = 0;
+			else
+				maniaSkin += 1;
+			maniaSkinSpr.loadGraphic(Paths.image('$path/maniaSkins/skin$maniaSkin'));
 		}
-		else if(space)
+		else if(space && freeplayMenuList != 3)
 		{
 			if(instPlaying != curSelected && !disableSpace)
 			{
-				mutex.acquire();
-				if (songToPlay != null)
-				{
-					FlxG.sound.playMusic(songToPlay);
+				if (songs[curSelected].songName == "Don't Cross!")
+					FlxG.sound.playMusic(Paths.inst("dont-cross", CoolUtil.difficulties[curDifficulty]));
+				else
+					FlxG.sound.playMusic(Paths.inst(songs[curSelected].songName, CoolUtil.difficulties[curDifficulty]));
 
-					if (FlxG.sound.music.fadeTween != null)
-						FlxG.sound.music.fadeTween.cancel();
+				if (FlxG.sound.music.fadeTween != null)
+					FlxG.sound.music.fadeTween.cancel();
 
-					FlxG.sound.music.volume = 0.0;
-					FlxG.sound.music.fadeIn(1.0, 0.0, 0.7);
-
-					songToPlay = null;
-				}
-				mutex.release();
+				FlxG.sound.music.volume = 0.0;
+				FlxG.sound.music.fadeIn(1.0, 0.0, 0.7);
 				songInstPlaying = true;
 				getBPM();
 				FlxTween.num(Conductor.bpm, bpm, 2, null, shitshitfuckfuck -> Conductor.bpm = shitshitfuckfuck);
@@ -775,78 +732,73 @@ class FreeplayState extends MusicBeatState
 
 		else if (accepted)
 		{
-			enterSong();
+			songInstPlaying = false;
+			persistentUpdate = false;
+			var songLowercase:String = Paths.formatToSongPath(songs[curSelected].songName);
+			if (isDontCross) // I've been suffering trying to get the randomizer to work with hardcoded charts only to find out this piece of shit was causing the crash oh my FUCKING GOD I'M GONNA RIP MY FUCKING HEAD OFF!!!!! (don)
+				songLowercase = "dont-cross";
+			var poop:String = Highscore.formatSong(songLowercase, curDifficulty); //fuck fuck fuck fuck fuck fuck
+			trace(poop);
+
+			PlayState.SONG = Song.loadFromJson(poop, songLowercase, crossRandom);
+			PlayState.isStoryMode = false;
+			PlayState.storyDifficulty = curDifficulty;
+
+			for (icon in iconArray) if (freeplayMenuList != 2) icon.scale.set(1.25, 1.25);
+
+			trace('CURRENT WEEK: ' + WeekData.getWeekFileName());
+			if(colorTween != null) {
+				colorTween.cancel();
+			}
+
+			if (freeplayMenuList == 2)
+			{
+				FlxG.sound.music.stop();
+				LoadingState.loadAndSwitchState(new PlayState());
+			} else {
+				FlxG.sound.music.fadeOut(2.3, 0, tw -> LoadingState.loadAndSwitchState(new PlayState()));
+				FlxG.camera.shake(.005, 5);
+				FlxG.camera.zoom += .25;
+				FlxTween.tween(FlxG.camera, {zoom: 1}, .35, {ease: FlxEase.cubeOut});
+				camOther.fade(FlxColor.BLACK, 2);
+				confirmSound.play(false, 0, 4);
+				confirmSound.fadeOut(4);
+			}
+
+			FlxG.sound.music.volume = 0;
 		}
 		else if(controls.RESET)
 		{
 			persistentUpdate = false;
 			openSubState(new ResetScoreSubState(songs[curSelected].songName, curDifficulty, songs[curSelected].songCharacter));
-			FlxG.sound.play(Paths.sound('cancelMenu'));
+			FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
 		}
 		super.update(elapsed);
 	}
 
-	function enterSong()
-	{
-		if (songs[curSelected].songName == "Birthday" && GameData.muckneyLock == 'uninvited' && !Main.debug)
+	function spawnMusicalNote()
 		{
-			FlxG.sound.play(Paths.sound('cancelMenu')); // todo: maybe get a new sfx for the future?
-			return;
+			final musicNote = new FlxSprite(800, 130, Paths.image('favi/ui/bdaynotes/note_${FlxG.random.int(1, 3)}', 'shared'));
+			musicNote.scale.set(.65, .65);
+			musicNote.updateHitbox();
+			musicNote.antialiasing = ClientPrefs.globalAntialiasing;
+			musicNote.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0);
+			musicNote.cameras = [camHUD];
+			add(musicNote);
+	
+			musicNote.alpha = 0;
+			FlxTween.tween(musicNote, {alpha: 1}, .5, {ease: FlxEase.sineInOut});
+	
+			final randomTimer = FlxG.random.float(3.5, 7);
+	
+			musicNote.velocity.x = -FlxG.random.float(120, 230);
+	
+			FlxTween.tween(musicNote, {y: musicNote.y - 70}, FlxG.random.float(1, 4), {ease: FlxEase.sineInOut, type: 4});
+			FlxTween.tween(musicNote, {alpha: 0}, randomTimer, {ease: FlxEase.sineInOut, startDelay: 1.5, onComplete: tweeeeeee -> {
+				remove(musicNote);
+				musicNote.destroy();
+			}});
 		}
-		songInstPlaying = false;
-		threadActive = false;
-		persistentUpdate = false;
-		var songLowercase:String = Paths.formatToSongPath(songs[curSelected].songName);
-		if (songs[curSelected].songName == "Don't Cross!") // I've been suffering trying to get the randomizer to work with hardcoded charts only to find out this piece of shit was causing the crash oh my FUCKING GOD I'M GONNA RIP MY FUCKING HEAD OFF!!!!! (don)
-			songLowercase = "dont-cross";
-		var poop:String = Highscore.formatSong(songLowercase, curDifficulty); //fuck fuck fuck fuck fuck fuck
-
-		PlayState.SONG = Song.loadFromJson(poop, songLowercase, crossRandom);
-		PlayState.isStoryMode = false;
-		PlayState.storyDifficulty = curDifficulty;
-
-		for (icon in iconArray) if (freeplayMenuList != 2) icon.scale.set(2.35, 2.35);
-
-		if(colorTween != null) {
-			colorTween.cancel();
-		}
-
-		if (freeplayMenuList != 2)
-		{	
-			for (shitToCancelLolol in [bg, disc, arrows, musicPlayer, musicNotes, bgslider, songText2, freeplayCtrlTxt, diffText])
-				FlxTween.cancelTweensOf(shitToCancelLolol);
-			if (spectrum != null) FlxTween.cancelTweensOf(spectrum);
-
-			FlxTween.tween(bg, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
-			if (spectrum != null) FlxTween.tween(spectrum, {x: spectrum.x - 700}, 1, {ease: FlxEase.sineOut});
-			FlxTween.tween(disc, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
-			FlxTween.tween(arrows, {alpha: 0}, 1);
-			FlxTween.tween(musicPlayer, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
-			FlxTween.tween(musicNotes, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
-			FlxTween.tween(bgslider, {x: bgslider.x - 700}, 1, {ease: FlxEase.sineOut});
-			FlxTween.tween(songText2, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
-			FlxTween.tween(songText2, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
-			FlxTween.tween(freeplayCtrlTxt, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
-			FlxTween.tween(scoreText, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
-			FlxTween.tween(diffText, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
-			FlxTween.tween(songText2, {alpha: 0}, 1, {ease: FlxEase.sineInOut});
-		}
-		if (freeplayMenuList == 2)
-		{
-			FlxG.sound.music.stop();
-			LoadingState.loadAndSwitchState(new PlayState());
-		} else {
-			FlxG.sound.music.fadeOut(2.3, 0, tw -> LoadingState.loadAndSwitchState(new PlayState()));
-			FlxG.camera.shake(.005, 5);
-			FlxG.camera.zoom += .25;
-			FlxTween.tween(FlxG.camera, {zoom: 1}, .35, {ease: FlxEase.cubeOut});
-			camOther.fade(FlxColor.BLACK, 2);
-			confirmSound.play(false, 0, 4);
-			confirmSound.fadeOut(4);
-		}
-
-		FlxG.sound.music.volume = 0;
-	}
 
 	// i would remove this but too lazy to remove this function from other menus rn so I don't get any compiling errors lol
 	public static function destroyFreeplayVocals() {
@@ -894,40 +846,12 @@ class FreeplayState extends MusicBeatState
 	override function beatHit() {
 		super.beatHit();
 
-		if (curBeat % 2 == 0 && freeplayMenuList != 2 && songInstPlaying)
+		if (curBeat % 2 == 0 && freeplayMenuList != 2)
 		{
-			//musicNotes.scale.set(.8, .8); yeahhhhhhhhhhhhhhh no.
-			for (icon in iconArray) icon.scale.set(2.35, 2.35);
+			spawnMusicalNote();
+			if (songInstPlaying)
+				for (icon in iconArray) icon.scale.set(0.9, 0.9);
 		}
-	}
-
-	function changeInst() {
-		if (songThread == null) {
-			songThread = Thread.create(function() {
-				while (true) {
-					if (!threadActive) return;
-
-					var index:Null<Int> = Thread.readMessage(false);
-					if (index != null) {
-						var inst:Sound = getInstrumentForSong(songs[curSelected].songName);
-						
-						if (threadActive) {
-							mutex.acquire();
-							songToPlay = inst;
-							mutex.release();
-						}
-					}
-				}
-			});
-		}
-		songThread.sendMessage(curSelected);
-	}
-
-	function getInstrumentForSong(songName:String):Sound {
-		if (songName == "Don't Cross!") {
-			return Paths.inst("dont-cross", CoolUtil.difficulties[curDifficulty]);
-		} 
-		return Paths.inst(songName, CoolUtil.difficulties[curDifficulty]);
 	}
 
 	var shittyTmr:FlxTimer;
@@ -962,19 +886,19 @@ class FreeplayState extends MusicBeatState
 		{
 			case 0: 
 				{
-					lime.app.Application.current.window.title = "Funkin.avi - Freeplay: Episode Songs - " + songName + ' - Composed by: ' + songArtist;
+					lime.app.Application.current.window.title = "Funkin.avi - Freeplay: Story Menu- " + songName + ' - Composed by: ' + songArtist;
 				}
 			case 1:
 				{
-					lime.app.Application.current.window.title = "Funkin.avi - Freeplay: Extra Songs - " + songName + " - Composed by: " + songArtist;
+					lime.app.Application.current.window.title = "Funkin.avi - Freeplay: Extras Menu - " + songName + " - Composed by: " + songArtist;
 				}
 			case 2:
 				{
-					lime.app.Application.current.window.title = "Funkin.avi - Freeplay: Legacy Songs - " + songName + " - Composed by: " + songArtist;
+					lime.app.Application.current.window.title = "Funkin.avi - Freeplay: Legacy Menu - " + songName + " - Composed by: " + songArtist;
 				}
 			case 3:
 				{
-					lime.app.Application.current.window.title = "Funkin.avi - Freeplay: ??? - " + songName + " - Composed by: " + songArtist;
+					lime.app.Application.current.window.title = "Funkin.avi - Freeplay: Mania Menu - " + songName + " - Composed by: " + songArtist;
 				}
 		}
 
@@ -1026,6 +950,7 @@ class FreeplayState extends MusicBeatState
 						{
 							iconArray[i].alpha = 0;
 							iconArray[i].animation.curAnim.curFrame = 0;
+							
 						}
 	
 						iconArray[curSelected].alpha = 1;
@@ -1048,8 +973,15 @@ class FreeplayState extends MusicBeatState
 	
 						for (s in 0...songDisplay.length)
 							songDisplay[s].alpha = 0;
+
+						for (a in albumHolder.members)
+							a.visible = false;
+
+						albumHolder.members[curSelected].visible = true;
 	
 						songDisplay[curSelected].alpha = 1;
+
+						gimmickInfo.text = "Mechanics - " + songs[curSelected].gimmicksTxt;
 			}
 			else
 			{
@@ -1072,8 +1004,6 @@ class FreeplayState extends MusicBeatState
 						item.alpha = 1;
 				}
 			}
-		
-		changeInst();
 
 		Paths.currentModDirectory = songs[curSelected].folder;
 		PlayState.storyWeek = songs[curSelected].week;
@@ -1103,8 +1033,6 @@ class FreeplayState extends MusicBeatState
 									]);
 							}
 							FlxG.camera.shake(0.01, 0.001);
-							remove(delutranceBg);
-							add(bg);
 	
 						case "don't-cross!":
 							if(!ClientPrefs.lowQuality) {
@@ -1135,10 +1063,7 @@ class FreeplayState extends MusicBeatState
 										new ShaderFilter(mercyShader2),
 									]);
 							}
-							// pretty sure you know why
-							remove(delutranceBg);
-							add(bg);
-	
+
 						case 'twisted-grins' | 'resentment' | 'mortiferum-risus':
 							if(!ClientPrefs.lowQuality)
 								FlxG.camera.setFilters([new ShaderFilter(smilesShader)]);
@@ -1168,25 +1093,15 @@ class FreeplayState extends MusicBeatState
 								FlxG.camera.setFilters([]);
 								FlxG.camera.shake(0.01, 0.001);
 							}
-							// fixing a bug of delulu bg not disappearing, and no, im not gonna use alpha
-							remove(delutranceBg);
-							add(bg);
 						
 						case 'devilish-deal' | 'delusional':
 							if(!ClientPrefs.lowQuality)
 								FlxG.camera.setFilters([new ShaderFilter(chromAberration)]);
 							FlxG.camera.shake(0.01, 0.001);
 	
-						case 'delutrance': 
-							FlxG.camera.setFilters([ new ShaderFilter(pixelShader)]);
-							remove(bg);
-							add(delutranceBg);
-	
 						default:
 							FlxG.camera.setFilters([]); // fixed it yay
 							FlxG.camera.shake(0.01, 0.001);
-							remove(delutranceBg);
-							add(bg);
 					}
 				}
 			}
@@ -1248,10 +1163,10 @@ class FreeplayState extends MusicBeatState
 		}
 		else
 		{
-			scoreText.x = 770;
-			scoreText.y = 560;
+			scoreText.x = 830;
+			scoreText.y = 570;
 			diffText.x = scoreText.x - 20;
-			diffText.y = scoreText.y + 70;
+			diffText.y = scoreText.y + 60;
 		}
 	}
 
@@ -1267,7 +1182,6 @@ class FreeplayState extends MusicBeatState
 			case 'laugh-track' | 'birthday': bpm = 180;
 			case 'malfunction': bpm = 166;
 			case 'twisted-grins' | "don't-cross!": bpm = 140;
-			case 'delutrance': bpm = 123;
 			case 'cycled-sins': bpm = 161;
 			case 'isolated-beta' | 'isolated-old': bpm = 120;
 		}
@@ -1284,7 +1198,7 @@ class FreeplayState extends MusicBeatState
 				case 'malfunction': difficultyRank = 'null';
 				case "dont-cross": difficultyRank = 'GOOD LUCK';
 				case 'birthday': difficultyRank = 'PARTY';
-				case 'delutrance': difficultyRank = 'DELUSIONAL';
+				case "rotten-petals" | "seeking-freedom" | "your-final-bow" | "curtain-call" |"am-i-real?" | "a-true-monster" | "ship-the-fart-yay-hooray-<3-(distant-stars)" | "ahh-the-scary-(somber-night)" | "the-wretched-tilezones-(simple-life)": difficultyRank = "MANIA";
 				default: difficultyRank = 'HARD';
 			}
 			return difficultyRank;
@@ -1295,15 +1209,15 @@ class FreeplayState extends MusicBeatState
 			switch (PlayState.SONG.song)
 			{
 				case "Devilish Deal" | "Isolated" | "Lunacy" | "Malfunction" | "Lunacy Legacy" | "Malfunction Legacy" | "Mercy Legacy": songArtist = "obscurity.";
-				case "Delusional" | "Birthday" | "Delusional Legacy": songArtist = "FR3SHMoure";
+				case "Delusional" | "Birthday" | "Delusional Legacy" | "A True Monster": songArtist = "FR3SHMoure";
 				case "Hunted" | "Hunted Legacy" | "Cycled Sins" | "Cycled Sins Legacy": songArtist = "JBlitz";
 				case "Laugh Track" | "Dont Cross" | "Bless" | "Twisted Grins": songArtist = "PualTheUnTruest";
-				case "Isolated Beta" | "Isolated Old": songArtist = "Toko";
-				case "Twisted Grins Legacy": songArtist = "Sayan Sama";
+				case "Isolated Beta" | "Isolated Old" | "Rotten Petals" | "Seeking Freedom" | "Your Final Bow": songArtist = "Yama Haki/Toko";
+				case "Twisted Grins Legacy" | "Curtain Call": songArtist = "Sayan Sama";
 				case "Isolated Legacy": songArtist = "Toko & obscurity.";
 				case "War Dilemma": songArtist = "Sayan Sama & obscurity.";
 				case "Mercy": songArtist = "Ophomix24";
-				case "Delutrance": songArtist = "RetroJogador";
+				case "Ship the Fart Yay Hooray <3 (Distant Stars)" | "Ahh the Scary (Somber Night)" | "The Wretched Tilezones (Simple Life)": songArtist = "ForFurtherNotice";
 				default: songArtist = "Unknown";
 			}
 			return songArtist;
@@ -1320,9 +1234,10 @@ class SongMetadata
 	public var rankName:String = "";
 	public var rankColor:FlxColor = FlxColor.WHITE;
 	public var iconOffset:Array<Int> = [0, 0];
+	public var gimmicksTxt:String = "Unknown";
 	public var folder:String = "";
 
-	public function new(song:String, week:Int, songCharacter:String, color:Int, composer:String, rankName:String, rankColor:FlxColor, iconOffset:Array<Int>)
+	public function new(song:String, week:Int, songCharacter:String, color:Int, composer:String, rankName:String, rankColor:FlxColor, iconOffset:Array<Int>, gimmicksTxt:String)
 	{
 		this.songName = song;
 		this.week = week;
@@ -1332,6 +1247,7 @@ class SongMetadata
 		this.rankName = rankName;
 		this.rankColor = rankColor;
 		this.iconOffset = iconOffset;
+		this.gimmicksTxt = gimmicksTxt;
 		this.folder = Paths.currentModDirectory;
 		if(this.folder == null) this.folder = '';
 	}

@@ -9,6 +9,7 @@ import openfl.system.System;
 import flixel.graphics.frames.FlxAtlasFrames;
 import openfl.utils.AssetType;
 import openfl.utils.Assets as OpenFlAssets;
+import openfl.media.Video;
 import lime.utils.Assets;
 #if sys
 import sys.io.File;
@@ -254,7 +255,7 @@ class Paths
 	inline static public function voicesPlayer(song:String, char:String = "Player" /*take that Psych devs, I programmed it much more simplier than how you all handled it!*/, diff:String = 'normal'):Any
 	{
 		diff = CoolUtil.difficulties[PlayState.storyDifficulty].toLowerCase();
-		var songKey:String = '${formatToSongPath(song)}/Voices-' + char.toLowerCase() + (diff == 'easy' || diff == 'normal' || diff == 'hard' ? '' : '-${diff}');
+		var songKey:String = '${formatToSongPath(song)}/Voices-' + char + (diff == 'easy' || diff == 'normal' || diff == 'hard' ? '' : '-${diff}');
 		var voices = returnSound('songs', songKey);
 		return voices;
 	}
@@ -262,7 +263,7 @@ class Paths
 	inline static public function voicesOpp(song:String, char:String = "Opponent", diff:String = 'normal'):Any
 	{
 		diff = CoolUtil.difficulties[PlayState.storyDifficulty].toLowerCase();
-		var songKey:String = '${formatToSongPath(song)}/Voices-' + char.toLowerCase() + (diff == 'easy' || diff == 'normal' || diff == 'hard' ? '' : '-${diff}');
+		var songKey:String = '${formatToSongPath(song)}/Voices-' + char + (diff == 'easy' || diff == 'normal' || diff == 'hard' ? '' : '-${diff}');
 		var voices = returnSound('songs', songKey);
 		return voices;
 	}
@@ -293,6 +294,13 @@ class Paths
 		var returnAsset:FlxGraphic = returnGraphic(key, library);
 		return returnAsset;
 	}
+
+	inline static public function imageAlbum(key:String, ?library:String):FlxGraphic
+		{
+			// streamlined the assets process more
+			var returnAsset:FlxGraphic = returnAlbumGraphic('Funkin_avi/pause/songs/$key', library);
+			return returnAsset;
+		}
 
 	static public function getTextFromFile(key:String, ?ignoreMods:Bool = false):String
 	{
@@ -389,52 +397,152 @@ class Paths
 
 	// completely rewritten asset loading? fuck!
 	public static var currentTrackedAssets:Map<String, FlxGraphic> = [];
-	public static function returnGraphic(key:String, ?library:String) {
-			var path = getPath('images/$key.png', IMAGE, library);
-			//trace(path);
-			if (OpenFlAssets.exists(path, IMAGE)) {
-				if(!currentTrackedAssets.exists(path)) {
-					var newGraphic:FlxGraphic = FlxG.bitmap.add(path, false, path);
-					newGraphic.persist = true;
-					currentTrackedAssets.set(path, newGraphic);
-				}
-				return currentTrackedAssets.get(path);
-			}
+	public static function returnGraphic(key:String, ?library:String, ?allowGPU:Bool = true) {
+		var bitmap:BitmapData = null;
+		var file:String = null;
 
-		trace('oh no $key is returning null NOOOO');
+		#if MODS_ALLOWED
+		file = modsImages(key);
+		if (currentTrackedAssets.exists(file))
+		{
+			localTrackedAssets.push(file);
+			return currentTrackedAssets.get(file);
+		}
+		else if (FileSystem.exists(file))
+			bitmap = BitmapData.fromFile(file);
+		else
+		#end
+		{
+			file = getPath('images/$key.png', IMAGE, library);
+			if (currentTrackedAssets.exists(file))
+			{
+				localTrackedAssets.push(file);
+				return currentTrackedAssets.get(file);
+			}
+			else if (OpenFlAssets.exists(file, IMAGE))
+				bitmap = OpenFlAssets.getBitmapData(file);
+		}
+
+		if (bitmap != null)
+		{
+			var retVal = cacheBitmap(file, bitmap, allowGPU);
+			if(retVal != null) return retVal;
+		}
+
+		trace('oh no its returning null NOOOO ($file)');
 		return null;
 	}
 
-	public static var currentTrackedSounds:Map<String, Sound> = [];
-	public static function returnSound(path:String, key:String, ?library:String) {
-		#if MODS_ALLOWED
-		var file:String = modsSounds(path, key);
-		if(FileSystem.exists(file)) {
-			if(!currentTrackedSounds.exists(file)) {
-				currentTrackedSounds.set(file, Sound.fromFile(file));
+	public static function returnAlbumGraphic(key:String, ?library:String, ?allowGPU:Bool = true) {
+		var bitmap:BitmapData = null;
+		var file:String = null;
+		{
+			file = getPath('images/$key.png', IMAGE, library);
+			if (currentTrackedAssets.exists(file))
+			{
+				localTrackedAssets.push(file);
+				return currentTrackedAssets.get(file);
 			}
-			localTrackedAssets.push(key);
-			return currentTrackedSounds.get(file);
+			else if (OpenFlAssets.exists(file, IMAGE))
+				bitmap = OpenFlAssets.getBitmapData(file);
+		}
+
+		if (bitmap != null)
+		{
+			var retVal = cacheBitmap(file, bitmap, allowGPU);
+			if(retVal != null) return retVal;
+		}
+
+		trace('$file returned null, using placeholder album!');
+		return imageAlbum('unknown-song');
+	}
+
+	static public function cacheBitmap(file:String, ?bitmap:BitmapData = null, ?allowGPU:Bool = true)
+		{
+			if(bitmap == null)
+			{
+				#if MODS_ALLOWED
+				if (FileSystem.exists(file))
+					bitmap = BitmapData.fromFile(file);
+				else
+				#end
+				{
+					if (OpenFlAssets.exists(file, IMAGE))
+						bitmap = OpenFlAssets.getBitmapData(file);
+				}
+	
+				if(bitmap == null) return null;
+			}
+	
+			localTrackedAssets.push(file);
+			var newGraphic:FlxGraphic = FlxGraphic.fromBitmapData(bitmap, false, file);
+			newGraphic.persist = true;
+			newGraphic.destroyOnNoUse = false;
+			currentTrackedAssets.set(file, newGraphic);
+			return newGraphic;
+		}
+
+	// ✨code successfully stolen from Sonic Legacy ✨
+	public static var currentTrackedSounds:Map<String, Sound> = [];
+	public static function returnSound(path:String, key:String, ?library:String, ?ignoreMods:Bool = false) {
+		#if MODS_ALLOWED
+		if(!ignoreMods){
+			var file:String = modsSounds(path, key);
+			if(exists(file,SOUND)) {
+				if(!currentTrackedSounds.exists(file)) {
+					currentTrackedSounds.set(file, Sound.fromFile(file));
+				}
+				localTrackedAssets.push(key);
+				return currentTrackedSounds.get(file);
+			}
 		}
 		#end
 		// I hate this so god damn much
 		var gottenPath:String = getPath('$path/$key.$SOUND_EXT', SOUND, library);
 		gottenPath = gottenPath.substring(gottenPath.indexOf(':') + 1, gottenPath.length);
 		// trace(gottenPath);
-		if(!currentTrackedSounds.exists(gottenPath))
-		#if MODS_ALLOWED
-			currentTrackedSounds.set(gottenPath, Sound.fromFile('./' + gottenPath));
-		#else
-		{
-			var folder:String = '';
-			if(path == 'songs') folder = 'songs:';
+		if(!currentTrackedSounds.exists(gottenPath)) {
 
-			currentTrackedSounds.set(gottenPath, OpenFlAssets.getSound(folder + getPath('$path/$key.$SOUND_EXT', SOUND, library)));
+			var sound:Null<openfl.media.Sound> = null;
+			sound = Sound.fromFile('./' + gottenPath);
+			//HORRID SOLUITION FOR NOW
+			if (sound.length == 0) {
+				var folder:String = '';
+				if(path == 'songs') folder = 'songs:';
+				sound = OpenFlAssets.getSound(folder + getPath('$path/$key.$SOUND_EXT', SOUND, library));
+			}
+			currentTrackedSounds.set(gottenPath,sound);
 		}
-		#end
 		localTrackedAssets.push(gottenPath);
 		return currentTrackedSounds.get(gottenPath);
 	}
+
+	inline static public function exists(asset:String, ?type:lime.utils.AssetType)
+		{
+			#if sys 
+			if (FileSystem.exists(asset)) {
+				return true;
+			}
+			#end
+			if (Assets.exists(asset, type)) {
+				return true;
+			}
+	
+			return false;
+			
+		}
+
+		inline static public function getContent(asset:String):Null<String>{
+			#if sys
+			if (FileSystem.exists(asset))
+				return File.getContent(asset);
+			#end
+			if (Assets.exists(asset))
+				return Assets.getText(asset);
+			
+	
+			return null;
+		}
 
 	#if MODS_ALLOWED
 	inline static public function mods(key:String = '') {

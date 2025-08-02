@@ -7,9 +7,6 @@ import openfl.display.Sprite;
 import openfl.events.Event;
 import openfl.display.StageScaleMode;
 
-// this is only so the dead code eliminator doesn't kill it
-import backend.ALSoftConfig;
-
 //crash handler stuff
 #if CRASH_HANDLER
 import lime.app.Application;
@@ -25,14 +22,13 @@ using StringTools;
 
 class Main extends Sprite
 {
-	public static final game = {
-		gameWidth: 1280, // Width of the game in pixels (might be less / more in actual pixels depending on your zoom).
-		gameHeight: 720, // Height of the game in pixels (might be less / more in actual pixels depending on your zoom).
-		initialState: TitleState, // The FlxState the game starts with.
-		framerate: 60, // How many frames per second the game should run at.
-		skipSplash: true, // Whether to skip the flixel splash screen that appears in release mode.
-		startFullscreen: false, // Whether to start the game in fullscreen on desktop targets
-	}
+	var gameWidth:Int = 1280; // Width of the game in pixels (might be less / more in actual pixels depending on your zoom).
+	var gameHeight:Int = 720; // Height of the game in pixels (might be less / more in actual pixels depending on your zoom).
+	public static var initialState:Class<FlxState> = /*EVILantileakState; *uncomment for playtest builds*/ TitleState; // The FlxState the game starts with.
+	var zoom:Float = -1; // If -1, zoom is automatically calculated to fit the window dimensions.
+	var framerate:Int = 60; // How many frames per second the game should run at.
+	var skipSplash:Bool = true; // Whether to skip the flixel splash screen that appears in release mode.
+	var startFullscreen:Bool = false; // Whether to start the game in fullscreen on desktop targets
 	public static var fpsVar:Framerate;
 	public static var debug:Bool = false;
 
@@ -47,9 +43,45 @@ class Main extends Sprite
 	{
 		super();
 
-		var aviGameCrap:FlxGame = new FlxGame(game.gameWidth, game.gameHeight, Init, game.framerate, game.framerate, game.skipSplash, game.startFullscreen);
-		@:privateAccess aviGameCrap._customSoundTray = gameObjects.ui.Soundtray;
-		addChild(aviGameCrap);
+		if (stage != null)
+		{
+			init();
+		}
+		else
+		{
+			addEventListener(Event.ADDED_TO_STAGE, init);
+		}
+	}
+
+	private function init(?E:Event):Void
+	{
+		if (hasEventListener(Event.ADDED_TO_STAGE))
+		{
+			removeEventListener(Event.ADDED_TO_STAGE, init);
+		}
+
+		setupGame();
+	}
+
+	private function setupGame():Void
+	{
+		var stageWidth:Int = Lib.current.stage.stageWidth;
+		var stageHeight:Int = Lib.current.stage.stageHeight;
+
+		if (zoom == -1)
+		{
+			var ratioX:Float = stageWidth / gameWidth;
+			var ratioY:Float = stageHeight / gameHeight;
+			zoom = Math.min(ratioX, ratioY);
+			gameWidth = Math.ceil(stageWidth / zoom);
+			gameHeight = Math.ceil(stageHeight / zoom);
+		}
+	
+		ClientPrefs.loadDefaultKeys();
+
+		var game:FlxGame = new FlxGame(gameWidth, gameHeight, Init, #if (flixel < "5.0.0") zoom, #end framerate, framerate, skipSplash, startFullscreen);
+		@:privateAccess game._customSoundTray = gameObjects.ui.Soundtray;
+		addChild(game);
 
 		#if !mobile
 		fpsVar = new Framerate(10, 3);
@@ -61,10 +93,39 @@ class Main extends Sprite
 			fpsVar.visible = ClientPrefs.showFPS;
 		}
 		#end
+
+		FlxG.autoPause = ClientPrefs.autoPause;
+		#if html5
+		FlxG.mouse.visible = false;
+		#end
+
+		//FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
 		
 		#if CRASH_HANDLER
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
 		#end
+
+		FlxG.signals.gameResized.add(function (w, h) {
+			if (FlxG.cameras != null) {
+			  for (cam in FlxG.cameras.list) {
+			   if (cam != null && cam.filters != null)
+				   resetSpriteCache(cam.flashSprite);
+			  }
+		   }
+
+		   if (FlxG.game != null)
+		    @:privateAccess {
+				FlxG.game.__cacheBitmap = null;
+				FlxG.game.__cacheBitmapData = null;
+		}
+	   });
+	}
+
+	static function resetSpriteCache(sprite:Sprite):Void {
+		@:privateAccess {
+				sprite.__cacheBitmap = null;
+			sprite.__cacheBitmapData = null;
+		}
 	}
 
 	// Code was entirely made by sqirra-rng for their fnf engine named "Izzy Engine", big props to them!!!

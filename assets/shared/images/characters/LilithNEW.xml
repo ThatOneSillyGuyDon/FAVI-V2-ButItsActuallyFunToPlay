@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Lilith.png">
+	<!-- Created with Adobe Animate version 23.0.0.407 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Lilith Dancing left0000" x="0" y="0" width="344" height="677"/>
+	<SubTexture name="Lilith Dancing left0001" x="0" y="0" width="344" height="677"/>
+	<SubTexture name="Lilith Dancing left0002" x="344" y="0" width="344" height="677"/>
+	<SubTexture name="Lilith Dancing left0003" x="344" y="0" width="344" height="677"/>
+	<SubTexture name="Lilith Dancing left0004" x="688" y="0" width="344" height="677"/>
+	<SubTexture name="Lilith Dancing left0005" x="688" y="0" width="344" height="677"/>
+	<SubTexture name="Lilith Dancing left0006" x="688" y="0" width="344" height="677"/>
+	<SubTexture name="Lilith Dancing left0007" x="1032" y="0" width="344" height="677"/>
+	<SubTexture name="Lilith Dancing left0008" x="1032" y="0" width="344" height="677"/>
+	<SubTexture name="Lilith Dancing left0009" x="1032" y="0" width="344" height="677"/>
+	<SubTexture name="Lilith Dancing left0010" x="1032" y="0" width="344" height="677"/>
+	<SubTexture name="Lilith Dancing left0011" x="1376" y="0" width="344" height="677"/>
+	<SubTexture name="Lilith Dancing left0012" x="1376" y="0" width="344" height="677"/>
+	<SubTexture name="Lilith Dancing left0013" x="1376" y="0" width="344" height="677"/>
+	<SubTexture name="Lilith Dancing left0014" x="1376" y="0" width="344" height="677"/>
+	<SubTexture name="Lilith Dancing left0015" x="1376" y="0" width="344" height="677"/>
+	<SubTexture name="Lilith Dancing right0000" x="0" y="677" width="347" height="691"/>
+	<SubTexture name="Lilith Dancing right0001" x="0" y="677" width="347" height="691"/>
+	<SubTexture name="Lilith Dancing right0002" x="347" y="677" width="347" height="691"/>
+	<SubTexture name="Lilith Dancing right0003" x="347" y="677" width="347" height="691"/>
+	<SubTexture name="Lilith Dancing right0004" x="694" y="677" width="347" height="691"/>
+	<SubTexture name="Lilith Dancing right0005" x="694" y="677" width="347" height="691"/>
+	<SubTexture name="Lilith Dancing right0006" x="694" y="677" width="347" height="691"/>
+	<SubTexture name="Lilith Dancing right0007" x="1041" y="677" width="347" height="691"/>
+	<SubTexture name="Lilith Dancing right0008" x="1041" y="677" width="347" height="691"/>
+	<SubTexture name="Lilith Dancing right0009" x="1041" y="677" width="347" height="691"/>
+	<SubTexture name="Lilith Dancing right0010" x="1041" y="677" width="347" height="691"/>
+	<SubTexture name="Lilith Dancing right0011" x="1388" y="677" width="347" height="691"/>
+	<SubTexture name="Lilith Dancing right0012" x="1388" y="677" width="347" height="691"/>
+	<SubTexture name="Lilith Dancing right0013" x="1388" y="677" width="347" height="691"/>
+	<SubTexture name="Lilith Dancing right0014" x="1388" y="677" width="347" height="691"/>
+	<SubTexture name="Lilith Dancing right0015" x="1388" y="677" width="347" height="691"/>
+	<SubTexture name="Lilith Dancing right0016" x="1388" y="677" width="347" height="691"/>
+</TextureAtlas>

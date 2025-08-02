@@ -1,70 +1,148 @@
 {
 	"animations": [
 		{
-			"offsets": [
-				-230,
-				-20
-			],
 			"loop": false,
-			"fps": 24,
+			"offsets": [
+				50,
+				60
+			],
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
-		},
-		{
-			"offsets": [
-				-230,
-				-20
-			],
-			"loop": false,
 			"fps": 24,
+			"name": "down0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				50,
+				60
+			],
 			"anim": "singUP",
-			"indices": [],
-			"name": "up"
+			"fps": 24,
+			"name": "up0",
+			"indices": []
 		},
 		{
-			"offsets": [
-				-230,
-				-20
-			],
 			"loop": false,
-			"fps": 28,
+			"offsets": [
+				50,
+				60
+			],
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "left"
+			"fps": 28,
+			"name": "left0",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
-				-229,
-				-20
+				51,
+				60
 			],
-			"indices": [],
-			"fps": 20,
 			"anim": "idle",
-			"loop": false,
-			"name": "idle"
-		},
-		{
-			"offsets": [
-				-230,
-				-20
-			],
-			"indices": [],
-			"fps": 25,
-			"anim": "singRIGHT",
-			"loop": false,
-			"name": "right"
-		},
-		{
-			"offsets": [
-				-229,
-				-20
-			],
-			"indices": [],
 			"fps": 20,
-			"anim": "idle-alt",
+			"name": "idle",
+			"indices": []
+		},
+		{
 			"loop": false,
-			"name": "ohHeMad"
+			"offsets": [
+				50,
+				60
+			],
+			"anim": "singRIGHT",
+			"fps": 25,
+			"name": "right0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				51,
+				60
+			],
+			"anim": "idle-alt",
+			"fps": 20,
+			"name": "ohHeMad",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				51,
+				54
+			],
+			"anim": "singDOWN-alt",
+			"fps": 24,
+			"name": "downAlt",
+			"indices": [
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9
+			]
+		},
+		{
+			"offsets": [
+				79,
+				36
+			],
+			"indices": [
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9
+			],
+			"fps": 24,
+			"anim": "singUP-alt",
+			"loop": false,
+			"name": "upAlt"
+		},
+		{
+			"offsets": [
+				-310,
+				60
+			],
+			"indices": [
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9
+			],
+			"fps": 30,
+			"anim": "singRIGHT-alt",
+			"loop": false,
+			"name": "rightAlt"
+		},
+		{
+			"offsets": [
+				450,
+				10
+			],
+			"indices": [
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9
+			],
+			"fps": 28,
+			"anim": "singLEFT-alt",
+			"loop": false,
+			"name": "leftAlt"
 		}
 	],
 	"no_antialiasing": true,
@@ -81,8 +159,8 @@
 		0
 	],
 	"camera_position": [
-		-260,
-		-500
+		-520,
+		-650
 	],
 	"sing_duration": 6.1,
 	"scale": 5.99999999999999

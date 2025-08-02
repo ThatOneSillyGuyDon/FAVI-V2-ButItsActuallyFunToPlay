@@ -15,6 +15,7 @@ import openfl.media.Sound;
 import openfl.net.FileReference;
 import openfl.utils.Assets as OpenFlAssets;
 import openfl.utils.ByteArray;
+import openfl.Lib;
 
 #if sys
 import flash.media.Sound;
@@ -23,7 +24,7 @@ import sys.io.File;
 #end
 
 
-@:access(flixel.system.FlxSound._sound)
+@:access(flixel.sound.FlxSound._sound)
 @:access(openfl.media.Sound.__buffer)
 
 class ChartingState extends MusicBeatState
@@ -46,14 +47,9 @@ class ChartingState extends MusicBeatState
 	var eventStuff:Array<Dynamic> =
 	[
 		['', "Nothing. Yep, that's right."],
-		['Dadbattle Spotlight', "Used in Dad Battle,\nValue 1: 0/1 = ON/OFF,\n2 = Target Dad\n3 = Target BF"],
 		['Hey!', "Plays the \"Hey!\" animation from Bopeebo,\nValue 1: BF = Only Boyfriend, GF = Only Girlfriend,\nSomething else = Both.\nValue 2: Custom animation duration,\nleave it blank for 0.6s"],
 		['Set GF Speed', "Sets GF head bopping speed,\nValue 1: 1 = Normal speed,\n2 = 1/2 speed, 4 = 1/4 speed etc.\nUsed on Fresh during the beatbox parts.\n\nWarning: Value must be integer!"],
-		['Philly Glow', "Exclusive to Week 3\nValue 1: 0/1/2 = OFF/ON/Reset Gradient\n \nNo, i won't add it to other weeks."],
-		['Kill Henchmen', "For Mom's songs, don't use this please, i love them :("],
 		['Add Camera Zoom', "Used on MILF on that one \"hard\" part\nValue 1: Camera zoom add (Default: 0.015)\nValue 2: UI zoom add (Default: 0.03)\nLeave the values blank if you want to use Default."],
-		['BG Freaks Expression', "Should be used only in \"school\" Stage!"],
-		['Trigger BG Ghouls', "Should be used only in \"schoolEvil\" Stage!"],
 		['Play Animation', "Plays an animation on a Character,\nonce the animation is completed,\nthe animation changes to Idle\n\nValue 1: Animation to play.\nValue 2: Character (Dad, BF, GF)"],
 		['Camera Follow Pos', "Value 1: X\nValue 2: Y\n\nThe camera won't change the follow point\nafter using this, for getting it back\nto normal, leave both values blank."],
 		['Alt Idle Animation', "Sets a specified suffix after the idle animation name.\nYou can use this to trigger 'idle-alt' if you set\nValue 2 to -alt\n\nValue 1: Character to set (Dad, BF or GF)\nValue 2: New suffix (Leave it blank to disable)"],
@@ -63,6 +59,11 @@ class ChartingState extends MusicBeatState
 		['Set Property', "Value 1: Variable name\nValue 2: New value"],
 		['Tween Camera Pos', "Value 1: X%%Y\nValue 2: Time"],
 		['Tween Camera Zoom', "Value 1: zoom\n\nValue 2: time"],
+		['Static Event', "Value 1: Determines what this triggers\nValue 2: Additional value input if needed\n\nValue 1 Inputs available:\n- togglevis\n- setalpha\n- twnalpha\n- settime"],
+		['Change Mal BG', "Value 1: Determines what this triggers\nValue 2: Additional value input if needed\n\nValue 1 Inputs available:\n- togglevis\n- setalpha\n- changebg"],
+		['No Signal Event', "Value 1: Determines what this triggers\nValue 2: Additional value input if needed\n\nValue 1 Inputs available:\n- togglevis\n- setalpha\n- changebg"],
+		['Mania BG Flash', "Value 1 Info: Customizer for how the flash will work\nValue 2 Info: Whether only the sky or the whole BG will flash\n\nValue 1: timer, ease, alpha, red value, green value, blue value\nValue 2: sky or all"],
+		['Mercy Transition', "too lazy to put a description here"]
 	];
 
 	var audioStuff:Array<String> = [];
@@ -209,6 +210,11 @@ class ChartingState extends MusicBeatState
 		}
 
 		AppIcon.changeIcon("debugicon");
+
+		Lib.application.window.onClose.removeAll(); // goes back to normal hopefully
+		Lib.application.window.onClose.add(function() {
+			DiscordClient.shutdown();
+		});
 
 		// Paths.clearMemory();
 
@@ -418,7 +424,7 @@ class ChartingState extends MusicBeatState
 
 		var reloadSongJson:FlxButton = new FlxButton(reloadSong.x, saveButton.y + 30, "Reload JSON", function()
 		{
-			openSubState(new Prompt('This action will clear current progress.\n\nProceed?', 0, function(){loadJson(_song.song.toLowerCase()); }, null,ignoreWarnings));
+			openSubState(new Prompt('This action will clear all unsaved progress or data here.\n\nProceed?', 0, function(){loadJson(_song.song.toLowerCase()); }, null,ignoreWarnings));
 		});
 
 		var loadAutosaveBtn:FlxButton = new FlxButton(reloadSongJson.x, reloadSongJson.y + 30, 'Load Autosave', function()
@@ -452,14 +458,14 @@ class ChartingState extends MusicBeatState
 
 		var clear_events:FlxButton = new FlxButton(320, 310, 'Clear events', function()
 			{
-				openSubState(new Prompt('This action will clear current progress.\n\nProceed?', 0, clearEvents, null,ignoreWarnings));
+				openSubState(new Prompt('This action will clear all unsaved progress or data here.\n\nProceed?', 0, clearEvents, null,ignoreWarnings));
 			});
 		clear_events.color = FlxColor.RED;
 		clear_events.label.color = FlxColor.WHITE;
 
 		var clear_notes:FlxButton = new FlxButton(320, clear_events.y + 30, 'Clear notes', function()
 			{
-				openSubState(new Prompt('This action will clear current progress.\n\nProceed?', 0, function(){for (sec in 0..._song.notes.length) {
+				openSubState(new Prompt('This action will clear all unsaved progress or data here.\n\nProceed?', 0, function(){for (sec in 0..._song.notes.length) {
 					_song.notes[sec].sectionNotes = [];
 				}
 				updateGrid();
@@ -937,6 +943,35 @@ class ChartingState extends MusicBeatState
 			key++;
 		}
 
+		#if LUA_ALLOWED
+		var directories:Array<String> = [];
+
+		#if MODS_ALLOWED
+		directories.push(Paths.mods('custom_notetypes/'));
+		directories.push(Paths.mods(Paths.currentModDirectory + '/custom_notetypes/'));
+		for(mod in Paths.getGlobalMods())
+			directories.push(Paths.mods(mod + '/custom_notetypes/'));
+		#end
+
+		for (i in 0...directories.length) {
+			var directory:String =  directories[i];
+			if(FileSystem.exists(directory)) {
+				for (file in FileSystem.readDirectory(directory)) {
+					var path = haxe.io.Path.join([directory, file]);
+					if (!FileSystem.isDirectory(path) && file.endsWith('.lua')) {
+						var fileToCheck:String = file.substr(0, file.length - 4);
+						if(!noteTypeMap.exists(fileToCheck)) {
+							displayNameList.push(fileToCheck);
+							noteTypeMap.set(fileToCheck, key);
+							noteTypeIntMap.set(key, fileToCheck);
+							key++;
+						}
+					}
+				}
+			}
+		}
+		#end
+
 		for (i in 1...displayNameList.length) {
 			displayNameList[i] = i + '. ' + displayNameList[i];
 		}
@@ -968,6 +1003,36 @@ class ChartingState extends MusicBeatState
 	{
 		var tab_group_event = new FlxUI(null, UI_box);
 		tab_group_event.name = 'Events';
+
+		#if LUA_ALLOWED
+		var eventPushedMap:Map<String, Bool> = new Map<String, Bool>();
+		var directories:Array<String> = [];
+
+		#if MODS_ALLOWED
+		directories.push(Paths.mods('custom_events/'));
+		directories.push(Paths.mods(Paths.currentModDirectory + '/custom_events/'));
+		for(mod in Paths.getGlobalMods())
+			directories.push(Paths.mods(mod + '/custom_events/'));
+		#end
+
+		for (i in 0...directories.length) {
+			var directory:String =  directories[i];
+			if(FileSystem.exists(directory)) {
+				for (file in FileSystem.readDirectory(directory)) {
+					var path = haxe.io.Path.join([directory, file]);
+					if (!FileSystem.isDirectory(path) && file != 'readme.txt' && file.endsWith('.txt')) {
+						var fileToCheck:String = file.substr(0, file.length - 4);
+						if(!eventPushedMap.exists(fileToCheck)) {
+							eventPushedMap.set(fileToCheck, true);
+							eventStuff.push([fileToCheck, File.getContent(path)]);
+						}
+					}
+				}
+			}
+		}
+		eventPushedMap.clear();
+		eventPushedMap = null;
+		#end
 
 		descText = new FlxText(20, 200, 0, eventStuff[0][0]);
 
@@ -1313,7 +1378,29 @@ class ChartingState extends MusicBeatState
 	}
 
 	function generateSong() {
-		FlxG.sound.playMusic(Paths.inst(currentSongName, CoolUtil.difficulties[PlayState.storyDifficulty]), 0.6/*, false*/);
+		switch (_song.song)
+		{
+			case "Rotten Petals":
+				FlxG.sound.playMusic(Paths.music("aviOST/rottenPetals"));
+			case "Seeking Freedom":
+				FlxG.sound.playMusic(Paths.music("aviOST/seekingFreedom"));
+			case "Curtain Call":
+				FlxG.sound.playMusic(Paths.music("aviOST/curtainCall"));
+			case "A True Monster":
+				FlxG.sound.playMusic(Paths.music("aviOST/aTrueMonster"));
+			case "Am I Real?":
+				FlxG.sound.playMusic(Paths.music("aviOST/gameOver/amIReal"));
+			case "Your Final Bow":
+				FlxG.sound.playMusic(Paths.music("aviOST/gameOver/yourFinalBow"));
+			case "The Wretched Tilezones (Simple Life)":
+				FlxG.sound.playMusic(Paths.music("aviOST/pause/theWretchedTilezones"));
+			case "Ahh the Scary (Somber Night)":
+				FlxG.sound.playMusic(Paths.music("aviOST/pause/somberNight"));
+			case "Ship the Fart Yay Hooray <3 (Distant Stars)":
+				FlxG.sound.playMusic(Paths.music("aviOST/pause/shipTheFartYayHoorayv3v"));
+			default:
+				FlxG.sound.playMusic(Paths.inst(currentSongName, CoolUtil.difficulties[PlayState.storyDifficulty]), 0.6);
+		}
 
 		FlxG.sound.music.onComplete = function()
 		{
@@ -1667,9 +1754,9 @@ class ChartingState extends MusicBeatState
 
 			if (FlxG.keys.justPressed.BACKSPACE) {
 				PlayState.chartingMode = false;
-				openSubState(new Prompt('Upon leaving the editor, you will lose all your progress.\n\nProceed?', 0, function(){
-					MusicBeatState.switchState(new MainMenu()); 
-					FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
+				openSubState(new Prompt('Upon leaving the editor, you will lose all current progress that hasn\'t been saved here.\n\nProceed?', 0, function(){
+					MusicBeatState.switchState(new MainMenuState()); 
+					FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 					FlxG.mouse.visible = true;
 					AppIcon.changeIcon("newIcon");
 				}, null,ignoreWarnings));
@@ -2125,7 +2212,7 @@ class ChartingState extends MusicBeatState
 	var lastSecBeatsNext:Float = 0;
 	function reloadGridLayer() {
 		gridLayer.clear();
-		gridBG = FlxGridOverlay.create(GRID_SIZE, GRID_SIZE, GRID_SIZE * 9, Std.int(GRID_SIZE * getSectionBeats() * 4 * zoomList[curZoom]));
+		gridBG = FlxGridOverlay.create(GRID_SIZE, GRID_SIZE, GRID_SIZE * 9, Std.int(GRID_SIZE * getSectionBeats() * 4 * zoomList[curZoom]), true, FlxColor.fromRGB(16, 16, 16), FlxColor.fromRGB(32, 32, 32));
 
 		#if desktop
 		if(FlxG.save.data.chart_waveformInst || FlxG.save.data.chart_waveformVoices) {
@@ -2137,7 +2224,7 @@ class ChartingState extends MusicBeatState
 		var foundNextSec:Bool = false;
 		if(sectionStartTime(1) <= FlxG.sound.music.length)
 		{
-			nextGridBG = FlxGridOverlay.create(GRID_SIZE, GRID_SIZE, GRID_SIZE * 9, Std.int(GRID_SIZE * getSectionBeats(curSec + 1) * 4 * zoomList[curZoom]));
+			nextGridBG = FlxGridOverlay.create(GRID_SIZE, GRID_SIZE, GRID_SIZE * 9, Std.int(GRID_SIZE * getSectionBeats(curSec + 1) * 4 * zoomList[curZoom]), true, FlxColor.fromRGB(16, 16, 16), FlxColor.fromRGB(32, 32, 32));
 			leHeight = Std.int(gridBG.height + nextGridBG.height);
 			foundNextSec = true;
 		}

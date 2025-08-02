@@ -127,17 +127,17 @@ class Framerate extends TextField
 							setTextFormat(new TextFormat(openfl.utils.Assets.getFont("assets/fonts/spunchBobs.otf").fontName, 10, 0xFFD1D1D1));
 							font = openfl.utils.Assets.getFont("assets/fonts/spunchBobs.otf").fontName;
 						}
-					case "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Twisted Grins Legacy" | "Malfunction Legacy" | "Cycled Sins Legacy" | "Mercy Legacy":
-						if (font != "_sans")
-						{
-							setTextFormat(new TextFormat("_sans", 12, 0xFFD1D1D1));
-							font = "_sans";
-						}
 					case "Malfunction":
 						if (font != openfl.utils.Assets.getFont("assets/fonts/Retro Gaming.ttf").fontName)
 						{
 							setTextFormat(new TextFormat(openfl.utils.Assets.getFont("assets/fonts/Retro Gaming.ttf").fontName, 9, 0x292929));
 							font = openfl.utils.Assets.getFont("assets/fonts/Retro Gaming.ttf").fontName;
+						}
+					case "Isolated Beta" | "Isolated Old" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Twisted Grins Legacy" | "Mercy Legacy" | "Cycled Sins Legacy" | "Malfunction Legacy":
+						if (font != "_sans")
+						{
+							setTextFormat(new TextFormat("_sans", 12, 0xFFD1D1D1));
+							font = "_sans";
 						}
 					default:
 						if (font != openfl.utils.Assets.getFont("assets/fonts/disneyFreeplayFont.ttf").fontName)

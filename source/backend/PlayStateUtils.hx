@@ -290,7 +290,7 @@ class PlayStateUtils// extending the class itself incase crashes
 				PlayState.camNotes.alpha = 0.001;
 				PlayState.camBars.fade(FlxColor.BLACK, 0.0001);
 				PlayState.camHUD.alpha = 0.001;
-				GameData.muckneyLock = 'beaten'; // instantly gives you birthday lel
+				GameData.birthdayLocky = 'beaten'; // instantly gives you birthday lel
 				GameData.saveShit();
 		}
 

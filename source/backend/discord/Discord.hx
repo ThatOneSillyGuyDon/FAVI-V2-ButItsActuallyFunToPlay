@@ -11,6 +11,7 @@ class DiscordClient
 	private static final _defaultID:String = "1297021927788904491";
 	public static var clientID(default, set):String = _defaultID;
 	private static var presence:DiscordRichPresence = DiscordRichPresence.create();
+	public static var discordName:String = "None";
 	
 	public static function prepare()
 	{
@@ -26,14 +27,20 @@ class DiscordClient
 		Discord.Shutdown();
 		isInitialized = false;
 	}
-	
+
 	private static function onReady(request:cpp.RawConstPointer<DiscordUser>):Void {
 		var requestPtr:cpp.Star<DiscordUser> = cpp.ConstPointer.fromRaw(request).ptr;
 
 		if (Std.parseInt(cast(requestPtr.discriminator, String)) != 0) //New Discord IDs/Discriminator system
+		{
 			trace('(Discord) Connected to User (${cast(requestPtr.username, String)}#${cast(requestPtr.discriminator, String)})');
+			discordName = '${cast(requestPtr.username, String)}#${cast(requestPtr.discriminator, String)}';
+		}
 		else //Old discriminators
+		{
 			trace('(Discord) Connected to User (${cast(requestPtr.username, String)})');
+			discordName = '${cast(requestPtr.username, String)}';
+		}
 
 		changePresence();
 	}
@@ -89,11 +96,11 @@ class DiscordClient
 		presence.endTimestamp = Std.int(endTimestamp / 1000);
 
 		var button1:DiscordButton = DiscordButton.create();
-        button1.label = "Secret Early Access";
-		button1.url = "https://youtu.be/Xv9GQFaezNc?si=ngBQBzuKCoGBBtLn";
+        button1.label = "GameJolt Page";
+		button1.url = "https://gamejolt.com/games/funkin-avi/710505";
 
         var button2:DiscordButton = DiscordButton.create();
-        button2.label = "Discord";
+        button2.label = "Discord Server";
         button2.url = "https://discord.gg/qTZYpP4hg3";
 
 		presence.buttons[0] = button2;

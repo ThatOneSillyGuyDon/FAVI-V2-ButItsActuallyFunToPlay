@@ -14,10 +14,13 @@ enum Category {
 	FREEPLAY;
 	LEGACY;
 }
+
+//TO-DO: use newer haxe shit in the next updates, keeping this here to remind myself (don)
+
 class RemakedFreeplayMenu extends MusicBeatState
 {
 	var curSelected:Int = 0;
-	var category:Category = STORY;
+	public static var category:Category = STORY;
 
 	// js some heads up 'bout this 
 	/**
@@ -77,8 +80,15 @@ class RemakedFreeplayMenu extends MusicBeatState
 	public function new(?category:Null<Category>) 
 	{
 		super();
-		category ?? FREEPLAY;
+		if (category == null) 
+			category = FREEPLAY;
+
 		this.category = category;
+	}
+
+	public function addSong(songName:String, weekNum:Int, songCharacter:String, color:Int, composer:String, rankName:String, rankColor:FlxColor, iconOffset:Array<Int>)
+	{
+		songs.push(new SongMetadata(songName, weekNum, songCharacter, color, composer, rankName, rankColor, iconOffset));
 	}
 
 	final path = 'Funkin_avi/freeplay';
@@ -86,6 +96,10 @@ class RemakedFreeplayMenu extends MusicBeatState
 	var disc:FlxSprite;
 	override public function create() 
 	{
+		for (i in songList.length)
+		{
+			addSong(songList[category][i]);
+		}
 		final bg = new FlxSprite().loadGraphic(Paths.image('$path/background'));
 		bg.updateHitbox();
 		bg.setPosition(-150, -200);
@@ -142,39 +156,42 @@ class RemakedFreeplayMenu extends MusicBeatState
 
 		super.create();
 
-		FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
-
-		mutex = new Mutex();
 		persistentUpdate = true;
 		PlayState.isStoryMode = false;
 	}
 
 	override public function update(elapsed:Float)
 	{
-		Conductor.songPosition = FlxG.sound?.music?.time;
+		Conductor.songPosition = FlxG.sound.music.time;
 		super.update(elapsed);
 
 		disc.angle += Conductor.crochet / 1000 * 2;
 
+		if (controls.BACK)
+		{
+			persistentUpdate = false;
+			FlxG.sound.play(Paths.sound('cancelMenu'));
+			MusicBeatState.switchState(new GeneralMenu());
+			FlxG.mouse.visible = true;
+		}
+
 		if(FlxG.keys.justPressed.SPACE)
 		{
-			if(instPlaying != curSelected)
+			if(instPlaying != curSelected && !disableSpace)
 			{
-				mutex.acquire();
-				if (songToPlay != null)
-				{
-					FlxG.sound.playMusic(songToPlay);
-
-					if (FlxG.sound.music.fadeTween != null)
-						FlxG.sound.music.fadeTween.cancel();
-
-					FlxG.sound.music.volume = 0.0;
-					FlxG.sound.music.fadeIn(1.0, 0.0, 0.7);
-
-					songToPlay = null;
-				}
-				mutex.release();
-				FlxTween.num(Conductor.bpm, getBPM(), 2, null, shitshitfuckfuck -> Conductor.bpm = shitshitfuckfuck);
+				if (songs[curSelected].songName == "Don't Cross!")
+					FlxG.sound.playMusic(Paths.inst("dont-cross", CoolUtil.difficulties[curDifficulty]));
+				else
+					FlxG.sound.playMusic(Paths.inst(songs[curSelected].songName, CoolUtil.difficulties[curDifficulty]));
+	
+				if (FlxG.sound.music.fadeTween != null)
+					FlxG.sound.music.fadeTween.cancel();
+	
+				FlxG.sound.music.volume = 0.0;
+				FlxG.sound.music.fadeIn(1.0, 0.0, 0.7);
+				songInstPlaying = true;
+				getBPM();
+				FlxTween.num(Conductor.bpm, bpm, 2, null, shitshitfuckfuck -> Conductor.bpm = shitshitfuckfuck);
 				instPlaying = curSelected;
 			}
 		}
@@ -230,5 +247,32 @@ class RemakedFreeplayMenu extends MusicBeatState
 			case 'isolated-beta' | 'isolated-old': bpm = 120;
 		}
 		return bpm;
+	}
+}
+
+class SongMetadata
+{
+	public var songName:String = "";
+	public var week:Int = 0;
+	public var songCharacter:String = "";
+	public var color:Int = -7179779;
+	public var composer:String = "Unknown";
+	public var rankName:String = "";
+	public var rankColor:FlxColor = FlxColor.WHITE;
+	public var iconOffset:Array<Int> = [0, 0];
+	public var folder:String = "";
+
+	public function new(song:String, week:Int, songCharacter:String, color:Int, composer:String, rankName:String, rankColor:FlxColor, iconOffset:Array<Int>)
+	{
+		this.songName = song;
+		this.week = week;
+		this.songCharacter = songCharacter;
+		this.color = color;
+		this.composer = composer;
+		this.rankName = rankName;
+		this.rankColor = rankColor;
+		this.iconOffset = iconOffset;
+		this.folder = Paths.currentModDirectory;
+		if(this.folder == null) this.folder = '';
 	}
 }

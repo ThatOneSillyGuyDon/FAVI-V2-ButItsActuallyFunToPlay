@@ -1,6 +1,7 @@
 import flixel.input.keyboard.FlxKey;
 import flixel.system.FlxAssets;
 import flixel.FlxState;
+import openfl.Lib;
 
 /**
 	This is the initialization class. if you ever want to set anything before the game starts or call anything then this is probably your best bet.
@@ -28,7 +29,7 @@ class Init extends FlxState
 		
 		CoolUtil.createCoreFile();
 
-        if (FlxG.save.data.weekCompleted != null) StoryMenuState.weekCompleted = FlxG.save.data.weekCompleted;
+        if (FlxG.save.data.weekCompleted != null) StoryMenu.weekCompleted = FlxG.save.data.weekCompleted;
 
         #if cpp
 		// run the gc's for a little bit of perfomance improvements :]]
@@ -49,8 +50,9 @@ class Init extends FlxState
         #if DISCORD_ALLOWED
         DiscordClient.initialize();
 
-        lime.app.Application.current.onExit.add(exitCode -> {
-          DiscordClient.shutdown();
+        
+        Lib.application.window.onClose.add(function() {
+            DiscordClient.shutdown();
         });
 		#end
 
@@ -64,18 +66,23 @@ class Init extends FlxState
         // fixes shaders acting weird when resizing the screen
         @:privateAccess
         {
+            final resetSpriteCache = function(sprite:openfl.display.Sprite) {
+                @:privateAccess {
+                    sprite.__cacheBitmap = null;
+                    sprite.__cacheBitmapData = null;
+                }
+            }
+
             FlxG.signals.gameResized.add((w, h) -> {
                 if (FlxG.cameras != null) for (cam in FlxG.cameras.list)
                     if (cam != null && cam.filters != null)
                     {
-                        cam.flashSprite.__cacheBitmap = null;
-                        cam.flashSprite.__cacheBitmapData = null;
+                        resetSpriteCache(cam.flashSprite);
                     }
     
                 if (FlxG.game != null) 
                 {
-                    FlxG.game.__cacheBitmap = null;
-                    FlxG.game.__cacheBitmapData = null;
+                    resetSpriteCache(FlxG.game);
                 }
            });
         }
@@ -90,12 +97,16 @@ class Init extends FlxState
 		FlxG.mouse.visible = true;
 
         // initializating ends here and switches to the state the Main class intends to
-
-        trace('Initialization complete, switching to ${Type.getClassName(Main.game.initialState)}');
         #if Freeplay
-        FlxG.switchState(Type.createInstance(RemakedFreeplayMenu, [])); 
-        #else
-        FlxG.switchState(Type.createInstance(Main.game.initialState, []));   
+        FlxG.switchState(Type.createInstance(FreeplayCategories, [])); 
         #end
+
+        var curState = Main.initialState;
+
+        if (!GameData.hasSeenWarning)
+            curState = FlashingState;
+
+        trace('Initialization complete, switching to ${Type.getClassName(curState)}');
+        FlxG.switchState(Type.createInstance(curState, []));   
     }
 }

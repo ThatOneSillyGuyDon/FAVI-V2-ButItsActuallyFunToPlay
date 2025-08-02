@@ -1,83 +1,63 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
-				0,
-				0
+				-920,
+				-740
 			],
-			"indices": [
-				6,
-				5,
-				4,
-				3,
-				2,
-				1,
-				0
-			],
-			"fps": 10,
 			"anim": "idle",
-			"loop": false,
-			"name": "DelusiMickEnd Idle"
+			"fps": 16,
+			"name": "idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
-				0,
-				0
+				-970,
+				-790
 			],
-			"indices": [
-				1,
-				0
-			],
-			"fps": 10,
 			"anim": "singDOWN",
-			"loop": false,
-			"name": "DelusiMickEnd DownPose"
+			"fps": 16,
+			"name": "down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
-				0,
-				0
+				-670,
+				-650
 			],
-			"indices": [
-				1,
-				0
-			],
-			"fps": 10,
 			"anim": "singLEFT",
-			"loop": false,
-			"name": "DelusiMickEnd LeftPose"
+			"fps": 16,
+			"name": "left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
-				0,
-				0
+				-840,
+				-710
 			],
-			"indices": [
-				1,
-				0
-			],
-			"fps": 10,
 			"anim": "singUP",
-			"loop": false,
-			"name": "DelusiMickEnd UpPose"
+			"fps": 16,
+			"name": "up",
+			"indices": []
 		},
 		{
-			"offsets": [
-				0,
-				0
-			],
-			"indices": [
-				1,
-				0
-			],
-			"fps": 10,
-			"anim": "singRIGHT",
 			"loop": false,
-			"name": "DelusiMickEnd RightPose"
+			"offsets": [
+				-380,
+				-760
+			],
+			"anim": "singRIGHT",
+			"fps": 16,
+			"name": "right",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/DelusiMickEnd",
+	"image": "characters/mickeyDeluEnd",
 	"position": [
 		0,
 		0
@@ -94,5 +74,5 @@
 		0
 	],
 	"sing_duration": 6.1,
-	"scale": 1.1
+	"scale": 2.7
 }

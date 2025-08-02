@@ -64,8 +64,8 @@ class GameData
 
 	// Hidden Songs
 	public static var canAddMalfunction:Bool = false;
-	public static var muckneyLock:String = "uncompleted";
-	public static var highOnCrackLock:String = "undiscovered";
+	public static var birthdayLocky:String = "uncompleted";
+	public static var maniaSaves:Array<String> = ["unlocked", "unlocked", "unlocked"];
 
 	public static function lockinIt():Void
 	{
@@ -137,8 +137,8 @@ class GameData
 
 		if (progression.data.canAddMalfunction == null)
 			progression.data.canAddMalfunction = false;
-		if (progression.data.muckneyLock == null)
-			progression.data.muckneyLock = "uncompleted";
+		if (progression.data.birthdayLocky == null)
+			progression.data.birthdayLocky = "uncompleted";
 		if (progression.data.highOnCrackLock == null)
 			progression.data.highOnCrackLock = "undiscovered";
 
@@ -189,8 +189,7 @@ class GameData
 		progression.data.hasSeenFlxSplash = hasSeenFlxSplash;
 
 		progression.data.canAddMalfunction = canAddMalfunction;
-		progression.data.muckneyLock = muckneyLock;
-		progression.data.highOnCrackLock = highOnCrackLock;
+		progression.data.birthdayLocky = birthdayLocky;
 
 		progression.flush();
 	}
@@ -240,8 +239,7 @@ class GameData
 		hasSeenFlxSplash = progression.data.hasSeenFlxSplash;
 
 		canAddMalfunction = progression.data.canAddMalfunction;
-		muckneyLock = progression.data.muckneyLock;
-		highOnCrackLock = progression.data.highOnCrackLock;
+		birthdayLocky = progression.data.birthdayLocky;
 
 		saveShit();
 	}
@@ -283,8 +281,7 @@ class GameData
 		legacyRLock = 'beaten';
 
 		canAddMalfunction = true;
-		muckneyLock = 'beaten';
-		highOnCrackLock = 'completed';
+		birthdayLocky = 'beaten';
 
 		saveShit();
 	}
@@ -294,8 +291,17 @@ class GameData
 		if (lockValue == null)
 			lockValue = 'unlocked';
 
-		if ((lockValue == 'unlocked' || lockValue == 'obtained') || (PlayState.isStoryMode && !Main.debug))
+		if ((lockValue == 'unlocked' || lockValue == 'obtained') || PlayState.isStoryMode)
 			PlayState.instance.cpuControlled = false;
+	}
+
+	public static var canOverrideCPU:Bool = false;
+
+	public static function overrideBotplay()
+	{
+		canOverrideCPU = true;
+		ClientPrefs.gameplaySettings["botplay"] = true;
+		MusicBeatState.switchState(new PlayState());
 	}
 
 	public static function setFreeplayData()
@@ -305,10 +311,7 @@ class GameData
 
 		var curLock:String;
 
-		if (PlayState.SONG.song == "Delutrance")
-			curLock = 'completed';
-		else
-			curLock = 'beaten';
+		curLock = 'beaten';
 
 		switch (PlayState.SONG.song.toLowerCase())
 		{
@@ -334,8 +337,8 @@ class GameData
 				if (progression.data.tgLock != 'beaten')
 					curLock = tgLock = 'unlocked';
 			case 'birthday':
-				if (progression.data.muckneyLock != 'beaten')
-					curLock = muckneyLock = 'beaten';
+				if (progression.data.birthdayLocky != 'beaten')
+					curLock = birthdayLocky = 'beaten';
 			case 'mercy':
 				if (progression.data.mercyLock != 'beaten')
 					curLock = mercyLock = 'unlocked';
@@ -387,12 +390,10 @@ class GameData
 			case 'resentment legacy':
 				if (progression.data.legacyRLock != 'beaten')
 					curLock = legacyRLock = 'unlocked';
-			case 'delutrance':
-				if (progression.data.highOnCrack != 'completed')
-					curLock = highOnCrackLock = 'unlocked';
 		}
 		saveShit();
-		checkBotplay(curLock); // just to double check :)))))))
+		if (!GameData.canOverrideCPU)
+			checkBotplay(curLock); // just to double check :)))))))
 	}
 
 	public static function completeFPSong()
@@ -421,39 +422,37 @@ class GameData
 			case 'cycled sins':
 					sinsLock = 'beaten';
 			case 'malfunction':
-					malfunctionLock = 'beaten';
+				malfunctionLock = 'beaten';
 			case 'scrapped':
 				scrappedLock = 'beaten';
 			case 'bless':
 				blessLock = 'beaten';
 			case 'laugh track':
-					rickyLock = 'beaten';
+				rickyLock = 'beaten';
 			case 'birthday':
-				muckneyLock = 'beaten';
+				birthdayLocky = 'beaten';
 			case 'mercy legacy':
-					legacyWLock = 'beaten';
+				legacyWLock = 'beaten';
 			case 'isolated legacy':
 				legacyILock = 'beaten';
 			case 'lunacy legacy':
 				legacyLLock = 'beaten';
 			case 'delusional legacy':
-					legacyDLock = 'beaten';
+				legacyDLock = 'beaten';
 			case 'hunted legacy':
 				legacyHLock = 'beaten';
 			case 'malfunction legacy':
-					legacyMLock = 'beaten';
+				legacyMLock = 'beaten';
 			case 'cycled sins legacy':
-					legacySLock = 'beaten';
+				legacySLock = 'beaten';
 			case 'bless legacy':
 				legacyBLock = 'beaten';
 			case 'neglection legacy':
-					legacyNLock = 'beaten';
+				legacyNLock = 'beaten';
 			case 'twisted grins legacy':
-					legacyTLock = 'beaten';
+				legacyTLock = 'beaten';
 			case 'resentment legacy':
 				legacyRLock = 'beaten';
-			case 'delutrance':
-				highOnCrackLock = 'completed';
 		}
 		saveShit();
 	}

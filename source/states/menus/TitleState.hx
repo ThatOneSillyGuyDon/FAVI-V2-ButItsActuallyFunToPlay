@@ -79,7 +79,7 @@ class TitleState extends MusicBeatState
 		"Stfu, I'm playing Fortnite",
 		"Stop asking for suicidal remixes",
 		"Why did Everett & Lilith enter these horrific cartoons in the first place?",
-		GameData.muckneyLock == 'beaten' ? "Muckney, realest one out there." : "One of our characters is the realest one out there, but you gotta meet him first!",
+		GameData.birthdayLocky == 'beaten' ? "Muckney, realest one out there." : "One of our characters is the realest one out there, but you gotta meet him first!",
 		"We late, but we late in style",
 		"ur adopted *insert get out sfx*",
 		"MOUSE RAP. MOUSE RAP",
@@ -177,35 +177,12 @@ class TitleState extends MusicBeatState
 	];
 	var keyIdx = 0;
 
+	var path:String = "Funkin_avi/title";
+
 	override public function create():Void
 	{	
 		Paths.clearStoredMemory();
 		Paths.clearUnusedMemory();
-
-		FlxG.game.focusLostFramerate = 60;
-		FlxG.sound.muteKeys = muteKeys;
-		FlxG.sound.volumeDownKeys = volumeDownKeys;
-		FlxG.sound.volumeUpKeys = volumeUpKeys;
-		FlxG.keys.preventDefaultKeys = [TAB];
-
-		PlayerSettings.init();
-		ClientPrefs.loadPrefs();
-		Highscore.load();
-		GameData.loadShit();
-
-		AppIcon.changeIcon("newIcon");
-		
-		CoolUtil.createCoreFile();
-
-		#if desktop
-		if (!DiscordClient.isInitialized)
-		{
-			DiscordClient.initialize();
-			Application.current.onExit.add (function (exitCode) {
-				DiscordClient.shutdown();
-			});
-		}
-		#end
 		
 		#if DISCORD_RPC
 		DiscordClient.changePresence("Title Screen", 'Waiting to start...', 'icon', 'clock'); // dw, I'll make sure to update the RPC shit, if anything, I'm gonna end up making a seperate RPC for this version of the engine
@@ -217,8 +194,8 @@ class TitleState extends MusicBeatState
 		super.create();
 
 		Application.current.window.title = 'Funkin.avi - ${windowArray[FlxG.random.int(0, windowArray.length-1)]}';
+		AppIcon.changeIcon("newIcon");
 
-		defaultShader = new FlxRuntimeShader(Shaders.grayScale, null, 140);
 		defaultShader2 = new FlxRuntimeShader(Shaders.monitorFilter, null, 140);
 		if(ClientPrefs.shaders)
 			{
@@ -233,6 +210,10 @@ class TitleState extends MusicBeatState
 		#if windows
 		backend.windows.CppAPI.darkMode();
         #end
+
+		#if Freeplay
+		MusicBeatState.switchState(new FreeplayCategories());
+		#end
 
 		startIntro();
 
@@ -249,24 +230,63 @@ class TitleState extends MusicBeatState
 
 	function startIntro()
 	{
-		Conductor.bpm = (65);
+		Conductor.bpm = (50);
 		persistentUpdate = true;
 
 		var bg:FlxSprite = new FlxSprite();
-		bg.loadGraphic(Paths.image('Funkin_avi/Title_bg'), false);
+		bg.loadGraphic(Paths.image('$path/titleSky'), false);
 		bg.screenCenter();
-		bg.scale.x = 0.68;
-		bg.scale.y = 0.67;
+		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
 
-		logoBl = new FlxSprite(150, 0);
-		logoBl.loadGraphic(Paths.image(('Funkin_avi/MickeyLogo')));
-		logoBl.antialiasing = true;
-		logoBl.updateHitbox();
-		logoBl.setGraphicSize(Std.int(logoBl.width * 0.4));
-		logoBl.screenCenter();
+		var buildings1:FlxBackdrop = new FlxBackdrop(Paths.image('$path/buildings2'), X, 0, 0);
+		buildings1.screenCenter();
+		buildings1.velocity.set(-250, 0);
+		buildings1.antialiasing = ClientPrefs.globalAntialiasing;
+		add(buildings1);
 
+		if (!ClientPrefs.lowQuality)
+		{
+			var blackShit1:FlxBackdrop = new FlxBackdrop(Paths.image('$path/blackShit2'), X, 0, 0);
+			blackShit1.screenCenter();
+			blackShit1.alpha = 0.47;
+			blackShit1.velocity.set(-300, 0);
+			blackShit1.antialiasing = ClientPrefs.globalAntialiasing;
+			add(blackShit1);
+
+			var dark:FlxSprite = new FlxSprite().loadGraphic(Paths.image('$path/buildingDark'));
+			dark.screenCenter();
+			dark.antialiasing = ClientPrefs.globalAntialiasing;
+			add(dark);
+		}
+
+		var buildings2:FlxBackdrop = new FlxBackdrop(Paths.image('$path/buildings1'), X, 0, 0);
+		buildings2.screenCenter();
+		buildings2.velocity.set(-350, 0);
+		buildings2.antialiasing = ClientPrefs.globalAntialiasing;
+		add(buildings2);
+
+		if (!ClientPrefs.lowQuality)
+		{
+			var blackShit2:FlxBackdrop = new FlxBackdrop(Paths.image('$path/blackShit1'), X, 0, 0);
+			blackShit2.screenCenter();
+			blackShit2.velocity.set(-400, 0);
+			blackShit2.antialiasing = ClientPrefs.globalAntialiasing;
+			add(blackShit2);
+		}
+
+		logoBl = new FlxSprite(150, 0);
+		logoBl.loadGraphic(Paths.image(('$path/titleLogo')));
+		logoBl.antialiasing = ClientPrefs.globalAntialiasing;
+		logoBl.updateHitbox();
+		logoBl.setGraphicSize(Std.int(logoBl.width * 0.85));
+		logoBl.screenCenter();
 		add(logoBl);
+
+		var vignette:FlxSprite = new FlxSprite().loadGraphic(Paths.image('$path/titleVignette'));
+		vignette.screenCenter();
+		vignette.antialiasing = ClientPrefs.globalAntialiasing;
+		add(vignette);
 
 		titleText = new FlxText(24, 600, 1200, "Click Anywhere Or Press Enter to Start", 96);
 		titleText.setFormat(Paths.font('MagicOwlFont.otf'), 60, FlxColor.fromRGB(255, 255, 255), CENTER, OUTLINE, FlxColor.BLACK);
@@ -290,8 +310,10 @@ class TitleState extends MusicBeatState
 
 		FlxTween.tween(credTextShit, {y: credTextShit.y + 20}, 2.9, {ease: FlxEase.quadInOut, type: PINGPONG});
 
-		if(FlxG.sound.music == null) {
-			FlxG.sound.playMusic(Paths.music('Exstended'), 1);
+		if(FlxG.sound.music == null || FlxG.sound.music.volume == 0) {
+			FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'), 0);
+
+			FlxG.sound.music.fadeIn(4, 0, 0.7);
 		}
 
 		whiteFade = new FlxSprite().makeGraphic(1, 1, 0xFFFFFFFF);
@@ -421,7 +443,7 @@ class TitleState extends MusicBeatState
 
 				new FlxTimer().start(1.3, function(tmr:FlxTimer){
 					closedState = true;
-					MusicBeatState.switchState(new MainMenu());
+					MusicBeatState.switchState(new MainMenuState());
 				});
 			}
 		}
@@ -432,8 +454,8 @@ class TitleState extends MusicBeatState
 		}
 
 		FlxG.camera.zoom = FlxMath.lerp(1, FlxG.camera.zoom, FlxMath.bound(1 - (elapsed * 1.925), 0, 1));
-		logoBl.scale.x = FlxMath.lerp(0.4, logoBl.scale.x, FlxMath.bound(1 - (elapsed * 1.995), 0, 1));
-		logoBl.scale.y = FlxMath.lerp(0.4, logoBl.scale.y, FlxMath.bound(1 - (elapsed * 1.995), 0, 1));
+		logoBl.scale.x = FlxMath.lerp(0.85, logoBl.scale.x, FlxMath.bound(1 - (elapsed * 1.995), 0, 1));
+		logoBl.scale.y = FlxMath.lerp(0.85, logoBl.scale.y, FlxMath.bound(1 - (elapsed * 1.995), 0, 1));
 
 		super.update(elapsed);
 	}
@@ -443,40 +465,28 @@ class TitleState extends MusicBeatState
 		for (i in 0...textArray.length)
 		{
 			var money:FlxText = new FlxText(0, 0, FlxG.width, textArray[i], 52);
-			money.setFormat(Paths.font("DisneyFont.ttf"), 62, FlxColor.WHITE, CENTER);
+			money.setFormat(Paths.font("DisneyFont.ttf"), 52, FlxColor.WHITE, CENTER);
 			money.screenCenter(X);
 			money.y += (i * 60) + 200;
-			money.y += offset;
 			credGroup.add(money);
 			textGroup.add(money);
-
-			FlxTween.cancelTweensOf(money);
-			FlxTween.num(0, 1, 1, null, num -> money.alpha = num);
 		}
 	}
 
 	function addMoreText(text:String, ?offset:Float = 0)
 	{
 		var coolText:FlxText = new FlxText(0, 0, FlxG.width, text, 52);
-		coolText.setFormat("assets/fonts/DisneyFont.ttf", 62, FlxColor.WHITE, CENTER);
+		coolText.setFormat("assets/fonts/DisneyFont.ttf", 52, FlxColor.WHITE, CENTER);
 		coolText.screenCenter(X);
 		coolText.y += (textGroup.length * 60) + 200;
-		coolText.y += offset;
 		credGroup.add(coolText);
 		textGroup.add(coolText);
-
-		FlxTween.cancelTweensOf(coolText);
-		FlxTween.num(0, 1, 1, null, num -> coolText.alpha = num);
 	}
 
 	function deleteCoolText()
 	{
 		while (textGroup.members.length > 0)
 		{
-			textGroup.forEach(sigma -> {
-				if (Std.isOfType(sigma, FlxText))
-					FlxTween.num(1, 0, .5, null, num -> cast (sigma, FlxText).alpha = num);
-			});
 			credGroup.remove(textGroup.members[0], true);
 			textGroup.remove(textGroup.members[0], true);
 		}
@@ -489,46 +499,47 @@ class TitleState extends MusicBeatState
 		super.beatHit();
 
 		if(!closedState) {
+			FlxG.camera.zoom += 0.035;
+
 			// logo doesn't have animation, we make one by ourselfs instead
-			logoBl.scale.x += 0.02;
-			logoBl.scale.y += 0.02;
+			logoBl.scale.x += 0.03;
+			logoBl.scale.y += 0.03;
 
 			sickBeats++;
 			switch (sickBeats)
 			{
 				case 1:
-					createCoolText(["Dunkin' Funkin' Team"], 0);
+					createCoolText(["Dunkin' Funkin' Team"], 15);
+				case 2:
+					addMoreText('Presents', 15);
 				case 3:
-					addMoreText('Presents', 0);
+					deleteCoolText();
+				case 4:
+					createCoolText(['The sights of hell...'], -40);
 				case 5:
+					addMoreText('..that awaits you.', -40);
+				case 6:
 					deleteCoolText();
 				case 7:
-					createCoolText(['The sights of hell...'], 0);
+					createCoolText([curWacky[0]]);
+				case 8:
+					addMoreText(curWacky[1]);
 				case 9:
-					addMoreText('..that awaits you.', 0);
+					deleteCoolText();
+				case 10:
+					addMoreText('Enjoy');
+				case 11:
+					addMoreText('Your Stay...');
 				case 12:
 					deleteCoolText();
+				case 13:
+					addMoreText('Funkin.avi');
 				case 14:
-					createCoolText([curWacky[0]]);
-				case 16:
-					addMoreText(curWacky[1]);
-				case 18:
-					deleteCoolText();
-				case 21:
-					addMoreText('Enjoy');
-				case 24:
-					addMoreText('Your Stay...');
-				case 27:
-					deleteCoolText();
-				case 30:
-					addMoreText('Funkin');
-				case 32:
-					deleteCoolText();
-					createCoolText(['Funkin.AVI'], 0);
-				case 35:
+					addMoreText('2.0');
+				case 15:
 					if(!isTweenCancelled)
 					fadeTween = FlxTween.tween(whiteFade, {alpha: 1}, 2, {ease: FlxEase.quartInOut});
-				case 36:
+				case 16:
 					if(!isTweenCancelled) {
 					fadeTween.cancel();
 					whiteFade.alpha = 0;	
@@ -694,16 +705,16 @@ class TitleState extends MusicBeatState
 					{
 						Application.current.window.title = " ";
 					}
-				else if(Application.current.window.title.contains('Funkin.avi - Funny Date Fact...'))
-				{
-					// this one's special because we gotta prevent spoilers for the newies
-					if (GameData.tgLock == 'locked' && GameData.blessLock == 'locked')
-						Application.current.window.title = "Funkin.avi - Two of our characters are dating, this is canon.";
-					else if (GameData.tgLock == 'locked' && GameData.blessLock == 'beaten')
-						Application.current.window.title = "Funkin.avi - A Special Guest & White Noise are dating, this is canon.";
-					if (GameData.tgLock == 'beaten' && GameData.blessLock == 'locked')
-						Application.current.window.title = "Funkin.avi - Mr. Smiles & A Special Guest are dating, this is canon.";
-					else Application.current.window.title = "Funkin.avi - Mr. Smiles & White Noise are dating, this is canon.";
-				}
+					else if(Application.current.window.title.contains('Funkin.avi - Funny Date Fact...'))
+						{
+							// this one's special because we gotta prevent spoilers for the newies
+							if (GameData.tgLock == 'locked' && GameData.blessLock == 'locked')
+								Application.current.window.title = "Funkin.avi - Two of our characters are dating, this is canon.";
+							else if (GameData.tgLock == 'locked' && GameData.blessLock == 'beaten')
+								Application.current.window.title = "Funkin.avi - A Special Guest & White Noise are dating, this is canon.";
+							if (GameData.tgLock == 'beaten' && GameData.blessLock == 'locked')
+								Application.current.window.title = "Funkin.avi - Mr. Smiles & A Special Guest are dating, this is canon.";
+							else Application.current.window.title = "Funkin.avi - Mr. Smiles & White Noise are dating, this is canon.";
+						}
 		}
 }

@@ -3,61 +3,105 @@
 		{
 			"loop": false,
 			"offsets": [
-				-410,
-				-461
-			],
-			"anim": "singDOWN",
-			"fps": 24,
-			"name": "downfi",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				-406,
-				-383
-			],
-			"anim": "singUP",
-			"fps": 24,
-			"name": "upfi",
-			"indices": []
-		},
-		{
-			"offsets": [
-				-432,
-				-411
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHT",
-			"indices": [],
-			"name": "leftfi"
-		},
-		{
-			"offsets": [
-				-296,
-				-434
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singLEFT",
-			"indices": [],
-			"name": "rightfi"
-		},
-		{
-			"loop": false,
-			"offsets": [
-				-400,
-				-420
+				-310,
+				-370
 			],
 			"anim": "idle",
 			"fps": 24,
-			"name": "idlefi",
+			"name": "idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-360,
+				-481
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-336,
+				-353
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-226,
+				-359
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "left0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-402,
+				-351
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-398,
+				-356
+			],
+			"anim": "singRIGHTmiss",
+			"fps": 24,
+			"name": "rightmiss",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-360,
+				-390
+			],
+			"anim": "singDOWNmiss",
+			"fps": 24,
+			"name": "downmiss",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-380,
+				-356
+			],
+			"anim": "singUPmiss",
+			"fps": 24,
+			"name": "upmiss",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-320,
+				-360
+			],
+			"anim": "singLEFTmiss",
+			"fps": 24,
+			"name": "leftmiss",
 			"indices": []
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/everettBFfinal",
+	"image": "characters/everettNEW",
 	"position": [
 		0,
 		350
@@ -70,9 +114,9 @@
 		132
 	],
 	"camera_position": [
-		-220,
-		420
+		-200,
+		390
 	],
 	"sing_duration": 4,
-	"scale": 1
+	"scale": 0.999999999999999
 }

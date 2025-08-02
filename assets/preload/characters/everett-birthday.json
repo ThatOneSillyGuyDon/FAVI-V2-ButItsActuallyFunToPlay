@@ -1,103 +1,103 @@
 {
 	"animations": [
 		{
-			"loop": true,
 			"offsets": [
 				-90,
 				-512
 			],
-			"anim": "idle",
+			"loop": true,
 			"fps": 12,
-			"name": "idle",
-			"indices": []
+			"anim": "idle",
+			"indices": [],
+			"name": "idle"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-60,
 				-510
 			],
-			"anim": "singUPmiss",
+			"loop": false,
 			"fps": 12,
-			"name": "miss-up",
-			"indices": []
+			"anim": "singUPmiss",
+			"indices": [],
+			"name": "miss-up"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-60,
 				-505
 			],
-			"anim": "singUP",
+			"loop": false,
 			"fps": 12,
-			"name": "up",
-			"indices": []
+			"anim": "singUP",
+			"indices": [],
+			"name": "up"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-100,
 				-500
 			],
-			"anim": "singDOWN",
+			"loop": false,
 			"fps": 12,
-			"name": "down",
-			"indices": []
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-110,
 				-510
 			],
-			"anim": "singLEFTmiss",
+			"loop": false,
 			"fps": 12,
-			"name": "miss-down",
-			"indices": []
+			"anim": "singLEFTmiss",
+			"indices": [],
+			"name": "miss-down"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-110,
 				-509
 			],
-			"anim": "singLEFT",
+			"loop": false,
 			"fps": 12,
-			"name": "left",
-			"indices": []
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "left"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-86,
 				-515
 			],
+			"loop": false,
+			"fps": 12,
 			"anim": "singRIGHT",
-			"fps": 12,
-			"name": "right",
-			"indices": []
+			"indices": [],
+			"name": "right"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-90,
 				-510
 			],
+			"loop": false,
+			"fps": 12,
 			"anim": "singRIGHTmiss",
-			"fps": 12,
-			"name": "miss-down",
-			"indices": []
+			"indices": [],
+			"name": "miss-down"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-90,
 				-510
 			],
-			"anim": "singDOWNmiss",
+			"loop": false,
 			"fps": 12,
-			"name": "miss-right",
-			"indices": []
+			"anim": "singDOWNmiss",
+			"indices": [],
+			"name": "miss-right"
 		}
 	],
 	"no_antialiasing": true,
@@ -109,9 +109,9 @@
 	"healthicon": "everettb",
 	"flip_x": true,
 	"healthbar_colors": [
-		221,
-		221,
-		201
+		212,
+		212,
+		212
 	],
 	"camera_position": [
 		-10,

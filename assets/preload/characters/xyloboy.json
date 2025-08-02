@@ -1,103 +1,103 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
 				125,
 				0
 			],
+			"loop": false,
+			"fps": 24,
 			"anim": "idle",
-			"fps": 24,
-			"name": "idle",
-			"indices": []
+			"indices": [],
+			"name": "idle"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				120,
 				0
 			],
+			"loop": false,
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "right",
-			"indices": []
+			"indices": [],
+			"name": "right"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				120,
 				0
 			],
+			"loop": false,
+			"fps": 24,
 			"anim": "singUP",
-			"fps": 24,
-			"name": "up",
-			"indices": []
+			"indices": [],
+			"name": "up"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				120,
 				0
 			],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 24,
-			"name": "left",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "left"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				120,
 				197
 			],
+			"loop": false,
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "down",
-			"indices": []
+			"indices": [],
+			"name": "down"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				120,
 				60
 			],
+			"loop": false,
+			"fps": 24,
 			"anim": "singUPmiss",
-			"fps": 24,
-			"name": "missup",
-			"indices": []
+			"indices": [],
+			"name": "missup"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				120,
 				60
 			],
+			"loop": false,
+			"fps": 24,
 			"anim": "singDOWNmiss",
-			"fps": 24,
-			"name": "missdown",
-			"indices": []
+			"indices": [],
+			"name": "missdown"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				120,
 				60
 			],
+			"loop": false,
+			"fps": 24,
 			"anim": "singLEFTmiss",
-			"fps": 24,
-			"name": "missright",
-			"indices": []
+			"indices": [],
+			"name": "missright"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				120,
 				60
 			],
-			"anim": "singRIGHTmiss",
+			"loop": false,
 			"fps": 24,
-			"name": "missleft",
-			"indices": []
+			"anim": "singRIGHTmiss",
+			"indices": [],
+			"name": "missleft"
 		}
 	],
 	"no_antialiasing": true,
@@ -109,9 +109,9 @@
 	"healthicon": "everettb",
 	"flip_x": true,
 	"healthbar_colors": [
-		200,
-		200,
-		200
+		212,
+		212,
+		212
 	],
 	"camera_position": [
 		10,

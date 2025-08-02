@@ -1,4 +1,4 @@
-#if (!macro)
+#if !macro
 /**
  * ## This file acts as a global import of all the classes you want to utilize on everything in the code!
  * 
@@ -68,6 +68,8 @@ import shaders.WiggleEffect;
 import shaders.WiggleEffect.WiggleEffectType;
 
 import substates.PauseSubState.FAVIPauseSubState;
+import substates.PauseSubState.PauseManiaSubstate;
+import substates.GameOverSubstate.ManiaLoseSubstate;
 // stuff that won't let you compile unless they're being used
 #if VIDEOS_ALLOWED
 import gameObjects.video.VideoSprite;
@@ -77,6 +79,11 @@ import backend.song.Section.SwagSection;
 import backend.song.Song.SwagSong;
 import gameObjects.transitions.CustomFadeTransition;
 import gameObjects.ui.notes.Note.EventNote;
+
+// shitty mod support stuff I plan on removing soon but for now is needed for the game to work
+import backend.FunkinLua.ModchartSprite;
+import backend.FunkinLua.ModchartText;
+import backend.FunkinLua.DebugLuaText;
 
 // import majority of classes the game uses from flixel almost everywhere
 import flixel.*;
@@ -102,6 +109,12 @@ import flixel.tweens.FlxTween.FlxTweenManager;
 import flixel.text.FlxText.FlxTextAlign;
 import flixel.text.FlxText.FlxTextBorderStyle;
 import flixel.util.FlxSignal.FlxTypedSignal;
+
+#if (flixel <= "5.2.2")
+	import flixel.system.FlxSound;
+#else
+	import flixel.sound.FlxSound;
+#end
 
 using StringTools;
 #end

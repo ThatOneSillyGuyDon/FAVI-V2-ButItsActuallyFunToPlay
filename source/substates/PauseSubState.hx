@@ -6,6 +6,9 @@ import flixel.system.FlxSound;
 import openfl.system.System;
 import sys.io.File;
 import haxe.Json;
+import openfl.Lib;
+import flixel.text.FlxText.FlxTextFormat;
+import flixel.text.FlxText.FlxTextFormatMarkerPair;
 
 /**
  * Pause Menu Data
@@ -37,6 +40,11 @@ class PauseSubState extends MusicBeatSubstate
 		super();
 		if(CoolUtil.difficulties.length < 2) menuItemsOG.remove('Change Difficulty'); //No need to change difficulty if there is only one!
 
+		Lib.application.window.onClose.removeAll(); // goes back to normal hopefully
+		Lib.application.window.onClose.add(function() {
+			DiscordClient.shutdown();
+		});
+
 		lime.app.Application.current.window.title += " - {Paused}";
 		PlayState.windowTimer.active = false;
 		if(PlayState.chartingMode)
@@ -66,9 +74,9 @@ class PauseSubState extends MusicBeatSubstate
 
 		switch (randomizer)
 		{
-			case 1: randomPauseSong = "calmlyWinds";
-			case 2: randomPauseSong = "soothingLight";
-			case 3: randomPauseSong = "simpleTunes";
+			case 1: randomPauseSong = "shipTheFartYayHoorayv3v";
+			case 2: randomPauseSong = "somberNight";
+			case 3: randomPauseSong = "theWretchedTilezones";
 		}
 
 		pauseMusic = new FlxSound();
@@ -260,13 +268,17 @@ class PauseSubState extends MusicBeatSubstate
 					PlayState.instance.botplayTxt.alpha = 1;
 					PlayState.instance.botplaySine = 0;
 				case "Exit to menu":
+					Lib.application.window.onClose.removeAll(); // goes back to normal hopefully
+					Lib.application.window.onClose.add(function() {
+						DiscordClient.shutdown();
+					});
 					PlayState.deathCounter = 0;
 					PlayState.seenCutscene = false;
 
 					WeekData.loadTheFirstEnabledMod();
 					if(PlayState.isStoryMode) {
 						MusicBeatState.switchState(new StoryMenu());
-						FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
+						FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 					} else {
 						MusicBeatState.switchState(new FreeplayState());
 						FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
@@ -296,6 +308,13 @@ class PauseSubState extends MusicBeatSubstate
 		PlayState.instance.paused = true; // For lua
 		FlxG.sound.music.volume = 0;
 		PlayState.instance.vocals.volume = 0;
+		PlayState.instance.opp_vocals.volume = 0;
+		PlayState.instance.bf_vocals.volume = 0;
+
+		Lib.application.window.onClose.removeAll(); // goes back to normal hopefully
+		Lib.application.window.onClose.add(function() {
+			DiscordClient.shutdown();
+		});
 
 		var songName:Array<String> = ['Dont Cross', "Dont-Cross", "dont cross", "dont-cross"];
 
@@ -412,10 +431,12 @@ class FAVIPauseSubState extends MusicBeatSubstate
 {
 	public static var colorSetup:Null<FlxColor> = FlxColor.WHITE;
 	public static var toOptions:Bool = false;
+
 	#if desktop
 	public static var getPropertyFromDesktop = Sys.getEnv(Sys.systemName() == "Windows" ? "UserProfile" : "HOME") + "\\Desktop";
 	public static var yourName = Sys.environment()["USERNAME"];
     #end
+
 	var bg:FlxSprite;
 	var bgOverlay:FlxSprite;
 	var menuHUD:FlxSprite;
@@ -435,27 +456,18 @@ class FAVIPauseSubState extends MusicBeatSubstate
 	var countDown:FlxText;
 	var hasResumed:Bool = false;
 	var hasFinishedAnim:Bool = false;
-	var satanTxt:FlxText;
-	var satanQuotes:Array<String> = [
-		"You can't leave now...",
-		"Not so fast, little one...",
-		"You've come too far to leave now...",
-		"The fun has just begun...",
-		"Don't be afraid of a little mouse...",
-		"He's already died many times...",
-		"What difference will you leaving do?",
-		"Leaving so soon?",
-		"Something wrong, " + yourName + "?",
-		"Are you scared?",
-		"You've seen too much, I won't let you go yet...",
-		"Do you know who I am?"
-	];
+	var pauseNameTxt:FlxText;
+	var pauseSongStr:String;
+	var satanTxt:FlxTypeText;
+	var satanQuotes:Array<String> = [];
 
 	var json:String = null;
 	var array:Array<Dynamic>;
 	var data:PauseData;
 
 	var fuckingName:String;
+
+	var creepyRed = new FlxTextFormatMarkerPair(new FlxTextFormat(FlxColor.RED, true, false, FlxColor.fromRGB(46, 0, 0)), '*');
 
 	public function new(x:Float, y:Float, ?itemStack:Array<String>)
 		{
@@ -466,19 +478,55 @@ class FAVIPauseSubState extends MusicBeatSubstate
 	
 			PlayState.windowTimer.active = false;
 
+			Lib.application.window.onClose.removeAll(); // goes back to normal hopefully
+			Lib.application.window.onClose.add(function() {
+				DiscordClient.shutdown();
+			});
+		
+
 			// cool stuff
-			var getArt:String = 'Funkin_avi/pause/songs/';
 			toOptions = false;
 			menuItems = itemStack;
+
+			// Will use your discord username if you're connected while playing lmao
+			if (DiscordClient.isInitialized && DiscordClient.discordName != "None")
+				yourName = DiscordClient.discordName;
+
+			satanQuotes = [
+				"No, it is forbidden...",
+				"You can't leave now...",
+				"You're not going anywhere...",
+				"You've come too far to leave now...",
+				"The fun has just begun...",
+				"Don't be afraid of a little mouse...",
+				"Stay right where you are, " + yourName + "...",
+				"He's already died many times...",
+				"What difference will you leaving do?",
+				"Leaving so soon?",
+				"Something wrong, " + yourName + "?",
+				"Are you scared?",
+				"You've seen too much, I won't let you go yet...",
+				"Do you know who I am?",
+				"You're a coward, " + yourName + "...",
+				"Not so fast, friend...",
+				"Not so fast, " + yourName + "...",
+				"Why leave so soon? You'll be back. *And we'll be waiting...*"
+			];
 	
 			var randomPauseSong:String = "";
 			var randomizer:Int = FlxG.random.int(1, 3);
 
 			switch (randomizer)
 			{
-				case 1: randomPauseSong = "calmlyWinds";
-				case 2: randomPauseSong = "soothingLight";
-				case 3: randomPauseSong = "simpleTunes";
+				case 1: 
+					randomPauseSong = "shipTheFartYayHoorayv3v";
+					pauseSongStr = "Ship The Fart Hooray < 3 (Distant Stars)";
+				case 2: 
+					randomPauseSong = "somberNight";
+					pauseSongStr = "Ahh The Scary (Somber Night)";
+				case 3: 
+					randomPauseSong = "theWretchedTilezones";
+					pauseSongStr = "The Wretched Tilezones (Simple Life)";
 			}
 
 			fuckingName = (PlayState.useFakeDeluName ? "Regret" : PlayState.SONG.song);
@@ -492,7 +540,6 @@ class FAVIPauseSubState extends MusicBeatSubstate
 				case "Delusional": if (colorSetup != FlxColor.fromRGB(79, 32, 32)) colorSetup = FlxColor.fromRGB(79, 32, 32);
 				case "Regret": if (colorSetup != FlxColor.WHITE) colorSetup = FlxColor.WHITE;
 				case "Birthday": if (colorSetup != FlxColor.fromRGB(84, 255, 181)) colorSetup = FlxColor.fromRGB(84, 255, 181);
-				case "Delutrance": if (colorSetup != FlxColor.fromRGB(0, 16, 245)) colorSetup = FlxColor.fromRGB(0, 16, 245);
 			}
 
 			var pauseArtAsset:String = CoolUtil.spaceToDash(fuckingName.toLowerCase());
@@ -529,21 +576,20 @@ class FAVIPauseSubState extends MusicBeatSubstate
 			disc = new FlxSprite(songArt.x, songArt.y - 12).loadGraphic(Paths.image('Funkin_avi/pause/disc'));
 			songName = new FlxText(FlxG.width * 0.78 + array[1], 10, 0, (PlayState.SONG.song == "Dont Cross" ? "Don't Cross!" : (PlayState.useFakeDeluName ? "Regret" : PlayState.SONG.song)), 32);
 			daSelector = new FlxSprite().loadGraphic(Paths.image("Funkin_avi/pause/buttonSelector"));
-			countDown = new FlxText(0, 0, 0, "", 0);
-			satanTxt = new FlxText(0, 650, 0, "", 0);
+			countDown = new FlxText(0, 0, 1280, "", 0);
+			satanTxt = new FlxTypeText(0, 25, 1280, "");
+			pauseNameTxt = new FlxText(5, 700, 1280, "Now Playing: " + pauseSongStr + " - ForFurtherNotice");
 	
 			// text stuff
 			// I'M NOT DELUSIONAL, YOU'RE DELUSIONAL !!!!!!
 			levelInfo.setFormat(Paths.font("disneyFreeplayFont.ttf"), 18, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 			songName.setFormat(Paths.font("disneyFreeplayFont.ttf"), 46, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-			countDown.setFormat(Paths.font("betterSatanFont.ttf"), 90, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-			satanTxt.setFormat(Paths.font("betterSatanFont.ttf"), 40, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			countDown.setFormat(Paths.font("disneyFreeplayFont.ttf"), 90, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			satanTxt.setFormat(Paths.font("disneyFreeplayFont.ttf"), 32, FlxColor.fromRGB(255, 117, 107), CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.fromRGB(92, 0, 26));
+			satanTxt.borderSize = 2;
+			pauseNameTxt.setFormat(Paths.font("disneyFreeplayFont.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 	
-			// cool file check system so we don't need to compile the game everytime for this
-			if (sys.FileSystem.exists('./assets/images/' + getArt + pauseArtAsset + '.png'))
-				songArt.loadGraphic(Paths.image(getArt + pauseArtAsset));
-			else
-				songArt.loadGraphic(Paths.image(getArt + 'unknown-song'));
+			songArt.loadGraphic(Paths.imageAlbum(pauseArtAsset));
 	
 			// scales
 			bg.scale.set(FlxG.width * 4, FlxG.height * 4);
@@ -554,43 +600,28 @@ class FAVIPauseSubState extends MusicBeatSubstate
 	
 			levelInfo.text = array[0];
 	
-			levelInfo.scrollFactor.set();
-			bg.scrollFactor.set();
-			songName.scrollFactor.set();
-			countDown.scrollFactor.set();
+			for (obj in [levelInfo, bg, songName, countDown])
+				obj.scrollFactor.set();
 	
 			tiles.velocity.set(50, 30);
 	
-			countDown.screenCenter();
-			bgOverlay.screenCenter();
-			menuHUD.screenCenter();
-			albumHolder.screenCenter();
+			for (obj in [countDown, bgOverlay, menuHUD, albumHolder])
+				obj.screenCenter();
+
 			satanTxt.screenCenter(X);
 	
 			menuHUD.x -= 850;
 			albumHolder.x += 500;
 	
 			// alpha value setup
-			bg.alpha = 0.0001;
-			bgOverlay.alpha = 0.0001;
-			tiles.alpha = 0.0001;
-			levelInfo.alpha = 0.0001;
-			songName.alpha = 0.0001;
-			daSelector.alpha = 0.0001;
+			for (obj in [bg, bgOverlay, tiles, levelInfo, songName, daSelector, pauseNameTxt])
+				obj.alpha = 0.0001;
+
 			countDown.visible = false;
 	
 			// fuck it. add everything
-			add(bg);
-			add(bgOverlay);
-			add(tiles);
-			add(menuHUD);
-			add(albumHolder);
-			add(songName);
-			add(levelInfo);
-			add(disc);
-			add(songArtOutline);
-			add(songArt);
-			add(daSelector);
+			for (obj in [bg, bgOverlay, tiles, menuHUD, albumHolder, songName, levelInfo, pauseNameTxt, disc, songArtOutline, songArt, daSelector])
+				add(obj);
 	
 			bgOverlay.color = colorSetup;
 			tiles.color = colorSetup;
@@ -628,6 +659,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 			FlxTween.tween(disc, {angle: 360}, 2, {type: LOOPING});
 			FlxTween.tween(songArt, {x: songArt.x - 110}, 0.8, {ease: FlxEase.quartOut});
 			FlxTween.tween(songArtOutline, {x: songArtOutline.x - 110}, 0.8, {ease: FlxEase.quartOut});
+			FlxTween.tween(pauseNameTxt, {alpha: 1}, 1, {ease:FlxEase.quartOut});
 	
 			changeSelection();
 			lime.app.Application.current.window.title += " - {Paused}";
@@ -684,10 +716,11 @@ class FAVIPauseSubState extends MusicBeatSubstate
 							FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
 							FlxG.mouse.visible = true;
 							MusicBeatState.switchState(new states.options.OptionsState());
-							FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
+							FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 						case 'no-hope':
 							songText.shake(0.5, 1, 1);
-							satanTxt.text = satanQuotes[FlxG.random.int(0, satanQuotes.length - 1)];
+							satanTxt.applyMarkup(satanQuotes[FlxG.random.int(0, satanQuotes.length - 1)], [creepyRed]);
+							satanTxt.start(0.02, true);
 						case 'leave':
 							remove(disc);
 							MusicBeatState.switchState(new states.ManIHateYouSoMuchYouMadeMuckneySad()); // grah
@@ -698,6 +731,10 @@ class FAVIPauseSubState extends MusicBeatSubstate
 							if (PlayState.pauseCountEnabled)
 								PlayState.pauseCountEnabled = false;
 							PlayState.seenCutscene = false;
+							Lib.application.window.onClose.removeAll(); // goes back to normal hopefully
+							Lib.application.window.onClose.add(function() {
+								DiscordClient.shutdown();
+							});
 							PlayState.cancelMusicFadeTween();
 							PlayState.changedDifficulty = false;
 							PlayState.chartingMode = false;
@@ -705,33 +742,19 @@ class FAVIPauseSubState extends MusicBeatSubstate
 	
 								if (PlayState.isStoryMode)
 								{
-									if (GameData.highOnCrackLock == 'forceBackToSong')
-									{
-										restartSong();
-									}
-									else
-									{
 										MusicBeatState.switchState(new StoryMenu());
-										FlxG.sound.playMusic(Paths.music('aviOST/soullessTown'));
-									}
+										FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 								}
 								else
 								{
 									switch (CoolUtil.dashToSpace(PlayState.SONG.song))
 									{
+										case "Rotten Petals" | "Curtain Call" | "Am I Real?" | "Your Final Bow" | "Seeking Freedom" | "Ahh the Scary (Somber Night)" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "The Wretched Tilezones (Simple Life)" | "A True Monster":
+											FreeplayState.freeplayMenuList = 3;
+											MusicBeatState.switchState(new FreeplayState());
 										case 'Devilish Deal' | 'Isolated' | 'Lunacy' | 'Delusional':
 											states.menus.FreeplayState.freeplayMenuList = 0;
 											MusicBeatState.switchState(new states.menus.FreeplayState());
-										case 'Delutrance': // hahaha, you FOOL, you're obligated to play till you beat it!
-											if (GameData.highOnCrackLock == 'forceBackToSong')
-											{
-												restartSong();
-											}
-											else
-											{
-												states.menus.FreeplayState.freeplayMenuList = 1;
-												MusicBeatState.switchState(new states.menus.FreeplayState());
-											}
 										default:
 											states.menus.FreeplayState.freeplayMenuList = (PlayState.SONG.song.toLowerCase().endsWith('legacy') || PlayState.SONG.song == "Isolated Beta" || PlayState.SONG.song == "Isolated Old") ? 2 : 1;
 											MusicBeatState.switchState(new states.menus.FreeplayState()); // yeah, there's no way I'm making a case for EVERY fucking song in that menu, too much work!
@@ -793,6 +816,12 @@ class FAVIPauseSubState extends MusicBeatSubstate
 				PlayState.instance.paused = true; // For lua
 				FlxG.sound.music.volume = 0;
 				PlayState.instance.vocals.volume = 0;
+				PlayState.instance.bf_vocals.volume = 0;
+				PlayState.instance.opp_vocals.volume = 0;
+				Lib.application.window.onClose.removeAll(); // goes back to normal hopefully
+				Lib.application.window.onClose.add(function() {
+					DiscordClient.shutdown();
+				});
 		
 				var random:Int = FlxG.random.int(1, 11);
 				var songName:Array<String> = ['Dont Cross', "Dont-Cross", "dont cross", "dont-cross"];
@@ -832,6 +861,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 				FlxTween.tween(tiles, {alpha: 0}, 1, {ease: FlxEase.quartInOut});
 				FlxTween.tween(menuHUD, {x: menuHUD.x - 850}, 0.95, {ease: FlxEase.quartOut});
 				FlxTween.tween(albumHolder, {x: albumHolder.x + 500}, 0.95, {ease: FlxEase.quartOut});
+				FlxTween.tween(pauseNameTxt, {alpha: 0}, 0.75, {ease: FlxEase.quartOut});
 	
 				new FlxTimer().start(0.4, function(tmr:FlxTimer)
 				{
@@ -877,6 +907,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 				FlxTween.tween(bg, {alpha: 0}, 0.4, {ease: FlxEase.quartOut});
 				FlxTween.tween(bgOverlay, {alpha: 0}, 0.4, {ease: FlxEase.quartOut});
 				FlxTween.tween(daSelector, {alpha: 0}, 0.4, {ease: FlxEase.quartOut});
+				FlxTween.tween(pauseNameTxt, {alpha: 0}, 0.04, {ease: FlxEase.quartOut});
 	
 				new FlxTimer().start(0.5, function(tmr:FlxTimer)
 				{
@@ -918,7 +949,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 				case "Dont Cross":
 					switch(Song.getCharterCredits())
 					{
-						case "DEMOLITIONDON96": json = CreditsData.dontCross3;
+						case "ThatOneSillyGuy": json = CreditsData.dontCross3;
 						case "Dreupy": json = CreditsData.dontCross1;
 						case "Purg": json = CreditsData.dontCross2;
 						case "MalyPlus": json = CreditsData.dontCross4;
@@ -930,7 +961,6 @@ class FAVIPauseSubState extends MusicBeatSubstate
 				case "Cycled Sins": json = CreditsData.cycledSins;
 				case "Malfunction": json = CreditsData.malfunction;
 				case "Birthday": json = CreditsData.birthday;
-				case "Delutrance": json = CreditsData.delutrance;
 			}
 		
 			if (json != null && json.length > 0)
@@ -938,4 +968,209 @@ class FAVIPauseSubState extends MusicBeatSubstate
 			else 
 				return null;
 		}
+}
+
+class PauseManiaSubstate extends MusicBeatSubstate
+{
+	var menuItems:Array<String>;
+	var curSelected:Int = 0;
+	var buttonGroup:FlxTypedGroup<FlxSprite>;
+	var pauseMusic:FlxSound;
+	var hasFinishedAnim:Bool = false;
+	var canQuit:Bool = false;
+	var songText:FlxSprite;
+
+	public function new(x:Float, y:Float, ?itemStack:Array<String>)
+		{
+			super();
+	
+			if (itemStack == null)
+				itemStack = ['maniaResume', 'maniaRetry', 'maniaOptions', 'maniaQuit'];
+	
+			PlayState.windowTimer.active = false;
+
+			Lib.application.window.onClose.removeAll(); // goes back to normal hopefully
+			Lib.application.window.onClose.add(function() {
+				DiscordClient.shutdown();
+			});
+		
+
+			// cool stuff
+			FAVIPauseSubState.toOptions = false;
+			menuItems = itemStack;
+
+			var randomPauseSong:String = "";
+			var randomizer:Int = FlxG.random.int(1, 3);
+
+			switch (randomizer)
+			{
+				case 1: 
+					randomPauseSong = "shipTheFartYayHoorayv3v";
+				case 2: 
+					randomPauseSong = "somberNight";
+				case 3: 
+					randomPauseSong = "theWretchedTilezones";
+			}
+
+			pauseMusic = new FlxSound();
+			pauseMusic.loadEmbedded(Paths.music("aviOST/pause/" + randomPauseSong), true, true);
+			pauseMusic.volume = 0;
+			pauseMusic.play(false, FlxG.random.int(0, Std.int(pauseMusic.length / 2)));
+
+			FlxG.sound.list.add(pauseMusic);
+
+			var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
+			bg.alpha = 0;
+			bg.scrollFactor.set();
+			add(bg);
+
+			// menu buttons
+			buttonGroup = new FlxTypedGroup<FlxSprite>();
+			add(buttonGroup);
+	
+			for (i in 0...menuItems.length)
+			{
+				songText = new FlxSprite(0, 0).loadGraphic(Paths.image('Funkin_avi/pause/menuButtons/${menuItems[i]}'));
+				songText.alpha = 0;
+				songText.scale.set(0.55, 0.55);
+				songText.ID = i;
+				songText.screenCenter();
+				FlxTween.tween(songText, {alpha: 1}, 0.45, {ease: FlxEase.quartInOut, onComplete: function(twn:FlxTween)
+				{
+					hasFinishedAnim = true;
+				}});
+				buttonGroup.add(songText);
+			}
+
+			FlxTween.tween(bg, {alpha: 0.6}, 0.4, {ease: FlxEase.quartInOut});
+
+			changeSelection();
+			lime.app.Application.current.window.title += " - {Paused}";
+			cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
+		}
+
+		override function update(elapsed:Float)
+		{
+			updateSelection();
+	
+			super.update(elapsed);
+
+			var upP = controls.UI_UP_P;
+			var downP = controls.UI_DOWN_P;
+			var accepted = controls.ACCEPT;
+			
+			if (hasFinishedAnim)
+				{
+					if (upP)
+						changeSelection(-1);
+					if (downP)
+						changeSelection(1);
+					if (accepted)
+					{
+						var daSelected:String = menuItems[curSelected];
+		
+						switch (daSelected)
+						{
+							case "maniaResume":
+								close();
+								lime.app.Application.current.window.title = PlayState.windowName;
+								PlayState.windowTimer.active = true;
+							case "maniaRetry":
+								restartSong();
+							case "maniaOptions":
+								FAVIPauseSubState.toOptions = true;
+								FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+								FlxG.mouse.visible = true;
+								MusicBeatState.switchState(new states.options.OptionsState());
+								FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
+							case "maniaQuit":
+								if (!canQuit)
+								{
+									songText.loadGraphic(Paths.image('Funkin_avi/pause/menuButtons/quitConfirm'));
+									canQuit = true;
+								}
+								else
+								{
+									Lib.application.window.onClose.removeAll(); // goes back to normal hopefully
+									Lib.application.window.onClose.add(function() {
+										DiscordClient.shutdown();
+									});
+									PlayState.cancelMusicFadeTween();
+									PlayState.changedDifficulty = false;
+									PlayState.chartingMode = false;
+									PlayState.deathCounter = 0;
+			
+									FreeplayState.freeplayMenuList = 3;
+									MusicBeatState.switchState(new FreeplayState());
+									FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
+									FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+								}
+						}
+					}
+				}
+
+			
+			if (pauseMusic != null && pauseMusic.playing)
+				{
+					if (pauseMusic.volume < 0.5)
+						pauseMusic.volume += 0.1 * elapsed;
+				}
+			}
+		
+			override function destroy()
+			{
+				if (pauseMusic != null)
+					pauseMusic.destroy();
+		
+				super.destroy();
+			}
+
+			public static function restartSong(noTrans:Bool = false)
+				{
+					if (PlayState.useFakeDeluName)
+						PlayState.useFakeDeluName = false;
+					if (PlayState.pauseCountEnabled)
+						PlayState.pauseCountEnabled = false;
+					PlayState.instance.paused = true; // For lua
+					FlxG.sound.music.volume = 0;
+					PlayState.instance.vocals.volume = 0;
+					PlayState.instance.bf_vocals.volume = 0;
+					PlayState.instance.opp_vocals.volume = 0;
+					Lib.application.window.onClose.removeAll(); // goes back to normal hopefully
+					Lib.application.window.onClose.add(function() {
+						DiscordClient.shutdown();
+					});
+
+					if(noTrans)
+					{
+						FlxTransitionableState.skipNextTransOut = true;
+						FlxG.resetState();
+					}
+					else
+					{
+						MusicBeatState.resetState();
+					}
+				}
+
+			function changeSelection(change:Int = 0):Void
+			{
+					FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'), 0.6);
+			
+					if (menuItems != null)
+						curSelected = FlxMath.wrap(curSelected + change, 0, menuItems.length - 1);
+			}
+
+			function updateSelection()
+			{
+				if (hasFinishedAnim)
+				{
+					buttonGroup.forEach(function(spr:FlxSprite)
+					{
+						spr.alpha = 0.45;
+					});
+				
+					if (buttonGroup.members[curSelected].alpha == 0.45)
+						buttonGroup.members[curSelected].alpha = 1;
+				}
+			}
 }

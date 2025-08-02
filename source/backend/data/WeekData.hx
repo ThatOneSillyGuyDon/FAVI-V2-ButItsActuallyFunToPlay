@@ -110,7 +110,7 @@ class WeekData {
 						switch (sexList[i])
 						{
 							case "episode1":
-								var week:WeekFile = getWeekFile(null, Week.episode1);
+								var week:WeekFile = getWeekFile(null, (GameData.episode1FPLock == "unlocked" ? Week.episode1Evil : Week.episode1));
 								var weekFile:WeekData = new WeekData(week, sexList[i]);
 								if(weekFile != null && (isStoryMode == null || (isStoryMode && !weekFile.hideStoryMode) || (!isStoryMode && !weekFile.hideFreeplay))) {
 									weeksLoaded.set(sexList[i], weekFile);

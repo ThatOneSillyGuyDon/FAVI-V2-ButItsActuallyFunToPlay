@@ -1,59 +1,59 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
 				51,
 				61
 			],
-			"anim": "idle",
+			"loop": false,
 			"fps": 11,
-			"name": "Mickey2 Idle",
-			"indices": []
+			"anim": "idle",
+			"indices": [],
+			"name": "Mickey2 Idle"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				55,
 				56
 			],
-			"anim": "singUP",
+			"loop": false,
 			"fps": 11,
-			"name": "Mickey2 Up",
-			"indices": []
+			"anim": "singUP",
+			"indices": [],
+			"name": "Mickey2 Up"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				60,
 				68
 			],
-			"anim": "singDOWN",
+			"loop": false,
 			"fps": 11,
-			"name": "Mickey2 Down",
-			"indices": []
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "Mickey2 Down"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				35,
 				55
 			],
-			"anim": "singLEFT",
+			"loop": false,
 			"fps": 11,
-			"name": "Mickey2 Left",
-			"indices": []
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "Mickey2 Left"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				70,
 				70
 			],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 11,
-			"name": "Mickey2 Right",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Mickey2 Right"
 		}
 	],
 	"no_antialiasing": true,
@@ -70,8 +70,8 @@
 		121
 	],
 	"camera_position": [
-		350,
-		360
+		420,
+		230
 	],
 	"sing_duration": 4,
 	"scale": 0.65

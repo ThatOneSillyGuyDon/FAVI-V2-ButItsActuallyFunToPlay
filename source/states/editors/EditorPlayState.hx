@@ -122,6 +122,18 @@ class EditorPlayState extends MusicBeatState
 		}
 
 		generateSong(PlayState.SONG.song);
+		#if (LUA_ALLOWED && MODS_ALLOWED)
+		for (notetype in noteTypeMap.keys()) {
+			var luaToLoad:String = Paths.modFolders('custom_notetypes/' + notetype + '.lua');
+			if(sys.FileSystem.exists(luaToLoad)) {
+				var lua:EditorLua = new EditorLua(luaToLoad);
+				new FlxTimer().start(0.1, function (tmr:FlxTimer) {
+					lua.stop();
+					lua = null;
+				});
+			}
+		}
+		#end
 		noteTypeMap.clear();
 		noteTypeMap = null;
 
@@ -191,7 +203,29 @@ class EditorPlayState extends MusicBeatState
 	var startingSong:Bool = true;
 	private function generateSong(dataPath:String):Void
 	{
-		FlxG.sound.playMusic(Paths.inst(PlayState.SONG.song), 0, false);
+		switch (PlayState.SONG.song)
+		{
+			case "Rotten Petals":
+				FlxG.sound.playMusic(Paths.music("aviOST/rottenPetals"), 0, false);
+			case "Seeking Freedom":
+				FlxG.sound.playMusic(Paths.music("aviOST/seekingFreedom"), 0, false);
+			case "Curtain Call":
+				FlxG.sound.playMusic(Paths.music("aviOST/curtainCall"), 0, false);
+			case "A True Monster":
+				FlxG.sound.playMusic(Paths.music("aviOST/aTrueMonster"), 0, false);
+			case "Am I Real?":
+				FlxG.sound.playMusic(Paths.music("aviOST/gameOver/amIReal"), 0, false);
+			case "Your Final Bow":
+				FlxG.sound.playMusic(Paths.music("aviOST/gameOver/yourFinalBow"), 0, false);
+			case "The Wretched Tilezones (Simple Life)":
+				FlxG.sound.playMusic(Paths.music("aviOST/pause/theWretchedTilezones"), 0, false);
+			case "Ahh the Scary (Somber Night)":
+				FlxG.sound.playMusic(Paths.music("aviOST/pause/somberNight"), 0, false);
+			case "Ship the Fart Yay Hooray <3 (Distant Stars)":
+				FlxG.sound.playMusic(Paths.music("aviOST/pause/shipTheFartYayHoorayv3v"), 0, false);
+			default:
+				FlxG.sound.playMusic(Paths.inst(PlayState.SONG.song, CoolUtil.difficulties[PlayState.storyDifficulty]), 0, false);
+		}
 		FlxG.sound.music.pause();
 		FlxG.sound.music.onComplete = endSong;
 		vocals.pause();

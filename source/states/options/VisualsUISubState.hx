@@ -33,8 +33,8 @@ class VisualsUISubState extends BaseOptionsMenu
 			true);
 		addOption(option);
 
-		var option:Option = new Option('Epilepsy',
-			"Uncheck this to reduce amount of flashing lights!",
+		var option:Option = new Option('Malfunction Effects',
+			"Uncheck this to reduce amount of flashing lights on\nMalfunction!",
 			'epilepsy',
 			'bool',
 			true);
