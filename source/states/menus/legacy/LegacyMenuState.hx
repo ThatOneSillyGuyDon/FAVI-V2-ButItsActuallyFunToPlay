@@ -554,8 +554,14 @@ class LegacyMenuState extends MusicBeatState
 			if (FlxG.keys.justPressed.SEVEN)
 			{
 				if (Main.debug)
+				{
+					Conductor.bpm = (50); // changes back to titlescreen bpm
+					FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'), 1); // resets music back to menu music
+					FlxG.sound.music.fadeIn();
 					MusicBeatState.switchState(new MasterEditorMenu());
-				else {
+				}
+				else
+				{
 					FlxG.sound.play(Paths.sound('cancelMenu'));
 					messenger.sendMessage('ACCESS DENIED!', 'Perhaps there is a code to access this?');
 				}
