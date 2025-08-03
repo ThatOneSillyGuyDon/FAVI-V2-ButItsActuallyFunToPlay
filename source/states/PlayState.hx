@@ -456,6 +456,7 @@ class PlayState extends MusicBeatState
 	var sinsEnd:Bool = false;
 
 	public var canBopCam:Bool = false;
+	public var delusionalCamBop:Bool = false;
 
 	var autism:Float = 0.42;
 	var	autisticDesires:Float = 15; //apparently, i needed another value for some decay value bullshit
@@ -4121,7 +4122,10 @@ class PlayState extends MusicBeatState
 					enableEvent = false;
 
 				//There's probably an easier way to do it, but right now, I'm just way too lazy right it's like 12 AM HELP
-				canBopCam = enableEvent;
+				if (SONG.song == "Delusional")
+					delusionalCamBop = enableEvent;
+				else
+					canBopCam = enableEvent;
 			case 'Play Animation':
 				//trace('Anim to play: ' + value1);
 				var char:Character = dad;
@@ -4176,12 +4180,11 @@ class PlayState extends MusicBeatState
 				if (value2 == 'true')
 					tweenBool = true;
 
-				remove(playfieldRenderer);
+				noteGroup.remove(playfieldRenderer);
 				playfieldRenderer.destroy();
-				remove(strumLineNotes);
+				noteGroup.remove(strumLineNotes);
 				strumLineNotes = new FlxTypedGroup<StrumNote>();
-				strumLineNotes.cameras = [camHUD];
-				add(strumLineNotes);
+				noteGroup.add(strumLineNotes);
 
 				playerStrums = new FlxTypedGroup<StrumNote>();
 				opponentStrums = new FlxTypedGroup<StrumNote>();
@@ -6242,6 +6245,12 @@ class PlayState extends MusicBeatState
 		{
 			camGame.zoom += SONG.song == "Bless" ? 0.06 : 0.15;
 			camHUD.zoom += SONG.song == "Bless" ? 0.02 : 0.1;
+		}
+
+		if (delusionalCamBop)
+		{
+			camGame.zoom += 0.015;
+			camHUD.zoom +=  0.03;
 		}
 
 		setOnScripts('curBeat', curBeat);
