@@ -62,10 +62,8 @@ class CaptionsBox extends FlxTypedGroup<FlxBasic>
         super();
         json = checkForData();
         if (json == null)
-        {
-            json.totalCounter = 1;
-            json.loadIcon = [false];
-        }
+            json = {totalCounter: 1, loadIcon: [true]};
+
         captionsGrp = new FlxTypedGroup<FlxTypeText>();
         captionsGrp.camera = camera;
         add(captionsGrp);
