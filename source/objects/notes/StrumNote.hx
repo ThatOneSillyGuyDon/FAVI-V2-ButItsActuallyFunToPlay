@@ -1,4 +1,4 @@
-package objects;
+package objects.notes;
 
 import backend.animation.PsychAnimationController;
 import flixel.addons.effects.FlxSkewedSprite;

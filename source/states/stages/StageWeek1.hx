@@ -34,7 +34,7 @@ class StageWeek1 extends BaseStage
 			add(stageCurtains);
 		}
 	}
-	override function eventPushed(event:objects.Note.EventNote)
+	override function eventPushed(event:objects.notes.Note.EventNote)
 	{
 		switch(event.event)
 		{

@@ -18,7 +18,7 @@ import flixel.util.FlxSort;
 import flixel.util.FlxTimer;
 import flixel.input.keyboard.FlxKey;
 import openfl.events.KeyboardEvent;
-import objects.NoteSplash;
+import objects.notes.NoteSplash;
 
 import modcharting.ModchartFuncs;
 import modcharting.NoteMovement;

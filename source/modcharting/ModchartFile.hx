@@ -749,7 +749,7 @@ class CustomModifierScript
 		interp.variables.set('Paths', #if (PSYCH && PSYCHVERSION >= "0.7") backend.Paths #else Paths #end);
 		interp.variables.set('Conductor', #if (PSYCH && PSYCHVERSION >= "0.7") backend.Conductor #else Conductor #end);
         interp.variables.set('StringTools', StringTools);
-        interp.variables.set('Note', #if (PSYCH && PSYCHVERSION >= "0.7") objects.Note #else Note #end);
+        interp.variables.set('Note', #if (PSYCH && PSYCHVERSION >= "0.7") objects.notes.Note #else Note #end);
 
         #if PSYCH
         interp.variables.set('ClientPrefs', #if (PSYCHVERSION >= "0.7") backend.ClientPrefs #else ClientPrefs #end);

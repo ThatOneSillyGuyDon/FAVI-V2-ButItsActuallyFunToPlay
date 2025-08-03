@@ -30,9 +30,9 @@ import backend.Song;
 import backend.Section;
 import backend.StageData;
 
-import objects.Note;
-import objects.StrumNote;
-import objects.NoteSplash;
+import objects.notes.Note;
+import objects.notes.StrumNote;
+import objects.notes.NoteSplash;
 import objects.HealthIcon;
 import objects.AttachedSprite;
 import objects.Character;

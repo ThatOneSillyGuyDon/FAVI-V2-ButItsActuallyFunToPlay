@@ -23,6 +23,8 @@ import backend.*;
 import backend.embeddedFiles.*;
 import backend.windows.*;
 import objects.*;
+import objects.notes.*;
+import objects.ui.*;
 
 // import screens you see in-game
 import substates.*;
@@ -83,7 +85,7 @@ import backend.Conductor.BPMChangeEvent;
 import backend.Section.SwagSection;
 import backend.Song.SwagSong;
 import backend.CustomFadeTransition;
-import objects.Note.EventNote;
+import objects.notes.Note.EventNote;
 
 // shitty mod support stuff I plan on removing soon but for now is needed for the game to work
 #if LUA_ALLOWED
@@ -172,11 +174,11 @@ import substates.MusicBeatSubstate;
 #else
 import backend.MusicBeatSubstate;
 #end
-import objects.Note;
+import objects.notes.Note;
 #if SCEModchartingTools
 import objects.StrumArrow;
 #else
-import objects.StrumNote;
+import objects.notes.StrumNote;
 #end
 import backend.Song;
 #else
@@ -196,4 +198,3 @@ import psychlua.HScript as FunkinHScript;
 import sys.FileSystem;
 import sys.io.File;
 #end
-

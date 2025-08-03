@@ -1,4 +1,4 @@
-package objects;
+package objects.ui;
 
 import flixel.util.FlxSignal;
 import flixel.tweens.FlxEase;

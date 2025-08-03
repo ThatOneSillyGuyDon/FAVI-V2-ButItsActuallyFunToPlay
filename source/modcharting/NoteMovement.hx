@@ -5,7 +5,7 @@ import states.PlayState;
 import game.Note;
 #elseif (PSYCH && PSYCHVERSION >= "0.7")
 import states.PlayState;
-import objects.Note;
+import objects.notes.Note;
 #else
 import PlayState;
 import Note;

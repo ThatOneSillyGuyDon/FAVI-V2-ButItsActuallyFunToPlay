@@ -1,4 +1,4 @@
-package objects;
+package objects.notes;
 
 import backend.animation.PsychAnimationController;
 import backend.NoteTypesConfig;
@@ -8,7 +8,7 @@ import flixel.addons.effects.FlxSkewedSprite;
 import shaders.RGBPalette;
 import shaders.RGBPalette.RGBShaderReference;
 
-import objects.StrumNote;
+import objects.notes.StrumNote;
 
 import flixel.math.FlxRect;
 

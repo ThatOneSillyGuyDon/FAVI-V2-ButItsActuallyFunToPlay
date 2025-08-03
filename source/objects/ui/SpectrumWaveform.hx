@@ -1,4 +1,4 @@
-package objects;
+package objects.ui;
 
 /**
  * SpectrumWaveform by mr_chaoss

@@ -32,6 +32,8 @@ import cutscenes.CutsceneHandler;
 import cutscenes.DialogueBoxPsych;
 
 import objects.Character.Shadow;
+import objects.ui.CaptionsBox.EventType;
+import objects.ui.CaptionsBox.CaptionUtils;
 
 import states.editors.ChartingState;
 import states.editors.CharacterEditorState;
@@ -48,7 +50,7 @@ import openfl.filters.ShaderFilter;
 #else import vlc.MP4Handler as VideoHandler; #end
 #end
 
-import objects.Note.EventNote;
+import objects.notes.Note.EventNote;
 import objects.*;
 import states.stages.objects.*;
 
@@ -482,6 +484,8 @@ class PlayState extends MusicBeatState
 		Lib.application.window.y = winY;
 		return y; 
 	}
+
+	var subtitles:CaptionsBox;
 
 	override public function create()
 	{
@@ -3620,6 +3624,22 @@ class PlayState extends MusicBeatState
 					}
 			}
 		}
+	}
+
+	public static function returnAlignType(align:String = '')
+	{
+		switch (align.toLowerCase())
+		{
+			case 'center':
+				return FlxTextAlign.CENTER;
+			case 'justify':
+				return FlxTextAlign.JUSTIFY;
+			case 'left':
+				return FlxTextAlign.LEFT;
+			case 'right':
+				return FlxTextAlign.RIGHT;
+		}
+		return FlxTextAlign.CENTER;
 	}
 
 	public static function returnTweenEase(ease:String = '')

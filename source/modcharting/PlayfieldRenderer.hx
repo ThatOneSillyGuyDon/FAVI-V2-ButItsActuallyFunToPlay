@@ -26,8 +26,8 @@ import game.StrumNote;
 import game.Conductor;
 #elseif (PSYCH && PSYCHVERSION >= "0.7")
 import states.PlayState;
-import objects.Note;
-import objects.StrumNote;
+import objects.notes.Note;
+import objects.notes.StrumNote;
 #else
 import PlayState;
 import Note;
