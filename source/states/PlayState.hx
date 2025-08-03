@@ -1355,21 +1355,8 @@ class PlayState extends MusicBeatState
 		cacheCountdown();
 		cachePopUpScore();
 
-		lyrics = new FlxTypeText(0, FlxG.height - 65, 0, '', 15);
-		lyrics.setFormat(Paths.font('vcr'), 30, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		lyrics.cameras = [camOther];
-		lyrics.alpha = 0;
-		lyrics.borderSize = 4;
-		lyrics.scrollFactor.set();
-		lyrics.screenCenter(X).x -= 90;
-		add(lyrics);
-
-		lyricsIcon = new HealthIcon('bf', false);
-		lyricsIcon.x = lyrics.x - 150;
-		lyricsIcon.y = lyrics.y - 65;
-		lyricsIcon.visible = false;
-		lyricsIcon.cameras = [camOther];
-		add(lyricsIcon);
+		subtitles = new CaptionsBox(camOther);
+		add(subtitles);
 
 		super.create();
 		Paths.clearUnusedMemory();
@@ -3216,82 +3203,6 @@ class PlayState extends MusicBeatState
 	}
 
 	/**
-	* Manages the `lyrics` of the song in-game
-	* @param icon Lyrics icon as string
-	* @param text The lyrics text
-	* @param font Lyric font
-	* @param size Lyric size
-	* @param duration Delay time to disappear
-	* @param tweenType Tween ease (as string)
-	* @param textDelay Text delay. The amount of seconds to type the next word
-	* 
-	* @author DEMOLITIONDON96 Ft. Jason
-	*/
-	public function manageLyrics(icon:String = 'bf', text:String = 'swaggers', font:String = 'vcr', size:Int = 15, duration:Float = 5,
-			tweenType:String = 'linear', textDelay:Float = 0.03)
-	{
-		if (!lyricsIcon.visible)
-		{
-			lyricsIcon.visible = true;
-			lyricsIcon.alpha = 0;
-		}
-
-		lyricsIcon.changeIcon(icon, false, false, false);
-
-		if (icon == "satanddNEW")
-			lyricsIcon.y = lyrics.y - 80;
-		else
-			lyricsIcon.y = lyrics.y - 65;
-
-		lyrics.font = Paths.font(font);
-		lyrics.resetText(text);
-		lyrics.start(textDelay); // currently placeholder time !!
-
-		if (lyricsTween != null)
-			lyricsTween.cancel();
-
-		if (iconTween != null)
-			iconTween.cancel();
-
-		iconTween = FlxTween.tween(lyricsIcon, {
-			'scale.x': 1,
-			'scale.y': 1,
-			alpha: 1
-		}, 0.5, {
-			ease: returnTweenEase(tweenType),
-			onComplete: function(twn:FlxTween)
-			{
-				iconTween = FlxTween.tween(lyricsIcon, {alpha: 0, 'scale.x': 0, 'scale.y': 0}, 0.25, {
-					startDelay: duration,
-					ease: returnTweenEase(tweenType),
-					onComplete: function(twn:FlxTween)
-					{
-						iconTween = null;
-					}
-				});
-			}
-		});
-
-		lyricsTween = FlxTween.tween(lyrics, {
-			size: size,
-			alpha: 1
-		}, 0.5, {
-			ease: returnTweenEase(tweenType),
-			onComplete: function(twn:FlxTween)
-			{
-				lyricsTween = FlxTween.tween(lyrics, {alpha: 0, size: 0}, 0.25, {
-					startDelay: duration,
-					ease: returnTweenEase(tweenType),
-					onComplete: function(twn:FlxTween)
-					{
-						lyricsTween = null;
-					}
-				});
-			}
-		});
-	}
-
-	/**
 	* # Stage Background Flash Function
 	*
 	* Basically the BG Flash used in Isolated but it's now hardcoded and can be used globally now.
@@ -4312,15 +4223,84 @@ class PlayState extends MusicBeatState
 
 			case 'Manage Lyrics':
 				var triggerInfo:Array<String> = value2.split(',');
-				manageLyrics(
-					value1.toLowerCase(), 			       //Character Speaking
-					triggerInfo[0],      			      // Text
-					triggerInfo[1],     			     // Font
-					Std.parseInt(triggerInfo[2]),       // Size
-					Std.parseFloat(triggerInfo[3]),    // Duration
-					triggerInfo[4],                   // Tween Type
-					Std.parseFloat(triggerInfo[5])   // Text Delay
-				);
+
+				switch(value1.trim().toLowerCase())
+				{
+					case "move":
+						subtitles.manageLyrics(
+							MOVE,
+							{
+								startTimer: Std.parseFloat(triggerInfo[1]), //Start Timer
+								delayTimer: Std.parseFloat(triggerInfo[2]), //Delay Timer
+								endTimer: Std.parseFloat(triggerInfo[3]), //End Timer
+								easeStart: returnTweenEase(triggerInfo[4].trim()), //Ease Start Value
+								easeEnd: returnTweenEase(triggerInfo[5].trim()), //Ease End Value
+							},
+							Std.parseInt(triggerInfo[0]) //Which Lyrics to use on
+						);
+					case "tween data" | "tweendata":
+						subtitles.manageLyrics(
+							TWEEN_DATA,
+							{
+								tweenData: [
+									Std.parseInt(triggerInfo[0]), //Add X Start
+									Std.parseInt(triggerInfo[1]), //Add Y Start
+									Std.parseInt(triggerInfo[2]), //Add Angle Start
+									Std.parseFloat(triggerInfo[3]), //Add Scale X Start
+									Std.parseFloat(triggerInfo[4]), //Add Scale Y Start
+									Std.parseFloat(triggerInfo[5]), //Alpha Start
+									Std.parseInt(triggerInfo[6]), //Add X End
+									Std.parseInt(triggerInfo[7]), //Add Y End
+									Std.parseInt(triggerInfo[8]), //Add Angle End
+									Std.parseFloat(triggerInfo[9]), //Add Scale X End
+									Std.parseFloat(triggerInfo[10]), //Add Scale Y End
+									Std.parseFloat(triggerInfo[11]), //Alpha End
+								]
+							}
+						);
+					case "data":
+						subtitles.manageLyrics(
+							DATA,
+							{
+								width: Std.parseInt(triggerInfo[1]), //Textfield Width
+								icon: triggerInfo[2].trim(), //Icon Name
+							},
+							Std.parseInt(triggerInfo[0]) //Which Lyrics to use on
+						);
+					case "text data" | "textdata":
+						subtitles.manageLyrics(
+							TEXT_DATA,
+							{
+								font: triggerInfo[1].trim(), //Font File
+								size: Std.parseInt(triggerInfo[2]), //Text Size
+								color: [Std.parseInt(triggerInfo[3]), Std.parseInt(triggerInfo[4]), Std.parseInt(triggerInfo[5])], //Text (R G B)
+								align: returnAlignType(triggerInfo[6].trim()), //Align Type
+								colorB: [Std.parseInt(triggerInfo[7]), Std.parseInt(triggerInfo[8]), Std.parseInt(triggerInfo[9])], //Border (R G B)
+								sizeB: Std.parseInt(triggerInfo[10]) //Border Size
+							},
+							Std.parseInt(triggerInfo[0]) //Which Lyrics to use on
+						);
+					case "position":
+						subtitles.manageLyrics(
+							POSITION,
+							{
+								positionData: [
+									Std.parseInt(triggerInfo[1]), //Add X
+									Std.parseInt(triggerInfo[2]) //Add Y
+								]
+							},
+							Std.parseInt(triggerInfo[0]) //Which Lyrics to use on
+						);
+					case "text":
+					subtitles.manageLyrics(
+						TEXT,
+						{
+							text: triggerInfo[1].trim(), //String Text
+							textDelay: Std.parseFloat(triggerInfo[2]), //Delay Timer
+						},
+						Std.parseInt(triggerInfo[0]) //Which Lyrics to use on
+					);
+				}
 
 			case 'Background Controls':
 				var triggerInfo:Array<String> = value2.split(',');
