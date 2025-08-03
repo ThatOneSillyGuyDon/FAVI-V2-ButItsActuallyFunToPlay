@@ -11,6 +11,8 @@ enum EventType
     MOVE;
     TEXT;
     DATA;
+    TWEEN_DATA;
+    TEXT_DATA;
 }
 
 typedef JsonPrepData =
@@ -23,25 +25,25 @@ typedef CaptionUtils =
 {
     //TEXT
     @:optional var text:String;
+    @:optional var textDelay:Float;
+    //TEXT_DATA
     @:optional var font:String;
     @:optional var size:Int;
     @:optional var color:Array<Int>;
     @:optional var colorB:Array<Int>;
     @:optional var sizeB:Int;
-    @:optional var icon:String;
-    @:optional var textDelay:Float;
     @:optional var align:FlxTextAlign;
-
     //DATA
     @:optional var width:Int;
-
-    //MOVE
+    @:optional var icon:String;
+    //TWEEN_DATA
     @:optional var tweenData:Array<Dynamic>;
+    //MOVE
     @:optional var startTimer:Float;
     @:optional var delayTimer:Float;
     @:optional var endTimer:Float;
-    @:optional var ease:String;
-
+    @:optional var easeStart:EaseFunction;
+    @:optional var easeEnd:EaseFunction;
     //POSITION
     @:optional var positionData:Array<Dynamic>;
 }
@@ -50,27 +52,23 @@ class CaptionsBox extends FlxTypedGroup<FlxBasic>
 {
     var captionsGrp:FlxTypedGroup<FlxTypeText>;
     var iconGrp:Array<HealthIcon> = [];
-    public var tween1:FlxTween;
-    public var tween2:FlxTween;
     var rawJson:String = null;
     var json:JsonPrepData;
+    public var tween1:FlxTween; //I need help getting arrays of tweens to work without the fucking game hitting me in the face with a "Null Object Reference" Error, it's actually so annoying given it has never done that before with Array<FlxTween> until now (don)
+    public var tween2:FlxTween;
 
     public function new(camera:FlxCamera)
     {
         super();
-
         json = checkForData();
-
         if (json == null)
         {
             json.totalCounter = 1;
             json.loadIcon = [false];
         }
-
         captionsGrp = new FlxTypedGroup<FlxTypeText>();
         captionsGrp.camera = camera;
         add(captionsGrp);
-
         for (i in 0...json.totalCounter) //this is actually evil wtf
         {
             var captions = new FlxTypeText(0, FlxG.height - 65, 0, '', 15);
@@ -82,7 +80,6 @@ class CaptionsBox extends FlxTypedGroup<FlxBasic>
             captions.ID = i;
             captions.camera = camera;
             captionsGrp.add(captions);
-
             if (json.loadIcon[i-1])
             {
                 var speaker = new HealthIcon('bf', false);
@@ -93,65 +90,95 @@ class CaptionsBox extends FlxTypedGroup<FlxBasic>
                 iconGrp.push(speaker);
                 add(speaker);
             }
-
-            trace('loaded ${captionsGrp.length} captions');
         }
+        trace('loaded ${captionsGrp.length} captions');
     }
 
+    var storedData:CaptionUtils;
     public function manageLyrics(event:EventType, data:CaptionUtils, captionCount:Int = 0)
 	{
         switch (event)
         {
+            case DATA:
+                if ((data.width != null) && captionsGrp.members[captionCount] != null)
+                {
+                    captionsGrp.members[captionCount].fieldWidth = data.width;
+                   
+                    var iconCount = captionCount-1;
+                    if (iconGrp[iconCount] != null)
+                        iconGrp[iconCount].changeIcon(data.icon, false, false, false);
+                }
+                else
+                    return trace('Either you counted wrong or you forgot the input value.');
+            case TEXT_DATA:
+                if ((data.font != null || data.font != '') && captionsGrp.members[captionCount] != null)
+                {
+                    captionsGrp.members[captionCount].setFormat(
+                        Paths.font(data.font), 
+                        data.size,
+                        FlxColor.fromRGB(data.color[0], data.color[1], data.color[2]),
+                        data.align,
+                        FlxTextBorderStyle.OUTLINE,
+                        FlxColor.fromRGB(data.colorB[0], data.colorB[1], data.colorB[2])
+                    );
+                    captionsGrp.members[captionCount].borderSize = data.sizeB;
+                }
+                else
+                    return trace('Either you counted wrong or yu forgot the input value');
+            case TWEEN_DATA:
+                if (data.tweenData[0] != null)
+                    storedData = {tweenData: data.tweenData};
+                else
+                    return trace('You forgot the input value.');
             case POSITION:
                 if ((data.positionData[0] != null || data.positionData[0] != '') && captionsGrp.members[captionCount] != null)
                 {
-                    if (iconGrp[captionCount] != null)
+                    if (iconGrp[captionCount-1] != null)
                     {
-                        iconGrp[captionCount].x += data.positionData[0];
-                        iconGrp[captionCount].y += data.positionData[1];
+                        iconGrp[captionCount-1].x += data.positionData[0];
+                        iconGrp[captionCount-1].y += data.positionData[1];
                     }
                     captionsGrp.members[captionCount].x += data.positionData[0];
                     captionsGrp.members[captionCount].y += data.positionData[1];
                 }
                 else
                     return trace('Either you counted wrong or you forgot the input value.');
-
             case MOVE:
                 if (tween1 != null)
                     tween1.cancel();
-                    
                 if (tween2 != null)
                     tween2.cancel();
-
-                if ((data.tweenData[0] != null || data.tweenData[0] != '') && captionsGrp.members[captionCount] != null)
-                {                    
-                    if (iconGrp[captionCount] != null)
+                if ((storedData.tweenData[0] != null || storedData.tweenData[0] != '') && captionsGrp.members[captionCount] != null)
+                {
+                    if (iconGrp[captionCount-1] != null)
                     {
-                        tween1 = FlxTween.tween(iconGrp[captionCount],
+                        tween1 = FlxTween.tween(iconGrp[captionCount-1],
                             {
-                                x: iconGrp[captionCount].x + data.tweenData[0],
-                                y: iconGrp[captionCount].y + data.tweenData[1],
-                                angle: iconGrp[captionCount].angle + data.tweenData[2],
-                                "scale.x": iconGrp[captionCount].scale.x + data.tweenData[3],
-                                "scale.y": iconGrp[captionCount].scale.y + data.tweenData[4],
-                                alpha: data.tweenData[5]
+                                x: iconGrp[captionCount-1].x + storedData.tweenData[0],
+                                y: iconGrp[captionCount-1].y + storedData.tweenData[1],
+                                angle: iconGrp[captionCount-1].angle + storedData.tweenData[2],
+                                "scale.x": iconGrp[captionCount-1].scale.x + storedData.tweenData[3],
+                                "scale.y": iconGrp[captionCount-1].scale.y + storedData.tweenData[4],
+                                alpha: storedData.tweenData[5]
                             },
                             data.startTimer,
                             {
-                                startDelay: data.delayTimer,
+                                ease: data.easeStart,
                                 onComplete: function(t:FlxTween)
                                 {
-                                    tween1 = FlxTween.tween(iconGrp[captionCount],
+                                    tween1 = FlxTween.tween(iconGrp[captionCount-1],
                                         {
-                                            x: iconGrp[captionCount].x + data.tweenData[6],
-                                            y: iconGrp[captionCount].y + data.tweenData[7],
-                                            angle: iconGrp[captionCount].angle + data.tweenData[8],
-                                            "scale.x": iconGrp[captionCount].scale.x + data.tweenData[9],
-                                            "scale.y": iconGrp[captionCount].scale.y + data.tweenData[10],
-                                            alpha: data.tweenData[11]
+                                            x: iconGrp[captionCount-1].x + storedData.tweenData[6],
+                                            y: iconGrp[captionCount-1].y + storedData.tweenData[7],
+                                            angle: iconGrp[captionCount-1].angle + storedData.tweenData[8],
+                                            "scale.x": iconGrp[captionCount-1].scale.x + storedData.tweenData[9],
+                                            "scale.y": iconGrp[captionCount-1].scale.y + storedData.tweenData[10],
+                                            alpha: storedData.tweenData[11]
                                         },
                                         data.endTimer,
                                         {
+                                            ease: data.easeEnd,
+                                            startDelay: data.delayTimer,
                                             onComplete: function(t:FlxTween)
                                             {
                                                 tween1 = null;
@@ -164,29 +191,31 @@ class CaptionsBox extends FlxTypedGroup<FlxBasic>
                     }
                     tween2 = FlxTween.tween(captionsGrp.members[captionCount],
                         {
-                            x: captionsGrp.members[captionCount].x + data.tweenData[0],
-                            y: captionsGrp.members[captionCount].y + data.tweenData[1],
-                            angle: captionsGrp.members[captionCount].angle + data.tweenData[2],
-                            "scale.x": captionsGrp.members[captionCount].scale.x + data.tweenData[3],
-                            "scale.y": captionsGrp.members[captionCount].scale.y + data.tweenData[4],
-                            alpha: data.tweenData[5]
+                            x: captionsGrp.members[captionCount].x + storedData.tweenData[0],
+                            y: captionsGrp.members[captionCount].y + storedData.tweenData[1],
+                            angle: captionsGrp.members[captionCount].angle + storedData.tweenData[2],
+                            "scale.x": captionsGrp.members[captionCount].scale.x + storedData.tweenData[3],
+                            "scale.y": captionsGrp.members[captionCount].scale.y + storedData.tweenData[4],
+                            alpha: storedData.tweenData[5]
                         },
                         data.startTimer,
                         {
-                            startDelay: data.delayTimer,
+                            ease: data.easeStart,
                             onComplete: function(t:FlxTween)
                             {
                                 tween2 = FlxTween.tween(captionsGrp.members[captionCount],
                                     {
-                                        x: captionsGrp.members[captionCount].x + data.tweenData[6],
-                                        y: captionsGrp.members[captionCount].y + data.tweenData[7],
-                                        angle: captionsGrp.members[captionCount].angle + data.tweenData[8],
-                                        "scale.x": captionsGrp.members[captionCount].scale.x + data.tweenData[9],
-                                        "scale.y": captionsGrp.members[captionCount].scale.y + data.tweenData[10],
-                                        alpha: data.tweenData[11]
+                                        x: captionsGrp.members[captionCount].x + storedData.tweenData[6],
+                                        y: captionsGrp.members[captionCount].y + storedData.tweenData[7],
+                                        angle: captionsGrp.members[captionCount].angle + storedData.tweenData[8],
+                                        "scale.x": captionsGrp.members[captionCount].scale.x + storedData.tweenData[9],
+                                        "scale.y": captionsGrp.members[captionCount].scale.y + storedData.tweenData[10],
+                                        alpha: storedData.tweenData[11]
                                     },
                                     data.endTimer,
                                     {
+                                        ease: data.easeEnd,
+                                        startDelay: data.delayTimer,
                                         onComplete: function(twn:FlxTween)
                                         {
                                             tween2 = null;
@@ -199,35 +228,14 @@ class CaptionsBox extends FlxTypedGroup<FlxBasic>
                 }
                 else
                     return trace('Either you counted wrong or you forgot the input value.');
-
             case TEXT:
                 if ((data.text != null || data.text != '') && captionsGrp.members[captionCount] != null)
                 {
-                    captionsGrp.members[captionCount].setFormat(
-                        Paths.font(data.font), 
-                        data.size, 
-                        FlxColor.fromRGB(data.color[0], data.color[1], data.color[2]), 
-                        data.align, 
-                        FlxTextBorderStyle.OUTLINE, 
-                        FlxColor.fromRGB(data.colorB[0], data.colorB[1], data.colorB[2])
-                    );
-
-                    captionsGrp.members[captionCount].borderSize = data.sizeB;
                     captionsGrp.members[captionCount].resetText(data.text);
                     captionsGrp.members[captionCount].start(data.textDelay);
-
-                    if (iconGrp[captionCount] != null)
-                        iconGrp[captionCount].changeIcon(data.icon, false, false, false);
                 }
                 else
                     return trace('Either you counted wrong or you forgot the input value.');
-               
-            case DATA:
-                if ((data.width != null) && captionsGrp.members[captionCount] != null)
-                    captionsGrp.members[captionCount].fieldWidth = data.width;
-                else
-                    return trace('Either you counted wrong or you forgot the input value.');
-
             default:
                 return trace('EVENT DOES NOT EXIST!');
         }
@@ -237,7 +245,6 @@ class CaptionsBox extends FlxTypedGroup<FlxBasic>
 	{
 		if (sys.FileSystem.exists('./assets/shared/data/${CoolUtil.spaceToDash(PlayState.SONG.song.toLowerCase())}/prepCaptions.json') || Assets.exists('./assets/shared/data/${CoolUtil.spaceToDash(PlayState.SONG.song.toLowerCase())}/prepCaptions.json'))
 			rawJson = File.getContent(Paths.getPath('data/${CoolUtil.spaceToDash(PlayState.SONG.song.toLowerCase())}/prepCaptions.json', TEXT, null));
-
 		if (rawJson != null && rawJson.length > 0)
         {
             trace('loaded captions data');
