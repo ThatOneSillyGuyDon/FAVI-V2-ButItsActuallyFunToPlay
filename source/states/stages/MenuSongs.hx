@@ -78,7 +78,7 @@ class MenuSongs extends BaseStage
 								}});
 							}
 						case "all": 
-							game.camFlashSystem(BG_FLASH, {
+							game.backgroundControls(BG_FLASH, {
 								timer: Std.parseFloat(triggerVars[0]), 
 								ease: PlayState.returnTweenEase(triggerVars[1]), 
 								alpha: Std.parseFloat(triggerVars[2]), 

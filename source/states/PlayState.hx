@@ -79,6 +79,10 @@ enum FlashType
 {
 	BG_FLASH;
 	BG_DARK;
+	SET_COLOR;
+	TWEEN_COLOR;
+	BADAPPLE_A;
+	BADAPPLE_B;
 	CAM_FLASH_FANCY;
 }
 
@@ -113,7 +117,12 @@ typedef FlashingSettings =
 	/**
 	 * The array of the color values (RGB)
 	 */
-	 @:optional var colors:Array<Int>;
+	@:optional var colors:Array<Int>;
+
+	/**
+	* The bool that checks for if it should enable the badapple style events (only used in BADAPPLE_A and BADAPPLE_B)
+	*/
+	@:optional var enableBadapple:Bool;
 }
 
 /**
@@ -384,8 +393,12 @@ class PlayState extends MusicBeatState
 
 	var stageBGFlash:FlxSprite;
 	var stageBGDark:FlxSprite;
+	var stageBGColor:FlxSprite;
+	var badappleSpr:FlxSprite;
 	var BGFlashTween:FlxTween;
 	var BGDarkTween:FlxTween;
+	var BGTweenColor:FlxTween;
+	var BadappleTween:FlxTween;
 
 	public var globalGradient:FlxSprite;
 
@@ -665,6 +678,22 @@ class PlayState extends MusicBeatState
 		stageBGDark.y -= 450;
 		stageBGDark.scrollFactor.set();
 		add(stageBGDark);
+
+		stageBGColor = new FlxSprite().makeGraphic(1, 1, 0xFFFFFFFF);
+		stageBGColor.scale.set(FlxG.width * 5, FlxG.height * 5);
+		stageBGColor.alpha = 0.0001; // it's at this value so the game doesn't lag when it becomes visible
+		stageBGColor.x -= 750;
+		stageBGColor.y -= 450;
+		stageBGColor.scrollFactor.set();
+		add(stageBGColor);
+
+		badappleSpr = new FlxSprite().makeGraphic(1, 1, 0xFFFFFFFF);
+		badappleSpr.scale.set(FlxG.width * 5, FlxG.height * 5);
+		badappleSpr.alpha = 0.0001; // it's at this value so the game doesn't lag when it becomes visible
+		badappleSpr.x -= 750;
+		badappleSpr.y -= 450;
+		badappleSpr.scrollFactor.set();
+		add(badappleSpr);
 
 		stageBGFlash = new FlxSprite().makeGraphic(1, 1, 0xFFFFFFFF);
 		stageBGFlash.scale.set(FlxG.width * 5, FlxG.height * 5);
@@ -3269,7 +3298,7 @@ class PlayState extends MusicBeatState
 	*
 	* @author DEMOLITIONDON96 ft. Jason
 	*/
-	public function camFlashSystem(flashType:FlashType, settings:FlashingSettings)
+	public function backgroundControls(flashType:FlashType, settings:FlashingSettings)
 	{
 		// null checkes
 		if (settings.colors == null) settings.colors = [255, 255, 255];
@@ -3337,38 +3366,257 @@ class PlayState extends MusicBeatState
 							}
 						});
 					}
-				
-				case CAM_FLASH_FANCY:
-					if (ClientPrefs.data.flashing)
+						
+				case SET_COLOR:
+					if (stageBGColor != null)
 					{
-						if (blendFlash != null)
+						stageBGColor.color = FlxColor.fromRGB(settings.colors[0], settings.colors[1], settings.colors[2], 255);
+
+						stageBGColor.alpha = settings.alpha;
+					}
+				
+				case TWEEN_COLOR:
+					if (stageBGColor != null)
+					{
+						if (BGTweenColor != null)
+							BGTweenColor.cancel();
+
+						if (stageBGColor.blend != NORMAL)
+							stageBGColor.blend = NORMAL;
+
+						if (settings.timer <= 0)
+							settings.timer = 1;
+
+						stageBGColor.color = FlxColor.fromRGB(settings.colors[0], settings.colors[1], settings.colors[2], 255);
+
+						BGTweenColor = FlxTween.tween(stageBGColor, {alpha: settings.alpha}, settings.timer, {
+							ease: settings.ease,
+							onComplete: function(twn:FlxTween)
+							{
+								BGTweenColor = null;
+							}
+						});
+					}
+
+				//White bg, black characters
+				case BADAPPLE_A:
+					if (badappleSpr != null)
+					{
+						if (BadappleTween != null)
+							BadappleTween.cancel();
+
+						if (badappleSpr.blend != NORMAL)
+							badappleSpr.blend = NORMAL;
+
+						if (settings.timer <= 0)
+							settings.timer = 1;
+
+						badappleSpr.color = FlxColor.WHITE; // hardcoded to be black
+
+						BadappleTween = FlxTween.tween(badappleSpr, {alpha: (settings.enableBadapple ? 1 : 0)}, settings.timer, {
+							ease: settings.ease,
+							onComplete: function(twn:FlxTween)
+							{
+								BadappleTween = null;
+							}
+						});
+
+						if (settings.enableBadapple)
 						{
-							if (settings.alpha > 1 || settings.alpha < 0) // prevents a crash from making a dumb mistake
-								blendFlash.alpha = 0.5;
-							else
-								blendFlash.alpha = settings.alpha;
+							BadappleTween = FlxTween.tween(dad.colorTransform, {
+								redOffset: 0,
+								blueOffset: 0,
+								greenOffset: 0,
+								redMultiplier: -1, 
+								blueMultiplier: -1, 
+								greenMultiplier: -1
+							}, settings.timer, {
+								ease: settings.ease
+							});
 
-							if (settings.timer <= 0) // another check to prevent a crash
-								settings.timer = 1;
+							BadappleTween = FlxTween.tween(boyfriend.colorTransform, {
+								redOffset: 0,
+								blueOffset: 0,
+								greenOffset: 0,
+								redMultiplier: -1, 
+								blueMultiplier: -1, 
+								greenMultiplier: -1
+							}, settings.timer, {
+								ease: settings.ease
+							});
 
-							if (settings.colors[0] == 0 && settings.colors[1] == 0 && settings.colors[2] == 0) // turn it to white, cause I can
-								blendFlash.blend = NORMAL;
-							else
-								blendFlash.blend = ADD;
-
-							if (flashTween != null)
-								flashTween.cancel();
-
-							blendFlash.color = FlxColor.fromRGB(settings.colors[0], settings.colors[1], settings.colors[2], 255);
-
-							flashTween = FlxTween.tween(blendFlash, {alpha: 0}, settings.timer, {
-								ease: settings.ease,
-								onComplete: function(twn:FlxTween)
-								{
-									flashTween = null;
-								}
+							BadappleTween = FlxTween.tween(gf.colorTransform, {
+								redOffset: 0,
+								blueOffset: 0,
+								greenOffset: 0,
+								redMultiplier: -1, 
+								blueMultiplier: -1, 
+								greenMultiplier: -1
+							}, settings.timer, {
+								ease: settings.ease
 							});
 						}
+						else
+						{
+							BadappleTween = FlxTween.tween(dad.colorTransform, {
+								redOffset: 1,
+								blueOffset: 1,
+								greenOffset: 1,
+								redMultiplier: 1, 
+								blueMultiplier: 1, 
+								greenMultiplier: 1
+							}, settings.timer, {
+								ease: settings.ease
+							});
+
+							BadappleTween = FlxTween.tween(boyfriend.colorTransform, {
+								redOffset: 1,
+								blueOffset: 1,
+								greenOffset: 1,
+								redMultiplier: 1, 
+								blueMultiplier: 1, 
+								greenMultiplier: 1
+							}, settings.timer, {
+								ease: settings.ease
+							});
+
+							BadappleTween = FlxTween.tween(gf.colorTransform, {
+								redOffset: 1,
+								blueOffset: 1,
+								greenOffset: 1,
+								redMultiplier: 1, 
+								blueMultiplier: 1, 
+								greenMultiplier: 1
+							}, settings.timer, {
+								ease: settings.ease
+							});
+						}
+					}
+
+				//black bg, white characters
+				case BADAPPLE_B:
+					if (badappleSpr != null)
+					{
+						if (BadappleTween != null)
+							BadappleTween.cancel();
+
+						if (badappleSpr.blend != NORMAL)
+							badappleSpr.blend = NORMAL;
+
+						if (settings.timer <= 0)
+							settings.timer = 1;
+
+						badappleSpr.color = FlxColor.BLACK; // hardcoded to be black
+
+						BadappleTween = FlxTween.tween(badappleSpr, {alpha: (settings.enableBadapple ? 1 : 0)}, settings.timer, {
+							ease: settings.ease,
+							onComplete: function(twn:FlxTween)
+							{
+								BadappleTween = null;
+							}
+						});
+
+						if (settings.enableBadapple)
+						{
+							BadappleTween = FlxTween.tween(dad.colorTransform, {
+								redOffset: 255,
+								blueOffset: 255,
+								greenOffset: 255,
+								redMultiplier: 255, 
+								blueMultiplier: 255, 
+								greenMultiplier: 255
+							}, settings.timer, {
+								ease: settings.ease
+							});
+
+							BadappleTween = FlxTween.tween(boyfriend.colorTransform, {
+								redOffset: 255,
+								blueOffset: 255,
+								greenOffset: 255,
+								redMultiplier: 255, 
+								blueMultiplier: 255, 
+								greenMultiplier: 255
+							}, settings.timer, {
+								ease: settings.ease
+							});
+
+							BadappleTween = FlxTween.tween(gf.colorTransform, {
+								redOffset: 255,
+								blueOffset: 255,
+								greenOffset: 255,
+								redMultiplier: 255, 
+								blueMultiplier: 255, 
+								greenMultiplier: 255
+							}, settings.timer, {
+								ease: settings.ease
+							});
+						}
+						else
+						{
+							BadappleTween = FlxTween.tween(dad.colorTransform, {
+								redOffset: 1,
+								blueOffset: 1,
+								greenOffset: 1,
+								redMultiplier: 1, 
+								blueMultiplier: 1, 
+								greenMultiplier: 1
+							}, settings.timer, {
+								ease: settings.ease
+							});
+
+							BadappleTween = FlxTween.tween(boyfriend.colorTransform, {
+								redOffset: 1,
+								blueOffset: 1,
+								greenOffset: 1,
+								redMultiplier: 1, 
+								blueMultiplier: 1, 
+								greenMultiplier: 1
+							}, settings.timer, {
+								ease: settings.ease
+							});
+
+							BadappleTween = FlxTween.tween(gf.colorTransform, {
+								redOffset: 1,
+								blueOffset: 1,
+								greenOffset: 1,
+								redMultiplier: 1, 
+								blueMultiplier: 1, 
+								greenMultiplier: 1
+							}, settings.timer, {
+								ease: settings.ease
+							});
+						}
+					}
+				
+				//This is needed only because mercy exists
+				case CAM_FLASH_FANCY:
+					if (blendFlash != null)
+					{
+						if (settings.alpha > 1 || settings.alpha < 0) // prevents a crash from making a dumb mistake
+							blendFlash.alpha = 0.5;
+						else
+							blendFlash.alpha = settings.alpha;
+
+						if (settings.timer <= 0) // another check to prevent a crash
+							settings.timer = 1;
+
+						if (settings.colors[0] == 0 && settings.colors[1] == 0 && settings.colors[2] == 0) // turn it to white, cause I can
+							blendFlash.blend = NORMAL;
+						else
+							blendFlash.blend = ADD;
+
+						if (flashTween != null)
+							flashTween.cancel();
+
+						blendFlash.color = FlxColor.fromRGB(settings.colors[0], settings.colors[1], settings.colors[2], 255);
+
+						flashTween = FlxTween.tween(blendFlash, {alpha: 0}, settings.timer, {
+							ease: settings.ease,
+							onComplete: function(twn:FlxTween)
+							{
+								flashTween = null;
+							}
+						});
 					}
 			}
 		}
@@ -3845,6 +4093,15 @@ class PlayState extends MusicBeatState
 					FlxG.camera.zoom += camZoom;
 					camHUD.zoom += hudZoom;
 				}
+			case 'Add Camera Zoom Chain':
+				var enableEvent:Bool = true;
+				if (value1.toLowerCase() == 'true')
+					enableEvent = true;
+				else
+					enableEvent = false;
+
+				//There's probably an easier way to do it, but right now, I'm just way too lazy right it's like 12 AM HELP
+				canBopCam = enableEvent;
 			case 'Play Animation':
 				//trace('Anim to play: ' + value1);
 				var char:Character = dad;
@@ -4047,17 +4304,53 @@ class PlayState extends MusicBeatState
 				switch (value1.toLowerCase())
 				{
 					case 'flash':
-						camFlashSystem(BG_FLASH, {
+						backgroundControls(BG_FLASH, {
 							timer: Std.parseFloat(triggerInfo[0]), 
 							ease: returnTweenEase(triggerInfo[1]), 
 							alpha: Std.parseFloat(triggerInfo[2]), 
 							colors: [Std.parseInt(triggerInfo[3]), Std.parseInt(triggerInfo[4]), Std.parseInt(triggerInfo[5])]
 						});
 					case 'darken' | 'dark':
-						camFlashSystem(BG_DARK, {
+						backgroundControls(BG_DARK, {
 							alpha: Std.parseFloat(triggerInfo[0]), 
 							timer: Std.parseFloat(triggerInfo[1]), 
 							ease: returnTweenEase(triggerInfo[2])});
+					case 'setcolor' | 'set color':
+						backgroundControls(SET_COLOR, {
+							alpha: Std.parseFloat(triggerInfo[0]), 
+							colors: [Std.parseInt(triggerInfo[1]), Std.parseInt(triggerInfo[2]), Std.parseInt(triggerInfo[3])]
+						});
+					case 'tweencolor' | 'tween color':
+						backgroundControls(TWEEN_COLOR, {
+							alpha: Std.parseFloat(triggerInfo[0]), 
+							timer: Std.parseFloat(triggerInfo[1]), 
+							ease: returnTweenEase(triggerInfo[2]),
+							colors: [Std.parseInt(triggerInfo[3]), Std.parseInt(triggerInfo[4]), Std.parseInt(triggerInfo[5])]
+						});
+					case 'badapplea' | 'badapple a':
+						var enableEvent:Bool = true;
+						if (triggerInfo[2] == "true")
+							enableEvent = true;
+						else
+							enableEvent = false;
+
+						backgroundControls(BADAPPLE_A, {
+							timer: Std.parseFloat(triggerInfo[0]), 
+							ease: returnTweenEase(triggerInfo[1]),
+							enableBadapple: enableEvent
+						});
+					case 'badappleb' | 'badapple b':
+						var enableEvent:Bool = true;
+						if (triggerInfo[2] == "true")
+							enableEvent = true;
+						else
+							enableEvent = false;
+
+						backgroundControls(BADAPPLE_B, {
+							timer: Std.parseFloat(triggerInfo[0]), 
+							ease: returnTweenEase(triggerInfo[1]),
+							enableBadapple: enableEvent
+						});
 				}
 
 			case 'Cinematic Event':
