@@ -352,12 +352,12 @@ class WaltStage extends BaseStage
 						pissOfGlory.visible = false;
 						game.dad.setPosition(0, 0);
 						greaterPiss.visible = false;
-						game.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.5, ease: FlxEase.sineOut, timer: 0.2, colors: [247, 230, 166]});
+						game.backgroundControls(CAM_FLASH_FANCY, {alpha: 0.5, ease: FlxEase.sineOut, timer: 0.2, colors: [247, 230, 166]});
 
 					case "finish":
 						for (bullshit in [retardedButPissBehind, sameAsAdobe, pissOfGlory, greaterPiss])
 							bullshit.visible = true;
-						game.camFlashSystem(CAM_FLASH_FANCY, {alpha: 0.5, ease: FlxEase.sineOut, timer: 0.2, colors: [247, 230, 166]});
+						game.backgroundControls(CAM_FLASH_FANCY, {alpha: 0.5, ease: FlxEase.sineOut, timer: 0.2, colors: [247, 230, 166]});
 						game.dad.setPosition(240, -200);
 						FlxTween.tween(sameAsAdobe, {alpha: 0}, 0.25, {ease: FlxEase.sineOut});
 						FlxTween.tween(camHUD, {alpha: 1}, 0.31, {ease: FlxEase.sineInOut});
