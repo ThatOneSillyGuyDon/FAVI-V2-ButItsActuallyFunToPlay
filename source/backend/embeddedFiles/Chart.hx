@@ -18751,7 +18751,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Manage Lyrics",
 						"text",
-						"0, ...No matter what is in..., 0.08"
+						"0, ...No matter what\'s in..., 0.08"
 					]
 				]
 			],
@@ -18866,7 +18866,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Manage Lyrics",
 						"text",
-						"0, ...Let us loop around once more!, 0.03"
+						"0, ...Let\'s loop \'round once more!, 0.03"
 					]
 				]
 			],
