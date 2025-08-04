@@ -49,6 +49,8 @@ class LoadingState extends MusicBeatState
 		"Human, i remeber your loading...",
 		"I am loading..."
 	];
+
+	var loadingScreens = FlxG.random.int(1,4);
 	
 	var target:FlxState;
 	var stopMusic = false;
@@ -74,10 +76,12 @@ class LoadingState extends MusicBeatState
 		lime.app.Application.current.window.title = 'Funkin.avi - ${funi[FlxG.random.int(0, funi.length-1)]}';
 		
 		loadingImage = new FlxSprite(0,0);
-		loadingImage.loadGraphic(Paths.image("Funkin_avi/loadingScreen/loadingScreen"));
+		loadingImage.loadGraphic(Paths.image('Funkin_avi/loadingScreen/loadingScreen${loadingScreens}'));
 		loadingImage.screenCenter();
 		loadingImage.antialiasing = ClientPrefs.data.antialiasing;
 		add(loadingImage);
+
+		trace('loading image ${loadingScreens} loaded');
 
 		iconAnimated = new FlxSprite(0,0);
 		iconAnimated.antialiasing = ClientPrefs.data.antialiasing;

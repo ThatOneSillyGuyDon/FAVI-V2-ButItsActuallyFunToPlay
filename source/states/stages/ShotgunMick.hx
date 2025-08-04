@@ -332,23 +332,6 @@ class ShotgunMick extends BaseStage
 					case 3:
 						game.sinsEnd = true;
 
-					//Putting the lyrics stuff here because for some reson it's not working in the chart editor	
-					case 4: game.manageLyrics('relapse2NEW-pixel', 'Do you think this is', 'freeplayDisneyFont.ttf', 30, 1.1, 'sineInOut');
-					case 5: game.manageLyrics('relapse2NEW-pixel', 'some kind of', 'freeplayDisneyFont.ttf', 30, 1.4, 'sineInOut');
-					case 6: game.manageLyrics('relapse2NEW-pixel', 'silly little GAME?', 'freeplayDisneyFont.ttf', 30, 1.15, 'sineInOut');
-					case 7: game.manageLyrics('relapse2NEW-pixel', 'Soon enough...', 'freeplayDisneyFont.ttf', 30, 1.3, 'sineInOut');
-					case 8: game.manageLyrics('relapse2NEW-pixel', "...you'll understand what ME...", 'freeplayDisneyFont.ttf', 30, 1.5, 'sineInOut');
-					case 9: game.manageLyrics('relapse2NEW-pixel', '...AND MY FRIENDS...', 'freeplayDisneyFont.ttf', 30, 1.6, 'sineInOut');
-					case 10: game.manageLyrics('relapse2NEW-pixel', '...HAVE TO GO THROUGH!', 'freeplayDisneyFont.ttf', 30, 1.1, 'sineInOut');
-					case 11: game.manageLyrics('relapse2NEW-pixel', 'Sooner or later...', 'freeplayDisneyFont.ttf', 30, 1.1, 'sineInOut');
-					case 12: game.manageLyrics('relapse2NEW-pixel', '...your DEATH will be nothing...', 'freeplayDisneyFont.ttf', 30, 1.1, 'sineInOut');
-					case 13: game.manageLyrics('relapse2NEW-pixel', '...BUT CYCLED SINS!', 'freeplayDisneyFont.ttf', 30, 1.1, 'sineInOut');
-
-					case 14: game.manageLyrics('relapse2NEW-pixel', 'Why don\'t my torturous ways travail...', 'freeplayDisneyFont.ttf', 30, 5, 'sineInOut');
-					case 15: game.manageLyrics('relapse2NEW-pixel', 'I\'m mental, indisposed and ill...', 'freeplayDisneyFont.ttf', 30, 5, 'sineInOut');
-					case 16: game.manageLyrics('relapse2NEW-pixel', 'I\'m deranged, full of hatred...', 'freeplayDisneyFont.ttf', 30, 5, 'sineInOut');
-					case 17: game.manageLyrics('relapse2NEW-pixel', 'This should\'ve been your termination... isn\'t it?', 'freeplayDisneyFont.ttf', 30, 5, 'sineInOut');
-					
 					case 18:
 						FlxTween.tween(game, {healthThing: 0.1}, 1, {ease: FlxEase.sineInOut});
 						bg1.visible = false;
