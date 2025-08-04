@@ -224,6 +224,9 @@ class PlayState extends MusicBeatState
 	public var gf:Character = null;
 	public var boyfriend:Character = null;
 
+	public static var gameBopIntensity:Float = 0;
+	public static var uiBopIntensity:Float = 0;
+
 	public var notes:FlxTypedGroup<Note>;
 	public var unspawnNotes:Array<Note> = [];
 	public var eventNotes:Array<EventNote> = [];
@@ -4026,17 +4029,8 @@ class PlayState extends MusicBeatState
 					camHUD.zoom += hudZoom;
 				}
 			case 'Add Camera Zoom Chain':
-				var enableEvent:Bool = true;
-				if (value1.toLowerCase() == 'true')
-					enableEvent = true;
-				else
-					enableEvent = false;
-
-				//There's probably an easier way to do it, but right now, I'm just way too lazy right it's like 12 AM HELP
-				if (SONG.song == "Delusional")
-					delusionalCamBop = enableEvent;
-				else
-					canBopCam = enableEvent;
+				gameBopIntensity = flValue1;
+				uiBopIntensity = flValue2;
 			case 'Play Animation':
 				//trace('Anim to play: ' + value1);
 				var char:Character = dad;
@@ -6227,11 +6221,8 @@ class PlayState extends MusicBeatState
 			camHUD.zoom += SONG.song == "Bless" ? 0.02 : 0.1;
 		}
 
-		if (delusionalCamBop)
-		{
-			camGame.zoom += 0.015;
-			camHUD.zoom +=  0.03;
-		}
+		camGame.zoom += gameBopIntensity;
+		camHUD.zoom +=  uiBopIntensity;
 
 		setOnScripts('curBeat', curBeat);
 		callOnScripts('onBeatHit');

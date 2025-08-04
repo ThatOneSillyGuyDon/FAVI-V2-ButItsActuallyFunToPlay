@@ -939,6 +939,8 @@ class Episode1Street extends BaseStage
 				{
 					case 1:
 						if (rain != null) rain.alpha = 1;
+						game.boundValue = 1;
+						game.drainValue = 0.02;
 					case 2:
 						game.camVideo.fade(FlxColor.BLACK, 5, true);
 						game.camVideo.alpha = 1;
@@ -1012,6 +1014,8 @@ class Episode1Street extends BaseStage
 					case 9:
 						game.chromTween = FlxTween.tween(game, {chromEffect: 0.1}, 0.6, {ease: FlxEase.quadOut});
 					case 10:
+						game.boundValue = 2;
+						game.drainValue = 0;
 						if (!ClientPrefs.data.lowQuality)
 						{
 							atmosphereParticle.visible = false;
@@ -1051,6 +1055,8 @@ class Episode1Street extends BaseStage
 						game.boyfriend.alpha = 0.0001; 
 					case 13:
 						game.chromEffect = 0.1;
+						game.boundValue = 0.45;
+						game.drainValue = 0.032;
 						PlayState.useFakeDeluName = false;
 						if (ClientPrefs.data.shaders)
 						{
