@@ -379,14 +379,6 @@ class DevilishStage extends BaseStage
 						game.uiGroup.add(minnieIcon);
 						game.uiGroup.add(satanIcon);
 						game.uiGroup.add(satanIconPulse);
-					case 2:
-						game.manageLyrics('satanddNEW', 'In the rain...', 'betterSatanFont.ttf', 30, 2, 'sineInOut', 0.1);
-					case 3:
-						game.manageLyrics('satanddNEW', '...Looking so blue...', 'betterSatanFont.ttf', 30, 3.2, 'sineInOut', 0.08);
-					case 4:
-						game.manageLyrics('satanddNEW', '...SPEAK...', 'betterSatanFont.ttf', 30, 0.7, 'sineInOut', 0.05);
-					case 5:
-						game.manageLyrics('satanddNEW', '...What is on your mind?', 'betterSatanFont.ttf', 30, 2.5, 'sineInOut', 0.06);
 					case 6:
 						FlxTween.tween(game.dad.colorTransform, {redMultiplier: 1, blueMultiplier: 1, greenMultiplier: 1}, 2, {ease: FlxEase.circInOut});
 				}

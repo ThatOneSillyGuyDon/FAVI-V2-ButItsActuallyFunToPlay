@@ -1122,7 +1122,7 @@ class PlayState extends MusicBeatState
 		updateScore(false);
 		uiGroup.add(scoreTxt);
 
-		if (FreeplayState.freeplayMenuList == 2)
+		if (FreeplayState.freeplayMenuList == 2 && !isStoryMode)
 		{
 		#if desktop
 			var peWatermark:FlxText = new FlxText(5, FlxG.height - 29, 0, "", 16);
