@@ -1088,11 +1088,11 @@ class Episode1Street extends BaseStage
 					case 15:
 						FlxTween.tween(mickeySpirit, {alpha: 0}, 4, {ease: FlxEase.quartOut});
 					
-					case 55:
+					case 16:
 						FlxTween.tween(fakeLightOfHope, {alpha: 0.001}, 1.7);
 						if (!ClientPrefs.data.lowQuality) FlxTween.tween(stageFront, {alpha: 1}, 1.5);
 					
-					case 56:
+					case 17:
 						if (!ClientPrefs.data.lowQuality)
 						{
 							smokeShit.forEach(function(spr:FlxSprite)
@@ -1105,12 +1105,12 @@ class Episode1Street extends BaseStage
 							});
 						}
 
-					case 57:
+					case 18:
 						if (!ClientPrefs.data.lowQuality)
 						{
 							FlxTween.tween(fireThing, {alpha: 1}, 1);
 						}
-					case 58:
+					case 19:
 						if (!ClientPrefs.data.lowQuality)
 						{
 							smokeShit.forEach(function(spr:FlxSprite)
@@ -1122,7 +1122,7 @@ class Episode1Street extends BaseStage
 									FlxTween.tween(spr, {alpha: 0.25}, 1.5);
 							});
 						}
-					case 59:
+					case 20:
 						colorsOrSmthElse.kill();
 						colorsOrSmthElse.destroy();
 						colorsOrSmthElse = null;
@@ -1150,22 +1150,22 @@ class Episode1Street extends BaseStage
 							stageFront = null;
 						}
 						minnieBackground.visible = true;
-					case 60:
+					case 21:
 						if (!ClientPrefs.data.lowQuality)
 						{
 							stageCurtains.alpha = 0.0001;
 							stageCurtains.visible = true;
 						}
-					case 61:
+					case 22:
 						if (!ClientPrefs.data.lowQuality)
 						{
 							stageCurtains.alpha = 1;
 							FlxTween.tween(stageCurtains, {alpha: 0}, 1, {ease: FlxEase.circOut});
 						}
-					case 62:
+					case 23:
 						if (!ClientPrefs.data.lowQuality)
 							FlxTween.tween(stageCurtains, {alpha: 1}, 5);
-					case 63:
+					case 24:
 						if (!ClientPrefs.data.lowQuality)
 						{
 							smokeShit.forEach(function(spr:FlxSprite)
@@ -1186,10 +1186,10 @@ class Episode1Street extends BaseStage
 						minnieBackground.kill();
 						minnieBackground.destroy();
 						minnieBackground = null;
-					case 64:
+					case 25:
 						fakeLightOfHope.alpha = 1;
 						FlxTween.tween(fakeLightOfHope, {alpha: 0.5}, 0.85);
-					case 65:
+					case 26:
 						FlxTween.tween(fakeLightOfHope, {alpha: 1, color: FlxColor.RED}, 2, {ease: FlxEase.circInOut});
 						if (!ClientPrefs.data.lowQuality) 
 							FlxTween.tween(fireThing2, {color: FlxColor.RED}, 2, {ease: FlxEase.circInOut});
@@ -1207,7 +1207,7 @@ class Episode1Street extends BaseStage
 								FlxTween.tween(spr, {color: FlxColor.RED}, 2, {ease: FlxEase.circInOut});
 							});
 						}
-					case 66:
+					case 27:
 						FlxTween.tween(fakeLightOfHope, {color: FlxColor.WHITE}, 0.5, {ease: FlxEase.circOut});
 						if (!ClientPrefs.data.lowQuality) FlxTween.tween(fireThing2, {color: FlxColor.WHITE, alpha: 0.75}, 1.2, {ease: FlxEase.circOut});
 						FlxTween.tween(streetRuins, {color: FlxColor.WHITE}, 0.5, {ease: FlxEase.circOut});
@@ -1226,10 +1226,10 @@ class Episode1Street extends BaseStage
 								FlxTween.tween(spr, {color: FlxColor.WHITE}, 0.5, {ease: FlxEase.circOut});
 							});
 						}
-					case 67:
+					case 28:
 						FlxTween.tween(fakeLightOfHope, {alpha: 0}, 2);
 						if (!ClientPrefs.data.lowQuality) FlxTween.tween(fireThing2, {alpha: 1}, 2);
-					case 68:
+					case 29:
 						if (!ClientPrefs.data.lowQuality)
 						{
 							fireForeground.kill();
@@ -1261,7 +1261,7 @@ class Episode1Street extends BaseStage
 						fakeLightOfHope.kill();
 						fakeLightOfHope.destroy();
 						fakeLightOfHope = null;
-					case 69:
+					case 30:
 						game.camVideo.zoom += 0.3;
 						game.camVideo.fade(FlxColor.BLACK, 0.2, true);
 						FlxTween.tween(game.camVideo, {zoom: 1}, 0.5, {ease: FlxEase.sineOut});

@@ -379,7 +379,7 @@ class DevilishStage extends BaseStage
 						game.uiGroup.add(minnieIcon);
 						game.uiGroup.add(satanIcon);
 						game.uiGroup.add(satanIconPulse);
-					case 6:
+					case 2:
 						FlxTween.tween(game.dad.colorTransform, {redMultiplier: 1, blueMultiplier: 1, greenMultiplier: 1}, 2, {ease: FlxEase.circInOut});
 				}
 			case 'Icon Handler':
