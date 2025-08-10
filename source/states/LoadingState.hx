@@ -50,13 +50,13 @@ class LoadingState extends MusicBeatState
 		"I am loading..."
 	];
 
-	var loadingScreens = FlxG.random.int(1,4);
-	
 	var target:FlxState;
 	var stopMusic = false;
 	var directory:String;
 	var callbacks:MultiCallback;
 	var targetShit:Float = 0;
+
+	var loadingScreens:Int = 10; // default Would be 10.
 
 	function new(target:FlxState, stopMusic:Bool, directory:String)
 	{
@@ -73,6 +73,7 @@ class LoadingState extends MusicBeatState
 	var iconAnimated:FlxSprite;
 	override function create()
 	{
+		if (PlayState.isStory) loadingScreens = FlxG.random.int(1,4);
 		lime.app.Application.current.window.title = 'Funkin.avi - ${funi[FlxG.random.int(0, funi.length-1)]}';
 		
 		loadingImage = new FlxSprite(0,0);
