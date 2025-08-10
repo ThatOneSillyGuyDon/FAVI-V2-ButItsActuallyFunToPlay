@@ -75,6 +75,9 @@ class Episode1Street extends BaseStage
 	public static var fakeBFLosingFrame:HealthIcon;
 	public static var demonBFScary:HealthIcon;
 
+	var mickeyShader = new DropShadowShader();
+	var satanShader = new DropShadowShader();
+
 	override function create()
 	{
 		game.defaultCamZoom = 0.87;
@@ -398,6 +401,17 @@ class Episode1Street extends BaseStage
 				fireForeground.blend = ADD;
 				add(fireForeground);
 				fireForeground.animation.play('burningShit');
+
+				for (s in [mickeyShader,satanShader])
+				{
+					s.setAdjustColor(-60, -32, -20, -25);
+					s.color = 0xFFFFFFFF;
+					s.distance = 30;
+					s.maskThreshold = 0.75;
+				}
+
+				mickeyShader.angle = 40;
+				satanShader.angle = 140;
 			}
 			streetRuins.visible = false;
 		}
@@ -811,6 +825,22 @@ class Episode1Street extends BaseStage
 	{
 		switch(eventName)
 		{
+			case 'Toggle Shadow Drop':
+				if (!ClientPrefs.data.lowQuality)
+				{
+					game.dad.shader = game.dad.shader == mickeyShader ? null : mickeyShader;
+					game.boyfriend.shader = game.boyfriend.shader == satanShader ? null : satanShader;
+
+					mickeyShader.attachedSprite = game.dad;
+					satanShader.attachedSprite = game.boyfriend;
+
+					game.dad.animation.onFrameChange.add(function(name, frameNum, frameIndex) { //this took fucking ages to figure out only to realize i'm a stupid fucking moron (don)
+					mickeyShader.updateFrameInfo(game.dad.frame);
+					});
+					game.boyfriend.animation.onFrameChange.add(function(name, frameNum, frameIndex) {
+						satanShader.updateFrameInfo(game.boyfriend.frame);
+					});
+				}
 			case 'Icon Handler':
 				var eventData:Float = Std.parseFloat(value1);
 				if (PlayState.SONG.song == "Isolated")

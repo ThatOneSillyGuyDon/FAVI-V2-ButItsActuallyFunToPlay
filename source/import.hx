@@ -76,6 +76,7 @@ import shaders.BlendModeEffect;
 import shaders.WiggleEffect;
 import shaders.WiggleEffect.WiggleEffectType;
 import shaders.OutlineEffect;
+import shaders.DropShadowShader;
 
 // stuff that won't let you compile unless they're being used
 #if VIDEOS_ALLOWED
