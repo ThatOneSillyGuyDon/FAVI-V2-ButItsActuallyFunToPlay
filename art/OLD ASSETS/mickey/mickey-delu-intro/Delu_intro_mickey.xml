@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="Delu_intro_mickey.png" width="3421" height="3431">
+	<SubTexture name="Mickey idle0000.png" x="1846" y="887" width="870" height="865" frameX="-7" frameY="-23" frameWidth="888" frameHeight="898"/>
+	<SubTexture name="Mickey idle0001.png" x="1846" y="887" width="870" height="865" frameX="-7" frameY="-23" frameWidth="888" frameHeight="898"/>
+	<SubTexture name="Mickey idle0002.png" x="1876" y="1" width="865" height="870" frameX="-7" frameY="-19" frameWidth="888" frameHeight="898"/>
+	<SubTexture name="Mickey idle0003.png" x="1876" y="1" width="865" height="870" frameX="-7" frameY="-19" frameWidth="888" frameHeight="898"/>
+	<SubTexture name="Mickey idle0004.png" x="982" y="1791" width="879" height="858" rotated="true" frameX="-7" frameY="-10" frameWidth="888" frameHeight="898"/>
+	<SubTexture name="Mickey idle0005.png" x="982" y="1791" width="879" height="858" rotated="true" frameX="-7" frameY="-10" frameWidth="888" frameHeight="898"/>
+	<SubTexture name="Mickey idle0006.png" x="1013" y="1" width="860" height="883" frameX="-7" frameY="-6" frameWidth="888" frameHeight="898"/>
+	<SubTexture name="Mickey idle0007.png" x="1013" y="1" width="860" height="883" frameX="-7" frameY="-6" frameWidth="888" frameHeight="898"/>
+	<SubTexture name="Mickey idle0008.png" x="982" y="905" width="861" height="883" frameX="-7" frameY="-6" frameWidth="888" frameHeight="898"/>
+	<SubTexture name="Mickey idle0009.png" x="982" y="905" width="861" height="883" frameX="-7" frameY="-6" frameWidth="888" frameHeight="898"/>
+	<SubTexture name="Mickey idle0010.png" x="982" y="905" width="861" height="883" frameX="-7" frameY="-6" frameWidth="888" frameHeight="898"/>
+	<SubTexture name="Mickey idle0011.png" x="982" y="905" width="861" height="883" frameX="-7" frameY="-6" frameWidth="888" frameHeight="898"/>
+	<SubTexture name="Mickey idle0012.png" x="982" y="905" width="861" height="883" frameX="-7" frameY="-6" frameWidth="888" frameHeight="898"/>
+	<SubTexture name="Mickey idle0013.png" x="982" y="905" width="861" height="883" frameX="-7" frameY="-6" frameWidth="888" frameHeight="898"/>
+	<SubTexture name="Mickey note down0000.png" x="2632" y="1755" width="788" height="768" frameX="-7" frameY="-11" frameWidth="813" frameHeight="788"/>
+	<SubTexture name="Mickey note down0001.png" x="2632" y="1755" width="788" height="768" frameX="-7" frameY="-11" frameWidth="813" frameHeight="788"/>
+	<SubTexture name="Mickey note down0002.png" x="1855" y="2656" width="796" height="774" frameX="-7" frameY="-5" frameWidth="813" frameHeight="788"/>
+	<SubTexture name="Mickey note down0003.png" x="1855" y="2656" width="796" height="774" frameX="-7" frameY="-5" frameWidth="813" frameHeight="788"/>
+	<SubTexture name="Mickey note down0004.png" x="1855" y="2656" width="796" height="774" frameX="-7" frameY="-5" frameWidth="813" frameHeight="788"/>
+	<SubTexture name="Mickey note down0005.png" x="1855" y="2656" width="796" height="774" frameX="-7" frameY="-5" frameWidth="813" frameHeight="788"/>
+	<SubTexture name="Mickey note down0006.png" x="1855" y="2656" width="796" height="774" frameX="-7" frameY="-5" frameWidth="813" frameHeight="788"/>
+	<SubTexture name="Mickey note down0007.png" x="1855" y="2656" width="796" height="774" frameX="-7" frameY="-5" frameWidth="813" frameHeight="788"/>
+	<SubTexture name="Mickey note down0008.png" x="1855" y="2656" width="796" height="774" frameX="-7" frameY="-5" frameWidth="813" frameHeight="788"/>
+	<SubTexture name="Mickey note down0009.png" x="1855" y="2656" width="796" height="774" frameX="-7" frameY="-5" frameWidth="813" frameHeight="788"/>
+	<SubTexture name="Mickey note down0010.png" x="1855" y="2656" width="796" height="774" frameX="-7" frameY="-5" frameWidth="813" frameHeight="788"/>
+	<SubTexture name="Mickey note down0011.png" x="1855" y="2656" width="796" height="774" frameX="-7" frameY="-5" frameWidth="813" frameHeight="788"/>
+	<SubTexture name="Mickey note down0012.png" x="1855" y="2656" width="796" height="774" frameX="-7" frameY="-5" frameWidth="813" frameHeight="788"/>
+	<SubTexture name="Mickey note down0013.png" x="1855" y="2656" width="796" height="774" frameX="-7" frameY="-5" frameWidth="813" frameHeight="788"/>
+	<SubTexture name="Mickey note left0000.png" x="1864" y="1755" width="765" height="898" frameX="-7" frameY="-5" frameWidth="784" frameHeight="913"/>
+	<SubTexture name="Mickey note left0001.png" x="1864" y="1755" width="765" height="898" frameX="-7" frameY="-5" frameWidth="784" frameHeight="913"/>
+	<SubTexture name="Mickey note left0002.png" x="953" y="2652" width="899" height="767" rotated="true" frameX="-7" frameY="-5" frameWidth="784" frameHeight="913"/>
+	<SubTexture name="Mickey note left0003.png" x="953" y="2652" width="899" height="767" rotated="true" frameX="-7" frameY="-5" frameWidth="784" frameHeight="913"/>
+	<SubTexture name="Mickey note left0004.png" x="953" y="2652" width="899" height="767" rotated="true" frameX="-7" frameY="-5" frameWidth="784" frameHeight="913"/>
+	<SubTexture name="Mickey note left0005.png" x="953" y="2652" width="899" height="767" rotated="true" frameX="-7" frameY="-5" frameWidth="784" frameHeight="913"/>
+	<SubTexture name="Mickey note left0006.png" x="953" y="2652" width="899" height="767" rotated="true" frameX="-7" frameY="-5" frameWidth="784" frameHeight="913"/>
+	<SubTexture name="Mickey note left0007.png" x="953" y="2652" width="899" height="767" rotated="true" frameX="-7" frameY="-5" frameWidth="784" frameHeight="913"/>
+	<SubTexture name="Mickey note left0008.png" x="953" y="2652" width="899" height="767" rotated="true" frameX="-7" frameY="-5" frameWidth="784" frameHeight="913"/>
+	<SubTexture name="Mickey note left0009.png" x="953" y="2652" width="899" height="767" rotated="true" frameX="-7" frameY="-5" frameWidth="784" frameHeight="913"/>
+	<SubTexture name="Mickey note left0010.png" x="953" y="2652" width="899" height="767" rotated="true" frameX="-7" frameY="-5" frameWidth="784" frameHeight="913"/>
+	<SubTexture name="Mickey note left0011.png" x="953" y="2652" width="899" height="767" rotated="true" frameX="-7" frameY="-5" frameWidth="784" frameHeight="913"/>
+	<SubTexture name="Mickey note left0012.png" x="953" y="2652" width="899" height="767" rotated="true" frameX="-7" frameY="-5" frameWidth="784" frameHeight="913"/>
+	<SubTexture name="Mickey note left0013.png" x="953" y="2652" width="899" height="767" rotated="true" frameX="-7" frameY="-5" frameWidth="784" frameHeight="913"/>
+	<SubTexture name="Mickey note right0000.png" x="1" y="1" width="1009" height="901" frameX="-7" frameY="-4" frameWidth="1026" frameHeight="914"/>
+	<SubTexture name="Mickey note right0001.png" x="1" y="1" width="1009" height="901" frameX="-7" frameY="-4" frameWidth="1026" frameHeight="914"/>
+	<SubTexture name="Mickey note right0002.png" x="1" y="905" width="978" height="899" frameX="-7" frameY="-6" frameWidth="1026" frameHeight="914"/>
+	<SubTexture name="Mickey note right0003.png" x="1" y="905" width="978" height="899" frameX="-7" frameY="-6" frameWidth="1026" frameHeight="914"/>
+	<SubTexture name="Mickey note right0004.png" x="1" y="905" width="978" height="899" frameX="-7" frameY="-6" frameWidth="1026" frameHeight="914"/>
+	<SubTexture name="Mickey note right0005.png" x="1" y="905" width="978" height="899" frameX="-7" frameY="-6" frameWidth="1026" frameHeight="914"/>
+	<SubTexture name="Mickey note right0006.png" x="1" y="905" width="978" height="899" frameX="-7" frameY="-6" frameWidth="1026" frameHeight="914"/>
+	<SubTexture name="Mickey note right0007.png" x="1" y="905" width="978" height="899" frameX="-7" frameY="-6" frameWidth="1026" frameHeight="914"/>
+	<SubTexture name="Mickey note right0008.png" x="1" y="905" width="978" height="899" frameX="-7" frameY="-6" frameWidth="1026" frameHeight="914"/>
+	<SubTexture name="Mickey note right0009.png" x="1" y="905" width="978" height="899" frameX="-7" frameY="-6" frameWidth="1026" frameHeight="914"/>
+	<SubTexture name="Mickey note right0010.png" x="1" y="905" width="978" height="899" frameX="-7" frameY="-6" frameWidth="1026" frameHeight="914"/>
+	<SubTexture name="Mickey note right0011.png" x="1" y="905" width="978" height="899" frameX="-7" frameY="-6" frameWidth="1026" frameHeight="914"/>
+	<SubTexture name="Mickey note right0012.png" x="1" y="905" width="978" height="899" frameX="-7" frameY="-6" frameWidth="1026" frameHeight="914"/>
+	<SubTexture name="Mickey note right0013.png" x="1" y="905" width="978" height="899" frameX="-7" frameY="-6" frameWidth="1026" frameHeight="914"/>
+	<SubTexture name="Mickey note up0000.png" x="1" y="2601" width="949" height="782" rotated="true" frameX="-7" frameY="-5" frameWidth="808" frameHeight="963"/>
+	<SubTexture name="Mickey note up0001.png" x="1" y="2601" width="949" height="782" rotated="true" frameX="-7" frameY="-5" frameWidth="808" frameHeight="963"/>
+	<SubTexture name="Mickey note up0002.png" x="1" y="1807" width="943" height="791" rotated="true" frameX="-7" frameY="-11" frameWidth="808" frameHeight="963"/>
+	<SubTexture name="Mickey note up0003.png" x="1" y="1807" width="943" height="791" rotated="true" frameX="-7" frameY="-11" frameWidth="808" frameHeight="963"/>
+	<SubTexture name="Mickey note up0004.png" x="1" y="1807" width="943" height="791" rotated="true" frameX="-7" frameY="-11" frameWidth="808" frameHeight="963"/>
+	<SubTexture name="Mickey note up0005.png" x="1" y="1807" width="943" height="791" rotated="true" frameX="-7" frameY="-11" frameWidth="808" frameHeight="963"/>
+	<SubTexture name="Mickey note up0006.png" x="1" y="1807" width="943" height="791" rotated="true" frameX="-7" frameY="-11" frameWidth="808" frameHeight="963"/>
+	<SubTexture name="Mickey note up0007.png" x="1" y="1807" width="943" height="791" rotated="true" frameX="-7" frameY="-11" frameWidth="808" frameHeight="963"/>
+	<SubTexture name="Mickey note up0008.png" x="1" y="1807" width="943" height="791" rotated="true" frameX="-7" frameY="-11" frameWidth="808" frameHeight="963"/>
+	<SubTexture name="Mickey note up0009.png" x="1" y="1807" width="943" height="791" rotated="true" frameX="-7" frameY="-11" frameWidth="808" frameHeight="963"/>
+	<SubTexture name="Mickey note up0010.png" x="1" y="1807" width="943" height="791" rotated="true" frameX="-7" frameY="-11" frameWidth="808" frameHeight="963"/>
+	<SubTexture name="Mickey note up0011.png" x="1" y="1807" width="943" height="791" rotated="true" frameX="-7" frameY="-11" frameWidth="808" frameHeight="963"/>
+	<SubTexture name="Mickey note up0012.png" x="1" y="1807" width="943" height="791" rotated="true" frameX="-7" frameY="-11" frameWidth="808" frameHeight="963"/>
+	<SubTexture name="Mickey note up0013.png" x="1" y="1807" width="943" height="791" rotated="true" frameX="-7" frameY="-11" frameWidth="808" frameHeight="963"/>
+</TextureAtlas>
