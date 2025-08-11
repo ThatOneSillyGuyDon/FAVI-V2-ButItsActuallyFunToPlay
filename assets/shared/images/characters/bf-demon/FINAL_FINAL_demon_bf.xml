@@ -1,75 +1,76 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="FINAL FINAL demon bf.png">
-	<!-- Created with Adobe Animate version 19.2.1.408 -->
-	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="Demon Idle dance0000" x="0" y="0" width="766" height="888"/>
-	<SubTexture name="Demon Idle dance0001" x="781" y="0" width="766" height="888"/>
-	<SubTexture name="Demon Idle dance0002" x="1562" y="0" width="766" height="888"/>
-	<SubTexture name="Demon Idle dance0003" x="2343" y="0" width="766" height="888"/>
-	<SubTexture name="Demon Idle dance0004" x="3124" y="0" width="766" height="888"/>
-	<SubTexture name="Demon Idle dance0005" x="3124" y="0" width="766" height="888"/>
-	<SubTexture name="Demon Idle dance0006" x="0" y="903" width="766" height="888"/>
-	<SubTexture name="Demon Idle dance0007" x="0" y="903" width="766" height="888"/>
-	<SubTexture name="Demon Idle dance0008" x="781" y="903" width="766" height="888"/>
-	<SubTexture name="Demon Idle dance0009" x="781" y="903" width="766" height="888"/>
-	<SubTexture name="Demon Idle dance0010" x="1562" y="903" width="766" height="888"/>
-	<SubTexture name="Demon Idle dance0011" x="1562" y="903" width="766" height="888"/>
-	<SubTexture name="Demon Idle dance0012" x="1562" y="903" width="766" height="888"/>
-	<SubTexture name="Demon Idle dance0013" x="1562" y="903" width="766" height="888"/>
-	<SubTexture name="Demon note down0000" x="2343" y="903" width="865" height="715"/>
-	<SubTexture name="Demon note down0001" x="2343" y="903" width="865" height="715"/>
-	<SubTexture name="Demon note down0002" x="3223" y="903" width="865" height="715"/>
-	<SubTexture name="Demon note down0003" x="3223" y="903" width="865" height="715"/>
-	<SubTexture name="Demon note down0004" x="0" y="1806" width="865" height="715"/>
-	<SubTexture name="Demon note down0005" x="0" y="1806" width="865" height="715"/>
-	<SubTexture name="Demon note down0006" x="880" y="1806" width="865" height="715"/>
-	<SubTexture name="Demon note down0007" x="880" y="1806" width="865" height="715"/>
-	<SubTexture name="Demon note down0008" x="1760" y="1806" width="865" height="715"/>
-	<SubTexture name="Demon note down0009" x="1760" y="1806" width="865" height="715"/>
-	<SubTexture name="Demon note down0010" x="1760" y="1806" width="865" height="715"/>
-	<SubTexture name="Demon note down0011" x="1760" y="1806" width="865" height="715"/>
-	<SubTexture name="Demon note down0012" x="1760" y="1806" width="865" height="715"/>
-	<SubTexture name="Demon note down0013" x="1760" y="1806" width="865" height="715"/>
-	<SubTexture name="Demon note left0000" x="2640" y="1806" width="947" height="870"/>
-	<SubTexture name="Demon note left0001" x="2640" y="1806" width="947" height="870"/>
-	<SubTexture name="Demon note left0002" x="0" y="2691" width="947" height="870"/>
-	<SubTexture name="Demon note left0003" x="0" y="2691" width="947" height="870"/>
-	<SubTexture name="Demon note left0004" x="962" y="2691" width="947" height="870"/>
-	<SubTexture name="Demon note left0005" x="962" y="2691" width="947" height="870"/>
-	<SubTexture name="Demon note left0006" x="1924" y="2691" width="947" height="870"/>
-	<SubTexture name="Demon note left0007" x="1924" y="2691" width="947" height="870"/>
-	<SubTexture name="Demon note left0008" x="2886" y="2691" width="947" height="870"/>
-	<SubTexture name="Demon note left0009" x="2886" y="2691" width="947" height="870"/>
-	<SubTexture name="Demon note left0010" x="2886" y="2691" width="947" height="870"/>
-	<SubTexture name="Demon note left0011" x="2886" y="2691" width="947" height="870"/>
-	<SubTexture name="Demon note left0012" x="2886" y="2691" width="947" height="870"/>
-	<SubTexture name="Demon note left0013" x="2886" y="2691" width="947" height="870"/>
-	<SubTexture name="Demon note right0000" x="0" y="3576" width="903" height="888"/>
-	<SubTexture name="Demon note right0001" x="0" y="3576" width="903" height="888"/>
-	<SubTexture name="Demon note right0002" x="918" y="3576" width="903" height="888"/>
-	<SubTexture name="Demon note right0003" x="918" y="3576" width="903" height="888"/>
-	<SubTexture name="Demon note right0004" x="1836" y="3576" width="903" height="888"/>
-	<SubTexture name="Demon note right0005" x="1836" y="3576" width="903" height="888"/>
-	<SubTexture name="Demon note right0006" x="2754" y="3576" width="903" height="888"/>
-	<SubTexture name="Demon note right0007" x="2754" y="3576" width="903" height="888"/>
-	<SubTexture name="Demon note right0008" x="0" y="4479" width="903" height="888"/>
-	<SubTexture name="Demon note right0009" x="0" y="4479" width="903" height="888"/>
-	<SubTexture name="Demon note right0010" x="0" y="4479" width="903" height="888"/>
-	<SubTexture name="Demon note right0011" x="0" y="4479" width="903" height="888"/>
-	<SubTexture name="Demon note right0012" x="0" y="4479" width="903" height="888"/>
-	<SubTexture name="Demon note right0013" x="0" y="4479" width="903" height="888"/>
-	<SubTexture name="Demon note up0000" x="918" y="4479" width="861" height="1039"/>
-	<SubTexture name="Demon note up0001" x="918" y="4479" width="861" height="1039"/>
-	<SubTexture name="Demon note up0002" x="1794" y="4479" width="861" height="1039"/>
-	<SubTexture name="Demon note up0003" x="1794" y="4479" width="861" height="1039"/>
-	<SubTexture name="Demon note up0004" x="2670" y="4479" width="861" height="1039"/>
-	<SubTexture name="Demon note up0005" x="2670" y="4479" width="861" height="1039"/>
-	<SubTexture name="Demon note up0006" x="0" y="5533" width="861" height="1039"/>
-	<SubTexture name="Demon note up0007" x="0" y="5533" width="861" height="1039"/>
-	<SubTexture name="Demon note up0008" x="876" y="5533" width="861" height="1039"/>
-	<SubTexture name="Demon note up0009" x="876" y="5533" width="861" height="1039"/>
-	<SubTexture name="Demon note up0010" x="876" y="5533" width="861" height="1039"/>
-	<SubTexture name="Demon note up0011" x="876" y="5533" width="861" height="1039"/>
-	<SubTexture name="Demon note up0012" x="876" y="5533" width="861" height="1039"/>
-	<SubTexture name="Demon note up0013" x="876" y="5533" width="861" height="1039"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="FINAL_FINAL_demon_bf.png" width="4954" height="4315">
+	<SubTexture name="Demon Idle dance0000.png" x="3555" y="1689" width="740" height="838" frameX="-8" frameY="-40" frameWidth="766" frameHeight="888"/>
+	<SubTexture name="Demon Idle dance0001.png" x="3435" y="3564" width="837" height="749" rotated="true" frameX="-6" frameY="-42" frameWidth="766" frameHeight="888"/>
+	<SubTexture name="Demon Idle dance0002.png" x="1729" y="3560" width="851" height="744" rotated="true" frameX="-12" frameY="-28" frameWidth="766" frameHeight="888"/>
+	<SubTexture name="Demon Idle dance0003.png" x="2583" y="3564" width="849" height="745" rotated="true" frameX="-11" frameY="-30" frameWidth="766" frameHeight="888"/>
+	<SubTexture name="Demon Idle dance0004.png" x="862" y="3554" width="864" height="738" rotated="true" frameX="-14" frameY="-15" frameWidth="766" frameHeight="888"/>
+	<SubTexture name="Demon Idle dance0005.png" x="862" y="3554" width="864" height="738" rotated="true" frameX="-14" frameY="-15" frameWidth="766" frameHeight="888"/>
+	<SubTexture name="Demon Idle dance0006.png" x="2687" y="2687" width="735" height="874" frameX="-15" frameY="-5" frameWidth="766" frameHeight="888"/>
+	<SubTexture name="Demon Idle dance0007.png" x="2687" y="2687" width="735" height="874" frameX="-15" frameY="-5" frameWidth="766" frameHeight="888"/>
+	<SubTexture name="Demon Idle dance0008.png" x="3406" y="1" width="735" height="875" frameX="-15" frameY="-4" frameWidth="766" frameHeight="888"/>
+	<SubTexture name="Demon Idle dance0009.png" x="3406" y="1" width="735" height="875" frameX="-15" frameY="-4" frameWidth="766" frameHeight="888"/>
+	<SubTexture name="Demon Idle dance0010.png" x="3425" y="2687" width="734" height="874" frameX="-15" frameY="-5" frameWidth="766" frameHeight="888"/>
+	<SubTexture name="Demon Idle dance0011.png" x="3425" y="2687" width="734" height="874" frameX="-15" frameY="-5" frameWidth="766" frameHeight="888"/>
+	<SubTexture name="Demon Idle dance0012.png" x="3425" y="2687" width="734" height="874" frameX="-15" frameY="-5" frameWidth="766" frameHeight="888"/>
+	<SubTexture name="Demon Idle dance0013.png" x="3425" y="2687" width="734" height="874" frameX="-15" frameY="-5" frameWidth="766" frameHeight="888"/>
+	<SubTexture name="Demon note down0000.png" x="4144" y="1" width="667" height="829" rotated="true" frameX="-8" frameY="-39" frameWidth="865" frameHeight="715"/>
+	<SubTexture name="Demon note down0001.png" x="4144" y="1" width="667" height="829" rotated="true" frameX="-8" frameY="-39" frameWidth="865" frameHeight="715"/>
+	<SubTexture name="Demon note down0002.png" x="4275" y="3379" width="678" height="848" rotated="true" frameX="-8" frameY="-28" frameWidth="865" frameHeight="715"/>
+	<SubTexture name="Demon note down0003.png" x="4275" y="3379" width="678" height="848" rotated="true" frameX="-8" frameY="-28" frameWidth="865" frameHeight="715"/>
+	<SubTexture name="Demon note down0004.png" x="3791" y="879" width="844" height="696" frameX="-9" frameY="-10" frameWidth="865" frameHeight="715"/>
+	<SubTexture name="Demon note down0005.png" x="3791" y="879" width="844" height="696" frameX="-9" frameY="-10" frameWidth="865" frameHeight="715"/>
+	<SubTexture name="Demon note down0006.png" x="1" y="3611" width="845" height="703" frameX="-9" frameY="-4" frameWidth="865" frameHeight="715"/>
+	<SubTexture name="Demon note down0007.png" x="1" y="3611" width="845" height="703" frameX="-9" frameY="-4" frameWidth="865" frameHeight="715"/>
+	<SubTexture name="Demon note down0008.png" x="4162" y="2530" width="702" height="846" rotated="true" frameX="-8" frameY="-4" frameWidth="865" frameHeight="715"/>
+	<SubTexture name="Demon note down0009.png" x="4162" y="2530" width="702" height="846" rotated="true" frameX="-8" frameY="-4" frameWidth="865" frameHeight="715"/>
+	<SubTexture name="Demon note down0010.png" x="4162" y="2530" width="702" height="846" rotated="true" frameX="-8" frameY="-4" frameWidth="865" frameHeight="715"/>
+	<SubTexture name="Demon note down0011.png" x="4162" y="2530" width="702" height="846" rotated="true" frameX="-8" frameY="-4" frameWidth="865" frameHeight="715"/>
+	<SubTexture name="Demon note down0012.png" x="4162" y="2530" width="702" height="846" rotated="true" frameX="-8" frameY="-4" frameWidth="865" frameHeight="715"/>
+	<SubTexture name="Demon note down0013.png" x="4162" y="2530" width="702" height="846" rotated="true" frameX="-8" frameY="-4" frameWidth="865" frameHeight="715"/>
+	<SubTexture name="Demon note left0000.png" x="1" y="1878" width="923" height="857" frameX="-9" frameY="-5" frameWidth="947" frameHeight="870"/>
+	<SubTexture name="Demon note left0001.png" x="1" y="1878" width="923" height="857" frameX="-9" frameY="-5" frameWidth="947" frameHeight="870"/>
+	<SubTexture name="Demon note left0002.png" x="862" y="2752" width="916" height="799" frameX="-19" frameY="-62" frameWidth="947" frameHeight="870"/>
+	<SubTexture name="Demon note left0003.png" x="862" y="2752" width="916" height="799" frameX="-19" frameY="-62" frameWidth="947" frameHeight="870"/>
+	<SubTexture name="Demon note left0004.png" x="1781" y="2757" width="903" height="800" frameX="-34" frameY="-61" frameWidth="947" frameHeight="870"/>
+	<SubTexture name="Demon note left0005.png" x="1781" y="2757" width="903" height="800" frameX="-34" frameY="-61" frameWidth="947" frameHeight="870"/>
+	<SubTexture name="Demon note left0006.png" x="2660" y="1884" width="892" height="800" frameX="-46" frameY="-61" frameWidth="947" frameHeight="870"/>
+	<SubTexture name="Demon note left0007.png" x="2660" y="1884" width="892" height="800" frameX="-46" frameY="-61" frameWidth="947" frameHeight="870"/>
+	<SubTexture name="Demon note left0008.png" x="2897" y="887" width="891" height="799" frameX="-47" frameY="-62" frameWidth="947" frameHeight="870"/>
+	<SubTexture name="Demon note left0009.png" x="2897" y="887" width="891" height="799" frameX="-47" frameY="-62" frameWidth="947" frameHeight="870"/>
+	<SubTexture name="Demon note left0010.png" x="2897" y="887" width="891" height="799" frameX="-47" frameY="-62" frameWidth="947" frameHeight="870"/>
+	<SubTexture name="Demon note left0011.png" x="2897" y="887" width="891" height="799" frameX="-47" frameY="-62" frameWidth="947" frameHeight="870"/>
+	<SubTexture name="Demon note left0012.png" x="2897" y="887" width="891" height="799" frameX="-47" frameY="-62" frameWidth="947" frameHeight="870"/>
+	<SubTexture name="Demon note left0013.png" x="2897" y="887" width="891" height="799" frameX="-47" frameY="-62" frameWidth="947" frameHeight="870"/>
+	<SubTexture name="Demon note right0000.png" x="2530" y="1" width="873" height="883" rotated="true" frameX="-10" frameY="-7" frameWidth="903" frameHeight="888"/>
+	<SubTexture name="Demon note right0001.png" x="2530" y="1" width="873" height="883" rotated="true" frameX="-10" frameY="-7" frameWidth="903" frameHeight="888"/>
+	<SubTexture name="Demon note right0002.png" x="2014" y="1006" width="880" height="875" frameX="-8" frameY="-5" frameWidth="903" frameHeight="888"/>
+	<SubTexture name="Demon note right0003.png" x="2014" y="1006" width="880" height="875" frameX="-8" frameY="-5" frameWidth="903" frameHeight="888"/>
+	<SubTexture name="Demon note right0004.png" x="927" y="1878" width="870" height="871" frameX="-7" frameY="-8" frameWidth="903" frameHeight="888"/>
+	<SubTexture name="Demon note right0005.png" x="927" y="1878" width="870" height="871" frameX="-7" frameY="-8" frameWidth="903" frameHeight="888"/>
+	<SubTexture name="Demon note right0006.png" x="1" y="2738" width="858" height="870" frameX="-6" frameY="-9" frameWidth="903" frameHeight="888"/>
+	<SubTexture name="Demon note right0007.png" x="1" y="2738" width="858" height="870" frameX="-6" frameY="-9" frameWidth="903" frameHeight="888"/>
+	<SubTexture name="Demon note right0008.png" x="1800" y="1884" width="857" height="870" frameX="-6" frameY="-10" frameWidth="903" frameHeight="888"/>
+	<SubTexture name="Demon note right0009.png" x="1800" y="1884" width="857" height="870" frameX="-6" frameY="-10" frameWidth="903" frameHeight="888"/>
+	<SubTexture name="Demon note right0010.png" x="1800" y="1884" width="857" height="870" frameX="-6" frameY="-10" frameWidth="903" frameHeight="888"/>
+	<SubTexture name="Demon note right0011.png" x="1800" y="1884" width="857" height="870" frameX="-6" frameY="-10" frameWidth="903" frameHeight="888"/>
+	<SubTexture name="Demon note right0012.png" x="1800" y="1884" width="857" height="870" frameX="-6" frameY="-10" frameWidth="903" frameHeight="888"/>
+	<SubTexture name="Demon note right0013.png" x="1800" y="1884" width="857" height="870" frameX="-6" frameY="-10" frameWidth="903" frameHeight="888"/>
+	<SubTexture name="Demon note up0000.png" x="846" y="1" width="833" height="1025" frameX="-15" frameY="-5" frameWidth="861" frameHeight="1039"/>
+	<SubTexture name="Demon note up0001.png" x="846" y="1" width="833" height="1025" frameX="-15" frameY="-5" frameWidth="861" frameHeight="1039"/>
+	<SubTexture name="Demon note up0002.png" x="1" y="1" width="842" height="1019" frameX="-9" frameY="-11" frameWidth="861" frameHeight="1039"/>
+	<SubTexture name="Demon note up0003.png" x="1" y="1" width="842" height="1019" frameX="-9" frameY="-11" frameWidth="861" frameHeight="1039"/>
+	<SubTexture name="Demon note up0004.png" x="1" y="1029" width="1006" height="846" rotated="true" frameX="-6" frameY="-24" frameWidth="861" frameHeight="1039"/>
+	<SubTexture name="Demon note up0005.png" x="1" y="1029" width="1006" height="846" rotated="true" frameX="-6" frameY="-24" frameWidth="861" frameHeight="1039"/>
+	<SubTexture name="Demon note up0006.png" x="1682" y="1" width="845" height="1002" frameX="-7" frameY="-28" frameWidth="861" frameHeight="1039"/>
+	<SubTexture name="Demon note up0007.png" x="1682" y="1" width="845" height="1002" frameX="-7" frameY="-28" frameWidth="861" frameHeight="1039"/>
+	<SubTexture name="Demon note up0008.png" x="1010" y="1029" width="1001" height="846" rotated="true" frameX="-6" frameY="-29" frameWidth="861" frameHeight="1039"/>
+	<SubTexture name="Demon note up0009.png" x="1010" y="1029" width="1001" height="846" rotated="true" frameX="-6" frameY="-29" frameWidth="861" frameHeight="1039"/>
+	<SubTexture name="Demon note up0010.png" x="1010" y="1029" width="1001" height="846" rotated="true" frameX="-6" frameY="-29" frameWidth="861" frameHeight="1039"/>
+	<SubTexture name="Demon note up0011.png" x="1010" y="1029" width="1001" height="846" rotated="true" frameX="-6" frameY="-29" frameWidth="861" frameHeight="1039"/>
+	<SubTexture name="Demon note up0012.png" x="1010" y="1029" width="1001" height="846" rotated="true" frameX="-6" frameY="-29" frameWidth="861" frameHeight="1039"/>
+	<SubTexture name="Demon note up0013.png" x="1010" y="1029" width="1001" height="846" rotated="true" frameX="-6" frameY="-29" frameWidth="861" frameHeight="1039"/>
 </TextureAtlas>
