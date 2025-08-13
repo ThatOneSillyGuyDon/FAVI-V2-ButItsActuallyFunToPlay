@@ -15,12 +15,7 @@ class YouveBeenBlessed extends BaseStage
 	var wires:FlxSprite;
 	var lights:FlxSprite;
 	var chainsFrontofLight:FlxSprite;
-
-	var moodyLighting:FlxSprite;
 	var lightsOverlay:FlxSprite;
-	var darkness:FlxSprite;
-	var overlayBehindBF:FlxSprite;
-	var randomColorBullshitIDK:FlxSprite;
 
 	// SHADER FOR BLESS ONLY CUZ IM DUMBASS - MalyPlus
 	var othershader:FlxRuntimeShader = new FlxRuntimeShader(Shaders.blessLightsShit);
@@ -32,8 +27,16 @@ class YouveBeenBlessed extends BaseStage
 		vault.antialiasing = ClientPrefs.data.antialiasing;
 		add(vault);
 
+		var vaultShader = new DropShadowShader();
+		vaultShader.setAdjustColor(-40, -23, -9, -20);
+		vaultShader.angle = 90;
+		vaultShader.distance = 45;
+		vaultShader.color = 0xff593021;
+		vaultShader.threshold = 0.2;
 		vaultDoor = new FlxSprite(1750, 340).loadGraphic(Paths.image(PlayState.pathway + 'BACKGROUND/vaultDoor'));
 		vaultDoor.antialiasing = ClientPrefs.data.antialiasing;
+		vaultDoor.shader = vaultShader;
+		vaultShader.attachedSprite = vaultDoor;
 		add(vaultDoor);
 	}
 	
@@ -66,33 +69,30 @@ class YouveBeenBlessed extends BaseStage
 
 		//OVERLAYS
 
-		moodyLighting = new FlxSprite(0, 0).loadGraphic(Paths.image(PlayState.pathway + 'OVERLAYS/MoodyLighting'));
-		moodyLighting.blend = "overlay";
-		moodyLighting.alpha = 0.37;
-		add(moodyLighting);
-
-		overlayBehindBF = new FlxSprite(0, 0).loadGraphic(Paths.image(PlayState.pathway + 'OVERLAYS/DarknessBehindEverett'));
-		overlayBehindBF.blend = "darken";
-		overlayBehindBF.alpha = 0.57;
-		add(overlayBehindBF);
-
+		var colorDodgeBlend = new BlendEffect();
+		colorDodgeBlend.blendMode = 6;
 		lightsOverlay = new FlxSprite(0, 0).loadGraphic(Paths.image(PlayState.pathway + 'OVERLAYS/Lights'));
-		lightsOverlay.blend = "add";
-		lightsOverlay.alpha = 0.51;
+		lightsOverlay.shader = colorDodgeBlend.shader;
+		lightsOverlay.alpha = 0.36;
+		lightsOverlay.color = 0xffffd9a0;
 		add(lightsOverlay);
 
-		darkness = new FlxSprite(0, 0).loadGraphic(Paths.image(PlayState.pathway + 'OVERLAYS/Darkness'));
-		darkness.blend = "overlay";
-		darkness.alpha = 0.77;
-		add(darkness);
-
-		randomColorBullshitIDK = new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height, FlxColor.fromRGB(255, 192, 92), false);
-		randomColorBullshitIDK.blend = "overlay";
-		randomColorBullshitIDK.alpha = 0.22;
-		randomColorBullshitIDK.scrollFactor.set(0, 0);
-		randomColorBullshitIDK.cameras = [camHUD];
-		add(randomColorBullshitIDK);
+		//CHARACTER SHADER
 		
+		var dropShader = new DropShadowShader();
+		dropShader.setAdjustColor(-40, -23, -3, -20);
+		dropShader.angle = 90;
+		dropShader.distance = 17;
+		dropShader.color = 0xfffbbc82;
+		dropShader.threshold = 0.15;
+		dropShader.antialiasAmt = 4;
+		game.boyfriend.shader = dropShader;
+		dropShader.attachedSprite = game.boyfriend;
+		game.boyfriend.animation.onFrameChange.add(function(name, frameNum, frameIndex) {
+			dropShader.updateFrameInfo(game.boyfriend.frame);
+		});
+
+
 		if (ClientPrefs.data.shaders)
 		{
 			camGame.setFilters(
