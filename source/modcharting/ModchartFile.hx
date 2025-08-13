@@ -456,25 +456,6 @@ class ModchartFile
                     else
                         json = emptyMod;
 
-                case "Bless":
-                    if (ClientPrefs.data.mechanics)
-                    {
-                        //Upscroll
-                        if (!ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
-                            json = Modchart.blessUpscroll;
-                        //Downscroll
-                        else if (ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
-                            json = Modchart.blessDownscroll;
-                        //Middle-Upscroll
-                        else if (!ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
-                            json = Modchart.blessMidUp;
-                        //Middle-Downscroll
-                        else if (ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
-                            json = Modchart.blessMidDown;
-                    }
-                    else
-                        json = emptyMod;
-
                 case "Dont Cross":
                     //So...Many...Goddamn....MODCHARTS....WHYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
                     if (ClientPrefs.data.mechanics && FlxG.random.bool(15))

@@ -9,20 +9,18 @@ import openfl.filters.ShaderFilter;
 class YouveBeenBlessed extends BaseStage
 {
 	//BLESS
-	var chains:FlxSprite;
 	var vault:FlxSprite;
-	var thingy:FlxSprite;
-	var chains2:FlxSprite;
-	var chains3:FlxSprite;
-	var light:FlxSprite;
-	var flair:FlxSprite;
-	var chainsI:FlxSprite;
-	var vaultI:FlxSprite;
-	var thingyI:FlxSprite;
-	var chainsI2:FlxSprite;
-	var chainsI3:FlxSprite;
-	public static var lightI:FlxSprite;
-	var flairI:FlxSprite;
+	var vaultDoor:FlxSprite;
+	var chainsBehindLight:FlxSprite;
+	var wires:FlxSprite;
+	var lights:FlxSprite;
+	var chainsFrontofLight:FlxSprite;
+
+	var moodyLighting:FlxSprite;
+	var lightsOverlay:FlxSprite;
+	var darkness:FlxSprite;
+	var overlayBehindBF:FlxSprite;
+	var randomColorBullshitIDK:FlxSprite;
 
 	// SHADER FOR BLESS ONLY CUZ IM DUMBASS - MalyPlus
 	var othershader:FlxRuntimeShader = new FlxRuntimeShader(Shaders.blessLightsShit);
@@ -30,71 +28,71 @@ class YouveBeenBlessed extends BaseStage
 
 	override function create()
 	{
-		vault = new FlxSprite(-200, -100).loadGraphic(Paths.image(PlayState.pathway + 'vault'));
-		vault.scale.set(2.45, 2.3);
+		vault = new FlxSprite(0, 0).loadGraphic(Paths.image(PlayState.pathway + 'BACKGROUND/MainBG'));
+		vault.antialiasing = ClientPrefs.data.antialiasing;
 		add(vault);
 
-		chains = new FlxSprite(-225, -100).loadGraphic(Paths.image(PlayState.pathway + 'chains1'));
-		chains.scale.set(2.5, 2.3);
-		chains.scrollFactor.set(1.2, 1.25);
-		chains2 = new FlxSprite(-225, -100).loadGraphic(Paths.image(PlayState.pathway + 'chains2'));
-		chains2.scale.set(2.5, 2.3);
-		chains2.scrollFactor.set(1.1, 1.2);
-		chains3 = new FlxSprite(-225, -100).loadGraphic(Paths.image(PlayState.pathway + 'chains3'));
-		chains3.scale.set(2.5, 2.3);
-		chains3.scrollFactor.set(1, 1.15);
-
-		light = new FlxSprite(-200, -100).loadGraphic(Paths.image(PlayState.pathway + 'lightSource'));
-		light.blend = DIFFERENCE;
-		light.alpha = 0.001;
-		light.scrollFactor.set(0.95, 1);
-		light.scale.set(2.45, 2.3);
-
-		flair = new FlxSprite(-200, -100).loadGraphic(Paths.image(PlayState.pathway + 'lightFlair'));
-		flair.blend = SCREEN;
-		flair.alpha = 0.001;
-		flair.scrollFactor.set(1.4, 1.25);
-		flair.scale.set(2.5, 2.4);
-
-		thingy = new FlxSprite(-200, -100).loadGraphic(Paths.image(PlayState.pathway + 'darkness'));
-		thingy.scale.set(2.45, 2.3);
-
-		lightI = new FlxSprite(-200, -100).loadGraphic(Paths.image(PlayState.pathway + 'lightInvert'));
-		lightI.blend = DIFFERENCE;
-		lightI.alpha = 0.37;
-		lightI.scrollFactor.set(0.95, 1);
-		lightI.scale.set(2.45, 2.3);
-		lightI.visible = false;
-		flairI = new FlxSprite(-200, -100).loadGraphic(Paths.image(PlayState.pathway + 'flairInvert'));
-		flairI.blend = SCREEN;
-		flairI.alpha = 0.6;
-		flairI.scrollFactor.set(1.4, 1.25);
-		flairI.scale.set(2.5, 2.4);
-		flairI.visible = false;
-
-		camGame.alpha = 0.001;
-		camHUD.alpha = 0.001;
+		vaultDoor = new FlxSprite(1750, 340).loadGraphic(Paths.image(PlayState.pathway + 'BACKGROUND/vaultDoor'));
+		vaultDoor.antialiasing = ClientPrefs.data.antialiasing;
+		add(vaultDoor);
 	}
 	
 	override function createPost()
 	{
-		game.boyfriend.setPosition(960, 530);
-		if (game.dad.curCharacter == 'white-noise-new') 
-			game.dad.setPosition(-680, -520); 
-		else 
-			game.dad.setPosition(90, 60);
+		game.dad.setPosition(2250, 450);
+		game.boyfriend.setPosition(2885, 1450);
 		game.gf.visible = false;
+
+		game.camBars.fade(FlxColor.BLACK, 0.0001);
+		camHUD.alpha = 0.001;
+
+		//FOREGROUND ELEMENTS
 		
-		add(chains3);
-		add(chains2);
-		add(chains);
-		add(light);
-		add(flair);
-		add(thingy);
+		chainsBehindLight = new FlxSprite(0, 0).loadGraphic(Paths.image(PlayState.pathway + 'FOREGROUND/ChainsBehindLight'));
+		chainsBehindLight.antialiasing = ClientPrefs.data.antialiasing;
+		add(chainsBehindLight);
 
-		add(lightI);
-		add(flairI);
+		wires = new FlxSprite(942, 0).loadGraphic(Paths.image(PlayState.pathway + 'FOREGROUND/WeirdHangingWires'));
+		wires.antialiasing = ClientPrefs.data.antialiasing;
+		add(wires);
 
+		lights = new FlxSprite(125, 0).loadGraphic(Paths.image(PlayState.pathway + 'FOREGROUND/HangingLights'));
+		lights.antialiasing = ClientPrefs.data.antialiasing;
+		add(lights);
+
+		chainsFrontofLight = new FlxSprite(0, 0).loadGraphic(Paths.image(PlayState.pathway + 'FOREGROUND/ChainsFrontofLight'));
+		chainsFrontofLight.antialiasing = ClientPrefs.data.antialiasing;
+		add(chainsFrontofLight);
+
+		//OVERLAYS
+
+		moodyLighting = new FlxSprite(0, 0).loadGraphic(Paths.image(PlayState.pathway + 'OVERLAYS/MoodyLighting'));
+		moodyLighting.blend = "overlay";
+		moodyLighting.alpha = 0.37;
+		add(moodyLighting);
+
+		overlayBehindBF = new FlxSprite(0, 0).loadGraphic(Paths.image(PlayState.pathway + 'OVERLAYS/DarknessBehindEverett'));
+		overlayBehindBF.blend = "darken";
+		overlayBehindBF.alpha = 0.57;
+		add(overlayBehindBF);
+
+		lightsOverlay = new FlxSprite(0, 0).loadGraphic(Paths.image(PlayState.pathway + 'OVERLAYS/Lights'));
+		lightsOverlay.blend = "add";
+		lightsOverlay.alpha = 0.51;
+		add(lightsOverlay);
+
+		darkness = new FlxSprite(0, 0).loadGraphic(Paths.image(PlayState.pathway + 'OVERLAYS/Darkness'));
+		darkness.blend = "overlay";
+		darkness.alpha = 0.77;
+		add(darkness);
+
+		randomColorBullshitIDK = new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height, FlxColor.fromRGB(255, 192, 92), false);
+		randomColorBullshitIDK.blend = "overlay";
+		randomColorBullshitIDK.alpha = 0.22;
+		randomColorBullshitIDK.scrollFactor.set(0, 0);
+		randomColorBullshitIDK.cameras = [camHUD];
+		add(randomColorBullshitIDK);
+		
 		if (ClientPrefs.data.shaders)
 		{
 			camGame.setFilters(
@@ -122,6 +120,15 @@ class YouveBeenBlessed extends BaseStage
 	{
 		switch(eventName)
 		{
+			case 'Bless Events':
+				switch (flValue1)
+				{
+					case 1:
+						FlxTween.tween(dad, {x: 1050}, 7.5, {ease: FlxEase.sineInOut});
+
+				}
+			
+			/* Gonna Revamp This Later
 			case 'Bless Events':
 				switch (flValue1)
 				{
@@ -215,6 +222,7 @@ class YouveBeenBlessed extends BaseStage
 							camGame.setFilters([]);
 						}
 				}
+			*/
 		}
 	}
 }

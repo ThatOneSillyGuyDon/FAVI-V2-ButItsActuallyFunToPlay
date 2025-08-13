@@ -2746,7 +2746,7 @@ class PlayState extends MusicBeatState
 		// shitty system for the camera to stay updated
 		var wn_r:Float = 70;
 		var rotRateWn = curStep / 9.5;
-		var wn_toy = -640 + -Math.sin(rotRateWn * 2) * wn_r * 0.45;
+		var wn_toy = 450 + -Math.sin(rotRateWn * 2) * wn_r * 0.45;
 
 		if (dad.curCharacter == "white-noise-new")
 		{
@@ -5110,10 +5110,6 @@ class PlayState extends MusicBeatState
 		comboSpr.y += 60;
 		comboSpr.velocity.x += FlxG.random.int(1, 10) * playbackRate;
 
-		if (SONG.song == "Bless")
-			if (states.stages.YouveBeenBlessed.lightI != null && states.stages.YouveBeenBlessed.lightI.visible)
-				rating.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0);
-
 		comboGroup.add(rating);
 		
 		if (!ClientPrefs.data.comboStacking)
@@ -5189,10 +5185,6 @@ class PlayState extends MusicBeatState
 			numScore.velocity.y -= FlxG.random.int(140, 160) * playbackRate;
 			numScore.velocity.x = FlxG.random.float(-5, 5) * playbackRate;
 			numScore.visible = !ClientPrefs.data.hideHud;
-
-			if (SONG.song == "Bless")
-				if (states.stages.YouveBeenBlessed.lightI != null && states.stages.YouveBeenBlessed.lightI.visible)
-					numScore.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0);
 
 			//if (combo >= 10 || combo == 0)
 			if(showComboNum)
@@ -6102,11 +6094,7 @@ class PlayState extends MusicBeatState
 		skin = SONG.splashSkin;
 		var splash:NoteSplash = grpNoteSplashes.recycle(NoteSplash);
 		splash.setupNoteSplash(x, y, data, note);
-		if (states.stages.YouveBeenBlessed.lightI != null)
-			if (states.stages.YouveBeenBlessed.lightI.visible) 
-				splash.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0); 
-			else 
-				splash.setColorTransform(1, 1, 1, 1, 0, 0, 0, 0);
+		splash.setColorTransform(1, 1, 1, 1, 0, 0, 0, 0);
 		grpNoteSplashes.add(splash);
 	}
 

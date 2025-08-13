@@ -40,45 +40,45 @@ enum abstract CreditsData(String) from String to String {
     var laughTrack:String = '{
 	"settings":
 		[
-			"Art: Just_Kuro, Jason &\nGreyDoodlez\n\nChart: ThatOneSillyGuy\n\nCode: Jason & ThatOneSillyGuy\n\nMusic: PualTheUnTruest", -5, -25
+			"Art: Just_Kuro, Jason &\nGreyDoodlez\n\nChart: ThatOneSillyGuy\n\nCode: Jason & ThatOneSillyGuy\n\nMusic: Lasagnacat", -5, -25
 		]
 	}';
     var bless:String = '{
 	"settings":
 		[
-			"Art: ThatOneSillyGuy\nAustinWProductions, JDrive, Teelbe\n& Moe\n\nChart: ThatOneSillyGuy\n\nCode: Jason, MalyPlus \n& ThatOneSillyGuy\n\nMusic: PualTheUnTruest", -30, -28
+			"Art: ThatOneSillyGuy\nAustinWProductions, JDrive, Teelbe\n& Moe\n\nChart: ThatOneSillyGuy\n\nCode: Jason, MalyPlus \n& ThatOneSillyGuy\n\nMusic: Lasagnacat", -30, -28
 		]
 	}';
     var dontCross1:String = '{
 	"settings":
 		[
-			"Art: Domingo & Moe\n\nChart: Dreupy\n\nCode: ThatOneSillyGuy\n\nMusic: PualTheUnTruest", 25, -25
+			"Art: Domingo & Moe\n\nChart: Dreupy\n\nCode: ThatOneSillyGuy\n\nMusic: Lasagnacat", 25, -25
 		]
 	}';
     var dontCross2:String = '{
 	"settings":
 		[
-			"Art: Domingo & Moe\n\nChart: Purg\n\nCode: ThatOneSillyGuy\n\nMusic: PualTheUnTruest", 25, -25
+			"Art: Domingo & Moe\n\nChart: Purg\n\nCode: ThatOneSillyGuy\n\nMusic: Lasagnacat", 25, -25
 		]
 	}';
     var dontCross3:String = '{
 	"settings":
 		[
-			"Art: Domingo & Moe\n\nChart: ThatOneSillyGuy\n\nCode: ThatOneSillyGuy\n\nMusic: PualTheUnTruest", 25, -25
+			"Art: Domingo & Moe\n\nChart: ThatOneSillyGuy\n\nCode: ThatOneSillyGuy\n\nMusic: Lasagnacat", 25, -25
 		]
 	}';
 	// In Case You'll add the dealthly chart
 	var dontCross4:String = '{
 		"settings":
 		[
-			"Art: Domingo & Moe\n\nChart: MalyPlus\n\nCode: ThatOneSillyGuy\n\nMusic: PualTheUnTruest", 25, -25
+			"Art: Domingo & Moe\n\nChart: MalyPlus\n\nCode: ThatOneSillyGuy\n\nMusic: Lasagnacat", 25, -25
 		]
 	}';
 
 	var dontCross5:String = '{
 		"settings":
 		[
-			"Art: Domingo & Moe\n\nChart: rezeo285\n\nCode: ThatOneSillyGuy\n\nMusic: PualTheUnTruest", 25, -25
+			"Art: Domingo & Moe\n\nChart: rezeo285\n\nCode: ThatOneSillyGuy\n\nMusic: Lasagnacat", 25, -25
 		]
 	}';
     var warDilemma:String = '{
@@ -90,7 +90,7 @@ enum abstract CreditsData(String) from String to String {
     var twistedGrins:String = '{
 	"settings":
 		[
-			"Art: AustinWProduction,\nTeelbe & TrellXD\n\nChart: Purg\n\nCode: Goober Man\n\nMusic: PualTheUnTruest\n\nVoice Actor: AustinWProductions", -24, -25
+			"Art: AustinWProduction,\nTeelbe & TrellXD\n\nChart: Purg\n\nCode: Goober Man\n\nMusic: Lasagnacat\n\nVoice Actor: AustinWProductions", -24, -25
 		]
 	}';
 	// cough cough health drain mechanic cough cough
@@ -121,7 +121,7 @@ enum abstract CreditsData(String) from String to String {
 	var scrapped:String = '{
 	"settings":
 		[
-			"Art: Ms.IDK, & Teelbe\n\nChart: Dreupy\n\nCode: ThatOneSillyGuy\n\nMusic: PualTheUnTruest", 20, -25
+			"Art: Ms.IDK, & Teelbe\n\nChart: Dreupy\n\nCode: ThatOneSillyGuy\n\nMusic: Lasagnacat", 20, -25
 		]
 	}';
 	var wbb:String = '{
