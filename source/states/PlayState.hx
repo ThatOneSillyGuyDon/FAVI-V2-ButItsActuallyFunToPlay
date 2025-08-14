@@ -1365,7 +1365,7 @@ class PlayState extends MusicBeatState
 
 		songCard = new SongCard();
 		songCard.cameras = [camOther];
-		songCard.playCardAnim(0);
+		//songCard.playCardAnim(0);
 		add(songCard);
 
 		super.create();
