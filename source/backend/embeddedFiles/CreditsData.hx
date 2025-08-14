@@ -46,7 +46,7 @@ enum abstract CreditsData(String) from String to String {
     var bless:String = '{
 	"settings":
 		[
-			"Art: ThatOneSillyGuy\nAustinWProductions, JDrive, Teelbe\n& Moe\n\nChart: ThatOneSillyGuy\n\nCode: Jason, MalyPlus \n& ThatOneSillyGuy\n\nMusic: Lasagnacat", -30, -28
+			"Art: ThatOneSillyGuy\nAustinWProductions, JDrive, Teelbe\n& Moe\n\nChart: Purg\n\nCode: Jason, MalyPlus \n& ThatOneSillyGuy\n\nMusic: Lasagnacat", -30, -28
 		]
 	}';
     var dontCross1:String = '{

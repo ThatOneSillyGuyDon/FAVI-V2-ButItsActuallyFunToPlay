@@ -260,6 +260,8 @@ class PlayState extends MusicBeatState
 	public var timeBar:Bar;
 	var songPercent:Float = 0;
 
+	var everythingIsInverted:Bool = false;
+
 	public var ratingsData:Array<Rating> = Rating.loadDefault();
 	
 	private var generatedMusic:Bool = false;
@@ -5111,6 +5113,14 @@ class PlayState extends MusicBeatState
 		comboSpr.y += 60;
 		comboSpr.velocity.x += FlxG.random.int(1, 10) * playbackRate;
 
+		if (SONG.song == "Bless")
+		{
+			if (everythingIsInverted)
+				rating.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0);
+			else
+				rating.setColorTransform(1, 1, 1, 1, 0, 0, 0, 0);
+		}
+
 		comboGroup.add(rating);
 		
 		if (!ClientPrefs.data.comboStacking)
@@ -5186,6 +5196,14 @@ class PlayState extends MusicBeatState
 			numScore.velocity.y -= FlxG.random.int(140, 160) * playbackRate;
 			numScore.velocity.x = FlxG.random.float(-5, 5) * playbackRate;
 			numScore.visible = !ClientPrefs.data.hideHud;
+
+			if (SONG.song == "Bless")
+			{
+				if (everythingIsInverted)
+					numScore.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0);
+				else
+					numScore.setColorTransform(1, 1, 1, 1, 0, 0, 0, 0);
+			}
 
 			//if (combo >= 10 || combo == 0)
 			if(showComboNum)
@@ -6095,7 +6113,10 @@ class PlayState extends MusicBeatState
 		skin = SONG.splashSkin;
 		var splash:NoteSplash = grpNoteSplashes.recycle(NoteSplash);
 		splash.setupNoteSplash(x, y, data, note);
-		splash.setColorTransform(1, 1, 1, 1, 0, 0, 0, 0);
+		if (everythingIsInverted) 
+			splash.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0); 
+		else 
+			splash.setColorTransform(1, 1, 1, 1, 0, 0, 0, 0);
 		grpNoteSplashes.add(splash);
 	}
 

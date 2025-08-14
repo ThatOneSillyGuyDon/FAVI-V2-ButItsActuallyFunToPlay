@@ -165,104 +165,150 @@ class YouveBeenBlessed extends BaseStage
 				{
 					case 1:
 						FlxTween.tween(dad, {x: 1050}, 7.5, {ease: FlxEase.sineInOut});
-
-				}
-			
-			/* Gonna Revamp This Later
-			case 'Bless Events':
-				switch (flValue1)
-				{
-					case 1:
-						FlxTween.tween(light, {alpha: .37}, 2, {ease: FlxEase.circOut});
-						FlxTween.tween(flair, {alpha: .6}, 2, {ease: FlxEase.circOut});
 					case 2:
-						FlxTween.tween(light, {alpha: 0}, .3, {ease: FlxEase.circOut});
-						FlxTween.tween(flair, {alpha: 0}, .3, {ease: FlxEase.circOut});
-					case 3:
-						FlxTween.tween(light, {alpha: .37}, .2, {ease: FlxEase.circOut});
-						FlxTween.tween(flair, {alpha: .6}, .2, {ease: FlxEase.circOut});
-					case 4:
-						AppIcon.changeIcon("blessIcon");
-						CppAPI.lightMode();
-						for (blessableObjects in [game.dad, game.boyfriend, vault, chains, thingy, chains, chains2, chains3, game.iconP1, game.iconP2, game.healthBar, game.healthBarBG, game.fancyBarOverlay])
-							blessableObjects.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0);
-						for (textShit in [game.songTxt, game.watermarkTxt, game.scoreTxt])
-						{
-							textShit.color = FlxColor.BLACK;
-							textShit.borderColor = FlxColor.WHITE;
-						}
-						light.visible = false;
-						flair.visible = false;
-						lightI.visible = true;
-						flairI.visible = true;
-						game.playfieldRenderer.isInvertColors = true;
-					case 5:
-						light.visible = true;
-						flair.visible = true;
-						lightI.visible = false;
-						flairI.visible = false;
-						game.playfieldRenderer.isInvertColors = false;
-						FlxTween.tween(camHUD, {alpha: 1}, 3);
-						for (blessableObjects in [game.dad, game.boyfriend, vault, chains, thingy, chains, chains2, chains3, game.iconP1, game.iconP2, game.healthBar, game.healthBarBG, game.fancyBarOverlay])
-							blessableObjects.setColorTransform(1, 1, 1, 1, 0, 0, 0, 0);
-						for (textShit in [game.songTxt, game.watermarkTxt, game.scoreTxt])
-						{
-							textShit.color = FlxColor.WHITE;
-							textShit.borderColor = FlxColor.BLACK;
-						}
-						AppIcon.changeIcon("newIcon");
-						CppAPI.darkMode();
-					case 6:
-						AppIcon.changeIcon("blessIcon");
-						CppAPI.lightMode();
-						for (blessableObjects in [game.dad, game.boyfriend, vault, chains, thingy, chains, chains2, chains3, game.iconP1, game.iconP2, game.healthBar, game.healthBarBG, game.fancyBarOverlay])
-							blessableObjects.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0);
-						for (textShit in [game.songTxt, game.watermarkTxt, game.scoreTxt])
-						{
-							textShit.color = FlxColor.BLACK;
-							textShit.borderColor = FlxColor.WHITE;
-						}
-						light.visible = false;
-						flair.visible = false;
-						lightI.visible = true;
-						flairI.visible = true;
-						game.playfieldRenderer.isInvertColors = true;
-					case 7:
-						AppIcon.changeIcon("newIcon");
-						CppAPI.darkMode();
-						for (blessableObjects in [game.dad, game.boyfriend, vault, chains, thingy, chains, chains2, chains3, game.iconP1, game.iconP2, game.healthBar, game.healthBarBG, game.fancyBarOverlay])
-							FlxTween.tween(blessableObjects.colorTransform, {
-								redOffset: 0,
-								blueOffset: 0,
-								greenOffset: 0,
-								redMultiplier: 1,
-								blueMultiplier: 1,
-								greenMultiplier: 1
-							}, 2, {ease: FlxEase.quartOut});
-						for (textShit in [game.songTxt, game.watermarkTxt, game.scoreTxt])
-						{
-							textShit.color = FlxColor.WHITE;
-							textShit.borderColor = FlxColor.BLACK;
-							textShit.alpha = 0;
-							FlxTween.tween(textShit, {alpha: 1}, 2, {ease: FlxEase.quartOut});
-						}
-					case 8:
 						if (ClientPrefs.data.shaders)
 						{
 							// We make ur Laptop fry till the end of the song :fire: - MalyPlus
 							camGame.setFilters([new ShaderFilter(othershader)]);
 						}
-					case 9:
-						lightI.visible = false;
-						thingy.visible = false;
-						flairI.visible = false;
-						game.playfieldRenderer.isInvertColors = false;
-						if (ClientPrefs.data.shaders)
-						{
-							camGame.setFilters([]);
-						}
+
 				}
-			*/
+			case 'Invert Shit':
+				var triggerInfo:Array<String> = value2.split(',');
+				if (value1.toLowerCase().trim() == "true")
+				{
+					AppIcon.changeIcon("blessIcon");
+					CppAPI.lightMode();
+
+					for (blessableObjects in [vault, vaultDoor, chainsBehindLight, wires, lights, chainsFrontofLight, lightsOverlay, dad, boyfriend, game.iconP1, game.iconP2, game.healthBar, game.healthBarBG, game.fancyBarOverlay])
+						FlxTween.tween(blessableObjects.colorTransform, {
+							redOffset: 255,
+							blueOffset: 255,
+							greenOffset: 255,
+							redMultiplier: -1,
+							blueMultiplier: -1,
+							greenMultiplier: -1
+						}, Std.parseFloat(triggerInfo[0]), {ease: returnTweenEase(triggerInfo[1])});
+
+					for (textShit in [game.songTxt, game.watermarkTxt, game.scoreTxt])
+					{
+						textShit.color = FlxColor.BLACK;
+						textShit.borderColor = FlxColor.WHITE;
+						textShit.alpha = 0;
+						FlxTween.tween(textShit, {alpha: 1}, Std.parseFloat(triggerInfo[0]), {ease: returnTweenEase(triggerInfo[1])});
+					}
+
+					game.playfieldRenderer.isInvertColors = true;
+					game.everythingIsInverted = true;
+				}
+				else
+				{
+					game.playfieldRenderer.isInvertColors = false;
+
+					for (blessableObjects in [vault, vaultDoor, chainsBehindLight, wires, lights, chainsFrontofLight, lightsOverlay, dad, boyfriend, game.iconP1, game.iconP2, game.healthBar, game.healthBarBG, game.fancyBarOverlay])
+						FlxTween.tween(blessableObjects.colorTransform, {
+							redOffset: 0,
+							blueOffset: 0,
+							greenOffset: 0,
+							redMultiplier: 1,
+							blueMultiplier: 1,
+							greenMultiplier: 1
+						}, Std.parseFloat(triggerInfo[0]), {ease: returnTweenEase(triggerInfo[1])});
+
+					for (textShit in [game.songTxt, game.watermarkTxt, game.scoreTxt])
+					{
+						textShit.color = FlxColor.WHITE;
+						textShit.borderColor = FlxColor.BLACK;
+						textShit.alpha = 0;
+						FlxTween.tween(textShit, {alpha: 1}, Std.parseFloat(triggerInfo[0]), {ease: returnTweenEase(triggerInfo[1])});
+					}
+
+					AppIcon.changeIcon("newIcon");
+					CppAPI.darkMode();
+					game.everythingIsInverted = false;
+				}
 		}
+	}
+
+	public static function returnTweenEase(ease:String = '')
+	{
+		switch (ease.toLowerCase())
+		{
+			case 'linear':
+				return FlxEase.linear;
+			case 'backin':
+				return FlxEase.backIn;
+			case 'backinout':
+				return FlxEase.backInOut;
+			case 'backout':
+				return FlxEase.backOut;
+			case 'bouncein':
+				return FlxEase.bounceIn;
+			case 'bounceinout':
+				return FlxEase.bounceInOut;
+			case 'bounceout':
+				return FlxEase.bounceOut;
+			case 'circin':
+				return FlxEase.circIn;
+			case 'circinout':
+				return FlxEase.circInOut;
+			case 'circout':
+				return FlxEase.circOut;
+			case 'cubein':
+				return FlxEase.cubeIn;
+			case 'cubeinout':
+				return FlxEase.cubeInOut;
+			case 'cubeout':
+				return FlxEase.cubeOut;
+			case 'elasticin':
+				return FlxEase.elasticIn;
+			case 'elasticinout':
+				return FlxEase.elasticInOut;
+			case 'elasticout':
+				return FlxEase.elasticOut;
+			case 'expoin':
+				return FlxEase.expoIn;
+			case 'expoinout':
+				return FlxEase.expoInOut;
+			case 'expoout':
+				return FlxEase.expoOut;
+			case 'quadin':
+				return FlxEase.quadIn;
+			case 'quadinout':
+				return FlxEase.quadInOut;
+			case 'quadout':
+				return FlxEase.quadOut;
+			case 'quartin':
+				return FlxEase.quartIn;
+			case 'quartinout':
+				return FlxEase.quartInOut;
+			case 'quartout':
+				return FlxEase.quartOut;
+			case 'quintin':
+				return FlxEase.quintIn;
+			case 'quintinout':
+				return FlxEase.quintInOut;
+			case 'quintout':
+				return FlxEase.quintOut;
+			case 'sinein':
+				return FlxEase.sineIn;
+			case 'sineinout':
+				return FlxEase.sineInOut;
+			case 'sineout':
+				return FlxEase.sineOut;
+			case 'smoothstepin':
+				return FlxEase.smoothStepIn;
+			case 'smoothstepinout':
+				return FlxEase.smoothStepInOut;
+			case 'smoothstepout':
+				return FlxEase.smoothStepInOut;
+			case 'smootherstepin':
+				return FlxEase.smootherStepIn;
+			case 'smootherstepinout':
+				return FlxEase.smootherStepInOut;
+			case 'smootherstepout':
+				return FlxEase.smootherStepOut;
+		}
+		return FlxEase.linear;
 	}
 }
