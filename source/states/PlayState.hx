@@ -950,12 +950,6 @@ class PlayState extends MusicBeatState
 		noteGroup = new FlxTypedGroup<FlxBasic>();
 		add(noteGroup);
 
-		switch(curStage)
-		{
-			case "vaultRoom":
-				dad.blend = ADD;
-		}
-
 		blendFlash = new FlxSprite().makeGraphic(1, 1, 0xFFFFFFFF);
 		blendFlash.scale.set(FlxG.width * 5, FlxG.height * 5);
 		blendFlash.alpha = 0.0001;

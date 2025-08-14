@@ -1,7 +1,7 @@
 package states.stages;
 
 import states.stages.objects.*;
-
+import openfl.display.BlendMode;
 #if !flash 
 import openfl.filters.ShaderFilter;
 #end
@@ -17,6 +17,8 @@ class YouveBeenBlessed extends BaseStage
 	var chainsFrontofLight:FlxSprite;
 	var lightsOverlay:FlxSprite;
 
+	var dropShadowArray:Array<DropShadowShader> = [];
+
 	// SHADER FOR BLESS ONLY CUZ IM DUMBASS - MalyPlus
 	var othershader:FlxRuntimeShader = new FlxRuntimeShader(Shaders.blessLightsShit);
 	public var shaderAnim:Float = 0;
@@ -27,19 +29,50 @@ class YouveBeenBlessed extends BaseStage
 		vault.antialiasing = ClientPrefs.data.antialiasing;
 		add(vault);
 
-		var vaultShader = new DropShadowShader();
-		vaultShader.setAdjustColor(-40, -23, -9, -20);
-		vaultShader.angle = 90;
-		vaultShader.distance = 45;
-		vaultShader.color = 0xff593021;
-		vaultShader.threshold = 0.2;
+		// SETUP DROP SHADOW SHADER CONFIGS
+		for (i in 0...6)
+		{
+			var shader = new DropShadowShader();
+			switch(i)
+			{
+				case 0:
+					shader.setAdjustColor(-40, -23, -9, -20); //VAULT DOOR
+					shader.angle = 90;
+					shader.distance = 45;
+					shader.color = 0xff593d21;
+					shader.threshold = 0.2;
+				case 4:
+					shader.setAdjustColor(-36, -20, 20, -20); //EVERETT
+					shader.angle = 90;
+					shader.distance = 17;
+					shader.color = 0xff614122;
+					shader.threshold = 0.15;
+					shader.antialiasAmt = 4;
+				case 5:
+					shader.setAdjustColor(-36, -20, 20, -30); //WHITE NOISE
+					shader.angle = 0;
+					shader.distance = 0;
+					shader.color = 0xff614122;
+					shader.threshold = 0.2;
+					shader.antialiasAmt = 3;
+				case 1 | 2 | 3:
+					shader.setAdjustColor(-40, -23, -9, -20); //FOREGROUND OBJECTS
+					shader.angle = 270;
+					shader.distance = 30;
+					shader.color = 0xffa98051;
+					shader.threshold = 0.2;
+			}
+			dropShadowArray.push(shader);
+		}
+
 		vaultDoor = new FlxSprite(1750, 340).loadGraphic(Paths.image(PlayState.pathway + 'BACKGROUND/vaultDoor'));
 		vaultDoor.antialiasing = ClientPrefs.data.antialiasing;
-		vaultDoor.shader = vaultShader;
-		vaultShader.attachedSprite = vaultDoor;
+		vaultDoor.shader = dropShadowArray[0];
+		dropShadowArray[0].attachedSprite = vaultDoor;
 		add(vaultDoor);
 	}
 	
+	var blendModes:Array<BlendEffect> = [];
 	override function createPost()
 	{
 		game.dad.setPosition(2250, 450);
@@ -50,13 +83,19 @@ class YouveBeenBlessed extends BaseStage
 		camHUD.alpha = 0.001;
 
 		//FOREGROUND ELEMENTS
-		
-		chainsBehindLight = new FlxSprite(0, 0).loadGraphic(Paths.image(PlayState.pathway + 'FOREGROUND/ChainsBehindLight'));
+
+		chainsBehindLight = new FlxSprite(-50, -150).loadGraphic(Paths.image(PlayState.pathway + 'FOREGROUND/ChainsBehindLight'));
 		chainsBehindLight.antialiasing = ClientPrefs.data.antialiasing;
+		chainsBehindLight.shader = dropShadowArray[1];
+		dropShadowArray[1].attachedSprite = chainsBehindLight;
+		chainsBehindLight.scrollFactor.set(0.8, 0.8);
 		add(chainsBehindLight);
 
-		wires = new FlxSprite(942, 0).loadGraphic(Paths.image(PlayState.pathway + 'FOREGROUND/WeirdHangingWires'));
+		wires = new FlxSprite(942, -100).loadGraphic(Paths.image(PlayState.pathway + 'FOREGROUND/WeirdHangingWires'));
 		wires.antialiasing = ClientPrefs.data.antialiasing;
+		wires.shader = dropShadowArray[2];
+		dropShadowArray[2].attachedSprite = wires;
+		wires.scrollFactor.set(0.9, 0.9);
 		add(wires);
 
 		lights = new FlxSprite(125, 0).loadGraphic(Paths.image(PlayState.pathway + 'FOREGROUND/HangingLights'));
@@ -65,9 +104,12 @@ class YouveBeenBlessed extends BaseStage
 
 		chainsFrontofLight = new FlxSprite(0, 0).loadGraphic(Paths.image(PlayState.pathway + 'FOREGROUND/ChainsFrontofLight'));
 		chainsFrontofLight.antialiasing = ClientPrefs.data.antialiasing;
+		chainsFrontofLight.shader = dropShadowArray[3];
+		dropShadowArray[3].attachedSprite = chainsFrontofLight;
+		chainsFrontofLight.scrollFactor.set(1.1, 1.1);
 		add(chainsFrontofLight);
 
-		//OVERLAYS
+		//OVERLAY
 
 		var colorDodgeBlend = new BlendEffect();
 		colorDodgeBlend.blendMode = 6;
@@ -76,21 +118,19 @@ class YouveBeenBlessed extends BaseStage
 		lightsOverlay.alpha = 0.36;
 		lightsOverlay.color = 0xffffd9a0;
 		add(lightsOverlay);
-
-		//CHARACTER SHADER
-		
-		var dropShader = new DropShadowShader();
-		dropShader.setAdjustColor(-40, -23, -3, -20);
-		dropShader.angle = 90;
-		dropShader.distance = 17;
-		dropShader.color = 0xfffbbc82;
-		dropShader.threshold = 0.15;
-		dropShader.antialiasAmt = 4;
-		game.boyfriend.shader = dropShader;
-		dropShader.attachedSprite = game.boyfriend;
+	
+		game.boyfriend.shader = dropShadowArray[4];
+		dropShadowArray[4].attachedSprite = game.boyfriend;
 		game.boyfriend.animation.onFrameChange.add(function(name, frameNum, frameIndex) {
-			dropShader.updateFrameInfo(game.boyfriend.frame);
+			dropShadowArray[4].updateFrameInfo(game.boyfriend.frame);
 		});
+
+		game.dad.shader = dropShadowArray[5];
+		dropShadowArray[5].attachedSprite = game.dad;
+		game.dad.animation.onFrameChange.add(function(name, frameNum, frameIndex) {
+			dropShadowArray[5].updateFrameInfo(game.dad.frame);
+		});
+		game.dad.blend = BlendMode.ADD;
 
 
 		if (ClientPrefs.data.shaders)
