@@ -114991,6 +114991,11 @@ enum abstract Chart(String) from String to String {
 						"Manage Lyrics",
 						"text",
 						"0, Give me your smile., 0.03"
+					],
+					[
+						"Camera Event",
+						"Fade",
+						"0,0,0,2.5,true"
 					]
 				]
 			],

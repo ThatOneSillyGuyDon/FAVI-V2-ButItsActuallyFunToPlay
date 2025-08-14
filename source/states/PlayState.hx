@@ -248,6 +248,8 @@ class PlayState extends MusicBeatState
 	public var camZoomingDecay:Float = 1;
 	private var curSong:String = "";
 
+	public static var songCard:SongCard;
+
 	public var gfSpeed:Int = 1;
 	public var healthThing:Float = 1;
 	public var healthLerp:Float = 1;
@@ -1360,6 +1362,11 @@ class PlayState extends MusicBeatState
 
 		subtitles = new CaptionsBox(camOther);
 		add(subtitles);
+
+		songCard = new SongCard();
+		songCard.cameras = [camOther];
+		songCard.playCardAnim(0);
+		add(songCard);
 
 		super.create();
 		Paths.clearUnusedMemory();
