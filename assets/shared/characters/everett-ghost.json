@@ -1,0 +1,124 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "Bf idle dance",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				160,
+				-190
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "Bf note down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-90,
+				15
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "Bf note right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				190,
+				-50
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "Bf note left",
+			"indices": []
+		},
+		{
+			"offsets": [
+				160,
+				-190
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWNmiss",
+			"loop": false,
+			"name": "Bf miss down"
+		},
+		{
+			"offsets": [
+				-35,
+				50
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "Bf note up"
+		},
+		{
+			"offsets": [
+				-35,
+				50
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUPmiss",
+			"loop": false,
+			"name": "bf miss up"
+		},
+		{
+			"offsets": [
+				-91,
+				13
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHTmiss",
+			"loop": false,
+			"name": "bf miss right"
+		},
+		{
+			"offsets": [
+				173,
+				-50
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFTmiss",
+			"loop": false,
+			"name": "Bf miss left"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/White_noise_bf",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "everettmodern",
+	"flip_x": true,
+	"healthbar_colors": [
+		28,
+		151,
+		255
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"sing_duration": 6.1,
+	"scale": 1,
+	"_editor_isPlayer": false
+}

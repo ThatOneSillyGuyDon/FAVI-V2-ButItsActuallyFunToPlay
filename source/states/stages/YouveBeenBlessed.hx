@@ -17,6 +17,10 @@ class YouveBeenBlessed extends BaseStage
 	var chainsFrontofLight:FlxSprite;
 	var lightsOverlay:FlxSprite;
 
+	var vaultRoom:FlxSprite;
+	var vaultLight:FlxSprite;
+	var vaultFore:FlxSprite;
+	
 	var dropShadowArray:Array<DropShadowShader> = [];
 
 	// SHADER FOR BLESS ONLY CUZ IM DUMBASS - MalyPlus
@@ -25,6 +29,16 @@ class YouveBeenBlessed extends BaseStage
 
 	override function create()
 	{
+		vaultRoom = new FlxSprite(300, -350).loadGraphic(Paths.image(PlayState.pathway + "BACKGROUND/VaultBG"));
+		add(vaultRoom);
+
+		vaultLight = new FlxSprite(300, -350).loadGraphic(Paths.image(PlayState.pathway + "FOREGROUND/VaultFog"));
+		vaultLight.blend = BlendMode.ADD;
+		add(vaultLight);
+
+		vaultFore = new FlxSprite(300, -350).loadGraphic(Paths.image(PlayState.pathway + "FOREGROUND/VaultChains"));
+		add(vaultFore);
+
 		vault = new FlxSprite(0, 0).loadGraphic(Paths.image(PlayState.pathway + 'BACKGROUND/MainBG'));
 		vault.antialiasing = ClientPrefs.data.antialiasing;
 		add(vault);
@@ -153,6 +167,8 @@ class YouveBeenBlessed extends BaseStage
 		
 		if (ClientPrefs.data.shaders)
 			othershader.setFloat('iTime', shaderAnim);
+
+		boyfriend.x = 2885;
 	}
 
 	// For events
@@ -166,6 +182,19 @@ class YouveBeenBlessed extends BaseStage
 					case 1:
 						FlxTween.tween(dad, {x: 1050}, 7.5, {ease: FlxEase.sineInOut});
 					case 2:
+						FlxTween.tween(vaultDoor, {alpha: 0.0001}, 1, {ease: FlxEase.circInOut});
+					case 3:
+						for (stuff in [vault, vaultDoor, chainsBehindLight, wires, lights, chainsFrontofLight])
+						{
+							stuff.visible = false;
+						}
+					case 4:
+						for (stuff in [vault, vaultDoor, chainsBehindLight, wires, lights, chainsFrontofLight])
+						{
+							stuff.visible = true;
+						}
+						
+					case 5:
 						if (ClientPrefs.data.shaders)
 						{
 							// We make ur Laptop fry till the end of the song :fire: - MalyPlus
@@ -180,7 +209,10 @@ class YouveBeenBlessed extends BaseStage
 					AppIcon.changeIcon("blessIcon");
 					CppAPI.lightMode();
 
-					for (blessableObjects in [vault, vaultDoor, chainsBehindLight, wires, lights, chainsFrontofLight, lightsOverlay, dad, boyfriend, game.iconP1, game.iconP2, game.healthBar, game.healthBarBG, game.fancyBarOverlay])
+					dad.shader = null;
+					boyfriend.shader = null;
+
+					for (blessableObjects in [dad, boyfriend])
 						FlxTween.tween(blessableObjects.colorTransform, {
 							redOffset: 255,
 							blueOffset: 255,
@@ -188,24 +220,24 @@ class YouveBeenBlessed extends BaseStage
 							redMultiplier: -1,
 							blueMultiplier: -1,
 							greenMultiplier: -1
-						}, Std.parseFloat(triggerInfo[0]), {ease: returnTweenEase(triggerInfo[1])});
-
-					for (textShit in [game.songTxt, game.watermarkTxt, game.scoreTxt])
-					{
-						textShit.color = FlxColor.BLACK;
-						textShit.borderColor = FlxColor.WHITE;
-						textShit.alpha = 0;
-						FlxTween.tween(textShit, {alpha: 1}, Std.parseFloat(triggerInfo[0]), {ease: returnTweenEase(triggerInfo[1])});
-					}
-
-					game.playfieldRenderer.isInvertColors = true;
-					game.everythingIsInverted = true;
+						}, Std.parseFloat(triggerInfo[0]), {ease: returnTweenEase(triggerInfo[1])
+					});
 				}
 				else
 				{
-					game.playfieldRenderer.isInvertColors = false;
+					game.boyfriend.shader = dropShadowArray[4];
+					dropShadowArray[4].attachedSprite = game.boyfriend;
+					game.boyfriend.animation.onFrameChange.add(function(name, frameNum, frameIndex) {
+						dropShadowArray[4].updateFrameInfo(game.boyfriend.frame);
+					});
 
-					for (blessableObjects in [vault, vaultDoor, chainsBehindLight, wires, lights, chainsFrontofLight, lightsOverlay, dad, boyfriend, game.iconP1, game.iconP2, game.healthBar, game.healthBarBG, game.fancyBarOverlay])
+					game.dad.shader = dropShadowArray[5];
+					dropShadowArray[5].attachedSprite = game.dad;
+					game.dad.animation.onFrameChange.add(function(name, frameNum, frameIndex) {
+						dropShadowArray[5].updateFrameInfo(game.dad.frame);
+					});
+
+					for (blessableObjects in [dad, boyfriend])
 						FlxTween.tween(blessableObjects.colorTransform, {
 							redOffset: 0,
 							blueOffset: 0,
@@ -213,19 +245,14 @@ class YouveBeenBlessed extends BaseStage
 							redMultiplier: 1,
 							blueMultiplier: 1,
 							greenMultiplier: 1
-						}, Std.parseFloat(triggerInfo[0]), {ease: returnTweenEase(triggerInfo[1])});
+						}, Std.parseFloat(triggerInfo[0]), {
+							ease: returnTweenEase(triggerInfo[1])
+						}
+					);
 
-					for (textShit in [game.songTxt, game.watermarkTxt, game.scoreTxt])
-					{
-						textShit.color = FlxColor.WHITE;
-						textShit.borderColor = FlxColor.BLACK;
-						textShit.alpha = 0;
-						FlxTween.tween(textShit, {alpha: 1}, Std.parseFloat(triggerInfo[0]), {ease: returnTweenEase(triggerInfo[1])});
-					}
-
+					
 					AppIcon.changeIcon("newIcon");
 					CppAPI.darkMode();
-					game.everythingIsInverted = false;
 				}
 		}
 	}

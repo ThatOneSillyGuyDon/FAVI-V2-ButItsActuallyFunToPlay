@@ -260,8 +260,6 @@ class PlayState extends MusicBeatState
 	public var timeBar:Bar;
 	var songPercent:Float = 0;
 
-	var everythingIsInverted:Bool = false;
-
 	public var ratingsData:Array<Rating> = Rating.loadDefault();
 	
 	private var generatedMusic:Bool = false;
@@ -2745,11 +2743,30 @@ class PlayState extends MusicBeatState
 		callOnScripts('onUpdate', [elapsed]);
 
 		flashSprite.alpha = FlxMath.lerp(0, flashSprite.alpha, Math.exp(-elapsed * flashSpeed));
+
+		if (boyfriend.curCharacter == "everett-ghost")
+		{
+			iconP1.blend = ADD;
+			boyfriend.blend = ADD;
+		}
+		else
+		{
+			iconP1.blend = NORMAL;
+			boyfriend.blend = NORMAL;
+		}
 		
 		// shitty system for the camera to stay updated
 		var wn_r:Float = 70;
 		var rotRateWn = curStep / 9.5;
 		var wn_toy = 450 + -Math.sin(rotRateWn * 2) * wn_r * 0.45;
+		var bfg_toy = 1050 + Math.sin(rotRateWn * 2) * wn_r * 0.45;
+
+		if (boyfriend.curCharacter == "everett-ghost")
+		{
+			boyfriend.y += (bfg_toy - boyfriend.y) / 12;
+			iconP1.y += (((healthBar.y - 85) + Math.sin(rotRateWn * 2) * 20 * 0.45) - iconP1.y) / 12;
+			if (camGame.visible) moveCamera(SONG.notes[curSection].mustHitSection); // so it moves properly !!
+		}
 
 		if (dad.curCharacter == "white-noise-new")
 		{
@@ -5113,14 +5130,6 @@ class PlayState extends MusicBeatState
 		comboSpr.y += 60;
 		comboSpr.velocity.x += FlxG.random.int(1, 10) * playbackRate;
 
-		if (SONG.song == "Bless")
-		{
-			if (everythingIsInverted)
-				rating.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0);
-			else
-				rating.setColorTransform(1, 1, 1, 1, 0, 0, 0, 0);
-		}
-
 		comboGroup.add(rating);
 		
 		if (!ClientPrefs.data.comboStacking)
@@ -5196,14 +5205,6 @@ class PlayState extends MusicBeatState
 			numScore.velocity.y -= FlxG.random.int(140, 160) * playbackRate;
 			numScore.velocity.x = FlxG.random.float(-5, 5) * playbackRate;
 			numScore.visible = !ClientPrefs.data.hideHud;
-
-			if (SONG.song == "Bless")
-			{
-				if (everythingIsInverted)
-					numScore.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0);
-				else
-					numScore.setColorTransform(1, 1, 1, 1, 0, 0, 0, 0);
-			}
 
 			//if (combo >= 10 || combo == 0)
 			if(showComboNum)
@@ -6113,10 +6114,6 @@ class PlayState extends MusicBeatState
 		skin = SONG.splashSkin;
 		var splash:NoteSplash = grpNoteSplashes.recycle(NoteSplash);
 		splash.setupNoteSplash(x, y, data, note);
-		if (everythingIsInverted) 
-			splash.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0); 
-		else 
-			splash.setColorTransform(1, 1, 1, 1, 0, 0, 0, 0);
 		grpNoteSplashes.add(splash);
 	}
 
