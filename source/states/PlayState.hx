@@ -3164,18 +3164,20 @@ class PlayState extends MusicBeatState
 			checkEventNote();
 		}
 
-		#if debug
-		if(!endingSong && !startingSong) {
-			if (FlxG.keys.justPressed.ONE) {
-				KillNotes();
-				FlxG.sound.music.onComplete();
+		if (Main.debug)
+		{
+			if(!endingSong && !startingSong) {
+				if (FlxG.keys.justPressed.ONE) {
+					KillNotes();
+					inst.onComplete();
+				}
 			}
+	
 			if(FlxG.keys.justPressed.TWO) { //Go 10 seconds into the future :O
 				setSongTime(Conductor.songPosition + 10000);
 				clearNotesBefore(Conductor.songPosition);
 			}
 		}
-		#end
 
 		// the COOLER cam pos thing or whatever
 		// x, y, angle
