@@ -21,7 +21,7 @@ typedef JsonPrepData =
     var loadIcon:Array<Bool>;
 }
 
-typedef CaptionUtils =
+typedef SubtitlesUtil =
 {
     //TEXT
     @:optional var text:String;
@@ -48,18 +48,21 @@ typedef CaptionUtils =
     @:optional var positionData:Array<Dynamic>;
 }
 
-class CaptionsBox extends FlxTypedGroup<FlxBasic>
+class SubtitlesBox extends FlxTypedGroup<FlxBasic>
 {
+    public var tween1:Array<FlxTween> = [];
+    public var tween2:Array<FlxTween> = [];
     var captionsGrp:FlxTypedGroup<FlxTypeText>;
     var iconGrp:Array<HealthIcon> = [];
     var rawJson:String = null;
     var json:JsonPrepData;
-    public var tween1:FlxTween; //I need help getting arrays of tweens to work without the fucking game hitting me in the face with a "Null Object Reference" Error, it's actually so annoying given it has never done that before with Array<FlxTween> until now (don)
-    public var tween2:FlxTween;
+    var storedData:SubtitlesUtil;
 
-    public function new(camera:FlxCamera)
+    public function new(camera:FlxCamera, tweenHandler:Array<FlxTween>, tweenHandler2:Array<FlxTween>)
     {
         super();
+        tween1 = tweenHandler;
+        tween2 = tweenHandler2;
         json = checkForData();
         if (json == null)
             json = {totalCounter: 1, loadIcon: [true]};
@@ -89,11 +92,9 @@ class CaptionsBox extends FlxTypedGroup<FlxBasic>
                 add(speaker);
             }
         }
-        trace('loaded ${captionsGrp.length} captions');
     }
 
-    var storedData:CaptionUtils;
-    public function manageLyrics(event:EventType, data:CaptionUtils, captionCount:Int = 0)
+    public function manageLyrics(event:EventType, data:SubtitlesUtil, captionCount:Int = 0)
 	{
         switch (event)
         {
@@ -149,15 +150,15 @@ class CaptionsBox extends FlxTypedGroup<FlxBasic>
                 else
                     return trace('Either you counted wrong or you forgot the input value.');
             case MOVE:
-                if (tween1 != null)
-                    tween1.cancel();
-                if (tween2 != null)
-                    tween2.cancel();
+                if (tween1[captionCount] != null)
+                    tween1[captionCount].cancel();
+                if (tween2[captionCount] != null)
+                    tween2[captionCount].cancel();
                 if ((storedData.tweenData[0] != null || storedData.tweenData[0] != '') && captionsGrp.members[captionCount] != null)
                 {
                     if (iconGrp[captionCount] != null)
                     {
-                        tween1 = FlxTween.tween(iconGrp[captionCount],
+                        tween1[captionCount] = FlxTween.tween(iconGrp[captionCount],
                             {
                                 x: iconGrp[captionCount].x + storedData.tweenData[0],
                                 y: iconGrp[captionCount].y + storedData.tweenData[1],
@@ -171,7 +172,7 @@ class CaptionsBox extends FlxTypedGroup<FlxBasic>
                                 ease: data.easeStart,
                                 onComplete: function(t:FlxTween)
                                 {
-                                    tween1 = FlxTween.tween(iconGrp[captionCount],
+                                    tween1[captionCount] = FlxTween.tween(iconGrp[captionCount],
                                         {
                                             x: iconGrp[captionCount].x + storedData.tweenData[6],
                                             y: iconGrp[captionCount].y + storedData.tweenData[7],
@@ -186,7 +187,7 @@ class CaptionsBox extends FlxTypedGroup<FlxBasic>
                                             startDelay: data.delayTimer,
                                             onComplete: function(t:FlxTween)
                                             {
-                                                tween1 = null;
+                                                tween1[captionCount] = null;
                                             }
                                         }
                                     );
@@ -194,7 +195,7 @@ class CaptionsBox extends FlxTypedGroup<FlxBasic>
                             }
                         );
                     }
-                    tween2 = FlxTween.tween(captionsGrp.members[captionCount],
+                    tween2[captionCount] = FlxTween.tween(captionsGrp.members[captionCount],
                         {
                             x: captionsGrp.members[captionCount].x + storedData.tweenData[0],
                             y: captionsGrp.members[captionCount].y + storedData.tweenData[1],
@@ -208,7 +209,7 @@ class CaptionsBox extends FlxTypedGroup<FlxBasic>
                             ease: data.easeStart,
                             onComplete: function(t:FlxTween)
                             {
-                                tween2 = FlxTween.tween(captionsGrp.members[captionCount],
+                                tween2[captionCount] = FlxTween.tween(captionsGrp.members[captionCount],
                                     {
                                         x: captionsGrp.members[captionCount].x + storedData.tweenData[6],
                                         y: captionsGrp.members[captionCount].y + storedData.tweenData[7],
@@ -223,7 +224,7 @@ class CaptionsBox extends FlxTypedGroup<FlxBasic>
                                         startDelay: data.delayTimer,
                                         onComplete: function(twn:FlxTween)
                                         {
-                                            tween2 = null;
+                                            tween2[captionCount] = null;
                                         }
                                     }
                                 );
@@ -248,17 +249,11 @@ class CaptionsBox extends FlxTypedGroup<FlxBasic>
 
     function checkForData()
 	{
-		if (sys.FileSystem.exists('./assets/shared/data/${CoolUtil.spaceToDash(PlayState.SONG.song.toLowerCase())}/prepCaptions.json') || Assets.exists('./assets/shared/data/${CoolUtil.spaceToDash(PlayState.SONG.song.toLowerCase())}/prepCaptions.json'))
-			rawJson = File.getContent(Paths.getPath('data/${CoolUtil.spaceToDash(PlayState.SONG.song.toLowerCase())}/prepCaptions.json', TEXT, null));
+		if (sys.FileSystem.exists('./assets/shared/data/${CoolUtil.spaceToDash(PlayState.SONG.song.toLowerCase())}/generateSubtitles.json') || Assets.exists('./assets/shared/data/${CoolUtil.spaceToDash(PlayState.SONG.song.toLowerCase())}/generateSubtitles.json'))
+			rawJson = File.getContent(Paths.getPath('data/${CoolUtil.spaceToDash(PlayState.SONG.song.toLowerCase())}/generateSubtitles.json', TEXT, null));
 		if (rawJson != null && rawJson.length > 0)
-        {
-            trace('loaded captions data');
 			return cast Json.parse(rawJson);
-        }
 		else 
-        {
-            trace('file does not exist');
 			return null;
-        }
 	}
 }

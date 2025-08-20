@@ -32,8 +32,8 @@ import cutscenes.CutsceneHandler;
 import cutscenes.DialogueBoxPsych;
 
 import objects.Character.Shadow;
-import objects.ui.CaptionsBox.EventType;
-import objects.ui.CaptionsBox.CaptionUtils;
+import objects.ui.SubtitlesBox.EventType;
+import objects.ui.SubtitlesBox.SubtitlesUtil;
 
 import states.editors.ChartingState;
 import states.editors.CharacterEditorState;
@@ -491,7 +491,9 @@ class PlayState extends MusicBeatState
 		return y; 
 	}
 
-	var subtitles:CaptionsBox;
+	var subtitles:SubtitlesBox;
+	var subtitleTwnHandler:Array<FlxTween> = [];
+	var iconHandler:Array<FlxTween> = [];
 
 	override public function create()
 	{
@@ -1354,7 +1356,7 @@ class PlayState extends MusicBeatState
 		cacheCountdown();
 		cachePopUpScore();
 
-		subtitles = new CaptionsBox(camOther);
+		subtitles = new SubtitlesBox(camOther, iconHandler, subtitleTwnHandler);
 		add(subtitles);
 
 		songCard = new SongCard();
@@ -2552,6 +2554,24 @@ class PlayState extends MusicBeatState
 				}
 			}
 
+			for (barTwns in shittyTwns) {
+				if(barTwns != null) {
+					barTwns.active = false;
+				}
+			}
+
+			for (subtitleTwns in subtitleTwnHandler) {
+				if(subtitleTwns != null) {
+					subtitleTwns.active = false;
+				}
+			}
+
+			for (lyricIconTwns in iconHandler) {
+				if(lyricIconTwns != null) {
+					lyricIconTwns.active = false;
+				}
+			}
+
 			for (tween in modchartTweens) {
 				tween.active = false;
 			}
@@ -2586,6 +2606,24 @@ class PlayState extends MusicBeatState
 			for (char in chars) {
 				if(char != null && char.colorTween != null) {
 					char.colorTween.active = true;
+				}
+			}
+
+			for (barTwns in shittyTwns) {
+				if(barTwns != null) {
+					barTwns.active = true;
+				}
+			}
+
+			for (lyricIconTwns in iconHandler) {
+				if(lyricIconTwns != null) {
+					lyricIconTwns.active = true;
+				}
+			}
+
+			for (subtitleTwns in subtitleTwnHandler) {
+				if(subtitleTwns != null) {
+					subtitleTwns.active = true;
 				}
 			}
 
