@@ -278,7 +278,7 @@ class MusicPlayer extends FlxGroup
 			songTxt.visible = timeTxt.visible = songBG.visible = progressBar.visible = playingMusic; //Show Music Player texts and boxes if playingMusic is true
 		}
 		else {
-			instance.scoreBG.alpha = instance.diffText.alpha = instance.scoreText.alpha = !playingMusic ? 1 : 0.25;
+			instance.diffText.alpha = instance.scoreText.alpha = !playingMusic ? 1 : 0.25;
 			songTxt.visible = timeTxt.visible = songBG.visible = progressBar.visible = playingMusic; //Show Music Player texts and boxes if playingMusic is true
 		}
 
