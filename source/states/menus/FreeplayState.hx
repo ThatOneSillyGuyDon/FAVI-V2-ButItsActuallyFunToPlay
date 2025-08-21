@@ -523,6 +523,7 @@ class FreeplayState extends MusicBeatState
 			disc.scale.set(1.35, 1.35);
 			disc.updateHitbox();
 			disc.setPosition(FlxG.width * .7, ((gramo.height - disc.height) * .5) + 20);
+			disc.cameras = [camHUD];
 			disc.antialiasing = ClientPrefs.data.antialiasing;
 
 			final shade = new FlxSprite().loadGraphic(Paths.image('$path/songtextshade'));
