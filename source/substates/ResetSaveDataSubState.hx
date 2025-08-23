@@ -17,16 +17,12 @@ class ResetSaveDataSubState extends MusicBeatSubstate
 		super();
 
 		bg = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
-		bg.alpha = 0;
 		bg.scrollFactor.set();
-		add(bg);
 
 		tiles = new FlxBackdrop(Paths.image("Funkin_avi/pause/ui/mickeyTiles"), XY, 0, 0);
-		tiles.alpha = 0;
 		tiles.velocity.set(50, 30);
 		tiles.color = FlxColor.fromRGB(65, 88, 94);
 		tiles.blend = OVERLAY;
-		add(tiles);
 
 		warning = new FlxTextAlphabet(0, 150, "", true);
 		warning.setFormat(Paths.font("newFreeplayFont.ttf"), 50, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -36,8 +32,6 @@ class ResetSaveDataSubState extends MusicBeatSubstate
 				new FlxTextFormatMarkerPair(new FlxTextFormat(FlxColor.RED), "*")
 			]
 		);
-		warning.alpha = 0;
-		add(warning);
 
 		desc = new FlxTextAlphabet(200, 250, "", true);
 		desc.setFormat(Paths.font("newFreeplayFont.ttf"), 35, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -46,8 +40,12 @@ class ResetSaveDataSubState extends MusicBeatSubstate
 				new FlxTextFormatMarkerPair(new FlxTextFormat(FlxColor.RED), "*")
 			]
 		);
-		desc.alpha = 0;
-		add(desc);
+
+		for (i in [bg, tiles, warning, desc])
+		{
+			i.alpha = 0;
+			add(i);
+		}
 
 		yesText = new FlxTextAlphabet(0, desc.y + 150, 'Yes', true);
 		yesText.screenCenter(X);
@@ -92,8 +90,7 @@ class ResetSaveDataSubState extends MusicBeatSubstate
 			FlxG.sound.play(Paths.sound('cancelMenu'), 1);
 			if(onYes) {
 				GameData.resetData();
-				TitleState.initialized = false;
-				TitleState.closedState = false;
+				TitleState.initialized = TitleState.closedState = false;
 				FlxG.sound.music.fadeOut(0.3);
 				FlxG.camera.fade(FlxColor.BLACK, 0.5, false, FlxG.resetGame, false);
 			}

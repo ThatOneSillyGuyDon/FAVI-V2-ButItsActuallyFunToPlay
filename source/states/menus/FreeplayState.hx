@@ -556,14 +556,20 @@ class FreeplayState extends MusicBeatState
 	{
 		if (freeplayMenuList != 2)
 		{
-			albumHolder = new FlxTypedGroup<FlxSprite>();
-			add(albumHolder);
-
 			scoreText = new FlxText(FlxG.width * 0.7, 5, 450, "", 32);
 			scoreText.x += 350;
 			diffText = new FlxText(scoreText.x, scoreText.y, 500, "", 24);
 			gimmickInfo = new FlxText(30, 510, 290, "Mechanics - None");
 			freeplayCtrlTxt = new FlxText(370, 510, 260, "Left & Right Keybinds - Change Song Choice\n\nESC - Exit Menu\n\nENTER - Play Song (Game)\n\nSPACE - Play Song (Music Player)", 36);
+
+			offandon = new FlxSprite().loadGraphic(Paths.image('$path/off'));
+			if(ClientPrefs.data.gameplaySettings["botplay"] == true)  offandon.loadGraphic(Paths.image('$path/on'));
+			add(offandon);
+			offandon.antialiasing = ClientPrefs.data.antialiasing;
+			offandon.cameras = [camHUD];
+
+			albumHolder = new FlxTypedGroup<FlxSprite>();
+			add(albumHolder);
 	
 			scoreText.setFormat(Paths.font("newFreeplayFont.ttf"), 32, FlxColor.WHITE, CENTER);
 			gimmickInfo.setFormat(Paths.font("newFreeplayFont.ttf"), 20, FlxColor.BLACK, CENTER);
