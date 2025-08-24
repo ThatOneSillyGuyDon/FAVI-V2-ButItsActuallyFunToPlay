@@ -3227,18 +3227,18 @@ class PlayState extends MusicBeatState
 		{
 			switch (char.animation.curAnim.name.substring(4))
 			{
-				case 'UP' | 'UP-alt' | 'UPmiss' | 'endingAnim':
+				case 'UP' | 'UP-alt' | 'UPmiss' | 'UP-loop' | 'endingAnim':
 					camOffset[1] -= 40;
 
-				case 'RIGHT' | 'RIGHT-alt' | 'RIGHTmiss':
+				case 'RIGHT' | 'RIGHT-alt' | 'RIGHTmiss' | 'RIGHT-loop':
 					camOffset[0] += 40;
 					if (FreeplayState.freeplayMenuList != 2) camOffset[2] += 1.3;
 
-				case 'LEFT' | 'LEFT-alt' | 'LEFTmiss':
+				case 'LEFT' | 'LEFT-alt' | 'LEFTmiss' | 'LEFT-loop':
 					camOffset[0] -= 40;
 					if (FreeplayState.freeplayMenuList != 2) camOffset[2] -= 1.3;
 
-				case 'DOWN' | 'DOWN-alt' | 'DOWNmiss':
+				case 'DOWN' | 'DOWN-alt' | 'DOWNmiss' | 'DOWN-loop':
 					camOffset[1] += 40;
 			}
 		}
