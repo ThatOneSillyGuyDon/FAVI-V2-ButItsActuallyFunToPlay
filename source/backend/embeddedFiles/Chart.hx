@@ -138379,12 +138379,47 @@ enum abstract Chart(String) from String to String {
 						"Camera Event",
 						"Snap Position",
 						"2450,1250"
+					],
+					[
+						"Camera Event",
+						"Change Value",
+						"alpha,0"
+					]
+				]
+			],
+			[
+				428.571428571429,
+				[
+					[
+						"Camera Event",
+						"Fade",
+						"0,0,0,1,true"
+					]
+				]
+			],
+			[
+				5571,
+				[
+					[
+						"Bless Events",
+						"0",
+						""
+					],
+					[
+						"Camera Event",
+						"Fade",
+						"0,0,0,1,false"
 					]
 				]
 			],
 			[
 				6857.14285714286,
 				[
+					[
+						"Camera Event",
+						"Tween Value",
+						"alpha,1,1,circOut"
+					],
 					[
 						"Camera Event",
 						"Fade",
@@ -138458,12 +138493,87 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
+				88114.2857142857,
+				[
+					[
+						"Camera Event",
+						"Tween Position",
+						"2450,1250,5,sineInOut"
+					],
+					[
+						"Camera Event",
+						"Tween Value",
+						"zoom,0.5,5,sineInOut"
+					]
+				]
+			],
+			[
+				94285.7142857142,
+				[
+					[
+						"Camera Event",
+						"Tween Value",
+						"zoom,1.7,1,circInOut"
+					]
+				]
+			],
+			[
 				94971.4285714285,
 				[
 					[
 						"Change Scroll Speed",
 						"0.9",
 						"0.2"
+					],
+					[
+						"Invert Shit",
+						"true",
+						"0.0001,linear"
+					],
+					[
+						"Bless Events",
+						"3",
+						""
+					],
+					[
+						"Camera Event",
+						"Tween Value",
+						"zoom,0.75,0.001,linear"
+					],
+					[
+						"Camera Event",
+						"Fade",
+						"255,255,255,1,true"
+					],
+					[
+						"Change Character",
+						"BF",
+						"everett-ghost"
+					],
+					[
+						"Set Property",
+						"isCameraOnForcedPos",
+						"false"
+					]
+				]
+			],
+			[
+				138171.428571428,
+				[
+					[
+						"Camera Event",
+						"Fade",
+						"0,0,0,1,false"
+					]
+				]
+			],
+			[
+				138857.142857143,
+				[
+					[
+						"Camera Event",
+						"Tween Value",
+						"hudalpha,0,1,linear"
 					]
 				]
 			],
@@ -138474,6 +138584,41 @@ enum abstract Chart(String) from String to String {
 						"Change Scroll Speed",
 						"1.6",
 						"0.2"
+					]
+				]
+			],
+			[
+				140914.285714286,
+				[
+					[
+						"Change Character",
+						"BF",
+						"everett-modern"
+					]
+				]
+			],
+			[
+				141600,
+				[
+					[
+						"Bless Events",
+						"4",
+						""
+					],
+					[
+						"Invert Shit",
+						"false",
+						"0.0001,linear"
+					],
+					[
+						"Camera Event",
+						"Fade",
+						"255,255,255,0.5,true"
+					],
+					[
+						"Camera Event",
+						"Change Value",
+						"hudalpha,1"
 					]
 				]
 			],

@@ -20,6 +20,8 @@ class YouveBeenBlessed extends BaseStage
 	var vaultRoom:FlxSprite;
 	var vaultLight:FlxSprite;
 	var vaultFore:FlxSprite;
+
+	var theDoor:FlxSprite;
 	
 	var dropShadowArray:Array<DropShadowShader> = [];
 
@@ -32,11 +34,7 @@ class YouveBeenBlessed extends BaseStage
 		vaultRoom = new FlxSprite(300, -350).loadGraphic(Paths.image(PlayState.pathway + "BACKGROUND/VaultBG"));
 		add(vaultRoom);
 
-		vaultLight = new FlxSprite(300, -350).loadGraphic(Paths.image(PlayState.pathway + "FOREGROUND/VaultFog"));
-		vaultLight.blend = BlendMode.ADD;
-		add(vaultLight);
-
-		vaultFore = new FlxSprite(300, -350).loadGraphic(Paths.image(PlayState.pathway + "FOREGROUND/VaultChains"));
+		vaultFore = new FlxSprite(300, -350).loadGraphic(Paths.image(PlayState.pathway + "FOREGROUND/VaultFG"));
 		add(vaultFore);
 
 		vault = new FlxSprite(0, 0).loadGraphic(Paths.image(PlayState.pathway + 'BACKGROUND/MainBG'));
@@ -94,7 +92,7 @@ class YouveBeenBlessed extends BaseStage
 		game.gf.visible = false;
 
 		game.camBars.fade(FlxColor.BLACK, 0.0001);
-		camHUD.alpha = 0.001;
+		camHUD.alpha = 0;
 
 		//FOREGROUND ELEMENTS
 
@@ -146,6 +144,12 @@ class YouveBeenBlessed extends BaseStage
 		});
 		game.dad.blend = BlendMode.ADD;
 
+		theDoor = new FlxSprite(0, 0).loadGraphic(Paths.image(PlayState.pathway + 'theDoor'));
+		theDoor.antialiasing = ClientPrefs.data.antialiasing;
+		theDoor.screenCenter();
+		theDoor.scale.set(0.25, 0.25);
+		theDoor.cameras = [game.camBars];
+		add(theDoor);
 
 		if (ClientPrefs.data.shaders)
 		{
@@ -179,6 +183,9 @@ class YouveBeenBlessed extends BaseStage
 			case 'Bless Events':
 				switch (flValue1)
 				{
+					case 0:
+						FlxTween.tween(theDoor, {alpha: 0}, 2, {ease: FlxEase.circInOut});
+						FlxTween.tween(theDoor.scale, {x: 0.5, y: 0.5}, 2, {ease: FlxEase.circInOut});
 					case 1:
 						FlxTween.tween(dad, {x: 1050}, 7.5, {ease: FlxEase.sineInOut});
 					case 2:
@@ -193,7 +200,7 @@ class YouveBeenBlessed extends BaseStage
 						{
 							stuff.visible = true;
 						}
-						
+						game.boyfriend.setPosition(2885, 1450);
 					case 5:
 						if (ClientPrefs.data.shaders)
 						{
