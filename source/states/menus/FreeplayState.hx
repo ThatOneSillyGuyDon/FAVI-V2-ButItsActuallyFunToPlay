@@ -561,17 +561,20 @@ class FreeplayState extends MusicBeatState
 			diffText = new FlxText(scoreText.x, scoreText.y, 500, "", 24);
 			gimmickInfo = new FlxText(30, 510, 290, "Mechanics - None");
 			freeplayCtrlTxt = new FlxText(370, 510, 260, "Left & Right Keybinds - Change Song Choice\n\nESC - Exit Menu\n\nENTER - Play Song (Game)\n\nSPACE - Play Song (Music Player)", 36);
-			final boxBot = new FlxSprite().loadGraphic(Paths.image('$path/botplaybox'));
-			offandon = new FlxSprite().loadGraphic(Paths.image('$path/off'));
+			final boxBot = new FlxSprite().loadGraphic(Paths.image('$path/botplayBtn/botplayUI'));
+			offandon = new FlxSprite().loadGraphic(Paths.image('$path/botplayBtn/off'));
+
+			offandon.screenCenter(X);
+			boxBot.screenCenter(X);
 	
-			if(ClientPrefs.data.gameplaySettings["botplay"] == true)  offandon.loadGraphic(Paths.image('$path/on'));
+			if(ClientPrefs.data.gameplaySettings["botplay"] == true)  offandon.loadGraphic(Paths.image('$path/botplayBtn/on'));
 			scoreText.setFormat(Paths.font("newFreeplayFont.ttf"), 32, FlxColor.WHITE, CENTER);
 			gimmickInfo.setFormat(Paths.font("newFreeplayFont.ttf"), 20, FlxColor.BLACK, CENTER);
 			diffText.alignment = CENTER;
 			diffText.font = scoreText.font;
 			freeplayCtrlTxt.setFormat(Paths.font('newFreeplayFont.ttf'), 16, FlxColor.BLACK, LEFT);
 
-			for (i in [boxBot, offandon, scoreText, diffText, gimmickInfo, freeplayCtrlTxt])
+			for (i in [scoreText, diffText, gimmickInfo, freeplayCtrlTxt, boxBot, offandon])
 			{
 				i.antialiasing = ClientPrefs.data.antialiasing;
 				i.cameras = [camHUD];
@@ -898,9 +901,9 @@ class FreeplayState extends MusicBeatState
 		ClientPrefs.data.gameplaySettings["botplay"] = (ClientPrefs.data.gameplaySettings["botplay"] == true) ? false : true;
 		if (freeplayMenuList != 2)
 			if (ClientPrefs.data.gameplaySettings["botplay"] == true)
-				offandon.loadGraphic(Paths.image('$path/on'));
+				offandon.loadGraphic(Paths.image('$path/botplayBtn/on'));
 			else
-				offandon.loadGraphic(Paths.image('$path/off'));
+				offandon.loadGraphic(Paths.image('$path/botplayBtn/off'));
 		else
 			if (ClientPrefs.data.gameplaySettings["botplay"] == true)
 				botplaytext.text = 'Press B to toggle Botplay. Botplay: ON';
