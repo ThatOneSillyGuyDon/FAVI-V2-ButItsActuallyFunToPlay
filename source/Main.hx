@@ -118,6 +118,8 @@ class Main extends Sprite
 			fpsVar.visible = ClientPrefs.data.showFPS;
 		}
 		#end
+		
+		//FlxG.scaleMode = new flixel.system.scaleModes.FullScreenScaleMode();
 
 		#if linux
 		var icon = Image.fromFile("icon.png");
