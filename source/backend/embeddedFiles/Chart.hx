@@ -4958,7 +4958,7 @@ enum abstract Chart(String) from String to String {
 						"Cinematic Event",
 						"Bop",
 						"33,1,quartOut"
-					]	
+					]
 				]
 			],
 			[
@@ -7582,7 +7582,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Camera Event",
 						"Tween Value",
-						"zoom,1.4,1.7,circIn"
+						"zoom,1.4,1.35,circIn"
 					]
 				]
 			],
@@ -7630,9 +7630,9 @@ enum abstract Chart(String) from String to String {
 				116363.636363636,
 				[
 					[
-						"Set Property",
-						"defaultCamZoom",
-						"0.85"
+						"Camera Event",
+						"Tween Value",
+						"zoom,0.85,0.001,linear"
 					],
 					[
 						"Set Property",

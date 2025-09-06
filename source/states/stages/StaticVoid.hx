@@ -45,23 +45,26 @@ class StaticVoid extends BaseStage {
 			//add(redGradThing);
 		}
 
-		if (!ClientPrefs.data.lowQuality)
+		if (ClientPrefs.data.shaders)
 		{
-			game.camGame.setFilters([
-				new ShaderFilter(staticEffect),
-				new ShaderFilter(blurShader),
-				new ShaderFilter(chromNormalShader),
-				new ShaderFilter(chromZoomShader)
-			]);
-			game.camHUD.setFilters([
-				new ShaderFilter(blurShaderHUD),
-				new ShaderFilter(chromNormalShader)
-			]);
-		}
-		else
-		{
-			game.camGame.setFilters([new ShaderFilter(chromNormalShader)]);
-			game.camHUD.setFilters([new ShaderFilter(chromNormalShader)]);
+			if (!ClientPrefs.data.lowQuality)
+			{
+				game.camGame.setFilters([
+					new ShaderFilter(staticEffect),
+					new ShaderFilter(blurShader),
+					new ShaderFilter(chromNormalShader),
+					new ShaderFilter(chromZoomShader)
+				]);
+				game.camHUD.setFilters([
+					new ShaderFilter(blurShaderHUD),
+					new ShaderFilter(chromNormalShader)
+				]);
+			}
+			else
+			{
+				game.camGame.setFilters([new ShaderFilter(chromNormalShader)]);
+				game.camHUD.setFilters([new ShaderFilter(chromNormalShader)]);
+			}
 		}
     }
 
@@ -76,17 +79,20 @@ class StaticVoid extends BaseStage {
     {
 		shaderAnim = Conductor.songPosition / 1000;
 
-        if (ClientPrefs.data.epilepsy)
-        {
-            blurShader.setFloat('bluramount', blurEffect);
-            blurShaderHUD.setFloat('bluramount', blurEffect * 0.72);
-        }
-        chromZoomShader.setFloat('aberration', game.chromEffect);
-        chromZoomShader.setFloat('effectTime', game.chromEffect);
-        chromNormalShader.setFloat('rOffset', game.chromEffect / 35);
-        chromNormalShader.setFloat('bOffset', -game.chromEffect / 35);
-        staticEffect.setFloat('uTime', shaderAnim);
-        staticEffect.setFloat('iTime', shaderAnim);
+		if (ClientPrefs.data.shaders)
+		{
+			if (ClientPrefs.data.epilepsy)
+			{
+				blurShader.setFloat('bluramount', blurEffect);
+				blurShaderHUD.setFloat('bluramount', blurEffect * 0.72);
+			}
+			chromZoomShader.setFloat('aberration', game.chromEffect);
+			chromZoomShader.setFloat('effectTime', game.chromEffect);
+			chromNormalShader.setFloat('rOffset', game.chromEffect / 35);
+			chromNormalShader.setFloat('bOffset', -game.chromEffect / 35);
+			staticEffect.setFloat('uTime', shaderAnim);
+			staticEffect.setFloat('iTime', shaderAnim);
+		}
     }
 
 	var blurTwn:FlxTween;

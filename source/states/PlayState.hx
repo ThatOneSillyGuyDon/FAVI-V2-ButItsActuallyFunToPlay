@@ -1361,7 +1361,23 @@ class PlayState extends MusicBeatState
 
 		songCard = new SongCard();
 		songCard.cameras = [camOther];
-		//songCard.playCardAnim(0);
+		if (!songCard.isLegacy)
+		{
+			if (!isStoryMode)
+			{
+				songCard.playCardAnim(0.08);
+			}
+			else if (isStoryMode)
+			{
+				switch (SONG.song)
+				{
+					case 'Isolated' | 'Lunacy' | 'Delusional':
+					// do nothing, it's already set under stepHit()
+					default:
+						songCard.playCardAnim(0.08);
+				}
+			}
+		}
 		add(songCard);
 
 		super.create();
@@ -2196,6 +2212,9 @@ class PlayState extends MusicBeatState
 			vocals.pause();
 			opponentVocals.pause();
 		}
+
+		if (songCard.isLegacy)
+			songCard.playCardAnim(0);
 
 		// Song duration in a float, useful for the time left feature
 		songLength = FlxG.sound.music.length;
@@ -6218,6 +6237,27 @@ class PlayState extends MusicBeatState
 		}
 
 		super.stepHit();
+
+		// Modified Card Delays
+		switch (SONG.song)
+		{
+			case 'Isolated' | 'Lunacy':
+				if (isStoryMode)
+				{
+					switch (curStep)
+					{
+						case 1: songCard.playCardAnim(0.2);
+					}
+				}
+			case 'Delusional':
+				if (isStoryMode)
+				{
+					switch (curStep)
+					{
+						case 1: songCard.playCardAnim(0.001);
+					}
+				}
+		}
 
 		if(curStep == lastStepHit) {
 			return;
