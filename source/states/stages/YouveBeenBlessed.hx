@@ -31,7 +31,7 @@ class YouveBeenBlessed extends BaseStage
 
 	override function create()
 	{
-		vaultRoom = new FlxSprite(300, -350).loadGraphic(Paths.image(PlayState.pathway + "BACKGROUND/VaultBG"));
+		vaultRoom = new FlxSprite(300, -350).loadGraphic(Paths.image(PlayState.pathway + "BACKGROUND/vaultBG"));
 		add(vaultRoom);
 
 		vaultFore = new FlxSprite(300, -350).loadGraphic(Paths.image(PlayState.pathway + "FOREGROUND/VaultFG"));
@@ -147,7 +147,7 @@ class YouveBeenBlessed extends BaseStage
 		theDoor = new FlxSprite(0, 0).loadGraphic(Paths.image(PlayState.pathway + 'theDoor'));
 		theDoor.antialiasing = ClientPrefs.data.antialiasing;
 		theDoor.screenCenter();
-		theDoor.scale.set(0.25, 0.25);
+		theDoor.scale.set(0.5, 0.5);
 		theDoor.cameras = [game.camBars];
 		add(theDoor);
 
@@ -185,7 +185,7 @@ class YouveBeenBlessed extends BaseStage
 				{
 					case 0:
 						FlxTween.tween(theDoor, {alpha: 0}, 2, {ease: FlxEase.circInOut});
-						FlxTween.tween(theDoor.scale, {x: 0.5, y: 0.5}, 2, {ease: FlxEase.circInOut});
+						FlxTween.tween(theDoor.scale, {x: 0.75, y: 0.75}, 2, {ease: FlxEase.circInOut});
 					case 1:
 						FlxTween.tween(dad, {x: 1050}, 7.5, {ease: FlxEase.sineInOut});
 					case 2:
