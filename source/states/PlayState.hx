@@ -1371,7 +1371,7 @@ class PlayState extends MusicBeatState
 			{
 				switch (SONG.song)
 				{
-					case 'Isolated' | 'Lunacy' | 'Delusional':
+					case 'Devilish Deal' | 'Isolated' | 'Lunacy' | 'Delusional':
 					// do nothing, it's already set under stepHit()
 					default:
 						songCard.playCardAnim(0.08);
@@ -6241,7 +6241,7 @@ class PlayState extends MusicBeatState
 		// Modified Card Delays
 		switch (SONG.song)
 		{
-			case 'Isolated' | 'Lunacy':
+			case 'Devilish Deal' | 'Isolated' | 'Lunacy':
 				if (isStoryMode)
 				{
 					switch (curStep)
