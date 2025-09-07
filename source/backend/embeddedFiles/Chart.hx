@@ -5288,6 +5288,11 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0.05",
 						"0.06"
+					],
+					[
+						"Show Song Card",
+						"true",
+						"0,1.5,sineInOut"
 					]
 				]
 			],
@@ -5413,6 +5418,11 @@ enum abstract Chart(String) from String to String {
 						"Background Controls",
 						"Flash",
 						"0.35,linear,0.2,194,194,194"
+					],
+					[
+						"Show Song Card",
+						"false",
+						"0,1.5,sineInOut"
 					]
 				]
 			],
@@ -14442,6 +14452,11 @@ enum abstract Chart(String) from String to String {
 						"Camera Event",
 						"Tween Value",
 						"zoom,0.75,0.0001,linear"
+					],
+					[
+						"Show Song Card",
+						"true",
+						"0,1,circOut"
 					]
 				]
 			],
@@ -14597,6 +14612,11 @@ enum abstract Chart(String) from String to String {
 						"Rain Handler",
 						"0.0001,0.35",
 						"sineOut"
+					],
+					[
+						"Cinematic Event",
+						"Move",
+						"60,0.5,circOut"
 					]
 				]
 			],
@@ -14632,6 +14652,11 @@ enum abstract Chart(String) from String to String {
 						"Camera Event",
 						"Flash",
 						"255,255,255,0.85,1,true"
+					],
+					[
+						"Show Song Card",
+						"false",
+						"0,1,circOut"
 					]
 				]
 			],
@@ -33976,7 +34001,37 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
-				71027,
+				71108.1081081082,
+				[
+					[
+						"Play Animation",
+						"singUP",
+						"Dad"
+					]
+				]
+			],
+			[
+				71189.1891891892,
+				[
+					[
+						"Play Animation",
+						"singUP",
+						"Dad"
+					]
+				]
+			],
+			[
+				71270.2702702703,
+				[
+					[
+						"Play Animation",
+						"singUP",
+						"Dad"
+					]
+				]
+			],
+			[
+				71351.3513513514,
 				[
 					[
 						"Change Strumline Style",
@@ -34017,46 +34072,6 @@ enum abstract Chart(String) from String to String {
 						"Change Character",
 						"BF",
 						"bf-demon"
-					]
-				]
-			],
-			[
-				71108.1081081082,
-				[
-					[
-						"Play Animation",
-						"singUP",
-						"Dad"
-					]
-				]
-			],
-			[
-				71189.1891891892,
-				[
-					[
-						"Play Animation",
-						"singUP",
-						"Dad"
-					]
-				]
-			],
-			[
-				71270.2702702703,
-				[
-					[
-						"Play Animation",
-						"singUP",
-						"Dad"
-					]
-				]
-			],
-			[
-				71351.3513513514,
-				[
-					[
-						"Play Animation",
-						"singUP",
-						"Dad"
 					]
 				]
 			],
@@ -34227,6 +34242,11 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom Chain",
 						"0.015",
 						"0.03"
+					],
+					[
+						"Show Song Card",
+						"true",
+						"0,1.5,sineInOut"
 					]
 				]
 			],
@@ -34237,6 +34257,16 @@ enum abstract Chart(String) from String to String {
 						"Delusional Events",
 						"6",
 						""
+					]
+				]
+			],
+			[
+				75243.2432432433,
+				[
+					[
+						"Show Song Card",
+						"false",
+						"0,1.5,sineInOut"
 					]
 				]
 			],
@@ -44127,6 +44157,26 @@ enum abstract Chart(String) from String to String {
 			}
 		],
 		"events": [
+			[
+				0,
+				[
+					[
+						"Show Song Card",
+						"true",
+						"0,1.5,sineInOut"
+					]
+				]
+			],
+			[
+				3000,
+				[
+					[
+						"Show Song Card",
+						"false",
+						"0,1.5,sineInOut"
+					]
+				]
+			],
 			[
 				24000,
 				[
@@ -88275,6 +88325,11 @@ enum abstract Chart(String) from String to String {
 						"Set Property",
 						"cameraSpeed",
 						"1"
+					],
+					[
+						"Show Song Card",
+						"true",
+						"0,1,circOut"
 					]
 				]
 			],
@@ -88355,6 +88410,11 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0.015",
 						"0.03"
+					],
+					[
+						"Show Song Card",
+						"false",
+						"0,1,circIn"
 					]
 				]
 			],
@@ -92170,6 +92230,11 @@ enum abstract Chart(String) from String to String {
 						"Static Event",
 						"twnalpha",
 						"0"
+					],
+					[
+						"Show Song Card",
+						"true",
+						"0,1,circOut"
 					]
 				]
 			],
@@ -92195,6 +92260,11 @@ enum abstract Chart(String) from String to String {
 						"Static Event",
 						"twnalpha",
 						"0"
+					],
+					[
+						"Show Song Card",
+						"false",
+						"0,1,circIn"
 					]
 				]
 			],
@@ -114936,6 +115006,11 @@ enum abstract Chart(String) from String to String {
 						"Background Controls",
 						"Darken",
 						"1,0.0001,linear"
+					],
+					[
+						"Show Song Card",
+						"true",
+						"0,1.5,sineInOut"
 					]
 				]
 			],
@@ -114996,6 +115071,11 @@ enum abstract Chart(String) from String to String {
 						"Camera Event",
 						"Fade",
 						"0,0,0,2.5,true"
+					],
+					[
+						"Show Song Card",
+						"false",
+						"0,2.5,linear"
 					]
 				]
 			],
@@ -123229,6 +123309,21 @@ enum abstract Chart(String) from String to String {
 						"Camera Event",
 						"Fade",
 						"0,0,0,0.0001,true"
+					],
+					[
+						"Show Song Card",
+						"true",
+						"0,1.5,sineInOut"
+					]
+				]
+			],
+			[
+				8944.09937888199,
+				[
+					[
+						"Show Song Card",
+						"false",
+						"0,1.5,sineInOut"
 					]
 				]
 			],
@@ -123528,6 +123623,26 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
+				128198.757763975,
+				[
+					[
+						"Manage Lyrics",
+						"data",
+						"0, 0, relapse2NEW-pixel"
+					],
+					[
+						"Manage Lyrics",
+						"tweenData",
+						"0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0.001"
+					],
+					[
+						"Manage Lyrics",
+						"text data",
+						"0, idc lol, 25, 255, 255, 255, CENTER, 0, 0, 0, 4"
+					]
+				]
+			],
+			[
 				136397.51552795,
 				[
 					[
@@ -123573,12 +123688,87 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
+				142267.080745341,
+				[
+					[
+						"Manage Lyrics",
+						"move",
+						"0, 0.001, 17, 1, linear, expoOut"
+					],
+					[
+						"Manage Lyrics",
+						"text",
+						"0, You, 0.001"
+					]
+				]
+			],
+			[
+				142732.919254658,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, You think, 0.001"
+					]
+				]
+			],
+			[
 				143105.590062112,
 				[
 					[
 						"Relapse Events",
 						"5",
 						""
+					]
+				]
+			],
+			[
+				143105.590062112,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, You think this, 0.001"
+					]
+				]
+			],
+			[
+				143291.925465838,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, You think this is, 0.001"
+					]
+				]
+			],
+			[
+				143571.428571428,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, You think this is some..., 0.001"
+					]
+				]
+			],
+			[
+				143850.931677018,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, ...kind, 0.001"
+					]
+				]
+			],
+			[
+				144037.267080745,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, ...kind of, 0.001"
 					]
 				]
 			],
@@ -123593,6 +123783,46 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
+				144596.273291925,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, ...kind of silly, 0.001"
+					]
+				]
+			],
+			[
+				144968.944099379,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, ...kind of silly little, 0.001"
+					]
+				]
+			],
+			[
+				145341.614906832,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, ...kind of silly little GAME?, 0.001"
+					]
+				]
+			],
+			[
+				146086.956521739,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, ..., 0.001"
+					]
+				]
+			],
+			[
 				146832.298136646,
 				[
 					[
@@ -123603,12 +123833,52 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
+				146832.298136646,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, Soon, 0.001"
+					]
+				]
+			],
+			[
+				147391.304347826,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, Soon enough..., 0.001"
+					]
+				]
+			],
+			[
 				148322.981366459,
 				[
 					[
 						"Relapse Events",
 						"8",
 						""
+					]
+				]
+			],
+			[
+				148416.149068323,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, You\'ll, 0.001"
+					]
+				]
+			],
+			[
+				148602.484472049,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, You\'ll understand, 0.001"
 					]
 				]
 			],
@@ -123624,6 +123894,36 @@ enum abstract Chart(String) from String to String {
 						"Background Controls",
 						"Flash",
 						"1.2,linear,0.32,255,0,0"
+					]
+				]
+			],
+			[
+				149347.826086956,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, You\'ll understand what, 0.001"
+					]
+				]
+			],
+			[
+				149720.49689441,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, You\'ll understand what ME..., 0.001"
+					]
+				]
+			],
+			[
+				150465.838509317,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, ...AND, 0.001"
 					]
 				]
 			],
@@ -123653,6 +123953,26 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
+				150931.677018633,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, ...AND MY, 0.001"
+					]
+				]
+			],
+			[
+				151304.347826087,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, ...AND MY FRIENDS!, 0.001"
+					]
+				]
+			],
+			[
 				152049.689440994,
 				[
 					[
@@ -123674,6 +123994,46 @@ enum abstract Chart(String) from String to String {
 						"Relapse Events",
 						"10",
 						""
+					]
+				]
+			],
+			[
+				152049.689440994,
+				[
+					[
+						"Manage Lyrics",
+						"Text",
+						"0, HAVE, 0.001"
+					]
+				]
+			],
+			[
+				152236.02484472,
+				[
+					[
+						"Manage Lyrics",
+						"Text",
+						"0, HAVE TO, 0.001"
+					]
+				]
+			],
+			[
+				152608.695652174,
+				[
+					[
+						"Manage Lyrics",
+						"Text",
+						"0, HAVE TO GO, 0.001"
+					]
+				]
+			],
+			[
+				152981.366459627,
+				[
+					[
+						"Manage Lyrics",
+						"Text",
+						"0, HAVE TO GO THROUGH!, 0.001"
 					]
 				]
 			],
@@ -123703,6 +124063,36 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
+				154099.378881987,
+				[
+					[
+						"Manage Lyrics",
+						"Text",
+						"0, Sooner, 0.001"
+					]
+				]
+			],
+			[
+				154472.049689441,
+				[
+					[
+						"Manage Lyrics",
+						"Text",
+						"0, Sooner or, 0.001"
+					]
+				]
+			],
+			[
+				154658.385093168,
+				[
+					[
+						"Manage Lyrics",
+						"Text",
+						"0, Sooner or later..., 0.001"
+					]
+				]
+			],
+			[
 				155031.055900621,
 				[
 					[
@@ -123724,6 +124114,46 @@ enum abstract Chart(String) from String to String {
 						"Relapse Events",
 						"12",
 						""
+					]
+				]
+			],
+			[
+				155403.726708074,
+				[
+					[
+						"Manage Lyrics",
+						"Text",
+						"0, Your, 0.001"
+					]
+				]
+			],
+			[
+				155776.397515528,
+				[
+					[
+						"Manage Lyrics",
+						"Text",
+						"0, Your DEATH, 0.001"
+					]
+				]
+			],
+			[
+				156149.068322981,
+				[
+					[
+						"Manage Lyrics",
+						"Text",
+						"0, Your DEATH will, 0.001"
+					]
+				]
+			],
+			[
+				156335.403726708,
+				[
+					[
+						"Manage Lyrics",
+						"Text",
+						"0, Your DEATH will be, 0.001"
 					]
 				]
 			],
@@ -123758,12 +124188,32 @@ enum abstract Chart(String) from String to String {
 				]
 			],
 			[
+				156894.409937888,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, Your DEATH will be NOTHING BUT..., 0.001"
+					]
+				]
+			],
+			[
 				157267.080745341,
 				[
 					[
 						"Play Animation",
 						"grinning",
 						"dad"
+					]
+				]
+			],
+			[
+				157267.080745341,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, CYCLED, 0.001"
 					]
 				]
 			],
@@ -123779,6 +124229,16 @@ enum abstract Chart(String) from String to String {
 						"Background Controls",
 						"Flash",
 						"1.2,linear,0.32,255,0,0"
+					]
+				]
+			],
+			[
+				158012.422360248,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, CYCLED SINS!, 0.001"
 					]
 				]
 			],
@@ -124046,371 +124506,6 @@ enum abstract Chart(String) from String to String {
 						"Relapse Events",
 						"3",
 						""
-					]
-				]
-			],
-			[
-				128198.757763975,
-				[
-					[
-						"Manage Lyrics",
-						"data",
-						"0, 0, relapse2NEW-pixel"
-					],
-					[
-						"Manage Lyrics",
-						"tweenData",
-						"0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0.001"
-					],
-					[
-						"Manage Lyrics",
-						"text data",
-						"0, idc lol, 25, 255, 255, 255, CENTER, 0, 0, 0, 4"
-					]
-				]
-			],
-			[
-				142267.080745341,
-				[
-					[
-						"Manage Lyrics",
-						"move",
-						"0, 0.001, 17, 1, linear, expoOut"
-					],
-					[
-						"Manage Lyrics",
-						"text",
-						"0, You, 0.001"
-					]
-				]
-			],
-			[
-				142732.919254658,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, You think, 0.001"
-					]
-				]
-			],
-			[
-				143105.590062112,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, You think this, 0.001"
-					]
-				]
-			],
-			[
-				143291.925465838,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, You think this is, 0.001"
-					]
-				]
-			],
-			[
-				143571.428571428,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, You think this is some..., 0.001"
-					]
-				]
-			],
-			[
-				143850.931677018,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, ...kind, 0.001"
-					]
-				]
-			],
-			[
-				144037.267080745,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, ...kind of, 0.001"
-					]
-				]
-			],
-			[
-				144596.273291925,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, ...kind of silly, 0.001"
-					]
-				]
-			],
-			[
-				144968.944099379,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, ...kind of silly little, 0.001"
-					]
-				]
-			],
-			[
-				145341.614906832,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, ...kind of silly little GAME?, 0.001"
-					]
-				]
-			],
-			[
-				146086.956521739,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, ..., 0.001"
-					]
-				]
-			],
-			[
-				146832.298136646,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, Soon, 0.001"
-					]
-				]
-			],
-			[
-				147391.304347826,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, Soon enough..., 0.001"
-					]
-				]
-			],
-			[
-				148416.149068323,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, You\'ll, 0.001"
-					]
-				]
-			],
-			[
-				148602.484472049,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, You\'ll understand, 0.001"
-					]
-				]
-			],
-			[
-				149347.826086956,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, You\'ll understand what, 0.001"
-					]
-				]
-			],
-			[
-				149720.49689441,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, You\'ll understand what ME..., 0.001"
-					]
-				]
-			],
-			[
-				150465.838509317,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, ...AND, 0.001"
-					]
-				]
-			],
-			[
-				150931.677018633,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, ...AND MY, 0.001"
-					]
-				]
-			],
-			[
-				151304.347826087,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, ...AND MY FRIENDS!, 0.001"
-					]
-				]
-			],
-			[
-				152049.689440994,
-				[
-					[
-						"Manage Lyrics",
-						"Text",
-						"0, HAVE, 0.001"
-					]
-				]
-			],
-			[
-				152236.02484472,
-				[
-					[
-						"Manage Lyrics",
-						"Text",
-						"0, HAVE TO, 0.001"
-					]
-				]
-			],
-			[
-				152608.695652174,
-				[
-					[
-						"Manage Lyrics",
-						"Text",
-						"0, HAVE TO GO, 0.001"
-					]
-				]
-			],
-			[
-				152981.366459627,
-				[
-					[
-						"Manage Lyrics",
-						"Text",
-						"0, HAVE TO GO THROUGH!, 0.001"
-					]
-				]
-			],
-			[
-				154099.378881987,
-				[
-					[
-						"Manage Lyrics",
-						"Text",
-						"0, Sooner, 0.001"
-					]
-				]
-			],
-			[
-				154472.049689441,
-				[
-					[
-						"Manage Lyrics",
-						"Text",
-						"0, Sooner or, 0.001"
-					]
-				]
-			],
-			[
-				154658.385093168,
-				[
-					[
-						"Manage Lyrics",
-						"Text",
-						"0, Sooner or later..., 0.001"
-					]
-				]
-			],
-			[
-				155403.726708074,
-				[
-					[
-						"Manage Lyrics",
-						"Text",
-						"0, Your, 0.001"
-					]
-				]
-			],
-			[
-				155776.397515528,
-				[
-					[
-						"Manage Lyrics",
-						"Text",
-						"0, Your DEATH, 0.001"
-					]
-				]
-			],
-			[
-				156149.068322981,
-				[
-					[
-						"Manage Lyrics",
-						"Text",
-						"0, Your DEATH will, 0.001"
-					]
-				]
-			],
-			[
-				156335.403726708,
-				[
-					[
-						"Manage Lyrics",
-						"Text",
-						"0, Your DEATH will be, 0.001"
-					]
-				]
-			],
-			[
-				156894.409937888,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, Your DEATH will be NOTHING BUT..., 0.001"
-					]
-				]
-			],
-			[
-				157267.080745341,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, CYCLED, 0.001"
-					]
-				]
-			],
-			[
-				158012.422360248,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, CYCLED SINS!, 0.001"
 					]
 				]
 			]
@@ -150730,6 +150825,11 @@ enum abstract Chart(String) from String to String {
 						"Cinematic Event",
 						"Move",
 						"50,1,circOut"
+					],
+					[
+						"Show Song Card",
+						"true",
+						"0,1,circOut"
 					]
 				]
 			],
@@ -150810,6 +150910,11 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0.085",
 						"0.07"
+					],
+					[
+						"Show Song Card",
+						"false",
+						"0,1,circIn"
 					]
 				]
 			],
@@ -176515,6 +176620,16 @@ enum abstract Chart(String) from String to String {
 		],
 		"events": [
 			[
+				0,
+				[
+					[
+						"Show Song Card",
+						"true",
+						"1,1,quadInOut"
+					]
+				]
+			],
+			[
 				375,
 				[
 					[
@@ -176636,6 +176751,11 @@ enum abstract Chart(String) from String to String {
 						"Remove Health",
 						"0.005",
 						""
+					],
+					[
+						"Show Song Card",
+						"false",
+						"0,1,quadInOut"
 					]
 				]
 			],
@@ -205366,6 +205486,11 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0.015",
 						"0.03"
+					],
+					[
+						"Show Song Card",
+						"true",
+						"0,1,circOut"
 					]
 				]
 			],
@@ -205416,6 +205541,16 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0.015",
 						"0.03"
+					]
+				]
+			],
+			[
+				25333.3333333333,
+				[
+					[
+						"Show Song Card",
+						"false",
+						"0,1,circOut"
 					]
 				]
 			],
@@ -231325,7 +231460,28 @@ enum abstract Chart(String) from String to String {
 				"mustHitSection": true
 			}
 		],
-		"events": [],
+		"events": [
+			[
+				30857.1428571429,
+				[
+					[
+						"Show Song Card",
+						"true",
+						"0,1,circOut"
+					]
+				]
+			],
+			[
+				34285.7142857143,
+				[
+					[
+						"Show Song Card",
+						"false",
+						"0,1,circIn"
+					]
+				]
+			]
+		],
 		"player2": "dctl-mickey",
 		"song": "Dont Cross",
 		"voiceSfx1": "Everett",
@@ -231341,7 +231497,28 @@ enum abstract Chart(String) from String to String {
     var dontCross2:String = '{
 	"song": {
 		"player1": "everett-modern",
-		"events": [],
+		"events": [
+			[
+				30857.1428571429,
+				[
+					[
+						"Show Song Card",
+						"true",
+						"0,1,circOut"
+					]
+				]
+			],
+			[
+				34285.7142857143,
+				[
+					[
+						"Show Song Card",
+						"false",
+						"0,1,circIn"
+					]
+				]
+			]
+		],
 		"gfVersion": "gf",
 		"notes": [
 			{
@@ -238572,7 +238749,28 @@ enum abstract Chart(String) from String to String {
 		"stage": "fuckingLine",
 		"player1": "everett-modern",
 		"player2": "dctl-mickey",
-		"events": [],
+		"events": [
+			[
+				30857.1428571429,
+				[
+					[
+						"Show Song Card",
+						"true",
+						"0,1,circOut"
+					]
+				]
+			],
+			[
+				34285.7142857143,
+				[
+					[
+						"Show Song Card",
+						"false",
+						"0,1,circIn"
+					]
+				]
+			]
+		],
 		"notes": [
 			{
 				"gfSection": false,
@@ -258407,7 +258605,28 @@ enum abstract Chart(String) from String to String {
 				"mustHitSection": true
 			}
 		],
-		"events": [],
+		"events": [
+			[
+				30857.1428571429,
+				[
+					[
+						"Show Song Card",
+						"true",
+						"0,1,circOut"
+					]
+				]
+			],
+			[
+				34285.7142857143,
+				[
+					[
+						"Show Song Card",
+						"false",
+						"0,1,circIn"
+					]
+				]
+			]
+		],
 		"player2": "dctl-mickey",
 		"song": "Dont Cross",
 		"voiceSfx1": "Everett",
@@ -261987,12 +262206,22 @@ enum abstract Chart(String) from String to String {
 		],
 		"events": [
 			[
-				8900.89285714286,
+				30857.1428571429,
 				[
 					[
-						"",
-						"",
-						""
+						"Show Song Card",
+						"true",
+						"0,1,circOut"
+					]
+				]
+			],
+			[
+				34285.7142857143,
+				[
+					[
+						"Show Song Card",
+						"false",
+						"0,1,circIn"
 					]
 				]
 			]
@@ -262013,7 +262242,28 @@ enum abstract Chart(String) from String to String {
 	 var dontCross6:String = '{
 	"song": {
 		"player1": "everett-modern",
-		"events": [],
+		"events": [
+			[
+				30857.1428571429,
+				[
+					[
+						"Show Song Card",
+						"true",
+						"0,1,circOut"
+					]
+				]
+			],
+			[
+				34285.7142857143,
+				[
+					[
+						"Show Song Card",
+						"false",
+						"0,1,circIn"
+					]
+				]
+			]
+		],
 		"gfVersion": "gf",
 		"notes": [
 			{
@@ -278330,7 +278580,28 @@ enum abstract Chart(String) from String to String {
 			}
 		],
 		"gfVersion": "gf",
-		"events": [],
+		"events": [
+			[
+				30857.1428571429,
+				[
+					[
+						"Show Song Card",
+						"true",
+						"0,1,circOut"
+					]
+				]
+			],
+			[
+				34285.7142857143,
+				[
+					[
+						"Show Song Card",
+						"false",
+						"0,1,circIn"
+					]
+				]
+			]
+		],
 		"player3": null,
 		"song": "Dont Cross",
 		"needsVoices": true,
@@ -278344,7 +278615,28 @@ enum abstract Chart(String) from String to String {
 		"composer": "Toko",
 		"player1": "everett-modern",
 		"player2": "dctl-mickey",
-		"events": [],
+		"events": [
+			[
+				30857.1428571429,
+				[
+					[
+						"Show Song Card",
+						"true",
+						"0,1,circOut"
+					]
+				]
+			],
+			[
+				34285.7142857143,
+				[
+					[
+						"Show Song Card",
+						"false",
+						"0,1,circIn"
+					]
+				]
+			]
+		],
 		"notes": [
 			{
 				"typeOfSection": 0,
@@ -286950,7 +287242,28 @@ enum abstract Chart(String) from String to String {
 		"composer": "Toko",
 		"player1": "everett-modern",
 		"player2": "dctl-mickey",
-		"events": [],
+		"events": [
+			[
+				30857.1428571429,
+				[
+					[
+						"Show Song Card",
+						"true",
+						"0,1,circOut"
+					]
+				]
+			],
+			[
+				34285.7142857143,
+				[
+					[
+						"Show Song Card",
+						"false",
+						"0,1,circIn"
+					]
+				]
+			]
+		],
 		"notes": [
 			{
 				"typeOfSection": 0,
@@ -313902,7 +314215,28 @@ enum abstract Chart(String) from String to String {
 				"mustHitSection": true
 			}
 		],
-		"events": [],
+		"events": [
+			[
+				30857.1428571429,
+				[
+					[
+						"Show Song Card",
+						"true",
+						"0,1,circOut"
+					]
+				]
+			],
+			[
+				34285.7142857143,
+				[
+					[
+						"Show Song Card",
+						"false",
+						"0,1,circIn"
+					]
+				]
+			]
+		],
 		"player2": "dctl-mickey",
 		"song": "Dont Cross",
 		"voiceSfx1": "Everett",
@@ -313920,7 +314254,28 @@ enum abstract Chart(String) from String to String {
 		"composer": "Toko",
 		"player1": "everett-modern",
 		"player2": "dctl-mickey",
-		"events": [],
+		"events": [
+			[
+				30857.1428571429,
+				[
+					[
+						"Show Song Card",
+						"true",
+						"0,1,circOut"
+					]
+				]
+			],
+			[
+				34285.7142857143,
+				[
+					[
+						"Show Song Card",
+						"false",
+						"0,1,circIn"
+					]
+				]
+			]
+		],
 		"notes": [
 			{
 				"typeOfSection": 0,
@@ -350109,6 +350464,11 @@ enum abstract Chart(String) from String to String {
 						"Static Event",
 						"twnalpha",
 						"0"
+					],
+					[
+						"Show Song Card",
+						"true",
+						"0,1,circOut"
 					]
 				]
 			],
@@ -350134,6 +350494,11 @@ enum abstract Chart(String) from String to String {
 						"Static Event",
 						"twnalpha",
 						"0"
+					],
+					[
+						"Show Song Card",
+						"false",
+						"0,1,circIn"
 					]
 				]
 			],
@@ -383553,6 +383918,11 @@ enum abstract Chart(String) from String to String {
 						"Camera Event",
 						"change value",
 						"hud alpha, 0"
+					],
+					[
+						"Show Song Card",
+						"true",
+						"0,0.35,circOut"
 					]
 				]
 			],
@@ -383598,6 +383968,11 @@ enum abstract Chart(String) from String to String {
 						"Camera Event",
 						"change value",
 						"static zoom, 0.6"
+					],
+					[
+						"Show Song Card",
+						"false",
+						"0,0.35,sineInOut"
 					]
 				]
 			],

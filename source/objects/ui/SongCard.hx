@@ -25,7 +25,7 @@ class SongCard extends FlxSpriteGroup
 
 		switch (PlayState.SONG.song)
 		{
-			case 'Devilish Deal' | 'Isolated' | 'Lunacy' | 'Hunted' | 'Birthday':
+			case 'Devilish Deal' | 'Isolated' | 'Lunacy' | 'Hunted' | 'Birthday' | 'War Dilemma' | 'Laugh Track' | 'Twisted Grins' | 'Whimsical Bar Blues':
 				fontStuff = "DisneyFont.ttf";
 			case 'Delusional':
 				fontStuff = "satanFont.ttf";
@@ -96,51 +96,45 @@ class SongCard extends FlxSpriteGroup
 	}
 
 	// This is a function in case you want the card to show up later in the song instead of instantly
-	public function playCardAnim(delaySet:Float = 0)
+	public function playCardAnim(delaySet:Float = 0, time:Float = 1, ease:String = 'linear')
 	{	
 		if (!isLegacy)
 		{
-			FlxTween.tween(cardSprite, {alpha: 1}, 1.5, {ease: FlxEase.sineInOut, startDelay: delaySet,
-				onComplete: function(twn:FlxTween)
-				{
-					FlxTween.tween(cardSprite, {alpha: 0}, 1.5, {ease: FlxEase.sineInOut, startDelay: 3.5});
-				}
-			});
-			FlxTween.tween(opponentIcon, {alpha: 1}, 2.2, {ease: FlxEase.sineInOut, startDelay: delaySet,
-				onComplete: function(twn:FlxTween)
-				{
-					FlxTween.tween(opponentIcon, {alpha: 0}, 2.2, {ease: FlxEase.sineInOut, startDelay: 3.5});
-				}
-			});
-			FlxTween.tween(playerIcon, {alpha: 1}, 2.2, {ease: FlxEase.sineInOut, startDelay: delaySet,
-				onComplete: function(twn:FlxTween)
-				{
-					FlxTween.tween(playerIcon, {alpha: 0}, 2.2, {ease: FlxEase.sineInOut, startDelay: 3.5});
-				}
-			});
-			FlxTween.tween(cardTxt, {alpha: 1}, 2, {ease: FlxEase.sineInOut, startDelay: delaySet,
-				onComplete: function(twn:FlxTween)
-				{
-					FlxTween.tween(cardTxt, {alpha: 0}, 2, {ease: FlxEase.sineInOut, startDelay: 3.5});
-				}
-			});
+			FlxTween.tween(cardSprite, {alpha: 1}, time, {ease: returnTweenEase(ease), startDelay: delaySet});
+
+			FlxTween.tween(opponentIcon, {alpha: 1}, time + 0.7, {ease: returnTweenEase(ease), startDelay: delaySet});
+
+			FlxTween.tween(playerIcon, {alpha: 1}, time + 0.7, {ease: returnTweenEase(ease), startDelay: delaySet});
+
+			FlxTween.tween(cardTxt, {alpha: 1}, time + 0.5, {ease: returnTweenEase(ease), startDelay: delaySet});
 		}
 		else
 		{
-			FlxTween.tween(songBanner, {alpha: 0.5}, 1, {ease: FlxEase.circOut, startDelay: delaySet,
+			FlxTween.tween(songBanner, {alpha: 0.5}, 1, {ease: FlxEase.circOut,
 				onComplete: function(twn:FlxTween)
 				{
 					FlxTween.tween(songBanner, {alpha: 0}, 1.5, {ease: FlxEase.circIn, startDelay: 4});
 				}
 			});
 
-			FlxTween.tween(songBannerText, {alpha: 1}, 1, {ease: FlxEase.circOut, startDelay: delaySet,
+			FlxTween.tween(songBannerText, {alpha: 1}, 1, {ease: FlxEase.circOut,
 				onComplete: function(twn:FlxTween)
 				{
 					FlxTween.tween(songBannerText, {alpha: 0}, 1.5, {ease: FlxEase.circIn, startDelay: 4});
 				}
 			});
 		}
+	}
+
+	public function removeCardAnim(delaySet:Float = 0, time:Float = 1, ease:String = 'linear')
+	{	
+		FlxTween.tween(cardSprite, {alpha: 0}, time, {ease: returnTweenEase(ease), startDelay: delaySet});
+
+		FlxTween.tween(opponentIcon, {alpha: 0}, time + 0.7, {ease: returnTweenEase(ease), startDelay: delaySet});
+
+		FlxTween.tween(playerIcon, {alpha: 0}, time + 0.7, {ease: returnTweenEase(ease), startDelay: delaySet});
+
+		FlxTween.tween(cardTxt, {alpha: 0}, time + 0.5, {ease: returnTweenEase(ease), startDelay: delaySet});
 	}
 
 	override function add(Object:FlxSprite):FlxSprite
@@ -150,5 +144,87 @@ class SongCard extends FlxSpriteGroup
 		if (Std.isOfType(Object, FlxSprite))
 			cast(Object, FlxSprite).antialiasing = ClientPrefs.data.antialiasing;
 		return super.add(Object);
+	}
+
+	public static function returnTweenEase(ease:String = '')
+	{
+		switch (ease.toLowerCase())
+		{
+			case 'linear':
+				return FlxEase.linear;
+			case 'backin':
+				return FlxEase.backIn;
+			case 'backinout':
+				return FlxEase.backInOut;
+			case 'backout':
+				return FlxEase.backOut;
+			case 'bouncein':
+				return FlxEase.bounceIn;
+			case 'bounceinout':
+				return FlxEase.bounceInOut;
+			case 'bounceout':
+				return FlxEase.bounceOut;
+			case 'circin':
+				return FlxEase.circIn;
+			case 'circinout':
+				return FlxEase.circInOut;
+			case 'circout':
+				return FlxEase.circOut;
+			case 'cubein':
+				return FlxEase.cubeIn;
+			case 'cubeinout':
+				return FlxEase.cubeInOut;
+			case 'cubeout':
+				return FlxEase.cubeOut;
+			case 'elasticin':
+				return FlxEase.elasticIn;
+			case 'elasticinout':
+				return FlxEase.elasticInOut;
+			case 'elasticout':
+				return FlxEase.elasticOut;
+			case 'expoin':
+				return FlxEase.expoIn;
+			case 'expoinout':
+				return FlxEase.expoInOut;
+			case 'expoout':
+				return FlxEase.expoOut;
+			case 'quadin':
+				return FlxEase.quadIn;
+			case 'quadinout':
+				return FlxEase.quadInOut;
+			case 'quadout':
+				return FlxEase.quadOut;
+			case 'quartin':
+				return FlxEase.quartIn;
+			case 'quartinout':
+				return FlxEase.quartInOut;
+			case 'quartout':
+				return FlxEase.quartOut;
+			case 'quintin':
+				return FlxEase.quintIn;
+			case 'quintinout':
+				return FlxEase.quintInOut;
+			case 'quintout':
+				return FlxEase.quintOut;
+			case 'sinein':
+				return FlxEase.sineIn;
+			case 'sineinout':
+				return FlxEase.sineInOut;
+			case 'sineout':
+				return FlxEase.sineOut;
+			case 'smoothstepin':
+				return FlxEase.smoothStepIn;
+			case 'smoothstepinout':
+				return FlxEase.smoothStepInOut;
+			case 'smoothstepout':
+				return FlxEase.smoothStepInOut;
+			case 'smootherstepin':
+				return FlxEase.smootherStepIn;
+			case 'smootherstepinout':
+				return FlxEase.smootherStepInOut;
+			case 'smootherstepout':
+				return FlxEase.smootherStepOut;
+		}
+		return FlxEase.linear;
 	}
 }

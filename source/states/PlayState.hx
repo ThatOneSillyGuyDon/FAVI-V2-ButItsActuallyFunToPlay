@@ -1361,23 +1361,6 @@ class PlayState extends MusicBeatState
 
 		songCard = new SongCard();
 		songCard.cameras = [camOther];
-		if (!songCard.isLegacy)
-		{
-			if (!isStoryMode)
-			{
-				songCard.playCardAnim(0.08);
-			}
-			else if (isStoryMode)
-			{
-				switch (SONG.song)
-				{
-					case 'Devilish Deal' | 'Isolated' | 'Lunacy' | 'Delusional':
-					// do nothing, it's already set under stepHit()
-					default:
-						songCard.playCardAnim(0.08);
-				}
-			}
-		}
 		add(songCard);
 
 		super.create();
@@ -4132,6 +4115,17 @@ class PlayState extends MusicBeatState
 					char.specialAnim = true;
 				}
 
+			case 'Show Song Card':
+				var triggerInfo:Array<String> = value2.split(',');
+
+				if (!songCard.isLegacy)
+				{
+					if (value1.toLowerCase().trim() == "true")
+						songCard.playCardAnim(Std.parseFloat(triggerInfo[0]), Std.parseFloat(triggerInfo[1]), triggerInfo[2]);
+					else
+						songCard.removeCardAnim(Std.parseFloat(triggerInfo[0]), Std.parseFloat(triggerInfo[1]), triggerInfo[2]);
+				}
+
 			case 'Alt Idle Animation':
 				var char:Character = dad;
 				switch(value1.toLowerCase().trim()) {
@@ -6237,27 +6231,6 @@ class PlayState extends MusicBeatState
 		}
 
 		super.stepHit();
-
-		// Modified Card Delays
-		switch (SONG.song)
-		{
-			case 'Devilish Deal' | 'Isolated' | 'Lunacy':
-				if (isStoryMode)
-				{
-					switch (curStep)
-					{
-						case 1: songCard.playCardAnim(0.2);
-					}
-				}
-			case 'Delusional':
-				if (isStoryMode)
-				{
-					switch (curStep)
-					{
-						case 1: songCard.playCardAnim(0.001);
-					}
-				}
-		}
 
 		if(curStep == lastStepHit) {
 			return;
