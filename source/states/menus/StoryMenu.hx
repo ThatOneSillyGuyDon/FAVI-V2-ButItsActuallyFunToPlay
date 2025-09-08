@@ -311,7 +311,20 @@ class StoryMenu extends MusicBeatState
 		if(diffic == null) diffic = '';
 
 		PlayState.storyDifficulty = curDifficulty;
-
+		/*
+		// Are we adding episode 2?
+		for (song in songArray.length){
+			switch(curEpisode){
+				case 1: // episode 1
+					if (Paths.formatToSongPath(song) != GameData.storySong.toLowerCase())
+						songArray.remove(song);
+					else
+						break;
+				default:
+					//nothing yes nothing
+			}
+		}
+		*/
 		if (!GameData.devilSong)
 		{
 			GameData.storySong = "Devilish-Deal";
