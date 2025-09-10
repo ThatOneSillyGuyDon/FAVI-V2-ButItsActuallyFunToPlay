@@ -9,6 +9,7 @@ import openfl.filters.ShaderFilter;
 class YouveBeenBlessed extends BaseStage
 {
 	//BLESS
+	var vaultRoomTiny:FlxSprite;
 	var vault:FlxSprite;
 	var vaultDoor:FlxSprite;
 	var chainsBehindLight:FlxSprite;
@@ -31,11 +32,11 @@ class YouveBeenBlessed extends BaseStage
 
 	override function create()
 	{
-		vaultRoom = new FlxSprite(300, -350).loadGraphic(Paths.image(PlayState.pathway + "BACKGROUND/vaultBG"));
+		vaultRoom = new FlxSprite(0, 0).loadGraphic(Paths.image(PlayState.pathway + "VAULT/vaultBG"));
 		add(vaultRoom);
 
-		vaultFore = new FlxSprite(300, -350).loadGraphic(Paths.image(PlayState.pathway + "FOREGROUND/VaultFG"));
-		add(vaultFore);
+		vaultRoomTiny = new FlxSprite(2000, 1000).loadGraphic(Paths.image(PlayState.pathway + "BACKGROUND/vaultRoomTiny"));
+		add(vaultRoomTiny);
 
 		vault = new FlxSprite(0, 0).loadGraphic(Paths.image(PlayState.pathway + 'BACKGROUND/MainBG'));
 		vault.antialiasing = ClientPrefs.data.antialiasing;
@@ -144,6 +145,10 @@ class YouveBeenBlessed extends BaseStage
 		});
 		game.dad.blend = BlendMode.ADD;
 
+		vaultFore = new FlxSprite(0, 0).loadGraphic(Paths.image(PlayState.pathway + "VAULT/vaultFG"));
+		vaultFore.visible = false;
+		add(vaultFore);
+
 		theDoor = new FlxSprite(0, 0).loadGraphic(Paths.image(PlayState.pathway + 'theDoor'));
 		theDoor.antialiasing = ClientPrefs.data.antialiasing;
 		theDoor.screenCenter();
@@ -184,22 +189,24 @@ class YouveBeenBlessed extends BaseStage
 				switch (flValue1)
 				{
 					case 0:
-						FlxTween.tween(theDoor, {alpha: 0}, 2, {ease: FlxEase.circInOut});
-						FlxTween.tween(theDoor.scale, {x: 0.75, y: 0.75}, 2, {ease: FlxEase.circInOut});
+						FlxTween.tween(theDoor, {alpha: 0}, 2, {ease: FlxEase.circInOut, startDelay: 0.9});
+						FlxTween.tween(theDoor.scale, {x: 0.85, y: 0.85}, 2, {ease: FlxEase.circInOut});
 					case 1:
 						FlxTween.tween(dad, {x: 1050}, 7.5, {ease: FlxEase.sineInOut});
 					case 2:
 						FlxTween.tween(vaultDoor, {alpha: 0.0001}, 1, {ease: FlxEase.circInOut});
 					case 3:
-						for (stuff in [vault, vaultDoor, chainsBehindLight, wires, lights, chainsFrontofLight])
+						for (stuff in [vault, vaultRoomTiny, vaultDoor, chainsBehindLight, wires, lights, chainsFrontofLight, lightsOverlay])
 						{
 							stuff.visible = false;
 						}
+						vaultFore.visible = true;
 					case 4:
-						for (stuff in [vault, vaultDoor, chainsBehindLight, wires, lights, chainsFrontofLight])
+						for (stuff in [vault, vaultRoomTiny, vaultDoor, chainsBehindLight, wires, lights, chainsFrontofLight, lightsOverlay])
 						{
 							stuff.visible = true;
 						}
+						vaultFore.visible = false;
 						game.boyfriend.setPosition(2885, 1450);
 					case 5:
 						if (ClientPrefs.data.shaders)
@@ -227,7 +234,7 @@ class YouveBeenBlessed extends BaseStage
 							redMultiplier: -1,
 							blueMultiplier: -1,
 							greenMultiplier: -1
-						}, Std.parseFloat(triggerInfo[0]), {ease: returnTweenEase(triggerInfo[1])
+						}, Std.parseFloat(triggerInfo[0]), {ease: PlayState.returnTweenEase(triggerInfo[1])
 					});
 				}
 				else
@@ -253,7 +260,7 @@ class YouveBeenBlessed extends BaseStage
 							blueMultiplier: 1,
 							greenMultiplier: 1
 						}, Std.parseFloat(triggerInfo[0]), {
-							ease: returnTweenEase(triggerInfo[1])
+							ease: PlayState.returnTweenEase(triggerInfo[1])
 						}
 					);
 
@@ -262,87 +269,5 @@ class YouveBeenBlessed extends BaseStage
 					CppAPI.darkMode();
 				}
 		}
-	}
-
-	public static function returnTweenEase(ease:String = '')
-	{
-		switch (ease.toLowerCase())
-		{
-			case 'linear':
-				return FlxEase.linear;
-			case 'backin':
-				return FlxEase.backIn;
-			case 'backinout':
-				return FlxEase.backInOut;
-			case 'backout':
-				return FlxEase.backOut;
-			case 'bouncein':
-				return FlxEase.bounceIn;
-			case 'bounceinout':
-				return FlxEase.bounceInOut;
-			case 'bounceout':
-				return FlxEase.bounceOut;
-			case 'circin':
-				return FlxEase.circIn;
-			case 'circinout':
-				return FlxEase.circInOut;
-			case 'circout':
-				return FlxEase.circOut;
-			case 'cubein':
-				return FlxEase.cubeIn;
-			case 'cubeinout':
-				return FlxEase.cubeInOut;
-			case 'cubeout':
-				return FlxEase.cubeOut;
-			case 'elasticin':
-				return FlxEase.elasticIn;
-			case 'elasticinout':
-				return FlxEase.elasticInOut;
-			case 'elasticout':
-				return FlxEase.elasticOut;
-			case 'expoin':
-				return FlxEase.expoIn;
-			case 'expoinout':
-				return FlxEase.expoInOut;
-			case 'expoout':
-				return FlxEase.expoOut;
-			case 'quadin':
-				return FlxEase.quadIn;
-			case 'quadinout':
-				return FlxEase.quadInOut;
-			case 'quadout':
-				return FlxEase.quadOut;
-			case 'quartin':
-				return FlxEase.quartIn;
-			case 'quartinout':
-				return FlxEase.quartInOut;
-			case 'quartout':
-				return FlxEase.quartOut;
-			case 'quintin':
-				return FlxEase.quintIn;
-			case 'quintinout':
-				return FlxEase.quintInOut;
-			case 'quintout':
-				return FlxEase.quintOut;
-			case 'sinein':
-				return FlxEase.sineIn;
-			case 'sineinout':
-				return FlxEase.sineInOut;
-			case 'sineout':
-				return FlxEase.sineOut;
-			case 'smoothstepin':
-				return FlxEase.smoothStepIn;
-			case 'smoothstepinout':
-				return FlxEase.smoothStepInOut;
-			case 'smoothstepout':
-				return FlxEase.smoothStepInOut;
-			case 'smootherstepin':
-				return FlxEase.smootherStepIn;
-			case 'smootherstepinout':
-				return FlxEase.smootherStepInOut;
-			case 'smootherstepout':
-				return FlxEase.smootherStepOut;
-		}
-		return FlxEase.linear;
 	}
 }
