@@ -4,12 +4,9 @@ class SongCard extends FlxSpriteGroup
 {	
 	// JSON Var Helpers
 	public var fontStuff:String = "vcr.ttf";
+	public var lineThing:String = "-";
 
-	// Base Card Setup
-	public var cardTxt:FlxText;
-	public var cardSprite:FlxSprite;
-
-	// Legacy Card Setup
+	// Card Setup
 	public var songBanner:FlxSprite;
 	public var songBannerText:FlxText;
 
@@ -42,56 +39,44 @@ class SongCard extends FlxSpriteGroup
 			case 'Isolated Old' | 'Isolated Beta' | "Isolated Legacy" | 'Lunacy Legacy' | 'Delusional Legacy' | 'Hunted Legacy' | 'Twisted Grins Legacy' | 'Mercy Legacy' | 'Cycled Sins Legacy' | 'Malfunction Legacy':
 				isLegacy = true;
 				fontStuff = "vcr.ttf";
+				lineThing = "";
 			default: 
 				fontStuff = "vcr.ttf";
 		}
 
+		songBanner = new FlxSprite(0, 0).makeGraphic(999, 136, FlxColor.WHITE);
+		songBanner.scrollFactor.set();
+		songBanner.blend = ADD;
+		songBanner.alpha = 0;
+		songBanner.antialiasing = ClientPrefs.data.antialiasing;
+		songBanner.screenCenter(XY);
+		add(songBanner);
+
+		songBannerText = new FlxText(0, 0, 600, '$lineThing ${PlayState.SONG.song} $lineThing\nBy: ${FreeplayState.getArtistName()}');
+		songBannerText.setFormat(Paths.font(fontStuff), 36, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		songBannerText.scrollFactor.set();
+		songBannerText.borderSize = 1.25;
+		songBannerText.alpha = 0;
+		songBannerText.screenCenter(XY);
+		add(songBannerText);
+
 		if (!isLegacy)
 		{
-			cardSprite = new FlxSprite();
-			cardSprite.makeGraphic(600, 350, 0xFF000000);
-			cardSprite.screenCenter();
-			cardSprite.alpha = 0.001;
-			add(cardSprite);
-
-			cardTxt = new FlxText(cardSprite.x, cardSprite.y, 0, '- ${PlayState.SONG.song} -\nBy: ${FreeplayState.getArtistName()}');
-			cardTxt.setFormat(Paths.font(fontStuff), 42, FlxColor.WHITE, CENTER);
-			cardTxt.screenCenter();
-			cardTxt.setBorderStyle(OUTLINE, FlxColor.BLACK, 2);
-			cardTxt.alpha = 0.001;
-			add(cardTxt);
-
 			opponentIcon = new HealthIcon(PlayState.instance.dad.healthIcon, false);
 			opponentIcon.x = 260;
-			opponentIcon.y = 130;
+			opponentIcon.scale.set(0.8, 0.8);
 			opponentIcon.animation.curAnim.curFrame = 2;
 			opponentIcon.alpha = 0.001;
+			opponentIcon.screenCenter(Y);
 			add(opponentIcon);
 
 			playerIcon = new HealthIcon(PlayState.instance.boyfriend.healthIcon, true);
 			playerIcon.x = 850;
-			playerIcon.y = 460;
+			playerIcon.scale.set(0.8, 0.8);
 			playerIcon.animation.curAnim.curFrame = 2;
 			playerIcon.alpha = 0.001;
+			playerIcon.screenCenter(Y);
 			add(playerIcon);
-		}
-		else
-		{
-			songBanner = new FlxSprite(0, 0).makeGraphic(999, 136, FlxColor.WHITE);
-			songBanner.scrollFactor.set();
-			songBanner.blend = ADD;
-			songBanner.alpha = 0;
-			songBanner.antialiasing = ClientPrefs.data.antialiasing;
-			songBanner.screenCenter(XY);
-			add(songBanner);
-
-			songBannerText = new FlxText(0, 0, 600, '${PlayState.SONG.song}\nBy: ${FreeplayState.getArtistName()}');
-			songBannerText.setFormat(Paths.font(fontStuff), 36, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-			songBannerText.scrollFactor.set();
-			songBannerText.borderSize = 1.25;
-			songBannerText.alpha = 0;
-			songBannerText.screenCenter(XY);
-			add(songBannerText);
 		}
 	}
 
@@ -100,13 +85,14 @@ class SongCard extends FlxSpriteGroup
 	{	
 		if (!isLegacy)
 		{
-			FlxTween.tween(cardSprite, {alpha: 1}, time, {ease: returnTweenEase(ease), startDelay: delaySet});
+			FlxTween.tween(songBanner, {alpha: 0.5}, time, {ease: returnTweenEase(ease), startDelay: delaySet});
+
+			FlxTween.tween(songBannerText, {alpha: 1}, time + 0.5, {ease: returnTweenEase(ease), startDelay: delaySet});
 
 			FlxTween.tween(opponentIcon, {alpha: 1}, time + 0.7, {ease: returnTweenEase(ease), startDelay: delaySet});
 
 			FlxTween.tween(playerIcon, {alpha: 1}, time + 0.7, {ease: returnTweenEase(ease), startDelay: delaySet});
 
-			FlxTween.tween(cardTxt, {alpha: 1}, time + 0.5, {ease: returnTweenEase(ease), startDelay: delaySet});
 		}
 		else
 		{
@@ -128,13 +114,10 @@ class SongCard extends FlxSpriteGroup
 
 	public function removeCardAnim(delaySet:Float = 0, time:Float = 1, ease:String = 'linear')
 	{	
-		FlxTween.tween(cardSprite, {alpha: 0}, time, {ease: returnTweenEase(ease), startDelay: delaySet});
-
+		FlxTween.tween(songBanner, {alpha: 0}, time, {ease: returnTweenEase(ease), startDelay: delaySet});
+		FlxTween.tween(songBannerText, {alpha: 0}, time + 0.5, {ease: returnTweenEase(ease), startDelay: delaySet});
 		FlxTween.tween(opponentIcon, {alpha: 0}, time + 0.7, {ease: returnTweenEase(ease), startDelay: delaySet});
-
 		FlxTween.tween(playerIcon, {alpha: 0}, time + 0.7, {ease: returnTweenEase(ease), startDelay: delaySet});
-
-		FlxTween.tween(cardTxt, {alpha: 0}, time + 0.5, {ease: returnTweenEase(ease), startDelay: delaySet});
 	}
 
 	override function add(Object:FlxSprite):FlxSprite

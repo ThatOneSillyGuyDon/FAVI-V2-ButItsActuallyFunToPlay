@@ -4858,6 +4858,21 @@ enum abstract Chart(String) from String to String {
 						"Cinematic Event",
 						"Move",
 						"130,0.0001,linear"
+					],
+					[
+						"Show Song Card",
+						"true",
+						"0,1.5,sineInOut"
+					]
+				]
+			],
+			[
+				2909.09090909091,
+				[
+					[
+						"Show Song Card",
+						"false",
+						"0,1.5,sineInOut"
 					]
 				]
 			],
@@ -5290,16 +5305,6 @@ enum abstract Chart(String) from String to String {
 						"0.06"
 					],
 					[
-						"Show Song Card",
-						"true",
-						"0,1.5,sineInOut"
-					]
-				]
-			],
-			[
-				34909.0909090909,
-				[
-					[
 						"Set Property",
 						"cameraSpeed",
 						"1"
@@ -5328,12 +5333,7 @@ enum abstract Chart(String) from String to String {
 						"Background Controls",
 						"Flash",
 						"0.35,linear,0.4,255,255,255"
-					]
-				]
-			],
-			[
-				34909.0909090909,
-				[
+					],
 					[
 						"Cinematic Event",
 						"Move",
@@ -5408,21 +5408,11 @@ enum abstract Chart(String) from String to String {
 						"Add Camera Zoom",
 						"0.05",
 						"0.06"
-					]
-				]
-			],
-			[
-				37818.1818181818,
-				[
+					],
 					[
 						"Background Controls",
 						"Flash",
 						"0.35,linear,0.2,194,194,194"
-					],
-					[
-						"Show Song Card",
-						"false",
-						"0,1.5,sineInOut"
 					]
 				]
 			],
@@ -13802,6 +13792,11 @@ enum abstract Chart(String) from String to String {
 						"Camera Event",
 						"Snap Pos",
 						"210,460"
+					],
+					[
+						"Show Song Card",
+						"true",
+						"0,1,circOut"
 					]
 				]
 			],
@@ -13877,6 +13872,11 @@ enum abstract Chart(String) from String to String {
 						"Set Property",
 						"isCameraOnForcedPos",
 						"false"
+					],
+					[
+						"Show Song Card",
+						"false",
+						"0,1,circOut"
 					]
 				]
 			],
@@ -14452,11 +14452,6 @@ enum abstract Chart(String) from String to String {
 						"Camera Event",
 						"Tween Value",
 						"zoom,0.75,0.0001,linear"
-					],
-					[
-						"Show Song Card",
-						"true",
-						"0,1,circOut"
 					]
 				]
 			],
@@ -14652,11 +14647,6 @@ enum abstract Chart(String) from String to String {
 						"Camera Event",
 						"Flash",
 						"255,255,255,0.85,1,true"
-					],
-					[
-						"Show Song Card",
-						"false",
-						"0,1,circOut"
 					]
 				]
 			],
@@ -115006,11 +114996,6 @@ enum abstract Chart(String) from String to String {
 						"Background Controls",
 						"Darken",
 						"1,0.0001,linear"
-					],
-					[
-						"Show Song Card",
-						"true",
-						"0,1.5,sineInOut"
 					]
 				]
 			],
@@ -115071,11 +115056,6 @@ enum abstract Chart(String) from String to String {
 						"Camera Event",
 						"Fade",
 						"0,0,0,2.5,true"
-					],
-					[
-						"Show Song Card",
-						"false",
-						"0,2.5,linear"
 					]
 				]
 			],
@@ -115086,6 +115066,21 @@ enum abstract Chart(String) from String to String {
 						"Camera Event",
 						"Tween Value",
 						"hudalpha,1,3,sineInOut"
+					],
+					[
+						"Show Song Card",
+						"true",
+						"0,1.5,sineInOut"
+					]
+				]
+			],
+			[
+				8571.42857142857,
+				[
+					[
+						"Show Song Card",
+						"false",
+						"0,1.5,sineInOut"
 					]
 				]
 			],
@@ -123309,21 +123304,6 @@ enum abstract Chart(String) from String to String {
 						"Camera Event",
 						"Fade",
 						"0,0,0,0.0001,true"
-					],
-					[
-						"Show Song Card",
-						"true",
-						"0,1.5,sineInOut"
-					]
-				]
-			],
-			[
-				8944.09937888199,
-				[
-					[
-						"Show Song Card",
-						"false",
-						"0,1.5,sineInOut"
 					]
 				]
 			],
@@ -123459,6 +123439,11 @@ enum abstract Chart(String) from String to String {
 						"Camera Event",
 						"Fade",
 						"255,0,0,1,true"
+					],
+					[
+						"Show Song Card",
+						"true",
+						"0,1.5,sineInOut"
 					]
 				]
 			],
@@ -123469,6 +123454,11 @@ enum abstract Chart(String) from String to String {
 						"Relapse Gimmick",
 						"0.35,0.15",
 						"false"
+					],
+					[
+						"Show Song Card",
+						"false",
+						"0,1.5,sineInOut"
 					]
 				]
 			],
@@ -176620,16 +176610,6 @@ enum abstract Chart(String) from String to String {
 		],
 		"events": [
 			[
-				0,
-				[
-					[
-						"Show Song Card",
-						"true",
-						"1,1,quadInOut"
-					]
-				]
-			],
-			[
 				375,
 				[
 					[
@@ -176751,11 +176731,6 @@ enum abstract Chart(String) from String to String {
 						"Remove Health",
 						"0.005",
 						""
-					],
-					[
-						"Show Song Card",
-						"false",
-						"0,1,quadInOut"
 					]
 				]
 			],
@@ -177991,6 +177966,11 @@ enum abstract Chart(String) from String to String {
 						"Remove Health",
 						"0.14",
 						""
+					],
+					[
+						"Show Song Card",
+						"true",
+						"0,1,quadInOut"
 					]
 				]
 			],
@@ -178071,6 +178051,11 @@ enum abstract Chart(String) from String to String {
 						"Remove Health",
 						"0.14",
 						""
+					],
+					[
+						"Show Song Card",
+						"false",
+						"0,1,quadInOut"
 					]
 				]
 			],
@@ -383968,7 +383953,12 @@ enum abstract Chart(String) from String to String {
 						"Camera Event",
 						"change value",
 						"static zoom, 0.6"
-					],
+					]
+				]
+			],
+			[
+				41454.5454545455,
+				[
 					[
 						"Show Song Card",
 						"false",

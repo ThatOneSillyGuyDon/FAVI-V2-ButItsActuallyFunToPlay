@@ -2196,7 +2196,7 @@ class PlayState extends MusicBeatState
 			opponentVocals.pause();
 		}
 
-		if (songCard.isLegacy)
+		if (songCard.isLegacy && ClientPrefs.data.songCards)
 			songCard.playCardAnim(0);
 
 		// Song duration in a float, useful for the time left feature
@@ -4118,7 +4118,7 @@ class PlayState extends MusicBeatState
 			case 'Show Song Card':
 				var triggerInfo:Array<String> = value2.split(',');
 
-				if (!songCard.isLegacy)
+				if (!songCard.isLegacy && ClientPrefs.data.songCards)
 				{
 					if (value1.toLowerCase().trim() == "true")
 						songCard.playCardAnim(Std.parseFloat(triggerInfo[0]), Std.parseFloat(triggerInfo[1]), triggerInfo[2]);

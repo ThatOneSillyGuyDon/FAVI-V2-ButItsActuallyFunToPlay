@@ -166,7 +166,9 @@ class Song
 						case 11: chartFile = ClientPrefs.data.gameplaySettings["botplay"] ? Chart.dontCross1 : Chart.dontCross11;
 					}
 				}
+				
 				if (jsonInput == 'events' && FlxG.random.bool(10))
+				{
 					switch (eventRandom)
 					{
 						case 1: chartFile = Event.bullshitEvent1;
@@ -174,6 +176,7 @@ class Song
 						case 3: chartFile = Event.bullshitEvent3;
 						case 4: chartFile = Event.bullshitEvent4;
 					}
+				}
 			case "rotten-petals": chartFile = Chart.rottenPetals;
 			case "somber-night": chartFile = Chart.somberNight;
 			case "simple-life": chartFile = Chart.simpleLife;

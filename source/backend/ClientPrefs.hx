@@ -85,6 +85,7 @@ import states.menus.TitleState;
 	public var pauseCountdown = false;
 	public var debugInfo = false;
 	public var shaking:Bool = true;
+	public var songCards:Bool = true;
 }
 
 class ClientPrefs {

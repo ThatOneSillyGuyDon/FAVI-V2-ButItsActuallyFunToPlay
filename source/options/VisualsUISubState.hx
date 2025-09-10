@@ -47,6 +47,14 @@ class VisualsUISubState extends BaseOptionsMenu
 			true);
 		addOption(option);
 */
+
+		var option:Option = new Option('Song Cards',
+			"If unchecked, it will hide the title cards for each song.",
+			'songCards',
+			'bool',
+			true);
+		addOption(option);
+
 		var option:Option = new Option('Hide HUD',
 			'If checked, hides most HUD elements.',
 			'hideHud',
@@ -57,7 +65,8 @@ class VisualsUISubState extends BaseOptionsMenu
 		var option:Option = new Option('Quantization',
 			'If checked, will color code the notes of their placement per beat.',
 			'quantization',
-			'bool');
+			'bool',
+			false);
 		addOption(option);
 		
 		var option:Option = new Option('Flashing Lights',
