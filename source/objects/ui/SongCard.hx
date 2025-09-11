@@ -52,7 +52,10 @@ class SongCard extends FlxSpriteGroup
 		songBanner.screenCenter(XY);
 		add(songBanner);
 
-		songBannerText = new FlxText(0, 0, 600, '$lineThing ${PlayState.SONG.song} $lineThing\nBy: ${FreeplayState.getArtistName()}');
+		var songName:String = PlayState.SONG.song;
+		if(PlayState.SONG.song == "Dont Cross") songName = "Don't Cross!";
+
+		songBannerText = new FlxText(0, 0, 600, '$lineThing $songName $lineThing\nBy: ${FreeplayState.getArtistName()}');
 		songBannerText.setFormat(Paths.font(fontStuff), 36, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		songBannerText.scrollFactor.set();
 		songBannerText.borderSize = 1.25;
