@@ -75,6 +75,13 @@ class ChangelogMenu extends MusicBeatSubstate
             stupidLerp[1] = 43;
             stupidLerp[2] = 108;
         }
+        if (stupidLerp[0] + theChanges.height < FlxG.height - 100) //THESE CALCULATIONS TOOK SO LONG TO FIGURE OUT, FUCK MATH!!!! (don)
+        {
+            stupidLerp[0] = FlxG.height - 100 - theChanges.height;
+            stupidLerp[1] = stupidLerp[0] + 33;
+            stupidLerp[2] = stupidLerp[0] + 68;
+        }
+        
         if (controls.BACK)
         {
             MainMenuState.selectedSomethin = false;
