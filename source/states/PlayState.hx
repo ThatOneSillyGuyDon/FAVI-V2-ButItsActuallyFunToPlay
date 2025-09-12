@@ -255,8 +255,7 @@ class PlayState extends MusicBeatState
 	public var healthLerp:Float = 1;
 	public var combo:Int = 0;
 
-	private var healthBarBG:AttachedSprite;
-	public var healthBar:FlxBar;
+	public var healthBar:Bar;
 	public var timeBar:Bar;
 	var songPercent:Float = 0;
 
@@ -1043,18 +1042,17 @@ class PlayState extends MusicBeatState
 		FlxG.fixedTimestep = false;
 		moveCameraSection();
 
-		healthBarBG = new AttachedSprite('healthBar');
-		healthBarBG.y = FlxG.height * 0.89;
-		healthBarBG.screenCenter(X);
-		healthBarBG.scrollFactor.set();
-		healthBarBG.visible = !ClientPrefs.data.hideHud;
-		healthBarBG.xAdd = -4;
-		healthBarBG.yAdd = -4;
-		uiGroup.add(healthBarBG);
-		if(ClientPrefs.data.downScroll || curStage == "waltRoom" || curStage == "menuSongs") healthBarBG.y = 0.11 * FlxG.height;
+		healthBar = new Bar(0, FlxG.height * (!ClientPrefs.data.downScroll ? 0.89 : 0.11), 'healthBar', function() return FreeplayState.freeplayMenuList != 2  ? healthLerp : healthThing, 0, 2);
+		healthBar.screenCenter(X);
+		healthBar.leftToRight = SONG.song == "Devilish Deal" ? true : false;
+		healthBar.scrollFactor.set();
+		healthBar.visible = !ClientPrefs.data.hideHud;
+		healthBar.alpha = ClientPrefs.data.healthBarAlpha;
+		reloadHealthBarColors();
+		if(ClientPrefs.data.downScroll || curStage == "waltRoom" || curStage == "menuSongs") healthBar.y = FlxG.height * 0.11;
 
 		//have to make an underlay so you can see the healthbar colors lmao
-		fancyBarOverlay = new FlxSprite(healthBarBG.x, healthBarBG.y).loadGraphic(Paths.image('episode1Overlay'));
+		fancyBarOverlay = new FlxSprite(healthBar.x, healthBar.y).loadGraphic(Paths.image('episode1Overlay'));
 		fancyBarOverlay.scale.set(1.01, 1);
 		fancyBarOverlay.screenCenter(X);
 		fancyBarOverlay.scrollFactor.set();
@@ -1070,15 +1068,6 @@ class PlayState extends MusicBeatState
 		fancyBarOverlay.visible = SONG.song.toLowerCase() != 'cycled sins';
 		if (FreeplayState.freeplayMenuList != 2)
 			uiGroup.add(fancyBarOverlay);
-
-		healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 5, (SONG.song == "Devilish Deal" ? LEFT_TO_RIGHT : RIGHT_TO_LEFT), Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 7), this,
-			'healthLerp', 0, 2);
-		healthBar.scrollFactor.set();
-		healthBar.percent = healthThing;
-		// healthBar
-		healthBar.visible = !ClientPrefs.data.hideHud;
-		healthBar.alpha = ClientPrefs.data.healthBarAlpha;
-		healthBarBG.sprTracker = healthBar;
 		uiGroup.add(healthBar);
 
 		iconP1 = new HealthIcon((SONG.song == "Mercy" ? "everettmercy" : boyfriend.healthIcon), (SONG.song == "Mercy" ? false : true));
@@ -1112,7 +1101,7 @@ class PlayState extends MusicBeatState
 		uiGroup.add(iconP2);
 		reloadHealthBarColors();
 
-		scoreTxt = new FlxText(0, ((curStage == "menuSongs" || curStage == "waltRoom") ? (ClientPrefs.data.downScroll ? 15 : 675) : healthBarBG.y + 36), FlxG.width, "", 20);
+		scoreTxt = new FlxText(0, ((curStage == "menuSongs" || curStage == "waltRoom") ? (ClientPrefs.data.downScroll ? 15 : 675) : healthBar.y + 36), FlxG.width, "", 20);
 		scoreTxt.setFormat(Paths.font("DisneyFont.ttf"), (FreeplayState.freeplayMenuList == 2  ? 28 : 20), FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
 		scoreTxt.borderSize = 1.25;
@@ -1141,7 +1130,7 @@ class PlayState extends MusicBeatState
 		if (curStage == "waltRoom" || curStage == "menuSongs")
 		{
 			fancyBarOverlay.flipY = true;
-			for (bar in [healthBar, healthBarBG, fancyBarOverlay])
+			for (bar in [healthBar, fancyBarOverlay])
 			{
 				bar.angle = 90;
 				bar.x -= 580;
@@ -1279,7 +1268,7 @@ class PlayState extends MusicBeatState
 		// shitty thing to make it so the health bar is visible at all times
 		if (curStage == "waltRoom")
 		{
-			for (funny in [healthBar, healthBarBG, fancyBarOverlay, iconP1, iconP2])
+			for (funny in [healthBar, fancyBarOverlay, iconP1, iconP2])
 				funny.cameras = [fakeCam];
 		}
 
@@ -1433,12 +1422,14 @@ class PlayState extends MusicBeatState
 		switch (SONG.song)
 		{
 			case "Mercy":
-				healthBar.createFilledBar(FlxColor.fromRGB(97, 72, 52), FlxColor.fromRGB(255, 239, 176));
+				healthBar.setColors(FlxColor.fromRGB(97, 72, 52), 
+					FlxColor.fromRGB(255, 239, 176));
 			case "Devilish Deal":
-				healthBar.createFilledBar(FlxColor.fromRGB(135, 99, 99), FlxColor.fromRGB(158, 158, 158));
+				healthBar.setColors(FlxColor.fromRGB(135, 99, 99),
+					FlxColor.fromRGB(158, 158, 158));
 			default:
-				healthBar.createFilledBar(FlxColor.fromRGB(dad.healthColorArray[0], dad.healthColorArray[1], dad.healthColorArray[2]),
-				FlxColor.fromRGB(boyfriend.healthColorArray[0], boyfriend.healthColorArray[1], boyfriend.healthColorArray[2]));
+				healthBar.setColors(FlxColor.fromRGB(dad.healthColorArray[0], dad.healthColorArray[1], dad.healthColorArray[2]),
+					FlxColor.fromRGB(boyfriend.healthColorArray[0], boyfriend.healthColorArray[1], boyfriend.healthColorArray[2]));
 		}
 		healthBar.updateBar();
 	}
