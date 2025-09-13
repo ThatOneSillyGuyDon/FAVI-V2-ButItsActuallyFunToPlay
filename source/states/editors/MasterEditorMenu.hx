@@ -101,6 +101,11 @@ class MasterEditorMenu extends MusicBeatState
 		}
 		#end
 
+		if(FlxG.mouse.wheel != 0)
+		{
+			changeSelection(-FlxG.mouse.wheel);
+		}
+
 		if (controls.BACK)
 		{
 			MusicBeatState.switchState(new MainMenuState());

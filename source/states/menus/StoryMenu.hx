@@ -279,6 +279,7 @@ class StoryMenu extends MusicBeatState
 
 	function selectWeek()
 	{
+		SaveProgress.loadProgress();
 		if (stopspamming == false)
 		{
 			FlxG.sound.play(Paths.sound('funkinAVI/menu/confirmEpisode'));
@@ -296,8 +297,43 @@ class StoryMenu extends MusicBeatState
 		// We can't use Dynamic Array .copy() because that crashes HTML5, here's a workaround.
 		var songArray:Array<String> = [];
 		var leWeek:Array<Dynamic> = loadedWeeks[curWeek].songs;
-		for (i in 0...leWeek.length) {
-			songArray.push(leWeek[i][0]);
+
+		// gotta redo the whole code with saving problably
+		switch(curWeek)
+		{
+			//Episode 1
+			case 0:
+				switch(SaveProgress.curStorySong)
+				{
+					case "Isolated":
+						songArray = [
+							"Isolated",
+							"Lunacy",
+							"Delusional",
+						];
+					case "Lunacy":
+						songArray = [
+							"Lunacy",
+							"Delusional",
+						];
+					case "Delusional":
+						songArray = [
+							"Delusional",
+						];
+					default: 
+						// hard coding goes hard
+						songArray = [
+							"Devilish Deal",
+							"Isolated",
+							"Lunacy",
+							"Delusional",
+						];
+						
+				}
+			default:
+				for (i in 0...leWeek.length) {
+					songArray.push(leWeek[i][0]);
+				}
 		}
 
 		// Nevermind that's stupid lmao
@@ -311,29 +347,7 @@ class StoryMenu extends MusicBeatState
 		if(diffic == null) diffic = '';
 
 		PlayState.storyDifficulty = curDifficulty;
-		/*
-		// Are we adding episode 2?
-		for (song in songArray.length){
-			switch(curEpisode){
-				case 1: // episode 1
-					if (Paths.formatToSongPath(song) != GameData.storySong.toLowerCase())
-						songArray.remove(song);
-					else
-						break;
-				default:
-					//nothing yes nothing
-			}
-		}
-		*/
-		if (!GameData.devilSong)
-		{
-			GameData.storySong = "Devilish-Deal";
-			PlayState.SONG = Song.loadFromJson(GameData.storySong.toLowerCase(), GameData.storySong.toLowerCase());
-		}
-		else if (GameData.devilSong)
-		{
-			PlayState.SONG = Song.loadFromJson(GameData.storySong.toLowerCase(), GameData.storySong.toLowerCase());
-		}
+		PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + diffic, songLowercase);
 		PlayState.campaignScore = 0;
 		PlayState.campaignMisses = 0;
 		new FlxTimer().start(1, function(tmr:FlxTimer)

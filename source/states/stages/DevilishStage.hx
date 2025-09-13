@@ -395,7 +395,6 @@ class DevilishStage extends BaseStage
 					case 5: minnieIcon.animation.curAnim.curFrame = 0;
 					case 6:
 						game.healthBar.visible = false;
-						game.healthBarBG.visible = false;
 						minnieIcon.visible = false;
 						satanIcon.visible = false;
 						game.noteGroup.visible = false;

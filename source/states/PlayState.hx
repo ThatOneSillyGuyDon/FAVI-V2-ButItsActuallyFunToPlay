@@ -496,6 +496,34 @@ class PlayState extends MusicBeatState
 
 	override public function create()
 	{
+		SaveProgress.loadProgress();
+		
+		// this code fucking sucks
+		/*if (WeekData.getWeekFileName() == "week1")
+		{
+			if (isStoryMode && WeekData.getCurrentWeek().songs[0][0] != curSong)
+			{
+				Episode1Progress.savedSong = SONG.song; 
+		
+				trace("Saved The Song: " + SONG.song);
+	
+				Episode1Progress.save();
+			}
+		}*/
+		
+		if (isStoryMode && WeekData.getCurrentWeek().songs[0][0] != SONG.song)
+		{
+
+			if (WeekData.getWeekFileName() == "episode1")
+				SaveProgress.curStorySong = SONG.song;
+			else if (WeekData.getWeekFileName() == "episode2")
+				SaveProgress.curStoryWeek2 = SONG.song;
+
+			SaveProgress.saveThing();
+			trace("the CurSong is now: " + SaveProgress.curStorySong); // test for ep1
+
+		}
+		
 		//trace('Playback Rate: ' + playbackRate);
 		Paths.clearStoredMemory();
 
@@ -4901,6 +4929,8 @@ class PlayState extends MusicBeatState
 		checkForAchievement([weekNoMiss, 'ur_bad', 'ur_good', 'hype', 'two_keys', 'toastie', 'debugger']);
 		#end
 
+		SaveProgress.saveThing();
+
 		var ret:Dynamic = callOnScripts('onEndSong', null, true);
 		if(ret != LuaUtils.Function_Stop && !transitioning)
 		{
@@ -4921,6 +4951,7 @@ class PlayState extends MusicBeatState
 			{
 				campaignScore += songScore;
 				campaignMisses += songMisses;
+				songProgress(SONG.song);
 
 				storyPlaylist.remove(storyPlaylist[0]);
 
@@ -4930,8 +4961,6 @@ class PlayState extends MusicBeatState
 					{
 						//hasEndingScene = true;
 						GameData.episode1FPLock = "unlocked";
-						GameData.deluluSong = true;
-						GameData.storySong = "Devilish-Deal";
 						GameData.saveShit();
 					}
 					if (SONG.song == "Birthday")
@@ -4940,7 +4969,7 @@ class PlayState extends MusicBeatState
 						GameData.saveShit();
 					}
 					Mods.loadTopMod();
-					FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
+					//FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 					#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
 
 					MusicBeatState.switchState(new StoryMenu());
@@ -4959,73 +4988,41 @@ class PlayState extends MusicBeatState
 				{
 					var difficulty:String = Difficulty.getFilePath();
 
-					if (SONG.song == "Devilish Deal")
-					{
-						//hasEndingScene = true;
-						GameData.devilSong = true;
-						GameData.storySong = "Isolated";
-						GameData.saveShit();
+					//hasEndingScene = true;
+					GameData.episode1FPLock = "unlocked";
+					GameData.saveShit();
+
+					Mods.loadTopMod();
+					FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
+					#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
+
+					MusicBeatState.switchState(new StoryMenu());
+
+					// if ()
+					if(!ClientPrefs.getGameplaySetting('practice') && !ClientPrefs.getGameplaySetting('botplay')) {
+						StoryMenu.weekCompleted.set(WeekData.weeksList[storyWeek], true);
+						Highscore.saveWeekScore(WeekData.getWeekFileName(), campaignScore, storyDifficulty);
+
+						FlxG.save.data.weekCompleted = StoryMenu.weekCompleted;
+						FlxG.save.flush();
 					}
-					if (SONG.song == "Isolated")
-					{
-						//hasEndingScene = true;
-						GameData.isoSong = true;
-						GameData.storySong = "Lunacy";
-						GameData.saveShit();
-					}
-					if (SONG.song == "Lunacy")
-					{
-						//hasEndingScene = true;
-						GameData.lunaSong = true;
-						GameData.storySong = "Delusional";
-						GameData.saveShit();
-					}
-					if (SONG.song == "Delusional")
-					{
-						//hasEndingScene = true;
-						GameData.episode1FPLock = "unlocked";
-						GameData.deluluSong = true;
-						GameData.storySong = "Devilish-Deal";
-						GameData.saveShit();
+					changedDifficulty = false;
 
-						Mods.loadTopMod();
-						FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
-						#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
+					trace('LOADING NEXT SONG');
+					trace(Paths.formatToSongPath(storyPlaylist[0]) + difficulty);
 
-						MusicBeatState.switchState(new StoryMenu());
+					FlxTransitionableState.skipNextTransIn = true;
+					FlxTransitionableState.skipNextTransOut = true;
+					
+					prevCamFollow = camFollow;
+					prevCamFollowPos = camFollowPos;
 
-						// if ()
-						if(!ClientPrefs.getGameplaySetting('practice') && !ClientPrefs.getGameplaySetting('botplay')) {
-							StoryMenu.weekCompleted.set(WeekData.weeksList[storyWeek], true);
-							Highscore.saveWeekScore(WeekData.getWeekFileName(), campaignScore, storyDifficulty);
+					var songLowercase:String = Paths.formatToSongPath(storyPlaylist[0]);
 
-							FlxG.save.data.weekCompleted = StoryMenu.weekCompleted;
-							FlxG.save.flush();
-						}
-						changedDifficulty = false;
-					}
+					SONG = Song.loadFromJson(storyPlaylist[0], songLowercase);
+					FlxG.sound.music.stop();
 
-					if (SONG.song != "Delusional")
-					{
-						trace('LOADING NEXT SONG');
-						trace(Paths.formatToSongPath(storyPlaylist[0]) + difficulty);
-
-						FlxTransitionableState.skipNextTransIn = true;
-						FlxTransitionableState.skipNextTransOut = true;
-						
-						prevCamFollow = camFollow;
-						prevCamFollowPos = camFollowPos;
-
-						var songLowercase:String = Paths.formatToSongPath(storyPlaylist[0]);
-
-						if (!GameData.devilSong)
-							SONG = Song.loadFromJson(storyPlaylist[0], songLowercase);
-						else if (GameData.devilSong)
-							SONG = Song.loadFromJson(GameData.storySong.toLowerCase(), GameData.storySong.toLowerCase());
-						FlxG.sound.music.stop();
-
-						LoadingState.loadAndSwitchState(new PlayState());
-					}
+					LoadingState.loadAndSwitchState(new PlayState());
 				}
 			}
 			else
@@ -5033,6 +5030,8 @@ class PlayState extends MusicBeatState
 				trace('WENT BACK TO FREEPLAY??');
 				Mods.loadTopMod();
 				#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
+
+				songProgress(SONG.song);
 
 				GameData.completeFPSong();
 				MusicBeatState.switchState(new FreeplayState());
@@ -5043,6 +5042,18 @@ class PlayState extends MusicBeatState
 			transitioning = true;
 		}
 		return true;
+	}
+
+	function songProgress(songName:String) {
+		// pls help me with my insanity --(MalyPlus)
+		for (i in 0...SaveProgress.songsStuff.length){
+			if (SaveProgress.songsStuff[i][0] == songName) {
+				SaveProgress.songsStuff[i][1] = "Beated";
+				trace(SaveProgress.songsStuff[i][0] + " saved: " + SaveProgress.songsStuff[i][1]);
+			}
+		}
+		
+		SaveProgress.saveThing();
 	}
 
 	public function KillNotes() {

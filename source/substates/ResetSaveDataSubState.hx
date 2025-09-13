@@ -27,7 +27,7 @@ class ResetSaveDataSubState extends MusicBeatSubstate
 		warning = new FlxTextAlphabet(0, 150, "", true);
 		warning.setFormat(Paths.font("newFreeplayFont.ttf"), 50, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		warning.screenCenter(X).x -= 100;
-		warning.applyMarkup('*WARNING*',
+		warning.applyMarkup('*~WARNING~*',
 			[
 				new FlxTextFormatMarkerPair(new FlxTextFormat(FlxColor.RED), "*")
 			]
@@ -35,7 +35,7 @@ class ResetSaveDataSubState extends MusicBeatSubstate
 
 		desc = new FlxTextAlphabet(200, 250, "", true);
 		desc.setFormat(Paths.font("newFreeplayFont.ttf"), 35, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		desc.applyMarkup('You are about to *PERMANENTLY DELETE* your save data.\nAre you sure you want to *delete* your save data?',
+		desc.applyMarkup('You are about to *PERMANENTLY DELETE* your save data.\nAre you sure you want to *delete* your save data?\n*It cannot be recovered once deleted.*',
 			[
 				new FlxTextFormatMarkerPair(new FlxTextFormat(FlxColor.RED), "*")
 			]
