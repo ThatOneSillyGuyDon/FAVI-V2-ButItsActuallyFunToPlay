@@ -497,23 +497,13 @@ class PlayState extends MusicBeatState
 	override public function create()
 	{
 		SaveProgress.loadProgress();
-		
-		// this code fucking sucks
-		/*if (WeekData.getWeekFileName() == "week1")
-		{
-			if (isStoryMode && WeekData.getCurrentWeek().songs[0][0] != curSong)
-			{
-				Episode1Progress.savedSong = SONG.song; 
-		
-				trace("Saved The Song: " + SONG.song);
-	
-				Episode1Progress.save();
-			}
-		}*/
-		
+				
 		if (isStoryMode && WeekData.getCurrentWeek().songs[0][0] != SONG.song)
 		{
-
+			// quick explaning about the code
+			/* 
+				i've separated both CurStorySong and CurStoryWeek so your progress wouldnt fuck up after you play episode 2 and start replaying ep1 lmfao
+			*/
 			if (WeekData.getWeekFileName() == "episode1")
 				SaveProgress.curStorySong = SONG.song;
 			else if (WeekData.getWeekFileName() == "episode2")
