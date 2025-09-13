@@ -27,6 +27,8 @@ class Framerate extends TextField
 	**/
 	public static final updateInterval:Int = 250; // keep this high
 
+	public var font:String = '';
+
 	/**
 		The current memory usage
 	**/
@@ -43,6 +45,7 @@ class Framerate extends TextField
 		mouseEnabled = false;
 		defaultTextFormat = new TextFormat(openfl.utils.Assets.getFont("assets/fonts/disneyFreeplayFont.ttf").fontName /*your standards are lame Jason lol*/, 12, 0xFFFFFF);
         // https://en.wikipedia.org/wiki/Game_design
+		font = openfl.utils.Assets.getFont("assets/fonts/disneyFreeplayFont.ttf").fontName;
 		multiline = false;
 		wordWrap = false;
 		autoSize = LEFT;
@@ -75,15 +78,17 @@ class Framerate extends TextField
 
 		then = now;
 		currentFPS = times.length < FlxG.updateFramerate ? times.length : FlxG.updateFramerate;
-                                                                                                                                                                                           // still retarded
-		text = 'FPS: ${currentFPS}\n' + ClientPrefs.data.debugInfo ? 'RAM: ${flixel.util.FlxStringUtil.formatBytes(memoryMegas)} (${flixel.util.FlxStringUtil.formatBytes(memoryPeak)} peak)\nFunkin.avi v2.5.0\n' : '';
-		// The frametime is currently a lie. Using deltaTime causes the TextField to regen more frequently, which is hideously memory intensive.
+		text = 'FPS: ${currentFPS}\n'; // The frametime is currently a lie. Using deltaTime causes the TextField to regen more frequently, which is hideously memory intensive.
+		// this is technically very bad but apperently compiler breaks itself
+		if (ClientPrefs.data.debugInfo) 
+			text += 'RAM: ${flixel.util.FlxStringUtil.formatBytes(memoryMegas)} (${flixel.util.FlxStringUtil.formatBytes(memoryPeak)} peak)\nFunkin.avi v2.5.0\n'; // <-- still retarded
 
 		textColor = currentFPS < (FlxG.drawFramerate * 0.5) ? 0xFFFF0000 : (Type.getClass(FlxG.state) == PlayState && PlayState.SONG.song == "Malfunction" ? 0x1F282E : 0xFFC2C2C2);
 	
         // why am I doing this? well, why tf not? (don)
 		// can't complain brah
         // avi if adding quadrillion unnecesarry things was a job (i'd be rich)
+		// also could've done better #justsaying
         if (Type.getClass(FlxG.state) == PlayState)
         {
             switch (PlayState.SONG.song)
