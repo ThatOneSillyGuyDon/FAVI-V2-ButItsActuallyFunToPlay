@@ -1,7 +1,5 @@
 package states.stages;
 
-import states.stages.objects.*;
-
 #if !flash 
 import openfl.filters.ShaderFilter;
 #end
@@ -644,5 +642,27 @@ class DevilishStage extends BaseStage
 				return FlxEase.smootherStepOut;
 		}
 		return FlxEase.linear;
+	}
+
+	override public function onFocus():Void 
+	{
+		if (FlxG.autoPause)
+		{
+			if (devilishGaming != null && devilishGaming.visible)
+				devilishGaming.resume();
+			if (episodeIntro != null && episodeIntro.visible)
+				episodeIntro.resume();
+		}
+	}
+
+	override public function onFocusLost():Void 
+	{
+		if (FlxG.autoPause)
+		{
+			if (devilishGaming != null && devilishGaming.visible)
+				devilishGaming.pause();
+			if (episodeIntro != null && episodeIntro.visible)
+				episodeIntro.pause();
+		}
 	}
 }

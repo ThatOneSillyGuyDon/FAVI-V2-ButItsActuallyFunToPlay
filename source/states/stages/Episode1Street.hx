@@ -33,9 +33,6 @@ class Episode1Street extends BaseStage
 	 public static var tumbleGrp:FlxTypedGroup<FlxSprite>;
 	 public static var lightning:FlxSprite;
 	 public static var lightningFore:FlxSprite;
-	 public static var streetDaytime:FlxSprite;
-	 public static var clouds:FlxSprite;
-	 public static var brightSky:FlxSprite;
 	 public static var streetRuins:FlxSprite;
 	 public static var fakeLightOfHope:FlxSprite;
 	 public static var fireThing:FlxSprite;
@@ -43,9 +40,7 @@ class Episode1Street extends BaseStage
 	 public static var fireForeground:FlxSprite;
 	 public static var fireTweenHandler:FlxTween;
 	 public static var rainTween:FlxTween;
-	 public static var fireParticle:FlxEmitter;
 	 public static var mickeySpirit:Character;
-	 public static var memoryMickey:Character;
 	 public static var smokeShit:FlxTypedGroup<FlxSprite>;
 	 public static var smokeFore:FlxTypedGroup<FlxSprite>;
 	 public static var spriteShit:Array<String> = ['smokeBBack', 'smokeTBack'];
@@ -151,11 +146,6 @@ class Episode1Street extends BaseStage
 			mickeySpirit = new Character(-200, -700, "avier-bg");
 			mickeySpirit.alpha = 0.0001;
 			add(mickeySpirit);
-
-			memoryMickey = new Character(575, 50, "Mickey-Bedroom", true);
-			memoryMickey.alpha = 0.0001;
-			memoryMickey.cameras = [game.camVideo];
-			add(memoryMickey);
 
 			streetRuins = new FlxSprite(-20, 200).loadGraphic(Paths.image(PlayState.pathway + 'streetDestroyed'));
 			streetRuins.antialiasing = ClientPrefs.data.antialiasing;
@@ -1382,5 +1372,39 @@ class Episode1Street extends BaseStage
 				return FlxEase.smootherStepOut;
 		}
 		return FlxEase.linear;
+	}
+
+	override public function onFocus():Void 
+	{
+		if (FlxG.autoPause)
+		{
+			if (death != null && death.visible)
+				death.resume();
+			if (deluSing != null && deluSing.visible)
+				deluSing.resume();
+			if (minnieJumpscare != null && minnieJumpscare.visible)
+				minnieJumpscare.resume();
+			if (isolatedIntro != null && isolatedIntro.visible)
+				isolatedIntro.resume();
+			if (lununuIntro != null && lununuIntro.visible)
+				lununuIntro.resume();
+		}
+	}
+
+	override public function onFocusLost():Void 
+	{
+		if (FlxG.autoPause)
+		{
+			if (death != null && death.visible)
+				death.pause();
+			if (deluSing != null && deluSing.visible)
+				deluSing.pause();
+			if (minnieJumpscare != null && minnieJumpscare.visible)
+				minnieJumpscare.pause();
+			if (isolatedIntro != null && isolatedIntro.visible)
+				isolatedIntro.pause();
+			if (lununuIntro != null && lununuIntro.visible)
+				lununuIntro.pause();
+		}
 	}
 }

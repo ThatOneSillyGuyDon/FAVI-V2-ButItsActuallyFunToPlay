@@ -104,6 +104,10 @@ class BaseStage extends FlxBasic
 		}
 	}
 
+	public function onFocus():Void {}
+
+	public function onFocusLost():Void {}
+
 	//start/end callback functions
 	public function setStartCallback(myfn:Void->Void)
 	{

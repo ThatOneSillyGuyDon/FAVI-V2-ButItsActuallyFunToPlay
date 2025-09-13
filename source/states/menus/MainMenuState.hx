@@ -325,6 +325,7 @@ class MainMenuState extends MusicBeatState
 			FlxG.mouse.visible = true;
 	}
 
+	var goingToBrainrot:Bool = false;
 	override function update(elapsed:Float)
 	{
 		evilAndFuckedUpBookScale = (FlxG.mouse.overlaps(menuItems.members[7])) ? 1.1 : 1;
@@ -383,8 +384,11 @@ class MainMenuState extends MusicBeatState
 				FlxG.sound.muteKeys = [FlxKey.ZERO, FlxKey.NUMPADZERO];
 		}
 
-		if (FlxG.sound.music.volume < 0.8)
-			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
+		if (!goingToBrainrot)
+		{
+			if (FlxG.sound.music.volume < 0.8)
+				FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
+		}
 
 		if (!selectedSomethin)
 		{
@@ -422,6 +426,12 @@ class MainMenuState extends MusicBeatState
 				GameData.episode1FPLock = "unlocked";
 				GameData.saveShit();
 			}
+			if (FlxG.keys.justPressed.NINE)
+			{
+				goingToBrainrot = true;
+				MusicBeatState.switchState(new Brainrot());
+				FlxG.sound.music.fadeOut(0.5);
+			}	
 			if (controls.BACK)
 			{
 				selectedSomethin = true;

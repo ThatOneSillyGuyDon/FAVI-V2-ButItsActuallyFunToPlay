@@ -2677,13 +2677,7 @@ class PlayState extends MusicBeatState
 	{
 		if (healthThing > 0 && !paused) resetRPC(Conductor.songPosition > 0.0);
 
-		if (SONG.song == "Devilish Deal")
-		{
-			if (states.stages.DevilishStage.devilishGaming != null && states.stages.DevilishStage.devilishGaming.visible)
-				states.stages.DevilishStage.devilishGaming.resume();
-			if (states.stages.DevilishStage.episodeIntro != null && states.stages.DevilishStage.episodeIntro.visible)
-				states.stages.DevilishStage.episodeIntro.resume();
-		}
+		stagesFunc(function(stage:BaseStage) stage.onFocus());
 
 		super.onFocus();
 	}
@@ -2699,13 +2693,7 @@ class PlayState extends MusicBeatState
 			}
 		#end
 
-		if (SONG.song == "Devilish Deal")
-		{
-			if (states.stages.DevilishStage.devilishGaming != null && states.stages.DevilishStage.devilishGaming.visible)
-				states.stages.DevilishStage.devilishGaming.pause();
-			if (states.stages.DevilishStage.episodeIntro != null && states.stages.DevilishStage.episodeIntro.visible)
-				states.stages.DevilishStage.episodeIntro.pause();
-		}
+		stagesFunc(function(stage:BaseStage) stage.onFocusLost());
 
 		super.onFocusLost();
 	}
@@ -4952,6 +4940,9 @@ class PlayState extends MusicBeatState
 						//hasEndingScene = true;
 						GameData.episode1FPLock = "unlocked";
 						GameData.saveShit();
+
+						SaveProgress.curStorySong = "Devilish Deal";
+						SaveProgress.saveThing();
 					}
 					if (SONG.song == "Birthday")
 					{
@@ -4959,7 +4950,7 @@ class PlayState extends MusicBeatState
 						GameData.saveShit();
 					}
 					Mods.loadTopMod();
-					//FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
+					FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 					#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
 
 					MusicBeatState.switchState(new StoryMenu());
@@ -4977,26 +4968,6 @@ class PlayState extends MusicBeatState
 				else
 				{
 					var difficulty:String = Difficulty.getFilePath();
-
-					//hasEndingScene = true;
-					GameData.episode1FPLock = "unlocked";
-					GameData.saveShit();
-
-					Mods.loadTopMod();
-					FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
-					#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
-
-					MusicBeatState.switchState(new StoryMenu());
-
-					// if ()
-					if(!ClientPrefs.getGameplaySetting('practice') && !ClientPrefs.getGameplaySetting('botplay')) {
-						StoryMenu.weekCompleted.set(WeekData.weeksList[storyWeek], true);
-						Highscore.saveWeekScore(WeekData.getWeekFileName(), campaignScore, storyDifficulty);
-
-						FlxG.save.data.weekCompleted = StoryMenu.weekCompleted;
-						FlxG.save.flush();
-					}
-					changedDifficulty = false;
 
 					trace('LOADING NEXT SONG');
 					trace(Paths.formatToSongPath(storyPlaylist[0]) + difficulty);

@@ -15937,6 +15937,11 @@ enum abstract Chart(String) from String to String {
 						"Tween Chromatic Abberation",
 						"Tween",
 						"0.55,0.6"
+					],
+					[
+						"Camera Event",
+						"Tween Value",
+						"hudalpha,0,3,sineInOut"
 					]
 				]
 			],
@@ -35051,7 +35056,7 @@ enum abstract Chart(String) from String to String {
 					[
 						"Meta Event",
 						"Window Title",
-						"true, Funkin.avi - , Regret [PEACEFUL] - Right?"
+						"true, Funkin.avi - , Regret [PEACEFUL] - Isn\'t it?"
 					]
 				]
 			],

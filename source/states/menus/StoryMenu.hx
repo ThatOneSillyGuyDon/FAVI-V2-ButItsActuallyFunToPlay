@@ -305,6 +305,13 @@ class StoryMenu extends MusicBeatState
 			case 0:
 				switch(SaveProgress.curStorySong)
 				{
+					case "Devilish Deal":
+						songArray = [
+							"Devilish Deal",
+							"Isolated",
+							"Lunacy",
+							"Delusional",
+						];
 					case "Isolated":
 						songArray = [
 							"Isolated",
@@ -381,6 +388,8 @@ class StoryMenu extends MusicBeatState
 		difficultySelectors.visible = !lockedWeek;
 
 		var storyName:String = WeekData.weeksLoaded.get(WeekData.weeksList[curWeek]).storyName;
+		if (GameData.episode1FPLock != "unlocked" && curWeek <= 1)
+			storyName = 'Broken Relationship';
 
 		lime.app.Application.current.window.title = "Funkin.avi - Story Menu - " + storyName;
 
