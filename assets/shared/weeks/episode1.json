@@ -1,0 +1,23 @@
+{
+	"songs": [
+		["Devilish Deal", "satanddNEW", [65, 88, 94]],
+		["Isolated", "avier", [60, 60, 60]],
+		["Lunacy", "lunaavier", [69, 54, 54]],
+		["Delusional", "deluavier", [79, 32, 32]]
+	],
+
+	"weekCharacters": [
+		"",
+		"bf",
+		"gf"
+	],
+	"weekBackground": "stage",
+
+	"storyName": "Satanic Heartbreak",
+	"weekBefore": "tutorial",
+	"weekName": "Episode 1",
+	"startUnlocked": true,
+
+	"hideStoryMode": false,
+	"hideFreeplay": false
+}
