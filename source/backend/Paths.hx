@@ -250,32 +250,32 @@ class Paths
 
 	inline static public function txt(key:String, ?library:String)
 	{
-		return getPath('data/$key.txt', TEXT, library, true);
+		return getPath('data/$key.txt', TEXT, library);
 	}
 
 	inline static public function xml(key:String, ?library:String)
 	{
-		return getPath('data/$key.xml', TEXT, library, true);
+		return getPath('data/$key.xml', TEXT, library);
 	}
 
 	inline static public function json(key:String, ?library:String)
 	{
-		return getPath('data/$key.json', TEXT, library, true);
+		return getPath('data/$key.json', TEXT, library);
 	}
 
 	inline static public function shaderFragment(key:String, ?library:String)
 	{
-		return getPath('shaders/$key.frag', TEXT, library, true);
+		return getPath('shaders/$key.frag', TEXT, library);
 	}
 	
 	inline static public function shaderVertex(key:String, ?library:String)
 	{
-		return getPath('shaders/$key.vert', TEXT, library, true);
+		return getPath('shaders/$key.vert', TEXT, library);
 	}
 	
 	inline static public function lua(key:String, ?library:String)
 	{
-		return getPath('$key.lua', TEXT, library, true);
+		return getPath('$key.lua', TEXT, library);
 	}
 
 	// Enhanced video function with path caching
@@ -519,6 +519,8 @@ class Paths
 
 		currentTrackedAssets.set(key, graph);
 		localTrackedAssets.push(key);
+
+		//trace('cacheBitmap key=' + key + ' parentFolder=' + parentFolder);
 		return graph;
 	}
 
@@ -549,6 +551,7 @@ class Paths
 		}
 	}
 
+
 	static public function getTextFromFile(key:String, ?ignoreMods:Bool = false):String
 	{
 		#if sys
@@ -569,9 +572,18 @@ class Paths
 					return File.getContent(levelPath);
 			}
 		}
-		#end
+		#end		
 		var path:String = getPath(key, TEXT);
-		if(OpenFlAssets.exists(path, TEXT)) return Assets.getText(path);
+		if(OpenFlAssets.exists(path, TEXT)) {
+			try {
+				return Assets.getText(path);
+			} catch (e:Dynamic) {
+				trace('Failed to load text asset: $path - Error: $e');
+				return null;
+			}
+		}
+		
+		//trace('Text file not found: $key (resolved path: $path)');
 		return null;
 	}
 

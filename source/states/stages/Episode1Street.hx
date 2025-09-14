@@ -431,9 +431,9 @@ class Episode1Street extends BaseStage
     public static function getStaticAssets(?song:String = "ALL"):Array<StageAssetData>
     {
 		var assets:Array<StageAssetData> = [
-			BaseStage.asset("randomColors", IMAGE, AssetPriority.HIGH),
-			BaseStage.asset("street",       IMAGE, AssetPriority.HIGH),
-			BaseStage.asset("i_forgor",     IMAGE, AssetPriority.MEDIUM),
+			BaseStage.asset("randomColors", IMAGE, AssetPriority.HIGH, song, "abandonedStreet/images"),
+			BaseStage.asset("street",       IMAGE, AssetPriority.HIGH, song, "abandonedStreet/images"),
+			BaseStage.asset("i_forgor",     IMAGE, AssetPriority.MEDIUM, song, "abandonedStreet/images"),
 		];
 
 		switch (song) {

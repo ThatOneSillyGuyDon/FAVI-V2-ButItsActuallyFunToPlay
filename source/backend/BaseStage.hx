@@ -176,11 +176,13 @@ class BaseStage extends FlxBasic
 	 */
 
 	public static function asset(path:String, type:AssetType, priority:AssetPriority = MEDIUM, ?song:String, ?folder:String) {
+		trace('[BaseStage.asset] type=' + type + ' path=' + path + ' folder=' + folder + ' song=' + song + ' prio=' + priority);
 		return {
-			path: PlayState.pathway + path, //path, .. chaos fucked my wife,,,,,,deserved (don)
+			path: path,
 			type: type,
 			priority: priority,
 			song: song,
+			// keep as-is; this trace will tell us if someone injects 'assets/shared'
 			folder: folder
 		};
 	}

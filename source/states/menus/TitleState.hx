@@ -395,6 +395,7 @@ class TitleState extends MusicBeatState
 				{
 					Main.debug = true;
 					FlxG.sound.play(Paths.sound("funkinAVI/easterEggSound"));
+					trace("Debug Initiated!");
 				}
 			}
 			else if (FlxG.keys.firstJustPressed() != FlxKey.NONE)

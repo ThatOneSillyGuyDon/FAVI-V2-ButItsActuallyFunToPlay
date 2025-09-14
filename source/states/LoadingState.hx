@@ -79,7 +79,6 @@ class LoadingState extends MusicBeatState
 
 	override function create()
 	{
-		loadingScreens = FlxG.random.int(1, 4);
 		lime.app.Application.current.window.title = 'Funkin.avi - ${funi[FlxG.random.int(0, funi.length-1)]}';
 		
 		setupLoadingUI();
@@ -106,6 +105,7 @@ class LoadingState extends MusicBeatState
 			FlxG.camera.fade(FlxG.camera.bgColor, fadeTime, true);
 			new FlxTimer().start(fadeTime + MIN_TIME, function(_) introComplete());
 		});
+		callbacks = new MultiCallback(onLoad, "LoadingCallbacks");
 	}
 
 	var textThing:FlxText;
@@ -116,8 +116,6 @@ class LoadingState extends MusicBeatState
 		loadingImage.screenCenter();
 		loadingImage.antialiasing = ClientPrefs.data.antialiasing;
 		add(loadingImage);
-
-		trace('loading image ${loadingScreens} loaded');
 
 		iconAnimated = new FlxSprite(0, 0);
 		iconAnimated.antialiasing = ClientPrefs.data.antialiasing;
@@ -178,9 +176,18 @@ class LoadingState extends MusicBeatState
 		assetsToLoad.sort(function(a, b) return a.priority - b.priority);
 
 		trace('Preloading ${totalAssets} assets for ${PlayState.SONG.song}');
+
+		trace('[Loading] song=' + PlayState.SONG.song
+		+ ' curStage=' + PlayState.curStage
+		+ ' songStage=' + (PlayState.SONG.stage == null ? '' : PlayState.SONG.stage)
+		+ ' pathway=' + PlayState.pathway
+		+ ' Paths.currentLevel=' + Paths.currentLevel);
+
+
 		updateProgressText("Loading stage assets...");
 
-		for (asset in assetsToLoad) {
+		for (i in 0...assetsToLoad.length) {
+			var asset = assetsToLoad[i];
 			loadAssetAsync(asset);
 		}
 	}
@@ -204,10 +211,12 @@ class LoadingState extends MusicBeatState
 		
 		switch (asset.type) {
 			case IMAGE:
+				//trace(fullPath);
 				if (!checkAssetExists(fullPath, IMAGE)) { onAssetLoaded(asset, false); callback(); return; }
+				trace("Trying to load asset: " + Paths.getPath(fullPath, IMAGE));
 				Assets.loadBitmapData(Paths.getPath(fullPath, IMAGE))
 					.onComplete(function(bd) {
-						if (bd != null) Paths.cacheBitmap(fullPath, asset.folder, bd);
+						if (bd != null) Paths.cacheBitmap(asset.path, asset.folder, bd);
 						onAssetLoaded(asset, bd != null); callback();
 					})
 					.onError(function(_) { onAssetLoaded(asset, false); callback(); });
@@ -292,43 +301,46 @@ class LoadingState extends MusicBeatState
 			case VIDEO: OFAssetType.BINARY;
 			case SOUND: OFAssetType.SOUND;
 		}
-
+		//trace(Paths.fileExists(path, ofType));
 		return Paths.fileExists(path, ofType);
 	}
 	
-	private function getAssetPath(asset:StageAssetData):String
-	{
-		var basePath = PlayState.pathway != null ? PlayState.pathway : "abandonedStreet"; // we have to fix it
-		trace(basePath);
-		
+	private function getAssetPath(asset:StageAssetData):String {
+		var basePath = (PlayState.pathway != null && PlayState.pathway.length > 0)
+			? PlayState.pathway
+			: 'favi/stages/' + PlayState.curStage;
+		if (StringTools.endsWith(basePath, "/")) basePath = basePath.substr(0, basePath.length - 1);
+
+		var sub = (asset.folder != null && asset.folder.length > 0) ? asset.folder + '/' : '';
+
+		trace('[Loading:getAssetPath] type=' + asset.type
+			+ ' base=' + basePath
+			+ ' folder=' + (asset.folder == null ? '' : asset.folder)
+			+ ' path=' + asset.path);
+
+		var key:String;
 		switch (asset.type) {
 			case IMAGE | ATLAS:
-				if (asset.folder != null) {
-					return 'images/${asset.folder}/${basePath}${asset.path}.png';
-				}
-				trace("Assets Path: " + asset.path + " Base path: " + basePath);
-				return asset.path + basePath + '.png';
-				
+				key = 'images/${basePath}/${sub}${asset.path}.png';
 			case CHARACTER:
-				return 'images/characters/${asset.path}.png';
-				
+				key = '${sub}images/characters/${asset.path}.png';
 			case ICON:
-				return 'images/icons/${asset.path}.png';
-				
+				key = '${sub}images/icons/${asset.path}.png';
 			case VIDEO:
-				return asset.path;
-
+				key = 'assets/videos/${asset.path}.${Paths.VIDEO_EXT}';
 			case SOUND:
-				if (asset.folder != null) {
-					return 'sounds/${asset.folder}/${asset.path}.${Paths.SOUND_EXT}';
-				}
-				return 'sounds/${asset.path}.${Paths.SOUND_EXT}';
-				
+				key = (asset.folder != null && asset.folder.length > 0)
+					? '${asset.folder}sounds/${asset.path}.${Paths.SOUND_EXT}'
+					: '${asset.folder}sounds/${asset.path}.${Paths.SOUND_EXT}';
 			default:
-				trace("Assets Path: " + asset.path + " Base path: " + basePath);
-				return basePath + asset.path;
+				key = '${sub}images/${basePath}/${asset.path}';
 		}
+
+		var returning = key; // mirrors your current return policy 'assets/shared/' + 
+		trace('[Loading:getAssetPath] RETURN=' + returning);
+		return returning;
 	}
+
 
 	private function onAssetLoaded(asset:StageAssetData, success:Bool):Void
 	{
@@ -375,14 +387,25 @@ class LoadingState extends MusicBeatState
 	
 	function checkLoadSong(path:String)
 	{
-		if (!Assets.cache.hasSound(path))
-		{
-			var library = Assets.getLibrary("songs");
-			final symbolPath = path.split(":").pop();
-			var callback = callbacks.add("song:" + path);
-			Assets.loadSound(path).onComplete(function (_) { callback(); });
+		if (Assets.cache.hasSound(path)) return;
+
+		var callback = callbacks.add("song:" + path);
+
+		// if the asset id is wrong, don't hang the loader
+		if (!Assets.exists(path, OFAssetType.SOUND)) {
+			trace('Sound does not exist: ' + path);
+			callback();
+			return;
 		}
+
+		Assets.loadSound(path)
+			.onComplete(function(_) { callback(); })
+			.onError(function(err) {
+				trace('Failed to load sound: ' + path + ' -> ' + err);
+				callback(); // important: always fire
+			});
 	}
+
 	
 	function checkLibrary(library:String) {
 		trace(Assets.hasLibrary(library));
@@ -433,23 +456,20 @@ class LoadingState extends MusicBeatState
 		var directory:String = 'shared';
 		var weekDir:String = StageData.forceNextDirectory;
 		StageData.forceNextDirectory = null;
-
-		if(weekDir != null && weekDir.length > 0 && weekDir != '') directory = weekDir;
+		if (weekDir != null && weekDir.length > 0) directory = weekDir;
 
 		Paths.setCurrentLevel(directory);
 		trace('Setting asset folder to ' + directory);
 
-		var loaded:Bool = false;
+		var loaded = false;
 		if (PlayState.SONG != null) {
-			loaded = isSoundLoaded(getSongPath()) && (!PlayState.SONG.needsVoices || isSoundLoaded(getVocalPath())) && isLibraryLoaded('week_assets');
+			loaded = isSoundLoaded(getSongPath())
+				&& (!PlayState.SONG.needsVoices || isSoundLoaded(getVocalPath()));
+			if (directory != 'shared') loaded = loaded && isLibraryLoaded('week_assets');
 		}
-		
-		if (!loaded)
-			return new LoadingState(target, stopMusic, directory);
-		
-		if (stopMusic && FlxG.sound.music != null)
-			FlxG.sound.music.stop();
-		
+
+		if (!loaded) return new LoadingState(target, stopMusic, directory);
+		if (stopMusic && FlxG.sound.music != null) FlxG.sound.music.stop();
 		return target;
 	}
 	

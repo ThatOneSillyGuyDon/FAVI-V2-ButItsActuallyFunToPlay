@@ -390,7 +390,7 @@ class PlayState extends MusicBeatState
 	public var chromTween:FlxTween;
 	public var chromEffect:Float = 0.0001;
 
-	public static var pathway:String = 'favi/stages/' + curStage + '/images/';
+	public static var pathway:String = '';
 
 	public static var curEpisode:String;
 
@@ -619,7 +619,15 @@ class PlayState extends MusicBeatState
 		}
 		curStage = SONG.stage;
 
+		// pathway = 'favi/stages/' + curStage;
 		pathway = 'favi/stages/' + curStage + (SONG.song == "Malfunction" ? '/stupidShit/' : '/images/');
+		
+		trace('[PlayState] curStage=' + curStage
+		+ ' SONG.stage=' + (SONG != null ? SONG.stage : 'null')
+		+ ' pathway=' + pathway
+		+ ' Paths.currentLevel=' + Paths.currentLevel);
+
+
 		if (SONG.song != "Malfunction Legacy")
 			daPixelZoom = 5;
 		else

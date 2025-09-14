@@ -161,6 +161,7 @@ class Song
 		
 		var formattedFolder:String = Paths.formatToSongPath(folder);
 		var formattedSong:String = Paths.formatToSongPath(jsonInput);
+		
 		#if MODS_ALLOWED
 		var moddyFile:String = Paths.modsJson(formattedFolder + '/' + formattedSong);
 		if(FileSystem.exists(moddyFile)) {
@@ -169,12 +170,25 @@ class Song
 		#end
 
 		if(rawJson == null) {
-			if (chartFile == null)
-			{
+			if (chartFile == null) {
+				var jsonPath = Paths.json(formattedFolder + '/' + formattedSong);
+				
 				#if sys
-				rawJson = File.getContent(Paths.json(formattedFolder + '/' + formattedSong)).trim();
+				if (FileSystem.exists(jsonPath)) {
+					rawJson = File.getContent(jsonPath).trim();
+				} else {
+					trace('JSON file not found: ${jsonPath}');
+					// Return a default/empty song structure instead of crashing
+					return createDefaultSong(jsonInput, folder);
+				}
 				#else
-				rawJson = Assets.getText(Paths.json(formattedFolder + '/' + formattedSong)).trim();
+				if (Assets.exists(jsonPath, TEXT)) {
+					rawJson = Assets.getText(jsonPath).trim();
+				} else {
+					trace('JSON file not found: ${jsonPath}');
+					// Return a default/empty song structure instead of crashing
+					return createDefaultSong(jsonInput, folder);
+				}
 				#end
 			}
 			else
@@ -209,6 +223,26 @@ class Song
 		if(jsonInput != 'events') StageData.loadDirectory(songJson);
 		onLoadJson(songJson);
 		return songJson;
+	}
+
+	// MY SAFE HEAVEN💙💙 -- mr_chaoss
+	private static function createDefaultSong(songName:String, folder:String):SwagSong
+	{
+		trace('Creating default song structure for: ${songName}');
+		
+		return {
+			song: songName != null ? songName : "test",
+			notes: [],
+			events: [],
+			bpm: 150,
+			needsVoices: false,
+			speed: 1,
+			player1: "bf",
+			player2: "bf-pixel-opponent",
+			gfVersion: "gf",
+			stage: "stage",
+			composer: "Unknown"
+		};
 	}
 
 	public static function getCharterCredits():String
