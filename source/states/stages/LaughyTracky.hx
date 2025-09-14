@@ -40,4 +40,18 @@ class LaughyTracky extends BaseStage
 		game.camBars.fade(FlxColor.BLACK, 0.0001);
 		camHUD.alpha = 0.001;
 	}
+
+	override function opponentNoteHit(note:Note)
+	{
+		if (ClientPrefs.data.shaking)
+		{
+			if (game.healthThing > 0.4)
+				game.healthThing -= 0.01;
+
+			camHUD.angle = FlxG.random.float(-1.5, 1.5);
+			camGame.shake(0.0035, 0.05);
+			camHUD.shake(0.002, 0.035);
+			FlxTween.tween(camHUD, {angle: 0}, .025);
+		}
+	}
 }

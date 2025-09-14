@@ -88,7 +88,7 @@ class ChartingState extends MusicBeatState
 		['Meta Event', 'Handles 4th wall breaking elements!\n\nValue 1: Meta Value\nValue 2: Meta Data\n\nDiscord - Details Txt, State Txt, Icon Name\nWindow Title - Bool Check for Extra Text, Main Text, Extra Text\nWindow Position - X Pos, Y Pos, Timer, Ease\nToggle Fullscreen - Bool Value\nToggle Fake Closeout - Bool Value\nToggle Window Transparency - Bool Value\nShake Window - Intensity, Duration in milliseconds'],
 		['Cinematic Event', "Creates a cinematic visual in-game\n\nValue 1: Action Type you want\nValue 2: Control inputs for action\n\nMove - Thickness, Duration, Ease name\nBop - Intensity, Speed, Ease name\nAngle - Angle, Duration, Ease name\nFlash - R, G, B, Duration, Ease name\nColor - R, G, B, Duration, Ease name\nAlpha - Visibility, Duration, Ease name\n\n(You must use the \"Move\" action type first before\nusing any other action! Move creates the bars!)"],
 		['Camera Event', "A series of customizers and event types that\nchanges the camera behavior!\n\nValue 1: Name of event you want\nValue 2: Controls the event\n\nStart Hidden - makes the song start off hidden no matter where you place the event!\nChange Value - Value Name, Value Input\nTween Value - Value Name, Value Input, Duration, Ease type\nShake - Intensity, Duration, Game or HUD\nFade - R, G, B, Duration, Alpha, Fade In Bool Toggle\nFlash - R, G, B, Duration, Alpha, Blend Bool Toggle\nChange Pos/Set Position - X Pos, Y Pos\nTween Position: X Pos, Y Pos, Duration, Ease type\nSnap Position: X Pos, Y Pos\n\n(Please refer to documentation or code that comes with this for\nvalid value names for \"Tween Value\" & \"Change Value\")"],
-		['Background Controls', "A series of customizers and event types that\nchanges the background's behavior!\n\nValue 1: Name of event you want\nValue 2: Controls the event\n\nFlash - Time, Ease type, Visibility, Colors (IN RGB FORM!!!)\nDarken - Visibility, Time, Ease type\nSet Color - Visibility, Colors (R, G, B)\nTween Color - Visibility, Time, Ease Type, Colors (R, G, B)\nBadapple A/B - Time, Ease, Bool check for enabling the event"],
+		['Background Controls', "A series of customizers and event types that\nchanges the background's behavior!\n\nValue 1: Name of event you want\nValue 2: Controls the event\n\nFlash - Time, Ease type, Visibility, Colors (IN RGB FORM!!!)\nDarken - Visibility, Time, Ease type\nSet Color - Visibility, Colors (R, G, B)\nTween Color - Visibility, Time, Ease Type, Colors (R, G, B)"],
 //      -- The events used in specific songs --
 		['Change Screen Dimming', "Value 1: Visibility, Time"],
 		['Devilish Events', "Value 1: Event Num"],
@@ -3192,7 +3192,7 @@ class ChartingState extends MusicBeatState
 			_file.addEventListener(#if desktop Event.SELECT #else Event.COMPLETE #end, onSaveComplete);
 			_file.addEventListener(Event.CANCEL, onSaveCancel);
 			_file.addEventListener(IOErrorEvent.IO_ERROR, onSaveError);
-			_file.save(data.trim(), Paths.formatToSongPath(_song.song) + ".json");
+			_file.save(data.trim(), Paths.formatToSongPath(_song.song) + "-null.json");
 		}
 	}
 

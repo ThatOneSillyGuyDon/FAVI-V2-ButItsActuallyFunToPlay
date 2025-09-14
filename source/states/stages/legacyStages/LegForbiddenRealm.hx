@@ -143,4 +143,72 @@ class LegForbiddenRealm extends BaseStage
 				blurShader.setFloat('bluramount', blurEffect);
 		}
 	}
+
+	override function opponentNoteHit(note:Note)
+	{
+		if (game.healthThing > 0.05)
+			game.healthThing -= 0.016;
+		if (ClientPrefs.data.shaking)
+		{
+			camGame.shake(0.008, 0.07);
+			camHUD.shake(0.015, 0.07);
+		}
+		if (ClientPrefs.data.shaders)
+		{
+			if(!ClientPrefs.data.lowQuality && ClientPrefs.data.epilepsy)
+			{
+				camGame.setFilters([
+					new ShaderFilter(chromNormalShader),
+					new ShaderFilter(blurShader)
+				]);
+				camHUD.setFilters([
+					new ShaderFilter(chromNormalShader),
+					new ShaderFilter(blurShader)
+				]);
+			}
+				
+			game.chromEffect += 0.3;
+			blurEffect += 1.5;
+				
+			if (game.chromTween != null)
+				game.chromTween.cancel();
+			if (blurTween != null)
+				blurTween.cancel();
+
+			game.chromTween = FlxTween.tween(
+				game,
+				{
+					chromEffect: 0.0001
+				},
+				0.1,
+				{
+					ease: FlxEase.sineOut,
+					onComplete: function(twn:FlxTween)
+					{
+						game.chromTween = null;
+					}
+				}
+			);
+			blurTween = FlxTween.tween(
+				states.stages.legacyStages.LegForbiddenRealm,
+				{
+					blurEffect: 0.0
+				},
+				0.1,
+				{
+					ease: FlxEase.sineOut,
+					onComplete: function(twn:FlxTween)
+					{
+						
+						if(!ClientPrefs.data.lowQuality)
+						{
+							camGame.setFilters([new ShaderFilter(chromNormalShader)]);
+							camHUD.setFilters([new ShaderFilter(chromNormalShader)]);
+						}
+						blurTween = null;
+					}
+				}
+			);
+		}
+	}
 }

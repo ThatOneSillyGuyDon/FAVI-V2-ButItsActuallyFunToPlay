@@ -104,37 +104,11 @@ class Song
 	{
 		switch(folder)
 		{
-			case "isolated":
-				chartFile = Chart.isolated;
-
-				if (jsonInput == 'events')
-					chartFile = Event.isolatedEvents;
-			case "isolated-beta": chartFile = Chart.isolatedBeta;
-			case "isolated-old": chartFile = Chart.isolatedOld;
-			case "isolated-legacy": chartFile = Chart.isolatedLegacy;
-			case "lunacy": chartFile = Chart.lunacy;
-			case "lunacy-legacy": chartFile = Chart.lunacyLegacy;
-			case "delusional": chartFile = Chart.delusional;
-			case "delusional-legacy": chartFile = Chart.delusionalLegacy;
 			case "malfunction": 
 				if(ClientPrefs.data.gameplaySettings["botplay"] == true)
 					chartFile = Chart.malfunctionBOT;
 				else
 					chartFile = Chart.malfunction;
-			case "malfunction-legacy": chartFile = Chart.malfunctionLegacy;
-			case "bless": chartFile = Chart.bless;
-			case "devilish-deal": chartFile = Chart.devilishDeal;
-			case "hunted": chartFile = Chart.hunted;
-			case "hunted-legacy": chartFile = Chart.huntedLegacy;
-			case "war-dilemma": chartFile = Chart.warDilemma;
-			case "cycled-sins-legacy": chartFile = Chart.cycledSinsLegacy;
-			case "birthday": chartFile = Chart.birthday;
-			case "mercy": chartFile = Chart.mercy;
-			case "mercy-legacy": chartFile = Chart.mercyLegacy;
-			case "laugh-track": chartFile = Chart.laughTrack;
-			case "twisted-grins-legacy": chartFile = Chart.twistedGrinsLegacy;
-			case "cycled-sins": chartFile = Chart.cycledSins;
-			case "twisted-grins": chartFile = Chart.twistedGrins;
 			case "scrapped": chartFile = Chart.scrapped;
 			case "whimsical-bar-blues": chartFile = Chart.wbb;
 

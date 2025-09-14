@@ -405,4 +405,144 @@ class ForbiddenRealm extends BaseStage
 				}	
 		}
 	}
+
+	override function opponentNoteHit(note:Note)
+	{
+		if (dad.curCharacter == 'glitched-mickey-new-pixel')
+		{
+			if (game.healthThing > 0.05)
+				game.healthThing -= 0.01;
+			if (ClientPrefs.data.shaking)
+			{
+				camGame.shake(0.008, 0.07);
+				camHUD.shake(0.015, 0.07);
+			}
+			if (ClientPrefs.data.shaders)
+			{			
+				if(!ClientPrefs.data.lowQuality && ClientPrefs.data.epilepsy)
+				{
+					camGame.setFilters([
+						new ShaderFilter(chromZoomShader),
+						new ShaderFilter(chromNormalShader),
+						new ShaderFilter(blurShader)
+					]);
+					camHUD.setFilters([
+						new ShaderFilter(chromNormalShader),
+						new ShaderFilter(blurShader)
+					]);
+				}
+				
+				game.chromEffect += 0.2;
+				blurEffect += 2.5;
+				
+				if (game.chromTween != null)
+					game.chromTween.cancel();
+				if (blurTween != null)
+					blurTween.cancel();
+
+				game.chromTween = FlxTween.tween(
+					game,
+					{
+						chromEffect: 0.0001
+					},
+					0.1,
+					{
+						ease: FlxEase.sineOut,
+						onComplete: function(twn:FlxTween)
+						{
+							game.chromTween = null;
+						}
+					}
+				);
+				blurTween = FlxTween.tween(
+					states.stages.ForbiddenRealm,
+					{
+						blurEffect: 0.0
+					},
+					0.1,
+					{
+						ease: FlxEase.sineOut,
+						onComplete: function(twn:FlxTween)
+						{
+						
+							if(!ClientPrefs.data.lowQuality)
+							{
+								camGame.setFilters([new ShaderFilter(chromZoomShader), new ShaderFilter(chromNormalShader)]);
+								camHUD.setFilters([new ShaderFilter(chromNormalShader)]);
+							}
+							blurTween = null;
+						}
+					}
+				);
+			}
+		}
+		else if (dad.curCharacter == 'malsquare-withFace')
+		{
+			if (game.healthThing > 0.05)
+				game.healthThing -= 0.015;
+			if (ClientPrefs.data.shaking)
+			{
+				camGame.shake(0.01, 0.07);
+				camHUD.shake(0.018, 0.07);
+			}
+			if (ClientPrefs.data.shaders)
+			{
+				if(!ClientPrefs.data.lowQuality && ClientPrefs.data.epilepsy)
+				{
+					camGame.setFilters([
+						new ShaderFilter(chromZoomShader),
+						new ShaderFilter(chromNormalShader),
+						new ShaderFilter(blurShader)
+					]);
+					camHUD.setFilters([
+						new ShaderFilter(chromNormalShader),
+						new ShaderFilter(blurShader)
+					]);
+				}
+				
+				game.chromEffect += 0.22;
+				blurEffect += 2.5;
+				
+				if (game.chromTween != null)
+					game.chromTween.cancel();
+				if (blurTween != null)
+					blurTween.cancel();
+
+				game.chromTween = FlxTween.tween(
+					game,
+					{
+						chromEffect: 0.0001
+					},
+					0.1,
+					{
+						ease: FlxEase.sineOut,
+						onComplete: function(twn:FlxTween)
+						{
+							game.chromTween = null;
+						}
+					}
+				);
+				blurTween = FlxTween.tween(
+					states.stages.ForbiddenRealm,
+					{
+						blurEffect: 0.0
+					},
+					0.1,
+					{
+						ease: FlxEase.sineOut,
+						onComplete: function(twn:FlxTween)
+						{
+						
+							if(!ClientPrefs.data.lowQuality)
+							{
+								camGame.setFilters([new ShaderFilter(chromZoomShader), new ShaderFilter(chromNormalShader)]);
+								camHUD.setFilters([new ShaderFilter(chromNormalShader)]);
+							}
+							blurTween = null;
+						}
+					}
+				);
+			}
+		}
+	}
 }

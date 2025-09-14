@@ -1276,4 +1276,49 @@ class Episode1Street extends BaseStage
 		skipDial.cameras = [game.camOther];
 		add(skipDial);
 	}
+
+	// Note Hit/Miss
+	override function goodNoteHit(note:Note)
+	{
+		// Code here
+	}
+
+	override function opponentNoteHit(note:Note)
+	{
+		switch (PlayState.SONG.song)
+        {  
+			case 'Isolated':
+				if (dad.curCharacter == "avier-whistle" && !note.isSustainNote) whistleNotes(dadGroup);
+			case 'Lunacy' | 'Delusional':
+				if (ClientPrefs.data.mechanics)
+				{
+					if (game.healthThing > game.boundValue)
+						game.healthThing -= game.drainValue;
+				}
+		}
+	}
+
+	public function whistleNotes(targetGroup:FlxSpriteGroup) {
+		var path:String = 'favi/ui/bdaynotes';
+		var particleNote:FlxSprite = new FlxSprite().loadGraphic(Paths.image('$path/note_${FlxG.random.int(1, 3)}'));
+		particleNote.setGraphicSize(Std.int(particleNote.width * 0.5));
+		particleNote.updateHitbox();
+		particleNote.angle = FlxG.random.float(-15, 18);
+		particleNote.setColorTransform(-1, -1, -1, 1, 128, 128, 128, 0);
+		particleNote.x = targetGroup.x - 175;
+		particleNote.y = targetGroup.y + 375;
+		particleNote.alpha = 0.0001;
+		particleNote.velocity.x -= targetGroup.y - 475;
+		FlxTween.tween(particleNote, {alpha: 1}, .5, {ease: FlxEase.sineInOut});
+		
+		FlxTween.tween(particleNote, {y: particleNote.y - 70}, FlxG.random.float(0.5, 2), {ease: FlxEase.sineInOut, type: 4});
+
+		FlxTween.tween(particleNote, {alpha: 0.0001}, 1, {ease: FlxEase.sineInOut, startDelay: 0.75,
+			onComplete: function(tween:FlxTween)
+			{
+				particleNote.destroy();
+			}
+		});
+		addBehindDad(particleNote);
+	}
 }

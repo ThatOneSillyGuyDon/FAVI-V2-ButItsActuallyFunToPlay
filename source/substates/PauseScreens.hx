@@ -956,14 +956,10 @@ class FAVIPauseSubState extends MusicBeatSubstate
 		{
 			switch (fuckingName)
 			{
-				case "Devilish Deal": json = CreditsData.devilishDeal;
-				case "Isolated": json = CreditsData.isolated;
-				case "Lunacy": json = CreditsData.lunacy;
-				case "Delusional": json = CreditsData.delusional;
-				case "Regret": json = CreditsData.regret;
-				case "Hunted": json = CreditsData.hunted;
-				case "Laugh Track": json = CreditsData.laughTrack;
-				case "Bless": json = CreditsData.bless;
+				case "Regret":
+					if (sys.FileSystem.exists('./assets/shared/data/delusional/regretData.json'))
+						json = File.getContent(Paths.getPath('data/delusional/regretData.json', TEXT, null));
+
 				case "Dont Cross":
 					switch(Song.getCharterCredits())
 					{
@@ -973,16 +969,11 @@ class FAVIPauseSubState extends MusicBeatSubstate
 						case "MalyPlus": json = CreditsData.dontCross4;
 						case "rezeo285": json = CreditsData.dontCross5;
 					}
-				case "War Dilemma": json = CreditsData.warDilemma;
-				case "Twisted Grins": json = CreditsData.twistedGrins;
-				case "Mercy": json = CreditsData.mercy;
-				case "Cycled Sins": json = CreditsData.cycledSins;
 				case "Malfunction": json = CreditsData.malfunction;
-				case "Birthday": json = CreditsData.birthday;
 				case "Scrapped": json = CreditsData.scrapped;
 				case "Whimsical Bar Blues": json = CreditsData.wbb;
 				default:
-					if (sys.FileSystem.exists('./assets/shared/data/${CoolUtil.spaceToDash(fuckingName.toLowerCase())}/data.json') || Assets.exists('./assets/shared/data/${CoolUtil.spaceToDash(fuckingName.toLowerCase())}/data.json'))
+					if (sys.FileSystem.exists('./assets/shared/data/${CoolUtil.spaceToDash(fuckingName.toLowerCase())}/data.json'))
 						json = File.getContent(Paths.getPath('data/${CoolUtil.spaceToDash(fuckingName.toLowerCase())}/data.json', TEXT, null));
 			}
 		

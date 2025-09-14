@@ -21,4 +21,26 @@ class FuckingLine extends BaseStage
 		game.boyfriend.setPosition(900, 300);
 		game.gf.visible = false;
 	}
+
+	override function opponentNoteHit(note:Note)
+	{
+		boyfriend.x += 1.2;
+		boyfriend.y -= 1.2;
+		boyfriend.scale.x -= 0.0012;
+		boyfriend.scale.y -= 0.0012;
+
+		if (ClientPrefs.data.mechanics)
+		{
+			if(game.healthThing > 0.05) // trol
+				game.healthThing -= 0.015;
+		}
+	}
+
+	override function goodNoteHit(note:Note)
+	{
+		boyfriend.x -= 1.4;
+		boyfriend.y += 1.4;
+		boyfriend.scale.x += 0.0014;
+		boyfriend.scale.y += 0.0014;
+	}
 }

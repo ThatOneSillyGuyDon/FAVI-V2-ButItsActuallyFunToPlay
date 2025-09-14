@@ -134,6 +134,36 @@ class Birtbhday extends BaseStage
 		}
 	}
 
+	override function opponentNoteHit(note:Note)
+	{
+		if (spawnNotes['muckney'] && !note.isSustainNote) birthdayParticles(dadGroup);
+	}
+
+	override function goodNoteHit(note:Note)
+	{
+		if (states.stages.Birtbhday.spawnNotes['bf']) birthdayParticles(boyfriendGroup);
+	}
+
+	public function birthdayParticles(targetGroup:FlxSpriteGroup) {
+		var path:String = 'favi/ui/bdaynotes';
+		var particleNote:FlxSprite = new FlxSprite().loadGraphic(Paths.image('$path/note_${FlxG.random.int(1, 3)}'));
+		particleNote.setGraphicSize(Std.int(particleNote.width * 0.7));
+		particleNote.updateHitbox();
+		particleNote.x = FlxG.random.int(Std.int(targetGroup.x - (targetGroup == boyfriendGroup ? 0 : 150)), Std.int(targetGroup.x + (targetGroup == boyfriendGroup ? 500 : 300)));
+		particleNote.y = targetGroup.y + 170;
+		particleNote.velocity.y += targetGroup.y - 400;
+		particleNote.acceleration.y = 400 * game.playbackRate;
+		particleNote.angle = FlxG.random.int(0, 360);
+		
+		FlxTween.tween(particleNote, {alpha: 0.0001}, 3, {
+			onComplete: function(tween:FlxTween)
+			{
+				particleNote.destroy();
+			}
+		});
+		add(particleNote);
+	}
+
 	public static function returnTweenEase(ease:String = '')
 	{
 		switch (ease.toLowerCase())

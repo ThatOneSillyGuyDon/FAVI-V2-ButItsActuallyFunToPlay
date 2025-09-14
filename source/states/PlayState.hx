@@ -83,8 +83,6 @@ enum FlashType
 	BG_DARK;
 	SET_COLOR;
 	TWEEN_COLOR;
-	BADAPPLE_A;
-	BADAPPLE_B;
 	CAM_FLASH_FANCY;
 }
 
@@ -400,11 +398,9 @@ class PlayState extends MusicBeatState
 	var stageBGFlash:FlxSprite;
 	var stageBGDark:FlxSprite;
 	var stageBGColor:FlxSprite;
-	var badappleSpr:FlxSprite;
 	var BGFlashTween:FlxTween;
 	var BGDarkTween:FlxTween;
 	var BGTweenColor:FlxTween;
-	var BadappleTween:FlxTween;
 
 	public var globalGradient:FlxSprite;
 
@@ -715,14 +711,6 @@ class PlayState extends MusicBeatState
 		stageBGColor.y -= 450;
 		stageBGColor.scrollFactor.set();
 		add(stageBGColor);
-
-		badappleSpr = new FlxSprite().makeGraphic(1, 1, 0xFFFFFFFF);
-		badappleSpr.scale.set(FlxG.width * 5, FlxG.height * 5);
-		badappleSpr.alpha = 0.0001; // it's at this value so the game doesn't lag when it becomes visible
-		badappleSpr.x -= 750;
-		badappleSpr.y -= 450;
-		badappleSpr.scrollFactor.set();
-		add(badappleSpr);
 
 		stageBGFlash = new FlxSprite().makeGraphic(1, 1, 0xFFFFFFFF);
 		stageBGFlash.scale.set(FlxG.width * 5, FlxG.height * 5);
@@ -3376,196 +3364,6 @@ class PlayState extends MusicBeatState
 						});
 					}
 
-				//White bg, black characters
-				case BADAPPLE_A:
-					if (badappleSpr != null)
-					{
-						if (BadappleTween != null)
-							BadappleTween.cancel();
-
-						if (badappleSpr.blend != NORMAL)
-							badappleSpr.blend = NORMAL;
-
-						if (settings.timer <= 0)
-							settings.timer = 1;
-
-						badappleSpr.color = FlxColor.WHITE; // hardcoded to be black
-
-						BadappleTween = FlxTween.tween(badappleSpr, {alpha: (settings.enableBadapple ? 1 : 0)}, settings.timer, {
-							ease: settings.ease,
-							onComplete: function(twn:FlxTween)
-							{
-								BadappleTween = null;
-							}
-						});
-
-						if (settings.enableBadapple)
-						{
-							BadappleTween = FlxTween.tween(dad.colorTransform, {
-								redOffset: 0,
-								blueOffset: 0,
-								greenOffset: 0,
-								redMultiplier: -1, 
-								blueMultiplier: -1, 
-								greenMultiplier: -1
-							}, settings.timer, {
-								ease: settings.ease
-							});
-
-							BadappleTween = FlxTween.tween(boyfriend.colorTransform, {
-								redOffset: 0,
-								blueOffset: 0,
-								greenOffset: 0,
-								redMultiplier: -1, 
-								blueMultiplier: -1, 
-								greenMultiplier: -1
-							}, settings.timer, {
-								ease: settings.ease
-							});
-
-							BadappleTween = FlxTween.tween(gf.colorTransform, {
-								redOffset: 0,
-								blueOffset: 0,
-								greenOffset: 0,
-								redMultiplier: -1, 
-								blueMultiplier: -1, 
-								greenMultiplier: -1
-							}, settings.timer, {
-								ease: settings.ease
-							});
-						}
-						else
-						{
-							BadappleTween = FlxTween.tween(dad.colorTransform, {
-								redOffset: 1,
-								blueOffset: 1,
-								greenOffset: 1,
-								redMultiplier: 1, 
-								blueMultiplier: 1, 
-								greenMultiplier: 1
-							}, settings.timer, {
-								ease: settings.ease
-							});
-
-							BadappleTween = FlxTween.tween(boyfriend.colorTransform, {
-								redOffset: 1,
-								blueOffset: 1,
-								greenOffset: 1,
-								redMultiplier: 1, 
-								blueMultiplier: 1, 
-								greenMultiplier: 1
-							}, settings.timer, {
-								ease: settings.ease
-							});
-
-							BadappleTween = FlxTween.tween(gf.colorTransform, {
-								redOffset: 1,
-								blueOffset: 1,
-								greenOffset: 1,
-								redMultiplier: 1, 
-								blueMultiplier: 1, 
-								greenMultiplier: 1
-							}, settings.timer, {
-								ease: settings.ease
-							});
-						}
-					}
-
-				//black bg, white characters
-				case BADAPPLE_B:
-					if (badappleSpr != null)
-					{
-						if (BadappleTween != null)
-							BadappleTween.cancel();
-
-						if (badappleSpr.blend != NORMAL)
-							badappleSpr.blend = NORMAL;
-
-						if (settings.timer <= 0)
-							settings.timer = 1;
-
-						badappleSpr.color = FlxColor.BLACK; // hardcoded to be black
-
-						BadappleTween = FlxTween.tween(badappleSpr, {alpha: (settings.enableBadapple ? 1 : 0)}, settings.timer, {
-							ease: settings.ease,
-							onComplete: function(twn:FlxTween)
-							{
-								BadappleTween = null;
-							}
-						});
-
-						if (settings.enableBadapple)
-						{
-							BadappleTween = FlxTween.tween(dad.colorTransform, {
-								redOffset: 255,
-								blueOffset: 255,
-								greenOffset: 255,
-								redMultiplier: 255, 
-								blueMultiplier: 255, 
-								greenMultiplier: 255
-							}, settings.timer, {
-								ease: settings.ease
-							});
-
-							BadappleTween = FlxTween.tween(boyfriend.colorTransform, {
-								redOffset: 255,
-								blueOffset: 255,
-								greenOffset: 255,
-								redMultiplier: 255, 
-								blueMultiplier: 255, 
-								greenMultiplier: 255
-							}, settings.timer, {
-								ease: settings.ease
-							});
-
-							BadappleTween = FlxTween.tween(gf.colorTransform, {
-								redOffset: 255,
-								blueOffset: 255,
-								greenOffset: 255,
-								redMultiplier: 255, 
-								blueMultiplier: 255, 
-								greenMultiplier: 255
-							}, settings.timer, {
-								ease: settings.ease
-							});
-						}
-						else
-						{
-							BadappleTween = FlxTween.tween(dad.colorTransform, {
-								redOffset: 1,
-								blueOffset: 1,
-								greenOffset: 1,
-								redMultiplier: 1, 
-								blueMultiplier: 1, 
-								greenMultiplier: 1
-							}, settings.timer, {
-								ease: settings.ease
-							});
-
-							BadappleTween = FlxTween.tween(boyfriend.colorTransform, {
-								redOffset: 1,
-								blueOffset: 1,
-								greenOffset: 1,
-								redMultiplier: 1, 
-								blueMultiplier: 1, 
-								greenMultiplier: 1
-							}, settings.timer, {
-								ease: settings.ease
-							});
-
-							BadappleTween = FlxTween.tween(gf.colorTransform, {
-								redOffset: 1,
-								blueOffset: 1,
-								greenOffset: 1,
-								redMultiplier: 1, 
-								blueMultiplier: 1, 
-								greenMultiplier: 1
-							}, settings.timer, {
-								ease: settings.ease
-							});
-						}
-					}
-				
 				//This is needed only because mercy exists
 				case CAM_FLASH_FANCY:
 					if (blendFlash != null)
@@ -4393,30 +4191,6 @@ class PlayState extends MusicBeatState
 							timer: Std.parseFloat(triggerInfo[1]), 
 							ease: returnTweenEase(triggerInfo[2]),
 							colors: [Std.parseInt(triggerInfo[3]), Std.parseInt(triggerInfo[4]), Std.parseInt(triggerInfo[5])]
-						});
-					case 'badapplea' | 'badapple a':
-						var enableEvent:Bool = true;
-						if (triggerInfo[2] == "true")
-							enableEvent = true;
-						else
-							enableEvent = false;
-
-						backgroundControls(BADAPPLE_A, {
-							timer: Std.parseFloat(triggerInfo[0]), 
-							ease: returnTweenEase(triggerInfo[1]),
-							enableBadapple: enableEvent
-						});
-					case 'badappleb' | 'badapple b':
-						var enableEvent:Bool = true;
-						if (triggerInfo[2] == "true")
-							enableEvent = true;
-						else
-							enableEvent = false;
-
-						backgroundControls(BADAPPLE_B, {
-							timer: Std.parseFloat(triggerInfo[0]), 
-							ease: returnTweenEase(triggerInfo[1]),
-							enableBadapple: enableEvent
 						});
 				}
 
@@ -5606,247 +5380,11 @@ class PlayState extends MusicBeatState
 			relapseEndNotes.shift();
 		}
 
+		stagesFunc(function(stage:BaseStage) stage.opponentNoteHit(note));
 		if(opponentVocals.length <= 0) vocals.volume = 1;
 		strumPlayAnim(true, Std.int(Math.abs(note.noteData)), Conductor.stepCrochet * 1.25 / 1000 / playbackRate);
 		note.hitByOpponent = true;
 
-		switch (SONG.song)
-        {  
-			case 'Lunacy' | 'Delusional':
-                if (ClientPrefs.data.mechanics)
-                     if (healthThing > boundValue)
-                        healthThing -= drainValue;
-			case 'Laugh Track':
-                if (ClientPrefs.data.shaking)
-                {
-                    if (healthThing > 0.4)
-                        healthThing -= 0.01;
-
-					camHUD.angle = FlxG.random.float(-1.5, 1.5);
-					camGame.shake(0.0035, 0.05);
-					camHUD.shake(0.002, 0.035);
-					FlxTween.tween(camHUD, {angle: 0}, .025);
-                }
-			case 'Malfunction':
-                if (dad.curCharacter == 'glitched-mickey-new-pixel')
-                {
-                    if (healthThing > 0.05)
-                        healthThing -= 0.01;
-                    if (ClientPrefs.data.shaking)
-                    {
-                        camGame.shake(0.008, 0.07);
-                        camHUD.shake(0.015, 0.07);
-                    }
-                    if (ClientPrefs.data.shaders)
-                    {			
-                        if(!ClientPrefs.data.lowQuality && ClientPrefs.data.epilepsy)
-                        {
-                            camGame.setFilters([
-                                new ShaderFilter(states.stages.ForbiddenRealm.chromZoomShader),
-                                new ShaderFilter(states.stages.ForbiddenRealm.chromNormalShader),
-                                new ShaderFilter(states.stages.ForbiddenRealm.blurShader)
-                            ]);
-                            camHUD.setFilters([
-                                new ShaderFilter(states.stages.ForbiddenRealm.chromNormalShader),
-                                new ShaderFilter(states.stages.ForbiddenRealm.blurShader)
-                            ]);
-                        }
-                        
-                        chromEffect += 0.2;
-                        states.stages.ForbiddenRealm.blurEffect += 2.5;
-                        
-                        if (chromTween != null)
-                            chromTween.cancel();
-                        if (states.stages.ForbiddenRealm.blurTween != null)
-                            states.stages.ForbiddenRealm.blurTween.cancel();
-
-                        chromTween = FlxTween.tween(
-                            instance,
-                            {
-                                chromEffect: 0.0001
-                            },
-                            0.1,
-                            {
-                                ease: FlxEase.sineOut,
-                                onComplete: function(twn:FlxTween)
-                                {
-                                    chromTween = null;
-                                }
-                            }
-                        );
-                        states.stages.ForbiddenRealm.blurTween = FlxTween.tween(
-                            states.stages.ForbiddenRealm,
-                            {
-                                blurEffect: 0.0
-                            },
-                            0.1,
-                            {
-                                ease: FlxEase.sineOut,
-                                onComplete: function(twn:FlxTween)
-                                {
-                                
-                                    if(!ClientPrefs.data.lowQuality)
-                                    {
-                                        camGame.setFilters([new ShaderFilter(states.stages.ForbiddenRealm.chromZoomShader), new ShaderFilter(states.stages.ForbiddenRealm.chromNormalShader)]);
-                                        camHUD.setFilters([new ShaderFilter(states.stages.ForbiddenRealm.chromNormalShader)]);
-                                    }
-                                    states.stages.ForbiddenRealm.blurTween = null;
-                                }
-                            }
-                        );
-                    }
-                }
-				else if (dad.curCharacter == 'malsquare-withFace')
-                {
-					if (healthThing > 0.05)
-                        healthThing -= 0.015;
-                    if (ClientPrefs.data.shaking)
-                    {
-                        camGame.shake(0.01, 0.07);
-                        camHUD.shake(0.018, 0.07);
-                    }
-                    if (ClientPrefs.data.shaders)
-                    {
-                        if(!ClientPrefs.data.lowQuality && ClientPrefs.data.epilepsy)
-                        {
-                            camGame.setFilters([
-                                new ShaderFilter(states.stages.ForbiddenRealm.chromZoomShader),
-                                new ShaderFilter(states.stages.ForbiddenRealm.chromNormalShader),
-                                new ShaderFilter(states.stages.ForbiddenRealm.blurShader)
-                            ]);
-                            camHUD.setFilters([
-                                new ShaderFilter(states.stages.ForbiddenRealm.chromNormalShader),
-                                new ShaderFilter(states.stages.ForbiddenRealm.blurShader)
-                            ]);
-                        }
-                        
-                        chromEffect += 0.22;
-                        states.stages.ForbiddenRealm.blurEffect += 2.5;
-                        
-                        if (chromTween != null)
-                            chromTween.cancel();
-                        if (states.stages.ForbiddenRealm.blurTween != null)
-                            states.stages.ForbiddenRealm.blurTween.cancel();
-
-                        chromTween = FlxTween.tween(
-                            instance,
-                            {
-                                chromEffect: 0.0001
-                            },
-                            0.1,
-                            {
-                                ease: FlxEase.sineOut,
-                                onComplete: function(twn:FlxTween)
-                                {
-                                    chromTween = null;
-                                }
-                            }
-                        );
-                        states.stages.ForbiddenRealm.blurTween = FlxTween.tween(
-                            states.stages.ForbiddenRealm,
-                            {
-                                blurEffect: 0.0
-                            },
-                            0.1,
-                            {
-                                ease: FlxEase.sineOut,
-                                onComplete: function(twn:FlxTween)
-                                {
-                                
-                                    if(!ClientPrefs.data.lowQuality)
-                                    {
-                                        camGame.setFilters([new ShaderFilter(states.stages.ForbiddenRealm.chromZoomShader), new ShaderFilter(states.stages.ForbiddenRealm.chromNormalShader)]);
-                                        camHUD.setFilters([new ShaderFilter(states.stages.ForbiddenRealm.chromNormalShader)]);
-                                    }
-                                    states.stages.ForbiddenRealm.blurTween = null;
-                                }
-                            }
-                        );
-                    }
-                }
-			case 'Malfunction Legacy': // the reason this gets a separate case is cause shader effects are gonna be different
-                if (healthThing > 0.05)
-                       healthThing -= 0.016;
-                if (ClientPrefs.data.shaking)
-                {
-                    camGame.shake(0.008, 0.07);
-                    camHUD.shake(0.015, 0.07);
-                }
-                if (ClientPrefs.data.shaders)
-                {
-                    if(!ClientPrefs.data.lowQuality && ClientPrefs.data.epilepsy)
-                    {
-                        camGame.setFilters([
-                            new ShaderFilter(states.stages.legacyStages.LegForbiddenRealm.chromNormalShader),
-                            new ShaderFilter(states.stages.legacyStages.LegForbiddenRealm.blurShader)
-                        ]);
-                        camHUD.setFilters([
-                            new ShaderFilter(states.stages.legacyStages.LegForbiddenRealm.chromNormalShader),
-                            new ShaderFilter(states.stages.legacyStages.LegForbiddenRealm.blurShader)
-                        ]);
-                    }
-                        
-                    chromEffect += 0.3;
-                    states.stages.legacyStages.LegForbiddenRealm.blurEffect += 1.5;
-                        
-                    if (chromTween != null)
-                        chromTween.cancel();
-                    if (states.stages.legacyStages.LegForbiddenRealm.blurTween != null)
-                        states.stages.legacyStages.LegForbiddenRealm.blurTween.cancel();
-
-                    chromTween = FlxTween.tween(
-                        instance,
-                        {
-                            chromEffect: 0.0001
-                        },
-                        0.1,
-                        {
-                            ease: FlxEase.sineOut,
-                            onComplete: function(twn:FlxTween)
-                            {
-                                chromTween = null;
-                            }
-                        }
-                    );
-                    states.stages.legacyStages.LegForbiddenRealm.blurTween = FlxTween.tween(
-                        states.stages.legacyStages.LegForbiddenRealm,
-                        {
-                            blurEffect: 0.0
-                        },
-                        0.1,
-                        {
-                            ease: FlxEase.sineOut,
-                            onComplete: function(twn:FlxTween)
-                            {
-                                
-                                if(!ClientPrefs.data.lowQuality)
-                                {
-                                    camGame.setFilters([new ShaderFilter(states.stages.legacyStages.LegForbiddenRealm.chromNormalShader)]);
-                                    camHUD.setFilters([new ShaderFilter(states.stages.legacyStages.LegForbiddenRealm.chromNormalShader)]);
-                                }
-                                states.stages.legacyStages.LegForbiddenRealm.blurTween = null;
-                            }
-                        }
-                    );
-                }
-                
-            case "Dont Cross":
-				boyfriend.x += 1.2;
-				boyfriend.y -= 1.2;
-				boyfriend.scale.x -= 0.0012;
-				boyfriend.scale.y -= 0.0012;
-
-				if (ClientPrefs.data.mechanics)
-				{
-					if(healthThing > 0.05) // trol
-						healthThing -= 0.015;
-				}
-			case 'Birthday':
-				if (states.stages.Birtbhday.spawnNotes['muckney'] && !note.isSustainNote) birthdayParticles(dadGroup);
-			case 'Isolated':
-				if (dad.curCharacter == "avier-whistle" && !note.isSustainNote) whistleNotes(dadGroup);
-		}
-		
 		var result:Dynamic = callOnLuas('opponentNoteHit', [notes.members.indexOf(note), Math.abs(note.noteData), note.noteType, note.isSustainNote]);
 		if(result != LuaUtils.Function_Stop && result != LuaUtils.Function_StopHScript && result != LuaUtils.Function_StopAll) callOnHScript('opponentNoteHit', [note]);
 
@@ -5864,6 +5402,7 @@ class PlayState extends MusicBeatState
 		var leData:Int = Math.round(Math.abs(note.noteData));
 		var leType:String = note.noteType;
 
+		stagesFunc(function(stage:BaseStage) stage.goodNoteHit(note));
 		var result:Dynamic = callOnLuas('goodNoteHitPre', [notes.members.indexOf(note), leData, leType, isSus]);
 		if(result != LuaUtils.Function_Stop && result != LuaUtils.Function_StopHScript && result != LuaUtils.Function_StopAll) callOnHScript('goodNoteHitPre', [note]);
 
@@ -6040,67 +5579,14 @@ class PlayState extends MusicBeatState
 			}
 			if(combo > 9999) combo = 9999;
 			popUpScore(note);
-
-			if (states.stages.Birtbhday.spawnNotes['bf']) birthdayParticles(boyfriendGroup);
 		}
 		healthThing += note.hitHealth * 0.55;
-
-		if (SONG.song == "Dont Cross")
-		{
-			boyfriend.x -= 1.4;
-			boyfriend.y += 1.4;
-			boyfriend.scale.x += 0.0014;
-			boyfriend.scale.y += 0.0014;
-		}
 
 		var result:Dynamic = callOnLuas('goodNoteHit', [notes.members.indexOf(note), leData, leType, isSus]);
 		if(result != LuaUtils.Function_Stop && result != LuaUtils.Function_StopHScript && result != LuaUtils.Function_StopAll) callOnHScript('goodNoteHit', [note]);
 
 		if(!note.isSustainNote) 
 			invalidateNote(note);
-	}
-
-	public function birthdayParticles(targetGroup:FlxSpriteGroup) {
-		var path:String = 'favi/ui/bdaynotes';
-		var particleNote:FlxSprite = new FlxSprite().loadGraphic(Paths.image('$path/note_${FlxG.random.int(1, 3)}'));
-		particleNote.setGraphicSize(Std.int(particleNote.width * 0.7));
-		particleNote.updateHitbox();
-		particleNote.x = FlxG.random.int(Std.int(targetGroup.x - (targetGroup == boyfriendGroup ? 0 : 150)), Std.int(targetGroup.x + (targetGroup == boyfriendGroup ? 500 : 300)));
-		particleNote.y = targetGroup.y + 170;
-		particleNote.velocity.y += targetGroup.y - 400;
-		particleNote.acceleration.y = 400 * playbackRate;
-		particleNote.angle = FlxG.random.int(0, 360);
-		
-		FlxTween.tween(particleNote, {alpha: 0.0001}, 3, {
-			onComplete: function(tween:FlxTween)
-			{
-				particleNote.destroy();
-			}
-		});
-		add(particleNote);
-	}
-
-	public function whistleNotes(targetGroup:FlxSpriteGroup) {
-		var path:String = 'favi/ui/bdaynotes';
-		var particleNote:FlxSprite = new FlxSprite().loadGraphic(Paths.image('$path/note_${FlxG.random.int(1, 3)}'));
-		particleNote.setGraphicSize(Std.int(particleNote.width * 0.5));
-		particleNote.updateHitbox();
-		particleNote.setColorTransform(-1, -1, -1, 1, 128, 128, 128, 0);
-		particleNote.x = targetGroup.x - 175;
-		particleNote.y = targetGroup.y + 375;
-		particleNote.alpha = 0.0001;
-		particleNote.velocity.x -= targetGroup.y - 475;
-		FlxTween.tween(particleNote, {alpha: 1}, .5, {ease: FlxEase.sineInOut});
-		
-		FlxTween.tween(particleNote, {y: particleNote.y - 70}, FlxG.random.float(0.5, 2), {ease: FlxEase.sineInOut, type: 4});
-
-		FlxTween.tween(particleNote, {alpha: 0.0001}, 1, {ease: FlxEase.sineInOut, startDelay: 0.75,
-			onComplete: function(tween:FlxTween)
-			{
-				particleNote.destroy();
-			}
-		});
-		addBehindDad(particleNote);
 	}
 
 	public function invalidateNote(note:Note):Void {

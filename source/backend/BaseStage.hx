@@ -120,6 +120,12 @@ class BaseStage extends FlxBasic
 		PlayState.instance.endCallback = myfn;
 	}
 
+	// Note Hit/Miss
+	public function goodNoteHit(note:Note) {}
+	public function opponentNoteHit(note:Note) {}
+	public function noteMiss(note:Note) {}
+	public function noteMissPress(direction:Int) {}
+
 	// overrides
 	function startCountdown() if(onPlayState) return PlayState.instance.startCountdown(); else return false;
 	function endSong() if(onPlayState)return PlayState.instance.endSong(); else return false;
