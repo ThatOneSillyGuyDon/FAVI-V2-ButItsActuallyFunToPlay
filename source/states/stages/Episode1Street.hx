@@ -1,6 +1,7 @@
 package states.stages;
 
 import states.stages.objects.*;
+import objects.notes.Note.EventNote;
 
 #if !flash 
 import openfl.filters.ShaderFilter;
@@ -33,14 +34,13 @@ class Episode1Street extends BaseStage
 	 public static var tumbleGrp:FlxTypedGroup<FlxSprite>;
 	 public static var lightning:FlxSprite;
 	 public static var lightningFore:FlxSprite;
-	 public static var streetRuins:FlxSprite;
 	 public static var fakeLightOfHope:FlxSprite;
 	 public static var fireThing:FlxSprite;
-	 public static var fireThing2:FlxSprite; // what the fuck what the fuck what the fuck what the fuck what the fuck what the fuck
 	 public static var fireForeground:FlxSprite;
 	 public static var fireTweenHandler:FlxTween;
 	 public static var rainTween:FlxTween;
 	 public static var mickeySpirit:Character;
+	 public static var memoryMickey:Character;
 	 public static var smokeShit:FlxTypedGroup<FlxSprite>;
 	 public static var smokeFore:FlxTypedGroup<FlxSprite>;
 	 public static var spriteShit:Array<String> = ['smokeBBack', 'smokeTBack'];
@@ -51,7 +51,6 @@ class Episode1Street extends BaseStage
 	public static var totallyanoriginalname:FlxSprite; // .. i have no idea what to say
 
 	//Shader stuff
-	public static var redVignette:FlxRuntimeShader = new FlxRuntimeShader(Shaders.redFromAngryBirds, null, 120);
 	public static var chromZoomShader:FlxRuntimeShader = new FlxRuntimeShader(Shaders.aberration, null, 150);
 	public static var chromNormalShader:FlxRuntimeShader = new FlxRuntimeShader(Shaders.aberrationDefault, null, 150);
 	public static var dramaticCamMovement:FlxRuntimeShader = new FlxRuntimeShader(Shaders.cameraMovement, null, 150);
@@ -89,7 +88,19 @@ class Episode1Street extends BaseStage
 		colorsOrSmthElse.active = false;
 		add(colorsOrSmthElse);
 
-		if (!ClientPrefs.data.lowQuality)
+		if (PlayState.SONG.song == 'Delusional')
+		{	
+			fakeLightOfHope = new FlxSprite(-990, 1600).loadGraphic(Paths.image(PlayState.pathway + 'falseHope'));
+			fakeLightOfHope.setGraphicSize(Std.int(fakeLightOfHope.width * 4));
+			fakeLightOfHope.updateHitbox();
+			fakeLightOfHope.antialiasing = ClientPrefs.data.antialiasing;
+			fakeLightOfHope.screenCenter();
+			fakeLightOfHope.scale.set(3, 3);
+			fakeLightOfHope.scrollFactor.set(0.9, 0.9);
+			add(fakeLightOfHope);
+		}
+
+		if (!ClientPrefs.data.lowQuality && PlayState.SONG.song != "Isolated")
 		{
 			fireThing = new FlxSprite(0, -80);
 			fireThing.scale.set(5.85, 3);
@@ -101,57 +112,36 @@ class Episode1Street extends BaseStage
 			add(fireThing);
 			fireThing.animation.play('burning');
 		}
-		
+
 		floor = new FlxSprite(-20, 200).loadGraphic(Paths.image(PlayState.pathway + 'street'));
 		floor.antialiasing = ClientPrefs.data.antialiasing;
 		floor.scale.set(2.8, 2.5);
 		floor.scrollFactor.set(1, 1);
 		floor.active = false;
 		add(floor);	
+		
+		if (!ClientPrefs.data.lowQuality && PlayState.SONG.song == "Delusional")
+		{
+			lightning = new FlxSprite(-25, -175);
+			lightning.frames = Paths.getSparrowAtlas(PlayState.pathway + "lightning");
+			lightning.antialiasing = ClientPrefs.data.antialiasing;
+			lightning.animation.addByPrefix('boom', 'lightning1', 12);
+			lightning.animation.addByPrefix('boom2', 'lightning2', 12);
+			lightning.scale.set(2, 2);
+			lightning.scrollFactor.set(0.8, 0.8);
+			add(lightning);
+		}
 
-		if (PlayState.SONG.song == 'Delusional')
-		{	
-			fakeLightOfHope = new FlxSprite(-990, 1600).loadGraphic(Paths.image(PlayState.pathway + 'falseHope'));
-			fakeLightOfHope.setGraphicSize(Std.int(fakeLightOfHope.width * 4));
-			fakeLightOfHope.updateHitbox();
-			fakeLightOfHope.antialiasing = ClientPrefs.data.antialiasing;
-			fakeLightOfHope.screenCenter();
-			fakeLightOfHope.scale.set(3, 3);
-			fakeLightOfHope.scrollFactor.set(0.9, 0.9);
-			add(fakeLightOfHope);
-			
-			if (!ClientPrefs.data.lowQuality)
-			{
-				fireThing2 = new FlxSprite(0, -80);
-				fireThing2.scale.set(5.85, 3);
-				fireThing2.alpha = 0.0001;
-				fireThing2.frames = Paths.getSparrowAtlas(PlayState.pathway + 'delusional-fire');
-				fireThing2.animation.addByPrefix('burning', 'delusional-fire fire-idle', 16, true);
-				fireThing2.scrollFactor.set(0.8, 0.8);
-				fireThing2.antialiasing = ClientPrefs.data.antialiasing;
-				fireThing2.blend = ADD;
-				add(fireThing2);
-				fireThing2.animation.play('burning');
-
-				lightning = new FlxSprite(-25, -175);
-				lightning.frames = Paths.getSparrowAtlas(PlayState.pathway + "lightning");
-				lightning.antialiasing = ClientPrefs.data.antialiasing;
-				lightning.animation.addByPrefix('boom', 'lightning1', 12);
-				lightning.animation.addByPrefix('boom2', 'lightning2', 12);
-				lightning.scale.set(2, 2);
-				lightning.scrollFactor.set(0.8, 0.8);
-				add(lightning);
-			}
-
+		if (PlayState.SONG.song == "Delusional")
+		{
 			mickeySpirit = new Character(-200, -700, "avier-bg");
 			mickeySpirit.alpha = 0.0001;
 			add(mickeySpirit);
 
-			streetRuins = new FlxSprite(-20, 200).loadGraphic(Paths.image(PlayState.pathway + 'streetDestroyed'));
-			streetRuins.antialiasing = ClientPrefs.data.antialiasing;
-			streetRuins.scale.set(2.8, 2.5);
-			streetRuins.scrollFactor.set(1, 1);
-			add(streetRuins);
+			memoryMickey = new Character(575, 50, "Mickey-Bedroom", true);
+			memoryMickey.alpha = 0.0001;
+			memoryMickey.cameras = [game.camVideo];
+			add(memoryMickey);
 
 			// Bedroom Grah :fire: - MalyPlus
 			minnieBackground = new FlxSprite(-20, 200).loadGraphic(Paths.image(PlayState.pathway + 'background'));
@@ -161,16 +151,16 @@ class Episode1Street extends BaseStage
 			minnieBackground.visible = false;
 			add(minnieBackground);
 
-			totallyanoriginalname = new FlxSprite(-20, 200).loadGraphic(Paths.image(PlayState.pathway + 'shading'));
-			totallyanoriginalname.scale.set(2,2);
-			totallyanoriginalname.scrollFactor.set(1,1);
-			totallyanoriginalname.visible = false;
-			totallyanoriginalname.antialiasing = ClientPrefs.data.antialiasing;
-			add(totallyanoriginalname);
-
 
 			if (!ClientPrefs.data.lowQuality)
 			{
+				totallyanoriginalname = new FlxSprite(-20, 200).loadGraphic(Paths.image(PlayState.pathway + 'shading'));
+				totallyanoriginalname.scale.set(2,2);
+				totallyanoriginalname.scrollFactor.set(1,1);
+				totallyanoriginalname.visible = false;
+				totallyanoriginalname.antialiasing = ClientPrefs.data.antialiasing;
+				add(totallyanoriginalname);
+
 				smokeShit = new FlxTypedGroup();
 				add(smokeShit);
 
@@ -248,21 +238,27 @@ class Episode1Street extends BaseStage
 			stageFront.scrollFactor.set(2.3, 1.7);
 			stageFront.active = false;
 
-			rain = new FlxSprite(-550, -900);
-			rain.frames = Paths.getSparrowAtlas(PlayState.pathway + 'rain');
-			rain.animation.addByPrefix('drippin', 'Rain', 30, true);
-			rain.scale.set(2, 2);
-			rain.antialiasing = ClientPrefs.data.antialiasing;
-			rain.alpha = 0.0001;
-			rain.animation.play('drippin');
+			if (PlayState.SONG.song != "Isolated")
+			{
+				rain = new FlxSprite(-550, -900);
+				rain.frames = Paths.getSparrowAtlas(PlayState.pathway + 'rain');
+				rain.animation.addByPrefix('drippin', 'Rain', 30, true);
+				rain.scale.set(2, 2);
+				rain.antialiasing = ClientPrefs.data.antialiasing;
+				rain.alpha = 0.0001;
+				rain.animation.play('drippin');
 
-			heavyRain = new FlxSprite(-550, -900);
-			heavyRain.frames = Paths.getSparrowAtlas(PlayState.pathway + 'heavyRain');
-			heavyRain.animation.addByPrefix('god is pissing omg', 'Rain full', 30, true);
-			heavyRain.scale.set(2, 2);
-			heavyRain.antialiasing = ClientPrefs.data.antialiasing;
-			heavyRain.alpha = 0.0001;
-			heavyRain.animation.play('god is pissing omg');
+				if (PlayState.SONG.song == "Delusional")
+				{
+					heavyRain = new FlxSprite(-550, -900);
+					heavyRain.frames = Paths.getSparrowAtlas(PlayState.pathway + 'heavyRain');
+					heavyRain.animation.addByPrefix('god is pissing omg', 'Rain full', 30, true);
+					heavyRain.scale.set(2, 2);
+					heavyRain.antialiasing = ClientPrefs.data.antialiasing;
+					heavyRain.alpha = 0.0001;
+					heavyRain.animation.play('god is pissing omg');
+				}
+			}
 		}
 
 		if (isStoryMode && !seenCutscene)
@@ -323,7 +319,6 @@ class Episode1Street extends BaseStage
 			switch (PlayState.SONG.song)
 			{
 				case 'Isolated' | 'Lunacy' | 'Delusional':
-					redVignette.setFloat('time', 0.0);
 					if (!ClientPrefs.data.lowQuality)
 					{
 						camGame.setFilters([
@@ -344,7 +339,6 @@ class Episode1Street extends BaseStage
 					}
 			}
 		}
-
 		add(tumbleGrp);
 
 		if (PlayState.SONG.song == 'Delusional')
@@ -403,9 +397,7 @@ class Episode1Street extends BaseStage
 				mickeyShader.angle = 40;
 				satanShader.angle = 140;
 			}
-			streetRuins.visible = false;
 		}
-
 
 		add(atmosphereParticle);
 		add(ashParticle);
@@ -417,6 +409,7 @@ class Episode1Street extends BaseStage
 			{
 				stageFront.y -= 250;
 				stageFront.alpha = 0.001;
+				floor.alpha = 0.001;
 			}
 			game.camBars.fade(0x000000, .0001);
 		}
@@ -490,84 +483,6 @@ class Episode1Street extends BaseStage
 			fakeBFLosingFrame.updateHitbox();
 		}
 	}
-	
-	function isoIntro()
-	{
-		camGame.visible = false;
-		isolatedIntro = new VideoSprite(false);
-		isolatedIntro.load(Paths.video('isolatedIntro'));
-		isolatedIntro.cameras = [game.camOther];
-		isolatedIntro.play();
-		add(isolatedIntro);
-		game.camVideo.visible = true;
-		isolatedIntro.addCallback("onStart", () -> {
-			game.camVideo.visible = true;
-			isolatedIntro.visible = true;
-		});
-		isolatedIntro.addCallback("onEnd", () -> {
-			trace("video gone");
-			remove(isolatedIntro);
-			isolatedIntro.kill();
-			isolatedIntro = null;
-			game.camVideo.visible = false;
-			camGame.visible = true;
-			game.camBars.fade(FlxColor.BLACK, 0.001);
-			startCountdown();
-		});
-
-		skipSceneTxt = new FlxText(0, 25, 1280, "Spam SPACE to skip this cutscene.");
-		skipSceneTxt.setFormat(Paths.font("MagicOwlFont.otf"), 32, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
-		skipSceneTxt.alpha = 0.0001;
-		skipSceneTxt.cameras = [game.camOther];
-		add(skipSceneTxt);
-
-		skipDial = new FlxPieDial(0, 0, 45, FlxColor.WHITE, 10, CIRCLE, true, 30);
-		skipDial.screenCenter();
-		skipDial.amount = 0.0;
-		skipDial.alpha = 0.0001;
-		skipDial.cameras = [game.camOther];
-		add(skipDial);
-	}
-
-	function lunaIntro()
-	{
-		camGame.visible = false;
-		lununuIntro = new VideoSprite(false);
-		lununuIntro.load(Paths.video("lunacyIntro"));
-		lununuIntro.cameras = [game.camOther];
-		lununuIntro.play();
-		game.camVideo.visible = true;
-		add(lununuIntro);
-		lununuIntro.addCallback("onStart", () -> {
-			game.camVideo.visible = true;
-			lununuIntro.visible = true;
-			game.camBars.visible = false;
-		});
-		lununuIntro.addCallback("onEnd", () -> {
-			game.camVideo.visible = false;
-			game.camBars.visible = true;
-			camGame.visible = true;
-			game.camBars.fade(FlxColor.BLACK, 0.0001);
-			startCountdown();
-			trace("video gone");
-			remove(lununuIntro);
-			lununuIntro.kill();
-			lununuIntro = null;
-		});
-
-		skipSceneTxt = new FlxText(0, 25, 1280, "Spam SPACE to skip this cutscene.");
-		skipSceneTxt.setFormat(Paths.font("MagicOwlFont.otf"), 32, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
-		skipSceneTxt.alpha = 0.0001;
-		skipSceneTxt.cameras = [game.camOther];
-		add(skipSceneTxt);
-
-		skipDial = new FlxPieDial(0, 0, 45, FlxColor.WHITE, 10, CIRCLE, true, 30);
-		skipDial.screenCenter();
-		skipDial.amount = 0.0;
-		skipDial.alpha = 0.0001;
-		skipDial.cameras = [game.camOther];
-		add(skipDial);
-	}
 
 	override function update(elapsed:Float)
 	{
@@ -613,23 +528,11 @@ class Episode1Street extends BaseStage
 
 		if (PlayState.SONG.song == "Isolated")
 		{
-			fakeBFLosingFrame.x = game.iconP1.x;
-			fakeBFLosingFrame.y = game.iconP1.y;
+			fakeBFLosingFrame.x = demonBFIcon.x = demonBFScary.x = game.iconP1.x;
+			fakeBFLosingFrame.y = demonBFIcon.y = demonBFScary.y = game.iconP1.y;
 
-			demonBFIcon.x = game.iconP1.x;
-			demonBFIcon.y = game.iconP1.y;
-
-			demonBFScary.x = game.iconP1.x;
-			demonBFScary.y = game.iconP1.y;
-
-			isolatedHappy.x = game.iconP2.x;
-			isolatedHappy.y = game.iconP2.y;
-
-			lunacyIcon.x = game.iconP2.x;
-			lunacyIcon.y = game.iconP2.y;
-
-			delusionalIcon.x = game.iconP2.x;
-			delusionalIcon.y = game.iconP2.y;
+			isolatedHappy.x = lunacyIcon.x = delusionalIcon.x = game.iconP2.x;
+			isolatedHappy.y = lunacyIcon.y = delusionalIcon.y = game.iconP2.y;
 		}
 
 		switch (game.dad.curCharacter)
@@ -748,66 +651,18 @@ class Episode1Street extends BaseStage
 		}
 	}
 
-	// prob use velocity.x someday for not time enough for that
-	function summonWeedMakerLmfao()
+	override function eventPushedUnique(event:EventNote)
 	{
-		if (FlxG.random.bool(1))
-		{
-			tumbleWeed = new FlxSprite(1800, 490).loadGraphic(Paths.image(PlayState.pathway + 'THELEGENDARYTUMBLEWEED'));
-			tumbleWeed.scale.set(0.6, 0.6);
-			FlxTween.tween(tumbleWeed, {angle: -360}, 0.5, {type: LOOPING});
-			tumbleGrp.add(tumbleWeed);
-	
-			FlxTween.tween(tumbleWeed, {y: 825}, 0.1, {ease: FlxEase.sineInOut, type: PINGPONG});
-	
-			FlxTween.tween(tumbleWeed, {x: -1200}, 2, {onComplete: function(twn:FlxTween)
-			{
-				tumbleWeed.kill();
-				tumbleWeed = null;
-			}});
+		// preload the ruined street asset
+		switch(event.event)
+		{ 
+			case 'Delusional Events':
+				var eventData:Float = Std.parseFloat(event.value1);
+				switch (eventData)
+				{
+					case 24: Paths.image(PlayState.pathway + "streetDestroyed");
+				}
 		}
-		else
-		{
-			tumbleWeed = new FlxSprite(1800, 600).loadGraphic(Paths.image(PlayState.pathway + 'Tumble_' + FlxG.random.int(0,1)));
-			FlxTween.tween(tumbleWeed, {angle: -360}, 1.7, {type: LOOPING});
-			tumbleGrp.add(tumbleWeed);
-	
-			FlxTween.tween(tumbleWeed, {y: 735}, 0.75, {ease: FlxEase.sineIn, type: PINGPONG});
-	
-			FlxTween.tween(tumbleWeed, {x: -1200}, 5.6, {onComplete: function(twn:FlxTween)
-			{
-				tumbleWeed.kill();
-				tumbleWeed = null;
-			}});
-		}
-	}
-
-	function lightningStrike()
-	{
-		lightning.alpha = 1;
-		if (FlxG.random.bool(50))
-		{
-			lightning.animation.play('boom');
-		}
-		else
-		{
-			lightning.animation.play('boom2');
-		}
-		new FlxTimer().start(1.5, function(tmr:FlxTimer) {lightning.alpha = 0;});
-	}
-
-	function lightningStrikeFore()
-	{
-		lightningFore.alpha = 1;
-		if (FlxG.random.bool(50))
-		{
-			lightningFore.animation.play('boom');
-		}
-		else
-		{
-			lightningFore.animation.play('boom2');
-		}
-		new FlxTimer().start(1.5, function(tmr:FlxTimer) {lightningFore.alpha = 0;});
 	}
 
 	// For events
@@ -931,7 +786,7 @@ class Episode1Street extends BaseStage
 					if (fireTweenHandler != null)
 						fireTweenHandler.cancel();
 
-					fireTweenHandler = FlxTween.tween(fireThing, {alpha: Std.parseFloat(triggerInfo[0]), y: Std.parseFloat(triggerInfo[1])}, Std.parseFloat(triggerInfo[2]), {ease: returnTweenEase(value2), onComplete: function(twn:FlxTween)
+					fireTweenHandler = FlxTween.tween(fireThing, {alpha: Std.parseFloat(triggerInfo[0]), y: Std.parseFloat(triggerInfo[1])}, Std.parseFloat(triggerInfo[2]), {ease: PlayState.returnTweenEase(value2), onComplete: function(twn:FlxTween)
 						{
 							fireTweenHandler = null;
 						}
@@ -947,7 +802,7 @@ class Episode1Street extends BaseStage
 
 					if (rain != null)
 					{
-						rainTween = FlxTween.tween(rain, {alpha: Std.parseFloat(triggerInfo[0])}, Std.parseFloat(triggerInfo[1]), {ease: returnTweenEase(value2), onComplete: function(twn:FlxTween)
+						rainTween = FlxTween.tween(rain, {alpha: Std.parseFloat(triggerInfo[0])}, Std.parseFloat(triggerInfo[1]), {ease: PlayState.returnTweenEase(value2), onComplete: function(twn:FlxTween)
 						{
 							rainTween = null;
 						}});
@@ -1110,6 +965,7 @@ class Episode1Street extends BaseStage
 					
 					case 16:
 						FlxTween.tween(fakeLightOfHope, {alpha: 0.001}, 1.7);
+						FlxTween.tween(floor, {alpha: 1}, 1.7);
 						if (!ClientPrefs.data.lowQuality) FlxTween.tween(stageFront, {alpha: 1}, 1.5);
 					
 					case 17:
@@ -1146,22 +1002,17 @@ class Episode1Street extends BaseStage
 						colorsOrSmthElse.kill();
 						colorsOrSmthElse.destroy();
 						colorsOrSmthElse = null;
-						floor.kill();
-						floor.destroy();
-						floor = null;
 						if (!ClientPrefs.data.lowQuality)
 						{
-							fireThing.kill();
-							fireThing.destroy();
-							fireThing = null;
+							fireThing.visible = false;
 							smokeShit.forEach(function(spr:FlxSprite)
-								{
-									spr.alpha = 0;
-								});
-								smokeFore.forEach(function(spr:FlxSprite)
-								{
-									spr.alpha = 0;
-								});
+							{
+								spr.visible = false;
+							});
+							smokeFore.forEach(function(spr:FlxSprite)
+							{
+								spr.visible = false;
+							});
 							heavyRain.visible = false;
 							totallyanoriginalname.visible = true;
 							stageCurtains.visible = false;
@@ -1169,6 +1020,7 @@ class Episode1Street extends BaseStage
 							stageFront.destroy();
 							stageFront = null;
 						}
+						floor.visible = false;
 						minnieBackground.visible = true;
 					case 21:
 						if (!ClientPrefs.data.lowQuality)
@@ -1201,7 +1053,8 @@ class Episode1Street extends BaseStage
 							totallyanoriginalname.destroy();
 							totallyanoriginalname = null;
 						}
-						streetRuins.visible = true;
+						floor.loadGraphic(Paths.image(PlayState.pathway + "streetDestroyed"));
+						floor.visible = true;
 						fakeLightOfHope.alpha = 0.5;
 						minnieBackground.kill();
 						minnieBackground.destroy();
@@ -1212,8 +1065,8 @@ class Episode1Street extends BaseStage
 					case 26:
 						FlxTween.tween(fakeLightOfHope, {alpha: 1, color: FlxColor.RED}, 2, {ease: FlxEase.circInOut});
 						if (!ClientPrefs.data.lowQuality) 
-							FlxTween.tween(fireThing2, {color: FlxColor.RED}, 2, {ease: FlxEase.circInOut});
-						FlxTween.tween(streetRuins, {color: FlxColor.RED}, 2, {ease: FlxEase.circInOut});
+							FlxTween.tween(fireThing, {color: FlxColor.RED}, 2, {ease: FlxEase.circInOut});
+						FlxTween.tween(floor, {color: FlxColor.RED}, 2, {ease: FlxEase.circInOut});
 						if (!ClientPrefs.data.lowQuality)
 						{
 							FlxTween.tween(fireForeground, {color: FlxColor.RED}, 2, {ease: FlxEase.circInOut});
@@ -1229,8 +1082,8 @@ class Episode1Street extends BaseStage
 						}
 					case 27:
 						FlxTween.tween(fakeLightOfHope, {color: FlxColor.WHITE}, 0.5, {ease: FlxEase.circOut});
-						if (!ClientPrefs.data.lowQuality) FlxTween.tween(fireThing2, {color: FlxColor.WHITE, alpha: 0.75}, 1.2, {ease: FlxEase.circOut});
-						FlxTween.tween(streetRuins, {color: FlxColor.WHITE}, 0.5, {ease: FlxEase.circOut});
+						if (!ClientPrefs.data.lowQuality) FlxTween.tween(fireThing, {color: FlxColor.WHITE, alpha: 0.75}, 1.2, {ease: FlxEase.circOut});
+						FlxTween.tween(floor, {color: FlxColor.WHITE}, 0.5, {ease: FlxEase.circOut});
 						if (!ClientPrefs.data.lowQuality)
 						{
 							lightningStrike();
@@ -1248,7 +1101,7 @@ class Episode1Street extends BaseStage
 						}
 					case 28:
 						FlxTween.tween(fakeLightOfHope, {alpha: 0}, 2);
-						if (!ClientPrefs.data.lowQuality) FlxTween.tween(fireThing2, {alpha: 1}, 2);
+						if (!ClientPrefs.data.lowQuality) FlxTween.tween(fireThing, {alpha: 1}, 2);
 					case 29:
 						if (!ClientPrefs.data.lowQuality)
 						{
@@ -1267,17 +1120,17 @@ class Episode1Street extends BaseStage
 									spr.destroy();
 									spr = null;
 								});
-							fireThing2.kill();
-							fireThing2.destroy();
-							fireThing2 = null;
+							fireThing.kill();
+							fireThing.destroy();
+							fireThing = null;
 							heavyRain.kill();
 							heavyRain.destroy();
 							heavyRain = null;
 							stageCurtains.visible = true;
 						}
-						streetRuins.kill();
-						streetRuins.destroy();
-						streetRuins = null;
+						floor.kill();
+						floor.destroy();
+						floor = null;
 						fakeLightOfHope.kill();
 						fakeLightOfHope.destroy();
 						fakeLightOfHope = null;
@@ -1292,119 +1145,135 @@ class Episode1Street extends BaseStage
 		}
 	}
 
-	public static function returnTweenEase(ease:String = '')
+	function summonWeedMakerLmfao()
 	{
-		switch (ease.toLowerCase())
+		tumbleWeed = new FlxSprite(1800, 600);
+		tumbleWeed.antialiasing = ClientPrefs.data.antialiasing;
+		var velocityX:Float = 0;
+		var loopTime:Array<Float> = [];
+		if (FlxG.random.bool(1))
 		{
-			case 'linear':
-				return FlxEase.linear;
-			case 'backin':
-				return FlxEase.backIn;
-			case 'backinout':
-				return FlxEase.backInOut;
-			case 'backout':
-				return FlxEase.backOut;
-			case 'bouncein':
-				return FlxEase.bounceIn;
-			case 'bounceinout':
-				return FlxEase.bounceInOut;
-			case 'bounceout':
-				return FlxEase.bounceOut;
-			case 'circin':
-				return FlxEase.circIn;
-			case 'circinout':
-				return FlxEase.circInOut;
-			case 'circout':
-				return FlxEase.circOut;
-			case 'cubein':
-				return FlxEase.cubeIn;
-			case 'cubeinout':
-				return FlxEase.cubeInOut;
-			case 'cubeout':
-				return FlxEase.cubeOut;
-			case 'elasticin':
-				return FlxEase.elasticIn;
-			case 'elasticinout':
-				return FlxEase.elasticInOut;
-			case 'elasticout':
-				return FlxEase.elasticOut;
-			case 'expoin':
-				return FlxEase.expoIn;
-			case 'expoinout':
-				return FlxEase.expoInOut;
-			case 'expoout':
-				return FlxEase.expoOut;
-			case 'quadin':
-				return FlxEase.quadIn;
-			case 'quadinout':
-				return FlxEase.quadInOut;
-			case 'quadout':
-				return FlxEase.quadOut;
-			case 'quartin':
-				return FlxEase.quartIn;
-			case 'quartinout':
-				return FlxEase.quartInOut;
-			case 'quartout':
-				return FlxEase.quartOut;
-			case 'quintin':
-				return FlxEase.quintIn;
-			case 'quintinout':
-				return FlxEase.quintInOut;
-			case 'quintout':
-				return FlxEase.quintOut;
-			case 'sinein':
-				return FlxEase.sineIn;
-			case 'sineinout':
-				return FlxEase.sineInOut;
-			case 'sineout':
-				return FlxEase.sineOut;
-			case 'smoothstepin':
-				return FlxEase.smoothStepIn;
-			case 'smoothstepinout':
-				return FlxEase.smoothStepInOut;
-			case 'smoothstepout':
-				return FlxEase.smoothStepInOut;
-			case 'smootherstepin':
-				return FlxEase.smootherStepIn;
-			case 'smootherstepinout':
-				return FlxEase.smootherStepInOut;
-			case 'smootherstepout':
-				return FlxEase.smootherStepOut;
+			tumbleWeed.loadGraphic(Paths.image(PlayState.pathway + 'THELEGENDARYTUMBLEWEED'));
+			tumbleWeed.scale.set(0.6, 0.6);
+			velocityX = -970;
+			loopTime[0] = 0.5;
+			loopTime[1] = 0.1;
+			loopTime[2] = 2;
 		}
-		return FlxEase.linear;
+		else
+		{
+			tumbleWeed.loadGraphic(Paths.image(PlayState.pathway + 'Tumble_' + FlxG.random.int(0,1)));
+			velocityX = -520;
+			loopTime[0] = 1.7;
+			loopTime[1] = 0.75;
+			loopTime[2] = 5.6;
+		}
+		tumbleWeed.velocity.set(velocityX, 0);
+		tumbleGrp.add(tumbleWeed);
+		FlxTween.tween(tumbleWeed, {angle: -360}, loopTime[0], {type: LOOPING});
+		FlxTween.tween(tumbleWeed, {y: 735}, loopTime[1], {ease: FlxEase.sineInOut, type: PINGPONG});
+		new FlxTimer().start(loopTime[2], function(tmr:FlxTimer)
+		{
+			tumbleWeed.kill();
+			tumbleWeed = null;
+		});
 	}
 
-	override public function onFocus():Void 
+	function lightningStrike()
 	{
-		if (FlxG.autoPause)
-		{
-			if (death != null && death.visible)
-				death.resume();
-			if (deluSing != null && deluSing.visible)
-				deluSing.resume();
-			if (minnieJumpscare != null && minnieJumpscare.visible)
-				minnieJumpscare.resume();
-			if (isolatedIntro != null && isolatedIntro.visible)
-				isolatedIntro.resume();
-			if (lununuIntro != null && lununuIntro.visible)
-				lununuIntro.resume();
-		}
+		lightning.alpha = 1;
+		if (FlxG.random.bool(50))
+			lightning.animation.play('boom');
+		else
+			lightning.animation.play('boom2');
+		new FlxTimer().start(1.5, function(tmr:FlxTimer) {lightning.alpha = 0.001;});
 	}
 
-	override public function onFocusLost():Void 
+	function lightningStrikeFore()
 	{
-		if (FlxG.autoPause)
-		{
-			if (death != null && death.visible)
-				death.pause();
-			if (deluSing != null && deluSing.visible)
-				deluSing.pause();
-			if (minnieJumpscare != null && minnieJumpscare.visible)
-				minnieJumpscare.pause();
-			if (isolatedIntro != null && isolatedIntro.visible)
-				isolatedIntro.pause();
-			if (lununuIntro != null && lununuIntro.visible)
-				lununuIntro.pause();
-		}
+		lightningFore.alpha = 1;
+		if (FlxG.random.bool(50))
+			lightningFore.animation.play('boom');
+		else
+			lightningFore.animation.play('boom2');
+		new FlxTimer().start(1.5, function(tmr:FlxTimer) {lightningFore.alpha = 0.001;});
+	}
+
+	function isoIntro()
+	{
+		camGame.visible = false;
+		isolatedIntro = new VideoSprite(false);
+		isolatedIntro.load(Paths.video('isolatedIntro'));
+		isolatedIntro.cameras = [game.camOther];
+		isolatedIntro.play();
+		add(isolatedIntro);
+		game.camVideo.visible = true;
+		isolatedIntro.addCallback("onStart", () -> {
+			game.camVideo.visible = true;
+			isolatedIntro.visible = true;
+		});
+		isolatedIntro.addCallback("onEnd", () -> {
+			trace("video gone");
+			remove(isolatedIntro);
+			isolatedIntro.kill();
+			isolatedIntro = null;
+			game.camVideo.visible = false;
+			camGame.visible = true;
+			game.camBars.fade(FlxColor.BLACK, 0.001);
+			startCountdown();
+		});
+
+		skipSceneTxt = new FlxText(0, 25, 1280, "Spam SPACE to skip this cutscene.");
+		skipSceneTxt.setFormat(Paths.font("MagicOwlFont.otf"), 32, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
+		skipSceneTxt.alpha = 0.0001;
+		skipSceneTxt.cameras = [game.camOther];
+		add(skipSceneTxt);
+
+		skipDial = new FlxPieDial(0, 0, 45, FlxColor.WHITE, 10, CIRCLE, true, 30);
+		skipDial.screenCenter();
+		skipDial.amount = 0.0;
+		skipDial.alpha = 0.0001;
+		skipDial.cameras = [game.camOther];
+		add(skipDial);
+	}
+
+	function lunaIntro()
+	{
+		camGame.visible = false;
+		lununuIntro = new VideoSprite(false);
+		lununuIntro.load(Paths.video("lunacyIntro"));
+		lununuIntro.cameras = [game.camOther];
+		lununuIntro.play();
+		game.camVideo.visible = true;
+		add(lununuIntro);
+		lununuIntro.addCallback("onStart", () -> {
+			game.camVideo.visible = true;
+			lununuIntro.visible = true;
+			game.camBars.visible = false;
+		});
+		lununuIntro.addCallback("onEnd", () -> {
+			game.camVideo.visible = false;
+			game.camBars.visible = true;
+			camGame.visible = true;
+			game.camBars.fade(FlxColor.BLACK, 0.0001);
+			startCountdown();
+			trace("video gone");
+			remove(lununuIntro);
+			lununuIntro.kill();
+			lununuIntro = null;
+		});
+
+		skipSceneTxt = new FlxText(0, 25, 1280, "Spam SPACE to skip this cutscene.");
+		skipSceneTxt.setFormat(Paths.font("MagicOwlFont.otf"), 32, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
+		skipSceneTxt.alpha = 0.0001;
+		skipSceneTxt.cameras = [game.camOther];
+		add(skipSceneTxt);
+
+		skipDial = new FlxPieDial(0, 0, 45, FlxColor.WHITE, 10, CIRCLE, true, 30);
+		skipDial.screenCenter();
+		skipDial.amount = 0.0;
+		skipDial.alpha = 0.0001;
+		skipDial.cameras = [game.camOther];
+		add(skipDial);
 	}
 }
