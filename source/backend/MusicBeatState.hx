@@ -21,6 +21,10 @@ class MusicBeatState extends modcharting.ModchartMusicBeatState
 		return Controls.instance;
 	}
 
+	public var variables:Map<String, Dynamic> = new Map<String, Dynamic>();
+	public static function getVariables()
+		return getState().variables;
+
 	override function create() {
 		var skip:Bool = FlxTransitionableState.skipNextTransOut;
 		#if MODS_ALLOWED Mods.updatedOnState = false; #end
@@ -156,6 +160,13 @@ class MusicBeatState extends modcharting.ModchartMusicBeatState
 		return cast (FlxG.state, MusicBeatState);
 	}
 
+	
+	public static function cleanupMemory(forced:Bool = false):Void {
+        if(forced) Paths.clearStoredMemory();
+        Paths.clearUnusedMemory();
+        trace('[SYSTEM] State Memory cleaned!');
+    }
+
 	public function stepHit():Void
 	{
 		stagesFunc(function(stage:BaseStage) {
@@ -187,6 +198,20 @@ class MusicBeatState extends modcharting.ModchartMusicBeatState
 			stage.sectionHit();
 		});
 	}
+
+	override function destroy():Void {
+        super.destroy();
+        
+        cleanupMemory(/*true*/);
+        variables.clear();
+        
+        if (stages != null) {
+            for (stage in stages) {
+                stage?.destroy();
+            }
+            stages = null;
+        }
+    }
 
 	function stagesFunc(func:BaseStage->Void)
 	{

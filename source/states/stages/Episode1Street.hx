@@ -72,8 +72,12 @@ class Episode1Street extends BaseStage
 	var mickeyShader = new DropShadowShader();
 	var satanShader = new DropShadowShader();
 
+	public static var pathWay:String;
+
 	override function create()
 	{
+		pathWay = "abandonedStreet";
+
 		game.defaultCamZoom = 0.87;
 		game.cameraSpeed = 1;
 		PlayState.isGreyscale = true;
@@ -278,39 +282,13 @@ class Episode1Street extends BaseStage
 		switch (PlayState.SONG.song)
 		{
 			case "Delusional":
-				deluSing = new VideoSprite(false);
-				deluSing.visible = false;
-				deluSing.load(Paths.video("deluLyrics"), [VideoSprite.muted]);
-				deluSing.cameras = [game.camVideo];
-				deluSing.play();
-				deluSing.pause();
-				deluSing.setVideoTime(0);
-				deluSing.addCallback("onEnd", () -> {
-					deluSing.kill();
-					deluSing.destroy();
-					deluSing = null;
-				});
-				death = new VideoSprite(false);
-				death.visible = false;
-				death.load(Paths.video("mickeyDeath"));
-				death.cameras = [game.camVideo];
-				death.play();
-				death.pause();
-				death.setVideoTime(0);
-				minnieJumpscare = new VideoSprite(false);
-				minnieJumpscare.visible = false;
-				minnieJumpscare.load(Paths.video("minniePart"), [VideoSprite.muted]);
-				minnieJumpscare.cameras = [game.camVideo];
-				minnieJumpscare.play();
-				minnieJumpscare.pause();
-				minnieJumpscare.setVideoTime(0);
-				minnieJumpscare.addCallback("onEnd", () -> {
-					minnieJumpscare.kill();
-					minnieJumpscare.destroy();
-					minnieJumpscare = null;
-				});
+				death = makeVideo(death, "mickeyDeath");
 				add(death);
+				
+				deluSing = makeVideo(deluSing, "deluLyrics");
 				add(deluSing);
+				
+				minnieJumpscare = makeVideo(minnieJumpscare, "minniePart");
 				add(minnieJumpscare);
 		}
 		
@@ -423,33 +401,84 @@ class Episode1Street extends BaseStage
 		if (PlayState.SONG.song == "Isolated")
 		{
 			demonBFIcon = new HealthIcon('evilcy', true, false, true, false);
-			demonBFIcon.visible = false;
 		
 			demonBFScary = new HealthIcon('evildelu', true, false, true, false);
 			demonBFScary.animation.curAnim.curFrame = 1;
-			demonBFScary.visible = false;
 		
 			fakeBFLosingFrame = new HealthIcon('evilrett', true, false, true, false);
 			fakeBFLosingFrame.animation.curAnim.curFrame = 1;
-			fakeBFLosingFrame.visible = false;
 		
 			isolatedHappy = new HealthIcon('lunaavier', false, false, false, true);
 			isolatedHappy.animation.curAnim.curFrame = 2;
-			isolatedHappy.visible = false;
 			
 			lunacyIcon = new HealthIcon('lunaavier', false, false, true, false);
-			lunacyIcon.visible = false;
 			
 			delusionalIcon = new HealthIcon('deluavier', false, false, true, false);
-			delusionalIcon.visible = false;
 
-			demonBFIcon.cameras = [camHUD];
-			demonBFScary.cameras = [camHUD];
-			fakeBFLosingFrame.cameras = [camHUD];
-			isolatedHappy.cameras = [camHUD];
-			lunacyIcon.cameras = [camHUD];
-			delusionalIcon.cameras = [camHUD];
+			for (i in [demonBFIcon, demonBFScary, fakeBFLosingFrame, isolatedHappy, lunacyIcon, delusionalIcon])
+			{
+				i.visible = false;
+				i.cameras = [camHUD];
+			}
 		}
+	}
+
+	override public function getStageAssets(?song:String):Array<StageAssetData>
+    {
+        return getStaticAssets(song != null ? song : PlayState.SONG.song);
+    }
+
+    public static function getStaticAssets(?song:String = "ALL"):Array<StageAssetData>
+    {
+		var assets:Array<StageAssetData> = [
+			BaseStage.asset("randomColors", IMAGE, AssetPriority.HIGH),
+			BaseStage.asset("street",       IMAGE, AssetPriority.HIGH),
+			BaseStage.asset("i_forgor",     IMAGE, AssetPriority.MEDIUM),
+		];
+
+		switch (song) {
+			case "Delusional":
+				assets = assets.concat([
+					BaseStage.asset("falseHope",       IMAGE, AssetPriority.HIGH,   "Delusional"),
+					BaseStage.asset("delusional-fire", ATLAS, AssetPriority.MEDIUM,"Delusional"),
+				]);
+				assets = assets.concat(BaseStage.characters(["avier-bg","Mickey-Bedroom"], AssetPriority.HIGH, "Delusional"));
+				assets = assets.concat(BaseStage.videos(["mickeyDeath","deluLyrics","minniePart"], AssetPriority.MEDIUM, "Delusional"));
+
+				if (!ClientPrefs.data.lowQuality) {
+					assets = assets.concat(BaseStage.assets(
+						["smokeBBack","smokeTBack","smokeBFore","smokeTFore"],
+						IMAGE, AssetPriority.LOW, "Delusional"
+					));
+				}
+
+			case "Isolated":
+				assets = assets.concat(BaseStage.videos(["isolatedIntro"], AssetPriority.HIGH, "Isolated"));
+				assets = assets.concat(BaseStage.icons(["evilcy","evildelu","lunaavier"], AssetPriority.MEDIUM, "Isolated"));
+		}
+
+		return filterByQuality(assets);
+    }
+
+	// New function but not really optimized, but it has soem function for calling videos
+	private function makeVideo(videoObject:VideoSprite, name:String):VideoSprite {
+		videoObject = cast Paths.getCachedVideo(name);
+		if (videoObject == null) {
+			videoObject = new VideoSprite(false);
+			videoObject.visible = false;
+			// videoObject.active = false; i dunno if that works -- mr_chaoss
+			videoObject.load(Paths.video(name), [VideoSprite.muted]);
+			videoObject.cameras = [game.camVideo];
+			videoObject.addCallback("onEnd", () -> {
+				videoObject.visible = false;
+			});
+			Paths.cacheVideo(name, videoObject);
+		} else {
+			videoObject.visible = false;
+			videoObject.setVideoTime(0);
+		}
+		trace("Video Created, calling "+ name);
+		return videoObject;
 	}
 	
 	override function beatHit()
@@ -820,8 +849,7 @@ class Episode1Street extends BaseStage
 						game.camVideo.fade(FlxColor.BLACK, 5, true);
 						game.camVideo.alpha = 1;
 						deluSing.visible = true;
-						deluSing.setVideoTime(0);
-						deluSing.resume();
+						deluSing.play();
 						//I FIXED IT!!!!!!!!!!!!!!!!!! :)
 						if (PlayState.instance.vocals.volume != 1) PlayState.instance.vocals.volume = 1; // it should be fixed then
 					case 3:
@@ -833,7 +861,7 @@ class Episode1Street extends BaseStage
 							rain = null;
 						}
 						if (heavyRain != null && !ClientPrefs.data.lowQuality)
-							heavyRain.alpha = 0.34;
+							heavyRain.alpha = 0.21;
 					case 4:
 						game.camVideo.alpha = 0.0001;
 						game.boundValue = 0.6;
@@ -925,7 +953,7 @@ class Episode1Street extends BaseStage
 					case 11:
 						FlxTween.tween(boyfriend, {alpha: 0.45}, 2.5, {ease: FlxEase.expoOut});
 					case 12:
-						minnieJumpscare.resume();
+						minnieJumpscare.play();
 						minnieJumpscare.visible = true;
 						game.boyfriend.alpha = 0.0001; 
 					case 13:
@@ -1138,8 +1166,7 @@ class Episode1Street extends BaseStage
 						game.camVideo.zoom += 0.3;
 						game.camVideo.fade(FlxColor.BLACK, 0.2, true);
 						FlxTween.tween(game.camVideo, {zoom: 1}, 0.5, {ease: FlxEase.sineOut});
-						death.setVideoTime(0);
-						death.resume();
+						death.play();
 						death.visible = true;
 				}
 		}

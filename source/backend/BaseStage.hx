@@ -4,6 +4,7 @@ import flixel.FlxBasic;
 import flixel.FlxObject;
 import flixel.FlxSubState;
 import backend.MusicBeatState;
+import states.PlayState;
 
 import objects.notes.Note.EventNote;
 import objects.Character;
@@ -15,6 +16,29 @@ enum Countdown
 	ONE;
 	GO;
 	START;
+}
+
+typedef StageAssetData = {
+	path:String,
+	type:AssetType,
+	priority:AssetPriority,
+	song:String,
+	folder:Null<String>
+}
+
+enum AssetType {
+	IMAGE;
+	ATLAS;
+	VIDEO;
+	CHARACTER;
+	ICON;
+	SOUND;
+}
+
+enum abstract AssetPriority(Int) from Int to Int {
+	var HIGH = 0;
+	var MEDIUM = 1;
+	var LOW = 2;
 }
 
 class BaseStage extends FlxBasic
@@ -118,6 +142,102 @@ class BaseStage extends FlxBasic
 	{
 		if(!onPlayState) return;
 		PlayState.instance.endCallback = myfn;
+	}
+
+	/*
+	===== CACHE SYSTEM ===== by mr_chaosss
+	*/
+
+	public function getStageAssets(?song:String):Array<StageAssetData> {
+		return [];
+	}
+
+	public static function getAssetsForStage(stageClass:Class<BaseStage>, ?song:String):Array<StageAssetData>
+	{
+		var fn = Reflect.field(stageClass, "getStaticAssets");
+		if (fn != null)
+		{
+			return Reflect.callMethod(stageClass, fn, [song]);
+		}
+
+		trace('No asset definition found for stage class: ' + Type.getClassName(stageClass));
+		return [];
+	}
+
+
+	/**
+	 * [Creating a multiple assets with same settings]
+	 * @param path Asset file name (without extension)
+	 * @param type Asset type (IMAGE, ATLAS, VIDEO, etc.)
+	 * @param priority Loading priority (HIGH, MEDIUM, LOW)
+	 * @param song Song this asset is for ("ALL" for all songs)
+	 * @param folder Subfolder path if needed
+	 * @return StageAssetData object
+	 */
+
+	public static function asset(path:String, type:AssetType, priority:AssetPriority = MEDIUM, ?song:String, ?folder:String) {
+		return {
+			path: PlayState.pathway + path, //path, .. chaos fucked my wife,,,,,,deserved (don)
+			type: type,
+			priority: priority,
+			song: song,
+			folder: folder
+		};
+	}
+
+	// Chaos lowkey carrying but we are fucking suffering asbufsdihbtejdsfhbaijFUdbDfxbsfez XHBv cxjhszrhbkv ghjacwefa#Jvszfadfh j - don :))
+	// but you forgot i exist lowkey -(malyplus)
+	// im making shit for mod 🤓 -- mr_chaoss
+	// shit shit shit shit shit siht shit shit shit sthis shits
+	// delusio
+	// fuckfuckfuckfuckfuckcfukccifuckad yfousyuafejhjwdcojklGJnbkjwesvncsdfkjxvbdfnv kzdvnckjdi bizdcgbvkiz vkjwves gigijo iogbzuidcfhu ceszov4ijfb 2ui4es rgacire f1r2w - don :)))))))
+	/**
+	 * [Helper method to create multiple assets with the same settings]
+	 * @param paths Array of asset file names
+	 * @param type Asset type for all assets
+	 * @param priority Loading priority for all assets
+	 * @param song Song these assets are for
+	 * @param folder Subfolder path for all assets
+	 * @return Array of StageAssetData objects
+	 */
+	public static function assets(paths:Array<String>, type:AssetType, priority:AssetPriority = MEDIUM, ?song:String = "ALL", ?folder:String):Array<StageAssetData>
+	{
+		return paths.map(path -> asset(path, type, priority, song, folder));
+	}
+
+	public static function characters(characters:Array<String>, priority:AssetPriority = HIGH, ?song:String = "ALL"):Array<StageAssetData>
+	{
+		return assets(characters, CHARACTER, priority, song, "characters");
+	}
+
+	public static function icons(icons:Array<String>, priority:AssetPriority = MEDIUM, ?song:String = "ALL"):Array<StageAssetData>
+	{
+		return assets(icons, ICON, priority, song, "icons");
+	}
+
+	public static function videos(videos:Array<String>, priority:AssetPriority = MEDIUM, ?song:String = "ALL"):Array<StageAssetData>
+	{
+		return assets(videos, VIDEO, priority, song, "videos");
+	}
+
+	public static function filterByQuality(assets:Array<StageAssetData>):Array<StageAssetData> {
+		if (!ClientPrefs.data.lowQuality) {
+			return assets;
+		}
+
+		return assets.filter(asset -> {
+			if(asset.type == CHARACTER || asset.type == VIDEO || asset.type == ICON) {
+				return true;
+			}
+
+			return asset.priority != LOW;
+		});
+	}
+
+	public function getCurrentSongAssets():Array<StageAssetData> {
+		var songName = game.SONG != null ? game.SONG.song : "ALL";
+		var assets = getStageAssets(songName);
+		return filterByQuality(assets);
 	}
 
 	// Note Hit/Miss

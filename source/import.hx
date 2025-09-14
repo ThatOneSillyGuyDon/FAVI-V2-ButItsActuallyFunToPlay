@@ -34,6 +34,16 @@ import states.options.*;
 import states.menus.*;
 import states.menus.freeplay.*;
 
+// Base Stage
+import backend.BaseStage.StageAssetData;
+import backend.BaseStage.AssetType;
+import backend.BaseStage.AssetPriority;
+import backend.BaseStage.*;
+// import backend.BaseStage.asset;
+// import backend.BaseStage.videos;
+// import backend.BaseStage.characters;
+// import backend.BaseStage.filterByQuality;
+
 //import game over screens
 import substates.GameOverScreens.BaseGameOver; //default fnf screen
 import substates.GameOverScreens.ManiaLoseScreen; //mania charts only
