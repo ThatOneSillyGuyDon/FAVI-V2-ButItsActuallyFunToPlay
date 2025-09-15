@@ -423,43 +423,6 @@ class Episode1Street extends BaseStage
 		}
 	}
 
-	override public function getStageAssets(?song:String):Array<StageAssetData>
-    {
-        return getStaticAssets(song != null ? song : PlayState.SONG.song);
-    }
-
-    public static function getStaticAssets(?song:String = "ALL"):Array<StageAssetData>
-    {
-		var assets:Array<StageAssetData> = [
-			BaseStage.asset("randomColors", IMAGE, AssetPriority.HIGH, song, "abandonedStreet/images"),
-			BaseStage.asset("street",       IMAGE, AssetPriority.HIGH, song, "abandonedStreet/images"),
-			BaseStage.asset("i_forgor",     IMAGE, AssetPriority.MEDIUM, song, "abandonedStreet/images"),
-		];
-
-		switch (song) {
-			case "Delusional":
-				assets = assets.concat([
-					BaseStage.asset("falseHope",       IMAGE, AssetPriority.HIGH,   "Delusional"),
-					BaseStage.asset("delusional-fire", ATLAS, AssetPriority.MEDIUM,"Delusional"),
-				]);
-				assets = assets.concat(BaseStage.characters(["avier-bg","Mickey-Bedroom"], AssetPriority.HIGH, "Delusional"));
-				assets = assets.concat(BaseStage.videos(["mickeyDeath","deluLyrics","minniePart"], AssetPriority.MEDIUM, "Delusional"));
-
-				if (!ClientPrefs.data.lowQuality) {
-					assets = assets.concat(BaseStage.assets(
-						["smokeBBack","smokeTBack","smokeBFore","smokeTFore"],
-						IMAGE, AssetPriority.LOW, "Delusional"
-					));
-				}
-
-			case "Isolated":
-				assets = assets.concat(BaseStage.videos(["isolatedIntro"], AssetPriority.HIGH, "Isolated"));
-				assets = assets.concat(BaseStage.icons(["evilcy","evildelu","lunaavier"], AssetPriority.MEDIUM, "Isolated"));
-		}
-
-		return filterByQuality(assets);
-    }
-
 	// New function but not really optimized, but it has soem function for calling videos
 	private function makeVideo(videoObject:VideoSprite, name:String):VideoSprite {
 		videoObject = cast Paths.getCachedVideo(name);
