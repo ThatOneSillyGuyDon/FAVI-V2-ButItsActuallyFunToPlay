@@ -7,6 +7,7 @@ import openfl.utils.Assets as OpenFlAssets;
 import sys.FileSystem;
 #end
 import openfl.media.Sound;
+import openfl.filters.ShaderFilter;
 
 class FreeplayState extends MusicBeatState
 {
@@ -53,6 +54,17 @@ class FreeplayState extends MusicBeatState
 	public static var confirmSound:FlxSound;
 	public static var maniaSkin:Int = 0;
 
+	var defaultShader2:FlxRuntimeShader;
+	var smilesShader:FlxRuntimeShader;
+	var mercyShader:FlxRuntimeShader;
+	var mercyShader2:FlxRuntimeShader;	
+	var getBlessed:FlxRuntimeShader;
+	var glitchyStuff:FlxRuntimeShader;
+	var chromAberration:FlxRuntimeShader;
+	var urFucked:FlxRuntimeShader;
+	var pixelShader:FlxRuntimeShader;
+	var shaderTime:Float = 0;
+
 	public function new() 
 		super();
 
@@ -75,6 +87,14 @@ class FreeplayState extends MusicBeatState
 		{
 			case 0: // Story Songs Menu
 				{
+					if (ClientPrefs.data.shaders)
+					{
+						defaultShader2 = new FlxRuntimeShader(Shaders.monitorFilter, null, 140);
+						chromAberration = new FlxRuntimeShader(Shaders.aberration, null, 150);
+						chromAberration.setFloat('aberration', 0.07);
+						chromAberration.setFloat('effectTime', 0.005);
+					}
+					
 					addSong('Devilish Deal', 3, 'satanddNEW', FlxColor.fromRGB(65, 88, 94), 'obscurity', 'EASY', FlxColor.WHITE, [25, -18], "None");
 					addSong('Isolated', 3, 'avier', FlxColor.fromRGB(60, 60, 60), 'obscurity', 'NORMAL', FlxColor.fromRGB(255, 220, 220), [15, 0], "Modcharts that move notes on occasion.");
 					addSong('Lunacy', 3, 'lunaavier', FlxColor.fromRGB(69, 54, 54), 'obscurity', 'HARD', FlxColor.fromRGB(255, 187, 187), [15, 0], "Modcharts that may cause visual distortion.");
@@ -82,6 +102,23 @@ class FreeplayState extends MusicBeatState
 				}
 			case 1: // Extras Menu
 				{		
+					if (ClientPrefs.data.shaders)
+					{
+						getBlessed = new FlxRuntimeShader(Shaders.bloom_alt, null, 120);
+						glitchyStuff = new FlxRuntimeShader(Shaders.vignetteGlitch, null, 130);
+						chromAberration = new FlxRuntimeShader(Shaders.aberration, null, 150);
+						chromAberration.setFloat('aberration', 0.07);
+						chromAberration.setFloat('effectTime', 0.005);
+						mercyShader = new FlxRuntimeShader(Shaders.vhsFilter, null, 130);
+						mercyShader2 = new FlxRuntimeShader(Shaders.cameraMovement, null, 150);
+						urFucked = new FlxRuntimeShader(Shaders.theBlurOf87, null, 150);
+						urFucked.setFloat('amount', 1);
+						smilesShader = new FlxRuntimeShader(Shaders.tvStatic, null, 120);
+						defaultShader2 = new FlxRuntimeShader(Shaders.monitorFilter, null, 140);
+						pixelShader = new FlxRuntimeShader(Shaders.unregisteredHyperCam2Quality, null, 140);
+						pixelShader.setFloat('size', 7.5);
+					}
+					
 					addSong('Hunted', 3, (GameData.huntedLock != 'unlocked' && GameData.huntedLock != 'beaten' ? 'mysteryfp' : 'goofy'), FlxColor.fromRGB(94, 28, 35), 'JBlitz', 'NORMAL', FlxColor.fromRGB(255, 220, 220), (GameData.huntedLock == "beaten" || GameData.huntedLock == "unlocked" ? [24, -8] : [25, 0]), "Modcharts that may cause visual distortion.");
 					addSong('Laugh Track', 3, (GameData.rickyLock != 'unlocked' && GameData.rickyLock != 'beaten' ? 'mysteryfp' : 'ricky'), FlxColor.fromRGB(181, 0, 0), 'Lasagnacat', 'HARD', FlxColor.fromRGB(255, 187, 187), (GameData.rickyLock == "beaten" || GameData.rickyLock == "unlocked" ? [20, -15] : [25, 0]), "None");
 					addSong('Bless', 3, (GameData.blessLock != 'unlocked' && GameData.blessLock != 'beaten' ? 'mysteryfp' : 'noise'), FlxColor.WHITE, 'Lasagnacat', 'HARD', FlxColor.fromRGB(255, 187, 187), (GameData.blessLock == "beaten" || GameData.blessLock == "unlocked" ? [30, -10] : [25, 0]), "None");
@@ -211,6 +248,23 @@ class FreeplayState extends MusicBeatState
 
 		if (FlxG.keys.justPressed.B && !selectedSomethin)
 			changeBotPlay();
+
+		if (ClientPrefs.data.shaders) // bye bye lag
+		{
+			if (freeplayMenuList == 1)
+			{
+				shaderTime = Conductor.songPosition / 1000;
+
+				glitchyStuff.setFloat('time', shaderTime);
+				glitchyStuff.setFloat('prob', shaderTime);
+
+				mercyShader.setFloat('time', shaderTime);
+				mercyShader2.setFloat('time', shaderTime);
+
+				smilesShader.setFloat('iTime', shaderTime);
+				smilesShader.setFloat('uTime', shaderTime);
+			}
+		}
 
 		super.update(elapsed);
 
@@ -818,6 +872,100 @@ class FreeplayState extends MusicBeatState
 
 		PlayState.storyWeek = songs[curSelected].week;
 
+		if (ClientPrefs.data.shaders) // to prevent lag
+		{
+			// ah yes, formatting made by vsc itself - jason
+			if (freeplayMenuList != 2)
+			{
+				switch (CoolUtil.spaceToDash(songs[curSelected].songName.toLowerCase()))
+				{
+					case 'bless':
+						FlxG.camera.shake(0.01, 0.001);
+						if(!ClientPrefs.data.lowQuality) {
+							FlxG.camera.setFilters(
+								[
+									new ShaderFilter(getBlessed), 
+								]);
+						}
+
+					case 'malfunction':
+						if(!ClientPrefs.data.lowQuality) {
+							FlxG.camera.setFilters(
+								[
+									new ShaderFilter(glitchyStuff), 
+									new ShaderFilter(chromAberration),
+								]);
+						}
+						FlxG.camera.shake(0.01, 0.001);
+
+					case "don't-cross!":
+						if(!ClientPrefs.data.lowQuality) {
+							FlxG.camera.setFilters(
+								[
+									new ShaderFilter(chromAberration)
+								]);
+						}
+
+					case 'scrapped':
+						if(!ClientPrefs.data.lowQuality) {
+							FlxG.camera.setFilters(
+								[
+									new ShaderFilter(smilesShader),
+									new ShaderFilter(chromAberration),
+								]);
+						}
+						FlxG.camera.shake(0.01, 0.001);
+
+					case 'cycled-sins':
+						if(!ClientPrefs.data.lowQuality) {
+							FlxG.camera.setFilters(
+								[
+									new ShaderFilter(chromAberration),
+									new ShaderFilter(mercyShader2),
+								]);
+						}
+
+					case 'twisted-grins' | 'resentment' | 'mortiferum-risus':
+						if(!ClientPrefs.data.lowQuality)
+							FlxG.camera.setFilters([new ShaderFilter(smilesShader)]);
+
+					case 'mercy' | 'affliction':
+						if(!ClientPrefs.data.lowQuality) {
+						FlxG.camera.setFilters(
+							[
+								new ShaderFilter(mercyShader),
+								new ShaderFilter(mercyShader2)
+							]);
+						}
+					
+					case 'birthday':
+						if (freeplayMenuList == 3)
+						{
+							if (!ClientPrefs.data.lowQuality)
+							{
+								FlxG.camera.setFilters(
+								[
+									new ShaderFilter(chromAberration)
+								]);
+							}
+						}
+						else
+						{
+							FlxG.camera.setFilters([]);
+							FlxG.camera.shake(0.01, 0.001);
+						}
+					
+					case 'devilish-deal' | 'delusional':
+						if(!ClientPrefs.data.lowQuality)
+							FlxG.camera.setFilters([new ShaderFilter(chromAberration)]);
+						FlxG.camera.shake(0.01, 0.001);
+
+					default:
+						FlxG.camera.setFilters([]); // fixed it yay
+				}
+			}
+		}
+		
 		if (freeplayMenuList != 2)
 		{
 			switch (CoolUtil.spaceToDash(songs[curSelected].songName.toLowerCase()))
