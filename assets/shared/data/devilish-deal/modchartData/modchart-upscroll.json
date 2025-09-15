@@ -1,0 +1,35 @@
+{
+	"events": [
+		[
+			"ease",
+			[
+				0,
+				"0",
+				"cubeInOut",
+				"1,hideOpp,-640,minnieNotePlacement"
+			],
+			[
+				false,
+				1,
+				1
+			]
+		]
+	],
+	"modifiers": [
+		[
+			"hideOpp",
+			"StealthModifier",
+			"Opponent",
+			-1,
+			-1
+		],
+		[
+			"minnieNotePlacement",
+			"XModifier",
+			"Player",
+			-1,
+			-1
+		]
+	],
+	"playfields": 1
+}

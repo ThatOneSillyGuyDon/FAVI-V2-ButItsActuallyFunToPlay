@@ -1,0 +1,28 @@
+{
+	"events": [
+		[
+			"ease",
+			[
+				0,
+				"0",
+				"cubeInOut",
+				"1,hide"
+			],
+			[
+				false,
+				1,
+				1
+			]
+		]
+	],
+	"modifiers": [
+		[
+			"hide",
+			"StealthModifier",
+			"Opponent",
+			-1,
+			-1
+		]
+	],
+	"playfields": 1
+}

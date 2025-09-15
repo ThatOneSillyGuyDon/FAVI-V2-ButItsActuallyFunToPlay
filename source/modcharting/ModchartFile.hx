@@ -381,81 +381,6 @@ class ModchartFile
         {
             switch (PlayState.SONG.song)
             {
-                case "Devilish Deal":
-                    //Upscroll
-                    if (!ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
-                        json = Modchart.devilishModchart;
-                    //Downscroll
-                    else if (ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
-                        json = Modchart.devilishModchart;
-                    //Middle-Upscroll
-                    else if (!ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
-                        json = Modchart.devilDealMidUp;
-                    //Middle-Downscroll
-                    else if (ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
-                        json = Modchart.devilDealMidDown;
-                
-                case "Isolated":
-                    if (ClientPrefs.data.mechanics) 
-                    {
-                        //Upscroll
-                        if (!ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
-                            json = Modchart.isolateModchartU;
-                        //Downscroll
-                        else if (ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
-                            json = Modchart.isolateModchartD;
-                        //Middle-Upscroll
-                        else if (!ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
-                            json = Modchart.isoMidUp;
-                        else if (ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
-                            json = Modchart.isoMidDown;
-                    }
-                    else
-                        json = emptyMod;
-                    
-                case "Lunacy":
-                    if (ClientPrefs.data.mechanics)
-                        json = Modchart.lunacyModchart;
-                    else
-                        json = emptyMod;
-
-                case "Delusional":
-                    if (ClientPrefs.data.mechanics) 
-                    {
-                        //Upscroll
-                        if (!ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
-                            json = Modchart.deluluModchartU;
-                        //Downscroll
-                        else if (ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
-                            json = Modchart.deluluModchartD;
-                        //Middle-Upscroll
-                        else if (!ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
-                            json = Modchart.deluluMidUp;
-                        else if (ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
-                            json = Modchart.deluluMidDown;
-                    }
-                    else
-                        json = emptyMod;
-
-                case "Hunted":
-                    if (ClientPrefs.data.mechanics)
-                    {
-                        //Upscroll
-                        if (!ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
-                            json = Modchart.goofyIsDrunkLmfao;
-                        //Downscroll
-                        else if (ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
-                            json = Modchart.goofyIsDrunkLmfao;
-                        //Middle-Upscroll
-                        else if (!ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
-                            json = Modchart.huntedMidUp;
-                        //Middle-Downscroll
-                        else if (ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
-                            json = Modchart.huntedMidDown;
-                    }
-                    else
-                        json = emptyMod;
-
                 case "Dont Cross":
                     //So...Many...Goddamn....MODCHARTS....WHYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
                     if (ClientPrefs.data.mechanics && FlxG.random.bool(15))
@@ -478,32 +403,7 @@ class ModchartFile
                     else
                         json = emptyMod;
 
-                case "War Dilemma":
-                    if (ClientPrefs.data.mechanics)
-                    {
-                        //Upscroll
-                        if (!ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
-                            json = Modchart.warModchartU;
-                        //Downscroll
-                        else if (ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
-                            json = Modchart.warModchartD;
-                        //Middle-Upscroll
-                        else if (!ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
-                            json = Modchart.warMidUp;
-                        //Middle-Downscroll
-                        else if (ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
-                            json = Modchart.warMidDown;
-                    }
-                    else
-                        json = emptyMod;
-
-                case "Twisted Grins":
-                    json = Modchart.tg;
-
-                case "Cycled Sins":
-                    json = Modchart.cycledShit;
-
-                case "Malfunction":
+                 case "Malfunction":
                     //Upscroll
                     if (!ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
                         json = Modchart.malfunctionModchartU;
@@ -516,65 +416,6 @@ class ModchartFile
                     //Middle-Downscroll
                     else if (ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
                         json = Modchart.malfuncMidDown;
-
-                case "Delusional Legacy":
-                    if (ClientPrefs.data.mechanics)
-                    {
-                        //Upscroll
-                        if (!ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
-                            json = Modchart.deluLegModU;
-                        //Downscroll
-                        else if (ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
-                            json = Modchart.deluLegModD;
-                        //Middle-Upscroll
-                        else if (!ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
-                            json = Modchart.deluLegModMU;
-                        //Middle-Downscroll
-                        else if (ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
-                            json = Modchart.deluLegModMD;
-                    }
-                    else
-                        json = emptyMod;
-
-                case "Malfunction Legacy":
-                    if (ClientPrefs.data.mechanics)
-                    {
-                        //Upscroll
-                        if (!ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
-                            json = Modchart.malLegacyModU;
-                        //Downscroll
-                        else if (ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
-                            json = Modchart.malLegacyModD;
-                        //Middle-Upscroll
-                        else if (!ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
-                            json = Modchart.malLegacyModMU;
-                        //Middle-Downscroll
-                        else if (ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
-                            json = Modchart.malLegacyModMD;
-                    }
-                    else
-                        json = emptyMod;
-
-                case "Mercy":
-                    if (ClientPrefs.data.mechanics)
-                    {
-                        if (ClientPrefs.data.middleScroll)
-                            json = Modchart.mercyMiddle;
-                        else
-                            json = Modchart.mercyThingy;
-                    }
-
-                case "Rotten Petals":
-                    if (ClientPrefs.data.mechanics)
-                        json = Modchart.petalsManiaMod;
-                    else
-                        json = emptyMod;
-
-                case "Ahh the Scary (Somber Night)":
-                    if (ClientPrefs.data.mechanics)
-                        json = Modchart.nightManiaMod;
-                    else
-                        json = emptyMod;
 
                 default:
                     if (autosaveMod != null)
