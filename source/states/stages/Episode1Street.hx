@@ -1267,12 +1267,6 @@ class Episode1Street extends BaseStage
 		add(skipDial);
 	}
 
-	// Note Hit/Miss
-	override function goodNoteHit(note:Note)
-	{
-		// Code here
-	}
-
 	override function opponentNoteHit(note:Note)
 	{
 		switch (PlayState.SONG.song)
@@ -1285,6 +1279,13 @@ class Episode1Street extends BaseStage
 					if (game.healthThing > game.boundValue)
 						game.healthThing -= game.drainValue;
 				}
+		}
+
+		// forces the 3rd character in the background in Delusional to work
+		if(mickeySpirit != null && PlayState.SONG.song == "Delusional")
+		{
+			mickeySpirit.playAnim(game.singAnimations[Std.int(Math.abs(Math.min(game.singAnimations.length-1, note.noteData)))], true);
+			mickeySpirit.holdTimer = 0;
 		}
 	}
 

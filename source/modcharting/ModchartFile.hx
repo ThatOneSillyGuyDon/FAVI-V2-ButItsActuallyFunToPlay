@@ -340,10 +340,6 @@ class ModchartFile
                 trace(e);
             }
             
-            if(FileSystem.exists(filePath))
-                trace(filePath);
-            else
-                trace('No modchart loaded');
             #if sys
             if(FileSystem.exists(filePath))
                 rawJson = File.getContent(filePath).trim();
@@ -355,9 +351,6 @@ class ModchartFile
         if (rawJson != null)
         {
             json = rawJson;
-            trace('loaded Modchart');
-            trace(folderShit);
-
             #if (hscript && sys)
             if (FileSystem.isDirectory(folderShit))
                 {

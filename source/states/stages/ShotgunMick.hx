@@ -28,6 +28,44 @@ class ShotgunMick extends BaseStage
 
 	public var shaderAnim:Float = 0;
 
+	var relapseEndNotes:Array<String> = [
+		"ah",
+		"eh",
+		"ah",
+		"eh",
+		"oo",
+		"o",
+		"o",
+		"ah",
+		"ehh",
+		"ooo",
+		"ahh",
+		"eee",
+		"ah",
+		"ah",
+		"e",
+		"ah",
+		"ah",
+		"ah",
+		"ee",
+		"o",
+		"eh",
+		"o",
+		"e",
+		"oh",
+		"e",
+		"oh",
+		"e",
+		"ah",
+		"ehh",
+		"ahh",
+		"ahh",
+		"ee",
+		"ohhh"
+	];
+
+	var sinsEnd:Bool = false;
+
 	override function create()
 	{
 		game.defaultCamZoom = PlayState.SONG.song == "Cycled Sins" ? 0.46 : 0.6;
@@ -117,6 +155,20 @@ class ShotgunMick extends BaseStage
 		}
 	}
 */
+
+	override function opponentNoteHit(note:Note)
+	{
+		if (sinsEnd && !note.isSustainNote)
+		{
+			var text:FlxText = new FlxText(-750, 490, 150, relapseEndNotes[0]);
+			text.setFormat(Paths.font("freeplayDisneyFont.ttf"), 70, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			//trace(relapseEndNotes);
+			addBehindDad(text);
+			FlxTween.tween(text, {x: text.x - FlxG.random.int(-150, 150), y: text.y - 700, alpha: 0, angle: FlxG.random.int(-20, 20)}, 2, {ease: FlxEase.sineOut});
+			relapseEndNotes.shift();
+		}
+	}
+
 	override function update(elapsed:Float)
 	{
 		shaderAnim = Conductor.songPosition / 1000;
@@ -330,7 +382,7 @@ class ShotgunMick extends BaseStage
 						FlxTween.tween(game.iconP2, {alpha: 0}, 1, {ease: FlxEase.sineOut});
 						FlxTween.tween(relapseIconLol, {alpha: 1}, 1, {ease: FlxEase.sineOut});
 					case 3:
-						game.sinsEnd = true;
+						sinsEnd = true;
 
 					case 18:
 						FlxTween.tween(game, {healthThing: 0.1}, 1, {ease: FlxEase.sineInOut});
