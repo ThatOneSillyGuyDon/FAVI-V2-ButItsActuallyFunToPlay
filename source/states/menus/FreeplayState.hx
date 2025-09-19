@@ -601,7 +601,7 @@ class FreeplayState extends MusicBeatState
 			botplaytext.setFormat(Paths.font("vcr.ttf"), 18, FlxColor.WHITE, CENTER);
 			botplaytext.scrollFactor.set();
 
-			for (i in [scoreText, scoreBG, diffText, textBG, botplaytext])
+			for (i in [scoreBG, scoreText, diffText, textBG, botplaytext])
 			{
 				i.cameras = [camHUD];
 				add(i);
