@@ -101,6 +101,11 @@ class Init extends FlxState
             curState = FlashingState;
 
         trace('Initialization complete, switching to ${Type.getClassName(curState)}');
-        FlxG.switchState(Type.createInstance(curState, []));   
+        if (FlxG.random.bool(8))
+        {
+            FlxG.switchState(new states.TheThing());
+        }
+        else
+            FlxG.switchState(Type.createInstance(curState, []));  
     }
 }
