@@ -57,8 +57,6 @@ class Init extends FlxState
         backend.windows.CppAPI.darkMode();
         #end
 
-        FlxG.scaleMode = new WidescreenScaleMode(true); 
-
         // fixes shaders acting weird when resizing the screen
         @:privateAccess
         {
