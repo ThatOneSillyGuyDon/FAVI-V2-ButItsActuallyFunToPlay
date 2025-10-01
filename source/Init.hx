@@ -57,6 +57,8 @@ class Init extends FlxState
         backend.windows.CppAPI.darkMode();
         #end
 
+        FlxG.scaleMode = new WidescreenScaleMode(true); 
+
         // fixes shaders acting weird when resizing the screen
         @:privateAccess
         {
@@ -89,11 +91,6 @@ class Init extends FlxState
         FlxG.autoPause = ClientPrefs.data.autoPause;
         FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
 		FlxG.mouse.visible = true;
-
-        // initializating ends here and switches to the state the Main class intends to
-        #if Freeplay
-        FlxG.switchState(Type.createInstance(FreeplayCategories, [])); 
-        #end
 
         var curState = Main.initialState;
 
