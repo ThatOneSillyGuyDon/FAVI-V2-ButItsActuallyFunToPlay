@@ -65,8 +65,6 @@ import psychlua.HScript;
 import tea.SScript;
 #end
 
-//import objects.StrumNote.SustainSplash;
-
 enum CinematicControls
 {
 	MOVE;
@@ -238,7 +236,6 @@ class PlayState extends MusicBeatState
 	public var opponentStrums:FlxTypedGroup<StrumNote>;
 	public var playerStrums:FlxTypedGroup<StrumNote>;
 	public var grpNoteSplashes:FlxTypedGroup<NoteSplash>;
-	//public var grpSustainSplashes:FlxTypedGroup<SustainSplash>;
 
 	public var camZooming:Bool = false;
 	public var camZoomingMult:Float = 1;
@@ -382,7 +379,6 @@ class PlayState extends MusicBeatState
 	//FUNKIN.AVI V2
 	var drainValue:Float = 0;
 	var boundValue:Float = 0;
-	//public var smoothyHealth:Float = 1; // IF YOU READ THIS ITS ONLY FOR MERCY !!
 	public static var thing:Int;
 
 	public var cinematicBars:Map<String, FlxSprite> = ["top" => null, "bottom" => null];
@@ -452,6 +448,8 @@ class PlayState extends MusicBeatState
 
 	override public function create()
 	{
+		FlxG.scaleMode = new WidescreenScaleMode(ClientPrefs.data.widescreen); 
+		
 		SaveProgress.loadProgress();
 				
 		if (isStoryMode && WeekData.getCurrentWeek().songs[0][0] != SONG.song)
@@ -521,7 +519,6 @@ class PlayState extends MusicBeatState
 
 		FlxG.cameras.setDefaultDrawTarget(camGame, true);
 		grpNoteSplashes = new FlxTypedGroup<NoteSplash>();
-		//grpSustainSplashes = new FlxTypedGroup<SustainSplash>();
 
 		persistentUpdate = true;
 		persistentDraw = true;
@@ -2099,8 +2096,8 @@ class PlayState extends MusicBeatState
 		if (autoUpdateRPC)
 			switch (SONG.song)
 			{
-				case "Joygrim" | "Neglection" | "Scrapped" | "Whimsical Bar Blues": DiscordClient.changePresence("Playing a song", "It's a secret...", "icon", "random", true, songLength - Conductor.songPosition - ClientPrefs.data.noteOffset);
-				default: DiscordClient.changePresence(discordTxt[0], discordTxt[1], CoolUtil.spaceToDash(discordIcon), "random", true, songLength - Conductor.songPosition - ClientPrefs.data.noteOffset);
+				case "Joygrim" | "Neglection" | "Scrapped" | "Whimsical Bar Blues": DiscordClient.changePresence("Playing a song", "It's a secret...", "icon", "random", true, songLength - Conductor.songPosition);
+				default: DiscordClient.changePresence(discordTxt[0], discordTxt[1], CoolUtil.spaceToDash(discordIcon), "random", true, songLength - Conductor.songPosition);
 			}
 	}
 
@@ -2273,7 +2270,7 @@ class PlayState extends MusicBeatState
 				{
 					var newEventNote:Array<Dynamic> = [event[0], event[1][i][0], event[1][i][1], event[1][i][2]];
 					var subEvent:EventNote = {
-						strumTime: newEventNote[0] + ClientPrefs.data.noteOffset,
+						strumTime: newEventNote[0],
 						event: newEventNote[1],
 						value1: newEventNote[2],
 						value2: newEventNote[3]
@@ -2434,7 +2431,7 @@ class PlayState extends MusicBeatState
 	function makeEvent(event:Array<Dynamic>, i:Int)
 	{
 		var subEvent:EventNote = {
-			strumTime: event[0] + ClientPrefs.data.noteOffset,
+			strumTime: event[0],
 			event: event[1][i][0],
 			value1: event[1][i][1],
 			value2: event[1][i][2]
@@ -2486,8 +2483,6 @@ class PlayState extends MusicBeatState
 				}
 				opponentStrums.add(babyArrow);
 			}
-
-			//grpSustainSplashes.add(babyArrow.sustainSplash);
 
 			strumLineNotes.add(babyArrow);
 			babyArrow.postAddedToGroup();
@@ -2643,8 +2638,8 @@ class PlayState extends MusicBeatState
 		if (healthThing > 0 && !paused && autoUpdateRPC)
 			switch (SONG.song)
 			{
-				case "Joygrim" | "Neglection" | "Scrapped": DiscordClient.changePresence("PAUSED", "It's a secret...", "icon", "random", true, songLength - Conductor.songPosition - ClientPrefs.data.noteOffset);
-				default: DiscordClient.changePresence("PAUSED", "Unfocused...", CoolUtil.spaceToDash(discordIcon), "random", true, songLength - Conductor.songPosition - ClientPrefs.data.noteOffset);
+				case "Joygrim" | "Neglection" | "Scrapped": DiscordClient.changePresence("PAUSED", "It's a secret...", "icon", "random", true, songLength - Conductor.songPosition);
+				default: DiscordClient.changePresence("PAUSED", "Unfocused...", CoolUtil.spaceToDash(discordIcon), "random", true, songLength - Conductor.songPosition);
 			}
 		#end
 
@@ -2680,8 +2675,8 @@ class PlayState extends MusicBeatState
 		if (showTime)
 			switch (SONG.song)
 			{
-				case "Joygrim" | "Neglection" | "Scrapped": DiscordClient.changePresence("Playing a song", "It's a secret...", "icon", "random", true, songLength - Conductor.songPosition - ClientPrefs.data.noteOffset);
-				default: DiscordClient.changePresence(discordTxt[0], discordTxt[1], CoolUtil.spaceToDash(discordIcon), "random", true, songLength - Conductor.songPosition - ClientPrefs.data.noteOffset);
+				case "Joygrim" | "Neglection" | "Scrapped": DiscordClient.changePresence("Playing a song", "It's a secret...", "icon", "random", true, songLength - Conductor.songPosition);
+				default: DiscordClient.changePresence(discordTxt[0], discordTxt[1], CoolUtil.spaceToDash(discordIcon), "random", true, songLength - Conductor.songPosition);
 			}
 		else
 			switch (SONG.song)
@@ -2930,7 +2925,7 @@ class PlayState extends MusicBeatState
 		}
 		else if (!paused && updateTime)
 		{
-			var curTime:Float = Math.max(0, Conductor.songPosition - ClientPrefs.data.noteOffset);
+			var curTime:Float = Math.max(0, Conductor.songPosition);
 			songPercent = (curTime / songLength);
 
 			var songCalc:Float = (songLength - curTime);
@@ -3105,19 +3100,7 @@ class PlayState extends MusicBeatState
 									}
 								}
 							}
-/*
-							if (ClientPrefs.data.sustainSplashes && !isPixelStage && curStage != "menuSongs" && FreeplayState.freeplayMenuList != 2) {
-								if (daNote.isSustainNote && daNote.wasGoodHit && !strumGroup.members[daNote.noteData].sustainSplash.updatedThisFrame) {
-									if (daNote.animation.curAnim.name.endsWith("holdend")) {
-										if (Conductor.songPosition >= daNote.strumTime) {
-											strumGroup.members[daNote.noteData].sustainSplash.hide(!daNote.mustPress);
-										}
-									} else {
-										strumGroup.members[daNote.noteData].sustainSplash.show();
-									}
-								}
-							} 
-*/
+
 							// Kill extremely late notes and cause misses
 							if (Conductor.songPosition > noteKillOffset + daNote.strumTime)
 							{
@@ -3143,15 +3126,6 @@ class PlayState extends MusicBeatState
 						});
 					}
 				}
-/*
-				if (ClientPrefs.data.sustainSplashes && !isPixelStage && curStage != "menuSongs" && FreeplayState.freeplayMenuList != 2) {
-					for (strum in strumLineNotes.members) {
-						if (!strum.sustainSplash.updatedThisFrame) {
-							strum.sustainSplash.hide(true);
-						}
-					}
-				}
-*/
 			}
 			checkEventNote();
 		}
@@ -4292,8 +4266,8 @@ class PlayState extends MusicBeatState
 		
 						switch (SONG.song)
 						{
-							case "Joygrim" | "Neglection" | "Scrapped": DiscordClient.changePresence("Playing a song", "It's a secret...", "icon", "random", true, songLength - Conductor.songPosition - ClientPrefs.data.noteOffset);
-							default: DiscordClient.changePresence(discordTxt[0], discordTxt[1], CoolUtil.spaceToDash(discordIcon), "random", true, songLength - Conductor.songPosition - ClientPrefs.data.noteOffset);
+							case "Joygrim" | "Neglection" | "Scrapped": DiscordClient.changePresence("Playing a song", "It's a secret...", "icon", "random", true, songLength - Conductor.songPosition);
+							default: DiscordClient.changePresence(discordTxt[0], discordTxt[1], CoolUtil.spaceToDash(discordIcon), "random", true, songLength - Conductor.songPosition);
 						}		
 				}
 
@@ -4589,10 +4563,10 @@ class PlayState extends MusicBeatState
 		opponentVocals.volume = 0;
 		opponentVocals.pause();
 
-		if(ClientPrefs.data.noteOffset <= 0 || ignoreNoteOffset) {
+		if(ignoreNoteOffset) {
 			endCallback();
 		} else {
-			finishTimer = new FlxTimer().start(ClientPrefs.data.noteOffset / 1000, function(tmr:FlxTimer) {
+			finishTimer = new FlxTimer().start(0 / 1000, function(tmr:FlxTimer) {
 				endCallback();
 			});
 		}
@@ -5609,6 +5583,7 @@ class PlayState extends MusicBeatState
 			Lib.application.window.y = Std.int((Lib.application.window.display.bounds.height - Lib.application.window.height) * 0.5);
 		}
 		backend.NoteTypesConfig.clearNoteTypesData();
+		FlxG.scaleMode = new WidescreenScaleMode(false); 
 		spawnShadow[0] = spawnShadow[1] = spawnShadow[2] = false;
 		instance = null;
 		super.destroy();
@@ -5617,7 +5592,7 @@ class PlayState extends MusicBeatState
 	var lastStepHit:Int = -1;
 	override function stepHit()
 	{
-		if (SONG.needsVoices && FlxG.sound.music.time >= -ClientPrefs.data.noteOffset)
+		if (SONG.needsVoices && FlxG.sound.music.time >= 0)
 		{
 			var timeSub:Float = Conductor.songPosition - Conductor.offset;
 			var syncTime:Float = 20 * playbackRate;

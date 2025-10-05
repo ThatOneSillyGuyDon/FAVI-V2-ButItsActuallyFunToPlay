@@ -224,7 +224,7 @@ class ManiaLoseScreen extends MusicBeatSubstate {
 		add(resultsTxt);
 
 		var songLength:Float = PlayState.instance.inst.length;
-		var curTime:Float = Conductor.songPosition - ClientPrefs.data.noteOffset;
+		var curTime:Float = Conductor.songPosition;
 		if(curTime < 0) curTime = 0;
 
 		var songName = new FlxText(890, 60, 450, PlayState.SONG.song + "\n\n\n\n\n\n\n\n\n\n\n" + FlxStringUtil.formatTime(Math.floor(curTime / 1000), false) + "/" + FlxStringUtil.formatTime(Math.floor(songLength / 1000)), 0);

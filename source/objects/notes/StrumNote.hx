@@ -38,8 +38,6 @@ class StrumNote extends FlxSkewedSprite
 		return value;
 	}
 
-//	public var sustainSplash:SustainSplash;
-
 	public var useRGBShader:Bool = true;
 	public function new(x:Float, y:Float, leData:Int, player:Int, ?inSettings:Bool = false) {
 		animation = new PsychAnimationController(this);
@@ -116,7 +114,6 @@ class StrumNote extends FlxSkewedSprite
 
 		texture = skin; //Load texture and anims
 		scrollFactor.set();
-//		sustainSplash = new SustainSplash(this);
 	}
 
 	public function reloadNote()
@@ -229,75 +226,3 @@ class StrumNote extends FlxSkewedSprite
 		if(useRGBShader) rgbShader.enabled = (animation.curAnim != null && animation.curAnim.name != 'static');
 	}
 }
-/*
-class SustainSplash extends FlxSprite {
-	public var rgbShader:RGBShaderReference;
-	public var strum:StrumNote;
-	override public function new(strum:StrumNote) {
-		super();
-		this.strum = strum;
-
-		@:privateAccess
-		rgbShader = new RGBShaderReference(this, Note.initializeGlobalRGBShader(strum.noteData));
-
-		frames = Paths.getSparrowAtlas("sustain_cover");
-		animation.addByPrefix('cover', 'sustain cover pre0', 24, false);
-		animation.addByPrefix('splash', 'sustain cover end0', 24, false);
-		animation.addByPrefix('loop', 'sustain cover0', 24);
-		animation.play("loop");
-		updateHitbox();
-		visible = false;
-		antialiasing = ClientPrefs.data.antialiasing;
-
-		updateHitbox();
-	}
-
-	public var updatedThisFrame:Bool = false;
-
-	public inline function show() {
-		updatedThisFrame = true;
-		visible = true;
-		if (animation.curAnim.name != "loop") {
-			animation.play("cover");
-			center();
-		}
-	}
-	public inline function hide(miss:Bool = false) {
-		if (animation.curAnim.name == "splash") return;
-
-		updatedThisFrame = true;
-		if (miss) visible = false;
-		if (animation.curAnim.name != "splash") {
-			animation.play("splash");
-			center();
-		}
-	}
-
-	override public function update(elapsed:Float) {
-		super.update(elapsed);
-		updatedThisFrame = false;
-
-		if (animation.curAnim.finished) {
-			if (animation.curAnim.name == "cover") animation.play("loop");
-			if (animation.curAnim.name == "splash") visible = false;
-		}
-
-		scale.set(strum.scale.x / 0.7, strum.scale.y / 0.7);
-		alpha = strum.alpha;
-
-		rgbShader.r = strum.rgbShader.r;
-		rgbShader.g = strum.rgbShader.g;
-		rgbShader.b = strum.rgbShader.b;
-
-		//if (animation.curAnim.name != "splash") center();
-		//updateHitbox();
-		center();
-	}
-
-	public function center() {
-		centerOffsets();
-		x = strum.x + (strum.width/2) - (width/2);
-		y = strum.y + (strum.height/2) - (height/2);
-	}
-}
-*/

@@ -474,7 +474,7 @@ class Note extends FlxSkewedSprite
 		// MAKE SURE ITS DEFINITELY OFF SCREEN?
 		y -= 2000;
 		this.strumTime = strumTime;
-		if(!inEditor) this.strumTime += ClientPrefs.data.noteOffset;
+		if(!inEditor) this.strumTime;
 
 		this.noteData = noteData;
 

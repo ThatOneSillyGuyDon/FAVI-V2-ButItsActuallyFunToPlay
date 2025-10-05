@@ -39,14 +39,6 @@ class VisualsUISubState extends BaseOptionsMenu
 		option.changeValue = 0.1;
 		option.decimals = 1;
 		addOption(option);
-/*
-		var option:Option = new Option('Hold Splashes',
-			'if unchecked, hides the splash effect when releasing a hold note.',
-			'sustainSplashes',
-			'bool',
-			true);
-		addOption(option);
-*/
 
 		var option:Option = new Option('Song Cards',
 			"If unchecked, it will hide the title cards for each song.",
