@@ -12,7 +12,8 @@ class OptionsState extends MusicBeatState
 		'Preferences',
 		'Graphics',
 		'Gameplay',
-		'Controls'
+		'Controls',
+		'Note Offsets'
 	];
 
 	private static var curSelected:Int = 0;
@@ -33,6 +34,8 @@ class OptionsState extends MusicBeatState
 				openSubState(new GraphicsSettingsSubState());
 			case 'Gameplay':
 				openSubState(new GameplaySettingsSubState());
+			case 'Note Offsets':
+				MusicBeatState.switchState(new options.NoteOffsetState());
 		}
 	}
 
