@@ -75,14 +75,12 @@ class NoteOffsetState extends MusicBeatState
 		beatText.x += 260;
 		beatText.alpha = 0;
 		beatText.acceleration.y = 250;
-		beatText.visible = false;
 		add(beatText);
 		
 		timeTxt = new FlxText(0, 600, FlxG.width, "", 32);
 		timeTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		timeTxt.scrollFactor.set();
 		timeTxt.borderSize = 2;
-		timeTxt.visible = false;
 		timeTxt.cameras = [camHUD];
 
 		barPercent = ClientPrefs.data.noteOffset;
@@ -91,7 +89,6 @@ class NoteOffsetState extends MusicBeatState
 		timeBar = new Bar(0, timeTxt.y + (timeTxt.height / 3), 'healthBar', function() return barPercent, delayMin, delayMax);
 		timeBar.scrollFactor.set();
 		timeBar.screenCenter(X);
-		timeBar.visible = false;
 		timeBar.cameras = [camHUD];
 		timeBar.leftBar.color = FlxColor.LIME;
 
