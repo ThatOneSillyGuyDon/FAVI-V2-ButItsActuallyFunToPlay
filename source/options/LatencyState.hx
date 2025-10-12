@@ -17,7 +17,6 @@ class LatencyState extends MusicBeatSubstate
   var blocks:FlxTypedGroup<FlxSprite>;
 
   var songPosVis:FlxSprite;
-  var songVisFollowVideo:FlxSprite;
   var songVisFollowAudio:FlxSprite;
 
   var beatTrail:FlxSprite;
@@ -87,9 +86,6 @@ class LatencyState extends MusicBeatSubstate
 
     songVisFollowAudio = new FlxSprite(0, FlxG.height - 20).makeGraphic(2, 20, FlxColor.YELLOW);
     add(songVisFollowAudio);
-
-    songVisFollowVideo = new FlxSprite(0, FlxG.height - 20).makeGraphic(2, 20, FlxColor.BLUE);
-    add(songVisFollowVideo);
 
     songPosVis = new FlxSprite(0, FlxG.height - 20).makeGraphic(2, 20, FlxColor.RED);
     add(songPosVis);
@@ -219,7 +215,6 @@ class LatencyState extends MusicBeatSubstate
 
     songPosVis.x = songPosToX(Conductor.songPosition);
     songVisFollowAudio.x = songPosToX(Conductor.songPosition - ClientPrefs.data.noteOffset);
-    songVisFollowVideo.x = songPosToX(Conductor.songPosition - ClientPrefs.data.ratingOffset);
 
     visualOffsetText.text = "Visual Offset: " + ClientPrefs.data.noteOffset + "ms";
     visualOffsetText.text += "\n\nYou can press SPACE+Left/Right to change this value.";
