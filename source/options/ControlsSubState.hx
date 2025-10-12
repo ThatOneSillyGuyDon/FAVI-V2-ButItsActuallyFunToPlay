@@ -283,12 +283,12 @@ class ControlsSubState extends MusicBeatSubstate
 					add(bindingBlack);
 
 					bindingText = new FlxTextAlphabet(FlxG.width / 2, 160, 0, 'Rebinding "${options[curOptions[curSelected]][3]}"', 80);
-					bindingText.setFormat(Paths.font("ratingFont.ttf"), 80, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+					bindingText.setFormat(Paths.font("NewWaltDisneyFontRegular-BPen.ttf"), 80, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 					bindingText.screenCenter(X);
 					add(bindingText);
 					
 					bindingText2 = new FlxTextAlphabet(FlxG.width / 2, 340, 0, "Hold ESC to Cancel\nHold Backspace to Delete", 80);
-					bindingText2.setFormat(Paths.font("ratingFont.ttf"), 80, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+					bindingText2.setFormat(Paths.font("NewWaltDisneyFontRegular-BPen.ttf"), 80, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 					bindingText2.screenCenter(X);
 					add(bindingText2);
 

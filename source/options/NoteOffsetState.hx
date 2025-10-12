@@ -5,13 +5,16 @@ import objects.Character;
 import objects.Bar;
 import flixel.addons.display.shapes.FlxShapeCircle;
 
-import states.stages.StageWeek1 as BackgroundStage;
+#if !flash 
+import openfl.filters.ShaderFilter;
+#end
+
+import options.backend.Episode1Street as BackgroundStage;
 
 class NoteOffsetState extends MusicBeatState
 {
-	var stageDirectory:String = 'week1';
-	var boyfriend:Character;
-	var gf:Character;
+	var littleBitch:Character;
+	var mickey:Character;
 
 	public var camHUD:FlxCamera;
 	public var camGame:FlxCamera;
@@ -20,20 +23,29 @@ class NoteOffsetState extends MusicBeatState
 	var barPercent:Float = 0;
 	var delayMin:Int = -500;
 	var delayMax:Int = 500;
-	var timeBar:Bar;
-	var timeTxt:FlxText;
+	var offsetBar:Bar;
+	var offsetTxt:FlxText;
 	var beatText:Alphabet;
 	var beatTween:FlxTween;
 
 	var changeModeText:FlxText;
 
-	var controllerPointer:FlxSprite;
-	var _lastControllerMode:Bool = false;
+	public var scratch:FlxSprite; // Peter Griffin: This reminds me of the time I met the Scratch cat
+	public var scratchButLessVisible:FlxSprite;
+
+	//Shader stuff
+	public static var chromZoomShader:FlxRuntimeShader = new FlxRuntimeShader(Shaders.aberration, null, 150);
+	public static var chromNormalShader:FlxRuntimeShader = new FlxRuntimeShader(Shaders.aberrationDefault, null, 150);
+	public static var dramaticCamMovement:FlxRuntimeShader = new FlxRuntimeShader(Shaders.cameraMovement, null, 150);
+	public static var monitorFilter:FlxRuntimeShader = new FlxRuntimeShader(Shaders.monitorFilter, null, 140);
+	public static var grayScale:FlxRuntimeShader = new FlxRuntimeShader(Shaders.grayScale, null, 120);
+
+	public var shaderAnim:Float = 0;
 
 	override public function create()
 	{
 		#if DISCORD_ALLOWED
-		DiscordClient.changePresence("Note Offset Menu", null);
+		DiscordClient.changePresence("Note Offset Menu", "Changing settings...", "icon", "gear");
 		#end
 
 		// Cameras
@@ -49,25 +61,21 @@ class NoteOffsetState extends MusicBeatState
 
 		FlxG.cameras.setDefaultDrawTarget(camGame, true);
 		
-		FlxG.camera.scroll.set(120, 130);
+		FlxG.camera.scroll.set(-250, 130);
+		FlxG.camera.zoom = 0.75;
 
 		persistentUpdate = true;
 		FlxG.sound.pause();
 
-		// Stage
-		Paths.setCurrentLevel(stageDirectory);
 		new BackgroundStage();
 
 		// Characters
-		gf = new Character(400, 130, 'gf');
-		gf.x += gf.positionArray[0];
-		gf.y += gf.positionArray[1];
-		gf.scrollFactor.set(0.95, 0.95);
-		boyfriend = new Character(770, 100, 'bf', true);
-		boyfriend.x += boyfriend.positionArray[0];
-		boyfriend.y += boyfriend.positionArray[1];
-		add(gf);
-		add(boyfriend);
+		mickey = new Character(0, 0, 'mickey-FINAL-HOLYSHI');
+		littleBitch = new Character(0, 0, 'bf-fake-new', true);
+		mickey.setPosition(-870, -190);
+		littleBitch.setPosition(275, 50);
+		add(mickey);
+		add(littleBitch);
 
 		// Note delay stuff
 		beatText = new Alphabet(0, 0, 'Beat Hit!', true);
@@ -77,23 +85,23 @@ class NoteOffsetState extends MusicBeatState
 		beatText.acceleration.y = 250;
 		add(beatText);
 		
-		timeTxt = new FlxText(0, 600, FlxG.width, "", 32);
-		timeTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		timeTxt.scrollFactor.set();
-		timeTxt.borderSize = 2;
-		timeTxt.cameras = [camHUD];
+		offsetTxt = new FlxText(0, 600, FlxG.width, "", 32);
+		offsetTxt.setFormat(Paths.font("VanillaExtractRegular.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		offsetTxt.scrollFactor.set();
+		offsetTxt.borderSize = 2;
+		offsetTxt.cameras = [camHUD];
 
 		barPercent = ClientPrefs.data.noteOffset;
 		updateNoteDelay();
 		
-		timeBar = new Bar(0, timeTxt.y + (timeTxt.height / 3), 'healthBar', function() return barPercent, delayMin, delayMax);
-		timeBar.scrollFactor.set();
-		timeBar.screenCenter(X);
-		timeBar.cameras = [camHUD];
-		timeBar.leftBar.color = FlxColor.LIME;
+		offsetBar = new Bar(0, offsetTxt.y + (offsetTxt.height / 3), 'healthBar', function() return barPercent, delayMin, delayMax);
+		offsetBar.scrollFactor.set();
+		offsetBar.screenCenter(X);
+		offsetBar.cameras = [camHUD];
+		offsetBar.setColors(FlxColor.WHITE, FlxColor.BLACK);
 
-		add(timeBar);
-		add(timeTxt);
+		add(offsetBar);
+		add(offsetTxt);
 
 		///////////////////////
 
@@ -104,24 +112,46 @@ class NoteOffsetState extends MusicBeatState
 		add(blackBox);
 
 		changeModeText = new FlxText(0, 4, FlxG.width, "Note Offset Menu", 32);
-		changeModeText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER);
+		changeModeText.setFormat(Paths.font("VanillaExtractRegular.ttf"), 32, FlxColor.WHITE, CENTER);
 		changeModeText.scrollFactor.set();
 		changeModeText.cameras = [camHUD];
 		add(changeModeText);
 		
-		controllerPointer = new FlxShapeCircle(0, 0, 20, {thickness: 0}, FlxColor.WHITE);
-		controllerPointer.offset.set(20, 20);
-		controllerPointer.screenCenter();
-		controllerPointer.alpha = 0.6;
-		controllerPointer.cameras = [camHUD];
-		add(controllerPointer);
-		
-		_lastControllerMode = true;
-
 		Conductor.bpm = 128.0;
 		FlxG.sound.playMusic(Paths.music('offsetSong'), 1, true);
 
+		if (ClientPrefs.data.shaders)
+		{
+			if (!ClientPrefs.data.lowQuality)
+			{
+				camGame.setFilters([
+					new ShaderFilter(dramaticCamMovement),
+					new ShaderFilter(monitorFilter),
+					new ShaderFilter(chromZoomShader),
+					new ShaderFilter(chromNormalShader)
+				]);
+				camHUD.setFilters([new ShaderFilter(chromNormalShader)]);
+			}
+			else
+			{
+				camGame.setFilters([
+					new ShaderFilter(monitorFilter),
+					new ShaderFilter(chromNormalShader)
+				]);
+				camHUD.setFilters([new ShaderFilter(chromNormalShader)]);
+			}
+		}
+
 		super.create();
+
+		stagesFunc(function(stage:BaseStage) stage.createPost());
+
+		scratch = new FlxSprite();
+		scratch.frames = Paths.getSparrowAtlas('favi/filters/scratchShit');
+		scratch.animation.addByPrefix('e', 'scratch thing', 24, true);
+		scratch.animation.play('e');
+		scratch.cameras = [camOther];
+		add(scratch);
 	}
 
 	var holdTime:Float = 0;
@@ -135,25 +165,6 @@ class NoteOffsetState extends MusicBeatState
 		if(FlxG.keys.pressed.SHIFT || FlxG.gamepads.anyPressed(LEFT_SHOULDER))
 		{
 			addNum = 3;
-		}
-
-		if(FlxG.gamepads.anyJustPressed(ANY)) controls.controllerMode = true;
-		else if(FlxG.mouse.justPressed) controls.controllerMode = false;
-
-		if(controls.controllerMode != _lastControllerMode)
-		{
-			//trace('changed controller mode');
-			FlxG.mouse.visible = !controls.controllerMode;
-			controllerPointer.visible = controls.controllerMode;
-
-			// changed to controller mid state
-			if(controls.controllerMode)
-			{
-				var mousePos = FlxG.mouse.getScreenPosition(camHUD);
-				controllerPointer.x = mousePos.x;
-				controllerPointer.y = mousePos.y;
-			}
-			_lastControllerMode = controls.controllerMode;
 		}
 
 		if(controls.UI_LEFT_P)
@@ -192,27 +203,32 @@ class NoteOffsetState extends MusicBeatState
 
 		if(controls.BACK)
 		{
-			if(zoomTween != null) zoomTween.cancel();
 			if(beatTween != null) beatTween.cancel();
 
 			persistentUpdate = false;
+			Conductor.bpm = 50;
 			MusicBeatState.switchState(new options.OptionsState());
-			if(OptionsState.onPlayState)
-			{
-				if(ClientPrefs.data.pauseMusic != 'None')
-					FlxG.sound.playMusic(Paths.music(Paths.formatToSongPath(ClientPrefs.data.pauseMusic)));
-				else
-					FlxG.sound.music.volume = 0;
-			}
-			else FlxG.sound.playMusic(Paths.music('freakyMenu'));
+			FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 			FlxG.mouse.visible = false;
 		}
 
 		Conductor.songPosition = FlxG.sound.music.time;
 		super.update(elapsed);
+
+		FlxG.camera.zoom = FlxMath.lerp(0.75, FlxG.camera.zoom, Math.exp(-elapsed * 3.125));
+
+		shaderAnim = Conductor.songPosition / 1000;
+		
+		if (ClientPrefs.data.shaders)
+		{
+			chromZoomShader.setFloat('aberration', 0.0001);
+			chromZoomShader.setFloat('effectTime', 0.0001);
+			chromNormalShader.setFloat('rOffset', 0.0001 / 45);
+			chromNormalShader.setFloat('bOffset', -0.0001 / 45);
+			dramaticCamMovement.setFloat('time', shaderAnim);
+		}
 	}
 
-	var zoomTween:FlxTween;
 	var lastBeatHit:Int = -1;
 	override public function beatHit()
 	{
@@ -225,20 +241,13 @@ class NoteOffsetState extends MusicBeatState
 
 		if(curBeat % 2 == 0)
 		{
-			boyfriend.dance();
-			gf.dance();
+			littleBitch.dance();
+			mickey.dance();
 		}
 		
 		if(curBeat % 4 == 2)
 		{
-			FlxG.camera.zoom = 1.15;
-
-			if(zoomTween != null) zoomTween.cancel();
-			zoomTween = FlxTween.tween(FlxG.camera, {zoom: 1}, 1, {ease: FlxEase.circOut, onComplete: function(twn:FlxTween)
-				{
-					zoomTween = null;
-				}
-			});
+			FlxG.camera.zoom += 0.15;
 
 			beatText.alpha = 1;
 			beatText.y = 320;
@@ -257,6 +266,6 @@ class NoteOffsetState extends MusicBeatState
 	function updateNoteDelay()
 	{
 		ClientPrefs.data.noteOffset = Math.round(barPercent);
-		timeTxt.text = 'Current offset: ' + Math.floor(barPercent) + ' ms';
+		offsetTxt.text = 'Current offset: ' + Math.floor(barPercent) + ' ms';
 	}
 }

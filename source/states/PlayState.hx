@@ -448,8 +448,6 @@ class PlayState extends MusicBeatState
 
 	override public function create()
 	{
-		FlxG.scaleMode = new WidescreenScaleMode(ClientPrefs.data.widescreen); 
-		
 		SaveProgress.loadProgress();
 				
 		if (isStoryMode && WeekData.getCurrentWeek().songs[0][0] != SONG.song)
@@ -5583,7 +5581,6 @@ class PlayState extends MusicBeatState
 			Lib.application.window.y = Std.int((Lib.application.window.display.bounds.height - Lib.application.window.height) * 0.5);
 		}
 		backend.NoteTypesConfig.clearNoteTypesData();
-		FlxG.scaleMode = new WidescreenScaleMode(false); 
 		spawnShadow[0] = spawnShadow[1] = spawnShadow[2] = false;
 		instance = null;
 		super.destroy();
