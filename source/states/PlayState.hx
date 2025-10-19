@@ -123,6 +123,8 @@ typedef FlashingSettings =
 	@:optional var enableBadapple:Bool;
 }
 
+//God recreating these events are going to be a pain in the ASS
+
 /**
  * This is where all the Gameplay stuff happens and is managed
  *
