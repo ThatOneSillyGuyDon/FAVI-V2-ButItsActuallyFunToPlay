@@ -12,10 +12,6 @@ class MasterEditorMenu extends MusicBeatState
 		'Chart Editor',
 		'Modchart Editor',
 		'Character Editor',
-		'Week Editor',
-		'Menu Character Editor',
-		'Dialogue Editor',
-		'Dialogue Portrait Editor'
 	];
 	private var grpTexts:FlxTypedGroup<Alphabet>;
 	private var directories:Array<String> = [null];
@@ -29,13 +25,23 @@ class MasterEditorMenu extends MusicBeatState
 		FlxG.camera.bgColor = FlxColor.BLACK;
 		#if desktop
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("Editors Main Menu", null);
+		DiscordClient.changePresence("Editors Main Menu", null, "icon");
 		#end
 
-		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
+		AppIcon.changeIcon("debugicon");
+
+		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/editor/chart/chartEditorBG'));
 		bg.scrollFactor.set();
-		bg.color = 0xFF353535;
+		bg.color = 0xFF222222;
 		add(bg);
+
+		var tiles:FlxBackdrop = new FlxBackdrop(Paths.image("Funkin_avi/editor/chart/arrowTile"), XY, 0, 0);
+		tiles.scrollFactor.set();
+		tiles.velocity.set(-80, 30);
+		tiles.blend = ADD;
+		tiles.color = bg.color;
+		tiles.alpha = 0.3;
+		add(tiles);
 
 		grpTexts = new FlxTypedGroup<Alphabet>();
 		add(grpTexts);
@@ -95,6 +101,11 @@ class MasterEditorMenu extends MusicBeatState
 		}
 		#end
 
+		if(FlxG.mouse.wheel != 0)
+		{
+			changeSelection(-FlxG.mouse.wheel);
+		}
+
 		if (controls.BACK)
 		{
 			MusicBeatState.switchState(new MainMenuState());
@@ -105,14 +116,6 @@ class MasterEditorMenu extends MusicBeatState
 			switch(options[curSelected]) {
 				case 'Character Editor':
 					LoadingState.loadAndSwitchState(new CharacterEditorState(Character.DEFAULT_CHARACTER, false));
-				case 'Week Editor':
-					MusicBeatState.switchState(new WeekEditorState());
-				case 'Menu Character Editor':
-					MusicBeatState.switchState(new MenuCharacterEditorState());
-				case 'Dialogue Portrait Editor':
-					LoadingState.loadAndSwitchState(new DialogueCharacterEditorState(), false);
-				case 'Dialogue Editor':
-					LoadingState.loadAndSwitchState(new DialogueEditorState(), false);
 				case 'Chart Editor'://felt it would be cool maybe
 					LoadingState.loadAndSwitchState(new ChartingState(), false);
 				case 'Modchart Editor':

@@ -1,0 +1,257 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				51,
+				60
+			],
+			"loop": false,
+			"fps": 20,
+			"anim": "MODCHARTS RAH",
+			"indices": [],
+			"name": "YouFinnaDead"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				50,
+				60
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				50,
+				60
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				50,
+				60
+			],
+			"anim": "singRIGHT",
+			"fps": 30,
+			"name": "right0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				50,
+				60
+			],
+			"anim": "singLEFT",
+			"fps": 28,
+			"name": "left0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				51,
+				54
+			],
+			"anim": "singDOWN-alt",
+			"fps": 24,
+			"name": "downAlt",
+			"indices": [
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9
+			]
+		},
+		{
+			"offsets": [
+				79,
+				36
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP-alt",
+			"indices": [
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9
+			],
+			"name": "upAlt"
+		},
+		{
+			"offsets": [
+				-310,
+				60
+			],
+			"loop": false,
+			"fps": 30,
+			"anim": "singRIGHT-alt",
+			"indices": [
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9
+			],
+			"name": "rightAlt"
+		},
+		{
+			"offsets": [
+				450,
+				10
+			],
+			"loop": false,
+			"fps": 28,
+			"anim": "singLEFT-alt",
+			"indices": [
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9
+			],
+			"name": "leftAlt"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				61,
+				66
+			],
+			"anim": "laughing",
+			"fps": 19,
+			"name": "laugh",
+			"indices": []
+		},
+		{
+			"offsets": [
+				51,
+				60
+			],
+			"loop": true,
+			"fps": 26,
+			"anim": "idle",
+			"indices": [],
+			"name": "idle0"
+		},
+		{
+			"offsets": [
+				51,
+				60
+			],
+			"indices": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18,
+				18
+			],
+			"fps": 19,
+			"anim": "idle-bruh",
+			"loop": true,
+			"name": "idleBruhMoment"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": true,
+	"image": "characters/malsquare-faceless",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "malNEW-pixel",
+	"flip_x": false,
+	"healthbar_colors": [
+		0,
+		0,
+		0
+	],
+	"camera_position": [
+		-900,
+		-500
+	],
+	"sing_duration": 6.1,
+	"scale": 5.99999999999999,
+	"_editor_isPlayer": false
+}

@@ -20,21 +20,11 @@
 
  // import objects, menus and backend support
 import backend.*;
-import backend.menu.*;
-import backend.song.*;
-import backend.data.*;
-import backend.nSwitch.*;
 import backend.embeddedFiles.*;
 import backend.windows.*;
-import gameObjects.*;
-import gameObjects.ui.*;
-import gameObjects.utils.*;
-import gameObjects.stageObjects.*;
-import gameObjects.ui.dialogue.*;
-import gameObjects.ui.menu.*;
-import gameObjects.ui.animatedText.*;
-import gameObjects.ui.notes.*;
-import gameObjects.ui.customEditorUI.*;
+import objects.*;
+import objects.notes.*;
+import objects.ui.*;
 
 // import screens you see in-game
 import substates.*;
@@ -44,18 +34,47 @@ import states.options.*;
 import states.menus.*;
 import states.menus.freeplay.*;
 
+// Base Stage
+import backend.BaseStage.StageAssetData;
+import backend.BaseStage.AssetType;
+import backend.BaseStage.AssetPriority;
+import backend.BaseStage.*;
+// import backend.BaseStage.asset;
+// import backend.BaseStage.videos;
+// import backend.BaseStage.characters;
+// import backend.BaseStage.filterByQuality;
+
+//import game over screens
+import substates.GameOverScreens.BaseGameOver; //default fnf screen
+import substates.GameOverScreens.ManiaLoseScreen; //mania charts only
+import substates.GameOverScreens.Episode1Death; //Episode 1
+import substates.GameOverScreens.DelusionalDeath; //Delusional Exclusive
+import substates.GameOverScreens.EpicFailLmao; //Don't Cross Ragebait
+import substates.GameOverScreens.EverettBaseDeath; //Default Everett Death
+import substates.GameOverScreens.WarGameOver; //War Dilemma Exclusive
+import substates.GameOverScreens.WompWompSadMan; //Birthday Exclusive
+import substates.GameOverScreens.MalsquareDeath; //Malfunction Exclusive
+import substates.GameOverScreens.MalsquareTrollScreen; //Least Annoying Thing in the mod
+
+//import pause screens
+import substates.PauseScreens.PauseSubState; //default fnf screen
+import substates.PauseScreens.FAVIPauseSubState; //favi screen
+import substates.PauseScreens.PauseManiaSubstate; //mania screen
+
 // import specific menus and objects to prevent compile errors
 #if desktop
-import backend.discord.Discord;
+import backend.Discord;
 #end
 import states.editors.ChartingState;
-import gameObjects.Achievements;
-import gameObjects.Character;
-import gameObjects.ui.dialogue.DialogueBoxPsych;
-import gameObjects.ui.menu.MenuCharacter;
-import backend.song.Conductor;
-import backend.data.StageData;
-import backend.data.WeekData;
+#if ACHIEVEMENTS_ALLOWED
+import objects.Achievements;
+#end
+import objects.Character;
+import cutscenes.DialogueBoxPsych;
+import objects.MenuCharacter;
+import backend.Conductor;
+import backend.StageData;
+import backend.WeekData;
 import backend.Controls;
 
 // import modchart system
@@ -66,24 +85,26 @@ import shaders.ColorSwap;
 import shaders.BlendModeEffect;
 import shaders.WiggleEffect;
 import shaders.WiggleEffect.WiggleEffectType;
+import shaders.OutlineEffect;
+import shaders.DropShadowShader;
+import shaders.BlendEffect;
 
-import substates.PauseSubState.FAVIPauseSubState;
-import substates.PauseSubState.PauseManiaSubstate;
-import substates.GameOverSubstate.ManiaLoseSubstate;
 // stuff that won't let you compile unless they're being used
 #if VIDEOS_ALLOWED
-import gameObjects.video.VideoSprite;
+import objects.VideoSprite;
 #end
-import backend.song.Conductor.BPMChangeEvent;
-import backend.song.Section.SwagSection;
-import backend.song.Song.SwagSong;
-import gameObjects.transitions.CustomFadeTransition;
-import gameObjects.ui.notes.Note.EventNote;
+import backend.Conductor.BPMChangeEvent;
+import backend.Section.SwagSection;
+import backend.Song.SwagSong;
+import backend.CustomFadeTransition;
+import objects.notes.Note.EventNote;
 
 // shitty mod support stuff I plan on removing soon but for now is needed for the game to work
-import backend.FunkinLua.ModchartSprite;
-import backend.FunkinLua.ModchartText;
-import backend.FunkinLua.DebugLuaText;
+#if LUA_ALLOWED
+import psychlua.FunkinLua.ModchartSprite;
+import psychlua.FunkinLua.ModchartText;
+import psychlua.FunkinLua.DebugLuaText;
+#end
 
 // import majority of classes the game uses from flixel almost everywhere
 import flixel.*;
@@ -110,6 +131,24 @@ import flixel.text.FlxText.FlxTextAlign;
 import flixel.text.FlxText.FlxTextBorderStyle;
 import flixel.util.FlxSignal.FlxTypedSignal;
 
+#if flxanimate
+import flxanimate.*;
+#end
+
+//Flixel
+import flixel.FlxG;
+import flixel.FlxSprite;
+import flixel.FlxCamera;
+import flixel.math.FlxMath;
+import flixel.math.FlxPoint;
+import flixel.util.FlxColor;
+import flixel.util.FlxTimer;
+import flixel.text.FlxText;
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
+import flixel.group.FlxSpriteGroup;
+import flixel.group.FlxGroup.FlxTypedGroup;
+
 #if (flixel <= "5.2.2")
 	import flixel.system.FlxSound;
 #else
@@ -117,4 +156,57 @@ import flixel.util.FlxSignal.FlxTypedSignal;
 #end
 
 using StringTools;
+#end
+
+#if LEATHER
+import states.PlayState;
+import game.Song;
+import game.Section.SwagSection;
+import game.Note;
+import ui.FlxScrollableDropDownMenu;
+import game.Conductor;
+import utilities.CoolUtil;
+import game.StrumNote;
+import utilities.NoteVariables;
+import states.LoadingState;
+import states.MusicBeatState;
+import substates.MusicBeatSubstate;
+#elseif (PSYCH && PSYCHVERSION >= "0.7")
+import flixel.addons.ui.FlxUIDropDownMenu;
+import backend.Section.SwagSection;
+import states.PlayState;
+import backend.CoolUtil;
+import backend.Conductor;
+import backend.ClientPrefs;
+import backend.Paths;
+import states.LoadingState;
+import backend.Difficulty;
+#if SCEModchartingTools
+import substates.MusicBeatSubstate;
+#else
+import backend.MusicBeatSubstate;
+#end
+import objects.notes.Note;
+#if SCEModchartingTools
+import objects.StrumArrow;
+#else
+import objects.notes.StrumNote;
+#end
+import backend.Song;
+#else
+import Section.SwagSection;
+import Song;
+import MusicBeatSubstate;
+#end
+
+#if (PSYCH && PSYCHVERSION >= "0.7")
+#if LUA_ALLOWED
+import psychlua.FunkinLua;
+import psychlua.HScript as FunkinHScript;
+#end
+#end
+
+#if sys
+import sys.FileSystem;
+import sys.io.File;
 #end

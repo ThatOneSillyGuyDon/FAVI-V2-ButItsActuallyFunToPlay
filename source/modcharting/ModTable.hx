@@ -1,6 +1,11 @@
 package modcharting;
 
+import flixel.math.FlxMath;
+import flixel.tweens.FlxTween;
 import modcharting.Modifier;
+#if LEATHER
+import game.Conductor;
+#end
 
 class ModTable
 {
@@ -59,7 +64,8 @@ class ModTable
         add(new YModifier('y'));
         add(new ZModifier('z'));
         add(new ConfusionModifier('confusion'));
-        for (i in 0...((NoteMovement.keyCount+NoteMovement.playerKeyCount)))
+    
+        for (i in 0...(NoteMovement.keyCount+NoteMovement.playerKeyCount))
         {
             add(new XModifier('x'+i, ModifierType.LANESPECIFIC));
             add(new YModifier('y'+i, ModifierType.LANESPECIFIC));
@@ -152,7 +158,7 @@ class ModTable
 
 
     
-    public function tweenModifier(modifier:String, val:Float, time:Float, ease:String, beat:Float)
+    public function tweenModifier(modifier:String, val:Float, time:Float, ease:String, beat:Float, ?tag:String = null)
     {
         var modifiers:Map<String, Modifier> = renderer.modifierTable.modifiers;
         if (modifiers.exists(modifier))
@@ -181,7 +187,7 @@ class ModTable
         }
     }
 
-    public function tweenModifierSubValue(modifier:String, subValue:String, val:Float, time:Float, ease:String, beat:Float)
+    public function tweenModifierSubValue(modifier:String, subValue:String, val:Float, time:Float, ease:String, beat:Float, ?tag:String = null)
     {
         var modifiers:Map<String, Modifier> = renderer.modifierTable.modifiers;
         if (modifiers.exists(modifier))

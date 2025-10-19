@@ -20,8 +20,7 @@ class Init extends FlxState
 		ClientPrefs.loadDefaultKeys();
 		FlxG.save.bind('funkin', CoolUtil.getSavePath());
 
-        PlayerSettings.init();
-		ClientPrefs.loadPrefs();
+        ClientPrefs.loadPrefs();
 		Highscore.load();
 		GameData.loadShit();
 
@@ -48,12 +47,7 @@ class Init extends FlxState
         FlxG.sound.soundTray.silent = true; // removes that annoying ass "BEEP" sound when you change the volume
 
         #if DISCORD_ALLOWED
-        DiscordClient.initialize();
-
-        
-        Lib.application.window.onClose.add(function() {
-            DiscordClient.shutdown();
-        });
+		DiscordClient.prepare();
 		#end
 
         FlxG.mouse.visible = true;
@@ -92,14 +86,9 @@ class Init extends FlxState
 		Lib.current.stage.window.setIcon(icon);
 		#end
         
-        FlxG.autoPause = ClientPrefs.autoPause;
+        FlxG.autoPause = ClientPrefs.data.autoPause;
         FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
 		FlxG.mouse.visible = true;
-
-        // initializating ends here and switches to the state the Main class intends to
-        #if Freeplay
-        FlxG.switchState(Type.createInstance(FreeplayCategories, [])); 
-        #end
 
         var curState = Main.initialState;
 
@@ -107,6 +96,11 @@ class Init extends FlxState
             curState = FlashingState;
 
         trace('Initialization complete, switching to ${Type.getClassName(curState)}');
-        FlxG.switchState(Type.createInstance(curState, []));   
+        if (FlxG.random.bool(8))
+        {
+            FlxG.switchState(new states.TheThing());
+        }
+        else
+            FlxG.switchState(Type.createInstance(curState, []));  
     }
 }

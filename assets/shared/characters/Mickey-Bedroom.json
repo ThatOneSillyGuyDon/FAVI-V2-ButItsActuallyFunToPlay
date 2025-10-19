@@ -1,0 +1,80 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				950,
+				250
+			],
+			"loop": false,
+			"fps": 7,
+			"anim": "idle",
+			"indices": [],
+			"name": "BedroomMick idle"
+		},
+		{
+			"offsets": [
+				950,
+				250
+			],
+			"loop": false,
+			"fps": 6,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "BedroomMick right"
+		},
+		{
+			"offsets": [
+				952,
+				249
+			],
+			"loop": false,
+			"fps": 9,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "BedroomMick left"
+		},
+		{
+			"offsets": [
+				951,
+				250
+			],
+			"loop": false,
+			"fps": 9,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "BedroomMick down"
+		},
+		{
+			"offsets": [
+				958,
+				250
+			],
+			"loop": false,
+			"fps": 9,
+			"anim": "singUP",
+			"indices": [],
+			"name": "BedroomMick up"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/DELUSIONAL_IS_DONE/BedroomMick",
+	"position": [
+		-730,
+		0
+	],
+	"healthicon": "f_avi/episode1/mickey",
+	"flip_x": true,
+	"healthbar_colors": [
+		216,
+		216,
+		216
+	],
+	"camera_position": [
+		640,
+		100
+	],
+	"sing_duration": 6.1,
+	"scale": 1.1,
+	"_editor_isPlayer": false
+}

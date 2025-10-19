@@ -1,24 +1,40 @@
 package;
 
+#if android
+import android.content.Context;
+#end
+
+import backend.Framerate;
+
+import flixel.graphics.FlxGraphic;
+import flixel.FlxGame;
+import flixel.FlxState;
+import haxe.io.Path;
 import openfl.Assets;
 import openfl.Lib;
-import backend.Framerate;
 import openfl.display.Sprite;
 import openfl.events.Event;
 import openfl.display.StageScaleMode;
+import lime.app.Application;
+import states.menus.TitleState;
+
+#if linux
+import lime.graphics.Image;
+#end
 
 //crash handler stuff
 #if CRASH_HANDLER
-import lime.app.Application;
 import openfl.events.UncaughtErrorEvent;
 import haxe.CallStack;
 import haxe.io.Path;
-import sys.FileSystem;
-import sys.io.File;
-import sys.io.Process;
 #end
 
-using StringTools;
+#if linux
+@:cppInclude('./external/gamemode_client.h')
+@:cppFileCode('
+	#define GAMEMODE_AUTO
+')
+#end
 
 class Main extends Sprite
 {
@@ -29,6 +45,7 @@ class Main extends Sprite
 	var framerate:Int = 60; // How many frames per second the game should run at.
 	var skipSplash:Bool = true; // Whether to skip the flixel splash screen that appears in release mode.
 	var startFullscreen:Bool = false; // Whether to start the game in fullscreen on desktop targets
+
 	public static var fpsVar:Framerate;
 	public static var debug:Bool = false;
 
@@ -42,6 +59,13 @@ class Main extends Sprite
 	public function new()
 	{
 		super();
+
+		// Credits to MAJigsaw77 (he's the og author for this code)
+		#if android
+		Sys.setCwd(Path.addTrailingSlash(Context.getExternalFilesDir()));
+		#elseif ios
+		Sys.setCwd(lime.system.System.applicationStorageDirectory);
+		#end
 
 		if (stage != null)
 		{
@@ -76,11 +100,12 @@ class Main extends Sprite
 			gameWidth = Math.ceil(stageWidth / zoom);
 			gameHeight = Math.ceil(stageHeight / zoom);
 		}
-	
+		
 		ClientPrefs.loadDefaultKeys();
+		Controls.instance = new Controls();
 
 		var game:FlxGame = new FlxGame(gameWidth, gameHeight, Init, #if (flixel < "5.0.0") zoom, #end framerate, framerate, skipSplash, startFullscreen);
-		@:privateAccess game._customSoundTray = gameObjects.ui.Soundtray;
+		@:privateAccess game._customSoundTray = objects.ui.Soundtray;
 		addChild(game);
 
 		#if !mobile
@@ -90,40 +115,48 @@ class Main extends Sprite
 		Lib.current.stage.align = "tl";
 		Lib.current.stage.scaleMode = StageScaleMode.NO_SCALE;
 		if(fpsVar != null) {
-			fpsVar.visible = ClientPrefs.showFPS;
+			fpsVar.visible = ClientPrefs.data.showFPS;
 		}
 		#end
 
-		FlxG.autoPause = ClientPrefs.autoPause;
-		#if html5
-		FlxG.mouse.visible = false;
+		#if linux
+		var icon = Image.fromFile("icon.png");
+		Lib.current.stage.window.setIcon(icon);
 		#end
 
-		//FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+		#if html5
+		FlxG.autoPause = false;
+		FlxG.mouse.visible = false;
+		#end
 		
 		#if CRASH_HANDLER
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
 		#end
 
-		FlxG.signals.gameResized.add(function (w, h) {
-			if (FlxG.cameras != null) {
-			  for (cam in FlxG.cameras.list) {
-			   if (cam != null && cam.filters != null)
-				   resetSpriteCache(cam.flashSprite);
-			  }
-		   }
+		#if DISCORD_ALLOWED
+		DiscordClient.prepare();
+		#end
 
-		   if (FlxG.game != null)
+		// shader coords fix
+		FlxG.signals.gameResized.add(function (w, h) {
+		     if (FlxG.cameras != null) {
+			   for (cam in FlxG.cameras.list) {
+				if (cam != null && cam.filters != null)
+					resetSpriteCache(cam.flashSprite);
+			   }
+			}
+
+			if (FlxG.game != null)
 		    @:privateAccess {
 				FlxG.game.__cacheBitmap = null;
 				FlxG.game.__cacheBitmapData = null;
-		}
-	   });
+			}
+		});
 	}
 
 	static function resetSpriteCache(sprite:Sprite):Void {
 		@:privateAccess {
-				sprite.__cacheBitmap = null;
+		        sprite.__cacheBitmap = null;
 			sprite.__cacheBitmapData = null;
 		}
 	}
@@ -141,7 +174,7 @@ class Main extends Sprite
 		dateNow = dateNow.replace(" ", "_");
 		dateNow = dateNow.replace(":", "'");
 
-		path = "./crash/" + "PsychEngine_" + dateNow + ".txt";
+		path = "./crash/" + "FunkinAVI_" + dateNow + ".txt";
 
 		for (stackItem in callStack)
 		{
@@ -154,7 +187,7 @@ class Main extends Sprite
 			}
 		}
 
-		errMsg += "\nUncaught Error: " + e.error + "\nPlease report this error to the GitHub page: https://github.com/ShadowMario/FNF-PsychEngine\n\n> Crash Handler written by: sqirra-rng";
+		errMsg += "\nUncaught Error: " + e.error + "\nPlease report this error to the Funkin.avi Community Server: https://discord.gg/eXWMDDkB\n\n> Crash Handler written by: sqirra-rng";
 
 		if (!FileSystem.exists("./crash/"))
 			FileSystem.createDirectory("./crash/");
@@ -165,7 +198,9 @@ class Main extends Sprite
 		Sys.println("Crash dump saved in " + Path.normalize(path));
 
 		Application.current.window.alert(errMsg, "Error!");
+		#if DISCORD_ALLOWED
 		DiscordClient.shutdown();
+		#end
 		Sys.exit(1);
 	}
 	#end

@@ -1,9 +1,40 @@
 package modcharting;
 
+import flixel.tweens.misc.BezierPathTween;
+import flixel.tweens.misc.BezierPathNumTween;
+import flixel.math.FlxMath;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
+import flixel.graphics.FlxGraphic;
+import flixel.util.FlxColor;
+import flixel.FlxStrip;
 import flixel.graphics.tile.FlxDrawTrianglesItem.DrawData;
 import openfl.geom.Vector3D;
+import flixel.util.FlxSpriteUtil;
+import flixel.graphics.frames.FlxFrame;
+import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.FlxSprite;
 
+import flixel.FlxG;
+import modcharting.Modifier;
 import flixel.system.FlxAssets.FlxShader;
+
+#if LEATHER
+import states.PlayState;
+import game.Note;
+import game.StrumNote;
+import game.Conductor;
+#elseif (PSYCH && PSYCHVERSION >= "0.7")
+import states.PlayState;
+import objects.notes.Note;
+import objects.notes.StrumNote;
+#else
+import PlayState;
+import Note;
+import StrumNote;
+#end
+
+using StringTools;
 
 //a few todos im gonna leave here:
 
@@ -22,7 +53,7 @@ typedef StrumNoteType =
 
 class PlayfieldRenderer extends FlxSprite //extending flxsprite just so i can edit draw
 {
-    public var strumGroup:FlxTypedGroup<StrumNote>;
+    public var strumGroup:FlxTypedGroup<StrumNoteType>;
     public var notes:FlxTypedGroup<Note>;
     public var instance:ModchartMusicBeatState;
     public var playStateInstance:PlayState;
@@ -41,14 +72,14 @@ class PlayfieldRenderer extends FlxSprite //extending flxsprite just so i can ed
     public var speed:Float = 1.0;
 
     public var modifiers(get, default):Map<String, Modifier>;
-    
+
     private function get_modifiers() : Map<String, Modifier>
     {
         return modifierTable.modifiers; //back compat with lua modcharts
     }
 
 
-    public function new(strumGroup:FlxTypedGroup<StrumNote>, notes:FlxTypedGroup<Note>,instance:ModchartMusicBeatState) 
+    public function new(strumGroup:FlxTypedGroup<StrumNoteType>, notes:FlxTypedGroup<Note>,instance:ModchartMusicBeatState) 
     {
         super(0,0);
         this.strumGroup = strumGroup;
@@ -57,8 +88,8 @@ class PlayfieldRenderer extends FlxSprite //extending flxsprite just so i can ed
         if (Std.isOfType(instance, PlayState))
             playStateInstance = cast instance; //so it just casts once
 
-       if(strumGroup != null) strumGroup.visible = false; //drawing with renderer instead
-       if(notes != null) notes.visible = false;
+        strumGroup.visible = false; //drawing with renderer instead
+        notes.visible = false;
 
         //fix stupid crash because the renderer in playstate is still technically null at this point and its needed for json loading
         instance.playfieldRenderer = this;
@@ -67,7 +98,8 @@ class PlayfieldRenderer extends FlxSprite //extending flxsprite just so i can ed
         eventManager = new ModchartEventManager(this);
         modifierTable = new ModTable(instance, this);
         addNewPlayfield(0,0,0);
-        modchart = new ModchartFile(this);
+        if (!Std.isOfType(instance, states.editors.EditorPlayState))
+            modchart = new ModchartFile(this);
     }
 
 
@@ -102,7 +134,7 @@ class PlayfieldRenderer extends FlxSprite //extending flxsprite just so i can ed
                 if (note.mesh != null) note.mesh.setColorTransform(1, 1, 1, 1, 0, 0, 0, 0);
             });
         }
-        
+
         super.update(elapsed);
     }
 
@@ -110,25 +142,35 @@ class PlayfieldRenderer extends FlxSprite //extending flxsprite just so i can ed
     override public function draw()
     {
         if (alpha == 0 || !visible)
-            return;
+			return;
 
-        if (strumGroup != null) strumGroup.cameras = this.cameras;
-        if (notes != null) notes.cameras = this.cameras;
-        
-        drawStuff(getNotePositions());
-        //draw notes to screen
+		strumGroup.cameras = this.cameras;
+		notes.cameras = this.cameras;
+
+		try
+		{
+			drawStuff(getNotePositions());
+		}
+		catch (e)
+		{
+			trace(e);
+		}
+		// draw notes to screen
     }
 
 
-    private function addDataToStrum(strumData:NotePositionData, strum:FlxSprite)
+    private function addDataToStrum(strumData:NotePositionData, strum:StrumNoteType)
     {
         strum.x = strumData.x;
         strum.y = strumData.y;
+        //Add Z to your strumNoteType if you want it youself!
         //strum.z = strumData.z;
         strum.angle = strumData.angle;
         strum.alpha = strumData.alpha;
         strum.scale.x = strumData.scaleX;
         strum.scale.y = strumData.scaleY;
+        strum.skew.x = strumData.skewX;
+        strum.skew.y = strumData.skewY;
     }
 
     private function getDataForStrum(i:Int, pf:Int)
@@ -138,12 +180,24 @@ class PlayfieldRenderer extends FlxSprite //extending flxsprite just so i can ed
         var strumZ = 0;
         var strumScaleX = NoteMovement.defaultScale[i];
         var strumScaleY = NoteMovement.defaultScale[i];
+        var strumSkewX = NoteMovement.defaultSkewX[i];
+        var strumSkewY = NoteMovement.defaultSkewY[i];
         if (ModchartUtil.getIsPixelStage(instance))
         {
             //work on pixel stages
             strumScaleX = 1*PlayState.daPixelZoom;
             strumScaleY = 1*PlayState.daPixelZoom;
         }
+        if (Std.isOfType(instance, states.editors.EditorPlayState) && ClientPrefs.data.middleScroll)
+        {
+            switch (i)
+            {
+                case 0 | 1 | 2 | 3:
+                    strumX = -9999999;
+                    strumY = 9999999;
+            }
+        }
+
         if (PlayState.curStage == "menuSongs")
         {
             switch (i)
@@ -157,8 +211,9 @@ class PlayfieldRenderer extends FlxSprite //extending flxsprite just so i can ed
                     strumZ -= 25;
             }
         }
+
         var strumData:NotePositionData = NotePositionData.get();
-        strumData.setupStrum(strumX, strumY, strumZ, i, strumScaleX, strumScaleY, pf);
+        strumData.setupStrum(strumX, strumY, strumZ, i, strumScaleX, strumScaleY, strumSkewX, strumSkewY, pf);
         playfields[pf].applyOffsets(strumData);
         modifierTable.applyStrumMods(strumData, i, pf);
         return strumData;
@@ -175,6 +230,8 @@ class PlayfieldRenderer extends FlxSprite //extending flxsprite just so i can ed
         daNote.alpha = noteData.alpha;
         daNote.scale.x = noteData.scaleX;
         daNote.scale.y = noteData.scaleY;
+        daNote.skew.x = noteData.skewX;
+        daNote.skew.y = noteData.skewY;
     }
     private function createDataFromNote(noteIndex:Int, playfieldIndex:Int, curPos:Float, noteDist:Float, incomingAngle:Array<Float>)
     {
@@ -184,16 +241,10 @@ class PlayfieldRenderer extends FlxSprite //extending flxsprite just so i can ed
         var lane = getLane(noteIndex);
         var noteScaleX = NoteMovement.defaultScale[lane];
         var noteScaleY = NoteMovement.defaultScale[lane];
+        var noteSkewX = notes.members[noteIndex].skew.x;
+        var noteSkewY = notes.members[noteIndex].skew.y;
 
-        var noteAlpha:Float = 1;
-        #if PSYCH
-        noteAlpha = notes.members[noteIndex].multAlpha;
-        #else 
-        if (notes.members[noteIndex].isSustainNote)
-            noteAlpha = 0.6;
-        else 
-            noteAlpha = 1;
-        #end
+        var noteAlpha:Float = #if PSYCH notes.members[noteIndex].multAlpha; #else notes.members[noteIndex].isSustainNote ? 0.6 : 1; #end
 
         if (ModchartUtil.getIsPixelStage(instance))
         {
@@ -201,16 +252,24 @@ class PlayfieldRenderer extends FlxSprite //extending flxsprite just so i can ed
             noteScaleX = 1*PlayState.daPixelZoom;
             noteScaleY = 1*PlayState.daPixelZoom;
         }
+        if (Std.isOfType(instance, states.editors.EditorPlayState) && ClientPrefs.data.middleScroll)
+        {
+            switch (noteIndex)
+            {
+                case 0 | 1 | 2 | 3:
+                    noteX = -9999999;
+                    noteY = 9999999;
+            }
+        }
 
         var noteData:NotePositionData = NotePositionData.get();
-        noteData.setupNote(noteX, noteY, noteZ, lane, noteScaleX, noteScaleY, playfieldIndex, noteAlpha, 
+        noteData.setupNote(noteX, noteY, noteZ, lane, noteScaleX, noteScaleY, noteSkewX, noteSkewY, playfieldIndex, noteAlpha, 
             curPos, noteDist, incomingAngle[0], incomingAngle[1], notes.members[noteIndex].strumTime, noteIndex);
         playfields[playfieldIndex].applyOffsets(noteData);
-
         return noteData;
     }
 
-    private function getNoteCurPos(noteIndex:Int, strumTimeOffset:Float = 0)
+    private function getNoteCurPos(noteIndex:Int, strumTimeOffset:Float = 0, ?pf:Int = 0)
     {
         #if PSYCH
         if (notes.members[noteIndex].isSustainNote && ModchartUtil.getDownscroll(instance))
@@ -219,9 +278,45 @@ class PlayfieldRenderer extends FlxSprite //extending flxsprite just so i can ed
         if (notes.members[noteIndex].isSustainNote && !ModchartUtil.getDownscroll(instance))
             strumTimeOffset += Conductor.stepCrochet; //fix upscroll lol
         #end
+        if (notes.members[noteIndex].isSustainNote)
+        {
+            // moved those inside holdsMath cuz they are only needed for sustains ig?
+            var lane = getLane(noteIndex);
+
+            var noteDist = getNoteDist(noteIndex);
+            noteDist = modifierTable.applyNoteDistMods(noteDist, lane, pf);
+    
+            strumTimeOffset += Std.int(Conductor.stepCrochet / getCorrectScrollSpeed());
+            switch (ModchartUtil.getDownscroll(instance))
+            {
+                case true:
+                    if (noteDist > 0)
+                    {
+                        strumTimeOffset -= Std.int(Conductor.stepCrochet); //down
+                    }
+                    else
+                    {
+                        strumTimeOffset += Std.int(Conductor.stepCrochet / getCorrectScrollSpeed());
+                        strumTimeOffset -= Std.int(Conductor.stepCrochet / getCorrectScrollSpeed());
+                    }
+                case false:
+                    if (noteDist > 0)
+                    {
+                        strumTimeOffset -= Std.int(Conductor.stepCrochet / getCorrectScrollSpeed()); //down
+                        strumTimeOffset -= Std.int(Conductor.stepCrochet); //down
+                    }
+                    else
+                    {			
+                        strumTimeOffset -= Std.int(Conductor.stepCrochet / getCorrectScrollSpeed());
+                    }
+            }
+            // FINALLY OMG I HATE THIS FUCKING MATH LMAO
+        }
+
         var distance = (Conductor.songPosition - notes.members[noteIndex].strumTime) + strumTimeOffset;
         return distance*getCorrectScrollSpeed();
     }
+    
     private function getLane(noteIndex:Int)
     {
         return (notes.members[noteIndex].mustPress ? notes.members[noteIndex].noteData+NoteMovement.keyCount : notes.members[noteIndex].noteData);
@@ -238,134 +333,180 @@ class PlayfieldRenderer extends FlxSprite //extending flxsprite just so i can ed
     private function getNotePositions()
     {
         var notePositions:Array<NotePositionData> = [];
-        for (pf in 0...playfields.length)
-        {
-            for (i in 0...strumGroup.members.length)
-            {
-                var strumData = getDataForStrum(i, pf);
-                notePositions.push(strumData);
-            }
-            for (i in 0...notes.members.length)
-            {
-                var songSpeed = getCorrectScrollSpeed();
+		for (pf in 0...playfields.length)
+		{
+			for (i in 0...strumGroup.members.length)
+			{
+				var strumData = getDataForStrum(i, pf);
+				notePositions.push(strumData);
+			}
+			for (i in 0...notes.members.length)
+			{
+				var songSpeed = getCorrectScrollSpeed();
 
-                var lane = getLane(i);
+				var lane = getLane(i);
+				var sustainTimeThingy:Float = 0;
 
-                var noteDist = getNoteDist(i);
-                noteDist = modifierTable.applyNoteDistMods(noteDist, lane, pf);
-                
+				var noteDist = getNoteDist(i);
+				var curPos = getNoteCurPos(i, sustainTimeThingy, pf);
 
-                var sustainTimeThingy:Float = 0;
+				// if (notes.members[i].isSustainNote) //so probably this code is needed for sustain movements on incoming angle, fuck
+				// {
+				// 	notePositions.push(createDataFromNote(i, pf, curPos, noteDist, [0,0,0]));
+				// 	continue;
+				// }
 
-                //just causes too many issues lol, might fix it at some point
-                /*if (notes.members[i].animation.curAnim.name.endsWith('end') && ClientPrefs.downScroll)
-                {
-                    if (noteDist > 0)
-                        sustainTimeThingy = (NoteMovement.getFakeCrochet()/4)/2; //fix stretched sustain ends (downscroll)
-                    //else 
-                        //sustainTimeThingy = (-NoteMovement.getFakeCrochet()/4)/songSpeed;
-                }*/
-                    
-                var curPos = getNoteCurPos(i, sustainTimeThingy);
-                curPos = modifierTable.applyCurPosMods(lane, curPos, pf);
+				noteDist = modifierTable.applyNoteDistMods(noteDist, lane, pf);
 
-                if ((notes.members[i].wasGoodHit || (notes.members[i].prevNote.wasGoodHit)) && curPos >= 0 && notes.members[i].isSustainNote)
-                    curPos = 0; //sustain clip
 
-                var incomingAngle:Array<Float> = modifierTable.applyIncomingAngleMods(lane, curPos, pf);
-                if (noteDist < 0)
-                    incomingAngle[0] += 180; //make it match for both scrolls
-                    
-                //get the general note path
-                NoteMovement.setNotePath(notes.members[i], lane, songSpeed, curPos, noteDist, incomingAngle[0], incomingAngle[1]);
+				// just causes too many issues lol, might fix it at some point
+				// if (notes.members[i].animation.curAnim.name.endsWith('end') && ClientPrefs.downScroll) //checking rn LMAO
+				// {
+				//     if (noteDist > 0)
+				//         sustainTimeThingy = (ModchartUtil.getFakeCrochet()/4)/2; //fix stretched sustain ends (downscroll)
+				//     //else
+				//         //sustainTimeThingy = (-NoteMovement.getFakeCrochet()/4)/songSpeed;
+				// }
 
-                //save the position data
-                var noteData = createDataFromNote(i, pf, curPos, noteDist, incomingAngle);
+				curPos = modifierTable.applyCurPosMods(lane, curPos, pf);
 
-                //add offsets to data with modifiers
-                modifierTable.applyNoteMods(noteData, lane, curPos, pf);
+				if ((notes.members[i].wasGoodHit || (notes.members[i].prevNote.wasGoodHit))
+					&& curPos >= 0
+					&& notes.members[i].isSustainNote)
+					curPos = 0; // sustain clip
 
-                //add position data to list
-                notePositions.push(noteData);
-            }
-        }
-        //sort by z before drawing
-        notePositions.sort(function(a, b){
-            if (a.z < b.z)
-                return -1;
-            else if (a.z > b.z)
-                return 1;
-            else
-                return 0;
-        });
-        return notePositions;
+				var incomingAngle:Array<Float> = modifierTable.applyIncomingAngleMods(lane, curPos, pf);
+				if (noteDist < 0)
+					incomingAngle[0] += 180; // make it match for both scrolls
+
+				// get the general note path
+				NoteMovement.setNotePath(notes.members[i], lane, songSpeed, curPos, noteDist, incomingAngle[0], incomingAngle[1]);
+
+				// save the position data
+				var noteData = createDataFromNote(i, pf, curPos, noteDist, incomingAngle);
+
+				// add offsets to data with modifiers
+				modifierTable.applyNoteMods(noteData, lane, curPos, pf);
+
+				// add position data to list
+				notePositions.push(noteData);
+			}
+		}
+		// sort by z before drawing
+		notePositions.sort(function(a, b)
+		{
+			if (a.z < b.z)
+				return -1;
+			else if (a.z > b.z)
+				return 1;
+			else
+				return 0;
+		});
+		return notePositions;
     }
 
     private function drawStrum(noteData:NotePositionData)
     {
         if (noteData.alpha <= 0)
-            return;
-        var strumNote = strumGroup.members[noteData.index];
-        var thisNotePos = ModchartUtil.calculatePerspective(new Vector3D(noteData.x+(strumNote.width/2), noteData.y+(strumNote.height/2), noteData.z*0.001), 
-        ModchartUtil.defaultFOV*(Math.PI/180), -(strumNote.width/2), -(strumNote.height/2));
+			return;
+		var changeX:Bool = noteData.z != 0;
+		var strumNote = strumGroup.members[noteData.index];
 
-        noteData.x = thisNotePos.x;
-        noteData.y = thisNotePos.y;
-        noteData.scaleX *= (1/-thisNotePos.z);
-        noteData.scaleY *= (1/-thisNotePos.z);
+		var thisNotePos;
+		if (changeX)
+			thisNotePos = ModchartUtil.calculatePerspective(new Vector3D(noteData.x + (strumNote.width / 2), noteData.y + (strumNote.height / 2),
+				noteData.z * 0.001),
+				ModchartUtil.defaultFOV * (Math.PI / 180),
+				-(strumNote.width / 2),
+				-(strumNote.height / 2));
+		else
+			thisNotePos = new Vector3D(noteData.x, noteData.y, 0);
 
-        addDataToStrum(noteData, strumGroup.members[noteData.index]); //set position and stuff before drawing
-        strumGroup.members[noteData.index].cameras = this.cameras;
+		noteData.x = thisNotePos.x;
+		noteData.y = thisNotePos.y;
+		if (changeX)
+		{
+			noteData.scaleX *= (1 / -thisNotePos.z);
+			noteData.scaleY *= (1 / -thisNotePos.z);
+		}
+		
+		strumNote.skew.x = noteData.skewX;
+		strumNote.skew.y = noteData.skewY;
 
-        strumGroup.members[noteData.index].draw();
-    }
+		addDataToStrum(noteData, strumGroup.members[noteData.index]); // set position and stuff before drawing
+		// strumGroup.members[noteData.index].cameras = this.cameras;
+		// draw it
+		strumGroup.members[noteData.index].cameras = this.cameras;
+		strumGroup.members[noteData.index].draw();
+	}
+
     private function drawNote(noteData:NotePositionData)
-    {
-        if (noteData.alpha <= 0)
-            return;
-        var daNote = notes.members[noteData.index];
-        var thisNotePos = ModchartUtil.calculatePerspective(new Vector3D(noteData.x+(daNote.width/2)+ModchartUtil.getNoteOffsetX(daNote, instance), noteData.y+(daNote.height/2), noteData.z*0.001), 
-        ModchartUtil.defaultFOV*(Math.PI/180), -(daNote.width/2), -(daNote.height/2));
+    {if (noteData.alpha <= 0)
+			return;
+		var changeX:Bool = noteData.z != 0;
+		var daNote = notes.members[noteData.index];
 
-        noteData.x = thisNotePos.x;
-        noteData.y = thisNotePos.y;
-        noteData.scaleX *= (1/-thisNotePos.z);
-        noteData.scaleY *= (1/-thisNotePos.z);
-        //set note position using the position data
-        addDataToNote(noteData, notes.members[noteData.index]); 
-        //make sure it draws on the correct camera
-        notes.members[noteData.index].cameras = this.cameras;
-        //draw it
-        notes.members[noteData.index].draw();
+		var thisNotePos;
+		if (changeX)
+			thisNotePos = ModchartUtil.calculatePerspective(new Vector3D(noteData.x + (daNote.width / 2) + ModchartUtil.getNoteOffsetX(daNote, instance),
+				noteData.y + (daNote.height / 2), noteData.z * 0.001),
+				ModchartUtil.defaultFOV * (Math.PI / 180),
+				-(daNote.width / 2),
+				-(daNote.height / 2));
+		else
+			thisNotePos = new Vector3D(noteData.x, noteData.y, 0);
+
+		noteData.x = thisNotePos.x;
+		noteData.y = thisNotePos.y;
+		if (changeX)
+		{
+			noteData.scaleX *= (1 / -thisNotePos.z);
+			noteData.scaleY *= (1 / -thisNotePos.z);
+		}
+
+		daNote.skew.x = noteData.skewX;
+		daNote.skew.y = noteData.skewY;
+
+		// noteData.skewX = skewX + noteData.skewX;
+		// noteData.skewY = skewY + noteData.skewY;
+		// set note position using the position data
+		addDataToNote(noteData, notes.members[noteData.index]);
+		// make sure it draws on the correct camera
+		// notes.members[noteData.index].cameras = this.cameras;
+		// draw it
+		notes.members[noteData.index].cameras = this.cameras;
+		notes.members[noteData.index].draw();
     }
+
     private function drawSustainNote(noteData:NotePositionData)
     {
         if (noteData.alpha <= 0)
-            return;
-        var daNote = notes.members[noteData.index];
-        if (daNote.mesh == null)
-            daNote.mesh = new SustainStrip(daNote);
+			return;
 
-        daNote.mesh.scrollFactor.x = daNote.scrollFactor.x;
-        daNote.mesh.scrollFactor.y = daNote.scrollFactor.y;
-        daNote.alpha = noteData.alpha;
-        daNote.mesh.alpha = daNote.alpha;
+		var daNote = notes.members[noteData.index];
+		if (daNote.mesh == null)
+			daNote.mesh = new SustainStrip(daNote);
 
-        var songSpeed = getCorrectScrollSpeed();
-        var lane = noteData.lane;
-        
-        //makes the sustain match the center of the parent note when at weird angles
-        var yOffsetThingy = (NoteMovement.arrowSizes[lane]/2);
+		// daNote.scrollFactor.x = daNote.scrollFactor.x;
+		// daNote.scrollFactor.y = daNote.scrollFactor.y;
+		daNote.alpha = noteData.alpha;
+		daNote.mesh.alpha = daNote.alpha;
+
+		var songSpeed = getCorrectScrollSpeed();
+		var lane = noteData.lane;
+
+		// makes the sustain match the center of the parent note when at weird angles
+		var yOffsetThingy = (NoteMovement.arrowSizes[lane] / 2);
 
         var thisNotePos = ModchartUtil.calculatePerspective(new Vector3D(noteData.x+(daNote.width/2)+ModchartUtil.getNoteOffsetX(daNote, instance), noteData.y+(NoteMovement.arrowSizes[noteData.lane]/2), noteData.z*0.001), 
         ModchartUtil.defaultFOV*(Math.PI/180), -(daNote.width/2), yOffsetThingy-(NoteMovement.arrowSizes[noteData.lane]/2));
-        
-        var timeToNextSustain = ModchartUtil.getFakeCrochet()/4;
-        if (noteData.noteDist < 0)
-            timeToNextSustain = -ModchartUtil.getFakeCrochet()/4; //weird shit that fixes upscroll lol
 
-        var nextHalfNotePos = getSustainPoint(noteData, timeToNextSustain*0.5);
-        var nextNotePos = getSustainPoint(noteData, timeToNextSustain);
+		var timeToNextSustain = ModchartUtil.getFakeCrochet() / 4;
+		if (noteData.noteDist < 0)
+			timeToNextSustain *= -1; // weird shit that fixes upscroll lol
+
+        var nextHalfNotePos = ModchartUtil.getDownscroll(instance) ? getSustainPoint(noteData, timeToNextSustain*0.458) : getSustainPoint(noteData, timeToNextSustain*0.548);
+        var nextNotePos = ModchartUtil.getDownscroll(instance) ? getSustainPoint(noteData, timeToNextSustain+2.2) : getSustainPoint(noteData, timeToNextSustain-2.2);
 
         var flipGraphic = false;
 
@@ -395,12 +536,12 @@ class PlayfieldRenderer extends FlxSprite //extending flxsprite just so i can ed
     {
         for (noteData in notePositions)
         {
-            if (noteData.isStrum) //draw strum
-                drawStrum(noteData);
-            else if (!notes.members[noteData.index].isSustainNote) //draw regular note
-                drawNote(noteData);
-            else //draw sustain
-                drawSustainNote(noteData);
+            if (noteData.isStrum) // draw strum
+				drawStrum(noteData);
+			else if (!notes.members[noteData.index].isSustainNote) // draw note
+				drawNote(noteData);
+			else // draw Sustain
+				drawSustainNote(noteData);
 
         }
     }
@@ -451,11 +592,16 @@ class PlayfieldRenderer extends FlxSprite //extending flxsprite just so i can ed
 
     override public function destroy()
     {
-        if (modchart != null)
+        if (!Std.isOfType(instance, states.editors.EditorPlayState))
         {
-            for (customMod in modchart.customModifiers)
+            if (modchart != null)
             {
-                customMod.destroy(); //make sure the interps are dead
+                #if hscript
+                for (customMod in modchart.customModifiers)
+                {
+                    customMod.destroy(); //make sure the interps are dead
+                }
+                #end
             }
         }
         super.destroy();

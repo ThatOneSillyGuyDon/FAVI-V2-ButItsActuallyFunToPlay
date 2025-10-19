@@ -2,19 +2,22 @@ package states;
 
 import lime.app.Promise;
 import lime.app.Future;
-import flixel.graphics.frames.FlxAtlasFrames;
+import flixel.FlxState;
 
 import openfl.utils.Assets;
+import openfl.utils.AssetType as OFAssetType;
+
 import lime.utils.Assets as LimeAssets;
 import lime.utils.AssetLibrary;
 import lime.utils.AssetManifest;
 
+import backend.StageData;
+import backend.BaseStage;
 import haxe.io.Path;
-import flixel.util.FlxTimer;
 
 class LoadingState extends MusicBeatState
 {
-	inline static var MIN_TIME = 1.0;
+	inline static var MIN_TIME = 3.0;
 
 	// Browsers will load create(), you can make your song load a custom directory there
 	// If you're compiling to desktop (or something that doesn't use NO_PRELOAD_ALL), search for getNextState instead
@@ -47,12 +50,24 @@ class LoadingState extends MusicBeatState
 		"Human, i remeber your loading...",
 		"I am loading..."
 	];
-	
+
 	var target:FlxState;
 	var stopMusic = false;
 	var directory:String;
 	var callbacks:MultiCallback;
 	var targetShit:Float = 0;
+
+	var loadingImage:FlxSprite;
+	var iconAnimated:FlxSprite;
+	var loadBar:FlxSprite;
+	var progressText:FlxText;
+	var loadingScreens:Int = 1;
+
+	// Asset loading system
+	private var totalAssets:Int = 0;
+	private var loadedAssets:Int = 0;
+	private var loadingProgress:Float = 0;
+	private var isPreloadingAssets:Bool = false;
 
 	function new(target:FlxState, stopMusic:Bool, directory:String)
 	{
@@ -62,25 +77,44 @@ class LoadingState extends MusicBeatState
 		this.directory = directory;
 	}
 
-	var funkay:FlxSprite;
-	var loadBar:FlxSprite;
-
-	var loadingImage:FlxSprite;
-	var iconAnimated:FlxSprite;
-
 	override function create()
 	{
-
 		lime.app.Application.current.window.title = 'Funkin.avi - ${funi[FlxG.random.int(0, funi.length-1)]}';
 		
-		loadingImage = new FlxSprite(0,0);
-		loadingImage.loadGraphic(Paths.image("Funkin_avi/loadingScreen/loadingScreen"));
+		setupLoadingUI();
+		
+		initSongsManifest().onComplete(function (lib) {
+			callbacks = new MultiCallback(onLoad);
+			var introComplete = callbacks.add("introComplete");
+			
+			if (PlayState.SONG != null) {
+				checkLoadSong(getSongPath());
+				if (PlayState.SONG.needsVoices)
+					checkLoadSong(getVocalPath());
+			}
+			
+			if(directory != null && directory.length > 0 && directory != 'shared') {
+				checkLibrary('week_assets');
+			}
+
+			var fadeTime = 0.5;
+			FlxG.camera.fade(FlxG.camera.bgColor, fadeTime, true);
+			new FlxTimer().start(fadeTime + MIN_TIME, function(_) introComplete());
+		});
+		callbacks = new MultiCallback(onLoad, "LoadingCallbacks");
+	}
+
+	var textThing:FlxText;
+	private function setupLoadingUI():Void
+	{
+		loadingImage = new FlxSprite(0, 0);
+		loadingImage.loadGraphic(Paths.image('Funkin_avi/loadingScreen/loadingScreen${loadingScreens}'));
 		loadingImage.screenCenter();
-		loadingImage.antialiasing = ClientPrefs.globalAntialiasing;
+		loadingImage.antialiasing = ClientPrefs.data.antialiasing;
 		add(loadingImage);
 
-		iconAnimated = new FlxSprite(0,0);
-		iconAnimated.antialiasing = ClientPrefs.globalAntialiasing;
+		iconAnimated = new FlxSprite(0, 0);
+		iconAnimated.antialiasing = ClientPrefs.data.antialiasing;
 		iconAnimated.scrollFactor.set(0, 0);
 		iconAnimated.scale.set(0.2, 0.2);
 		iconAnimated.x += 880;
@@ -89,44 +123,29 @@ class LoadingState extends MusicBeatState
 		iconAnimated.animation.addByPrefix('loadBitch', "loadingicon", 16, true);
 		iconAnimated.animation.play('loadBitch');
 		add(iconAnimated);
-		
-		initSongsManifest().onComplete
-		(
-			function (lib)
-			{
-				callbacks = new MultiCallback(onLoad);
-				var introComplete = callbacks.add("introComplete");
-				/*if (PlayState.SONG != null) {
-					checkLoadSong(getSongPath());
-					if (PlayState.SONG.needsVoices)
-						checkLoadSong(getVocalPath());
-				}*/
-				checkLibrary("shared");
-				if(directory != null && directory.length > 0 && directory != 'shared') {
-					checkLibrary(directory);
-				}
-
-				var fadeTime = 0.5;
-				FlxG.camera.fade(FlxG.camera.bgColor, fadeTime, true);
-				new FlxTimer().start(fadeTime + MIN_TIME, function(_) introComplete());
-			}
-		);
 	}
 	
 	function checkLoadSong(path:String)
 	{
-		if (!Assets.cache.hasSound(path))
-		{
-			var library = Assets.getLibrary("songs");
-			final symbolPath = path.split(":").pop();
-			// @:privateAccess
-			// library.types.set(symbolPath, SOUND);
-			// @:privateAccess
-			// library.pathGroups.set(symbolPath, [library.__cacheBreak(symbolPath)]);
-			var callback = callbacks.add("song:" + path);
-			Assets.loadSound(path).onComplete(function (_) { callback(); });
+		if (Assets.cache.hasSound(path)) return;
+
+		var callback = callbacks.add("song:" + path);
+
+		// if the asset id is wrong, don't hang the loader
+		if (!Assets.exists(path, OFAssetType.SOUND)) {
+			trace('Sound does not exist: ' + path);
+			callback();
+			return;
 		}
+
+		Assets.loadSound(path)
+			.onComplete(function(_) { callback(); })
+			.onError(function(err) {
+				trace('Failed to load sound: ' + path + ' -> ' + err);
+				callback(); // important: always fire
+			});
 	}
+
 	
 	function checkLibrary(library:String) {
 		trace(Assets.hasLibrary(library));
@@ -134,7 +153,7 @@ class LoadingState extends MusicBeatState
 		{
 			@:privateAccess
 			if (!LimeAssets.libraryPaths.exists(library))
-				throw "Missing library: " + library;
+				throw new haxe.Exception("Missing library: " + library);
 
 			var callback = callbacks.add("library:" + library);
 			Assets.loadLibrary(library).onComplete(function (_) { callback(); });
@@ -150,6 +169,9 @@ class LoadingState extends MusicBeatState
 	{
 		if (stopMusic && FlxG.sound.music != null)
 			FlxG.sound.music.stop();
+		
+		// Log cache statistics
+		trace("Loading complete! Cache stats:", Paths.getCacheStats());
 		
 		MusicBeatState.switchState(target);
 	}
@@ -174,27 +196,26 @@ class LoadingState extends MusicBeatState
 		var directory:String = 'shared';
 		var weekDir:String = StageData.forceNextDirectory;
 		StageData.forceNextDirectory = null;
-
-		if(weekDir != null && weekDir.length > 0 && weekDir != '') directory = weekDir;
+		if (weekDir != null && weekDir.length > 0) directory = weekDir;
 
 		Paths.setCurrentLevel(directory);
 		trace('Setting asset folder to ' + directory);
 
-		var loaded:Bool = false;
+		var loaded = false;
 		if (PlayState.SONG != null) {
-			loaded = isSoundLoaded(getSongPath()) && (!PlayState.SONG.needsVoices || isSoundLoaded(getVocalPath())) && isLibraryLoaded("shared") && isLibraryLoaded(directory);
+			loaded = isSoundLoaded(getSongPath())
+				&& (!PlayState.SONG.needsVoices || isSoundLoaded(getVocalPath()));
+			if (directory != 'shared') loaded = loaded && isLibraryLoaded('week_assets');
 		}
-		
-		if (!loaded)
-			return new LoadingState(target, stopMusic, directory);
-		if (stopMusic && FlxG.sound.music != null)
-			FlxG.sound.music.stop();
 
+		if (!loaded) return new LoadingState(target, stopMusic, directory);
+		if (stopMusic && FlxG.sound.music != null) FlxG.sound.music.stop();
 		return target;
 	}
-
+	
 	static function isSoundLoaded(path:String):Bool
 	{
+		trace(path);
 		return Assets.cache.hasSound(path);
 	}
 	

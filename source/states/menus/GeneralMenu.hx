@@ -1,11 +1,7 @@
 package states.menus;
 
-import lime.ui.MouseCursor;
-import openfl.ui.Mouse;
-import openfl.events.MouseEvent;
 import lime.app.Application;
 import flash.system.System;
-import flixel.input.mouse.FlxMouseEvent;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.effects.FlxFlicker;
 import flixel.graphics.frames.FlxAtlasFrames;
@@ -47,10 +43,9 @@ class GeneralMenu extends MusicBeatState {
 	];
 
     private static var curSelected:Int = 0;
-    private static var allowInputs:Bool;
-    private var mouseOnButtons:Bool = false;
-
-    override function create() {
+    
+    override function create() 
+    {
 
         camMain = new FlxCamera();
         FlxG.cameras.reset(camMain);
@@ -63,10 +58,7 @@ class GeneralMenu extends MusicBeatState {
 
 		Application.current.window.title = "Funkin.avi - Freeplay: Category Menu";
 
-        if (!FlxG.mouse.visible)
-			FlxG.mouse.visible = true;
-
-		AppIcon.changeIcon("newIcon");
+        AppIcon.changeIcon("newIcon");
 		
 		defaultShader2 = new FlxRuntimeShader(Shaders.monitorFilter, null, 140);
 		FlxG.camera.setFilters(
@@ -84,7 +76,7 @@ class GeneralMenu extends MusicBeatState {
         backdrop.setGraphicSize(Std.int(backdrop.width * 0.6));
 		add(backdrop);
 
-        if (!ClientPrefs.lowQuality)
+        if (!ClientPrefs.data.lowQuality)
         {
             var greyParticles:FlxEmitter = new FlxEmitter(-2080.5, 650.4);
 			greyParticles.launchMode = SQUARE;
@@ -111,27 +103,15 @@ class GeneralMenu extends MusicBeatState {
         itemGroup = new FlxTypedGroup<FlxSprite>();
         add(itemGroup);
 
-        for (i in 0...item.length) {
-            var itemSprite = new FlxSprite();
-            itemSprite.loadGraphic(Paths.image('Funkin_avi/category/item/' + item[i] + '0'));
-            itemGroup.add(itemSprite);
+        for (i in 0...3) {
+            var itemSprite = new FlxSprite(426*i, 0);
+            itemSprite.antialiasing = ClientPrefs.data.antialiasing;
+            itemSprite.loadGraphic(Paths.image('Funkin_avi/category/item/itemsSheet-IDLE'), true, 426, 720);
+            itemSprite.updateHitbox();
+            itemSprite.animation.add('anim', [i], 24, true);
+			itemSprite.animation.play('anim', true);
             itemSprite.ID = i;
-            switch (itemSprite.ID)
-            {
-                case 0:
-                    itemSprite.scale.set(0.9, 0.9);
-                    itemSprite.x -= 80;
-                case 1:
-                    itemSprite.scale.set(0.92, 0.92);
-                    itemSprite.x += 20;
-                case 2:
-                    itemSprite.scale.set(0.71, 0.71);
-                    itemSprite.x += 70;
-                    itemSprite.y -= 50;
-            }
-            #if desktop
-            FlxMouseEvent.add(itemSprite, onClick, null, mouseHandlerOver, mouseHandlerOut, true, true, true);
-            #end
+            itemGroup.add(itemSprite);
         }
 
         bottom = new FlxSprite(0, 0).loadGraphic(Paths.image('Funkin_avi/category/bottom'));
@@ -166,81 +146,69 @@ class GeneralMenu extends MusicBeatState {
         add(frame);
         FlxTween.tween(frame, {alpha: 0.25}, 3, {ease: FlxEase.quartInOut, type: 4});
 
-        if(!ClientPrefs.lowQuality)
-			{
-				var scratchStuff:FlxSprite = new FlxSprite();
-				scratchStuff.frames = Paths.getSparrowAtlas('Funkin_avi/filters/scratchShit');
-				scratchStuff.animation.addByPrefix('idle', 'scratch thing 1', 24, true);
-				scratchStuff.animation.play('idle');
-				scratchStuff.screenCenter();
-				scratchStuff.scale.x = 1.1;
-				scratchStuff.scale.y = 1.1;
-				add(scratchStuff);
-	
-				var grain:FlxSprite = new FlxSprite();
-				grain.frames = Paths.getSparrowAtlas('Funkin_avi/filters/Grainshit');
-				grain.animation.addByPrefix('idle', 'grains 1', 24, true);
-				grain.animation.play('idle');
-				grain.screenCenter();
-				grain.scale.x = 1.1;
-				grain.scale.y = 1.1;
-				add(grain);
-            }
+        if(!ClientPrefs.data.lowQuality)
+        {
+            var scratchStuff:FlxSprite = new FlxSprite();
+            scratchStuff.frames = Paths.getSparrowAtlas('Funkin_avi/filters/scratchShit');
+            scratchStuff.animation.addByPrefix('idle', 'scratch thing 1', 24, true);
+            scratchStuff.animation.play('idle');
+            scratchStuff.screenCenter();
+            scratchStuff.scale.x = 1.1;
+            scratchStuff.scale.y = 1.1;
+            add(scratchStuff);
+
+            var grain:FlxSprite = new FlxSprite();
+            grain.frames = Paths.getSparrowAtlas('Funkin_avi/filters/Grainshit');
+            grain.animation.addByPrefix('idle', 'grains 1', 24, true);
+            grain.animation.play('idle');
+            grain.screenCenter();
+            grain.scale.x = 1.1;
+            grain.scale.y = 1.1;
+            add(grain);
+        }
 
         super.create();
         updateSelection();
+
         FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+
+		if (!FlxG.mouse.visible)
+			FlxG.mouse.visible = true;
     }
 
     override function update(elapsed:Float) {
-        if (controls.UI_LEFT_P) {
-            allowInputs = true;
-            mouseOnButtons = false;
-            changeItem(-1);
+        super.update(elapsed);
+
+        if (FlxG.mouse.overlaps(itemGroup))
+        {
+            itemGroup.forEachAlive(function(item:FlxSprite) {
+                if (curSelected != item.ID && FlxG.mouse.overlaps(item))
+                {
+                    curSelected = item.ID;
+                    updateSelection();
+                }
+                if (FlxG.mouse.overlaps(item) && curSelected == item.ID && FlxG.mouse.justPressed)
+                {
+                    selectItem(curSelected);
+                }
+            });
         }
-        if (controls.UI_RIGHT_P) {
-            allowInputs = true;
-            mouseOnButtons = false;
-            changeItem(1);
-        }
+        
 		if (controls.BACK) {
             Conductor.bpm = 50;
 			FreeplayState.songInstPlaying = false;
 			FlxG.sound.play(Paths.sound("cancelMenu"));
-			MusicBeatState.switchState(new MainMenuState());
-			FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
-		}
-        if (controls.ACCEPT) {
-            selectItem(curSelected);
-        }
-
-        checkMousePosition();
-        super.update(elapsed);
-    }
-
-    function checkMousePosition():Void {
-        if (FlxG.mouse.justMoved) {
-            for (i in 0...itemGroup.members.length) {
-                var spr:FlxSprite = itemGroup.members[i];
-                if (i == curSelected && !FlxG.mouse.overlaps(spr) || !mouseOnButtons) {
-                    spr.loadGraphic(Paths.image('Funkin_avi/category/item/' + item[i] + '0'));
-                }
+            if (FlxG.random.bool(8) && GameData.episode1FPLock == "unlocked")
+			{
+				FlxG.sound.music.fadeOut(0.5);
+				MusicBeatState.switchState(new states.menus.legacy.LegacyMenuState());
+			}
+			else
+            {
+				MusicBeatState.switchState(new MainMenuState());
+			    FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
             }
-        }
-    }
-
-    function mouseHandlerOver(object:FlxSprite) {
-        mouseOnButtons = true;
-        curSelected = object.ID;
-        updateSelection();
-    }
-
-    function mouseHandlerOut(object:FlxSprite) {
-        mouseOnButtons = false;
-    }
-
-    function onClick(object:FlxSprite) {
-        selectItem(object.ID);
+		}
     }
 
     function selectItem(id:Int) {
@@ -249,17 +217,13 @@ class GeneralMenu extends MusicBeatState {
 		MusicBeatState.switchState(new FreeplayState());
     }
 
-    function changeItem(change:Int = 0) {
-        if (change != 0) {
-            curSelected = flixel.math.FlxMath.wrap(curSelected + change, 0, item.length - 1);
-        }
-        updateSelection();
-    }
-
     function updateSelection() {
         for (i in 0...item.length) {
             var spr:FlxSprite = itemGroup.members[i];
-            spr.loadGraphic(Paths.image('Funkin_avi/category/item/' + item[i] + (i == curSelected ? '1' : '0')));
+            spr.loadGraphic(Paths.image('Funkin_avi/category/item/itemsSheet-' + (i == curSelected ? 'SELECT' : 'IDLE')), true, 426, 720);
+            spr.updateHitbox();
+            spr.animation.add('anim', [i], 24, true);
+			spr.animation.play('anim', true);
         }
         FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
         catDesc.resetText(catDescInfo[curSelected][1]);
@@ -267,5 +231,4 @@ class GeneralMenu extends MusicBeatState {
         catTitle.resetText(catDescInfo[curSelected][0]);
         catTitle.start(0.017, true);
     }
-
 }

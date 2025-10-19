@@ -194,7 +194,7 @@ class FlxRuntimeShader extends FlxShader
 	 */
 	public function new(fragmentSource:String = null, vertexSource:String = null, glslVersion:Int = 120):Void
 	{
-		if (!ClientPrefs.shaders)
+		if (!ClientPrefs.data.shaders)
 			return;
 
 		_glslVersion = glslVersion;

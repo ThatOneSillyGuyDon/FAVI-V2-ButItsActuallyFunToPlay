@@ -1,0 +1,21 @@
+- Improved Performance on Main Menu
+- Tweaked some visuals in menu
+- Menu buttons now behave differently
+- Hitbox collisions have been adjusted drastically for the book
+- adjusted the button positions (story mode, freeplay, credits & options)
+- You can now access Changelogs here (if that wasn't obvious)
+- Reset Data button has been added
+- Added Shadows (WIP) in Twisted Grins
+- Don't Cross! is a lot more gimmicky now
+- New Lunacy Avier sprites
+- Found the missing "Reload JSON" button on the Chart Editor and restored it
+- Adjusted how the game draws sprites on-screen now
+- Overhauled visuals for the Botplay screen
+- Pressing SPACE on the freeplay menu now opens a music player UI similar to one from base Psych
+- Botplay toggle indicator now appears on legacy freeplay menu
+- There is now a custom UI for when viewing the Reset Score screen on freeplay
+- Scrapped v1 added (placeholder)
+
+Okay that's it!
+Press ESCAPE to close this menu.
+Have fun!

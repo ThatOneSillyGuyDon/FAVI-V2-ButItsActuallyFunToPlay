@@ -32,5 +32,40 @@ class CppAPI
     {
         lime.app.Application.current.window.setIcon(lime.graphics.Image.fromFile('${Paths.image('appIcons/$file')}'));
     }
+
+	public static function setWindowOppacity(a:Float)
+	{
+		WindowsData.setWindowAlpha(a);
+	}
+
+	public static function _setWindowLayered()
+	{
+		WindowsData._setWindowLayered();
+	}
+
+	public static function hideTaskbar()
+	{
+		WindowsData.hideTaskbar();
+	}
+	
+	public static function restoreTaskbar()
+	{
+		WindowsData.restoreTaskbar();
+	}
+	
+	public static function hideWindows()
+	{
+		WindowsData.hideWindows();
+	}
+	
+	public static function restoreWindows()
+	{
+		WindowsData.restoreWindows();
+	}
+
+	public static function shakeWindows(s:Int, n:Int)
+	{
+		WindowsData.shakeWindows(s, n);
+	}
 	#end
 }

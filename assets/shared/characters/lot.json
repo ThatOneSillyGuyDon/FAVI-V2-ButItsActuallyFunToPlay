@@ -1,0 +1,80 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				118,
+				-92
+			],
+			"loop": false,
+			"fps": 1,
+			"anim": "idle",
+			"indices": [],
+			"name": "lot Idle"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				112,
+				-86
+			],
+			"anim": "singUP",
+			"fps": 10,
+			"name": "lot up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				119,
+				-91
+			],
+			"anim": "singDOWN",
+			"fps": 10,
+			"name": "lot down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				120,
+				-90
+			],
+			"anim": "singLEFT",
+			"fps": 10,
+			"name": "lot left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				96,
+				-97
+			],
+			"anim": "singRIGHT",
+			"fps": 10,
+			"name": "lot right",
+			"indices": []
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/lot",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "lot1",
+	"flip_x": false,
+	"healthbar_colors": [
+		175,
+		102,
+		206
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"sing_duration": 6.1,
+	"scale": 1.1,
+	"_editor_isPlayer": false
+}

@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="lunamick-new.png">
+<SubTexture name="Mickey2 Idle0000" x="0" y="3397" width="746" height="1057" frameX="-466" frameY="-330" frameWidth="1650" frameHeight="1440" />
+<SubTexture name="Mickey2 Idle0001" x="746" y="3397" width="747" height="1045" frameX="-474" frameY="-341" frameWidth="1650" frameHeight="1440" />
+<SubTexture name="Mickey2 Idle0002" x="3026" y="1098" width="734" height="1055" frameX="-487" frameY="-334" frameWidth="1650" frameHeight="1440" />
+<SubTexture name="Mickey2 Idle0003" x="3766" y="2168" width="742" height="1072" frameX="-479" frameY="-318" frameWidth="1650" frameHeight="1440" />
+<SubTexture name="Mickey2 Idle0004" x="3766" y="0" width="747" height="1085" frameX="-470" frameY="-305" frameWidth="1650" frameHeight="1440" />
+<SubTexture name="Mickey2 Idle0005" x="3026" y="0" width="740" height="1098" frameX="-472" frameY="-293" frameWidth="1650" frameHeight="1440" />
+<SubTexture name="Mickey2 Idle0006" x="1547" y="1158" width="790" height="1102" frameX="-421" frameY="-289" frameWidth="1650" frameHeight="1440" />
+<SubTexture name="Mickey2 Idle0007" x="754" y="1158" width="793" height="1105" frameX="-418" frameY="-286" frameWidth="1650" frameHeight="1440" />
+<SubTexture name="Mickey2 Up0000" x="0" y="1158" width="754" height="1141" frameX="-437" frameY="-250" frameWidth="1650" frameHeight="1440" />
+<SubTexture name="Mickey2 Up0001" x="1494" y="0" width="758" height="1148" frameX="-436" frameY="-245" frameWidth="1650" frameHeight="1440" />
+<SubTexture name="Mickey2 Up0002" x="0" y="0" width="737" height="1158" frameX="-454" frameY="-236" frameWidth="1650" frameHeight="1440" />
+<SubTexture name="Mickey2 Up0003" x="737" y="0" width="757" height="1150" frameX="-436" frameY="-242" frameWidth="1650" frameHeight="1440" />
+<SubTexture name="Mickey2 Up0004" x="2252" y="0" width="774" height="1147" frameX="-420" frameY="-245" frameWidth="1650" frameHeight="1440" />
+<SubTexture name="Mickey2 Down0000" x="1493" y="3397" width="743" height="1028" frameX="-518" frameY="-363" frameWidth="1650" frameHeight="1440" />
+<SubTexture name="Mickey2 Down0001" x="4513" y="3067" width="734" height="1016" frameX="-517" frameY="-374" frameWidth="1650" frameHeight="1440" />
+<SubTexture name="Mickey2 Down0002" x="1976" y="4454" width="746" height="1005" frameX="-502" frameY="-384" frameWidth="1650" frameHeight="1440" />
+<SubTexture name="Mickey2 Down0003" x="1220" y="4454" width="756" height="1006" frameX="-500" frameY="-383" frameWidth="1650" frameHeight="1440" />
+<SubTexture name="Mickey2 Down0004" x="3454" y="3397" width="768" height="1009" frameX="-489" frameY="-380" frameWidth="1650" frameHeight="1440" />
+<SubTexture name="Mickey2 Left0000" x="3766" y="1085" width="697" height="1083" frameX="-390" frameY="-291" frameWidth="1650" frameHeight="1440" />
+<SubTexture name="Mickey2 Left0001" x="0" y="2299" width="742" height="1098" frameX="-350" frameY="-276" frameWidth="1650" frameHeight="1440" />
+<SubTexture name="Mickey2 Left0002" x="742" y="2299" width="815" height="1097" frameX="-345" frameY="-277" frameWidth="1650" frameHeight="1440" />
+<SubTexture name="Mickey2 Left0003" x="1557" y="2299" width="811" height="1088" frameX="-360" frameY="-286" frameWidth="1650" frameHeight="1440" />
+<SubTexture name="Mickey2 Left0004" x="2368" y="2299" width="794" height="1086" frameX="-361" frameY="-288" frameWidth="1650" frameHeight="1440" />
+<SubTexture name="Mickey2 Right0000" x="4513" y="0" width="1162" height="1024" frameX="-418" frameY="-384" frameWidth="1650" frameHeight="1440" />
+<SubTexture name="Mickey2 Right0001" x="2236" y="3397" width="1218" height="1025" frameX="-412" frameY="-383" frameWidth="1650" frameHeight="1440" />
+<SubTexture name="Mickey2 Right0002" x="0" y="4454" width="1220" height="1022" frameX="-422" frameY="-386" frameWidth="1650" frameHeight="1440" />
+<SubTexture name="Mickey2 Right0003" x="4513" y="2046" width="1158" height="1021" frameX="-472" frameY="-387" frameWidth="1650" frameHeight="1440" />
+<SubTexture name="Mickey2 Right0004" x="4513" y="1024" width="1151" height="1022" frameX="-475" frameY="-386" frameWidth="1650" frameHeight="1440" />
+</TextureAtlas>

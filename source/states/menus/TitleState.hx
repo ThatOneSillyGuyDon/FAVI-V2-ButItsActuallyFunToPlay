@@ -197,7 +197,7 @@ class TitleState extends MusicBeatState
 		AppIcon.changeIcon("newIcon");
 
 		defaultShader2 = new FlxRuntimeShader(Shaders.monitorFilter, null, 140);
-		if(ClientPrefs.shaders)
+		if(ClientPrefs.data.shaders)
 			{
 				FlxG.camera.setFilters(
 					[
@@ -236,48 +236,48 @@ class TitleState extends MusicBeatState
 		var bg:FlxSprite = new FlxSprite();
 		bg.loadGraphic(Paths.image('$path/titleSky'), false);
 		bg.screenCenter();
-		bg.antialiasing = ClientPrefs.globalAntialiasing;
+		bg.antialiasing = ClientPrefs.data.antialiasing;
 		add(bg);
 
 		var buildings1:FlxBackdrop = new FlxBackdrop(Paths.image('$path/buildings2'), X, 0, 0);
 		buildings1.screenCenter();
 		buildings1.velocity.set(-250, 0);
-		buildings1.antialiasing = ClientPrefs.globalAntialiasing;
+		buildings1.antialiasing = ClientPrefs.data.antialiasing;
 		add(buildings1);
 
-		if (!ClientPrefs.lowQuality)
+		if (!ClientPrefs.data.lowQuality)
 		{
 			var blackShit1:FlxBackdrop = new FlxBackdrop(Paths.image('$path/blackShit2'), X, 0, 0);
 			blackShit1.screenCenter();
 			blackShit1.alpha = 0.47;
 			blackShit1.velocity.set(-300, 0);
-			blackShit1.antialiasing = ClientPrefs.globalAntialiasing;
+			blackShit1.antialiasing = ClientPrefs.data.antialiasing;
 			add(blackShit1);
 
 			var dark:FlxSprite = new FlxSprite().loadGraphic(Paths.image('$path/buildingDark'));
 			dark.screenCenter();
-			dark.antialiasing = ClientPrefs.globalAntialiasing;
+			dark.antialiasing = ClientPrefs.data.antialiasing;
 			add(dark);
 		}
 
 		var buildings2:FlxBackdrop = new FlxBackdrop(Paths.image('$path/buildings1'), X, 0, 0);
 		buildings2.screenCenter();
 		buildings2.velocity.set(-350, 0);
-		buildings2.antialiasing = ClientPrefs.globalAntialiasing;
+		buildings2.antialiasing = ClientPrefs.data.antialiasing;
 		add(buildings2);
 
-		if (!ClientPrefs.lowQuality)
+		if (!ClientPrefs.data.lowQuality)
 		{
 			var blackShit2:FlxBackdrop = new FlxBackdrop(Paths.image('$path/blackShit1'), X, 0, 0);
 			blackShit2.screenCenter();
 			blackShit2.velocity.set(-400, 0);
-			blackShit2.antialiasing = ClientPrefs.globalAntialiasing;
+			blackShit2.antialiasing = ClientPrefs.data.antialiasing;
 			add(blackShit2);
 		}
 
 		logoBl = new FlxSprite(150, 0);
 		logoBl.loadGraphic(Paths.image(('$path/titleLogo')));
-		logoBl.antialiasing = ClientPrefs.globalAntialiasing;
+		logoBl.antialiasing = ClientPrefs.data.antialiasing;
 		logoBl.updateHitbox();
 		logoBl.setGraphicSize(Std.int(logoBl.width * 0.85));
 		logoBl.screenCenter();
@@ -285,13 +285,13 @@ class TitleState extends MusicBeatState
 
 		var vignette:FlxSprite = new FlxSprite().loadGraphic(Paths.image('$path/titleVignette'));
 		vignette.screenCenter();
-		vignette.antialiasing = ClientPrefs.globalAntialiasing;
+		vignette.antialiasing = ClientPrefs.data.antialiasing;
 		add(vignette);
 
 		titleText = new FlxText(24, 600, 1200, "Click Anywhere Or Press Enter to Start", 96);
 		titleText.setFormat(Paths.font('MagicOwlFont.otf'), 60, FlxColor.fromRGB(255, 255, 255), CENTER, OUTLINE, FlxColor.BLACK);
 		titleText.borderSize = 1.5;
-		titleText.antialiasing = ClientPrefs.globalAntialiasing;
+		titleText.antialiasing = ClientPrefs.data.antialiasing;
 		add(titleText);
 
 		credGroup = new FlxGroup();
@@ -322,7 +322,7 @@ class TitleState extends MusicBeatState
 		whiteFade.alpha = 0;
 		add(whiteFade);
 
-		if(!ClientPrefs.lowQuality) {
+		if(!ClientPrefs.data.lowQuality) {
 			var scratchStuff:FlxSprite = new FlxSprite();
 			scratchStuff.frames = Paths.getSparrowAtlas('Funkin_avi/filters/scratchShit');
 			scratchStuff.animation.addByPrefix('idle', 'scratch thing 1', 24, true);
@@ -395,6 +395,7 @@ class TitleState extends MusicBeatState
 				{
 					Main.debug = true;
 					FlxG.sound.play(Paths.sound("funkinAVI/easterEggSound"));
+					trace("Debug Initiated!");
 				}
 			}
 			else if (FlxG.keys.firstJustPressed() != FlxKey.NONE)
@@ -443,7 +444,13 @@ class TitleState extends MusicBeatState
 
 				new FlxTimer().start(1.3, function(tmr:FlxTimer){
 					closedState = true;
-					MusicBeatState.switchState(new MainMenuState());
+					if (FlxG.random.bool(8) && GameData.episode1FPLock == "unlocked")
+					{
+						FlxG.sound.music.fadeOut(0.5);
+						MusicBeatState.switchState(new states.menus.legacy.LegacyMenuState());
+					}
+					else
+						MusicBeatState.switchState(new MainMenuState());
 				});
 			}
 		}
@@ -535,7 +542,7 @@ class TitleState extends MusicBeatState
 				case 13:
 					addMoreText('Funkin.avi');
 				case 14:
-					addMoreText('2.0');
+					addMoreText('2.5');
 				case 15:
 					if(!isTweenCancelled)
 					fadeTween = FlxTween.tween(whiteFade, {alpha: 1}, 2, {ease: FlxEase.quartInOut});
@@ -652,7 +659,7 @@ class TitleState extends MusicBeatState
 					}
 				else if(Application.current.window.title.contains('Funkin.avi - Fuck you *inverts your game*'))
 				{
-					if (ClientPrefs.shaders)
+					if (ClientPrefs.data.shaders)
 					{
 						final invert = new FlxRuntimeShader("#pragma header
 						uniform float binaryIntensity;

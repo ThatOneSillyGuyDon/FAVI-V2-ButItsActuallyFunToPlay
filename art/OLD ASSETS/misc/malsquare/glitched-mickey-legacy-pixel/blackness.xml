@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="blackness.png">
+	<!-- Created with Adobe Animate version 21.0.0.35450 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="BlackDown0000" x="2242" y="486" width="321" height="159" frameX="-90" frameY="0" frameWidth="321" frameHeight="535"/>
+	<SubTexture name="BlackDown0001" x="0" y="0" width="459" height="58" frameX="-17" frameY="-100" frameWidth="493" frameHeight="159"/>
+	<SubTexture name="BlackDown0002" x="0" y="0" width="459" height="58" frameX="-17" frameY="-100" frameWidth="493" frameHeight="159"/>
+	<SubTexture name="BlackDown0003" x="459" y="0" width="493" height="44" frameX="0" frameY="-114" frameWidth="493" frameHeight="159"/>
+	<SubTexture name="BlackDown0004" x="459" y="0" width="493" height="44" frameX="0" frameY="-114" frameWidth="493" frameHeight="159"/>
+	<SubTexture name="BlackDown0005" x="459" y="0" width="493" height="44" frameX="0" frameY="-114" frameWidth="493" frameHeight="159"/>
+	<SubTexture name="BlackDown0006" x="459" y="0" width="493" height="44" frameX="0" frameY="-114" frameWidth="493" frameHeight="159"/>
+	<SubTexture name="BlackLeft0000" x="952" y="0" width="240" height="323" frameX="-557" frameY="-163" frameWidth="797" frameHeight="490"/>
+	<SubTexture name="BlackLeft0001" x="1192" y="0" width="114" height="412" frameX="-556" frameY="-74" frameWidth="797" frameHeight="490"/>
+	<SubTexture name="BlackLeft0002" x="1306" y="0" width="36" height="486" frameX="-556" frameY="0" frameWidth="797" frameHeight="490"/>
+	<SubTexture name="BlackLeft0003" x="1342" y="0" width="56" height="474" frameX="-536" frameY="-12" frameWidth="797" frameHeight="490"/>
+	<SubTexture name="BlackLeft0004" x="1398" y="0" width="400" height="445" frameX="-186" frameY="-38" frameWidth="797" frameHeight="490"/>
+	<SubTexture name="BlackLeft0005" x="1798" y="0" width="466" height="455" frameX="-121" frameY="-35" frameWidth="797" frameHeight="490"/>
+	<SubTexture name="BlackLeft0006" x="2264" y="0" width="597" height="57" frameX="-39" frameY="-430" frameWidth="797" frameHeight="490"/>
+	<SubTexture name="BlackLeft0007" x="2861" y="0" width="637" height="77" frameX="-18" frameY="-410" frameWidth="797" frameHeight="490"/>
+	<SubTexture name="BlackLeft0008" x="0" y="486" width="666" height="82" frameX="-6" frameY="-405" frameWidth="797" frameHeight="490"/>
+	<SubTexture name="BlackLeft0009" x="666" y="486" width="684" height="86" frameX="0" frameY="-401" frameWidth="797" frameHeight="490"/>
+	<SubTexture name="BlackLeft0010" x="1350" y="486" width="545" height="32" frameX="-53" frameY="-455" frameWidth="797" frameHeight="490"/>
+	<SubTexture name="Blackness0000" x="1895" y="486" width="347" height="332"/>
+	<SubTexture name="Blackup0000" x="2242" y="486" width="321" height="159" frameX="0" frameY="-375" frameWidth="321" frameHeight="535"/>
+	<SubTexture name="Blackup0001" x="2563" y="486" width="136" height="358" frameX="-88" frameY="-177" frameWidth="321" frameHeight="535"/>
+	<SubTexture name="Blackup0002" x="2699" y="486" width="160" height="535" frameX="-72" frameY="0" frameWidth="321" frameHeight="535"/>
+	<SubTexture name="Blackup0003" x="2699" y="486" width="160" height="535" frameX="-72" frameY="0" frameWidth="321" frameHeight="535"/>
+	<SubTexture name="Blackup0004" x="2859" y="486" width="175" height="527" frameX="-63" frameY="-8" frameWidth="321" frameHeight="535"/>
+	<SubTexture name="Blackup0005" x="2859" y="486" width="175" height="527" frameX="-63" frameY="-8" frameWidth="321" frameHeight="535"/>
+	<SubTexture name="RightBlack0000" x="3034" y="486" width="402" height="259" frameX="-4" frameY="-106" frameWidth="608" frameHeight="366"/>
+	<SubTexture name="RightBlack0001" x="3436" y="486" width="443" height="365" frameX="-13" frameY="0" frameWidth="608" frameHeight="366"/>
+	<SubTexture name="RightBlack0002" x="0" y="1021" width="607" height="359" frameX="-1" frameY="-7" frameWidth="608" frameHeight="366"/>
+	<SubTexture name="RightBlack0003" x="607" y="1021" width="590" height="296" frameX="0" frameY="-70" frameWidth="608" frameHeight="366"/>
+	<SubTexture name="RightBlack0004" x="1197" y="1021" width="562" height="205" frameX="-9" frameY="-161" frameWidth="608" frameHeight="366"/>
+	<SubTexture name="RightBlack0005" x="1759" y="1021" width="547" height="200" frameX="-6" frameY="-165" frameWidth="608" frameHeight="366"/>
+	<SubTexture name="RightBlack0006" x="1759" y="1021" width="547" height="200" frameX="-6" frameY="-165" frameWidth="608" frameHeight="366"/>
+</TextureAtlas>

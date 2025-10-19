@@ -89,15 +89,15 @@ class StoryMenu extends MusicBeatState
 		// I have a present simple for you
 
 		booksimage = new FlxSprite();
-		booksimage.antialiasing = ClientPrefs.globalAntialiasing;
+		booksimage.antialiasing = ClientPrefs.data.antialiasing;
 		add(booksimage); // Istg, i need to learn some day about the arrays ugh
 
 		weekIcon = new FlxSprite();
-		weekIcon.antialiasing = ClientPrefs.globalAntialiasing;
+		weekIcon.antialiasing = ClientPrefs.data.antialiasing;
 		add(weekIcon);
 
 		list = new FlxSprite();
-		list.antialiasing = ClientPrefs.globalAntialiasing;
+		list.antialiasing = ClientPrefs.data.antialiasing;
 		add(list);
 
 
@@ -123,17 +123,17 @@ class StoryMenu extends MusicBeatState
 
 		difficultySelectors = new FlxGroup();
 
-		CoolUtil.difficulties = CoolUtil.defaultDifficulties.copy();
+		Difficulty.difficulties = Difficulty.defaultList.copy();
 		if(lastDifficulty == '')
 		{
-			lastDifficulty = CoolUtil.defaultDifficulty;
+			lastDifficulty = Difficulty.defaultDifficulty;
 		}
-		curDifficulty = Math.round(Math.max(0, CoolUtil.defaultDifficulties.indexOf(lastDifficulty)));
+		curDifficulty = Math.round(Math.max(0, Difficulty.defaultList.indexOf(lastDifficulty)));
 
 		//add(yellowBG);
 		add(grpWeekCharacters);
 
-		if(!ClientPrefs.lowQuality) 
+		if(!ClientPrefs.data.lowQuality) 
 		{
 			var fogShit:FlxSprite = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/storymenu/supa_dark_mode'));
 			fogShit.screenCenter();
@@ -261,7 +261,13 @@ class StoryMenu extends MusicBeatState
 		{
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 			movedBack = true;
-			MusicBeatState.switchState(new MainMenuState());
+			if (FlxG.random.bool(8) && GameData.episode1FPLock == "unlocked")
+			{
+				FlxG.sound.music.fadeOut(0.5);
+				MusicBeatState.switchState(new states.menus.legacy.LegacyMenuState());
+			}
+			else
+				MusicBeatState.switchState(new MainMenuState());
 		}
 
 		super.update(elapsed);
@@ -273,47 +279,42 @@ class StoryMenu extends MusicBeatState
 
 	function selectWeek()
 	{
-				if (stopspamming == false)
-				{
-					FlxG.sound.play(Paths.sound('funkinAVI/menu/confirmEpisode'));
-					stopspamming = true;
+		if (stopspamming == false)
+		{
+			FlxG.sound.play(Paths.sound('funkinAVI/menu/confirmEpisode'));
+			stopspamming = true;
 
-					@:privateAccess
-					{
-						FlxG.camera._fxFlashColor = FlxColor.WHITE;
-						FlxG.camera._fxFlashDuration = .5;
-						FlxG.camera._fxFlashAlpha = .5;
-					}
-					new FlxTimer().start(.25, d -> FlxG.camera.fade(0x000000, .75));
-				}
-	
-				// We can't use Dynamic Array .copy() because that crashes HTML5, here's a workaround.
-				var songArray:Array<String> = [];
-				var leWeek:Array<Dynamic> = loadedWeeks[curWeek].songs;
-				for (i in 0...leWeek.length) {
-					songArray.push(leWeek[i][0]);
-				}
-	
-				// Nevermind that's stupid lmao
-				PlayState.storyPlaylist = songArray;
-				PlayState.isStoryMode = true;
-				selectedWeek = true;
+			@:privateAccess
+			{
+				FlxG.camera._fxFlashColor = FlxColor.WHITE;
+				FlxG.camera._fxFlashDuration = .5;
+				FlxG.camera._fxFlashAlpha = .5;
+			}
+			new FlxTimer().start(.25, d -> FlxG.camera.fade(0x000000, .75));
+		}
 
-				var songLowercase:String = Paths.formatToSongPath(PlayState.storyPlaylist[0]);
-	
-				var diffic = CoolUtil.getDifficultyFilePath(curDifficulty);
-				if(diffic == null) diffic = '';
-	
-				PlayState.storyDifficulty = curDifficulty;
-	
-				PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + diffic, songLowercase);
-				PlayState.campaignScore = 0;
-				PlayState.campaignMisses = 0;
-				new FlxTimer().start(1, function(tmr:FlxTimer)
-				{
-					LoadingState.loadAndSwitchState(new PlayState(), true);
-					FreeplayState.destroyFreeplayVocals();
-				});
+		// We can't use Dynamic Array .copy() because that crashes HTML5, here's a workaround.
+		var songArray:Array<String> = [];
+		var leWeek:Array<Dynamic> = loadedWeeks[curWeek].songs;
+
+		// Nevermind that's stupid lmao
+		PlayState.storyPlaylist = songArray;
+		PlayState.isStoryMode = true;
+		selectedWeek = true;
+
+		var songLowercase:String = Paths.formatToSongPath(PlayState.storyPlaylist[0]);
+
+		var diffic = Difficulty.getFilePath(curDifficulty);
+		if(diffic == null) diffic = '';
+
+		PlayState.storyDifficulty = curDifficulty;
+		PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + diffic, songLowercase);
+		PlayState.campaignScore = 0;
+		PlayState.campaignMisses = 0;
+		new FlxTimer().start(1, function(tmr:FlxTimer)
+		{
+			LoadingState.loadAndSwitchState(new PlayState(), true);
+		});
 	}
 
 	var difficultyTween:FlxTween;
@@ -323,8 +324,8 @@ class StoryMenu extends MusicBeatState
 		curDifficulty += change;
 
 		if (curDifficulty < 0)
-			curDifficulty = CoolUtil.difficulties.length-1;
-		if (curDifficulty >= CoolUtil.difficulties.length)
+			curDifficulty = Difficulty.difficulties.length-1;
+		if (curDifficulty >= Difficulty.difficulties.length)
 			curDifficulty = 0;
 
 		WeekData.setDirectoryFromWeek(loadedWeeks[curWeek]);
@@ -341,6 +342,8 @@ class StoryMenu extends MusicBeatState
 		difficultySelectors.visible = !lockedWeek;
 
 		var storyName:String = WeekData.weeksLoaded.get(WeekData.weeksList[curWeek]).storyName;
+		if (GameData.episode1FPLock != "unlocked" && curWeek <= 1)
+			storyName = 'Broken Relationship';
 
 		lime.app.Application.current.window.title = "Funkin.avi - Story Menu - " + storyName;
 
@@ -377,7 +380,7 @@ class StoryMenu extends MusicBeatState
 		var leWeek:WeekData = WeekData.weeksLoaded.get(name);
 		return (!leWeek.startUnlocked && leWeek.weekBefore.length > 0 && (!weekCompleted.exists(leWeek.weekBefore) || !weekCompleted.get(leWeek.weekBefore)));
 	}
-	
+
 	function updateText()
 	{	
 		booksimage.loadGraphic(Paths.image('Funkin_avi/storymenu/art$curWeek' + (GameData.episode1FPLock == "unlocked" ? "-evil" : "")));

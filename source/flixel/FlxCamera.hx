@@ -1202,7 +1202,7 @@ class FlxCamera extends FlxBasic
 		updateFlash(elapsed);
 		updateFade(elapsed);
 
-		flashSprite.filters = (filtersEnabled && ClientPrefs.shaders) ? filters : null;
+		flashSprite.filters = (filtersEnabled) ? filters : null;
 
 		updateFlashSpritePosition();
 		updateShake(elapsed);
@@ -1214,14 +1214,29 @@ class FlxCamera extends FlxBasic
 	 */
 	public function updateScroll():Void
 	{
+		// Make sure we didn't go outside the camera's bounds
+		bindScrollPos(scroll);
+	}
+	
+	/**
+	 * Takes the desired scroll position and restricts it to the camera's min/max scroll properties.
+	 * This modifies the given point.
+	 * 
+	 * @param   scrollPos  The scroll position
+	 * @return  The same point passed in, moved within the scroll bounds
+	 * @since 5.4.0
+	 */
+	public function bindScrollPos(scrollPos:FlxPoint)
+	{
 		var minX:Null<Float> = minScrollX == null ? null : minScrollX - (zoom - 1) * width / (2 * zoom);
 		var maxX:Null<Float> = maxScrollX == null ? null : maxScrollX + (zoom - 1) * width / (2 * zoom);
 		var minY:Null<Float> = minScrollY == null ? null : minScrollY - (zoom - 1) * height / (2 * zoom);
 		var maxY:Null<Float> = maxScrollY == null ? null : maxScrollY + (zoom - 1) * height / (2 * zoom);
 
-		// Make sure we didn't go outside the camera's bounds
-		scroll.x = FlxMath.bound(scroll.x, minX, (maxX != null) ? maxX - width : null);
-		scroll.y = FlxMath.bound(scroll.y, minY, (maxY != null) ? maxY - height : null);
+		// keep point with bounds
+		scrollPos.x = FlxMath.bound(scrollPos.x, minX, (maxX != null) ? maxX - width : null);
+		scrollPos.y = FlxMath.bound(scrollPos.y, minY, (maxY != null) ? maxY - height : null);
+		return scrollPos;
 	}
 
 	/**
@@ -1263,6 +1278,9 @@ class FlxCamera extends FlxBasic
 				{
 					_scrollTarget.y -= height;
 				}
+
+				// without this we see weird behavior when switching to SCREEN_BY_SCREEN at arbitrary scroll positions
+				bindScrollPos(_scrollTarget);
 			}
 			else
 			{
@@ -1561,7 +1579,7 @@ class FlxCamera extends FlxBasic
 	 */
 	public function flash(Color:FlxColor = FlxColor.WHITE, Duration:Float = 1, ?OnComplete:Void->Void, Force:Bool = false):Void
 	{
-		if (!ClientPrefs.flashing || (!Force && (_fxFlashAlpha > 0.0)))
+		if (!ClientPrefs.data.flashing || (!Force && (_fxFlashAlpha > 0.0)))
 			return;
 
 		_fxFlashColor = Color;

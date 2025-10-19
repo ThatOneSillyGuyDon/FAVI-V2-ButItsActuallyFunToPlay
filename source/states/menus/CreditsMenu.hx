@@ -65,7 +65,7 @@ class CreditsMenu extends MusicBeatState
 		
 		DiscordClient.changePresence('Credits', 'Look at all these cool people!', 'icon', 'book');
 
-		FlxG.sound.playMusic(Paths.music('aviOST/curtainCall'));
+		//FlxG.sound.playMusic(Paths.music('aviOST/curtainCall'));
 
 		//Conductor.bpm = (164);
 
@@ -76,7 +76,7 @@ class CreditsMenu extends MusicBeatState
 
 		background = new FlxSprite().loadGraphic(Paths.image('$path/theLight'));
 		background.screenCenter();
-		background.antialiasing = ClientPrefs.globalAntialiasing;
+		background.antialiasing = ClientPrefs.data.antialiasing;
 		add(background);
 		FlxTween.tween(background, {alpha: 0.25}, 2, {ease: FlxEase.expoInOut, type: PINGPONG});
 
@@ -86,28 +86,28 @@ class CreditsMenu extends MusicBeatState
 		backdrop.alpha = 0;
 		backdrop.setGraphicSize(Std.int(backdrop.width * 0.6));
 		FlxTween.tween(backdrop, {alpha: 1}, 0.5, {ease: FlxEase.quadOut});
-		backdrop.antialiasing = ClientPrefs.globalAntialiasing;
+		backdrop.antialiasing = ClientPrefs.data.antialiasing;
 		add(backdrop);
 
 		dark = new FlxSprite().loadGraphic(Paths.image('$path/darkness'));
 		dark.screenCenter();
-		dark.antialiasing = ClientPrefs.globalAntialiasing;
+		dark.antialiasing = ClientPrefs.data.antialiasing;
 		add(dark);
 
 		daStrip = new FlxSprite().loadGraphic(Paths.image('$path/filmstrip'));
 		daStrip.screenCenter();
-		daStrip.antialiasing = ClientPrefs.globalAntialiasing;
+		daStrip.antialiasing = ClientPrefs.data.antialiasing;
 		add(daStrip);
 
 		box = new FlxSprite().loadGraphic(Paths.image('$path/iconFrame'));
 		box.screenCenter();
-		box.antialiasing = ClientPrefs.globalAntialiasing;
+		box.antialiasing = ClientPrefs.data.antialiasing;
 		add(box);
 
 		teelSquares = new FlxSprite().loadGraphic(Paths.image('$path/teelbeSpecial'));
 		teelSquares.screenCenter().x -= 120;
 		teelSquares.setGraphicSize(Std.int(box.width * 0.6));
-		teelSquares.antialiasing = ClientPrefs.globalAntialiasing;
+		teelSquares.antialiasing = ClientPrefs.data.antialiasing;
 		teelSquares.alpha = 0;
 		add(teelSquares);
 
@@ -126,42 +126,42 @@ class CreditsMenu extends MusicBeatState
 		creditDescText = new FlxText(FlxG.width * 0.52, FlxG.height * 0.6, 500, creditArray[curSelected][3]);
 		creditDescText.setFormat(Paths.font('disneyFreeplayFont.ttf'), 40, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
 		creditDescText.borderSize = 1.3;
-		creditDescText.antialiasing = ClientPrefs.globalAntialiasing;
+		creditDescText.antialiasing = ClientPrefs.data.antialiasing;
 		add(creditDescText);
 
 		creditNameText = new FlxText(FlxG.width * 0.22, FlxG.height * 0.3, FlxG.width, creditArray[curSelected][0]);
 		creditNameText.setFormat(Paths.font('Oceanic_Cocktail_Demo.otf'), 70, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
 		creditNameText.borderSize = 1.3;
-		creditNameText.antialiasing = ClientPrefs.globalAntialiasing;
+		creditNameText.antialiasing = ClientPrefs.data.antialiasing;
 		add(creditNameText);
 
 		creditWorkText = new FlxText(FlxG.width * 0.52, FlxG.height * 0.41, 500, creditArray[curSelected][2]);
 		creditWorkText.setFormat(Paths.font('MagicOwlFont.otf'), 30, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
 		creditWorkText.borderSize = 1.3;
-		creditWorkText.antialiasing = ClientPrefs.globalAntialiasing;
+		creditWorkText.antialiasing = ClientPrefs.data.antialiasing;
 		add(creditWorkText);
 
 		creditIconSprite = new FlxSprite(creditArray[curSelected][4],
 			creditArray[curSelected][5]).loadGraphic(Paths.image('$path/icons/${creditArray[curSelected][1]}'));
 		creditIconSprite.setGraphicSize(Std.int(creditIconSprite.width * creditArray[curSelected][6]));
-		creditIconSprite.antialiasing = ClientPrefs.globalAntialiasing;
+		creditIconSprite.antialiasing = ClientPrefs.data.antialiasing;
 		add(creditIconSprite);
 
 		boxOverlay = new FlxSprite().loadGraphic(Paths.image('$path/frameOverlay'));
 		boxOverlay.screenCenter();
-		boxOverlay.antialiasing = ClientPrefs.globalAntialiasing;
+		boxOverlay.antialiasing = ClientPrefs.data.antialiasing;
 		add(boxOverlay);
 
 		cool_1980_shader = new FlxRuntimeShader(Shaders.vhsFilter, null, 130);
 		var monitor = new FlxRuntimeShader(Shaders.monitorFilter, null, 140);
 
-		if (ClientPrefs.shaders)
+		if (ClientPrefs.data.shaders)
 			fuckingCameraSoTheMenuDoesntFuckUpOrWhateverCauseFlixelIsEVIL.setFilters([
 				//new ShaderFilter(cool_1980_shader), // yeah so like no offense im very sorry but it isn't really readable AT ALL, you can uncomment if you want to idm
 				new ShaderFilter(monitor)
 			]);
 
-		if (!ClientPrefs.lowQuality)
+		if (!ClientPrefs.data.lowQuality)
 		{
 			var scratchStuff:FlxSprite = new FlxSprite();
 			scratchStuff.frames = Paths.getSparrowAtlas('Funkin_avi/filters/scratchShit');
@@ -202,7 +202,7 @@ class CreditsMenu extends MusicBeatState
 		upArrow.y = FlxMath.lerp(100, upArrow.y, CoolUtil.boundTo(1 - (elapsed * 15), 0, 1));
 		downArrow.y = FlxMath.lerp(500, downArrow.y, CoolUtil.boundTo(1 - (elapsed * 15), 0, 1));
 
-		if (ClientPrefs.shaders)
+		if (ClientPrefs.data.shaders)
 			cool_1980_shader.setFloat('time', Conductor.songPosition / 1000);
 
 		if (controls.UI_UP_P)
@@ -218,10 +218,18 @@ class CreditsMenu extends MusicBeatState
 
 		if (controls.BACK)
 		{
-			MusicBeatState.switchState(new MainMenuState());
-			Conductor.bpm = (50); // changes back to titlescreen bpm
-			FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'), 1); // resets music back to menu music
-			FlxG.sound.music.fadeIn();
+			if (FlxG.random.bool(8) && GameData.episode1FPLock == "unlocked")
+			{
+				FlxG.sound.music.fadeOut(0.5);
+				MusicBeatState.switchState(new states.menus.legacy.LegacyMenuState());
+			}
+			else
+			{
+				MusicBeatState.switchState(new MainMenuState());
+				Conductor.bpm = (50); // changes back to titlescreen bpm
+				FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'), 1); // resets music back to menu music
+				FlxG.sound.music.fadeIn();
+			}
 		}
 
 		if(FlxG.mouse.wheel != 0)

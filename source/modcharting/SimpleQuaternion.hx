@@ -1,6 +1,8 @@
 package modcharting;
 
+import flixel.math.FlxAngle;
 import openfl.geom.Vector3D;
+import flixel.math.FlxMath;
 
 typedef Quaternion = 
 {
@@ -16,12 +18,12 @@ class SimpleQuaternion
     public static function fromEuler(roll:Float, pitch:Float, yaw:Float) : Quaternion
     {
         //https://en.wikipedia.org/wiki/Conversion_between_quaternions_and_Euler_angles
-        var cr = Math.cos(roll * FlxAngle.TO_RAD);
-        var sr = Math.sin(roll * FlxAngle.TO_RAD);
-        var cp = Math.cos(pitch * FlxAngle.TO_RAD);
-        var sp = Math.sin(pitch * FlxAngle.TO_RAD);
-        var cy = Math.cos(yaw * FlxAngle.TO_RAD);
-        var sy = Math.sin(yaw * FlxAngle.TO_RAD);
+        var cr = FlxMath.fastCos(roll * FlxAngle.TO_RAD);
+        var sr = FlxMath.fastSin(roll * FlxAngle.TO_RAD);
+        var cp = FlxMath.fastCos(pitch * FlxAngle.TO_RAD);
+        var sp = FlxMath.fastSin(pitch * FlxAngle.TO_RAD);
+        var cy = FlxMath.fastCos(yaw * FlxAngle.TO_RAD);
+        var sy = FlxMath.fastSin(yaw * FlxAngle.TO_RAD);
     
         var q:Quaternion = {x: 0, y: 0, z: 0, w:0 };
         q.w = cr * cp * cy + sr * sp * sy;

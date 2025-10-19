@@ -1,13 +1,7 @@
 package states.menus;
 
-import flixel.tweens.FlxTween;
-import flixel.util.FlxColor;
-import flixel.FlxG;
-import flixel.FlxCamera;
 import sys.io.File;
 import haxe.Json;
-import flixel.text.FlxText;
-import flixel.FlxSprite;
 
 // prob gonna keep jsons and then hardcode it cus thats pretty smart
 typedef CharMenuThing = { info:Array<Dynamic> };
@@ -40,79 +34,53 @@ class CharacterMenu extends MusicBeatState
     override public function create() {
         theJson = thejofsons();
         charArray = theJson.info;
-
         openfl.Lib.application.window.title = 'Funkin.avi - Character Menu';
 
         hud = cam = new FlxCamera();
         hud.bgColor.alpha = 0;
-
         FlxG.cameras.reset(cam);
         FlxG.cameras.add(hud, false);
         FlxG.cameras.setDefaultDrawTarget(cam, true);
 
         var bg = new FlxSprite().loadGraphic(Paths.image(path + 'infoBase'));
-        bg.screenCenter();
-        bg.antialiasing = ClientPrefs.globalAntialiasing;
-        add(bg);
-
         character = new FlxSprite(340, 360).loadGraphic(Paths.image(path + 'characters/avierNew'));
+        book1 = new FlxSprite().loadGraphic(Paths.image(path + 'god\'sFuckingLight'));
+        book2 = new FlxSprite().loadGraphic(Paths.image(path + 'infoUI'));
+        ui = new FlxSprite().loadGraphic(Paths.image(path + 'buttonLeave'));
+        control = new FlxSprite().loadGraphic(Paths.image(path + 'leftButton0'));
+        control2 = new FlxSprite().loadGraphic(Paths.image(path + 'rightButton0'));
+        var spotlight = new FlxSprite().loadGraphic(Paths.image(path + 'infoTutorial'));
+        descText = new FlxText(FlxG.width * .688, 150, 280).setFormat(Paths.font('Oceanic_Cocktail_Demo.otf'), 23, FlxColor.WHITE, LEFT, OUTLINE, FlxColor.BLACK);
+        name = new FlxText(0, 40, 1280).setFormat(Paths.font('infoMenu.ttf'), 33, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
+
         character.setGraphicSize(Std.int(character.width * .75));
         character.angle = 6;
-        character.antialiasing = ClientPrefs.globalAntialiasing;
-        add(character);
-
-        book1 = new FlxSprite().loadGraphic(Paths.image(path + 'god\'sFuckingLight'));
-        book1.screenCenter();
+        character.antialiasing = ClientPrefs.data.antialiasing;
         book1.blend = ADD;
-        FlxTween.tween(book1, {alpha: .65}, 3, {type: 4});
-        book1.antialiasing = ClientPrefs.globalAntialiasing;
-        add(book1);
 
-        descText = new FlxText(FlxG.width * .688, 150, 280).setFormat(Paths.font('Oceanic_Cocktail_Demo.otf'), 23, FlxColor.WHITE, LEFT, OUTLINE, FlxColor.BLACK);
         descText.x -= 28;
-        descText.antialiasing = ClientPrefs.globalAntialiasing;
+        name.y -= 10;
+        name.alignment = CENTER;
+        name.camera = hud;
+        name.screenCenter(X);
+
+        for (i in [bg, book1, book2, ui, control, control2, spotlight])
+        {
+            i.screenCenter();
+            i.antialiasing = ClientPrefs.data.antialiasing;
+            add(i);
+        }
+        insert(members.indexOf(book1), character);
+        add(name);
         add(descText);
 
-        book2 = new FlxSprite().loadGraphic(Paths.image(path + 'infoUI'));
-        book2.screenCenter();
-        book2.antialiasing = ClientPrefs.globalAntialiasing;
-        add(book2);
-        
-        ui = new FlxSprite().loadGraphic(Paths.image(path + 'buttonLeave'));
-        ui.screenCenter();
-        ui.antialiasing = ClientPrefs.globalAntialiasing;
-        add(ui);
-
-        control = new FlxSprite().loadGraphic(Paths.image(path + 'leftButton0'));
-        control.screenCenter();
-        control.antialiasing = ClientPrefs.globalAntialiasing;
-        add(control);
-
-        control2 = new FlxSprite().loadGraphic(Paths.image(path + 'rightButton0'));
-        control2.screenCenter();
-        control2.antialiasing = ClientPrefs.globalAntialiasing;
-        add(control2);
-
-        var spotlight = new FlxSprite().loadGraphic(Paths.image(path + 'infoTutorial'));
-        spotlight.screenCenter();
-        spotlight.antialiasing = ClientPrefs.globalAntialiasing;
-        add(spotlight);
+        FlxTween.tween(book1, {alpha: .65}, 3, {type: 4});
         new FlxTimer().start(5, function(tmr)
         {
             FlxTween.tween(spotlight, {alpha: 0.15}, 2, {ease: FlxEase.circInOut});
         });
 
-        name = new FlxText(0, 40, 1280).setFormat(Paths.font('infoMenu.ttf'), 33, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
-        name.screenCenter(X);
-        name.alignment = CENTER;
-        name.camera = hud;
-        name.antialiasing = ClientPrefs.globalAntialiasing;
-        add(name);
-
         super.create();
-
-        name.y -= 10;
-
         changeSelection();
     }
 
@@ -121,10 +89,18 @@ class CharacterMenu extends MusicBeatState
     var riteTmr:FlxTimer;
     override public function update(elapsed:Float) {
         super.update(elapsed);
-
         name.y = FlxMath.lerp(40, name.y, CoolUtil.boundTo(1 - (elapsed * 15), 0, 1));
 
-        if (controls.BACK) MusicBeatState.switchState(new MainMenuState());
+        if (controls.BACK) 
+        {
+            if (FlxG.random.bool(8) && GameData.episode1FPLock == "unlocked")
+			{
+				FlxG.sound.music.fadeOut(0.5);
+				MusicBeatState.switchState(new states.menus.legacy.LegacyMenuState());
+			}
+			else
+				MusicBeatState.switchState(new MainMenuState());
+        }
 
         if (controls.UI_LEFT_P)
         {
@@ -184,7 +160,6 @@ class CharacterMenu extends MusicBeatState
                     });
                 }
                 changeSelection((checkNewHold - checkLastHold));
-                //changeDiff();
             }
         }
 
@@ -209,6 +184,12 @@ class CharacterMenu extends MusicBeatState
         descText.text = charArray[curSelected][5];
         name.y -= 10;
 
+        //Changes the font when hovering over LOT
+        if (curSelected == 15)
+            descText.setFormat(Paths.font('DaLotFont.ttf'), 16, FlxColor.WHITE, LEFT, OUTLINE, FlxColor.BLACK);
+        else
+            descText.setFormat(Paths.font('Oceanic_Cocktail_Demo.otf'), 23, FlxColor.WHITE, LEFT, OUTLINE, FlxColor.BLACK);
+
         #if DISCORD_RPC
         #if DEV_BUILD
         DiscordClient.changePresence('???????? ??????', 'Stop checking here for leaks fool.', 'icon', 'mouse');
@@ -222,10 +203,8 @@ class CharacterMenu extends MusicBeatState
     {
         jsonString = File.getContent(Paths.json('charMenu'));
 
-        if (jsonString != null && jsonString.length > 0) {
+        if (jsonString != null && jsonString.length > 0)
             return cast Json.parse(jsonString);
-        }
-
         return null;
     }
 }

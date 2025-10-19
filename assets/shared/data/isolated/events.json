@@ -1,0 +1,3610 @@
+{
+	"song": {
+		"events": [
+			[
+				-5000,
+				[
+					[
+						"Camera Event",
+						"Fade",
+						"0,0,0,0.0001,false"
+					],
+					[
+						"Camera Event",
+						"Change Value",
+						"hudalpha,0"
+					]
+				]
+			],
+			[
+				0,
+				[
+					[
+						"Camera Event",
+						"Tween Position",
+						"400,0,2,backOut"
+					],
+					[
+						"Background Controls",
+						"Darken",
+						"0.7,0.01,linear"
+					],
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,1.4"
+					]
+				]
+			],
+			[
+				363.636363636364,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"130,0.0001,linear"
+					],
+					[
+						"Show Song Card",
+						"true",
+						"0,1.5,sineInOut"
+					]
+				]
+			],
+			[
+				2909.09090909091,
+				[
+					[
+						"Show Song Card",
+						"false",
+						"0,1.5,sineInOut"
+					]
+				]
+			],
+			[
+				4363.63636363636,
+				[
+					[
+						"Camera Event",
+						"Fade",
+						"0,0,0,3,true"
+					],
+					[
+						"Camera Event",
+						"Tween Value",
+						"zoom,0.85,7,quadInOut"
+					]
+				]
+			],
+			[
+				4363.63636363636,
+				[
+					[
+						"Camera Event",
+						"Tween Position",
+						"400,525,5,quadInOut"
+					]
+				]
+			],
+			[
+				10181.8181818182,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"65,1,circInOut"
+					]
+				]
+			],
+			[
+				10909.0909090909,
+				[
+					[
+						"Camera Event",
+						"Tween Value",
+						"zoom,1,1.5,cubeInOut"
+					],
+					[
+						"Background Controls",
+						"Darken",
+						"0.35,1,cubeInOut"
+					],
+					[
+						"Camera Event",
+						"Tween Value",
+						"hudalpha,1,3,quadOut"
+					]
+				]
+			],
+			[
+				10909.0909090909,
+				[
+					[
+						"Camera Event",
+						"Tween Position",
+						"-100,475,0.7,circIn"
+					]
+				]
+			],
+			[
+				11636.3636363636,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.85"
+					],
+					[
+						"Set Property",
+						"isCameraOnForcedPos",
+						"false"
+					]
+				]
+			],
+			[
+				11636.3636363636,
+				[
+					[
+						"Camera Event",
+						"Flash",
+						"255,255,255,0.85,1,false"
+					]
+				]
+			],
+			[
+				11636.3636363636,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"33,1,quartOut"
+					]
+				]
+			],
+			[
+				13088.6363636364,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"33,1,quartOut"
+					]
+				]
+			],
+			[
+				13090.9090909091,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"1.2,linear,0.32,194,194,194"
+					]
+				]
+			],
+			[
+				14545.4545454545,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"1.2,linear,0.32,194,194,194"
+					]
+				]
+			],
+			[
+				14545.4545454545,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"33,1,quartOut"
+					]
+				]
+			],
+			[
+				15997.7272727273,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"33,1,quartOut"
+					]
+				]
+			],
+			[
+				16000,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"1.2,linear,0.32,194,194,194"
+					]
+				]
+			],
+			[
+				17454.5454545455,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"33,1,quartOut"
+					]
+				]
+			],
+			[
+				18909.0909090909,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"1.2,linear,0.32,194,194,194"
+					]
+				]
+			],
+			[
+				18909.0909090909,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"33,1,quartOut"
+					]
+				]
+			],
+			[
+				20361.3636363636,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"33,1,quartOut"
+					]
+				]
+			],
+			[
+				20363.6363636364,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"1.2,linear,0.32,194,194,194"
+					]
+				]
+			],
+			[
+				21818.1818181818,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"1.2,linear,0.32,194,194,194"
+					]
+				]
+			],
+			[
+				21818.1818181818,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"33,1,quartOut"
+					]
+				]
+			],
+			[
+				23270.4545454545,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"33,1,quartOut"
+					]
+				]
+			],
+			[
+				23272.7272727273,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"1.2,linear,0.32,194,194,194"
+					]
+				]
+			],
+			[
+				24727.2727272727,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"1.2,linear,0.32,194,194,194"
+					]
+				]
+			],
+			[
+				24727.2727272727,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"33,1,quartOut"
+					]
+				]
+			],
+			[
+				26175,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"33,1,quartOut"
+					]
+				]
+			],
+			[
+				26181.8181818182,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"1.2,linear,0.32,194,194,194"
+					]
+				]
+			],
+			[
+				27636.3636363636,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"1.2,linear,0.32,194,194,194"
+					]
+				]
+			],
+			[
+				27636.3636363636,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"33,1,quartOut"
+					]
+				]
+			],
+			[
+				29086.3636363636,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"33,1,quartOut"
+					]
+				]
+			],
+			[
+				29090.9090909091,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"1.2,linear,0.32,194,194,194"
+					]
+				]
+			],
+			[
+				30538.6363636364,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"33,1,quartOut"
+					]
+				]
+			],
+			[
+				30545.4545454546,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"1.2,linear,0.32,194,194,194"
+					]
+				]
+			],
+			[
+				32000,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0.01,3,linear"
+					]
+				]
+			],
+			[
+				32000,
+				[
+					[
+						"Camera Event",
+						"Tween Value",
+						"zoom,1.4,3,sineInOut"
+					],
+					[
+						"Background Controls",
+						"Flash",
+						"1.2,linear,0.32,194,194,194"
+					]
+				]
+			],
+			[
+				32000,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"33,1,quartOut"
+					]
+				]
+			],
+			[
+				33452.2727272727,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"33,1,quartOut"
+					]
+				]
+			],
+			[
+				33454.5454545455,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"1.2,linear,0.32,194,194,194"
+					]
+				]
+			],
+			[
+				34545.4545454546,
+				[
+					[
+						"Camera Event",
+						"Change Pos",
+						"-100,475"
+					],
+					[
+						"Set Property",
+						"cameraSpeed",
+						"4"
+					]
+				]
+			],
+			[
+				34909.0909090909,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					],
+					[
+						"Set Property",
+						"cameraSpeed",
+						"1"
+					],
+					[
+						"Set Property",
+						"isCameraOnForcedPos",
+						"false"
+					],
+					[
+						"Camera Event",
+						"Change Value",
+						"defaultcamzoom,0.85"
+					],
+					[
+						"Camera Event",
+						"Tween Value",
+						"zoom,0.85,0.4,expoOut"
+					],
+					[
+						"Camera Event",
+						"Flash",
+						"255,255,255,0.85,1,true"
+					],
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.4,255,255,255"
+					],
+					[
+						"Cinematic Event",
+						"Move",
+						"0,0.3,sineOut"
+					]
+				]
+			],
+			[
+				35636.3636363636,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				35636.3636363636,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				36363.6363636364,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				36363.6363636364,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.2,194,194,194"
+					]
+				]
+			],
+			[
+				37090.9090909091,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				37090.9090909091,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				37818.1818181818,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					],
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.2,194,194,194"
+					]
+				]
+			],
+			[
+				38545.4545454546,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				38545.4545454546,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				39272.7272727273,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				39272.7272727273,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.2,194,194,194"
+					]
+				]
+			],
+			[
+				40000,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				40000,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				40727.2727272727,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				40727.2727272727,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.2,194,194,194"
+					]
+				]
+			],
+			[
+				41454.5454545455,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				41454.5454545455,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				42181.8181818182,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				42181.8181818182,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.2,194,194,194"
+					]
+				]
+			],
+			[
+				42909.0909090909,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				42909.0909090909,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				43636.3636363636,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				43636.3636363637,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.2,194,194,194"
+					]
+				]
+			],
+			[
+				44363.6363636364,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				44363.6363636364,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				45090.9090909091,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				45090.9090909091,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.2,194,194,194"
+					]
+				]
+			],
+			[
+				45818.1818181818,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				45818.1818181818,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				46545.4545454546,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				46545.4545454546,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.4,194,194,194"
+					],
+					[
+						"Camera Event",
+						"Flash",
+						"255,255,255,0.85,1,true"
+					]
+				]
+			],
+			[
+				47272.7272727273,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				47272.7272727273,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				48000,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				48000,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.2,194,194,194"
+					]
+				]
+			],
+			[
+				48727.2727272727,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				48727.2727272727,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				49454.5454545455,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				49454.5454545455,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.2,194,194,194"
+					]
+				]
+			],
+			[
+				50181.8181818182,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				50181.8181818182,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				50909.0909090909,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				50909.0909090909,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.2,194,194,194"
+					]
+				]
+			],
+			[
+				51636.3636363636,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				51636.3636363637,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				52363.6363636364,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				53090.9090909091,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				53090.9090909091,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				53818.1818181818,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				53818.1818181818,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.2,194,194,194"
+					]
+				]
+			],
+			[
+				54545.4545454546,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				54545.4545454546,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				55272.7272727273,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				55272.7272727273,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.2,194,194,194"
+					]
+				]
+			],
+			[
+				56000,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				56000,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				56727.2727272727,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				56727.2727272728,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.2,194,194,194"
+					]
+				]
+			],
+			[
+				57454.5454545455,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				57454.5454545455,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				58181.8181818182,
+				[
+					[
+						"Change Character",
+						"dad",
+						"avier-whistle"
+					]
+				]
+			],
+			[
+				58181.8181818182,
+				[
+					[
+						"Camera Event",
+						"Tween Position",
+						"-100,475,1,backInOut"
+					]
+				]
+			],
+			[
+				58181.8181818182,
+				[
+					[
+						"Camera Event",
+						"Tween Value",
+						"zoom,1.3,2,sineInOut"
+					],
+					[
+						"Background Controls",
+						"Darken",
+						"0.85,0.5,quartOut"
+					]
+				]
+			],
+			[
+				58181.8181818182,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"140,1,circOut"
+					]
+				]
+			],
+			[
+				58181.8181818182,
+				[
+					[
+						"Icon Handler",
+						"1",
+						""
+					]
+				]
+			],
+			[
+				59636.3636363637,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"15,0.85,quartOut"
+					]
+				]
+			],
+			[
+				61090.9090909091,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"60,1,quartOut"
+					]
+				]
+			],
+			[
+				61090.9090909091,
+				[
+					[
+						"Icon Handler",
+						"2",
+						""
+					]
+				]
+			],
+			[
+				62543.1818181819,
+				[
+					[
+						"Icon Handler",
+						"3",
+						""
+					]
+				]
+			],
+			[
+				62545.4545454546,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"60,1,quartOut"
+					]
+				]
+			],
+			[
+				63272.7272727273,
+				[
+					[
+						"Camera Event",
+						"Tween Position",
+						"875,575,2,backOut"
+					]
+				]
+			],
+			[
+				64000,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"60,1,quartOut"
+					]
+				]
+			],
+			[
+				64000,
+				[
+					[
+						"Icon Handler",
+						"4",
+						""
+					]
+				]
+			],
+			[
+				65090.9090909091,
+				[
+					[
+						"Change Character",
+						"dad",
+						"mickey-FINAL-HOLYSHI"
+					]
+				]
+			],
+			[
+				65454.5454545455,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"15,0.85,quartOut"
+					]
+				]
+			],
+			[
+				66545.4545454546,
+				[
+					[
+						"Camera Event",
+						"Tween Position",
+						"400,525,2,circOut"
+					],
+					[
+						"Camera Event",
+						"Tween Value",
+						"zoom,0.85,2,circOut"
+					]
+				]
+			],
+			[
+				66909.0909090909,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0.77,0.5,quartOut"
+					]
+				]
+			],
+			[
+				66909.0909090909,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"60,1,quartOut"
+					]
+				]
+			],
+			[
+				66909.0909090909,
+				[
+					[
+						"Icon Handler",
+						"5",
+						""
+					]
+				]
+			],
+			[
+				68361.3636363637,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"60,1,quartOut"
+					]
+				]
+			],
+			[
+				68363,
+				[
+					[
+						"Icon Handler",
+						"188",
+						""
+					]
+				]
+			],
+			[
+				68363.6363636364,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0.6,0.5,quartOut"
+					]
+				]
+			],
+			[
+				69272.7272727273,
+				[
+					[
+						"Camera Event",
+						"Tween Position",
+						"-100,475,0.7,circIn"
+					],
+					[
+						"Camera Event",
+						"Tween Value",
+						"zoom,1.4,0.7,circIn"
+					]
+				]
+			],
+			[
+				69815.9090909091,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"85,0.7,sineOut"
+					]
+				]
+			],
+			[
+				69818.1818181819,
+				[
+					[
+						"Set Property",
+						"isCameraOnForcedPos",
+						"false"
+					],
+					[
+						"Background Controls",
+						"Darken",
+						"0,0.01,linear"
+					],
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.32,194,194,194"
+					],
+					[
+						"Camera Event",
+						"Flash",
+						"255,255,255,0.85,1,true"
+					],
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1.25"
+					]
+				]
+			],
+			[
+				70545,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"45,0.3,sineOut"
+					]
+				]
+			],
+			[
+				70545.4545454546,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.32,194,194,194"
+					]
+				]
+			],
+			[
+				71272.7272727273,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.32,194,194,194"
+					]
+				]
+			],
+			[
+				71272.7272727273,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"45,0.3,sineOut"
+					]
+				]
+			],
+			[
+				72000,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.32,194,194,194"
+					]
+				]
+			],
+			[
+				72000,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"45,0.3,sineOut"
+					]
+				]
+			],
+			[
+				72725,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"45,0.3,sineOut"
+					]
+				]
+			],
+			[
+				72727.2727272728,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.32,194,194,194"
+					]
+				]
+			],
+			[
+				73454,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"45,0.3,sineOut"
+					]
+				]
+			],
+			[
+				73454.5454545455,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.32,194,194,194"
+					]
+				]
+			],
+			[
+				74181.8181818182,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.32,194,194,194"
+					]
+				]
+			],
+			[
+				74181.8181818182,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"45,0.3,sineOut"
+					]
+				]
+			],
+			[
+				74909,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"45,0.3,sineOut"
+					]
+				]
+			],
+			[
+				74909.0909090909,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.32,194,194,194"
+					]
+				]
+			],
+			[
+				75636.3636363637,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"45,0.3,sineOut"
+					]
+				]
+			],
+			[
+				76363,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"45,0.3,sineOut"
+					]
+				]
+			],
+			[
+				76363.6363636364,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.32,194,194,194"
+					]
+				]
+			],
+			[
+				77090.9090909091,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.32,194,194,194"
+					]
+				]
+			],
+			[
+				77090.9090909091,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"45,0.3,sineOut"
+					]
+				]
+			],
+			[
+				77818,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"45,0.3,sineOut"
+					]
+				]
+			],
+			[
+				77818.1818181819,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.32,194,194,194"
+					]
+				]
+			],
+			[
+				78543.1818181819,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"45,0.3,sineOut"
+					]
+				]
+			],
+			[
+				78545.4545454546,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addhudzoom,0.04"
+					],
+					[
+						"Background Controls",
+						"Flash",
+						"0.1,linear,0.32,194,194,194"
+					]
+				]
+			],
+			[
+				78909,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.1,linear,0.32,194,194,194"
+					]
+				]
+			],
+			[
+				78909.090909091,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addhudzoom,0.04"
+					]
+				]
+			],
+			[
+				79272,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.1,linear,0.32,194,194,194"
+					]
+				]
+			],
+			[
+				79272.7272727273,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addhudzoom,0.04"
+					]
+				]
+			],
+			[
+				79636,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.1,linear,0.32,194,194,194"
+					]
+				]
+			],
+			[
+				79636.3636363637,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"addhudzoom,0.04"
+					]
+				]
+			],
+			[
+				80000,
+				[
+					[
+						"Camera Event",
+						"Tween Value",
+						"zoom,0.85,2,sineInOut"
+					],
+					[
+						"Background Controls",
+						"Flash",
+						"0.1,linear,0.32,194,194,194"
+					]
+				]
+			],
+			[
+				80000,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"45,0.3,sineOut"
+					]
+				]
+			],
+			[
+				80363.6363636364,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"45,0.3,sineOut"
+					]
+				]
+			],
+			[
+				80727,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"45,0.3,sineOut"
+					]
+				]
+			],
+			[
+				80727.2727272728,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.32,194,194,194"
+					]
+				]
+			],
+			[
+				81090.9090909091,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"45,0.3,sineOut"
+					]
+				]
+			],
+			[
+				81452.2727272728,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"0,0.3,quartOut"
+					]
+				]
+			],
+			[
+				81454.5454545455,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				81454.5454545455,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0.001,0.01,linear"
+					],
+					[
+						"Camera Event",
+						"Flash",
+						"255,255,255,0.85,1,true"
+					]
+				]
+			],
+			[
+				82181.8181818182,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				82181.8181818182,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				82909.0909090909,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				82909.090909091,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.2,194,194,194"
+					]
+				]
+			],
+			[
+				83636.3636363636,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				83636.3636363637,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				84363.6363636364,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				84363.6363636364,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.2,194,194,194"
+					]
+				]
+			],
+			[
+				85090.9090909091,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				85090.9090909091,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				85818.1818181818,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				85818.1818181819,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.2,194,194,194"
+					]
+				]
+			],
+			[
+				86545.4545454546,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				86545.4545454546,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				87272.7272727273,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				87272.7272727273,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.2,194,194,194"
+					]
+				]
+			],
+			[
+				88000,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				88000,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				88727.2727272727,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				88727.2727272728,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.2,194,194,194"
+					]
+				]
+			],
+			[
+				89454.5454545455,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				89454.5454545455,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				90181.8181818182,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				90909.0909090909,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				90909.090909091,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				91636.3636363636,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				91636.3636363637,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.2,194,194,194"
+					]
+				]
+			],
+			[
+				92363.6363636364,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				92363.6363636364,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				93090,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.4,194,194,194"
+					]
+				]
+			],
+			[
+				93090.9090909091,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				93090.9090909091,
+				[
+					[
+						"Camera Event",
+						"Flash",
+						"255,255,255,0.85,1,true"
+					]
+				]
+			],
+			[
+				93818.1818181818,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				93818.1818181819,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				94545.4545454546,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				94545.4545454546,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.2,194,194,194"
+					]
+				]
+			],
+			[
+				95272.7272727273,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				95272.7272727273,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				96000,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				96000.0000000001,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.2,194,194,194"
+					]
+				]
+			],
+			[
+				96727.2727272727,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				96727.2727272728,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				97454.5454545455,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				97454.5454545455,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.2,194,194,194"
+					]
+				]
+			],
+			[
+				98181.8181818182,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				98181.8181818182,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				98909.0909090909,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				99636.3636363636,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				99636.3636363637,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				100363.636363636,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				100363.636363636,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.2,194,194,194"
+					]
+				]
+			],
+			[
+				101090.909090909,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				101090.909090909,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				101818.181818182,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				101818.181818182,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.2,194,194,194"
+					]
+				]
+			],
+			[
+				102545.454545455,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				102545.454545455,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				103272.727272727,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				103272.727272727,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.2,194,194,194"
+					]
+				]
+			],
+			[
+				104000,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				104000,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				104545.454545455,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,1.2"
+					],
+					[
+						"Cinematic Event",
+						"Move",
+						"100,0.001,linear"
+					]
+				]
+			],
+			[
+				104727.272727273,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				104727.272727273,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,0.85"
+					],
+					[
+						"Camera Event",
+						"Flash",
+						"255,255,255,0.85,1,true"
+					],
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.4,194,194,194"
+					],
+					[
+						"Cinematic Event",
+						"Move",
+						"0,0.75,circOut"
+					]
+				]
+			],
+			[
+				105454.545454545,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				105454.545454546,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				106181.818181818,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				106181.818181818,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.2,194,194,194"
+					]
+				]
+			],
+			[
+				106909.090909091,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				106909.090909091,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				107629.545454546,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.2,194,194,194"
+					]
+				]
+			],
+			[
+				107636.363636364,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				107636.363636364,
+				[
+					[
+						"Camera Event",
+						"Tween Position",
+						"400,525,2,circOut"
+					]
+				]
+			],
+			[
+				108363.636363636,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				108363.636363636,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				109090.909090909,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				109090.909090909,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.2,194,194,194"
+					]
+				]
+			],
+			[
+				109818.181818182,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				109818.181818182,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				110545.454545455,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				110545.454545455,
+				[
+					[
+						"Set Property",
+						"isCameraOnForcedPos",
+						"false"
+					]
+				]
+			],
+			[
+				111272.727272727,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				111272.727272727,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				112000,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				112000,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.2,194,194,194"
+					]
+				]
+			],
+			[
+				112727.272727273,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				112727.272727273,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				113445.454545455,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.2,194,194,194"
+					]
+				]
+			],
+			[
+				113454.545454545,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				113454.545454546,
+				[
+					[
+						"Camera Event",
+						"Tween Position",
+						"400,525,2,circOut"
+					]
+				]
+			],
+			[
+				114181.818181818,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				114181.818181818,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				114906.818181818,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.2,194,194,194"
+					],
+					[
+						"Camera Event",
+						"Tween Value",
+						"zoom,1.4,1.35,circIn"
+					]
+				]
+			],
+			[
+				114909.090909091,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				115636.363636364,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				115636.363636364,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				116363,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				116363.636363636,
+				[
+					[
+						"Camera Event",
+						"Tween Value",
+						"zoom,0.85,0.001,linear"
+					],
+					[
+						"Set Property",
+						"isCameraOnForcedPos",
+						"false"
+					],
+					[
+						"Camera Event",
+						"Change Value",
+						"cameraspeed,4"
+					]
+				]
+			],
+			[
+				116363.636363636,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.4,194,194,194"
+					],
+					[
+						"Camera Event",
+						"Flash",
+						"255,255,255,0.85,1,true"
+					]
+				]
+			],
+			[
+				116363.636363636,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,0.85"
+					]
+				]
+			],
+			[
+				116727.272727273,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"cameraspeed,1"
+					]
+				]
+			],
+			[
+				117090.909090909,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				117090.909090909,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				117818.181818182,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				117818.181818182,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.2,194,194,194"
+					]
+				]
+			],
+			[
+				118545.454545455,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				118545.454545455,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				119272.727272727,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				119272.727272727,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.2,194,194,194"
+					]
+				]
+			],
+			[
+				120000,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				120000,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				120727.272727273,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				120727.272727273,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.2,194,194,194"
+					]
+				]
+			],
+			[
+				121454.545454545,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				121454.545454546,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				122181.818181818,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				122181.818181818,
+				[
+					[
+						"Camera Event",
+						"Flash",
+						"0,0,0,0.85,1,false"
+					],
+					[
+						"Background Controls",
+						"Flash",
+						"1.2,linear,0.32,194,194,194"
+					]
+				]
+			],
+			[
+				122909.090909091,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				122909.090909091,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				123636.363636364,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				123636.363636364,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.2,194,194,194"
+					]
+				]
+			],
+			[
+				124363.636363636,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				124363.636363636,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				125090.909090909,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				125090.909090909,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.2,194,194,194"
+					]
+				]
+			],
+			[
+				125818.181818182,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				125818.181818182,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				126545.454545455,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				126545.454545455,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.2,194,194,194"
+					]
+				]
+			],
+			[
+				127272.727272727,
+				[
+					[
+						"Add Camera Zoom",
+						"0.05",
+						"0.06"
+					]
+				]
+			],
+			[
+				127272.727272727,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.35,linear,0.55,194,194,194"
+					]
+				]
+			],
+			[
+				128000,
+				[
+					[
+						"Change Character",
+						"dad",
+						"avier-whistle"
+					]
+				]
+			],
+			[
+				128000,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0.85,0.5,quartOut"
+					],
+					[
+						"Camera Event",
+						"Tween Value",
+						"zoom,1.07,5,quadInOut"
+					],
+					[
+						"Set Property",
+						"cameraSpeed",
+						"0.75"
+					]
+				]
+			],
+			[
+				128000,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"140,1,circOut"
+					]
+				]
+			],
+			[
+				135000,
+				[
+					[
+						"Change Character",
+						"dad",
+						"mickey-FINAL-HOLYSHI"
+					]
+				]
+			],
+			[
+				136722.727272727,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"0,3,sineInOut"
+					]
+				]
+			],
+			[
+				136727.272727273,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0.0001,4,quartInOut"
+					]
+				]
+			],
+			[
+				145454.545454545,
+				[
+					[
+						"Camera Event",
+						"Tween Position",
+						"400,525,2,expoOut"
+					],
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.75"
+					]
+				]
+			],
+			[
+				150909.090909091,
+				[
+					[
+						"Camera Event",
+						"Tween Value",
+						"zoom,1,0.63,circInOut"
+					],
+					[
+						"Cinematic Event",
+						"Move",
+						"600,0.63,circInOut"
+					]
+				]
+			],
+			[
+				151272.727272727,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"hudalpha,0"
+					],
+					[
+						"Camera Event",
+						"Change Value",
+						"alpha,0"
+					]
+				]
+			],
+			[
+				151454.545454545,
+				[
+					[
+						"black",
+						"30",
+						""
+					]
+				],
+				""
+			],
+			[
+				151545.454545454,
+				[
+					[
+						"black",
+						"30",
+						""
+					]
+				],
+				""
+			],
+			[
+				151636.363636364,
+				[
+					[
+						"black",
+						"30",
+						""
+					]
+				],
+				""
+			],
+			[
+				151727.272727273,
+				[
+					[
+						"black",
+						"30",
+						""
+					]
+				],
+				""
+			],
+			[
+				151818.181818182,
+				[
+					[
+						"black",
+						"30",
+						""
+					]
+				],
+				""
+			],
+			[
+				151909.090909091,
+				[
+					[
+						"black",
+						"30",
+						""
+					]
+				],
+				""
+			],
+			[
+				152000,
+				[
+					[
+						"black",
+						"30",
+						""
+					]
+				],
+				""
+			],
+			[
+				152090.909090909,
+				[
+					[
+						"black",
+						"30",
+						""
+					]
+				],
+				""
+			],
+			[
+				152181.818181818,
+				[
+					[
+						"black",
+						"30",
+						""
+					]
+				],
+				""
+			],
+			[
+				152272.727272727,
+				[
+					[
+						"black",
+						"30",
+						""
+					]
+				],
+				""
+			],
+			[
+				152363.636363636,
+				[
+					[
+						"black",
+						"30",
+						""
+					]
+				],
+				""
+			],
+			[
+				152454.545454545,
+				[
+					[
+						"black",
+						"30",
+						""
+					]
+				],
+				""
+			],
+			[
+				152545.454545454,
+				[
+					[
+						"black",
+						"30",
+						""
+					]
+				],
+				""
+			],
+			[
+				152636.363636364,
+				[
+					[
+						"black",
+						"30",
+						""
+					]
+				],
+				""
+			],
+			[
+				152727.272727273,
+				[
+					[
+						"black",
+						"30",
+						""
+					]
+				],
+				""
+			],
+			[
+				152818.181818182,
+				[
+					[
+						"black",
+						"30",
+						""
+					]
+				],
+				""
+			],
+			[
+				152909.090909091,
+				[
+					[
+						"black",
+						"30",
+						""
+					]
+				],
+				""
+			],
+			[
+				153000,
+				[
+					[
+						"black",
+						"30",
+						""
+					]
+				],
+				""
+			],
+			[
+				153090.909090909,
+				[
+					[
+						"black",
+						"30",
+						""
+					]
+				],
+				""
+			],
+			[
+				153181.818181818,
+				[
+					[
+						"black",
+						"30",
+						""
+					]
+				],
+				""
+			],
+			[
+				153272.727272727,
+				[
+					[
+						"black",
+						"30",
+						""
+					]
+				],
+				""
+			],
+			[
+				153363.636363636,
+				[
+					[
+						"black",
+						"30",
+						""
+					]
+				],
+				""
+			],
+			[
+				153454.545454545,
+				[
+					[
+						"black",
+						"30",
+						""
+					]
+				],
+				""
+			],
+			[
+				153545.454545454,
+				[
+					[
+						"black",
+						"30",
+						""
+					]
+				],
+				""
+			],
+			[
+				153636.363636364,
+				[
+					[
+						"black",
+						"30",
+						""
+					]
+				],
+				""
+			],
+			[
+				153727.272727273,
+				[
+					[
+						"black",
+						"30",
+						""
+					]
+				],
+				""
+			],
+			[
+				153818.181818182,
+				[
+					[
+						"black",
+						"30",
+						""
+					]
+				],
+				""
+			],
+			[
+				153909.090909091,
+				[
+					[
+						"black",
+						"30",
+						""
+					]
+				],
+				""
+			],
+			[
+				154000,
+				[
+					[
+						"black",
+						"30",
+						""
+					]
+				],
+				""
+			]
+		]
+	}
+}

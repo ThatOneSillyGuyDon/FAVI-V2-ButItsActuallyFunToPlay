@@ -44,8 +44,7 @@ class AskQuestionToThatGuy extends MusicBeatState
     ];
 
     override function create() {
-        CustomFadeTransition.nextCamera = camHUD;
-
+        
         camHUD = new FlxCamera();
         camHUD.bgColor.alpha = 0;
         FlxG.cameras.add(camHUD, false);
@@ -96,7 +95,7 @@ class AskQuestionToThatGuy extends MusicBeatState
         text.resetText(introTexts[FlxG.random.int(0, introTexts.length-1)]);
         text.start(.04, true);
         text.sounds = [FlxG.sound.load(Paths.sound('funkinAVI/Jaysun Dialogue Sound'))];
-        text.antialiasing = ClientPrefs.globalAntialiasing;
+        text.antialiasing = ClientPrefs.data.antialiasing;
         text.camera = camHUD;
         text.completeCallback = () -> {
             jaysun.visible = true;
@@ -114,7 +113,7 @@ class AskQuestionToThatGuy extends MusicBeatState
         box.focusLost = () -> typing = false;
         add(box);
 
-        if (!ClientPrefs.lowQuality)
+        if (!ClientPrefs.data.lowQuality)
         {
             var scratchStuff:FlxSprite = new FlxSprite();
             scratchStuff.frames = Paths.getSparrowAtlas('Funkin_avi/filters/scratchShit');
@@ -164,7 +163,7 @@ class AskQuestionToThatGuy extends MusicBeatState
     override function update(elapsed:Float) {
         if (controls.BACK && !typing)
         {
-            MusicBeatState.switchState(new MainMenu());
+            MusicBeatState.switchState(new MainMenuState());
             FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
         }
 
@@ -176,7 +175,7 @@ class AskQuestionToThatGuy extends MusicBeatState
             askQuestion(box.text);
         }
 
-        super.update(elapsed);
+        //super.update(elapsed);
 
         var lerpVal:Float = CoolUtil.boundTo(elapsed * 2.4, 0, 1);
 		camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x, lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal));
