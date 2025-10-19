@@ -234,14 +234,14 @@ class TheThing extends MusicBeatState
 		Conductor.bpm = (50);
 		persistentUpdate = true;
 
-		street = new FlxBackdrop(Paths.image('street'), X, 0, 0);
+		street = new FlxBackdrop(Paths.image('$path/secret/street'), X, 0, 0);
         street.velocity.set(-100, 0);
         street.y -= 30;
         street.scale.set(1.3, 1.3);
         add(street);
 
         mickey = new FlxSprite();
-        mickey.frames = Paths.getSparrowAtlas('mick');
+        mickey.frames = Paths.getSparrowAtlas('$path/secret/mick');
         mickey.animation.addByPrefix('walk', 'mick idle', 8, true);
         mickey.animation.play('walk');
         mickey.screenCenter().y += 190;

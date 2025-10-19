@@ -9,7 +9,6 @@ import openfl.filters.ShaderFilter;
 class YouveBeenBlessed extends BaseStage
 {
 	//BLESS
-	var vaultRoomTiny:FlxSprite;
 	var vault:FlxSprite;
 	var vaultDoor:FlxSprite;
 	var chainsBehindLight:FlxSprite;
@@ -32,11 +31,8 @@ class YouveBeenBlessed extends BaseStage
 
 	override function create()
 	{
-		vaultRoom = new FlxSprite(0, 0).loadGraphic(Paths.image(PlayState.pathway + "VAULT/vaultBG"));
+		vaultRoom = new FlxSprite(0, 0).loadGraphic(Paths.image(PlayState.pathway + "BACKGROUND/VaultBG"));
 		add(vaultRoom);
-
-		vaultRoomTiny = new FlxSprite(2000, 1000).loadGraphic(Paths.image(PlayState.pathway + "BACKGROUND/vaultRoomTiny"));
-		add(vaultRoomTiny);
 
 		vault = new FlxSprite(0, 0).loadGraphic(Paths.image(PlayState.pathway + 'BACKGROUND/MainBG'));
 		vault.antialiasing = ClientPrefs.data.antialiasing;
@@ -145,7 +141,7 @@ class YouveBeenBlessed extends BaseStage
 		});
 		game.dad.blend = BlendMode.ADD;
 
-		vaultFore = new FlxSprite(0, 0).loadGraphic(Paths.image(PlayState.pathway + "VAULT/vaultFG"));
+		vaultFore = new FlxSprite(0, 0).loadGraphic(Paths.image(PlayState.pathway + "FOREGROUND/VaultFG"));
 		vaultFore.visible = false;
 		add(vaultFore);
 
@@ -196,13 +192,13 @@ class YouveBeenBlessed extends BaseStage
 					case 2:
 						FlxTween.tween(vaultDoor, {alpha: 0.0001}, 1, {ease: FlxEase.circInOut});
 					case 3:
-						for (stuff in [vault, vaultRoomTiny, vaultDoor, chainsBehindLight, wires, lights, chainsFrontofLight, lightsOverlay])
+						for (stuff in [vault, vaultDoor, chainsBehindLight, wires, lights, chainsFrontofLight, lightsOverlay])
 						{
 							stuff.visible = false;
 						}
 						vaultFore.visible = true;
 					case 4:
-						for (stuff in [vault, vaultRoomTiny, vaultDoor, chainsBehindLight, wires, lights, chainsFrontofLight, lightsOverlay])
+						for (stuff in [vault, vaultDoor, chainsBehindLight, wires, lights, chainsFrontofLight, lightsOverlay])
 						{
 							stuff.visible = true;
 						}

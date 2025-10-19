@@ -28,7 +28,7 @@ class SongCard extends FlxSpriteGroup
 				fontStuff = "satanFont.ttf";
 			case 'Bless':
 				fontStuff = "MagicOwlFont.otf";
-			case "Don't Cross!":
+			case "Dont Cross":
 				fontStuff = "PhantomMuff Full Letters 1.1.5.ttf";
 			case 'Cycled Sins':
 				fontStuff = "calibri-regular.ttf";

@@ -21,30 +21,30 @@ class Episode1Street extends BaseStage
     var skipLerp:Float = 0.0;
     var skipTmr:FlxTimer;
 
-		 //MICKEY STAGE ASSETS
-	 public static var colorsOrSmthElse:FlxSprite;
-	 public static var floor:FlxSprite;
-	 public static var stageCurtains:FlxSprite;
-	 public static var stageFront:FlxSprite;
-	 public static var atmosphereParticle:FlxEmitter;
-	 public static var ashParticle:FlxEmitter;
-	 public static var rain:FlxSprite;
-	 public static var heavyRain:FlxSprite;
-	 public static var tumbleWeed:FlxSprite;
-	 public static var tumbleGrp:FlxTypedGroup<FlxSprite>;
-	 public static var lightning:FlxSprite;
-	 public static var lightningFore:FlxSprite;
-	 public static var fakeLightOfHope:FlxSprite;
-	 public static var fireThing:FlxSprite;
-	 public static var fireForeground:FlxSprite;
-	 public static var fireTweenHandler:FlxTween;
-	 public static var rainTween:FlxTween;
-	 public static var mickeySpirit:Character;
-	 public static var memoryMickey:Character;
-	 public static var smokeShit:FlxTypedGroup<FlxSprite>;
-	 public static var smokeFore:FlxTypedGroup<FlxSprite>;
-	 public static var spriteShit:Array<String> = ['smokeBBack', 'smokeTBack'];
-	 public static var spriteShitForeground:Array<String> = ['smokeBFore', 'smokeTFore'];
+	//MICKEY STAGE ASSETS
+	public static var colorsOrSmthElse:FlxSprite;
+	public static var floor:FlxSprite;
+	public static var stageCurtains:FlxSprite;
+	public static var stageFront:FlxSprite;
+	public static var atmosphereParticle:FlxEmitter;
+	public static var ashParticle:FlxEmitter;
+	public static var rain:FlxSprite;
+	public static var heavyRain:FlxSprite;
+	public static var tumbleWeed:FlxSprite;
+	public static var tumbleGrp:FlxTypedGroup<FlxSprite>;
+	public static var lightning:FlxSprite;
+	public static var lightningFore:FlxSprite;
+	public static var fakeLightOfHope:FlxSprite;
+	public static var fireThing:FlxSprite;
+	public static var fireForeground:FlxSprite;
+	public static var fireTweenHandler:FlxTween;
+	public static var rainTween:FlxTween;
+	public static var mickeySpirit:Character;
+	public static var memoryMickey:Character;
+	public static var smokeShit:FlxTypedGroup<FlxSprite>;
+	public static var smokeFore:FlxTypedGroup<FlxSprite>;
+	public static var spriteShit:Array<String> = ['smokeBBack', 'smokeTBack'];
+	public static var spriteShitForeground:Array<String> = ['smokeBFore', 'smokeTFore'];
 	  
 	// Mickey being delusional and minnie appearing Scene For Delusional aaaa
 	public static var minnieBackground:FlxSprite; 

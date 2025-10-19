@@ -384,7 +384,7 @@ class DevilishStage extends BaseStage
 				var eventData:Float = Std.parseFloat(value1);
 				switch (eventData)
 				{
-					case 1: satanIcon.animation.curAnim.curFrame = 2;
+					case 1: satanIcon.changeIcon('satandd2NEW', false, true, false);
 					case 2: minnieIcon.animation.curAnim.curFrame = 1;
 					case 3:
 						satanIconPulse.visible = true;
