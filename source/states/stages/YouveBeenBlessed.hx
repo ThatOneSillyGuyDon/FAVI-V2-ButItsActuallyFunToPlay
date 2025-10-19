@@ -210,6 +210,12 @@ class YouveBeenBlessed extends BaseStage
 							// We make ur Laptop fry till the end of the song :fire: - MalyPlus
 							camGame.setFilters([new ShaderFilter(othershader)]);
 						}
+					case 6:
+						if (ClientPrefs.data.shaders)
+						{
+							// We make ur Laptop unfried :fire: - Goober Man
+							camGame.setFilters([]);
+						}
 
 				}
 			case 'Invert Shit':

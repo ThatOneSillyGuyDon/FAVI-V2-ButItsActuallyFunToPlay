@@ -184,7 +184,7 @@ class ChartingState extends MusicBeatState
 		else
 		{
 			Difficulty.resetList();
-			_song = Song.loadFromJson('isolated', 'isolated');
+			_song = Song.loadFromJson('isolated-null', 'isolated');
 			addSection();
 			PlayState.SONG = _song;
 		}

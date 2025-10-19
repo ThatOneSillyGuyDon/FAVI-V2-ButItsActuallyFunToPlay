@@ -4719,13 +4719,6 @@ class PlayState extends MusicBeatState
 	}
 
 	function songProgress(songName:String) {
-		// pls help me with my insanity --(MalyPlus)
-		for (i in 0...SaveProgress.songsStuff.length){
-			if (SaveProgress.songsStuff[i][0] == songName) {
-				SaveProgress.songsStuff[i][1] = "Beated";
-				trace(SaveProgress.songsStuff[i][0] + " saved: " + SaveProgress.songsStuff[i][1]);
-			}
-		}
 		
 		SaveProgress.saveThing();
 	}

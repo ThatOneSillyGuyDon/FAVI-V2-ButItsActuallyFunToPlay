@@ -185,7 +185,7 @@ class CharacterMenu extends MusicBeatState
         name.y -= 10;
 
         //Changes the font when hovering over LOT
-        if (curSelected == 14)
+        if (curSelected == 15)
             descText.setFormat(Paths.font('DaLotFont.ttf'), 16, FlxColor.WHITE, LEFT, OUTLINE, FlxColor.BLACK);
         else
             descText.setFormat(Paths.font('Oceanic_Cocktail_Demo.otf'), 23, FlxColor.WHITE, LEFT, OUTLINE, FlxColor.BLACK);

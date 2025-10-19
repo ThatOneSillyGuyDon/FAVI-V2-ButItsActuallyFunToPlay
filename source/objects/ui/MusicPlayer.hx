@@ -347,6 +347,8 @@ class MusicPlayer extends FlxGroup
 
 		if (FreeplayState.vocals == null && FreeplayState.vocalsOpp == null)
 			toggleTxt.visible = false;
+		else
+			toggleTxt.visible = true;
 
 	}
 
