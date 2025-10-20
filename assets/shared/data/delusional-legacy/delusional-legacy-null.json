@@ -182,16 +182,6 @@
 				48000,
 				[
 					[
-						"Scroll Type",
-						"Flip",
-						"Default"
-					]
-				]
-			],
-			[
-				48000,
-				[
-					[
 						"Camera Event",
 						"Change Value",
 						"addDefaultCamZoom,-0.2"
@@ -215,11 +205,6 @@
 						"Flash Screen",
 						"0",
 						""
-					],
-					[
-						"Scroll Type",
-						"Default",
-						"Left"
 					]
 				]
 			],
@@ -266,11 +251,6 @@
 			[
 				79135.1351351351,
 				[
-					[
-						"Scroll Type",
-						"",
-						"Right"
-					],
 					[
 						"Flash Screen",
 						"0",
@@ -2860,11 +2840,6 @@
 						"Set Cam Zoom",
 						"1.2",
 						"1"
-					],
-					[
-						"Scroll Type",
-						"Undyne",
-						""
 					]
 				]
 			],
@@ -3725,16 +3700,6 @@
 						"Screen Fade",
 						"1",
 						""
-					]
-				]
-			],
-			[
-				201081.081081081,
-				[
-					[
-						"Scroll Type",
-						"Default",
-						"Default"
 					]
 				]
 			],
@@ -7977,11 +7942,6 @@
 				295783.783783784,
 				[
 					[
-						"Scroll Type",
-						"Default",
-						"Default"
-					],
-					[
 						"Set Cam Zoom",
 						"1.3",
 						"15"
@@ -8475,6 +8435,156 @@
 						"Screen Fade",
 						"1",
 						""
+					]
+				]
+			],
+			[
+				48000,
+				[
+					[
+						"Scroll Type",
+						"Flip",
+						"Default"
+					]
+				]
+			],
+			[
+				58378.3783783784,
+				[
+					[
+						"Scroll Type",
+						"Default",
+						"Left"
+					]
+				]
+			],
+			[
+				58388.5135135136,
+				[
+					[
+						"Scroll Type",
+						"Default",
+						"Left"
+					]
+				]
+			],
+			[
+				58398.6486486487,
+				[
+					[
+						"Scroll Type",
+						"Default",
+						"Left"
+					]
+				]
+			],
+			[
+				58408.7837837838,
+				[
+					[
+						"Scroll Type",
+						"Default",
+						"Left"
+					]
+				]
+			],
+			[
+				58418.918918919,
+				[
+					[
+						"Scroll Type",
+						"Default",
+						"Left"
+					]
+				]
+			],
+			[
+				58429.0540540541,
+				[
+					[
+						"Scroll Type",
+						"Default",
+						"Left"
+					]
+				]
+			],
+			[
+				58439.1891891892,
+				[
+					[
+						"Scroll Type",
+						"Default",
+						"Left"
+					]
+				]
+			],
+			[
+				58449.3243243244,
+				[
+					[
+						"Scroll Type",
+						"Default",
+						"Left"
+					]
+				]
+			],
+			[
+				77837.8378378379,
+				[
+					[
+						"Scroll Type",
+						"",
+						"Default"
+					]
+				]
+			],
+			[
+				79135.1351351351,
+				[
+					[
+						"Scroll Type",
+						"",
+						"Right"
+					]
+				]
+			],
+			[
+				99891.8918918918,
+				[
+					[
+						"Scroll Type",
+						"Undyne",
+						""
+					]
+				]
+			],
+			[
+				201081.081081081,
+				[
+					[
+						"Scroll Type",
+						"Default",
+						"Default"
+					]
+				]
+			],
+			[
+				258162.162162163,
+				[
+					[
+						"Scroll Type",
+						"",
+						"Left"
+					]
+				]
+			],
+			[
+				295783.783783784,
+				[
+					[
+						"Scroll Type",
+						"Default",
+						"Default"
 					]
 				]
 			]
