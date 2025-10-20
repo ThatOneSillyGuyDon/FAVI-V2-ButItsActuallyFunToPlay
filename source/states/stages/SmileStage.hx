@@ -43,6 +43,13 @@ class SmileStage extends BaseStage
 		office.scale.set(0.85, 0.8);
 		chair.scale.set(0.9, 0.85);
 	}
+
+	override public function resetCharPos() 
+	{
+		game.boyfriend.setPosition(1300, 400);
+		game.dad.setPosition(0, 0);
+		game.gf.setPosition(1100, 560);
+	}
 	
 	override function createPost()
 	{
@@ -54,10 +61,6 @@ class SmileStage extends BaseStage
 		funiLight.active = false;
 		add(funiLight);
 		funiLight.scale.set(0.85, 0.8);
-
-		game.boyfriend.setPosition(1300, 400);
-		game.dad.setPosition(0, 0);
-		game.gf.setPosition(1100, 560);
 
 		if (ClientPrefs.data.shaders)
 		{

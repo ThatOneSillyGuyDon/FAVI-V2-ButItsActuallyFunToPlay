@@ -49,7 +49,10 @@ class LegForest extends BaseStage
 				camHUD.setFilters([new ShaderFilter(grayScale)]);
 			}
 		}
+	}
 
+	override public function resetCharPos() 
+	{
 		game.dad.setPosition(0, 0);
     	game.boyfriend.setPosition(900, -20);
 		game.gf.visible = false;

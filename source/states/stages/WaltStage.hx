@@ -199,7 +199,7 @@ class WaltStage extends BaseStage
 		}
 	}
 
-	override function update(elapsed:Float)
+	override public function resetCharPos() 
 	{
 		switch (game.dad.curCharacter)
 		{
@@ -211,7 +211,10 @@ class WaltStage extends BaseStage
 				game.dad.setPosition(0, 0);
 		}
 		game.boyfriend.setPosition(330, 300);
-		
+	}
+
+	override function update(elapsed:Float)
+	{	
 		shaderAnim = Conductor.songPosition / 1000;
 		
 		if (ClientPrefs.data.shaders)

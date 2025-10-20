@@ -74,6 +74,13 @@ class DevilishStage extends BaseStage
 		lightingSound = new FlxSound();
 		FlxG.sound.list.add(lightingSound);
 	}
+
+	override public function resetCharPos() 
+	{
+		game.boyfriend.setPosition(770, 450);
+		game.dad.setPosition(1660, 120);
+		game.gf.visible = false;
+	}
 	
 	override function createPost()
 	{
@@ -90,10 +97,6 @@ class DevilishStage extends BaseStage
 		fgWall.scale.set(0.84, 0.84);
 		fgWall.scrollFactor.set(1.18, 1.18);
 		add(fgWall);
-
-		game.boyfriend.setPosition(770, 450);
-		game.dad.setPosition(1660, 120);
-		game.gf.visible = false;
 
 		game.dad.setColorTransform(-1, -1, -1, 1, 0, 0, 0, 0);
 		camGame.alpha = 0.001;

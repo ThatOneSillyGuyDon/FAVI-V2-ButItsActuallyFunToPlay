@@ -4,6 +4,8 @@ package states.stages.legacyStages;
 import openfl.filters.ShaderFilter;
 #end
 
+import lime.app.Application;
+
 class LegForbiddenRealm extends BaseStage
 {
 	//MALFUNCTION
@@ -13,6 +15,14 @@ class LegForbiddenRealm extends BaseStage
 	var glitchBG:FlxRuntimeShader;
 	var staticBG:FlxRuntimeShader;
 	var accessPath:String;
+
+	public var crashLives:FlxText;
+	public var crashLivesIcon:FlxSprite;
+
+	public var crashLivesCounter:Int = 0;
+
+	var heartTween:FlxTween;
+	var malfunctionTxt:FlxTween;
 
 	public static var malFreakG:FlxRuntimeShader = new FlxRuntimeShader(Shaders.freakyGlitch, null, 120);
 	public static var malBG:FlxRuntimeShader = new FlxRuntimeShader(Shaders.malfunctionBGEffect, null, 120);
@@ -69,9 +79,20 @@ class LegForbiddenRealm extends BaseStage
 			add(greyParticles);
 		}
 	}
+
+	override public function resetCharPos() 
+	{
+		if (game.dad.curCharacter == 'gm-calm-pixel')
+			game.dad.setPosition(-130, 50);
+		else
+			game.dad.setPosition(-100, 150);
+		
+		game.boyfriend.setPosition(1300, 600);
+		game.gf.visible = false;
+	}
 	
 	override function createPost()
-	{
+	{	
 		var blackParticles:FlxEmitter = new FlxEmitter(-2080.5, 912.4);
 		blackParticles.launchMode = SQUARE;
 		blackParticles.velocity.set(-70, -220, 70, -620, -110, 20, 110, -620);
@@ -107,14 +128,6 @@ class LegForbiddenRealm extends BaseStage
 			add(blackParticles);
 			add(mickeyEmitter);
 
-		if (game.dad.curCharacter == 'gm-calm-pixel')
-			game.dad.setPosition(-130, 50);
-		else
-			game.dad.setPosition(-100, 150);
-		
-		game.boyfriend.setPosition(1300, 600);
-		game.gf.visible = false;
-
 		if (ClientPrefs.data.shaders)
 		{
 			if(!ClientPrefs.data.lowQuality)
@@ -131,6 +144,36 @@ class LegForbiddenRealm extends BaseStage
 				]);
 			}
 		}
+
+		if (ClientPrefs.data.downScroll)
+		{
+			crashLives = new FlxText(600, 170, 0, "", 20);
+			crashLivesIcon = new FlxSprite(550, 170);
+		}
+		else
+		{
+			crashLives = new FlxText(600, 500, 0, "", 20);
+			crashLivesIcon = new FlxSprite(550, 500);
+		}
+
+		crashLives.setFormat(Paths.font("Retro Gaming.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		crashLives.borderSize = 2;
+		crashLives.borderQuality = 2;
+		crashLives.antialiasing = false;
+		crashLives.scrollFactor.set();
+		crashLives.cameras = [camHUD];
+
+		crashLivesIcon.frames = Paths.getSparrowAtlas('UI/funkinAVI/gimmicks/malfunctionGimmickIcon');
+		crashLivesIcon.animation.addByPrefix('idle', 'lives-icon idle', 15);
+		crashLivesIcon.animation.addByPrefix('OMFG IT GLITCHES', 'lives-icon glitchin', 15);
+		crashLivesIcon.animation.play('idle');
+		crashLivesIcon.scale.set(2.2, 2.2);
+		crashLivesIcon.antialiasing = false;
+		crashLivesIcon.cameras = [camHUD];
+		game.uiGroup.add(crashLives);
+		game.uiGroup.add(crashLivesIcon);
+		crashLivesCounter += 30;
+		crashLives.text = 'Lives: ${crashLivesCounter}';
 	}
 
 	override function update(elapsed:Float)
@@ -141,6 +184,116 @@ class LegForbiddenRealm extends BaseStage
 			chromNormalShader.setFloat('bOffset', -game.chromEffect / 20);
 			if (ClientPrefs.data.epilepsy)
 				blurShader.setFloat('bluramount', blurEffect);
+		}
+	}
+
+	var malfunctionComboCheck:Int = 0;
+	
+	override function noteMiss(note:Note)
+	{
+		malfunctionComboCheck = 0;
+	}
+
+	override function goodNoteHit(note:Note)
+	{
+		if (note.noteType == "Error Note")
+		{
+			game.healthThing += note.hitHealth * 3.8;
+			crashLivesCounter -= 1;
+
+			crashLives.text = 'Lives: ${crashLivesCounter}';
+
+			if (malfunctionTxt != null)
+				malfunctionTxt.cancel();
+	
+			if (heartTween != null)
+				heartTween.cancel();
+	
+			malfunctionTxt = FlxTween.tween(crashLives, {alpha: 1}, 0.6, {
+				ease: FlxEase.sineOut,
+				onComplete: function(twn:FlxTween)
+				{
+					malfunctionTxt = FlxTween.tween(crashLives, {alpha: 0.3}, 2, {
+						ease: FlxEase.quartInOut,
+						startDelay: 5,
+						onComplete: function(twn:FlxTween)
+						{
+							malfunctionTxt = null;
+						}
+					});
+				}
+			});
+	
+			heartTween = FlxTween.tween(crashLivesIcon, {alpha: 1}, 0.6, {
+				ease: FlxEase.sineOut,
+				onComplete: function(twn:FlxTween)
+				{
+					heartTween = FlxTween.tween(crashLivesIcon, {alpha: 0.3}, 2, {
+						ease: FlxEase.quartInOut,
+						startDelay: 5,
+						onComplete: function(twn:FlxTween)
+						{
+							heartTween = null;
+						}
+					});
+				}
+			});
+	
+			// to be honest we can just use shake
+			//                                - jason
+	
+			FlxTween.tween(crashLives, {x: 620}, 0.01);
+			FlxTween.tween(crashLivesIcon, {x: 570}, 0.01);
+			FlxTween.tween(crashLives, {x: 585}, 0.01, {startDelay: 0.1});
+			FlxTween.tween(crashLivesIcon, {x: 535}, 0.01, {startDelay: 0.1});
+			FlxTween.tween(crashLives, {x: 610}, 0.01, {startDelay: 0.2});
+			FlxTween.tween(crashLivesIcon, {x: 560}, 0.01, {startDelay: 0.2});
+			FlxTween.tween(crashLives, {x: 595}, 0.01, {startDelay: 0.3});
+			FlxTween.tween(crashLivesIcon, {x: 545}, 0.01, {startDelay: 0.3});
+			FlxTween.tween(crashLives, {x: 600}, 0.01, {startDelay: 0.4});
+			FlxTween.tween(crashLivesIcon, {x: 550}, 0.01, {startDelay: 0.4});
+	
+			crashLivesIcon.animation.play("OMFG IT GLITCHES");
+	
+			new FlxTimer().start(0.25, function(tmr:FlxTimer)
+			{
+				crashLivesIcon.animation.play('idle');
+			});
+	
+			if (crashLivesCounter == -1)
+			{
+				game.finishSong();
+				trace('0 lives left, closing game...');
+				FlxG.sound.play(Paths.sound('funkinAVI/wiiCrash'), 1);
+	
+				if (FlxG.random.bool(10))
+																																																							
+					Application.current.window.alert("You Suck LMAO\n\n\nmaybe actually be good at the game for once instead of killing yourself so many times bro.", 'Note About Your Skill:'); // 10% of probability
+				else																																																																					/**corny ass shit no offense**/
+					Application.current.window.alert("<Message Log>\n========================                                                                                        \n\nPlayState.hx (7504):\n   if(crashLivesCounter == -1)\n   {trace('0 lives left, closing game...')}\n\n\njust give up, you stand no chance against me, everett.",
+						'Error On Funkin.avi.exe!:');
+	
+				Sys.exit(0);
+			}
+		}
+
+		if (!note.isSustainNote)
+		{
+			if (PlayState.SONG.song == "Malfunction") malfunctionComboCheck += 1;
+			
+			if (malfunctionComboCheck == 100 && PlayState.SONG.song == "Malfunction")
+			{
+				malfunctionComboCheck = 0;
+				if (game.ratingPercent == 1)
+					crashLivesCounter += 5;
+				else if (game.ratingPercent >= 0.9)
+					crashLivesCounter += 3;
+				else
+					crashLivesCounter += 1;
+				crashLives.text = 'Lives: ${crashLivesCounter}';
+				crashLivesIcon.y -= 20;
+				FlxTween.tween(crashLivesIcon, {y: crashLivesIcon.y + 20}, 0.3, {ease: FlxEase.sineOut});
+			}
 		}
 	}
 

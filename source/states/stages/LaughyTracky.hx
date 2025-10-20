@@ -33,12 +33,15 @@ class LaughyTracky extends BaseStage
 		tentsfront.scale.set(1.15, 1.15);
 		add(tentsfront);
 
+		game.camBars.fade(FlxColor.BLACK, 0.0001);
+		camHUD.alpha = 0.001;
+	}
+
+	override public function resetCharPos() 
+	{
 		game.dad.setPosition(-990, -100);
 		game.boyfriend.setPosition(0,-360);
 		game.gf.setPosition(-300, -200);
-
-		game.camBars.fade(FlxColor.BLACK, 0.0001);
-		camHUD.alpha = 0.001;
 	}
 
 	override function opponentNoteHit(note:Note)

@@ -54,26 +54,8 @@ class Birtbhday extends BaseStage
 		spawnNotes['bf'] = false;
 		spawnNotes['muckney'] = false;
 	}
-	
-	override function createPost()
-	{
-		game.camBars.fade(FlxColor.BLACK, 0.0001);
-		camHUD.alpha = 0.001;
 
-		if (!ClientPrefs.data.lowQuality)
-		{
-			var banners = new FlxSprite(-480, -110).loadGraphic(Paths.image(PlayState.pathway + "birthdayBanners"));
-			banners.scrollFactor.set(1.2, 1.2);
-			add(banners);
-
-			var foreObj = new FlxSprite(-470, -400).loadGraphic(Paths.image(PlayState.pathway + 'foreBG'));
-			foreObj.scrollFactor.set(1.4, 1.4);
-			add(foreObj);
-		}
-	}
-
-	//Have to put this in update since for some reason it bugs when munckey turns into munpet
-	override function update(elapsed:Float)
+	override public function resetCharPos() 
 	{
 		switch (game.dad.curCharacter)
 		{
@@ -92,6 +74,24 @@ class Birtbhday extends BaseStage
 		}
 		game.gf.setPosition(280, -410);
 	}
+	
+	override function createPost()
+	{
+		game.camBars.fade(FlxColor.BLACK, 0.0001);
+		camHUD.alpha = 0.001;
+
+		if (!ClientPrefs.data.lowQuality)
+		{
+			var banners = new FlxSprite(-480, -110).loadGraphic(Paths.image(PlayState.pathway + "birthdayBanners"));
+			banners.scrollFactor.set(1.2, 1.2);
+			add(banners);
+
+			var foreObj = new FlxSprite(-470, -400).loadGraphic(Paths.image(PlayState.pathway + 'foreBG'));
+			foreObj.scrollFactor.set(1.4, 1.4);
+			add(foreObj);
+		}
+	}
+
 	// For events
 	override function eventCalled(eventName:String, value1:String, value2:String, flValue1:Null<Float>, flValue2:Null<Float>, strumTime:Float)
 	{

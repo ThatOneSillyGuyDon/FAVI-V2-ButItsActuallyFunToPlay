@@ -94,6 +94,13 @@ class ShotgunMick extends BaseStage
 		bg2.visible = false;
 		add(bg2);
 	}
+
+	override public function resetCharPos() 
+	{
+		if (PlayState.SONG.song == "Cycled Sins Legacy") game.gf.visible = false;
+		game.dad.setPosition(-1000, 270);
+    	game.boyfriend.setPosition(590, 250);
+	}
 	
 	override function createPost()
 	{
@@ -141,21 +148,6 @@ class ShotgunMick extends BaseStage
 		}
 	}
 
-/*
-	override function beatHit()
-	{
-		switch (PlayState.SONG.song)
-		{
-			case 'Cycled Sins Legacy':
-				switch (curBeat)
-				{
-					case 272:
-						FlxTween.tween(game, {healthThing: 0.1}, 20, {ease: FlxEase.quartInOut});
-				}
-		}
-	}
-*/
-
 	override function opponentNoteHit(note:Note)
 	{
 		if (sinsEnd && !note.isSustainNote)
@@ -192,10 +184,6 @@ class ShotgunMick extends BaseStage
 					staticEffect.setFloat('iTime', shaderAnim);
 				}
 		}
-
-		if (PlayState.SONG.song == "Cycled Sins Legacy") game.gf.visible = false;
-		game.dad.setPosition(-1000, 270);
-    	game.boyfriend.setPosition(590, 250);
 	}
 	public function detectSpace(isAutoplay:Bool = false)
 	{

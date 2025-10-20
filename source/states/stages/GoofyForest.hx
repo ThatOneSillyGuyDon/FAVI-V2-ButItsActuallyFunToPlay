@@ -78,7 +78,10 @@ class GoofyForest extends BaseStage
 			}
 		}
 		add(treesFront);
+	}
 
+	override public function resetCharPos() 
+	{
 		game.dad.setPosition(-110, -15); // goofy ahh goofy offsets - malyplus
 		game.boyfriend.setPosition(480, -220);
 		game.gf.setPosition(170, -70);

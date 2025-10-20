@@ -80,14 +80,17 @@ class YouveBeenBlessed extends BaseStage
 		dropShadowArray[0].attachedSprite = vaultDoor;
 		add(vaultDoor);
 	}
-	
-	var blendModes:Array<BlendEffect> = [];
-	override function createPost()
+
+	override public function resetCharPos() 
 	{
 		game.dad.setPosition(2250, 450);
 		game.boyfriend.setPosition(2885, 1450);
 		game.gf.visible = false;
-
+	}
+	
+	var blendModes:Array<BlendEffect> = [];
+	override function createPost()
+	{
 		game.camBars.fade(FlxColor.BLACK, 0.0001);
 		camHUD.alpha = 0;
 

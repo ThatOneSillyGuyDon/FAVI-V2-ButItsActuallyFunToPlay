@@ -91,6 +91,8 @@ class BaseStage extends FlxBasic
 	//public function update(elapsed:Float) {}
 	public function countdownTick(count:Countdown, num:Int) {}
 
+	public function resetCharPos() {}
+
 	// FNF steps, beats and sections
 	public var curBeat:Int = 0;
 	public var curDecBeat:Float = 0;
