@@ -44,15 +44,12 @@ class SmileStage extends BaseStage
 		chair.scale.set(0.9, 0.85);
 	}
 
-	override public function resetCharPos() 
+	override function createPost()
 	{
 		game.boyfriend.setPosition(1300, 400);
 		game.dad.setPosition(0, 0);
 		game.gf.setPosition(1100, 560);
-	}
-	
-	override function createPost()
-	{
+		
 		funiLight = new FlxSprite(-500, -300).loadGraphic(Paths.image(PlayState.pathway + 'light'));
 		funiLight.antialiasing = true;
 		funiLight.scrollFactor.set(1, 1);

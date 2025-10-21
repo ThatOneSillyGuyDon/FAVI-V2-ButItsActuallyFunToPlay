@@ -520,7 +520,7 @@ class LegacyMenuState extends MusicBeatState
 								{
 									case 'story_mode':
 										FlxG.mouse.visible = false;
-										MusicBeatState.switchState(new StoryMenu());
+										MusicBeatState.switchState(new StoryMenuState());
 										Conductor.bpm = (50); // changes back to titlescreen bpm
 										FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'), 1); // resets music back to menu music
 										FlxG.sound.music.fadeIn();
@@ -531,7 +531,7 @@ class LegacyMenuState extends MusicBeatState
 									case 'credits':
 										FlxG.sound.music.fadeIn(0.5, 0, 1);
 										FlxG.sound.playMusic(Paths.music('aviOST/curtainCall'));
-										MusicBeatState.switchState(new CreditsMenu());
+										MusicBeatState.switchState(new CreditsState());
 									case 'options':
 										Conductor.bpm = (50); // changes back to titlescreen bpm
 										FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'), 1); // resets music back to menu music

@@ -74,15 +74,12 @@ class GiveMeTheFiles extends BaseStage
 		}
 	}
 
-	override public function resetCharPos() 
-	{
+	override function createPost()
+	{	
 		game.dad.setPosition(-140, 80);
    	 	game.boyfriend.setPosition(1500, 650);
 		game.gf.visible = false;
-	}
-	
-	override function createPost()
-	{	
+		
 		if (!ClientPrefs.data.lowQuality)
 		{
 			var fore = new FlxSprite(-1280 * defaultCamZoom, -720 * defaultCamZoom, Paths.image(defaultPath + "grassFore"));

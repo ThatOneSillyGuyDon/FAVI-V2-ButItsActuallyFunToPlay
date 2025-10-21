@@ -499,6 +499,30 @@ class Episode1Street extends BaseStage
 				}
 		}
 
+		switch (game.dad.curCharacter)
+		{
+			case 'delusional-mickey':
+				game.dad.setPosition(-260, 120);
+			case 'mickey-delu-intro':
+				game.dad.setPosition(-210, 180);
+			case 'death-part-1':
+				game.dad.setPosition(-450, 100);
+			case 'death-part-2':
+				game.dad.setPosition(-430, 100);
+			case 'delumickey' | 'deluMick-eyeless':
+				game.dad.setPosition(-870, -185);
+			default:
+				game.dad.setPosition(-870, -190);
+		}
+		switch (game.boyfriend.curCharacter)
+		{
+			case 'evildelu': game.boyfriend.setPosition(550, 190);
+			case 'bf-delu-intro': game.boyfriend.setPosition(750, 350);
+			case 'bf-demon': game.boyfriend.setPosition(275, 65);
+			case 'Mickey-Bedroom': game.boyfriend.setPosition(575, 50);
+			default: game.boyfriend.setPosition(275, 50);
+		}
+
 		if (PlayState.SONG.song == "Isolated")
 		{
 			var mult:Float = FlxMath.lerp(1, demonBFIcon.scale.x, CoolUtil.boundTo(1 - (elapsed * 9 * game.playbackRate), 0, 1));
@@ -581,33 +605,6 @@ class Episode1Street extends BaseStage
 			if (skipSceneTxt != null)
 				for (skipper in [skipSceneTxt, skipDial])
 					skipper.alpha = FlxMath.lerp(skipLerp, skipper.alpha, CoolUtil.boundTo(1 - (elapsed * 9), 0, 1));
-		}
-	}
-
-	override public function resetCharPos() 
-	{
-		switch (game.dad.curCharacter)
-		{
-			case 'delusional-mickey':
-				game.dad.setPosition(-260, 120);
-			case 'mickey-delu-intro':
-				game.dad.setPosition(-210, 180);
-			case 'death-part-1':
-				game.dad.setPosition(-450, 100);
-			case 'death-part-2':
-				game.dad.setPosition(-430, 100);
-			case 'delumickey' | 'deluMick-eyeless':
-				game.dad.setPosition(-870, -185);
-			default:
-				game.dad.setPosition(-870, -190);
-		}
-		switch (game.boyfriend.curCharacter)
-		{
-			case 'evildelu': game.boyfriend.setPosition(550, 190);
-			case 'bf-delu-intro': game.boyfriend.setPosition(750, 350);
-			case 'bf-demon': game.boyfriend.setPosition(275, 65);
-			case 'Mickey-Bedroom': game.boyfriend.setPosition(575, 50);
-			default: game.boyfriend.setPosition(275, 50);
 		}
 	}
 

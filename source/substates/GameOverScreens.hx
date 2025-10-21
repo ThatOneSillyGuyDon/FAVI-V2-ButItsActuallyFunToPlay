@@ -103,7 +103,7 @@ class BaseGameOver extends MusicBeatSubstate {
 
 			if (PlayState.isStoryMode)
 			{
-				MusicBeatState.switchState(new StoryMenu());
+				MusicBeatState.switchState(new StoryMenuState());
 				FlxG.sound.playMusic(Paths.music('aviOST/gameOver/rottenPetals'));
 			}
 			else
@@ -472,7 +472,7 @@ class Episode1Death extends MusicBeatSubstate {
 				{
 					stupidAssCam.fade(FlxColor.BLACK, 1.4, false, function()
 					{
-						MusicBeatState.switchState(new StoryMenu());
+						MusicBeatState.switchState(new StoryMenuState());
 						FlxG.sound.playMusic(Paths.music('aviOST/gameOver/rottenPetals'));
 					});
 				}
@@ -657,7 +657,7 @@ class DelusionalDeath extends MusicBeatSubstate {
 				{
 					stupidAssCam.fade(FlxColor.BLACK, 1.4, false, function()
 					{
-						MusicBeatState.switchState(new StoryMenu());
+						MusicBeatState.switchState(new StoryMenuState());
 						FlxG.sound.playMusic(Paths.music('aviOST/gameOver/rottenPetals'));
 					});
 				}
@@ -853,7 +853,7 @@ class EpicFailLmao extends MusicBeatSubstate {
 						{
 							if (PlayState.isStoryMode)
 							{
-								MusicBeatState.switchState(new StoryMenu());
+								MusicBeatState.switchState(new StoryMenuState());
 								FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 							}
 							else
@@ -1056,7 +1056,7 @@ class EverettBaseDeath extends MusicBeatSubstate {
 				{
 					stupidAssCam.fade(FlxColor.BLACK, 1.4, false, function()
 					{
-						MusicBeatState.switchState(new StoryMenu());
+						MusicBeatState.switchState(new StoryMenuState());
 						FlxG.sound.playMusic(Paths.music('aviOST/gameOver/rottenPetals'));
 					});
 				}
@@ -1228,7 +1228,7 @@ class WarGameOver extends MusicBeatSubstate {
 				{
 					stupidAssCam.fade(FlxColor.BLACK, 1.4, false, function()
 					{
-						MusicBeatState.switchState(new StoryMenu());
+						MusicBeatState.switchState(new StoryMenuState());
 						FlxG.sound.playMusic(Paths.music('aviOST/gameOver/rottenPetals'));
 					});
 				}
@@ -1540,7 +1540,7 @@ class MalsquareDeath extends MusicBeatSubstate {
 				{
 					stupidAssCam.fade(FlxColor.BLACK, 1.4, false, function()
 					{
-						MusicBeatState.switchState(new StoryMenu());
+						MusicBeatState.switchState(new StoryMenuState());
 						FlxG.sound.playMusic(Paths.music('aviOST/gameOver/rottenPetals'));
 					});
 				}
@@ -1702,7 +1702,7 @@ class MalsquareTrollScreen extends MusicBeatSubstate {
 		
 						if (PlayState.isStoryMode)
 						{
-							MusicBeatState.switchState(new StoryMenu());
+							MusicBeatState.switchState(new StoryMenuState());
 							FlxG.sound.playMusic(Paths.music('aviOST/gameOver/rottenPetals'));
 						}
 						else

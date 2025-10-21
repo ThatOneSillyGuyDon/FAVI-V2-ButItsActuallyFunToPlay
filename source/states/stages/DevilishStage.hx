@@ -75,13 +75,6 @@ class DevilishStage extends BaseStage
 		FlxG.sound.list.add(lightingSound);
 	}
 
-	override public function resetCharPos() 
-	{
-		game.boyfriend.setPosition(770, 450);
-		game.dad.setPosition(1660, 120);
-		game.gf.visible = false;
-	}
-	
 	override function createPost()
 	{
 		var rain:FlxSprite = new FlxSprite(-600, 130);
@@ -473,6 +466,10 @@ class DevilishStage extends BaseStage
 	override function update(elapsed:Float)
 	{
 		shaderAnim = Conductor.songPosition / 1000;
+
+		game.boyfriend.setPosition(770, 450);
+		game.dad.setPosition(1660, 120);
+		game.gf.visible = false;
 		
 		var mult:Float = FlxMath.lerp(1, minnieIcon.scale.x, CoolUtil.boundTo(1 - (elapsed * 9 * game.playbackRate), 0, 1));
 		minnieIcon.scale.set(mult, mult);

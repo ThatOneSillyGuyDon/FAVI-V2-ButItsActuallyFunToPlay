@@ -28,9 +28,6 @@ import openfl.utils.Assets as OpenFlAssets;
 import openfl.events.KeyboardEvent;
 import haxe.Json;
 
-import cutscenes.CutsceneHandler;
-import cutscenes.DialogueBoxPsych;
-
 import objects.Character.Shadow;
 import objects.ui.SubtitlesBox.EventType;
 import objects.ui.SubtitlesBox.SubtitlesUtil;
@@ -912,8 +909,6 @@ class PlayState extends MusicBeatState
 		noteGroup = new FlxTypedGroup<FlxBasic>();
 		add(noteGroup);
 
-		resetCharPos();
-
 		blendFlash = new FlxSprite().makeGraphic(1, 1, 0xFFFFFFFF);
 		blendFlash.scale.set(FlxG.width * 5, FlxG.height * 5);
 		blendFlash.alpha = 0.0001;
@@ -1279,18 +1274,6 @@ class PlayState extends MusicBeatState
 		if(eventNotes.length < 1) checkEventNote();
 	}
 
-	function resetCharPos()
-	{
-		switch (curStage)
-		{
-			default:
-				boyfriend.setPosition(770, 450);
-				dad.setPosition(100, 100);
-				gf.setPosition(300, 100);
-		}
-		stagesFunc(function(stage:BaseStage) stage.resetCharPos());
-	}
-
 	function set_songSpeed(value:Float):Float
 	{
 		if(generatedMusic)
@@ -1537,39 +1520,6 @@ class PlayState extends MusicBeatState
 			endSong();
 		else
 			startCountdown();
-	}
-
-	var dialogueCount:Int = 0;
-	public var psychDialogue:DialogueBoxPsych;
-	//You don't have to add a song, just saying. You can just do "startDialogue(DialogueBoxPsych.parseDialogue(Paths.json(songName + '/dialogue')))" and it should load dialogue.json
-	public function startDialogue(dialogueFile:DialogueFile, ?song:String = null):Void
-	{
-		// TO DO: Make this more flexible, maybe?
-		if(psychDialogue != null) return;
-
-		if(dialogueFile.dialogue.length > 0) {
-			inCutscene = true;
-			psychDialogue = new DialogueBoxPsych(dialogueFile, song);
-			psychDialogue.scrollFactor.set();
-			if(endingSong) {
-				psychDialogue.finishThing = function() {
-					psychDialogue = null;
-					endSong();
-				}
-			} else {
-				psychDialogue.finishThing = function() {
-					psychDialogue = null;
-					startCountdown();
-				}
-			}
-			psychDialogue.nextDialogueThing = startNextDialogue;
-			psychDialogue.skipDialogueThing = skipDialogue;
-			psychDialogue.cameras = [camHUD];
-			add(psychDialogue);
-		} else {
-			FlxG.log.warn('Your dialogue file is badly formatted!');
-			startAndEnd();
-		}
 	}
 
 	var startTimer:FlxTimer;
@@ -2088,15 +2038,6 @@ class PlayState extends MusicBeatState
 		vocals.play();
 		opponentVocals.play();
 		Conductor.songPosition = time;
-	}
-
-	public function startNextDialogue() {
-		dialogueCount++;
-		callOnScripts('onNextDialogue', [dialogueCount]);
-	}
-
-	public function skipDialogue() {
-		callOnScripts('onSkipDialogue', [dialogueCount]);
 	}
 
 	function startSong():Void
@@ -3956,7 +3897,6 @@ class PlayState extends MusicBeatState
 						}
 				}
 				reloadHealthBarColors();
-				resetCharPos();
 
 			case 'Change Scroll Speed':
 				if (songSpeedType != "constant")
@@ -4965,14 +4905,14 @@ class PlayState extends MusicBeatState
 					FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 					#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
 
-					MusicBeatState.switchState(new StoryMenu());
+					MusicBeatState.switchState(new StoryMenuState());
 
 					// if ()
 					if(!ClientPrefs.getGameplaySetting('practice') && !ClientPrefs.getGameplaySetting('botplay')) {
-						StoryMenu.weekCompleted.set(WeekData.weeksList[storyWeek], true);
+						StoryMenuState.weekCompleted.set(WeekData.weeksList[storyWeek], true);
 						Highscore.saveWeekScore(WeekData.getWeekFileName(), campaignScore, storyDifficulty);
 
-						FlxG.save.data.weekCompleted = StoryMenu.weekCompleted;
+						FlxG.save.data.weekCompleted = StoryMenuState.weekCompleted;
 						FlxG.save.flush();
 					}
 					changedDifficulty = false;
@@ -5559,7 +5499,7 @@ class PlayState extends MusicBeatState
 		if (SONG.song == "Birthday")
 			opponentStrums.members[note.noteData].scale.set(forceAutismIntoThisNoteLikeAnAverageAmericanDoctor + (autism * forceAutismIntoThisNoteLikeAnAverageAmericanDoctor / (!note.isSustainNote ? 2 : 4) + 0.12), forceAutismIntoThisNoteLikeAnAverageAmericanDoctor - (autism * forceAutismIntoThisNoteLikeAnAverageAmericanDoctor / (!note.isSustainNote ? 2 : 4) + 0.12));
 
-		if (songName != 'tutorial')
+		if (SONG.song != "Bless")
 			camZooming = true;
 
 		if(note.noteType == 'Hey!' && dad.animOffsets.exists('hey')) {
@@ -5628,6 +5568,9 @@ class PlayState extends MusicBeatState
 		if(SONG.song == "Birthday")
 			playerStrums.members[note.noteData].scale.set(forceAutismIntoThisNoteLikeAnAverageAmericanDoctor + (!note.isSustainNote ? autism : autism * forceAutismIntoThisNoteLikeAnAverageAmericanDoctor / 2), forceAutismIntoThisNoteLikeAnAverageAmericanDoctor - (!note.isSustainNote ? autism : autism * forceAutismIntoThisNoteLikeAnAverageAmericanDoctor / 2));
 
+		if (SONG.song == "Bless")
+			camZooming = true;
+		
 		if (ClientPrefs.data.hitsoundVolume > 0 && !note.hitsoundDisabled)
 		{
 			FlxG.sound.play(Paths.sound('hitsound'), ClientPrefs.data.hitsoundVolume);

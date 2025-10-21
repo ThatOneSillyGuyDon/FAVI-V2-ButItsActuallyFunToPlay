@@ -28,7 +28,7 @@ class Init extends FlxState
 		
 		CoolUtil.createCoreFile();
 
-        if (FlxG.save.data.weekCompleted != null) StoryMenu.weekCompleted = FlxG.save.data.weekCompleted;
+        if (FlxG.save.data.weekCompleted != null) StoryMenuState.weekCompleted = FlxG.save.data.weekCompleted;
 
         #if cpp
 		// run the gc's for a little bit of perfomance improvements :]]

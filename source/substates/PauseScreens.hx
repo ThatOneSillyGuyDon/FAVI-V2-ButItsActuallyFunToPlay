@@ -303,7 +303,7 @@ class PauseSubState extends MusicBeatSubstate
 
 					Mods.loadTopMod();
 					if(PlayState.isStoryMode) {
-						MusicBeatState.switchState(new StoryMenu());
+						MusicBeatState.switchState(new StoryMenuState());
 						FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 					} else {
 						MusicBeatState.switchState(new FreeplayState());
@@ -761,7 +761,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 	
 								if (PlayState.isStoryMode)
 								{
-										MusicBeatState.switchState(new StoryMenu());
+										MusicBeatState.switchState(new StoryMenuState());
 										FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 								}
 								else

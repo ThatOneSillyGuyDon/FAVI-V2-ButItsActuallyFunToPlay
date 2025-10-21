@@ -80,17 +80,6 @@ class LegForbiddenRealm extends BaseStage
 		}
 	}
 
-	override public function resetCharPos() 
-	{
-		if (game.dad.curCharacter == 'gm-calm-pixel')
-			game.dad.setPosition(-130, 50);
-		else
-			game.dad.setPosition(-100, 150);
-		
-		game.boyfriend.setPosition(1300, 600);
-		game.gf.visible = false;
-	}
-	
 	override function createPost()
 	{	
 		var blackParticles:FlxEmitter = new FlxEmitter(-2080.5, 912.4);
@@ -178,6 +167,14 @@ class LegForbiddenRealm extends BaseStage
 
 	override function update(elapsed:Float)
 	{
+		if (game.dad.curCharacter == 'gm-calm-pixel')
+			game.dad.setPosition(-130, 50);
+		else
+			game.dad.setPosition(-100, 150);
+		
+		game.boyfriend.setPosition(1300, 600);
+		game.gf.visible = false;
+		
 		if (ClientPrefs.data.shaders)
 		{
 			chromNormalShader.setFloat('rOffset', game.chromEffect / 20);

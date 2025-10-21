@@ -95,15 +95,11 @@ class ShotgunMick extends BaseStage
 		add(bg2);
 	}
 
-	override public function resetCharPos() 
+	override function createPost()
 	{
 		if (PlayState.SONG.song == "Cycled Sins Legacy") game.gf.visible = false;
 		game.dad.setPosition(-1000, 270);
     	game.boyfriend.setPosition(590, 250);
-	}
-	
-	override function createPost()
-	{
 
 		dodgeWarning = new FlxSprite(1080, 540).loadGraphic(Paths.image('favi/ui/dodgeSins/cycledWarn' + (FlxG.random.bool(2) ? "-alt" : "")));
 		dodgeWarning.antialiasing = false;

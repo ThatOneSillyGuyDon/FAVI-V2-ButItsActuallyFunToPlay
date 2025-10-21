@@ -25,15 +25,12 @@ class LegSmile extends BaseStage
 		add(office);
 	}
 
-	override public function resetCharPos() 
+	override function createPost()
 	{
 		game.boyfriend.setPosition(1000, 300);
 		game.dad.setPosition(200, 400);
 		game.gf.visible = false;
-	}
-	
-	override function createPost()
-	{
+		
 		var funiLight:FlxSprite = new FlxSprite(-100, -100).loadGraphic(Paths.image(PlayState.pathway + 'officeLight'));
 		funiLight.scale.set(1, 1);
 		funiLight.updateHitbox();

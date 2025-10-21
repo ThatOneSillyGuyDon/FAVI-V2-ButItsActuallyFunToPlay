@@ -556,7 +556,7 @@ class MainMenuState extends MusicBeatState
 							{
 								case 'story_mode':
 									FlxG.mouse.visible = false;
-									MusicBeatState.switchState(new StoryMenu());
+									MusicBeatState.switchState(new StoryMenuState());
 								case 'options':
 									LoadingState.loadAndSwitchState(new options.OptionsState());
 									options.OptionsState.onPlayState = false;
@@ -734,7 +734,7 @@ class MainMenuState extends MusicBeatState
 						{
 							FlxG.sound.music.fadeIn(0.5, 0, 1);
 							FlxG.sound.playMusic(Paths.music('aviOST/curtainCall'));
-							MusicBeatState.switchState(new CreditsMenu());
+							MusicBeatState.switchState(new CreditsState());
 						});
 					}
 				});

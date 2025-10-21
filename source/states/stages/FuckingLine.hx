@@ -15,7 +15,7 @@ class FuckingLine extends BaseStage
 		add(line);
 	}
 	
-	override public function resetCharPos() 
+	override public function createPost() 
 	{
 		game.dad.setPosition(-400, -150);
 		game.boyfriend.setPosition(900, 300);

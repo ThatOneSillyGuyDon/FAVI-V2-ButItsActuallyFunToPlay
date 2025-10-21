@@ -7,7 +7,7 @@ import lime.app.Application;
 import sys.FileSystem;
 import flash.system.System;
 
-class StoryMenu extends MusicBeatState
+class StoryMenuState extends MusicBeatState
 {
 	public static var weekCompleted:Map<String, Bool> = new Map<String, Bool>();
 

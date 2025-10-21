@@ -55,7 +55,7 @@ class Birtbhday extends BaseStage
 		spawnNotes['muckney'] = false;
 	}
 
-	override public function resetCharPos() 
+	override function update(elapsed:Float)
 	{
 		switch (game.dad.curCharacter)
 		{
@@ -73,8 +73,10 @@ class Birtbhday extends BaseStage
 				game.boyfriend.setPosition(650, -360);
 		}
 		game.gf.setPosition(280, -410);
+
+		super.update(elapsed);
 	}
-	
+
 	override function createPost()
 	{
 		game.camBars.fade(FlxColor.BLACK, 0.0001);

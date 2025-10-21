@@ -89,12 +89,32 @@
 				]
 			],
 			[
-				22285.7142857143,
+				21857.1428571429,
 				[
 					[
-						"Set Property",
-						"isCameraOnForcedPos",
-						"false"
+						"Camera Event",
+						"Tween Position",
+						"3000,1600,3,sineInOut"
+					]
+				]
+			],
+			[
+				29142.8571428571,
+				[
+					[
+						"Camera Event",
+						"Tween Position",
+						"2000,1250,1,circOut"
+					]
+				]
+			],
+			[
+				36000,
+				[
+					[
+						"Camera Event",
+						"Tween Position",
+						"3000,1600,1,circOut"
 					]
 				]
 			],
@@ -114,12 +134,32 @@
 				]
 			],
 			[
+				44571.4285714286,
+				[
+					[
+						"Set Property",
+						"isCameraOnForcedPos",
+						"false"
+					]
+				]
+			],
+			[
 				48428.5714285714,
 				[
 					[
 						"Camera Event",
 						"Tween Value",
 						"hudalpha,1,1,linear"
+					]
+				]
+			],
+			[
+				49285.7142857143,
+				[
+					[
+						"Set Property",
+						"camZooming",
+						"true"
 					]
 				]
 			],
@@ -249,7 +289,7 @@
 					[
 						"Camera Event",
 						"Tween Value",
-						"zoom,1.7,1,circInOut"
+						"zoom,1.7,1.25,circInOut"
 					]
 				]
 			],

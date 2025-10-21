@@ -107,7 +107,7 @@ class LegEpisode1Street extends BaseStage
 				add(waltScreenThing);
 	}
 
-	override public function resetCharPos() 
+	override function update(elapsed:Float)
 	{
 		game.dad.setPosition(0, 0);
 		if (game.boyfriend.curCharacter == 'bf')
@@ -116,10 +116,7 @@ class LegEpisode1Street extends BaseStage
 		}else{
 			game.boyfriend.setPosition(500, -320);
 		}
-	}
-
-	override function update(elapsed:Float)
-	{
+		
 		shaderAnim = Conductor.songPosition / 1000;
 
 		if (ClientPrefs.data.shaders)

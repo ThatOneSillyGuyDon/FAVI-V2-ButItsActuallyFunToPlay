@@ -15,7 +15,7 @@ typedef CreditStuff = {
 	devs:Array<Dynamic>
 }
 
-class CreditsMenu extends MusicBeatState
+class CreditsState extends MusicBeatState
 {
 	public static var creditArray:Array<Dynamic>;
 
