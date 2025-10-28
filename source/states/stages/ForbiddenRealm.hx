@@ -266,7 +266,7 @@ class ForbiddenRealm extends BaseStage
 		crashLives.scrollFactor.set();
 		crashLives.cameras = [camHUD];
 
-		crashLivesIcon.frames = Paths.getSparrowAtlas('UI/funkinAVI/gimmicks/malfunctionGimmickIcon');
+		crashLivesIcon.frames = Paths.getSparrowAtlas('favi/ui/malfunctionGimmickIcon');
 		crashLivesIcon.animation.addByPrefix('idle', 'lives-icon idle', 15);
 		crashLivesIcon.animation.addByPrefix('OMFG IT GLITCHES', 'lives-icon glitchin', 15);
 		crashLivesIcon.animation.play('idle');
@@ -331,7 +331,7 @@ class ForbiddenRealm extends BaseStage
 				switch(flValue1)
 				{
 					case 3:
-						var count:FlxSprite = new FlxSprite().loadGraphic(Paths.image('UI/funkinAVI/intro/mal-prepare'));
+						var count:FlxSprite = new FlxSprite().loadGraphic(Paths.image('favi/countdown/mal-prepare'));
 						count.scrollFactor.set();
 						count.updateHitbox();
 						count.setGraphicSize(Std.int(count.width * 6));
@@ -347,7 +347,7 @@ class ForbiddenRealm extends BaseStage
 						});
 						FlxG.sound.play(Paths.sound('intro3-glitch'), 2);
 					case 2:
-						var count:FlxSprite = new FlxSprite().loadGraphic(Paths.image('UI/funkinAVI/intro/mal-ready'));
+						var count:FlxSprite = new FlxSprite().loadGraphic(Paths.image('favi/countdown/mal-ready'));
 						count.scrollFactor.set();
 						count.updateHitbox();
 						count.setGraphicSize(Std.int(count.width * 6));
@@ -363,7 +363,7 @@ class ForbiddenRealm extends BaseStage
 						});
 						FlxG.sound.play(Paths.sound('intro2-glitch'), 2);
 					case 1:
-						var count:FlxSprite = new FlxSprite().loadGraphic(Paths.image('UI/funkinAVI/intro/mal-set'));
+						var count:FlxSprite = new FlxSprite().loadGraphic(Paths.image('favi/countdown/mal-set'));
 						count.scrollFactor.set();
 						count.updateHitbox();
 						count.setGraphicSize(Std.int(count.width * 6));
@@ -379,7 +379,7 @@ class ForbiddenRealm extends BaseStage
 						});
 						FlxG.sound.play(Paths.sound('intro1-glitch'), 2);
 					case 0:
-						var count:FlxSprite = new FlxSprite().loadGraphic(Paths.image('UI/funkinAVI/intro/mal-go'));
+						var count:FlxSprite = new FlxSprite().loadGraphic(Paths.image('favi/countdown/mal-go'));
 						count.scrollFactor.set();
 						count.updateHitbox();
 						count.setGraphicSize(Std.int(count.width * 6));

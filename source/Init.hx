@@ -87,7 +87,7 @@ class Init extends FlxState
 		#end
         
         FlxG.autoPause = ClientPrefs.data.autoPause;
-        FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+        FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
 		FlxG.mouse.visible = true;
 
         var curState = Main.initialState;

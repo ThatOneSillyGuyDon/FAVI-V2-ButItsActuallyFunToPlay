@@ -288,7 +288,7 @@ class PauseSubState extends MusicBeatSubstate
 					if (PlayState.useFakeDeluName)
 						PlayState.useFakeDeluName = false;
 					PlayState.pauseCountEnabled = false;
-					FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+					FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
 					FlxG.mouse.visible = true;
 					MusicBeatState.switchState(new options.OptionsState());
 					options.OptionsState.onPlayState = true;
@@ -311,7 +311,7 @@ class PauseSubState extends MusicBeatSubstate
 					}
 					PlayState.changedDifficulty = false;
 					PlayState.chartingMode = false;
-					FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+					FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
 			}
 		}
 	}
@@ -732,7 +732,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 							if (PlayState.useFakeDeluName)
 								PlayState.useFakeDeluName = false;
 							PlayState.pauseCountEnabled = false;
-							FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+							FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
 							FlxG.mouse.visible = true;
 							MusicBeatState.switchState(new options.OptionsState());
 							options.OptionsState.onPlayState = true;
@@ -780,7 +780,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 									}
 									FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
 								}
-									FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+									FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
 					}
 				}
 			}
@@ -1089,7 +1089,7 @@ class PauseManiaSubstate extends MusicBeatSubstate
 							case "maniaRetry":
 								restartSong();
 							case "maniaOptions":
-								FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+								FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
 								FlxG.mouse.visible = true;
 								MusicBeatState.switchState(new options.OptionsState());
 								options.OptionsState.onPlayState = true;
@@ -1113,7 +1113,7 @@ class PauseManiaSubstate extends MusicBeatSubstate
 									FreeplayState.freeplayMenuList = 3;
 									MusicBeatState.switchState(new FreeplayState());
 									FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
-									FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+									FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
 								}
 						}
 					}

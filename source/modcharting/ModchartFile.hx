@@ -410,6 +410,18 @@ class ModchartFile
                     else if (ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
                         json = Modchart.malfuncMidDown;
 
+                case "Rotten Petals":
+                    if (ClientPrefs.data.mechanics)
+                        json = Modchart.petalsManiaMod;
+                    else
+                        json = emptyMod;
+
+                case "Ahh the Scary (Somber Night)":
+                    if (ClientPrefs.data.mechanics)
+                        json = Modchart.nightManiaMod;
+                    else
+                        json = emptyMod;
+
                 default:
                     if (autosaveMod != null)
                     {

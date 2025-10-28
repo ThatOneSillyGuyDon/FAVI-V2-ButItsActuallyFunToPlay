@@ -170,7 +170,7 @@ class GeneralMenu extends MusicBeatState {
         super.create();
         updateSelection();
 
-        FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+        FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
 
 		if (!FlxG.mouse.visible)
 			FlxG.mouse.visible = true;

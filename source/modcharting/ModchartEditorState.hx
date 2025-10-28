@@ -419,7 +419,7 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
 	if(FlxG.sound.music != null)
 		FlxG.sound.music.stop();
 
-        FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+        FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
         FlxG.mouse.visible = true;
 
         #if LEATHER 

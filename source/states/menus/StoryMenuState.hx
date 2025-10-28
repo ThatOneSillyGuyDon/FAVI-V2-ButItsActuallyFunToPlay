@@ -279,7 +279,6 @@ class StoryMenuState extends MusicBeatState
 
 	function selectWeek()
 	{
-		SaveProgress.loadProgress();
 		if (stopspamming == false)
 		{
 			FlxG.sound.play(Paths.sound('funkinAVI/menu/confirmEpisode'));
@@ -297,50 +296,8 @@ class StoryMenuState extends MusicBeatState
 		// We can't use Dynamic Array .copy() because that crashes HTML5, here's a workaround.
 		var songArray:Array<String> = [];
 		var leWeek:Array<Dynamic> = loadedWeeks[curWeek].songs;
-
-		// gotta redo the whole code with saving problably
-		switch(curWeek)
-		{
-			//Episode 1
-			case 0:
-				switch(SaveProgress.curStorySong)
-				{
-					case "Devilish Deal":
-						songArray = [
-							"Devilish Deal",
-							"Isolated",
-							"Lunacy",
-							"Delusional",
-						];
-					case "Isolated":
-						songArray = [
-							"Isolated",
-							"Lunacy",
-							"Delusional",
-						];
-					case "Lunacy":
-						songArray = [
-							"Lunacy",
-							"Delusional",
-						];
-					case "Delusional":
-						songArray = [
-							"Delusional",
-						];
-					default: 
-						// hard coding goes hard
-						songArray = [
-							"Devilish Deal",
-							"Isolated",
-							"Lunacy",
-							"Delusional",
-						];
-						
-				}
-			default:
-				for (i in 0...leWeek.length) {
-					songArray.push(leWeek[i][0]);
-				}
+		for (i in 0...leWeek.length) {
+			songArray.push(leWeek[i][0]);
 		}
 
 		// Nevermind that's stupid lmao
@@ -354,7 +311,15 @@ class StoryMenuState extends MusicBeatState
 		if(diffic == null) diffic = '';
 
 		PlayState.storyDifficulty = curDifficulty;
-		PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + diffic, songLowercase);
+		if (!GameData.devilSong)
+		{
+			GameData.storySong = "Devilish-Deal";
+			PlayState.SONG = Song.loadFromJson(GameData.storySong.toLowerCase() + diffic, GameData.storySong.toLowerCase());
+		}
+		else if (GameData.devilSong)
+		{
+			PlayState.SONG = Song.loadFromJson(GameData.storySong.toLowerCase() + diffic, GameData.storySong.toLowerCase());
+		}
 		PlayState.campaignScore = 0;
 		PlayState.campaignMisses = 0;
 		new FlxTimer().start(1, function(tmr:FlxTimer)

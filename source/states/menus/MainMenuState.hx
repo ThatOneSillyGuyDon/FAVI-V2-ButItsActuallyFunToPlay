@@ -319,7 +319,7 @@ class MainMenuState extends MusicBeatState
 		changeSelection(0);
 		super.create();
 
-		FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+		FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
 
 		if (!FlxG.mouse.visible)
 			FlxG.mouse.visible = true;
@@ -590,7 +590,7 @@ class MainMenuState extends MusicBeatState
 		switch (getEvent)
 		{
 			case 1:
-				var redGradient:FlxSprite = new FlxSprite(0, 0, Paths.image('UI/gimmicks/redGradient'));
+				var redGradient:FlxSprite = new FlxSprite(0, 0, Paths.image('favi/filters/redGradient'));
 				redGradient.setGraphicSize(Std.int(redGradient.width * 0.7));
 				redGradient.screenCenter();
 				redGradient.cameras = [camHUD];

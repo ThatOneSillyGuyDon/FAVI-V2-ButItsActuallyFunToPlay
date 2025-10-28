@@ -90,8 +90,6 @@ class ResetSaveDataSubState extends MusicBeatSubstate
 			FlxG.sound.play(Paths.sound('cancelMenu'), 1);
 			if(onYes) {
 				GameData.resetData();
-				SaveProgress.curStorySong = "Devilish Deal";
-				SaveProgress.saveThing();
 				TitleState.initialized = TitleState.closedState = false;
 				FlxG.sound.music.fadeOut(0.3);
 				FlxG.camera.fade(FlxColor.BLACK, 0.5, false, FlxG.resetGame, false);

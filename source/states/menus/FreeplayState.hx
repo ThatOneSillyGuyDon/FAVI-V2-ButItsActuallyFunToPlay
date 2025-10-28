@@ -167,7 +167,7 @@ class FreeplayState extends MusicBeatState
 	
 			if (freeplayMenuList != 2)
 			{
-				var gradient = new FlxSprite().loadGraphic(Paths.image('UI/gimmicks/gradient'));
+				var gradient = new FlxSprite().loadGraphic(Paths.image('favi/filters/gradient'));
 				gradient.screenCenter();
 				gradient.setGraphicSize(Std.int(gradient.width * 0.8));
 				gradient.alpha = .45;
@@ -337,6 +337,11 @@ class FreeplayState extends MusicBeatState
 				else
 					maniaSkin += 1;
 				maniaSkinSpr.loadGraphic(Paths.image('$path/maniaSkins/skin$maniaSkin'));
+			}
+			if(FlxG.keys.justPressed.CONTROL && !player.playingMusic && freeplayMenuList != 3)
+			{
+				persistentUpdate = false;
+				openSubState(new GameplayChangersSubstate());
 			}
 			else if(space && freeplayMenuList != 3)
 			{

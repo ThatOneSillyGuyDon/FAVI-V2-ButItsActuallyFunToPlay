@@ -152,7 +152,7 @@ class LegForbiddenRealm extends BaseStage
 		crashLives.scrollFactor.set();
 		crashLives.cameras = [camHUD];
 
-		crashLivesIcon.frames = Paths.getSparrowAtlas('UI/funkinAVI/gimmicks/malfunctionGimmickIcon');
+		crashLivesIcon.frames = Paths.getSparrowAtlas('favi/ui/malfunctionGimmickIcon');
 		crashLivesIcon.animation.addByPrefix('idle', 'lives-icon idle', 15);
 		crashLivesIcon.animation.addByPrefix('OMFG IT GLITCHES', 'lives-icon glitchin', 15);
 		crashLivesIcon.animation.play('idle');

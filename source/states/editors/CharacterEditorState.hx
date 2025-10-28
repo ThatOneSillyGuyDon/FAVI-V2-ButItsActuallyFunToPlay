@@ -152,7 +152,7 @@ class CharacterEditorState extends MusicBeatState
 		add(frameAdvanceText);
 
 		addHelpScreen();
-		FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+		FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
 		FlxG.mouse.visible = true;
 		FlxG.camera.zoom = 1;
 
