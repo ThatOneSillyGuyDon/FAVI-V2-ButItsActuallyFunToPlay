@@ -4,45 +4,21 @@ import states.stages.objects.*;
 
 class MenuSongs extends BaseStage
 {
-	var skyFlash:FlxSprite;
+	var flashableObjects:FlxSpriteGroup;
 
 	override function create()
 	{
 		game.defaultCamZoom = 1;
 
-		var sky = new FlxSprite().loadGraphic(Paths.image(PlayState.pathway + "secretBG"));
-		sky.scrollFactor.set(0, 0);
-		add(sky);
+		generateBGVariant(PlayState.SONG.song);
 
-		var stars1 = new FlxSprite().loadGraphic(Paths.image(PlayState.pathway + "secretStars1"));
-		stars1.scrollFactor.set(0, 0);
-		add(stars1);
-		
-		var stars2 = new FlxSprite().loadGraphic(Paths.image(PlayState.pathway + "secretStars2"));
-		stars2.scrollFactor.set(0, 0);
-		stars2.alpha = 0.001;
-		add(stars2);
-
-		skyFlash = new FlxSprite().makeGraphic(FlxG.width*5, FlxG.height*5, FlxColor.WHITE);
-		skyFlash.screenCenter();
-		skyFlash.scrollFactor.set(0, 0);
-		skyFlash.alpha = 0.001;
-		add(skyFlash);
-
-		var street = new FlxSprite().loadGraphic(Paths.image(PlayState.pathway + "secretStreet"));
-		street.scrollFactor.set(0, 0);
-		add(street);
-
-		var underlay = new FlxSprite().loadGraphic(Paths.image(PlayState.pathway + "secretNoteUnderlay"));
+		var underlay = new FlxSprite().loadGraphic(Paths.image(PlayState.pathway + "maniaUnderlay"));
 		underlay.cameras = [camHUD];
 		add(underlay);
 
-		var overlay = new FlxSprite().loadGraphic(Paths.image(PlayState.pathway + "secretOverlay"));
+		var overlay = new FlxSprite().loadGraphic(Paths.image(PlayState.pathway + "maniaOverlay"));
 		overlay.cameras = [camOther];
 		add(overlay);
-
-		FlxTween.tween(stars1, {alpha: 0}, 3, {type: 4});
-		FlxTween.tween(stars2, {alpha: 1}, 3, {type: 4});
 	}
 	
 	override function createPost()
@@ -50,6 +26,84 @@ class MenuSongs extends BaseStage
 		game.boyfriend.visible = false;
 		game.dad.visible = false;
 		game.gf.visible = false;
+	}
+
+	var lights1:FlxSprite;
+	var lights2:FlxSprite;
+	function generateBGVariant(songName:String)
+	{
+		flashableObjects = new FlxSpriteGroup();
+		flashableObjects.scrollFactor.set(0, 0);
+		add(flashableObjects);
+
+		var subpath:String = Paths.formatToSongPath(songName) + '/';
+		switch(songName.toLowerCase())
+		{
+			case "rotten petals" | 'seeking freedom' | 'alone' | 'curtain call':
+				subpath = 'rotten-petals/';
+				for (flashableObj in ['sky', 'stars1', 'stars2'])
+				{
+					var spr = new FlxSprite().loadGraphic(Paths.image(PlayState.pathway + subpath + flashableObj));
+					spr.scrollFactor.set(0, 0);
+					spr.ID = flashableObj.length-1;
+					switch(flashableObj)
+					{
+						case "stars1":
+							FlxTween.tween(spr, {alpha: 0.001}, 3, {type: 4});
+						case "stars2":
+							spr.alpha = 0.001;
+							FlxTween.tween(spr, {alpha: 1}, 3, {type: 4});
+					}
+					flashableObjects.add(spr);
+				}
+				var street = new FlxSprite().loadGraphic(Paths.image(PlayState.pathway + subpath + "street"));
+				street.scrollFactor.set(0, 0);
+				add(street);
+
+			case 'ahh the scary (somber night)': //did these next two cause these would've been a fucking pain in the ass to talk you through about, maly; Goober, if you see this, please do not touch this, let Maly do this bro (don)
+				subpath = 'somber-night/';
+				var spr = new FlxSprite().loadGraphic(Paths.image(PlayState.pathway + subpath + 'sky'));
+				spr.scrollFactor.set(0, 0);
+				spr.ID = 0;
+				flashableObjects.add(spr);
+
+				var city = new FlxSprite().loadGraphic(Paths.image(PlayState.pathway + subpath + "city"));
+				city.scrollFactor.set(0, 0);
+				add(city);
+
+				lights1 = new FlxSprite().loadGraphic(Paths.image(PlayState.pathway + subpath + "lights1"));
+				lights1.scrollFactor.set(0, 0);
+				add(lights1);
+
+				lights2 = new FlxSprite().loadGraphic(Paths.image(PlayState.pathway + subpath + "lights2"));
+				lights2.scrollFactor.set(0, 0);
+				add(lights2);
+
+				FlxTween.tween(lights1, {alpha: 0.001}, 3, {type: 4});
+				lights2.alpha = 0.001;
+				FlxTween.tween(lights2, {alpha: 1}, 3, {type: 4});
+
+			case 'am i real?':
+				var bg = new FlxSprite().loadGraphic(Paths.image(PlayState.pathway + subpath + "bg"));
+				bg.scrollFactor.set(0, 0);
+				add(bg);
+				FlxTween.tween(bg.colorTransform, {
+					redOffset: 255,
+					blueOffset: 255,
+					greenOffset: 255,
+					redMultiplier: -1,
+					blueMultiplier: -1,
+					greenMultiplier: -1
+					}, 5, {ease: FlxEase.sineInOut, type: FlxTween.PINGPONG
+				});
+
+			//case 'ship the fart yay hooray <3 (distant stars)':
+			//case 'the wretched tilezones (simple life)':
+			//case 'your final bow':
+			//case 'seeking freedom':
+			//case 'alone':
+			//case 'curtain call':
+		}
 	}
 
 	var skyTwn:FlxTween;
@@ -67,15 +121,22 @@ class MenuSongs extends BaseStage
 						case "sky":
 							if (skyTwn != null)
 								skyTwn.cancel();
-
-							if (skyFlash != null)
+							if (flashableObjects != null)
 							{
-								skyFlash.color = FlxColor.fromRGB(Std.parseInt(triggerVars[3]), Std.parseInt(triggerVars[4]), Std.parseInt(triggerVars[5]));
-								skyFlash.alpha = Std.parseFloat(triggerVars[2]);
-								skyTwn = FlxTween.tween(skyFlash, {alpha: 0}, Std.parseFloat(triggerVars[0]), {ease: PlayState.returnTweenEase(triggerVars[1]), onComplete: function(twn:FlxTween)
-								{
-									skyTwn = null;
-								}});
+								flashableObjects.color = FlxColor.fromRGB(Std.parseInt(triggerVars[3]), Std.parseInt(triggerVars[4]), Std.parseInt(triggerVars[5]));
+								skyTwn = FlxTween.color(
+									flashableObjects, 
+									Std.parseFloat(triggerVars[0]), 
+									FlxColor.fromRGB(Std.parseInt(triggerVars[3]), Std.parseInt(triggerVars[4]), Std.parseInt(triggerVars[5])), 
+									FlxColor.WHITE, 
+									{
+										ease: PlayState.returnTweenEase(triggerVars[1]),
+										onComplete: function(twn:FlxTween)
+										{
+											skyTwn = null;
+										}
+									}
+								);
 							}
 						case "all": 
 							game.backgroundControls(BG_FLASH, {
@@ -87,5 +148,13 @@ class MenuSongs extends BaseStage
 					}
 				}
 		}
+	}
+
+	override function update(elapsed:Float)
+	{
+		if (lights1 != null) //so basically, they can't be put in the group obj cause then the city lights won't appear, which is why I did this one for you so you don't have to suffer like I did (don)
+			lights1.color = lights2.color = flashableObjects.color;
+
+		super.update(elapsed);
 	}
 }

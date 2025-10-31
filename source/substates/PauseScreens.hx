@@ -540,7 +540,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 			{
 				case 1: 
 					randomPauseSong = "shipTheFartYayHoorayv3v";
-					pauseSongStr = "Ship The Fart Hooray < 3 (Distant Stars)";
+					pauseSongStr = "Ship The Fart Yay Hooray < 3 (Distant Stars)";
 				case 2: 
 					randomPauseSong = "somberNight";
 					pauseSongStr = "Ahh The Scary (Somber Night)";
@@ -607,7 +607,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 			countDown.setFormat(Paths.font("disneyFreeplayFont.ttf"), 90, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 			satanTxt.setFormat(Paths.font("disneyFreeplayFont.ttf"), 32, FlxColor.fromRGB(255, 117, 107), CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.fromRGB(92, 0, 26));
 			satanTxt.borderSize = 2;
-			pauseNameTxt.setFormat(Paths.font("disneyFreeplayFont.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			pauseNameTxt.setFormat(Paths.font("disneyFreeplayFont.ttf"), (pauseSongStr == "Ship The Fart Yay Hooray < 3 (Distant Stars)" ? 14 : 16), FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 	
 			songArt.loadGraphic(Paths.imageAlbum(pauseArtAsset));
 	

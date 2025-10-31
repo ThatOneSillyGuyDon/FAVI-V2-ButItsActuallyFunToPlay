@@ -145,7 +145,7 @@ class LegacyMenuState extends MusicBeatState
 		Application.current.window.title = "Funkin.avi";
 
 		FlxG.sound.music.fadeIn(0.5, 0, 1);
-		FlxG.sound.playMusic(Paths.music('aviOST/legacy/MenuMusic'));
+		FlxG.sound.playMusic(Paths.music('aviOST/alone'));
 
 		AppIcon.changeIcon("legacyIcon");
 		#if desktop
