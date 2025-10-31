@@ -1452,6 +1452,8 @@ class ChartingState extends MusicBeatState
 				FlxG.sound.playMusic(Paths.music("aviOST/pause/somberNight"));
 			case "Ship the Fart Yay Hooray <3 (Distant Stars)":
 				FlxG.sound.playMusic(Paths.music("aviOST/pause/shipTheFartYayHoorayv3v"));
+			case "Alone":
+				FlxG.sound.playMusic(Paths.music("aviOST/alone"));
 			default:
 				FlxG.sound.playMusic(Paths.inst(currentSongName), 0.6/*, false*/);
 		}
