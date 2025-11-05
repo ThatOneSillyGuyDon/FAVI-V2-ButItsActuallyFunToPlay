@@ -170,6 +170,18 @@ class MenuSongs extends BaseStage
 		}
 	}
 
+	override function closeSubState()
+	{
+		if(paused)
+		{
+			if (skyTwn != null) skyTwn.active = true;
+			if (laneTwn != null) laneTwn.active = true;
+			if (lightTwn != null) lightTwn.active = true;
+			if (lightTwn2 != null) lightTwn2.active = true;
+			if (lightTwn3 != null) lightTwn3.active = true;
+		}
+	}
+
 	override function update(elapsed:Float)
 	{
 		if (lights1 != null)
