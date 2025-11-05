@@ -566,16 +566,25 @@ class LegacyMenuState extends MusicBeatState
 					messenger.sendMessage('ACCESS DENIED!', 'Perhaps there is a code to access this?');
 				}
 			}
-			if (FlxG.keys.justPressed.ONE && Main.debug)
+			if (Main.debug)
 			{
-				GameData.unlockEverything();
-				FlxG.sound.play(Paths.sound('funkinAVI/easterEggSound'));
-			}		
-			if (FlxG.keys.justPressed.TWO && Main.debug)
-			{
-				FlxG.sound.play(Paths.sound('funkinAVI/easterEggSound'));
-				GameData.episode1FPLock = "unlocked";
-				GameData.saveShit();
+				if (FlxG.keys.justPressed.ONE) // Unlocks EVERYTHING
+				{
+					GameData.unlockEverything();
+					FlxG.sound.play(Paths.sound('funkinAVI/easterEggSound'));
+				}
+				if (FlxG.keys.justPressed.TWO) // Unlocks Freeplay Access for Testing
+				{
+					FlxG.sound.play(Paths.sound('funkinAVI/easterEggSound'));
+					GameData.episode1FPLock = "unlocked";
+					GameData.saveShit();
+				}
+				if (FlxG.keys.justPressed.THREE) // Dev Shortcut to Mania Menu
+				{
+					FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
+					FreeplayState.freeplayMenuList = 3;
+					MusicBeatState.switchState(new FreeplayState());
+				}
 			}
 		}
 

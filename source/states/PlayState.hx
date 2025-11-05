@@ -4849,7 +4849,16 @@ class PlayState extends MusicBeatState
 			#if !switch
 			var percent:Float = ratingPercent;
 			if(Math.isNaN(percent)) percent = 0;
-			Highscore.saveScore(SONG.song, songScore, storyDifficulty, percent);
+
+			var songName:String = SONG.song; //fixes the song scores not displaying for some songs in freeplay due to them having different name formats and id from freeplay and in-game (don)
+			switch (SONG.song)
+			{
+				case "Dont Cross": songName = "Don't Cross!";
+				case "The Wretched Tilezones (Simple Life)": songName = "Simple Life";
+				case "Ship the Fart Yay Hooray <3 (Distant Stars)": songName = "Distant Stars";
+				case "Ahh the Scary (Somber Night)": songName = "Somber Night";
+			}
+			Highscore.saveScore(songName, songScore, storyDifficulty, percent);
 			#end
 			playbackRate = 1;
 

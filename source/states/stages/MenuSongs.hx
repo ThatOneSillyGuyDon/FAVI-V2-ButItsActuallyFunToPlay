@@ -4,7 +4,12 @@ import states.stages.objects.*;
 
 class MenuSongs extends BaseStage
 {
-	var flashableObjects:FlxSpriteGroup;
+	var skyTwn:FlxTween;
+	var lightTwn:FlxTween;
+	var lightTwn2:FlxTween;
+	var lightTwn3:FlxTween;
+	var laneTwn:FlxTween;
+	var noteTwn:FlxTween;
 
 	override function create()
 	{
@@ -28,6 +33,7 @@ class MenuSongs extends BaseStage
 		game.gf.visible = false;
 	}
 
+	var flashableObjects:FlxSpriteGroup;
 	var lights1:FlxSprite;
 	var lights2:FlxSprite;
 	function generateBGVariant(songName:String)
@@ -39,20 +45,19 @@ class MenuSongs extends BaseStage
 		var subpath:String = Paths.formatToSongPath(songName) + '/';
 		switch(songName.toLowerCase())
 		{
-			case "rotten petals" | 'seeking freedom' | 'alone' | 'curtain call':
+			case "rotten petals" | 'alone' | 'curtain call':
 				subpath = 'rotten-petals/';
 				for (flashableObj in ['sky', 'stars1', 'stars2'])
 				{
 					var spr = new FlxSprite().loadGraphic(Paths.image(PlayState.pathway + subpath + flashableObj));
 					spr.scrollFactor.set(0, 0);
-					spr.ID = flashableObj.length-1;
 					switch(flashableObj)
 					{
 						case "stars1":
-							FlxTween.tween(spr, {alpha: 0.001}, 3, {type: 4});
+							lightTwn = FlxTween.tween(spr, {alpha: 0.001}, 3, {type: 4});
 						case "stars2":
 							spr.alpha = 0.001;
-							FlxTween.tween(spr, {alpha: 1}, 3, {type: 4});
+							lightTwn2 = FlxTween.tween(spr, {alpha: 1}, 3, {type: 4});
 					}
 					flashableObjects.add(spr);
 				}
@@ -64,7 +69,6 @@ class MenuSongs extends BaseStage
 				subpath = 'somber-night/';
 				var spr = new FlxSprite().loadGraphic(Paths.image(PlayState.pathway + subpath + 'sky'));
 				spr.scrollFactor.set(0, 0);
-				spr.ID = 0;
 				flashableObjects.add(spr);
 
 				var city = new FlxSprite().loadGraphic(Paths.image(PlayState.pathway + subpath + "city"));
@@ -79,15 +83,15 @@ class MenuSongs extends BaseStage
 				lights2.scrollFactor.set(0, 0);
 				add(lights2);
 
-				FlxTween.tween(lights1, {alpha: 0.001}, 3, {type: 4});
+				lightTwn = FlxTween.tween(lights1, {alpha: 0.001}, 3, {type: 4});
 				lights2.alpha = 0.001;
-				FlxTween.tween(lights2, {alpha: 1}, 3, {type: 4});
+				lightTwn2 = FlxTween.tween(lights2, {alpha: 1}, 3, {type: 4});
 
 			case 'am i real?':
 				var bg = new FlxSprite().loadGraphic(Paths.image(PlayState.pathway + subpath + "bg"));
 				bg.scrollFactor.set(0, 0);
 				add(bg);
-				FlxTween.tween(bg.colorTransform, {
+				lightTwn = FlxTween.tween(bg.colorTransform, {
 					redOffset: 255,
 					blueOffset: 255,
 					greenOffset: 255,
@@ -106,7 +110,6 @@ class MenuSongs extends BaseStage
 		}
 	}
 
-	var skyTwn:FlxTween;
 	// For events
 	override function eventCalled(eventName:String, value1:String, value2:String, flValue1:Null<Float>, flValue2:Null<Float>, strumTime:Float)
 	{
@@ -150,11 +153,52 @@ class MenuSongs extends BaseStage
 		}
 	}
 
+	override function beatHit()
+		if (!ClientPrefs.data.lowQuality && PlayState.SONG.song.toLowerCase() == 'seeking freedom')
+			if (curBeat % 4 == 0)
+				seekingFreedomNoteSpawner();
+
+	override function openSubState(SubState:flixel.FlxSubState)
+	{
+		if(paused)
+		{
+			if (skyTwn != null) skyTwn.active = false;
+			if (laneTwn != null) laneTwn.active = false;
+			if (lightTwn != null) lightTwn.active = false;
+			if (lightTwn2 != null) lightTwn2.active = false;
+			if (lightTwn3 != null) lightTwn3.active = false;
+		}
+	}
+
 	override function update(elapsed:Float)
 	{
-		if (lights1 != null) //so basically, they can't be put in the group obj cause then the city lights won't appear, which is why I did this one for you so you don't have to suffer like I did (don)
-			lights1.color = lights2.color = flashableObjects.color;
+		if (lights1 != null)
+			lights1.color = flashableObjects.color;
+		if (lights2 != null)
+			lights2.color = flashableObjects.color;
 
 		super.update(elapsed);
+	}
+
+	function seekingFreedomNoteSpawner()
+	{
+		var note = new FlxSprite(1300, -60).loadGraphic(Paths.image(PlayState.pathway + 'seeking-freedom/notes/note${FlxG.random.int(1, 8)}'));
+		note.scrollFactor.set(0, 0);
+		note.flipY = FlxG.random.bool(50);
+		note.scale.set(0.2, 0.2);
+		note.velocity.set(-300, 160);
+		note.acceleration.set(-35, -55);
+		if (flashableObjects != null)
+			flashableObjects.add(note);
+		noteTwn = FlxTween.tween(note.scale, {x: 1.2, y: 1.2}, 7, {onComplete: function(twn:FlxTween)
+		{
+			if (flashableObjects.members[4] != null)
+			{
+				FlxTween.tween(note, {alpha: 0}, 0.5, {onComplete: function(twn2:FlxTween)
+				{
+					flashableObjects.remove(flashableObjects.members[4], true);
+				}});
+			}
+		}});
 	}
 }

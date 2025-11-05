@@ -416,6 +416,12 @@ class ModchartFile
                     else
                         json = emptyMod;
 
+                case "Seeking Freedom":
+                    if (ClientPrefs.data.mechanics)
+                        json = Modchart.freedomMod;
+                    else
+                        json = emptyMod;
+
                 case "Ahh the Scary (Somber Night)":
                     if (ClientPrefs.data.mechanics)
                         json = Modchart.nightManiaMod;

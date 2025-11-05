@@ -31,7 +31,7 @@ class YouveBeenBlessed extends BaseStage
 
 	override function create()
 	{
-		vaultRoom = new FlxSprite(0, 0).loadGraphic(Paths.image(PlayState.pathway + "BACKGROUND/VaultBG"));
+		vaultRoom = new FlxSprite(250, 0).loadGraphic(Paths.image(PlayState.pathway + "BACKGROUND/VaultBG"));
 		add(vaultRoom);
 
 		vault = new FlxSprite(0, 0).loadGraphic(Paths.image(PlayState.pathway + 'BACKGROUND/MainBG'));
@@ -141,7 +141,7 @@ class YouveBeenBlessed extends BaseStage
 		});
 		game.dad.blend = BlendMode.ADD;
 
-		vaultFore = new FlxSprite(0, 0).loadGraphic(Paths.image(PlayState.pathway + "FOREGROUND/VaultFG"));
+		vaultFore = new FlxSprite(250, 0).loadGraphic(Paths.image(PlayState.pathway + "FOREGROUND/VaultFG"));
 		vaultFore.visible = false;
 		add(vaultFore);
 

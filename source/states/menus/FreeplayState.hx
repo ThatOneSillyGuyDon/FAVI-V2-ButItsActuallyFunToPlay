@@ -113,14 +113,15 @@ class FreeplayState extends MusicBeatState
 				}
 			case 3: // Secret Mania Menu
 				{
-					addSong('Rotten Petals', 3, "avier", FlxColor.WHITE, 'Yama Haki/Toko', "MANIA", FlxColor.CYAN, [15, 0], "None");
-					addSong('Seeking Freedom', 3, "avier", FlxColor.WHITE, 'Yama Haki/Toko', "MANIA", FlxColor.CYAN, [15, 0], "None");
-					//addSong('Curtain Call', 3, "avier", FlxColor.WHITE, 'Sayan Sama', "MANIA", FlxColor.CYAN, [15, 0], "None");
-					//addSong("Distant Stars", 3, "avier", FlxColor.WHITE, 'ForFurtherNotice', "MANIA", FlxColor.CYAN, [15, 0], "None");
-					addSong("Somber Night", 3, "avier", FlxColor.WHITE, 'ForFurtherNotice', "MANIA", FlxColor.CYAN, [15, 0], "None");
-					addSong("Simple Life", 3, "avier", FlxColor.WHITE, 'ForFurtherNotice', "MANIA", FlxColor.CYAN, [15, 0], "None");
-					//addSong("Am I Real?")
-					//addSong("Alone", 3, "avier", FlxColor.WHITE, 'JBlitz', "MANIA", FlxColor.CYAN, [15, 0], "None");
+					//addSong("Alone", 3, "avier", FlxColor.WHITE, 'JBlitz', "BASIC", FlxColor.fromRGB(67, 247, 121), [15, 0], "None");
+					addSong("Am I Real?", 3, "avier", FlxColor.WHITE, 'Yama Haki/Toko', "BASIC", FlxColor.fromRGB(67, 247, 121), [15, 0], "None");
+					//addSong("Distant Stars", 3, "avier", FlxColor.WHITE, 'ForFurtherNotice', "INTERMEDIATE", FlxColor.fromRGB(67, 247, 205), [15, 0], "None");
+					addSong("Somber Night", 3, "avier", FlxColor.WHITE, 'ForFurtherNotice', "INTERMEDIATE", FlxColor.fromRGB(67, 247, 205), [15, 0], "None");
+					//addSong("Your Final Bow", 3, "avier", FlxColor.WHITE, 'Yama Haki/Toko', "INTERMEDIATE", FlxColor.fromRGB(67, 247, 205), [15, 0], "None");
+					addSong("Simple Life", 3, "avier", FlxColor.WHITE, 'ForFurtherNotice', "CHALLENGING", FlxColor.fromRGB(67, 235, 247), [15, 0], "None");
+					addSong('Rotten Petals', 3, "avier", FlxColor.WHITE, 'Yama Haki/Toko', "CHALLENGING", FlxColor.fromRGB(67, 235, 247), [15, 0], "None");
+					addSong('Seeking Freedom', 3, "avier", FlxColor.WHITE, 'Yama Haki/Toko', "EXPERT", FlxColor.fromRGB(224, 129, 252), [15, 0], "None");
+					//addSong('Curtain Call', 3, "avier", FlxColor.WHITE, 'Sayan Sama', "EXPERT", FlxColor.fromRGB(224, 129, 252), [15, 0], "None");
 				}
 		}
 
@@ -657,6 +658,9 @@ class FreeplayState extends MusicBeatState
 
 				icon.x += songs[i].iconOffset[0];
 				icon.y += songs[i].iconOffset[1];
+
+				if (freeplayMenuList == 3) // Hide icons in mania menu
+					icon.visible = false;
 			}
 			else {
 				songTextA = new Alphabet(100, (43 * i) + 120, songs[i].songName, true);
@@ -703,7 +707,7 @@ class FreeplayState extends MusicBeatState
 			shittyTmr = null;
 		});
 
-		if(ClientPrefs.data.flashing)
+		if(ClientPrefs.data.flashing && freeplayMenuList != 3)
 			FlxG.camera.flash(FlxColor.BLACK, 0.1);
 
 		curSelected += change;
@@ -783,7 +787,7 @@ class FreeplayState extends MusicBeatState
 		{
 			for (i in 0...iconArray.length)
 			{
-				iconArray[i].alpha = 0;
+				iconArray[i].alpha = 0.001;
 				iconArray[i].animation.curAnim.curFrame = 0;			
 			}
 			iconArray[curSelected].alpha = 1;
@@ -796,7 +800,7 @@ class FreeplayState extends MusicBeatState
 				iconArray[curSelected].animation.curAnim.curFrame = 2;
 	
 			for (s in 0...songDisplay.length)
-				songDisplay[s].alpha = 0;
+				songDisplay[s].alpha = 0.001;
 
 			for (a in albumHolder.members)
 				a.visible = false;
@@ -974,7 +978,10 @@ class FreeplayState extends MusicBeatState
 			case 'malfunction': difficultyRank = 'null';
 			case "dont-cross": difficultyRank = 'GOOD LUCK';
 			case 'birthday': difficultyRank = 'PARTY';
-			case "rotten-petals" | "seeking-freedom" | "your-final-bow" | "curtain-call" |"am-i-real?" | "a-true-monster" | "ship-the-fart-yay-hooray-<3-(distant-stars)" | "ahh-the-scary-(somber-night)" | "the-wretched-tilezones-(simple-life)": difficultyRank = "MANIA";
+			case "alone" | "am-i-real?": difficultyRank = "BASIC";
+			case "ship-the-fart-yay-hooray-<3-(distant-stars)" | "ahh-the-scary-(somber-night)" | "your-final-bow": difficultyRank = "INTERMEDIATE";
+			case "rotten-petals" | "the-wretched-tilezones-(simple-life)": difficultyRank = "CHALLENGING";
+			case "seeking-freedom" | "curtain-call": difficultyRank = "EXPERT";
 			default: difficultyRank = 'HARD';
 		}
 		return difficultyRank;
@@ -986,10 +993,10 @@ class FreeplayState extends MusicBeatState
 		switch (PlayState.SONG.song)
 		{
 			case "Devilish Deal" | "Isolated" | "Lunacy" | "Malfunction" | "Lunacy Legacy" | "Malfunction Legacy" | "Mercy Legacy": songArtist = "obscurity.";
-			case "Delusional" | "Birthday" | "Delusional Legacy" | "A True Monster": songArtist = "FR3SHMoure";
-			case "Hunted" | "Hunted Legacy" | "Cycled Sins" | "Cycled Sins Legacy": songArtist = "JBlitz";
+			case "Delusional" | "Birthday" | "Delusional Legacy": songArtist = "FR3SHMoure";
+			case "Hunted" | "Hunted Legacy" | "Cycled Sins" | "Cycled Sins Legacy" | "Alone": songArtist = "JBlitz";
 			case "Laugh Track" | "Dont Cross" | "Bless" | "Twisted Grins" | "Scrapped": songArtist = "Lasagnacat";
-			case "Isolated Beta" | "Isolated Old" | "Rotten Petals" | "Seeking Freedom" | "Your Final Bow": songArtist = "Yama Haki/Toko";
+			case "Isolated Beta" | "Isolated Old" | "Rotten Petals" | "Seeking Freedom" | "Your Final Bow" | "Am I Real?": songArtist = "Yama Haki/Toko";
 			case "Twisted Grins Legacy" | "Curtain Call": songArtist = "Sayan Sama";
 			case "Isolated Legacy": songArtist = "Toko & obscurity.";
 			case "War Dilemma": songArtist = "Sayan Sama & obscurity.";
