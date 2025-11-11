@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="stageWalkers.png">
+<SubTexture name="avier0000" x="314" y="0" width="67" height="117" frameX="-4" frameY="-1" frameWidth="68" frameHeight="113" />
+<SubTexture name="avier0001" x="381" y="116" width="74" height="113" frameX="0" frameY="-4" frameWidth="68" frameHeight="113" />
+<SubTexture name="everett0000" x="314" y="117" width="60" height="107" frameX="-11" frameY="-9" frameWidth="68" frameHeight="113" />
+<SubTexture name="everett0001" x="149" y="283" width="72" height="101" frameX="-2" frameY="-10" frameWidth="68" frameHeight="113" />
+<SubTexture name="girl0000" x="455" y="116" width="45" height="113" frameX="-18" frameY="-2" frameWidth="68" frameHeight="113" />
+<SubTexture name="generic0000" x="500" y="116" width="45" height="113" frameX="-11" frameY="-5" frameWidth="68" frameHeight="113" />
+<SubTexture name="girl0001" x="76" y="283" width="73" height="107" frameX="-1" frameY="-4" frameWidth="68" frameHeight="113" />
+<SubTexture name="generic0001" x="0" y="283" width="76" height="112" frameX="0" frameY="-6" frameWidth="70" frameHeight="113" />
+<SubTexture name="malsquare0000" x="0" y="157" width="219" height="126" frameX="-3" frameY="-2" frameWidth="217" frameHeight="123" />
+<SubTexture name="malsquare0001" x="381" y="0" width="222" height="116" frameX="0" frameY="-11" frameWidth="217" frameHeight="123" />
+<SubTexture name="mal-og0000" x="232" y="0" width="82" height="133" frameX="0" frameY="0" frameWidth="79" frameHeight="153" />
+<SubTexture name="mal-og0001" x="219" y="157" width="81" height="126" frameX="0" frameY="-1" frameWidth="79" frameHeight="153" />
+<SubTexture name="smile0000" x="0" y="0" width="115" height="157" frameX="0" frameY="-1" frameWidth="111" frameHeight="155" />
+<SubTexture name="smile0001" x="115" y="0" width="117" height="151" frameX="0" frameY="-8" frameWidth="111" frameHeight="155" />
+<SubTexture name="white-noise0000" x="317" y="283" width="103" height="85" frameX="-5" frameY="-1" frameWidth="114" frameHeight="140" />
+<SubTexture name="white-noise0001" x="221" y="283" width="96" height="88" frameX="-12" frameY="-1" frameWidth="113" frameHeight="140" />
+<SubTexture name="legendary-tumbleweed0000" x="504" y="283" width="81" height="73" frameX="0" frameY="0" frameWidth="75" frameHeight="68" />
+<SubTexture name="legendary-tumbleweed0001" x="420" y="283" width="84" height="74" frameX="0" frameY="0" frameWidth="78" frameHeight="68" />
+</TextureAtlas>

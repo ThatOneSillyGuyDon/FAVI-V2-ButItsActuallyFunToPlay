@@ -1043,6 +1043,8 @@ class Episode1Street extends BaseStage
 							totallyanoriginalname.kill();
 							totallyanoriginalname.destroy();
 							totallyanoriginalname = null;
+							fireThing.visible = true;
+							fireThing.alpha = 0.55;
 						}
 						floor.loadGraphic(Paths.image(PlayState.pathway + "streetDestroyed"));
 						floor.visible = true;
