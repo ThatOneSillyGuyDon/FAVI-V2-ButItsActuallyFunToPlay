@@ -181,23 +181,29 @@ class MenuSongs extends BaseStage
 				subpath = 'distant-stars/';
 				for (flashableObj in ['sky', 'stars1', 'stars2'])
 				{
-					var spr = new FlxSprite().loadGraphic(Paths.image(PlayState.pathway + subpath + flashableObj));
+					var spr = new FlxBackdrop(Paths.image(PlayState.pathway + subpath + flashableObj), X, 0, 0);
 					spr.scrollFactor.set(0, 0);
 					switch(flashableObj)
 					{
+						case 'sky':
+							spr.velocity.set(0, 0);
 						case "stars1":
+							spr.velocity.set(-15, 0);
 							lightTwn = FlxTween.tween(spr, {alpha: 0.001}, 3, {type: 4});
 						case "stars2":
+							spr.velocity.set(-15, 0);
 							spr.alpha = 0.001;
 							lightTwn2 = FlxTween.tween(spr, {alpha: 1}, 3, {type: 4});
 					}
 					flashableObjects.add(spr);
 				}
-				var street = new FlxSprite().loadGraphic(Paths.image(PlayState.pathway + subpath + "street"));
+				var street = new FlxBackdrop(Paths.image(PlayState.pathway + subpath + "street"), X, 0, 0);
+				street.velocity.set(-120, 0);
 				street.scrollFactor.set(0, 0);
 				add(street);
 
-				var fog = new FlxSprite().loadGraphic(Paths.image(PlayState.pathway + subpath + "fog"));
+				var fog = new FlxBackdrop(Paths.image(PlayState.pathway + subpath + "fog"), X, 0, 0);
+				fog.velocity.set(-150, 0);
 				fog.scrollFactor.set(0, 0);
 				add(fog);
 

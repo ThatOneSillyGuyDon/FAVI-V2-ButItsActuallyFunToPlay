@@ -121,7 +121,7 @@ class FreeplayState extends MusicBeatState
 					addSong("Simple Life", 3, "avier", FlxColor.WHITE, 'ForFurtherNotice', "CHALLENGING", FlxColor.fromRGB(67, 235, 247), [15, 0], "None");
 					addSong('Rotten Petals', 3, "avier", FlxColor.WHITE, 'Yama Haki/Toko', "CHALLENGING", FlxColor.fromRGB(67, 235, 247), [15, 0], "None");
 					addSong('Seeking Freedom', 3, "avier", FlxColor.WHITE, 'Yama Haki/Toko', "EXPERT", FlxColor.fromRGB(224, 129, 252), [15, 0], "None");
-					//addSong('Curtain Call', 3, "avier", FlxColor.WHITE, 'Sayan Sama', "EXPERT", FlxColor.fromRGB(224, 129, 252), [15, 0], "None");
+					addSong('Curtain Call', 3, "avier", FlxColor.WHITE, 'Sayan Sama', "EXPERT", FlxColor.fromRGB(224, 129, 252), [15, 0], "None");
 				}
 		}
 
