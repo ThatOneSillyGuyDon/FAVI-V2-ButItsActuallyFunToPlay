@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="flames.png">
+<SubTexture name="idle0000" x="0" y="655" width="999" height="595" frameX="0" frameY="-19" frameWidth="1280" frameHeight="720" />
+<SubTexture name="idle0001" x="0" y="0" width="989" height="655" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="idle0002" x="989" y="0" width="968" height="614" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="idle0003" x="0" y="1250" width="1000" height="587" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+</TextureAtlas>

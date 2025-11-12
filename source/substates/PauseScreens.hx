@@ -288,7 +288,7 @@ class PauseSubState extends MusicBeatSubstate
 					if (PlayState.useFakeDeluName)
 						PlayState.useFakeDeluName = false;
 					PlayState.pauseCountEnabled = false;
-					FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+					FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
 					FlxG.mouse.visible = true;
 					MusicBeatState.switchState(new options.OptionsState());
 					options.OptionsState.onPlayState = true;
@@ -303,7 +303,7 @@ class PauseSubState extends MusicBeatSubstate
 
 					Mods.loadTopMod();
 					if(PlayState.isStoryMode) {
-						MusicBeatState.switchState(new StoryMenu());
+						MusicBeatState.switchState(new StoryMenuState());
 						FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 					} else {
 						MusicBeatState.switchState(new FreeplayState());
@@ -311,7 +311,7 @@ class PauseSubState extends MusicBeatSubstate
 					}
 					PlayState.changedDifficulty = false;
 					PlayState.chartingMode = false;
-					FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+					FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
 			}
 		}
 	}
@@ -540,7 +540,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 			{
 				case 1: 
 					randomPauseSong = "shipTheFartYayHoorayv3v";
-					pauseSongStr = "Ship The Fart Hooray < 3 (Distant Stars)";
+					pauseSongStr = "Ship The Fart Yay Hooray < 3 (Distant Stars)";
 				case 2: 
 					randomPauseSong = "somberNight";
 					pauseSongStr = "Ahh The Scary (Somber Night)";
@@ -607,7 +607,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 			countDown.setFormat(Paths.font("disneyFreeplayFont.ttf"), 90, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 			satanTxt.setFormat(Paths.font("disneyFreeplayFont.ttf"), 32, FlxColor.fromRGB(255, 117, 107), CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.fromRGB(92, 0, 26));
 			satanTxt.borderSize = 2;
-			pauseNameTxt.setFormat(Paths.font("disneyFreeplayFont.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			pauseNameTxt.setFormat(Paths.font("disneyFreeplayFont.ttf"), (pauseSongStr == "Ship The Fart Yay Hooray < 3 (Distant Stars)" ? 14 : 16), FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 	
 			songArt.loadGraphic(Paths.imageAlbum(pauseArtAsset));
 	
@@ -732,7 +732,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 							if (PlayState.useFakeDeluName)
 								PlayState.useFakeDeluName = false;
 							PlayState.pauseCountEnabled = false;
-							FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+							FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
 							FlxG.mouse.visible = true;
 							MusicBeatState.switchState(new options.OptionsState());
 							options.OptionsState.onPlayState = true;
@@ -761,7 +761,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 	
 								if (PlayState.isStoryMode)
 								{
-										MusicBeatState.switchState(new StoryMenu());
+										MusicBeatState.switchState(new StoryMenuState());
 										FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 								}
 								else
@@ -780,7 +780,7 @@ class FAVIPauseSubState extends MusicBeatSubstate
 									}
 									FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
 								}
-									FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+									FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
 					}
 				}
 			}
@@ -1089,7 +1089,7 @@ class PauseManiaSubstate extends MusicBeatSubstate
 							case "maniaRetry":
 								restartSong();
 							case "maniaOptions":
-								FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+								FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
 								FlxG.mouse.visible = true;
 								MusicBeatState.switchState(new options.OptionsState());
 								options.OptionsState.onPlayState = true;
@@ -1113,7 +1113,7 @@ class PauseManiaSubstate extends MusicBeatSubstate
 									FreeplayState.freeplayMenuList = 3;
 									MusicBeatState.switchState(new FreeplayState());
 									FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
-									FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+									FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
 								}
 						}
 					}

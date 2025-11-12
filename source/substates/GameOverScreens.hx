@@ -103,7 +103,7 @@ class BaseGameOver extends MusicBeatSubstate {
 
 			if (PlayState.isStoryMode)
 			{
-				MusicBeatState.switchState(new StoryMenu());
+				MusicBeatState.switchState(new StoryMenuState());
 				FlxG.sound.playMusic(Paths.music('aviOST/gameOver/rottenPetals'));
 			}
 			else
@@ -472,7 +472,7 @@ class Episode1Death extends MusicBeatSubstate {
 				{
 					stupidAssCam.fade(FlxColor.BLACK, 1.4, false, function()
 					{
-						MusicBeatState.switchState(new StoryMenu());
+						MusicBeatState.switchState(new StoryMenuState());
 						FlxG.sound.playMusic(Paths.music('aviOST/gameOver/rottenPetals'));
 					});
 				}
@@ -484,7 +484,7 @@ class Episode1Death extends MusicBeatSubstate {
 						FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
 					});
 				}
-				FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+				FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
 				PlayState.instance.callOnLuas('onGameOverConfirm', [false]);
 			}
 			arrowLerp = quitLerp = tryLerp = 0;
@@ -657,7 +657,7 @@ class DelusionalDeath extends MusicBeatSubstate {
 				{
 					stupidAssCam.fade(FlxColor.BLACK, 1.4, false, function()
 					{
-						MusicBeatState.switchState(new StoryMenu());
+						MusicBeatState.switchState(new StoryMenuState());
 						FlxG.sound.playMusic(Paths.music('aviOST/gameOver/rottenPetals'));
 					});
 				}
@@ -669,7 +669,7 @@ class DelusionalDeath extends MusicBeatSubstate {
 						FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
 					});
 				}
-				FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+				FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
 				PlayState.instance.callOnLuas('onGameOverConfirm', [false]);
 			}
 			arrowLerp = quitLerp = tryLerp = 0;
@@ -853,7 +853,7 @@ class EpicFailLmao extends MusicBeatSubstate {
 						{
 							if (PlayState.isStoryMode)
 							{
-								MusicBeatState.switchState(new StoryMenu());
+								MusicBeatState.switchState(new StoryMenuState());
 								FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 							}
 							else
@@ -864,7 +864,7 @@ class EpicFailLmao extends MusicBeatSubstate {
 						});
 					});
 
-					FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+					FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
 					PlayState.instance.callOnLuas('onGameOverConfirm', [false]);
 				}
 
@@ -1056,7 +1056,7 @@ class EverettBaseDeath extends MusicBeatSubstate {
 				{
 					stupidAssCam.fade(FlxColor.BLACK, 1.4, false, function()
 					{
-						MusicBeatState.switchState(new StoryMenu());
+						MusicBeatState.switchState(new StoryMenuState());
 						FlxG.sound.playMusic(Paths.music('aviOST/gameOver/rottenPetals'));
 					});
 				}
@@ -1068,7 +1068,7 @@ class EverettBaseDeath extends MusicBeatSubstate {
 						FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
 					});
 				}
-				FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+				FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
 				PlayState.instance.callOnLuas('onGameOverConfirm', [false]);
 			}
 			arrowLerp = quitLerp = tryLerp = 0;
@@ -1228,7 +1228,7 @@ class WarGameOver extends MusicBeatSubstate {
 				{
 					stupidAssCam.fade(FlxColor.BLACK, 1.4, false, function()
 					{
-						MusicBeatState.switchState(new StoryMenu());
+						MusicBeatState.switchState(new StoryMenuState());
 						FlxG.sound.playMusic(Paths.music('aviOST/gameOver/rottenPetals'));
 					});
 				}
@@ -1240,7 +1240,7 @@ class WarGameOver extends MusicBeatSubstate {
 						FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
 					});
 				}
-				FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+				FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
 				PlayState.instance.callOnLuas('onGameOverConfirm', [false]);
 			}
 			arrowLerp = quitLerp = tryLerp = 0;
@@ -1540,7 +1540,7 @@ class MalsquareDeath extends MusicBeatSubstate {
 				{
 					stupidAssCam.fade(FlxColor.BLACK, 1.4, false, function()
 					{
-						MusicBeatState.switchState(new StoryMenu());
+						MusicBeatState.switchState(new StoryMenuState());
 						FlxG.sound.playMusic(Paths.music('aviOST/gameOver/rottenPetals'));
 					});
 				}
@@ -1552,7 +1552,7 @@ class MalsquareDeath extends MusicBeatSubstate {
 						FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
 					});
 				}
-				FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+				FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
 				PlayState.instance.callOnLuas('onGameOverConfirm', [false]);
 			}
 			quitLerp = tryLerp = 0;
@@ -1702,7 +1702,7 @@ class MalsquareTrollScreen extends MusicBeatSubstate {
 		
 						if (PlayState.isStoryMode)
 						{
-							MusicBeatState.switchState(new StoryMenu());
+							MusicBeatState.switchState(new StoryMenuState());
 							FlxG.sound.playMusic(Paths.music('aviOST/gameOver/rottenPetals'));
 						}
 						else
@@ -1710,7 +1710,7 @@ class MalsquareTrollScreen extends MusicBeatSubstate {
 							MusicBeatState.switchState(new FreeplayState());
 							FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
 						}
-						FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+						FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
 						PlayState.instance.callOnLuas('onGameOverConfirm', [false]);
 					}
 					remove(bg);

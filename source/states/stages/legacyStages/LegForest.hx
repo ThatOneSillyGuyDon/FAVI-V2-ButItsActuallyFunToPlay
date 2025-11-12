@@ -24,6 +24,10 @@ class LegForest extends BaseStage
 	
 	override function createPost()
 	{
+		game.dad.setPosition(0, 0);
+    	game.boyfriend.setPosition(900, -20);
+		game.gf.visible = false;
+		
 		if (ClientPrefs.data.shaders)
 		{
 			blurShader.setFloat('bluramount', 0.6);
@@ -49,9 +53,5 @@ class LegForest extends BaseStage
 				camHUD.setFilters([new ShaderFilter(grayScale)]);
 			}
 		}
-
-		game.dad.setPosition(0, 0);
-    	game.boyfriend.setPosition(900, -20);
-		game.gf.visible = false;
 	}
 }

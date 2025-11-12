@@ -15062,6 +15062,7 @@
 			}
 		],
 		"gfVersion": "gf",
+		"splashSkin": "noteSplashes",
 		"song": "Bless",
 		"validScore": true,
 		"stage": "vaultRoom",

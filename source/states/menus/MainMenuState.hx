@@ -319,7 +319,7 @@ class MainMenuState extends MusicBeatState
 		changeSelection(0);
 		super.create();
 
-		FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+		FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
 
 		if (!FlxG.mouse.visible)
 			FlxG.mouse.visible = true;
@@ -406,6 +406,26 @@ class MainMenuState extends MusicBeatState
 				
 			if (FlxG.mouse.overlaps(menuItems.members[curSelected]) && FlxG.mouse.justPressed)
 					enterSelection();
+			if (Main.debug)
+			{
+				if (FlxG.keys.justPressed.ONE) // Unlocks EVERYTHING
+				{
+					GameData.unlockEverything();
+					FlxG.sound.play(Paths.sound('funkinAVI/easterEggSound'));
+				}
+				if (FlxG.keys.justPressed.TWO) // Unlocks Freeplay Access for Testing
+				{
+					FlxG.sound.play(Paths.sound('funkinAVI/easterEggSound'));
+					GameData.episode1FPLock = "unlocked";
+					GameData.saveShit();
+				}
+				if (FlxG.keys.justPressed.THREE) // Dev Shortcut to Mania Menu
+				{
+					FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
+					FreeplayState.freeplayMenuList = 3;
+					MusicBeatState.switchState(new FreeplayState());
+				}
+			}
 			if (FlxG.keys.justPressed.SEVEN)
 			{
 				if (Main.debug)
@@ -415,17 +435,6 @@ class MainMenuState extends MusicBeatState
 					messenger.sendMessage('ACCESS DENIED!', 'Perhaps there is a code to access this?');
 				}
 			}	
-			if (FlxG.keys.justPressed.ONE && Main.debug)
-			{
-				GameData.unlockEverything();
-				FlxG.sound.play(Paths.sound('funkinAVI/easterEggSound'));
-			}		
-			if (FlxG.keys.justPressed.TWO && Main.debug)
-			{
-				FlxG.sound.play(Paths.sound('funkinAVI/easterEggSound'));
-				GameData.episode1FPLock = "unlocked";
-				GameData.saveShit();
-			}
 			if (FlxG.keys.justPressed.NINE)
 			{
 				goingToBrainrot = true;
@@ -556,7 +565,7 @@ class MainMenuState extends MusicBeatState
 							{
 								case 'story_mode':
 									FlxG.mouse.visible = false;
-									MusicBeatState.switchState(new StoryMenu());
+									MusicBeatState.switchState(new StoryMenuState());
 								case 'options':
 									LoadingState.loadAndSwitchState(new options.OptionsState());
 									options.OptionsState.onPlayState = false;
@@ -590,7 +599,7 @@ class MainMenuState extends MusicBeatState
 		switch (getEvent)
 		{
 			case 1:
-				var redGradient:FlxSprite = new FlxSprite(0, 0, Paths.image('UI/gimmicks/redGradient'));
+				var redGradient:FlxSprite = new FlxSprite(0, 0, Paths.image('favi/filters/redGradient'));
 				redGradient.setGraphicSize(Std.int(redGradient.width * 0.7));
 				redGradient.screenCenter();
 				redGradient.cameras = [camHUD];
@@ -734,7 +743,7 @@ class MainMenuState extends MusicBeatState
 						{
 							FlxG.sound.music.fadeIn(0.5, 0, 1);
 							FlxG.sound.playMusic(Paths.music('aviOST/curtainCall'));
-							MusicBeatState.switchState(new CreditsMenu());
+							MusicBeatState.switchState(new CreditsState());
 						});
 					}
 				});

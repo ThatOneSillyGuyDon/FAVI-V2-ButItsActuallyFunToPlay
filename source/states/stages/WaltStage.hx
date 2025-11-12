@@ -200,7 +200,7 @@ class WaltStage extends BaseStage
 	}
 
 	override function update(elapsed:Float)
-	{
+	{	
 		switch (game.dad.curCharacter)
 		{
 			case 'walt-new':

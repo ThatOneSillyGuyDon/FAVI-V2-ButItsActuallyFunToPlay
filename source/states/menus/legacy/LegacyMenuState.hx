@@ -145,7 +145,7 @@ class LegacyMenuState extends MusicBeatState
 		Application.current.window.title = "Funkin.avi";
 
 		FlxG.sound.music.fadeIn(0.5, 0, 1);
-		FlxG.sound.playMusic(Paths.music('aviOST/legacy/MenuMusic'));
+		FlxG.sound.playMusic(Paths.music('aviOST/alone'));
 
 		AppIcon.changeIcon("legacyIcon");
 		#if desktop
@@ -520,7 +520,7 @@ class LegacyMenuState extends MusicBeatState
 								{
 									case 'story_mode':
 										FlxG.mouse.visible = false;
-										MusicBeatState.switchState(new StoryMenu());
+										MusicBeatState.switchState(new StoryMenuState());
 										Conductor.bpm = (50); // changes back to titlescreen bpm
 										FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'), 1); // resets music back to menu music
 										FlxG.sound.music.fadeIn();
@@ -531,7 +531,7 @@ class LegacyMenuState extends MusicBeatState
 									case 'credits':
 										FlxG.sound.music.fadeIn(0.5, 0, 1);
 										FlxG.sound.playMusic(Paths.music('aviOST/curtainCall'));
-										MusicBeatState.switchState(new CreditsMenu());
+										MusicBeatState.switchState(new CreditsState());
 									case 'options':
 										Conductor.bpm = (50); // changes back to titlescreen bpm
 										FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'), 1); // resets music back to menu music
@@ -566,16 +566,25 @@ class LegacyMenuState extends MusicBeatState
 					messenger.sendMessage('ACCESS DENIED!', 'Perhaps there is a code to access this?');
 				}
 			}
-			if (FlxG.keys.justPressed.ONE && Main.debug)
+			if (Main.debug)
 			{
-				GameData.unlockEverything();
-				FlxG.sound.play(Paths.sound('funkinAVI/easterEggSound'));
-			}		
-			if (FlxG.keys.justPressed.TWO && Main.debug)
-			{
-				FlxG.sound.play(Paths.sound('funkinAVI/easterEggSound'));
-				GameData.episode1FPLock = "unlocked";
-				GameData.saveShit();
+				if (FlxG.keys.justPressed.ONE) // Unlocks EVERYTHING
+				{
+					GameData.unlockEverything();
+					FlxG.sound.play(Paths.sound('funkinAVI/easterEggSound'));
+				}
+				if (FlxG.keys.justPressed.TWO) // Unlocks Freeplay Access for Testing
+				{
+					FlxG.sound.play(Paths.sound('funkinAVI/easterEggSound'));
+					GameData.episode1FPLock = "unlocked";
+					GameData.saveShit();
+				}
+				if (FlxG.keys.justPressed.THREE) // Dev Shortcut to Mania Menu
+				{
+					FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
+					FreeplayState.freeplayMenuList = 3;
+					MusicBeatState.switchState(new FreeplayState());
+				}
 			}
 		}
 

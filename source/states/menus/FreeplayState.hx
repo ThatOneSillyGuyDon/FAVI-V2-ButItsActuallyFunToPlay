@@ -85,12 +85,14 @@ class FreeplayState extends MusicBeatState
 					addSong('Hunted', 3, (GameData.huntedLock != 'unlocked' && GameData.huntedLock != 'beaten' ? 'mysteryfp' : 'goofy'), FlxColor.fromRGB(94, 28, 35), 'JBlitz', 'NORMAL', FlxColor.fromRGB(255, 220, 220), (GameData.huntedLock == "beaten" || GameData.huntedLock == "unlocked" ? [24, -8] : [25, 0]), "Modcharts that may cause visual distortion.");
 					addSong('Laugh Track', 3, (GameData.rickyLock != 'unlocked' && GameData.rickyLock != 'beaten' ? 'mysteryfp' : 'ricky'), FlxColor.fromRGB(181, 0, 0), 'Lasagnacat', 'HARD', FlxColor.fromRGB(255, 187, 187), (GameData.rickyLock == "beaten" || GameData.rickyLock == "unlocked" ? [20, -15] : [25, 0]), "None");
 					addSong('Bless', 3, (GameData.blessLock != 'unlocked' && GameData.blessLock != 'beaten' ? 'mysteryfp' : 'noise'), FlxColor.WHITE, 'Lasagnacat', 'HARD', FlxColor.fromRGB(255, 187, 187), (GameData.blessLock == "beaten" || GameData.blessLock == "unlocked" ? [30, -10] : [25, 0]), "None");
+					addSong('Scrapped', 3, (GameData.scrappedLock != 'unlocked' && GameData.scrappedLock != 'beaten' ? 'mysteryfp' : 'rs'), FlxColor.fromRGB(0, 0, 0), 'Lasagnacat', 'HARD', FlxColor.fromRGB(255, 187, 187), (GameData.scrappedLock == "beaten" || GameData.scrappedLock == "unlocked" ? [30, -10] : [25, 0]), "None");
 					addSong("Don't Cross!", 3, (GameData.crossinLock != 'unlocked' && GameData.crossinLock != 'beaten' ? 'mysteryfp' : 'cross'), FlxColor.fromRGB(255, 0, 0), 'Lasagnacat', 'GOOD LUCK', FlxColor.fromRGB(201, 0, 0), (GameData.crossinLock == "beaten" || GameData.crossinLock == "unlocked" ? [23, -10] : [25, 0]), "Chart is randomized every attempt.");
 					addSong('War Dilemma', 3, (GameData.warLock != 'unlocked' && GameData.warLock != 'beaten' ? 'mysteryfp' : 'ethernalg'), FlxColor.fromRGB(204, 41, 103), 'Sayan Sama & obscurity', 'HARD', FlxColor.fromRGB(255, 187, 187), (GameData.warLock == "beaten" || GameData.warLock == "unlocked" ? [24, 1] : [25, 0]), "Modcharts that may cause visual distortion.");
 					addSong('Twisted Grins', 3, (GameData.tgLock != 'unlocked' && GameData.tgLock != 'beaten' ? 'mysteryfp' : 'smile'), FlxColor.fromRGB(54, 38, 38), 'Lasagnacat', 'HARD', FlxColor.fromRGB(255, 187, 187), (GameData.tgLock == "beaten" || GameData.tgLock == "unlocked" ? [25, -10] : [25, 0]), "Scroll speed changes.");
 					addSong('Mercy', 3, (GameData.mercyLock != 'beaten' && GameData.mercyLock != 'beaten' ? 'mysteryfp' : 'walt'), FlxColor.fromRGB(176, 169, 116), 'Ophomix24', 'INSANE', FlxColor.fromRGB(255, 110, 110), (GameData.mercyLock == "beaten" || GameData.mercyLock == "unlocked" ? [27, -20] : [25, 0]), "Drains your health until death. Utilizes the SPACEBAR, highly recommend checking your controls setting before playing.");
 					//addSong('Neglection', 3, 'mysteryfp', FlxColor.WHITE, 'FR3SHMoure', 'Man idk', FlxColor.WHITE, [25, 0], "None");
 					addSong('Cycled Sins', 3, (GameData.sinsLock != 'unlocked' && GameData.sinsLock != 'beaten' ? 'mysteryfp' : 'relapseNEW-pixel'), FlxColor.fromRGB(105, 30, 30), 'JBlitz', 'HARD', FlxColor.fromRGB(255, 187, 187), (GameData.sinsLock == "beaten" || GameData.sinsLock == "unlocked" ? [24, -21] : [25, 0]), "Dodge Relapse Mouse's gunshots. Utilizes the SPACEBAR, highly recommend checking your controls setting before playing.");
+					addSong('Whimsical Bar Blues', 3, 'mysteryfp', FlxColor.fromRGB(133, 190, 255), 'inneaux & Sayan Sama', 'NORMAL', FlxColor.fromRGB(255, 220, 220), [25, 0], "None");		
 					if (GameData.canAddMalfunction)
 						addSong('Malfunction', 3, (GameData.malfunctionLock != 'unlocked' && GameData.malfunctionLock != 'beaten' ? 'mysteryfp' : 'malNEW-pixel'), FlxColor.fromRGB(150, 149, 186), 'obscurity', null, FlxColor.WHITE, (GameData.malfunctionLock == "beaten" || GameData.malfunctionLock == "unlocked" ? [27, 0] : [25, 0]), "Contains extreme flashing lights, very unforgiving modcharts, life system & note gimmicks. Mechanics are enabled by default upon playing.\nGood luck.");		
 					if ((GameData.birthdayLocky == 'beaten' || GameData.birthdayLocky == 'obtained') && GameData.birthdayLocky != "uninvited")
@@ -111,12 +113,15 @@ class FreeplayState extends MusicBeatState
 				}
 			case 3: // Secret Mania Menu
 				{
-					addSong('Rotten Petals', 3, "avier", FlxColor.WHITE, 'Yama Haki/Toko', "MANIA", FlxColor.CYAN, [15, 0], "None");
-					//addSong('Seeking Freedom', 3, "avier", FlxColor.WHITE, 'Yama Haki/Toko', "MANIA", FlxColor.CYAN, [15, 0], "None");
-					//addSong('Curtain Call', 3, "avier", FlxColor.WHITE, 'Sayan Sama', "MANIA", FlxColor.CYAN, [15, 0], "None");
-					//addSong("Distant Stars", 3, "avier", FlxColor.WHITE, 'ForFurtherNotice', "MANIA", FlxColor.CYAN, [15, 0], "None");
-					addSong("Somber Night", 3, "avier", FlxColor.WHITE, 'ForFurtherNotice', "MANIA", FlxColor.CYAN, [15, 0], "None");
-					addSong("Simple Life", 3, "avier", FlxColor.WHITE, 'ForFurtherNotice', "MANIA", FlxColor.CYAN, [15, 0], "None");
+					//addSong("Alone", 3, "avier", FlxColor.WHITE, 'JBlitz', "BASIC", FlxColor.fromRGB(67, 247, 121), [15, 0], "None");
+					addSong("Am I Real?", 3, "avier", FlxColor.WHITE, 'Yama Haki/Toko', "BASIC", FlxColor.fromRGB(67, 247, 121), [15, 0], "None");
+					//addSong("Distant Stars", 3, "avier", FlxColor.WHITE, 'ForFurtherNotice', "INTERMEDIATE", FlxColor.fromRGB(67, 247, 205), [15, 0], "None");
+					addSong("Somber Night", 3, "avier", FlxColor.WHITE, 'ForFurtherNotice', "INTERMEDIATE", FlxColor.fromRGB(67, 247, 205), [15, 0], "None");
+					//addSong("Your Final Bow", 3, "avier", FlxColor.WHITE, 'Yama Haki/Toko', "INTERMEDIATE", FlxColor.fromRGB(67, 247, 205), [15, 0], "None");
+					addSong("Simple Life", 3, "avier", FlxColor.WHITE, 'ForFurtherNotice', "CHALLENGING", FlxColor.fromRGB(67, 235, 247), [15, 0], "None");
+					addSong('Rotten Petals', 3, "avier", FlxColor.WHITE, 'Yama Haki/Toko', "CHALLENGING", FlxColor.fromRGB(67, 235, 247), [15, 0], "None");
+					addSong('Seeking Freedom', 3, "avier", FlxColor.WHITE, 'Yama Haki/Toko', "EXPERT", FlxColor.fromRGB(224, 129, 252), [15, 0], "None");
+					addSong('Curtain Call', 3, "avier", FlxColor.WHITE, 'Sayan Sama', "EXPERT", FlxColor.fromRGB(224, 129, 252), [15, 0], "None");
 				}
 		}
 
@@ -165,7 +170,7 @@ class FreeplayState extends MusicBeatState
 	
 			if (freeplayMenuList != 2)
 			{
-				var gradient = new FlxSprite().loadGraphic(Paths.image('UI/gimmicks/gradient'));
+				var gradient = new FlxSprite().loadGraphic(Paths.image('favi/filters/gradient'));
 				gradient.screenCenter();
 				gradient.setGraphicSize(Std.int(gradient.width * 0.8));
 				gradient.alpha = .45;
@@ -335,6 +340,11 @@ class FreeplayState extends MusicBeatState
 				else
 					maniaSkin += 1;
 				maniaSkinSpr.loadGraphic(Paths.image('$path/maniaSkins/skin$maniaSkin'));
+			}
+			if(FlxG.keys.justPressed.CONTROL && !player.playingMusic && freeplayMenuList != 3)
+			{
+				persistentUpdate = false;
+				openSubState(new GameplayChangersSubstate());
 			}
 			else if(space && freeplayMenuList != 3)
 			{
@@ -648,6 +658,9 @@ class FreeplayState extends MusicBeatState
 
 				icon.x += songs[i].iconOffset[0];
 				icon.y += songs[i].iconOffset[1];
+
+				if (freeplayMenuList == 3) // Hide icons in mania menu
+					icon.visible = false;
 			}
 			else {
 				songTextA = new Alphabet(100, (43 * i) + 120, songs[i].songName, true);
@@ -694,7 +707,7 @@ class FreeplayState extends MusicBeatState
 			shittyTmr = null;
 		});
 
-		if(ClientPrefs.data.flashing)
+		if(ClientPrefs.data.flashing && freeplayMenuList != 3)
 			FlxG.camera.flash(FlxColor.BLACK, 0.1);
 
 		curSelected += change;
@@ -774,7 +787,7 @@ class FreeplayState extends MusicBeatState
 		{
 			for (i in 0...iconArray.length)
 			{
-				iconArray[i].alpha = 0;
+				iconArray[i].alpha = 0.001;
 				iconArray[i].animation.curAnim.curFrame = 0;			
 			}
 			iconArray[curSelected].alpha = 1;
@@ -787,7 +800,7 @@ class FreeplayState extends MusicBeatState
 				iconArray[curSelected].animation.curAnim.curFrame = 2;
 	
 			for (s in 0...songDisplay.length)
-				songDisplay[s].alpha = 0;
+				songDisplay[s].alpha = 0.001;
 
 			for (a in albumHolder.members)
 				a.visible = false;
@@ -960,12 +973,15 @@ class FreeplayState extends MusicBeatState
 		switch (CoolUtil.spaceToDash(PlayState.SONG.song.toLowerCase()))
 		{
 			case 'devilish-deal' | 'hunted-legacy' | 'isolated-beta' | 'isolated-old': difficultyRank = 'EASY';
-			case 'isolated' | 'neglection' | 'resentment' | 'lunacy-legacy' | 'hunted' | 'mortiferum-risus' | 'isolated-legacy': difficultyRank = 'NORMAL';
+			case 'isolated' | 'neglection' | 'resentment' | 'lunacy-legacy' | 'hunted' | 'mortiferum-risus' | 'isolated-legacy' | 'whimsical-bar-blues': difficultyRank = 'NORMAL';
 			case 'delusional' | 'mercy' | 'malfunction-legacy': difficultyRank = 'INSANE';
 			case 'malfunction': difficultyRank = 'null';
 			case "dont-cross": difficultyRank = 'GOOD LUCK';
 			case 'birthday': difficultyRank = 'PARTY';
-			case "rotten-petals" | "seeking-freedom" | "your-final-bow" | "curtain-call" |"am-i-real?" | "a-true-monster" | "ship-the-fart-yay-hooray-<3-(distant-stars)" | "ahh-the-scary-(somber-night)" | "the-wretched-tilezones-(simple-life)": difficultyRank = "MANIA";
+			case "alone" | "am-i-real?": difficultyRank = "BASIC";
+			case "ship-the-fart-yay-hooray-<3-(distant-stars)" | "ahh-the-scary-(somber-night)" | "your-final-bow": difficultyRank = "INTERMEDIATE";
+			case "rotten-petals" | "the-wretched-tilezones-(simple-life)": difficultyRank = "CHALLENGING";
+			case "seeking-freedom" | "curtain-call": difficultyRank = "EXPERT";
 			default: difficultyRank = 'HARD';
 		}
 		return difficultyRank;
@@ -977,15 +993,16 @@ class FreeplayState extends MusicBeatState
 		switch (PlayState.SONG.song)
 		{
 			case "Devilish Deal" | "Isolated" | "Lunacy" | "Malfunction" | "Lunacy Legacy" | "Malfunction Legacy" | "Mercy Legacy": songArtist = "obscurity.";
-			case "Delusional" | "Birthday" | "Delusional Legacy" | "A True Monster": songArtist = "FR3SHMoure";
-			case "Hunted" | "Hunted Legacy" | "Cycled Sins" | "Cycled Sins Legacy": songArtist = "JBlitz";
-			case "Laugh Track" | "Dont Cross" | "Bless" | "Twisted Grins": songArtist = "PualTheUnTruest";
-			case "Isolated Beta" | "Isolated Old" | "Rotten Petals" | "Seeking Freedom" | "Your Final Bow": songArtist = "Yama Haki/Toko";
+			case "Delusional" | "Birthday" | "Delusional Legacy": songArtist = "FR3SHMoure";
+			case "Hunted" | "Hunted Legacy" | "Cycled Sins" | "Cycled Sins Legacy" | "Alone": songArtist = "JBlitz";
+			case "Laugh Track" | "Dont Cross" | "Bless" | "Twisted Grins" | "Scrapped": songArtist = "Lasagnacat";
+			case "Isolated Beta" | "Isolated Old" | "Rotten Petals" | "Seeking Freedom" | "Your Final Bow" | "Am I Real?": songArtist = "Yama Haki/Toko";
 			case "Twisted Grins Legacy" | "Curtain Call": songArtist = "Sayan Sama";
 			case "Isolated Legacy": songArtist = "Toko & obscurity.";
 			case "War Dilemma": songArtist = "Sayan Sama & obscurity.";
 			case "Mercy": songArtist = "Ophomix24";
 			case "Ship the Fart Yay Hooray <3 (Distant Stars)" | "Ahh the Scary (Somber Night)" | "The Wretched Tilezones (Simple Life)": songArtist = "ForFurtherNotice";
+			case "Whimsical Bar Blues": songArtist = "inneaux & Sayan Sama";
 			default: songArtist = "Unknown";
 		}
 		return songArtist;

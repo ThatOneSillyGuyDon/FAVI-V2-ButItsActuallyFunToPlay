@@ -28,9 +28,6 @@ import openfl.utils.Assets as OpenFlAssets;
 import openfl.events.KeyboardEvent;
 import haxe.Json;
 
-import cutscenes.CutsceneHandler;
-import cutscenes.DialogueBoxPsych;
-
 import objects.Character.Shadow;
 import objects.ui.SubtitlesBox.EventType;
 import objects.ui.SubtitlesBox.SubtitlesUtil;
@@ -122,6 +119,8 @@ typedef FlashingSettings =
 	*/
 	@:optional var enableBadapple:Bool;
 }
+
+//God recreating these events are going to be a pain in the ASS
 
 /**
  * This is where all the Gameplay stuff happens and is managed
@@ -346,14 +345,6 @@ class PlayState extends MusicBeatState
 	#end
 	public var introSoundsSuffix:String = '';
 
-	public var crashLives:FlxText;
-	public var crashLivesIcon:FlxSprite;
-
-	public var crashLivesCounter:Int = 0;
-
-	var heartTween:FlxTween;
-	var malfunctionTxt:FlxTween;
-
 	public var fancyBarOverlay:FlxSprite;
 	public var watermarkTxt:FlxText;
 	public var songTxt:FlxText;
@@ -393,6 +384,7 @@ class PlayState extends MusicBeatState
 	var stageBGFlash:FlxSprite;
 	var stageBGDark:FlxSprite;
 	var stageBGColor:FlxSprite;
+
 	var BGFlashTween:FlxTween;
 	var BGDarkTween:FlxTween;
 	var BGTweenColor:FlxTween;
@@ -404,9 +396,6 @@ class PlayState extends MusicBeatState
 
 	public static var windowName:String = "";
 	public static var windowTimer:FlxTimer;
-
-	//Space bar vars
-	public var limitThing:Int = 0; // Default Value
 
 	//Pause/gameOver variables
 	public static var pauseCountEnabled:Bool = false;
@@ -667,7 +656,7 @@ class PlayState extends MusicBeatState
 
 		switch (SONG.song)
 		{
-			case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Twisted Grins Legacy" | "Laugh Track" |  "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Birthday" | "Rotten Petals" | "Seeking Freedom" | "Am I Real?" | "Curtain Call" | "Your Final Bow" | "A True Monster" | "The Wretched Tilezones (Simple Life)" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "Ahh the Scary (Somber Night)":
+			case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Twisted Grins Legacy" | "Laugh Track" |  "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Birthday" | "Rotten Petals" | "Seeking Freedom" | "Am I Real?" | "Curtain Call" | "Your Final Bow" | "A True Monster" | "The Wretched Tilezones (Simple Life)" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "Ahh the Scary (Somber Night)" | "Alone":
 				introSoundsSuffix = "-cartoon";
 			case "Cycled Sins Legacy" | "Cycled Sins":
 				introSoundsSuffix = "-sins";
@@ -958,7 +947,7 @@ class PlayState extends MusicBeatState
 
 		generateSong(SONG.song);
 
-		if (SONG.song != "Birthday")
+		if (SONG.song != "Birthday" || SONG.song != "Delusional Legacy")
 		{
 			playfieldRenderer = new PlayfieldRenderer(strumLineNotes, notes, this);
 			noteGroup.add(playfieldRenderer);
@@ -1135,50 +1124,9 @@ class PlayState extends MusicBeatState
 			iconP2.visible = false;
 		}
 
-		if (ClientPrefs.data.downScroll)
-		{
-			crashLives = new FlxText(600, 170, 0, "", 20);
-			crashLivesIcon = new FlxSprite(550, 170);
-		}
-		else
-		{
-			crashLives = new FlxText(600, 500, 0, "", 20);
-			crashLivesIcon = new FlxSprite(550, 500);
-		}
-
-		crashLives.setFormat(Paths.font("Retro Gaming.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		crashLives.borderSize = 2;
-		crashLives.borderQuality = 2;
-		crashLives.antialiasing = false;
-		crashLives.scrollFactor.set();
-		crashLives.cameras = [camHUD];
-
-		crashLivesIcon.frames = Paths.getSparrowAtlas('UI/funkinAVI/gimmicks/malfunctionGimmickIcon');
-		crashLivesIcon.animation.addByPrefix('idle', 'lives-icon idle', 15);
-		crashLivesIcon.animation.addByPrefix('OMFG IT GLITCHES', 'lives-icon glitchin', 15);
-		crashLivesIcon.animation.play('idle');
-		crashLivesIcon.scale.set(2.2, 2.2);
-		crashLivesIcon.antialiasing = false;
-		crashLivesIcon.cameras = [camHUD];
-
-		if (SONG.song == "Malfunction")
-		{
-			add(crashLives);
-			add(crashLivesIcon);
-			crashLivesCounter += 25;
-			crashLives.text = 'Lives: ${crashLivesCounter}';
-		}
-		else if (SONG.song == "Malfunction Legacy")
-		{
-			add(crashLives);
-			add(crashLivesIcon);
-			crashLivesCounter += 30;
-			crashLives.text = 'Lives: ${crashLivesCounter}';
-		}
-
 		if (!ClientPrefs.data.lowQuality)
 		{
-			globalGradient = new FlxSprite().loadGraphic(Paths.image('UI/gimmicks/gradient'));
+			globalGradient = new FlxSprite().loadGraphic(Paths.image('favi/filters/gradient'));
 			globalGradient.screenCenter();
 			globalGradient.setGraphicSize(Std.int(globalGradient.width * 0.68));
 			globalGradient.cameras = [camOther];
@@ -1301,6 +1249,22 @@ class PlayState extends MusicBeatState
 		songCard = new SongCard();
 		songCard.cameras = [camOther];
 		add(songCard);
+
+		lyrics = new FlxTypeText(0, FlxG.height - 65, 0, '', 15);
+		lyrics.setFormat(Paths.font('vcr'), 30, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		lyrics.cameras = [camOther];
+		lyrics.alpha = 0;
+		lyrics.borderSize = 4;
+		lyrics.scrollFactor.set();
+		lyrics.screenCenter(X).x -= 90;
+		add(lyrics);
+
+		lyricsIcon = new HealthIcon('bf', false);
+		lyricsIcon.x = lyrics.x - 150;
+		lyricsIcon.y = lyrics.y - 65;
+		lyricsIcon.visible = false;
+		lyricsIcon.cameras = [camOther];
+		add(lyricsIcon);
 
 		super.create();
 		Paths.clearUnusedMemory();
@@ -1556,39 +1520,6 @@ class PlayState extends MusicBeatState
 			startCountdown();
 	}
 
-	var dialogueCount:Int = 0;
-	public var psychDialogue:DialogueBoxPsych;
-	//You don't have to add a song, just saying. You can just do "startDialogue(DialogueBoxPsych.parseDialogue(Paths.json(songName + '/dialogue')))" and it should load dialogue.json
-	public function startDialogue(dialogueFile:DialogueFile, ?song:String = null):Void
-	{
-		// TO DO: Make this more flexible, maybe?
-		if(psychDialogue != null) return;
-
-		if(dialogueFile.dialogue.length > 0) {
-			inCutscene = true;
-			psychDialogue = new DialogueBoxPsych(dialogueFile, song);
-			psychDialogue.scrollFactor.set();
-			if(endingSong) {
-				psychDialogue.finishThing = function() {
-					psychDialogue = null;
-					endSong();
-				}
-			} else {
-				psychDialogue.finishThing = function() {
-					psychDialogue = null;
-					startCountdown();
-				}
-			}
-			psychDialogue.nextDialogueThing = startNextDialogue;
-			psychDialogue.skipDialogueThing = skipDialogue;
-			psychDialogue.cameras = [camHUD];
-			add(psychDialogue);
-		} else {
-			FlxG.log.warn('Your dialogue file is badly formatted!');
-			startAndEnd();
-		}
-	}
-
 	var startTimer:FlxTimer;
 	var finishTimer:FlxTimer = null;
 
@@ -1616,7 +1547,7 @@ class PlayState extends MusicBeatState
 		var introAlts:Array<String> = introAssets.get('default');
 		switch (SONG.song)
 		{
-			case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Twisted Grins Legacy" | "Laugh Track" |  "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Birthday" | "Rotten Petals" | "Curtain Call" | "Seeking Freedom" | "A True Monster" | "Am I Real?" | "Your Final Bow" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "The Wretched Tilezones (Simple Life)" | "Ahh the Scary (Somber Night)":
+			case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Twisted Grins Legacy" | "Laugh Track" |  "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Birthday" | "Rotten Petals" | "Curtain Call" | "Seeking Freedom" | "A True Monster" | "Am I Real?" | "Your Final Bow" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "The Wretched Tilezones (Simple Life)" | "Ahh the Scary (Somber Night)" | "Alone":
 				introAlts = introAssets.get('cartoon');
 			case "Cycled Sins Legacy" | "Cycled Sins":
 				introAlts = introAssets.get('sins');
@@ -1699,7 +1630,7 @@ class PlayState extends MusicBeatState
 			for (i in 0...opponentStrums.length) {
 				setOnScripts('defaultOpponentStrumX' + i, opponentStrums.members[i].x);
 				setOnScripts('defaultOpponentStrumY' + i, opponentStrums.members[i].y);
-				if(middlescroll) 
+				if(middlescroll && SONG.song == "Birthday") 
 				{
 					opponentStrums.members[i].x -= 99999999;
 					opponentStrums.members[i].visible = false;
@@ -1740,7 +1671,7 @@ class PlayState extends MusicBeatState
 				var antialias:Bool = ClientPrefs.data.antialiasing;
 				switch (SONG.song)
 				{
-					case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Twisted Grins Legacy" | "Laugh Track" |  "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Birthday" | "Rotten Petals" | "Curtain Call" | "Seeking Freedom" | "A True Monster" | "Am I Real?" | "Your Final Bow" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "The Wretched Tilezones (Simple Life)" | "Ahh the Scary (Somber Night)":
+					case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Twisted Grins Legacy" | "Laugh Track" |  "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Birthday" | "Rotten Petals" | "Curtain Call" | "Seeking Freedom" | "A True Monster" | "Am I Real?" | "Your Final Bow" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "The Wretched Tilezones (Simple Life)" | "Ahh the Scary (Somber Night)" | "Alone":
 						introAlts = introAssets.get('cartoon');
 					case "Cycled Sins Legacy" | "Cycled Sins":
 						introAlts = introAssets.get('sins');
@@ -2107,15 +2038,6 @@ class PlayState extends MusicBeatState
 		Conductor.songPosition = time;
 	}
 
-	public function startNextDialogue() {
-		dialogueCount++;
-		callOnScripts('onNextDialogue', [dialogueCount]);
-	}
-
-	public function skipDialogue() {
-		callOnScripts('onSkipDialogue', [dialogueCount]);
-	}
-
 	function startSong():Void
 	{
 		startingSong = false;
@@ -2221,6 +2143,8 @@ class PlayState extends MusicBeatState
 					inst.loadEmbedded(Paths.music("aviOST/pause/somberNight"));
 				case "Ship the Fart Yay Hooray <3 (Distant Stars)":
 					inst.loadEmbedded(Paths.music("aviOST/pause/shipTheFartYayHoorayv3v"));
+				case "Alone":
+					inst.loadEmbedded(Paths.music("aviOST/alone"));
 				default:
 					inst.loadEmbedded(Paths.inst(songData.song));
 			}
@@ -2984,18 +2908,27 @@ class PlayState extends MusicBeatState
 
 							if (strumScroll) //Downscroll
 							{
-								//daNote.y = (strumY + 0.45 * (Conductor.songPosition - daNote.strumTime) * songSpeed);
-								daNote.distance = (0.45 * (Conductor.songPosition - daNote.strumTime) * songSpeed * daNote.multSpeed);
+								daNote.y = (strumY + 0.45 * (Conductor.songPosition - daNote.strumTime) * songSpeed);
+								daNote.distance = (0.45 * (Conductor.songPosition - daNote.strumTime) * songSpeed);
 							}
 							else //Upscroll
 							{
-								//daNote.y = (strumY - 0.45 * (Conductor.songPosition - daNote.strumTime) * songSpeed);
-								daNote.distance = (-0.45 * (Conductor.songPosition - daNote.strumTime) * songSpeed * daNote.multSpeed);
+								daNote.y = (strumY - 0.45 * (Conductor.songPosition - daNote.strumTime) * songSpeed);
+								daNote.distance = (-0.45 * (Conductor.songPosition - daNote.strumTime) * songSpeed);
 							}
 
 							var angleDir = strumDirection * Math.PI / 180;
-							if (daNote.copyAngle)
-								daNote.angle = strumDirection - 90 + strumAngle;
+							if (daNote.copyAngle){
+								daNote.angle = strumAngle;
+								daNote.angle += strumDirection - 90;
+								if(Math.abs(strumDirection) % 90 == 0 ) daNote.angle -= strumDirection - 90;
+							}
+							if(daNote.isSustainNote){
+								daNote.angle = strumDirection + 90;
+								if(daNote.angle == 180 && strumScroll == true){
+									daNote.angle = 0;
+								}
+							}
 
 							if(daNote.copyAlpha)
 								daNote.alpha = strumAlpha;
@@ -3013,8 +2946,8 @@ class PlayState extends MusicBeatState
 									if (daNote.animation.curAnim.name.endsWith('end')) {
 										daNote.y += 10.5 * (fakeCrochet / 400) * 1.5 * songSpeed + (46 * (songSpeed - 1));
 										daNote.y -= 46 * (1 - (fakeCrochet / 600)) * songSpeed;
-										if(isPixelStage) {
-											daNote.y += 8 + (6 - daNote.originalHeight) * daPixelZoom;
+										if(PlayState.isPixelStage) {
+											daNote.y += 8 + (6 - daNote.originalHeight) * PlayState.daPixelZoom;
 										} else {
 											daNote.y -= 19;
 										}
@@ -3594,7 +3527,7 @@ class PlayState extends MusicBeatState
 		#end
 
 		MusicBeatState.switchState(new ChartingState());
-		FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+		FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
 	}
 
 	function openCharacterEditor()
@@ -3607,7 +3540,7 @@ class PlayState extends MusicBeatState
 		#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
 
 		MusicBeatState.switchState(new CharacterEditorState(SONG.player2));
-		FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+		FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
 	}
 
 	function openModchartEditor()
@@ -3622,7 +3555,7 @@ class PlayState extends MusicBeatState
 
 
 		MusicBeatState.switchState(new modcharting.ModchartEditorState());
-		FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+		FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
 	}
 
 	public var isDead:Bool = false; //Don't mess with this on Lua!!!
@@ -3747,6 +3680,82 @@ class PlayState extends MusicBeatState
 			triggerEvent(eventNotes[0].event, value1, value2, leStrumTime);
 			eventNotes.shift();
 		}
+	}
+
+	/**
+	 * Manages the `lyrics` of the song in-game
+	 * @param icon Lyrics icon as string
+	 * @param text The lyrics text
+	 * @param font Lyric font
+	 * @param size Lyric size
+	 * @param duration Delay time to disappear
+	 * @param tweenType Tween ease (as string)
+	 * @param textDelay Text delay. The amount of seconds to type the next word
+	 * 
+	 * @author DEMOLITIONDON96 Ft. Jason
+		*/
+	public function manageLyrics(icon:String = 'bf', text:String = 'swaggers', font:String = 'vcr', size:Int = 15, duration:Float = 5,
+			tweenType:String = 'linear', textDelay:Float = 0.03)
+	{
+		if (!lyricsIcon.visible)
+		{
+			lyricsIcon.visible = true;
+			lyricsIcon.alpha = 0;
+		}
+
+		lyricsIcon.changeIcon(icon, false, false, false);
+
+		if (icon == "satanddNEW")
+			lyricsIcon.y = lyrics.y - 80;
+		else
+			lyricsIcon.y = lyrics.y - 65;
+
+		lyrics.font = Paths.font(font);
+		lyrics.resetText(text);
+		lyrics.start(textDelay); // currently placeholder time !!
+
+		if (lyricsTween != null)
+			lyricsTween.cancel();
+
+		if (iconTween != null)
+			iconTween.cancel();
+
+		iconTween = FlxTween.tween(lyricsIcon, {
+			'scale.x': 1,
+			'scale.y': 1,
+			alpha: 1
+		}, 0.5, {
+			ease: returnTweenEase(tweenType),
+			onComplete: function(twn:FlxTween)
+			{
+				iconTween = FlxTween.tween(lyricsIcon, {alpha: 0, 'scale.x': 0, 'scale.y': 0}, 0.25, {
+					startDelay: duration,
+					ease: returnTweenEase(tweenType),
+					onComplete: function(twn:FlxTween)
+					{
+						iconTween = null;
+					}
+				});
+			}
+		});
+
+		lyricsTween = FlxTween.tween(lyrics, {
+			size: size,
+			alpha: 1
+		}, 0.5, {
+			ease: returnTweenEase(tweenType),
+			onComplete: function(twn:FlxTween)
+			{
+				lyricsTween = FlxTween.tween(lyrics, {alpha: 0, size: 0}, 0.25, {
+					startDelay: duration,
+					ease: returnTweenEase(tweenType),
+					onComplete: function(twn:FlxTween)
+					{
+						lyricsTween = null;
+					}
+				});
+			}
+		});
 	}
 
 	public function triggerEvent(eventName:String, value1:String, value2:String, strumTime:Float) {
@@ -3996,11 +4005,345 @@ class PlayState extends MusicBeatState
 					#end
 				}
 
+			//thx KutikiPlayz for letting me use this
+			case 'Scroll Type':
+				if(ClientPrefs.data.mechanics)
+				{
+					var playerLeft:Bool = false;
+					var playerDown:Bool = false;
+					var playerUp:Bool = false;
+					var playerRight:Bool = false;
+					var playerDefault:Bool = false;
+					var playerFlip:Bool = false;
+					var undyne:Bool = false;
+
+					switch(value1) 
+					{
+						case 'left' | 'Left':
+							undyne = false;
+							playerDefault = false;
+							playerLeft = true;
+							playerDown = false;
+							playerUp = false;
+							playerRight = false;
+							playerFlip = false;
+						case 'down' | 'Down':
+							undyne = false;
+							playerDefault = false;
+							playerLeft = false;
+							playerDown = true;
+							playerUp = false;
+							playerRight = false;
+							playerFlip = false;
+						case 'up' | 'Up':
+							undyne = false;
+							playerDefault = false;
+							playerLeft = false;
+							playerDown = false;
+							playerUp = true;
+							playerRight = false;
+							playerFlip = false;
+						case 'right' | 'Right':
+							undyne = false;
+							playerDefault = false;
+							playerLeft = false;
+							playerDown = false;
+							playerUp = false;
+							playerRight = true;
+							playerFlip = false;
+						case 'default' | 'Default':
+							undyne = false;
+							playerDefault = true;
+							playerLeft = false;
+							playerDown = false;
+							playerUp = false;
+							playerRight = false;
+							playerFlip = false;
+						case 'flip' | 'Flip':
+							undyne = false;
+							playerDefault = false;
+							playerLeft = false;
+							playerDown = false;
+							playerUp = false;
+							playerRight = false;
+							playerFlip = true;
+						case 'undyne' | 'Undyne':
+							undyne = true;
+							playerDefault = false;
+							playerLeft = false;
+							playerDown = false;
+							playerUp = false;
+							playerRight = false;
+							playerFlip = false;
+					}
+
+					for (i in 0...playerStrums.length) 
+					{
+						for(j in 0...opponentStrums.length) 
+						{
+							if(playerLeft) 
+							{
+								FlxTween.tween(playerStrums.members[i], {direction: 180, x: FlxG.width - 150, angle: 90}, 0.2, {ease: FlxEase.quartInOut});
+								FlxTween.tween(playerStrums.members[0], {y: 144}, 0.2, {ease: FlxEase.quartInOut});
+								FlxTween.tween(playerStrums.members[1], {y: 256}, 0.25, {ease: FlxEase.quartInOut});
+								FlxTween.tween(playerStrums.members[2], {y: 368}, 0.3, {ease: FlxEase.quartInOut});
+								FlxTween.tween(playerStrums.members[3], {y: 480}, 0.35, {ease: FlxEase.quartInOut});
+								playerStrums.members[i].downScroll = false;
+
+								FlxTween.tween(opponentStrums.members[j], {alpha: 1}, 0.2, {ease: FlxEase.quartInOut});
+							} 
+							else if(playerDown) 
+							{
+								FlxTween.tween(playerStrums.members[i], {direction: 90, y: FlxG.height - 150, angle: 0}, 0.2, {ease: FlxEase.quartInOut});
+								FlxTween.tween(playerStrums.members[0], {x: 732}, 0.2, {ease: FlxEase.quartInOut});
+								FlxTween.tween(playerStrums.members[1], {x: 844}, 0.3, {ease: FlxEase.quartInOut});
+								FlxTween.tween(playerStrums.members[2], {x: 956}, 0.35, {ease: FlxEase.quartInOut});
+								FlxTween.tween(playerStrums.members[3], {x: 1068}, 0.2, {ease: FlxEase.quartInOut});
+								playerStrums.members[i].downScroll = true;
+
+								FlxTween.tween(opponentStrums.members[j], {alpha: 1}, 0.2, {ease: FlxEase.quartInOut});
+							} 
+							else if(playerUp) 
+							{
+								FlxTween.tween(playerStrums.members[i], {direction: 90, y: 50, angle: 0}, 0.2, {ease: FlxEase.quartInOut});
+								FlxTween.tween(playerStrums.members[0], {x: 732}, 0.2, {ease: FlxEase.quartInOut});
+								FlxTween.tween(playerStrums.members[1], {x: 844}, 0.35, {ease: FlxEase.quartInOut});
+								FlxTween.tween(playerStrums.members[2], {x: 956}, 0.3, {ease: FlxEase.quartInOut});
+								FlxTween.tween(playerStrums.members[3], {x: 1068}, 0.2, {ease: FlxEase.quartInOut});
+								playerStrums.members[i].downScroll = false;
+
+								FlxTween.tween(opponentStrums.members[j], {alpha: 1}, 0.2, {ease: FlxEase.quartInOut});
+							}
+							else if(playerRight) 
+							{
+								FlxTween.tween(playerStrums.members[i], {direction: 0, x: 50, angle: 270}, 0.2, {ease: FlxEase.quartInOut});
+								FlxTween.tween(playerStrums.members[0], {y: 480}, 0.2, {ease: FlxEase.quartInOut});
+								FlxTween.tween(playerStrums.members[1], {y: 368}, 0.25, {ease: FlxEase.quartInOut});
+								FlxTween.tween(playerStrums.members[2], {y: 256}, 0.3, {ease: FlxEase.quartInOut});
+								FlxTween.tween(playerStrums.members[3], {y: 144}, 0.35, {ease: FlxEase.quartInOut});
+								playerStrums.members[i].downScroll = false;
+
+								FlxTween.tween(opponentStrums.members[j], {alpha: 1}, 0.2, {ease: FlxEase.quartInOut});
+							} 
+							else if(playerDefault) 
+							{
+								if(ClientPrefs.data.downScroll) 
+								{
+									FlxTween.tween(playerStrums.members[i], {direction: 90, y: FlxG.height - 150, angle: 0}, 0.2, {ease: FlxEase.quartInOut});
+									FlxTween.tween(playerStrums.members[0], {x: 732}, 0.2, {ease: FlxEase.quartInOut});
+									FlxTween.tween(playerStrums.members[1], {x: 844}, 0.3, {ease: FlxEase.quartInOut});
+									FlxTween.tween(playerStrums.members[2], {x: 956}, 0.35, {ease: FlxEase.quartInOut});
+									FlxTween.tween(playerStrums.members[3], {x: 1068}, 0.2, {ease: FlxEase.quartInOut});
+									playerStrums.members[i].downScroll = true;
+								} 
+								else 
+								{
+									FlxTween.tween(playerStrums.members[i], {direction: 90, y: 50, angle: 0}, 0.2, {ease: FlxEase.quartInOut});
+									FlxTween.tween(playerStrums.members[0], {x: 732}, 0.2, {ease: FlxEase.quartInOut});
+									FlxTween.tween(playerStrums.members[1], {x: 844}, 0.35, {ease: FlxEase.quartInOut});
+									FlxTween.tween(playerStrums.members[2], {x: 956}, 0.3, {ease: FlxEase.quartInOut});
+									FlxTween.tween(playerStrums.members[3], {x: 1068}, 0.2, {ease: FlxEase.quartInOut});
+									playerStrums.members[i].downScroll = false;
+								}
+
+								FlxTween.tween(opponentStrums.members[j], {alpha: 1}, 0.2, {ease: FlxEase.quartInOut});
+								} 
+								else if(playerFlip) 
+								{
+									if(ClientPrefs.data.downScroll) 
+									{
+										FlxTween.tween(playerStrums.members[i], {direction: 90, y: 50, angle: 0}, 0.2, {ease: FlxEase.quartInOut});
+										FlxTween.tween(playerStrums.members[0], {x: 732}, 0.2, {ease: FlxEase.quartInOut});
+										FlxTween.tween(playerStrums.members[1], {x: 844}, 0.35, {ease: FlxEase.quartInOut});
+										FlxTween.tween(playerStrums.members[2], {x: 956}, 0.3, {ease: FlxEase.quartInOut});
+										FlxTween.tween(playerStrums.members[3], {x: 1068}, 0.2, {ease: FlxEase.quartInOut});
+										playerStrums.members[i].downScroll = false;
+									} 
+									else 
+									{
+										FlxTween.tween(playerStrums.members[i], {direction: 90, y: FlxG.height - 150, angle: 0}, 0.2, {ease: FlxEase.quartInOut});
+										FlxTween.tween(playerStrums.members[0], {x: 732}, 0.2, {ease: FlxEase.quartInOut});
+										FlxTween.tween(playerStrums.members[1], {x: 844}, 0.3, {ease: FlxEase.quartInOut});
+										FlxTween.tween(playerStrums.members[2], {x: 956}, 0.35, {ease: FlxEase.quartInOut});
+										FlxTween.tween(playerStrums.members[3], {x: 1068}, 0.2, {ease: FlxEase.quartInOut});
+										playerStrums.members[i].downScroll = true;
+									}
+
+									FlxTween.tween(opponentStrums.members[j], {alpha: 1}, 0.2, {ease: FlxEase.quartInOut});
+								} 
+								else if(undyne) 
+								{
+									FlxTween.tween(playerStrums.members[0], {direction: 180, x: 585 - 75, y: 305, angle: 0}, 0.3, {ease: FlxEase.quartInOut});
+									playerStrums.members[0].downScroll = false;
+									FlxTween.tween(playerStrums.members[1], {direction: 90, x: 586, y: 305 + 75, angle: 0}, 0.2, {ease: FlxEase.quartInOut});
+									playerStrums.members[1].downScroll = false;
+									FlxTween.tween(playerStrums.members[2], {direction: 90, x: 586, y: 305 - 75, angle: 0}, 0.36, {ease: FlxEase.quartInOut});
+									playerStrums.members[2].downScroll = true;
+									FlxTween.tween(playerStrums.members[3], {direction: 0, x: 585 + 75, y: 305, angle: 0}, 0.43, {ease: FlxEase.quartInOut});
+									playerStrums.members[3].downScroll = false;
+
+									FlxTween.tween(opponentStrums.members[j], {alpha: 0}, 0.2, {ease: FlxEase.quartInOut});
+								}
+						}
+					}
+
+					var opponentLeft:Bool = false;
+					var opponentDown:Bool = false;
+					var opponentUp:Bool = false;
+					var opponentRight:Bool = false;
+					var opponentDefault:Bool = false;
+					var opponentFlip:Bool = false;
+
+					switch(value2) 
+					{
+						case 'left' | 'Left':
+							undyne = false;
+							opponentDefault = false;
+							opponentLeft = true;
+							opponentDown = false;
+							opponentUp = false;
+							opponentRight = false;
+							opponentFlip = false;
+						case 'down' | 'Down':
+							undyne = false;
+							opponentDefault = false;
+							opponentLeft = false;
+							opponentDown = true;
+							opponentUp = false;
+							opponentRight = false;
+							opponentFlip = false;
+						case 'up' | 'Up':
+							undyne = false;
+							opponentDefault = false;
+							opponentLeft = false;
+							opponentDown = false;
+							opponentUp = true;
+							opponentRight = false;
+							opponentFlip = false;
+						case 'right' | 'Right':
+							undyne = false;
+							opponentDefault = false;
+							opponentLeft = false;
+							opponentDown = false;
+							opponentUp = false;
+							opponentRight = true;
+							opponentFlip = false;
+						case 'default' | 'Default':
+							undyne = false;
+							opponentDefault = true;
+							opponentLeft = false;
+							opponentDown = false;
+							opponentUp = false;
+							opponentRight = false;
+							opponentFlip = false;
+						case 'flip' | 'Flip':
+							undyne = false;
+							opponentDefault = false;
+							opponentLeft = false;
+							opponentDown = false;
+							opponentUp = false;
+							opponentRight = false;
+							opponentFlip = true;
+					}
+
+					for (i in 0...opponentStrums.length) 
+					{
+						if(opponentLeft) 
+						{
+							FlxTween.tween(opponentStrums.members[i], {direction: 180, x: FlxG.width - 150, angle: 90, alpha: 1}, 0.2, {ease: FlxEase.quartInOut});
+							FlxTween.tween(opponentStrums.members[0], {y: 144}, 0.2, {ease: FlxEase.quartInOut});
+							FlxTween.tween(opponentStrums.members[1], {y: 256}, 0.25, {ease: FlxEase.quartInOut});
+							FlxTween.tween(opponentStrums.members[2], {y: 368}, 0.3, {ease: FlxEase.quartInOut});
+							FlxTween.tween(opponentStrums.members[3], {y: 480}, 0.35, {ease: FlxEase.quartInOut});
+							opponentStrums.members[i].downScroll = false;
+						} 
+						else if(opponentDown) 
+						{
+							FlxTween.tween(opponentStrums.members[i], {direction: 90, y: FlxG.height - 150, angle: 0, alpha: 1}, 0.2, {ease: FlxEase.quartInOut});
+							FlxTween.tween(opponentStrums.members[0], {x: 92}, 0.2, {ease: FlxEase.quartInOut});
+							FlxTween.tween(opponentStrums.members[1], {x: 204}, 0.3, {ease: FlxEase.quartInOut});
+							FlxTween.tween(opponentStrums.members[2], {x: 316}, 0.35, {ease: FlxEase.quartInOut});
+							FlxTween.tween(opponentStrums.members[3], {x: 428}, 0.2, {ease: FlxEase.quartInOut});
+							opponentStrums.members[i].downScroll = true;
+						} 
+						else if(opponentUp) 
+						{
+							FlxTween.tween(opponentStrums.members[i], {direction: 90, y: 50, angle: 0, alpha: 1}, 0.2, {ease: FlxEase.quartInOut});
+							FlxTween.tween(opponentStrums.members[0], {x: 92}, 0.2, {ease: FlxEase.quartInOut});
+							FlxTween.tween(opponentStrums.members[1], {x: 204}, 0.35, {ease: FlxEase.quartInOut});
+							FlxTween.tween(opponentStrums.members[2], {x: 316}, 0.3, {ease: FlxEase.quartInOut});
+							FlxTween.tween(opponentStrums.members[3], {x: 428}, 0.2, {ease: FlxEase.quartInOut});
+							opponentStrums.members[i].downScroll = false;
+						} 
+						else if(opponentRight) 
+						{
+							FlxTween.tween(opponentStrums.members[i], {direction: 0, x: 50, angle: 270, alpha: 1}, 0.2, {ease: FlxEase.quartInOut});
+							FlxTween.tween(opponentStrums.members[0], {y: 480}, 0.2, {ease: FlxEase.quartInOut});
+							FlxTween.tween(opponentStrums.members[1], {y: 368}, 0.25, {ease: FlxEase.quartInOut});
+							FlxTween.tween(opponentStrums.members[2], {y: 256}, 0.3, {ease: FlxEase.quartInOut});
+							FlxTween.tween(opponentStrums.members[3], {y: 144}, 0.35, {ease: FlxEase.quartInOut});
+							opponentStrums.members[i].downScroll = false;
+						} 
+						else if(opponentDefault) 
+						{
+							if(ClientPrefs.data.downScroll) 
+							{
+								FlxTween.tween(opponentStrums.members[i], {direction: 90, y: FlxG.height - 150, angle: 0, alpha: 1}, 0.2, {ease: FlxEase.quartInOut});
+								FlxTween.tween(opponentStrums.members[0], {x: 92}, 0.2, {ease: FlxEase.quartInOut});
+								FlxTween.tween(opponentStrums.members[1], {x: 204}, 0.3, {ease: FlxEase.quartInOut});
+								FlxTween.tween(opponentStrums.members[2], {x: 316}, 0.35, {ease: FlxEase.quartInOut});
+								FlxTween.tween(opponentStrums.members[3], {x: 428}, 0.2, {ease: FlxEase.quartInOut});
+								opponentStrums.members[i].downScroll = true;
+							} 
+							else 
+							{
+								FlxTween.tween(opponentStrums.members[i], {direction: 90, y: 50, angle: 0, alpha: 1}, 0.2, {ease: FlxEase.quartInOut});
+								FlxTween.tween(opponentStrums.members[0], {x: 92}, 0.2, {ease: FlxEase.quartInOut});
+								FlxTween.tween(opponentStrums.members[1], {x: 204}, 0.35, {ease: FlxEase.quartInOut});
+								FlxTween.tween(opponentStrums.members[2], {x: 316}, 0.3, {ease: FlxEase.quartInOut});
+								FlxTween.tween(opponentStrums.members[3], {x: 428}, 0.2, {ease: FlxEase.quartInOut});
+								opponentStrums.members[i].downScroll = false;
+							}
+						} 
+						else if(opponentFlip) 
+						{
+							if(ClientPrefs.data.downScroll) 
+							{
+								FlxTween.tween(opponentStrums.members[i], {direction: 90, y: 50, angle: 0, alpha: 1}, 0.2, {ease: FlxEase.quartInOut});
+								FlxTween.tween(opponentStrums.members[0], {x: 92}, 0.2, {ease: FlxEase.quartInOut});
+								FlxTween.tween(opponentStrums.members[1], {x: 204}, 0.35, {ease: FlxEase.quartInOut});
+								FlxTween.tween(opponentStrums.members[2], {x: 316}, 0.3, {ease: FlxEase.quartInOut});
+								FlxTween.tween(opponentStrums.members[3], {x: 428}, 0.2, {ease: FlxEase.quartInOut});
+								opponentStrums.members[i].downScroll = false;
+							} 
+							else 
+							{
+								FlxTween.tween(opponentStrums.members[i], {direction: 90, y: FlxG.height - 150, angle: 0, alpha: 1}, 0.2, {ease: FlxEase.quartInOut});
+								FlxTween.tween(opponentStrums.members[0], {x: 92}, 0.2, {ease: FlxEase.quartInOut});
+								FlxTween.tween(opponentStrums.members[1], {x: 204}, 0.3, {ease: FlxEase.quartInOut});
+								FlxTween.tween(opponentStrums.members[2], {x: 316}, 0.35, {ease: FlxEase.quartInOut});
+								FlxTween.tween(opponentStrums.members[3], {x: 428}, 0.2, {ease: FlxEase.quartInOut});
+								opponentStrums.members[i].downScroll = true;
+							}
+						}
+					} //T O O  M U C H  C O D E
+				}
+
 			case 'Manage Lyrics':
 				var triggerInfo:Array<String> = value2.split(',');
 
 				switch(value1.trim().toLowerCase())
 				{
+					case "legacy":
+						manageLyrics(
+							triggerInfo[0], 			       //Character Speaking
+							triggerInfo[1],      			      // Text
+							triggerInfo[2],     			     // Font
+							Std.parseInt(triggerInfo[3]),       // Size
+							Std.parseFloat(triggerInfo[4]),    // Duration
+							triggerInfo[5],                   // Tween Type
+							Std.parseFloat(triggerInfo[6])   // Text Delay
+						);
 					case "move":
 						subtitles.manageLyrics(
 							MOVE,
@@ -4600,7 +4943,16 @@ class PlayState extends MusicBeatState
 			#if !switch
 			var percent:Float = ratingPercent;
 			if(Math.isNaN(percent)) percent = 0;
-			Highscore.saveScore(SONG.song, songScore, storyDifficulty, percent);
+
+			var songName:String = SONG.song; //fixes the song scores not displaying for some songs in freeplay due to them having different name formats and id from freeplay and in-game (don)
+			switch (SONG.song)
+			{
+				case "Dont Cross": songName = "Don't Cross!";
+				case "The Wretched Tilezones (Simple Life)": songName = "Simple Life";
+				case "Ship the Fart Yay Hooray <3 (Distant Stars)": songName = "Distant Stars";
+				case "Ahh the Scary (Somber Night)": songName = "Somber Night";
+			}
+			Highscore.saveScore(songName, songScore, storyDifficulty, percent);
 			#end
 			playbackRate = 1;
 
@@ -4623,6 +4975,8 @@ class PlayState extends MusicBeatState
 					{
 						//hasEndingScene = true;
 						GameData.episode1FPLock = "unlocked";
+						GameData.deluluSong = true;
+						GameData.storySong = "Devilish-Deal";
 						GameData.saveShit();
 					}
 					if (SONG.song == "Birthday")
@@ -4634,14 +4988,14 @@ class PlayState extends MusicBeatState
 					FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 					#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
 
-					MusicBeatState.switchState(new StoryMenu());
+					MusicBeatState.switchState(new StoryMenuState());
 
 					// if ()
 					if(!ClientPrefs.getGameplaySetting('practice') && !ClientPrefs.getGameplaySetting('botplay')) {
-						StoryMenu.weekCompleted.set(WeekData.weeksList[storyWeek], true);
+						StoryMenuState.weekCompleted.set(WeekData.weeksList[storyWeek], true);
 						Highscore.saveWeekScore(WeekData.getWeekFileName(), campaignScore, storyDifficulty);
 
-						FlxG.save.data.weekCompleted = StoryMenu.weekCompleted;
+						FlxG.save.data.weekCompleted = StoryMenuState.weekCompleted;
 						FlxG.save.flush();
 					}
 					changedDifficulty = false;
@@ -4650,21 +5004,73 @@ class PlayState extends MusicBeatState
 				{
 					var difficulty:String = Difficulty.getFilePath();
 
-					trace('LOADING NEXT SONG');
-					trace(Paths.formatToSongPath(storyPlaylist[0]) + difficulty);
+					if (SONG.song == "Devilish Deal")
+					{
+						//hasEndingScene = true;
+						GameData.devilSong = true;
+						GameData.storySong = "Isolated";
+						GameData.saveShit();
+					}
+					if (SONG.song == "Isolated")
+					{
+						//hasEndingScene = true;
+						GameData.isoSong = true;
+						GameData.storySong = "Lunacy";
+						GameData.saveShit();
+					}
+					if (SONG.song == "Lunacy")
+					{
+						//hasEndingScene = true;
+						GameData.lunaSong = true;
+						GameData.storySong = "Delusional";
+						GameData.saveShit();
+					}
+					if (SONG.song == "Delusional")
+					{
+						//hasEndingScene = true;
+						GameData.episode1FPLock = "unlocked";
+						GameData.deluluSong = true;
+						GameData.storySong = "Devilish-Deal";
+						GameData.saveShit();
 
-					FlxTransitionableState.skipNextTransIn = true;
-					FlxTransitionableState.skipNextTransOut = true;
-					
-					prevCamFollow = camFollow;
-					prevCamFollowPos = camFollowPos;
+						Mods.loadTopMod();
+						FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
+						#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
 
-					var songLowercase:String = Paths.formatToSongPath(storyPlaylist[0]);
+						MusicBeatState.switchState(new StoryMenuState());
 
-					SONG = Song.loadFromJson(storyPlaylist[0], songLowercase);
-					FlxG.sound.music.stop();
+						// if ()
+						if(!ClientPrefs.getGameplaySetting('practice') && !ClientPrefs.getGameplaySetting('botplay')) {
+							StoryMenuState.weekCompleted.set(WeekData.weeksList[storyWeek], true);
+							Highscore.saveWeekScore(WeekData.getWeekFileName(), campaignScore, storyDifficulty);
 
-					LoadingState.loadAndSwitchState(new PlayState());
+							FlxG.save.data.weekCompleted = StoryMenuState.weekCompleted;
+							FlxG.save.flush();
+						}
+						changedDifficulty = false;
+					}
+
+					if (SONG.song != "Delusional")
+					{
+						trace('LOADING NEXT SONG');
+						trace(Paths.formatToSongPath(storyPlaylist[0]) + difficulty);
+
+						FlxTransitionableState.skipNextTransIn = true;
+						FlxTransitionableState.skipNextTransOut = true;
+						
+						prevCamFollow = camFollow;
+						prevCamFollowPos = camFollowPos;
+
+						var songLowercase:String = Paths.formatToSongPath(storyPlaylist[0]);
+
+						if (!GameData.devilSong)
+							SONG = Song.loadFromJson(storyPlaylist[0], songLowercase);
+						else if (GameData.devilSong)
+							SONG = Song.loadFromJson(GameData.storySong.toLowerCase() + '-null', GameData.storySong.toLowerCase());
+						FlxG.sound.music.stop();
+
+						LoadingState.loadAndSwitchState(new PlayState());
+					}
 				}
 			}
 			else
@@ -4676,7 +5082,7 @@ class PlayState extends MusicBeatState
 				GameData.completeFPSong();
 				MusicBeatState.switchState(new FreeplayState());
 				FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
-				FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+				FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
 				changedDifficulty = false;
 			}
 			transitioning = true;
@@ -5175,7 +5581,6 @@ class PlayState extends MusicBeatState
 			doDeathCheck(true);
 		}
 
-		malfunctionComboCheck = 0;
 		combo = 0;
 		healthThing -= note.missHealth * healthLoss;
 
@@ -5222,7 +5627,7 @@ class PlayState extends MusicBeatState
 		if (SONG.song == "Birthday")
 			opponentStrums.members[note.noteData].scale.set(forceAutismIntoThisNoteLikeAnAverageAmericanDoctor + (autism * forceAutismIntoThisNoteLikeAnAverageAmericanDoctor / (!note.isSustainNote ? 2 : 4) + 0.12), forceAutismIntoThisNoteLikeAnAverageAmericanDoctor - (autism * forceAutismIntoThisNoteLikeAnAverageAmericanDoctor / (!note.isSustainNote ? 2 : 4) + 0.12));
 
-		if (songName != 'tutorial')
+		if (SONG.song != "Bless")
 			camZooming = true;
 
 		if(note.noteType == 'Hey!' && dad.animOffsets.exists('hey')) {
@@ -5291,90 +5696,12 @@ class PlayState extends MusicBeatState
 		if(SONG.song == "Birthday")
 			playerStrums.members[note.noteData].scale.set(forceAutismIntoThisNoteLikeAnAverageAmericanDoctor + (!note.isSustainNote ? autism : autism * forceAutismIntoThisNoteLikeAnAverageAmericanDoctor / 2), forceAutismIntoThisNoteLikeAnAverageAmericanDoctor - (!note.isSustainNote ? autism : autism * forceAutismIntoThisNoteLikeAnAverageAmericanDoctor / 2));
 
+		if (SONG.song == "Bless")
+			camZooming = true;
+		
 		if (ClientPrefs.data.hitsoundVolume > 0 && !note.hitsoundDisabled)
 		{
 			FlxG.sound.play(Paths.sound('hitsound'), ClientPrefs.data.hitsoundVolume);
-		}
-
-		if (note.noteType == "Error Note")
-		{
-			healthThing += note.hitHealth * 3.8;
-			crashLivesCounter -= 1;
-
-			crashLives.text = 'Lives: ${crashLivesCounter}';
-
-			if (malfunctionTxt != null)
-				malfunctionTxt.cancel();
-	
-			if (heartTween != null)
-				heartTween.cancel();
-	
-			malfunctionTxt = FlxTween.tween(crashLives, {alpha: 1}, 0.6, {
-				ease: FlxEase.sineOut,
-				onComplete: function(twn:FlxTween)
-				{
-					malfunctionTxt = FlxTween.tween(crashLives, {alpha: 0.3}, 2, {
-						ease: FlxEase.quartInOut,
-						startDelay: 5,
-						onComplete: function(twn:FlxTween)
-						{
-							malfunctionTxt = null;
-						}
-					});
-				}
-			});
-	
-			heartTween = FlxTween.tween(crashLivesIcon, {alpha: 1}, 0.6, {
-				ease: FlxEase.sineOut,
-				onComplete: function(twn:FlxTween)
-				{
-					heartTween = FlxTween.tween(crashLivesIcon, {alpha: 0.3}, 2, {
-						ease: FlxEase.quartInOut,
-						startDelay: 5,
-						onComplete: function(twn:FlxTween)
-						{
-							heartTween = null;
-						}
-					});
-				}
-			});
-	
-			// to be honest we can just use shake
-			//                                - jason
-	
-			FlxTween.tween(crashLives, {x: 620}, 0.01);
-			FlxTween.tween(crashLivesIcon, {x: 570}, 0.01);
-			FlxTween.tween(crashLives, {x: 585}, 0.01, {startDelay: 0.1});
-			FlxTween.tween(crashLivesIcon, {x: 535}, 0.01, {startDelay: 0.1});
-			FlxTween.tween(crashLives, {x: 610}, 0.01, {startDelay: 0.2});
-			FlxTween.tween(crashLivesIcon, {x: 560}, 0.01, {startDelay: 0.2});
-			FlxTween.tween(crashLives, {x: 595}, 0.01, {startDelay: 0.3});
-			FlxTween.tween(crashLivesIcon, {x: 545}, 0.01, {startDelay: 0.3});
-			FlxTween.tween(crashLives, {x: 600}, 0.01, {startDelay: 0.4});
-			FlxTween.tween(crashLivesIcon, {x: 550}, 0.01, {startDelay: 0.4});
-	
-			crashLivesIcon.animation.play("OMFG IT GLITCHES");
-	
-			new FlxTimer().start(0.25, function(tmr:FlxTimer)
-			{
-				crashLivesIcon.animation.play('idle');
-			});
-	
-			if (crashLivesCounter == -1)
-			{
-				finishSong();
-				trace('0 lives left, closing game...');
-				FlxG.sound.play(Paths.sound('funkinAVI/wiiCrash'), 1);
-	
-				if (FlxG.random.bool(10))
-																																																							
-					Application.current.window.alert("You Suck LMAO\n\n\nmaybe actually be good at the game for once instead of killing yourself so many times bro.", 'Note About Your Skill:'); // 10% of probability
-				else																																																																					/**corny ass shit no offense**/
-					Application.current.window.alert("<Message Log>\n========================                                                                                        \n\nPlayState.hx (7504):\n   if(crashLivesCounter == -1)\n   {trace('0 lives left, closing game...')}\n\n\njust give up, you stand no chance against me, everett.",
-						'Error On Funkin.avi.exe!:');
-	
-				Sys.exit(0);
-			}
 		}
 
 		if(note.hitCausesMiss) {
@@ -5438,21 +5765,7 @@ class PlayState extends MusicBeatState
 
 		if (!note.isSustainNote)
 		{
-			if (SONG.song == "Malfunction") malfunctionComboCheck += 1;
 			combo += 1;
-			if (malfunctionComboCheck == 100 && SONG.song == "Malfunction")
-			{
-				malfunctionComboCheck = 0;
-				if (ratingPercent == 1)
-					crashLivesCounter += 5;
-				else if (ratingPercent >= 0.9)
-					crashLivesCounter += 3;
-				else
-					crashLivesCounter += 1;
-				crashLives.text = 'Lives: ${crashLivesCounter}';
-				crashLivesIcon.y -= 20;
-				FlxTween.tween(crashLivesIcon, {y: crashLivesIcon.y + 20}, 0.3, {ease: FlxEase.sineOut});
-			}
 			if(combo > 9999) combo = 9999;
 			popUpScore(note);
 		}
@@ -5484,7 +5797,7 @@ class PlayState extends MusicBeatState
 		var skin:String = 'noteSplashes';
 		switch (SONG.song)
 		{
-			case "Devilish Deal" | "Isolated" | "Lunacy" | "Delusional" | "Hunted" | "Laugh Track" | "Twisted Grins" | "Rotten Petals" | "Seeking Freedom" | "Am I Real?" | "Your Final Bow" | "The Wretched Tilezones (Simple Life)" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "Ahh the Scary (Somber Night)" | "Curtain Call": SONG.splashSkin = "noteSplashes/noteSplashes-sparkles";
+			case "Devilish Deal" | "Isolated" | "Lunacy" | "Delusional" | "Hunted" | "Laugh Track" | "Twisted Grins" | "Rotten Petals" | "Seeking Freedom" | "Am I Real?" | "Your Final Bow" | "The Wretched Tilezones (Simple Life)" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "Ahh the Scary (Somber Night)" | "Curtain Call" | "Alone": SONG.splashSkin = "noteSplashes/noteSplashes-sparkles";
 			case "Mercy": SONG.splashSkin = "noteSplashes/noteSplashes-diamond";
 			case "Birthday": SONG.splashSkin = "noteSplashes/noteSplashes-birthday";
 			default: SONG.splashSkin = "noteSplashes/noteSplashes" + NoteSplash.getSplashSkinPostfix();

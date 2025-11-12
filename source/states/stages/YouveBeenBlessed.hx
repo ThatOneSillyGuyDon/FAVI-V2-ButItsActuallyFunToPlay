@@ -46,13 +46,13 @@ class YouveBeenBlessed extends BaseStage
 
 		light = new FlxSprite(-200, -100).loadGraphic(Paths.image(PlayState.pathway + 'lightSource'));
 		light.blend = DIFFERENCE;
-		light.alpha = 0.001;
+		light.alpha = 0.37;
 		light.scrollFactor.set(0.95, 1);
 		light.scale.set(2.45, 2.3);
 
 		flair = new FlxSprite(-200, -100).loadGraphic(Paths.image(PlayState.pathway + 'lightFlair'));
 		flair.blend = SCREEN;
-		flair.alpha = 0.001;
+		flair.alpha = 0.6;
 		flair.scrollFactor.set(1.4, 1.25);
 		flair.scale.set(2.5, 2.4);
 
@@ -137,7 +137,7 @@ class YouveBeenBlessed extends BaseStage
 					case 4:
 						AppIcon.changeIcon("blessIcon");
 						CppAPI.lightMode();
-						for (blessableObjects in [dad, boyfriend, vault, chains, thingy, chains, chains2, chains3, game.iconP1, game.iconP2, game.healthBar, game.healthBarBG, game.fancyBarOverlay])
+						for (blessableObjects in [game.dad, game.boyfriend, vault, thingy, chains, chains2, chains3])
 							blessableObjects.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0);
 						for (textShit in [game.songTxt, game.watermarkTxt, game.scoreTxt])
 						{
@@ -148,7 +148,6 @@ class YouveBeenBlessed extends BaseStage
 						flair.visible = false;
 						lightI.visible = true;
 						flairI.visible = true;
-						game.playfieldRenderer.isInvertColors = true;
 					case 5:
 						light.visible = true;
 						flair.visible = true;
@@ -156,7 +155,7 @@ class YouveBeenBlessed extends BaseStage
 						flairI.visible = false;
 						game.playfieldRenderer.isInvertColors = false;
 						FlxTween.tween(camHUD, {alpha: 1}, 3);
-						for (blessableObjects in [dad, boyfriend, vault, chains, thingy, chains, chains2, chains3, game.iconP1, game.iconP2, game.healthBar, game.healthBarBG, game.fancyBarOverlay])
+						for (blessableObjects in [game.dad, game.boyfriend, vault, thingy, chains, chains2, chains3])
 							blessableObjects.setColorTransform(1, 1, 1, 1, 0, 0, 0, 0);
 						for (textShit in [game.songTxt, game.watermarkTxt, game.scoreTxt])
 						{
@@ -168,7 +167,7 @@ class YouveBeenBlessed extends BaseStage
 					case 6:
 						AppIcon.changeIcon("blessIcon");
 						CppAPI.lightMode();
-						for (blessableObjects in [game.dad, game.boyfriend, vault, chains, thingy, chains, chains2, chains3, game.iconP1, game.iconP2, game.healthBar, game.healthBarBG, game.fancyBarOverlay])
+						for (blessableObjects in [game.dad, game.boyfriend, vault, thingy, chains, chains2, chains3])
 							blessableObjects.setColorTransform(-1, -1, -1, 1, 255, 255, 255, 0);
 						for (textShit in [game.songTxt, game.watermarkTxt, game.scoreTxt])
 						{
@@ -179,11 +178,10 @@ class YouveBeenBlessed extends BaseStage
 						flair.visible = false;
 						lightI.visible = true;
 						flairI.visible = true;
-						game.playfieldRenderer.isInvertColors = true;
 					case 7:
 						AppIcon.changeIcon("newIcon");
 						CppAPI.darkMode();
-						for (blessableObjects in [game.dad, game.boyfriend, vault, chains, thingy, chains, chains2, chains3, game.iconP1, game.iconP2, game.healthBar, game.healthBarBG, game.fancyBarOverlay])
+						for (blessableObjects in [game.dad, game.boyfriend, vault, thingy, chains, chains2, chains3])
 							FlxTween.tween(blessableObjects.colorTransform, {
 								redOffset: 0,
 								blueOffset: 0,

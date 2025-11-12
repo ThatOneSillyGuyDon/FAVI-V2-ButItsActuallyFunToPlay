@@ -217,7 +217,7 @@ class TheThing extends MusicBeatState
 
 		startIntro();
 
-		FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+		FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
 		FlxG.mouse.visible = true;
 
 		closedState = false;

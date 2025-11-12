@@ -73,9 +73,9 @@ class GiveMeTheFiles extends BaseStage
 			add(mickey);
 		}
 	}
-	
+
 	override function createPost()
-	{
+	{	
 		game.dad.setPosition(-140, 80);
    	 	game.boyfriend.setPosition(1500, 650);
 		game.gf.visible = false;

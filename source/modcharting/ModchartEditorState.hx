@@ -87,7 +87,7 @@ class ModchartEditorEvent extends FlxSprite
         frames = Paths.getSparrowAtlas("ui skins/" + utilities.Options.getData("uiSkin") + "/arrows/default", 'shared');
         animation.addByPrefix('note', 'left0');
         #elseif PSYCH
-        loadGraphic(Paths.image('eventArrowModchart'));
+        loadGraphic(Paths.image('editors/eventArrowModchart'));
         #else
         frames = Paths.getSparrowAtlas('NOTE_assets');
         animation.addByPrefix('note', 'purple0');
@@ -419,7 +419,7 @@ class ModchartEditorState extends #if (PSYCH && PSYCHVERSION >= "0.7") backend.M
 	if(FlxG.sound.music != null)
 		FlxG.sound.music.stop();
 
-        FlxG.mouse.load(Paths.image('UI/funkinAVI/mouses/Hand').bitmap);
+        FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
         FlxG.mouse.visible = true;
 
         #if LEATHER 

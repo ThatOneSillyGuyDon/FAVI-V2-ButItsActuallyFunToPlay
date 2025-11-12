@@ -109,8 +109,6 @@ class LegEpisode1Street extends BaseStage
 
 	override function update(elapsed:Float)
 	{
-		shaderAnim = Conductor.songPosition / 1000;
-		
 		game.dad.setPosition(0, 0);
 		if (game.boyfriend.curCharacter == 'bf')
 		{
@@ -118,6 +116,8 @@ class LegEpisode1Street extends BaseStage
 		}else{
 			game.boyfriend.setPosition(500, -320);
 		}
+		
+		shaderAnim = Conductor.songPosition / 1000;
 
 		if (ClientPrefs.data.shaders)
 		{
