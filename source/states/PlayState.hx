@@ -947,10 +947,16 @@ class PlayState extends MusicBeatState
 
 		generateSong(SONG.song);
 
-		if (SONG.song != "Birthday" || SONG.song != "Delusional Legacy")
+		playfieldRenderer = new PlayfieldRenderer(strumLineNotes, notes, this);
+		noteGroup.add(playfieldRenderer);
+
+		if (SONG.song == "Birthday" || SONG.song == "Delusional Legacy")
 		{
-			playfieldRenderer = new PlayfieldRenderer(strumLineNotes, notes, this);
-			noteGroup.add(playfieldRenderer);
+			noteGroup.remove(playfieldRenderer);
+			playfieldRenderer.destroy();
+
+			strumLineNotes.visible = true;
+			notes.visible = true; // the game will literally refuse to let the actual notes appear unless playfieldRenderer was made if you play these 2 songs before the others, fuck this man... (don)
 		}
 		noteGroup.add(grpNoteSplashes);
 
@@ -1614,11 +1620,6 @@ class PlayState extends MusicBeatState
 			for (i in 0...opponentStrums.length) {
 				setOnScripts('defaultOpponentStrumX' + i, opponentStrums.members[i].x);
 				setOnScripts('defaultOpponentStrumY' + i, opponentStrums.members[i].y);
-				if(middlescroll && SONG.song == "Birthday") 
-				{
-					opponentStrums.members[i].x -= 99999999;
-					opponentStrums.members[i].visible = false;
-				}
 			}
 
 			startedCountdown = true;
