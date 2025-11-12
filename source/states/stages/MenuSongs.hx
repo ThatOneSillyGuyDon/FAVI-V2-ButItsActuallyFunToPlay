@@ -135,8 +135,7 @@ class MenuSongs extends BaseStage
 		var subpath:String = Paths.formatToSongPath(songName) + '/';
 		switch(songName.toLowerCase())
 		{
-			case "rotten petals" | 'mistful wind':
-				subpath = 'rotten-petals/';
+			case "rotten petals":
 				for (flashableObj in ['sky', 'stars1', 'stars2'])
 				{
 					var spr = new FlxSprite().loadGraphic(Paths.image(PlayState.pathway + subpath + flashableObj));
@@ -357,6 +356,7 @@ class MenuSongs extends BaseStage
 					lighting.scrollFactor.set(0, 0);
 					add(lighting);
 				}
+
 			case 'alone':
 				var bg = new FlxSprite().loadGraphic(Paths.image(PlayState.pathway + subpath + 'bg'));
 				bg.scrollFactor.set(0, 0);
@@ -374,7 +374,33 @@ class MenuSongs extends BaseStage
 
 				FlxTween.tween(dark, {alpha: 1}, 5, {ease: FlxEase.sineInOut, type: FlxTween.PINGPONG});
 				FlxTween.tween(light, {alpha: 0.5}, 5, {ease: FlxEase.sineInOut, type: FlxTween.PINGPONG});
-			//case 'mistul wind':
+
+			case 'mistful wind':
+				for (flashableObj in ['sky', 'stars1', 'stars2'])
+				{
+					var spr = new FlxSprite().loadGraphic(Paths.image(PlayState.pathway + subpath + flashableObj));
+					spr.scrollFactor.set(0, 0);
+					switch(flashableObj)
+					{
+						case "stars1":
+							lightTwn = FlxTween.tween(spr, {alpha: 0.001}, 3, {type: 4});
+						case "stars2":
+							spr.alpha = 0.001;
+							lightTwn2 = FlxTween.tween(spr, {alpha: 1}, 3, {type: 4});
+					}
+					flashableObjects.add(spr);
+				}
+
+				var field = new FlxSprite();
+				field.frames = Paths.getSparrowAtlas(PlayState.pathway + subpath + "grassField");
+				field.animation.addByIndices("idle", "idle", [1, 2, 0, 2], '', 3, true);
+				field.animation.play("idle");
+				field.scrollFactor.set(0, 0);
+				add(field);
+
+				var overlay = new FlxSprite().loadGraphic(Paths.image(PlayState.pathway + subpath + "lightingOverlay"));
+				overlay.scrollFactor.set(0, 0);
+				add(overlay);
 		}
 	}
 
@@ -388,16 +414,7 @@ class MenuSongs extends BaseStage
 		note.acceleration.set(-35, -55);
 		if (flashableObjects != null)
 			flashableObjects.add(note);
-		noteTwn = FlxTween.tween(note.scale, {x: 1.2, y: 1.2}, 7, {onComplete: function(twn:FlxTween)
-		{
-			if (flashableObjects.members[4] != null)
-			{
-				FlxTween.tween(note, {alpha: 0}, 0.5, {onComplete: function(twn2:FlxTween)
-				{
-					flashableObjects.remove(flashableObjects.members[4], true);
-				}});
-			}
-		}});
+		noteTwn = FlxTween.tween(note.scale, {x: 1.2, y: 1.2}, 7);
 	}
 
 	var checkSpawnedChar:Array<Bool> = [

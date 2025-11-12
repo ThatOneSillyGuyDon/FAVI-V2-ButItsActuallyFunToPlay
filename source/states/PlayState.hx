@@ -415,6 +415,7 @@ class PlayState extends MusicBeatState
 	//META EVENT VARIABLES
 	var discordIcon:String;
 	var discordTxt:Array<String> = [];
+	var isDisplayingScore:Bool = true;
 
 	var winX(default, set):Int;
 	var winY(default, set):Int;
@@ -1993,7 +1994,7 @@ class PlayState extends MusicBeatState
 			switch (SONG.song)
 			{
 				case "Joygrim" | "Neglection" | "Scrapped" | "Whimsical Bar Blues": DiscordClient.changePresence("Playing a song", "It's a secret...", "icon", "random", true, songLength - Conductor.songPosition - ClientPrefs.data.noteOffset);
-				default: DiscordClient.changePresence(discordTxt[0], discordTxt[1], CoolUtil.spaceToDash(discordIcon), "random", true, songLength - Conductor.songPosition - ClientPrefs.data.noteOffset);
+				default: DiscordClient.changePresence(discordTxt[0], (isDisplayingScore ? scoreTxt.text : discordTxt[1]), CoolUtil.spaceToDash(discordIcon), "random", true, songLength - Conductor.songPosition - ClientPrefs.data.noteOffset);
 			}
 	}
 
@@ -2546,7 +2547,7 @@ class PlayState extends MusicBeatState
 			discordIcon = SONG.song.toLowerCase().trim();
 
 			if (FreeplayState.freeplayMenuList == 3)
-				discordIcon = "volume2";
+				discordIcon = SONG.song == "Alone" ? "volume1" : "volume2";
 			
 			if (FreeplayState.freeplayMenuList == 2)
 				discordIcon = "volume1";
@@ -3500,7 +3501,7 @@ class PlayState extends MusicBeatState
 			switch (SONG.song)
 			{
 				case "Joygrim" | "Neglection" | "Scrapped": DiscordClient.changePresence("Playing a song", "It's a secret...", "icon", "random");
-				default: DiscordClient.changePresence(discordTxt[0], discordTxt[1], CoolUtil.spaceToDash(discordIcon), "random");
+				default: DiscordClient.changePresence('Paused - ' + discordTxt[0], discordTxt[1], CoolUtil.spaceToDash(discordIcon), "random");
 			}
 		#end
 	}
@@ -4464,7 +4465,10 @@ class PlayState extends MusicBeatState
 							discordTxt[0] = triggerInfo[0].trim();
 		
 						if (triggerInfo[1].trim() != null)
+						{
 							discordTxt[1] = triggerInfo[1].trim();
+							isDisplayingScore = false;
+						}
 		
 						if (triggerInfo[2].toLowerCase().trim() != null)
 							discordIcon = triggerInfo[2].toLowerCase().trim();
@@ -4473,14 +4477,17 @@ class PlayState extends MusicBeatState
 							discordTxt[0] = detailsText;
 		
 						if (triggerInfo[1].toLowerCase().trim() == "default")
+						{
 							discordTxt[1] = scoreTxt.text;
+							isDisplayingScore = true;
+						}
 		
 						if (triggerInfo[2].toLowerCase().trim() == "default")
 						{
 							discordIcon = SONG.song.toLowerCase().trim();
 		
 							if (FreeplayState.freeplayMenuList == 3)
-								discordIcon = "volume2";
+								discordIcon = SONG.song == "Alone" ? "volume1" : "volume2";
 							
 							if (FreeplayState.freeplayMenuList == 2)
 								discordIcon = "volume1";
