@@ -430,7 +430,10 @@ class Episode1Street extends BaseStage
 			videoObject = new VideoSprite(false);
 			videoObject.visible = false;
 			// videoObject.active = false; i dunno if that works -- mr_chaoss
-			videoObject.load(Paths.video(name), [VideoSprite.muted]);
+			if (name == 'mickeyDeath')
+				videoObject.load(Paths.video(name));
+			else
+				videoObject.load(Paths.video(name), [VideoSprite.muted]);
 			videoObject.cameras = [game.camVideo];
 			videoObject.addCallback("onEnd", () -> {
 				videoObject.visible = false;
@@ -1142,15 +1145,17 @@ class Episode1Street extends BaseStage
 		tumbleWeed = new FlxSprite(1800, 600);
 		tumbleWeed.antialiasing = ClientPrefs.data.antialiasing;
 		var velocityX:Float = 0;
+		var bounceVal:Int = 735;
 		var loopTime:Array<Float> = [];
 		if (FlxG.random.bool(1))
 		{
 			tumbleWeed.loadGraphic(Paths.image(PlayState.pathway + 'THELEGENDARYTUMBLEWEED'));
 			tumbleWeed.scale.set(0.6, 0.6);
-			velocityX = -970;
+			velocityX = -1270;
+			bounceVal = 50;
 			loopTime[0] = 0.5;
 			loopTime[1] = 0.1;
-			loopTime[2] = 2;
+			loopTime[2] = 4;
 		}
 		else
 		{
@@ -1163,7 +1168,7 @@ class Episode1Street extends BaseStage
 		tumbleWeed.velocity.set(velocityX, 0);
 		tumbleGrp.add(tumbleWeed);
 		FlxTween.tween(tumbleWeed, {angle: -360}, loopTime[0], {type: LOOPING});
-		FlxTween.tween(tumbleWeed, {y: 735}, loopTime[1], {ease: FlxEase.sineInOut, type: PINGPONG});
+		FlxTween.tween(tumbleWeed, {y: bounceVal}, loopTime[1], {ease: FlxEase.sineInOut, type: PINGPONG});
 		new FlxTimer().start(loopTime[2], function(tmr:FlxTimer)
 		{
 			tumbleWeed.kill();

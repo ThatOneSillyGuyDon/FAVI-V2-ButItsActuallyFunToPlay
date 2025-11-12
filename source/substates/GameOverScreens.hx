@@ -197,6 +197,7 @@ class ManiaLoseScreen extends MusicBeatSubstate {
 	var canUseCtrls:Bool = false;
 
 	var stupidLerps:Array<Float> = [1, .35];
+	var maniaMusic:FlxSound = new FlxSound().loadEmbedded(Paths.music('aviOST/gameOver/mistfulWind'), true, false);
 
 	override function create()
 	{
@@ -232,7 +233,7 @@ class ManiaLoseScreen extends MusicBeatSubstate {
 		songName.alpha = 0.001;
 		add(songName);
 
-		var album = new FlxSprite(0, -190).loadGraphic(Paths.imageAlbum("volume2Album"));
+		var album = new FlxSprite(0, -190).loadGraphic(Paths.imageAlbum(PlayState.SONG.song == "Alone" ? "volume1Album" : "volume2Album"));
 		album.scale.set(0.3, 0.3);
 		album.screenCenter(X);
 		album.x += 475;
@@ -250,16 +251,17 @@ class ManiaLoseScreen extends MusicBeatSubstate {
 		quitBtn.alpha = 0.001;
 		add(quitBtn);
 
+		FlxG.sound.list.add(maniaMusic);
 		new FlxTimer().start(5, function(tmr:FlxTimer){
 			FlxG.sound.music.stop();
 			FlxG.sound.music.volume = 0;
 			PlayState.instance.inst.stop();
-			FlxG.sound.playMusic(Paths.music('aviOST/gameOver/mistfulWind'));
-			FlxG.sound.music.fadeIn(2, 0, 1);
+			maniaMusic.play();
+			maniaMusic.fadeIn(3, 0, 1);
 			canUseCtrls = true;
 		});
 
-		cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
+		cameras = [PlayState.instance.camOther];
 
 		super.create();
 	}
@@ -287,6 +289,7 @@ class ManiaLoseScreen extends MusicBeatSubstate {
 			if (controls.ACCEPT)
 			{
 				FlxG.sound.play(Paths.sound("funkinAVI/menu/selectSfx"));
+				maniaMusic.fadeOut(2, 0);
 				if (stupidLerps[0] == 1)
 				{
 					PlayState.instance.camOther.fade(FlxColor.BLACK, 2, false, function()

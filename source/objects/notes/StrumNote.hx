@@ -80,7 +80,7 @@ class StrumNote extends FlxSkewedSprite
 		{
 			switch (PlayState.SONG.song)
 			{
-				case "Rotten Petals" | "Curtain Call" | "Seeking Freedom" | "A True Monster" | "Am I Real?" | "Your Final Bow" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "The Wretched Tilezones (Simple Life)" | "Ahh the Scary (Somber Night)":
+				case "Rotten Petals" | "Curtain Call" | "Seeking Freedom" | "Mistful Wind" | "Am I Real?" | "Your Final Bow" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "The Wretched Tilezones (Simple Life)" | "Ahh the Scary (Somber Night)" | "Alone":
 					switch (FreeplayState.maniaSkin)
 					{
 						case 0: skin = "faviNotes/NOTE_assets-MANIA";

@@ -135,7 +135,7 @@ class MenuSongs extends BaseStage
 		var subpath:String = Paths.formatToSongPath(songName) + '/';
 		switch(songName.toLowerCase())
 		{
-			case "rotten petals" | 'alone':
+			case "rotten petals" | 'mistful wind':
 				subpath = 'rotten-petals/';
 				for (flashableObj in ['sky', 'stars1', 'stars2'])
 				{
@@ -357,7 +357,24 @@ class MenuSongs extends BaseStage
 					lighting.scrollFactor.set(0, 0);
 					add(lighting);
 				}
-			//case 'alone':
+			case 'alone':
+				var bg = new FlxSprite().loadGraphic(Paths.image(PlayState.pathway + subpath + 'bg'));
+				bg.scrollFactor.set(0, 0);
+				add(bg);
+
+				var dark = new FlxSprite().loadGraphic(Paths.image(PlayState.pathway + subpath + 'darkness'));
+				dark.alpha = 0.001;
+				dark.scrollFactor.set(0, 0);
+				add(dark);
+
+				var light = new FlxSprite().loadGraphic(Paths.image(PlayState.pathway + subpath + 'light'));
+				light.blend = ADD;
+				light.scrollFactor.set(0, 0);
+				add(light);
+
+				FlxTween.tween(dark, {alpha: 1}, 5, {ease: FlxEase.sineInOut, type: FlxTween.PINGPONG});
+				FlxTween.tween(light, {alpha: 0.5}, 5, {ease: FlxEase.sineInOut, type: FlxTween.PINGPONG});
+			//case 'mistul wind':
 		}
 	}
 

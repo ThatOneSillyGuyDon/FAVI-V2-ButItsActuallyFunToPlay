@@ -1440,8 +1440,8 @@ class ChartingState extends MusicBeatState
 				FlxG.sound.playMusic(Paths.music("aviOST/seekingFreedom"));
 			case "Curtain Call":
 				FlxG.sound.playMusic(Paths.music("aviOST/curtainCall"));
-			case "A True Monster":
-				FlxG.sound.playMusic(Paths.music("aviOST/aTrueMonster"));
+			case "Mistful Wind":
+				FlxG.sound.playMusic(Paths.music("aviOST/gameOver/mistfulWind"));
 			case "Am I Real?":
 				FlxG.sound.playMusic(Paths.music("aviOST/gameOver/amIReal"));
 			case "Your Final Bow":
