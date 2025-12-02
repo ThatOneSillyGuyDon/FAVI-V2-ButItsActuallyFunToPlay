@@ -6,12 +6,51 @@ import states.stages.objects.*;
 import openfl.filters.ShaderFilter;
 #end
 
+class HealthBoostIcon extends FlxSprite
+{
+	public function new(x:Float, y:Float)
+	{
+		super(x, y);
+		
+		frames = Paths.getSparrowAtlas("favi/ui/mercyIcon");
+		animation.addByPrefix("phase1-idle", "phase1", 24, true);
+		animation.addByPrefix("phase2-transition", "phase20", 24, false);
+		animation.addByPrefix("phase2-idle", "phase2-loop", 24, true);
+		animation.addByPrefix("phase3-transition", "phase30", 24, false);
+		animation.addByPrefix("phase3-idle", "phase3-loop", 24, true);
+		animation.addByPrefix("phase4-transition", "phase40", 24, false);
+		animation.addByPrefix("phase4-idle", "phase4-loop", 24, true);
+		animation.play("phase1-idle");
+		scrollFactor.set();	
+	}
+	
+	override function update(elapsed:Float) 
+	{
+		if(animation.curAnim != null && animation.curAnim.name == 'phase2-transition') {
+			if(animation.curAnim.finished) 
+				animation.play('phase2-idle', true);
+		}
+
+		if(animation.curAnim != null && animation.curAnim.name == 'phase3-transition') {
+			if(animation.curAnim.finished) 
+				animation.play('phase3-idle', true);
+		}
+
+		if(animation.curAnim != null && animation.curAnim.name == 'phase4-transition') {
+			if(animation.curAnim.finished) 
+				animation.play('phase4-idle', true);
+		}
+		
+		super.update(elapsed);
+	}
+}
+
 class WaltStage extends BaseStage
 {
 	public var waltScreenThing:FlxSprite; // idk, this is needed too for some reason
 	public var inkFormWarning:FlxText;
 	public var spaceBarCounter:FlxText;
-	public var mercyBoostIcon:FlxSprite;
+	public var mercyBoostIcon:HealthBoostIcon;
 	public var limitThing:Int = 0; // Default Value
 
 	public var shaderAnim:Float = 0;
@@ -54,7 +93,6 @@ class WaltStage extends BaseStage
 		pissOfGlory.scrollFactor.set(1, 1);
 		pissOfGlory.active = false;
 		pissOfGlory.blend = ADD;
-		//add(pissOfGlory);
 
 		retardedButPissBehind = new FlxSprite().loadGraphicFromSprite(pissOfGlory);
 		add(retardedButPissBehind);
@@ -84,7 +122,6 @@ class WaltStage extends BaseStage
 
 		waltGoop = new FlxSprite(-800, 410).loadGraphic(Paths.image(PlayState.pathway + 'melted'));
 		waltGoop.scale.set(0.3, 0.3);
-		//waltGoop.screenCenter();
 		waltGoop.alpha = 0.001;
 
 		if(!ClientPrefs.data.lowQuality)
@@ -128,22 +165,12 @@ class WaltStage extends BaseStage
 		inkFormWarning.scrollFactor.set();
 		inkFormWarning.screenCenter();
 
-		mercyBoostIcon = new FlxSprite(-10, 600);
-		mercyBoostIcon.frames = Paths.getSparrowAtlas("favi/ui/mercyIcon");
-		mercyBoostIcon.animation.addByPrefix("full", "full", 7, true);
-		mercyBoostIcon.animation.addByPrefix("hmm", "hmm", 7, true);
-		mercyBoostIcon.animation.addByPrefix("halfway", "halfway", 7, true);
-		mercyBoostIcon.animation.addByPrefix("thatsBad", "thatsBad", 7, true);
-		mercyBoostIcon.animation.addByPrefix("almostOut", "almostOut", 7, true);
-		mercyBoostIcon.animation.addByPrefix("empty", "empty", 7, true);
+		mercyBoostIcon = new HealthBoostIcon(-10, 600);
 		mercyBoostIcon.cameras = [game.fakeCam];
 		mercyBoostIcon.alpha = 0;
-		mercyBoostIcon.animation.play("full");
-		mercyBoostIcon.scale.set(0.75, 0.75);
-		mercyBoostIcon.scrollFactor.set();			
 
-		spaceBarCounter = new FlxText(0, 650, 140, '', 15);
-		spaceBarCounter.setFormat(Paths.font("splatter.otf"), 30, FlxColor.BLACK, CENTER, OUTLINE, FlxColor.WHITE);
+		spaceBarCounter = new FlxText(0, 640, 140, '', 15);
+		spaceBarCounter.setFormat(Paths.font("Black-Ground.otf"), 50, FlxColor.BLACK, CENTER, OUTLINE, FlxColor.WHITE);
 		spaceBarCounter.cameras = [game.fakeCam];
 		spaceBarCounter.alpha = 0;
 		spaceBarCounter.scrollFactor.set();
@@ -272,11 +299,12 @@ class WaltStage extends BaseStage
 							var mathShit:Float = limitThing / initialCount;
 							switch (mathShit)
 							{
-								case 0.75 | 0.8: mercyBoostIcon.animation.play("hmm");
-								case 0.5: mercyBoostIcon.animation.play("halfway");
-								case 0.25 | 0.2: mercyBoostIcon.animation.play("thatsBad");
-								case 0.1 | 0.12: mercyBoostIcon.animation.play("almostOut");
-								case 0: mercyBoostIcon.animation.play("empty");
+								case 0.75 | 0.8: 
+									mercyBoostIcon.animation.play("phase2-transition");
+								case 0.35 | 0.3: 
+									mercyBoostIcon.animation.play("phase3-transition");
+								case 0: 
+									mercyBoostIcon.animation.play("phase4-transition");
 							}
 						}
 					
@@ -310,11 +338,12 @@ class WaltStage extends BaseStage
 						var mathShit:Float = limitThing / initialCount;
 						switch (mathShit)
 						{
-							case 0.75 | 0.8: mercyBoostIcon.animation.play("hmm");
-							case 0.5: mercyBoostIcon.animation.play("halfway");
-							case 0.25 | 0.2: mercyBoostIcon.animation.play("thatsBad");
-							case 0.1 | 0.12: mercyBoostIcon.animation.play("almostOut");
-							case 0: mercyBoostIcon.animation.play("empty");
+							case 0.75 | 0.8: 
+								mercyBoostIcon.animation.play("phase2-transition");
+							case 0.35 | 0.3: 
+								mercyBoostIcon.animation.play("phase3-transition");
+							case 0: 
+								mercyBoostIcon.animation.play("phase4-transition");
 						}
 					}
 					

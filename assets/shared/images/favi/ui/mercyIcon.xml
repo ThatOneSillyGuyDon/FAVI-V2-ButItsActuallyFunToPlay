@@ -1,21 +1,20 @@
 <?xml version='1.0' encoding='utf-8'?>
 <TextureAtlas imagePath="mercyIcon.png">
-<SubTexture name="full0000" x="480" y="127" width="115" height="125" frameX="-25" frameY="-14" frameWidth="156" frameHeight="138" />
-<SubTexture name="full0001" x="480" y="252" width="117" height="125" frameX="-26" frameY="-13" frameWidth="156" frameHeight="138" />
-<SubTexture name="full0002" x="361" y="129" width="117" height="127" frameX="-24" frameY="-12" frameWidth="156" frameHeight="138" />
-<SubTexture name="hmm0000" x="243" y="132" width="115" height="125" frameX="-25" frameY="-14" frameWidth="156" frameHeight="138" />
-<SubTexture name="hmm0001" x="361" y="262" width="117" height="125" frameX="-26" frameY="-13" frameWidth="156" frameHeight="138" />
-<SubTexture name="hmm0002" x="242" y="262" width="119" height="127" frameX="-24" frameY="-12" frameWidth="156" frameHeight="138" />
-<SubTexture name="halfway0000" x="480" y="0" width="121" height="127" frameX="-22" frameY="-12" frameWidth="156" frameHeight="138" />
-<SubTexture name="halfway0001" x="122" y="132" width="121" height="129" frameX="-23" frameY="-9" frameWidth="156" frameHeight="138" />
-<SubTexture name="halfway0002" x="0" y="132" width="122" height="130" frameX="-20" frameY="-9" frameWidth="156" frameHeight="138" />
-<SubTexture name="thatsBad0000" x="361" y="0" width="119" height="129" frameX="-23" frameY="-10" frameWidth="156" frameHeight="138" />
-<SubTexture name="thatsBad0001" x="0" y="262" width="121" height="129" frameX="-22" frameY="-9" frameWidth="156" frameHeight="138" />
-<SubTexture name="thatsBad0002" x="119" y="0" width="123" height="131" frameX="-22" frameY="-8" frameWidth="156" frameHeight="138" />
-<SubTexture name="almostOut0000" x="0" y="0" width="119" height="132" frameX="-24" frameY="-8" frameWidth="156" frameHeight="138" />
-<SubTexture name="almostOut0001" x="121" y="262" width="121" height="128" frameX="-23" frameY="-10" frameWidth="156" frameHeight="138" />
-<SubTexture name="almostOut0002" x="242" y="0" width="119" height="131" frameX="-23" frameY="-9" frameWidth="156" frameHeight="138" />
-<SubTexture name="empty0000" x="259" y="391" width="129" height="122" frameX="-19" frameY="-17" frameWidth="156" frameHeight="138" />
-<SubTexture name="empty0001" x="130" y="391" width="129" height="125" frameX="-19" frameY="-15" frameWidth="156" frameHeight="138" />
-<SubTexture name="empty0002" x="0" y="391" width="130" height="126" frameX="-20" frameY="-15" frameWidth="156" frameHeight="138" />
+<SubTexture name="phase10000" x="131" y="0" width="85" height="90" frameX="-32" frameY="-29" frameWidth="156" frameHeight="138" />
+<SubTexture name="phase20000" x="0" y="99" width="85" height="90" frameX="-32" frameY="-29" frameWidth="156" frameHeight="138" />
+<SubTexture name="phase20001" x="85" y="99" width="85" height="90" frameX="-32" frameY="-29" frameWidth="156" frameHeight="138" />
+<SubTexture name="phase20002" x="85" y="99" width="85" height="90" frameX="-32" frameY="-29" frameWidth="156" frameHeight="138" />
+<SubTexture name="phase20003" x="216" y="0" width="85" height="90" frameX="-32" frameY="-29" frameWidth="156" frameHeight="138" />
+<SubTexture name="phase2-loop0000" x="216" y="90" width="85" height="90" frameX="-32" frameY="-29" frameWidth="156" frameHeight="138" />
+<SubTexture name="phase30000" x="0" y="189" width="85" height="90" frameX="-32" frameY="-29" frameWidth="156" frameHeight="138" />
+<SubTexture name="phase30001" x="85" y="189" width="85" height="90" frameX="-32" frameY="-29" frameWidth="156" frameHeight="138" />
+<SubTexture name="phase30002" x="170" y="189" width="85" height="90" frameX="-32" frameY="-29" frameWidth="156" frameHeight="138" />
+<SubTexture name="phase30003" x="301" y="0" width="85" height="90" frameX="-32" frameY="-29" frameWidth="156" frameHeight="138" />
+<SubTexture name="phase3-loop0000" x="301" y="0" width="85" height="90" frameX="-32" frameY="-29" frameWidth="156" frameHeight="138" />
+<SubTexture name="phase40000" x="0" y="0" width="131" height="99" frameX="-6" frameY="-20" frameWidth="156" frameHeight="138" />
+<SubTexture name="phase40001" x="0" y="0" width="131" height="99" frameX="-6" frameY="-20" frameWidth="156" frameHeight="138" />
+<SubTexture name="phase40002" x="0" y="279" width="121" height="89" frameX="-18" frameY="-29" frameWidth="156" frameHeight="138" />
+<SubTexture name="phase40003" x="0" y="279" width="121" height="89" frameX="-18" frameY="-29" frameWidth="156" frameHeight="138" />
+<SubTexture name="phase40004" x="121" y="279" width="114" height="89" frameX="-23" frameY="-29" frameWidth="156" frameHeight="138" />
+<SubTexture name="phase4-loop0000" x="235" y="279" width="90" height="89" frameX="-32" frameY="-29" frameWidth="156" frameHeight="138" />
 </TextureAtlas>
