@@ -253,9 +253,8 @@ class Song
 			case "Devilish Deal" | "Lunacy" | "Hunted" | "War Dilemma" | "Twisted Grins" | "Isolated" | "The Wretched Tilezones (Simple Life)": charter = "Purg";
 			case "Delusional" | "Cycled Sins" | "Birthday" | "Cycled Sins Legacy" | "Twisted Grins Legacy" | "Scrapped" | "Curtain Call": charter = "Dreupy";
 			case "Lunacy Legacy": charter = "obscurity.";
-			case "Malfunction" | "Mercy" | "Mercy Legacy" | "Isolated Old" | "Isolated Legacy" | "Isolated Beta" | "Malfunction Legacy" | "Laugh Track" | "Rotten Petals" | "Ahh the Scary (Somber Night)" | "Whimsical Bar Blues" | "Am I Real?" | "Seeking Freedom": charter = "ThatOneSillyGuy";
+			case "Bless" | "Malfunction" | "Mercy" | "Mercy Legacy" | "Isolated Old" | "Isolated Legacy" | "Isolated Beta" | "Malfunction Legacy" | "Laugh Track" | "Rotten Petals" | "Ahh the Scary (Somber Night)" | "Whimsical Bar Blues" | "Am I Real?" | "Seeking Freedom": charter = "ThatOneSillyGuy";
 			case "Delusional Legacy": charter = "Noppz";
-			case "Bless": charter = "ThatOneSillyGuy & Goober Man";
 			case "Dont Cross":
 				switch (randomizer)
 				{

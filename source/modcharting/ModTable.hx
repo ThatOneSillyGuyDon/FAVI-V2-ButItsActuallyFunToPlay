@@ -3,9 +3,6 @@ package modcharting;
 import flixel.math.FlxMath;
 import flixel.tweens.FlxTween;
 import modcharting.Modifier;
-#if LEATHER
-import game.Conductor;
-#end
 
 class ModTable
 {

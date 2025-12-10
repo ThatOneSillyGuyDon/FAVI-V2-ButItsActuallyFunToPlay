@@ -2,9 +2,6 @@ package modcharting;
 
 import flixel.graphics.tile.FlxDrawTrianglesItem.DrawData;
 import openfl.geom.Vector3D;
-#if LEATHER
-import game.Note;
-#end
 import flixel.FlxStrip;
 
 class SustainStrip extends FlxStrip

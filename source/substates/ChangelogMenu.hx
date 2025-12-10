@@ -41,7 +41,7 @@ class ChangelogMenu extends MusicBeatSubstate
         changelogText.setFormat(Paths.font("DisneyFont.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
         FlxTween.tween(changelogText, {x: 10}, 1, {ease: FlxEase.circOut});
 
-        imBouttaStrangleYou = new FlxText(-450, 49, 600, "- Dev Build #45", 40);
+        imBouttaStrangleYou = new FlxText(-450, 49, 600, "- Update 2.2.0", 40);
         imBouttaStrangleYou.setFormat(Paths.font("DisneyFont.ttf"), 40, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
         FlxTween.tween(imBouttaStrangleYou, {x: 0}, 1, {ease: FlxEase.circOut});
 

@@ -5,24 +5,16 @@ import haxe.Exception;
 import haxe.Json;
 import haxe.format.JsonParser;
 import lime.utils.Assets;
-#if LEATHER
-import states.PlayState;
-import game.Note;
-import game.Conductor;
-#if polymod
-import polymod.backends.PolymodAssets;
-#end
-#end
+
 #if sys
 import sys.FileSystem;
 import sys.io.File;
 #end
-#if hscript
-import hscript.*;
+
+#if HSCRIPT_ALLOWED
+import psychlua.HScript;
 #end
-#if (HSCRIPT_ALLOWED && PSYCH && PSYCHVERSION >= "0.7")
-import psychlua.HScript as FunkinHScript;
-#end
+
 using StringTools;
 
 typedef ModchartJson = 
@@ -59,9 +51,9 @@ class ModchartFile
     public var data:ModchartJson = null;
     private var renderer:PlayfieldRenderer;
     public var scriptListen:Bool = false;
-    #if hscript
+
     public var customModifiers:Map<String, Dynamic> = new Map<String, Dynamic>();
-    #end
+
     public var useDownScrollChart:Bool = false; //so it loads false as default!
     public var useMiddleDownScrollChart:Bool = false;
     public var useMiddleUpScrollChart:Bool = false;
@@ -100,31 +92,30 @@ class ModchartFile
         var folderShit:String = "";
         #if sys
         //downscroll
-        var moddyFile:String = Paths.json(#if PSYCH Paths.formatToSongPath(folder) #else PlayState.SONG.song #end + '/modchartData/modchart-downscroll');
+        var moddyFile:String = Paths.json(Paths.formatToSongPath(folder) + '/modchartData/modchart-downscroll');
         //upscroll
-        var moddyFile2:String = Paths.json(#if PSYCH Paths.formatToSongPath(folder) #else PlayState.SONG.song #end + '/modchartData/modchart-upscroll');
+        var moddyFile2:String = Paths.json(Paths.formatToSongPath(folder) + '/modchartData/modchart-upscroll');
         //middle-downscroll
-        var moddyFile3:String = Paths.json(#if PSYCH Paths.formatToSongPath(folder) #else PlayState.SONG.song #end + '/modchartData/modchart-middleDown');
+        var moddyFile3:String = Paths.json(Paths.formatToSongPath(folder) + '/modchartData/modchart-middleDown');
         //middle-upscroll
-        var moddyFile4:String = Paths.json(#if PSYCH Paths.formatToSongPath(folder) #else PlayState.SONG.song #end + '/modchartData/modchart-middleUp');
+        var moddyFile4:String = Paths.json(Paths.formatToSongPath(folder) + '/modchartData/modchart-middleUp');
         //global modchart
-        var moddyFile5:String = Paths.json(#if PSYCH Paths.formatToSongPath(folder) #else PlayState.SONG.song #end + '/modchartData/modchart');
+        var moddyFile5:String = Paths.json(Paths.formatToSongPath(folder) + '/modchartData/modchart');
 
         #if MODS_ALLOWED
         //downscroll in mods folder
-        var modModdyFile:String = Paths.modsJson(#if PSYCH Paths.formatToSongPath(folder) #else PlayState.SONG.song #end + '/modchartData/modchart-downscroll');
+        var modModdyFile:String = Paths.modsJson(Paths.formatToSongPath(folder) + '/modchartData/modchart-downscroll');
         //upscroll in mods folder
-        var modModdyFile2:String = Paths.modsJson(#if PSYCH Paths.formatToSongPath(folder) #else PlayState.SONG.song #end + '/modchartData/modchart-upscroll');
+        var modModdyFile2:String = Paths.modsJson(Paths.formatToSongPath(folder) + '/modchartData/modchart-upscroll');
         //middle-downscroll in mods folder
-        var modModdyFile3:String = Paths.modsJson(#if PSYCH Paths.formatToSongPath(folder) #else PlayState.SONG.song #end + '/modchartData/modchart-middleDown');
+        var modModdyFile3:String = Paths.modsJson(Paths.formatToSongPath(folder) + '/modchartData/modchart-middleDown');
         //middle-upscroll in mods folder
-        var modModdyFile4:String = Paths.modsJson(#if PSYCH Paths.formatToSongPath(folder) #else PlayState.SONG.song #end + '/modchartData/modchart-middleUp');
+        var modModdyFile4:String = Paths.modsJson(Paths.formatToSongPath(folder) + '/modchartData/modchart-middleUp');
         //global modchart
-        var modModdyFile5:String = Paths.modsJson(#if PSYCH Paths.formatToSongPath(folder) #else PlayState.SONG.song #end + '/modchartData/modchart');
+        var modModdyFile5:String = Paths.modsJson(Paths.formatToSongPath(folder) + '/modchartData/modchart');
         #end
 
         //this took too long just to get middlescroll support holy fucking shit - Sonic_fan0208
-        #if PSYCH
         try 
         {
             //if modchart exists, downscroll is enabled, and middlescroll is disabled (it'll use the downscroll chart)
@@ -266,7 +257,6 @@ class ModchartFile
             trace(e);
         }
         #end
-        #end
 
         if (rawJson == null)
         {
@@ -362,7 +352,9 @@ class ModchartFile
                         {
                             var scriptStr = File.getContent(folderShit + file);
                             var scriptInit:Dynamic = null;
-                            scriptInit = #if (HSCRIPT_ALLOWED && PSYCH && PSYCHVERSION >= "0.7") new FunkinHScript(null, scriptStr) #else new CustomModifierScript(scriptStr) #end;
+                            #if HSCRIPT_ALLOWED
+                            scriptInit = new HScript(null, scriptStr);
+                            #end
                             customModifiers.set(file.replace(".hx", ""), scriptInit);
                             trace('loaded custom mod: ' + file);
                         }
@@ -397,16 +389,12 @@ class ModchartFile
                         json = emptyMod;
 
                  case "Malfunction":
-                    //Upscroll
                     if (!ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
                         json = Modchart.malfunctionModchartU;
-                    //Downscroll
                     else if (ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll)
                         json = Modchart.malfunctionModchartD;
-                    //Middle-Upscroll
                     else if (!ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
                         json = Modchart.malfuncMidUp;
-                    //Middle-Downscroll
                     else if (ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll)
                         json = Modchart.malfuncMidDown;
 
@@ -525,99 +513,3 @@ class ModchartFile
         scriptListen = true;
     }
 }
-
-#if hscript
-class CustomModifierScript
-{
-    public var interp:Interp = null;
-    var script:Expr;
-    var parser:Parser;
-    public function new(scriptStr:String)
-    {
-        parser = new Parser();
-        parser.allowTypes = true;
-        parser.allowMetadata = true;
-        parser.allowJSON = true;
-        
-        try
-        {
-            interp = new Interp();
-            script = parser.parseString(scriptStr); //load da shit
-            interp.execute(script);
-        }
-        catch(e)
-        {
-            lime.app.Application.current.window.alert(e.message, 'Error on custom mod .hx!');
-            return;
-        }
-        init();
-    }
-    private function init()
-    {
-        if (interp == null)
-            return;
-
-        #if LEATHER
-        interp.variables.set('mod', Modifier); //the game crashes without this???????? what??????????? -- fue glow
-        #end
-
-        interp.variables.set('Math', Math);
-        interp.variables.set('PlayfieldRenderer', PlayfieldRenderer);
-        interp.variables.set('ModchartUtil', ModchartUtil);
-        interp.variables.set('Modifier', Modifier);
-        interp.variables.set('ModifierSubValue', Modifier.ModifierSubValue);
-        interp.variables.set('BeatXModifier', Modifier.BeatXModifier);
-        interp.variables.set('NoteMovement', NoteMovement);
-        interp.variables.set('NotePositionData', NotePositionData);
-        interp.variables.set('ModchartFile', ModchartFile);
-        interp.variables.set('FlxG', flixel.FlxG);
-		interp.variables.set('FlxSprite', flixel.FlxSprite);
-        interp.variables.set('FlxMath', FlxMath);
-		interp.variables.set('FlxCamera', flixel.FlxCamera);
-		interp.variables.set('FlxTimer', flixel.util.FlxTimer);
-		interp.variables.set('FlxTween', flixel.tweens.FlxTween);
-		interp.variables.set('FlxEase', flixel.tweens.FlxEase);
-		interp.variables.set('PlayState', #if (PSYCH && PSYCHVERSION >= "0.7") states.PlayState #else PlayState #end);
-		interp.variables.set('game', #if (PSYCH && PSYCHVERSION >= "0.7") states.PlayState.instance #else PlayState.instance #end);
-		interp.variables.set('Paths', #if (PSYCH && PSYCHVERSION >= "0.7") backend.Paths #else Paths #end);
-		interp.variables.set('Conductor', #if (PSYCH && PSYCHVERSION >= "0.7") backend.Conductor #else Conductor #end);
-        interp.variables.set('StringTools', StringTools);
-        interp.variables.set('Note', #if (PSYCH && PSYCHVERSION >= "0.7") objects.notes.Note #else Note #end);
-
-        #if PSYCH
-        interp.variables.set('ClientPrefs', #if (PSYCHVERSION >= "0.7") backend.ClientPrefs #else ClientPrefs #end);
-        interp.variables.set('ColorSwap', #if (PSYCHVERSION >= "0.7") shaders.ColorSwap #else ColorSwap #end);
-        #end
-
-        
-    }
-    public function call(event:String, args:Array<Dynamic>)
-    {
-        if (interp == null)
-            return;
-        if (interp.variables.exists(event)) //make sure it exists
-        {
-            try
-            {
-                if (args.length > 0)
-                    Reflect.callMethod(null, interp.variables.get(event), args);
-                else
-                    interp.variables.get(event)(); //if function doesnt need an arg
-            }
-            catch(e)
-            {
-                lime.app.Application.current.window.alert(e.message, 'Error on custom mod .hx!');
-            }
-        }
-    }
-    public function initMod(mod:Modifier)
-    {
-        call("initMod", [mod]);
-    }
-
-    public function destroy()
-    {
-        interp = null;
-    }
-}
-#end
