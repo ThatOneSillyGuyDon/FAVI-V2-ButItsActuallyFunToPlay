@@ -434,7 +434,11 @@ class MainMenuState extends MusicBeatState
 					FlxG.sound.play(Paths.sound('cancelMenu'));
 					messenger.sendMessage('ACCESS DENIED!', 'Perhaps there is a code to access this?');
 				}
-			}	
+			}
+			if (FlxG.keys.justPressed.EIGHT)
+			{
+				MusicBeatState.switchState(new CutsceneState());
+			}
 			if (FlxG.keys.justPressed.NINE)
 			{
 				goingToBrainrot = true;

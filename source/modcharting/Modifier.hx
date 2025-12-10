@@ -4,19 +4,9 @@ import flixel.tweens.FlxEase;
 import flixel.math.FlxMath;
 import flixel.FlxG;
 
-#if LEATHER
-import states.PlayState;
-import game.Note;
-import game.StrumNote;
-import game.Conductor;
-import utilities.CoolUtil;
-#elseif (PSYCH && PSYCHVERSION >= "0.7")
 import states.PlayState;
 import objects.notes.Note;
-#else 
-import PlayState;
-import Note;
-#end
+
 import lime.math.Vector4;
 import haxe.ds.List;
 import flixel.group.FlxGroup.FlxTypedGroup;
@@ -1923,11 +1913,7 @@ class ArrowPath extends Modifier {
     public var _pathDistance: Float = 0;
 
     override public function noteMath(noteData: NotePositionData, lane: Int, curPos: Float, pf: Int) {
-        #if PSYCH
-	    if (Paths.fileExists("data/"+Paths.formatToSongPath(PlayState.SONG.song)+"/customMods/path.txt", TEXT))
-        #elseif LEATHER 
-        if (openfl.utils.Assets.exists(Paths.txt(PlayState.SONG.song.toLowerCase()+"/customMods/path")))
-        #end
+        if (Paths.fileExists("data/"+Paths.formatToSongPath(PlayState.SONG.song)+"/customMods/path.txt", TEXT))
         {
             var newPosition = executePath(0, curPos, lane, lane < 4 ? 0 : 1, new Vector4(noteData.x, noteData.y, noteData.z, 0));
             noteData.x = newPosition.x;
@@ -1952,10 +1938,10 @@ class ArrowPath extends Modifier {
         }
     public function loadPath() {
         var file = null;
-	file = CoolUtil.coolTextFile(Paths#if(PSYCH && MODS_ALLOWED).modFolders #else .txt#end(#if PSYCH "data/"+#end PlayState.SONG.song.toLowerCase()+"/customMods/path"#if PSYCH +".txt"#end));
+	    file = CoolUtil.coolTextFile(Paths.txt("data/" + PlayState.SONG.song.toLowerCase() + "/customMods/path"));
         @:privateAccess
         var file2 = null;
-	file2 = CoolUtil.coolTextFile(#if (PSYCH && PSYCHVERSION >= "0.7.3") Paths.getSharedPath #else Paths.getPreloadPath #end("data/"+PlayState.SONG.song.toLowerCase()+"/customMods/path.txt"));
+	    file2 = CoolUtil.coolTextFile(Paths.getSharedPath("data/" + PlayState.SONG.song.toLowerCase() + "/customMods/path.txt"));
 
         var filePath = null;
         if (file != null) {

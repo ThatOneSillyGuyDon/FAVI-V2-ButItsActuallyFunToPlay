@@ -35,7 +35,7 @@ class OptionsState extends MusicBeatState
 			case 'Gameplay':
 				openSubState(new GameplaySettingsSubState());
 			case 'Note Offsets':
-				openSubState(new options.LatencyState());
+				MusicBeatState.switchState(new NoteOffsetState());
 		}
 	}
 

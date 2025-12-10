@@ -9,7 +9,7 @@ import flixel.addons.display.shapes.FlxShapeCircle;
 import openfl.filters.ShaderFilter;
 #end
 
-import options.backend.Episode1Street as BackgroundStage;
+import options.backend.LilStage as BackgroundStage;
 
 class NoteOffsetState extends MusicBeatState
 {

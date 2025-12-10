@@ -1,6 +1,6 @@
 package options.backend;
 
-class Episode1Street extends BaseStage
+class LilStage extends BaseStage
 {
 	//MICKEY STAGE ASSETS
 	public static var colorsOrSmthElse:FlxSprite;

@@ -19,20 +19,9 @@ import flixel.FlxG;
 import modcharting.Modifier;
 import flixel.system.FlxAssets.FlxShader;
 
-#if LEATHER
-import states.PlayState;
-import game.Note;
-import game.StrumNote;
-import game.Conductor;
-#elseif (PSYCH && PSYCHVERSION >= "0.7")
 import states.PlayState;
 import objects.notes.Note;
 import objects.notes.StrumNote;
-#else
-import PlayState;
-import Note;
-import StrumNote;
-#end
 
 using StringTools;
 
@@ -44,12 +33,7 @@ using StringTools;
 //finish setting up tooltips in editor
 //start documenting more stuff idk
 
-typedef StrumNoteType = 
-#if (PSYCH || LEATHER) StrumNote
-#elseif KADE StaticArrow
-#elseif FOREVER_LEGACY UIStaticArrow
-#elseif ANDROMEDA Receptor
-#else FlxSprite #end;
+typedef StrumNoteType = StrumNote;
 
 class PlayfieldRenderer extends FlxSprite //extending flxsprite just so i can edit draw
 {
@@ -244,7 +228,7 @@ class PlayfieldRenderer extends FlxSprite //extending flxsprite just so i can ed
         var noteSkewX = notes.members[noteIndex].skew.x;
         var noteSkewY = notes.members[noteIndex].skew.y;
 
-        var noteAlpha:Float = #if PSYCH notes.members[noteIndex].multAlpha; #else notes.members[noteIndex].isSustainNote ? 0.6 : 1; #end
+        var noteAlpha:Float = notes.members[noteIndex].multAlpha;
 
         if (ModchartUtil.getIsPixelStage(instance))
         {
@@ -271,13 +255,8 @@ class PlayfieldRenderer extends FlxSprite //extending flxsprite just so i can ed
 
     private function getNoteCurPos(noteIndex:Int, strumTimeOffset:Float = 0, ?pf:Int = 0)
     {
-        #if PSYCH
         if (notes.members[noteIndex].isSustainNote && ModchartUtil.getDownscroll(instance))
             strumTimeOffset -= Std.int(Conductor.stepCrochet/getCorrectScrollSpeed()); //psych does this to fix its sustains but that breaks the visuals so basically reverse it back to normal
-        #else 
-        if (notes.members[noteIndex].isSustainNote && !ModchartUtil.getDownscroll(instance))
-            strumTimeOffset += Conductor.stepCrochet; //fix upscroll lol
-        #end
         if (notes.members[noteIndex].isSustainNote)
         {
             // moved those inside holdsMath cuz they are only needed for sustains ig?
