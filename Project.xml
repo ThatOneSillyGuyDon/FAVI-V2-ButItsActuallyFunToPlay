@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project>
-	<!-- _________________________ Application Settings _________________________ -->
+	<!-- _________________________ Application Settings. _________________________ -->
 
 	<app title="Funkin.avi" file="Funkin.avi" packageName="com.demolitiondon96.funkinavi" package="com.demolitiondon96.funkinavi" main="Main" version="0.2.8" company="Dunkin-Funkin" />
 
