@@ -19,7 +19,7 @@
 	<set name="SWF_VERSION" value="11.8" />
 	
 	<!-- ______________________ PSYCH ENGINE CUSTOMIZATION ______________________ -->
-
+	<!--boob-->
 	<define name="ACHIEVEMENTS_ALLOWED" />
 	<define name="HSCRIPT_ALLOWED" if="desktop" />
 	<define name="DISCORD_ALLOWED" unless="html5" />
