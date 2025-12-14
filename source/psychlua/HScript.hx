@@ -1,7 +1,7 @@
 package psychlua;
 
 import flixel.FlxBasic;
-import objects.Character;
+import gameObjects.Character;
 import psychlua.LuaUtils;
 import psychlua.CustomSubstate;
 
@@ -162,14 +162,14 @@ class HScript extends Iris
 		set('FlxTween', flixel.tweens.FlxTween);
 		set('FlxEase', flixel.tweens.FlxEase);
 		set('FlxColor', CustomFlxColor);
-		set('Countdown', backend.BaseStage.Countdown);
+		set('Countdown', backend.data.BaseStage.Countdown);
 		set('PlayState', PlayState);
 		set('Paths', Paths);
 		set('Conductor', Conductor);
 		set('ClientPrefs', ClientPrefs);
 		set('Character', Character);
 		set('Alphabet', Alphabet);
-		set('Note', objects.notes.Note);
+		set('Note', gameObjects.ui.notes.Note);
 		set('CustomSubstate', CustomSubstate);
 		#if (!flash && sys)
 		set('FlxRuntimeShader', flixel.addons.display.FlxRuntimeShader);

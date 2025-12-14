@@ -18,13 +18,22 @@
  // just in case
  import unused.*;
 
- // import objects, menus and backend support
+ // import gameObjects, menus and backend support
 import backend.*;
+import backend.menu.*;
+import backend.song.*;
+import backend.data.*;
 import backend.embeddedFiles.*;
 import backend.windows.*;
-import objects.*;
-import objects.notes.*;
-import objects.ui.*;
+import gameObjects.*;
+import gameObjects.ui.*;
+import gameObjects.utils.*;
+import gameObjects.stageObjects.*;
+import gameObjects.ui.dialogue.*;
+import gameObjects.ui.menu.*;
+import gameObjects.ui.animatedText.*;
+import gameObjects.ui.notes.*;
+import gameObjects.ui.customEditorUI.*;
 
 // import screens you see in-game
 import substates.*;
@@ -35,10 +44,10 @@ import states.menus.*;
 import states.menus.freeplay.*;
 
 // Base Stage
-import backend.BaseStage.StageAssetData;
-import backend.BaseStage.AssetType;
-import backend.BaseStage.AssetPriority;
-import backend.BaseStage.*;
+import backend.data.BaseStage.StageAssetData;
+import backend.data.BaseStage.AssetType;
+import backend.data.BaseStage.AssetPriority;
+import backend.data.BaseStage.*;
 // import backend.BaseStage.asset;
 // import backend.BaseStage.videos;
 // import backend.BaseStage.characters;
@@ -61,17 +70,16 @@ import substates.PauseScreens.PauseSubState; //default fnf screen
 import substates.PauseScreens.FAVIPauseSubState; //favi screen
 import substates.PauseScreens.PauseManiaSubstate; //mania screen
 
-// import specific menus and objects to prevent compile errors
+// import specific menus and gameObjects to prevent compile errors
 #if desktop
-import backend.Discord;
+import backend.discord.Discord;
 #end
 import states.editors.ChartingState;
-import objects.Character;
-//import cutscenes.DialogueBoxPsych;
-import objects.MenuCharacter;
-import backend.Conductor;
-import backend.StageData;
-import backend.WeekData;
+import gameObjects.Character;
+import gameObjects.ui.menu.MenuCharacter;
+import backend.song.Conductor;
+import backend.data.StageData;
+import backend.data.WeekData;
 import backend.Controls;
 
 // import modchart system
@@ -88,20 +96,13 @@ import shaders.BlendEffect;
 
 // stuff that won't let you compile unless they're being used
 #if VIDEOS_ALLOWED
-import objects.VideoSprite;
+import gameObjects.video.VideoSprite;
 #end
-import backend.Conductor.BPMChangeEvent;
-import backend.Section.SwagSection;
-import backend.Song.SwagSong;
-import backend.CustomFadeTransition;
-import objects.notes.Note.EventNote;
-
-// shitty mod support stuff I plan on removing soon but for now is needed for the game to work
-#if LUA_ALLOWED
-import psychlua.FunkinLua.ModchartSprite;
-import psychlua.FunkinLua.ModchartText;
-import psychlua.FunkinLua.DebugLuaText;
-#end
+import backend.song.Conductor.BPMChangeEvent;
+import backend.song.Section.SwagSection;
+import backend.song.Song.SwagSong;
+import gameObjects.transitions.CustomFadeTransition;
+import gameObjects.ui.notes.Note.EventNote;
 
 // import majority of classes the game uses from flixel almost everywhere
 import flixel.*;
@@ -155,21 +156,21 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 using StringTools;
 #end
 
+import backend.song.Section.SwagSection;
+import backend.song.Conductor;
+import backend.song.Song;
+
 import flixel.addons.ui.FlxUIDropDownMenu;
-import backend.Section.SwagSection;
 import states.PlayState;
 import backend.CoolUtil;
-import backend.Conductor;
-import backend.ClientPrefs;
+import backend.data.ClientPrefs;
 import backend.Paths;
 import states.LoadingState;
 import backend.Difficulty;
-import backend.MusicBeatSubstate;
+import backend.menu.MusicBeatSubstate;
 
-import objects.notes.Note;
-import objects.notes.StrumNote;
-
-import backend.Song;
+import gameObjects.ui.notes.Note;
+import gameObjects.ui.notes.StrumNote;
 
 #if LUA_ALLOWED
 import psychlua.FunkinLua;

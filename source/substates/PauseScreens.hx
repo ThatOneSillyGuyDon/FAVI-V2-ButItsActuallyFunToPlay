@@ -290,8 +290,8 @@ class PauseSubState extends MusicBeatSubstate
 					PlayState.pauseCountEnabled = false;
 					FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
 					FlxG.mouse.visible = true;
-					MusicBeatState.switchState(new options.OptionsState());
-					options.OptionsState.onPlayState = true;
+					MusicBeatState.switchState(new OptionsState());
+					OptionsState.onPlayState = true;
 					FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 				case "Exit to menu":
 					Lib.application.window.onClose.removeAll(); // goes back to normal hopefully
@@ -734,8 +734,8 @@ class FAVIPauseSubState extends MusicBeatSubstate
 							PlayState.pauseCountEnabled = false;
 							FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
 							FlxG.mouse.visible = true;
-							MusicBeatState.switchState(new options.OptionsState());
-							options.OptionsState.onPlayState = true;
+							MusicBeatState.switchState(new OptionsState());
+							OptionsState.onPlayState = true;
 							FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 						case 'no-hope':
 							songText.shake(0.5, 1, 1);
@@ -1091,8 +1091,8 @@ class PauseManiaSubstate extends MusicBeatSubstate
 							case "maniaOptions":
 								FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
 								FlxG.mouse.visible = true;
-								MusicBeatState.switchState(new options.OptionsState());
-								options.OptionsState.onPlayState = true;
+								MusicBeatState.switchState(new OptionsState());
+								OptionsState.onPlayState = true;
 								FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 							case "maniaQuit":
 								if (!canQuit)

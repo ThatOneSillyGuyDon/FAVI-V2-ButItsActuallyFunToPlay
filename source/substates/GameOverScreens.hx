@@ -1,8 +1,8 @@
 package substates;
 
-import backend.WeekData;
+import backend.data.WeekData;
 
-import objects.Character;
+import gameObjects.Character;
 import flixel.FlxObject;
 import flixel.FlxSubState;
 import openfl.Lib;

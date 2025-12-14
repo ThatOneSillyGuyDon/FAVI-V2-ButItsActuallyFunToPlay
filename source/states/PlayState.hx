@@ -1,10 +1,10 @@
 package states;
 
-import backend.Highscore;
-import backend.StageData;
-import backend.WeekData;
-import backend.Song;
-import backend.Section;
+import backend.data.Highscore;
+import backend.data.StageData;
+import backend.data.WeekData;
+import backend.song.Song;
+import backend.song.Section;
 import backend.Rating;
 
 import modcharting.ModchartFuncs;
@@ -28,9 +28,9 @@ import openfl.utils.Assets as OpenFlAssets;
 import openfl.events.KeyboardEvent;
 import haxe.Json;
 
-import objects.Character.Shadow;
-import objects.ui.SubtitlesBox.EventType;
-import objects.ui.SubtitlesBox.SubtitlesUtil;
+import gameObjects.Character.Shadow;
+import gameObjects.ui.SubtitlesBox.EventType;
+import gameObjects.ui.SubtitlesBox.SubtitlesUtil;
 
 import states.editors.ChartingState;
 import states.editors.CharacterEditorState;
@@ -47,9 +47,8 @@ import openfl.filters.ShaderFilter;
 #else import vlc.MP4Handler as VideoHandler; #end
 #end
 
-import objects.notes.Note.EventNote;
-import objects.*;
-import states.stages.objects.*;
+import gameObjects.ui.notes.Note.EventNote;
+import gameObjects.*;
 
 #if LUA_ALLOWED
 import psychlua.*;
@@ -610,27 +609,27 @@ class PlayState extends MusicBeatState
 
 		switch (curStage)
 		{
-			case 'stage': new states.stages.StageWeek1(); //Week 1
-			case 'alleyway' | 'ddStage': new states.stages.DevilishStage(); //Devilish Deal
-			case 'abandonedStreet': new states.stages.Episode1Street(); //Isolated, Lunacy, and Delusional
-			case 'forestNew': new states.stages.GoofyForest(); //Hunted
-			case 'circus': new states.stages.LaughyTracky(); //Laugh Track
-			case 'vaultRoom': new states.stages.YouveBeenBlessed(); //Bless
-			case 'fuckingLine': new states.stages.FuckingLine(); //Don't Cross!
-			case 'war': new states.stages.GiveMeTheFiles(); //War Dilemma
-			case 'trueGrinsOfSins': new states.stages.SmileStage(); //Twisted Grins
-			case 'waltRoom': new states.stages.WaltStage(); //Mercy/Mercy Legacy
-			case 'apartment': new states.stages.ShotgunMick(); //Cycled Sins
-			case 'grassNation': new states.stages.ForbiddenRealm(); //Malfunction
-			case 'clubhouse': new states.stages.Birtbhday(); //Birthday
-			case 'staticVoid': new states.stages.StaticVoid(); //RS lmao
-			case 'menuSongs': new states.stages.MenuSongs(); //Menu Songs
+			case 'stage': new gameObjects.stages.StageWeek1(); //Week 1
+			case 'alleyway' | 'ddStage': new gameObjects.stages.DevilishStage(); //Devilish Deal
+			case 'abandonedStreet': new gameObjects.stages.Episode1Street(); //Isolated, Lunacy, and Delusional
+			case 'forestNew': new gameObjects.stages.GoofyForest(); //Hunted
+			case 'circus': new gameObjects.stages.LaughyTracky(); //Laugh Track
+			case 'vaultRoom': new gameObjects.stages.YouveBeenBlessed(); //Bless
+			case 'fuckingLine': new gameObjects.stages.FuckingLine(); //Don't Cross!
+			case 'war': new gameObjects.stages.GiveMeTheFiles(); //War Dilemma
+			case 'trueGrinsOfSins': new gameObjects.stages.SmileStage(); //Twisted Grins
+			case 'waltRoom': new gameObjects.stages.WaltStage(); //Mercy/Mercy Legacy
+			case 'apartment': new gameObjects.stages.ShotgunMick(); //Cycled Sins
+			case 'grassNation': new gameObjects.stages.ForbiddenRealm(); //Malfunction
+			case 'clubhouse': new gameObjects.stages.Birtbhday(); //Birthday
+			case 'staticVoid': new gameObjects.stages.StaticVoid(); //RS lmao
+			case 'menuSongs': new gameObjects.stages.MenuSongs(); //Menu Songs
 			//Legacy is A S S
-			case 'theLoop': new states.stages.legacyStages.LegEpisode1Street(); //Episode 1 legacy songs
-			case 'forestOld': new states.stages.legacyStages.LegForest(); //Hunted Legacy
-			case 'smilesOffice': new states.stages.legacyStages.LegSmile(); //Twisted Grins Legacy
-			case 'forbiddenRealm': new states.stages.legacyStages.LegForbiddenRealm(); //Malfunction Legacy
-			case 'testingArea': new states.stages.TestStage(); //test area
+			case 'theLoop': new gameObjects.stages.legacyStages.LegEpisode1Street(); //Episode 1 legacy songs
+			case 'forestOld': new gameObjects.stages.legacyStages.LegForest(); //Hunted Legacy
+			case 'smilesOffice': new gameObjects.stages.legacyStages.LegSmile(); //Twisted Grins Legacy
+			case 'forbiddenRealm': new gameObjects.stages.legacyStages.LegForbiddenRealm(); //Malfunction Legacy
+			case 'testingArea': new gameObjects.stages.TestStage(); //test area
 		}
 
 		stageBGDark = new FlxSprite().makeGraphic(1, 1, 0xFFFFFFFF);
@@ -1606,7 +1605,7 @@ class PlayState extends MusicBeatState
 					opponentVocals.pause();
 				}
 	
-				openSubState(new Prompt('Are you sure you want to quit?\n\nYou will lose your unsaved progress.', 0, function(){
+				openSubState(new gameObjects.ui.customEditorUI.Prompt('Are you sure you want to quit?\n\nYou will lose your unsaved progress.', 0, function(){
 					System.exit(0);
 					DiscordClient.shutdown();
 				}, function(){
@@ -2504,7 +2503,7 @@ class PlayState extends MusicBeatState
 				opponentVocals.pause();
 			}
 
-			openSubState(new Prompt('Are you sure you want to quit?\n\nYour data will still save if you do.', 0, function(){
+			openSubState(new gameObjects.ui.customEditorUI.Prompt('Are you sure you want to quit?\n\nYour data will still save if you do.', 0, function(){
 				System.exit(0);
 				DiscordClient.shutdown();
 			}, function(){
@@ -2732,17 +2731,17 @@ class PlayState extends MusicBeatState
 		if (!boyfriend.animatedIcon)
 			if (iconP1.frames.frames.length >= 3 && healthBar.percent > 80)
 			{
-				if (SONG.song == "Isolated") states.stages.Episode1Street.demonBFIcon.animation.curAnim.curFrame = 2;
+				if (SONG.song == "Isolated") gameObjects.stages.Episode1Street.demonBFIcon.animation.curAnim.curFrame = 2;
 				iconP1.animation.curAnim.curFrame = 2;
 			}
 			else if (iconP1.frames.frames.length >= 2 && healthBar.percent < 20)
 			{
-				if (SONG.song == "Isolated") states.stages.Episode1Street.demonBFIcon.animation.curAnim.curFrame = 1;
+				if (SONG.song == "Isolated") gameObjects.stages.Episode1Street.demonBFIcon.animation.curAnim.curFrame = 1;
 				iconP1.animation.curAnim.curFrame = 1;
 			}
 			else
 			{
-				if (SONG.song == "Isolated") states.stages.Episode1Street.demonBFIcon.animation.curAnim.curFrame = 1;
+				if (SONG.song == "Isolated") gameObjects.stages.Episode1Street.demonBFIcon.animation.curAnim.curFrame = 1;
 				iconP1.animation.curAnim.curFrame = 0;
 			}
 		else
@@ -2756,8 +2755,8 @@ class PlayState extends MusicBeatState
 			{
 				if (SONG.song == "Isolated")
 				{
-					states.stages.Episode1Street.lunacyIcon.animation.curAnim.curFrame = 1;
-					states.stages.Episode1Street.delusionalIcon.animation.curAnim.curFrame = 1;
+					gameObjects.stages.Episode1Street.lunacyIcon.animation.curAnim.curFrame = 1;
+					gameObjects.stages.Episode1Street.delusionalIcon.animation.curAnim.curFrame = 1;
 				}
 				iconP2.animation.curAnim.curFrame = 1;
 			}
@@ -2765,8 +2764,8 @@ class PlayState extends MusicBeatState
 			{
 				if (SONG.song == "Isolated")
 				{
-					states.stages.Episode1Street.lunacyIcon.animation.curAnim.curFrame = 2;
-					states.stages.Episode1Street.delusionalIcon.animation.curAnim.curFrame = 2;
+					gameObjects.stages.Episode1Street.lunacyIcon.animation.curAnim.curFrame = 2;
+					gameObjects.stages.Episode1Street.delusionalIcon.animation.curAnim.curFrame = 2;
 				}
 				iconP2.animation.curAnim.curFrame = 2;
 			}
@@ -2774,8 +2773,8 @@ class PlayState extends MusicBeatState
 			{
 				if (SONG.song == "Isolated")
 				{
-					states.stages.Episode1Street.lunacyIcon.animation.curAnim.curFrame = 0;
-					states.stages.Episode1Street.delusionalIcon.animation.curAnim.curFrame = 0;
+					gameObjects.stages.Episode1Street.lunacyIcon.animation.curAnim.curFrame = 0;
+					gameObjects.stages.Episode1Street.delusionalIcon.animation.curAnim.curFrame = 0;
 				}
 				iconP2.animation.curAnim.curFrame = 0;
 			}
@@ -2799,9 +2798,9 @@ class PlayState extends MusicBeatState
 			iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * iconP2.scale.x) / 2 - iconOffset * 2;
 			if (SONG.song == "Devilish Deal")
 			{
-				states.stages.DevilishStage.minnieIcon.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(-healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * iconP2.scale.x) / 2 - iconOffset * 25;
-				states.stages.DevilishStage.satanIcon.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(-healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * iconP1.scale.x - 150) / 2 - iconOffset * 24;
-				states.stages.DevilishStage.satanIconPulse.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(-healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * iconP1.scale.x - 150) / 2 - iconOffset * 24;
+				gameObjects.stages.DevilishStage.minnieIcon.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(-healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * iconP2.scale.x) / 2 - iconOffset * 25;
+				gameObjects.stages.DevilishStage.satanIcon.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(-healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * iconP1.scale.x - 150) / 2 - iconOffset * 24;
+				gameObjects.stages.DevilishStage.satanIconPulse.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(-healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * iconP1.scale.x - 150) / 2 - iconOffset * 24;
 			}
 		}
 

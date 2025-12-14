@@ -26,17 +26,17 @@ import openfl.media.Sound;
 import openfl.net.FileReference;
 import openfl.utils.Assets as OpenFlAssets;
 
-import backend.Song;
-import backend.Section;
-import backend.StageData;
+import backend.song.Song;
+import backend.song.Section;
+import backend.data.StageData;
 
-import objects.notes.Note;
-import objects.notes.StrumNote;
-import objects.notes.NoteSplash;
-import objects.HealthIcon;
-import objects.AttachedSprite;
-import objects.Character;
-import substates.Prompt;
+import gameObjects.ui.notes.Note;
+import gameObjects.ui.notes.StrumNote;
+import gameObjects.ui.notes.NoteSplash;
+import gameObjects.ui.HealthIcon;
+import gameObjects.utils.AttachedSprite;
+import gameObjects.Character;
+import gameObjects.ui.customEditorUI.Prompt;
 import lime.app.Application;
 
 #if sys
@@ -48,13 +48,13 @@ import flash.media.Sound;
 
 class ChartingState extends MusicBeatState
 {
-	public static var noteTypeList:Array<Dynamic> = states.editors.objects.Notes.getNotes();
+	public static var noteTypeList:Array<Dynamic> = gameObjects.ui.customEditorUI.Notes.getNotes();
 	
 	public var ignoreWarnings = false;
 	var curNoteTypes:Array<String> = [];
 	var undos = [];
 	var redos = [];
-	var eventStuff:Array<Dynamic> = states.editors.objects.Events.getEvents();
+	var eventStuff:Array<Dynamic> = gameObjects.ui.customEditorUI.Events.getEvents();
 
 	var _file:FileReference;
 	var UI_box:FlxUITabMenu;

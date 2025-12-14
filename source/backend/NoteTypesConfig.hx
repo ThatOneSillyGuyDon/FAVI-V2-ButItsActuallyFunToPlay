@@ -1,6 +1,6 @@
 package backend;
 
-import objects.notes.Note;
+import gameObjects.ui.notes.Note;
 
 typedef NoteTypeProperty = {
 	property:Array<String>,

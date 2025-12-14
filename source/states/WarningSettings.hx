@@ -4,9 +4,9 @@ import lime.app.Application;
 import flixel.text.FlxText.FlxTextFormat;
 import flixel.text.FlxText.FlxTextFormatMarkerPair;
 import backend.FlxTextAlphabet;
-import objects.AttachedFlxText;
+import gameObjects.utils.AttachedFlxText;
 import flixel.addons.transition.FlxTransitionableState;
-import options.Option;
+import gameObjects.ui.Option;
 
 class WarningSettings extends MusicBeatState {
     var menuCam:FlxCamera;

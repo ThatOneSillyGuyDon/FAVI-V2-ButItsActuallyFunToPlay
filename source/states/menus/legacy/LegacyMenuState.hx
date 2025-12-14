@@ -536,8 +536,8 @@ class LegacyMenuState extends MusicBeatState
 										Conductor.bpm = (50); // changes back to titlescreen bpm
 										FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'), 1); // resets music back to menu music
 										FlxG.sound.music.fadeIn();
-										LoadingState.loadAndSwitchState(new options.OptionsState());
-										options.OptionsState.onPlayState = false;
+										LoadingState.loadAndSwitchState(new states.options.OptionsState());
+										states.options.OptionsState.onPlayState = false;
 										if (PlayState.SONG != null)
 										{
 											PlayState.SONG.arrowSkin = null;

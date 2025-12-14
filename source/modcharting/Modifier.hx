@@ -5,7 +5,7 @@ import flixel.math.FlxMath;
 import flixel.FlxG;
 
 import states.PlayState;
-import objects.notes.Note;
+import gameObjects.ui.notes.Note;
 
 import lime.math.Vector4;
 import haxe.ds.List;

@@ -43,11 +43,11 @@ import flixel.addons.transition.FlxTransitionableState;
 import lime.app.Application;
 
 import flixel.addons.ui.FlxUIDropDownMenu;
-import backend.Section.SwagSection;
-import backend.MusicBeatSubstate;
-import objects.notes.Note;
-import objects.notes.StrumNote;
-import backend.Song;
+import backend.song.Section.SwagSection;
+import backend.menu.MusicBeatSubstate;
+import gameObjects.ui.notes.Note;
+import gameObjects.ui.notes.StrumNote;
+import backend.song.Song;
 
 import modcharting.*;
 import modcharting.PlayfieldRenderer.StrumNoteType;
@@ -760,7 +760,7 @@ class ModchartEditorState extends MusicBeatState
             if(vocals != null) vocals.stop();
             if(opponentVocals != null) opponentVocals.stop();
 
-            backend.StageData.loadDirectory(PlayState.SONG);
+            backend.data.StageData.loadDirectory(PlayState.SONG);
             
             if (hasUnsavedChanges)
                 autosaveModchart(this);
@@ -784,7 +784,7 @@ class ModchartEditorState extends MusicBeatState
                 ModchartFile.autosaveMod = null; //makes it so it won't interfere with anything else upon leaving the editor
             };
             persistentUpdate = false;
-            openSubState(new Prompt('This action will clear all unsaved progress or data here.\n\nProceed?', 0, function(){exitFunc();}, null,false, camHUD));
+            openSubState(new gameObjects.ui.customEditorUI.Prompt('This action will clear all unsaved progress or data here.\n\nProceed?', 0, function(){exitFunc();}, null,false, camHUD));
         }
 
         var curBpmChange = getBPMFromSeconds(Conductor.songPosition);

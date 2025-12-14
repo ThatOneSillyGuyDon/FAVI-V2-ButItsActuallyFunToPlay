@@ -1,7 +1,7 @@
 package psychlua;
 
-import backend.WeekData;
-import objects.Character;
+import backend.data.WeekData;
+import gameObjects.Character;
 
 import openfl.display.BlendMode;
 import Type.ValueType;

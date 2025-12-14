@@ -20,8 +20,8 @@ import modcharting.Modifier;
 import flixel.system.FlxAssets.FlxShader;
 
 import states.PlayState;
-import objects.notes.Note;
-import objects.notes.StrumNote;
+import gameObjects.ui.notes.Note;
+import gameObjects.ui.notes.StrumNote;
 
 using StringTools;
 

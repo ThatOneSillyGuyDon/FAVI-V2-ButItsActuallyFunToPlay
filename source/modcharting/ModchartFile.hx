@@ -341,7 +341,7 @@ class ModchartFile
         if (rawJson != null)
         {
             json = rawJson;
-            #if (hscript && sys)
+            #if sys
             if (FileSystem.isDirectory(folderShit))
                 {
                     trace("folder le exists");

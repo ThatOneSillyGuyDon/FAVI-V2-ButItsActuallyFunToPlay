@@ -1,7 +1,7 @@
 package states.editors;
 
-import backend.Section.SwagSection;
-import backend.Song.SwagSong;
+import backend.song.Section.SwagSection;
+import backend.song.Song.SwagSong;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.util.FlxColor;
@@ -18,14 +18,14 @@ import flixel.util.FlxSort;
 import flixel.util.FlxTimer;
 import flixel.input.keyboard.FlxKey;
 import openfl.events.KeyboardEvent;
-import objects.notes.NoteSplash;
+import gameObjects.ui.notes.NoteSplash;
 
 import modcharting.ModchartFuncs;
 import modcharting.NoteMovement;
 import modcharting.PlayfieldRenderer;
 
 import haxe.Json;
-import objects.Character;
+import gameObjects.Character;
 import openfl.utils.Assets as OpenFlAssets;
 
 using StringTools;

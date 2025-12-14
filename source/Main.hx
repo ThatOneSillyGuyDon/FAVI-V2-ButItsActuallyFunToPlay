@@ -105,7 +105,7 @@ class Main extends Sprite
 		Controls.instance = new Controls();
 
 		var game:FlxGame = new FlxGame(gameWidth, gameHeight, Init, #if (flixel < "5.0.0") zoom, #end framerate, framerate, skipSplash, startFullscreen);
-		@:privateAccess game._customSoundTray = objects.ui.Soundtray;
+		@:privateAccess game._customSoundTray = gameObjects.ui.Soundtray;
 		addChild(game);
 
 		#if !mobile

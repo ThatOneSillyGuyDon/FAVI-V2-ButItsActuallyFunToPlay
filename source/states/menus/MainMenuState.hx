@@ -571,8 +571,8 @@ class MainMenuState extends MusicBeatState
 									FlxG.mouse.visible = false;
 									MusicBeatState.switchState(new StoryMenuState());
 								case 'options':
-									LoadingState.loadAndSwitchState(new options.OptionsState());
-									options.OptionsState.onPlayState = false;
+									LoadingState.loadAndSwitchState(new OptionsState());
+									OptionsState.onPlayState = false;
 									if (PlayState.SONG != null)
 									{
 										PlayState.SONG.arrowSkin = null;
