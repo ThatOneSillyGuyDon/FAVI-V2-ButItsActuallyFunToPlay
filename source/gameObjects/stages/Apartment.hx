@@ -4,7 +4,7 @@ package gameObjects.stages;
 import openfl.filters.ShaderFilter;
 #end
 
-class ShotgunMick extends BaseStage
+class Apartment extends BaseStage
 {
 	var glitchBG:FlxRuntimeShader;
 	public static var chromZoomShader:FlxRuntimeShader = new FlxRuntimeShader(Shaders.aberration, null, 150);

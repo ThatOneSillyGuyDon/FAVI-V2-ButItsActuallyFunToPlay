@@ -4,7 +4,7 @@ package gameObjects.stages;
 import openfl.filters.ShaderFilter;
 #end
 
-class GoofyForest extends BaseStage
+class ForestNew extends BaseStage
 {
 	var wobblyBG:FlxRuntimeShader = new FlxRuntimeShader(Shaders.acidTrip, null, 120);
 	var treesFront:FlxSprite;

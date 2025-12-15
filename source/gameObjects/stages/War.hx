@@ -1,6 +1,6 @@
 package gameObjects.stages;
 
-class GiveMeTheFiles extends BaseStage
+class War extends BaseStage
 {
 	//WAR DILEMMA
 	var defaultPath:String = 'favi/stages/war/stuff/';

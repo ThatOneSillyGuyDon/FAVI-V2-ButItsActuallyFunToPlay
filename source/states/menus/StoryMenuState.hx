@@ -27,12 +27,6 @@ class StoryMenuState extends MusicBeatState
 
 	var txtTracklist:FlxText;
 
-	var grpWeekText:FlxTypedGroup<MenuItem>;
-	var grpWeekCharacters:FlxTypedGroup<MenuCharacter>;
-	var bookStuff:FlxTypedGroup<FlxSprite>;
-
-	var grpLocks:FlxTypedGroup<FlxSprite>;
-
 	var loadedWeeks:Array<WeekData> = [];
 
 	var book:FlxSprite;
@@ -83,9 +77,6 @@ class StoryMenuState extends MusicBeatState
 		book.alpha = 1;
 		add(book);
 
-		bookStuff = new FlxTypedGroup<FlxSprite>();
-		add(bookStuff);
-
 		// I have a present simple for you
 
 		booksimage = new FlxSprite();
@@ -101,12 +92,6 @@ class StoryMenuState extends MusicBeatState
 		add(list);
 
 
-		grpWeekText = new FlxTypedGroup<MenuItem>();
-		add(grpWeekText);
-
-		grpLocks = new FlxTypedGroup<FlxSprite>();
-		add(grpLocks);
-
 		var num:Int = 0;
 		for (i in 0...WeekData.weeksList.length)
 		{
@@ -119,8 +104,6 @@ class StoryMenuState extends MusicBeatState
 			}
 		}
 
-		WeekData.setDirectoryFromWeek(loadedWeeks[0]);
-
 		difficultySelectors = new FlxGroup();
 
 		Difficulty.difficulties = Difficulty.defaultList.copy();
@@ -129,9 +112,6 @@ class StoryMenuState extends MusicBeatState
 			lastDifficulty = Difficulty.defaultDifficulty;
 		}
 		curDifficulty = Math.round(Math.max(0, Difficulty.defaultList.indexOf(lastDifficulty)));
-
-		//add(yellowBG);
-		add(grpWeekCharacters);
 
 		if(!ClientPrefs.data.lowQuality) 
 		{
@@ -156,8 +136,6 @@ class StoryMenuState extends MusicBeatState
 			grain.scale.x = 1.1;
 			grain.scale.y = 1.1;
 			add(grain);
-
-
 		}
 
 		gradient = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/filters/gradient'));
@@ -189,14 +167,6 @@ class StoryMenuState extends MusicBeatState
 
 		if (FlxG.sound.music != null && FlxG.sound.music.playing)
 			Conductor.songPosition = FlxG.sound.music.time;
-
-		if (grpLocks != null)
-		{
-			grpLocks.forEach(function(lock:FlxSprite)
-			{
-				lock.y = grpWeekText.members[lock.ID].y;
-			});
-		}
 
 		var upP = controls.UI_UP_P;
 		var downP = controls.UI_DOWN_P;
@@ -338,8 +308,6 @@ class StoryMenuState extends MusicBeatState
 			curDifficulty = Difficulty.difficulties.length-1;
 		if (curDifficulty >= Difficulty.difficulties.length)
 			curDifficulty = 0;
-
-		WeekData.setDirectoryFromWeek(loadedWeeks[curWeek]);
 	}
 
 	var lerpScore:Int = 0;
@@ -357,28 +325,6 @@ class StoryMenuState extends MusicBeatState
 			storyName = 'Broken Relationship';
 
 		lime.app.Application.current.window.title = "Funkin.avi - Story Menu - " + storyName;
-
-		var bullShit:Int = 0;
-
-		for (item in grpWeekText.members)
-		{
-			switch (curWeek)
-			{
-				case 0:
-					item.x = 20;
-				case 1:
-					item.x = -20;
-				case 2:
-					item.x = 150;
-			}
-			item.targetY = bullShit - curWeek;
-			if (item.targetY == 0 && !lockedWeek) {
-				item.alpha = 1;
-			} else {
-				item.alpha = 0;
-			}
-			bullShit++;
-		}
 
 		FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
 

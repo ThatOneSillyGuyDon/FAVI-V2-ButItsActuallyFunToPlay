@@ -1,10 +1,10 @@
-package gameObjects.stages.legacyStages;
+package gameObjects.stages;
 
 #if !flash 
 import openfl.filters.ShaderFilter;
 #end
 
-class LegForest extends BaseStage
+class ForestOld extends BaseStage
 {
 
 	public static var grayScale:FlxRuntimeShader = new FlxRuntimeShader(Shaders.grayScale, null, 120);

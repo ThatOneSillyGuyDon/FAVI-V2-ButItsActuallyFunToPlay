@@ -5,7 +5,7 @@ import openfl.display.BlendMode;
 import openfl.filters.ShaderFilter;
 #end
 
-class YouveBeenBlessed extends BaseStage
+class VaultRoom extends BaseStage
 {
 	//BLESS
 	var vault:FlxSprite;

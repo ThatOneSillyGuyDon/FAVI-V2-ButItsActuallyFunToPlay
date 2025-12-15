@@ -4,7 +4,7 @@ package gameObjects.stages;
 import openfl.filters.ShaderFilter;
 #end
 
-class DevilishStage extends BaseStage
+class DDStage extends BaseStage
 {
 	//Stage vars
 	var gradient:FlxSprite;

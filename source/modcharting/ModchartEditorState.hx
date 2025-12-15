@@ -1181,11 +1181,7 @@ class ModchartEditorState extends MusicBeatState
 		try
 		{
 			var path:String = Paths.getPath('characters/$char.json' , TEXT, null, true);
-			#if MODS_ALLOWED
-			var character:Dynamic = Json.parse(File.getContent(path));
-			#else
-			var character:Dynamic = Json.parse(Assets.getText(path));
-			#end
+            var character:Dynamic = Json.parse(Assets.getText(path));
 			return character.vocals_file;
 		}
 		return null;

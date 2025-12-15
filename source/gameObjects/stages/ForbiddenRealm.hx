@@ -8,14 +8,13 @@ import lime.app.Application;
 
 class ForbiddenRealm extends BaseStage
 {
-	var staticSpr:FlxSprite;
-	var fuckedBG:FlxSprite;
-	var noSignalBG:FlxSprite;
-	var noSignalLogo:FlxSprite;
-
 	//MALFUNCTION
 	var mickeyEmitter:FlxEmitter;
+	var fuckingsquares:FlxSprite;
 	var whiteBG:FlxSprite;
+	var glitchBG:FlxRuntimeShader;
+	var staticBG:FlxRuntimeShader;
+	var accessPath:String;
 
 	public var crashLives:FlxText;
 	public var crashLivesIcon:FlxSprite;
@@ -25,203 +24,98 @@ class ForbiddenRealm extends BaseStage
 	var heartTween:FlxTween;
 	var malfunctionTxt:FlxTween;
 
+	public static var malFreakG:FlxRuntimeShader = new FlxRuntimeShader(Shaders.freakyGlitch, null, 120);
+	public static var malBG:FlxRuntimeShader = new FlxRuntimeShader(Shaders.malfunctionBGEffect, null, 120);
+
 	//SHADERS WOOOOOOOOOOOOOOOOO
 	public static var chromZoomShader:FlxRuntimeShader = new FlxRuntimeShader(Shaders.aberration, null, 150);
 	public static var chromNormalShader:FlxRuntimeShader = new FlxRuntimeShader(Shaders.aberrationDefault, null, 150);
-	public static var malFreakG:FlxRuntimeShader = new FlxRuntimeShader(Shaders.freakyGlitch, null, 120);
-	public static var malBG:FlxRuntimeShader = new FlxRuntimeShader(Shaders.malfunctionBGEffect, null, 120);
 	public static var blurShader:FlxRuntimeShader = new FlxRuntimeShader(Shaders.tiltShift, null, 120);
 
-	public static var blurEffect:Float = 0;
+	public static var blurEffect:Float = 0.0;
 	public var shaderAnim:Float = 0;
 
 	public static var blurTween:FlxTween;
 
 	override function create()
-	{	
-		if (!ClientPrefs.data.lowQuality)
+	{
+		game.defaultCamZoom = 0.8;
+
+		accessPath = PlayState.SONG.song == 'Malfunction Legacy' ? 'PixelMouse' : 'malfunctionBG-NEW';
+		
+		staticBG = new FlxRuntimeShader(Shaders.tvStatic, null, 120);
+		glitchBG = new FlxRuntimeShader(Shaders.vignetteGlitch, null, 130);
+
+		fuckingsquares = new FlxSprite(-750, -850);
+		fuckingsquares.loadGraphic(Paths.image(PlayState.pathway + accessPath));
+		fuckingsquares.scale.set(1.2, 1);
+		fuckingsquares.updateHitbox();
+		fuckingsquares.antialiasing = false;
+		fuckingsquares.scrollFactor.set(1, 1);
+		fuckingsquares.active = false;
+		if (ClientPrefs.data.shaders && !ClientPrefs.data.lowQuality)
+			fuckingsquares.shader = malBG;
+		add(fuckingsquares);
+
+		var greyParticles:FlxEmitter = new FlxEmitter(-2080.5, 650.4);
+		greyParticles.launchMode = SQUARE;
+		greyParticles.velocity.set(-50, -200, 50, -600, -90, 0, 90, -600);
+		greyParticles.scale.set(4, 4, 4, 4, 0, 0, 0, 0);
+		greyParticles.drag.set(0, 0, 0, 0, 5, 5, 10, 10);
+		greyParticles.width = 4787.45;
+		greyParticles.alpha.set(1, 1);
+		greyParticles.lifespan.set(1.9, 4.9);
+		greyParticles.loadParticles(Paths.image(PlayState.pathway + 'greyParticle'), 500, 16, true);
+		greyParticles.start(false, FlxG.random.float(.0521, .1060), 1000000);
+		
+		whiteBG = new FlxSprite(-800, -200).makeGraphic(1, 1, 0xFFFFFFFF);
+		whiteBG.scale.set(FlxG.width, FlxG.height);
+		whiteBG.alpha = 0.001;
+		whiteBG.active = false;
+		add(whiteBG);
+		
+		if (PlayState.SONG.song != 'Malfunction Legacy')
 		{
-			var white:FlxSprite = new FlxSprite().makeGraphic(FlxG.width*5, FlxG.height*5, FlxColor.WHITE);
-			white.scrollFactor.set(0, 0);
-			white.antialiasing = ClientPrefs.data.antialiasing;
-			white.screenCenter();
-			add(white);
-
-			var grass1:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image(PlayState.pathway + 'grass4'));
-			grass1.scrollFactor.set(0.45, 0.45);
-			grass1.antialiasing = false;
-			if (ClientPrefs.data.shaders && !ClientPrefs.data.lowQuality)
-				grass1.shader = malBG;
-			add(grass1);
-
-			var grass2:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image(PlayState.pathway + 'grass3'));
-			grass2.scrollFactor.set(0.57, 0.57);
-			grass2.antialiasing = false;
-			if (ClientPrefs.data.shaders && !ClientPrefs.data.lowQuality)
-				grass2.shader = malBG;
-			add(grass2);
-
-			var grass3:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image(PlayState.pathway + 'grass2'));
-			grass3.scrollFactor.set(0.65, 0.65);
-			grass3.antialiasing = false;
-			if (ClientPrefs.data.shaders && !ClientPrefs.data.lowQuality)
-				grass3.shader = malBG;
-			add(grass3);
-
-			var grass4:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image(PlayState.pathway + 'grass1'));
-			grass4.scrollFactor.set(0.75, 0.75);
-			grass4.antialiasing = false;
-			if (ClientPrefs.data.shaders && !ClientPrefs.data.lowQuality)
-				grass4.shader = malBG;
-			add(grass4);
-
-			var ground:FlxBackdrop = new FlxBackdrop(Paths.image(PlayState.pathway + 'ground'), X, 0, 0);
-			ground.antialiasing = false;
-			add(ground);
-
-			var cloudClutters:FlxBackdrop = new FlxBackdrop(Paths.image(PlayState.pathway + 'cloudClutters'), X, 0, 0);
-			cloudClutters.antialiasing = false;
-			cloudClutters.scrollFactor.set(0.92, 0.92);
-			cloudClutters.velocity.set(100, 0);
-			add(cloudClutters);
-
-			whiteBG = new FlxSprite().makeGraphic(1, 1, 0xFFFFFFFF);
-			whiteBG.scale.set(FlxG.width*5, FlxG.height*5);
-			whiteBG.scrollFactor.set(0, 0);
-			whiteBG.screenCenter();
-			whiteBG.alpha = 0.001;
-			whiteBG.active = false;
-			add(whiteBG);
-
-			if (ClientPrefs.data.epilepsy)
-			{
-				fuckedBG = new FlxSprite();
-				fuckedBG.frames = Paths.getSparrowAtlas(PlayState.pathway + 'screenFucker/fuckedUpBG');
-				fuckedBG.animation.addByPrefix('bg1', 'bg1', 24, true);
-				fuckedBG.animation.addByPrefix('bg2', 'bg2', 24, true);
-				fuckedBG.animation.addByPrefix('bg3', 'bg3', 24, true);
-				fuckedBG.animation.addByPrefix('bg4', 'bg4', 24, true);
-				fuckedBG.animation.play('bg1');
-				fuckedBG.antialiasing = false;
-				fuckedBG.alpha = 0.0001;
-				fuckedBG.scale.set(1.75, 1.75);
-				fuckedBG.x -= 250;
-				fuckedBG.y += 50;
-				add(fuckedBG);
-			}
-
-			var fog1:FlxBackdrop = new FlxBackdrop(Paths.image(PlayState.pathway + 'fogBack'), X, 0, 0);
-			fog1.antialiasing = false;
-			fog1.scrollFactor.set(1.1, 1.1);
-			fog1.velocity.set(87, 0);
-			add(fog1);
-
-			for (shit in [grass1, grass2, grass3, grass4, ground, cloudClutters, fog1])
-			{
-				shit.scale.set(1.75, 1.75);
-				shit.x -= 250;
-				shit.y += 50;
-			}
-
-			if (ClientPrefs.data.epilepsy)
-			{
-				noSignalBG = new FlxSprite();
-				noSignalBG.frames = Paths.getSparrowAtlas(PlayState.pathway + 'screenFucker/noSignalBG');
-				noSignalBG.animation.addByPrefix('signal1', 'signal1', 24, true);
-				noSignalBG.animation.addByPrefix('signal2', 'signal2', 24, true);
-				noSignalBG.animation.addByPrefix('signal3', 'signal3', 24, true);
-				noSignalBG.animation.addByPrefix('signal4', 'signal4', 24, true);
-				noSignalBG.animation.play('signal1');
-
-				staticSpr = new FlxSprite();
-				staticSpr.frames = Paths.getSparrowAtlas(PlayState.pathway + 'screenFucker/TVstatic');
-				staticSpr.animation.addByPrefix('TVstatic idle', 'TVstatic idle', 20, true);
-				staticSpr.animation.play('TVstatic idle');
-
-				noSignalLogo = new FlxSprite().loadGraphic(Paths.image(PlayState.pathway + 'screenFucker/noSignalLogo'));
-
-				for (screenShit in [noSignalBG, staticSpr, noSignalLogo])
-				{
-					screenShit.cameras = [camHUD];
-					screenShit.screenCenter();
-					screenShit.alpha = 0.001;
-					screenShit.antialiasing = false;
-				}
-			}
+			add(greyParticles);
 		}
-		else
-		{
-			var white:FlxSprite = new FlxSprite().makeGraphic(FlxG.width*5, FlxG.height*5, FlxColor.WHITE);
-			white.scrollFactor.set(0, 0);
-			white.antialiasing = ClientPrefs.data.antialiasing;
-			white.screenCenter();
-			add(white);
-			
-			var lowQualityBG:FlxSprite = new FlxSprite(-250, 50).loadGraphic(Paths.image('favi/stages/grassNation/bgLowQuality'));
-			lowQualityBG.antialiasing = false;
-			lowQualityBG.scale.set(1.75, 1.75);
-			add(lowQualityBG);
-
-			if (ClientPrefs.data.epilepsy)
-			{
-				fuckedBG = new FlxSprite(-250, 50).loadGraphic(Paths.image(PlayState.pathway + 'fuckedBGLow'));
-				fuckedBG.antialiasing = false;
-				fuckedBG.scale.set(1.75, 1.75);
-				fuckedBG.alpha = 0.001;
-				add(fuckedBG);
-			}
-
-			whiteBG = new FlxSprite(-800, -200).makeGraphic(1, 1, 0xFFFFFFFF);
-			whiteBG.scale.set(FlxG.width*5, FlxG.height*5);
-			whiteBG.scrollFactor.set(0, 0);
-			whiteBG.screenCenter();
-			whiteBG.alpha = 0.001;
-			whiteBG.active = false;
-			add(whiteBG);
-
-			if (ClientPrefs.data.epilepsy)
-			{
-				noSignalBG = new FlxSprite().loadGraphic(Paths.image(PlayState.pathway + 'screenFucker/noSignalLow'));
-				staticSpr = new FlxSprite().loadGraphic(Paths.image(PlayState.pathway + 'screenFucker/staticLow'));
-				noSignalLogo = new FlxSprite().loadGraphic(Paths.image(PlayState.pathway + 'screenFucker/noSignalLogo'));
-
-				for (screenShit in [noSignalBG, staticSpr, noSignalLogo])
-				{
-					screenShit.cameras = [camHUD];
-					screenShit.screenCenter();
-					screenShit.alpha = 0.001;
-					screenShit.antialiasing = false;
-				}
-			}
-		}
-
-		if (ClientPrefs.data.epilepsy)
-		{
-			for (stuf in [noSignalBG, staticSpr, noSignalLogo])
-				add(stuf);
-		}
-		game.camBars.fade(FlxColor.BLACK, 0.0001);
-		camHUD.alpha = 0.001;
 	}
 
 	override function createPost()
-	{
-		game.defaultCamZoom = 0.8;
+	{	
+		var blackParticles:FlxEmitter = new FlxEmitter(-2080.5, 912.4);
+		blackParticles.launchMode = SQUARE;
+		blackParticles.velocity.set(-70, -220, 70, -620, -110, 20, 110, -620);
+		blackParticles.scale.set(6, 6, 6, 6, 2, 2, 2, 2);
+		blackParticles.drag.set(2, 2, 2, 2, 7, 7, 12, 12);
+		blackParticles.width = 4787.45;
+		blackParticles.alpha.set(1, 1);
+		blackParticles.lifespan.set(1.9, 4.9);
+		blackParticles.loadParticles(Paths.image(PlayState.pathway + 'particleBlack'), 500, 16, true);
+		blackParticles.start(false, FlxG.random.float(.0821, .1460), 1000000);
 		
-		var fog2:FlxBackdrop = new FlxBackdrop(Paths.image(PlayState.pathway + 'fogFore'), X, 0, 0);
-		fog2.antialiasing = false;
-		fog2.scrollFactor.set(1.32, 1.32);
-		fog2.velocity.set(-173, 0);
-		add(fog2);
-
-		for (shit in [fog2])
+		mickeyEmitter = new FlxEmitter(-2099.8, 1620.4);
+		for (i in 0 ... 100)
 		{
-			shit.scale.set(1.75, 1.75);
-			shit.x -= 250;
-			shit.y += 50;
+			var mickeyParticle = new FlxParticle();
+			mickeyParticle.frames = Paths.getSparrowAtlas(PlayState.pathway + 'mickParticle');
+			mickeyParticle.animation.addByPrefix('mickParticle idle', 'mickParticle idle', 12, true);
+			mickeyParticle.animation.play('mickParticle idle');
+			mickeyParticle.exists = false;
+			mickeyEmitter.add(mickeyParticle);
 		}
-
-		game.gf.visible = false;
+		mickeyEmitter.launchMode = SQUARE;
+		mickeyEmitter.velocity.set(-50, -400, 50, -800, -100, 0, 100, -800);
+		mickeyEmitter.scale.set(3.4, 3.4, 3.4, 3.4, 0, 0, 0, 0);
+		mickeyEmitter.drag.set(0, 0, 0, 0, 5, 5, 10, 10);
+		mickeyEmitter.width = 4200.45;
+		mickeyEmitter.alpha.set(1, 1);
+		mickeyEmitter.lifespan.set(4, 4.5);
+		mickeyEmitter.start(false, FlxG.random.float(.125, .287), 100000);
+		mickeyEmitter.emitting = false;
+		
+		if (PlayState.SONG.song != 'Malfunction Legacy')
+			add(blackParticles);
+			add(mickeyEmitter);
 
 		if (ClientPrefs.data.shaders)
 		{
@@ -229,20 +123,14 @@ class ForbiddenRealm extends BaseStage
 			{
 				camGame.setFilters(
 				[
-					new ShaderFilter(chromZoomShader),
-					new ShaderFilter(blurShader),
+					new ShaderFilter(chromNormalShader),
+					new ShaderFilter(blurShader)
 				]);
 				camHUD.setFilters(
 				[
 					new ShaderFilter(chromNormalShader),
 					new ShaderFilter(blurShader)
 				]);
-				
-				new flixel.util.FlxTimer().start(5, function(tmr)
-				{
-					camGame.setFilters([new ShaderFilter(chromZoomShader)]);
-					camHUD.setFilters([new ShaderFilter(chromNormalShader)]);
-				});
 			}
 		}
 
@@ -271,175 +159,28 @@ class ForbiddenRealm extends BaseStage
 		crashLivesIcon.scale.set(2.2, 2.2);
 		crashLivesIcon.antialiasing = false;
 		crashLivesIcon.cameras = [camHUD];
-		add(crashLives);
-		add(crashLivesIcon);
-		crashLivesCounter += 25;
+		game.uiGroup.add(crashLives);
+		game.uiGroup.add(crashLivesIcon);
+		crashLivesCounter += 30;
 		crashLives.text = 'Lives: ${crashLivesCounter}';
 	}
 
 	override function update(elapsed:Float)
 	{
-		shaderAnim = Conductor.songPosition / 1000;
+		if (game.dad.curCharacter == 'gm-calm-pixel')
+			game.dad.setPosition(-130, 50);
+		else
+			game.dad.setPosition(-100, 150);
+		
+		game.boyfriend.setPosition(1300, 600);
+		game.gf.visible = false;
 		
 		if (ClientPrefs.data.shaders)
 		{
 			chromNormalShader.setFloat('rOffset', game.chromEffect / 20);
 			chromNormalShader.setFloat('bOffset', -game.chromEffect / 20);
-			if (!ClientPrefs.data.lowQuality)
-			{
-				chromZoomShader.setFloat('aberration', game.chromEffect);
-				chromZoomShader.setFloat('effectTime', game.chromEffect);
-				malFreakG.setFloat("iTime", shaderAnim);
-				malBG.setFloat("iTime", shaderAnim);
-				if (ClientPrefs.data.epilepsy)
-				{
-					blurShader.setFloat('bluramount', blurEffect);
-				}
-			}
-		}
-	}
-	
-	var staticTwn:FlxTween;
-	var staticTmr:Float = 1;
-	
-	override function eventCalled(eventName:String, value1:String, value2:String, flValue1:Null<Float>, flValue2:Null<Float>, strumTime:Float)
-	{
-		switch(eventName)
-		{
-			case 'Change Dads Cam Offset':
-				if (!game.cpuControlled)
-				{
-					game.opponentCameraOffset[0] += flValue1;
-					game.opponentCameraOffset[1] += flValue2;
-				}
-			case 'Add Mal Shaders':
-				if (ClientPrefs.data.shaders)
-				{
-					if (!ClientPrefs.data.lowQuality && ClientPrefs.data.epilepsy)
-					{
-						camGame.setFilters(
-							[
-								new ShaderFilter(chromZoomShader), 
-								new ShaderFilter(blurShader)
-							]);
-						camHUD.setFilters([new ShaderFilter(chromNormalShader), new ShaderFilter(blurShader)]);
-					}
-				}
-			case 'Malfunction Countdown':
-				switch(flValue1)
-				{
-					case 3:
-						var count:FlxSprite = new FlxSprite().loadGraphic(Paths.image('favi/countdown/mal-prepare'));
-						count.scrollFactor.set();
-						count.updateHitbox();
-						count.setGraphicSize(Std.int(count.width * 6));
-						count.antialiasing = false;
-						count.screenCenter();
-						add(count);
-						FlxTween.tween(count, {y: count.y += 50, alpha: 0}, Conductor.crochet / 1000, {
-							ease: FlxEase.cubeInOut,
-							onComplete: function(twn:FlxTween)
-							{
-								count.destroy();
-							}
-						});
-						FlxG.sound.play(Paths.sound('intro3-glitch'), 2);
-					case 2:
-						var count:FlxSprite = new FlxSprite().loadGraphic(Paths.image('favi/countdown/mal-ready'));
-						count.scrollFactor.set();
-						count.updateHitbox();
-						count.setGraphicSize(Std.int(count.width * 6));
-						count.screenCenter();
-						count.antialiasing = false;
-						add(count);
-						FlxTween.tween(count, {y: count.y += 50, alpha: 0}, Conductor.crochet / 1000, {
-							ease: FlxEase.cubeInOut,
-							onComplete: function(twn:FlxTween)
-							{
-								count.destroy();
-							}
-						});
-						FlxG.sound.play(Paths.sound('intro2-glitch'), 2);
-					case 1:
-						var count:FlxSprite = new FlxSprite().loadGraphic(Paths.image('favi/countdown/mal-set'));
-						count.scrollFactor.set();
-						count.updateHitbox();
-						count.setGraphicSize(Std.int(count.width * 6));
-						count.screenCenter();
-						count.antialiasing = false;
-						add(count);
-						FlxTween.tween(count, {y: count.y += 50, alpha: 0}, Conductor.crochet / 1000, {
-							ease: FlxEase.cubeInOut,
-							onComplete: function(twn:FlxTween)
-							{
-								count.destroy();
-							}
-						});
-						FlxG.sound.play(Paths.sound('intro1-glitch'), 2);
-					case 0:
-						var count:FlxSprite = new FlxSprite().loadGraphic(Paths.image('favi/countdown/mal-go'));
-						count.scrollFactor.set();
-						count.updateHitbox();
-						count.setGraphicSize(Std.int(count.width * 6));
-						count.screenCenter();
-						count.antialiasing = false;
-						add(count);
-						FlxTween.tween(count, {y: count.y += 50, alpha: 0}, Conductor.crochet / 1000, {
-							ease: FlxEase.cubeInOut,
-							onComplete: function(twn:FlxTween)
-							{
-								count.destroy();
-							}
-						});
-						FlxG.sound.play(Paths.sound('introGo-glitch'), 2);
-				}
-			case 'Static Event':
-				if (ClientPrefs.data.epilepsy)
-				{
-					switch(value1.toLowerCase().trim())
-					{
-						case 'togglevis':
-							staticSpr.visible = !staticSpr.visible;
-						case 'setalpha':
-							staticSpr.alpha = Std.parseFloat(value2);
-						case 'twnalpha':
-							if (staticTwn != null)
-								staticTwn.cancel();
-							staticTwn = FlxTween.tween(staticSpr, {alpha: Std.parseFloat(value2)}, staticTmr, {ease: FlxEase.circIn});
-						case 'settime':
-							staticTmr = Std.parseFloat(value2);
-					}
-				}
-		
-			case 'Change Mal BG':
-				if (ClientPrefs.data.epilepsy)
-				{
-					switch(value1.toLowerCase().trim())
-					{
-						case 'togglevis':
-							fuckedBG.visible = !fuckedBG.visible;
-						case 'setalpha':
-							fuckedBG.alpha = Std.parseFloat(value2);
-						case 'changebg':
-							if (!ClientPrefs.data.lowQuality) fuckedBG.animation.play('bg${Std.parseFloat(value2)}');
-					}
-				}
-
-			case 'No Signal Event':
-				if (ClientPrefs.data.epilepsy)
-				{
-					switch(value1.toLowerCase().trim())
-					{
-						case 'togglevis':
-							noSignalBG.visible = !noSignalBG.visible;
-							noSignalLogo.visible = !noSignalLogo.visible;
-						case 'setalpha':
-							noSignalLogo.alpha = Std.parseFloat(value2);
-							noSignalBG.alpha = Std.parseFloat(value2);
-						case 'changebg':
-							if (!ClientPrefs.data.lowQuality) noSignalBG.animation.play('signal${Std.parseFloat(value2)}');
-					}
-				}	
+			if (ClientPrefs.data.epilepsy)
+				blurShader.setFloat('bluramount', blurEffect);
 		}
 	}
 
@@ -555,141 +296,69 @@ class ForbiddenRealm extends BaseStage
 
 	override function opponentNoteHit(note:Note)
 	{
-		if (dad.curCharacter == 'glitched-mickey-new-pixel')
+		if (game.healthThing > 0.05)
+			game.healthThing -= 0.016;
+		if (ClientPrefs.data.shaking)
 		{
-			if (game.healthThing > 0.05)
-				game.healthThing -= 0.01;
-			if (ClientPrefs.data.shaking)
-			{
-				camGame.shake(0.008, 0.07);
-				camHUD.shake(0.015, 0.07);
-			}
-			if (ClientPrefs.data.shaders)
-			{			
-				if(!ClientPrefs.data.lowQuality && ClientPrefs.data.epilepsy)
-				{
-					camGame.setFilters([
-						new ShaderFilter(chromZoomShader),
-						new ShaderFilter(chromNormalShader),
-						new ShaderFilter(blurShader)
-					]);
-					camHUD.setFilters([
-						new ShaderFilter(chromNormalShader),
-						new ShaderFilter(blurShader)
-					]);
-				}
-				
-				game.chromEffect += 0.2;
-				blurEffect += 2.5;
-				
-				if (game.chromTween != null)
-					game.chromTween.cancel();
-				if (blurTween != null)
-					blurTween.cancel();
-
-				game.chromTween = FlxTween.tween(
-					game,
-					{
-						chromEffect: 0.0001
-					},
-					0.1,
-					{
-						ease: FlxEase.sineOut,
-						onComplete: function(twn:FlxTween)
-						{
-							game.chromTween = null;
-						}
-					}
-				);
-				blurTween = FlxTween.tween(
-					gameObjects.stages.ForbiddenRealm,
-					{
-						blurEffect: 0.0
-					},
-					0.1,
-					{
-						ease: FlxEase.sineOut,
-						onComplete: function(twn:FlxTween)
-						{
-						
-							if(!ClientPrefs.data.lowQuality)
-							{
-								camGame.setFilters([new ShaderFilter(chromZoomShader), new ShaderFilter(chromNormalShader)]);
-								camHUD.setFilters([new ShaderFilter(chromNormalShader)]);
-							}
-							blurTween = null;
-						}
-					}
-				);
-			}
+			camGame.shake(0.008, 0.07);
+			camHUD.shake(0.015, 0.07);
 		}
-		else if (dad.curCharacter == 'malsquare-withFace')
+		if (ClientPrefs.data.shaders)
 		{
-			if (game.healthThing > 0.05)
-				game.healthThing -= 0.015;
-			if (ClientPrefs.data.shaking)
+			if(!ClientPrefs.data.lowQuality && ClientPrefs.data.epilepsy)
 			{
-				camGame.shake(0.01, 0.07);
-				camHUD.shake(0.018, 0.07);
+				camGame.setFilters([
+					new ShaderFilter(chromNormalShader),
+					new ShaderFilter(blurShader)
+				]);
+				camHUD.setFilters([
+					new ShaderFilter(chromNormalShader),
+					new ShaderFilter(blurShader)
+				]);
 			}
-			if (ClientPrefs.data.shaders)
-			{
-				if(!ClientPrefs.data.lowQuality && ClientPrefs.data.epilepsy)
-				{
-					camGame.setFilters([
-						new ShaderFilter(chromZoomShader),
-						new ShaderFilter(chromNormalShader),
-						new ShaderFilter(blurShader)
-					]);
-					camHUD.setFilters([
-						new ShaderFilter(chromNormalShader),
-						new ShaderFilter(blurShader)
-					]);
-				}
 				
-				game.chromEffect += 0.22;
-				blurEffect += 2.5;
+			game.chromEffect += 0.3;
+			blurEffect += 1.5;
 				
-				if (game.chromTween != null)
-					game.chromTween.cancel();
-				if (blurTween != null)
-					blurTween.cancel();
+			if (game.chromTween != null)
+				game.chromTween.cancel();
+			if (blurTween != null)
+				blurTween.cancel();
 
-				game.chromTween = FlxTween.tween(
-					game,
+			game.chromTween = FlxTween.tween(
+				game,
+				{
+					chromEffect: 0.0001
+				},
+				0.1,
+				{
+					ease: FlxEase.sineOut,
+					onComplete: function(twn:FlxTween)
 					{
-						chromEffect: 0.0001
-					},
-					0.1,
-					{
-						ease: FlxEase.sineOut,
-						onComplete: function(twn:FlxTween)
-						{
-							game.chromTween = null;
-						}
+						game.chromTween = null;
 					}
-				);
-				blurTween = FlxTween.tween(
-					gameObjects.stages.ForbiddenRealm,
+				}
+			);
+			blurTween = FlxTween.tween(
+				ForbiddenRealm,
+				{
+					blurEffect: 0.0
+				},
+				0.1,
+				{
+					ease: FlxEase.sineOut,
+					onComplete: function(twn:FlxTween)
 					{
-						blurEffect: 0.0
-					},
-					0.1,
-					{
-						ease: FlxEase.sineOut,
-						onComplete: function(twn:FlxTween)
-						{
 						
-							if(!ClientPrefs.data.lowQuality)
-							{
-								camGame.setFilters([new ShaderFilter(chromZoomShader), new ShaderFilter(chromNormalShader)]);
-								camHUD.setFilters([new ShaderFilter(chromNormalShader)]);
-							}
-							blurTween = null;
+						if(!ClientPrefs.data.lowQuality)
+						{
+							camGame.setFilters([new ShaderFilter(chromNormalShader)]);
+							camHUD.setFilters([new ShaderFilter(chromNormalShader)]);
 						}
+						blurTween = null;
 					}
-				);
-			}
+				}
+			);
 		}
 	}
 }

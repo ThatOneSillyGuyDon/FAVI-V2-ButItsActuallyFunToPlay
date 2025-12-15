@@ -27,7 +27,6 @@ class MusicBeatState extends modcharting.ModchartMusicBeatState
 
 	override function create() {
 		var skip:Bool = FlxTransitionableState.skipNextTransOut;
-		#if MODS_ALLOWED Mods.updatedOnState = false; #end
 
 		super.create();
 

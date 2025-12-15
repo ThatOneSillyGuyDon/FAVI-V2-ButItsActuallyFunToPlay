@@ -1,7 +1,5 @@
 package modcharting;
 
-import flixel.tweens.misc.BezierPathTween;
-import flixel.tweens.misc.BezierPathNumTween;
 import flixel.math.FlxMath;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;

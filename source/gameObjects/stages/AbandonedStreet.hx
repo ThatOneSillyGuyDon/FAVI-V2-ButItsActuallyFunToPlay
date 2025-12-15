@@ -4,7 +4,7 @@ package gameObjects.stages;
 import openfl.filters.ShaderFilter;
 #end
 
-class Episode1Street extends BaseStage
+class AbandonedStreet extends BaseStage
 {
 	//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 	var death:VideoSprite;

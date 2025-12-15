@@ -19,9 +19,6 @@ typedef CharacterFile = {
 	var scale:Float;
 	var sing_duration:Float;
 	var healthicon:String;
-	var animatedIcon:Bool;
-	var intenseIcon:Bool;
-	var iconBops:Bool;
 
 	var position:Array<Float>;
 	var camera_position:Array<Float>;
@@ -68,9 +65,6 @@ class Character extends FlxSkewedSprite
 	public var skipDance:Bool = false;
 
 	public var healthIcon:String = 'face';
-	public var animatedIcon:Bool = false;
-	public var intenseIcon:Bool = false;
-	public var boppingIcon:Bool = true;
 	public var animationsArray:Array<AnimArray> = [];
 
 	public var positionArray:Array<Float> = [0, 0];
@@ -104,11 +98,7 @@ class Character extends FlxSkewedSprite
 				var characterPath:String = 'characters/$curCharacter.json';
 
 				var path:String = Paths.getPath(characterPath, TEXT, null, true);
-				#if MODS_ALLOWED
-				if (!FileSystem.exists(path))
-				#else
 				if (!Assets.exists(path))
-				#end
 				{
 					path = Paths.getSharedPath('characters/' + DEFAULT_CHARACTER + '.json'); //If a character couldn't be found, change him to BF just to prevent a crash
 					color = FlxColor.BLACK;
@@ -117,11 +107,7 @@ class Character extends FlxSkewedSprite
 
 				try
 				{
-					#if MODS_ALLOWED
-					loadCharacterFile(Json.parse(File.getContent(path)));
-					#else
 					loadCharacterFile(Json.parse(Assets.getText(path)));
-					#end
 				}
 				catch(e:Dynamic)
 				{
@@ -140,7 +126,7 @@ class Character extends FlxSkewedSprite
 
 		#if flxanimate
 		var animToFind:String = Paths.getPath('images/' + json.image + '/Animation.json', TEXT, null, true);
-		if (#if MODS_ALLOWED FileSystem.exists(animToFind) || #end Assets.exists(animToFind))
+		if (Assets.exists(animToFind))
 			isAnimateAtlas = true;
 		#end
 
@@ -178,9 +164,6 @@ class Character extends FlxSkewedSprite
 
 		// data
 		healthIcon = json.healthicon;
-		animatedIcon = json.animatedIcon;
-		intenseIcon = json.intenseIcon;
-		boppingIcon = json.iconBops;
 		singDuration = json.sing_duration;
 		flipX = (json.flip_x != isPlayer);
 		healthColorArray = (json.healthbar_colors != null && json.healthbar_colors.length > 2) ? json.healthbar_colors : [161, 161, 161];

@@ -3,17 +3,6 @@ package modcharting;
 import haxe.Json;
 import openfl.net.FileReference;
 import flixel.FlxG;
-#if LUA_ALLOWED
-import llua.Lua;
-import llua.LuaL;
-import llua.State;
-import llua.Convert;
-#end
-
-#if LUA_ALLOWED
-import psychlua.FunkinLua;
-import psychlua.HScript as FunkinHScript;
-#end
 
 import modcharting.Modifier;
 import modcharting.PlayfieldRenderer;
@@ -25,83 +14,9 @@ import openfl.events.IOErrorEvent;
 
 using StringTools;
 
-//for lua and hscript
+//for hscript
 class ModchartFuncs
 {
-    #if LUA_ALLOWED
-    public static function loadLuaFunctions(funkin:FunkinLua)
-    {
-        Lua_helper.add_callback(funkin.lua, 'startMod', function(name:String, modClass:String, type:String = '', pf:Int = -1){
-            startMod(name,modClass,type,pf);
-
-            PlayState.instance.playfieldRenderer.modifierTable.reconstructTable(); //needs to be reconstructed for lua modcharts
-        });
-        Lua_helper.add_callback(funkin.lua, 'setMod', function(name:String, value:Float){
-            setMod(name, value);
-        });
-        Lua_helper.add_callback(funkin.lua, 'setSubMod', function(name:String, subValName:String, value:Float){
-            setSubMod(name, subValName,value);
-        });
-        Lua_helper.add_callback(funkin.lua, 'setModTargetLane', function(name:String, value:Int){
-            setModTargetLane(name, value);
-        });
-        Lua_helper.add_callback(funkin.lua, 'setModPlayfield', function(name:String, value:Int){
-            setModPlayfield(name,value);
-        });
-        Lua_helper.add_callback(funkin.lua, 'addPlayfield', function(?x:Float = 0, ?y:Float = 0, ?z:Float = 0){
-            addPlayfield(x,y,z);
-        });
-        Lua_helper.add_callback(funkin.lua, 'removePlayfield', function(idx:Int){
-            removePlayfield(idx);
-        });
-        Lua_helper.add_callback(funkin.lua, 'tweenModifier', function(modifier:String, val:Float, time:Float, ease:String, ?tag:String = null){
-            tweenModifier(modifier,val,time,ease,null,tag);
-        });
-        Lua_helper.add_callback(funkin.lua, 'tweenModifierSubValue', function(modifier:String, subValue:String, val:Float, time:Float, ease:String, ?tag:String = null){
-            tweenModifierSubValue(modifier,subValue,val,time,ease,null,tag);
-        });
-        Lua_helper.add_callback(funkin.lua, 'setModEaseFunc', function(name:String, ease:String){
-            setModEaseFunc(name,ease);
-        });
-        Lua_helper.add_callback(funkin.lua, 'set', function(beat:Float, argsAsString:String){
-            set(beat, argsAsString);
-        });
-        Lua_helper.add_callback(funkin.lua, 'ease', function(beat:Float, time:Float, easeStr:String, argsAsString:String, ?tag:String = null){
-            ease(beat, time, easeStr, argsAsString, null, tag);                
-        });
-        
-        loadHaxeFunctions(funkin);
-    }
-    
-    public static function loadHaxeFunctions(funkin:FunkinLua)
-    {
-        #if HSCRIPT_ALLOWED
-        FunkinHScript.initHaxeModule(funkin);
-
-        if (funkin.hscript != null)
-        {
-            #if (SScript >= "6.1.80")
-                funkin.hscript.setClass(Math);
-                funkin.hscript.setClass(PlayfieldRenderer);
-                funkin.hscript.setClass(ModchartUtil);
-                funkin.hscript.setClass(Modifier);
-                funkin.hscript.setClass(NoteMovement);
-                funkin.hscript.setClass(NotePositionData);
-                funkin.hscript.setClass(ModchartFile);
-            #else
-                funkin.hscript.set('Math', Math);
-                funkin.hscript.set('PlayfieldRenderer', PlayfieldRenderer);
-                funkin.hscript.set('ModchartUtil', ModchartUtil);
-                funkin.hscript.set('Modifier', Modifier);
-                funkin.hscript.set('NoteMovement', NoteMovement);
-                funkin.hscript.set('NotePositionData', NotePositionData);
-                funkin.hscript.set('ModchartFile', ModchartFile);
-            #end
-        }
-        #end
-    }
-    #end
-        
     #if HSCRIPT_ALLOWED
     public static function loadHScriptFunctions(parent:Dynamic)
     {
@@ -110,7 +25,7 @@ class ModchartFuncs
 
             if (PlayState.instance == FlxG.state && PlayState.instance.playfieldRenderer != null)
             {
-                PlayState.instance.playfieldRenderer.modifierTable.reconstructTable(); //needs to be reconstructed for lua modcharts
+                PlayState.instance.playfieldRenderer.modifierTable.reconstructTable();
             }
         });
         parent.set('setMod', function(name:String, value:Float){

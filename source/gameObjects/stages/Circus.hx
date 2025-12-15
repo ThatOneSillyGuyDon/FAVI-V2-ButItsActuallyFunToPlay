@@ -1,6 +1,6 @@
 package gameObjects.stages;
 
-class LaughyTracky extends BaseStage
+class Circus extends BaseStage
 {
 	//Laffy Taffys are goated as fuck why are they hated so much?
 	var circusPath:String = 'favi/stages/circus/e/';

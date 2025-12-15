@@ -1,4 +1,4 @@
-package states;
+package states.menus;
 
 #if desktop
 import sys.thread.Thread;
@@ -29,7 +29,7 @@ import sys.FileSystem;
 import sys.io.File;
 //import flixel.graphics.FlxGraphic as FlixelGraphic;
 
-class TheThing extends MusicBeatState
+class SuperDuperMegaSecretTitleScreen extends MusicBeatState
 {
     public static var muteKeys:Array<FlxKey> = [FlxKey.ZERO];
 	public static var volumeDownKeys:Array<FlxKey> = [FlxKey.NUMPADMINUS, FlxKey.MINUS];

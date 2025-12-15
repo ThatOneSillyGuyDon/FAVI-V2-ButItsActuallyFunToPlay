@@ -50,12 +50,8 @@ import openfl.filters.ShaderFilter;
 import gameObjects.ui.notes.Note.EventNote;
 import gameObjects.*;
 
-#if LUA_ALLOWED
-import psychlua.*;
-#else
 import psychlua.LuaUtils;
 import psychlua.HScript;
-#end
 
 #if HSCRIPT_ALLOWED
 import psychlua.HScript.HScriptInfos;
@@ -339,11 +335,11 @@ class PlayState extends MusicBeatState
 
 	// Lua shit
 	public static var instance:PlayState;
-	#if LUA_ALLOWED public var luaArray:Array<FunkinLua> = []; #end
 
-	#if (LUA_ALLOWED || HSCRIPT_ALLOWED)
+	#if HSCRIPT_ALLOWED
 	private var luaDebugGroup:FlxTypedGroup<psychlua.DebugLuaText>;
 	#end
+
 	public var introSoundsSuffix:String = '';
 
 	public var fancyBarOverlay:FlxSprite;
@@ -468,7 +464,6 @@ class PlayState extends MusicBeatState
 		practiceMode = ClientPrefs.getGameplaySetting('practice');
 		cpuControlled = ClientPrefs.getGameplaySetting('botplay');
 
-		// var gameCam:FlxCamera = FlxG.camera;
 		camGame = new FlxCamera();
 		camHUD = new FlxCamera();
 		camBars = new FlxCamera();
@@ -495,7 +490,7 @@ class PlayState extends MusicBeatState
 		persistentDraw = true;
 
 		if (SONG == null)
-			SONG = Song.loadFromJson('tutorial');
+			SONG = Song.loadFromJson('isolated-null', 'isolated');
 
 		Conductor.mapBPMChanges(SONG);
 		Conductor.bpm = SONG.bpm;
@@ -609,27 +604,27 @@ class PlayState extends MusicBeatState
 
 		switch (curStage)
 		{
-			case 'stage': new gameObjects.stages.StageWeek1(); //Week 1
-			case 'alleyway' | 'ddStage': new gameObjects.stages.DevilishStage(); //Devilish Deal
-			case 'abandonedStreet': new gameObjects.stages.Episode1Street(); //Isolated, Lunacy, and Delusional
-			case 'forestNew': new gameObjects.stages.GoofyForest(); //Hunted
-			case 'circus': new gameObjects.stages.LaughyTracky(); //Laugh Track
-			case 'vaultRoom': new gameObjects.stages.YouveBeenBlessed(); //Bless
-			case 'fuckingLine': new gameObjects.stages.FuckingLine(); //Don't Cross!
-			case 'war': new gameObjects.stages.GiveMeTheFiles(); //War Dilemma
-			case 'trueGrinsOfSins': new gameObjects.stages.SmileStage(); //Twisted Grins
-			case 'waltRoom': new gameObjects.stages.WaltStage(); //Mercy/Mercy Legacy
-			case 'apartment': new gameObjects.stages.ShotgunMick(); //Cycled Sins
-			case 'grassNation': new gameObjects.stages.ForbiddenRealm(); //Malfunction
-			case 'clubhouse': new gameObjects.stages.Birtbhday(); //Birthday
-			case 'staticVoid': new gameObjects.stages.StaticVoid(); //RS lmao
-			case 'menuSongs': new gameObjects.stages.MenuSongs(); //Menu Songs
+			case 'stage': new StageWeek1(); //Week 1
+			case 'alleyway' | 'ddStage': new DDStage(); //Devilish Deal
+			case 'abandonedStreet': new AbandonedStreet(); //Isolated, Lunacy, and Delusional
+			case 'forestNew': new ForestNew(); //Hunted
+			case 'circus': new Circus(); //Laugh Track
+			case 'vaultRoom': new VaultRoom(); //Bless
+			case 'fuckingLine': new FuckingLine(); //Don't Cross!
+			case 'war': new War(); //War Dilemma
+			case 'trueGrinsOfSins': new TrueGrinsOfSins(); //Twisted Grins
+			case 'waltRoom': new WaltStage(); //Mercy/Mercy Legacy
+			case 'apartment': new Apartment(); //Cycled Sins
+			case 'grassNation': new GrassNation(); //Malfunction
+			case 'clubhouse': new Clubhouse(); //Birthday
+			case 'staticVoid': new StaticVoid(); //RS lmao
+			case 'menuSongs': new MenuSongs(); //Menu Songs
 			//Legacy is A S S
-			case 'theLoop': new gameObjects.stages.legacyStages.LegEpisode1Street(); //Episode 1 legacy songs
-			case 'forestOld': new gameObjects.stages.legacyStages.LegForest(); //Hunted Legacy
-			case 'smilesOffice': new gameObjects.stages.legacyStages.LegSmile(); //Twisted Grins Legacy
-			case 'forbiddenRealm': new gameObjects.stages.legacyStages.LegForbiddenRealm(); //Malfunction Legacy
-			case 'testingArea': new gameObjects.stages.TestStage(); //test area
+			case 'theLoop': new TheLoop(); //Episode 1 legacy songs
+			case 'forestOld': new ForestOld(); //Hunted Legacy
+			case 'smilesOffice': new SmilesOffice(); //Twisted Grins Legacy
+			case 'forbiddenRealm': new ForbiddenRealm(); //Malfunction Legacy
+			case 'testingArea': new TestStage(); //test area
 		}
 
 		stageBGDark = new FlxSprite().makeGraphic(1, 1, 0xFFFFFFFF);
@@ -722,22 +717,17 @@ class PlayState extends MusicBeatState
 		}
 		
 
-		#if (LUA_ALLOWED || HSCRIPT_ALLOWED)
+		#if HSCRIPT_ALLOWED
 		luaDebugGroup = new FlxTypedGroup<psychlua.DebugLuaText>();
 		luaDebugGroup.cameras = [camOther];
 		add(luaDebugGroup);
 		#end
 
 		// "GLOBAL" SCRIPTS
-		#if (LUA_ALLOWED || HSCRIPT_ALLOWED)
+		#if HSCRIPT_ALLOWED
 		for (folder in Mods.directoriesWithFile(Paths.getSharedPath(), 'scripts/'))
 			for (file in FileSystem.readDirectory(folder))
 			{
-				#if LUA_ALLOWED
-				if(file.toLowerCase().endsWith('.lua'))
-					new FunkinLua(folder + file);
-				#end
-
 				#if HSCRIPT_ALLOWED
 				if(file.toLowerCase().endsWith('.hx'))
 					initHScript(folder + file);
@@ -746,10 +736,6 @@ class PlayState extends MusicBeatState
 		#end
 
 		// STAGE SCRIPTS
-		#if LUA_ALLOWED
-		startLuasNamed('stages/' + curStage + '.lua');
-		#end
-
 		#if HSCRIPT_ALLOWED
 		startHScriptsNamed('stages/' + curStage + '.hx');
 		#end
@@ -1189,19 +1175,13 @@ class PlayState extends MusicBeatState
 			lime.app.Application.current.window.title = windowName;
 		});
 
-		#if LUA_ALLOWED
-		for (notetype in noteTypes)
-			startLuasNamed('custom_notetypes/' + notetype + '.lua');
-		for (event in eventsPushed)
-			startLuasNamed('custom_events/' + event + '.lua');
-		#end
-
 		#if HSCRIPT_ALLOWED
 		for (notetype in noteTypes)
 			startHScriptsNamed('custom_notetypes/' + notetype + '.hx');
 		for (event in eventsPushed)
 			startHScriptsNamed('custom_events/' + event + '.hx');
 		#end
+
 		noteTypes = null;
 		eventsPushed = null;
 
@@ -1212,15 +1192,10 @@ class PlayState extends MusicBeatState
 		}
 
 		// SONG SPECIFIC SCRIPTS
-		#if (LUA_ALLOWED || HSCRIPT_ALLOWED)
+		#if HSCRIPT_ALLOWED
 		for (folder in Mods.directoriesWithFile(Paths.getSharedPath(), 'data/$songName/'))
 			for (file in FileSystem.readDirectory(folder))
 			{
-				#if LUA_ALLOWED
-				if(file.toLowerCase().endsWith('.lua'))
-					new FunkinLua(folder + file);
-				#end
-
 				#if HSCRIPT_ALLOWED
 				if(file.toLowerCase().endsWith('.hx'))
 					initHScript(folder + file);
@@ -1306,7 +1281,7 @@ class PlayState extends MusicBeatState
 		return playbackRate;
 	}
 
-	#if (LUA_ALLOWED || HSCRIPT_ALLOWED)
+	#if HSCRIPT_ALLOWED
 	public function addTextToDebug(text:String, color:FlxColor) {
 		var newText:psychlua.DebugLuaText = luaDebugGroup.recycle(psychlua.DebugLuaText);
 		newText.text = text;
@@ -1377,60 +1352,14 @@ class PlayState extends MusicBeatState
 
 	function startCharacterScripts(name:String)
 	{
-		// Lua
-		#if LUA_ALLOWED
-		var doPush:Bool = false;
-		var luaFile:String = 'characters/$name.lua';
-		#if MODS_ALLOWED
-		var replacePath:String = Paths.modFolders(luaFile);
-		if(FileSystem.exists(replacePath))
-		{
-			luaFile = replacePath;
-			doPush = true;
-		}
-		else
-		{
-			luaFile = Paths.getSharedPath(luaFile);
-			if(FileSystem.exists(luaFile))
-				doPush = true;
-		}
-		#else
-		luaFile = Paths.getSharedPath(luaFile);
-		if(Assets.exists(luaFile)) doPush = true;
-		#end
-
-		if(doPush)
-		{
-			for (script in luaArray)
-			{
-				if(script.scriptName == luaFile)
-				{
-					doPush = false;
-					break;
-				}
-			}
-			if(doPush) new FunkinLua(luaFile);
-		}
-		#end
-
 		// HScript
 		#if HSCRIPT_ALLOWED
 		var doPush:Bool = false;
 		var scriptFile:String = 'characters/' + name + '.hx';
-		#if MODS_ALLOWED
-		var replacePath:String = Paths.modFolders(scriptFile);
-		if(FileSystem.exists(replacePath))
-		{
-			scriptFile = replacePath;
+		
+		scriptFile = Paths.getSharedPath(scriptFile);
+		if(FileSystem.exists(scriptFile))
 			doPush = true;
-		}
-		else
-		#end
-		{
-			scriptFile = Paths.getSharedPath(scriptFile);
-			if(FileSystem.exists(scriptFile))
-				doPush = true;
-		}
 
 		if(doPush)
 		{
@@ -1443,11 +1372,6 @@ class PlayState extends MusicBeatState
 	}
 
 	public function getLuaObject(tag:String, text:Bool=true):FlxSprite {
-		#if LUA_ALLOWED
-		if(modchartSprites.exists(tag)) return modchartSprites.get(tag);
-		if(text && modchartTexts.exists(tag)) return modchartTexts.get(tag);
-		if(variables.exists(tag)) return variables.get(tag);
-		#end
 		return null;
 	}
 
@@ -2728,63 +2652,53 @@ class PlayState extends MusicBeatState
 		if (healthThing > 2)
 			healthThing = 2;
 
-		if (!boyfriend.animatedIcon)
-			if (iconP1.frames.frames.length >= 3 && healthBar.percent > 80)
-			{
-				if (SONG.song == "Isolated") gameObjects.stages.Episode1Street.demonBFIcon.animation.curAnim.curFrame = 2;
-				iconP1.animation.curAnim.curFrame = 2;
-			}
-			else if (iconP1.frames.frames.length >= 2 && healthBar.percent < 20)
-			{
-				if (SONG.song == "Isolated") gameObjects.stages.Episode1Street.demonBFIcon.animation.curAnim.curFrame = 1;
-				iconP1.animation.curAnim.curFrame = 1;
-			}
-			else
-			{
-				if (SONG.song == "Isolated") gameObjects.stages.Episode1Street.demonBFIcon.animation.curAnim.curFrame = 1;
-				iconP1.animation.curAnim.curFrame = 0;
-			}
+		if (iconP1.frames.frames.length >= 3 && healthBar.percent > 80)
+		{
+			if (SONG.song == "Isolated") 
+				AbandonedStreet.demonBFIcon.animation.curAnim.curFrame = 2;
+			iconP1.animation.curAnim.curFrame = 2;
+		}
+		else if (iconP1.frames.frames.length >= 2 && healthBar.percent < 20)
+		{
+			if (SONG.song == "Isolated") 
+				AbandonedStreet.demonBFIcon.animation.curAnim.curFrame = 1;
+			iconP1.animation.curAnim.curFrame = 1;
+		}
 		else
-			if (healthBar.percent < 20 && iconP1.animation.name != '${boyfriend.healthIcon}Losing')
-				iconP1.animation.play(boyfriend.healthIcon + "Losing");
-			else if (healthBar.percent >= 20 && iconP1.animation.name != '${boyfriend.healthIcon}Neutral')
-				iconP1.animation.play(boyfriend.healthIcon + "Neutral");
-
-		if (!dad.animatedIcon)
-			if (iconP2.frames.frames.length >= 2 && healthBar.percent > 80)
+		{
+			if (SONG.song == "Isolated") 
+				AbandonedStreet.demonBFIcon.animation.curAnim.curFrame = 1;
+			iconP1.animation.curAnim.curFrame = 0;
+		}
+		
+		if (iconP2.frames.frames.length >= 2 && healthBar.percent > 80)
+		{
+			if (SONG.song == "Isolated")
 			{
-				if (SONG.song == "Isolated")
-				{
-					gameObjects.stages.Episode1Street.lunacyIcon.animation.curAnim.curFrame = 1;
-					gameObjects.stages.Episode1Street.delusionalIcon.animation.curAnim.curFrame = 1;
-				}
-				iconP2.animation.curAnim.curFrame = 1;
+				AbandonedStreet.lunacyIcon.animation.curAnim.curFrame = 1;
+				AbandonedStreet.delusionalIcon.animation.curAnim.curFrame = 1;
 			}
-			else if (iconP2.frames.frames.length >= 3 && healthBar.percent < 20)
+			iconP2.animation.curAnim.curFrame = 1;
+		}
+		else if (iconP2.frames.frames.length >= 3 && healthBar.percent < 20)
+		{
+			if (SONG.song == "Isolated")
 			{
-				if (SONG.song == "Isolated")
-				{
-					gameObjects.stages.Episode1Street.lunacyIcon.animation.curAnim.curFrame = 2;
-					gameObjects.stages.Episode1Street.delusionalIcon.animation.curAnim.curFrame = 2;
-				}
-				iconP2.animation.curAnim.curFrame = 2;
+				AbandonedStreet.lunacyIcon.animation.curAnim.curFrame = 2;
+				AbandonedStreet.delusionalIcon.animation.curAnim.curFrame = 2;
 			}
-			else
-			{
-				if (SONG.song == "Isolated")
-				{
-					gameObjects.stages.Episode1Street.lunacyIcon.animation.curAnim.curFrame = 0;
-					gameObjects.stages.Episode1Street.delusionalIcon.animation.curAnim.curFrame = 0;
-				}
-				iconP2.animation.curAnim.curFrame = 0;
-			}
+			iconP2.animation.curAnim.curFrame = 2;
+		}
 		else
-			if (healthBar.percent > 80 && iconP2.animation.name != '${dad.healthIcon}Losing')
-				iconP2.animation.play(dad.healthIcon + "Losing");
-			else if (healthBar.percent <= 80 && iconP2.animation.name != '${dad.healthIcon}Neutral')
-				iconP2.animation.play(dad.healthIcon + "Neutral");
-
-
+		{
+			if (SONG.song == "Isolated")
+			{
+				AbandonedStreet.lunacyIcon.animation.curAnim.curFrame = 0;
+				AbandonedStreet.delusionalIcon.animation.curAnim.curFrame = 0;
+			}
+			iconP2.animation.curAnim.curFrame = 0;
+		}
+		
 		var iconOffset:Int = 26;
 
 		if (curStage == "waltRoom")
@@ -2798,9 +2712,9 @@ class PlayState extends MusicBeatState
 			iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * iconP2.scale.x) / 2 - iconOffset * 2;
 			if (SONG.song == "Devilish Deal")
 			{
-				gameObjects.stages.DevilishStage.minnieIcon.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(-healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * iconP2.scale.x) / 2 - iconOffset * 25;
-				gameObjects.stages.DevilishStage.satanIcon.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(-healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * iconP1.scale.x - 150) / 2 - iconOffset * 24;
-				gameObjects.stages.DevilishStage.satanIconPulse.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(-healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * iconP1.scale.x - 150) / 2 - iconOffset * 24;
+				DDStage.minnieIcon.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(-healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * iconP2.scale.x) / 2 - iconOffset * 25;
+				DDStage.satanIcon.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(-healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * iconP1.scale.x - 150) / 2 - iconOffset * 24;
+				DDStage.satanIconPulse.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(-healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * iconP1.scale.x - 150) / 2 - iconOffset * 24;
 			}
 		}
 
@@ -3726,6 +3640,7 @@ class PlayState extends MusicBeatState
 					FlxG.camera.zoom += camZoom;
 					camHUD.zoom += hudZoom;
 				}
+
 			case 'Add Camera Zoom Chain':
 				gameBopIntensity = flValue1;
 				uiBopIntensity = flValue2;
@@ -3840,7 +3755,7 @@ class PlayState extends MusicBeatState
 							boyfriend.alpha = 0.00001;
 							boyfriend = boyfriendMap.get(value2);
 							boyfriend.alpha = lastAlpha;
-							iconP1.changeIcon(boyfriend.healthIcon, boyfriend.animatedIcon, boyfriend.intenseIcon, boyfriend.boppingIcon);
+							iconP1.changeIcon(boyfriend.healthIcon, false, false, true);
 						}
 						setOnScripts('boyfriendName', boyfriend.curCharacter);
 
@@ -3862,7 +3777,7 @@ class PlayState extends MusicBeatState
 								gf.visible = false;
 							}
 							dad.alpha = lastAlpha;
-							iconP2.changeIcon(dad.healthIcon, dad.animatedIcon, dad.intenseIcon, dad.boppingIcon);
+							iconP2.changeIcon(dad.healthIcon, false, false, true);
 						}
 						setOnScripts('dadName', dad.curCharacter);
 
@@ -3917,7 +3832,7 @@ class PlayState extends MusicBeatState
 				{
 					var len:Int = e.message.indexOf('\n') + 1;
 					if(len <= 0) len = e.message.length;
-					#if (LUA_ALLOWED || HSCRIPT_ALLOWED)
+					#if HSCRIPT_ALLOWED
 					addTextToDebug('ERROR ("Set Property" Event) - ' + e.message.substr(0, len), FlxColor.RED);
 					#else
 					FlxG.log.warn('ERROR ("Set Property" Event) - ' + e.message.substr(0, len));
@@ -4582,7 +4497,7 @@ class PlayState extends MusicBeatState
 								}});
 
 							default:
-								#if (LUA_ALLOWED || HSCRIPT_ALLOWED)
+								#if HSCRIPT_ALLOWED
 								addTextToDebug('ERROR ("Camera Event" Event) - Value data type does not exist!', FlxColor.RED);
 								#else
 								FlxG.log.warn('ERROR ("Camera Event" Event) - Value data type does not exist!');
@@ -4607,7 +4522,7 @@ class PlayState extends MusicBeatState
 							case "hudangle" | "hud angle": camHUD.angle = Std.parseFloat(triggerInfo[1]);
 							case "adddefaultcamzoom" | "add default cam zoom" | "add default camera zoom": defaultCamZoom += Std.parseFloat(triggerInfo[1]);
 							default:
-								#if (LUA_ALLOWED || HSCRIPT_ALLOWED)
+								#if HSCRIPT_ALLOWED
 								addTextToDebug('ERROR ("Camera Event" Event) - Value data type does not exist!', FlxColor.RED);
 								#else
 								FlxG.log.warn('ERROR ("Camera Event" Event) - Value data type does not exist!');
@@ -4894,7 +4809,6 @@ class PlayState extends MusicBeatState
 						GameData.birthdayLocky = 'beaten';
 						GameData.saveShit();
 					}
-					Mods.loadTopMod();
 					FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 					#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
 
@@ -4943,7 +4857,6 @@ class PlayState extends MusicBeatState
 						GameData.storySong = "Devilish-Deal";
 						GameData.saveShit();
 
-						Mods.loadTopMod();
 						FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 						#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
 
@@ -4986,7 +4899,6 @@ class PlayState extends MusicBeatState
 			else
 			{
 				trace('WENT BACK TO FREEPLAY??');
-				Mods.loadTopMod();
 				#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
 
 				GameData.completeFPSong();
@@ -5715,16 +5627,6 @@ class PlayState extends MusicBeatState
 	}
 
 	override function destroy() {
-		#if LUA_ALLOWED
-		for (lua in luaArray)
-		{
-			lua.call('onDestroy', []);
-			lua.stop();
-		}
-		luaArray = [];
-		FunkinLua.customFunctions.clear();
-		#end
-
 		#if HSCRIPT_ALLOWED
 		for (script in hscriptArray)
 			if(script != null)
@@ -5886,40 +5788,10 @@ class PlayState extends MusicBeatState
 		callOnScripts('onSectionHit');
 	}
 
-	#if LUA_ALLOWED
-	public function startLuasNamed(luaFile:String)
-	{
-		#if MODS_ALLOWED
-		var luaToLoad:String = Paths.modFolders(luaFile);
-		if(!FileSystem.exists(luaToLoad))
-			luaToLoad = Paths.getSharedPath(luaFile);
-
-		if(FileSystem.exists(luaToLoad))
-		#elseif sys
-		var luaToLoad:String = Paths.getSharedPath(luaFile);
-		if(OpenFlAssets.exists(luaToLoad))
-		#end
-		{
-			for (script in luaArray)
-				if(script.scriptName == luaToLoad) return false;
-
-			new FunkinLua(luaToLoad);
-			return true;
-		}
-		return false;
-	}
-	#end
-
 	#if HSCRIPT_ALLOWED
 	public function startHScriptsNamed(scriptFile:String)
 	{
-		#if MODS_ALLOWED
-		var scriptToLoad:String = Paths.modFolders(scriptFile);
-		if(!FileSystem.exists(scriptToLoad))
-			scriptToLoad = Paths.getSharedPath(scriptFile);
-		#else
 		var scriptToLoad:String = Paths.getSharedPath(scriptFile);
-		#end
 
 		if(FileSystem.exists(scriptToLoad))
 		{
@@ -5965,40 +5837,7 @@ class PlayState extends MusicBeatState
 
 	public function callOnLuas(funcToCall:String, args:Array<Dynamic> = null, ignoreStops = false, exclusions:Array<String> = null, excludeValues:Array<Dynamic> = null):Dynamic {
 		var returnVal:Dynamic = LuaUtils.Function_Continue;
-		#if LUA_ALLOWED
-		if(args == null) args = [];
-		if(exclusions == null) exclusions = [];
-		if(excludeValues == null) excludeValues = [LuaUtils.Function_Continue];
-
-		var arr:Array<FunkinLua> = [];
-		for (script in luaArray)
-		{
-			if(script.closed)
-			{
-				arr.push(script);
-				continue;
-			}
-
-			if(exclusions.contains(script.scriptName))
-				continue;
-
-			var myValue:Dynamic = script.call(funcToCall, args);
-			if((myValue == LuaUtils.Function_StopLua || myValue == LuaUtils.Function_StopAll) && !excludeValues.contains(myValue) && !ignoreStops)
-			{
-				returnVal = myValue;
-				break;
-			}
-
-			if(myValue != null && !excludeValues.contains(myValue))
-				returnVal = myValue;
-
-			if(script.closed) arr.push(script);
-		}
-
-		if(arr.length > 0)
-			for (script in arr)
-				luaArray.remove(script);
-		#end
+		
 		return returnVal;
 	}
 
@@ -6042,20 +5881,7 @@ class PlayState extends MusicBeatState
 
 	public function setOnScripts(variable:String, arg:Dynamic, exclusions:Array<String> = null) {
 		if(exclusions == null) exclusions = [];
-		setOnLuas(variable, arg, exclusions);
 		setOnHScript(variable, arg, exclusions);
-	}
-
-	public function setOnLuas(variable:String, arg:Dynamic, exclusions:Array<String> = null) {
-		#if LUA_ALLOWED
-		if(exclusions == null) exclusions = [];
-		for (script in luaArray) {
-			if(exclusions.contains(script.scriptName))
-				continue;
-
-			script.set(variable, arg);
-		}
-		#end
 	}
 
 	public function setOnHScript(variable:String, arg:Dynamic, exclusions:Array<String> = null) {
@@ -6120,74 +5946,4 @@ class PlayState extends MusicBeatState
 		setOnScripts('ratingName', ratingName);
 		setOnScripts('ratingFC', ratingFC);
 	}
-
-	#if (!flash && sys)
-	public var runtimeShaders:Map<String, Array<String>> = new Map<String, Array<String>>();
-	public function createRuntimeShader(name:String):FlxRuntimeShader
-	{
-		if(!ClientPrefs.data.shaders) return new FlxRuntimeShader();
-
-		#if (!flash && MODS_ALLOWED && sys)
-		if(!runtimeShaders.exists(name) && !initLuaShader(name))
-		{
-			FlxG.log.warn('Shader $name is missing!');
-			return new FlxRuntimeShader();
-		}
-
-		var arr:Array<String> = runtimeShaders.get(name);
-		return new FlxRuntimeShader(arr[0], arr[1]);
-		#else
-		FlxG.log.warn("Platform unsupported for Runtime Shaders!");
-		return null;
-		#end
-	}
-
-	public function initLuaShader(name:String, ?glslVersion:Int = 120)
-	{
-		if(!ClientPrefs.data.shaders) return false;
-
-		#if (MODS_ALLOWED && !flash && sys)
-		if(runtimeShaders.exists(name))
-		{
-			FlxG.log.warn('Shader $name was already initialized!');
-			return true;
-		}
-
-		for (folder in Mods.directoriesWithFile(Paths.getSharedPath(), 'shaders/'))
-		{
-			var frag:String = folder + name + '.frag';
-			var vert:String = folder + name + '.vert';
-			var found:Bool = false;
-			if(FileSystem.exists(frag))
-			{
-				frag = File.getContent(frag);
-				found = true;
-			}
-			else frag = null;
-
-			if(FileSystem.exists(vert))
-			{
-				vert = File.getContent(vert);
-				found = true;
-			}
-			else vert = null;
-
-			if(found)
-			{
-				runtimeShaders.set(name, [frag, vert]);
-				//trace('Found shader $name!');
-				return true;
-			}
-		}
-			#if (LUA_ALLOWED || HSCRIPT_ALLOWED)
-			addTextToDebug('Missing shader $name .frag AND .vert files!', FlxColor.RED);
-			#else
-			FlxG.log.warn('Missing shader $name .frag AND .vert files!');
-			#end
-		#else
-		FlxG.log.warn('This platform doesn\'t support Runtime Shaders!');
-		#end
-		return false;
-	}
-	#end
 }

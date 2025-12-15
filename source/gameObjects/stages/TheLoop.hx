@@ -1,11 +1,11 @@
-package gameObjects.stages.legacyStages;
+package gameObjects.stages;
 
 #if !flash 
 import openfl.filters.ShaderFilter;
 #end
 import openfl.Lib;
 
-class LegEpisode1Street extends BaseStage
+class TheLoop extends BaseStage
 {
 	public static var grayScale:FlxRuntimeShader = new FlxRuntimeShader(Shaders.grayScale, null, 120);
 	public static var legacyChrom:FlxRuntimeShader = new FlxRuntimeShader(LegacyShaders.chromaticAberration, null, 120);

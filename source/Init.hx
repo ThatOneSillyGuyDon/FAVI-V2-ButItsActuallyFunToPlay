@@ -98,7 +98,7 @@ class Init extends FlxState
         trace('Initialization complete, switching to ${Type.getClassName(curState)}');
         if (FlxG.random.bool(8))
         {
-            FlxG.switchState(new states.TheThing());
+            FlxG.switchState(new states.menus.SuperDuperMegaSecretTitleScreen());
         }
         else
             FlxG.switchState(Type.createInstance(curState, []));  

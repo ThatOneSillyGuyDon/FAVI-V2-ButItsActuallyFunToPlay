@@ -1,10 +1,10 @@
-package gameObjects.stages.legacyStages;
+package gameObjects.stages;
 
 #if !flash 
 import openfl.filters.ShaderFilter;
 #end
 
-class LegSmile extends BaseStage
+class SmilesOffice extends BaseStage
 {
 	public static var staticEffect:FlxRuntimeShader = new FlxRuntimeShader(Shaders.tvStatic, null, 120);
 

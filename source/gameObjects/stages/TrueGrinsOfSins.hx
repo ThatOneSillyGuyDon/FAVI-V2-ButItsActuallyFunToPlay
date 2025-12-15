@@ -5,7 +5,7 @@ import openfl.filters.ShaderFilter;
 #end
 import shaders.OutlineEffect;
 
-class SmileStage extends BaseStage
+class TrueGrinsOfSins extends BaseStage
 {
 	var staticEffect:FlxRuntimeShader = new FlxRuntimeShader(Shaders.tvStatic, null, 120);
 

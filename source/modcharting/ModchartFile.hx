@@ -102,19 +102,6 @@ class ModchartFile
         //global modchart
         var moddyFile5:String = Paths.json(Paths.formatToSongPath(folder) + '/modchartData/modchart');
 
-        #if MODS_ALLOWED
-        //downscroll in mods folder
-        var modModdyFile:String = Paths.modsJson(Paths.formatToSongPath(folder) + '/modchartData/modchart-downscroll');
-        //upscroll in mods folder
-        var modModdyFile2:String = Paths.modsJson(Paths.formatToSongPath(folder) + '/modchartData/modchart-upscroll');
-        //middle-downscroll in mods folder
-        var modModdyFile3:String = Paths.modsJson(Paths.formatToSongPath(folder) + '/modchartData/modchart-middleDown');
-        //middle-upscroll in mods folder
-        var modModdyFile4:String = Paths.modsJson(Paths.formatToSongPath(folder) + '/modchartData/modchart-middleUp');
-        //global modchart
-        var modModdyFile5:String = Paths.modsJson(Paths.formatToSongPath(folder) + '/modchartData/modchart');
-        #end
-
         //this took too long just to get middlescroll support holy fucking shit - Sonic_fan0208
         try 
         {
@@ -159,45 +146,6 @@ class ModchartFile
                 useUpScrollChart = false;
             }
 
-            #if MODS_ALLOWED
-            if(FileSystem.exists(modModdyFile) && ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll) 
-            {
-                useDownScrollChart = true;
-                useMiddleDownScrollChart = false;
-                useMiddleUpScrollChart = false;
-                useUpScrollChart = false;
-            }
-            else if(FileSystem.exists(modModdyFile2) && !ClientPrefs.data.downScroll && !ClientPrefs.data.middleScroll) 
-            {
-                useDownScrollChart = false;
-                useMiddleDownScrollChart = false;
-                useMiddleUpScrollChart = false;
-                useUpScrollChart = true;
-            }
-            else if(FileSystem.exists(modModdyFile4) && !ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll) 
-            {
-                useDownScrollChart = false;
-                useMiddleDownScrollChart = false;
-                useMiddleUpScrollChart = true;
-                useUpScrollChart = false;
-            }
-            else if(FileSystem.exists(modModdyFile3) && ClientPrefs.data.downScroll && ClientPrefs.data.middleScroll) 
-            {
-                useDownScrollChart = false;
-                useMiddleDownScrollChart = true;
-                useMiddleUpScrollChart = false;
-                useUpScrollChart = false;
-            }
-            //if a global modchart exists
-            else if (FileSystem.exists(modModdyFile5) &&!FileSystem.exists(modModdyFile) && !FileSystem.exists(modModdyFile2) && !FileSystem.exists(modModdyFile3) && !FileSystem.exists(modModdyFile4))
-            {
-                useDownScrollChart = false;
-                useMiddleDownScrollChart = false;
-                useMiddleUpScrollChart = false;
-                useUpScrollChart = false;
-            }
-            #end
-            
             if(useDownScrollChart) 
             {
                 rawJson = File.getContent(moddyFile).trim();
@@ -223,34 +171,6 @@ class ModchartFile
                 rawJson = File.getContent(moddyFile5).trim();
                 folderShit = moddyFile5.replace('modchart.json', "customMods/");
             }
-
-            #if MODS_ALLOWED
-            if(useDownScrollChart) 
-            {
-                rawJson = File.getContent(modModdyFile).trim();
-                folderShit = modModdyFile.replace('modchart-downscroll.json', "customMods/");
-            }
-            else if(useUpScrollChart) 
-            {
-                rawJson = File.getContent(modModdyFile2).trim();
-                folderShit = modModdyFile2.replace('modchart-upscroll.json', "customMods/");
-            }
-            else if(useMiddleDownScrollChart) 
-            {
-                rawJson = File.getContent(modModdyFile3).trim();
-                folderShit = modModdyFile3.replace('modchart-middleDown.json', "customMods/");
-            }
-            else if(useMiddleUpScrollChart) 
-            {
-                rawJson = File.getContent(modModdyFile4).trim();
-                folderShit = modModdyFile4.replace('modchart-middleUp.json', "customMods/");
-            }
-            else if(!useDownScrollChart && !useUpScrollChart && !useMiddleDownScrollChart && !useMiddleUpScrollChart) 
-            {
-                rawJson = File.getContent(modModdyFile5).trim();
-                folderShit = modModdyFile5.replace('modchart.json', "customMods/");
-            }
-            #end
         }
         catch(e:Dynamic)
         {
@@ -292,38 +212,6 @@ class ModchartFile
                     filePath = Paths.json(folder + '/modchartData/modchart');
                     folderShit = filePath.replace('modchart.json', "customMods/");
                 }
-
-                #if MODS_ALLOWED
-                //downscroll only
-                if (useDownScrollChart)
-                {
-                    filePath = Paths.modsJson(folder + '/modchartData/modchart-downscroll');
-                    folderShit = filePath.replace('modchart-downscroll.json', "customMods/");
-                }
-                //upscroll only
-                else if (useUpScrollChart)
-                {
-                    filePath = Paths.modsJson(folder + '/modchartData/modchart-upscroll');
-                    folderShit = filePath.replace('modchart-upscroll.json', "customMods/");
-                }
-                //downscroll/middlescroll
-                else if (useMiddleDownScrollChart)
-                {
-                    filePath = Paths.modsJson(folder + '/modchartData/modchart-middleDown');
-                    folderShit = filePath.replace('modchart-middleDown.json', "customMods/");
-                }
-                //upscroll/middle
-                else if (useMiddleUpScrollChart)
-                {
-                    filePath = Paths.modsJson(folder + '/modchartData/modchart-middleUp');
-                    folderShit = filePath.replace('modchart-middleUp.json', "customMods/");
-                }
-                else if(!useDownScrollChart && !useUpScrollChart && !useMiddleDownScrollChart && !useMiddleUpScrollChart) 
-                {
-                    filePath = Paths.modsJson(folder + '/modchartData/modchart');
-                    folderShit = filePath.replace('modchart.json', "customMods/");
-                }
-                #end
             }
             catch(e:Dynamic)
             {

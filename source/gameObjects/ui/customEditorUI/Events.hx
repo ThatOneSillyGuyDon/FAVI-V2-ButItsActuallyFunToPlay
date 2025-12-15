@@ -17,6 +17,7 @@ class Events {
             ['Play Sound', "Value 1: Sound file name\nValue 2: Volume (Default: 1), ranges from 0 to 1"],
     //      -- The Custom AVI events -- 
             ['Add Camera Zoom Chain', 'Value 1: Camera Zoom Intensity\nValue 2: UI Zoom Intensity\n(Leave the values blank to disable the event)'],
+            ['Tween BPM', "Value 1: New BPM\nValue 2: Time it takes"],
             ['Show Song Card', 'Triggers the title cards for each song (DOES NOT WORK IN LEGACY SONGS)\n\nValue 1: Intro Bool\nValue 2: Animation delay, Time, Ease type'],
             ['Scroll Type', "Changes Scroll Type, Mid-Song\n \nValue 1 = BF Notes\nValue 2 = Dad Notes\n \nDefault = Normal Scroll Type\nFlip = Flips Current Scroll Type\nDown = Locks Downscroll\nUp = Locks Upscroll\nLeft = Sidescroll from Left\nRight = Sidescroll from Right\nUndyne = Centerscroll"],
 		    ['Change Strumline Style', "Value 1: Opponent Note Skin, Player Note Skin\nValue 2: Trigger intro tween?"],

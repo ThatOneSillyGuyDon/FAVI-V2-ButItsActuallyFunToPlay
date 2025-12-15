@@ -1,6 +1,6 @@
 package gameObjects.stages;
 
-class Birtbhday extends BaseStage
+class Clubhouse extends BaseStage
 {
 	// BIRTHDAY NOTES
 	// you welcome
@@ -141,7 +141,7 @@ class Birtbhday extends BaseStage
 
 	override function goodNoteHit(note:Note)
 	{
-		if (gameObjects.stages.Birtbhday.spawnNotes['bf']) birthdayParticles(boyfriendGroup);
+		if (spawnNotes['bf']) birthdayParticles(boyfriendGroup);
 	}
 
 	public function birthdayParticles(targetGroup:FlxSpriteGroup) {

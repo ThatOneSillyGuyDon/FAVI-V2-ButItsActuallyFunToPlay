@@ -18,7 +18,7 @@
  // just in case
  import unused.*;
 
- // import gameObjects, menus and backend support
+ // import objects, menus and backend support
 import backend.*;
 import backend.menu.*;
 import backend.song.*;
@@ -28,9 +28,7 @@ import backend.windows.*;
 import gameObjects.*;
 import gameObjects.ui.*;
 import gameObjects.utils.*;
-import gameObjects.stageObjects.*;
-import gameObjects.ui.dialogue.*;
-import gameObjects.ui.menu.*;
+import gameObjects.stages.*;
 import gameObjects.ui.animatedText.*;
 import gameObjects.ui.notes.*;
 import gameObjects.ui.customEditorUI.*;
@@ -44,14 +42,10 @@ import states.menus.*;
 import states.menus.freeplay.*;
 
 // Base Stage
-import backend.data.BaseStage.StageAssetData;
-import backend.data.BaseStage.AssetType;
-import backend.data.BaseStage.AssetPriority;
-import backend.data.BaseStage.*;
-// import backend.BaseStage.asset;
-// import backend.BaseStage.videos;
-// import backend.BaseStage.characters;
-// import backend.BaseStage.filterByQuality;
+import backend.BaseStage.StageAssetData;
+import backend.BaseStage.AssetType;
+import backend.BaseStage.AssetPriority;
+import backend.BaseStage.*;
 
 //import game over screens
 import substates.GameOverScreens.BaseGameOver; //default fnf screen
@@ -76,7 +70,6 @@ import backend.discord.Discord;
 #end
 import states.editors.ChartingState;
 import gameObjects.Character;
-import gameObjects.ui.menu.MenuCharacter;
 import backend.song.Conductor;
 import backend.data.StageData;
 import backend.data.WeekData;
@@ -171,11 +164,6 @@ import backend.menu.MusicBeatSubstate;
 
 import gameObjects.ui.notes.Note;
 import gameObjects.ui.notes.StrumNote;
-
-#if LUA_ALLOWED
-import psychlua.FunkinLua;
-import psychlua.HScript as FunkinHScript;
-#end
 
 #if sys
 import sys.FileSystem;

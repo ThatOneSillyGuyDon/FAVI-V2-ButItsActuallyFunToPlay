@@ -202,7 +202,6 @@ class ManiaLoseScreen extends MusicBeatSubstate {
 	override function create()
 	{
 		instance = this;
-		PlayState.instance.callOnLuas('onGameOverStart', []);
 
 		var red = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.RED);
 		red.blend = ADD;
@@ -331,9 +330,6 @@ class Episode1Death extends MusicBeatSubstate {
 	override function create()
 	{
 		instance = this;
-		PlayState.instance.callOnLuas('onGamerOverStart', []);
-
-		PlayState.instance.setOnLuas('inGameOver', true);
 
 		stupidAssCam = new FlxCamera();
 		FlxG.cameras.add(stupidAssCam);
@@ -458,7 +454,6 @@ class Episode1Death extends MusicBeatSubstate {
 							MusicBeatState.resetState();
 					});
 				});
-				PlayState.instance.callOnLuas('onGameOverConfirm', [true]);
 			}
 
 			if (quitLerp == 1)
@@ -488,7 +483,6 @@ class Episode1Death extends MusicBeatSubstate {
 					});
 				}
 				FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
-				PlayState.instance.callOnLuas('onGameOverConfirm', [false]);
 			}
 			arrowLerp = quitLerp = tryLerp = 0;
 			isEnding = true;
@@ -517,9 +511,6 @@ class DelusionalDeath extends MusicBeatSubstate {
 	override function create()
 	{
 		instance = this;
-		PlayState.instance.callOnLuas('onGamerOverStart', []);
-
-		PlayState.instance.setOnLuas('inGameOver', true);
 
 		stupidAssCam = new FlxCamera();
 		FlxG.cameras.add(stupidAssCam);
@@ -643,7 +634,6 @@ class DelusionalDeath extends MusicBeatSubstate {
 							MusicBeatState.resetState();
 					});
 				});
-				PlayState.instance.callOnLuas('onGameOverConfirm', [true]);
 			}
 
 			if (quitLerp == 1)
@@ -673,7 +663,6 @@ class DelusionalDeath extends MusicBeatSubstate {
 					});
 				}
 				FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
-				PlayState.instance.callOnLuas('onGameOverConfirm', [false]);
 			}
 			arrowLerp = quitLerp = tryLerp = 0;
 			isEnding = true;
@@ -730,9 +719,6 @@ class EpicFailLmao extends MusicBeatSubstate {
 	override function create()
 	{
 		instance = this;
-		PlayState.instance.callOnLuas('onGamerOverStart', []);
-
-		PlayState.instance.setOnLuas('inGameOver', true);
 
 		stupidAssCam = new FlxCamera();
 		deathHUD = new FlxCamera();
@@ -868,7 +854,6 @@ class EpicFailLmao extends MusicBeatSubstate {
 					});
 
 					FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
-					PlayState.instance.callOnLuas('onGameOverConfirm', [false]);
 				}
 
 				if (tryLerp == 1)
@@ -897,7 +882,6 @@ class EpicFailLmao extends MusicBeatSubstate {
 								MusicBeatState.resetState();
 						});
 					});
-					PlayState.instance.callOnLuas('onGameOverConfirm', [true]);
 				}
 				camLerpBullshit = 0;
 				isEnding = true;
@@ -927,9 +911,6 @@ class EverettBaseDeath extends MusicBeatSubstate {
 	override function create()
 	{
 		instance = this;
-		PlayState.instance.callOnLuas('onGamerOverStart', []);
-
-		PlayState.instance.setOnLuas('inGameOver', true);
 
 		stupidAssCam = new FlxCamera();
 		FlxG.cameras.add(stupidAssCam);
@@ -1042,7 +1023,6 @@ class EverettBaseDeath extends MusicBeatSubstate {
 							MusicBeatState.resetState();
 					});
 				});
-				PlayState.instance.callOnLuas('onGameOverConfirm', [true]);
 			}
 
 			if (quitLerp == 1)
@@ -1072,7 +1052,6 @@ class EverettBaseDeath extends MusicBeatSubstate {
 					});
 				}
 				FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
-				PlayState.instance.callOnLuas('onGameOverConfirm', [false]);
 			}
 			arrowLerp = quitLerp = tryLerp = 0;
 			isEnding = true;
@@ -1102,9 +1081,6 @@ class WarGameOver extends MusicBeatSubstate {
 	override function create()
 	{
 		instance = this;
-		PlayState.instance.callOnLuas('onGamerOverStart', []);
-
-		PlayState.instance.setOnLuas('inGameOver', true);
 
 		stupidAssCam = new FlxCamera();
 		deathHUD = new FlxCamera();
@@ -1214,7 +1190,6 @@ class WarGameOver extends MusicBeatSubstate {
 							MusicBeatState.resetState();
 					});
 				});
-				PlayState.instance.callOnLuas('onGameOverConfirm', [true]);
 			}
 
 			if (quitLerp == 1)
@@ -1244,7 +1219,6 @@ class WarGameOver extends MusicBeatSubstate {
 					});
 				}
 				FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
-				PlayState.instance.callOnLuas('onGameOverConfirm', [false]);
 			}
 			arrowLerp = quitLerp = tryLerp = 0;
 			isEnding = true;
@@ -1270,9 +1244,6 @@ class WompWompSadMan extends MusicBeatSubstate {
 	override function create()
 	{
 		instance = this;
-		PlayState.instance.callOnLuas('onGamerOverStart', []);
-
-		PlayState.instance.setOnLuas('inGameOver', true);
 
 		stupidAssCam = new FlxCamera();
 		FlxG.cameras.add(stupidAssCam);
@@ -1370,7 +1341,6 @@ class WompWompSadMan extends MusicBeatSubstate {
 							MusicBeatState.resetState();
 					});
 				});
-				PlayState.instance.callOnLuas('onGameOverConfirm', [true]);
 			}
 
 			if (quitLerp == 1)
@@ -1405,9 +1375,6 @@ class MalsquareDeath extends MusicBeatSubstate {
 	override function create()
 	{
 		instance = this;
-		PlayState.instance.callOnLuas('onGamerOverStart', []);
-
-		PlayState.instance.setOnLuas('inGameOver', true);
 
 		stupidAssCam = new FlxCamera();
 		FlxG.cameras.add(stupidAssCam);
@@ -1526,7 +1493,6 @@ class MalsquareDeath extends MusicBeatSubstate {
 							MusicBeatState.resetState();
 					});
 				});
-				PlayState.instance.callOnLuas('onGameOverConfirm', [true]);
 			}
 
 			if (quitLerp == 1)
@@ -1556,7 +1522,6 @@ class MalsquareDeath extends MusicBeatSubstate {
 					});
 				}
 				FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
-				PlayState.instance.callOnLuas('onGameOverConfirm', [false]);
 			}
 			quitLerp = tryLerp = 0;
 			isEnding = true;
@@ -1580,9 +1545,6 @@ class MalsquareTrollScreen extends MusicBeatSubstate {
 	override function create()
 	{
 		instance = this;
-		PlayState.instance.callOnLuas('onGamerOverStart', []);
-
-		PlayState.instance.setOnLuas('inGameOver', true);
 
 		stupidAssCam = new FlxCamera();
 		FlxG.cameras.add(stupidAssCam);
@@ -1714,7 +1676,6 @@ class MalsquareTrollScreen extends MusicBeatSubstate {
 							FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
 						}
 						FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
-						PlayState.instance.callOnLuas('onGameOverConfirm', [false]);
 					}
 					remove(bg);
 					remove(tiles);
