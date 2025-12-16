@@ -64,7 +64,7 @@ class ModchartFuncs
     }
     #end
 
-    public static function startMod(name:String, modClass:String, type:String = '', pf:Int = -1, ?instance:ModchartMusicBeatState = null)
+    public static function startMod(name:String, modClass:String, type:String = '', pf:Int = -1, ?instance:MusicBeatState = null)
     {
         if (instance == null)
         {
@@ -117,7 +117,7 @@ class ModchartFuncs
         return modType;
     }
 
-    public static function setMod(name:String, value:Float, ?instance:ModchartMusicBeatState = null)
+    public static function setMod(name:String, value:Float, ?instance:MusicBeatState = null)
     {
         if (instance == null)
             instance = PlayState.instance;
@@ -129,7 +129,7 @@ class ModchartFuncs
         if (instance.playfieldRenderer.modifierTable.modifiers.exists(name))
             instance.playfieldRenderer.modifierTable.modifiers.get(name).currentValue = value;
     }
-    public static function setSubMod(name:String, subValName:String, value:Float, ?instance:ModchartMusicBeatState = null)
+    public static function setSubMod(name:String, subValName:String, value:Float, ?instance:MusicBeatState = null)
     {
         if (instance == null)
             instance = PlayState.instance;
@@ -144,48 +144,48 @@ class ModchartFuncs
             else
                 instance.playfieldRenderer.modifiers.get(name).subValues.set(subValName,new Modifier.ModifierSubValue(value));
     }
-    public static function setModTargetLane(name:String, value:Int, ?instance:ModchartMusicBeatState = null)
+    public static function setModTargetLane(name:String, value:Int, ?instance:MusicBeatState = null)
     {
         if (instance == null)
             instance = PlayState.instance;
         if (instance.playfieldRenderer.modifierTable.modifiers.exists(name))
             instance.playfieldRenderer.modifierTable.modifiers.get(name).targetLane = value;
     }
-    public static function setModPlayfield(name:String, value:Int, ?instance:ModchartMusicBeatState = null)
+    public static function setModPlayfield(name:String, value:Int, ?instance:MusicBeatState = null)
     {
         if (instance == null)
             instance = PlayState.instance;
         if (instance.playfieldRenderer.modifierTable.modifiers.exists(name))
             instance.playfieldRenderer.modifierTable.modifiers.get(name).playfield = value;
     }
-    public static function addPlayfield(?x:Float = 0, ?y:Float = 0, ?z:Float = 0, ?instance:ModchartMusicBeatState = null)
+    public static function addPlayfield(?x:Float = 0, ?y:Float = 0, ?z:Float = 0, ?instance:MusicBeatState = null)
     {
         if (instance == null)
             instance = PlayState.instance;
         instance.playfieldRenderer.addNewPlayfield(x,y,z);
     }
-    public static function removePlayfield(idx:Int, ?instance:ModchartMusicBeatState = null)
+    public static function removePlayfield(idx:Int, ?instance:MusicBeatState = null)
     {
         if (instance == null)
             instance = PlayState.instance;
         instance.playfieldRenderer.playfields.remove(instance.playfieldRenderer.playfields[idx]);
     }
 
-    public static function tweenModifier(modifier:String, val:Float, time:Float, ease:String, ?instance:ModchartMusicBeatState = null, ?tag:String = null)
+    public static function tweenModifier(modifier:String, val:Float, time:Float, ease:String, ?instance:MusicBeatState = null, ?tag:String = null)
     {
         if (instance == null)
             instance = PlayState.instance;
         instance.playfieldRenderer.modifierTable.tweenModifier(modifier, val, time, ease, Modifier.beat, tag);
     }
 
-    public static function tweenModifierSubValue(modifier:String, subValue:String, val:Float, time:Float, ease:String, ?instance:ModchartMusicBeatState = null, ?tag:String = null)
+    public static function tweenModifierSubValue(modifier:String, subValue:String, val:Float, time:Float, ease:String, ?instance:MusicBeatState = null, ?tag:String = null)
     {
         if (instance == null)
             instance = PlayState.instance;
         instance.playfieldRenderer.modifierTable.tweenModifierSubValue(modifier, subValue, val, time, ease, Modifier.beat, tag);
     }
 
-    public static function setModEaseFunc(name:String, ease:String, ?instance:ModchartMusicBeatState = null)
+    public static function setModEaseFunc(name:String, ease:String, ?instance:MusicBeatState = null)
     {
         if (instance == null)
             instance = PlayState.instance;
@@ -200,7 +200,7 @@ class ModchartFuncs
             }
         }
     }
-    public static function set(beat:Float, argsAsString:String, ?instance:ModchartMusicBeatState = null)
+    public static function set(beat:Float, argsAsString:String, ?instance:MusicBeatState = null)
     {
         if (instance == null)
         {
@@ -239,7 +239,7 @@ class ModchartFuncs
             }
         }, args);
     }
-    public static function ease(beat:Float, time:Float, ease:String, argsAsString:String, ?instance:ModchartMusicBeatState = null, ?tag:String = null):Void
+    public static function ease(beat:Float, time:Float, ease:String, argsAsString:String, ?instance:MusicBeatState = null, ?tag:String = null):Void
     {
         if (instance == null)
         {

@@ -44,13 +44,11 @@ import lime.app.Application;
 
 import flixel.addons.ui.FlxUIDropDownMenu;
 import backend.song.Section.SwagSection;
-import backend.menu.MusicBeatSubstate;
 import gameObjects.ui.notes.Note;
 import gameObjects.ui.notes.StrumNote;
 import backend.song.Song;
 
 import modcharting.*;
-import modcharting.PlayfieldRenderer.StrumNoteType;
 import modcharting.Modifier;
 import modcharting.ModchartFile;
 import modcharting.ModchartFile.ModchartJson;
@@ -197,9 +195,9 @@ class ModchartEditorState extends MusicBeatState
 	public var camGame:FlxCamera;
     public var notes:FlxTypedGroup<Note>;
     private var strumLine:FlxSprite;
-    public var strumLineNotes:FlxTypedGroup<StrumNoteType>;
-	public var opponentStrums:FlxTypedGroup<StrumNoteType>;
-	public var playerStrums:FlxTypedGroup<StrumNoteType>;
+    public var strumLineNotes:FlxTypedGroup<StrumNote>;
+	public var opponentStrums:FlxTypedGroup<StrumNote>;
+	public var playerStrums:FlxTypedGroup<StrumNote>;
 	public var unspawnNotes:Array<Note> = [];
     public var loadedNotes:Array<Note> = []; //stored notes from the chart that unspawnNotes can copy from
     public var vocals:FlxSound;
@@ -211,7 +209,7 @@ class ModchartEditorState extends MusicBeatState
     var _song:SwagSong;
     var _modchart:ModchartJson;
 
-    var playfieldInstance:ModchartMusicBeatState;
+    var playfieldInstance:MusicBeatState;
 
     private var grid:FlxBackdrop;
     private var line:FlxSprite;
@@ -308,11 +306,11 @@ class ModchartEditorState extends MusicBeatState
 		
 		strumLine.scrollFactor.set();
 
-        strumLineNotes = new FlxTypedGroup<StrumNoteType>();
+        strumLineNotes = new FlxTypedGroup<StrumNote>();
 		add(strumLineNotes);
 
-		opponentStrums = new FlxTypedGroup<StrumNoteType>();
-		playerStrums = new FlxTypedGroup<StrumNoteType>();
+		opponentStrums = new FlxTypedGroup<StrumNote>();
+		playerStrums = new FlxTypedGroup<StrumNote>();
 
 		generateSong(PlayState.SONG);
 
@@ -640,7 +638,7 @@ class ModchartEditorState extends MusicBeatState
             if (Conductor.songPosition >= daNote.strumTime)
             {
                 daNote.wasGoodHit = true;
-                var spr:StrumNoteType = null;
+                var spr:StrumNote = null;
                 if(!daNote.mustPress) {
                     spr = opponentStrums.members[daNote.noteData];
                 } else {
@@ -2280,7 +2278,7 @@ class ModchartEditorState extends MusicBeatState
 
 
     var _file:FileReference;
-    public function saveModchartJson(?instance:ModchartMusicBeatState = null) : Void
+    public function saveModchartJson(?instance:MusicBeatState = null) : Void
     {
         if (instance == null)
             instance = PlayState.instance;
@@ -2326,7 +2324,7 @@ class ModchartEditorState extends MusicBeatState
         _file = null;
     }
 
-    function autosaveModchart(?instance:ModchartMusicBeatState = null):Void
+    function autosaveModchart(?instance:MusicBeatState = null):Void
     {
         if (instance == null)
             instance = PlayState.instance;

@@ -693,7 +693,17 @@ class Note extends FlxSkewedSprite
 		}
 		else animation.addByPrefix(colArray[noteData] + 'Scroll', colArray[noteData] + '0');
 
-		setGraphicSize(Std.int(width * 0.7));
+		var s = 0.7;
+		switch (PlayState.SONG.song)
+		{
+			case "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Malfunction Legacy" | "Cycled Sins Legacy" | "Mercy Legacy" | "Delutrance" | "Malfunction":
+				s = 0.7;
+			case "Dont Cross" | "Mercy":
+			   s = 0.64;
+			default:
+				s = 0.6;
+		}
+		setGraphicSize(Std.int(width * s));
 		updateHitbox();
 	}
 

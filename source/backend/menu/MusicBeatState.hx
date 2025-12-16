@@ -5,10 +5,12 @@ import flixel.addons.transition.FlxTransitionableState;
 import flixel.FlxState;
 import openfl.Lib;
 
-class MusicBeatState extends modcharting.ModchartMusicBeatState
+class MusicBeatState extends FlxUIState
 {
 	private var curSection:Int = 0;
 	private var stepsToDo:Int = 0;
+
+	public var playfieldRenderer:PlayfieldRenderer;
 
 	private var curStep:Int = 0;
 	private var curBeat:Int = 0;

@@ -7,7 +7,7 @@ import modcharting.Modifier;
 class ModTable
 {
     public var modifiers:Map<String, Modifier> = new Map<String, Modifier>();
-    private var instance:ModchartMusicBeatState = null;
+    private var instance:MusicBeatState = null;
     private var renderer:PlayfieldRenderer = null;
 
     //The table is used to precalculate all the playfield and lane checks on each modifier,
@@ -15,7 +15,7 @@ class ModTable
     //index table by playfield, then lane, and then loop through each modifier
     private var table:Array<Array<Array<Modifier>>> = [];
 
-    public function new(instance:ModchartMusicBeatState, renderer:PlayfieldRenderer)
+    public function new(instance:MusicBeatState, renderer:PlayfieldRenderer)
     {
         this.instance = instance;
         this.renderer = renderer;

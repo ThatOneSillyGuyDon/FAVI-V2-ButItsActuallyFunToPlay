@@ -54,7 +54,7 @@ class Modifier
     public var type:ModifierType = ALL;
     public var playfield:Int = -1;
     public var targetLane:Int = -1;
-    public var instance:ModchartMusicBeatState = null;
+    public var instance:MusicBeatState = null;
     public var renderer:PlayfieldRenderer = null;
     public static var beat:Float = 0;
     public var notes:FlxTypedGroup<Note>;
