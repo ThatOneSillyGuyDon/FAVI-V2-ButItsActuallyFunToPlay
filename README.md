@@ -45,9 +45,10 @@ Download the original mod [here](https://gamejolt.com/games/funkin-avi/710505)
 * Mouse - Made chromatics for Lilith & Everett
 * JustJustin - Made Ricky Chromatic
 
-### Psych Engine Credits
+## Psych Engine Credits
 * Shadow Mario - Programmer
 * Riveren - Artist
+### Special Thanks
 * bbpanzu - Ex-Programmer
 * Yoshubs - Ex-Programmer
 * SqirraRNG - Crash Handler and Base code for Chart Editor's Waveform
