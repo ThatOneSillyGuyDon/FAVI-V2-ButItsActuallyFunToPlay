@@ -164,17 +164,7 @@ class StrumNote extends FlxSkewedSprite
 			animation.addByPrefix('red', 'arrowRIGHT');
 
 			antialiasing = ClientPrefs.data.antialiasing;
-			var s = 0.7;
-			switch (PlayState.SONG.song)
-			{
-				case "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Malfunction Legacy" | "Twisted Grins Legacy" | "Cycled Sins Legacy" | "Mercy Legacy" | "Delutrance" | "Birthday" | "Malfunction":
-					s = 0.7;
-				case "Dont Cross" | "Mercy":
-				   s = 0.64;
-				default:
-					s = 0.6;
-			}
-			setGraphicSize(Std.int(width * s));
+			setGraphicSize(Std.int(width * 0.7));
 
 			switch (Math.abs(noteData) % 4)
 			{
