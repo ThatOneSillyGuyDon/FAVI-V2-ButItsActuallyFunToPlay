@@ -985,10 +985,18 @@ class FAVIPauseSubState extends MusicBeatSubstate
 
 class PauseManiaSubstate extends MusicBeatSubstate
 {
+	var pauseMusic:FlxSound;
 	var menuItems:Array<String>;
 	var curSelected:Int = 0;
+	var countdown:FlxText;
 	var buttonGroup:FlxTypedGroup<FlxSprite>;
-	var pauseMusic:FlxSound;
+	var bg:FlxSprite;
+	var infoTxt:FlxText;
+	var creditTxt:FlxText;
+	var infoTab:FlxSprite;
+	var creditTab:FlxSprite;
+	var disc:FlxSprite;
+	var waveform:SpectrumWaveform;
 	var hasFinishedAnim:Bool = false;
 	var canQuit:Bool = false;
 	var songText:FlxSprite;
@@ -1010,16 +1018,20 @@ class PauseManiaSubstate extends MusicBeatSubstate
 			menuItems = itemStack;
 
 			var randomPauseSong:String = "";
+			var pauseSongStr:String = "";
 			var randomizer:Int = FlxG.random.int(1, 3);
 
 			switch (randomizer)
 			{
 				case 1: 
 					randomPauseSong = "shipTheFartYayHoorayv3v";
+					pauseSongStr = "Ship The Fart Yay Hooray < 3 (Distant Stars)";
 				case 2: 
 					randomPauseSong = "somberNight";
+					pauseSongStr = "Ahh The Scary (Somber Night)";
 				case 3: 
 					randomPauseSong = "theWretchedTilezones";
+					pauseSongStr = "The Wretched Tilezones (Simple Life)";
 			}
 
 			pauseMusic = new FlxSound();
@@ -1029,10 +1041,57 @@ class PauseManiaSubstate extends MusicBeatSubstate
 
 			FlxG.sound.list.add(pauseMusic);
 
-			var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
-			bg.alpha = 0;
+			bg = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
+			bg.alpha = 0.001;
 			bg.scrollFactor.set();
 			add(bg);
+
+			if (!ClientPrefs.data.lowQuality)
+			{
+				waveform = new SpectrumWaveform(0, 720, pauseMusic, FlxG.width, FlxG.height, TO_UP_FROM_DOWN, ROUNDED, 0xff808080);
+				waveform.MAX_AMPLITUDE = 79560;
+				waveform.design = ROUNDED;
+				waveform.barWidth = 12;
+				waveform.barSpacing = 16;
+				waveform.roundValue = 25;
+				waveform.blend = ADD;
+				waveform.alpha = 0.001;
+				add(waveform);
+
+				FlxTween.tween(waveform, {alpha: 0.4}, 1.2, {ease: FlxEase.quartInOut});
+			}
+
+			disc = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/pause/maniaUI/disc'));
+			disc.x -= 300;
+
+			infoTab = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/pause/maniaUI/infoTab'));
+			infoTab.y += 200;
+
+			creditTab = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/pause/maniaUI/creditTab'));
+			creditTab.x += 300;
+
+			for (i in [disc, infoTab, creditTab])
+			{
+				i.alpha = 0.001;
+				add(i);
+			}
+
+			FlxTween.tween(disc, {x: disc.x + 300, alpha: 1}, 0.8, {ease: FlxEase.quartInOut});
+			FlxTween.tween(infoTab, {y: infoTab.y - 200, alpha: 1}, 0.8, {ease: FlxEase.quartInOut});
+			FlxTween.tween(creditTab, {x: creditTab.x - 300, alpha: 1}, 0.8, {ease: FlxEase.quartInOut});
+
+			infoTxt = new FlxText(infoTab.x + 25, infoTab.y + 375, infoTab.width - 50, "Song: " + PlayState.SONG.song + " - " + FreeplayState.getArtistName() + " [" + FreeplayState.getDiffRank() + "]\n\nPause Theme: " + pauseSongStr + " - By: ForFurtherNotice", 16);
+			infoTxt.setFormat(Paths.font("resultsFont.ttf"), 34, FlxColor.WHITE, CENTER);
+			infoTxt.alpha = 0.001;
+			add(infoTxt);
+
+			creditTxt = new FlxText(creditTab.x + 733, creditTab.y + 15, 250, "Mania UI & Background Artwork by:\nThatOneSillyGuy\n\nChart by:\n" + Song.getCharterCredits(), 16);
+			creditTxt.setFormat(Paths.font("resultsFont.ttf"), 22, FlxColor.WHITE, CENTER);
+			creditTxt.alpha = 0.001;
+			add(creditTxt);
+
+			FlxTween.tween(infoTxt, {alpha: 1}, 0.8, {ease: FlxEase.quartInOut, startDelay: 0.2});
+			FlxTween.tween(creditTxt, {alpha: 1}, 0.8, {ease: FlxEase.quartInOut, startDelay: 0.2});
 
 			// menu buttons
 			buttonGroup = new FlxTypedGroup<FlxSprite>();
@@ -1040,7 +1099,7 @@ class PauseManiaSubstate extends MusicBeatSubstate
 	
 			for (i in 0...menuItems.length)
 			{
-				songText = new FlxSprite(0, 0).loadGraphic(Paths.image('Funkin_avi/pause/menuButtons/${menuItems[i]}'));
+				songText = new FlxSprite(0, 0).loadGraphic(Paths.image('Funkin_avi/pause/maniaUI/menuButtons/${menuItems[i]}'));
 				songText.alpha = 0;
 				songText.scale.set(0.55, 0.55);
 				songText.ID = i;
@@ -1053,6 +1112,11 @@ class PauseManiaSubstate extends MusicBeatSubstate
 			}
 
 			FlxTween.tween(bg, {alpha: 0.6}, 0.4, {ease: FlxEase.quartInOut});
+
+			countdown = new FlxText(0, 0, 1280, "", 0);
+			countdown.setFormat(Paths.font("resultsFont.ttf"), 60, FlxColor.WHITE, CENTER);
+			countdown.screenCenter();
+			add(countdown);
 
 			changeSelection();
 			lime.app.Application.current.window.title += " - {Paused}";
@@ -1082,9 +1146,7 @@ class PauseManiaSubstate extends MusicBeatSubstate
 						switch (daSelected)
 						{
 							case "maniaResume":
-								close();
-								lime.app.Application.current.window.title = PlayState.windowName;
-								PlayState.windowTimer.active = true;
+								resumeGame();
 							case "maniaRetry":
 								restartSong();
 							case "maniaOptions":
@@ -1096,7 +1158,7 @@ class PauseManiaSubstate extends MusicBeatSubstate
 							case "maniaQuit":
 								if (!canQuit)
 								{
-									songText.loadGraphic(Paths.image('Funkin_avi/pause/menuButtons/quitConfirm'));
+									songText.loadGraphic(Paths.image('Funkin_avi/pause/maniaUI/menuButtons/quitConfirm'));
 									canQuit = true;
 								}
 								else
@@ -1159,6 +1221,58 @@ class PauseManiaSubstate extends MusicBeatSubstate
 						MusicBeatState.resetState();
 					}
 				}
+
+			function resumeGame()
+			{
+				hasFinishedAnim = false;
+				if (PlayState.pauseCountEnabled)
+				{
+					for (obj in [infoTxt, creditTxt, infoTab, creditTab, disc])
+						FlxTween.tween(obj, {alpha: 0}, 0.3, {ease: FlxEase.quartOut});
+
+					waveform != null ? FlxTween.tween(waveform, {y: waveform.y + 1200}, 0.4, {ease: FlxEase.quartOut}) : null;
+
+					buttonGroup.forEach(function(spr:FlxSprite)
+					{
+						FlxTween.tween(spr, {alpha: 0}, 0.3, {ease: FlxEase.quartOut});
+					});
+		
+					new FlxTimer().start(0.4, function(tmr:FlxTimer)
+					{
+						FlxG.sound.play(Paths.sound('hitsound'), 0.4);
+						countdown.text = "3";
+						new FlxTimer().start(1, function(tmr:FlxTimer)
+						{
+							FlxG.sound.play(Paths.sound('hitsound'), 0.4);
+							countdown.text = "2";
+							new FlxTimer().start(1, function(tmr:FlxTimer)
+							{
+								FlxG.sound.play(Paths.sound('hitsound'), 0.4);
+								countdown.text = "1";
+								FlxTween.tween(bg, {alpha: 0}, 1.2, {ease: FlxEase.quartInOut});
+								new FlxTimer().start(1, function(tmr:FlxTimer)
+								{
+									FlxG.sound.play(Paths.sound('hitsound'), 0.4);
+									countdown.text = "Go!";
+									FlxTween.tween(countdown, {alpha: 0}, 0.4);
+									new FlxTimer().start(0.55, function(tmr:FlxTimer)
+									{
+										close();
+										lime.app.Application.current.window.title = PlayState.windowName;
+										PlayState.windowTimer.active = true;
+									});
+								});
+							});
+						});
+					});
+				}
+				else
+				{
+					close();
+					lime.app.Application.current.window.title = PlayState.windowName;
+					PlayState.windowTimer.active = true;
+				}
+			}	
 
 			function changeSelection(change:Int = 0):Void
 			{

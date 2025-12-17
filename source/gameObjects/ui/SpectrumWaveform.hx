@@ -43,9 +43,9 @@ enum SpectrumDesign {
 
 class SpectrumWaveform extends FlxSpriteGroup {
     // Define some constants
-    static inline var SAMPLE_RATE:Int = 2048;
-    static inline var MAX_AMPLITUDE:Int = 65535;
-    static inline var LERP_SPEED:Float = 30;
+    public var SAMPLE_RATE:Int = 2048;
+    public var MAX_AMPLITUDE:Int = 65535;
+    public var LERP_SPEED:Float = 30;
 
     @:noPrivateAccess var elapsed:Float = 0;
     @:noPrivateAccess var previous:Int = 0;
