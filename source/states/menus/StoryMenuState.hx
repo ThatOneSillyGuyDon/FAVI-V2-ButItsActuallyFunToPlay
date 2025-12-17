@@ -12,9 +12,9 @@ class StoryMenuState extends MusicBeatState
 	public static var weekCompleted:Map<String, Bool> = new Map<String, Bool>();
 
 	var scoreText:FlxText;
-	var curDifficulty:Int = 1;
 
-	static var lastDifficulty:String = '';
+	private static var lastDifficultyName:String = '';
+	var curDifficulty:Int = 1;
 
 	var weekCharacters:Array<Array<String>> = [];
 	var bookImages:Array<String> = ['depression']; // For sum reason it dosent work brah, time to activate my secret mind - malyplus
@@ -106,12 +106,12 @@ class StoryMenuState extends MusicBeatState
 
 		difficultySelectors = new FlxGroup();
 
-		Difficulty.difficulties = Difficulty.defaultList.copy();
-		if(lastDifficulty == '')
+		Difficulty.resetList();
+		if(lastDifficultyName == '')
 		{
-			lastDifficulty = Difficulty.defaultDifficulty;
+			lastDifficultyName = Difficulty.getDefault();
 		}
-		curDifficulty = Math.round(Math.max(0, Difficulty.defaultList.indexOf(lastDifficulty)));
+		curDifficulty = Math.round(Math.max(0, Difficulty.defaultList.indexOf(lastDifficultyName)));
 
 		if(!ClientPrefs.data.lowQuality) 
 		{
@@ -199,15 +199,6 @@ class StoryMenuState extends MusicBeatState
 					changeDifficulty();
 				}
 
-				// WE DONT NEED IT GRAHHHH CAUSE ONLY HARD MODE IS IN THIS MOD I THINK!!!!!!!!!!!!!!!!!!! - MalyPlus
-				/*
-				if (controls.UI_RIGHT_P)
-					changeDifficulty(1);
-				else if (controls.UI_LEFT_P)
-					changeDifficulty(-1);
-				else if (upP || downP)
-					changeDifficulty();*/
-				
 				if (leftP || rightP)
 				{
 					changeDifficulty(); // nothing special, just in case
@@ -281,6 +272,7 @@ class StoryMenuState extends MusicBeatState
 		if(diffic == null) diffic = '';
 
 		PlayState.storyDifficulty = curDifficulty;
+		
 		if (!GameData.devilSong)
 		{
 			GameData.storySong = "Devilish-Deal";
@@ -298,16 +290,19 @@ class StoryMenuState extends MusicBeatState
 		});
 	}
 
-	var difficultyTween:FlxTween;
-
+	var tweenDifficulty:FlxTween;
 	function changeDifficulty(change:Int = 0):Void
 	{
 		curDifficulty += change;
 
 		if (curDifficulty < 0)
-			curDifficulty = Difficulty.difficulties.length-1;
-		if (curDifficulty >= Difficulty.difficulties.length)
+			curDifficulty = Difficulty.list.length-1;
+		if (curDifficulty >= Difficulty.list.length)
 			curDifficulty = 0;
+
+		var diff:String = Difficulty.getString(curDifficulty);
+		
+		lastDifficultyName = diff;
 	}
 
 	var lerpScore:Int = 0;
@@ -329,6 +324,19 @@ class StoryMenuState extends MusicBeatState
 		FlxG.sound.play(Paths.sound('funkinAVI/menu/scrollSfx'));
 
 		changeDifficulty();
+
+		if(Difficulty.list.contains(Difficulty.getDefault()))
+			curDifficulty = Math.round(Math.max(0, Difficulty.defaultList.indexOf(Difficulty.getDefault())));
+		else
+			curDifficulty = 0;
+
+		var newPos:Int = Difficulty.list.indexOf(lastDifficultyName);
+		//trace('Pos of ' + lastDifficultyName + ' is ' + newPos);
+		if(newPos > -1)
+		{
+			curDifficulty = newPos;
+		}
+
 		updateText();
 	}
 

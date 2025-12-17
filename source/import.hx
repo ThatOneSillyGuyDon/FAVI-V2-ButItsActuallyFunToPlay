@@ -15,9 +15,6 @@
  * There are many more ways of using this file, so go nuts!
  */
 
- // just in case
- import unused.*;
-
  // import objects, menus and backend support
 import backend.*;
 import backend.menu.*;
@@ -32,6 +29,7 @@ import gameObjects.stages.*;
 import gameObjects.ui.animatedText.*;
 import gameObjects.ui.notes.*;
 import gameObjects.ui.customEditorUI.*;
+import gameObjects.ui.customEditorUI.psychUI.*; //Psych-UI
 
 // import screens you see in-game
 import substates.*;
@@ -46,6 +44,7 @@ import backend.BaseStage.StageAssetData;
 import backend.BaseStage.AssetType;
 import backend.BaseStage.AssetPriority;
 import backend.BaseStage.*;
+
 
 //import game over screens
 import substates.GameOverScreens.BaseGameOver; //default fnf screen

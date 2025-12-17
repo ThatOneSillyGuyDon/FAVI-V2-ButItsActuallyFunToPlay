@@ -7,7 +7,6 @@ import openfl.media.Sound;
 
 class FreeplayState extends MusicBeatState
 {
-	private static var lastDifficultyName:String = '';
 	private var grpSongs:FlxTypedGroup<Alphabet>;
 	private var albumHolder:FlxTypedGroup<FlxSprite>;
 	private var iconArray:Array<HealthIcon> = [];
@@ -31,6 +30,7 @@ class FreeplayState extends MusicBeatState
 	var lerpScore:Int = 0;
 	var intendedScore:Int = 0;
 	var curDifficulty:Int = -1;
+	private static var lastDifficultyName:String = Difficulty.getDefault();
 	var instPlaying:Int = -1;
 	var holdTime:Float = 0;
 	var lerpRating:Float = 0;
@@ -136,10 +136,6 @@ class FreeplayState extends MusicBeatState
 		createMenuBG();
 		createUIComponents();
 
-		if(lastDifficultyName == '')
-		{
-			lastDifficultyName = Difficulty.defaultDifficulty;
-		}
 		curDifficulty = Math.round(Math.max(0, Difficulty.defaultList.indexOf(lastDifficultyName)));
 
 		player = new MusicPlayer(this);
@@ -682,6 +678,28 @@ class FreeplayState extends MusicBeatState
 		}
 	}
 
+	function changeDiff(change:Int = 0)
+	{
+		if (player.playingMusic)
+			return;
+
+		curDifficulty += change;
+
+		if (curDifficulty < 0)
+			curDifficulty = Difficulty.list.length-1;
+		if (curDifficulty >= Difficulty.list.length)
+			curDifficulty = 0;
+
+		#if !switch
+		intendedScore = Highscore.getScore(songs[curSelected].songName, curDifficulty);
+		intendedRating = Highscore.getRating(songs[curSelected].songName, curDifficulty);
+		#end
+
+		lastDifficultyName = Difficulty.getString(curDifficulty);
+
+		positionHighscore();
+	}
+
 	var shittyTmr:FlxTimer;
 	function changeSelection(change:Int = 0, playSound:Bool = true)
 	{
@@ -703,6 +721,7 @@ class FreeplayState extends MusicBeatState
 		if(ClientPrefs.data.flashing && freeplayMenuList != 3)
 			FlxG.camera.flash(FlxColor.BLACK, 0.1);
 
+		var lastList:Array<String> = Difficulty.list;
 		curSelected += change;
 
 		if (curSelected < 0)
@@ -834,43 +853,6 @@ class FreeplayState extends MusicBeatState
 			}
 		}
 
-		Difficulty.difficulties = Difficulty.defaultList.copy();
-		var diffStr:String = "Hard";
-		if(diffStr != null) diffStr = diffStr.trim(); //Fuck you HTML5
-
-		if(diffStr != null && diffStr.length > 0)
-		{
-			var diffs:Array<String> = diffStr.split(',');
-			var i:Int = diffs.length - 1;
-			while (i > 0)
-			{
-				if(diffs[i] != null)
-				{
-					diffs[i] = diffs[i].trim();
-					if(diffs[i].length < 1) diffs.remove(diffs[i]);
-				}
-				--i;
-			}
-
-			if(diffs.length > 0 && diffs[0].length > 0)
-				Difficulty.difficulties = diffs;
-		}
-		
-		if(Difficulty.difficulties.contains(Difficulty.defaultDifficulty))
-			curDifficulty = Math.round(Math.max(0, Difficulty.defaultList.indexOf(Difficulty.defaultDifficulty)));
-		else
-			curDifficulty = 0;
-
-		if (curDifficulty < 0)
-			curDifficulty = Difficulty.difficulties.length-1;
-		if (curDifficulty >= Difficulty.difficulties.length)
-			curDifficulty = 0;
-
-		lastDifficultyName = Difficulty.difficulties[curDifficulty];
-		#if !switch
-		intendedScore = Highscore.getScore(songs[curSelected].songName, curDifficulty);
-		intendedRating = Highscore.getRating(songs[curSelected].songName, curDifficulty);
-		#end
 		PlayState.storyDifficulty = curDifficulty;
 		var difficultyRank = songs[curSelected].rankName;
 		diffText.color = songs[curSelected].rankColor;
@@ -878,9 +860,24 @@ class FreeplayState extends MusicBeatState
 		if (freeplayMenuList == 2) diffText.text = 'RANK: ' + difficultyRank; else diffText.text = "Difficulty: " + difficultyRank;// display the text
 		positionHighscore();
 
-		var newPos:Int = Difficulty.difficulties.indexOf(lastDifficultyName);
-		if(newPos > -1)
-			curDifficulty = newPos;
+		var savedDiff:String = songs[curSelected].lastDifficulty;
+		var lastDiff:Int = Difficulty.list.indexOf(lastDifficultyName);
+		if(savedDiff != null && !lastList.contains(savedDiff) && Difficulty.list.contains(savedDiff))
+			curDifficulty = Math.round(Math.max(0, Difficulty.list.indexOf(savedDiff)));
+		else if(lastDiff > -1)
+			curDifficulty = lastDiff;
+		else if(Difficulty.list.contains(Difficulty.getDefault()))
+			curDifficulty = Math.round(Math.max(0, Difficulty.defaultList.indexOf(Difficulty.getDefault())));
+		else
+			curDifficulty = 0;
+
+		changeDiff();
+		_updateSongLastDifficulty();
+	}
+
+	inline private function _updateSongLastDifficulty()
+	{
+		songs[curSelected].lastDifficulty = Difficulty.getString(curDifficulty);
 	}
 
 	private function positionHighscore() {
@@ -1020,6 +1017,7 @@ class SongMetadata
 	public var mechanic:String = "";
 	public var iconOffset:Array<Int> = [0, 0];
 	public var folder:String = "";
+	public var lastDifficulty:String = null;
 
 	public function new(song:String, week:Int, songCharacter:String, color:Int, composer:String, rankName:String, rankColor:FlxColor, iconOffset:Array<Int>, mechanic:String)
 	{

@@ -233,6 +233,8 @@ class PauseSubState extends MusicBeatSubstate
 					FlxG.sound.music.volume = 0;
 					PlayState.changedDifficulty = true;
 					PlayState.chartingMode = false;
+					PlayState.modchartingMode = false;
+					ModchartFile.autosaveMod = null;
 					return;
 				}
 
@@ -300,6 +302,8 @@ class PauseSubState extends MusicBeatSubstate
 					});
 					PlayState.deathCounter = 0;
 					PlayState.seenCutscene = false;
+
+					ModchartFile.autosaveMod = null;
 					
 					if(PlayState.isStoryMode) {
 						MusicBeatState.switchState(new StoryMenuState());
@@ -310,6 +314,7 @@ class PauseSubState extends MusicBeatSubstate
 					}
 					PlayState.changedDifficulty = false;
 					PlayState.chartingMode = false;
+					PlayState.modchartingMode = false;
 					FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
 			}
 		}
@@ -756,30 +761,33 @@ class FAVIPauseSubState extends MusicBeatSubstate
 							});
 							PlayState.changedDifficulty = false;
 							PlayState.chartingMode = false;
+							PlayState.modchartingMode = false;
 							PlayState.deathCounter = 0;
+
+							ModchartFile.autosaveMod = null;
 	
-								if (PlayState.isStoryMode)
+							if (PlayState.isStoryMode)
+							{
+									MusicBeatState.switchState(new StoryMenuState());
+									FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
+							}
+							else
+							{
+								switch (CoolUtil.dashToSpace(PlayState.SONG.song))
 								{
-										MusicBeatState.switchState(new StoryMenuState());
-										FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
+									case "Rotten Petals" | "Curtain Call" | "Am I Real?" | "Your Final Bow" | "Seeking Freedom" | "Ahh the Scary (Somber Night)" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "The Wretched Tilezones (Simple Life)" | "A True Monster":
+										FreeplayState.freeplayMenuList = 3;
+										MusicBeatState.switchState(new FreeplayState());
+									case 'Devilish Deal' | 'Isolated' | 'Lunacy' | 'Delusional':
+										states.menus.FreeplayState.freeplayMenuList = 0;
+										MusicBeatState.switchState(new states.menus.FreeplayState());
+									default:
+										states.menus.FreeplayState.freeplayMenuList = (PlayState.SONG.song.toLowerCase().endsWith('legacy') || PlayState.SONG.song == "Isolated Beta" || PlayState.SONG.song == "Isolated Old") ? 2 : 1;
+										MusicBeatState.switchState(new states.menus.FreeplayState()); // yeah, there's no way I'm making a case for EVERY fucking song in that menu, too much work!
 								}
-								else
-								{
-									switch (CoolUtil.dashToSpace(PlayState.SONG.song))
-									{
-										case "Rotten Petals" | "Curtain Call" | "Am I Real?" | "Your Final Bow" | "Seeking Freedom" | "Ahh the Scary (Somber Night)" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "The Wretched Tilezones (Simple Life)" | "A True Monster":
-											FreeplayState.freeplayMenuList = 3;
-											MusicBeatState.switchState(new FreeplayState());
-										case 'Devilish Deal' | 'Isolated' | 'Lunacy' | 'Delusional':
-											states.menus.FreeplayState.freeplayMenuList = 0;
-											MusicBeatState.switchState(new states.menus.FreeplayState());
-										default:
-											states.menus.FreeplayState.freeplayMenuList = (PlayState.SONG.song.toLowerCase().endsWith('legacy') || PlayState.SONG.song == "Isolated Beta" || PlayState.SONG.song == "Isolated Old") ? 2 : 1;
-											MusicBeatState.switchState(new states.menus.FreeplayState()); // yeah, there's no way I'm making a case for EVERY fucking song in that menu, too much work!
-									}
-									FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
-								}
-									FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
+								FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
+							}
+							FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
 					}
 				}
 			}
