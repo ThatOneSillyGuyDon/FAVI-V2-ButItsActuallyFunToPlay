@@ -999,9 +999,9 @@ class PlayState extends MusicBeatState
 			fancyBarOverlay.flipY = true;
 		}
 		fancyBarOverlay.visible = SONG.song.toLowerCase() != 'cycled sins';
+		uiGroup.add(healthBar);
 		if (FreeplayState.freeplayMenuList != 2)
 			uiGroup.add(fancyBarOverlay);
-		uiGroup.add(healthBar);
 
 		iconP1 = new HealthIcon((SONG.song == "Mercy" ? "everettmercy" : boyfriend.healthIcon), (SONG.song == "Mercy" ? false : true));
 		iconP1.y = healthBar.y - 75;
