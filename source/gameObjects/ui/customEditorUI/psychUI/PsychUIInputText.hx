@@ -60,13 +60,14 @@ class PsychUIInputText extends FlxSpriteGroup
 
 	public var selectedFormat:FlxTextFormat = new FlxTextFormat(FlxColor.WHITE);
 
-	public function new(x:Float = 0, y:Float = 0, wid:Int = 100, ?text:String = '', size:Int = 8)
+	public function new(x:Float = 0, y:Float = 0, wid:Int = 100, ?text:String = '', size:Int = 10)
 	{
 		super(x, y);
 		this.bg = new FlxSprite().makeGraphic(1, 1, FlxColor.BLACK);
-		this.behindText = new FlxSprite(1, 1).makeGraphic(1, 1, FlxColor.WHITE);
+		this.behindText = new FlxSprite(1, 1).makeGraphic(1, 1, FlxColor.fromRGB(36, 36, 36));
 		this.selection = new FlxSprite().makeGraphic(1, 1, FlxColor.WHITE);
 		this.textObj = new FlxText(1, 1, Math.max(1, wid - 2), '', size);
+		this.textObj.setFormat(Paths.font("resultsFont.ttf"), size, FlxColor.WHITE);
 		this.caret = new FlxSprite().makeGraphic(1, 1, FlxColor.WHITE);
 		add(this.bg);
 		add(this.behindText);
@@ -74,7 +75,7 @@ class PsychUIInputText extends FlxSpriteGroup
 		add(this.textObj);
 		add(this.caret);
 
-		this.textObj.color = FlxColor.BLACK;
+		this.textObj.color = FlxColor.WHITE;
 		this.textObj.textField.selectable = false;
 		this.textObj.textField.wordWrap = false;
 		this.textObj.textField.multiline = false;

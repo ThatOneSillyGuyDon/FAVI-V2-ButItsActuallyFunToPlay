@@ -22,6 +22,7 @@ class PsychUICheckBox extends FlxSpriteGroup
 
 		text = new FlxText(box.width + 4, 0, textWid, label);
 		text.y += box.height/2 - text.height/2;
+		text.setFormat(Paths.font("resultsFont.ttf"), 10, FlxColor.WHITE);
 		add(text);
 
 		this.onClick = callback;

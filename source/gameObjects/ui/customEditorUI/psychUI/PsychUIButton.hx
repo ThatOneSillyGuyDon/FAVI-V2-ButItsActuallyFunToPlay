@@ -25,8 +25,8 @@ class PsychUIButton extends FlxSpriteGroup
 		bgAlpha: 1
 	};
 	public var normalStyle:UIStyleData = {
-		bgColor: 0xFFAAAAAA,
-		textColor: FlxColor.BLACK,
+		bgColor: FlxColor.fromRGB(36, 36, 36),
+		textColor: FlxColor.WHITE,
 		bgAlpha: 1
 	};
 
@@ -40,6 +40,7 @@ class PsychUIButton extends FlxSpriteGroup
 
 		text = new FlxText(0, 0, 1, '');
 		text.alignment = CENTER;
+		text.setFormat(Paths.font("resultsFont.ttf"), 10, FlxColor.WHITE);
 		add(text);
 		resize(wid, hei);
 		this.label = label;

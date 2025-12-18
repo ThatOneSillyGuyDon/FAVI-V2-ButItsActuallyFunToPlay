@@ -27,20 +27,21 @@ class PsychUISlider extends FlxSpriteGroup
 		bar.color = mainColor;
 		add(bar);
 
-		minText = new FlxText(0, 0, 80, '', 8);
+		minText = new FlxText(0, 0, 80, '', 10);
 		minText.alignment = CENTER;
-		minText.color = mainColor;
+		minText.setFormat(Paths.font("resultsFont.ttf"), 10, mainColor);
 		add(minText);
-		maxText = new FlxText(0, 0, 80, '', 8);
+		maxText = new FlxText(0, 0, 80, '', 10);
 		maxText.alignment = CENTER;
-		maxText.color = mainColor;
+		maxText.setFormat(Paths.font("resultsFont.ttf"), 10, mainColor);
 		add(maxText);
-		valueText = new FlxText(0, 0, 80, '', 8);
+		valueText = new FlxText(0, 0, 80, '', 10);
 		valueText.alignment = CENTER;
-		valueText.color = handleColor;
+		valueText.setFormat(Paths.font("resultsFont.ttf"), 10, handleColor);
 		add(valueText);
-		labelText = new FlxText(0, 0, wid, '', 8);
+		labelText = new FlxText(0, 0, wid, '', 10);
 		labelText.alignment = CENTER;
+		labelText.setFormat(Paths.font("resultsFont.ttf"), 10, FlxColor.WHITE);
 		add(labelText);
 
 		handle = new FlxSprite().makeGraphic(1, 1, FlxColor.WHITE);

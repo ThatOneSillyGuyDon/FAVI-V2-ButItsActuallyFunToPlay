@@ -225,8 +225,8 @@ class PsychUIDropDownItem extends FlxSpriteGroup
 		bgAlpha: 1
 	};
 	public var normalStyle:UIStyleData = {
-		bgColor: FlxColor.WHITE,
-		textColor: FlxColor.BLACK,
+		bgColor: FlxColor.fromRGB(36, 36, 36),
+		textColor: FlxColor.WHITE,
 		bgAlpha: 1
 	};
 
@@ -236,13 +236,13 @@ class PsychUIDropDownItem extends FlxSpriteGroup
 	{
 		super(x, y);
 
-		bg = new FlxSprite().makeGraphic(1, 1, FlxColor.WHITE);
+		bg = new FlxSprite().makeGraphic(1, 1, FlxColor.fromRGB(36, 36, 36));
 		bg.setGraphicSize(width, 20);
 		bg.updateHitbox();
 		add(bg);
 
-		text = new FlxText(0, 0, width, 8);
-		text.color = FlxColor.BLACK;
+		text = new FlxText(0, 0, width, 10);
+		text.setFormat(Paths.font("resultsFont.ttf"), 10, FlxColor.WHITE);
 		add(text);
 	}
 
