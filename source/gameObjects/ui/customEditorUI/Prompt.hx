@@ -15,7 +15,6 @@ class Prompt extends MusicBeatSubstate
 	var buttons:FlxSprite = new FlxSprite(473.3, 450);
 	var theText:String = '';
 	var goAnyway:Bool = false;
-	var UI_box:FlxUIPopup;
 	var panel:FlxSprite;
 	var panelbg:FlxSprite;
 	var buttonAccept:FlxButton;
