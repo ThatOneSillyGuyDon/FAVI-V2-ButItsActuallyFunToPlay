@@ -573,43 +573,42 @@ class Note extends FlxSkewedSprite
 		if(texture == null) texture = '';
 		if(postfix == null) postfix = '';
 
-		var skin:String = texture + postfix;
-		if(texture.length < 1) {
-			skin = PlayState.SONG != null ? PlayState.SONG.arrowSkin : "NOTE_assets";
-			if(skin == null || skin.length < 1)
-				if (PlayState.SONG != null)
-				{
-					switch (PlayState.SONG.song)
+		var skin:String = null;
+		if(PlayState.SONG != null && PlayState.SONG.arrowSkin != null && PlayState.SONG.arrowSkin.length > 1) skin = PlayState.SONG.arrowSkin;
+		else skin = defaultNoteSkin;
+
+		if (PlayState.SONG != null)
+		{
+			switch (PlayState.SONG.arrowSkin)
+			{
+				case "Default":
+					skin = "faviNotes/NOTE_assets-DEFAULT";
+				case "Cartoon":
+					skin = "faviNotes/NOTE_assets-CARTOON";
+				case "Cross":
+					skin = "faviNotes/NOTE_assets-CROSS";
+				case "War":
+					skin = "faviNotes/NOTE_assets-WAR";
+				case "Mercy":
+					skin = "faviNotes/NOTE_assets-MERCY";
+				case "Sin":
+					skin = "faviNotes/NOTE_assets-SIN";
+				case "Malfunction":
+					skin = "faviNotes/NOTE_assets-MALFUNCTION";
+				case "Birthday":
+					skin = "faviNotes/NOTE_assets-BIRTHDAY";
+				case "Mania":
+					switch (FreeplayState.maniaSkin)
 					{
-						case "Rotten Petals" | "Curtain Call" | "Seeking Freedom" | "Mistful Wind" | "Am I Real?" | "Your Final Bow" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "The Wretched Tilezones (Simple Life)" | "Ahh the Scary (Somber Night)" | "Alone":
-							switch (FreeplayState.maniaSkin)
-							{
-								case 0: skin = "faviNotes/NOTE_assets-MANIA";
-								case 1: skin = "faviNotes/NOTE_assets-MANIABAR";
-								case 2: skin = "faviNotes/NOTE_assets-MANIACIRCLE";
-							}
-						case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Laugh Track":
-							skin = "faviNotes/NOTE_assets-CARTOON";
-						case "Mercy":
-							skin = "faviNotes/NOTE_assets-MERCY";
-						case "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Malfunction Legacy" | "Twisted Grins Legacy" | "Cycled Sins Legacy" | "Mercy Legacy":
-							skin = "NOTE_assets";
-						case "Cycled Sins":
-							skin = "faviNotes/NOTE_assets-SIN";
-						case "Dont Cross":
-							skin = "faviNotes/NOTE_assets-CROSS";
-						case "Malfunction":
-							skin = "faviNotes/NOTE_assets-MALFUNCTION";
-						case "War Dilemma":
-							skin = "faviNotes/NOTE_assets-WAR";
-						case "Birthday":
-							skin = "faviNotes/NOTE_assets-BIRTHDAY";
-						default:
-							skin = "faviNotes/NOTE_assets-DEFAULT";
+						case 0: skin = "faviNotes/NOTE_assets-MANIA";
+						case 1: skin = "faviNotes/NOTE_assets-MANIABAR";
+						case 2: skin = "faviNotes/NOTE_assets-MANIACIRCLE";
 					}
-				}
-				else skin = PlayState.isPixelStage ? "faviNotes/NOTE_assets-MALFUNCTION" : "faviNotes/NOTE_assets-DEFAULT";
+				case "Base Game":
+					skin = "NOTE_assets";
+			}
 		}
+		else skin = PlayState.isPixelStage ? "faviNotes/NOTE_assets-MALFUNCTION" : "faviNotes/NOTE_assets-DEFAULT";
 
 		var animName:String = null;
 		if(animation.curAnim != null) {

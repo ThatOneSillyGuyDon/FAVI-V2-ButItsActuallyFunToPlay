@@ -987,23 +987,15 @@ class EditorPlayState extends MusicBeatState
 		if(note != null) {
 			var strum:StrumNote = playerStrums.members[note.noteData];
 			if(strum != null) {
-				spawnNoteSplash(strum.x, strum.y, note.noteData, note);
+				spawnNoteSplash(strum.x, strum.y, note.noteData, note, strum);
 			}
 		}
 	}
 
-	function spawnNoteSplash(x:Float, y:Float, data:Int, ?note:Note = null) {
-		var skin:String = 'noteSplashes';
-		switch (PlayState.SONG.song)
-		{
-			case "Devilish Deal" | "Isolated" | "Lunacy" | "Delusional" | "Hunted" | "Laugh Track" | "Twisted Grins" | "Rotten Petals" | "Seeking Freedom" | "Am I Real?" | "Your Final Bow" | "The Wretched Tilezones (Simple Life)" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "Ahh the Scary (Somber Night)" | "Curtain Call": PlayState.SONG.splashSkin = "noteSplashes/noteSplashes-sparkles";
-			case "Mercy": PlayState.SONG.splashSkin = "noteSplashes/noteSplashes-diamond";
-			case "Birthday": PlayState.SONG.splashSkin = "noteSplashes/noteSplashes-birthday";
-			default: PlayState.SONG.splashSkin = "noteSplashes/noteSplashes" + NoteSplash.getSplashSkinPostfix();
-		}
-		skin = PlayState.SONG.splashSkin;
+	public function spawnNoteSplash(x:Float, y:Float, data:Int, ?note:Note, ?strum:StrumNote) {
 		var splash:NoteSplash = grpNoteSplashes.recycle(NoteSplash);
-		splash.setupNoteSplash(x, y, data, note);
+		splash.babyArrow = strum;
+		splash.spawnSplashNote(x, y, data, note);
 		grpNoteSplashes.add(splash);
 	}
 	

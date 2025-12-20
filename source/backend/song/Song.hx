@@ -20,16 +20,13 @@ typedef SwagSong =
 
 	var composer:String;
 
+	var gameOverStyle:String;
+
 	var player1:String;
 	var player2:String;
 	var gfVersion:String;
 	var stage:String;
 
-	@:optional var gameOverChar:String;
-	@:optional var gameOverSound:String;
-	@:optional var gameOverLoop:String;
-	@:optional var gameOverEnd:String;
-	
 	@:optional var disableNoteRGB:Bool;
 
 	@:optional var arrowSkin:String;
@@ -48,10 +45,7 @@ class Song
 	public var needsVoices:Bool = true;
 	public var arrowSkin:String;
 	public var splashSkin:String;
-	public var gameOverChar:String;
-	public var gameOverSound:String;
-	public var gameOverLoop:String;
-	public var gameOverEnd:String;
+	public var gameOverStyle:String = "Base Game";
 	public var disableNoteRGB:Bool = false;
 	public var speed:Float = 1;
 	public static var charter:String = "Unknown";
@@ -232,6 +226,7 @@ class Song
 			bpm: 150,
 			needsVoices: false,
 			speed: 1,
+			gameOverStyle: "Base Game",
 			player1: "bf",
 			player2: "bf-pixel-opponent",
 			gfVersion: "gf",

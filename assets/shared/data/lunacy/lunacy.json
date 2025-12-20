@@ -1,0 +1,10023 @@
+{
+	"song": {
+		"composer": "obscurity",
+		"player1": "bf-fake-new",
+		"player2": "lunamick-new",
+		"gameOverStyle": "Episode 1",
+		"arrowSkin": "Cartoon",
+		"splashSkin": "Sparkles",
+		"notes": [
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 150,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 150,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						30638.2978723404,
+						3,
+						877.659574468085
+					],
+					[
+						31595.7446808511,
+						0,
+						239.36170212766
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						31914.8936170213,
+						1,
+						558.510638297872
+					],
+					[
+						32553.1914893617,
+						2,
+						79.7872340425532
+					],
+					[
+						32553.1914893617,
+						0,
+						239.36170212766
+					],
+					[
+						32872.3404255319,
+						1,
+						239.36170212766
+					],
+					[
+						32872.3404255319,
+						2,
+						79.7872340425532
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						33191.4893617021,
+						3,
+						877.659574468085
+					],
+					[
+						34148.9361702128,
+						2,
+						239.36170212766
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						34468.085106383,
+						0,
+						558.510638297872
+					],
+					[
+						34787.2340425532,
+						1,
+						239.36170212766
+					],
+					[
+						35106.3829787234,
+						3,
+						558.510638297872
+					],
+					[
+						35106.3829787234,
+						2,
+						239.36170212766
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						35744.6808510638,
+						0,
+						558.510638297872
+					],
+					[
+						36382.9787234042,
+						2,
+						0
+					],
+					[
+						36462.7659574468,
+						3,
+						0
+					],
+					[
+						36542.5531914894,
+						1,
+						0
+					],
+					[
+						36622.3404255319,
+						2,
+						0
+					],
+					[
+						36702.1276595745,
+						0,
+						239.36170212766
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						37021.2765957447,
+						1,
+						0
+					],
+					[
+						37180.8510638298,
+						3,
+						0
+					],
+					[
+						37340.4255319149,
+						2,
+						0
+					],
+					[
+						37500,
+						2,
+						398.936170212766
+					],
+					[
+						37978.7234042553,
+						1,
+						239.36170212766
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						38297.8723404255,
+						0,
+						558.510638297872
+					],
+					[
+						38936.170212766,
+						3,
+						558.510638297872
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						39574.4680851064,
+						2,
+						1196.8085106383
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						40851.0638297872,
+						2,
+						239.36170212766
+					],
+					[
+						40851.0638297872,
+						4,
+						1196.8085106383
+					],
+					[
+						41170.2127659574,
+						0,
+						239.36170212766
+					],
+					[
+						41489.3617021277,
+						1,
+						239.36170212766
+					],
+					[
+						41808.5106382979,
+						3,
+						0
+					],
+					[
+						41968.085106383,
+						2,
+						0
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						42127.6595744681,
+						6,
+						1196.8085106383
+					],
+					[
+						42287.2340425532,
+						2,
+						0
+					],
+					[
+						42606.3829787234,
+						1,
+						0
+					],
+					[
+						42765.9574468085,
+						2,
+						0
+					],
+					[
+						42925.5319148936,
+						1,
+						0
+					],
+					[
+						43085.1063829787,
+						0,
+						239.36170212766
+					],
+					[
+						42127.6595744681,
+						0,
+						0
+					],
+					[
+						42446.8085106383,
+						3,
+						0
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						43404.2553191489,
+						7,
+						1196.8085106383
+					],
+					[
+						43404.2553191489,
+						3,
+						239.36170212766
+					],
+					[
+						43723.4042553192,
+						2,
+						239.36170212766
+					],
+					[
+						44042.5531914894,
+						1,
+						239.36170212766
+					],
+					[
+						44361.7021276596,
+						2,
+						239.36170212766
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						44680.8510638298,
+						0,
+						239.36170212766
+					],
+					[
+						45000,
+						1,
+						239.36170212766
+					],
+					[
+						45319.1489361702,
+						0,
+						239.36170212766
+					],
+					[
+						45638.2978723404,
+						3,
+						239.36170212766
+					],
+					[
+						44680.8510638298,
+						4,
+						558.510638297872
+					],
+					[
+						45319.1489361702,
+						5,
+						558.510638297872
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						45957.4468085106,
+						2,
+						239.36170212766
+					],
+					[
+						46276.5957446809,
+						3,
+						239.36170212766
+					],
+					[
+						46595.7446808511,
+						1,
+						239.36170212766
+					],
+					[
+						46914.8936170213,
+						0,
+						0
+					],
+					[
+						47074.4680851064,
+						2,
+						0
+					],
+					[
+						45957.4468085106,
+						7,
+						1196.8085106383
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						47234.0425531915,
+						3,
+						239.36170212766
+					],
+					[
+						47553.1914893617,
+						0,
+						0
+					],
+					[
+						47712.7659574468,
+						1,
+						0
+					],
+					[
+						47872.3404255319,
+						2,
+						0
+					],
+					[
+						48031.914893617,
+						1,
+						0
+					],
+					[
+						48191.4893617021,
+						3,
+						239.36170212766
+					],
+					[
+						47234.0425531915,
+						5,
+						1196.8085106383
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						48510.6382978724,
+						0,
+						239.36170212766
+					],
+					[
+						48829.7872340426,
+						1,
+						239.36170212766
+					],
+					[
+						49148.9361702128,
+						2,
+						239.36170212766
+					],
+					[
+						49468.085106383,
+						3,
+						239.36170212766
+					],
+					[
+						48510.6382978724,
+						6,
+						1196.8085106383
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						49787.2340425532,
+						4,
+						1196.8085106383
+					],
+					[
+						49787.2340425532,
+						0,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						50106.3829787234,
+						3,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						50425.5319148936,
+						1,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						50744.6808510639,
+						2,
+						240,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						51063.8297872341,
+						2,
+						1196.8085106383
+					],
+					[
+						51063.8297872341,
+						7,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						51382.9787234043,
+						4,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						51702.1276595745,
+						6,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						52021.2765957447,
+						5,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						52180.8510638298,
+						6,
+						0,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						52340.4255319149,
+						3,
+						1196.8085106383
+					],
+					[
+						52340.4255319149,
+						4,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						52500,
+						6,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						52659.5744680851,
+						7,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						52819.1489361702,
+						5,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						52978.7234042553,
+						7,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						53138.2978723404,
+						5,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						53297.8723404256,
+						4,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						53457.4468085107,
+						7,
+						0,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						53617.0212765958,
+						6,
+						0
+					],
+					[
+						53936.170212766,
+						4,
+						0
+					],
+					[
+						54255.3191489362,
+						7,
+						239.36170212766
+					],
+					[
+						54574.4680851064,
+						5,
+						0
+					],
+					[
+						54734.0425531915,
+						5,
+						0
+					],
+					[
+						53617.0212765958,
+						2,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						53776.5957446809,
+						1,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						53936.170212766,
+						2,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						54095.7446808511,
+						2,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						54414.8936170213,
+						3,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						54574.4680851064,
+						0,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						54734.0425531915,
+						0,
+						0,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						54893.6170212766,
+						4,
+						0
+					],
+					[
+						55212.7659574468,
+						4,
+						0
+					],
+					[
+						55531.914893617,
+						6,
+						239.36170212766
+					],
+					[
+						55851.0638297873,
+						5,
+						239.36170212766
+					],
+					[
+						54893.6170212766,
+						1,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						55053.1914893617,
+						3,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						55212.7659574468,
+						2,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						55531.914893617,
+						1,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						55851.0638297873,
+						2,
+						240,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						56170.2127659575,
+						3,
+						558.510638297872
+					],
+					[
+						56808.5106382979,
+						0,
+						0
+					],
+					[
+						57127.6595744681,
+						0,
+						0
+					],
+					[
+						56170.2127659575,
+						5,
+						1200,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						57446.8085106383,
+						1,
+						558.510638297872
+					],
+					[
+						58085.1063829788,
+						0,
+						0
+					],
+					[
+						58404.255319149,
+						0,
+						0
+					],
+					[
+						57446.8085106383,
+						4,
+						1200,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						58723.4042553192,
+						6,
+						1196.8085106383
+					],
+					[
+						58723.4042553192,
+						1,
+						1200,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						60000,
+						7,
+						0
+					],
+					[
+						60319.1489361702,
+						7,
+						0
+					],
+					[
+						60638.2978723405,
+						6,
+						558.510638297872
+					],
+					[
+						60000,
+						2,
+						1200,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						61276.5957446809,
+						0,
+						239.36170212766
+					],
+					[
+						61595.7446808511,
+						2,
+						239.36170212766
+					],
+					[
+						61914.8936170213,
+						1,
+						239.36170212766
+					],
+					[
+						62234.0425531915,
+						3,
+						0
+					],
+					[
+						62393.6170212766,
+						1,
+						0
+					],
+					[
+						61276.5957446809,
+						7,
+						2160,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						62553.1914893617,
+						2,
+						0
+					],
+					[
+						62712.7659574468,
+						0,
+						0
+					],
+					[
+						62872.340425532,
+						3,
+						0
+					],
+					[
+						63031.9148936171,
+						0,
+						0
+					],
+					[
+						63191.4893617022,
+						1,
+						0
+					],
+					[
+						63351.0638297873,
+						0,
+						0
+					],
+					[
+						63510.6382978724,
+						3,
+						0
+					],
+					[
+						63670.2127659575,
+						2,
+						0
+					],
+					[
+						63510.6382978724,
+						5,
+						240,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						64148.9361702128,
+						2,
+						0
+					],
+					[
+						63829.7872340426,
+						1,
+						0
+					],
+					[
+						63989.3617021277,
+						0,
+						0
+					],
+					[
+						64308.5106382979,
+						3,
+						0
+					],
+					[
+						64468.085106383,
+						0,
+						0
+					],
+					[
+						64627.6595744681,
+						3,
+						0
+					],
+					[
+						64787.2340425532,
+						1,
+						0
+					],
+					[
+						64946.8085106383,
+						2,
+						0
+					],
+					[
+						63829.7872340426,
+						4,
+						2160,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						65106.3829787234,
+						1,
+						0
+					],
+					[
+						65425.5319148937,
+						2,
+						239.36170212766
+					],
+					[
+						65265.9574468086,
+						3,
+						0
+					],
+					[
+						65744.6808510639,
+						0,
+						239.36170212766
+					],
+					[
+						66063.8297872341,
+						3,
+						239.36170212766
+					],
+					[
+						66063.8297872341,
+						7,
+						240,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						66382.9787234043,
+						6,
+						239.36170212766
+					],
+					[
+						66702.1276595745,
+						7,
+						239.36170212766
+					],
+					[
+						67021.2765957447,
+						4,
+						0
+					],
+					[
+						67180.8510638298,
+						4,
+						0
+					],
+					[
+						67340.4255319149,
+						6,
+						0
+					],
+					[
+						67500,
+						5,
+						0
+					],
+					[
+						66382.9787234043,
+						1,
+						2160,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						67659.5744680851,
+						7,
+						0
+					],
+					[
+						67819.1489361703,
+						5,
+						0
+					],
+					[
+						67978.7234042554,
+						6,
+						0
+					],
+					[
+						68138.2978723405,
+						4,
+						0
+					],
+					[
+						68297.8723404256,
+						5,
+						0
+					],
+					[
+						68457.4468085107,
+						7,
+						0
+					],
+					[
+						68617.0212765958,
+						6,
+						0
+					],
+					[
+						68776.5957446809,
+						4,
+						0
+					],
+					[
+						68617.0212765958,
+						1,
+						80,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						68617.0212765958,
+						0,
+						240,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						68936.170212766,
+						7,
+						239.36170212766
+					],
+					[
+						69255.3191489362,
+						6,
+						239.36170212766
+					],
+					[
+						69574.4680851064,
+						4,
+						239.36170212766
+					],
+					[
+						69893.6170212766,
+						6,
+						239.36170212766
+					],
+					[
+						68936.170212766,
+						2,
+						1200,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						70212.7659574468,
+						5,
+						239.36170212766
+					],
+					[
+						70531.9148936171,
+						7,
+						239.36170212766
+					],
+					[
+						70851.0638297873,
+						4,
+						239.36170212766
+					],
+					[
+						71170.2127659575,
+						6,
+						239.36170212766
+					],
+					[
+						70212.7659574468,
+						3,
+						560,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						70851.0638297873,
+						1,
+						560,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						71489.3617021277,
+						1,
+						0
+					],
+					[
+						71648.9361702128,
+						3,
+						0
+					],
+					[
+						71728.7234042553,
+						2,
+						0
+					],
+					[
+						71808.5106382979,
+						0,
+						0
+					],
+					[
+						71968.085106383,
+						1,
+						0
+					],
+					[
+						72127.6595744681,
+						2,
+						0
+					],
+					[
+						72287.2340425532,
+						3,
+						0
+					],
+					[
+						72446.8085106383,
+						1,
+						0
+					],
+					[
+						72606.3829787234,
+						0,
+						0
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						72765.9574468085,
+						2,
+						239.36170212766
+					],
+					[
+						73085.1063829787,
+						0,
+						239.36170212766
+					],
+					[
+						73404.255319149,
+						2,
+						0
+					],
+					[
+						73563.8297872341,
+						1,
+						0
+					],
+					[
+						73723.4042553192,
+						1,
+						0
+					],
+					[
+						73882.9787234043,
+						2,
+						0
+					],
+					[
+						73484.0425531915,
+						0,
+						0
+					],
+					[
+						73643.6170212766,
+						3,
+						0
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						74042.5531914894,
+						0,
+						0
+					],
+					[
+						74202.1276595745,
+						1,
+						0
+					],
+					[
+						74281.914893617,
+						0,
+						0
+					],
+					[
+						74361.7021276596,
+						3,
+						0
+					],
+					[
+						74521.2765957447,
+						1,
+						0
+					],
+					[
+						74680.8510638298,
+						2,
+						0
+					],
+					[
+						74840.4255319149,
+						0,
+						0
+					],
+					[
+						75000,
+						1,
+						0
+					],
+					[
+						75159.5744680851,
+						0,
+						0
+					],
+					[
+						75239.3617021277,
+						2,
+						0
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						75319.1489361702,
+						3,
+						0
+					],
+					[
+						75478.7234042553,
+						1,
+						0
+					],
+					[
+						75638.2978723404,
+						2,
+						0
+					],
+					[
+						75797.8723404255,
+						0,
+						0
+					],
+					[
+						75957.4468085106,
+						1,
+						239.36170212766
+					],
+					[
+						76276.5957446809,
+						3,
+						239.36170212766
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						76595.7446808511,
+						2,
+						0
+					],
+					[
+						76755.3191489362,
+						0,
+						0
+					],
+					[
+						76914.8936170213,
+						3,
+						0
+					],
+					[
+						77074.4680851064,
+						0,
+						0
+					],
+					[
+						77234.0425531915,
+						1,
+						0
+					],
+					[
+						77393.6170212766,
+						2,
+						0
+					],
+					[
+						77553.1914893617,
+						1,
+						0
+					],
+					[
+						77712.7659574468,
+						3,
+						0
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						77872.3404255319,
+						2,
+						398.936170212766
+					],
+					[
+						78351.0638297872,
+						0,
+						0
+					],
+					[
+						78430.8510638298,
+						3,
+						0
+					],
+					[
+						78510.6382978723,
+						2,
+						239.36170212766
+					],
+					[
+						78829.7872340426,
+						0,
+						239.36170212766
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						79148.9361702128,
+						1,
+						0
+					],
+					[
+						79468.085106383,
+						2,
+						0
+					],
+					[
+						79308.5106382979,
+						3,
+						0
+					],
+					[
+						79627.6595744681,
+						3,
+						0
+					],
+					[
+						79787.2340425532,
+						0,
+						0
+					],
+					[
+						79946.8085106383,
+						2,
+						0
+					],
+					[
+						80106.3829787234,
+						1,
+						0
+					],
+					[
+						80265.9574468085,
+						0,
+						0
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						80425.5319148936,
+						2,
+						239.36170212766
+					],
+					[
+						80744.6808510638,
+						3,
+						0
+					],
+					[
+						80904.2553191489,
+						0,
+						0
+					],
+					[
+						81063.829787234,
+						2,
+						558.510638297872
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						81702.1276595745,
+						7,
+						1196.8085106383
+					],
+					[
+						81702.1276595745,
+						2,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						81861.7021276596,
+						3,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						81941.4893617021,
+						2,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						82021.2765957447,
+						0,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						82180.8510638298,
+						1,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						82340.4255319149,
+						3,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						82500,
+						1,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						82659.5744680851,
+						2,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						82819.1489361702,
+						0,
+						0,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						82978.7234042553,
+						2,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						83297.8723404255,
+						0,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						83617.0212765957,
+						2,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						83696.8085106383,
+						0,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						83776.5957446808,
+						1,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						83856.3829787234,
+						3,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						83936.1702127659,
+						1,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						84095.744680851,
+						2,
+						0,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						84255.3191489361,
+						1,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						84414.8936170213,
+						2,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						84494.6808510638,
+						1,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						84574.4680851064,
+						0,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						84734.0425531915,
+						1,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						84893.6170212766,
+						2,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						85053.1914893617,
+						3,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						85212.7659574468,
+						2,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						85372.3404255319,
+						1,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						85452.1276595744,
+						2,
+						0,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						85531.914893617,
+						3,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						85691.4893617021,
+						1,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						85851.0638297872,
+						2,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						86010.6382978723,
+						0,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						86170.2127659574,
+						1,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						86489.3617021276,
+						3,
+						240,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						86808.5106382978,
+						2,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						86968.0851063829,
+						1,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						87127.6595744681,
+						0,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						87287.2340425532,
+						1,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						87446.8085106383,
+						3,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						87606.3829787234,
+						2,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						87765.9574468085,
+						0,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						87925.5319148936,
+						1,
+						0,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						88085.1063829787,
+						2,
+						400,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						88563.829787234,
+						0,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						88643.6170212766,
+						3,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						88723.4042553191,
+						2,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						89042.5531914893,
+						0,
+						240,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						89361.7021276595,
+						2,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						89521.2765957446,
+						1,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						89680.8510638297,
+						3,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						89840.4255319149,
+						1,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						90000,
+						0,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						90159.5744680851,
+						1,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						90319.1489361702,
+						2,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						90478.7234042553,
+						1,
+						0,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						90638.2978723404,
+						2,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						90957.4468085106,
+						3,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						91117.0212765957,
+						1,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						91276.5957446808,
+						0,
+						560,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						91914.8936170212,
+						2,
+						0
+					],
+					[
+						92074.4680851063,
+						3,
+						0
+					],
+					[
+						92234.0425531914,
+						0,
+						0
+					],
+					[
+						92393.6170212765,
+						2,
+						0
+					],
+					[
+						92553.1914893616,
+						0,
+						0
+					],
+					[
+						92712.7659574468,
+						1,
+						0
+					],
+					[
+						92872.3404255319,
+						3,
+						0
+					],
+					[
+						93031.914893617,
+						0,
+						0
+					],
+					[
+						92952.1276595744,
+						2,
+						0
+					],
+					[
+						91914.8936170212,
+						7,
+						1200,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						93191.4893617021,
+						2,
+						239.36170212766
+					],
+					[
+						93510.6382978723,
+						3,
+						239.36170212766
+					],
+					[
+						93829.7872340425,
+						0,
+						239.36170212766
+					],
+					[
+						94148.9361702127,
+						3,
+						239.36170212766
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						94468.0851063829,
+						1,
+						0
+					],
+					[
+						94627.659574468,
+						0,
+						0
+					],
+					[
+						94707.4468085106,
+						2,
+						0
+					],
+					[
+						94787.2340425531,
+						1,
+						0
+					],
+					[
+						94946.8085106382,
+						3,
+						0
+					],
+					[
+						95106.3829787233,
+						2,
+						0
+					],
+					[
+						95265.9574468084,
+						0,
+						0
+					],
+					[
+						95425.5319148936,
+						1,
+						0
+					],
+					[
+						95585.1063829787,
+						3,
+						0
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						95744.6808510638,
+						1,
+						558.510638297872
+					],
+					[
+						96382.9787234042,
+						0,
+						239.36170212766
+					],
+					[
+						96702.1276595744,
+						1,
+						239.36170212766
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						97021.2765957446,
+						2,
+						0
+					],
+					[
+						97180.8510638297,
+						3,
+						0
+					],
+					[
+						97340.4255319148,
+						1,
+						0
+					],
+					[
+						97499.9999999999,
+						3,
+						0
+					],
+					[
+						97659.574468085,
+						0,
+						0
+					],
+					[
+						97819.1489361701,
+						1,
+						0
+					],
+					[
+						97978.7234042552,
+						2,
+						0
+					],
+					[
+						98138.2978723404,
+						0,
+						0
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						98297.8723404255,
+						3,
+						398.936170212766
+					],
+					[
+						98776.5957446808,
+						0,
+						0
+					],
+					[
+						98856.3829787233,
+						1,
+						0
+					],
+					[
+						98936.1702127659,
+						3,
+						239.36170212766
+					],
+					[
+						99255.3191489361,
+						2,
+						239.36170212766
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						99574.4680851063,
+						1,
+						0
+					],
+					[
+						99734.0425531914,
+						0,
+						0
+					],
+					[
+						99893.6170212765,
+						3,
+						0
+					],
+					[
+						100053.191489362,
+						0,
+						0
+					],
+					[
+						100212.765957447,
+						2,
+						0
+					],
+					[
+						100372.340425532,
+						0,
+						0
+					],
+					[
+						100531.914893617,
+						1,
+						0
+					],
+					[
+						100691.489361702,
+						3,
+						0
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						100851.063829787,
+						2,
+						239.36170212766
+					],
+					[
+						101170.212765957,
+						1,
+						0
+					],
+					[
+						101329.787234042,
+						0,
+						0
+					],
+					[
+						101489.361702128,
+						2,
+						558.510638297872
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						102127.659574468,
+						7,
+						1196.8085106383
+					],
+					[
+						102127.659574468,
+						2,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						102287.234042553,
+						3,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						102446.808510638,
+						1,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						102606.382978723,
+						2,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						102765.957446808,
+						0,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						102925.531914894,
+						1,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						103085.106382979,
+						3,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						103164.893617021,
+						2,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						103244.680851064,
+						0,
+						0,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						103404.255319149,
+						2,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						103723.404255319,
+						3,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						104042.553191489,
+						1,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						104361.702127659,
+						3,
+						240,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						104680.85106383,
+						1,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						104840.425531915,
+						0,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						104920.212765957,
+						2,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						105000,
+						1,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						105159.574468085,
+						3,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						105319.14893617,
+						2,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						105478.723404255,
+						0,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						105638.29787234,
+						3,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						105797.872340425,
+						1,
+						0,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						105957.446808511,
+						0,
+						560,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						106595.744680851,
+						1,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						106914.893617021,
+						0,
+						240,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						107234.042553191,
+						2,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						107393.617021276,
+						1,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						107553.191489362,
+						0,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						107712.765957447,
+						1,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						107872.340425532,
+						3,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						108031.914893617,
+						2,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						108191.489361702,
+						0,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						108351.063829787,
+						1,
+						0,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						108510.638297872,
+						3,
+						400,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						108989.361702128,
+						0,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						109069.14893617,
+						1,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						109148.936170213,
+						3,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						109468.085106383,
+						2,
+						240,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						109787.234042553,
+						0,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						109946.808510638,
+						1,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						110106.382978723,
+						3,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						110265.957446808,
+						1,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						110425.531914893,
+						0,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						110585.106382979,
+						2,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						110744.680851064,
+						0,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						110904.255319149,
+						1,
+						0,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						111063.829787234,
+						2,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						111382.978723404,
+						0,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						111542.553191489,
+						1,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						111702.127659574,
+						2,
+						560,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						112340.425531915,
+						2,
+						239.36170212766
+					],
+					[
+						112659.574468085,
+						0,
+						239.36170212766
+					],
+					[
+						112978.723404255,
+						2,
+						239.36170212766
+					],
+					[
+						113297.872340425,
+						0,
+						239.36170212766
+					],
+					[
+						112340.425531915,
+						7,
+						1200,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						113617.021276596,
+						2,
+						239.36170212766
+					],
+					[
+						114255.319148936,
+						2,
+						0
+					],
+					[
+						114414.893617021,
+						1,
+						0
+					],
+					[
+						114574.468085106,
+						3,
+						239.36170212766
+					],
+					[
+						113936.170212766,
+						1,
+						239.36170212766
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						114893.617021276,
+						0,
+						239.36170212766
+					],
+					[
+						115212.765957447,
+						3,
+						239.36170212766
+					],
+					[
+						115531.914893617,
+						2,
+						239.36170212766
+					],
+					[
+						115851.063829787,
+						0,
+						239.36170212766
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						116170.212765957,
+						1,
+						239.36170212766
+					],
+					[
+						116489.361702128,
+						3,
+						239.36170212766
+					],
+					[
+						116808.510638298,
+						2,
+						239.36170212766
+					],
+					[
+						117127.659574468,
+						1,
+						239.36170212766
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						117446.808510638,
+						2,
+						239.36170212766
+					],
+					[
+						117765.957446808,
+						0,
+						239.36170212766
+					],
+					[
+						118085.106382979,
+						3,
+						239.36170212766
+					],
+					[
+						118404.255319149,
+						0,
+						239.36170212766
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						118723.404255319,
+						1,
+						239.36170212766
+					],
+					[
+						119042.553191489,
+						3,
+						239.36170212766
+					],
+					[
+						119361.702127659,
+						2,
+						239.36170212766
+					],
+					[
+						119680.85106383,
+						0,
+						239.36170212766
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						120000,
+						1,
+						239.36170212766
+					],
+					[
+						120319.14893617,
+						3,
+						239.36170212766
+					],
+					[
+						120638.29787234,
+						0,
+						239.36170212766
+					],
+					[
+						120957.44680851,
+						2,
+						239.36170212766
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						121276.595744681,
+						0,
+						239.36170212766
+					],
+					[
+						121595.744680851,
+						3,
+						239.36170212766
+					],
+					[
+						121914.893617021,
+						2,
+						239.36170212766
+					],
+					[
+						122234.042553191,
+						0,
+						239.36170212766
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						122872.340425532,
+						3,
+						239.36170212766
+					],
+					[
+						122553.191489362,
+						1,
+						239.36170212766
+					],
+					[
+						123191.489361702,
+						2,
+						239.36170212766
+					],
+					[
+						123510.638297872,
+						3,
+						239.36170212766
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						123829.787234042,
+						1,
+						239.36170212766
+					],
+					[
+						124148.936170213,
+						0,
+						239.36170212766
+					],
+					[
+						124468.085106383,
+						3,
+						239.36170212766
+					],
+					[
+						124787.234042553,
+						2,
+						239.36170212766
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						125106.382978723,
+						0,
+						239.36170212766
+					],
+					[
+						125425.531914893,
+						2,
+						239.36170212766
+					],
+					[
+						125425.531914893,
+						1,
+						0
+					],
+					[
+						125744.680851064,
+						3,
+						239.36170212766
+					],
+					[
+						126063.829787234,
+						2,
+						239.36170212766
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						126382.978723404,
+						1,
+						239.36170212766
+					],
+					[
+						126702.127659574,
+						2,
+						239.36170212766
+					],
+					[
+						127021.276595744,
+						0,
+						239.36170212766
+					],
+					[
+						127340.425531915,
+						2,
+						239.36170212766
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						127659.574468085,
+						1,
+						239.36170212766
+					],
+					[
+						127978.723404255,
+						3,
+						239.36170212766
+					],
+					[
+						128297.872340425,
+						2,
+						239.36170212766
+					],
+					[
+						128617.021276596,
+						0,
+						239.36170212766
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						128936.170212766,
+						3,
+						239.36170212766
+					],
+					[
+						129255.319148936,
+						2,
+						239.36170212766
+					],
+					[
+						129574.468085106,
+						1,
+						239.36170212766
+					],
+					[
+						129893.617021276,
+						2,
+						239.36170212766
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						130212.765957447,
+						0,
+						1196.8085106383
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						131489.361702127,
+						3,
+						1196.8085106383
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						132765.957446808,
+						2,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						133085.106382979,
+						3,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						133404.255319149,
+						2,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						133723.404255319,
+						3,
+						240,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						134042.553191489,
+						2,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						134361.702127659,
+						1,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						134680.85106383,
+						2,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						134840.425531915,
+						1,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						135000,
+						0,
+						240,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						135319.14893617,
+						3,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						135638.29787234,
+						1,
+						242,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						135957.44680851,
+						2,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						136276.595744681,
+						1,
+						240,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						136595.744680851,
+						0,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						136914.893617021,
+						3,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						137234.042553191,
+						2,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						137553.191489361,
+						1,
+						240,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						137872.340425532,
+						2,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						138191.489361702,
+						3,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						138510.638297872,
+						1,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						138829.787234042,
+						3,
+						240,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						139148.936170213,
+						0,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						139468.085106383,
+						3,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						139787.234042553,
+						2,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						140106.382978723,
+						1,
+						240,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						140425.531914893,
+						0,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						140744.680851064,
+						3,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						141063.829787234,
+						1,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						141382.978723404,
+						2,
+						240,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						141702.127659574,
+						3,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						142021.276595744,
+						1,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						142340.425531915,
+						0,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						142659.574468085,
+						3,
+						240,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						142978.723404255,
+						2,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						143297.872340425,
+						3,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						143617.021276596,
+						1,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						143936.170212766,
+						3,
+						240,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						144255.319148936,
+						0,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						144574.468085106,
+						1,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						144893.617021276,
+						3,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						145212.765957447,
+						2,
+						240,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						145531.914893617,
+						1,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						145851.063829787,
+						3,
+						0,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						145851.063829787,
+						2,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						146170.212765957,
+						1,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						146489.361702127,
+						0,
+						240,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						146808.510638298,
+						1,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						147127.659574468,
+						3,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						147446.808510638,
+						1,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						147765.957446808,
+						2,
+						240,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						148085.106382978,
+						0,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						148404.255319149,
+						2,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						148723.404255319,
+						0,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						149042.553191489,
+						1,
+						240,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						149361.702127659,
+						3,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						149680.85106383,
+						2,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						150000,
+						1,
+						240,
+						"Evilrett Alt Skin 1"
+					],
+					[
+						150319.14893617,
+						2,
+						240,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						150638.29787234,
+						3,
+						1200,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						151914.893617021,
+						0,
+						1200,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						153191.489361702,
+						3,
+						1196.8085106383
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						155744.680851064,
+						2,
+						1196.8085106383
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						158297.872340425,
+						0,
+						1196.8085106383
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						160851.063829787,
+						1,
+						1196.8085106383
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						163404.255319149,
+						3,
+						1200,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						165957.44680851,
+						1,
+						1200,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						168510.638297872,
+						0,
+						1200,
+						"Evilrett Alt Skin 1"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [
+					[
+						171063.829787234,
+						1,
+						0,
+						"Evilrett Alt Skin 1 No Anim"
+					],
+					[
+						171063.829787234,
+						2,
+						1200,
+						"Evilrett Alt Skin 1 No Anim"
+					]
+				],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"lengthInSteps": 16,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"sectionBeats": 4,
+				"altAnim": false,
+				"mustHitSection": true,
+				"isMomSection": false,
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"bpm": 188,
+				"changeBPM": false
+			},
+			{
+				"sectionBeats": 4,
+				"altAnim": false,
+				"mustHitSection": true,
+				"isMomSection": false,
+				"lengthInSteps": 16,
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"bpm": 188,
+				"changeBPM": false
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"sectionBeats": 4,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 188,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"sectionBeats": 4,
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"gfSection": false,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 188
+			}
+		],
+		"song": "Lunacy",
+		"validScore": true,
+		"speed": 3,
+		"gfVersion": "gf",
+		"events": [
+			[
+				-5000,
+				[
+					[
+						"Camera Event",
+						"Fade",
+						"0,0,0,0.001,false"
+					],
+					[
+						"Camera Event",
+						"Change Value",
+						"hudalpha,0"
+					]
+				]
+			],
+			[
+				0,
+				[
+					[
+						"Camera Event",
+						"Snap Position",
+						"400,525"
+					],
+					[
+						"Alt Idle Animation",
+						"dad",
+						"-alt"
+					]
+				]
+			],
+			[
+				319.148936170213,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"60,0.001,linear"
+					]
+				]
+			],
+			[
+				5106.3829787234,
+				[
+					[
+						"Camera Event",
+						"Fade",
+						"0,0,0,3,true"
+					]
+				]
+			],
+			[
+				9574.46808510638,
+				[
+					[
+						"Camera Event",
+						"Tween Position",
+						"-100,475,0.7,circIn"
+					]
+				]
+			],
+			[
+				10208.7765957447,
+				[
+					[
+						"Camera Event",
+						"Flash",
+						"0,0,0,0.85,1,false"
+					]
+				]
+			],
+			[
+				10212.7659574468,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"120,1.2,circOut"
+					]
+				]
+			],
+			[
+				10212.7659574468,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.27,1.5"
+					],
+					[
+						"Set Property",
+						"isCameraOnForcedPos",
+						"false"
+					]
+				]
+			],
+			[
+				12127.6595744681,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"20,0.5,quartOut"
+					],
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.12,0.3"
+					]
+				]
+			],
+			[
+				12765.9574468085,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"20,0.5,quartOut"
+					]
+				]
+			],
+			[
+				12765.9574468085,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.12,0.3"
+					]
+				]
+			],
+			[
+				14680,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.12,0.3"
+					]
+				]
+			],
+			[
+				14680.8510638298,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"20,0.5,quartOut"
+					]
+				]
+			],
+			[
+				15319.1489361702,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"20,0.5,quartOut"
+					]
+				]
+			],
+			[
+				15319.1489361702,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.12,0.3"
+					]
+				]
+			],
+			[
+				17234.0425531915,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.12,0.3"
+					]
+				]
+			],
+			[
+				17234.0425531915,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"20,0.5,quartOut"
+					]
+				]
+			],
+			[
+				17870.3457446809,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.12,0.3"
+					]
+				]
+			],
+			[
+				17872.3404255319,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"20,0.5,quartOut"
+					]
+				]
+			],
+			[
+				19787.2340425532,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.12,0.3"
+					]
+				]
+			],
+			[
+				19787.2340425532,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"20,0.5,quartOut"
+					],
+					[
+						"Camera Event",
+						"Tween Position",
+						"525,525,0.7,circIn"
+					]
+				]
+			],
+			[
+				20421.5425531915,
+				[
+					[
+						"Camera Event",
+						"Flash",
+						"0,0,0,1.2,1,false"
+					]
+				]
+			],
+			[
+				20423.5372340426,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.12,0.3"
+					]
+				]
+			],
+			[
+				20425.5319148936,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"190,1.2,circOut"
+					],
+					[
+						"Set Property",
+						"isCameraOnForcedPos",
+						"false"
+					]
+				]
+			],
+			[
+				20425.5319148936,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"0.27",
+						"1.5"
+					]
+				]
+			],
+			[
+				20425.5319148936,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.27,1.5"
+					]
+				]
+			],
+			[
+				22340.4255319149,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.12,0.3"
+					]
+				]
+			],
+			[
+				22340.4255319149,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"20,0.5,quartOut"
+					]
+				]
+			],
+			[
+				22976.7287234043,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.12,0.3"
+					]
+				]
+			],
+			[
+				22978.7234042553,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"20,0.5,quartOut"
+					]
+				]
+			],
+			[
+				24893.6170212766,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"20,0.5,quartOut"
+					]
+				]
+			],
+			[
+				24893.6170212766,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.12,0.3"
+					]
+				]
+			],
+			[
+				25529.920212766,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.12,0.3"
+					]
+				]
+			],
+			[
+				25531.914893617,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"20,0.5,quartOut"
+					]
+				]
+			],
+			[
+				27446.8085106383,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"20,0.5,quartOut"
+					]
+				]
+			],
+			[
+				27446.8085106383,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.12,0.3"
+					]
+				]
+			],
+			[
+				28081.1170212766,
+				[
+					[
+						"Camera Event",
+						"Tween Value",
+						"zoom,.75,2.2,sineInOut"
+					],
+					[
+						"Camera Event",
+						"Tween Value",
+						"hudalpha,1,5,sineOut"
+					]
+				]
+			],
+			[
+				28083.1117021277,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.12,0.3"
+					]
+				]
+			],
+			[
+				28085.1063829787,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"20,0.5,quartOut"
+					],
+					[
+						"Camera Event",
+						"Tween Position",
+						"400,525,0.7,circOut"
+					]
+				]
+			],
+			[
+				28085.1063829787,
+				[
+					[
+						"Change Character",
+						"dad",
+						"lunamick-new"
+					],
+					[
+						"Play Animation",
+						"transition",
+						"dad"
+					],
+					[
+						"Alt Idle Animation",
+						"dad",
+						""
+					]
+				]
+			],
+			[
+				28723.4042553191,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"0,2,circInOut"
+					]
+				]
+			],
+			[
+				30638.2978723404,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"defaultcamzoom,0.75"
+					],
+					[
+						"Camera Event",
+						"Flash",
+						"255,255,255,0.85,1,true"
+					]
+				]
+			],
+			[
+				30638.2978723404,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,2.1"
+					]
+				]
+			],
+			[
+				30638.2978723404,
+				[
+					[
+						"Set Property",
+						"isCameraOnForcedPos",
+						"false"
+					]
+				]
+			],
+			[
+				31914.8936170213,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.5,sineOut,0.5,255,255,255"
+					],
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.4,1"
+					]
+				]
+			],
+			[
+				32553.1914893617,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.12,0.3"
+					]
+				]
+			],
+			[
+				33191.4893617021,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,2.1"
+					]
+				]
+			],
+			[
+				34468,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.4,1"
+					]
+				]
+			],
+			[
+				34468.085106383,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.5,sineOut,0.5,255,255,255"
+					]
+				]
+			],
+			[
+				35106.3829787234,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.12,0.3"
+					]
+				]
+			],
+			[
+				35744.6808510638,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,2.1"
+					]
+				]
+			],
+			[
+				37021,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.4,1"
+					]
+				]
+			],
+			[
+				37021.2765957447,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.5,sineOut,0.5,255,255,255"
+					]
+				]
+			],
+			[
+				37659.5744680851,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.12,0.3"
+					]
+				]
+			],
+			[
+				38297.8723404255,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,2.1"
+					]
+				]
+			],
+			[
+				39574.4680851064,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.4,1"
+					]
+				]
+			],
+			[
+				39574.4680851064,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.5,sineOut,0.5,255,255,255"
+					]
+				]
+			],
+			[
+				40212.7659574468,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.12,0.3"
+					]
+				]
+			],
+			[
+				40851.0638297872,
+				[
+					[
+						"Camera Event",
+						"Flash",
+						"255,255,255,0.85,1,true"
+					]
+				]
+			],
+			[
+				40851.0638297872,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"defaultcamzoom,0.75"
+					],
+					[
+						"Camera Event",
+						"Flash",
+						"255,255,255,0.85,1,true"
+					]
+				]
+			],
+			[
+				40851.0638297872,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,2.1"
+					]
+				]
+			],
+			[
+				40851.0638297872,
+				[
+					[
+						"Camera Event",
+						"Change Pos",
+						"400,525"
+					]
+				]
+			],
+			[
+				42127.6595744681,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.4,1"
+					]
+				]
+			],
+			[
+				42127.6595744681,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.5,sineOut,0.5,255,255,255"
+					]
+				]
+			],
+			[
+				42765.9574468085,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.12,0.3"
+					]
+				]
+			],
+			[
+				43404.2553191489,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,2.1"
+					]
+				]
+			],
+			[
+				44680.8510638298,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.4,1"
+					]
+				]
+			],
+			[
+				44680.8510638298,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.5,sineOut,0.5,255,255,255"
+					]
+				]
+			],
+			[
+				45319.1489361702,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.12,0.3"
+					]
+				]
+			],
+			[
+				45957.4468085106,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,2.1"
+					]
+				]
+			],
+			[
+				47234.0425531915,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.4,1"
+					]
+				]
+			],
+			[
+				47234.0425531915,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.5,sineOut,0.5,255,255,255"
+					]
+				]
+			],
+			[
+				47872.3404255319,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.12,0.3"
+					]
+				]
+			],
+			[
+				48510.6382978724,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,2.1"
+					]
+				]
+			],
+			[
+				49148.9361702128,
+				[
+					[
+						"Camera Event",
+						"Tween Position",
+						"875,575,0.7,circInOut"
+					]
+				]
+			],
+			[
+				49787.2340425532,
+				[
+					[
+						"Change Character",
+						"bf",
+						"bf-lunacy"
+					],
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1.05"
+					]
+				]
+			],
+			[
+				49787.2340425532,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0.77,0.5,quadOut"
+					],
+					[
+						"Cinematic Event",
+						"Move",
+						"120,0.4,circOut"
+					]
+				]
+			],
+			[
+				49787.2340425532,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.33,0.2"
+					]
+				]
+			],
+			[
+				49787.2340425532,
+				[
+					[
+						"Change Strumline Style",
+						"faviNotes/NOTE_assets-CARTOON, faviNotes/NOTE_assets-LUNACYEVIL",
+						"false"
+					]
+				]
+			],
+			[
+				50425.5319148936,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.4,0.2"
+					]
+				]
+			],
+			[
+				51061.835106383,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"80,1,circOut"
+					],
+					[
+						"Set Property",
+						"boundValue",
+						"1.25"
+					],
+					[
+						"Set Property",
+						"drainValue",
+						"0.015"
+					],
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.7"
+					],
+					[
+						"Camera Event",
+						"Flash",
+						"0,0,0,0.85,1,false"
+					]
+				]
+			],
+			[
+				51063.8297872341,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0,0.5,quadOut"
+					],
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					],
+					[
+						"Camera Event",
+						"Snap Pos",
+						"210,460"
+					],
+					[
+						"Show Song Card",
+						"true",
+						"0,1,circOut"
+					]
+				]
+			],
+			[
+				51702.1276595745,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.6,0.25"
+					]
+				]
+			],
+			[
+				52021.2765957447,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.5,0.22"
+					]
+				]
+			],
+			[
+				52659.5744680851,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.35,0.2"
+					]
+				]
+			],
+			[
+				52978.7234042553,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.45,0.2"
+					]
+				]
+			],
+			[
+				53297.8723404256,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.56,0.2"
+					]
+				]
+			],
+			[
+				53617.0212765957,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				53617.0212765958,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					],
+					[
+						"Set Property",
+						"isCameraOnForcedPos",
+						"false"
+					],
+					[
+						"Show Song Card",
+						"false",
+						"0,1,circOut"
+					]
+				]
+			],
+			[
+				53936.170212766,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				54255.3191489362,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.6,0.25"
+					]
+				]
+			],
+			[
+				54255.3191489362,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				54574.4680851064,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.5,0.22"
+					]
+				]
+			],
+			[
+				54574.4680851064,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				54890.6808510638,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.7"
+					]
+				]
+			],
+			[
+				54890.6808510638,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				54891.6223404255,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0,0.5,quadOut"
+					]
+				]
+			],
+			[
+				55212.7659574468,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.35,0.2"
+					]
+				]
+			],
+			[
+				55531.914893617,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.45,0.2"
+					]
+				]
+			],
+			[
+				55851.0638297873,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.56,0.2"
+					]
+				]
+			],
+			[
+				56170.2127659575,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				56808.5106382979,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.6,0.25"
+					]
+				]
+			],
+			[
+				57127.6595744681,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.5,0.22"
+					]
+				]
+			],
+			[
+				57765.9574468085,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.35,0.2"
+					]
+				]
+			],
+			[
+				58085.1063829788,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.45,0.2"
+					]
+				]
+			],
+			[
+				58404.255319149,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.56,0.2"
+					]
+				]
+			],
+			[
+				58723.4042553192,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				59361.7021276596,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.6,0.25"
+					]
+				]
+			],
+			[
+				59680.8510638298,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.5,0.22"
+					]
+				]
+			],
+			[
+				60319.1489361702,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.35,0.2"
+					]
+				]
+			],
+			[
+				60638.2978723405,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.45,0.2"
+					]
+				]
+			],
+			[
+				60957.4468085107,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.56,0.2"
+					]
+				]
+			],
+			[
+				61274,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				61274.6010638298,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.75"
+					]
+				]
+			],
+			[
+				61276.5957446809,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"180,10,circOut"
+					]
+				]
+			],
+			[
+				61914.8936170213,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.6,0.25"
+					]
+				]
+			],
+			[
+				62234.0425531915,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.5,0.22"
+					]
+				]
+			],
+			[
+				62872.340425532,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.35,0.2"
+					]
+				]
+			],
+			[
+				63191.4893617022,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.45,0.2"
+					]
+				]
+			],
+			[
+				63510.6382978724,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.56,0.2"
+					]
+				]
+			],
+			[
+				63827.7925531915,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				63829.7872340426,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.8"
+					]
+				]
+			],
+			[
+				64468.085106383,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.6,0.25"
+					]
+				]
+			],
+			[
+				64787.2340425532,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.5,0.22"
+					]
+				]
+			],
+			[
+				65425.5319148937,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.35,0.2"
+					]
+				]
+			],
+			[
+				65744.6808510639,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.45,0.2"
+					]
+				]
+			],
+			[
+				66063.8297872341,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.56,0.2"
+					]
+				]
+			],
+			[
+				66380.9840425532,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				66382.9787234043,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.85"
+					]
+				]
+			],
+			[
+				67021.2765957447,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.6,0.25"
+					]
+				]
+			],
+			[
+				67340.4255319149,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.5,0.22"
+					]
+				]
+			],
+			[
+				67978.7234042554,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.35,0.2"
+					]
+				]
+			],
+			[
+				68297.8723404256,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.45,0.2"
+					]
+				]
+			],
+			[
+				68617.0212765958,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.56,0.2"
+					]
+				]
+			],
+			[
+				68934.1755319149,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				68936.170212766,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.9"
+					]
+				]
+			],
+			[
+				69574.4680851064,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.6,0.25"
+					]
+				]
+			],
+			[
+				69893.6170212766,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.5,0.22"
+					]
+				]
+			],
+			[
+				70212.7659574468,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.95"
+					]
+				]
+			],
+			[
+				70531.9148936171,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.35,0.2"
+					]
+				]
+			],
+			[
+				70851,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.45,0.2"
+					]
+				]
+			],
+			[
+				70851.0638297873,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1"
+					]
+				]
+			],
+			[
+				71010.6382978724,
+				[
+					[
+						"Camera Event",
+						"Tween Value",
+						"zoom,2,0.53,backIn"
+					]
+				]
+			],
+			[
+				71170.2127659575,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.56,0.2"
+					]
+				]
+			],
+			[
+				71485.3723404256,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.75"
+					],
+					[
+						"Camera Event",
+						"Flash",
+						"255,255,255,0.85,1,true"
+					],
+					[
+						"Camera Event",
+						"Tween Value",
+						"hudalpha,0,3,sineInOut"
+					],
+					[
+						"Camera Event",
+						"Tween Value",
+						"zoom,0.75,0.0001,linear"
+					]
+				]
+			],
+			[
+				71489.3617021277,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"60,0.5,circOut"
+					]
+				]
+			],
+			[
+				71490,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				72127.6595744681,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.6,0.25"
+					]
+				]
+			],
+			[
+				72446.8085106383,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.5,0.22"
+					]
+				]
+			],
+			[
+				72763,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1.1"
+					]
+				]
+			],
+			[
+				72763.9627659575,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0.77,0.5,quadOut"
+					]
+				]
+			],
+			[
+				72763.9627659575,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				72765.9574468085,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"130,0.15,circOut"
+					]
+				]
+			],
+			[
+				72765.9574468085,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				72766.3617021277,
+				[
+					[
+						"Fire Handler",
+						"0.75,-250,0.35",
+						"sineOut"
+					],
+					[
+						"Rain Handler",
+						"0.5,0.35",
+						"sineOut"
+					]
+				]
+			],
+			[
+				73085.1063829787,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				73404.255319149,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"130,0.15,circOut"
+					],
+					[
+						"Background Controls",
+						"Darken",
+						"0,0.5,quadOut"
+					],
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.65"
+					]
+				]
+			],
+			[
+				73405,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					],
+					[
+						"Fire Handler",
+						"0.0001,-80,0.35",
+						"sineOut"
+					],
+					[
+						"Rain Handler",
+						"0.0001,0.35",
+						"sineOut"
+					],
+					[
+						"Cinematic Event",
+						"Move",
+						"60,0.5,circOut"
+					]
+				]
+			],
+			[
+				73723.4042553192,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				74040.5585106383,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				74042.5531914894,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.7"
+					],
+					[
+						"Camera Event",
+						"Flash",
+						"255,255,255,0.85,1,true"
+					]
+				]
+			],
+			[
+				74680.8510638298,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.6,0.25"
+					]
+				]
+			],
+			[
+				75000,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.5,0.22"
+					]
+				]
+			],
+			[
+				75317.1542553192,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				75319.1489361702,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.65"
+					]
+				]
+			],
+			[
+				75319.1489361702,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				75638.2978723404,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				75957,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0.77,0.5,quadOut"
+					]
+				]
+			],
+			[
+				75957,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.8"
+					]
+				]
+			],
+			[
+				75957,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				75957.4468085106,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"130,0.15,circOut"
+					],
+					[
+						"Fire Handler",
+						"0.75,-250,0.35",
+						"sineOut"
+					],
+					[
+						"Rain Handler",
+						"0.5,0.35",
+						"sineOut"
+					]
+				]
+			],
+			[
+				76276,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				76276.5957446809,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1"
+					]
+				]
+			],
+			[
+				76593,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.7"
+					]
+				]
+			],
+			[
+				76593.75,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0,0.5,quadOut"
+					]
+				]
+			],
+			[
+				76595,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				76595.7446808511,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"60,0.5,circOut"
+					],
+					[
+						"Fire Handler",
+						"0.0001,-80,0.35",
+						"sineOut"
+					],
+					[
+						"Rain Handler",
+						"0.0001,0.35",
+						"sineOut"
+					]
+				]
+			],
+			[
+				77234.0425531915,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.6,0.25"
+					]
+				]
+			],
+			[
+				77553.1914893617,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.5,0.22"
+					]
+				]
+			],
+			[
+				77870.3457446809,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0.77,0.5,quadOut"
+					]
+				]
+			],
+			[
+				77870.3457446809,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				77872.3404255319,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"130,0.15,circOut"
+					]
+				]
+			],
+			[
+				77872.3404255319,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				77872.7446808511,
+				[
+					[
+						"Fire Handler",
+						"0.75,-250,0.35",
+						"sineOut"
+					],
+					[
+						"Rain Handler",
+						"0.5,0.35",
+						"sineOut"
+					]
+				]
+			],
+			[
+				78191.4893617021,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				78510.6382978723,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				78829.7872340426,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				79146,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.7"
+					]
+				]
+			],
+			[
+				79146,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				79146.9414893617,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0,0.5,quadOut"
+					]
+				]
+			],
+			[
+				79148.9361702128,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"60,0.5,circOut"
+					]
+				]
+			],
+			[
+				79149.3404255319,
+				[
+					[
+						"Fire Handler",
+						"0.0001,-80,0.35",
+						"sineOut"
+					],
+					[
+						"Rain Handler",
+						"0.0001,0.35",
+						"sineOut"
+					]
+				]
+			],
+			[
+				79787.2340425532,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.6,0.25"
+					]
+				]
+			],
+			[
+				80106.3829787234,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.5,0.22"
+					]
+				]
+			],
+			[
+				80421,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.9"
+					]
+				]
+			],
+			[
+				80421.5425531915,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0.77,0.5,quadOut"
+					]
+				]
+			],
+			[
+				80423.5372340426,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				80425.5319148936,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"130,0.15,circOut"
+					]
+				]
+			],
+			[
+				80425.5319148936,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				80425.9361702128,
+				[
+					[
+						"Fire Handler",
+						"0.75,-250,0.35",
+						"sineOut"
+					],
+					[
+						"Rain Handler",
+						"0.5,0.35",
+						"sineOut"
+					]
+				]
+			],
+			[
+				80744.6808510638,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				81063.829787234,
+				[
+					[
+						"Camera Event",
+						"Tween Value",
+						"hudalpha,1,1,sineInOut"
+					],
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1.1"
+					]
+				]
+			],
+			[
+				81063.829787234,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				81382.9787234043,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				81698.1382978723,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0,0.5,quadOut"
+					]
+				]
+			],
+			[
+				81699.1914893617,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.7"
+					]
+				]
+			],
+			[
+				81699.1914893617,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				81700.1329787234,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0,0.5,quadOut"
+					]
+				]
+			],
+			[
+				81702,
+				[
+					[
+						"Camera Event",
+						"Flash",
+						"255,255,255,0.85,1,true"
+					]
+				]
+			],
+			[
+				81702,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				81702.1276595745,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"60,0.5,circOut"
+					],
+					[
+						"Fire Handler",
+						"0.0001,-80,0.35",
+						"sineOut"
+					],
+					[
+						"Rain Handler",
+						"0.0001,0.35",
+						"sineOut"
+					]
+				]
+			],
+			[
+				82340.4255319149,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.6,0.25"
+					]
+				]
+			],
+			[
+				82659.5744680851,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.5,0.22"
+					]
+				]
+			],
+			[
+				82976,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1.1"
+					]
+				]
+			],
+			[
+				82976.7287234042,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0.77,0.5,quadOut"
+					]
+				]
+			],
+			[
+				82976.7287234043,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				82978.7234042553,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"130,0.15,circOut"
+					]
+				]
+			],
+			[
+				82978.7234042553,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				82979.1276595745,
+				[
+					[
+						"Fire Handler",
+						"0.75,-250,0.35",
+						"sineOut"
+					],
+					[
+						"Rain Handler",
+						"0.5,0.35",
+						"sineOut"
+					]
+				]
+			],
+			[
+				83297.8723404255,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				83617,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0,0.5,quadOut"
+					]
+				]
+			],
+			[
+				83617,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.65"
+					]
+				]
+			],
+			[
+				83617.0212765957,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"60,0.5,circOut"
+					]
+				]
+			],
+			[
+				83617.0212765957,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					],
+					[
+						"Fire Handler",
+						"0.0001,-80,0.35",
+						"sineOut"
+					],
+					[
+						"Rain Handler",
+						"0.0001,0.35",
+						"sineOut"
+					]
+				]
+			],
+			[
+				83936.170212766,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				84252.3829787234,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.7"
+					]
+				]
+			],
+			[
+				84252.3829787234,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				84253.3244680851,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0,0.5,quadOut"
+					]
+				]
+			],
+			[
+				84255.3191489361,
+				[
+					[
+						"Camera Event",
+						"Flash",
+						"255,255,255,0.85,1,true"
+					],
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.7"
+					]
+				]
+			],
+			[
+				84255.3191489361,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				84893.6170212766,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.6,0.25"
+					]
+				]
+			],
+			[
+				85212.7659574468,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1"
+					]
+				]
+			],
+			[
+				85212.7659574468,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.5,0.22"
+					]
+				]
+			],
+			[
+				85529.920212766,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				85531.914893617,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.65"
+					]
+				]
+			],
+			[
+				86170,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0.77,0.5,quadOut"
+					]
+				]
+			],
+			[
+				86170,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.8"
+					]
+				]
+			],
+			[
+				86170.2127659574,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"130,0.15,circOut"
+					],
+					[
+						"Fire Handler",
+						"0.75,-250,0.35",
+						"sineOut"
+					],
+					[
+						"Rain Handler",
+						"0.5,0.35",
+						"sineOut"
+					]
+				]
+			],
+			[
+				86489.3617021276,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1"
+					]
+				]
+			],
+			[
+				86806,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.7"
+					]
+				]
+			],
+			[
+				86806.5159574468,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0,0.5,quadOut"
+					]
+				]
+			],
+			[
+				86808.5106382978,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"60,0.5,circOut"
+					]
+				]
+			],
+			[
+				86808.5106382978,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				86808.5106382979,
+				[
+					[
+						"Rain Handler",
+						"0.0001,0.35",
+						"sineOut"
+					],
+					[
+						"Fire Handler",
+						"0.0001,-80,0.35",
+						"sineOut"
+					]
+				]
+			],
+			[
+				87446.8085106383,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.6,0.25"
+					]
+				]
+			],
+			[
+				87765.9574468085,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.5,0.22"
+					]
+				]
+			],
+			[
+				88081.1170212766,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0.77,0.5,quadOut"
+					]
+				]
+			],
+			[
+				88083.1117021277,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				88085.1063829787,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"130,0.15,circOut"
+					]
+				]
+			],
+			[
+				88085.1063829787,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				88085.5106382979,
+				[
+					[
+						"Fire Handler",
+						"0.75,-250,0.35",
+						"sineOut"
+					],
+					[
+						"Rain Handler",
+						"0.5,0.35",
+						"sineOut"
+					]
+				]
+			],
+			[
+				88404.2553191489,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				88723.4042553192,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				89042.5531914894,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				89358.7659574468,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.7"
+					]
+				]
+			],
+			[
+				89358.7659574468,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				89359,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.7"
+					]
+				]
+			],
+			[
+				89359.7074468085,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0,0.5,quadOut"
+					]
+				]
+			],
+			[
+				89359.7074468085,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0,0.5,quadOut"
+					]
+				]
+			],
+			[
+				89361.7021276595,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"60,0.5,circOut"
+					]
+				]
+			],
+			[
+				89361.7021276595,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				89361.7021276596,
+				[
+					[
+						"Rain Handler",
+						"0.0001,0.35",
+						"sineOut"
+					],
+					[
+						"Fire Handler",
+						"0.0001,-80,0.35",
+						"sineOut"
+					]
+				]
+			],
+			[
+				90000,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.6,0.25"
+					]
+				]
+			],
+			[
+				90319.1489361702,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.5,0.22"
+					]
+				]
+			],
+			[
+				90636,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.9"
+					]
+				]
+			],
+			[
+				90636.3031914893,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0.77,0.5,quadOut"
+					]
+				]
+			],
+			[
+				90636.3031914894,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				90638.2978723404,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"130,0.15,circOut"
+					]
+				]
+			],
+			[
+				90638.2978723404,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				90638.7021276596,
+				[
+					[
+						"Fire Handler",
+						"0.75,-250,0.35",
+						"sineOut"
+					],
+					[
+						"Rain Handler",
+						"0.5,0.35",
+						"sineOut"
+					]
+				]
+			],
+			[
+				90957.4468085106,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				91276.5957446808,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1.1"
+					]
+				]
+			],
+			[
+				91276.5957446808,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				91595.7446808511,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				91910.9042553191,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0,0.5,quadOut"
+					]
+				]
+			],
+			[
+				91911.9574468085,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.7"
+					]
+				]
+			],
+			[
+				91911.9574468085,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				91912.8989361702,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0,0.5,quadOut"
+					]
+				]
+			],
+			[
+				91914.8936170212,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"60,0.5,circOut"
+					]
+				]
+			],
+			[
+				91914.8936170212,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					],
+					[
+						"Camera Event",
+						"Tween Value",
+						"hudalpha,0,3,sineInOut"
+					]
+				]
+			],
+			[
+				91914.8936170213,
+				[
+					[
+						"Rain Handler",
+						"0.0001,0.35",
+						"sineOut"
+					],
+					[
+						"Fire Handler",
+						"0.0001,-80,0.35",
+						"sineOut"
+					]
+				]
+			],
+			[
+				92553.1914893618,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.6,0.25"
+					]
+				]
+			],
+			[
+				92872.3404255319,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.5,0.22"
+					]
+				]
+			],
+			[
+				93189,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1.1"
+					]
+				]
+			],
+			[
+				93189.494680851,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0.77,0.5,quadOut"
+					]
+				]
+			],
+			[
+				93189.4946808511,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				93191.4893617021,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"130,0.15,circOut"
+					]
+				]
+			],
+			[
+				93191.4893617021,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				93191.8936170213,
+				[
+					[
+						"Fire Handler",
+						"0.75,-250,0.35",
+						"sineOut"
+					],
+					[
+						"Rain Handler",
+						"0.5,0.35",
+						"sineOut"
+					]
+				]
+			],
+			[
+				93510.6382978723,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				93829.7872340426,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				94148.9361702128,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				94465.1489361702,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.7"
+					]
+				]
+			],
+			[
+				94465.1489361702,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				94466,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.65"
+					]
+				]
+			],
+			[
+				94466.0904255319,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0,0.5,quadOut"
+					]
+				]
+			],
+			[
+				94466.0904255319,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0,0.5,quadOut"
+					]
+				]
+			],
+			[
+				94468.0851063829,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"60,0.5,circOut"
+					]
+				]
+			],
+			[
+				94468.0851063829,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				94468.085106383,
+				[
+					[
+						"Rain Handler",
+						"0.0001,0.35",
+						"sineOut"
+					],
+					[
+						"Fire Handler",
+						"0.0001,-80,0.35",
+						"sineOut"
+					]
+				]
+			],
+			[
+				95106.3829787234,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.6,0.25"
+					]
+				]
+			],
+			[
+				95425.5319148937,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.5,0.22"
+					]
+				]
+			],
+			[
+				95740,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.7"
+					]
+				]
+			],
+			[
+				95740.6914893616,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0.77,0.5,quadOut"
+					]
+				]
+			],
+			[
+				95742.6861702128,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				95744.6808510638,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"130,0.15,circOut"
+					]
+				]
+			],
+			[
+				95744.6808510638,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				95745.085106383,
+				[
+					[
+						"Fire Handler",
+						"0.75,-250,0.35",
+						"sineOut"
+					],
+					[
+						"Rain Handler",
+						"0.5,0.35",
+						"sineOut"
+					]
+				]
+			],
+			[
+				96063.829787234,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				96382.9787234043,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				96702.1276595745,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				97017,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.7"
+					]
+				]
+			],
+			[
+				97017.2872340425,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0,0.5,quadOut"
+					]
+				]
+			],
+			[
+				97018.3404255319,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.7"
+					]
+				]
+			],
+			[
+				97018.3404255319,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				97019.2819148936,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0,0.5,quadOut"
+					]
+				]
+			],
+			[
+				97021.2765957446,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"60,0.5,circOut"
+					]
+				]
+			],
+			[
+				97021.2765957446,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				97021.2765957447,
+				[
+					[
+						"Rain Handler",
+						"0.0001,0.35",
+						"sineOut"
+					],
+					[
+						"Fire Handler",
+						"0.0001,-80,0.35",
+						"sineOut"
+					]
+				]
+			],
+			[
+				97659.5744680851,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.6,0.25"
+					]
+				]
+			],
+			[
+				97978.7234042553,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.5,0.22"
+					]
+				]
+			],
+			[
+				98295.8776595744,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0.77,0.5,quadOut"
+					]
+				]
+			],
+			[
+				98295.8776595745,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				98297.8723404255,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"130,0.15,circOut"
+					]
+				]
+			],
+			[
+				98297.8723404255,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				98298.2765957447,
+				[
+					[
+						"Fire Handler",
+						"0.75,-250,0.35",
+						"sineOut"
+					],
+					[
+						"Rain Handler",
+						"0.5,0.35",
+						"sineOut"
+					]
+				]
+			],
+			[
+				98617.0212765957,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				98936.1702127659,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1.25"
+					]
+				]
+			],
+			[
+				98936.170212766,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				99255.3191489362,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				99570,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.65"
+					]
+				]
+			],
+			[
+				99570,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				99570.4787234042,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0,0.5,quadOut"
+					]
+				]
+			],
+			[
+				99571.5319148936,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.7"
+					]
+				]
+			],
+			[
+				99571.5319148936,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				99572.4734042553,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0,0.5,quadOut"
+					]
+				]
+			],
+			[
+				99574.4680851063,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"60,0.5,circOut"
+					]
+				]
+			],
+			[
+				99574.4680851064,
+				[
+					[
+						"Rain Handler",
+						"0.0001,0.35",
+						"sineOut"
+					],
+					[
+						"Fire Handler",
+						"0.0001,-80,0.35",
+						"sineOut"
+					]
+				]
+			],
+			[
+				100212.765957447,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.6,0.25"
+					]
+				]
+			],
+			[
+				100531.914893617,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.5,0.22"
+					]
+				]
+			],
+			[
+				100847,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.8"
+					]
+				]
+			],
+			[
+				100847.074468085,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0.77,0.5,quadOut"
+					]
+				]
+			],
+			[
+				100849.069148936,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				100851.063829787,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"130,0.15,circOut"
+					]
+				]
+			],
+			[
+				100851.063829787,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				100851.468085106,
+				[
+					[
+						"Fire Handler",
+						"0.75,-250,0.35",
+						"sineOut"
+					],
+					[
+						"Rain Handler",
+						"0.5,0.35",
+						"sineOut"
+					]
+				]
+			],
+			[
+				101170.212765957,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				101489.361702128,
+				[
+					[
+						"Camera Event",
+						"Tween Value",
+						"hudalpha,1,1,sineInOut"
+					],
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1.25"
+					]
+				]
+			],
+			[
+				101489.361702128,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				101808.510638298,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				102123,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				102123.670212766,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0,0.5,quadOut"
+					]
+				]
+			],
+			[
+				102124.723404255,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.7"
+					]
+				]
+			],
+			[
+				102124.723404255,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				102125.664893617,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0,0.5,quadOut"
+					]
+				]
+			],
+			[
+				102127.659574468,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"60,0.5,circOut"
+					],
+					[
+						"Camera Event",
+						"Flash",
+						"255,255,255,0.85,1,true"
+					],
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.7"
+					]
+				]
+			],
+			[
+				102127.659574468,
+				[
+					[
+						"Rain Handler",
+						"0.0001,0.35",
+						"sineOut"
+					],
+					[
+						"Fire Handler",
+						"0.0001,-80,0.35",
+						"sineOut"
+					]
+				]
+			],
+			[
+				102765.957446809,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.6,0.25"
+					]
+				]
+			],
+			[
+				103085.106382979,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.5,0.22"
+					]
+				]
+			],
+			[
+				103400.265957447,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0.77,0.5,quadOut"
+					]
+				]
+			],
+			[
+				103402.260638298,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				103404.255319149,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"130,0.15,circOut"
+					]
+				]
+			],
+			[
+				103404.255319149,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				103404.659574468,
+				[
+					[
+						"Fire Handler",
+						"0.75,-250,0.35",
+						"sineOut"
+					],
+					[
+						"Rain Handler",
+						"0.5,0.35",
+						"sineOut"
+					]
+				]
+			],
+			[
+				103723.404255319,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				104042.553191489,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				104361.70212766,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				104677.914893617,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.7"
+					]
+				]
+			],
+			[
+				104677.914893617,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				104678,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.7"
+					]
+				]
+			],
+			[
+				104678.856382979,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0,0.5,quadOut"
+					]
+				]
+			],
+			[
+				104678.856382979,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0,0.5,quadOut"
+					]
+				]
+			],
+			[
+				104680.85106383,
+				[
+					[
+						"Rain Handler",
+						"0.0001,0.35",
+						"sineOut"
+					],
+					[
+						"Fire Handler",
+						"0.0001,-80,0.35",
+						"sineOut"
+					]
+				]
+			],
+			[
+				104680.85106383,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"60,0.5,circOut"
+					]
+				]
+			],
+			[
+				104685,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				105319.14893617,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.6,0.25"
+					]
+				]
+			],
+			[
+				105638.29787234,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.5,0.22"
+					]
+				]
+			],
+			[
+				105953,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.8"
+					]
+				]
+			],
+			[
+				105953.457446808,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0.77,0.5,quadOut"
+					]
+				]
+			],
+			[
+				105955.45212766,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				105957.446808511,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"130,0.15,circOut"
+					]
+				]
+			],
+			[
+				105957.446808511,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				105957.85106383,
+				[
+					[
+						"Fire Handler",
+						"0.75,-250,0.35",
+						"sineOut"
+					],
+					[
+						"Rain Handler",
+						"0.5,0.35",
+						"sineOut"
+					]
+				]
+			],
+			[
+				106276.595744681,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				106595.744680851,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1"
+					]
+				]
+			],
+			[
+				106595.744680851,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				106914.893617021,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				107231.106382979,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.7"
+					]
+				]
+			],
+			[
+				107231.106382979,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				107232,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.7"
+					]
+				]
+			],
+			[
+				107232.04787234,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0,0.5,quadOut"
+					]
+				]
+			],
+			[
+				107232.04787234,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0,0.5,quadOut"
+					]
+				]
+			],
+			[
+				107234.042553191,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"60,0.5,circOut"
+					]
+				]
+			],
+			[
+				107234.042553191,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				107234.042553191,
+				[
+					[
+						"Rain Handler",
+						"0.0001,0.35",
+						"sineOut"
+					],
+					[
+						"Fire Handler",
+						"0.0001,-80,0.35",
+						"sineOut"
+					]
+				]
+			],
+			[
+				107872.340425532,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.6,0.25"
+					]
+				]
+			],
+			[
+				108191.489361702,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.5,0.22"
+					]
+				]
+			],
+			[
+				108508.643617021,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0.77,0.5,quadOut"
+					]
+				]
+			],
+			[
+				108508.643617021,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				108510.638297872,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"130,0.15,circOut"
+					]
+				]
+			],
+			[
+				108510.638297872,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				108511.042553191,
+				[
+					[
+						"Fire Handler",
+						"0.75,-250,0.35",
+						"sineOut"
+					],
+					[
+						"Rain Handler",
+						"0.5,0.35",
+						"sineOut"
+					]
+				]
+			],
+			[
+				108829.787234043,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				109148.936170213,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1.25"
+					]
+				]
+			],
+			[
+				109148.936170213,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				109468.085106383,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				109783,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.8"
+					]
+				]
+			],
+			[
+				109783.244680851,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0,0.5,quadOut"
+					]
+				]
+			],
+			[
+				109784.29787234,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.7"
+					]
+				]
+			],
+			[
+				109784.29787234,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				109785.239361702,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0,0.5,quadOut"
+					]
+				]
+			],
+			[
+				109787.234042553,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"60,0.5,circOut"
+					]
+				]
+			],
+			[
+				109787.234042553,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				109787.234042553,
+				[
+					[
+						"Rain Handler",
+						"0.0001,0.35",
+						"sineOut"
+					],
+					[
+						"Fire Handler",
+						"0.0001,-80,0.35",
+						"sineOut"
+					]
+				]
+			],
+			[
+				110425.531914894,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.6,0.25"
+					]
+				]
+			],
+			[
+				110744.680851064,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.5,0.22"
+					]
+				]
+			],
+			[
+				111059.840425532,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0.77,0.5,quadOut"
+					]
+				]
+			],
+			[
+				111061.835106383,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				111063.829787234,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"130,0.15,circOut"
+					]
+				]
+			],
+			[
+				111063.829787234,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				111382.978723404,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				111702.127659574,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"1.25"
+					]
+				]
+			],
+			[
+				111702.127659574,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				112021.276595745,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.32,0.22"
+					]
+				]
+			],
+			[
+				112337.489361702,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.7"
+					]
+				]
+			],
+			[
+				112337.489361702,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.55,0.6"
+					]
+				]
+			],
+			[
+				112338.430851064,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0,0.5,quadOut"
+					],
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.65"
+					],
+					[
+						"Camera Event",
+						"Tween Value",
+						"hudalpha,0.25,8,sineInOut"
+					]
+				]
+			],
+			[
+				112338.430851064,
+				[
+					[
+						"Background Controls",
+						"Darken",
+						"0,0.5,quadOut"
+					]
+				]
+			],
+			[
+				112340.425531915,
+				[
+					[
+						"Rain Handler",
+						"0.0001,0.35",
+						"sineOut"
+					],
+					[
+						"Fire Handler",
+						"0.0001,-80,0.35",
+						"sineOut"
+					]
+				]
+			],
+			[
+				112340.425531915,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"50,2,circOut"
+					],
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					],
+					[
+						"Lunacy Event Thing idk",
+						"",
+						""
+					]
+				]
+			],
+			[
+				112978,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				112978.723404255,
+				[
+					[
+						"Camera Event",
+						"Tween Value",
+						"zoom,1.1,18,linear"
+					]
+				]
+			],
+			[
+				113617.021276596,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				114255.319148936,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				114893.617021276,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				115531.914893617,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				116170.212765957,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				116808.510638298,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				117446.808510638,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				118085.106382979,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				118723.404255319,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				119361.702127659,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				120000,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				120638.29787234,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				121276.595744681,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				121914.893617021,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				122553.191489362,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				123191.489361702,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				123829.787234042,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				124468.085106383,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				125106.382978723,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				125744.680851064,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				126382.978723404,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				127021.276595745,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				127659.574468085,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				128297.872340425,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				128936.170212766,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				129574.468085106,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				130212.765957447,
+				[
+					[
+						"Camera Event",
+						"Tween Value",
+						"hudalpha,0.36,4,sineInOut"
+					],
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.9"
+					]
+				]
+			],
+			[
+				130212.765957447,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				130851.063829787,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				131489.361702127,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.7"
+					]
+				]
+			],
+			[
+				131489.361702128,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					],
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.36,1"
+					]
+				]
+			],
+			[
+				132127.659574468,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					],
+					[
+						"Camera Event",
+						"Tween Position",
+						"875,575,0.7,circIn"
+					]
+				]
+			],
+			[
+				132765.957446808,
+				[
+					[
+						"Camera Event",
+						"Flash",
+						"255,255,255,0.8,1,true"
+					]
+				]
+			],
+			[
+				132765.957446808,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				132765.957446808,
+				[
+					[
+						"Fire Handler",
+						"1,-350,19.5",
+						"sineInOut"
+					]
+				]
+			],
+			[
+				132765.957446808,
+				[
+					[
+						"Set Property",
+						"isCameraOnForcedPos",
+						"false"
+					]
+				]
+			],
+			[
+				133404.255319149,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				134042.553191489,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				134680.85106383,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				135319.14893617,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.6,sineOut,0.65,255,255,255"
+					]
+				]
+			],
+			[
+				135319.14893617,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				135957.44680851,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				136595.744680851,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				137234.042553191,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				137872.340425532,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.6,sineOut,0.65,255,255,255"
+					]
+				]
+			],
+			[
+				137872.340425532,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				138510.638297872,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				139148.936170213,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				139787.234042553,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				140425.531914893,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.6,sineOut,0.65,255,255,255"
+					]
+				]
+			],
+			[
+				140425.531914893,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				141063.829787234,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				141702.127659574,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				142340.425531915,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				142978.723404255,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.6,sineOut,0.65,255,255,255"
+					]
+				]
+			],
+			[
+				142978.723404255,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				143617.021276596,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				144255.319148936,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				144893.617021276,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				145531.914893617,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.6,sineOut,0.65,255,255,255"
+					]
+				]
+			],
+			[
+				145531.914893617,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				146170.212765957,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				146808.510638298,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				147446.808510638,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				148085.106382978,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.6,sineOut,0.65,255,255,255"
+					]
+				]
+			],
+			[
+				148085.106382979,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				148723.404255319,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				149361.702127659,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				150000,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				150638.29787234,
+				[
+					[
+						"Background Controls",
+						"Flash",
+						"0.6,sineOut,0.65,255,255,255"
+					]
+				]
+			],
+			[
+				150638.29787234,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				151276.595744681,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Tween",
+						"0.3,0.5"
+					]
+				]
+			],
+			[
+				151914.893617021,
+				[
+					[
+						"Tween Chromatic Abberation",
+						"Zoom",
+						"0.85,1.6"
+					]
+				]
+			],
+			[
+				153189.494680851,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"110,0.0001,linear"
+					]
+				]
+			],
+			[
+				153191.489361702,
+				[
+					[
+						"Change Character",
+						"dad",
+						"mick-lunacyEnd"
+					],
+					[
+						"Set Property",
+						"boundValue",
+						"1"
+					],
+					[
+						"Set Property",
+						"drainValue",
+						"0.02"
+					],
+					[
+						"Camera Event",
+						"Flash",
+						"0,0,0,0.9,1,false"
+					],
+					[
+						"Set Property",
+						"camHUD.alpha",
+						"0"
+					],
+					[
+						"Tween Chromatic Abberation",
+						"Zoom",
+						"0.00001,0.001"
+					],
+					[
+						"Rain Handler",
+						"1,0.0001",
+						"linear"
+					],
+					[
+						"Fire Handler",
+						"0.35,-120,0.0001",
+						"linear"
+					],
+					[
+						"Camera Event",
+						"Tween Value",
+						"zoom,0.85,0.0001,linear"
+					]
+				]
+			],
+			[
+				161489.361702127,
+				[
+					[
+						"Camera Event",
+						"Tween Value",
+						"hudalpha,0.5,4,sineInOut"
+					]
+				]
+			],
+			[
+				171061.835106383,
+				[
+					[
+						"Camera Event",
+						"Tween Value",
+						"hudalpha,0,2,sineInOut"
+					]
+				]
+			],
+			[
+				171063.829787234,
+				[
+					[
+						"Play Animation",
+						"endingAnim",
+						"bf"
+					],
+					[
+						"Alt Idle Animation",
+						"bf",
+						"-alt"
+					],
+					[
+						"Fire Handler",
+						"0,0,1",
+						"sineOut"
+					]
+				]
+			],
+			[
+				172340.425531915,
+				[
+					[
+						"Camera Event",
+						"Fade",
+						"0,0,0,5,1,false"
+					]
+				]
+			],
+			[
+				172978.723404255,
+				[
+					[
+						"Camera Event",
+						"Tween Value",
+						"zoom,0.55,10,circInOut"
+					]
+				]
+			]
+		],
+		"charter": "Purg",
+		"needsVoices": true,
+		"stage": "abandonedStreet",
+		"voiceSfx1": "Player",
+		"bpm": 188,
+		"voiceSfx2": "Opponent"
+	}
+}

@@ -3515,9 +3515,15 @@ class PlayState extends MusicBeatState
 					modchartTimers.clear();
 					modchartTweens.clear();
 
-					switch (SONG.song)
+					switch (SONG.gameOverStyle)
 					{
-						case "War Dilemma":
+						case "Episode 1":
+							openSubState(new Episode1Death());
+						case "Delusional":
+							openSubState(new DelusionalDeath());
+						case "Cross":
+							openSubState(new EpicFailLmao());
+						case "War":
 							openSubState(new WarGameOver());
 						case "Malfunction":
 							if (((malfunctionTrollCounter >= 10 && malfunctionTrollCounter <= 19) && FlxG.random.bool(15)) || (malfunctionTrollCounter >= 20 && FlxG.random.bool(25)))
@@ -3526,15 +3532,9 @@ class PlayState extends MusicBeatState
 								openSubState(new MalsquareDeath());
 						case "Birthday":
 							openSubState(new WompWompSadMan());
-						case "Hunted" | "Laugh Track" | "Cycled Sins" | "Twisted Grins" | "Mercy":
+						case "Default":
 							openSubState(new EverettBaseDeath());
-						case "Dont Cross":
-							openSubState(new EpicFailLmao());
-						case "Delusional":
-							openSubState(new DelusionalDeath());
-						case "Isolated" | "Lunacy":
-							openSubState(new Episode1Death());
-						default:
+						case 'Base Game':
 							openSubState(new BaseGameOver());
 					}
 				}
@@ -5605,24 +5605,15 @@ class PlayState extends MusicBeatState
 	public function spawnNoteSplashOnNote(note:Note) {
 		if(note != null) {
 			var strum:StrumNote = playerStrums.members[note.noteData];
-			if(strum != null) {
-				spawnNoteSplash(strum.x, strum.y, note.noteData, note);
-			}
+			if(strum != null)
+				spawnNoteSplash(strum.x, strum.y, note.noteData, note, strum);
 		}
 	}
 
-	public function spawnNoteSplash(x:Float, y:Float, data:Int, ?note:Note = null) {
-		var skin:String = 'noteSplashes';
-		switch (SONG.song)
-		{
-			case "Devilish Deal" | "Isolated" | "Lunacy" | "Delusional" | "Hunted" | "Laugh Track" | "Twisted Grins" | "Rotten Petals" | "Seeking Freedom" | "Am I Real?" | "Your Final Bow" | "Mistful Wind" | "The Wretched Tilezones (Simple Life)" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "Ahh the Scary (Somber Night)" | "Curtain Call" | "Alone": SONG.splashSkin = "noteSplashes/noteSplashes-sparkles";
-			case "Mercy": SONG.splashSkin = "noteSplashes/noteSplashes-diamond";
-			case "Birthday": SONG.splashSkin = "noteSplashes/noteSplashes-birthday";
-			default: SONG.splashSkin = "noteSplashes/noteSplashes" + NoteSplash.getSplashSkinPostfix();
-		}
-		skin = SONG.splashSkin;
+	public function spawnNoteSplash(x:Float = 0, y:Float = 0, ?data:Int = 0, ?note:Note, ?strum:StrumNote) {
 		var splash:NoteSplash = grpNoteSplashes.recycle(NoteSplash);
-		splash.setupNoteSplash(x, y, data, note);
+		splash.babyArrow = strum;
+		splash.spawnSplashNote(x, y, data, note);
 		grpNoteSplashes.add(splash);
 	}
 

@@ -78,32 +78,32 @@ class StrumNote extends FlxSkewedSprite
 
 		if (PlayState.SONG != null && !inSettings)
 		{
-			switch (PlayState.SONG.song)
+			switch (PlayState.SONG.arrowSkin)
 			{
-				case "Rotten Petals" | "Curtain Call" | "Seeking Freedom" | "Mistful Wind" | "Am I Real?" | "Your Final Bow" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "The Wretched Tilezones (Simple Life)" | "Ahh the Scary (Somber Night)" | "Alone":
+				case "Mania":
 					switch (FreeplayState.maniaSkin)
 					{
 						case 0: skin = "faviNotes/NOTE_assets-MANIA";
 						case 1: skin = "faviNotes/NOTE_assets-MANIABAR";
 						case 2: skin = "faviNotes/NOTE_assets-MANIACIRCLE";
 					}
-				case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Laugh Track":
+				case "Cartoon":
 					skin = "faviNotes/NOTE_assets-CARTOON";
 				case "Mercy":
 					skin = "faviNotes/NOTE_assets-MERCY";
-				case "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Malfunction Legacy" | "Twisted Grins Legacy" | "Cycled Sins Legacy" | "Mercy Legacy":
+				case "Base Game":
 					skin = "NOTE_assets";
-				case "Cycled Sins":
+				case "Sin":
 					skin = "faviNotes/NOTE_assets-SIN";
-				case "Dont Cross":
+				case "Cross":
 					skin = "faviNotes/NOTE_assets-CROSS";
 				case "Malfunction":
 					skin = "faviNotes/NOTE_assets-MALFUNCTION";
-				case "War Dilemma":
+				case "War":
 					skin = "faviNotes/NOTE_assets-WAR";
 				case "Birthday":
 					skin = "faviNotes/NOTE_assets-BIRTHDAY";
-				default:
+				case "Default":
 					skin = "faviNotes/NOTE_assets-DEFAULT";
 			}
 		}

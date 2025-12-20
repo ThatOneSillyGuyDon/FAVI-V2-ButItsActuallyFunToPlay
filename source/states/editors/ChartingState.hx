@@ -162,7 +162,7 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		else
 		{
 			Difficulty.resetList();
-			_song = Song.loadFromJson('isolated-null', 'isolated');
+			_song = Song.loadFromJson('isolated', 'isolated');
 			addSection();
 			PlayState.SONG = _song;
 		}
@@ -264,7 +264,7 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		dummyArrow.antialiasing = ClientPrefs.data.antialiasing;
 		add(dummyArrow);
 
-		UI_box = new PsychUIBox(640 + GRID_SIZE / 2 - 50, 25, 450, 450, ['Charting', 'Events', 'Note', 'Section', 'Song']);
+		UI_box = new PsychUIBox(640 + GRID_SIZE / 2 - 50, 25, 450, 450, ['Charting', 'Data', 'Events', 'Note', 'Section', 'Song']);
 		UI_box.canMove = false;
 		UI_box.scrollFactor.set();
 
@@ -298,6 +298,7 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		addNoteUI();
 		addEventsUI();
 		addChartingUI();
+		addDataUI();
 		updateHeads();
 		updateWaveform();
 
@@ -1195,6 +1196,104 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		trackVolumeStepper.visible = false;
 		muteTrackCheck.visible = false;
 		trackVolumeTxt.visible = false;
+	}
+
+	var gameOverStyleDropDown:PsychUIDropDownMenu;
+	var noteSkinDropDown:PsychUIDropDownMenu;
+	var noteSplashesDropDown:PsychUIDropDownMenu;
+	function addDataUI()
+	{
+		var tab_group_data = UI_box.getTab('Data').menu;
+
+		var gameOverStyles:Array<String> = ['Default', 'Episode 1', 'Delusional', "Cross", 'War', 'Malfunction', 'Birthday', 'Base Game'];
+		var noteSkins:Array<String> = ['Default', 'Cartoon', 'Cross', "War", 'Mercy', 'Sin', 'Malfunction', 'Birthday', 'Mania', 'Base Game'];
+		var noteSplashSkins:Array<String> = ['Default', 'Diamond', 'Sparkles', "Birthday"];
+
+		var check_disableNoteRGB:PsychUICheckBox = new PsychUICheckBox(10, 170, "Disable Note RGB", 100);
+		check_disableNoteRGB.checked = (_song.disableNoteRGB == true);
+		check_disableNoteRGB.onClick = function()
+		{
+			_song.disableNoteRGB = check_disableNoteRGB.checked;
+			updateGrid();
+			//trace('CHECKED!');
+		};
+
+		gameOverStyleDropDown = new PsychUIDropDownMenu(10, 25, gameOverStyles, function(id:Int, idx:String)
+		{
+			_song.gameOverStyle = gameOverStyles[id];
+		});
+		gameOverStyleDropDown.selectedLabel = _song.gameOverStyle;
+		blockPressWhileScrolling.push(gameOverStyleDropDown);
+
+		noteSkinDropDown = new PsychUIDropDownMenu(10, gameOverStyleDropDown.y + 60, noteSkins, function(id:Int, idx:String)
+		{
+			var skin:String = "NOTE_assets";
+			switch(noteSkins[id])
+			{
+				case "Default":
+					skin = "faviNotes/NOTE_assets-DEFAULT";
+				case "Cartoon":
+					skin = "faviNotes/NOTE_assets-CARTOON";
+				case "Cross":
+					skin = "faviNotes/NOTE_assets-CROSS";
+				case "War":
+					skin = "faviNotes/NOTE_assets-WAR";
+				case "Mercy":
+					skin = "faviNotes/NOTE_assets-MERCY";
+				case "Sin":
+					skin = "faviNotes/NOTE_assets-SIN";
+				case "Malfunction":
+					skin = "faviNotes/NOTE_assets-MALFUNCTION";
+				case "Birthday":
+					skin = "faviNotes/NOTE_assets-BIRTHDAY";
+				case "Mania":
+					switch (FreeplayState.maniaSkin)
+					{
+						case 0: skin = "faviNotes/NOTE_assets-MANIA";
+						case 1: skin = "faviNotes/NOTE_assets-MANIABAR";
+						case 2: skin = "faviNotes/NOTE_assets-MANIACIRCLE";
+					}
+				case "Base Game":
+					skin = "NOTE_assets";
+			}
+			_song.arrowSkin = skin;
+			updateGrid();
+		});
+		noteSkinDropDown.selectedLabel = _song.arrowSkin;
+		blockPressWhileScrolling.push(noteSkinDropDown);
+
+		noteSplashesDropDown = new PsychUIDropDownMenu(10, noteSkinDropDown.y + 60, noteSplashSkins, function(id:Int, idx:String)
+		{
+			var skin:String = 'noteSplashes';
+			switch(noteSplashSkins[id])
+			{
+				case "Sparkles": skin = "noteSplashes/noteSplashes-sparkles";
+				case "Diamond": skin = "noteSplashes/noteSplashes-diamond";
+				case "Birthday": skin = "noteSplashes/noteSplashes-birthday";
+				case "Default": skin = "noteSplashes/noteSplashes" + NoteSplash.getSplashSkinPostfix();
+			}
+			_song.splashSkin = skin;
+		});
+		noteSplashesDropDown.selectedLabel = _song.splashSkin;
+		blockPressWhileScrolling.push(noteSplashesDropDown);
+
+		tab_group_data.add(check_disableNoteRGB);
+
+		var text:FlxText = new FlxText(gameOverStyleDropDown.x, gameOverStyleDropDown.y - 15, 0, 'Game Over Style:', 12);
+		text.font = Paths.font("resultsFont.ttf");
+		tab_group_data.add(text);
+
+		var text:FlxText = new FlxText(noteSkinDropDown.x, noteSkinDropDown.y - 15, 0, 'Note Texture:', 12);
+		text.font = Paths.font("resultsFont.ttf");
+		tab_group_data.add(text);
+
+		var text:FlxText = new FlxText(noteSplashesDropDown.x, noteSplashesDropDown.y - 15, 0, 'Note Splashes Texture:', 12);
+		text.font = Paths.font("resultsFont.ttf");
+		tab_group_data.add(text);
+
+		tab_group_data.add(noteSplashesDropDown);
+		tab_group_data.add(noteSkinDropDown);
+		tab_group_data.add(gameOverStyleDropDown);
 	}
 
 	function loadSong():Void
@@ -2927,7 +3026,7 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 			_file.addEventListener(#if desktop Event.SELECT #else Event.COMPLETE #end, onSaveComplete);
 			_file.addEventListener(Event.CANCEL, onSaveCancel);
 			_file.addEventListener(IOErrorEvent.IO_ERROR, onSaveError);
-			_file.save(data.trim(), Paths.formatToSongPath(_song.song) + "-null.json");
+			_file.save(data.trim(), Paths.formatToSongPath(_song.song) + ".json");
 		}
 	}
 

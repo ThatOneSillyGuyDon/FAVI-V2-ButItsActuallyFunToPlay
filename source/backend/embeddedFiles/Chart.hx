@@ -4,6 +4,9 @@ enum abstract Chart(String) from String to String {
 	var malfunction:String = '{
 	"song": {
 		"player1": "bf-pixel",
+		"gameOverStyle": "Malfunction",
+		"arrowSkin": "Malfunction",
+		"splashSkin": "Default",
 		"events": [
 			[
 				361.44578313253,
@@ -18494,6 +18497,9 @@ enum abstract Chart(String) from String to String {
 	"song": {
 		"player1": "everett-modern",
 		"gfVersion": "gf",
+		"gameOverStyle": "Cross",
+		"arrowSkin": "Cross",
+		"splashSkin": "Default",
 		"notes": [
 			{
 				"lengthInSteps": 16,
@@ -26332,7 +26338,6 @@ enum abstract Chart(String) from String to String {
 		"song": "Dont Cross",
 		"voiceSfx1": "Everett",
 		"needsVoices": true,
-		"arrowSkin": "",
 		"validScore": true,
 		"stage": "fuckingLine",
 		"voiceSfx2": "Crossin",
@@ -26343,6 +26348,9 @@ enum abstract Chart(String) from String to String {
     var dontCross2:String = '{
 	"song": {
 		"player1": "everett-modern",
+		"gameOverStyle": "Cross",
+		"arrowSkin": "Cross",
+		"splashSkin": "Default",
 		"events": [
 			[
 				30857.1428571429,
@@ -33595,6 +33603,9 @@ enum abstract Chart(String) from String to String {
 		"stage": "fuckingLine",
 		"player1": "everett-modern",
 		"player2": "dctl-mickey",
+		"gameOverStyle": "Cross",
+		"arrowSkin": "Cross",
+		"splashSkin": "Default",
 		"events": [
 			[
 				30857.1428571429,
@@ -41382,7 +41393,6 @@ enum abstract Chart(String) from String to String {
 		"validScore": false,
 		"gfVersion": "gf",
 		"bpm": 140,
-		"arrowSkin": "",
 		"voiceSfx1": "Everett",
 		"voiceSfx2": "Crossin",
 		"needsVoices": true,
@@ -41393,6 +41403,9 @@ enum abstract Chart(String) from String to String {
 	"song": {
 		"player1": "everett-modern",
 		"gfVersion": "gf",
+		"gameOverStyle": "Cross",
+		"arrowSkin": "Cross",
+		"splashSkin": "Default",
 		"notes": [
 			{
 				"lengthInSteps": 16,
@@ -53476,7 +53489,6 @@ enum abstract Chart(String) from String to String {
 		"song": "Dont Cross",
 		"voiceSfx1": "Everett",
 		"needsVoices": true,
-		"arrowSkin": "",
 		"validScore": true,
 		"stage": "fuckingLine",
 		"voiceSfx2": "Crossin",
@@ -53488,6 +53500,9 @@ enum abstract Chart(String) from String to String {
 	"song": {
 		"player1": "everett-modern",
 		"gfVersion": "gf",
+		"gameOverStyle": "Cross",
+		"arrowSkin": "Cross",
+		"splashSkin": "Default",
 		"notes": [
 			{
 				"sectionBeats": 4,
@@ -57075,7 +57090,6 @@ enum abstract Chart(String) from String to String {
 		"song": "Dont Cross",
 		"voiceSfx1": "Everett",
 		"needsVoices": true,
-		"arrowSkin": "",
 		"validScore": true,
 		"stage": "fuckingLine",
 		"voiceSfx2": "Crossin",
@@ -57087,6 +57101,9 @@ enum abstract Chart(String) from String to String {
 	 var dontCross6:String = '{
 	"song": {
 		"player1": "everett-modern",
+		"gameOverStyle": "Cross",
+		"arrowSkin": "Cross",
+		"splashSkin": "Default",
 		"events": [
 			[
 				30857.1428571429,
@@ -66062,6 +66079,9 @@ enum abstract Chart(String) from String to String {
 		"voiceSfx2": "Crossin",
 		"player1": "everett-modern",
 		"player2": "dctl-mickey",
+		"gameOverStyle": "Cross",
+		"arrowSkin": "Cross",
+		"splashSkin": "Default",
 		"notes": [
 			{
 				"lengthInSteps": 16,
@@ -73459,6 +73479,9 @@ enum abstract Chart(String) from String to String {
 	"song": {
 		"player1": "everett-modern",
 		"player2": "dctl-mickey",
+		"gameOverStyle": "Cross",
+		"arrowSkin": "Cross",
+		"splashSkin": "Default",
 		"events": [
 			[
 				30857.1428571429,
@@ -82073,7 +82096,6 @@ enum abstract Chart(String) from String to String {
 		"song": "Dont Cross",
 		"stage": "fuckingLine",
 		"validScore": true,
-		"arrowSkin": "",
 		"needsVoices": true,
 		"voiceSfx1": "Everett",
 		"speed": 5,
@@ -82085,6 +82107,9 @@ enum abstract Chart(String) from String to String {
 	"song": {
 		"player1": "everett-modern",
 		"player2": "dctl-mickey",
+		"gameOverStyle": "Cross",
+		"arrowSkin": "Cross",
+		"splashSkin": "Default",
 		"events": [
 			[
 				30857.1428571429,
@@ -89953,7 +89978,6 @@ enum abstract Chart(String) from String to String {
 		"song": "Dont Cross",
 		"stage": "fuckingLine",
 		"validScore": true,
-		"arrowSkin": "",
 		"needsVoices": true,
 		"voiceSfx1": "Everett",
 		"speed": 6.99999999999999,
@@ -89965,6 +89989,9 @@ enum abstract Chart(String) from String to String {
 	"song": {
 		"player1": "everett-modern",
 		"gfVersion": "gf",
+		"gameOverStyle": "Cross",
+		"arrowSkin": "Cross",
+		"splashSkin": "Default",
 		"notes": [
 			{
 				"lengthInSteps": 16,
@@ -109083,7 +109110,6 @@ enum abstract Chart(String) from String to String {
 		"song": "Dont Cross",
 		"voiceSfx1": "Everett",
 		"needsVoices": true,
-		"arrowSkin": "",
 		"validScore": true,
 		"stage": "fuckingLine",
 		"voiceSfx2": "Crossin",
@@ -109095,6 +109121,9 @@ enum abstract Chart(String) from String to String {
 	"song": {
 		"player1": "everett-modern",
 		"player2": "dctl-mickey",
+		"gameOverStyle": "Cross",
+		"arrowSkin": "Cross",
+		"splashSkin": "Default",
 		"events": [
 			[
 				30857.1428571429,
@@ -120785,7 +120814,6 @@ enum abstract Chart(String) from String to String {
 		"song": "Dont Cross",
 		"stage": "fuckingLine",
 		"validScore": true,
-		"arrowSkin": "",
 		"needsVoices": true,
 		"voiceSfx1": "Everett",
 		"speed": 3,
@@ -120796,6 +120824,7 @@ enum abstract Chart(String) from String to String {
 	var somberNight:String = '{
 	"song": {
 		"player1": "everett-relapse",
+		"arrowSkin": "Mania",
 		"events": [
 			[
 				400,
@@ -125291,6 +125320,7 @@ enum abstract Chart(String) from String to String {
 	"song": {
 		"player1": "everett-relapse",
 		"player2": "relapseNEW",
+		"arrowSkin": "Mania",
 		"notes": [
 			{
 				"lengthInSteps": 16,
@@ -137384,7 +137414,6 @@ enum abstract Chart(String) from String to String {
 		"needsVoices": false,
 		"stage": "menuSongs",
 		"voiceSfx1": "Player",
-		"arrowSkin": "",
 		"speed": 1.9,
 		"bpm": 100,
 		"voiceSfx2": "Opponent"
@@ -137395,6 +137424,7 @@ enum abstract Chart(String) from String to String {
 			"player1": "everett-relapse",
 			"events": [],
 			"gfVersion": "minnie-relapse",
+			"arrowSkin": "Mania",
 			"notes": [
 				{
 					"sectionNotes": [
@@ -143472,6 +143502,9 @@ enum abstract Chart(String) from String to String {
 	var malfunctionBOT:String = '{
 	"song": {
 		"player1": "bf-pixel",
+		"gameOverStyle": "Malfunction",
+		"arrowSkin": "Malfunction",
+		"splashSkin": "Default",
 		"events": [
 			[
 				361.44578313253,
@@ -162418,6 +162451,9 @@ enum abstract Chart(String) from String to String {
 		"song": {
 			"player1": "everett-modern",
 			"gfVersion": "gf",
+			"gameOverStyle": "Default",
+			"arrowSkin": "Default",
+			"splashSkin": "Default",
 			"notes": [
 				{
 					"sectionNotes": [],
@@ -171311,7 +171347,6 @@ enum abstract Chart(String) from String to String {
 			"charter": "Dreupy",
 			"song": "Scrapped",
 			"needsVoices": true,
-			"arrowSkin": "",
 			"validScore": true,
 			"stage": "staticVoid",
 			"bpm": 180,
@@ -171322,6 +171357,9 @@ enum abstract Chart(String) from String to String {
 	"song": {
 		"player1": "bf",
 		"gfVersion": "gf",
+		"gameOverStyle": "Base Game",
+		"arrowSkin": "Default",
+		"splashSkin": "Default",
 		"notes": [
 			{
 				"sectionNotes": [],
@@ -179211,7 +179249,6 @@ enum abstract Chart(String) from String to String {
 		"charter": "ThatOneSillyGuy",
 		"song": "Whimsical Bar Blues",
 		"needsVoices": true,
-		"arrowSkin": "",
 		"validScore": true,
 		"stage": "stage",
 		"bpm": 110,
@@ -179224,6 +179261,7 @@ enum abstract Chart(String) from String to String {
 		"composer": "obscurity",
 		"player1": "bf-fake-new",
 		"player2": "malsquare-phase0-pixel",
+		"arrowSkin": "Mania",
 		"notes": [
 			{
 				"lengthInSteps": 16,
@@ -196402,7 +196440,6 @@ enum abstract Chart(String) from String to String {
 			]
 		],
 		"player3": null,
-		"splashSkin": "noteSplashes/noteSplashes-sparkles",
 		"song": "Seeking Freedom",
 		"voiceSfx1": "Evilrett",
 		"validScore": true,
@@ -196420,6 +196457,7 @@ enum abstract Chart(String) from String to String {
 		"composer": "obscurity",
 		"events": [],
 		"gfVersion": "gf",
+		"arrowSkin": "Mania",
 		"notes": [
 			{
 				"sectionNotes": [],
@@ -199001,7 +199039,6 @@ enum abstract Chart(String) from String to String {
 		],
 		"player2": "mickey-FINAL-HOLYSHI",
 		"player3": null,
-		"splashSkin": "noteSplashes/noteSplashes-sparkles",
 		"song": "Am I Real?",
 		"stage": "menuSongs",
 		"needsVoices": false,
@@ -199017,6 +199054,7 @@ enum abstract Chart(String) from String to String {
 		"player1": "everett-relapse",
 		"composer": "Unknown",
 		"gfVersion": "gf",
+		"arrowSkin": "Mania",
 		"notes": [
 			{
 				"sectionBeats": 4,
