@@ -505,7 +505,7 @@ class FreeplayState extends MusicBeatState
 
 			if (!ClientPrefs.data.lowQuality)
 			{
-				spectrum = new SpectrumWaveform(0, 370, FlxG.sound.music, 700, FlxG.height, TO_UP_FROM_DOWN, ROUNDED, 0xff001aff);
+				spectrum = new SpectrumWaveform(0, 370, FlxG.sound.music, 700, FlxG.height, TO_UP_FROM_DOWN, ROUNDED, FlxColor.WHITE);
 				spectrum.design = ROUNDED;
 				spectrum.roundValue = 30;
 				spectrum.barWidth = 6;

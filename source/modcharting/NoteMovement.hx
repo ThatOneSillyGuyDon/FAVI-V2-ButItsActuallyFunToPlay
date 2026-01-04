@@ -70,29 +70,6 @@ class NoteMovement
         }
     }
 
-    public static function getDefaultStrumPosPlaytest(game:EditorPlayState)
-    {
-        defaultStrumX = []; //reset
-        defaultStrumY = []; 
-        defaultSkewX = [];
-        defaultSkewY = [];
-        defaultScale = [];
-        arrowSizes = [];
-        keyCount = game.strumLineNotes.length-game.playerStrums.length; //base game doesnt have opponent strums as group
-        playerKeyCount = game.playerStrums.length;
-
-
-        for (i in 0...game.strumLineNotes.members.length)
-        {
-            var strum = game.strumLineNotes.members[i];
-            defaultStrumX.push(strum.x);
-            defaultStrumY.push(strum.y);
-            var s = 0.7;
-            defaultScale.push(s);
-            arrowSizes.push(160*s);
-        }
-    }
-
     public static function setNotePath(daNote:Note, lane:Int, scrollSpeed:Float, curPos:Float, noteDist:Float, incomingAngleX:Float, incomingAngleY:Float)
     {
         daNote.x = defaultStrumX[lane];

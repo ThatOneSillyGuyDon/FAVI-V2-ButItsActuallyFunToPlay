@@ -1075,7 +1075,8 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 					trackVolumeTxt.visible = false;
 				}
 				
-				updateWaveform();
+				
+				.
 			}
 		);
 		blockPressWhileScrolling.push(waveformTrackDropDown);
@@ -1701,7 +1702,7 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 				playtesting = true;
 				playtestingTime = Conductor.songPosition;
 				playtestingOnComplete = FlxG.sound.music.onComplete;
-				LoadingState.loadAndSwitchState(new states.editors.EditorPlayState(sectionStartTime()));
+				openSubState(new states.editors.EditorPlayState(playbackSpeed));
 			}
 			else if (FlxG.keys.justPressed.ENTER)
 			{
