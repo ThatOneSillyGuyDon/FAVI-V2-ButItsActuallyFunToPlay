@@ -1076,7 +1076,6 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 				}
 				
 				
-				.
 			}
 		);
 		blockPressWhileScrolling.push(waveformTrackDropDown);
