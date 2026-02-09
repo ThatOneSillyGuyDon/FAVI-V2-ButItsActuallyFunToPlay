@@ -150,6 +150,9 @@ class Song
 			case "seeking-freedom": chartFile = Chart.seekingFreedom;
 			case "am-i-real": chartFile = Chart.amIReal;
 			case "alone": chartFile = Chart.alone;
+			case "curtain-call": chartFile = Chart.curtainCall;
+			case "distant-stars": chartFile = Chart.distantStars;
+			case "mistful-wind": chartFile = Chart.mistfulWind;
 			default:
 				chartFile = null;
 		}
@@ -240,7 +243,7 @@ class Song
 		switch (PlayState.SONG.song)
 		{
 			case "Devilish Deal" | "Lunacy" | "Hunted" | "War Dilemma" | "Twisted Grins" | "Isolated" | "The Wretched Tilezones (Simple Life)": charter = "Purg";
-			case "Delusional" | "Cycled Sins" | "Birthday" | "Cycled Sins Legacy" | "Twisted Grins Legacy" | "Scrapped": charter = "Dreupy";
+			case "Delusional" | "Cycled Sins" | "Birthday" | "Cycled Sins Legacy" | "Twisted Grins Legacy" | "Scrapped" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "Mistful Wind": charter = "Dreupy";
 			case "Curtain Call": charter = "Dreupy [Ft. ThatOneSillyGuy]";
 			case "Lunacy Legacy": charter = "obscurity.";
 			case "Malfunction" | "Mercy" | "Mercy Legacy" | "Isolated Old" | "Isolated Legacy" | "Isolated Beta" | "Malfunction Legacy" | "Laugh Track" | "Rotten Petals" | "Ahh the Scary (Somber Night)" | "Whimsical Bar Blues" | "Am I Real?" | "Seeking Freedom" | "Alone": charter = "ThatOneSillyGuy";

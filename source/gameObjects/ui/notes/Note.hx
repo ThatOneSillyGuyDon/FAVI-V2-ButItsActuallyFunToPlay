@@ -244,6 +244,7 @@ class Note extends FlxSkewedSprite
 
 	public var noAnimation:Bool = false;
 	public var noMissAnimation:Bool = false;
+	public var customSkinnedNote:Bool = false;
 	public var hitCausesMiss:Bool = false;
 	public var distance:Float = 2000; //plan on doing scroll directions soon -bb
 
@@ -324,14 +325,18 @@ class Note extends FlxSkewedSprite
 			switch(value) {
 				case 'Evilrett Alt Skin 1':
 					reloadNote('faviNotes/NOTE_assets-LUNACYEVIL');
+					customSkinnedNote = true;
 				case 'Evilrett Alt Skin 1 No Anim':
 					reloadNote('faviNotes/NOTE_assets-LUNACYEVIL');
 					noAnimation = true;
 					noMissAnimation = true;
+					customSkinnedNote = true;
 				case 'Evilrett Alt Skin 2':
 					reloadNote('faviNotes/NOTE_assets-EVILINTRO');
+					customSkinnedNote = true;
 				case 'Evilrett Alt Skin 3':
 					reloadNote('faviNotes/NOTE_assets-SATAN');
+					customSkinnedNote = true;
 					var arr:Array<FlxColor> = [0xFFBF8282, 0xFFF49999, 0xFFA74141];
 
 					if (ClientPrefs.data.quantization)
@@ -384,6 +389,8 @@ class Note extends FlxSkewedSprite
 						arr = arrowRGBNewError[randomInt];
 					}
 
+					customSkinnedNote = true;
+
 					if (ClientPrefs.data.quantization)
 					{
 						var idx = quants.indexOf(quant);
@@ -425,6 +432,8 @@ class Note extends FlxSkewedSprite
 						var randomInt:Int = FlxG.random.int(0, 5);
 						arr = arrowRGBNewError[randomInt];
 					}
+
+					customSkinnedNote = true;
 
 					if (ClientPrefs.data.quantization)
 					{
@@ -573,42 +582,42 @@ class Note extends FlxSkewedSprite
 		if(texture == null) texture = '';
 		if(postfix == null) postfix = '';
 
-		var skin:String = null;
-		if(PlayState.SONG != null && PlayState.SONG.arrowSkin != null && PlayState.SONG.arrowSkin.length > 1) skin = PlayState.SONG.arrowSkin;
-		else skin = defaultNoteSkin;
-
-		if (PlayState.SONG != null)
-		{
-			switch (PlayState.SONG.arrowSkin)
-			{
-				case "Default":
-					skin = "faviNotes/NOTE_assets-DEFAULT";
-				case "Cartoon":
-					skin = "faviNotes/NOTE_assets-CARTOON";
-				case "Cross":
-					skin = "faviNotes/NOTE_assets-CROSS";
-				case "War":
-					skin = "faviNotes/NOTE_assets-WAR";
-				case "Mercy":
-					skin = "faviNotes/NOTE_assets-MERCY";
-				case "Sin":
-					skin = "faviNotes/NOTE_assets-SIN";
-				case "Malfunction":
-					skin = "faviNotes/NOTE_assets-MALFUNCTION";
-				case "Birthday":
-					skin = "faviNotes/NOTE_assets-BIRTHDAY";
-				case "Mania":
-					switch (FreeplayState.maniaSkin)
+		var skin:String = texture + postfix;
+		if(texture.length < 1) {
+			if(skin == null || skin.length < 1)
+				if (PlayState.SONG != null)
+				{
+					switch (PlayState.SONG.arrowSkin)
 					{
-						case 0: skin = "faviNotes/NOTE_assets-MANIA";
-						case 1: skin = "faviNotes/NOTE_assets-MANIABAR";
-						case 2: skin = "faviNotes/NOTE_assets-MANIACIRCLE";
+						case "Default":
+							skin = "faviNotes/NOTE_assets-DEFAULT";
+						case "Cartoon":
+							skin = "faviNotes/NOTE_assets-CARTOON";
+						case "Cross":
+							skin = "faviNotes/NOTE_assets-CROSS";
+						case "War":
+							skin = "faviNotes/NOTE_assets-WAR";
+						case "Mercy":
+							skin = "faviNotes/NOTE_assets-MERCY";
+						case "Sin":
+							skin = "faviNotes/NOTE_assets-SIN";
+						case "Malfunction":
+							skin = "faviNotes/NOTE_assets-MALFUNCTION";
+						case "Birthday":
+							skin = "faviNotes/NOTE_assets-BIRTHDAY";
+						case "Mania":
+							switch (FreeplayState.maniaSkin)
+							{
+								case 0: skin = "faviNotes/NOTE_assets-MANIA";
+								case 1: skin = "faviNotes/NOTE_assets-MANIABAR";
+								case 2: skin = "faviNotes/NOTE_assets-MANIACIRCLE";
+							}
+						case "Base Game":
+							skin = "NOTE_assets";
 					}
-				case "Base Game":
-					skin = "NOTE_assets";
-			}
+				}
+				else skin = PlayState.isPixelStage ? "faviNotes/NOTE_assets-MALFUNCTION" : "faviNotes/NOTE_assets-DEFAULT";
 		}
-		else skin = PlayState.isPixelStage ? "faviNotes/NOTE_assets-MALFUNCTION" : "faviNotes/NOTE_assets-DEFAULT";
 
 		var animName:String = null;
 		if(animation.curAnim != null) {
