@@ -21,7 +21,7 @@ class AskQuestionToThatGuy extends MusicBeatState
     var targetZoom = .85;
 
     var text:FlxTypeText;
-    var box:FlxUIInputText;
+    var box:PsychUIInputText;
 
     var typing:Bool = false;
 
@@ -90,8 +90,9 @@ class AskQuestionToThatGuy extends MusicBeatState
         targetZoom = 1;
 
         text = new FlxTypeText(155, 520, 1100, '');
-        text.setFormat(Paths.font('vcr.ttf'), 34, FlxColor.WHITE, LEFT, OUTLINE, FlxColor.BLACK);
+        text.setFormat(Paths.font('vcr.ttf'), 34, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
         text.borderSize = 2;
+        text.screenCenter(X);
         text.resetText(introTexts[FlxG.random.int(0, introTexts.length-1)]);
         text.start(.04, true);
         text.sounds = [FlxG.sound.load(Paths.sound('funkinAVI/Jaysun Dialogue Sound'))];
@@ -106,11 +107,9 @@ class AskQuestionToThatGuy extends MusicBeatState
         };
         add(text);
 
-        box = new FlxUIInputText(0, 90, 300, null, 32, FlxColor.BLACK, FlxColor.GRAY);
+        box = new PsychUIInputText(0, 90, 300, "", 32);
         box.screenCenter(X);
         box.camera = camHUD;
-        box.focusGained = () -> typing = true;
-        box.focusLost = () -> typing = false;
         add(box);
 
         if (!ClientPrefs.data.lowQuality)
@@ -137,7 +136,7 @@ class AskQuestionToThatGuy extends MusicBeatState
             grain.camera = camHUD;
             add(grain);
 
-            var gradient = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/filters/gradient'));
+            var gradient = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/filters/grainGradient'));
             gradient.scrollFactor.set(0, 0);
             gradient.setGraphicSize(Std.int(gradient.width * 0.775));
             gradient.updateHitbox();
@@ -161,8 +160,15 @@ class AskQuestionToThatGuy extends MusicBeatState
     }
 
     override function update(elapsed:Float) {
+        super.update(elapsed);
+
+        typing = PsychUIInputText.focusOn != null;
+
+        ClientPrefs.toggleVolumeKeys(PsychUIInputText.focusOn == null);
+        
         if (controls.BACK && !typing)
         {
+            FlxG.sound.play(Paths.sound('cancelMenu'));
             MusicBeatState.switchState(new MainMenuState());
             FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
         }
@@ -174,8 +180,6 @@ class AskQuestionToThatGuy extends MusicBeatState
         {
             askQuestion(box.text);
         }
-
-        //super.update(elapsed);
 
         var lerpVal:Float = CoolUtil.boundTo(elapsed * 2.4, 0, 1);
 		camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x, lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal));

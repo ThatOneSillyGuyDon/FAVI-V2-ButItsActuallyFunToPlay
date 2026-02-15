@@ -147,7 +147,7 @@ class NoteOffsetState extends MusicBeatState
 		stagesFunc(function(stage:BaseStage) stage.createPost());
 
 		scratch = new FlxSprite();
-		scratch.frames = Paths.getSparrowAtlas('favi/filters/scratchShit');
+		scratch.frames = Paths.getSparrowAtlas('Funkin_avi/filters/scratchShit');
 		scratch.animation.addByPrefix('e', 'scratch thing', 24, true);
 		scratch.animation.play('e');
 		scratch.cameras = [camOther];

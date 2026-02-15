@@ -30,7 +30,7 @@ class TheLoop extends BaseStage
 		if(!ClientPrefs.data.lowQuality)
 		{
 			var grainstuff:FlxSprite = new FlxSprite(0, 0);
-			grainstuff.frames = Paths.getSparrowAtlas('favi/filters/Grainshit');
+			grainstuff.frames = Paths.getSparrowAtlas('Funkin_avi/filters/Grainshit');
 			grainstuff.animation.addByPrefix('yucky', 'grains 1', 24, true);
 			grainstuff.animation.play('yucky');
 			grainstuff.cameras = [camHUD];

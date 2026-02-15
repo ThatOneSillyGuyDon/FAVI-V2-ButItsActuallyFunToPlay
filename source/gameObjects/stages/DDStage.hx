@@ -62,7 +62,7 @@ class DDStage extends BaseStage
 		alley.scale.set(0.84, 0.84);
 		add(alley);
 		
-		gradient = new FlxSprite().loadGraphic(Paths.image('favi/filters/gradient'));
+		gradient = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/filters/gradient'));
 		gradient.cameras = [game.camOther];
 		gradient.screenCenter();
 		gradient.scale.set(0.5, 0.5);

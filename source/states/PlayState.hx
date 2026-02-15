@@ -39,14 +39,12 @@ import states.editors.CharacterEditorState;
 import flixel.addons.display.FlxRuntimeShader;
 import openfl.filters.ShaderFilter;
 #end
-
+/*
 #if VIDEOS_ALLOWED
-#if (hxCodec >= "3.0.0") import hxcodec.flixel.FlxVideo as VideoHandler;
-#elseif (hxCodec >= "2.6.1") import hxcodec.VideoHandler as VideoHandler;
-#elseif (hxCodec == "2.6.0") import VideoHandler;
-#else import vlc.MP4Handler as VideoHandler; #end
+import gameObjects.video.VideoSprite;
+import hxvlc.flixel.FlxVideo;
 #end
-
+*/
 import gameObjects.ui.notes.Note.EventNote;
 import gameObjects.*;
 
@@ -246,7 +244,6 @@ class PlayState extends MusicBeatState
 	public var combo:Int = 0;
 
 	public var healthBar:Bar;
-	public var timeBar:Bar;
 	var songPercent:Float = 0;
 
 	public var ratingsData:Array<Rating> = Rating.loadDefault();
@@ -285,7 +282,6 @@ class PlayState extends MusicBeatState
 	public var songHits:Int = 0;
 	public var songMisses:Int = 0;
 	public var scoreTxt:FlxText;
-	var timeTxt:FlxText;
 	var scoreTxtTween:FlxTween;
 
 	public var scratch:FlxSprite; // Peter Griffin: This reminds me of the time I met the Scratch cat
@@ -895,33 +891,8 @@ class PlayState extends MusicBeatState
 		else
 			middlescroll = true;
 
-		var showTime:Bool = (ClientPrefs.data.timeBarType != 'Disabled');
-		timeTxt = new FlxText(STRUM_X + (FlxG.width / 2) - 248, 19, 400, "", 32);
-		timeTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		timeTxt.scrollFactor.set();
-		timeTxt.alpha = 0;
-		timeTxt.visible = false;
-		timeTxt.borderSize = 2;
-		timeTxt.visible = updateTime = showTime;
-		if(ClientPrefs.data.downScroll) timeTxt.y = FlxG.height - 44;
-		if(ClientPrefs.data.timeBarType == 'Song Name') timeTxt.text = SONG.song;
-
-		timeBar = new Bar(0, timeTxt.y + (timeTxt.height / 4), 'timeBar', function() return songPercent, 0, 1);
-		timeBar.scrollFactor.set();
-		timeBar.screenCenter(X);
-		timeBar.alpha = 0;
-		timeBar.visible = false;
-		uiGroup.add(timeBar);
-		uiGroup.add(timeTxt);
-
 		strumLineNotes = new FlxTypedGroup<StrumNote>();
 		noteGroup.add(strumLineNotes);
-
-		if(ClientPrefs.data.timeBarType == 'Song Name')
-		{
-			timeTxt.size = 24;
-			timeTxt.y += 3;
-		}
 
 		var splash:NoteSplash = new NoteSplash(100, 100);
 		grpNoteSplashes.add(splash);
@@ -1120,7 +1091,7 @@ class PlayState extends MusicBeatState
 
 		if (!ClientPrefs.data.lowQuality)
 		{
-			globalGradient = new FlxSprite().loadGraphic(Paths.image('favi/filters/gradient'));
+			globalGradient = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/filters/gradient'));
 			globalGradient.screenCenter();
 			globalGradient.setGraphicSize(Std.int(globalGradient.width * 0.68));
 			globalGradient.cameras = [camOther];
@@ -1141,7 +1112,7 @@ class PlayState extends MusicBeatState
 
 				case 'theLoop':
 					scratch = new FlxSprite();
-					scratch.frames = Paths.getSparrowAtlas('favi/filters/scratchShit');
+					scratch.frames = Paths.getSparrowAtlas('Funkin_avi/filters/scratchShit');
 					scratch.animation.addByPrefix('e', 'scratch thing', 24, true);
 					scratch.animation.play('e');
 					scratch.cameras = [camHUD];
@@ -1149,7 +1120,7 @@ class PlayState extends MusicBeatState
 				
 				default:
 					scratch = new FlxSprite();
-					scratch.frames = Paths.getSparrowAtlas('favi/filters/scratchShit');
+					scratch.frames = Paths.getSparrowAtlas('Funkin_avi/filters/scratchShit');
 					scratch.animation.addByPrefix('e', 'scratch thing', 24, true);
 					scratch.animation.play('e');
 					scratch.cameras = [camOther];
@@ -1384,7 +1355,7 @@ class PlayState extends MusicBeatState
 		char.x += char.positionArray[0];
 		char.y += char.positionArray[1];
 	}
-
+/*
 	public function startVideo(name:String)
 	{
 		#if VIDEOS_ALLOWED
@@ -1397,37 +1368,37 @@ class PlayState extends MusicBeatState
 		if(!OpenFlAssets.exists(filepath))
 		#end
 		{
-			FlxG.log.warn('Couldnt find video file: ' + name);
-			startAndEnd();
+			inCutscene = true;
+			var bg = new flixel.system.FlxBGSprite();
+			bg.scrollFactor.set();
+			bg.cameras = [camHUD];
+			add(bg);
+			
+			var vid = new FlxVideo();
+			FlxG.addChildBelowMouse(vid);
+			vid.onEndReached.add(() -> {
+				remove(bg);
+				startAndEnd();
+				
+				FlxG.removeChild(vid);
+				vid.dispose();
+			});
+			vid.load(name);
+			vid.play();
 			return;
 		}
-
-		var video:VideoHandler = new VideoHandler();
-			#if (hxCodec >= "3.0.0")
-			// Recent versions
-			video.play(filepath);
-			video.onEndReached.add(function()
-			{
-				video.dispose();
-				startAndEnd();
-				return;
-			}, true);
-			#else
-			// Older versions
-			video.playVideo(filepath);
-			video.finishCallback = function()
-			{
-				startAndEnd();
-				return;
-			}
-			#end
+		else
+		{
+			FlxG.log.warn('Couldnt find video file: ' + name);
+			startAndEnd();
+		}
 		#else
 		FlxG.log.warn('Platform not supported!');
 		startAndEnd();
 		return;
 		#end
 	}
-
+*/
 	function startAndEnd()
 	{
 		if(endingSong)
@@ -2734,13 +2705,9 @@ class PlayState extends MusicBeatState
 			songPercent = (curTime / songLength);
 
 			var songCalc:Float = (songLength - curTime);
-			if(ClientPrefs.data.timeBarType == 'Time Elapsed') songCalc = curTime;
 
 			var secondsTotal:Int = Math.floor(songCalc / 1000);
 			if(secondsTotal < 0) secondsTotal = 0;
-
-			if(ClientPrefs.data.timeBarType != 'Song Name')
-				timeTxt.text = FlxStringUtil.formatTime(secondsTotal, false);
 
 			if (curStage == "menuSongs")
 				songTxt.text = SONG.song + " - " + FlxStringUtil.formatTime(secondsTotal, false);
@@ -3409,7 +3376,7 @@ class PlayState extends MusicBeatState
 		if (chartingMode || modchartingMode || FreeplayState.freeplayMenuList == 2)
 			openSubState(new PauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 		else
-			openSubState(FreeplayState.freeplayMenuList != 3 ? new FAVIPauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y) : new PauseManiaSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
+			openSubState((FreeplayState.freeplayMenuList != 3 || isStoryMode) ? new FAVIPauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y) : new PauseManiaSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 
 		#if DISCORD_ALLOWED
 		if(autoUpdateRPC) 
@@ -4745,8 +4712,6 @@ class PlayState extends MusicBeatState
 			DiscordClient.shutdown();
 		});
 
-		timeBar.visible = false;
-		timeTxt.visible = false;
 		canPause = false;
 		endingSong = true;
 		camZooming = false;
@@ -5029,18 +4994,6 @@ class PlayState extends MusicBeatState
 			rating.y += 495 + (SONG.song == "Malfunction" ? ((daRating.image == "sick" && ratingPercent != 1) ? -50 : -35) : 0);
 		if (SONG.song == "War Dilemma" && !ClientPrefs.data.downScroll)
 			rating.y -= 120;
-		
-		var comboSpr:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'combo' + pixelShitPart2));
-		comboSpr.screenCenter();
-		comboSpr.x = coolText.x;
-		comboSpr.acceleration.y = FlxG.random.int(200, 300) * playbackRate * playbackRate;
-		comboSpr.velocity.y -= FlxG.random.int(140, 160) * playbackRate;
-		comboSpr.visible = (!ClientPrefs.data.hideHud && showCombo);
-		comboSpr.x += ClientPrefs.data.comboOffset[0];
-		comboSpr.y -= ClientPrefs.data.comboOffset[1];
-		comboSpr.y += 60;
-		comboSpr.velocity.x += FlxG.random.int(1, 10) * playbackRate;
-
 		comboGroup.add(rating);
 		
 		if (!ClientPrefs.data.comboStacking)
@@ -5049,18 +5002,6 @@ class PlayState extends MusicBeatState
 			lastRating = rating;
 		}
 
-		if (!isPixelStage)
-		{
-			comboSpr.setGraphicSize(Std.int(comboSpr.width * 0.7));
-			comboSpr.antialiasing = ClientPrefs.data.antialiasing;
-		}
-		else
-		{
-			rating.setGraphicSize(Std.int(rating.width * daPixelZoom * (SONG.song == "Malfunction" ? 0.25 : 0.36)));
-			comboSpr.setGraphicSize(Std.int(comboSpr.width * daPixelZoom * 0.85));
-		}
-
-		comboSpr.updateHitbox();
 		rating.updateHitbox();
 
 		var seperatedScore:Array<Int> = [];
@@ -5074,13 +5015,7 @@ class PlayState extends MusicBeatState
 
 		var daLoop:Int = 0;
 		var xThing:Float = 0;
-		if (showCombo)
-			comboGroup.add(comboSpr);
-		if (!ClientPrefs.data.comboStacking)
-		{
-			if (lastCombo != null) lastCombo.kill();
-			lastCombo = comboSpr;
-		}
+		
 		if (lastScore != null)
 		{
 			while (lastScore.length > 0)
@@ -5132,23 +5067,17 @@ class PlayState extends MusicBeatState
 			daLoop++;
 			if(numScore.x > xThing) xThing = numScore.x;
 		}
-		comboSpr.x = xThing + 50;
 
 		coolText.text = Std.string(seperatedScore);
 		// add(coolText);
 
 		FlxTween.tween(rating, {alpha: 0}, 0.2 / playbackRate, {
-			startDelay: Conductor.crochet * 0.001 / playbackRate
-		});
-
-		FlxTween.tween(comboSpr, {alpha: 0}, 0.2 / playbackRate, {
 			onComplete: function(tween:FlxTween)
 			{
 				coolText.destroy();
-				comboSpr.destroy();
 				rating.destroy();
 			},
-			startDelay: Conductor.crochet * 0.002 / playbackRate
+			startDelay: Conductor.crochet * 0.001 / playbackRate
 		});
 	}
 

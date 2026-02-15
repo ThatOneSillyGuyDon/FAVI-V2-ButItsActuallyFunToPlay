@@ -435,6 +435,9 @@ class AbandonedStreet extends BaseStage
 			videoObject.addCallback("onEnd", () -> {
 				videoObject.visible = false;
 			});
+			videoObject.play(); // this loads the video before pausing it immedeatly, that way the vid can actually sync with the part it needs to play at
+			videoObject.pause();
+			videoObject.setVideoTime(0);
 			Paths.cacheVideo(name, videoObject);
 		} else {
 			videoObject.visible = false;

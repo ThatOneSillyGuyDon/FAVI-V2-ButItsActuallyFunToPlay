@@ -4,55 +4,9 @@ import lime.ui.MouseCursor;
 import openfl.ui.Mouse;
 import openfl.events.MouseEvent;
 import flixel.addons.transition.FlxTransitionableState;
-import flixel.effects.FlxFlicker;
 import lime.app.Application;
 import flash.system.System;
 import flixel.input.keyboard.FlxKey;
-
-/*class newMainMenuStateThatWontBeUsedTillItsDone extends MusicBeatState{
-	// now its Dynamic! Yay! Anyways Book and Discord will be used as a part of OptionShit. -- (MalyPlus)
-	var optionShit:Array<Array<Dynamic>> = [
-		// Note to myself.
-		//["ButtonName", "ID/NameThatWouldBeRefrenced like if array[2] == that ID then", offsetX, offsetY, optional Scale (CAN BE NULL)].
-		["story_mode", "story", 0, 0, null],
-		["freeplay", "freeplay", 0, 0, null],
-		["credits", "credits", 0, 0, null],
-		["options", "options", 0, 0, null],
-		["book", "CharacterMenu", 0, 0, null],
-		["discord", "communityServer", 0, 0, null]
-	];
-	var menuItems:FlxTypedGroup<FlxSprite>;
-	var selectedSomethin:Bool = false;
-	var pathToImage:String = "Funkin_avi/menu/";
-
-	override function create(){
-		//if (Save data has the finished week.) optionShit.push(["The Guy That you talk with","FunnyGuy",0,0,null]);
-		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pathToImage + "menuBG"));
-		bg.scrollFactor.set(0,0);
-		bg.antialiasing = ClientPrefs.data.antialiasing;
-		add(bg);
-
-		for (i in 0...optionShit.length){
-			var menuItem:FlxSprite=new FlxSprite();
-			menuItem.loadGraphic(Paths.image(pathToImage +"buttons/"+ optionShit[i][0]));
-			menuItem.scale.set(0.6, 0.6);
-			if (optionShit[i][4] != null) menuItem.scale.set(optionShit[i][4], optionShit[i][4]);
-			menuItem.updateHitbox();
-			menuItem.ID = i;
-			menuItem.screenCenter(X);
-			menuItem.x += 460;
-			menuItem.scrollFactor.set(0,0);
-			menuItem.antialiasing = ClientPrefs.data.antialiasing;
-			if (optionShit[i][2] != null) menuItem.x += optionShit[i][2];
-			if (optionShit[i][3] != null) menuItem.y += optionShit[i][3];
-			if (optionShit[i][1] == "freeplay" && GameData.episode1FPLock != "unlocked") menuItem.loadGraphic(Paths.image('Funkin_avi/menu/buttons/freeplayLocked'));
-			add(menuItem);
-		}
-		
-		super.create();
-	}
-
-}*/
 
 class MainMenuState extends MusicBeatState
 {
@@ -60,13 +14,9 @@ class MainMenuState extends MusicBeatState
 	var camHUD:FlxCamera;
 	public static var selectedSomethin:Bool = false;
 	var menuItems:FlxTypedGroup<FlxSprite>;
-	var optionShit:Array<String> = ['story_mode', 'freeplay', 'credits', 'options', 'discordIcon', 'changelog', 'reset', 'book'];
+	var optionShit:Array<String> = ['story', 'freeplay', 'settings', 'credits', 'discordIcon', 'changelog', 'reset', 'book'];
 	public static var curSelected:Int = 0;
-	var arrow:FlxSprite;
-	var arrowX:Float = 0;
-	var arrowY:Float = 0;
-	var arrowA:Float = 1;
-	var evilAndFuckedUpBookScale = 1.0;
+	
 	var miniBtnScale:Array<Float> = [1.0, 1.0, 1.0];
 	var birthdayCode:Array<Dynamic> = [
 		[FlxKey.TWO, FlxKey.NUMPADTWO],
@@ -182,7 +132,7 @@ class MainMenuState extends MusicBeatState
 		//debugKeys = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_1'));
 		persistentUpdate = persistentDraw = true;
 
-		var bg = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/menu/menuBG'));
+		var bg = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/menu/NEWmenu/Background'));
 		bg.setGraphicSize(0, FlxG.height);
 		bg.updateHitbox();
 		bg.screenCenter();
@@ -195,7 +145,7 @@ class MainMenuState extends MusicBeatState
 			var gradient = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/filters/gradient'));
 			gradient.setGraphicSize(Std.int(gradient.width * 0.78));
 			gradient.x -= 5;
-			var vig = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/menu/vignette'));
+			var vig = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/menu/NEWmenu/FrameScreenBlur'));
 			vig.setGraphicSize(0, FlxG.height);
 
 			for (obj in [gradient, vig])
@@ -212,72 +162,73 @@ class MainMenuState extends MusicBeatState
 		add(menuItems);
 		for (i in 0...optionShit.length)
 		{
-			var offset = 108 - (Math.max(optionShit.length, 4) - 4) * 80;
-			var menuItem = new FlxSprite(0, (i * 100) + offset);
-			menuItem.scale.set(0.6, 0.6);
-			menuItem.updateHitbox();
-			menuItem.loadGraphic(Paths.image('Funkin_avi/menu/buttons/' + optionShit[i]));
+			var menuItem = new FlxSprite();
 			menuItem.ID = i;
-			menuItem.screenCenter(X);
-			menuItem.x += 460;
-			menuItems.add(menuItem);
-			var scr = (optionShit.length - 4) * 0.135;
-			menuItem.scrollFactor.set(0, 0);
 			switch (menuItem.ID)
 			{
-				case 0:
-					menuItem.x -= 35;
-					menuItem.y = 130;
-				case 1:
-					if (GameData.episode1FPLock != "unlocked") menuItem.loadGraphic(Paths.image('Funkin_avi/menu/buttons/freeplayLocked'));
-					menuItem.x += 15;
-					menuItem.y = 240;
-				case 2:
-					menuItem.x += 40;
-					menuItem.y = 350;
-				case 3:
-					menuItem.x += 75;
-					menuItem.y = 460;
-				case 4:
-					menuItem.scale.set(0.14, 0.14);
-					menuItem.x = 1120;
-					menuItem.y = 610;
-				case 5:
-					menuItem.scale.set(0.14, 0.14);
-					menuItem.x = 1030;
-					menuItem.y = 610;
-				case 6:
-					menuItem.scale.set(0.14, 0.14);
-					menuItem.x = 910;
-					menuItem.y = 610;
-				case 7:
+				case 0 | 1 | 2 | 3: //story mode, freeplay, settings, credits
+					menuItem.frames = Paths.getSparrowAtlas("Funkin_avi/menu/NEWmenu/BUTTONS/" + optionShit[i]);
+					menuItem.animation.addByPrefix("idle", optionShit[i] + " idle", 24, true);
+					menuItem.animation.addByPrefix("selected", optionShit[i] + " selected", 24, true);
+					menuItem.animation.addByPrefix("hovered", optionShit[i] + " hovered", 24, true);
+					menuItem.animation.play("idle");
 					menuItem.scale.set(1, 1);
-					menuItem.screenCenter().x -= 220;
-					if (GameData.malfunctionLock != "unlocked" || GameData.malfunctionLock != "beaten")
-						menuItem.setColorTransform(0.5, 0.5, 0.5, 0.75, 0, 0, 0, 0);
-					else if (GameData.malfunctionLock == "unlocked" || GameData.malfunctionLock == "beaten")
-						menuItem.setColorTransform(1, 1, 1, 1, 0, 0, 0, 0);
+					switch (menuItem.ID)
+					{
+						case 0:
+							menuItem.offset.x = -50;
+							menuItem.setPosition(725, 190);
+							menuItem.width *= 6.5;
+						case 1: // freeplay
+							if (GameData.episode1FPLock != "unlocked") menuItem.color = FlxColor.fromHSL(menuItem.color.hue, menuItem.color.saturation, 0.2, 1);
+							menuItem.offset.x = -60;
+							menuItem.setPosition(720, 270);
+							menuItem.width *= 5;
+						case 2:
+							menuItem.offset.x = -70;
+							menuItem.setPosition(715, 380);
+							menuItem.width *= 5;
+						case 3:
+							menuItem.offset.x = -80;
+							menuItem.setPosition(705, 485);
+							menuItem.width *= 4;
+					}
+				case 4 | 5 | 6: // discord, changelog, reset save data
+					menuItem.loadGraphic(Paths.image('Funkin_avi/menu/NEWmenu/BUTTONS/' + optionShit[i]));
+					menuItem.scale.set(0.14, 0.14);
+					menuItem.offset.x = 0;
+					switch (menuItem.ID)
+					{
+						case 4:
+							menuItem.x = 1070;
+						case 5:
+							menuItem.x = 980;
+						case 6:
+							menuItem.x = 860;
+					}
+					menuItem.y = 610;
+					menuItem.updateHitbox();
+				case 7: // book
+					menuItem.frames = Paths.getSparrowAtlas("Funkin_avi/menu/NEWmenu/BUTTONS/book");
+					menuItem.animation.addByPrefix("idle", "idle", 24, true);
+					menuItem.animation.addByPrefix("hovered", "hovered", 24, true);
+					menuItem.animation.play("idle");
+					menuItem.scale.set(1, 1);
+					menuItem.offset.x = 0;
+					menuItem.setPosition(120, 300);
+				case 8:
+					menuItem.frames = Paths.getSparrowAtlas("Funkin_avi/menu/NEWmenu/BUTTONS/jaysun");
+					menuItem.animation.addByPrefix("idle", optionShit[i] + " idle", 24, true);
+					menuItem.animation.addByPrefix("selected", optionShit[i] + " selected", 24, true);
+					menuItem.animation.addByPrefix("hovered", optionShit[i] + " hovered", 24, true);
+					menuItem.animation.play("idle");
+					menuItem.color = FlxColor.fromHSL(menuItem.color.hue, menuItem.color.saturation, 0.2, 1);
+					menuItem.scale.set(1, 1);
+					menuItem.setPosition(1200, 650);
 			}
+			menuItems.add(menuItem);
+			
 			menuItem.antialiasing = ClientPrefs.data.antialiasing;
-			menuItem.updateHitbox();
-			if (menuItem.ID == 7) // smaller hitbox setup for this fatass book blocking the buttons AAAAAAAAAAAAAAAA
-			{
-				menuItem.width = 270;
-				menuItem.height = 370;
-				menuItem.offset.set(250, 200);
-				menuItem.x += 250;
-				menuItem.y += 200;
-			}
-		}
-
-		if (!ClientPrefs.data.lowQuality)
-		{
-				arrow = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/menu/menuArrow'));
-				arrow.scrollFactor.set(0, 0);
-				arrow.updateHitbox();
-				arrow.screenCenter();
-				arrow.antialiasing = ClientPrefs.data.antialiasing;
-				add(arrow);
 		}
 
 		messenger = new MessageBox(-400, FlxG.height - 80, {
@@ -326,7 +277,6 @@ class MainMenuState extends MusicBeatState
 	var goingToBrainrot:Bool = false;
 	override function update(elapsed:Float)
 	{
-		evilAndFuckedUpBookScale = (FlxG.mouse.overlaps(menuItems.members[7])) ? 1.1 : 1;
 		miniBtnScale = [
 			(FlxG.mouse.overlaps(menuItems.members[4])) ? .165 : .14,
 			(FlxG.mouse.overlaps(menuItems.members[5])) ? .165 : .14,
@@ -337,19 +287,11 @@ class MainMenuState extends MusicBeatState
 		{
 			switch (spr.ID)
 			{
-				case 0 | 1 | 2 | 3: spr.scale.set(FlxMath.lerp(.6, spr.scale.x, CoolUtil.boundTo(1 - (elapsed * 9.6), 0, 1)), FlxMath.lerp(.6, spr.scale.y, CoolUtil.boundTo(1 - (elapsed * 9.6), 0, 1)));
 				case 4: spr.scale.set(FlxMath.lerp(miniBtnScale[0], spr.scale.x, CoolUtil.boundTo(1 - (elapsed * 7.4), 0, 1)), FlxMath.lerp(miniBtnScale[0], spr.scale.y, CoolUtil.boundTo(1 - (elapsed * 7.4), 0, 1)));
 				case 5: spr.scale.set(FlxMath.lerp(miniBtnScale[1], spr.scale.x, CoolUtil.boundTo(1 - (elapsed * 7.4), 0, 1)), FlxMath.lerp(miniBtnScale[1], spr.scale.y, CoolUtil.boundTo(1 - (elapsed * 7.4), 0, 1)));
 				case 6: spr.scale.set(FlxMath.lerp(miniBtnScale[2], spr.scale.x, CoolUtil.boundTo(1 - (elapsed * 7.4), 0, 1)), FlxMath.lerp(miniBtnScale[2], spr.scale.y, CoolUtil.boundTo(1 - (elapsed * 7.4), 0, 1)));
-				case 7: spr.scale.set(FlxMath.lerp(evilAndFuckedUpBookScale, spr.scale.x, CoolUtil.boundTo(1 - (elapsed * 9.6), 0, 1)), FlxMath.lerp(evilAndFuckedUpBookScale, spr.scale.x, CoolUtil.boundTo(1 - (elapsed * 9.6), 0, 1)));
 			}
 		});
-
-		if (arrow != null) 
-		{
-			arrow.setPosition(FlxMath.lerp(arrowX, arrow.x, CoolUtil.boundTo(1 - (elapsed * 15), 0, 1)), FlxMath.lerp(arrowY, arrow.y, CoolUtil.boundTo(1 - (elapsed * 15), 0, 1)));
-			arrow.alpha = FlxMath.lerp(arrowA, arrow.alpha, CoolUtil.boundTo(1 - (elapsed * 15), 0, 1));
-		}
 
 		if (!sys.FileSystem.exists('./assets/shared/images/favi/stages/forbiddenRealm/DO NOT TOUCH MY MEME.png') && GameData.check(NO_MALFUNCTION))
 			coolMenuEvents(2);
@@ -397,8 +339,14 @@ class MainMenuState extends MusicBeatState
 						changeSelection(i);
 					else if (!FlxG.mouse.overlaps(menuItems.members[i]))
 					{
-						menuItems.members[i].color = FlxColor.WHITE;
-						menuItems.members[i].alpha = 0.45;
+						switch (i)
+						{
+							case 0 | 1 | 2 | 3 | 7 | 8:
+								menuItems.members[i].animation.play("idle");
+							default:
+								menuItems.members[i].color = FlxColor.WHITE;
+								menuItems.members[i].alpha = 0.45;
+						}
 					}
 				}
 				
@@ -470,43 +418,30 @@ class MainMenuState extends MusicBeatState
 			selection = 0;
 		curSelected = selection;
 
-		if (arrow != null && !selectedSomethin)
-		{
-			switch (curSelected)
-			{
-				case 0:
-					arrowX = 540;
-					arrowY = 155;
-					arrowA = 1;
-				case 1:
-					arrowX = 690;
-					arrowY = 255;
-					arrowA = 1;
-				case 2:
-					arrowX = 730;
-					arrowY = 360;
-					arrowA = 1;
-				case 3:
-					arrowX = 755;
-					arrowY = 470;
-					arrowA = 1;
-				default:
-					arrowA = 0.001;
-			}
-		}
-	
 		for (i in 0...optionShit.length)
 		{
 			var menuItem:FlxSprite = menuItems.members[i];
 			if (i == selection)
 			{
-				menuItem.color = FlxColor.RED;
-				menuItem.alpha = 1.0;
+				switch (i)
+				{
+					case 0 | 1 | 2 | 3 | 7 | 8:
+						menuItem.animation.play("hovered");
+					default:
+						menuItem.color = FlxColor.RED;
+						menuItem.alpha = 1.0;
+				}
 			}
 			else
 			{
-				menuItem.color = FlxColor.WHITE;
-				menuItem.alpha = 0.45;
+				switch (i)
+				{
+					case 0 | 1 | 2 | 3 | 7 | 8:
+						menuItem.animation.play("idle");
+					default:
+						menuItem.color = FlxColor.WHITE;
+						menuItem.alpha = 0.45;
+				}
 			}
 		}
 		curSelected = selection;
@@ -515,7 +450,7 @@ class MainMenuState extends MusicBeatState
 	var flashValue:Float = 0.1;
 	function enterSelection()
 	{
-		var daChoice:String = optionShit[Math.floor(curSelected)];
+		var daChoice:String = optionShit[curSelected];
 		if (ClientPrefs.data.flashing)
 			flashValue = 0.2;
 
@@ -539,60 +474,48 @@ class MainMenuState extends MusicBeatState
 			coolMenuEvents(6);
 		else if (daChoice == "changelog")
 			coolMenuEvents(9);
+		else if (daChoice == "jaysun")
+			coolMenuEvents(10);
 		else
 		{
-			menuItems.forEach(function(spr:FlxSprite)
+			if (!selectedSomethin)
 			{
-				if (curSelected != spr.ID)
+				new FlxTimer().start(1, function(tmr:FlxTimer)
 				{
-					if (spr.ID != 7)
-					{
-						FlxTween.tween(spr, {x: spr.x + 250, alpha: 0}, 0.4, {
-							ease: FlxEase.quadOut,
-							onComplete: function(twn:FlxTween)
-							{
-								spr.kill();
-							}
-						});
-					}
-				}
-				else
+					goToState(daChoice);
+				});
+			}
+			for (sillies in [menuItems.members[curSelected]])
+			{
+				if (sillies != null)
 				{
-					if (!selectedSomethin)
-					{
-						menuItems.members[curSelected].scale.set(.75, .75);
-						FlxFlicker.flicker(spr, 1, flashValue, false, false, function(flick:FlxFlicker)
-						{
-							switch (daChoice)
-							{
-								case 'story_mode':
-									FlxG.mouse.visible = false;
-									MusicBeatState.switchState(new StoryMenuState());
-								case 'options':
-									LoadingState.loadAndSwitchState(new OptionsState());
-									OptionsState.onPlayState = false;
-									if (PlayState.SONG != null)
-									{
-										PlayState.SONG.arrowSkin = null;
-										PlayState.SONG.splashSkin = null;
-										PlayState.stageUI = 'normal';
-									}
-							}
-						});
-					}
-					for (sillies in [arrow, menuItems.members[Math.floor(curSelected)]])
-					{
-						if (sillies != null)
-						{
-							sillies.setColorTransform(1, 1, 1, 1, 255, 255, 255, 255);
-							FlxTween.tween(sillies.colorTransform, {redOffset: 0, greenOffset: 0, blueOffset: 0}, 1);
-						}
-					}
-					FlxG.sound.play(Paths.sound('funkinAVI/menu/selectSfx'));
-					selectedSomethin = true;
-					FlxG.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
+					sillies.animation.play("selected");
+					sillies.setColorTransform(1, 1, 1, 1, 255, 0, 0, 0);
+					FlxTween.tween(sillies.colorTransform, {redOffset: 0}, 1);
 				}
-			});
+			}
+			FlxG.sound.play(Paths.sound('funkinAVI/menu/selectSfx'));
+			selectedSomethin = true;
+			FlxG.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
+		}
+	}
+
+	function goToState(name:String)
+	{
+		switch (name)
+		{
+			case 'story':
+				FlxG.mouse.visible = false;
+				MusicBeatState.switchState(new StoryMenuState());
+			case 'settings':
+				LoadingState.loadAndSwitchState(new OptionsState());
+				OptionsState.onPlayState = false;
+				if (PlayState.SONG != null)
+				{
+					PlayState.SONG.arrowSkin = null;
+					PlayState.SONG.splashSkin = null;
+					PlayState.stageUI = 'normal';
+				}
 		}
 	}
 
@@ -601,7 +524,7 @@ class MainMenuState extends MusicBeatState
 		switch (getEvent)
 		{
 			case 1:
-				var redGradient:FlxSprite = new FlxSprite(0, 0, Paths.image('favi/filters/redGradient'));
+				var redGradient:FlxSprite = new FlxSprite(0, 0, Paths.image('Funkin_avi/filters/redGradient'));
 				redGradient.setGraphicSize(Std.int(redGradient.width * 0.7));
 				redGradient.screenCenter();
 				redGradient.cameras = [camHUD];
@@ -619,24 +542,11 @@ class MainMenuState extends MusicBeatState
 				GameData.canAddMalfunction = true;
 				GameData.saveShit();	
 			case 3:
-				menuItems.members[7].scale.set(.9, .9);
 				menuItems.members[7].setColorTransform(1, 1, 1, 1, 255, 255, 255, 255);
 				FlxTween.tween(menuItems.members[7].colorTransform, {redOffset: 0, greenOffset: 0, blueOffset: 0}, 1);
 				selectedSomethin = true;
 				FlxG.sound.play(Paths.sound('funkinAVI/menu/selectSfx'));
-				menuItems.forEach(function(spr:FlxSprite)
-				{
-					if (spr.ID != 7)
-					{
-						FlxTween.tween(spr, {x: spr.x + 250, alpha: 0}, 0.4, {
-							ease: FlxEase.quadOut,
-							onComplete: function(twn:FlxTween)
-							{
-								spr.kill();
-							}
-						});
-					}
-				});
+				
 				new FlxTimer().start(.6, s -> MusicBeatState.switchState(new states.menus.CharacterMenu()));
 			case 4:
 				var cantaloupe = new FlxSprite(-200, -100).loadGraphic(Paths.image('Funkin_avi/cantaloupe'));
@@ -680,23 +590,9 @@ class MainMenuState extends MusicBeatState
 					FlxG.sound.music.fadeOut(0.8);
 					menuItems.forEach(function(spr:FlxSprite)
 					{
-						if (curSelected != spr.ID)
+						if (spr.ID == curSelected)
 						{
-							if (spr.ID != 7)
-							{
-								FlxTween.tween(spr, {x: spr.x + 250, alpha: 0}, 0.4, {
-									ease: FlxEase.quadOut,
-									onComplete: function(twn:FlxTween)
-									{
-										spr.kill();
-									}
-								});
-							}
-						}
-						else
-						{
-							menuItems.members[curSelected].scale.set(.75, .75);
-							FlxFlicker.flicker(spr, 1, flashValue, false, false, function(flick:FlxFlicker)
+							new FlxTimer().start(1, function(tmr:FlxTimer)
 							{
 								MusicBeatState.switchState(new GeneralMenu());
 								FlxG.sound.music.fadeIn(0.5, 0, 1);
@@ -704,12 +600,13 @@ class MainMenuState extends MusicBeatState
 							});
 						}
 					});
-					for (sillies in [arrow, menuItems.members[Math.floor(curSelected)]])
+					for (sillies in [menuItems.members[curSelected]])
 					{
 						if (sillies != null)
 						{
-							sillies.setColorTransform(1, 1, 1, 1, 255, 255, 255, 255);
-							FlxTween.tween(sillies.colorTransform, {redOffset: 0, greenOffset: 0, blueOffset: 0}, 1);
+							sillies.animation.play("selected");
+							sillies.setColorTransform(1, 1, 1, 1, 255, 0, 0, 0);
+							FlxTween.tween(sillies.colorTransform, {redOffset: 0}, 1);
 						}
 					}
 					FlxG.sound.play(Paths.sound('funkinAVI/menu/selectSfx'));
@@ -723,38 +620,20 @@ class MainMenuState extends MusicBeatState
 				}
 			case 8:
 				FlxG.sound.music.fadeOut(0.8);
-				menuItems.forEach(function(spr:FlxSprite)
+				new FlxTimer().start(1, function(tmr:FlxTimer)
 				{
-					if (curSelected != spr.ID)
-					{
-						if (spr.ID != 7)
-						{
-							FlxTween.tween(spr, {x: spr.x + 250, alpha: 0}, 0.4, {
-								ease: FlxEase.quadOut,
-								onComplete: function(twn:FlxTween)
-								{
-									spr.kill();
-								}
-							});
-						}
-					}
-					else
-					{
-						menuItems.members[curSelected].scale.set(.75, .75);
-						FlxFlicker.flicker(spr, 1, flashValue, false, false, function(flick:FlxFlicker)
-						{
-							FlxG.sound.music.fadeIn(0.5, 0, 1);
-							FlxG.sound.playMusic(Paths.music('aviOST/curtainCall'));
-							MusicBeatState.switchState(new CreditsState());
-						});
-					}
+					FlxG.sound.music.fadeIn(0.5, 0, 1);
+					FlxG.sound.playMusic(Paths.music('aviOST/curtainCall'));
+					MusicBeatState.switchState(new CreditsState());
 				});
-				for (sillies in [arrow, menuItems.members[Math.floor(curSelected)]])
+
+				for (sillies in [menuItems.members[curSelected]])
 				{
 					if (sillies != null)
 					{
-						sillies.setColorTransform(1, 1, 1, 1, 255, 255, 255, 255);
-						FlxTween.tween(sillies.colorTransform, {redOffset: 0, greenOffset: 0, blueOffset: 0}, 1);
+						sillies.animation.play("selected");
+						sillies.setColorTransform(1, 1, 1, 1, 255, 0, 0, 0);
+						FlxTween.tween(sillies.colorTransform, {redOffset: 0}, 1);
 					}
 				}
 				FlxG.sound.play(Paths.sound('funkinAVI/menu/selectSfx'));
@@ -763,6 +642,25 @@ class MainMenuState extends MusicBeatState
 			case 9:
 				selectedSomethin = true;
 				openSubState(new ChangelogMenu());
+			case 10:
+				FlxG.sound.music.fadeOut(3);
+				FlxG.camera.fade();
+				FlxTween.tween(camGame, {y: -300}, 2, {ease: FlxEase.sineInOut, onComplete: function(twn:FlxTween) {
+					MusicBeatState.switchState(new states.menus.AskQuestionToThatGuy());
+				}});
+
+				for (sillies in [menuItems.members[curSelected]])
+				{
+					if (sillies != null)
+					{
+						sillies.animation.play("selected");
+						sillies.setColorTransform(1, 1, 1, 1, 255, 0, 0, 0);
+						FlxTween.tween(sillies.colorTransform, {redOffset: 0}, 1);
+					}
+				}
+				FlxG.sound.play(Paths.sound('funkinAVI/easterEggSound'));
+				selectedSomethin = true;
+				FlxG.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
 		}
 	}
 

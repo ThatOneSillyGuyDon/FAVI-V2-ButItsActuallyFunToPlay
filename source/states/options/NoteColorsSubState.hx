@@ -13,7 +13,7 @@ import gameObjects.ui.notes.Note;
 import shaders.RGBPalette;
 import shaders.RGBPalette.RGBShaderReference;
 
-class NotesSubState extends MusicBeatSubstate
+class NoteColorsSubState extends MusicBeatSubstate
 {
 	var onModeColumn:Bool = true;
 	var curSelectedMode:Int = 0;

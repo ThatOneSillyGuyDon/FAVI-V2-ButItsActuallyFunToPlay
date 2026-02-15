@@ -85,6 +85,13 @@ class Init extends FlxState
 		var icon = Image.fromFile("icon.png");
 		Lib.current.stage.window.setIcon(icon);
 		#end
+
+        #if DEV_BUILD
+        // some plugins for devs to use
+		backend.devPlugins.HotReloadPlugin.init();
+		backend.devPlugins.ScreenshotPlugin.initialize();
+        #end
+		backend.devPlugins.FullScreenPlugin.init();
         
         FlxG.autoPause = ClientPrefs.data.autoPause;
         FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);

@@ -1,4 +1,4 @@
-package substates;
+package states.substates;
 
 import backend.data.WeekData;
 
@@ -395,7 +395,7 @@ class Episode1Death extends MusicBeatSubstate {
 		if (!ClientPrefs.data.lowQuality)
 		{
 			scratch = new FlxSprite();
-			scratch.frames = Paths.getSparrowAtlas('favi/filters/scratchShit');
+			scratch.frames = Paths.getSparrowAtlas('Funkin_avi/filters/scratchShit');
 			scratch.animation.addByPrefix('e', 'scratch thing', 24, true);
 			scratch.animation.play('e');
 			scratch.cameras = [stupidAssCam];
@@ -575,7 +575,7 @@ class DelusionalDeath extends MusicBeatSubstate {
 		if (!ClientPrefs.data.lowQuality)
 		{
 			scratch = new FlxSprite();
-			scratch.frames = Paths.getSparrowAtlas('favi/filters/scratchShit');
+			scratch.frames = Paths.getSparrowAtlas('Funkin_avi/filters/scratchShit');
 			scratch.animation.addByPrefix('e', 'scratch thing', 24, true);
 			scratch.animation.play('e');
 			scratch.cameras = [stupidAssCam];

@@ -69,6 +69,11 @@ import states.menus.TitleState;
 		'opponentplay' => false
 	];
 
+	#if DEV_BUILD
+	public var fancyPreview:Bool = true;
+	public var previewOnSave:Bool = true;
+	#end
+
 	public var comboOffset:Array<Int> = [0, 0, 0, 0];
 	public var ratingOffset:Int = 0;
 	public var sickWindow:Int = 45;

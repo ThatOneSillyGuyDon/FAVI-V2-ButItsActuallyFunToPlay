@@ -32,7 +32,7 @@ import gameObjects.ui.customEditorUI.*;
 import gameObjects.ui.customEditorUI.psychUI.*; //Psych-UI
 
 // import screens you see in-game
-import substates.*;
+import states.substates.*;
 import states.*;
 import states.editors.*;
 import states.options.*;
@@ -47,21 +47,21 @@ import backend.BaseStage.*;
 
 
 //import game over screens
-import substates.GameOverScreens.BaseGameOver; //default fnf screen
-import substates.GameOverScreens.ManiaLoseScreen; //mania charts only
-import substates.GameOverScreens.Episode1Death; //Episode 1
-import substates.GameOverScreens.DelusionalDeath; //Delusional Exclusive
-import substates.GameOverScreens.EpicFailLmao; //Don't Cross Ragebait
-import substates.GameOverScreens.EverettBaseDeath; //Default Everett Death
-import substates.GameOverScreens.WarGameOver; //War Dilemma Exclusive
-import substates.GameOverScreens.WompWompSadMan; //Birthday Exclusive
-import substates.GameOverScreens.MalsquareDeath; //Malfunction Exclusive
-import substates.GameOverScreens.MalsquareTrollScreen; //Least Annoying Thing in the mod
+import states.substates.GameOverScreens.BaseGameOver; //default fnf screen
+import states.substates.GameOverScreens.ManiaLoseScreen; //mania charts only
+import states.substates.GameOverScreens.Episode1Death; //Episode 1
+import states.substates.GameOverScreens.DelusionalDeath; //Delusional Exclusive
+import states.substates.GameOverScreens.EpicFailLmao; //Don't Cross Ragebait
+import states.substates.GameOverScreens.EverettBaseDeath; //Default Everett Death
+import states.substates.GameOverScreens.WarGameOver; //War Dilemma Exclusive
+import states.substates.GameOverScreens.WompWompSadMan; //Birthday Exclusive
+import states.substates.GameOverScreens.MalsquareDeath; //Malfunction Exclusive
+import states.substates.GameOverScreens.MalsquareTrollScreen; //Least Annoying Thing in the mod
 
 //import pause screens
-import substates.PauseScreens.PauseSubState; //default fnf screen
-import substates.PauseScreens.FAVIPauseSubState; //favi screen
-import substates.PauseScreens.PauseManiaSubstate; //mania screen
+import states.substates.PauseScreens.PauseSubState; //default fnf screen
+import states.substates.PauseScreens.FAVIPauseSubState; //favi screen
+import states.substates.PauseScreens.PauseManiaSubstate; //mania screen
 
 // import specific menus and gameObjects to prevent compile errors
 #if desktop

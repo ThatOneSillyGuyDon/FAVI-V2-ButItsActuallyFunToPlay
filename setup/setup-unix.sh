@@ -11,9 +11,8 @@ haxelib set flixel-ui 2.5.0
 haxelib set flixel-tools 1.5.1
 haxelib set hscript-iris 1.1.3
 haxelib set hscript 2.7.0
-haxelib git hxCodec https://github.com/polybiusproxy/hxCodec
 haxelib set tjson 1.4.0
-haxelib set hxvlc 1.2.0
+haxelib git hxvlc https://github.com/MAJigsaw77/hxvlc a1ac9900248209a91a9a9c1ebc1ae8af5dfdfb86
 haxelib remove flxanimate
 haxelib git flxanimate https://github.com/ShadowMario/flxanimate dev
 haxelib git linc_luajit https://github.com/superpowers04/linc_luajit

@@ -1,4 +1,4 @@
-package substates;
+package states.substates;
 
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.input.keyboard.FlxKey;

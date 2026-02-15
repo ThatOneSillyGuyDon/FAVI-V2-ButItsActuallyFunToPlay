@@ -167,7 +167,7 @@ class FreeplayState extends MusicBeatState
 	
 			if (freeplayMenuList != 2)
 			{
-				var gradient = new FlxSprite().loadGraphic(Paths.image('favi/filters/gradient'));
+				var gradient = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/filters/gradient'));
 				gradient.screenCenter();
 				gradient.setGraphicSize(Std.int(gradient.width * 0.8));
 				gradient.alpha = .45;

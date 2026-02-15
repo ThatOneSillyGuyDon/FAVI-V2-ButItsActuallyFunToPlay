@@ -8,12 +8,11 @@ import flixel.input.keyboard.FlxKey;
 class OptionsState extends MusicBeatState
 {
 	var options:Array<String> = [
-		'Note Colors', 
+		'Note Settings', 
 		'Preferences',
 		'Graphics',
 		'Gameplay',
-		'Controls',
-		'Note Offsets'
+		'Controls'
 	];
 
 	private static var curSelected:Int = 0;
@@ -24,8 +23,8 @@ class OptionsState extends MusicBeatState
 	{
 		switch (label)
 		{
-			case 'Note Colors':
-				openSubState(new NotesSubState());
+			case 'Note Settings':
+				openSubState(new NoteSettingsSubState());
 			case 'Preferences':
 				openSubState(new VisualsUISubState());
 			case 'Controls':
@@ -34,8 +33,6 @@ class OptionsState extends MusicBeatState
 				openSubState(new GraphicsSettingsSubState());
 			case 'Gameplay':
 				openSubState(new GameplaySettingsSubState());
-			case 'Note Offsets':
-				MusicBeatState.switchState(new NoteOffsetState());
 		}
 	}
 
