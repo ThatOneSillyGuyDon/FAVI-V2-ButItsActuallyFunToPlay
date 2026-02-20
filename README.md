@@ -5,7 +5,7 @@
 ## Installation:
 
 Refer to [the Build Instructions](./BUILDING.md)
-Download the original mod [here](https://gamejolt.com/games/funkin-avi/710505)
+Download the mod [here](https://gamejolt.com/games/funkin-avi/710505)
 
 ## Credits:
 * Yama Haki/Toko - Creator, Owner, Director, Composer, PlayTester
@@ -31,8 +31,8 @@ Download the original mod [here](https://gamejolt.com/games/funkin-avi/710505)
 * Austin W. Productions - Artist, Owner of Mr. Smiles & Professionally Horny
 * Gemmie Femmie - Concept Artist, Death Screen Artist & Playtester
 * Purg - Charter & Voice Actor
-* Goober Man - Lead Programmer, The one dude no body invited
-* MalyPlus - Assistant Programmer
+* Goober Man - Assistant Programmer, The one dude no body invited
+* MalyPlus - Lead Programmer
 * Mr. Chaos - Programmer, created the Spectrum Visualizer used in the Freeplay menu
 * BonoanAnything - Evilrett VA, made lyrics for Delusional & trailers
 * Sayan Sama - Made Twisted Grins V1 (Legacy) and Credit Music
