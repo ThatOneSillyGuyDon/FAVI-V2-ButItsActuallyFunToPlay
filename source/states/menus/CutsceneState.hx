@@ -5,6 +5,8 @@ class CutsceneState extends MusicBeatState
     var vidToPlay:VideoSprite;
     var pauseIcon:FlxSprite;
 
+    var loadingText:FlxText;
+
     var cutsceneButtons:FlxTypedGroup<FlxSprite>;
 	var cutsceneOptions:Array<String> = [
         'episodeStart', 
@@ -57,31 +59,32 @@ class CutsceneState extends MusicBeatState
 			menuItem.screenCenter(X);
 			menuItem.x += 560;
 			cutsceneButtons.add(menuItem);
-            menuItem.scale.set(0.14, 0.14);
+            menuItem.scale.set(0.2, 0.2);
             menuItem.alpha = 0.45;
 			switch (menuItem.ID)
 			{
 				case 0:
-					menuItem.x -= 300;
+					menuItem.x -= 450;
 					menuItem.y = 130;
 				case 1:
-					menuItem.x -= 100;
+					menuItem.x -= 150;
 					menuItem.y = 130;
 				case 2:
-					menuItem.x += 100;
+					menuItem.x += 150;
 					menuItem.y = 130;
 				case 3:
-					menuItem.x += 300;
+					menuItem.x += 450;
 					menuItem.y = 130;
 				case 4:
-					menuItem.x -= 200;
-					menuItem.y = 260;
+					menuItem.x -= 300;
+					menuItem.y = 300;
 				case 5:
-					menuItem.y = 260;
+					menuItem.y = 300;
 				case 6:
-                    menuItem.x += 200;
-					menuItem.y = 260;
+                    menuItem.x += 300;
+					menuItem.y = 300;
 			}
+            menuItem.x -= 50;
 			menuItem.antialiasing = ClientPrefs.data.antialiasing;
 			menuItem.updateHitbox();
 
@@ -97,6 +100,11 @@ class CutsceneState extends MusicBeatState
         pauseIcon.cameras = [camVideo];
         pauseIcon.visible = false;
         pauseIcon.screenCenter();
+
+        loadingText = new FlxText(900, FlxG.height, FlxG.width, "Loading Video...", 15);
+        loadingText.setFormat(Paths.font('DisneyFont.ttf'), 15, FlxColor.WHITE, RIGHT, OUTLINE, FlxColor.BLACK);
+        loadingText.borderSize = 3;
+        add(loadingText);
         
         super.create();
 
@@ -136,7 +144,7 @@ class CutsceneState extends MusicBeatState
                 if (FlxG.random.bool(8) && GameData.episode1FPLock == "unlocked")
                 {
                     FlxG.sound.music.fadeOut(0.5);
-                    MusicBeatState.switchState(new states.menus.legacy.LegacyMenuState());
+                    MusicBeatState.switchState(new states.menus.secret.LegacyMenuState());
                 }
                 else
                     MusicBeatState.switchState(new MainMenuState());
@@ -247,6 +255,12 @@ class CutsceneState extends MusicBeatState
                 FlxG.sound.music.fadeIn(0.5, 0, 0.8);
                 FlxG.camera.fade(FlxColor.BLACK, 0.5, true);
 			});
+            videoObject.addCallback("onFormat", () -> {
+				FlxTween.tween(loadingText, {alpha: 1}, 1, {ease: FlxEase.circIn});
+			});
+            videoObject.addCallback("onStart", () -> {
+				FlxTween.tween(loadingText, {alpha: 0}, 1, {ease: FlxEase.circOut});
+			});
 			Paths.cacheVideo(name, videoObject);
 		} 
         else 
@@ -254,7 +268,6 @@ class CutsceneState extends MusicBeatState
 			videoObject.visible = false;
 		}
         videoObject.setVideoTime(0);
-		trace("Video Created, calling " + name);
 		return videoObject;
 	}
 }

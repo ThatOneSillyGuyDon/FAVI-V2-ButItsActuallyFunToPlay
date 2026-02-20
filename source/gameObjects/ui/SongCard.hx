@@ -25,7 +25,7 @@ class SongCard extends FlxSpriteGroup
 			case 'Devilish Deal' | 'Isolated' | 'Lunacy' | 'Hunted' | 'Birthday' | 'War Dilemma' | 'Laugh Track' | 'Twisted Grins' | 'Whimsical Bar Blues':
 				fontStuff = "DisneyFont.ttf";
 			case 'Delusional':
-				fontStuff = "satanFont.ttf";
+				fontStuff = "betterSatanFont.ttf";
 			case 'Bless':
 				fontStuff = "MagicOwlFont.otf";
 			case "Dont Cross":

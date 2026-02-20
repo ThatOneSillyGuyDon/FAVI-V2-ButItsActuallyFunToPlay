@@ -161,8 +161,8 @@ class Apartment extends BaseStage
 		
 		if (PlayState.SONG.song == "Cycled Sins")
 		{
-			relapseIconLol.x = game.iconP2.x;
-			relapseIconLol.y = game.iconP2.y;
+			relapseIconLol.x = playHUD.iconP2.x;
+			relapseIconLol.y = playHUD.iconP2.y;
 		}
 
 		detectSpace(game.cpuControlled);
@@ -347,7 +347,7 @@ class Apartment extends BaseStage
 						warningTxt.x -= 200;
 						warningTxt.cameras = [camOther];
 						add(warningTxt);
-						game.uiGroup.add(relapseIconLol);
+						game.playHUD.add(relapseIconLol);
 						for (i in [warningTxt, dodgeWarning])
 							FlxTween.tween(i, {alpha: 1}, 1.5, {onComplete: function(twn:FlxTween)
 							{
@@ -361,7 +361,7 @@ class Apartment extends BaseStage
 								});
 							}});
 					case 2:
-						FlxTween.tween(game.iconP2, {alpha: 0}, 1, {ease: FlxEase.sineOut});
+						FlxTween.tween(playHUD.iconP2, {alpha: 0}, 1, {ease: FlxEase.sineOut});
 						FlxTween.tween(relapseIconLol, {alpha: 1}, 1, {ease: FlxEase.sineOut});
 					case 3:
 						sinsEnd = true;

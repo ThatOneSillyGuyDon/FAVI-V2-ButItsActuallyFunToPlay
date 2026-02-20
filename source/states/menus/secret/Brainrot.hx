@@ -1,4 +1,4 @@
-package states.menus;
+package states.menus.secret;
 
 class Brainrot extends MusicBeatState
 {

@@ -1,33 +1,12 @@
-package states.menus;
+package states.menus.secret;
 
-#if desktop
-import sys.thread.Thread;
-#end
 import flash.system.System;
-import flixel.addons.display.FlxGridOverlay;
-import flixel.addons.transition.FlxTransitionSprite.GraphicTransTileDiamond;
-import flixel.addons.transition.FlxTransitionableState;
-import flixel.addons.transition.TransitionData;
-import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.input.gamepad.FlxGamepad;
 import flixel.input.keyboard.FlxKey;
-#if (flixel <= "5.2.2")
-	import flixel.system.FlxSound;
-#else
-	import flixel.sound.FlxSound;
-#end
-import flixel.system.ui.FlxSoundTray;
-import haxe.Json;
+
 import lime.app.Application;
 import openfl.Assets;
-import openfl.display.Bitmap;
-import openfl.display.BitmapData;
-import openfl.filters.BitmapFilter;
 import openfl.filters.ShaderFilter;
-
-import sys.FileSystem;
-import sys.io.File;
-//import flixel.graphics.FlxGraphic as FlixelGraphic;
 
 class SuperDuperMegaSecretTitleScreen extends MusicBeatState
 {
@@ -421,7 +400,7 @@ class SuperDuperMegaSecretTitleScreen extends MusicBeatState
 					if (FlxG.random.bool(8) && GameData.episode1FPLock == "unlocked")
 					{
 						FlxG.sound.music.fadeOut(0.5);
-						MusicBeatState.switchState(new states.menus.legacy.LegacyMenuState());
+						MusicBeatState.switchState(new states.menus.secret.LegacyMenuState());
 					}
 					else
 						MusicBeatState.switchState(new MainMenuState());

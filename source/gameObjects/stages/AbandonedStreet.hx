@@ -37,7 +37,6 @@ class AbandonedStreet extends BaseStage
 	public static var fireTweenHandler:FlxTween;
 	public static var rainTween:FlxTween;
 	public static var mickeySpirit:Character;
-	public static var memoryMickey:Character;
 	public static var smokeShit:FlxTypedGroup<FlxSprite>;
 	public static var smokeFore:FlxTypedGroup<FlxSprite>;
 	public static var spriteShit:Array<String> = ['smokeBBack', 'smokeTBack'];
@@ -54,7 +53,6 @@ class AbandonedStreet extends BaseStage
 	public static var monitorFilter:FlxRuntimeShader = new FlxRuntimeShader(Shaders.monitorFilter, null, 140);
 	public static var delusionalShift:FlxRuntimeShader = new FlxRuntimeShader(Shaders.delusionalShift, null, 120);
 	public static var heatWaveEffect:FlxRuntimeShader = new FlxRuntimeShader(Shaders.heatWave, null, 120);
-	public static var grayScale:FlxRuntimeShader = new FlxRuntimeShader(Shaders.grayScale, null, 120);
 
 	public var shaderAnim:Float = 0;
 
@@ -139,11 +137,6 @@ class AbandonedStreet extends BaseStage
 			mickeySpirit.alpha = 0.0001;
 			add(mickeySpirit);
 
-			memoryMickey = new Character(575, 50, "Mickey-Bedroom", true);
-			memoryMickey.alpha = 0.0001;
-			memoryMickey.cameras = [game.camVideo];
-			add(memoryMickey);
-
 			// Bedroom Grah :fire: - MalyPlus
 			minnieBackground = new FlxSprite(-20, 200).loadGraphic(Paths.image(PlayState.pathway + 'background'));
 			minnieBackground.scale.set(2,2);
@@ -151,7 +144,6 @@ class AbandonedStreet extends BaseStage
 			minnieBackground.antialiasing = ClientPrefs.data.antialiasing;
 			minnieBackground.visible = false;
 			add(minnieBackground);
-
 
 			if (!ClientPrefs.data.lowQuality)
 			{
@@ -547,11 +539,11 @@ class AbandonedStreet extends BaseStage
 
 		if (PlayState.SONG.song == "Isolated")
 		{
-			fakeBFLosingFrame.x = demonBFIcon.x = demonBFScary.x = game.iconP1.x;
-			fakeBFLosingFrame.y = demonBFIcon.y = demonBFScary.y = game.iconP1.y;
+			fakeBFLosingFrame.x = demonBFIcon.x = demonBFScary.x = playHUD.iconP1.x;
+			fakeBFLosingFrame.y = demonBFIcon.y = demonBFScary.y = playHUD.iconP1.y;
 
-			isolatedHappy.x = lunacyIcon.x = delusionalIcon.x = game.iconP2.x;
-			isolatedHappy.y = lunacyIcon.y = delusionalIcon.y = game.iconP2.y;
+			isolatedHappy.x = lunacyIcon.x = delusionalIcon.x = playHUD.iconP2.x;
+			isolatedHappy.y = lunacyIcon.y = delusionalIcon.y = playHUD.iconP2.y;
 		}
 
 		if (isStoryMode && !seenCutscene && PlayState.SONG.song != "Delusional")
@@ -688,46 +680,46 @@ class AbandonedStreet extends BaseStage
 					switch (eventData)
 					{
 						case 1:
-							game.iconP2.alpha = 0;
+							playHUD.iconP2.alpha = 0;
 							isolatedHappy.visible = true;
 							FlxTween.tween(isolatedHappy, {alpha: 0}, 1);
-							FlxTween.tween(game.iconP2, {alpha: 1}, 0.6);
+							FlxTween.tween(playHUD.iconP2, {alpha: 1}, 0.6);
 							add(isolatedHappy);
 					
 						case 2:
 							lunacyIcon.visible = true;
-							game.iconP2.alpha = 0;
+							playHUD.iconP2.alpha = 0;
 							FlxTween.tween(lunacyIcon, {alpha: 0}, 1);
-							FlxTween.tween(game.iconP2, {alpha: 1}, 0.6);
+							FlxTween.tween(playHUD.iconP2, {alpha: 1}, 0.6);
 							add(lunacyIcon);
 
 						case 3:
 							delusionalIcon.visible = true;
-							game.iconP2.alpha = 0;
+							playHUD.iconP2.alpha = 0;
 							FlxTween.tween(delusionalIcon, {alpha: 0}, 1);
-							FlxTween.tween(game.iconP2, {alpha: 1}, 0.6);
+							FlxTween.tween(playHUD.iconP2, {alpha: 1}, 0.6);
 							add(delusionalIcon);
 
 						case 4:
 							fakeBFLosingFrame.visible = true;
-							game.iconP1.alpha = 0;
+							playHUD.iconP1.alpha = 0;
 							FlxTween.tween(fakeBFLosingFrame, {alpha: 0}, 1);
-							FlxTween.tween(game.iconP1, {alpha: 1}, 0.6);
+							FlxTween.tween(playHUD.iconP1, {alpha: 1}, 0.6);
 							add(fakeBFLosingFrame);
 
 						case 5:
 							demonBFIcon.visible = true;
-							game.iconP1.alpha = 0;
+							playHUD.iconP1.alpha = 0;
 							FlxTween.tween(demonBFIcon, {alpha: 0}, 1);
-							FlxTween.tween(game.iconP1, {alpha: 1}, 0.6);
+							FlxTween.tween(playHUD.iconP1, {alpha: 1}, 0.6);
 							add(demonBFIcon);
 				
 						//Made a typo and never fixed it soooo, oops?
 						case 188:
 							demonBFScary.visible = true;
-							game.iconP1.alpha = 0;
+							playHUD.iconP1.alpha = 0;
 							FlxTween.tween(demonBFScary, {alpha: 0}, 1);
-							FlxTween.tween(game.iconP1, {alpha: 1}, 0.6);
+							FlxTween.tween(playHUD.iconP1, {alpha: 1}, 0.6);
 							add(demonBFScary);
 					}
 				}

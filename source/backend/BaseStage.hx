@@ -46,6 +46,8 @@ class BaseStage extends FlxBasic
 	private var game(default, set):Dynamic = PlayState.instance;
 	public var onPlayState:Bool = false;
 
+	private var playHUD(get, never):Dynamic;
+
 	// some variables for convenience
 	public var paused(get, never):Bool;
 	public var songName(get, never):String;
@@ -158,6 +160,7 @@ class BaseStage extends FlxBasic
 	function moveCameraSection() if(onPlayState) moveCameraSection();
 	function moveCamera(isDad:Bool) if(onPlayState) moveCamera(isDad);
 	inline private function get_paused() return game.paused;
+	inline private function get_playHUD() return game.playHUD;
 	inline private function get_songName() return game.songName;
 	inline private function get_isStoryMode() return PlayState.isStoryMode;
 	inline private function get_seenCutscene() return PlayState.seenCutscene;

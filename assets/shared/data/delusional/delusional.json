@@ -16159,23 +16159,13 @@
 					],
 					[
 						"Set Property",
-						"comboGroup.alpha",
-						"0.0001"
-					],
-					[
-						"Set Property",
-						"uiGroup.alpha",
+						"playHUD.alpha",
 						"0.0001"
 					],
 					[
 						"Camera Event",
 						"Change Value",
 						"alpha,0.0001"
-					],
-					[
-						"Set Property",
-						"timeTxt.alpha",
-						"0"
 					]
 				]
 			],
@@ -16209,23 +16199,13 @@
 					],
 					[
 						"Set Property",
-						"comboGroup.alpha",
-						"1"
-					],
-					[
-						"Set Property",
-						"uiGroup.alpha",
+						"playHUD.alpha",
 						"1"
 					],
 					[
 						"Camera Event",
 						"Change Value",
 						"alpha,1"
-					],
-					[
-						"Set Property",
-						"timeTxt.alpha",
-						"0"
 					]
 				]
 			],
@@ -16319,17 +16299,7 @@
 					],
 					[
 						"Set Property",
-						"comboGroup.alpha",
-						"0"
-					],
-					[
-						"Set Property",
-						"uiGroup.alpha",
-						"0"
-					],
-					[
-						"Set Property",
-						"timeTxt.alpha",
+						"playHUD.alpha",
 						"0"
 					]
 				]
@@ -16754,18 +16724,8 @@
 					],
 					[
 						"Set Property",
-						"comboGroup.alpha",
+						"playHUD.alpha",
 						"1"
-					],
-					[
-						"Set Property",
-						"uiGroup.alpha",
-						"1"
-					],
-					[
-						"Set Property",
-						"timeTxt.alpha",
-						"0"
 					],
 					[
 						"Cinematic Event",

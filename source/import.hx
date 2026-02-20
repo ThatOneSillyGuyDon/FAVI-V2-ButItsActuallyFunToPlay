@@ -37,7 +37,7 @@ import states.*;
 import states.editors.*;
 import states.options.*;
 import states.menus.*;
-import states.menus.freeplay.*;
+import states.menus.secret.*;
 
 // Base Stage
 import backend.BaseStage.StageAssetData;

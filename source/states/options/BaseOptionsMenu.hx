@@ -6,7 +6,7 @@ import flash.text.TextField;
 import lime.utils.Assets;
 import haxe.Json;
 import flixel.input.keyboard.FlxKey;
-import backend.FlxTextAlphabet;
+import gameObjects.utils.FlxTextAlphabet;
 import gameObjects.utils.AttachedFlxText;
 
 class BaseOptionsMenu extends MusicBeatSubstate
@@ -149,7 +149,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 
 		if (!ClientPrefs.data.lowQuality)
 		{
-			var gradient:FlxSprite = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/filters/gradient'));
+			var gradient:FlxSprite = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/filters/grainGradient'));
 			gradient.scrollFactor.set(0, 0);
 			gradient.setGraphicSize(Std.int(gradient.width * 0.75));
 			gradient.updateHitbox();

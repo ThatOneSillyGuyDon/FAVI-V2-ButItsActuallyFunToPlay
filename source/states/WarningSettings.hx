@@ -3,7 +3,7 @@ package states;
 import lime.app.Application;
 import flixel.text.FlxText.FlxTextFormat;
 import flixel.text.FlxText.FlxTextFormatMarkerPair;
-import backend.FlxTextAlphabet;
+import gameObjects.utils.FlxTextAlphabet;
 import gameObjects.utils.AttachedFlxText;
 import flixel.addons.transition.FlxTransitionableState;
 import gameObjects.ui.Option;

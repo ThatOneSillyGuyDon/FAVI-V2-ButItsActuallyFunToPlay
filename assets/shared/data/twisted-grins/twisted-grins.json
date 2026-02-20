@@ -26,12 +26,7 @@
 					],
 					[
 						"Set Property",
-						"comboGroup.alpha",
-						"0"
-					],
-					[
-						"Set Property",
-						"uiGroup.alpha",
+						"playHUD.alpha",
 						"0"
 					],
 					[
@@ -311,18 +306,8 @@
 					],
 					[
 						"Set Property",
-						"uiGroup.alpha",
+						"playHUD.alpha",
 						"1"
-					],
-					[
-						"Set Property",
-						"comboGroup.alpha",
-						"1"
-					],
-					[
-						"Set Property",
-						"timeTxt.alpha",
-						"0"
 					],
 					[
 						"Set Property",
@@ -461,12 +446,7 @@
 				[
 					[
 						"Set Property",
-						"uiGroup.alpha",
-						"0"
-					],
-					[
-						"Set Property",
-						"comboGroup.alpha",
+						"playHUD.alpha",
 						"0"
 					],
 					[
@@ -726,18 +706,8 @@
 					],
 					[
 						"Set Property",
-						"uiGroup.alpha",
+						"playHUD.alpha",
 						"1"
-					],
-					[
-						"Set Property",
-						"comboGroup.alpha",
-						"1"
-					],
-					[
-						"Set Property",
-						"timeTxt.alpha",
-						"0"
 					],
 					[
 						"Set Property",
@@ -881,12 +851,7 @@
 				[
 					[
 						"Set Property",
-						"uiGroup.alpha",
-						"0"
-					],
-					[
-						"Set Property",
-						"comboGroup.alpha",
+						"playHUD.alpha",
 						"0"
 					],
 					[

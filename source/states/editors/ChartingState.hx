@@ -237,8 +237,8 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		strumLine = new FlxSprite(0, 50).makeGraphic(Std.int(GRID_SIZE * 9), 4);
 		add(strumLine);
 
-		quant = new AttachedSprite('chart_quant','chart_quant');
-		quant.animation.addByPrefix('q','chart_quant',0,false);
+		quant = new AttachedSprite('editors/chart_quant', 'chart_quant');
+		quant.animation.addByPrefix('q', 'chart_quant', 0, false);
 		quant.animation.play('q', true, false, 0);
 		quant.sprTracker = strumLine;
 		quant.xAdd = -32;
@@ -1750,22 +1750,6 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 			if(FlxG.keys.justPressed.X && curZoom < zoomList.length-1) {
 				curZoom++;
 				updateZoom();
-			}
-
-			if (FlxG.keys.justPressed.TAB)
-			{
-				if (FlxG.keys.pressed.SHIFT)
-				{
-					UI_box.selectedIndex -= 1;
-					if (UI_box.selectedIndex < 0)
-						UI_box.selectedIndex = 2;
-				}
-				else
-				{
-					UI_box.selectedIndex += 1;
-					if (UI_box.selectedIndex >= 3)
-						UI_box.selectedIndex = 0;
-				}
 			}
 
 			if (FlxG.keys.justPressed.SPACE)

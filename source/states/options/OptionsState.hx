@@ -73,7 +73,7 @@ class OptionsState extends MusicBeatState
 
 		if (!ClientPrefs.data.lowQuality)
 		{
-			var gradient:FlxSprite = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/filters/gradient'));
+			var gradient:FlxSprite = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/filters/grainGradient'));
 			gradient.scrollFactor.set(0, 0);
 			gradient.setGraphicSize(Std.int(gradient.width * 0.75));
 			gradient.updateHitbox();
@@ -154,7 +154,7 @@ class OptionsState extends MusicBeatState
 				if (FlxG.random.bool(8) && GameData.episode1FPLock == "unlocked")
 				{
 					FlxG.sound.music.fadeOut(0.5);
-					MusicBeatState.switchState(new states.menus.legacy.LegacyMenuState());
+					MusicBeatState.switchState(new states.menus.secret.LegacyMenuState());
 				}
 				else
 					MusicBeatState.switchState(new MainMenuState());

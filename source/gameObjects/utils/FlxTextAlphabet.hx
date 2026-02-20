@@ -1,4 +1,4 @@
-package backend;
+package gameObjects.utils;
 
 /**
  * An extension of `flixel.text.FlxText` which adds content from `Alphabet`

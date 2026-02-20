@@ -4,7 +4,7 @@ import backend.InputFormatter;
 import flixel.addons.display.FlxBackdrop;
 import flixel.addons.display.FlxGridOverlay;
 import gameObjects.utils.AttachedSprite;
-import backend.FlxTextAlphabet;
+import gameObjects.utils.FlxTextAlphabet;
 
 import flixel.input.keyboard.FlxKey;
 import flixel.input.gamepad.FlxGamepad;

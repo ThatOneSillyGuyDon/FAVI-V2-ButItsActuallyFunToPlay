@@ -1,4 +1,4 @@
-package states.menus.legacy;
+package states.menus.secret;
 
 import flixel.input.keyboard.FlxKeyboard;
 import flixel.input.keyboard.FlxKey;
