@@ -368,11 +368,11 @@ class DDStage extends BaseStage
 						devilishGaming.visible = true;
 						minnieIcon.visible = true;
 						satanIcon.visible = true;
-						playHUD.iconP1.visible = false;
-						playHUD.iconP2.visible = false;
-						playHUD.add(minnieIcon);
-						playHUD.add(satanIcon);
-						playHUD.add(satanIconPulse);
+						game.iconP1.visible = false;
+						game.iconP2.visible = false;
+						game.uiGroup.add(minnieIcon);
+						game.uiGroup.add(satanIcon);
+						game.uiGroup.add(satanIconPulse);
 					case 2:
 						FlxTween.tween(game.dad.colorTransform, {redMultiplier: 1, blueMultiplier: 1, greenMultiplier: 1}, 2, {ease: FlxEase.circInOut});
 				}
@@ -388,14 +388,14 @@ class DDStage extends BaseStage
 					case 4: minnieIcon.animation.curAnim.curFrame = 2;
 					case 5: minnieIcon.animation.curAnim.curFrame = 0;
 					case 6:
-						playHUD.healthBar.visible = false;
+						game.healthBar.visible = false;
 						minnieIcon.visible = false;
 						satanIcon.visible = false;
 						game.noteGroup.visible = false;
-						playHUD.fancyBarOverlay.visible = false;
-						playHUD.scoreTxt.visible = false;
-						playHUD.watermarkTxt.visible = false;
-						playHUD.songTxt.visible = false;
+						game.fancyBarOverlay.visible = false;
+						game.scoreTxt.visible = false;
+						game.watermarkTxt.visible = false;
+						game.songTxt.visible = false;
 					case 7:
 						FlxTween.tween(game.dad.colorTransform, {redMultiplier: 1, blueMultiplier: 1, greenMultiplier: 1}, 2, {ease: FlxEase.circInOut});
 				}

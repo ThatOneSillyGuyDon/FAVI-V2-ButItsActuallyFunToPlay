@@ -79,7 +79,7 @@
 
 	<!-- _______________________________ Libraries ______________________________ -->
 
-	<haxelib name="flixel" version="5.7.0" />
+	<haxelib name="flixel" version="5.6.1" />
 	<haxelib name="flixel-addons" version="3.2.2" />
 	<haxelib name="flixel-tools" version="1.5.1" />
 	<haxelib name="tjson" version="1.4.0" />
