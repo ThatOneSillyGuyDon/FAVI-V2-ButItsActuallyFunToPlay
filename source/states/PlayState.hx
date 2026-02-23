@@ -1399,7 +1399,6 @@ class PlayState extends MusicBeatState
 							case "War Dilemma" | "Dont Cross" | "Bless" | "Mercy" | "Mercy Legacy" | "Delutrance":
 								count3.play();
 							default:
-								trace("prepare");
 								add(countdownIntro);
 								FlxTween.tween(countdownIntro, {alpha: 0}, Conductor.crochet / 1000, {
 									ease: FlxEase.cubeInOut,
@@ -1427,7 +1426,6 @@ class PlayState extends MusicBeatState
 
 								countdownReady.screenCenter();
 								countdownReady.antialiasing = antialias;
-								trace("ready");
 								add(countdownReady);
 								FlxTween.tween(countdownReady, {/*y: countdownReady.y + 100,*/ alpha: 0}, Conductor.crochet / 1000, {
 									ease: FlxEase.cubeInOut,
@@ -1449,7 +1447,6 @@ class PlayState extends MusicBeatState
 
 								countdownReady.screenCenter();
 								countdownReady.antialiasing = antialias;
-								trace("ready");
 								add(countdownReady);
 								FlxTween.tween(countdownReady, {/*y: countdownReady.y + 100,*/ alpha: 0}, Conductor.crochet / 1000, {
 									ease: FlxEase.cubeInOut,
@@ -1476,7 +1473,6 @@ class PlayState extends MusicBeatState
 
 								countdownSet.screenCenter();
 								countdownSet.antialiasing = antialias;
-								trace("set");
 								add(countdownSet);
 								FlxTween.tween(countdownSet, {/*y: countdownSet.y + 100,*/ alpha: 0}, Conductor.crochet / 1000, {
 									ease: FlxEase.cubeInOut,
@@ -1497,7 +1493,6 @@ class PlayState extends MusicBeatState
 
 								countdownSet.screenCenter();
 								countdownSet.antialiasing = antialias;
-								trace("set");
 								add(countdownSet);
 								FlxTween.tween(countdownSet, {/*y: countdownSet.y + 100,*/ alpha: 0}, Conductor.crochet / 1000, {
 									ease: FlxEase.cubeInOut,
@@ -1526,7 +1521,6 @@ class PlayState extends MusicBeatState
 
 								countdownGo.screenCenter();
 								countdownGo.antialiasing = antialias;
-								trace("go!");
 								add(countdownGo);
 								FlxTween.tween(countdownGo, {/*y: countdownGo.y + 100,*/ alpha: 0}, Conductor.crochet / 1000, {
 									ease: FlxEase.cubeInOut,
@@ -1549,7 +1543,6 @@ class PlayState extends MusicBeatState
 
 								countdownGo.screenCenter();
 								countdownGo.antialiasing = antialias;
-								trace("go!");
 								add(countdownGo);
 								FlxTween.tween(countdownGo, {/*y: countdownGo.y + 100,*/ alpha: 0}, Conductor.crochet / 1000, {
 									ease: FlxEase.cubeInOut,

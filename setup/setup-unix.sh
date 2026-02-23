@@ -3,11 +3,11 @@
 #
 # REMINDER THAT YOU NEED HAXE INSTALLED PRIOR TO USING THIS
 # https://haxe.org/download/version/4.2.5/
+haxelib set away3d 5.0.9
 haxelib set lime 8.2.2
 haxelib set openfl 9.4.1
-haxelib set flixel 5.6.1
+haxelib set flixel 5.7.0
 haxelib set flixel-addons 3.2.2
-haxelib set flixel-ui 2.5.0
 haxelib set flixel-tools 1.5.1
 haxelib set hscript-iris 1.1.3
 haxelib set hscript 2.7.0
