@@ -4535,10 +4535,7 @@ class PlayState extends MusicBeatState
 							FlxG.save.flush();
 						}
 						changedDifficulty = false;
-					}
-
-					if (SONG.song != "Delusional")
-					{
+					}else{
 						trace('LOADING NEXT SONG');
 						trace(Paths.formatToSongPath(storyPlaylist[0]) + difficulty);
 
