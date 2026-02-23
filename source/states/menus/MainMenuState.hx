@@ -180,7 +180,7 @@ class MainMenuState extends MusicBeatState
 							menuItem.setPosition(725, 190);
 							menuItem.width *= 6.5;
 						case 1: // freeplay
-							if (GameData.episode1FPLock != "unlocked") menuItem.color = FlxColor.fromHSL(menuItem.color.hue, menuItem.color.saturation, 0.2, 1);
+							if (SaveData.unlockFreeplay != "unlocked") menuItem.color = FlxColor.fromHSL(menuItem.color.hue, menuItem.color.saturation, 0.2, 1);
 							menuItem.offset.x = -60;
 							menuItem.setPosition(720, 270);
 							menuItem.width *= 5;
@@ -362,7 +362,7 @@ class MainMenuState extends MusicBeatState
 				if (FlxG.keys.justPressed.TWO) // Unlocks Freeplay Access for Testing
 				{
 					FlxG.sound.play(Paths.sound('funkinAVI/easterEggSound'));
-					GameData.episode1FPLock = "unlocked";
+					SaveData.unlockFreeplay = "unlocked";
 					GameData.saveShit();
 				}
 				if (FlxG.keys.justPressed.THREE) // Dev Shortcut to Mania Menu
@@ -539,8 +539,10 @@ class MainMenuState extends MusicBeatState
 				});
 				FlxG.sound.play(Paths.sound('funkinAVI/easterEggSound'));
 				messenger.sendMessage('I just wanna talk bro.', 'New Freeplay Song Unlocked!');
-				GameData.canAddMalfunction = true;
-				GameData.saveShit();	
+				SaveData.addMalfunction = true;
+				SaveData.saveData();
+				/*GameData.canAddMalfunction = true;
+				GameData.saveShit();	*/
 			case 3:
 				menuItems.members[7].setColorTransform(1, 1, 1, 1, 255, 255, 255, 255);
 				FlxTween.tween(menuItems.members[7].colorTransform, {redOffset: 0, greenOffset: 0, blueOffset: 0}, 1);
@@ -585,7 +587,7 @@ class MainMenuState extends MusicBeatState
 				selectedSomethin = true;
 				openSubState(new ResetSaveDataSubState());
 			case 7:
-				if (GameData.episode1FPLock == "unlocked")
+				if (SaveData.unlockFreeplay == "unlocked")
 				{
 					FlxG.sound.music.fadeOut(0.8);
 					menuItems.forEach(function(spr:FlxSprite)

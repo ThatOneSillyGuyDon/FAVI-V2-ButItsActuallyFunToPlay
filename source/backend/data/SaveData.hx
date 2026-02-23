@@ -1,8 +1,5 @@
 package backend.data;
 
-import flixel.FlxG;
-import flixel.util.FlxSave;
-
 using StringTools;
 private enum DATA_CHECK_TYPE
 {
@@ -10,10 +7,17 @@ private enum DATA_CHECK_TYPE
 	ALL;
 }
 
+/**
+ * So Basicaly, GameData kinda had some problems in V2 release, and just to make it clear etc,
+ * i decided to remake it all -- (MalyPlus)
+ * 
+ * Blame goober for making me delusional.
+ */
+
 class SaveData {
-
-    public static var unlockFreeplay:Bool = false;
-
+    
+    public static var unlockFreeplay:String = 'locked';
+    public static var currentStorySong:String = "Devilish Deal";
     public static var storySongs:Array<Array<Dynamic>> = [ 
         // unlocked, locked, beaten
         ['Devilish Deal'],
@@ -21,6 +25,10 @@ class SaveData {
         ['Lunacy'],
         ['Delusional']
     ];
+
+    public static var addMalfunction:Bool = false;
+    public static var addBirthday:Bool = false;
+    public static var seenWarning:Bool = false;
 
     // unlocked locked beaten
     public static var freeplaySongs:Array<Array<Dynamic>> = [
@@ -44,6 +52,10 @@ class SaveData {
 		for (i in 0...freeplaySongs.length) { 
             FlxG.save.data.freeplaySongs = freeplaySongs;
         }
+        FlxG.save.data.currentStorySong = currentStorySong;
+        FlxG.save.data.unlockFreeplay = unlockFreeplay;
+        FlxG.save.data.addBirthday = addBirthday;
+        FlxG.save.data.seenWarning = seenWarning;
         
 		FlxG.save.flush();
 	}
@@ -57,5 +69,45 @@ class SaveData {
 				}
 			}
 		}
+
+        if(FlxG.save.data.addBirthday != null)
+            addBirthday = FlxG.save.data.addBirthday;
+        if(FlxG.save.data.seenWarning != null)
+            seenWarning = FlxG.save.data.seenWarning;
+
+        if(FlxG.save.data.addMalfunction != null)
+            addMalfunction = FlxG.save.data.addMalfunction;
+
+       if(FlxG.save.data.currentStorySong != null)
+			currentStorySong = FlxG.save.data.currentStorySong;
+
+        if(FlxG.save.data.unlockFreeplay != null)
+            unlockFreeplay = FlxG.save.data.unlockFreeplay;
+
+
     }
+
+    /*public static function check(type:DATA_CHECK_TYPE):Dynamic
+	{
+		switch (type)
+		{
+			case NO_MALFUNCTION:
+				return (for (i in 0...SaveData.freeplaySongs.length){
+				if(FlxG.save.data.freeplaySongs != null &&  i < FlxG.save.data.freeplaySongs.length && FlxG.save.data.freeplaySongs[i] != null && FlxG.save.data.freeplaySongs[i][1] != null) {
+					SaveData.freeplaySongs[i][1] = "beaten";
+				}});
+			
+    
+
+			case ALL:
+				return (for (i in 0...SaveData.freeplaySongs.length){
+				if(FlxG.save.data.freeplaySongs != null &&  i < FlxG.save.data.freeplaySongs.length && FlxG.save.data.freeplaySongs[i] != null && FlxG.save.data.freeplaySongs[i][1] != null) {
+					SaveData.freeplaySongs[i][1] = "beaten";
+                    SaveData.addMalfunction = true;
+				}});
+		}
+
+		// tragic
+		return false;
+	}*/
 }

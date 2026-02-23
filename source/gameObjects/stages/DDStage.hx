@@ -158,7 +158,7 @@ class DDStage extends BaseStage
 			episodeIntro.addCallback("onEnd", () -> {
 				camHUD.alpha = 0.001;
 				game.camBars.fade(FlxColor.BLACK, 0.001);
-				if (PlayState.SONG.song == "Devilish Deal" && isStoryMode && GameData.episode1FPLock != "unlocked")
+				if (PlayState.SONG.song == "Devilish Deal" && isStoryMode && SaveData.unlockFreeplay != "unlocked")
 				{
 					PlayState.windowName = "Funkin.avi - " + 
 					(isStoryMode ? "Episode 1" + " - " : "Freeplay - ") + 
@@ -514,7 +514,7 @@ class DDStage extends BaseStage
 			{
 				episodeIntro.pause();
 				episodeIntro.visible = false;
-				if (PlayState.SONG.song == "Devilish Deal" && isStoryMode && GameData.episode1FPLock != "unlocked")
+				if (PlayState.SONG.song == "Devilish Deal" && isStoryMode && SaveData.unlockFreeplay != "unlocked")
 				{
 					PlayState.windowName = "Funkin.avi - " + 
 					(isStoryMode ? "Episode 1" + " - " : "Freeplay - ") + 

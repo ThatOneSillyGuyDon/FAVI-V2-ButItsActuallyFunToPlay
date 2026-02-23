@@ -339,7 +339,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 			}
 		}
 
-		if (spamCounter >= 150 && GameData.episode1FPLock == "unlocked")
+		if (spamCounter >= 150 && SaveData.unlockFreeplay == "unlocked")
 		{
 			FlxG.sound.playMusic(Paths.music('aviOST/seekingFreedom'));
 			FreeplayState.freeplayMenuList = 3;

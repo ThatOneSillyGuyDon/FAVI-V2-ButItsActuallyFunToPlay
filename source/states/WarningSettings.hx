@@ -209,8 +209,8 @@ class WarningSettings extends MusicBeatState {
             if (controls.BACK) {
                 FlxTween.tween(menuCam, {zoom: 0.6, alpha: 0}, 1, {ease: FlxEase.circOut, onComplete: function(twn:FlxTween)
                 {
-                    GameData.hasSeenWarning = true;
-                    GameData.saveShit();
+                    SaveData.seenWarning = true;
+                    SaveData.saveData();
                     ClientPrefs.saveSettings();
                     MusicBeatState.switchState(new TitleState());
                     FlxG.sound.music.pitch = 1;

@@ -491,8 +491,9 @@ class PlayState extends MusicBeatState
 			switch (SONG.song)
 			{
 				case "Birthday":
-					GameData.birthdayLocky = 'unlocked';
-					GameData.saveShit();
+					//GameData.birthdayLocky = 'unlocked';
+					SaveData.freeplaySongs[12][1] = 'unlocked';
+					SaveData.saveData();
 			}
 			if (!GameData.canOverrideCPU)
 				GameData.checkBotplay(null);
@@ -687,7 +688,7 @@ class PlayState extends MusicBeatState
 			default: curEpisode = "Episode ???";
 		}
 
-		if (SONG.song == "Devilish Deal" && isStoryMode && GameData.episode1FPLock != "unlocked")
+		if (SONG.song == "Devilish Deal" && isStoryMode && SaveData.unlockFreeplay != "unlocked")
 			windowName = "Funkin.avi - Episode 1 - Isolated (Composed by: obscurity) - Chart by: Purg [NORMAL] - Mechanics: " + (ClientPrefs.data.mechanics ? "Enabled" : "Disabled"); // shitty long ass name that credits literally every fucking thing
 		else
 			windowName = "Funkin.avi - " + 
@@ -4757,10 +4758,9 @@ class PlayState extends MusicBeatState
 					if (ClientPrefs.data.mechanics && SONG.song == "Delusional")
 					{
 						//hasEndingScene = true;
-						GameData.episode1FPLock = "unlocked";
-						GameData.deluluSong = true;
-						GameData.storySong = "Devilish-Deal";
-						GameData.saveShit();
+						SaveData.unlockFreeplay = "unlocked";
+						SaveData.currentStorySong = "Devilish-Deal";
+						SaveData.saveData();
 					}
 					if (SONG.song == "Birthday")
 					{
@@ -4786,34 +4786,14 @@ class PlayState extends MusicBeatState
 				{
 					var difficulty:String = Difficulty.getFilePath();
 
-					if (SONG.song == "Devilish Deal")
-					{
-						//hasEndingScene = true;
-						GameData.devilSong = true;
-						GameData.storySong = "Isolated";
-						GameData.saveShit();
-					}
-					if (SONG.song == "Isolated")
-					{
-						//hasEndingScene = true;
-						GameData.isoSong = true;
-						GameData.storySong = "Lunacy";
-						GameData.saveShit();
-					}
-					if (SONG.song == "Lunacy")
-					{
-						//hasEndingScene = true;
-						GameData.lunaSong = true;
-						GameData.storySong = "Delusional";
-						GameData.saveShit();
-					}
+
 					if (SONG.song == "Delusional")
 					{
 						//hasEndingScene = true;
-						GameData.episode1FPLock = "unlocked";
+						SaveData.unlockFreeplay = "unlocked";
 						GameData.deluluSong = true;
-						GameData.storySong = "Devilish-Deal";
-						GameData.saveShit();
+						SaveData.currentStorySong = "Devilish-Deal";
+						SaveData.saveData();
 
 						FlxG.sound.playMusic(Paths.music('aviOST/rottenPetals'));
 						#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
@@ -4833,6 +4813,9 @@ class PlayState extends MusicBeatState
 						trace('LOADING NEXT SONG');
 						trace(Paths.formatToSongPath(storyPlaylist[0]) + difficulty);
 
+						SaveData.currentStorySong = storyPlaylist[0]; 
+						SaveData.saveData();
+
 						FlxTransitionableState.skipNextTransIn = true;
 						FlxTransitionableState.skipNextTransOut = true;
 						
@@ -4841,10 +4824,8 @@ class PlayState extends MusicBeatState
 
 						var songLowercase:String = Paths.formatToSongPath(storyPlaylist[0]);
 
-						if (!GameData.devilSong)
-							SONG = Song.loadFromJson(storyPlaylist[0], songLowercase);
-						else if (GameData.devilSong)
-							SONG = Song.loadFromJson(GameData.storySong.toLowerCase(), GameData.storySong.toLowerCase());
+						SONG = Song.loadFromJson(storyPlaylist[0], songLowercase);
+
 						FlxG.sound.music.stop();
 
 						LoadingState.loadAndSwitchState(new PlayState());

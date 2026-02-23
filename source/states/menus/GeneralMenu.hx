@@ -198,7 +198,7 @@ class GeneralMenu extends MusicBeatState {
             Conductor.bpm = 50;
 			FreeplayState.songInstPlaying = false;
 			FlxG.sound.play(Paths.sound("cancelMenu"));
-            if (FlxG.random.bool(8) && GameData.episode1FPLock == "unlocked")
+            if (FlxG.random.bool(8) && SaveData.unlockFreeplay == "unlocked")
 			{
 				FlxG.sound.music.fadeOut(0.5);
 				MusicBeatState.switchState(new states.menus.secret.LegacyMenuState());

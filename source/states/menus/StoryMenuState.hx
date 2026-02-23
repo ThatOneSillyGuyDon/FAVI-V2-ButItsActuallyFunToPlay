@@ -64,7 +64,7 @@ class StoryMenuState extends MusicBeatState
 
 		DiscordClient.changePresence('Story Menu', 'Selecting Episode...');
 
-		book = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/storymenu/storyBook' + (GameData.episode1FPLock == "unlocked" ? "-evil" : "")));
+		book = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/storymenu/storyBook' + (SaveData.unlockFreeplay == "unlocked" ? "-evil" : "")));
 		book.scrollFactor.set(0, 0);
 		book.setGraphicSize(Std.int(book.width * 1.1));
 		book.updateHitbox();
@@ -219,7 +219,7 @@ class StoryMenuState extends MusicBeatState
 		{
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 			movedBack = true;
-			if (FlxG.random.bool(8) && GameData.episode1FPLock == "unlocked")
+			if (FlxG.random.bool(8) && SaveData.unlockFreeplay == "unlocked")
 			{
 				FlxG.sound.music.fadeOut(0.5);
 				MusicBeatState.switchState(new states.menus.secret.LegacyMenuState());
@@ -254,9 +254,35 @@ class StoryMenuState extends MusicBeatState
 		// We can't use Dynamic Array .copy() because that crashes HTML5, here's a workaround.
 		var songArray:Array<String> = [];
 		var leWeek:Array<Dynamic> = loadedWeeks[curWeek].songs;
-		for (i in 0...leWeek.length) {
+		/*for (i in 0...leWeek.length) {
 			songArray.push(leWeek[i][0]);
+		}*/
+
+		switch(curWeek){
+			case 0:
+				// hardcoding ts okay
+				songArray = [
+					"Devilish Deal",
+					"Isolated",
+					"Lunacy",
+					"Delusional"
+				];
+
+				for (i in 0...songArray.length){
+					if (songArray[i] == SaveData.currentStorySong){
+						break;
+					}else{
+						songArray.remove(songArray[i]);
+					}
+				}
+			default:
+				var leWeek:Array<Dynamic> = loadedWeeks[curWeek].songs;
+				for (i in 0...leWeek.length) {
+					songArray.push(leWeek[i][0]);
+				}
 		}
+
+	
 
 		// Nevermind that's stupid lmao
 		PlayState.storyPlaylist = songArray;
@@ -270,7 +296,7 @@ class StoryMenuState extends MusicBeatState
 
 		PlayState.storyDifficulty = curDifficulty;
 		
-		if (!GameData.devilSong)
+		/*if (!GameData.devilSong)
 		{
 			GameData.storySong = "Devilish-Deal";
 			PlayState.SONG = Song.loadFromJson(GameData.storySong.toLowerCase() + diffic, GameData.storySong.toLowerCase());
@@ -278,7 +304,8 @@ class StoryMenuState extends MusicBeatState
 		else if (GameData.devilSong)
 		{
 			PlayState.SONG = Song.loadFromJson(GameData.storySong.toLowerCase() + diffic, GameData.storySong.toLowerCase());
-		}
+		}*/
+		PlayState.SONG = Song.loadFromJson(songLowercase + diffic, songLowercase);
 		PlayState.campaignScore = 0;
 		PlayState.campaignMisses = 0;
 		new FlxTimer().start(1, function(tmr:FlxTimer)
@@ -313,7 +340,7 @@ class StoryMenuState extends MusicBeatState
 		difficultySelectors.visible = !lockedWeek;
 
 		var storyName:String = WeekData.weeksLoaded.get(WeekData.weeksList[curWeek]).storyName;
-		if (GameData.episode1FPLock != "unlocked" && curWeek <= 1)
+		if (SaveData.unlockFreeplay!= "unlocked" && curWeek <= 1)
 			storyName = 'Broken Relationship';
 
 		lime.app.Application.current.window.title = "Funkin.avi - Story Menu - " + storyName;
@@ -345,8 +372,8 @@ class StoryMenuState extends MusicBeatState
 
 	function updateText()
 	{	
-		booksimage.loadGraphic(Paths.image('Funkin_avi/storymenu/art$curWeek' + (GameData.episode1FPLock == "unlocked" ? "-evil" : "")));
-		weekIcon.loadGraphic(Paths.image('Funkin_avi/storymenu/title$curWeek' + (GameData.episode1FPLock == "unlocked" ? "-evil" : "")));
-		list.loadGraphic(Paths.image('Funkin_avi/storymenu/songs$curWeek' + (GameData.episode1FPLock == "unlocked" ? "-evil" : "")));
+		booksimage.loadGraphic(Paths.image('Funkin_avi/storymenu/art$curWeek' + (SaveData.unlockFreeplay == "unlocked" ? "-evil" : "")));
+		weekIcon.loadGraphic(Paths.image('Funkin_avi/storymenu/title$curWeek' + (SaveData.unlockFreeplay == "unlocked" ? "-evil" : "")));
+		list.loadGraphic(Paths.image('Funkin_avi/storymenu/songs$curWeek' + (SaveData.unlockFreeplay == "unlocked" ? "-evil" : "")));
 	}
 }

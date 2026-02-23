@@ -23,6 +23,7 @@ class Init extends FlxState
         ClientPrefs.loadPrefs();
 		Highscore.load();
 		GameData.loadShit();
+        SaveData.loadData();
 
 		AppIcon.changeIcon("newIcon");
 		
@@ -99,7 +100,7 @@ class Init extends FlxState
 
         var curState = Main.initialState;
 
-        if (!GameData.hasSeenWarning)
+        if (!SaveData.seenWarning)
             curState = FlashingState;
 
         trace('Initialization complete, switching to ${Type.getClassName(curState)}');

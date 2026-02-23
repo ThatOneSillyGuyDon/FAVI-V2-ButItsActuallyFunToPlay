@@ -218,7 +218,7 @@ class CreditsState extends MusicBeatState
 
 		if (controls.BACK)
 		{
-			if (FlxG.random.bool(8) && GameData.episode1FPLock == "unlocked")
+			if (FlxG.random.bool(8) && SaveData.unlockFreeplay == "unlocked")
 			{
 				FlxG.sound.music.fadeOut(0.5);
 				MusicBeatState.switchState(new states.menus.secret.LegacyMenuState());

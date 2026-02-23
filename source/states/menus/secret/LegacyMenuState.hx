@@ -573,7 +573,7 @@ class LegacyMenuState extends MusicBeatState
 				if (FlxG.keys.justPressed.TWO) // Unlocks Freeplay Access for Testing
 				{
 					FlxG.sound.play(Paths.sound('funkinAVI/easterEggSound'));
-					GameData.episode1FPLock = "unlocked";
+					SaveData.unlockFreeplay = "unlocked";
 					GameData.saveShit();
 				}
 				if (FlxG.keys.justPressed.THREE) // Dev Shortcut to Mania Menu
