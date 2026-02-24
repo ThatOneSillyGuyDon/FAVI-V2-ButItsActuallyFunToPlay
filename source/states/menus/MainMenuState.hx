@@ -99,7 +99,9 @@ class MainMenuState extends MusicBeatState
 		"uhuhuhuh",
 		"This is actually the patch's exclusive message, hi to however found this message - malyplus",
 		"women.",
-		"men."
+		"men.",
+		"Blame Goober for making me delusional",
+		"Fun fact: away3d is an library that makes our mod work, deleting it would result on us not being to compile no more" // change if needed.
 	];
 
 	override function create()
