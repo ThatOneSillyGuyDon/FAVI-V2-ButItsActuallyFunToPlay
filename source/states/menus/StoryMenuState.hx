@@ -143,6 +143,7 @@ class StoryMenuState extends MusicBeatState
 		gradient.antialiasing = true;
 		add(gradient);
 
+		trace(SaveData.currentStorySong);
 		changeWeek();
 		changeDifficulty();
 		updateText();
@@ -268,7 +269,7 @@ class StoryMenuState extends MusicBeatState
 					"Delusional"
 				];
 
-			while (songArray.length > 0 && songArray[0] != SaveData.currentStorySong){
+			while (songArray.length > 0 && songArray[0] != SaveData.currentStorySong.replace("-",' ')){
 				songArray.remove(songArray[0]);
 			}
 			default:
@@ -292,15 +293,7 @@ class StoryMenuState extends MusicBeatState
 
 		PlayState.storyDifficulty = curDifficulty;
 		
-		/*if (!GameData.devilSong)
-		{
-			GameData.storySong = "Devilish-Deal";
-			PlayState.SONG = Song.loadFromJson(GameData.storySong.toLowerCase() + diffic, GameData.storySong.toLowerCase());
-		}
-		else if (GameData.devilSong)
-		{
-			PlayState.SONG = Song.loadFromJson(GameData.storySong.toLowerCase() + diffic, GameData.storySong.toLowerCase());
-		}*/
+
 		PlayState.SONG = Song.loadFromJson(songLowercase + diffic, songLowercase);
 		PlayState.campaignScore = 0;
 		PlayState.campaignMisses = 0;
