@@ -268,13 +268,9 @@ class StoryMenuState extends MusicBeatState
 					"Delusional"
 				];
 
-				for (i in 0...songArray.length){
-					if (songArray[i] == SaveData.currentStorySong){
-						break;
-					}else{
-						songArray.remove(songArray[i]);
-					}
-				}
+			while (songArray.length > 0 && songArray[0] != SaveData.currentStorySong){
+				songArray.remove(songArray[0]);
+			}
 			default:
 				var leWeek:Array<Dynamic> = loadedWeeks[curWeek].songs;
 				for (i in 0...leWeek.length) {
