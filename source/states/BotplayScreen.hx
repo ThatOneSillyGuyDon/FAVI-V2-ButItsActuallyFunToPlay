@@ -103,7 +103,7 @@ class BotplayScreen extends MusicBeatState {
             if (FlxG.keys.justPressed.Y)
                 FlxTween.tween(stupidGraphic, {alpha: 1}, 3, {onComplete: function(twn:FlxTween)
                 {
-                    GameData.overrideBotplay();
+                    SaveData.overrideBotplay();
                 }});
             if(FlxG.keys.justPressed.N)
                 FlxTween.tween(stupidGraphic, {alpha: 1}, 3, {onComplete: function(twn:FlxTween)

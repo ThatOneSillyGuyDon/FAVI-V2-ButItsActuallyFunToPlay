@@ -27,12 +27,12 @@ class SaveData {
     ];
 
     public static var addMalfunction:Bool = false;
-    public static var addBirthday:Bool = false;
+    public static var addBirthday:String = 'invited';
     public static var seenWarning:Bool = false;
 
     // unlocked locked beaten
-    public static var freeplaySongs:Array<Array<Dynamic>> = [
-        ['Hunted','locked', 'Musican'],
+    public static var freeplaySongs:Array<Array<String>> = [
+        ['Hunted','locked'],
         ['Malfunction','locked'],
         ['Bless','locked'],
         ['Scrapped','locked'],
@@ -60,6 +60,21 @@ class SaveData {
 		FlxG.save.flush();
 	}
 
+    // yeah
+    public static function setthefreeplayData(){
+        var progression:FlxSave = new FlxSave();
+		progression.bind("gameProgression", CoolUtil.getSavePath());
+
+        for (i in 0...freeplaySongs.lenght){
+            if (PlayState.SONG.song.toLowerCase() == freeplaySongs[i].toLowerCase()){
+                if (FlxG.save.data.freeplaySongs[i] != 'beaten')
+					curLock = huntedLock = 'unlocked';
+            }
+        }
+        saveData();
+		
+    } 
+
     	
 	public static function loadData() {
 		if (freeplaySongs != null) {
@@ -86,6 +101,14 @@ class SaveData {
 
 
     }
+
+    public static var canOverrideCPU:Bool = false;
+    public static function overrideBotplay()
+	{
+		canOverrideCPU = true;
+		ClientPrefs.data.gameplaySettings["botplay"] = true;
+		MusicBeatState.switchState(new PlayState());
+	}
 
     /*public static function check(type:DATA_CHECK_TYPE):Dynamic
 	{
