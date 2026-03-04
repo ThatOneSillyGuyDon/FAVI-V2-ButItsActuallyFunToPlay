@@ -2573,6 +2573,15 @@ class PlayState extends MusicBeatState
 			scoreTxt.visible = false;
 		}
 
+		if (dad.curCharacter == "malsquareIsPissedAtYou")
+		{
+			if ((dad.animation.curAnim.curFrame == 1 || dad.animation.curAnim.curFrame == 4) && dad.animation.curAnim.name == "idle-bruh")
+			{
+				FlxG.sound.play(Paths.sound("funkinAVI/spongebob-blinking-sound-effect-mp3cut"));
+				trace("playing sound");
+			}
+		}
+
 		//Shitty thing so that the camera doesn't bug in some instances.
 		if (generatedMusic && !endingSong && !isCameraOnForcedPos)
 		{
@@ -4981,11 +4990,12 @@ class PlayState extends MusicBeatState
 
 		var seperatedScore:Array<Int> = [];
 
-		if(combo >= 1000) {
+		if(combo >= 1000)
 			seperatedScore.push(Math.floor(combo / 1000) % 10);
-		}
-		seperatedScore.push(Math.floor(combo / 100) % 10);
-		seperatedScore.push(Math.floor(combo / 10) % 10);
+		if(combo >= 100)
+			seperatedScore.push(Math.floor(combo / 100) % 10);
+		if(combo >= 10)
+			seperatedScore.push(Math.floor(combo / 10) % 10);
 		seperatedScore.push(combo % 10);
 
 		var daLoop:Int = 0;
