@@ -4811,7 +4811,7 @@ class PlayState extends MusicBeatState
 						changedDifficulty = false;
 					}else{
 						trace('LOADING NEXT SONG');
-						trace(Paths.formatToSongPath(storyPlaylist[0]) + difficulty);
+						trace(Paths.formatToSongPath(storyPlaylist[0])/* + difficulty*/);
 
 						SaveData.currentStorySong = storyPlaylist[0]; 
 						SaveData.saveData();
