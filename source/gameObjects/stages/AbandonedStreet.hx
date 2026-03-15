@@ -285,7 +285,7 @@ class AbandonedStreet extends BaseStage
 				deluSing = makeVideo(deluSing, "deluLyrics");
 				add(deluSing);
 				
-				minnieJumpscare = makeVideo(minnieJumpscare, "minniePart");
+				minnieJumpscare = makeVideo(minnieJumpscare, "minniebutnotReallyJumpscare");
 				add(minnieJumpscare);
 		}
 		
