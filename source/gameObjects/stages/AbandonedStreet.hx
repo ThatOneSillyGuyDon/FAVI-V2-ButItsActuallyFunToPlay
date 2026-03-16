@@ -293,7 +293,19 @@ class AbandonedStreet extends BaseStage
 				deluSing = makeVideo(deluSing, "deluLyrics");
 				add(deluSing);
 				
-				minnieJumpscare = makeVideo(minnieJumpscare, "minniePart");
+				/*minnieJumpscare = makeVideo(minnieJumpscare, "minniePart");
+				add(minnieJumpscare);*/
+				minnieJumpscare = new VideoSprite(false);
+				minnieJumpscare.visible = false;
+				minnieJumpscare.load(Paths.video("minniePart"), [VideoSprite.muted]);
+				minnieJumpscare.cameras = [game.camVideo];
+				minnieJumpscare.addCallback("onEnd", () -> {
+					minnieJumpscare.visible = false;
+				});
+				minnieJumpscare.play();
+				minnieJumpscare.pause();
+				minnieJumpscare.setVideoTime(0);
+				Paths.cacheVideo("minniePart", minnieJumpscare);
 				add(minnieJumpscare);
 		}
 		
@@ -945,10 +957,11 @@ class AbandonedStreet extends BaseStage
 					case 50: // doing ts cause lazy
 						FlxTween.tween(boyfriend, {alpha: 0.001}, 11, {ease: FlxEase.cubeInOut});
 				case 12: // PLEASE FUCKING WORK OK
-						minnieJumpscare.play();
+						minnieJumpscare.resume();
 						minnieJumpscare.visible = true;
-     game.camVideo.alpha = 1;
+     					game.camVideo.alpha = 1;
 						boyfriend.alpha = 0.0001; 
+						trace("FUCKING WORK ALREADY"); // biggest crashout ever
 
 					case 53:
 						dad.alpha = 1;
