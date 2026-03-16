@@ -944,12 +944,10 @@ class AbandonedStreet extends BaseStage
 						}
 					case 50: // doing ts cause lazy
 						FlxTween.tween(boyfriend, {alpha: 0.001}, 11, {ease: FlxEase.cubeInOut});
-					case 12: // WHY WONT YOU WORK!!!!
-						game.camVideo.fade(FlxColor.BLACK, 5, true);
-						game.camVideo.alpha = 1;
-						minnieJumpscare.alpha = 1;
-						minnieJumpscare.visible = true;
+				case 12: // PLEASE FUCKING WORK OK
 						minnieJumpscare.play();
+						minnieJumpscare.visible = true;
+     game.camVideo.alpha = 1;
 						boyfriend.alpha = 0.0001; 
 
 					case 53:
