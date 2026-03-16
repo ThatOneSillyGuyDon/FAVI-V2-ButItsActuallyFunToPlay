@@ -70,6 +70,7 @@ class AbandonedStreet extends BaseStage
 	var satanShader = new DropShadowShader();
 
 	public static var pathWay:String;
+	var blackBG:FlxSprite;
 
 	override function create()
 	{
@@ -261,6 +262,13 @@ class AbandonedStreet extends BaseStage
 				}
 			}
 		}
+		if (PlayState.SONG.song == "Delusional"){
+			blackBG = new FlxSprite().makeGraphic(3200,2000, FlxColor.BLACK);
+			add(blackBG);
+			blackBG.alpha=0.001;
+			blackBG.scrollFactor.set(0,0);
+			blackBG.screenCenter();
+		}
 
 		if (isStoryMode && !seenCutscene)
 		{
@@ -285,7 +293,7 @@ class AbandonedStreet extends BaseStage
 				deluSing = makeVideo(deluSing, "deluLyrics");
 				add(deluSing);
 				
-				minnieJumpscare = makeVideo(minnieJumpscare, "minniebutnotReallyJumpscare");
+				minnieJumpscare = makeVideo(minnieJumpscare, "minniePart");
 				add(minnieJumpscare);
 		}
 		
@@ -912,14 +920,43 @@ class AbandonedStreet extends BaseStage
 						PlayState.useFakeDeluName = true;
 						game.chromEffect = 0.00001;
 						game.boyfriend.x += 1000;
+						dad.alpha = 0.0001;
 						boyfriend.alpha = 0.0001;
+						camGame.alpha = 0.001;
+						camGame.zoom = 0.5;
 					case 11:
 						FlxTween.tween(boyfriend, {alpha: 0.45}, 2.5, {ease: FlxEase.expoOut});
-					case 12:
+					case 57:
+						//FlxTween.tween(boyfriend, {alpha: 0.45}, 2.5, {ease: FlxEase.expoOut});
+						var previousY:Int = Std.int(game.boyfriend.y);
+						if (blackBG.alpha == 0.001){
+							blackBG.alpha = 1;
+							boyfriend.y = previousY + 50; 
+							FlxTween.tween(boyfriend, {alpha: 1, y:previousY}, 2.4, {ease: FlxEase.expoOut});
+							FlxTween.tween(camGame, {alpha: 1, zoom: 0.9}, 2.4, {ease: FlxEase.expoOut});
+
+						} 
+						else {
+							blackBG.alpha =0;
+						}
+					case 50: // doing ts cause lazy
+						FlxTween.tween(boyfriend, {alpha: 0.001}, 11, {ease: FlxEase.cubeInOut});
+					case 12: // WHY WONT YOU WORK!!!!
+						game.camVideo.fade(FlxColor.BLACK, 5, true);
+						game.camVideo.alpha = 1;
+						minnieJumpscare.visible = true;
 						minnieJumpscare.play();
 						minnieJumpscare.visible = true;
-						game.boyfriend.alpha = 0.0001; 
+						boyfriend.alpha = 0.0001; 
+
+					case 53:
+						dad.alpha = 1;
+
 					case 13:
+						
+						dad.alpha = 1;
+						blackBG.alpha = 0;
+						boyfriend.alpha =1;
 						game.chromEffect = 0.1;
 						game.boundValue = 0.45;
 						game.drainValue = 0.032;
@@ -1011,8 +1048,8 @@ class AbandonedStreet extends BaseStage
 							stageFront.destroy();
 							stageFront = null;
 						}
-						floor.visible = false;
-						minnieBackground.visible = true;
+						//floor.visible = false;
+						//minnieBackground.visible = true;
 					case 21:
 						if (!ClientPrefs.data.lowQuality)
 						{

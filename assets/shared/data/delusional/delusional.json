@@ -29,6 +29,11 @@
 						1028.57142857143,
 						1,
 						257.142857142857
+					],
+					[
+						0,
+						2,
+						0
 					]
 				],
 				"lengthInSteps": 16,
@@ -5785,28 +5790,28 @@
 				"sectionNotes": [
 					[
 						158972.972972973,
-						5,
+						1,
 						455
 					],
 					[
 						159700.245700246,
-						5,
+						1,
 						455
 					],
 					[
 						158427.518427518,
-						7,
+						3,
 						455
 					],
 					[
 						159518.427518428,
-						6,
+						2,
 						0
 					]
 				],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -5814,33 +5819,33 @@
 				"sectionNotes": [
 					[
 						160245.7002457,
-						4,
+						0,
 						0
 					],
 					[
 						160427.518427518,
-						7,
+						3,
 						0
 					],
 					[
 						160609.336609337,
-						4,
+						0,
 						273
 					],
 					[
 						160972.972972973,
-						5,
+						1,
 						0
 					],
 					[
 						161154.791154791,
-						6,
+						2,
 						819
 					]
 				],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -5848,13 +5853,13 @@
 				"sectionNotes": [
 					[
 						162063.882063882,
-						7,
+						3,
 						637
 					]
 				],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -5862,33 +5867,33 @@
 				"sectionNotes": [
 					[
 						162791.154791155,
-						4,
+						0,
 						0
 					],
 					[
 						162972.972972973,
-						6,
+						2,
 						0
 					],
 					[
 						163336.609336609,
-						5,
+						1,
 						273
 					],
 					[
 						163700.245700246,
-						7,
+						3,
 						0
 					],
 					[
 						163882.063882064,
-						5,
+						1,
 						273
 					]
 				],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -5896,33 +5901,33 @@
 				"sectionNotes": [
 					[
 						164245.7002457,
-						6,
+						2,
 						273
 					],
 					[
 						164972.972972973,
-						4,
+						0,
 						273
 					],
 					[
 						165336.609336609,
-						7,
+						3,
 						0
 					],
 					[
 						165518.427518427,
-						5,
+						1,
 						455
 					],
 					[
 						164609.336609337,
-						5,
+						1,
 						0
 					]
 				],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -5930,28 +5935,28 @@
 				"sectionNotes": [
 					[
 						166427.518427518,
-						4,
+						0,
 						273
 					],
 					[
 						166791.154791155,
-						5,
+						1,
 						0
 					],
 					[
 						166972.972972973,
-						7,
+						3,
 						819
 					],
 					[
 						166063.882063882,
-						6,
+						2,
 						0
 					]
 				],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -5959,18 +5964,18 @@
 				"sectionNotes": [
 					[
 						168427.518427518,
-						6,
+						2,
 						0
 					],
 					[
 						167882.063882064,
-						4,
+						0,
 						455
 					]
 				],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -5978,33 +5983,33 @@
 				"sectionNotes": [
 					[
 						168609.336609337,
-						7,
+						3,
 						0
 					],
 					[
 						168791.154791155,
-						5,
+						1,
 						0
 					],
 					[
 						169518.427518427,
-						4,
+						0,
 						0
 					],
 					[
 						169154.791154791,
-						6,
+						2,
 						273
 					],
 					[
 						169700.245700246,
-						7,
+						3,
 						273
 					]
 				],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -6012,28 +6017,28 @@
 				"sectionNotes": [
 					[
 						170063.882063882,
-						5,
+						1,
 						637
 					],
 					[
 						170791.154791155,
-						6,
+						2,
 						273
 					],
 					[
 						171154.791154791,
-						4,
+						0,
 						0
 					],
 					[
 						171336.609336609,
-						7,
+						3,
 						455
 					]
 				],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -6041,28 +6046,28 @@
 				"sectionNotes": [
 					[
 						171882.063882064,
-						5,
+						1,
 						273
 					],
 					[
 						172245.7002457,
-						6,
+						2,
 						273
 					],
 					[
 						172609.336609337,
-						4,
+						0,
 						0
 					],
 					[
 						172791.154791155,
-						5,
+						1,
 						456
 					]
 				],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -6070,28 +6075,28 @@
 				"sectionNotes": [
 					[
 						173336.609336609,
-						7,
+						3,
 						273
 					],
 					[
 						173700.245700246,
-						6,
+						2,
 						0
 					],
 					[
 						173882.063882064,
-						5,
+						1,
 						0
 					],
 					[
 						174245.7002457,
-						6,
+						2,
 						273
 					]
 				],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -6099,28 +6104,28 @@
 				"sectionNotes": [
 					[
 						174609.336609336,
-						4,
+						0,
 						0
 					],
 					[
 						174972.972972973,
-						4,
+						0,
 						0
 					],
 					[
 						175154.791154791,
-						5,
+						1,
 						273
 					],
 					[
 						175518.427518427,
-						6,
+						2,
 						273
 					]
 				],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -6128,28 +6133,28 @@
 				"sectionNotes": [
 					[
 						175882.063882064,
-						7,
+						3,
 						637
 					],
 					[
 						176609.336609336,
-						6,
+						2,
 						273
 					],
 					[
 						176972.972972973,
-						4,
+						0,
 						0
 					],
 					[
 						177154.791154791,
-						5,
+						1,
 						273
 					]
 				],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -6157,28 +6162,28 @@
 				"sectionNotes": [
 					[
 						178063.882063882,
-						4,
+						0,
 						273
 					],
 					[
 						178427.518427518,
-						7,
+						3,
 						0
 					],
 					[
 						177518.427518427,
-						6,
+						2,
 						455
 					],
 					[
 						178609.336609336,
-						5,
+						1,
 						457
 					]
 				],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -6186,28 +6191,28 @@
 				"sectionNotes": [
 					[
 						179154.791154791,
-						4,
+						0,
 						273
 					],
 					[
 						179518.427518427,
-						6,
+						2,
 						273
 					],
 					[
 						179882.063882064,
-						5,
+						1,
 						0
 					],
 					[
 						180063.882063882,
-						6,
+						2,
 						1185
 					]
 				],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -6215,7 +6220,7 @@
 				"sectionNotes": [],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -6223,33 +6228,33 @@
 				"sectionNotes": [
 					[
 						181700.245700246,
-						5,
+						1,
 						457
 					],
 					[
 						182609.336609336,
-						7,
+						3,
 						273
 					],
 					[
 						182427.518427518,
-						5,
+						1,
 						0
 					],
 					[
 						182245.7002457,
-						4,
+						0,
 						0
 					],
 					[
 						182972.972972973,
-						6,
+						2,
 						274
 					]
 				],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -6257,33 +6262,33 @@
 				"sectionNotes": [
 					[
 						183336.609336609,
-						5,
+						1,
 						0
 					],
 					[
 						183518.427518427,
-						7,
+						3,
 						274
 					],
 					[
 						183882.063882064,
-						5,
+						1,
 						0
 					],
 					[
 						184063.882063882,
-						6,
+						2,
 						273
 					],
 					[
 						184427.518427518,
-						4,
+						0,
 						455
 					]
 				],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -6291,28 +6296,28 @@
 				"sectionNotes": [
 					[
 						184972.972972973,
-						6,
+						2,
 						273
 					],
 					[
 						185336.609336609,
-						5,
+						1,
 						0
 					],
 					[
 						185518.427518427,
-						7,
+						3,
 						273
 					],
 					[
 						185882.063882064,
-						4,
+						0,
 						273
 					]
 				],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -6320,38 +6325,38 @@
 				"sectionNotes": [
 					[
 						186245.7002457,
-						5,
+						1,
 						0
 					],
 					[
 						186609.336609336,
-						4,
+						0,
 						0
 					],
 					[
 						186791.154791155,
-						6,
+						2,
 						0
 					],
 					[
 						186972.972972973,
-						7,
+						3,
 						0
 					],
 					[
 						187154.791154791,
-						5,
+						1,
 						0
 					],
 					[
 						187336.609336609,
-						4,
+						0,
 						0
 					]
 				],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -6359,33 +6364,33 @@
 				"sectionNotes": [
 					[
 						187518.427518427,
-						6,
+						2,
 						273
 					],
 					[
 						187882.063882064,
-						5,
+						1,
 						0
 					],
 					[
 						188427.518427518,
-						6,
+						2,
 						0
 					],
 					[
 						188063.882063882,
-						7,
+						3,
 						273
 					],
 					[
 						188609.336609336,
-						4,
+						0,
 						273
 					]
 				],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -6393,43 +6398,43 @@
 				"sectionNotes": [
 					[
 						188972.972972973,
-						7,
+						3,
 						273
 					],
 					[
 						189336.609336609,
-						5,
+						1,
 						274
 					],
 					[
 						189700.245700245,
-						4,
+						0,
 						0
 					],
 					[
 						189882.063882064,
-						5,
+						1,
 						0
 					],
 					[
 						189972.972972973,
-						7,
+						3,
 						0
 					],
 					[
 						190063.882063882,
-						6,
+						2,
 						0
 					],
 					[
 						190245.7002457,
-						5,
+						1,
 						819
 					]
 				],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -6437,13 +6442,13 @@
 				"sectionNotes": [
 					[
 						191154.791154791,
-						6,
+						2,
 						637
 					]
 				],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -6451,33 +6456,33 @@
 				"sectionNotes": [
 					[
 						191882.063882064,
-						4,
+						0,
 						0
 					],
 					[
 						192063.882063882,
-						7,
+						3,
 						0
 					],
 					[
 						192427.518427518,
-						5,
+						1,
 						273
 					],
 					[
 						192791.154791155,
-						4,
+						0,
 						0
 					],
 					[
 						192972.972972973,
-						6,
+						2,
 						274
 					]
 				],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -6485,38 +6490,38 @@
 				"sectionNotes": [
 					[
 						193882.063882064,
-						7,
+						3,
 						0
 					],
 					[
 						193336.609336609,
-						5,
+						1,
 						455
 					],
 					[
 						194063.882063882,
-						5,
+						1,
 						0
 					],
 					[
 						194245.7002457,
-						6,
+						2,
 						0
 					],
 					[
 						194427.518427518,
-						4,
+						0,
 						0
 					],
 					[
 						194609.336609336,
-						5,
+						1,
 						273
 					]
 				],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -6524,33 +6529,33 @@
 				"sectionNotes": [
 					[
 						194972.972972973,
-						6,
+						2,
 						0
 					],
 					[
 						195154.791154791,
-						5,
+						1,
 						0
 					],
 					[
 						195336.609336609,
-						7,
+						3,
 						273
 					],
 					[
 						195700.245700245,
-						4,
+						0,
 						0
 					],
 					[
 						195882.063882064,
-						6,
+						2,
 						273
 					]
 				],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -6558,48 +6563,48 @@
 				"sectionNotes": [
 					[
 						196427.518427518,
-						7,
+						3,
 						0
 					],
 					[
 						196609.336609336,
-						7,
+						3,
 						0
 					],
 					[
 						196791.154791154,
-						6,
+						2,
 						0
 					],
 					[
 						196245.7002457,
-						5,
+						1,
 						0
 					],
 					[
 						196972.972972973,
-						5,
+						1,
 						0
 					],
 					[
 						197154.791154791,
-						4,
+						0,
 						0
 					],
 					[
 						197336.609336609,
-						6,
+						2,
 						0
 					],
 					[
 						197518.427518427,
-						7,
+						3,
 						273
 					]
 				],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -6607,43 +6612,43 @@
 				"sectionNotes": [
 					[
 						198063.882063882,
-						4,
+						0,
 						0
 					],
 					[
 						198791.154791154,
-						7,
+						3,
 						0
 					],
 					[
 						198972.972972973,
-						5,
+						1,
 						0
 					],
 					[
 						197882.063882064,
-						6,
+						2,
 						0
 					],
 					[
 						198245.7002457,
-						5,
+						1,
 						0
 					],
 					[
 						198427.518427518,
-						6,
+						2,
 						0
 					],
 					[
 						198609.336609336,
-						5,
+						1,
 						0
 					]
 				],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -6651,43 +6656,43 @@
 				"sectionNotes": [
 					[
 						199154.791154791,
-						4,
+						0,
 						0
 					],
 					[
 						200245.7002457,
-						7,
+						3,
 						0
 					],
 					[
 						199336.609336609,
-						7,
+						3,
 						0
 					],
 					[
 						199518.427518427,
-						6,
+						2,
 						0
 					],
 					[
 						199700.245700245,
-						5,
+						1,
 						273
 					],
 					[
 						200063.882063882,
-						4,
+						0,
 						0
 					],
 					[
 						200427.518427518,
-						4,
+						0,
 						273
 					]
 				],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -6695,28 +6700,28 @@
 				"sectionNotes": [
 					[
 						200791.154791154,
-						6,
+						2,
 						0
 					],
 					[
 						201154.791154791,
-						6,
+						2,
 						0
 					],
 					[
 						201336.609336609,
-						5,
+						1,
 						273
 					],
 					[
 						201700.245700245,
-						7,
+						3,
 						273
 					]
 				],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -6724,18 +6729,18 @@
 				"sectionNotes": [
 					[
 						202063.882063882,
-						6,
+						2,
 						637
 					],
 					[
 						202791.154791154,
-						5,
+						1,
 						637
 					]
 				],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -6743,18 +6748,18 @@
 				"sectionNotes": [
 					[
 						203518.427518427,
-						6,
+						2,
 						638
 					],
 					[
 						204245.7002457,
-						4,
+						0,
 						637
 					]
 				],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -6762,13 +6767,13 @@
 				"sectionNotes": [
 					[
 						204972.972972973,
-						7,
+						3,
 						1186
 					]
 				],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -6776,7 +6781,7 @@
 				"sectionNotes": [],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -6784,7 +6789,7 @@
 				"sectionNotes": [],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -6792,7 +6797,7 @@
 				"sectionNotes": [],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -6800,7 +6805,7 @@
 				"sectionNotes": [],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -6808,7 +6813,7 @@
 				"sectionNotes": [],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -6816,7 +6821,7 @@
 				"sectionNotes": [],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -6824,7 +6829,7 @@
 				"sectionNotes": [],
 				"lengthInSteps": 16,
 				"altAnim": false,
-				"mustHitSection": false,
+				"mustHitSection": true,
 				"changeBPM": false,
 				"bpm": 0
 			},
@@ -12688,6 +12693,16 @@
 				]
 			],
 			[
+				112864.864864865,
+				[
+					[
+						"Set Property",
+						"isCameraOnForcedPos",
+						"false"
+					]
+				]
+			],
+			[
 				113675.675675676,
 				[
 					[
@@ -13091,6 +13106,16 @@
 				156972.972972973,
 				[
 					[
+						"Set Property",
+						"isCameraOnForcedPos",
+						"false"
+					]
+				]
+			],
+			[
+				156972.972972973,
+				[
+					[
 						"Meta Event",
 						"Discord",
 						"Do you have any idea..., ...what you are dealing with?, regret"
@@ -13098,102 +13123,47 @@
 				]
 			],
 			[
-				158427.518427518,
+				157245.7002457,
 				[
 					[
 						"Change Character",
-						"Dad",
-						"Minnie-Bedroom"
+						"bf",
+						"SoloAvier"
 					]
 				]
 			],
 			[
-				158427.518427518,
-				[
-					[
-						"Change Character",
-						"BF",
-						"Mickey-Bedroom"
-					]
-				]
-			],
-			[
-				158427.518427518,
-				[
-					[
-						"Camera Event",
-						"Snap Position",
-						"630,750"
-					]
-				]
-			],
-			[
-				158427.518427518,
-				[
-					[
-						"Camera Event",
-						"Tween Value",
-						"zoom,0.5,0.0001,linear"
-					]
-				]
-			],
-			[
-				158427.518427518,
-				[
-					[
-						"Camera Event",
-						"Change Value",
-						"vidalpha,1"
-					]
-				]
-			],
-			[
-				158427.518427518,
-				[
-					[
-						"Meta Event",
-						"Discord",
-						"Regret (PEACEFUL), default, regret"
-					]
-				]
-			],
-			[
-				158427.518427518,
-				[
-					[
-						"Meta Event",
-						"Window Title",
-						"true, Funkin.avi - , Regret [________]"
-					]
-				]
-			],
-			[
-				158427.518427518,
-				[
-					[
-						"Camera Event",
-						"Fade",
-						"0,0,0,0.0001,true"
-					]
-				]
-			],
-			[
-				158427.518427518,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"70,10,linear"
-					]
-				]
-			],
-			[
-				158428.518427518,
+				157336.609336609,
 				[
 					[
 						"Change Strumline Style",
 						"faviNotes/NOTE_assets-CARTOON, faviNotes/NOTE_assets-CARTOON",
 						"false"
+					]
+				]
+			],
+			[
+				157609.336609337,
+				[
+					[
+						"Cinematic Event",
+						"move",
+						"0,2.5,quadOut"
+					]
+				]
+			],
+			[
+				157700.245700246,
+				[
+					[
+						"Camera Event",
+						"Tween Value",
+						"zoom,2,10,smoothStepInOut"
+					],
+					[
+						"Delusional Events",
+						"57",
+						""
 					]
 				]
 			],
@@ -13258,32 +13228,22 @@
 				]
 			],
 			[
-				168609.336609337,
-				[
-					[
-						"Delusional Events",
-						"11",
-						""
-					]
-				]
-			],
-			[
-				168609.336609337,
-				[
-					[
-						"Meta Event",
-						"Window Title",
-						"true, Funkin.avi - , Regret [PEACEFU_]"
-					]
-				]
-			],
-			[
 				170063.882063882,
 				[
 					[
 						"Meta Event",
 						"Window Title",
 						"true, Funkin.avi - , Regret [PEACEFUL]"
+					]
+				]
+			],
+			[
+				181695.7002457,
+				[
+					[
+						"Camera Event",
+						"tweenvalue",
+						"zoom,1,0.5,cubeInOut"
 					]
 				]
 			],
@@ -13388,12 +13348,42 @@
 				]
 			],
 			[
-				216609.336609336,
+				206154.791154791,
 				[
 					[
-						"Change Strumline Style",
-						"faviNotes/NOTE_assets-EVILINTRO, faviNotes/NOTE_assets-CARTOON",
-						"false"
+						"Camera Event",
+						"tweenvalue",
+						"zoom,0.62,10,cubeInOut"
+					]
+				]
+			],
+			[
+				206218.427518427,
+				[
+					[
+						"Delusional Events",
+						"50",
+						"zoom,0.4,2.3,circOut"
+					]
+				]
+			],
+			[
+				206336.609336609,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"And here lies Mickey Mouse"
+					]
+				]
+			],
+			[
+				228237.745700245,
+				[
+					[
+						"Delusional Events",
+						"12",
+						"12"
 					]
 				]
 			],
@@ -13403,7 +13393,7 @@
 					[
 						"Delusional Events",
 						"12",
-						""
+						"12"
 					]
 				]
 			],
@@ -13468,27 +13458,17 @@
 				]
 			],
 			[
-				253045.113735436,
+				251859.336609336,
 				[
 					[
-						"Meta Event",
-						"Window Title",
-						"false, Welcome back... Little mouse."
+						"",
+						"FUCK",
+						"FYCJJJ"
 					]
 				]
 			],
 			[
-				253045.113735436,
-				[
-					[
-						"Set Property",
-						"defaultCamZoom",
-						"0.85"
-					]
-				]
-			],
-			[
-				256242,
+				251878.363636364,
 				[
 					[
 						"Change Strumline Style",
@@ -13498,7 +13478,7 @@
 				]
 			],
 			[
-				256242,
+				251878.363636364,
 				[
 					[
 						"Delusional Events",
@@ -13508,7 +13488,7 @@
 				]
 			],
 			[
-				256242,
+				251878.363636364,
 				[
 					[
 						"Change Character",
@@ -13518,7 +13498,7 @@
 				]
 			],
 			[
-				256242,
+				251878.363636364,
 				[
 					[
 						"Change Character",
@@ -13528,7 +13508,7 @@
 				]
 			],
 			[
-				256242,
+				251878.363636364,
 				[
 					[
 						"Set Property",
@@ -13538,7 +13518,7 @@
 				]
 			],
 			[
-				256242,
+				251878.363636364,
 				[
 					[
 						"Camera Event",
@@ -13548,7 +13528,7 @@
 				]
 			],
 			[
-				256245.113735436,
+				251881.4773718,
 				[
 					[
 						"Delusional Events",
@@ -13558,7 +13538,7 @@
 				]
 			],
 			[
-				256245.113735436,
+				251881.4773718,
 				[
 					[
 						"Delusional Events",
@@ -13568,7 +13548,7 @@
 				]
 			],
 			[
-				256245.113735436,
+				251881.4773718,
 				[
 					[
 						"Meta Event",
@@ -13578,7 +13558,7 @@
 				]
 			],
 			[
-				256245.113735436,
+				251881.4773718,
 				[
 					[
 						"Meta Event",
@@ -13588,7 +13568,7 @@
 				]
 			],
 			[
-				256245.113735436,
+				251881.4773718,
 				[
 					[
 						"Set Property",
@@ -13598,7 +13578,7 @@
 				]
 			],
 			[
-				256245.113735436,
+				251881.4773718,
 				[
 					[
 						"Set Property",
@@ -13608,7 +13588,7 @@
 				]
 			],
 			[
-				256245.113735436,
+				251881.4773718,
 				[
 					[
 						"Cinematic Event",
@@ -13618,7 +13598,87 @@
 				]
 			],
 			[
-				258839.70833003,
+				251904.79115479,
+				[
+					[
+						"",
+						"FUCK",
+						"FYCJJJ"
+					]
+				]
+			],
+			[
+				252972.972972972,
+				[
+					[
+						"",
+						"ALLEVENTS",
+						""
+					]
+				]
+			],
+			[
+				254148.648648648,
+				[
+					[
+						"Set Property",
+						"dad.alpha",
+						"1"
+					]
+				]
+			],
+			[
+				254256.756756756,
+				[
+					[
+						"Delusional Events",
+						"53",
+						""
+					]
+				]
+			],
+			[
+				254266.469594594,
+				[
+					[
+						"Set Property",
+						"comboGroup.alpha",
+						"1"
+					]
+				]
+			],
+			[
+				254268.243243242,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"30,0.6,circOut"
+					]
+				]
+			],
+			[
+				254270.270270269,
+				[
+					[
+						"Delusional Events",
+						"13",
+						""
+					]
+				]
+			],
+			[
+				254270.270270269,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.85"
+					]
+				]
+			],
+			[
+				254270.270270269,
 				[
 					[
 						"Delusional Events",
@@ -13628,12 +13688,12 @@
 				]
 			],
 			[
-				258840.70833003,
+				254270.270270269,
 				[
 					[
-						"Cinematic Event",
-						"Bop",
-						"30,0.6,circOut"
+						"",
+						"FUCK",
+						"FYCJJJGGG"
 					]
 				]
 			],
@@ -13758,302 +13818,12 @@
 				]
 			],
 			[
-				274405.248870571,
-				[
-					[
-						"Cinematic Event",
-						"Bop",
-						"30,0.6,circOut"
-					]
-				]
-			],
-			[
-				274407.275897598,
-				[
-					[
-						"Delusional Events",
-						"25",
-						""
-					]
-				]
-			],
-			[
-				275702.546167868,
-				[
-					[
-						"Cinematic Event",
-						"Bop",
-						"30,0.6,circOut"
-					]
-				]
-			],
-			[
-				275704.573194895,
-				[
-					[
-						"Delusional Events",
-						"25",
-						""
-					]
-				]
-			],
-			[
-				277001.870492192,
-				[
-					[
-						"Delusional Events",
-						"25",
-						""
-					]
-				]
-			],
-			[
-				277001.870492192,
-				[
-					[
-						"Cinematic Event",
-						"Bop",
-						"30,0.6,circOut"
-					]
-				]
-			],
-			[
-				278299.167789489,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"185,0.8,circIn "
-					]
-				]
-			],
-			[
-				278299.167789489,
-				[
-					[
-						"Camera Event",
-						"Tween Value",
-						"zoom,0.95,0.8,circIn"
-					]
-				]
-			],
-			[
-				279594.438059759,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"50,0.8,circOut"
-					]
-				]
-			],
-			[
-				279594.438059759,
-				[
-					[
-						"Camera Event",
-						"Tween Value",
-						"zoom,0.85,0.8,circOut"
-					]
-				]
-			],
-			[
-				279596.465086787,
-				[
-					[
-						"Delusional Events",
-						"25",
-						""
-					]
-				]
-			],
-			[
-				282189.032654354,
-				[
-					[
-						"Cinematic Event",
-						"Bop",
-						"30,0.6,circOut"
-					]
-				]
-			],
-			[
-				282191.059681382,
-				[
-					[
-						"Delusional Events",
-						"25",
-						""
-					]
-				]
-			],
-			[
-				283488.356978679,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"185,0.8,circIn "
-					]
-				]
-			],
-			[
-				283488.356978679,
-				[
-					[
-						"Camera Event",
-						"Tween Value",
-						"zoom,0.95,0.8,circIn"
-					]
-				]
-			],
-			[
-				284783.627248949,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"50,0.8,circOut"
-					]
-				]
-			],
-			[
-				284783.627248949,
-				[
-					[
-						"Camera Event",
-						"Tween Value",
-						"zoom,0.85,0.8,circOut"
-					]
-				]
-			],
-			[
-				284785.654275976,
-				[
-					[
-						"Delusional Events",
-						"25",
-						""
-					]
-				]
-			],
-			[
-				286080.924546246,
-				[
-					[
-						"Cinematic Event",
-						"Bop",
-						"30,0.6,circOut"
-					]
-				]
-			],
-			[
-				286082.951573273,
-				[
-					[
-						"Delusional Events",
-						"25",
-						""
-					]
-				]
-			],
-			[
 				287380.248870571,
 				[
 					[
 						"Delusional Events",
 						"25",
 						""
-					]
-				]
-			],
-			[
-				288677.546167868,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"185,0.8,circIn"
-					]
-				]
-			],
-			[
-				288677.546167868,
-				[
-					[
-						"Camera Event",
-						"Tween Value",
-						"zoom,0.95,0.8,circIn"
-					]
-				]
-			],
-			[
-				289972.816438138,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"50,0.8,circOut"
-					]
-				]
-			],
-			[
-				289972.816438138,
-				[
-					[
-						"Camera Event",
-						"Tween Value",
-						"zoom,0.85,0.8,circOut"
-					]
-				]
-			],
-			[
-				289974.843465165,
-				[
-					[
-						"Delusional Events",
-						"25",
-						""
-					]
-				]
-			],
-			[
-				292567.411032733,
-				[
-					[
-						"Cinematic Event",
-						"Bop",
-						"30,0.6,circOut"
-					]
-				]
-			],
-			[
-				292569.43805976,
-				[
-					[
-						"Delusional Events",
-						"25",
-						""
-					]
-				]
-			],
-			[
-				293866.735357057,
-				[
-					[
-						"Cinematic Event",
-						"Move",
-						"185,0.8,circIn "
-					]
-				]
-			],
-			[
-				293866.735357057,
-				[
-					[
-						"Camera Event",
-						"Tween Value",
-						"zoom,0.95,0.8,circIn"
 					]
 				]
 			],
@@ -14956,10 +14726,20 @@
 						"vidalpha,0,4,linear"
 					]
 				]
+			],
+			[
+				2254270.27027027,
+				[
+					[
+						"Cinematic Event",
+						"Bop",
+						"30,0.6,circOut"
+					]
+				]
 			]
 		],
 		"gfVersion": "gf",
-		"gameOverStyle": "Delusional",
+		"gameOverStyle": "Episode 1",
 		"splashSkin": "Sparkles",
 		"song": "Delusional",
 		"needsVoices": true,
