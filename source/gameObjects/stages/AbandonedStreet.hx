@@ -443,6 +443,9 @@ class AbandonedStreet extends BaseStage
 			videoObject.addCallback("onEnd", () -> {
 				videoObject.visible = false;
 			});
+			videoObject.play(); // this loads the video before pausing it immedeatly, that way the vid can actually sync with the part it needs to play at
+			videoObject.pause();
+			videoObject.setVideoTime(0);
 			Paths.cacheVideo(name, videoObject);
 		} else {
 			videoObject.visible = false;
@@ -944,9 +947,9 @@ class AbandonedStreet extends BaseStage
 					case 12: // WHY WONT YOU WORK!!!!
 						game.camVideo.fade(FlxColor.BLACK, 5, true);
 						game.camVideo.alpha = 1;
+						minnieJumpscare.alpha = 1;
 						minnieJumpscare.visible = true;
 						minnieJumpscare.play();
-						minnieJumpscare.visible = true;
 						boyfriend.alpha = 0.0001; 
 
 					case 53:
