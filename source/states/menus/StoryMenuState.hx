@@ -273,11 +273,11 @@ class StoryMenuState extends MusicBeatState
 		if (!GameData.devilSong)
 		{
 			GameData.storySong = "Devilish-Deal";
-			PlayState.SONG = Song.loadFromJson(GameData.storySong.toLowerCase() + diffic, GameData.storySong.toLowerCase());
+			PlayState.SONG = Song.loadFromJson(GameData.storySong.toLowerCase(), GameData.storySong.toLowerCase());
 		}
 		else if (GameData.devilSong)
 		{
-			PlayState.SONG = Song.loadFromJson(GameData.storySong.toLowerCase() + diffic, GameData.storySong.toLowerCase());
+			PlayState.SONG = Song.loadFromJson(GameData.storySong.toLowerCase(), GameData.storySong.toLowerCase());
 		}
 		PlayState.campaignScore = 0;
 		PlayState.campaignMisses = 0;
