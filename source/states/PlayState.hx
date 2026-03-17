@@ -4889,7 +4889,7 @@ class PlayState extends MusicBeatState
 						if (!GameData.devilSong)
 							SONG = Song.loadFromJson(storyPlaylist[0], songLowercase);
 						else if (GameData.devilSong)
-							SONG = Song.loadFromJson(GameData.storySong.toLowerCase() + '-null', GameData.storySong.toLowerCase());
+							SONG = Song.loadFromJson(GameData.storySong.toLowerCase(), GameData.storySong.toLowerCase());
 						FlxG.sound.music.stop();
 
 						LoadingState.loadAndSwitchState(new PlayState());
