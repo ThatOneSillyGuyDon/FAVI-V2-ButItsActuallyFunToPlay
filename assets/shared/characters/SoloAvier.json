@@ -1,0 +1,93 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				401,
+				-20
+			],
+			"indices": [],
+			"fps": 6,
+			"anim": "idle",
+			"loop": true,
+			"name": "SoloAvier idle"
+		},
+		{
+			"offsets": [
+				379,
+				-20
+			],
+			"indices": [
+				1,
+				0,
+				0
+			],
+			"fps": 5,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "SoloAvier left"
+		},
+		{
+			"offsets": [
+				401,
+				-23
+			],
+			"indices": [
+				1,
+				0
+			],
+			"fps": 6,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "SoloAvier down"
+		},
+		{
+			"offsets": [
+				400,
+				-11
+			],
+			"indices": [
+				1,
+				0
+			],
+			"fps": 6,
+			"anim": "singUP",
+			"loop": false,
+			"name": "SoloAvier up"
+		},
+		{
+			"offsets": [
+				401,
+				-10
+			],
+			"indices": [
+				1,
+				0
+			],
+			"fps": 6,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "SoloAvier right"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/SoloAvier/SoloAvier",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "lunaavier",
+	"flip_x": false,
+	"healthbar_colors": [
+		136,
+		136,
+		136
+	],
+	"camera_position": [
+		-750,
+		10
+	],
+	"sing_duration": 6.1,
+	"scale": 1.2,
+	"_editor_isPlayer": false
+}
