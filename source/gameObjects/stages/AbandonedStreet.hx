@@ -70,6 +70,8 @@ class AbandonedStreet extends BaseStage
 	var satanShader = new DropShadowShader();
 
 	public static var pathWay:String;
+	var blackBG:FlxSprite;
+
 
 	override function create()
 	{
@@ -260,6 +262,13 @@ class AbandonedStreet extends BaseStage
 					heavyRain.animation.play('god is pissing omg');
 				}
 			}
+		}
+		if (PlayState.SONG.song == "Delusional"){
+			blackBG = new FlxSprite().makeGraphic(3200,2000, FlxColor.BLACK);
+			add(blackBG);
+			blackBG.alpha=0.001;
+			blackBG.scrollFactor.set(0,0);
+			blackBG.screenCenter();
 		}
 
 		if (isStoryMode && !seenCutscene)
@@ -911,6 +920,8 @@ class AbandonedStreet extends BaseStage
 						}
 						PlayState.useFakeDeluName = true;
 						game.chromEffect = 0.00001;
+						dad.alpha = 0.0001;
+
 						game.boyfriend.x += 1000;
 						boyfriend.alpha = 0.0001;
 					case 11:
@@ -919,7 +930,27 @@ class AbandonedStreet extends BaseStage
 						minnieJumpscare.play();
 						minnieJumpscare.visible = true;
 						game.boyfriend.alpha = 0.0001; 
+					case 57:
+						var previousY:Int = Std.int(boyfriend.y);
+						if (blackBG.alpha == 0.001){
+							blackBG.alpha = 1;
+							boyfriend.y = previousY + 50; 
+							FlxTween.tween(boyfriend, {alpha: 1, y:previousY}, 2.4, {ease: FlxEase.expoOut});
+							FlxTween.tween(camGame, {alpha: 1, zoom: 0.82}, 2.4, {ease: FlxEase.expoOut});
+
+						} 
+						else {
+							blackBG.alpha =0;
+						}
+					case 50: // doing ts cause lazy
+						FlxTween.tween(boyfriend, {alpha: 0.001}, 11, {ease: FlxEase.cubeInOut});
+
+					case 53:
+						dad.alpha = 1; 
+						blackBG.alpha = 0;
 					case 13:
+						dad.alpha = 1;
+						blackBG.alpha = 0;
 						game.chromEffect = 0.1;
 						game.boundValue = 0.45;
 						game.drainValue = 0.032;
@@ -1012,7 +1043,7 @@ class AbandonedStreet extends BaseStage
 							stageFront = null;
 						}
 						floor.visible = false;
-						minnieBackground.visible = true;
+						minnieBackground.visible = false; // not gonna be used for this ok
 					case 21:
 						if (!ClientPrefs.data.lowQuality)
 						{

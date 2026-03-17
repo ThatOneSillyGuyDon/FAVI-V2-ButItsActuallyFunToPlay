@@ -3667,7 +3667,7 @@ class PlayState extends MusicBeatState
 				}
 
 			case 'Show Song Card':
-				var triggerInfo:Array<String> = value2.split(',');
+			/*	var triggerInfo:Array<String> = value2.split(',');
 
 				if (!songCard.isLegacy && ClientPrefs.data.songCards)
 				{
@@ -3676,7 +3676,7 @@ class PlayState extends MusicBeatState
 					else
 						songCard.removeCardAnim(Std.parseFloat(triggerInfo[0]), Std.parseFloat(triggerInfo[1]), triggerInfo[2]);
 				}
-
+*/
 			case 'Alt Idle Animation':
 				var char:Character = dad;
 				switch(value1.toLowerCase().trim()) {

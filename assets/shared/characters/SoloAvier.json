@@ -5,16 +5,44 @@
 				401,
 				-20
 			],
-			"indices": [],
+			"loop": true,
 			"fps": 6,
 			"anim": "idle",
-			"loop": true,
+			"indices": [],
 			"name": "SoloAvier idle"
 		},
 		{
 			"offsets": [
-				379,
-				-20
+				401,
+				-23
+			],
+			"loop": false,
+			"fps": 6,
+			"anim": "singDOWN",
+			"indices": [
+				1,
+				0
+			],
+			"name": "SoloAvier down"
+		},
+		{
+			"offsets": [
+				420,
+				-31
+			],
+			"loop": false,
+			"fps": 6,
+			"anim": "singUP",
+			"indices": [
+				1,
+				0
+			],
+			"name": "SoloAvier up"
+		},
+		{
+			"offsets": [
+				399,
+				-2
 			],
 			"indices": [
 				1,
@@ -24,40 +52,12 @@
 			"fps": 5,
 			"anim": "singLEFT",
 			"loop": false,
-			"name": "SoloAvier left"
+			"name": "SoloAvier right"
 		},
 		{
 			"offsets": [
-				401,
-				-23
-			],
-			"indices": [
-				1,
-				0
-			],
-			"fps": 6,
-			"anim": "singDOWN",
-			"loop": false,
-			"name": "SoloAvier down"
-		},
-		{
-			"offsets": [
-				400,
-				-11
-			],
-			"indices": [
-				1,
-				0
-			],
-			"fps": 6,
-			"anim": "singUP",
-			"loop": false,
-			"name": "SoloAvier up"
-		},
-		{
-			"offsets": [
-				401,
-				-10
+				431,
+				-21
 			],
 			"indices": [
 				1,
@@ -66,7 +66,7 @@
 			"fps": 6,
 			"anim": "singRIGHT",
 			"loop": false,
-			"name": "SoloAvier right"
+			"name": "SoloAvier left"
 		}
 	],
 	"vocals_file": "",
@@ -84,10 +84,10 @@
 		136
 	],
 	"camera_position": [
-		-750,
-		10
+		480,
+		0
 	],
 	"sing_duration": 6.1,
 	"scale": 1.2,
-	"_editor_isPlayer": false
+	"_editor_isPlayer": true
 }
