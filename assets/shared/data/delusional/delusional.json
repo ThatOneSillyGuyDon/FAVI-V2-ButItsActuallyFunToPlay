@@ -13418,12 +13418,152 @@
 				]
 			],
 			[
+				206245.7002457,
+				[
+					[
+						"Manage Lyrics",
+						"move",
+						"0, 2, 20, 1, circOut, expoOut"
+					]
+				]
+			],
+			[
+				206245.7002457,
+				[
+					[
+						"Manage Lyrics",
+						"textdata",
+						"0, disneyFreeplayFont.ttf, 30, 255, 255, 255, CENTER, 0, 0, 0, 4"
+					]
+				]
+			],
+			[
+				206245.7002457,
+				[
+					[
+						"Manage Lyrics",
+						"tween data",
+						"0, 0, 0, 0, 0, 1, 0, 350, 0, -0.6, 0.45, 0.001"
+					]
+				]
+			],
+			[
+				206427.518427518,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, And Here Lies Mickey Mouse, 0.04"
+					]
+				]
+			],
+			[
+				208754.791154791,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, Stuck in an endless cycle, 0.04"
+					]
+				]
+			],
+			[
+				210154.791154791,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, of dying over and over again., 0.04"
+					]
+				]
+			],
+			[
+				212882.063882063,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, No matter what he does, 0.04"
+					]
+				]
+			],
+			[
+				214609.336609336,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, the poor little mouse, 0.04"
+					]
+				]
+			],
+			[
+				215609.336609336,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, Just cant find a way to save himself, 0.04"
+					]
+				]
+			],
+			[
 				216609.336609336,
 				[
 					[
 						"Change Strumline Style",
 						"faviNotes/NOTE_assets-EVILINTRO, faviNotes/NOTE_assets-CARTOON",
 						"false"
+					]
+				]
+			],
+			[
+				217882.063882063,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, from this cruel and unusual pugatory!, 0.04"
+					]
+				]
+			],
+			[
+				220882.063882063,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, Pfh, you should just give up now, mouse., 0.04"
+					]
+				]
+			],
+			[
+				223882.063882063,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, Need I remind you of what you've lost?, 0.04"
+					]
+				]
+			],
+			[
+				226245.7002457,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, What you've RUINED?, 0.04"
+					]
+				]
+			],
+			[
+				228211.609336609,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, , 0.04"
 					]
 				]
 			],
