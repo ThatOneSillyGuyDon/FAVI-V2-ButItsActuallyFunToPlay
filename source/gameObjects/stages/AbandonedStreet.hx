@@ -418,7 +418,7 @@ class AbandonedStreet extends BaseStage
 			// also blame goober for everything actually
 			newTextShi = new FlxText(0,((ClientPrefs.data.downScroll) ? -100 :Std.int(FlxG.height + 100))).setFormat("disneyFreeplayFont.ttf", 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 			newTextShi.scrollFactor.set(0,0);
-			newTextShi.text = anniversaryArray[fuckingManage];
+			newTextShi.text = anniversaryArray[8];
 			add(newTextShi);
 			newTextShi.alpha = 0.0001;
 			newTextShi.cameras = [camOther];
@@ -691,6 +691,7 @@ class AbandonedStreet extends BaseStage
 				}
 		}
 	}
+	var g_:Int = 0;
 
 	// For events
 	override function eventCalled(eventName:String, value1:String, value2:String, flValue1:Null<Float>, flValue2:Null<Float>, strumTime:Float)
@@ -1191,11 +1192,26 @@ class AbandonedStreet extends BaseStage
 						death.play();
 						death.visible = true;
 					case 60:
+
 						newTextShi.y = ((ClientPrefs.data.downScroll) ? -100 :Std.int(FlxG.height + 100));
 						fuckingManage++;
 						newTextShi.alpha = 0.001;
 						newTextShi.text = anniversaryArray[fuckingManage];
+						newTextShi.screenCenter(X);
 						FlxTween.tween(newTextShi, {y: ((ClientPrefs.data.downScroll) ? 100 :Std.int(FlxG.height - 100)),alpha:1}, 0.4, {ease: FlxEase.quadInOut});	
+					case 61: 
+						g_++;
+						var fuckassBlastMemoryFuckYou:FlxSprite = new FlxSprite(0,200).loadGraphic(Paths.image(PlayState.pathway + value2));
+						add(fuckassBlastMemoryFuckYou);
+						fuckassBlastMemoryFuckYou.scale.set(0.6,0.6);
+						fuckassBlastMemoryFuckYou.updateHitbox();
+						if (g_ % 2 == 0)fuckassBlastMemoryFuckYou.x += 900;
+						else fuckassBlastMemoryFuckYou.x -= 200;
+						fuckassBlastMemoryFuckYou.y -= 140;
+						FlxTween.tween(fuckassBlastMemoryFuckYou, {alpha: 0}, 4, {ease:FlxEase.sineInOut, onComplete: function(_:FlxTween){
+							fuckassBlastMemoryFuckYou.destroy();
+							remove(fuckassBlastMemoryFuckYou);
+						}});
 				}
 		}
 	}
