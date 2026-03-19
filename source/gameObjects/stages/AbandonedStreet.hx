@@ -71,6 +71,24 @@ class AbandonedStreet extends BaseStage
 
 	public static var pathWay:String;
 	var blackBG:FlxSprite;
+	public static var newTextShi:FlxText;
+
+	// SEE MY VISION RAGH
+	var anniversaryArray:Array<String> = [
+		'',
+		'And Here Lies Mickey Mouse',
+		'Stuck in an endless cycle',
+		'of dying over and over again.',
+		'No matter what he does',
+		'the poor little mouse',
+		'Just cant find a way to save himself',
+		'from this cruel and unusual pugatory!',
+		'Pfh, you should just give up now, mouse.',
+		"Need I remind you of what you've lost?",
+		"What you've RUINED?",
+		''
+	];
+	var fuckingManage:Int = 0;
 
 
 	override function create()
@@ -396,6 +414,14 @@ class AbandonedStreet extends BaseStage
 				floor.alpha = 0.001;
 			}
 			game.camBars.fade(0x000000, .0001);
+			// i dont know what caused to Manage Lyrics to happen but, new text for this only ^^
+			// also blame goober for everything actually
+			newTextShi = new FlxText(0,((ClientPrefs.data.downScroll) ? -100 :Std.int(FlxG.height + 100))).setFormat("disneyFreeplayFont.ttf", 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			newTextShi.scrollFactor.set(0,0);
+			newTextShi.text = anniversaryArray[fuckingManage];
+			add(newTextShi);
+			newTextShi.alpha = 0.0001;
+			newTextShi.cameras = [camOther];
 		}
 
 		add(rain);
@@ -1164,6 +1190,12 @@ class AbandonedStreet extends BaseStage
 						FlxTween.tween(game.camVideo, {zoom: 1}, 0.5, {ease: FlxEase.sineOut});
 						death.play();
 						death.visible = true;
+					case 60:
+						newTextShi.y = ((ClientPrefs.data.downScroll) ? -100 :Std.int(FlxG.height + 100));
+						fuckingManage++;
+						newTextShi.alpha = 0.001;
+						newTextShi.text = anniversaryArray[fuckingManage];
+						FlxTween.tween(newTextShi, {y: ((ClientPrefs.data.downScroll) ? 100 :Std.int(FlxG.height - 100)),alpha:1}, 0.4, {ease: FlxEase.quadInOut});	
 				}
 		}
 	}
