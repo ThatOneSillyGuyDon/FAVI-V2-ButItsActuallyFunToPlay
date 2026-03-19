@@ -351,6 +351,7 @@
 			-1
 		]
 	],
+	"playfields": 1,
 	"events": [
 		[
 			"ease",
@@ -597,48 +598,6 @@
 				"0",
 				"expoOut",
 				",MickeyX,,SatanAngle1:y,,SatanAngle3:y,,SatanLaneX1,,SatanLaneX2,,SatanLaneX3,,SatanLaneX4,,SatanLaneY1,,SatanLaneY2,,SatanLaneY3,,SatanLaneY4,,SatanAngle4:y,1a,Alpha,950,MickeyX,1,SatanVisible,-350,MickeyZ,1,FlipMickeyNotes,1,fearLmao:speed,1,fearLmao,-1000,SatanX"
-			],
-			[
-				false,
-				1,
-				1
-			]
-		],
-		[
-			"ease",
-			[
-				480.25,
-				"5",
-				"expoOut",
-				"-100,MickeyX,1,FlipMickeyNotes,-450,MickeyZ,,SatanLaneX1,,SatanLaneX2,,SatanLaneX3,,SatanLaneX4,,SatanLaneY1,,SatanLaneY2,,SatanLaneY3,,SatanLaneY4,,SatanAngle4:y,,Alpha,0.7,MickeyVisible,1,SatanVisible,0,CancelMidP2L4,0,CancelMidP2L3,0,CancelMidP1"
-			],
-			[
-				false,
-				1,
-				1
-			]
-		],
-		[
-			"ease",
-			[
-				508,
-				"4a",
-				"expoOut",
-				"0.25,SatanVisible,,SatanX"
-			],
-			[
-				false,
-				1,
-				1
-			]
-		],
-		[
-			"ease",
-			[
-				672,
-				"10",
-				"quadInOut",
-				"-1500,SatanX,1800,MickeyX,-665,CancelMidP2L3,-665,CancelMidP2L4"
 			],
 			[
 				false,
@@ -939,7 +898,48 @@
 				1,
 				1
 			]
+		],
+		[
+			"ease",
+			[
+				477.5,
+				"5",
+				"expoOut",
+				"0,SatanX,1,FlipMickeyNotes,-450,MickeyZ,,SatanLaneX1,,SatanLaneX2,,SatanLaneX3,,SatanLaneX4,,SatanLaneY1,,SatanLaneY2,,SatanLaneY3,,SatanLaneY4,,SatanAngle4:y,0,Alpha,1,MickeyVisible,0,SatanVisible,,CancelMidP2L4,,CancelMidP2L3,0,CancelMidP1"
+			],
+			[
+				false,
+				1,
+				1
+			]
+		],
+		[
+			"ease",
+			[
+				477.25,
+				"0",
+				"expoOut",
+				"-10000,MickeyX"
+			],
+			[
+				false,
+				1,
+				1
+			]
+		],
+		[
+			"ease",
+			[
+				608,
+				"10",
+				"quadInOut",
+				"-1500,SatanX,1800,MickeyX,-665,CancelMidP2L3,-665,CancelMidP2L4"
+			],
+			[
+				false,
+				1,
+				1
+			]
 		]
-	],
-	"playfields": 1
+	]
 }
