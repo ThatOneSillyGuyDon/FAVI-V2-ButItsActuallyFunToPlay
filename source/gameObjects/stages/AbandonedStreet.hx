@@ -133,6 +133,11 @@ class AbandonedStreet extends BaseStage
 			add(fireThing);
 			fireThing.animation.play('burning');
 		}
+		if (!ClientPrefs.data.lowQuality && PlayState.SONG.song == 'Delusional'){
+			mickeySpirit = new Character(-200, -700, "avier-bg");
+			mickeySpirit.alpha = 0.0001;
+			add(mickeySpirit);
+		}
 
 		floor = new FlxSprite(-20, 200).loadGraphic(Paths.image(PlayState.pathway + 'street'));
 		floor.antialiasing = ClientPrefs.data.antialiasing;
@@ -155,10 +160,6 @@ class AbandonedStreet extends BaseStage
 
 		if (PlayState.SONG.song == "Delusional")
 		{
-			mickeySpirit = new Character(-200, -700, "avier-bg");
-			mickeySpirit.alpha = 0.0001;
-			add(mickeySpirit);
-
 			memoryMickey = new Character(575, 50, "Mickey-Bedroom", true);
 			memoryMickey.alpha = 0.0001;
 			memoryMickey.cameras = [game.camVideo];
@@ -963,7 +964,7 @@ class AbandonedStreet extends BaseStage
 							blackBG.alpha = 1;
 							boyfriend.y = previousY + 50; 
 							FlxTween.tween(boyfriend, {alpha: 1, y:previousY}, 2.4, {ease: FlxEase.expoOut});
-							FlxTween.tween(camGame, {alpha: 1, zoom: 0.82}, 2.4, {ease: FlxEase.expoOut});
+							FlxTween.tween(camGame, {alpha: 1}, 2.4);
 
 						} 
 						else {
@@ -1192,7 +1193,6 @@ class AbandonedStreet extends BaseStage
 						death.play();
 						death.visible = true;
 					case 60:
-
 						newTextShi.y = ((ClientPrefs.data.downScroll) ? -100 :Std.int(FlxG.height + 100));
 						fuckingManage++;
 						newTextShi.alpha = 0.001;
@@ -1212,6 +1212,11 @@ class AbandonedStreet extends BaseStage
 							fuckassBlastMemoryFuckYou.destroy();
 							remove(fuckassBlastMemoryFuckYou);
 						}});
+					case 62:
+						if (game.camVideo.visible)
+							game.camVideo.visible = false;
+						else
+							game.camVideo.visible = true;
 				}
 		}
 	}
