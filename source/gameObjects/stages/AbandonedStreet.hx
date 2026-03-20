@@ -72,6 +72,7 @@ class AbandonedStreet extends BaseStage
 	public static var pathWay:String;
 	var blackBG:FlxSprite;
 	public static var newTextShi:FlxText;
+	public static var satzText:FlxText;
 
 	// SEE MY VISION RAGH
 	var anniversaryArray:Array<String> = [
@@ -417,12 +418,20 @@ class AbandonedStreet extends BaseStage
 			game.camBars.fade(0x000000, .0001);
 			// i dont know what caused to Manage Lyrics to happen but, new text for this only ^^
 			// also blame goober for everything actually
-			newTextShi = new FlxText(0,((ClientPrefs.data.downScroll) ? -100 :Std.int(FlxG.height + 100))).setFormat("disneyFreeplayFont.ttf", 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-			newTextShi.scrollFactor.set(0,0);
-			newTextShi.text = anniversaryArray[8];
-			add(newTextShi);
-			newTextShi.alpha = 0.0001;
-			newTextShi.cameras = [camOther];
+				newTextShi = new FlxText(0,((ClientPrefs.data.downScroll) ? -100 :Std.int(FlxG.height + 100))).setFormat("disneyFreeplayFont.ttf", 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+				newTextShi.scrollFactor.set(0,0);
+				newTextShi.text = anniversaryArray[8];
+				add(newTextShi);
+				newTextShi.alpha = 0.0001;
+				newTextShi.cameras = [camOther];
+
+				satzText = new FlxText(0,((ClientPrefs.data.downScroll) ? -100 :Std.int(FlxG.height + 100))).setFormat("disneyFreeplayFont.ttf", 32, FlxColor.RED, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+				satzText.scrollFactor.set(0,0);
+				satzText.text = anniversaryArray[8];
+				add(satzText);
+				satzText.alpha = 0.0001;
+				satzText.cameras = [camOther];
+			
 		}
 
 		add(rain);
@@ -1194,11 +1203,18 @@ class AbandonedStreet extends BaseStage
 						death.visible = true;
 					case 60:
 						newTextShi.y = ((ClientPrefs.data.downScroll) ? -100 :Std.int(FlxG.height + 100));
+						satzText.y = ((ClientPrefs.data.downScroll) ? -100 :Std.int(FlxG.height + 100));
 						fuckingManage++;
 						newTextShi.alpha = 0.001;
 						newTextShi.text = anniversaryArray[fuckingManage];
+						satzText.text = anniversaryArray[fuckingManage];
 						newTextShi.screenCenter(X);
+						satzText.screenCenter(X);
+
 						FlxTween.tween(newTextShi, {y: ((ClientPrefs.data.downScroll) ? 100 :Std.int(FlxG.height - 100)),alpha:1}, 0.4, {ease: FlxEase.quadInOut});	
+						FlxTween.tween(satzText, {y: ((ClientPrefs.data.downScroll) ? 100 :Std.int(FlxG.height - 100))}, 0.4, {ease: FlxEase.quadInOut});	
+						if (anniversaryArray[fuckingManage] == 'Pfh, you should just give up now, mouse.') FlxTween.tween(satzText, {alpha:1}, 2, {ease: FlxEase.quadInOut});	
+
 					case 61: 
 						g_++;
 						var fuckassBlastMemoryFuckYou:FlxSprite = new FlxSprite(0,200).loadGraphic(Paths.image(PlayState.pathway + value2));
@@ -1217,6 +1233,19 @@ class AbandonedStreet extends BaseStage
 							game.camVideo.visible = false;
 						else
 							game.camVideo.visible = true;
+					case 63:
+						var fuckassBlastMemoryFuckYou:FlxSprite = new FlxSprite(200,200).loadGraphic(Paths.image(PlayState.pathway + "AHHH_FUCK_YOU_MINNIE"));
+						add(fuckassBlastMemoryFuckYou);
+						fuckassBlastMemoryFuckYou.alpha = 0.001;
+						fuckassBlastMemoryFuckYou.scale.set(0.6,0.6);
+						fuckassBlastMemoryFuckYou.updateHitbox();
+						fuckassBlastMemoryFuckYou.y -= 140;
+						FlxTween.tween(fuckassBlastMemoryFuckYou, {alpha: 1}, 4, {ease:FlxEase.sineInOut, onComplete: function(_:FlxTween){
+							FlxTween.tween(fuckassBlastMemoryFuckYou, {alpha:0}, 2, {ease:FlxEase.sineInOut, onComplete: function(__:FlxTween){
+								fuckassBlastMemoryFuckYou.destroy();
+								remove(fuckassBlastMemoryFuckYou);
+							}});
+						}}); 
 				}
 		}
 	}

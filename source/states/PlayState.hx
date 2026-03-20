@@ -417,6 +417,7 @@ class PlayState extends MusicBeatState
 	var winX(default, set):Int;
 	var winY(default, set):Int;
 
+
 	@:noCompletion function set_winX(x:Int):Int { 
 		winX = x;
 		Lib.application.window.x = winX;
@@ -432,6 +433,7 @@ class PlayState extends MusicBeatState
 	var subtitles:SubtitlesBox;
 	var subtitleTwnHandler:Array<FlxTween> = [];
 	var iconHandler:Array<FlxTween> = [];
+	public var malThing:FlxCamera; 
 
 	override public function create()
 	{
@@ -466,20 +468,24 @@ class PlayState extends MusicBeatState
 
 		camGame = new FlxCamera();
 		camHUD = new FlxCamera();
+		malThing = new FlxCamera();
 		camBars = new FlxCamera();
 		camVideo = new FlxCamera();
 		camOther = new FlxCamera();
 		fakeCam = new FlxCamera();
+
 		camHUD.bgColor.alpha = 0;
 		camBars.bgColor.alpha = 0;
 		camVideo.bgColor.alpha = 0;
 		camOther.bgColor.alpha = 0;
 		fakeCam.bgColor.alpha = 0;
+		malThing.bgColor.alpha = 0;
 
 		FlxG.cameras.reset(camGame);
 		FlxG.cameras.add(camVideo, false);
 		FlxG.cameras.add(camBars, false);
 		FlxG.cameras.add(camHUD, false);
+		FlxG.cameras.add(malThing, false);
 		FlxG.cameras.add(camOther, false);
 		FlxG.cameras.add(fakeCam, false);
 
@@ -3000,6 +3006,8 @@ class PlayState extends MusicBeatState
 		backend.CamUtils.updateCamera(camGame, elapsed);
 		backend.CamUtils.updateCamera(camHUD, elapsed);
 		backend.CamUtils.updateCamera(camOther, elapsed);
+		backend.CamUtils.updateCamera(malThing, elapsed);
+
 
 		setOnScripts('cameraX', camFollowPos.x);
 		setOnScripts('cameraY', camFollowPos.y);

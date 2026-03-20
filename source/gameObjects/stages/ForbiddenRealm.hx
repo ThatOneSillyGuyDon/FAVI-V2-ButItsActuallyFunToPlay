@@ -150,7 +150,7 @@ class ForbiddenRealm extends BaseStage
 		crashLives.borderQuality = 2;
 		crashLives.antialiasing = false;
 		crashLives.scrollFactor.set();
-		crashLives.cameras = [camHUD];
+		crashLives.cameras = [game.malThing];
 
 		crashLivesIcon.frames = Paths.getSparrowAtlas('favi/ui/malfunctionGimmickIcon');
 		crashLivesIcon.animation.addByPrefix('idle', 'lives-icon idle', 15);
@@ -158,9 +158,9 @@ class ForbiddenRealm extends BaseStage
 		crashLivesIcon.animation.play('idle');
 		crashLivesIcon.scale.set(2.2, 2.2);
 		crashLivesIcon.antialiasing = false;
-		crashLivesIcon.cameras = [camHUD];
-		game.uiGroup.add(crashLives);
-		game.uiGroup.add(crashLivesIcon);
+		crashLivesIcon.cameras = [game.malThing];
+		add(crashLives);
+		add(crashLivesIcon);
 		crashLivesCounter += 30;
 		crashLives.text = 'Lives: ${crashLivesCounter}';
 	}

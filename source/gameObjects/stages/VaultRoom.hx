@@ -78,12 +78,17 @@ class VaultRoom extends BaseStage
 		vaultDoor.shader = dropShadowArray[0];
 		dropShadowArray[0].attachedSprite = vaultDoor;
 		add(vaultDoor);
+		//game.dad.alpha = 0.0001;
+
 	}
 
 	var blendModes:Array<BlendEffect> = [];
 	override function createPost()
 	{
-		game.dad.setPosition(2250, 450);
+		game.dad.setPosition(1050/*2250*/, 450);
+		game.dad.alpha = 0.001;
+		dad.alpha = 0.001;
+
 		game.boyfriend.setPosition(2885, 1450);
 		game.gf.visible = false;
 		
@@ -188,8 +193,9 @@ class VaultRoom extends BaseStage
 					case 0:
 						FlxTween.tween(theDoor, {alpha: 0}, 2, {ease: FlxEase.circInOut, startDelay: 0.9});
 						FlxTween.tween(theDoor.scale, {x: 0.85, y: 0.85}, 2, {ease: FlxEase.circInOut});
+
 					case 1:
-						FlxTween.tween(dad, {x: 1050}, 7.5, {ease: FlxEase.sineInOut});
+						//FlxTween.tween(dad, {x:1050}, 7.5, {ease: FlxEase.sineInOut});
 					case 2:
 						FlxTween.tween(vaultDoor, {alpha: 0.0001}, 1, {ease: FlxEase.circInOut});
 					case 3:
