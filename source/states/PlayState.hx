@@ -1242,6 +1242,8 @@ class PlayState extends MusicBeatState
 
 		callOnScripts('onCreatePost');
 
+		stagesFunc(function(stage:BaseStage) stage.addObjectsToHUD()); //basically createpost but post the create post
+
 		cacheCountdown();
 		cachePopUpScore();
 
@@ -4338,13 +4340,13 @@ class PlayState extends MusicBeatState
 				{
 					case "legacy":
 						manageLyrics(
-							triggerInfo[0], 			       //Character Speaking
-							triggerInfo[1],      			      // Text
-							triggerInfo[2],     			     // Font
-							Std.parseInt(triggerInfo[3]),       // Size
-							Std.parseFloat(triggerInfo[4]),    // Duration
-							triggerInfo[5],                   // Tween Type
-							Std.parseFloat(triggerInfo[6])   // Text Delay
+							triggerInfo[0],                         //Character Speaking
+							triggerInfo[1],                        // Text
+							triggerInfo[2],                       // Font
+							Std.parseInt(triggerInfo[3]),        // Size
+							Std.parseFloat(triggerInfo[4]),     // Duration
+							triggerInfo[5],                    // Tween Type
+							Std.parseFloat(triggerInfo[6])    // Text Delay
 						);
 					case "move":
 						subtitles.manageLyrics(

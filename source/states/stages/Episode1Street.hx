@@ -40,7 +40,6 @@ class Episode1Street extends BaseStage
 	public static var fireTweenHandler:FlxTween;
 	public static var rainTween:FlxTween;
 	public static var mickeySpirit:Character;
-	public static var memoryMickey:Character;
 	public static var smokeShit:FlxTypedGroup<FlxSprite>;
 	public static var smokeFore:FlxTypedGroup<FlxSprite>;
 	public static var spriteShit:Array<String> = ['smokeBBack', 'smokeTBack'];
@@ -141,11 +140,6 @@ class Episode1Street extends BaseStage
 			mickeySpirit = new Character(-200, -700, "avier-bg");
 			mickeySpirit.alpha = 0.0001;
 			add(mickeySpirit);
-
-			memoryMickey = new Character(575, 50, "Mickey-Bedroom", true);
-			memoryMickey.alpha = 0.0001;
-			memoryMickey.cameras = [game.camVideo];
-			add(memoryMickey);
 
 			// Bedroom Grah :fire: - MalyPlus
 			minnieBackground = new FlxSprite(-20, 200).loadGraphic(Paths.image(PlayState.pathway + 'background'));

@@ -80,59 +80,8 @@ class LegForbiddenRealm extends BaseStage
 		}
 	}
 
-	override function createPost()
-	{	
-		var blackParticles:FlxEmitter = new FlxEmitter(-2080.5, 912.4);
-		blackParticles.launchMode = SQUARE;
-		blackParticles.velocity.set(-70, -220, 70, -620, -110, 20, 110, -620);
-		blackParticles.scale.set(6, 6, 6, 6, 2, 2, 2, 2);
-		blackParticles.drag.set(2, 2, 2, 2, 7, 7, 12, 12);
-		blackParticles.width = 4787.45;
-		blackParticles.alpha.set(1, 1);
-		blackParticles.lifespan.set(1.9, 4.9);
-		blackParticles.loadParticles(Paths.image(PlayState.pathway + 'particleBlack'), 500, 16, true);
-		blackParticles.start(false, FlxG.random.float(.0821, .1460), 1000000);
-		
-		mickeyEmitter = new FlxEmitter(-2099.8, 1620.4);
-		for (i in 0 ... 100)
-		{
-			var mickeyParticle = new FlxParticle();
-			mickeyParticle.frames = Paths.getSparrowAtlas(PlayState.pathway + 'mickParticle');
-			mickeyParticle.animation.addByPrefix('mickParticle idle', 'mickParticle idle', 12, true);
-			mickeyParticle.animation.play('mickParticle idle');
-			mickeyParticle.exists = false;
-			mickeyEmitter.add(mickeyParticle);
-		}
-		mickeyEmitter.launchMode = SQUARE;
-		mickeyEmitter.velocity.set(-50, -400, 50, -800, -100, 0, 100, -800);
-		mickeyEmitter.scale.set(3.4, 3.4, 3.4, 3.4, 0, 0, 0, 0);
-		mickeyEmitter.drag.set(0, 0, 0, 0, 5, 5, 10, 10);
-		mickeyEmitter.width = 4200.45;
-		mickeyEmitter.alpha.set(1, 1);
-		mickeyEmitter.lifespan.set(4, 4.5);
-		mickeyEmitter.start(false, FlxG.random.float(.125, .287), 100000);
-		mickeyEmitter.emitting = false;
-		
-		if (PlayState.SONG.song != 'Malfunction Legacy')
-			add(blackParticles);
-			add(mickeyEmitter);
-
-		if (ClientPrefs.data.shaders)
-		{
-			if(!ClientPrefs.data.lowQuality)
-			{
-				camGame.setFilters(
-				[
-					new ShaderFilter(chromNormalShader),
-					new ShaderFilter(blurShader)
-				]);
-				camHUD.setFilters(
-				[
-					new ShaderFilter(chromNormalShader),
-					new ShaderFilter(blurShader)
-				]);
-			}
-		}
+	override function addObjectsToHUD()
+	{
 
 		if (ClientPrefs.data.downScroll)
 		{
@@ -150,7 +99,6 @@ class LegForbiddenRealm extends BaseStage
 		crashLives.borderQuality = 2;
 		crashLives.antialiasing = false;
 		crashLives.scrollFactor.set();
-		crashLives.cameras = [camHUD];
 
 		crashLivesIcon.frames = Paths.getSparrowAtlas('favi/ui/malfunctionGimmickIcon');
 		crashLivesIcon.animation.addByPrefix('idle', 'lives-icon idle', 15);
@@ -158,11 +106,30 @@ class LegForbiddenRealm extends BaseStage
 		crashLivesIcon.animation.play('idle');
 		crashLivesIcon.scale.set(2.2, 2.2);
 		crashLivesIcon.antialiasing = false;
-		crashLivesIcon.cameras = [camHUD];
 		game.uiGroup.add(crashLives);
 		game.uiGroup.add(crashLivesIcon);
 		crashLivesCounter += 30;
 		crashLives.text = 'Lives: ${crashLivesCounter}';
+	}
+
+	override function createPost()
+	{	
+		if (ClientPrefs.data.shaders)
+		{
+			if(!ClientPrefs.data.lowQuality)
+			{
+				camGame.setFilters(
+				[
+					new ShaderFilter(chromNormalShader),
+					new ShaderFilter(blurShader)
+				]);
+				camHUD.setFilters(
+				[
+					new ShaderFilter(chromNormalShader),
+					new ShaderFilter(blurShader)
+				]);
+			}
+		}
 	}
 
 	override function update(elapsed:Float)

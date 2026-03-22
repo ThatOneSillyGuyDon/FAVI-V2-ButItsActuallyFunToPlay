@@ -247,7 +247,10 @@ class ForbiddenRealm extends BaseStage
 				});
 			}
 		}
+	}
 
+	override function addObjectsToHUD()
+	{
 		if (ClientPrefs.data.downScroll)
 		{
 			crashLives = new FlxText(600, 170, 0, "", 20);
@@ -264,7 +267,6 @@ class ForbiddenRealm extends BaseStage
 		crashLives.borderQuality = 2;
 		crashLives.antialiasing = false;
 		crashLives.scrollFactor.set();
-		crashLives.cameras = [camHUD];
 
 		crashLivesIcon.frames = Paths.getSparrowAtlas('favi/ui/malfunctionGimmickIcon');
 		crashLivesIcon.animation.addByPrefix('idle', 'lives-icon idle', 15);
@@ -272,9 +274,8 @@ class ForbiddenRealm extends BaseStage
 		crashLivesIcon.animation.play('idle');
 		crashLivesIcon.scale.set(2.2, 2.2);
 		crashLivesIcon.antialiasing = false;
-		crashLivesIcon.cameras = [camHUD];
-		add(crashLives);
-		add(crashLivesIcon);
+		game.uiGroup.add(crashLives);
+		game.uiGroup.add(crashLivesIcon);
 		crashLivesCounter += 25;
 		crashLives.text = 'Lives: ${crashLivesCounter}';
 	}
