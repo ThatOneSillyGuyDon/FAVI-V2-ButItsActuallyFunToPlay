@@ -460,6 +460,24 @@ class Note extends FlxSkewedSprite
 		return value;
 	}
 
+	public function resetNote(spawnTime:Float, noteColumn:Int, oldNote:Note, ?isSustain:Bool = false)
+	{
+    	this.strumTime = spawnTime;
+		this.noteType = '';
+    	this.noteData = noteColumn;
+   		this.prevNote = oldNote;
+   	 	this.isSustainNote = isSustain;
+    	this.exists = true;
+    	this.visible = true;
+ 		this.alpha = 1;
+    	this.wasGoodHit = false;
+    	this.missed = false;
+    	this.tooLate = false;
+    	this.ignoreNote = false;
+    	this.canBeHit = false;
+    	this.spawned = false;
+	}
+
 	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false, ?inEditor:Bool = false, ?inSettings:Bool = false)
 	{
 		super();

@@ -25,6 +25,9 @@
 	<define name="IRIS_DEBUG"/>
 
 	<define name="DEV_BUILD"/>
+
+	<!--Skip time breaks with note pooling lolol-->
+	<define name="ENABLE_NOTE_POOLING"/>
 	
 	<define name="VIDEOS_ALLOWED" if="windows || linux || android" unless="32bits"/>
 

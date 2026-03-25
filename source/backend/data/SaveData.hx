@@ -61,19 +61,21 @@ class SaveData {
 	}
 
     // yeah
-    public static function setthefreeplayData(){
+    // you're both fired
+   /* public static function setthefreeplayData(){
         var progression:FlxSave = new FlxSave();
 		progression.bind("gameProgression", CoolUtil.getSavePath());
 
-        for (i in 0...freeplaySongs.lenght){
-            if (PlayState.SONG.song.toLowerCase() == freeplaySongs[i].toLowerCase()){
+        for (i in 0...freeplaySongs.length)
+        {
+            if (PlayState.SONG.song.toLowerCase() == freeplaySongs[i][0].toLowerCase()){
                 if (FlxG.save.data.freeplaySongs[i] != 'beaten')
 					curLock = huntedLock = 'unlocked';
             }
         }
         saveData();
 		
-    } 
+    } */
 
     	
 	public static function loadData() {

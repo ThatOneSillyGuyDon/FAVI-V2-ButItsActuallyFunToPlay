@@ -14,6 +14,8 @@ import lime.app.Application;
 import openfl.Lib;
 import flash.system.System;
 
+import flixel.text.FlxBitmapFont;
+import flixel.text.FlxBitmapText;
 import flixel.FlxBasic;
 import flixel.FlxObject;
 import flixel.FlxSubState;
@@ -274,7 +276,7 @@ class PlayState extends MusicBeatState
 	public var songScore:Int = 0;
 	public var songHits:Int = 0;
 	public var songMisses:Int = 0;
-	public var scoreTxt:FlxText;
+	public var scoreTxt:FlxBitmapText;
 	var scoreTxtTween:FlxTween;
 
 	public var scratch:FlxSprite; // Peter Griffin: This reminds me of the time I met the Scratch cat
@@ -421,6 +423,8 @@ class PlayState extends MusicBeatState
 	var subtitles:SubtitlesBox;
 	var subtitleTwnHandler:Array<FlxTween> = [];
 	var iconHandler:Array<FlxTween> = [];
+
+	var notePool:Array<Note> = [];
 
 	override public function create()
 	{
@@ -999,11 +1003,16 @@ class PlayState extends MusicBeatState
 		uiGroup.add(iconP2);
 		reloadHealthBarColors();
 
-		scoreTxt = new FlxText(0, ((curStage == "menuSongs" || curStage == "waltRoom") ? (ClientPrefs.data.downScroll ? 15 : 675) : healthBar.y + 36), FlxG.width, "", 20);
-		scoreTxt.setFormat(Paths.font("DisneyFont.ttf"), (FreeplayState.freeplayMenuList == 2  ? 28 : 20), FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		scoreTxt = new FlxBitmapText(0, ((curStage == "menuSongs" || curStage == "waltRoom") ? (ClientPrefs.data.downScroll ? 15 : 675) : healthBar.y + 36), '', FlxBitmapFont.fromAngelCode(Paths.font("DisneyFont.png"), Paths.font("DisneyFont.fnt")));
+		scoreTxt.alignment = CENTER;
+		scoreTxt.borderStyle = OUTLINE;
+		scoreTxt.borderColor = FlxColor.BLACK;
+		scoreTxt.letterSpacing = -1;
 		scoreTxt.scrollFactor.set();
 		scoreTxt.borderSize = 1.25;
 		scoreTxt.visible = (!ClientPrefs.data.hideHud || !cpuControlled);
+		scoreTxt.scale.set(0.5, 0.5);
+		scoreTxt.updateHitbox();
 		updateScore(false);
 		uiGroup.add(scoreTxt);
 
@@ -1799,8 +1808,13 @@ class PlayState extends MusicBeatState
 				daNote.ignoreNote = true;
 
 				daNote.kill();
+				#if ENABLE_NOTE_POOLING
+				recycleNote(daNote);
+				notes.remove(daNote, true);
+				#else
 				unspawnNotes.remove(daNote);
 				daNote.destroy();
+				#end
 			}
 			--i;
 		}
@@ -2081,7 +2095,7 @@ class PlayState extends MusicBeatState
 				else
 					oldNote = null;
 
-				var swagNote:Note = new Note(daStrumTime, daNoteData, oldNote);
+				var swagNote:Note = #if ENABLE_NOTE_POOLING getNote#else new Note#end(daStrumTime, daNoteData, oldNote);
 				swagNote.mustPress = gottaHitNote;
 				swagNote.sustainLength = songNotes[2];
 				swagNote.gfNote = (section.gfSection && (songNotes[1]<4));
@@ -2100,7 +2114,7 @@ class PlayState extends MusicBeatState
 					{
 						oldNote = unspawnNotes[Std.int(unspawnNotes.length - 1)];
 
-						var sustainNote:Note = new Note(daStrumTime + (Conductor.stepCrochet * susNote) + (Conductor.stepCrochet / FlxMath.roundDecimal(songSpeed, 2)), daNoteData, oldNote, true);
+						var sustainNote:Note = #if ENABLE_NOTE_POOLING getNote#else new Note#end(daStrumTime + (Conductor.stepCrochet * susNote) + (Conductor.stepCrochet / FlxMath.roundDecimal(songSpeed, 2)), daNoteData, oldNote, true);
 						sustainNote.mustPress = gottaHitNote;
 						sustainNote.gfNote = (section.gfSection && (songNotes[1]<4));
 						sustainNote.noteType = swagNote.noteType;
@@ -5066,6 +5080,34 @@ class PlayState extends MusicBeatState
 		});
 	}
 
+	function getNote(spawnTime:Float, noteColumn:Int, oldNote:Note, ?isSustain:Bool = false):Note 
+	{
+    	var note:Note;
+   		if (notePool.length > 0) 
+		{
+        	note = notePool.pop();
+        	note.resetNote(spawnTime, noteColumn, oldNote, isSustain);
+			//trace('recycled note!');
+    	} else {
+			note = new Note(spawnTime, noteColumn, oldNote, isSustain);
+			//trace('NOT recycled');
+		}
+
+    	note.exists = true;
+    	note.visible = true;
+   		return note;
+	}
+
+	// recycle a note back into the pool
+	function recycleNote(note:Note) 
+	{
+    	note.exists = false;
+    	note.visible = false;
+    	note.kill();
+    	notePool.push(note);
+		//trace('NOTE RECYCLED! Pool size now: ' + notePool.length);
+	}
+
 	public var strumsBlocked:Array<Bool> = [];
 	private function onKeyPress(event:KeyboardEvent):Void
 	{
@@ -5511,9 +5553,14 @@ class PlayState extends MusicBeatState
 	}
 
 	public function invalidateNote(note:Note):Void {
+		#if ENABLE_NOTE_POOLING
+		recycleNote(note);
+		notes.remove(note, true);
+		#else
 		note.kill();
 		notes.remove(note, true);
 		note.destroy();
+		#end
 	}
 
 	public function spawnNoteSplashOnNote(note:Note) {
