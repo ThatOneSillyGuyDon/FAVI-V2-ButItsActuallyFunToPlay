@@ -1,59 +1,59 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				-155,
 				-306
 			],
-			"indices": [],
-			"fps": 12,
 			"anim": "idle",
-			"loop": false,
-			"name": "mr-smiles-newer idle"
+			"fps": 12,
+			"name": "mr-smiles-newer idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-142,
 				-143
 			],
-			"indices": [],
-			"fps": 12,
 			"anim": "singDOWN",
-			"loop": false,
-			"name": "mr-smiles-newer down"
+			"fps": 12,
+			"name": "mr-smiles-newer down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-120,
 				-140
 			],
-			"indices": [],
-			"fps": 12,
 			"anim": "singUP",
-			"loop": false,
-			"name": "mr-smiles-newer up"
+			"fps": 12,
+			"name": "mr-smiles-newer up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-123,
 				-144
 			],
-			"indices": [],
-			"fps": 12,
 			"anim": "singRIGHT",
-			"loop": false,
-			"name": "mr-smiles-newer right"
+			"fps": 12,
+			"name": "mr-smiles-newer right",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-121,
 				-144
 			],
-			"indices": [],
-			"fps": 12,
 			"anim": "singLEFT",
-			"loop": false,
-			"name": "mr-smiles-newer left"
+			"fps": 12,
+			"name": "mr-smiles-newer left",
+			"indices": []
 		}
 	],
 	"vocals_file": "",
@@ -66,9 +66,9 @@
 	"healthicon": "smile",
 	"flip_x": false,
 	"healthbar_colors": [
-		50,
-		50,
-		50
+		75,
+		75,
+		75
 	],
 	"camera_position": [
 		200,
