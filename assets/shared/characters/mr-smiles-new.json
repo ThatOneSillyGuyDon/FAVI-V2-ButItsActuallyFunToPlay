@@ -2,70 +2,63 @@
 	"animations": [
 		{
 			"offsets": [
-				0,
-				0
+				-155,
+				-306
 			],
-			"loop": false,
+			"indices": [],
 			"fps": 12,
 			"anim": "idle",
-			"indices": [
-				4,
-				5,
-				6,
-				0,
-				1,
-				2,
-				3
-			],
-			"name": "idle"
+			"loop": false,
+			"name": "mr-smiles-newer idle"
 		},
 		{
 			"offsets": [
-				0,
-				0
+				-142,
+				-143
 			],
-			"loop": false,
+			"indices": [],
 			"fps": 12,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
+			"loop": false,
+			"name": "mr-smiles-newer down"
 		},
 		{
 			"offsets": [
-				0,
-				0
+				-120,
+				-140
 			],
-			"loop": false,
+			"indices": [],
 			"fps": 12,
 			"anim": "singUP",
-			"indices": [],
-			"name": "up"
+			"loop": false,
+			"name": "mr-smiles-newer up"
 		},
 		{
 			"offsets": [
-				0,
-				0
+				-123,
+				-144
 			],
-			"loop": false,
+			"indices": [],
 			"fps": 12,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right"
+			"loop": false,
+			"name": "mr-smiles-newer right"
 		},
 		{
 			"offsets": [
-				0,
-				0
+				-121,
+				-144
 			],
-			"loop": false,
+			"indices": [],
 			"fps": 12,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "left"
+			"loop": false,
+			"name": "mr-smiles-newer left"
 		}
 	],
+	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/mr-smiles-new/mr-smiles-new",
+	"image": "characters/mr-smiles-new/mr-smiles-newer",
 	"position": [
 		0,
 		0
@@ -82,5 +75,6 @@
 		240
 	],
 	"sing_duration": 6.1,
-	"scale": 0.8
+	"scale": 1,
+	"_editor_isPlayer": false
 }

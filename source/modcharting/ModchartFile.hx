@@ -67,13 +67,14 @@ class ModchartFile
     }';
 
     public static var instance:ModchartFile;
+    var autosave:FlxSave;
     
     public function new(renderer:PlayfieldRenderer)
     {
-        if (autosaveMod != null)
-			data = parseModchartBullshit(autosaveMod);
-		else
-			data = loadFromJson(PlayState.SONG.song.toLowerCase(), Difficulty.getString().toLowerCase() == null ? Difficulty.defaultList[PlayState.storyDifficulty] : Difficulty.getString().toLowerCase());
+        autosave = new FlxSave();
+        autosave.bind("dataAutosave", CoolUtil.getSavePath());
+
+        data = loadFromJson(PlayState.SONG.song.toLowerCase(), Difficulty.getString().toLowerCase() == null ? Difficulty.defaultList[PlayState.storyDifficulty] : Difficulty.getString().toLowerCase());
 	    this.renderer = renderer;
         renderer.modchart = this;
         instance = this;
@@ -307,6 +308,8 @@ class ModchartFile
                     if (autosaveMod != null)
                     {
                         json = autosaveMod;
+                        autosave.data.autosaveModchart = autosaveMod;
+                        autosave.flush();
                     }
                     else
                         json = emptyMod;

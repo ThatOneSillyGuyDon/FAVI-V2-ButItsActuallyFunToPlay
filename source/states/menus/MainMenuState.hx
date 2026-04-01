@@ -132,6 +132,8 @@ class MainMenuState extends MusicBeatState
 		}
 
 		//debugKeys = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_1'));
+		transIn = FlxTransitionableState.defaultTransIn;
+		transOut = FlxTransitionableState.defaultTransOut;
 		persistentUpdate = persistentDraw = true;
 
 		var bg = new FlxSprite().loadGraphic(Paths.image('Funkin_avi/menu/NEWmenu/Background'));

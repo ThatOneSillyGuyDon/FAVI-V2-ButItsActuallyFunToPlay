@@ -21,7 +21,7 @@ class AskQuestionToThatGuy extends MusicBeatState
     var targetZoom = .85;
 
     var text:FlxTypeText;
-    var box:PsychUIInputText;
+    var box:FlxUIInputText;
 
     var typing:Bool = false;
 
@@ -107,9 +107,11 @@ class AskQuestionToThatGuy extends MusicBeatState
         };
         add(text);
 
-        box = new PsychUIInputText(0, 90, 300, "", 32);
+        box = new FlxUIInputText(0, 90, 300, null, 32, FlxColor.BLACK, FlxColor.GRAY);
         box.screenCenter(X);
         box.camera = camHUD;
+        box.focusGained = () -> typing = true;
+        box.focusLost = () -> typing = false;
         add(box);
 
         if (!ClientPrefs.data.lowQuality)
@@ -162,10 +164,6 @@ class AskQuestionToThatGuy extends MusicBeatState
     override function update(elapsed:Float) {
         super.update(elapsed);
 
-        typing = PsychUIInputText.focusOn != null;
-
-        ClientPrefs.toggleVolumeKeys(PsychUIInputText.focusOn == null);
-        
         if (controls.BACK && !typing)
         {
             FlxG.sound.play(Paths.sound('cancelMenu'));

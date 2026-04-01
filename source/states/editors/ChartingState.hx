@@ -7,7 +7,15 @@ import haxe.io.Bytes;
 
 import flixel.FlxObject;
 import flixel.addons.display.FlxGridOverlay;
+import flixel.addons.ui.FlxUI;
+import flixel.addons.ui.FlxUICheckBox;
+import flixel.addons.ui.FlxUIInputText;
+import flixel.addons.ui.FlxUIDropDownMenu;
+import flixel.addons.ui.FlxUINumericStepper;
+import flixel.addons.ui.FlxUISlider;
+import flixel.addons.ui.FlxUITabMenu;
 import flixel.group.FlxGroup;
+import flixel.ui.FlxButton;
 
 import flixel.util.FlxSort;
 import lime.media.AudioBuffer;
@@ -38,7 +46,7 @@ import flash.media.Sound;
 @:access(flixel.sound.FlxSound._sound)
 @:access(openfl.media.Sound.__buffer)
 
-class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychUIEvent
+class ChartingState extends MusicBeatState
 {
 	public static var noteTypeList:Array<Dynamic> = Notes.getNotes();
 	
@@ -49,7 +57,7 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 	var eventStuff:Array<Dynamic> = Events.getEvents();
 
 	var _file:FileReference;
-	var UI_box:PsychUIBox;
+	var UI_box:FlxUITabMenu;
 
 	public static var goToPlayState:Bool = false;
 	/**
@@ -105,8 +113,8 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 	var leftIcon:HealthIcon;
 	var rightIcon:HealthIcon;
 
-	var value1InputText:PsychUIInputText;
-	var value2InputText:PsychUIInputText;
+	var value1InputText:FlxUIInputText;
+	var value2InputText:FlxUIInputText;
 	var currentSongName:String;
 
 	var zoomTxt:FlxText;
@@ -128,9 +136,9 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 	];
 	var curZoom:Int = 2;
 
-	private var blockPressWhileTypingOn:Array<PsychUIInputText> = [];
-	private var blockPressWhileTypingOnStepper:Array<PsychUINumericStepper> = [];
-	private var blockPressWhileScrolling:Array<PsychUIDropDownMenu> = [];
+	private var blockPressWhileTypingOn:Array<FlxUIInputText> = [];
+	private var blockPressWhileTypingOnStepper:Array<FlxUINumericStepper> = [];
+	private var blockPressWhileScrolling:Array<FlxUIDropDownMenu> = [];
 
 	var waveformSprite:FlxSprite;
 	var gridLayer:FlxTypedGroup<FlxSprite>;
@@ -220,7 +228,12 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		nextRenderedNotes = new FlxTypedGroup<Note>();
 
 		FlxG.mouse.visible = true;
-		
+		//FlxG.save.bind('funkin', CoolUtil.getSavePath());
+
+		//addSection();
+
+		// sections = _song.notes;
+
 		updateJsonData();
 		currentSongName = Paths.formatToSongPath(_song.song);
 		loadSong();
@@ -256,7 +269,6 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		}
 		add(strumLineNotes);
 
-
 		camPos = new FlxObject(0, 0, 1, 1);
 		camPos.setPosition(strumLine.x + CAM_OFFSET + 100, strumLine.y);
 
@@ -264,8 +276,20 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		dummyArrow.antialiasing = ClientPrefs.data.antialiasing;
 		add(dummyArrow);
 
-		UI_box = new PsychUIBox(640 + GRID_SIZE / 2 - 50, 25, 450, 450, ['Charting', 'Data', 'Events', 'Note', 'Section', 'Song']);
-		UI_box.canMove = false;
+		var tabs = [
+			{name: "Song", label: 'Song'},
+			{name: "Section", label: 'Section'},
+			{name: "Note", label: 'Note'},
+			{name: "Events", label: 'Events'},
+			{name: "Charting", label: 'Charting'},
+			{name: "Data", label: 'Data'}
+		];
+
+		UI_box = new FlxUITabMenu(null, tabs, true);
+
+		UI_box.resize(450, 450);
+		UI_box.x = 640 + GRID_SIZE / 2 - 50;
+		UI_box.y = 25;
 		UI_box.scrollFactor.set();
 
 		text = //I want to die knowing this is how the game fucking formats this shitty text
@@ -301,8 +325,7 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		addDataUI();
 		updateHeads();
 		updateWaveform();
-
-		UI_box.selectedName = 'Editor';
+		//UI_box.selected_tab = 4;
 
 		add(curRenderedSustains);
 		add(curRenderedNotes);
@@ -324,40 +347,39 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		super.create();
 	}
 
-	var check_mute_inst:PsychUICheckBox = null;
-	var check_mute_vocals:PsychUICheckBox = null;
-	var check_mute_vocals_opponent:PsychUICheckBox = null;
-	var check_vortex:PsychUICheckBox = null;
-	var check_warnings:PsychUICheckBox = null;
-	var playSoundBf:PsychUICheckBox = null;
-	var playSoundDad:PsychUICheckBox = null;
-	var UI_songTitle:PsychUIInputText;
-	var stageDropDown:PsychUIDropDownMenu;
+	var check_mute_inst:FlxUICheckBox = null;
+	var check_mute_vocals:FlxUICheckBox = null;
+	var check_mute_vocals_opponent:FlxUICheckBox = null;
+	var check_vortex:FlxUICheckBox = null;
+	var check_warnings:FlxUICheckBox = null;
+	var playSoundBf:FlxUICheckBox = null;
+	var playSoundDad:FlxUICheckBox = null;
+	var UI_songTitle:FlxUIInputText;
+	var stageDropDown:FlxUIDropDownMenu;
 	#if FLX_PITCH
-	var sliderRate:PsychUISlider;
+	var sliderRate:FlxUISlider;
 	#end
-	var stepperSpeed:PsychUINumericStepper;
-	var stepperBPM:PsychUINumericStepper;
 	function addSongUI():Void
 	{
-		UI_songTitle = new PsychUIInputText(10, 10, 120, _song.song, 8);
+		UI_songTitle = new FlxUIInputText(10, 10, 120, _song.song, 8, FlxColor.WHITE, 0xFF333333);
+		UI_songTitle.setFormat(Paths.font("resultsFont.ttf"), 10, FlxColor.WHITE);
 		blockPressWhileTypingOn.push(UI_songTitle);
 
-		var check_voices = new PsychUICheckBox(10, 25, "Has voice track");
+		var check_voices = new FlxUICheckBox(10, 25, null, null, "Has voice track", 100);
 		check_voices.checked = _song.needsVoices;
 		// _song.needsVoices = check_voices.checked;
-		check_voices.onClick = function()
+		check_voices.callback = function()
 		{
 			_song.needsVoices = check_voices.checked;
 			//trace('CHECKED!');
 		};
 
-		var saveButton:PsychUIButton = new PsychUIButton(350, 8, "Save", function()
+		var saveButton:FlxButton = new FlxButton(350, 8, "Save", function()
 		{
 			saveLevel();
 		});
 
-		var reloadSong:PsychUIButton = new PsychUIButton(saveButton.x, saveButton.y + 60, "Reload Audio", function()
+		var reloadSong:FlxButton = new FlxButton(saveButton.x, saveButton.y + 60, "Reload Audio", function()
 		{
 			currentSongName = Paths.formatToSongPath(UI_songTitle.text);
 			updateJsonData();
@@ -365,18 +387,18 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 			updateWaveform();
 		});
 
-		var reloadSongJson:PsychUIButton = new PsychUIButton(reloadSong.x, reloadSong.y + 30, "Reload JSON", function()
+		var reloadSongJson:FlxButton = new FlxButton(reloadSong.x, reloadSong.y + 30, "Reload JSON", function()
 		{
 			openSubState(new Prompt('This action will clear all unsaved progress or data here.\n\nProceed?', 0, function(){loadJson(_song.song.toLowerCase()); }, null,ignoreWarnings));
 		});
 
-		var loadAutosaveBtn:PsychUIButton = new PsychUIButton(reloadSongJson.x, reloadSongJson.y + 30, 'Load Autosave', function()
+		var loadAutosaveBtn:FlxButton = new FlxButton(reloadSongJson.x, reloadSongJson.y + 30, 'Load Autosave', function()
 		{
 			PlayState.SONG = Song.parseJSONshit(FlxG.save.data.autosave);
 			MusicBeatState.resetState();
 		});
 
-		var loadEventJson:PsychUIButton = new PsychUIButton(loadAutosaveBtn.x, loadAutosaveBtn.y + 30, 'Load Events', function()
+		var loadEventJson:FlxButton = new FlxButton(loadAutosaveBtn.x, loadAutosaveBtn.y + 30, 'Load Events', function()
 		{
 
 			var songName:String = Paths.formatToSongPath(_song.song);
@@ -394,25 +416,25 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 			}
 		});
 
-		var saveEvents:PsychUIButton = new PsychUIButton(350, saveButton.y + 30, 'Save Events', function ()
+		var saveEvents:FlxButton = new FlxButton(350, saveButton.y + 30, 'Save Events', function ()
 		{
 			saveEvents();
 		});
 
 		for (b in [saveButton, reloadSong, reloadSongJson, loadAutosaveBtn, saveEvents, loadEventJson])
 		{
-			b.normalStyle.bgColor = FlxColor.fromRGB(36, 36, 36);
-			b.normalStyle.textColor = FlxColor.WHITE;
+			b.color = FlxColor.fromRGB(36, 36, 36);
+			b.label.color = FlxColor.WHITE;
 		}
 
-		var clear_events:PsychUIButton = new PsychUIButton(350, 310, 'Clear events', function()
+		var clear_events:FlxButton = new FlxButton(350, 310, 'Clear events', function()
 			{
 				openSubState(new Prompt('This action will clear current progress.\n\nProceed?', 0, clearEvents, null,ignoreWarnings));
 			});
-		clear_events.normalStyle.bgColor = 0xFF210707;
-		clear_events.normalStyle.textColor = FlxColor.WHITE;
+		clear_events.color = 0xFF210707;
+		clear_events.label.color = FlxColor.WHITE;
 
-		var clear_notes:PsychUIButton = new PsychUIButton(350, clear_events.y + 30, 'Clear notes', function()
+		var clear_notes:FlxButton = new FlxButton(350, clear_events.y + 30, 'Clear notes', function()
 			{
 				openSubState(new Prompt('This action will clear current progress.\n\nProceed?', 0, function(){for (sec in 0..._song.notes.length) {
 					_song.notes[sec].sectionNotes = [];
@@ -421,15 +443,17 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 			}, null,ignoreWarnings));
 
 			});
-		clear_notes.normalStyle.bgColor = 0xFF210707;
-		clear_notes.normalStyle.textColor = FlxColor.WHITE;
+		clear_notes.color = 0xFF210707;
+		clear_notes.label.color = FlxColor.WHITE;
 
-		stepperBPM = new PsychUINumericStepper(10, 70, 1, 1, 1, 400, 3);
+		var stepperBPM:FlxUINumericStepper = new FlxUINumericStepper(10, 70, 1, 1, 1, 400, 3);
 		stepperBPM.value = Conductor.bpm;
+		stepperBPM.name = 'song_bpm';
 		blockPressWhileTypingOnStepper.push(stepperBPM);
 
-		stepperSpeed = new PsychUINumericStepper(10, stepperBPM.y + 35, 0.1, 1, 0.1, 10, 2);
+		var stepperSpeed:FlxUINumericStepper = new FlxUINumericStepper(10, stepperBPM.y + 35, 0.1, 1, 0.1, 10, 2);
 		stepperSpeed.value = _song.speed;
+		stepperSpeed.name = 'song_speed';
 		blockPressWhileTypingOnStepper.push(stepperSpeed);
 		
 		var directories:Array<String> = [Paths.getSharedPath('characters/')];
@@ -460,27 +484,27 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		}
 		tempArray = [];
 
-		var player1DropDown = new PsychUIDropDownMenu(10, stepperSpeed.y + 45, characters, function(id:Int, character:String)
+		var player1DropDown = new FlxUIDropDownMenu(10, stepperSpeed.y + 45, FlxUIDropDownMenu.makeStrIdLabelArray(characters, true), function(character:String)
 		{
-			_song.player1 = characters[id];
+			_song.player1 = characters[Std.parseInt(character)];
 			updateJsonData();
 			updateHeads();
 		});
 		player1DropDown.selectedLabel = _song.player1;
 		blockPressWhileScrolling.push(player1DropDown);
 
-		var gfVersionDropDown = new PsychUIDropDownMenu(player1DropDown.x, player1DropDown.y + 40, characters, function(id:Int, character:String)
+		var gfVersionDropDown = new FlxUIDropDownMenu(player1DropDown.x, player1DropDown.y + 40, FlxUIDropDownMenu.makeStrIdLabelArray(characters, true), function(character:String)
 		{
-			_song.gfVersion = characters[id];
+			_song.gfVersion = characters[Std.parseInt(character)];
 			updateJsonData();
 			updateHeads();
 		});
 		gfVersionDropDown.selectedLabel = _song.gfVersion;
 		blockPressWhileScrolling.push(gfVersionDropDown);
 
-		var player2DropDown = new PsychUIDropDownMenu(player1DropDown.x, gfVersionDropDown.y + 40, characters, function(id:Int, character:String)
+		var player2DropDown = new FlxUIDropDownMenu(player1DropDown.x, gfVersionDropDown.y + 40, FlxUIDropDownMenu.makeStrIdLabelArray(characters, true), function(character:String)
 		{
-			_song.player2 = characters[id];
+			_song.player2 = characters[Std.parseInt(character)];
 			updateJsonData();
 			updateHeads();
 		});
@@ -500,14 +524,15 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		
 		if(stages.length < 1) stages.push('stage');
 
-		stageDropDown = new PsychUIDropDownMenu(player1DropDown.x, player2DropDown.y + 40, stages, function(id:Int, character:String)
+		stageDropDown = new FlxUIDropDownMenu(player1DropDown.x, player2DropDown.y + 40, FlxUIDropDownMenu.makeStrIdLabelArray(stages, true), function(character:String)
 		{
-			_song.stage = stages[id];
+			_song.stage = stages[Std.parseInt(character)];
 		});
 		stageDropDown.selectedLabel = _song.stage;
 		blockPressWhileScrolling.push(stageDropDown);
 
-		var tab_group_song = UI_box.getTab('Song').menu;
+		var tab_group_song = new FlxUI(null, UI_box);
+		tab_group_song.name = "Song";
 		tab_group_song.add(UI_songTitle);
 
 		tab_group_song.add(check_voices);
@@ -544,53 +569,60 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		tab_group_song.add(gfVersionDropDown);
 		tab_group_song.add(player1DropDown);
 
+		UI_box.addGroup(tab_group_song);
+
 		FlxG.camera.follow(camPos);
 	}
 
-	var stepperBeats:PsychUINumericStepper;
-	var check_mustHitSection:PsychUICheckBox;
-	var check_gfSection:PsychUICheckBox;
-	var check_changeBPM:PsychUICheckBox;
-	var stepperSectionBPM:PsychUINumericStepper;
-	var check_altAnim:PsychUICheckBox;
+	var stepperBeats:FlxUINumericStepper;
+	var check_mustHitSection:FlxUICheckBox;
+	var check_gfSection:FlxUICheckBox;
+	var check_changeBPM:FlxUICheckBox;
+	var stepperSectionBPM:FlxUINumericStepper;
+	var check_altAnim:FlxUICheckBox;
 
 	var sectionToCopy:Int = 0;
 	var notesCopied:Array<Dynamic>;
 
 	function addSectionUI():Void
 	{
-		var tab_group_section = UI_box.getTab('Section').menu;
+		var tab_group_section = new FlxUI(null, UI_box);
+		tab_group_section.name = 'Section';
 
-		check_mustHitSection = new PsychUICheckBox(10, 15, "Must hit section");
+		check_mustHitSection = new FlxUICheckBox(10, 15, null, null, "Must hit section", 100);
 		check_mustHitSection.name = 'check_mustHit';
 		check_mustHitSection.checked = _song.notes[curSec].mustHitSection;
 
-		check_gfSection = new PsychUICheckBox(10, check_mustHitSection.y + 22, "GF section");
+		check_gfSection = new FlxUICheckBox(10, check_mustHitSection.y + 22, null, null, "GF section", 100);
 		check_gfSection.name = 'check_gf';
 		check_gfSection.checked = _song.notes[curSec].gfSection;
 		// _song.needsVoices = check_mustHit.checked;
 
-		check_altAnim = new PsychUICheckBox(check_gfSection.x + 120, check_gfSection.y, "Alt Animation");
+		check_altAnim = new FlxUICheckBox(check_gfSection.x + 120, check_gfSection.y, null, null, "Alt Animation", 100);
 		check_altAnim.checked = _song.notes[curSec].altAnim;
 
-		stepperBeats = new PsychUINumericStepper(10, 100, 1, 4, 1, 7, 2);
+		stepperBeats = new FlxUINumericStepper(10, 100, 1, 4, 1, 7, 2);
 		stepperBeats.value = getSectionBeats();
+		stepperBeats.name = 'section_beats';
 		blockPressWhileTypingOnStepper.push(stepperBeats);
+		check_altAnim.name = 'check_altAnim';
 
-		check_changeBPM = new PsychUICheckBox(10, stepperBeats.y + 30, 'Change BPM');
+		check_changeBPM = new FlxUICheckBox(10, stepperBeats.y + 30, null, null, 'Change BPM', 100);
 		check_changeBPM.checked = _song.notes[curSec].changeBPM;
+		check_changeBPM.name = 'check_changeBPM';
 
-		stepperSectionBPM = new PsychUINumericStepper(10, check_changeBPM.y + 20, 1, Conductor.bpm, 0, 999, 1);
+		stepperSectionBPM = new FlxUINumericStepper(10, check_changeBPM.y + 20, 1, Conductor.bpm, 0, 999, 1);
 		if(check_changeBPM.checked) {
 			stepperSectionBPM.value = _song.notes[curSec].bpm;
 		} else {
 			stepperSectionBPM.value = Conductor.bpm;
 		}
+		stepperSectionBPM.name = 'section_bpm';
 		blockPressWhileTypingOnStepper.push(stepperSectionBPM);
 
-		var check_eventsSec:PsychUICheckBox = null;
-		var check_notesSec:PsychUICheckBox = null;
-		var copyButton:PsychUIButton = new PsychUIButton(10, 190, "Copy Section", function()
+		var check_eventsSec:FlxUICheckBox = null;
+		var check_notesSec:FlxUICheckBox = null;
+		var copyButton:FlxButton = new FlxButton(10, 190, "Copy Section", function()
 		{
 			notesCopied = [];
 			sectionToCopy = curSec;
@@ -618,7 +650,7 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 			}
 		});
 
-		var pasteButton:PsychUIButton = new PsychUIButton(copyButton.x + 100, copyButton.y, "Paste Section", function()
+		var pasteButton:FlxButton = new FlxButton(copyButton.x + 100, copyButton.y, "Paste Section", function()
 		{
 			if(notesCopied == null || notesCopied.length < 1)
 			{
@@ -661,7 +693,7 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 			updateGrid();
 		});
 
-		var clearSectionButton:PsychUIButton = new PsychUIButton(pasteButton.x + 100, pasteButton.y, "Clear", function()
+		var clearSectionButton:FlxButton = new FlxButton(pasteButton.x + 100, pasteButton.y, "Clear", function()
 		{
 			if(check_notesSec.checked)
 			{
@@ -685,15 +717,15 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 			updateGrid();
 			updateNoteUI();
 		});
-		clearSectionButton.normalStyle.bgColor = 0xFF210707;
-		clearSectionButton.normalStyle.textColor = FlxColor.WHITE;
+		clearSectionButton.color = 0xFF210707;
+		clearSectionButton.label.color = FlxColor.WHITE;
 		
-		check_notesSec = new PsychUICheckBox(10, clearSectionButton.y + 25, "Notes");
+		check_notesSec = new FlxUICheckBox(10, clearSectionButton.y + 25, null, null, "Notes", 100);
 		check_notesSec.checked = true;
-		check_eventsSec = new PsychUICheckBox(check_notesSec.x + 100, check_notesSec.y, "Events");
+		check_eventsSec = new FlxUICheckBox(check_notesSec.x + 100, check_notesSec.y, null, null, "Events", 100);
 		check_eventsSec.checked = true;
 
-		var swapSection:PsychUIButton = new PsychUIButton(10, check_notesSec.y + 40, "Swap section", function()
+		var swapSection:FlxButton = new FlxButton(10, check_notesSec.y + 40, "Swap section", function()
 		{
 			for (i in 0..._song.notes[curSec].sectionNotes.length)
 			{
@@ -703,11 +735,11 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 			}
 			updateGrid();
 		});
-		swapSection.normalStyle.bgColor = 0xFF210707;
-		swapSection.normalStyle.textColor = FlxColor.WHITE;
+		swapSection.color = 0xFF210707;
+		swapSection.label.color = FlxColor.WHITE;
 
-		var stepperCopy:PsychUINumericStepper = null;
-		var copyLastButton:PsychUIButton = new PsychUIButton(10, swapSection.y + 30, "Copy last section", function()
+		var stepperCopy:FlxUINumericStepper = null;
+		var copyLastButton:FlxButton = new FlxButton(10, swapSection.y + 30, "Copy last section", function()
 		{
 			var value:Int = Std.int(stepperCopy.value);
 			if(value == 0) return;
@@ -741,12 +773,13 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 			}
 			updateGrid();
 		});
-		copyLastButton.resize(80, 30);
+		copyLastButton.setGraphicSize(80, 30);
+		copyLastButton.updateHitbox();
 		
-		stepperCopy = new PsychUINumericStepper(copyLastButton.x + 100, copyLastButton.y, 1, 1, -999, 999, 0);
+		stepperCopy = new FlxUINumericStepper(copyLastButton.x + 100, copyLastButton.y, 1, 1, -999, 999, 0);
 		blockPressWhileTypingOnStepper.push(stepperCopy);
 
-		var duetButton:PsychUIButton = new PsychUIButton(10, copyLastButton.y + 45, "Duet Notes", function()
+		var duetButton:FlxButton = new FlxButton(10, copyLastButton.y + 45, "Duet Notes", function()
 		{
 			var duetNotes:Array<Array<Dynamic>> = [];
 			for (note in _song.notes[curSec].sectionNotes)
@@ -769,7 +802,7 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 
 			updateGrid();
 		});
-		var mirrorButton:PsychUIButton = new PsychUIButton(duetButton.x + 100, duetButton.y, "Mirror Notes", function()
+		var mirrorButton:FlxButton = new FlxButton(duetButton.x + 100, duetButton.y, "Mirror Notes", function()
 		{
 			var duetNotes:Array<Array<Dynamic>> = [];
 			for (note in _song.notes[curSec].sectionNotes)
@@ -793,8 +826,8 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 
 		for (b in [copyButton, pasteButton, copyLastButton, duetButton, mirrorButton])
 		{
-			b.normalStyle.bgColor = FlxColor.fromRGB(36, 36, 36);
-			b.normalStyle.textColor = FlxColor.WHITE;
+			b.color = FlxColor.fromRGB(36, 36, 36);
+			b.label.color = FlxColor.WHITE;
 		}
 
 		var beatSecTxt:FlxText = new FlxText(stepperBeats.x, stepperBeats.y - 15, 0, 'Beats per Section:');
@@ -817,30 +850,31 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		tab_group_section.add(copyLastButton);
 		tab_group_section.add(duetButton);
 		tab_group_section.add(mirrorButton);
+
+		UI_box.addGroup(tab_group_section);
 	}
 
-	var stepperSusLength:PsychUINumericStepper;
-	var strumTimeInputText:PsychUIInputText; //I wanted to use a stepper but we can't scale these as far as i know :(
-	var noteTypeDropDown:PsychUIDropDownMenu;
+	var stepperSusLength:FlxUINumericStepper;
+	var strumTimeInputText:FlxUIInputText; //I wanted to use a stepper but we can't scale these as far as i know :(
+	var noteTypeDropDown:FlxUIDropDownMenu;
 	var currentType:Int = 0;
 
 	function addNoteUI():Void
 	{
-		var tab_group_note = UI_box.getTab('Note').menu;
+		var tab_group_note = new FlxUI(null, UI_box);
+		tab_group_note.name = 'Note';
 
-		stepperSusLength = new PsychUINumericStepper(10, 25, Conductor.stepCrochet / 2, 0, 0, Conductor.stepCrochet * 128, 1);
-		stepperSusLength.onValueChange = function()
-		{
-			if(curSelectedNote != null && curSelectedNote[2] != null) {
-				curSelectedNote[2] = stepperSusLength.value;
-				updateGrid();
-			}
-		};
+		stepperSusLength = new FlxUINumericStepper(10, 25, Conductor.stepCrochet / 2, 0, 0, Conductor.stepCrochet * 64);
+		stepperSusLength.value = 0;
+		stepperSusLength.name = 'note_susLength';
 		blockPressWhileTypingOnStepper.push(stepperSusLength);
 
-		strumTimeInputText = new PsychUIInputText(10, 65, 180, "0");
+		strumTimeInputText = new FlxUIInputText(10, 65, 180, "0");
 		tab_group_note.add(strumTimeInputText);
 		blockPressWhileTypingOn.push(strumTimeInputText);
+
+		strumTimeInputText.backgroundColor = 0xFF333333;
+        strumTimeInputText.setFormat(Paths.font("resultsFont.ttf"), 12, FlxColor.WHITE);
 
 		var key:Int = 0;
 		while (key < noteTypeList.length) {
@@ -873,9 +907,9 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 			displayNameList[i] = i + '. ' + displayNameList[i];
 		}
 
-		noteTypeDropDown = new PsychUIDropDownMenu(10, 105, displayNameList, function(id:Int, character:String)
+		noteTypeDropDown = new FlxUIDropDownMenu(10, 105, FlxUIDropDownMenu.makeStrIdLabelArray(displayNameList, true), function(character:String)
 		{
-			currentType = id;
+			currentType = Std.parseInt(character);
 			if(curSelectedNote != null && curSelectedNote[1] > -1) {
 				curSelectedNote[3] = curNoteTypes[currentType];
 				updateGrid();
@@ -897,14 +931,17 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		tab_group_note.add(stepperSusLength);
 		tab_group_note.add(strumTimeInputText);
 		tab_group_note.add(noteTypeDropDown);
+
+		UI_box.addGroup(tab_group_note);
 	}
 
-	var eventDropDown:PsychUIDropDownMenu;
+	var eventDropDown:FlxUIDropDownMenu;
 	var descText:FlxText;
 	var selectedEventText:FlxText;
 	function addEventsUI():Void
 	{
-		var tab_group_event = UI_box.getTab('Events').menu;
+		var tab_group_event = new FlxUI(null, UI_box);
+		tab_group_event.name = 'Events';
 
 		descText = new FlxText(20, 180, 0, eventStuff[0][0]);
 		descText.setFormat(Paths.font("resultsFont.ttf"), 10, FlxColor.WHITE);
@@ -917,8 +954,8 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		var text:FlxText = new FlxText(20, 30, 0, "Event:");
 		text.setFormat(Paths.font("resultsFont.ttf"), 12, FlxColor.WHITE);
 		tab_group_event.add(text);
-		eventDropDown = new PsychUIDropDownMenu(20, 50, leEvents, function(id:Int, pressed:String) {
-			var selectedEvent:Int = id;
+		eventDropDown = new FlxUIDropDownMenu(20, 50, FlxUIDropDownMenu.makeStrIdLabelArray(leEvents, true), function(pressed:String) {
+			var selectedEvent:Int = Std.parseInt(pressed);
 			descText.text = eventStuff[selectedEvent][1];
 				if (curSelectedNote != null &&  eventStuff != null) {
 				if (curSelectedNote != null && curSelectedNote[2] == null){
@@ -933,17 +970,23 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		var text:FlxText = new FlxText(20, 90, 0, "Value 1:");
 		text.setFormat(Paths.font("resultsFont.ttf"), 12, FlxColor.WHITE);
 		tab_group_event.add(text);
-		value1InputText = new PsychUIInputText(20, 110, 100, "");
+		value1InputText = new FlxUIInputText(20, 110, 100, "");
 		blockPressWhileTypingOn.push(value1InputText);
 
 		var text:FlxText = new FlxText(20, 130, 0, "Value 2:");
 		text.setFormat(Paths.font("resultsFont.ttf"), 12, FlxColor.WHITE);
 		tab_group_event.add(text);
-		value2InputText = new PsychUIInputText(20, 150, 100, "");
+		value2InputText = new FlxUIInputText(20, 150, 100, "");
 		blockPressWhileTypingOn.push(value2InputText);
 
+		for (i in [value1InputText, value2InputText])
+		{
+			i.backgroundColor = 0xFF333333;
+			i.setFormat(Paths.font("resultsFont.ttf"), 12, FlxColor.WHITE);
+		}
+
 		// New event buttons
-		var removeButton:PsychUIButton = new PsychUIButton(eventDropDown.x + eventDropDown.width + 10, eventDropDown.y, '-', function()
+		var removeButton:FlxButton = new FlxButton(eventDropDown.x + eventDropDown.width + 10, eventDropDown.y, '-', function()
 		{
 			if(curSelectedNote != null && curSelectedNote[2] == null) //Is event note
 			{
@@ -966,13 +1009,15 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 				updateGrid();
 			}
 		});
-		removeButton.resize(Std.int(removeButton.height), Std.int(removeButton.height));
-		removeButton.normalStyle.bgColor = 0xFF210707;
-		removeButton.normalStyle.textColor = FlxColor.WHITE;
+		removeButton.setGraphicSize(Std.int(removeButton.height), Std.int(removeButton.height));
+		removeButton.updateHitbox();
+		removeButton.color = 0xFF210707;
+		removeButton.label.color = FlxColor.WHITE;
+		removeButton.label.size = 12;
+		setAllLabelsOffset(removeButton, -30, 0);
 		tab_group_event.add(removeButton);
 
-
-		var addButton:PsychUIButton = new PsychUIButton(removeButton.x + removeButton.width + 10, removeButton.y, '+', function()
+		var addButton:FlxButton = new FlxButton(removeButton.x + removeButton.width + 10, removeButton.y, '+', function()
 		{
 			if(curSelectedNote != null && curSelectedNote[2] == null) //Is event note
 			{
@@ -983,29 +1028,38 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 				updateGrid();
 			}
 		});
-		addButton.resize(Std.int(removeButton.width), Std.int(removeButton.height));
-		addButton.normalStyle.bgColor = 0xFF152C12;
-		addButton.normalStyle.textColor = FlxColor.WHITE;
+		addButton.setGraphicSize(Std.int(removeButton.width), Std.int(removeButton.height));
+		addButton.updateHitbox();
+		addButton.color = 0xFF152C12;
+		addButton.label.color = FlxColor.WHITE;
+		addButton.label.size = 12;
+		setAllLabelsOffset(addButton, -30, 0);
 		tab_group_event.add(addButton);
 
-		var moveLeftButton:PsychUIButton = new PsychUIButton(addButton.x + addButton.width + 20, addButton.y, '<', function()
+		var moveLeftButton:FlxButton = new FlxButton(addButton.x + addButton.width + 20, addButton.y, '<', function()
 		{
 			changeEventSelected(-1);
 		});
-		moveLeftButton.resize(Std.int(addButton.width), Std.int(addButton.height));
+		moveLeftButton.setGraphicSize(Std.int(addButton.width), Std.int(addButton.height));
+		moveLeftButton.updateHitbox();
+		moveLeftButton.label.size = 12;
+		setAllLabelsOffset(moveLeftButton, -30, 0);
 		tab_group_event.add(moveLeftButton);
 
-		var moveRightButton:PsychUIButton = new PsychUIButton(moveLeftButton.x + moveLeftButton.width + 10, moveLeftButton.y, '>', function()
+		var moveRightButton:FlxButton = new FlxButton(moveLeftButton.x + moveLeftButton.width + 10, moveLeftButton.y, '>', function()
 		{
 			changeEventSelected(1);
 		});
-		moveRightButton.resize(Std.int(moveLeftButton.width), Std.int(moveLeftButton.height));
+		moveRightButton.setGraphicSize(Std.int(moveLeftButton.width), Std.int(moveLeftButton.height));
+		moveRightButton.updateHitbox();
+		moveRightButton.label.size = 12;
+		setAllLabelsOffset(moveRightButton, -30, 0);
 		tab_group_event.add(moveRightButton);
 
 		for (b in [moveLeftButton, moveRightButton])
 		{
-			b.normalStyle.bgColor = FlxColor.fromRGB(36, 36, 36);
-			b.normalStyle.textColor = FlxColor.WHITE;
+			b.color = FlxColor.fromRGB(36, 36, 36);
+			b.label.color = FlxColor.WHITE;
 		}
 
 		selectedEventText = new FlxText(addButton.x - 100, addButton.y + addButton.height + 6, (moveRightButton.x - addButton.x) + 186, 'Selected Event: None');
@@ -1017,6 +1071,8 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		tab_group_event.add(value1InputText);
 		tab_group_event.add(value2InputText);
 		tab_group_event.add(eventDropDown);
+
+		UI_box.addGroup(tab_group_event);
 	}
 
 	function changeEventSelected(change:Int = 0)
@@ -1036,21 +1092,30 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		updateNoteUI();
 	}
 
-	var metronome:PsychUICheckBox;
-	var mouseScrollingQuant:PsychUICheckBox;
-	var metronomeStepper:PsychUINumericStepper;
-	var metronomeOffsetStepper:PsychUINumericStepper;
+	function setAllLabelsOffset(button:FlxButton, x:Float, y:Float)
+	{
+		for (point in button.labelOffsets)
+		{
+			point.set(x, y);
+		}
+	}
 
-	var waveformTrackDropDown:PsychUIDropDownMenu;
+	var metronome:FlxUICheckBox;
+	var mouseScrollingQuant:FlxUICheckBox;
+	var metronomeStepper:FlxUINumericStepper;
+	var metronomeOffsetStepper:FlxUINumericStepper;
+
+	var waveformTrackDropDown:FlxUIDropDownMenu;
 	var waveformTrack:FlxSound;
-	var trackVolumeStepper:PsychUINumericStepper;
-	var muteTrackCheck:PsychUICheckBox;
+	var trackVolumeStepper:FlxUINumericStepper;
+	var muteTrackCheck:FlxUICheckBox;
 	
-	var instVolume:PsychUINumericStepper;
-	var voicesVolume:PsychUINumericStepper;
-	var voicesOppVolume:PsychUINumericStepper;
+	var instVolume:FlxUINumericStepper;
+	var voicesVolume:FlxUINumericStepper;
+	var voicesOppVolume:FlxUINumericStepper;
 	function addChartingUI() {
-		var tab_group_chart = UI_box.getTab('Charting').menu;
+		var tab_group_chart = new FlxUI(null, UI_box);
+		tab_group_chart.name = 'Charting';
 
 		var displayNameList = ["None"];
 		for (k => v in soundTracksMap)
@@ -1059,8 +1124,10 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		var trackVolumeTxt:FlxText = null;
 		var trackName:String;
 
-		waveformTrackDropDown = new PsychUIDropDownMenu(10, 100, displayNameList, function(id:Int, idx:String) {
-				trackName = displayNameList[id];
+		waveformTrackDropDown = new FlxUIDropDownMenu(10, 100, 
+			FlxUIDropDownMenu.makeStrIdLabelArray(displayNameList, true), 
+			function(idx:String){
+				trackName = displayNameList[Std.parseInt(idx)];
 				waveformTrack = soundTracksMap.get(trackName); 
 
 				if (waveformTrack != null){
@@ -1080,14 +1147,15 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		);
 		blockPressWhileScrolling.push(waveformTrackDropDown);
 
-		trackVolumeStepper = new PsychUINumericStepper(waveformTrackDropDown.x + waveformTrackDropDown.width + 64, waveformTrackDropDown.y + 5, 0.1, 1, 0, 1, 1);
+		trackVolumeStepper = new FlxUINumericStepper(waveformTrackDropDown.x + waveformTrackDropDown.width + 64, waveformTrackDropDown.y + 5, 0.1, 1, 0, 1, 1);
+		trackVolumeStepper.name = "track_volume";
 		blockPressWhileTypingOnStepper.push(trackVolumeStepper);
 
 		trackVolumeTxt = new FlxText(trackVolumeStepper.x, trackVolumeStepper.y - 15, 0, "Volume:");
 
-		muteTrackCheck = new PsychUICheckBox(trackVolumeStepper.x + 100, trackVolumeStepper.y, "Mute Track");
+		muteTrackCheck = new FlxUICheckBox(trackVolumeStepper.x + 100, trackVolumeStepper.y, null, null, "Mute Track", 100);
 		muteTrackCheck.checked = false;
-		muteTrackCheck.onClick = function()
+		muteTrackCheck.callback = function()
 		{
 			var vol:Float = trackName == "Intrumentals" ? 0.6 : 1;
 
@@ -1097,7 +1165,7 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 			waveformTrack.volume = vol;
 		};
 		
-		playSoundBf = new PsychUICheckBox(10, 300 + 50, 'Play Sound (Boyfriend notes)', 100,
+		playSoundBf = new FlxUICheckBox(10, 300 + 50, null, null, 'Play Sound (Boyfriend notes)', 100,
 			function() {
 				FlxG.save.data.chart_playSoundBf = playSoundBf.checked;
 			}
@@ -1105,7 +1173,7 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		if (FlxG.save.data.chart_playSoundBf == null) FlxG.save.data.chart_playSoundBf = false;
 		playSoundBf.checked = FlxG.save.data.chart_playSoundBf;
 
-		playSoundDad = new PsychUICheckBox(playSoundBf.x + 140, playSoundBf.y, 'Play Sound (Opponent notes)', 100,
+		playSoundDad = new FlxUICheckBox(playSoundBf.x + 140, playSoundBf.y, null, null, 'Play Sound (Opponent notes)', 100,
 			function() {
 				FlxG.save.data.chart_playSoundDad = playSoundDad.checked;
 			}
@@ -1113,7 +1181,7 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		if (FlxG.save.data.chart_playSoundDad == null) FlxG.save.data.chart_playSoundDad = false;
 		playSoundDad.checked = FlxG.save.data.chart_playSoundDad;
 
-		metronome = new PsychUICheckBox(10, 15, "Metronome Enabled", 100,
+		metronome = new FlxUICheckBox(10, 15, null, null, "Metronome Enabled", 100,
 			function() {
 				FlxG.save.data.chart_metronome = metronome.checked;
 			}
@@ -1121,49 +1189,47 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		if (FlxG.save.data.chart_metronome == null) FlxG.save.data.chart_metronome = false;
 		metronome.checked = FlxG.save.data.chart_metronome;
 
-		metronomeStepper = new PsychUINumericStepper(12, 55, 5, _song.bpm, 1, 1500, 1);
-		metronomeOffsetStepper = new PsychUINumericStepper(metronomeStepper.x + 68, metronomeStepper.y, 25, 0, 0, 1000, 1);
+		metronomeStepper = new FlxUINumericStepper(12, 55, 5, _song.bpm, 1, 1500, 1);
+		metronomeOffsetStepper = new FlxUINumericStepper(metronomeStepper.x + 68, metronomeStepper.y, 25, 0, 0, 1000, 1);
 		blockPressWhileTypingOnStepper.push(metronomeStepper);
 		blockPressWhileTypingOnStepper.push(metronomeOffsetStepper);
 
-		mouseScrollingQuant = new PsychUICheckBox(playSoundBf.x + 250, 190, "Mouse Scrolling Quantization");
+		mouseScrollingQuant = new FlxUICheckBox(playSoundBf.x + 250, 190, null, null, "Mouse Scrolling Quantization", 100);
 		if (FlxG.save.data.mouseScrollingQuant == null) FlxG.save.data.mouseScrollingQuant = false;
 		mouseScrollingQuant.checked = FlxG.save.data.mouseScrollingQuant;
 
-		mouseScrollingQuant.onClick = function()
+		mouseScrollingQuant.callback = function()
 		{
 			FlxG.save.data.mouseScrollingQuant = mouseScrollingQuant.checked;
 			mouseQuant = FlxG.save.data.mouseScrollingQuant;
 		};
 
-		check_vortex = new PsychUICheckBox(playSoundBf.x + 250, mouseScrollingQuant.y + 50, "Vortex Editor (BETA)");
+		check_vortex = new FlxUICheckBox(playSoundBf.x + 250, mouseScrollingQuant.y + 50, null, null, "Vortex Editor (BETA)", 100);
 		if (FlxG.save.data.chart_vortex == null) FlxG.save.data.chart_vortex = false;
 		check_vortex.checked = FlxG.save.data.chart_vortex;
 
-		check_vortex.onClick = function()
+		check_vortex.callback = function()
 		{
 			FlxG.save.data.chart_vortex = check_vortex.checked;
 			vortex = FlxG.save.data.chart_vortex;
 			reloadGridLayer();
 		};
 
-		check_warnings = new PsychUICheckBox(playSoundBf.x + 250, check_vortex.y + 50, "Ignore Progress Warnings");
+		check_warnings = new FlxUICheckBox(playSoundBf.x + 250, check_vortex.y + 50, null, null, "Ignore Progress Warnings", 100);
 		if (FlxG.save.data.ignoreWarnings == null) FlxG.save.data.ignoreWarnings = false;
 		check_warnings.checked = FlxG.save.data.ignoreWarnings;
 
-		check_warnings.onClick = function()
+		check_warnings.callback = function()
 		{
 			FlxG.save.data.ignoreWarnings = check_warnings.checked;
 			ignoreWarnings = FlxG.save.data.ignoreWarnings;
 		};
 		
 		#if FLX_PITCH
-		sliderRate = new PsychUISlider(metronomeOffsetStepper.x + 160, metronomeStepper.y - 30, function(v:Float) {
-            playbackSpeed = v;
-        }, 1, 0.5, 3, 150);
-		for (i in [sliderRate.labelText, sliderRate.minText, sliderRate.maxText, sliderRate.valueText])
+		sliderRate = new FlxUISlider(this, 'playbackSpeed', metronomeOffsetStepper.x + 160, metronomeStepper.y - 30, 0.5, 3, 150, null, 5, 0xFF333333, FlxColor.WHITE);
+		sliderRate.nameLabel.text = 'Playback Rate';
+		for (i in [sliderRate.nameLabel, sliderRate.minLabel, sliderRate.maxLabel, sliderRate.valueLabel])
 			i.setFormat(Paths.font("resultsFont.ttf"), 13, FlxColor.WHITE);
-		sliderRate.label = 'Playback Rate';
 		tab_group_chart.add(sliderRate);
 		#end
 
@@ -1196,84 +1262,93 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		trackVolumeStepper.visible = false;
 		muteTrackCheck.visible = false;
 		trackVolumeTxt.visible = false;
+
+		UI_box.addGroup(tab_group_chart);
 	}
 
-	var gameOverStyleDropDown:PsychUIDropDownMenu;
-	var noteSkinDropDown:PsychUIDropDownMenu;
-	var noteSplashesDropDown:PsychUIDropDownMenu;
+	var gameOverStyleDropDown:FlxUIDropDownMenu;
+	var noteSkinDropDown:FlxUIDropDownMenu;
+	var noteSplashesDropDown:FlxUIDropDownMenu;
 	function addDataUI()
 	{
-		var tab_group_data = UI_box.getTab('Data').menu;
+		var tab_group_data = new FlxUI(null, UI_box);
+		tab_group_data.name = 'Data';
 
 		var gameOverStyles:Array<String> = ['Default', 'Episode 1', 'Delusional', "Cross", 'War', 'Malfunction', 'Birthday', 'Base Game'];
 		var noteSkins:Array<String> = ['Default', 'Cartoon', 'Cross', "War", 'Mercy', 'Sin', 'Malfunction', 'Birthday', 'Mania', 'Base Game'];
 		var noteSplashSkins:Array<String> = ['Default', 'Diamond', 'Sparkles', "Birthday"];
 
-		var check_disableNoteRGB:PsychUICheckBox = new PsychUICheckBox(10, 170, "Disable Note RGB", 100);
+		var check_disableNoteRGB:FlxUICheckBox = new FlxUICheckBox(10, 170, null, null, "Disable Note RGB", 100);
 		check_disableNoteRGB.checked = (_song.disableNoteRGB == true);
-		check_disableNoteRGB.onClick = function()
+		check_disableNoteRGB.callback = function()
 		{
 			_song.disableNoteRGB = check_disableNoteRGB.checked;
 			updateGrid();
 			//trace('CHECKED!');
 		};
 
-		gameOverStyleDropDown = new PsychUIDropDownMenu(10, 25, gameOverStyles, function(id:Int, idx:String)
-		{
-			_song.gameOverStyle = gameOverStyles[id];
-		});
+		gameOverStyleDropDown = new FlxUIDropDownMenu(10, 25, 
+			FlxUIDropDownMenu.makeStrIdLabelArray(gameOverStyles, true), 
+			function(idx:String){
+				_song.gameOverStyle = gameOverStyles[Std.parseInt(idx)];
+			}
+		);
 		gameOverStyleDropDown.selectedLabel = _song.gameOverStyle;
 		blockPressWhileScrolling.push(gameOverStyleDropDown);
 
-		noteSkinDropDown = new PsychUIDropDownMenu(10, gameOverStyleDropDown.y + 60, noteSkins, function(id:Int, idx:String)
-		{
-			var skin:String = "NOTE_assets";
-			switch(noteSkins[id])
-			{
-				case "Default":
-					skin = "faviNotes/NOTE_assets-DEFAULT";
-				case "Cartoon":
-					skin = "faviNotes/NOTE_assets-CARTOON";
-				case "Cross":
-					skin = "faviNotes/NOTE_assets-CROSS";
-				case "War":
-					skin = "faviNotes/NOTE_assets-WAR";
-				case "Mercy":
-					skin = "faviNotes/NOTE_assets-MERCY";
-				case "Sin":
-					skin = "faviNotes/NOTE_assets-SIN";
-				case "Malfunction":
-					skin = "faviNotes/NOTE_assets-MALFUNCTION";
-				case "Birthday":
-					skin = "faviNotes/NOTE_assets-BIRTHDAY";
-				case "Mania":
-					switch (FreeplayState.maniaSkin)
-					{
-						case 0: skin = "faviNotes/NOTE_assets-MANIA";
-						case 1: skin = "faviNotes/NOTE_assets-MANIABAR";
-						case 2: skin = "faviNotes/NOTE_assets-MANIACIRCLE";
-					}
-				case "Base Game":
-					skin = "NOTE_assets";
+		noteSkinDropDown = new FlxUIDropDownMenu(10, gameOverStyleDropDown.y + 60, 
+			FlxUIDropDownMenu.makeStrIdLabelArray(noteSkins, true), 
+			function(idx:String){
+				var skin:String = "NOTE_assets";
+				switch(noteSkins[Std.parseInt(idx)])
+				{
+					case "Default":
+						skin = "faviNotes/NOTE_assets-DEFAULT";
+					case "Cartoon":
+						skin = "faviNotes/NOTE_assets-CARTOON";
+					case "Cross":
+						skin = "faviNotes/NOTE_assets-CROSS";
+					case "War":
+						skin = "faviNotes/NOTE_assets-WAR";
+					case "Mercy":
+						skin = "faviNotes/NOTE_assets-MERCY";
+					case "Sin":
+						skin = "faviNotes/NOTE_assets-SIN";
+					case "Malfunction":
+						skin = "faviNotes/NOTE_assets-MALFUNCTION";
+					case "Birthday":
+						skin = "faviNotes/NOTE_assets-BIRTHDAY";
+					case "Mania":
+						switch (FreeplayState.maniaSkin)
+						{
+							case 0: skin = "faviNotes/NOTE_assets-MANIA";
+							case 1: skin = "faviNotes/NOTE_assets-MANIABAR";
+							case 2: skin = "faviNotes/NOTE_assets-MANIACIRCLE";
+						}
+					case "Base Game":
+						skin = "NOTE_assets";
+				}
+				_song.arrowSkin = skin;
+				updateGrid();
 			}
-			_song.arrowSkin = skin;
-			updateGrid();
-		});
+		);
 		noteSkinDropDown.selectedLabel = _song.arrowSkin;
 		blockPressWhileScrolling.push(noteSkinDropDown);
 
-		noteSplashesDropDown = new PsychUIDropDownMenu(10, noteSkinDropDown.y + 60, noteSplashSkins, function(id:Int, idx:String)
-		{
-			var skin:String = 'noteSplashes';
-			switch(noteSplashSkins[id])
-			{
-				case "Sparkles": skin = "noteSplashes/noteSplashes-sparkles";
-				case "Diamond": skin = "noteSplashes/noteSplashes-diamond";
-				case "Birthday": skin = "noteSplashes/noteSplashes-birthday";
-				case "Default": skin = "noteSplashes/noteSplashes" + NoteSplash.getSplashSkinPostfix();
+		noteSplashesDropDown = new FlxUIDropDownMenu(10, noteSkinDropDown.y + 60, 
+			FlxUIDropDownMenu.makeStrIdLabelArray(noteSplashSkins, true), 
+			function(idx:String){
+				var skin:String = 'noteSplashes';
+				switch(noteSplashSkins[Std.parseInt(idx)])
+				{
+					case "Sparkles": skin = "noteSplashes/noteSplashes-sparkles";
+					case "Diamond": skin = "noteSplashes/noteSplashes-diamond";
+					case "Birthday": skin = "noteSplashes/noteSplashes-birthday";
+					case "Default": skin = "noteSplashes/noteSplashes" + NoteSplash.getSplashSkinPostfix();
+				}
+				_song.splashSkin = skin;
 			}
-			_song.splashSkin = skin;
-		});
+		);
 		noteSplashesDropDown.selectedLabel = _song.splashSkin;
 		blockPressWhileScrolling.push(noteSplashesDropDown);
 
@@ -1294,6 +1369,8 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		tab_group_data.add(noteSplashesDropDown);
 		tab_group_data.add(noteSkinDropDown);
 		tab_group_data.add(gameOverStyleDropDown);
+
+		UI_box.addGroup(tab_group_data);
 	}
 
 	function loadSong():Void
@@ -1464,8 +1541,75 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		bullshitUI.add(title);
 	}
 
-	public function UIEvent(id:String, sender:Dynamic) {
-		if(id == PsychUIInputText.CHANGE_EVENT) {
+	override function getEvent(id:String, sender:Dynamic, data:Dynamic, ?params:Array<Dynamic>)
+	{
+		if (id == FlxUICheckBox.CLICK_EVENT)
+		{
+			var check:FlxUICheckBox = cast sender;
+			var label = check.getLabel().text;
+			switch (label)
+			{
+				case 'Must hit section':
+					_song.notes[curSec].mustHitSection = check.checked;
+
+					updateGrid();
+					updateHeads();
+
+				case 'GF section':
+					_song.notes[curSec].gfSection = check.checked;
+
+					updateGrid();
+					updateHeads();
+
+				case 'Change BPM':
+					_song.notes[curSec].changeBPM = check.checked;
+					FlxG.log.add('changed bpm shit');
+				case "Alt Animation":
+					_song.notes[curSec].altAnim = check.checked;
+			}
+		}
+		else if (id == FlxUINumericStepper.CHANGE_EVENT && (sender is FlxUINumericStepper))
+		{
+			var nums:FlxUINumericStepper = cast sender;
+			var wname = nums.name;
+			//FlxG.log.add(wname);
+			switch(wname)
+			{
+				case 'section_beats':
+					_song.notes[curSec].sectionBeats = nums.value;
+					reloadGridLayer();
+
+				case 'song_speed':
+					_song.speed = nums.value;
+
+				case 'song_bpm':
+					_song.bpm = nums.value;
+					Conductor.mapBPMChanges(_song);
+					Conductor.bpm = nums.value;
+					stepperSusLength.stepSize = Math.ceil(Conductor.stepCrochet / 2);
+					updateGrid();
+
+				case 'note_susLength':
+					if(curSelectedNote != null && curSelectedNote[2] != null) {
+						curSelectedNote[2] = nums.value;
+						updateGrid();
+					}
+
+				case 'section_bpm':
+					_song.notes[curSec].bpm = nums.value;
+					updateGrid();
+
+				case 'track_volume':
+					if (waveformTrack != null)
+					{
+						waveformTrack.volume = nums.value;
+						if (waveformTrack.volume == 0) muteTrackCheck.checked = true; else muteTrackCheck.checked = false;
+					}
+					else
+						trace("No track selected.");
+			}
+		}
+		else if(id == FlxUIInputText.CHANGE_EVENT && (sender is FlxUIInputText)) {
 			if(curSelectedNote != null)
 			{
 				if(sender == value1InputText) {
@@ -1490,68 +1634,16 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 				}
 			}
 		}
-		else if (id == PsychUINumericStepper.CHANGE_EVENT)
+		else if (id == FlxUISlider.CHANGE_EVENT && (sender is FlxUISlider))
 		{
-			if (sender == stepperBeats)
+			switch (sender)
 			{
-				_song.notes[curSec].sectionBeats = stepperBeats.value;
-				reloadGridLayer();
-			}
-			else if (sender == stepperSpeed)
-				_song.speed = stepperSpeed.value;
-			else if (sender == stepperBPM)
-			{
-				_song.bpm = stepperBPM.value;
-				Conductor.mapBPMChanges(_song);
-				Conductor.bpm = stepperBPM.value;
-				stepperSusLength.step = Math.ceil(Conductor.stepCrochet / 2);
-				updateGrid();
-			}
-			else if (sender == stepperSectionBPM)
-			{
-				_song.notes[curSec].bpm = stepperSectionBPM.value;
-				updateGrid();
-			}
-			else if (sender == trackVolumeStepper)
-			{
-				if (waveformTrack != null)
-				{
-					waveformTrack.volume = trackVolumeStepper.value;
-					if (waveformTrack.volume == 0) muteTrackCheck.checked = true; else muteTrackCheck.checked = false;
-				}
-				else
-					trace("No track selected.");
+				case 'playbackSpeed':
+					playbackSpeed = #if FLX_PITCH Std.int(sliderRate.value) #else 1.0 #end;
 			}
 		}
-		else if(id == PsychUISlider.CHANGE_EVENT)
-		{
-			if (sender == sliderRate)
-        		playbackSpeed = #if FLX_PITCH Std.int(sliderRate.value) #else 1.0 #end;
-		}
-		else if (id == PsychUICheckBox.CLICK_EVENT)
-		{
-			if (sender == check_mustHitSection)
-			{
-        		_song.notes[curSec].mustHitSection = check_mustHitSection.checked;
 
-				updateGrid();
-				updateHeads();
-			}
-			else if (sender == check_gfSection)
-			{
-        		_song.notes[curSec].gfSection = check_gfSection.checked;
-
-				updateGrid();
-				updateHeads();
-			}
-			else if (sender == check_changeBPM)
-			{
-        		_song.notes[curSec].changeBPM = check_changeBPM.checked;
-				FlxG.log.add('changed bpm shit');
-			}
-			else if (sender == check_altAnim)
-				_song.notes[curSec].altAnim = check_altAnim.checked;
-		}
+		// FlxG.log.add(id + " WEED " + sender + " WEED " + data + " WEED " + params);
 	}
 
 	var updatedSection:Bool = false;
@@ -1672,12 +1764,35 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		}
 
 		var blockInput:Bool = false;
-		if (PsychUIInputText.focusOn != null)
-			blockInput = true;
-		else
-			blockInput = false;
+		for (inputText in blockPressWhileTypingOn) {
+			if(inputText.hasFocus) {
+				ClientPrefs.toggleVolumeKeys(false);
+				blockInput = true;
+				break;
+			}
+		}
 
-		ClientPrefs.toggleVolumeKeys(PsychUIInputText.focusOn == null);
+		if(!blockInput) {
+			for (stepper in blockPressWhileTypingOnStepper) {
+				@:privateAccess
+				var leText:FlxUIInputText = cast (stepper.text_field, FlxUIInputText);
+				if(leText.hasFocus) {
+					ClientPrefs.toggleVolumeKeys(false);
+					blockInput = true;
+					break;
+				}
+			}
+		}
+
+		if(!blockInput) {
+			ClientPrefs.toggleVolumeKeys(true);
+			for (dropDownMenu in blockPressWhileScrolling) {
+				if(dropDownMenu.dropPanel.visible) {
+					blockInput = true;
+					break;
+				}
+			}
+		}
 
 		if (!blockInput)
 		{
@@ -1750,6 +1865,22 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 			if(FlxG.keys.justPressed.X && curZoom < zoomList.length-1) {
 				curZoom++;
 				updateZoom();
+			}
+
+			if (FlxG.keys.justPressed.TAB)
+			{
+				if (FlxG.keys.pressed.SHIFT)
+				{
+					UI_box.selected_tab -= 1;
+					if (UI_box.selected_tab < 0)
+						UI_box.selected_tab = 2;
+				}
+				else
+				{
+					UI_box.selected_tab += 1;
+					if (UI_box.selected_tab >= 3)
+						UI_box.selected_tab = 0;
+				}
 			}
 
 			if (FlxG.keys.justPressed.SPACE)
@@ -1938,6 +2069,12 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 					changeSection(_song.notes.length-1);
 				} else {
 					changeSection(curSec - shiftThing);
+				}
+			}
+		} else if (FlxG.keys.justPressed.ENTER) {
+			for (i in 0...blockPressWhileTypingOn.length) {
+				if(blockPressWhileTypingOn[i].hasFocus) {
+					blockPressWhileTypingOn[i].hasFocus = false;
 				}
 			}
 		}
@@ -2538,7 +2675,7 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 				}
 			} else {
 				eventDropDown.selectedLabel = curSelectedNote[1][curEventSelected][0];
-				var selected:Int = eventDropDown.selectedIndex;
+				var selected:Int = Std.parseInt(eventDropDown.selectedId);
 				if(selected > 0 && selected < eventStuff.length) {
 					descText.text = eventStuff[selected][1];
 				}
@@ -2869,7 +3006,7 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		}
 		else
 		{
-			var event = eventStuff[eventDropDown.selectedIndex][0];
+			var event = eventStuff[Std.parseInt(eventDropDown.selectedId)][0];
 			var text1 = value1InputText.text;
 			var text2 = value2InputText.text;
 			_song.events.push([noteStrum, [[event, text1, text2]]]);

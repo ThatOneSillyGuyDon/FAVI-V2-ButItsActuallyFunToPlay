@@ -1004,28 +1004,27 @@ class PlayState extends MusicBeatState
 		reloadHealthBarColors();
 
 		scoreTxt = new FlxBitmapText(0, ((curStage == "menuSongs" || curStage == "waltRoom") ? (ClientPrefs.data.downScroll ? 15 : 675) : healthBar.y + 36), '', FlxBitmapFont.fromAngelCode(Paths.font("DisneyFont.png"), Paths.font("DisneyFont.fnt")));
-		scoreTxt.alignment = CENTER;
-		scoreTxt.borderStyle = OUTLINE;
-		scoreTxt.borderColor = FlxColor.BLACK;
 		scoreTxt.letterSpacing = -1;
 		scoreTxt.scrollFactor.set();
 		scoreTxt.borderSize = 1.25;
 		scoreTxt.visible = (!ClientPrefs.data.hideHud || !cpuControlled);
-		scoreTxt.scale.set(0.5, 0.5);
+		scoreTxt.scale.set(0.45, 0.45);
+		scoreTxt.alignment = FlxTextAlign.CENTER;
+		scoreTxt.borderStyle = FlxTextBorderStyle.OUTLINE;
+		scoreTxt.borderColor = FlxColor.BLACK;
 		scoreTxt.updateHitbox();
 		updateScore(false);
 		uiGroup.add(scoreTxt);
 
 		if (FreeplayState.freeplayMenuList == 2 && !isStoryMode)
 		{
-		#if desktop
 			var peWatermark:FlxText = new FlxText(5, FlxG.height - 29, 0, "", 16);
 			peWatermark.setFormat(Paths.font("DisneyFont.ttf"), 28, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 			peWatermark.scrollFactor.set();
 			peWatermark.text = 'Funkin.avi | $curSong (Hard)';
 			peWatermark.cameras = [camOther];
 			add(peWatermark);
-		#end
+			
 			var SCALEdebugText:FlxText = new FlxText(10,10,200,"Default scale mode (ratio)");
 			SCALEdebugText.scrollFactor.set(0,0);
 			SCALEdebugText.cameras = [camOther];
@@ -1879,20 +1878,6 @@ class PlayState extends MusicBeatState
 	}
 
 	public function doScoreBop():Void {
-		if(!ClientPrefs.data.scoreZoom)
-			return;
-
-		if(scoreTxtTween != null)
-			scoreTxtTween.cancel();
-
-		scoreTxt.scale.x = 1.075;
-		scoreTxt.scale.y = 1.075;
-		scoreTxtTween = FlxTween.tween(scoreTxt.scale, {x: 1, y: 1}, 0.2, {
-			onComplete: function(twn:FlxTween) {
-				scoreTxtTween = null;
-			}
-		});
-
 		// Updating Discord Rich Presence (with Time Left)
 		if (autoUpdateRPC)
 			switch (SONG.song)
@@ -1900,6 +1885,20 @@ class PlayState extends MusicBeatState
 				case "Joygrim" | "Neglection" | "Scrapped" | "Whimsical Bar Blues": DiscordClient.changePresence("Playing a song", "It's a secret...", "icon", "random", true, songLength - Conductor.songPosition - ClientPrefs.data.noteOffset);
 				default: DiscordClient.changePresence(discordTxt[0], (isDisplayingScore ? scoreTxt.text : discordTxt[1]), CoolUtil.spaceToDash(discordIcon), "random", true, songLength - Conductor.songPosition - ClientPrefs.data.noteOffset);
 			}
+
+		if(!ClientPrefs.data.scoreZoom)
+			return;
+
+		if(scoreTxtTween != null)
+			scoreTxtTween.cancel();
+
+		scoreTxt.scale.x = 0.45;
+		scoreTxt.scale.y = 0.45;
+		scoreTxtTween = FlxTween.tween(scoreTxt.scale, {x: 0.4, y: 0.4}, 0.2, {
+			onComplete: function(twn:FlxTween) {
+				scoreTxtTween = null;
+			}
+		});
 	}
 
 	public function setSongTime(time:Float)

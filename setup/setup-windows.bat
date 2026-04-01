@@ -8,6 +8,7 @@ haxelib set lime 8.2.2
 haxelib set openfl 9.4.1
 haxelib set flixel 5.6.1
 haxelib set flixel-addons 3.2.2
+haxelib set flixel-ui 2.5.0
 haxelib set flixel-tools 1.5.1
 haxelib set hscript-iris 1.1.3
 haxelib set hscript 2.7.0
