@@ -14,8 +14,6 @@ import lime.app.Application;
 import openfl.Lib;
 import flash.system.System;
 
-import flixel.text.FlxBitmapFont;
-import flixel.text.FlxBitmapText;
 import flixel.FlxBasic;
 import flixel.FlxObject;
 import flixel.FlxSubState;
@@ -276,7 +274,7 @@ class PlayState extends MusicBeatState
 	public var songScore:Int = 0;
 	public var songHits:Int = 0;
 	public var songMisses:Int = 0;
-	public var scoreTxt:FlxBitmapText;
+	public var scoreTxt:FlxText;
 	var scoreTxtTween:FlxTween;
 
 	public var scratch:FlxSprite; // Peter Griffin: This reminds me of the time I met the Scratch cat
@@ -1003,16 +1001,11 @@ class PlayState extends MusicBeatState
 		uiGroup.add(iconP2);
 		reloadHealthBarColors();
 
-		scoreTxt = new FlxBitmapText(0, ((curStage == "menuSongs" || curStage == "waltRoom") ? (ClientPrefs.data.downScroll ? 15 : 675) : healthBar.y + 36), '', FlxBitmapFont.fromAngelCode(Paths.font("DisneyFont.png"), Paths.font("DisneyFont.fnt")));
-		scoreTxt.letterSpacing = -1;
+		scoreTxt = new FlxText(0, ((curStage == "menuSongs" || curStage == "waltRoom") ? (ClientPrefs.data.downScroll ? 15 : 675) : healthBar.y + 36), FlxG.width, "", 20);
+		scoreTxt.setFormat(Paths.font("DisneyFont.ttf"), (FreeplayState.freeplayMenuList == 2  ? 28 : 20), FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
 		scoreTxt.borderSize = 1.25;
 		scoreTxt.visible = (!ClientPrefs.data.hideHud || !cpuControlled);
-		scoreTxt.scale.set(0.45, 0.45);
-		scoreTxt.alignment = FlxTextAlign.CENTER;
-		scoreTxt.borderStyle = FlxTextBorderStyle.OUTLINE;
-		scoreTxt.borderColor = FlxColor.BLACK;
-		scoreTxt.updateHitbox();
 		updateScore(false);
 		uiGroup.add(scoreTxt);
 
