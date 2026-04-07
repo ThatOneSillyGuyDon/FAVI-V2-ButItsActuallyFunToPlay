@@ -9,6 +9,7 @@ import lime.app.Application;
 import flash.system.System;
 import flixel.input.keyboard.FlxKey;
 
+// wow so uhmmmm, this menu got unused i guess ?
 /*class newMainMenuStateThatWontBeUsedTillItsDone extends MusicBeatState{
 	// now its Dynamic! Yay! Anyways Book and Discord will be used as a part of OptionShit. -- (MalyPlus)
 	var optionShit:Array<Array<Dynamic>> = [
