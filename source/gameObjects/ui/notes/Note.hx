@@ -632,7 +632,12 @@ class Note extends FlxSkewedSprite
 							}
 						case "Base Game":
 							skin = "NOTE_assets";
+						default:
+							skin = PlayState.SONG.arrowSkin;
 					}
+
+					if(skin == null || skin.length < 1)
+						skin = PlayState.isPixelStage ? "faviNotes/NOTE_assets-MALFUNCTION" : defaultNoteSkin;
 				}
 				else skin = PlayState.isPixelStage ? "faviNotes/NOTE_assets-MALFUNCTION" : "faviNotes/NOTE_assets-DEFAULT";
 		}
