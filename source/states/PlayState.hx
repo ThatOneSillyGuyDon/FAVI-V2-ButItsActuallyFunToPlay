@@ -278,7 +278,6 @@ class PlayState extends MusicBeatState
 	var scoreTxtTween:FlxTween;
 
 	public var scratch:FlxSprite; // Peter Griffin: This reminds me of the time I met the Scratch cat
-	public var scratchButLessVisible:FlxSprite;
 
 	//vars for manageLyrics function
 	var lyricsIcon:HealthIcon;
@@ -536,7 +535,7 @@ class PlayState extends MusicBeatState
 		curStage = SONG.stage;
 
 		// pathway = 'favi/stages/' + curStage;
-		pathway = 'favi/stages/' + curStage + (SONG.song == "Malfunction" ? '/stupidShit/' : '/images/');
+		pathway = 'favi/stages/' + (SONG.song == "Delusional" ? "abandonedStreet" : curStage) + (SONG.song == "Malfunction" ? '/stupidShit/' : '/images/');
 		
 		trace('[PlayState] curStage=' + curStage
 		+ ' SONG.stage=' + (SONG != null ? SONG.stage : 'null')
@@ -598,7 +597,8 @@ class PlayState extends MusicBeatState
 		{
 			case 'stage': new StageWeek1(); //Week 1
 			case 'alleyway' | 'ddStage': new DDStage(); //Devilish Deal
-			case 'abandonedStreet': new AbandonedStreet(); //Isolated, Lunacy, and Delusional
+			case 'abandonedStreet': new AbandonedStreet(); //Isolated, Lunacy
+			case 'delusionalStreet': new DelusionalStreet(); //Delusional
 			case 'forestNew': new ForestNew(); //Hunted
 			case 'circus': new Circus(); //Laugh Track
 			case 'vaultRoom': new VaultRoom(); //Bless
@@ -3460,7 +3460,7 @@ class PlayState extends MusicBeatState
 				for (cams in [camGame, camHUD])
 					cams.setFilters([]); // kills the shaders if any exists
 
-				for (highEndShit in [scratch, scratchButLessVisible, fancyBarOverlay])
+				for (highEndShit in [scratch, fancyBarOverlay])
 					if (highEndShit != null)
 					{
 						remove(highEndShit);
