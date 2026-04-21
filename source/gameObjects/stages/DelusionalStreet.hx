@@ -1,8 +1,6 @@
 package gameObjects.stages;
 
-#if !flash 
 import openfl.filters.ShaderFilter;
-#end
 
 class DelusionalStreet extends BaseStage
 {
@@ -12,42 +10,42 @@ class DelusionalStreet extends BaseStage
 	var minnieJumpscare:VideoSprite;
 
 	//MICKEY STAGE ASSETS
-	public static var colorsOrSmthElse:FlxSprite;
-	public static var floor:FlxSprite;
-	public static var stageCurtains:FlxSprite;
-	public static var stageFront:FlxSprite;
-	public static var atmosphereParticle:FlxEmitter;
-	public static var ashParticle:FlxEmitter;
-	public static var rain:FlxSprite;
-	public static var heavyRain:FlxSprite;
-	public static var tumbleWeed:FlxSprite;
-	public static var tumbleGrp:FlxTypedGroup<FlxSprite>;
-	public static var lightning:FlxSprite;
-	public static var lightningFore:FlxSprite;
-	public static var fakeLightOfHope:FlxSprite;
-	public static var fireThing:FlxSprite;
-	public static var fireForeground:FlxSprite;
-	public static var fireTweenHandler:FlxTween;
-	public static var rainTween:FlxTween;
-	public static var mickeySpirit:Character;
-	public static var smokeShit:FlxTypedGroup<FlxSprite>;
-	public static var smokeFore:FlxTypedGroup<FlxSprite>;
-	public static var spriteShit:Array<String> = ['smokeBBack', 'smokeTBack'];
-	public static var spriteShitForeground:Array<String> = ['smokeBFore', 'smokeTFore'];
+	var colorsOrSmthElse:FlxSprite;
+	var floor:FlxSprite;
+	var stageCurtains:FlxSprite;
+	var stageFront:FlxSprite;
+	var atmosphereParticle:FlxEmitter;
+	var ashParticle:FlxEmitter;
+	var rain:FlxSprite;
+	var heavyRain:FlxSprite;
+	var tumbleWeed:FlxSprite;
+	var tumbleGrp:FlxTypedGroup<FlxSprite>;
+	var lightning:FlxSprite;
+	var lightningFore:FlxSprite;
+	var fakeLightOfHope:FlxSprite;
+	var fireThing:FlxSprite;
+	var fireForeground:FlxSprite;
+	var fireTweenHandler:FlxTween;
+	var rainTween:FlxTween;
+	var mickeySpirit:Character;
+	var smokeShit:FlxTypedGroup<FlxSprite>;
+	var smokeFore:FlxTypedGroup<FlxSprite>;
+	var spriteShit:Array<String> = ['smokeBBack', 'smokeTBack'];
+	var spriteShitForeground:Array<String> = ['smokeBFore', 'smokeTFore'];
 	  
 	// Mickey being delusional and minnie appearing Scene For Delusional aaaa
-	public static var minnieBackground:FlxSprite; 
-	public static var totallyanoriginalname:FlxSprite; // .. i have no idea what to say
+	var minnieBackground:FlxSprite; 
+	var totallyanoriginalname:FlxSprite; // .. i have no idea what to say
 
 	//Shader stuff
-	public static var chromZoomShader:FlxRuntimeShader = new FlxRuntimeShader(Shaders.aberration, null, 150);
-	public static var chromNormalShader:FlxRuntimeShader = new FlxRuntimeShader(Shaders.aberrationDefault, null, 150);
-	public static var dramaticCamMovement:FlxRuntimeShader = new FlxRuntimeShader(Shaders.cameraMovement, null, 150);
-	public static var monitorFilter:FlxRuntimeShader = new FlxRuntimeShader(Shaders.monitorFilter, null, 140);
-	public static var delusionalShift:FlxRuntimeShader = new FlxRuntimeShader(Shaders.delusionalShift, null, 120);
-	public static var heatWaveEffect:FlxRuntimeShader = new FlxRuntimeShader(Shaders.heatWave, null, 120);
+	var chromZoomShader:FlxRuntimeShader = new FlxRuntimeShader(Shaders.aberration, null, 150);
+	var chromNormalShader:FlxRuntimeShader = new FlxRuntimeShader(Shaders.aberrationDefault, null, 150);
+	var dramaticCamMovement:FlxRuntimeShader = new FlxRuntimeShader(Shaders.cameraMovement, null, 150);
+	var monitorFilter:FlxRuntimeShader = new FlxRuntimeShader(Shaders.monitorFilter, null, 140);
+	var delusionalShift:FlxRuntimeShader = new FlxRuntimeShader(Shaders.delusionalShift, null, 120);
+	var heatWaveEffect:FlxRuntimeShader = new FlxRuntimeShader(Shaders.heatWave, null, 120);
 
-	public var shaderAnim:Float = 0;
+	var shaderAnim:Float = 0;
 
 	public static var pathWay:String;
 
@@ -153,8 +151,6 @@ class DelusionalStreet extends BaseStage
 			}
 		}
 
-		tumbleGrp = new FlxTypedGroup();
-
 		if(!ClientPrefs.data.lowQuality)
 		{
 			stageCurtains = new FlxSprite(0, 0).loadGraphic(Paths.image(PlayState.pathway + 'i_forgor'));
@@ -166,62 +162,6 @@ class DelusionalStreet extends BaseStage
 			stageCurtains.cameras = [camOther];
 			stageCurtains.scrollFactor.set(1.3, 1.3);
 			add(stageCurtains);	
-
-			atmosphereParticle = new FlxEmitter(-2080.5, 2000);
-			atmosphereParticle.launchMode = SQUARE;
-			atmosphereParticle.velocity.set(-50, -200, 50, -600, -90, 0, 90, -600);
-			atmosphereParticle.scale.set(4, 4, 4, 4, 0, 0, 0, 0);
-			atmosphereParticle.drag.set(0, 0, 0, 0, 5, 5, 10, 10);
-			atmosphereParticle.width = 4787.45;
-			atmosphereParticle.alpha.set(1, 0.3);
-			atmosphereParticle.lifespan.set(1.9, 4.9);
-			atmosphereParticle.loadParticles(Paths.image(PlayState.pathway + 'dustParticle'), 500, 16, true);
-			atmosphereParticle.start(false, FlxG.random.float(.0521, .1060), 1000000);
-
-			ashParticle = new FlxEmitter(-2080.5, 2150.4);
-			for (i in 0 ... 100)
-				{
-					var blackParticle = new FlxParticle();
-					blackParticle.frames = Paths.getSparrowAtlas(PlayState.pathway + 'ashParticle');
-					blackParticle.animation.addByPrefix('idle', 'ashParticle idle', 5, true);
-					blackParticle.animation.play('idle');
-					blackParticle.antialiasing = ClientPrefs.data.antialiasing;
-					blackParticle.exists = false;
-					ashParticle.add(blackParticle);
-				}
-			ashParticle.launchMode = SQUARE;
-			ashParticle.velocity.set(-50, -200, 50, -600, -90, 0, 90, -600);
-			ashParticle.scale.set(4, 4, 4, 4, 0, 0, 0, 0);
-			ashParticle.drag.set(0, 0, 0, 0, 5, 5, 10, 10);
-			ashParticle.width = 4787.45;
-			ashParticle.alpha.set(1, 1);
-			ashParticle.lifespan.set(1.9, 4.9);
-			ashParticle.start(false, FlxG.random.float(.0521, .1060), 1000000);
-			ashParticle.angle.set(290, 0);
-			ashParticle.launchAngle.set(0, 280);
-
-			stageFront = new FlxSprite(-3000, 130).loadGraphic(Paths.image(PlayState.pathway + 'cables'));
-			stageFront.scale.set(9, 2.1);
-			stageFront.updateHitbox();
-			stageFront.antialiasing = ClientPrefs.data.antialiasing;
-			stageFront.scrollFactor.set(2.3, 1.7);
-			stageFront.active = false;
-
-			rain = new FlxSprite(-550, -900);
-			rain.frames = Paths.getSparrowAtlas(PlayState.pathway + 'rain');
-			rain.animation.addByPrefix('drippin', 'Rain', 30, true);
-			rain.scale.set(2, 2);
-			rain.antialiasing = ClientPrefs.data.antialiasing;
-			rain.alpha = 0.0001;
-			rain.animation.play('drippin');
-
-			heavyRain = new FlxSprite(-550, -900);
-			heavyRain.frames = Paths.getSparrowAtlas(PlayState.pathway + 'heavyRain');
-			heavyRain.animation.addByPrefix('god is pissing omg', 'Rain full', 30, true);
-			heavyRain.scale.set(2, 2);
-			heavyRain.antialiasing = ClientPrefs.data.antialiasing;
-			heavyRain.alpha = 0.0001;
-			heavyRain.animation.play('god is pissing omg');
 		}
 	}
 	
@@ -257,6 +197,8 @@ class DelusionalStreet extends BaseStage
 				camHUD.setFilters([new ShaderFilter(chromNormalShader)]);
 			}
 		}
+
+		tumbleGrp = new FlxTypedGroup();
 		add(tumbleGrp);
 
 		if (!ClientPrefs.data.lowQuality)
@@ -303,21 +245,76 @@ class DelusionalStreet extends BaseStage
 			fireForeground.animation.play('burningShit');
 		}
 
-		add(atmosphereParticle);
-		add(ashParticle);
-		add(stageFront);
-
 		if (!ClientPrefs.data.lowQuality)
 		{
+			atmosphereParticle = new FlxEmitter(-2080.5, 2000);
+			atmosphereParticle.launchMode = SQUARE;
+			atmosphereParticle.velocity.set(-50, -200, 50, -600, -90, 0, 90, -600);
+			atmosphereParticle.scale.set(4, 4, 4, 4, 0, 0, 0, 0);
+			atmosphereParticle.drag.set(0, 0, 0, 0, 5, 5, 10, 10);
+			atmosphereParticle.width = 4787.45;
+			atmosphereParticle.alpha.set(1, 0.3);
+			atmosphereParticle.lifespan.set(1.9, 4.9);
+			atmosphereParticle.loadParticles(Paths.image(PlayState.pathway + 'dustParticle'), 500, 16, true);
+			atmosphereParticle.start(false, FlxG.random.float(.0521, .1060), 1000000);
+			add(atmosphereParticle);
+
+			ashParticle = new FlxEmitter(-2080.5, 2150.4);
+			for (i in 0 ... 100)
+				{
+					var blackParticle = new FlxParticle();
+					blackParticle.frames = Paths.getSparrowAtlas(PlayState.pathway + 'ashParticle');
+					blackParticle.animation.addByPrefix('idle', 'ashParticle idle', 5, true);
+					blackParticle.animation.play('idle');
+					blackParticle.antialiasing = ClientPrefs.data.antialiasing;
+					blackParticle.exists = false;
+					ashParticle.add(blackParticle);
+				}
+			ashParticle.launchMode = SQUARE;
+			ashParticle.velocity.set(-50, -200, 50, -600, -90, 0, 90, -600);
+			ashParticle.scale.set(4, 4, 4, 4, 0, 0, 0, 0);
+			ashParticle.drag.set(0, 0, 0, 0, 5, 5, 10, 10);
+			ashParticle.width = 4787.45;
+			ashParticle.alpha.set(1, 1);
+			ashParticle.lifespan.set(1.9, 4.9);
+			ashParticle.start(false, FlxG.random.float(.0521, .1060), 1000000);
+			ashParticle.angle.set(290, 0);
+			ashParticle.launchAngle.set(0, 280);
+			add(ashParticle);
+
+			stageFront = new FlxSprite(-3000, 130).loadGraphic(Paths.image(PlayState.pathway + 'cables'));
+			stageFront.scale.set(9, 2.1);
+			stageFront.updateHitbox();
+			stageFront.antialiasing = ClientPrefs.data.antialiasing;
+			stageFront.scrollFactor.set(2.3, 1.7);
+			stageFront.active = false;
+			add(stageFront);
+
 			stageFront.y -= 250;
 			stageFront.alpha = 0.001;
 			floor.alpha = 0.001;
+
+			rain = new FlxSprite(-550, -900);
+			rain.frames = Paths.getSparrowAtlas(PlayState.pathway + 'rain');
+			rain.animation.addByPrefix('drippin', 'Rain', 30, true);
+			rain.scale.set(2, 2);
+			rain.antialiasing = ClientPrefs.data.antialiasing;
+			rain.alpha = 0.0001;
+			rain.animation.play('drippin');
+			add(rain);
+
+			heavyRain = new FlxSprite(-550, -900);
+			heavyRain.frames = Paths.getSparrowAtlas(PlayState.pathway + 'heavyRain');
+			heavyRain.animation.addByPrefix('god is pissing omg', 'Rain full', 30, true);
+			heavyRain.scale.set(2, 2);
+			heavyRain.antialiasing = ClientPrefs.data.antialiasing;
+			heavyRain.alpha = 0.0001;
+			heavyRain.animation.play('god is pissing omg');
+			add(heavyRain);
 		}
 		camBars.fade(0x000000, .0001);
 
 
-		add(rain);
-		add(heavyRain);
 
 		game.gf.visible = false;
 	}
@@ -897,7 +894,9 @@ class DelusionalStreet extends BaseStage
 			lightning.animation.play('boom');
 		else
 			lightning.animation.play('boom2');
-		new FlxTimer().start(1.5, function(tmr:FlxTimer) {lightning.alpha = 0.001;});
+		new FlxTimer().start(1.5, function(tmr:FlxTimer) {
+			lightning.alpha = 0.001;
+		});
 	}
 
 	function lightningStrikeFore()
@@ -907,7 +906,9 @@ class DelusionalStreet extends BaseStage
 			lightningFore.animation.play('boom');
 		else
 			lightningFore.animation.play('boom2');
-		new FlxTimer().start(1.5, function(tmr:FlxTimer) {lightningFore.alpha = 0.001;});
+		new FlxTimer().start(1.5, function(tmr:FlxTimer) {
+			lightningFore.alpha = 0.001;
+		});
 	}
 
 	override function opponentNoteHit(note:Note)
