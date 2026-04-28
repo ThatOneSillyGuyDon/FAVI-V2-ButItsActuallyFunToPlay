@@ -337,6 +337,7 @@ class MainMenuState extends MusicBeatState
 		if (!selectedSomethin)
 		{
 			if (FlxG.mouse.justMoved)
+			{
 				for (i in 0...menuItems.length)
 				{
 					if (FlxG.mouse.overlaps(menuItems.members[i]) || (FlxG.mouse.overlaps(menuItems.members[curSelected]) && menuItems.members[curSelected].alpha == 0.45))
@@ -353,6 +354,7 @@ class MainMenuState extends MusicBeatState
 						}
 					}
 				}
+			}
 				
 			if (FlxG.mouse.overlaps(menuItems.members[curSelected]) && FlxG.mouse.justPressed)
 					enterSelection();
