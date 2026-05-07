@@ -194,7 +194,7 @@ class CreditsState extends MusicBeatState
 
 		// dont mind me adding this funny
 		// yes i used the numbers because why not
-		FlxG.camera.shake(creditArray[curSelected][0].toLowerCase() == "malyplus" ? 0.01 : 0);
+		FlxG.camera.shake(creditArray[curSelected][0].toLowerCase() == "malyplus" ? 0.001 : 0);
 		Conductor.songPosition = FlxG.sound.music != null ? FlxG.sound.music.time : 0;
 
 		teelSquares.alpha = FlxMath.lerp(creditArray[curSelected][0].toLowerCase() == "teelbe" ? FlxG.random.float(.2, 1) : 0, teelSquares.alpha, .85);
