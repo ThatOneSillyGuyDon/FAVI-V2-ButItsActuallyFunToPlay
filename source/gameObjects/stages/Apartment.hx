@@ -71,6 +71,7 @@ class Apartment extends BaseStage
 		game.defaultCamZoom = PlayState.SONG.song == "Cycled Sins" ? 0.46 : 0.6;
 		game.cameraSpeed = 0.9;
 		PlayState.isGreyscale = false; // FIRE
+		game.camGame.pixelPerfectRender = true; // positions of the objects rendered on this camera are rounded
 
 		//Phase 2 shaders
 		glitchBG = new FlxRuntimeShader(Shaders.vignetteGlitch, null, 130);
