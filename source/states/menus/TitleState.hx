@@ -165,7 +165,9 @@ class TitleState extends MusicBeatState
 		"Mickey getting bitches, 100% real no fake",
 		"Lets Goku mcdonalds, Y'know what im saiyan?",
 		"Walter",
-		"Imagine waiting 3 years for a singular Friday Night Funkin' mod update"
+		"Imagine waiting 3 years for a singular Friday Night Funkin' mod update",
+		"Did you know that Array3D is holding this mod toghether? (It breaks the mod without it)",
+		"Crunchy Micheal Bob Brush." // Those who knows okay
 		/*"T H E  'C O R E', D E S T R O Y  I T !",
 		"THE 'CORE' CONTAINS THE EVIL"*/
 	];
