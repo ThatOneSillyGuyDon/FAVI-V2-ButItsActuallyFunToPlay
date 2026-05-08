@@ -7483,12 +7483,17 @@
 					[
 						"Camera Event",
 						"Fade",
-						"255,0,0,2.3,true"
+						"255,0,0,1,true"
 					],
 					[
 						"Show Song Card",
 						"true",
 						"0,1.5,sineInOut"
+					],
+					[
+						"Relapse Events",
+						"5",
+						""
 					]
 				]
 			],
@@ -7764,16 +7769,6 @@
 						"Manage Lyrics",
 						"text",
 						"0, You think, 0.001"
-					]
-				]
-			],
-			[
-				143105.590062112,
-				[
-					[
-						"Relapse Events",
-						"5",
-						""
 					]
 				]
 			],
