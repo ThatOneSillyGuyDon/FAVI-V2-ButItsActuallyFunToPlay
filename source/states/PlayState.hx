@@ -1026,7 +1026,29 @@ class PlayState extends MusicBeatState
 
 		if (curStage == 'vaultRoom') iconP2.blend = ADD;
 
-		if (curStage == "waltRoom" || curStage == "menuSongs")
+		switch (curStage.toLowerCase()){
+			case 'waltroom','menusongs':
+				fancyBarOverlay.flipY = true;
+				for (bar in [healthBar, fancyBarOverlay])
+				{
+					bar.angle = 90;
+					bar.x -= 580;
+					bar.y += 270;
+				}
+				fancyBarOverlay.x += 54;
+				fancyBarOverlay.y -= 53;
+				iconP1.x = healthBar.x + 220;
+				iconP2.x = healthBar.x + 220;			
+			case 'apartment':
+				healthBar.visible = false;
+				iconP1.x = Std.int(FlxG.width) - 150;
+				iconP2.x = 0;	
+				var _y_:Float = Std.int(FlxG.height - 150); // im a fat chud and i want this way --(MalyPlus)
+				if (ClientPrefs.data.downScroll) _y_ = 0;
+				for (item in [iconP1,iconP2])
+					item.y = _y_;
+		}
+		/*if (curStage == "waltRoom" || curStage == "menuSongs")
 		{
 			fancyBarOverlay.flipY = true;
 			for (bar in [healthBar, fancyBarOverlay])
@@ -1039,7 +1061,7 @@ class PlayState extends MusicBeatState
 			fancyBarOverlay.y -= 53;
 			iconP1.x = healthBar.x + 220;
 			iconP2.x = healthBar.x + 220;
-		}
+		}*/
 
 		switch (SONG.song)
 		{
@@ -2681,21 +2703,26 @@ class PlayState extends MusicBeatState
 		
 		var iconOffset:Int = 26;
 
-		if (curStage == "waltRoom")
-		{
-			iconP1.y = healthBar.y + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * iconP1.scale.y - 150) / 2 - iconOffset * 11.85;
-			iconP2.y = healthBar.y + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * iconP2.scale.y) / 2 - iconOffset * 13.85;
-		}
-		else
-		{
-			iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * iconP1.scale.x - 150) / 2 - iconOffset;
-			iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * iconP2.scale.x) / 2 - iconOffset * 2;
-			if (SONG.song == "Devilish Deal")
-			{
-				DDStage.minnieIcon.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(-healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * iconP2.scale.x) / 2 - iconOffset * 25;
-				DDStage.satanIcon.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(-healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * iconP1.scale.x - 150) / 2 - iconOffset * 24;
-				DDStage.satanIconPulse.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(-healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * iconP1.scale.x - 150) / 2 - iconOffset * 24;
-			}
+		// No more using if, just switch haha -- (MalyPlus)
+		switch (curStage){
+			case 'waltRoom':
+				iconP1.y = healthBar.y + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * iconP1.scale.y - 150) / 2 - iconOffset * 11.85;
+				iconP2.y = healthBar.y + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * iconP2.scale.y) / 2 - iconOffset * 13.85;
+			case 'Apartment':
+				iconP1.x = Std.int(FlxG.width) - 150;
+				iconP2.x = 0;	
+			default:
+				// why is it ignoring Apartment ?
+				if (SONG.song.toLowerCase() != 'cycled sins'){
+					iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * iconP1.scale.x - 150) / 2 - iconOffset;
+					iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * iconP2.scale.x) / 2 - iconOffset * 2;
+				}
+				if (SONG.song == "Devilish Deal")
+				{
+					DDStage.minnieIcon.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(-healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * iconP2.scale.x) / 2 - iconOffset * 25;
+					DDStage.satanIcon.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(-healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * iconP1.scale.x - 150) / 2 - iconOffset * 24;
+					DDStage.satanIconPulse.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(-healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * iconP1.scale.x - 150) / 2 - iconOffset * 24;
+				}
 		}
 
 		if (startedCountdown && !paused)

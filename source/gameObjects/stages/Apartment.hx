@@ -130,7 +130,7 @@ class Apartment extends BaseStage
 		staticg.animation.play('idle');
 		staticg.visible = false;
 		staticg.alpha = 0.1;
-		staticg.scale.set(2, 2);
+		staticg.scale.set(1.1, 1.1);
 		staticg.screenCenter();
 		add(staticg);
 		staticg.cameras = [game.camOther];
