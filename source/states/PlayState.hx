@@ -600,7 +600,6 @@ class PlayState extends MusicBeatState
 			case 'abandonedStreet': new AbandonedStreet(); //Isolated, Lunacy
 			case 'delusionalStreet': new DelusionalStreet(); //Delusional
 			case 'forestNew': new ForestNew(); //Hunted
-			case 'circus': new Circus(); //Laugh Track
 			case 'vaultRoom': new VaultRoom(); //Bless
 			case 'fuckingLine': new FuckingLine(); //Don't Cross!
 			case 'war': new War(); //War Dilemma
@@ -645,7 +644,7 @@ class PlayState extends MusicBeatState
 
 		switch (SONG.song)
 		{
-			case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Twisted Grins Legacy" | "Laugh Track" |  "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Birthday" | "Rotten Petals" | "Seeking Freedom" | "Am I Real?" | "Curtain Call" | "Your Final Bow" | "Mistful Wind" | "The Wretched Tilezones (Simple Life)" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "Ahh the Scary (Somber Night)" | "Alone":
+			case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Twisted Grins Legacy" | "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Birthday" | "Rotten Petals" | "Seeking Freedom" | "Am I Real?" | "Curtain Call" | "Your Final Bow" | "Mistful Wind" | "The Wretched Tilezones (Simple Life)" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "Ahh the Scary (Somber Night)" | "Alone":
 				introSoundsSuffix = "-cartoon";
 			case "Cycled Sins Legacy" | "Cycled Sins":
 				introSoundsSuffix = "-sins";
@@ -668,7 +667,6 @@ class PlayState extends MusicBeatState
 			"Lunacy",
 			"Delusional",
 			"Hunted",
-			"Laugh Track",
 			"Dont Cross",
 			"Cycled Sins",
 			"Bless",
@@ -1451,7 +1449,7 @@ class PlayState extends MusicBeatState
 		var introAlts:Array<String> = introAssets.get('default');
 		switch (SONG.song)
 		{
-			case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Twisted Grins Legacy" | "Laugh Track" |  "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Birthday" | "Rotten Petals" | "Curtain Call" | "Seeking Freedom" | "Mistful Wind" | "Am I Real?" | "Your Final Bow" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "The Wretched Tilezones (Simple Life)" | "Ahh the Scary (Somber Night)" | "Alone":
+			case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Twisted Grins Legacy" | "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Birthday" | "Rotten Petals" | "Curtain Call" | "Seeking Freedom" | "Mistful Wind" | "Am I Real?" | "Your Final Bow" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "The Wretched Tilezones (Simple Life)" | "Ahh the Scary (Somber Night)" | "Alone":
 				introAlts = introAssets.get('cartoon');
 			case "Cycled Sins Legacy" | "Cycled Sins":
 				introAlts = introAssets.get('sins');
@@ -1570,7 +1568,7 @@ class PlayState extends MusicBeatState
 				var antialias:Bool = ClientPrefs.data.antialiasing;
 				switch (SONG.song)
 				{
-					case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Twisted Grins Legacy" | "Laugh Track" |  "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Birthday" | "Rotten Petals" | "Curtain Call" | "Seeking Freedom" | "Mistful Wind" | "Am I Real?" | "Your Final Bow" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "The Wretched Tilezones (Simple Life)" | "Ahh the Scary (Somber Night)" | "Alone":
+					case "Isolated" | "Devilish Deal" | "Lunacy" | "Delusional" | "Hunted" | "Twisted Grins" | "Twisted Grins Legacy" | "Isolated Old" | "Isolated Beta" | "Isolated Legacy" | "Lunacy Legacy" | "Delusional Legacy" | "Hunted Legacy" | "Birthday" | "Rotten Petals" | "Curtain Call" | "Seeking Freedom" | "Mistful Wind" | "Am I Real?" | "Your Final Bow" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "The Wretched Tilezones (Simple Life)" | "Ahh the Scary (Somber Night)" | "Alone":
 						introAlts = introAssets.get('cartoon');
 					case "Cycled Sins Legacy" | "Cycled Sins":
 						introAlts = introAssets.get('sins');

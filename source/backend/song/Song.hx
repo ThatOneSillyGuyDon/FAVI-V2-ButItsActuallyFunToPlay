@@ -246,7 +246,7 @@ class Song
 			case "Delusional" | "Cycled Sins" | "Birthday" | "Cycled Sins Legacy" | "Twisted Grins Legacy" | "Scrapped" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "Mistful Wind": charter = "Dreupy";
 			case "Curtain Call": charter = "Dreupy [Ft. ThatOneSillyGuy]";
 			case "Lunacy Legacy": charter = "obscurity.";
-			case "Malfunction" | "Mercy" | "Mercy Legacy" | "Isolated Old" | "Isolated Legacy" | "Isolated Beta" | "Malfunction Legacy" | "Laugh Track" | "Rotten Petals" | "Ahh the Scary (Somber Night)" | "Whimsical Bar Blues" | "Am I Real?" | "Seeking Freedom" | "Alone": charter = "ThatOneSillyGuy";
+			case "Malfunction" | "Mercy" | "Mercy Legacy" | "Isolated Old" | "Isolated Legacy" | "Isolated Beta" | "Malfunction Legacy" | "Rotten Petals" | "Ahh the Scary (Somber Night)" | "Whimsical Bar Blues" | "Am I Real?" | "Seeking Freedom" | "Alone": charter = "ThatOneSillyGuy";
 			case "Delusional Legacy": charter = "Noppz";
 			case "Bless": charter = "ThatOneSillyGuy [Ft. Goober Man]";
 			case "Dont Cross":

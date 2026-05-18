@@ -22,7 +22,7 @@ class SongCard extends FlxSpriteGroup
 
 		switch (PlayState.SONG.song)
 		{
-			case 'Devilish Deal' | 'Isolated' | 'Lunacy' | 'Hunted' | 'Birthday' | 'War Dilemma' | 'Laugh Track' | 'Twisted Grins' | 'Whimsical Bar Blues':
+			case 'Devilish Deal' | 'Isolated' | 'Lunacy' | 'Hunted' | 'Birthday' | 'War Dilemma' | 'Twisted Grins' | 'Whimsical Bar Blues':
 				fontStuff = "DisneyFont.ttf";
 			case 'Delusional':
 				fontStuff = "betterSatanFont.ttf";
