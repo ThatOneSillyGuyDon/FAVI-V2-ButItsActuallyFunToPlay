@@ -54,6 +54,31 @@
 			true
 		],
 		[
+			"MalyPlus",
+			"maly",
+			"Co Director, Artist, Lead Programmer, and Animator",
+			"^red^BUAHAHHAAH IVE SECRETLY PUT PIPEBOMB UNDER UR BED^red^
+Anyways time to be serious,
+First you start your first fnf mod and then you end up in here,
+I'll be honest, I want to thank the team for putting all of their effort onto this mod,
+and YOU for playing it, thank you so much for playing!
+\n (also blame goober for making me delusional)",
+			-310,
+			-140,
+			0.55,
+			true
+		],
+		[
+			"KKCopinXD",
+			"kopin",
+			"Icon Artist & Concept Menu Artist",
+			"\nif it wasn't for Coolye3ted I wouldn't be here on this Mod to be able to work on it\n\nI've been here since 1.5 and It's an honor to be here working for this amazing team,\n\nI made a lot of friends I appreciate being able to be friends with them I hope you enjoyed the update we all worked hard to finish it! YIPPEEEEEEE-\n\nI made Malfuntion background, all MOD icons ( except Hunter Goofy ) all OST arts, dubbed Relapse Mouse and Malfuntion countdowns and I made FreePlay Concept",
+			40,
+			40,
+			1,
+			true
+		],
+		[
 			"Sadness",
 			"8tastic",
 			"Pixel Artist for Everett on Malfunction",
@@ -87,6 +112,16 @@ im glad we got this mod out
 			false
 		],
 		[
+			"BladzAMC_emerald",
+			"bladzNEW",
+			"Artist and Playtester",
+			"- .... .. ... / -- --- -.. / .. ... / - --- --- / -- .- ... ... .. ...- .",
+			-310,
+			-140,
+			0.55,
+			false
+		],
+		[
 			"Moe",
 			"moe",
 			"Artist, Animator And Cutscenes",
@@ -95,6 +130,19 @@ im glad we got this mod out
 			310,
 			1.57,
 			false
+		],
+		[
+			"Teelbe",
+			"teelLogo",
+			"Artist",
+			"
+			
+			I seriously wanna thank yall for your efforts , this mod was a dream to work on and was the best I have ever experienced, 
+Yall are the best people ever",
+			-320,
+			-140,
+			0.55,
+			true
 		],
 		[
 			"Gemmie Femmie",
@@ -117,6 +165,16 @@ im glad we got this mod out
 			false
 		],
 		[
+			"\n\nGoober Man",
+			"gooberMan",
+			"\n\n\nProgrammer, The one dude no body invited",
+			"\n\n\n\n\nMan... One second, you work on a Shitty psych port of this mod. Then the next, you're on the official dev team.\nBut anyway, yea. I had fun being on this dev team, it was nice to work on everything I did.\nSo with all of that said, thank you so much to the dev team for letting me on the team, it was nice being here!\n\nGoober Man Man Goober.",
+			-630,
+			-550,
+			0.15,
+			true
+		],
+		[
 			"BonoanAnything",
 			"bonoan",
 			"Evilrett VA, made lyrics for Delusional & trailers",
@@ -125,6 +183,17 @@ im glad we got this mod out
 			-370,
 			0.65,
 			true
+
+		],
+		[
+			"Sayan Sama",
+			"sayan",
+			"Made Twisted Grins V1 (Legacy) and Credit Music",
+			"",
+			-196,
+			-370,
+			0.65,
+			false
 
 		],
 		[
@@ -178,10 +247,57 @@ Thanks for everything, and let's keep going, live and learn!
 			0.56,
 			true
 		],
+
+		[
+			"JustJustin",
+			"justinx",
+			"Made Ricky Chromatic",
+			"\n\nmy odd squad name would be OJustin, What would yours be? Find out at\n\n\nhttps://www.oddsquadtv.com/oddsquad/agents/createagent/ !",
+			0,
+			80,
+			0.6,
+			true
+		],
+
+
+
+
+
+		[
+			"ThatOneSillyGuy // Don",
+			"demoboi",
+			"EX-DEV, Director, Main Programmer, Artist, Animator, Charter",
+			"It's official, I have wasted 3 years of my life on a fucking mouse mod, and no, you can't take our assets without putting effort in your recreation cause I'm evil lmao.",
+			-310,
+			-140,
+			0.55,
+			false
+		],
+		[
+			"JDrive",
+			"jdrivelol",
+			"EX-DEV, Cycled Sins art & Owner of Walt",
+			"\n\nHi! Thanks for checking out Funkin.avi, and I hoped you enjoyed the mod as well as my little Walt guy. We've had this mod in the oven for quite a while now, and we're so glad we get to release it after all these years. We hope you weren't too disappointed. if you were, Oh well! 
+Until Next Time!",
+			-290,
+			-140,
+			0.6,
+			true
+		],
+		[
+			"Domingo",
+			"domingo",
+			"EX-DEV, Director, Main Artist, Animator, Cutscenes, PlayTester",
+			"\n\nA realistic depiction of working on Funkin.Avi!!\n\nOH WAIT by the time, June 12, 2023, I'm writing this I'm pretty sure it has been exactly 1 year since we have uploaded the very first demo of the mod. \n\nWe have come such a long way and I'm happy with what we've been able to achieve and the story hasn't even reached its climax. \nThank you for playing!",
+			-310,
+			-140,
+			0.55,
+			true
+		],
 		[
 			"Ms.IDK",
 			"msidkBird",
-			"Artist & Owner of White Noise and LOT",
+			"EX-DEV, Artist & Owner of White Noise and LOT",
 			"I hate suicide mouse!",
 			-314,
 			-140,
@@ -189,13 +305,102 @@ Thanks for everything, and let's keep going, live and learn!
 			false
 		],
 		[
+			"Purg",
+			"purg",
+			"EX-DEV, Charter & Voice Actor",
+			"Hi! I'm Purg, the furry dude of the mod that voices the Narrator, charted a bunch of songs, and also wrote the story for Ricky (character featured in Laugh Track)
+To see this mod release after being involved in it's development for almost 2 years (Yes I know, not as long as some of the others on here)
+is insane. I remember obsessing over the mod somewhere back in 2022 when the first demo released, which also motivated me to start modding on my own. I met my best friend Yama, and also met my goats Grey, Niko, Notice, and others. Thank you guys. I love you all. (no homo, at least not with my friends)
+Hope you enjoy the mod and have fun playing  what the team made! We're incredibly proud of our efforts finally being done.. for now at least. :3
+(also play Jump Showdown on roblox or you will get haunted by a scary ghost) 
+",
+			-220,
+			-150,
+			0.74,
+			true
+
+		],
+		[
+			"GreyDoodlez",
+			"greyFINAL",
+			"EX-DEV, Artist",
+			"Hola Javí, hola Slayer, hola Cedríc, hola Leaff, hola Javivianos y Forevianos de corazón. Listo, híce que aparezcan en comunidad juego. Ahora chinguen a su madre, ola Sam. Hola Ruuben, pajero de mierda. XdxDXdxD Hola Palos, Hola Ivánculo. Hola, Acújin o TheNeonDS. Hola, Alexander Ajolote Furia Azulada. P.S; And for the rest, hope y'all enjoyed the mod!!! Humildad fuera.
+
+Vas a caer, Luis...",
+			45,
+			155,
+			0.65,
+			true
+		],
+		[
+			"yahfe",
+			"shitty",
+			"EX-DEV, Hunter Goofy Artist",
+			"\n\nhunted boi here! im really glad to be a part of the team, im not the best artist but i sure love working here. thanks to everyone on that team, theyre all good ppl that deserves only the best. also! if you played hunted before the 2.5 update, the sprites you see for hunter goofy, everett and lilith are outdated! cool things are coming. bless yall.
+			\n(From MalyPlus: Even tho your sprites arent used no more, \nwe still appricate the contribution you've done for the mod, take care of yourself)",
+			50,
+			40,
+			1,
+			true
+		],
+		[
+			"Austin W. Productions",
+			"austinw",
+			"EX-DEV, Artist, Owner of Mr. Smiles & Professionally Horny",
+			"Just an average Dinosaur Human hybrid thing that hopes you enjoyed the mod, so uhm... Yeah",
+			-380,
+			-300,
+			0.22,
+			false
+		],
+		[
+			"Lasagnacat",
+			"garfield",
+			"EX-DEV, Composer",
+			"hi im lasagnacat im kinda good at music sometimes. thanks to don for letting my goofy ass in this peak as fuck mod!",
+			-166,
+			-370,
+			0.8,
+			false
+		],
+		[
+			"obscurity",
+			"placeholder",
+			"EX-DEV, Composer of Malfunction, War Dilemma & almost all the Episode 1 tracks",
+			"",
+			-315,
+			-140,
+			0.55,
+			false
+		],
+		[
+			"Kyuxhtysu", 
+			"kyuxhtsyu", 
+			"EX-DEV, Artist & Redesigned Lilith", 
+			"gay sonic artist.", 
+			-725, 
+			-830, 
+			0.18, 
+			false
+		],
+		[
 			"Hikki.", 
 			"oyxzNEWagain", 
-			"Artist for Settings & Info menus\nCarried the mod heavily with all the assets we were missing", 
+			"EX-DEV, Artist for Settings & Info menus\nCarried the mod heavily with all the assets we were missing", 
 			"I've lost faithed in this mod (/j)", 
 			-360, 
 			-265, 
 			0.22, 
+			false
+		],
+		[
+			"BlueFishAnimation",
+			"bluefish",
+			"EX DEV, Freeplay Menu Art",
+			"",
+			20,
+			40,
+			0.5,
 			false
 		]
     ]
