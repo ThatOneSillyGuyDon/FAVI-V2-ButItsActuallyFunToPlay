@@ -469,7 +469,13 @@ class NoteUtil
 		final idx = id > skin.keys ? 0 : id;
 		
 		var arr = skin.colors[idx];
-		if (ClientPrefs.quants && quant != 0) arr = quantDefaultColors[quants.indexOf(quant)];
+		if (ClientPrefs.quants && quant != 0)
+		{
+			if (skin.quantColors != null)
+				colors = skin.quantColors[quants.indexOf(quant)];
+			else
+				colors = quantDefaultColors[quants.indexOf(quant)];
+		}
 		
 		return colorToArray(arr);
 	}
