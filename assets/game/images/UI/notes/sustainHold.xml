@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="sustainHold.png">
+	<!-- Created with Adobe Animate version 20.0.2.22168 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="end0000" x="5" y="5" width="103" height="51" frameX="-61" frameY="-101" frameWidth="207" frameHeight="258"/>
+	<SubTexture name="end0001" x="5" y="5" width="103" height="51" frameX="-61" frameY="-101" frameWidth="207" frameHeight="258"/>
+	<SubTexture name="end0002" x="113" y="5" width="180" height="228" frameX="-14" frameY="-9" frameWidth="207" frameHeight="258"/>
+	<SubTexture name="end0003" x="298" y="5" width="198" height="250" frameX="-1" frameY="0" frameWidth="207" frameHeight="258"/>
+	<SubTexture name="end0004" x="298" y="5" width="198" height="250" frameX="-1" frameY="0" frameWidth="207" frameHeight="258"/>
+	<SubTexture name="end0005" x="501" y="5" width="204" height="256" frameX="0" frameY="-2" frameWidth="207" frameHeight="258"/>
+	<SubTexture name="end0006" x="710" y="5" width="204" height="223" frameX="-3" frameY="-27" frameWidth="207" frameHeight="258"/>
+	<SubTexture name="loop0000" x="5" y="266" width="164" height="131" frameX="-15" frameY="0" frameWidth="203" frameHeight="134"/>
+	<SubTexture name="loop0001" x="174" y="266" width="176" height="127" frameX="0" frameY="-3" frameWidth="203" frameHeight="134"/>
+	<SubTexture name="loop0002" x="355" y="266" width="187" height="132" frameX="-16" frameY="-2" frameWidth="203" frameHeight="134"/>
+	<SubTexture name="start0000" x="547" y="266" width="112" height="82"/>
+</TextureAtlas>

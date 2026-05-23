@@ -1,114 +1,86 @@
-import flixel.input.keyboard.FlxKey;
-import flixel.system.FlxAssets;
+package;
+
+import funkin.FunkinAssets;
+
 import flixel.FlxState;
-import openfl.Lib;
+import flixel.FlxG;
+import flixel.input.keyboard.FlxKey;
+
+import funkin.backend.math.Vector3;
 
 /**
-	This is the initialization class. if you ever want to set anything before the game starts or call anything then this is probably your best bet.
-**/
+ * Initiation state that prepares backend classes and returns to menus when finished
+ * 
+ * There is no need to open this beyond the first time
+ */
+@:nullSafety(Strict)
 class Init extends FlxState
 {
-    public static var muteKeys:Array<FlxKey> = [FlxKey.ZERO];
-	public static var volumeDownKeys:Array<FlxKey> = [FlxKey.NUMPADMINUS, FlxKey.MINUS];
-	public static var volumeUpKeys:Array<FlxKey> = [FlxKey.NUMPADPLUS, FlxKey.PLUS];
-
-    public override function create() {
-        trace('Initializating...');
-
+	override public function create():Void
+	{
+		// load settings/save
+		funkin.input.Controls.init();
+		
+		ClientPrefs.load();
+		
+		DataUSMM.loadData();
+		
+		funkin.data.Highscore.load();
+		
+		if (FlxG.save.data.weekCompleted != null) funkin.states.StoryMenuState.weekCompleted = FlxG.save.data.weekCompleted;
+		
+		FlxSprite.defaultAntialiasing = ClientPrefs.globalAntialiasing;
+		
+		DiscordClient.init();
+		
+		#if MODS_ALLOWED
+		funkin.Mods.pushGlobalMods();
+		funkin.Mods.loadTopMod();
+		#end
+		
+		// set some flixel settings
+		FlxG.fixedTimestep = false;
+		FlxG.game.focusLostFramerate = 60;
+		FlxG.sound.muteKeys = ClientPrefs.muteKeys;
+		FlxG.sound.volumeDownKeys = ClientPrefs.volumeDownKeys;
+		FlxG.sound.volumeUpKeys = ClientPrefs.volumeUpKeys;
+		FlxG.keys.preventDefaultKeys = [TAB];
+		FlxG.mouse.visible = false;
+		FlxG.plugins.drawOnTop = true;
+		
+		FlxG.scaleMode = new funkin.backend.FunkinRatioScaleMode();
+		FlxG.signals.preStateSwitch.add((cast FlxG.scaleMode : funkin.backend.FunkinRatioScaleMode).resetSize);
+		
+		FlxG.sound.music = new extensions.flixel.FlxSoundEx();
+		FlxG.sound.music.persist = true;
+		
+		FlxG.autoPause = ClientPrefs.autoPause;
+		
+		// ready backends
+		funkin.backend.plugins.HotReloadPlugin.init();
+		
+		funkin.backend.plugins.DebugTextPlugin.init();
+		
+		funkin.backend.plugins.FullScreenPlugin.init();
+		
+		funkin.scripts.FunkinScript.init();
+		
+		#if VIDEOS_ALLOWED
+		funkin.video.FunkinVideoSprite.init();
+		#end
+		
+		#if FEATURE_DEBUG_TRACY
+		funkin.utils.WindowUtil.initTracy();
+		#end
+		
+		funkin.scripting.PluginsManager.prepareSignals();
+		funkin.scripting.PluginsManager.populate();
+		
+		FunkinAssets.cache.currentTrackedSounds.addPermanentKey('assets/music/freakyMenu.ogg');
+		
 		super.create();
 		
-		ClientPrefs.loadDefaultKeys();
-		FlxG.save.bind('funkin', CoolUtil.getSavePath());
-
-        ClientPrefs.loadPrefs();
-		Highscore.load();
-		GameData.loadShit();
-        SaveData.loadData();
-
-		AppIcon.changeIcon("newIcon");
-		
-		CoolUtil.createCoreFile();
-
-        if (FlxG.save.data.weekCompleted != null) StoryMenuState.weekCompleted = FlxG.save.data.weekCompleted;
-
-        #if cpp
-		// run the gc's for a little bit of perfomance improvements :]]
-		cpp.NativeGc.enable(true);
-		cpp.NativeGc.run(true);
-		#end
-
-        FlxG.sound.muteKeys = muteKeys;
-		FlxG.sound.volumeDownKeys = volumeDownKeys;
-		FlxG.sound.volumeUpKeys = volumeUpKeys;
-
-        FlxG.fixedTimestep = false;
-		FlxG.game.focusLostFramerate = 60;
-		FlxG.keys.preventDefaultKeys = [TAB];
-
-        FlxG.sound.soundTray.silent = true; // removes that annoying ass "BEEP" sound when you change the volume
-
-        #if DISCORD_ALLOWED
-		DiscordClient.prepare();
-		#end
-
-        FlxG.mouse.visible = true;
-        FlxG.mouse.useSystemCursor = false;
-
-        #if windows
-        backend.windows.CppAPI.darkMode();
-        #end
-
-        // fixes shaders acting weird when resizing the screen
-        @:privateAccess
-        {
-            final resetSpriteCache = function(sprite:openfl.display.Sprite) {
-                @:privateAccess {
-                    sprite.__cacheBitmap = null;
-                    sprite.__cacheBitmapData = null;
-                }
-            }
-
-            FlxG.signals.gameResized.add((w, h) -> {
-                if (FlxG.cameras != null) for (cam in FlxG.cameras.list)
-                    if (cam != null && cam.filters != null)
-                    {
-                        resetSpriteCache(cam.flashSprite);
-                    }
-    
-                if (FlxG.game != null) 
-                {
-                    resetSpriteCache(FlxG.game);
-                }
-           });
-        }
-
-        #if linux
-		var icon = Image.fromFile("icon.png");
-		Lib.current.stage.window.setIcon(icon);
-		#end
-
-        #if DEV_BUILD
-        // some plugins for devs to use
-		backend.devPlugins.HotReloadPlugin.init();
-		backend.devPlugins.ScreenshotPlugin.initialize();
-        #end
-		backend.devPlugins.FullScreenPlugin.init();
-        
-        FlxG.autoPause = ClientPrefs.data.autoPause;
-        FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
-		FlxG.mouse.visible = true;
-
-        var curState = Main.initialState;
-
-        if (!SaveData.seenWarning)
-            curState = FlashingState;
-
-        trace('Initialization complete, switching to ${Type.getClassName(curState)}');
-        if (FlxG.random.bool(8))
-        {
-            FlxG.switchState(new states.menus.secret.SuperDuperMegaSecretTitleScreen());
-        }
-        else
-            FlxG.switchState(Type.createInstance(curState, []));  
-    }
+		final nextState:Class<FlxState> = Main.startMeta.skipSplash || !ClientPrefs.toggleSplashScreen ? Main.startMeta.initialState : Splash;
+		FlxG.switchState(() -> Type.createInstance(nextState, []));
+	}
 }

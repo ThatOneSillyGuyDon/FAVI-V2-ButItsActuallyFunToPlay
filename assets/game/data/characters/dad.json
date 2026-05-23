@@ -1,0 +1,145 @@
+{
+	"_editor_isPlayer": false,
+	"animations": [
+		{
+			"indices": [],
+			"offsets": [
+				-9,
+				10
+			],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "Dad Sing Note LEFT"
+		},
+		{
+			"indices": [],
+			"offsets": [
+				0,
+				-30
+			],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "Dad Sing Note DOWN"
+		},
+		{
+			"indices": [],
+			"offsets": [
+				-6,
+				50
+			],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "Dad Sing Note UP"
+		},
+		{
+			"indices": [],
+			"offsets": [
+				0,
+				27
+			],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "Dad Sing Note RIGHT"
+		},
+		{
+			"indices": [],
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "idle",
+			"loop": false,
+			"name": "Dad idle dance"
+		},
+		{
+			"indices": [
+				10,
+				11,
+				12,
+				12
+			],
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "idle-loop",
+			"loop": true,
+			"name": "Dad idle dance"
+		},
+		{
+			"indices": [
+				12,
+				13,
+				14,
+				15
+			],
+			"offsets": [
+				-9,
+				10
+			],
+			"fps": 24,
+			"anim": "singLEFT-loop",
+			"loop": true,
+			"name": "Dad Sing Note LEFT"
+		},
+		{
+			"indices": [
+				15,
+				16,
+				17,
+				18
+			],
+			"offsets": [
+				0,
+				27
+			],
+			"fps": 24,
+			"anim": "singRIGHT-loop",
+			"loop": true,
+			"name": "Dad Sing Note RIGHT"
+		},
+		{
+			"indices": [
+				56,
+				57,
+				58,
+				59
+			],
+			"offsets": [
+				-6,
+				50
+			],
+			"fps": 24,
+			"anim": "singUP-loop",
+			"loop": true,
+			"name": "Dad Sing Note UP"
+		}
+	],
+	"camera_position": [
+		70,
+		0
+	],
+	"dance_every": 2,
+	"flip_x": false,
+	"gameover_character": null,
+	"gameover_confirm_sound": null,
+	"gameover_intial_sound": null,
+	"gameover_loop_sound": null,
+	"healthbar_colour": -5282098,
+	"healthicon": "dad",
+	"image": "characters/DADDY_DEAREST",
+	"no_antialiasing": false,
+	"position": [
+		0,
+		0
+	],
+	"scalableOffsets": false,
+	"scale": 1,
+	"sing_duration": 6.1
+}

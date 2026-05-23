@@ -1,0 +1,87 @@
+{
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+
+    "files.associations": {
+        "*.hscript": "haxe",
+        "*.hxs": "haxe",
+        ".hxpkg": "json"
+    },
+    "lime.targetConfigurations": [
+        {
+            "label": "Windows (ASSET_REDIRECT)",
+            "target": "windows",
+            "args": [
+                "-DASSET_REDIRECT"
+            ]
+        },
+        {
+            "label": "Windows / Debug (Forced ANSI)",
+            "target": "windows",
+            "args": [
+                "-debug",
+                "-DFORCED_ANSI"
+            ]
+        },
+        {
+            "label": "Windows / Debug (Tracy)",
+            "target": "windows",
+            "args": [
+                "-debug",
+                "-DFEATURE_DEBUG_TRACY"
+            ]
+        },
+        {
+            "label": "Windows / Debug (ASSET_REDIRECT & Forced ANSI)",
+            "target": "windows",
+            "args": [
+                "-debug",
+                "-DASSET_REDIRECT",
+                "-DFORCED_ANSI"
+            ]
+        },
+        {
+            "label": "hl (ASSET_REDIRECT)",
+            "target": "hl",
+            "args": [
+                "-DASSET_REDIRECT"
+            ]
+        },
+        {
+            "label": "hl / Debug (Forced ANSI)",
+            "target": "hl",
+            "args": [
+                "-debug",
+                "-DFORCED_ANSI"
+            ]
+        },
+        {
+            "label": "hl / Debug (ASSET_REDIRECT)",
+            "target": "hl",
+            "args": [
+                "-debug",
+                "-DASSET_REDIRECT"
+            ]
+        },
+        {
+            "label": "hl / Debug (ASSET_REDIRECT & Forced ANSI)",
+            "target": "hl",
+            "args": [
+                "-debug",
+                "-DASSET_REDIRECT",
+                "-DFORCED_ANSI"
+            ]
+        },
+    ],
+    "[haxe]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnSaveMode": "file",
+        "editor.formatOnPaste": false,
+        "editor.codeActionsOnSave": {
+            "source.sortImports": "never"
+        }
+    },
+
+    "json.format.keepLines": true
+}

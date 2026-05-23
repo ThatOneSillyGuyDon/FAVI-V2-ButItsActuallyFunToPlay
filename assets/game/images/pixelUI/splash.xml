@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="pixelsplash.png" width="242" height="211">
+	<SubTexture name="splash10000" x="207" y="5" width="29" height="28" frameX="-9" frameY="-11" frameWidth="48" frameHeight="48"/>
+	<SubTexture name="splash10001" x="205" y="46" width="31" height="28" frameX="-8" frameY="-8" frameWidth="48" frameHeight="48"/>
+	<SubTexture name="splash10002" x="53" y="162" width="42" height="39" frameX="-2" frameY="-3" frameWidth="48" frameHeight="48"/>
+	<SubTexture name="splash10003" x="5" y="5" width="48" height="48" frameX="-0" frameY="-0" frameWidth="48" frameHeight="48"/>
+	<SubTexture name="splash10004" x="58" y="5" width="48" height="48" frameX="-0" frameY="-0" frameWidth="48" frameHeight="48"/>
+	<SubTexture name="splash10005" x="58" y="5" width="48" height="48" frameX="-0" frameY="-0" frameWidth="48" frameHeight="48"/>
+	<SubTexture name="splash10006" x="159" y="161" width="41" height="45" frameX="-6" frameY="-3" frameWidth="48" frameHeight="48"/>
+	<SubTexture name="splash10007" x="159" y="161" width="41" height="45" frameX="-6" frameY="-3" frameWidth="48" frameHeight="48"/>
+	<SubTexture name="splash20000" x="205" y="161" width="28" height="37" rotated="true" frameX="-1" frameY="-9" frameWidth="48" frameHeight="48"/>
+	<SubTexture name="splash20001" x="163" y="5" width="39" height="36" frameX="-6" frameY="-2" frameWidth="48" frameHeight="48"/>
+	<SubTexture name="splash20002" x="111" y="58" width="47" height="47" frameX="-1" frameY="-0" frameWidth="48" frameHeight="48"/>
+	<SubTexture name="splash20003" x="5" y="58" width="48" height="48" frameX="-0" frameY="-0" frameWidth="48" frameHeight="48"/>
+	<SubTexture name="splash20004" x="58" y="58" width="48" height="47" frameX="-0" frameY="-1" frameWidth="48" frameHeight="48"/>
+	<SubTexture name="splash20005" x="58" y="58" width="48" height="47" frameX="-0" frameY="-1" frameWidth="48" frameHeight="48"/>
+	<SubTexture name="splash20006" x="110" y="159" width="44" height="43" frameX="-1" frameY="-3" frameWidth="48" frameHeight="48"/>
+	<SubTexture name="splash20007" x="110" y="159" width="44" height="43" frameX="-1" frameY="-3" frameWidth="48" frameHeight="48"/>
+	<SubTexture name="splash30000" x="208" y="79" width="29" height="28" frameX="-9" frameY="-9" frameWidth="48" frameHeight="48"/>
+	<SubTexture name="splash30001" x="163" y="46" width="37" height="35" frameX="-3" frameY="-5" frameWidth="48" frameHeight="48"/>
+	<SubTexture name="splash30002" x="5" y="159" width="43" height="40" frameX="-2" frameY="-0" frameWidth="48" frameHeight="48"/>
+	<SubTexture name="splash30003" x="5" y="111" width="48" height="43" frameX="-0" frameY="-0" frameWidth="48" frameHeight="48"/>
+	<SubTexture name="splash30004" x="111" y="5" width="47" height="48" rotated="true" frameX="-0" frameY="-0" frameWidth="48" frameHeight="48"/>
+	<SubTexture name="splash30005" x="58" y="110" width="47" height="47" frameX="-0" frameY="-0" frameWidth="48" frameHeight="48"/>
+	<SubTexture name="splash30006" x="110" y="110" width="46" height="44" frameX="-0" frameY="-3" frameWidth="48" frameHeight="48"/>
+	<SubTexture name="splash30007" x="161" y="110" width="42" height="46" rotated="true" frameX="-0" frameY="-6" frameWidth="48" frameHeight="48"/>
+</TextureAtlas>
