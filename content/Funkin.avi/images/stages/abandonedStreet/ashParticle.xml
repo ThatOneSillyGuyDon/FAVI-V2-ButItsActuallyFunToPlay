@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="ashParticle.png">
+<SubTexture name="ashParticle idle0000" x="0" y="132" width="99" height="57" frameX="-43" frameY="-97" frameWidth="192" frameHeight="192" />
+<SubTexture name="ashParticle idle0001" x="187" y="59" width="60" height="56" frameX="-56" frameY="-94" frameWidth="192" frameHeight="192" />
+<SubTexture name="ashParticle idle0002" x="101" y="71" width="61" height="56" frameX="-62" frameY="-93" frameWidth="192" frameHeight="192" />
+<SubTexture name="ashParticle idle0003" x="187" y="0" width="90" height="59" frameX="-35" frameY="-87" frameWidth="192" frameHeight="192" />
+<SubTexture name="ashParticle idle0004" x="99" y="132" width="122" height="55" frameX="-18" frameY="-84" frameWidth="192" frameHeight="192" />
+<SubTexture name="ashParticle idle0005" x="105" y="0" width="82" height="65" frameX="-40" frameY="-82" frameWidth="192" frameHeight="192" />
+<SubTexture name="ashParticle idle0006" x="0" y="0" width="56" height="71" frameX="-60" frameY="-84" frameWidth="192" frameHeight="192" />
+<SubTexture name="ashParticle idle0007" x="56" y="0" width="49" height="69" frameX="-60" frameY="-84" frameWidth="192" frameHeight="192" />
+<SubTexture name="ashParticle idle0008" x="0" y="71" width="101" height="61" frameX="-40" frameY="-83" frameWidth="192" frameHeight="192" />
+<SubTexture name="ashParticle idle0009" x="0" y="189" width="127" height="53" frameX="-33" frameY="-84" frameWidth="192" frameHeight="192" />
+</TextureAtlas>

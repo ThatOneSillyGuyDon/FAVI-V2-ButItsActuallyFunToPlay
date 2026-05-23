@@ -1,0 +1,314 @@
+{
+	"singAnimations": [
+		"singLEFT",
+		"singDOWN",
+		"singUP",
+		"singRIGHT"
+	],
+	"splashesEnabled": true,
+	"susSplashesEnabled": false,
+	"noteTexture": "UI/noteSkins/NOTE_assets-CARTOON",
+	"receptorAnimations": [
+		[
+			{
+				"looping": false,
+				"offsets": [
+					0,
+					0
+				],
+				"xmlName": "arrowLEFT",
+				"anim": "static"
+			},
+			{
+				"looping": false,
+				"offsets": [
+					0,
+					0
+				],
+				"xmlName": "left press",
+				"anim": "pressed"
+			},
+			{
+				"looping": false,
+				"offsets": [
+					-1,
+					-1
+				],
+				"xmlName": "left confirm",
+				"anim": "confirm"
+			}
+		],
+		[
+			{
+				"looping": false,
+				"offsets": [
+					0,
+					0
+				],
+				"xmlName": "arrowDOWN",
+				"anim": "static"
+			},
+			{
+				"looping": false,
+				"offsets": [
+					0,
+					0
+				],
+				"xmlName": "down press",
+				"anim": "pressed"
+			},
+			{
+				"looping": false,
+				"offsets": [
+					-2,
+					0
+				],
+				"xmlName": "down confirm",
+				"anim": "confirm"
+			}
+		],
+		[
+			{
+				"looping": false,
+				"offsets": [
+					0,
+					0
+				],
+				"xmlName": "arrowUP",
+				"anim": "static"
+			},
+			{
+				"looping": false,
+				"offsets": [
+					0,
+					0
+				],
+				"xmlName": "up press",
+				"anim": "pressed"
+			},
+			{
+				"looping": false,
+				"offsets": [
+					-1,
+					-1
+				],
+				"xmlName": "up confirm",
+				"anim": "confirm"
+			}
+		],
+		[
+			{
+				"looping": false,
+				"offsets": [
+					0,
+					0
+				],
+				"xmlName": "arrowRIGHT",
+				"anim": "static"
+			},
+			{
+				"looping": false,
+				"offsets": [
+					0,
+					0
+				],
+				"xmlName": "right press",
+				"anim": "pressed"
+			},
+			{
+				"looping": false,
+				"offsets": [
+					-1,
+					0
+				],
+				"xmlName": "right confirm",
+				"anim": "confirm"
+			}
+		]
+	],
+	"noteSplashAnimations": [
+		{
+			"looping": false,
+			"xmlName": "splash sparkles purple 1",
+			"offsets": [
+				4,
+				-15
+			],
+			"anim": "note0"
+		},
+		{
+			"looping": false,
+			"xmlName": "splash sparkles blue 1",
+			"offsets": [
+				3,
+				-5
+			],
+			"anim": "note1"
+		},
+		{
+			"looping": false,
+			"xmlName": "splash sparkles green 1",
+			"offsets": [
+				6,
+				-5
+			],
+			"anim": "note2"
+		},
+		{
+			"looping": false,
+			"xmlName": "splash sparkles red 1",
+			"offsets": [
+				12,
+				-5
+			],
+			"anim": "note3"
+		}
+	],
+	"noteAnimations": [
+		[
+			{
+				"looping": false,
+				"offsets": [
+					0,
+					0
+				],
+				"xmlName": "purple",
+				"anim": "scroll"
+			},
+			{
+				"looping": false,
+				"offsets": [
+					0,
+					0
+				],
+				"xmlName": "purple hold piece",
+				"anim": "hold"
+			},
+			{
+				"looping": false,
+				"offsets": [
+					0,
+					0
+				],
+				"xmlName": "purple hold end",
+				"anim": "holdend"
+			}
+		],
+		[
+			{
+				"looping": false,
+				"offsets": [
+					0,
+					0
+				],
+				"xmlName": "blue",
+				"anim": "scroll"
+			},
+			{
+				"looping": false,
+				"offsets": [
+					0,
+					0
+				],
+				"xmlName": "blue hold piece",
+				"anim": "hold"
+			},
+			{
+				"looping": false,
+				"offsets": [
+					0,
+					0
+				],
+				"xmlName": "blue hold end",
+				"anim": "holdend"
+			}
+		],
+		[
+			{
+				"looping": false,
+				"offsets": [
+					0,
+					0
+				],
+				"xmlName": "green",
+				"anim": "scroll"
+			},
+			{
+				"looping": false,
+				"offsets": [
+					0,
+					0
+				],
+				"xmlName": "green hold piece",
+				"anim": "hold"
+			},
+			{
+				"looping": false,
+				"offsets": [
+					0,
+					0
+				],
+				"xmlName": "green hold end",
+				"anim": "holdend"
+			}
+		],
+		[
+			{
+				"looping": false,
+				"offsets": [
+					0,
+					0
+				],
+				"xmlName": "red",
+				"anim": "scroll"
+			},
+			{
+				"looping": false,
+				"offsets": [
+					0,
+					0
+				],
+				"xmlName": "red hold piece",
+				"anim": "hold"
+			},
+			{
+				"looping": false,
+				"offsets": [
+					0,
+					0
+				],
+				"xmlName": "red hold end",
+				"anim": "holdend"
+			}
+		]
+	],
+	"arrowRGB": [
+		{"b": -16777216, "r": -11513776, "g": -1},
+		{"b": -16777216, "r": -11513776, "g": -1},
+		{"b": -16777216, "r": -11513776, "g": -1},
+		{"b": -16777216, "r": -11513776, "g": -1}
+	],
+	"arrowRGBQuant": [
+		{"b": -13750738, "r": -9211021, "g": -1},
+		{"b": -12434878, "r": -5000269, "g": -1},
+		{"b": -13750738, "r": -8947849, "g": -1},
+		{"b": -12303292, "r": -2829100, "g": -1},
+		{"b": -13355980, "r": -8750470, "g": -1},
+		{"b": -13684945, "r": -6513508, "g": -1},
+		{"b": -15000805, "r": -9934744, "g": -1},
+		{"b": -13421773, "r": -6710887, "g": -1},
+		{"b": -13224394, "r": -10855846, "g": -1},
+		{"b": -12961222, "r": -7697782, "g": -1},
+		{"b": -11513776, "r": -5197648, "g": -1}
+	],
+	"splashTexture": "UI/noteSplashes/noteSplashes-cartoon",
+	"antialiasing": true,
+	"inGameColoring": true,
+	"quantsEnabled": false,
+	"sustainAlpha": 0.6,
+	"noteScale": 0.7,
+	"receptorScale": 0.7,
+	"sustainScale": 0.7,
+	"splashScale": 1,
+	"susSplashOrigin": [-10, 15]
+}

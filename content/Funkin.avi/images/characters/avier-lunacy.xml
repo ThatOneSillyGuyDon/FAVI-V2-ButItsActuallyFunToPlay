@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="avier-lunacy.png" width="4984" height="1839">
+	<SubTexture name="idle0000" x="0" y="333" width="508" height="437" rotated="true" frameX="-233" frameY="-175" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="idle0001" x="2732" y="429" width="523" height="437" rotated="true" frameX="-230" frameY="-160" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="idle0002" x="3255" y="429" width="531" height="443" rotated="true" frameX="-212" frameY="-152" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="idle0003" x="3786" y="430" width="539" height="443" rotated="true" frameX="-212" frameY="-144" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="idle0004" x="496" y="803" width="542" height="447" rotated="true" frameX="-209" frameY="-141" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="idle0005" x="1038" y="854" width="542" height="447" rotated="true" frameX="-208" frameY="-141" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="idle0006" x="2122" y="860" width="542" height="449" rotated="true" frameX="-207" frameY="-141" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="idle0007" x="1580" y="857" width="542" height="448" rotated="true" frameX="-207" frameY="-141" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="up0000" x="4015" y="1336" width="553" height="503" rotated="true" frameX="-120" frameY="-130" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="up0001" x="1674" y="1309" width="541" height="481" rotated="true" frameX="-160" frameY="-142" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="down0000" x="0" y="770" width="496" height="470" rotated="true" frameX="-215" frameY="-188" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="down0001" x="3503" y="1336" width="512" height="493" rotated="true" frameX="-178" frameY="-172" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="left0000" x="541" y="0" width="525" height="372" rotated="true" frameX="-172" frameY="-157" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="left0001" x="0" y="0" width="541" height="333" rotated="true" frameX="-198" frameY="-141" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="right0000" x="2215" y="1323" width="673" height="489" frameX="-152" frameY="-200" frameWidth="826" frameHeight="700"/>
+	<SubTexture name="right0001" x="2888" y="1330" width="615" height="491" frameX="-173" frameY="-198" frameWidth="826" frameHeight="700"/>
+	<SubTexture name="transition0000" x="508" y="372" width="550" height="431" rotated="true" frameX="-162" frameY="-139" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="transition0001" x="1058" y="423" width="550" height="431" rotated="true" frameX="-160" frameY="-139" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="transition0002" x="1621" y="0" width="556" height="426" rotated="true" frameX="-164" frameY="-133" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="transition0003" x="1608" y="426" width="562" height="431" rotated="true" frameX="-162" frameY="-127" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="transition0004" x="2738" y="0" width="561" height="429" rotated="true" frameX="-164" frameY="-128" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="transition0005" x="3860" y="0" width="562" height="430" rotated="true" frameX="-163" frameY="-127" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="transition0006" x="2177" y="0" width="561" height="427" rotated="true" frameX="-165" frameY="-128" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="transition0007" x="4422" y="0" width="562" height="430" rotated="true" frameX="-163" frameY="-127" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="transition0008" x="3299" y="0" width="561" height="429" rotated="true" frameX="-165" frameY="-128" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="transition0009" x="2170" y="427" width="562" height="433" rotated="true" frameX="-163" frameY="-127" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="transition0010" x="0" y="1250" width="556" height="461" rotated="true" frameX="-165" frameY="-133" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="transition0011" x="556" y="1301" width="556" height="462" rotated="true" frameX="-163" frameY="-133" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="transition0012" x="3785" y="876" width="556" height="460" rotated="true" frameX="-165" frameY="-133" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="transition0013" x="4341" y="876" width="561" height="460" rotated="true" frameX="-163" frameY="-128" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="transition0014" x="3224" y="872" width="561" height="458" rotated="true" frameX="-165" frameY="-128" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="transition0015" x="1112" y="1305" width="562" height="464" rotated="true" frameX="-158" frameY="-127" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="transition0016" x="2664" y="866" width="560" height="457" rotated="true" frameX="-179" frameY="-129" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="transition0017" x="1066" y="0" width="555" height="423" rotated="true" frameX="-207" frameY="-134" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="transition0018" x="4325" y="430" width="533" height="446" rotated="true" frameX="-198" frameY="-154" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="transition0019" x="0" y="333" width="508" height="437" rotated="true" frameX="-233" frameY="-175" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="transition0020" x="2732" y="429" width="523" height="437" rotated="true" frameX="-230" frameY="-160" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="transition0021" x="3255" y="429" width="531" height="443" rotated="true" frameX="-212" frameY="-152" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="transition0022" x="3786" y="430" width="539" height="443" rotated="true" frameX="-212" frameY="-144" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="transition0023" x="496" y="803" width="542" height="447" rotated="true" frameX="-209" frameY="-141" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="transition0024" x="1038" y="854" width="542" height="447" rotated="true" frameX="-208" frameY="-141" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="transition0025" x="2122" y="860" width="542" height="449" rotated="true" frameX="-207" frameY="-141" frameWidth="825" frameHeight="700"/>
+	<SubTexture name="transition0026" x="1580" y="857" width="542" height="448" rotated="true" frameX="-207" frameY="-141" frameWidth="825" frameHeight="700"/>
+</TextureAtlas>
