@@ -85,19 +85,6 @@
 			],
 			"flipY": false,
 			"loop": false,
-			"fps": 8,
-			"anim": "endingAnim",
-			"flipX": false,
-			"indices": [],
-			"name": "altUp"
-		},
-		{
-			"offsets": [
-				0,
-				0
-			],
-			"flipY": false,
-			"loop": false,
 			"fps": 12,
 			"anim": "singDOWN",
 			"flipX": false,
@@ -142,6 +129,42 @@
 			"flipX": false,
 			"indices": [],
 			"name": "up"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				15,
+				15,
+				15,
+				15,
+				15,
+				15
+			],
+			"fps": 8,
+			"flipX": false,
+			"flipY": false,
+			"anim": "endingAnim",
+			"loop": false,
+			"name": "altUp"
 		}
 	],
 	"no_antialiasing": false,

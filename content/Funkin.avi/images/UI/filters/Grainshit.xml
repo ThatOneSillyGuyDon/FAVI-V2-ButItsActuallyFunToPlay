@@ -1,12 +1,13 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="Grainshit.png">
-	<!-- Created with Adobe Animate version 21.0.1.37179 -->
-	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="grains 10000" x="10" y="10" width="1280" height="720" frameX="-3" frameY="0" frameWidth="1283" frameHeight="721"/>
-	<SubTexture name="grains 10001" x="1300" y="10" width="1280" height="720" frameX="-3" frameY="-1" frameWidth="1283" frameHeight="721"/>
-	<SubTexture name="grains 10002" x="2590" y="10" width="1280" height="720" frameX="-3" frameY="-1" frameWidth="1283" frameHeight="721"/>
-	<SubTexture name="grains 10003" x="10" y="10" width="1280" height="720" frameX="0" frameY="-1" frameWidth="1283" frameHeight="721"/>
-	<SubTexture name="grains 10004" x="1300" y="10" width="1280" height="720" frameX="-3" frameY="-1" frameWidth="1283" frameHeight="721"/>
-	<SubTexture name="grains 10005" x="2590" y="10" width="1280" height="720" frameX="-3" frameY="-1" frameWidth="1283" frameHeight="721"/>
-	<SubTexture name="grains 10006" x="10" y="10" width="1280" height="720" frameX="-3" frameY="0" frameWidth="1283" frameHeight="721"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="Grainshit.png" width="3076" height="433">
+	<SubTexture name="grains 10000" x="0" y="0" width="769" height="433" frameX="-1" frameY="-0" frameWidth="770" frameHeight="433"/>
+	<SubTexture name="grains 10001" x="769" y="0" width="769" height="433" frameX="-1" frameY="-0" frameWidth="770" frameHeight="433"/>
+	<SubTexture name="grains 10002" x="1538" y="0" width="769" height="433" frameX="-1" frameY="-0" frameWidth="770" frameHeight="433"/>
+	<SubTexture name="grains 10003" x="2307" y="0" width="769" height="433" frameX="-0" frameY="-0" frameWidth="770" frameHeight="433"/>
+	<SubTexture name="grains 10004" x="769" y="0" width="769" height="433" frameX="-1" frameY="-0" frameWidth="770" frameHeight="433"/>
+	<SubTexture name="grains 10005" x="1538" y="0" width="769" height="433" frameX="-1" frameY="-0" frameWidth="770" frameHeight="433"/>
+	<SubTexture name="grains 10006" x="0" y="0" width="769" height="433" frameX="-1" frameY="-0" frameWidth="770" frameHeight="433"/>
 </TextureAtlas>

@@ -1,5 +1,6 @@
 import flixel.effects.particles.FlxEmitter.FlxEmitterMode;
 import flixel.effects.particles.FlxParticle;
+
 import openfl.filters.ShaderFilter;
 
 var overlay;
@@ -23,7 +24,11 @@ function onLoad()
 {
 	isCartoon = true;
 	
-	if (PlayState.SONG.song == 'Lunacy') addCharacterToList('evilrett-lunacy', 0);
+	if (PlayState.SONG.song == 'Lunacy')
+	{
+		addCharacterToList('evilrett-lunacy', 0);
+		addCharacterToList('avier-lunaEnd', 1);
+	}
 	
 	overlay = new FlxSprite().loadGraphic(Paths.image(path + 'i_forgor'));
 	overlay.screenCenter();
@@ -156,6 +161,15 @@ function onSongStart()
 		});
 		modManager.queueFuncOnce(156 * 4, (s, s2) -> {
 			changeCharacter('evilrett-lunacy', 0);
+		});
+		modManager.queueFuncOnce(480 * 4, (s, s2) -> {
+			changeCharacter('avier-lunaEnd', 1);
+			dad.idleSuffix = '';
+		});
+		modManager.queueFuncOnce(536 * 4, (s, s2) -> {
+			boyfriend.playAnim('endingAnim', true);
+			boyfriend.specialAnim = true;
+			boyfriend.idleSuffix = '-end';
 		});
 	}
 }

@@ -1,43 +1,44 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="scratchShit.png">
-	<!-- Created with Adobe Animate version 21.0.1.37179 -->
-	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="scratch thing 10000" x="10" y="10" width="1281" height="720"/>
-	<SubTexture name="scratch thing 10001" x="1301" y="10" width="1281" height="720"/>
-	<SubTexture name="scratch thing 10002" x="1301" y="10" width="1281" height="720"/>
-	<SubTexture name="scratch thing 10003" x="2592" y="10" width="1281" height="720"/>
-	<SubTexture name="scratch thing 10004" x="3883" y="10" width="1281" height="720"/>
-	<SubTexture name="scratch thing 10005" x="5174" y="10" width="1281" height="720"/>
-	<SubTexture name="scratch thing 10006" x="6465" y="10" width="1281" height="720"/>
-	<SubTexture name="scratch thing 10007" x="10" y="740" width="1281" height="720"/>
-	<SubTexture name="scratch thing 10008" x="1301" y="740" width="1281" height="720"/>
-	<SubTexture name="scratch thing 10009" x="2592" y="740" width="1281" height="720"/>
-	<SubTexture name="scratch thing 10010" x="3883" y="740" width="1281" height="720"/>
-	<SubTexture name="scratch thing 10011" x="5174" y="740" width="1281" height="720"/>
-	<SubTexture name="scratch thing 10012" x="6465" y="740" width="1281" height="720"/>
-	<SubTexture name="scratch thing 10013" x="10" y="1470" width="1281" height="720"/>
-	<SubTexture name="scratch thing 10014" x="1301" y="1470" width="1281" height="720"/>
-	<SubTexture name="scratch thing 10015" x="2592" y="1470" width="1281" height="720"/>
-	<SubTexture name="scratch thing 10016" x="3883" y="1470" width="1281" height="720"/>
-	<SubTexture name="scratch thing 10017" x="5174" y="1470" width="1281" height="720"/>
-	<SubTexture name="scratch thing 10018" x="6465" y="1470" width="1281" height="720"/>
-	<SubTexture name="scratch thing 10019" x="10" y="2200" width="1281" height="720"/>
-	<SubTexture name="scratch thing 10020" x="1301" y="2200" width="1281" height="720"/>
-	<SubTexture name="scratch thing 10021" x="2592" y="2200" width="1281" height="720"/>
-	<SubTexture name="scratch thing 10022" x="3883" y="2200" width="1281" height="720"/>
-	<SubTexture name="scratch thing 10023" x="5174" y="2200" width="1281" height="720"/>
-	<SubTexture name="scratch thing 10024" x="6465" y="2200" width="1281" height="720"/>
-	<SubTexture name="scratch thing 10025" x="10" y="2930" width="1281" height="720"/>
-	<SubTexture name="scratch thing 10026" x="1301" y="2930" width="1281" height="720"/>
-	<SubTexture name="scratch thing 10027" x="2592" y="2930" width="1281" height="720"/>
-	<SubTexture name="scratch thing 10028" x="3883" y="2930" width="1281" height="720"/>
-	<SubTexture name="scratch thing 10029" x="5174" y="2930" width="1281" height="720"/>
-	<SubTexture name="scratch thing 10030" x="6465" y="2930" width="1281" height="720"/>
-	<SubTexture name="scratch thing 10031" x="10" y="3660" width="1281" height="720"/>
-	<SubTexture name="scratch thing 10032" x="1301" y="3660" width="1281" height="720"/>
-	<SubTexture name="scratch thing 10033" x="2592" y="3660" width="1281" height="720"/>
-	<SubTexture name="scratch thing 10034" x="3883" y="3660" width="1281" height="720"/>
-	<SubTexture name="scratch thing 10035" x="5174" y="3660" width="1281" height="720"/>
-	<SubTexture name="scratch thing 10036" x="5174" y="3660" width="1281" height="720"/>
-	<SubTexture name="scratch thing 10037" x="6465" y="3660" width="1281" height="720"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="scratchShit.png" width="4620" height="648">
+	<SubTexture name="scratch thing 10000" x="0" y="0" width="385" height="216" frameX="-0" frameY="-0" frameWidth="385" frameHeight="216"/>
+	<SubTexture name="scratch thing 10001" x="385" y="0" width="385" height="216" frameX="-0" frameY="-0" frameWidth="385" frameHeight="216"/>
+	<SubTexture name="scratch thing 10002" x="385" y="0" width="385" height="216" frameX="-0" frameY="-0" frameWidth="385" frameHeight="216"/>
+	<SubTexture name="scratch thing 10003" x="770" y="0" width="385" height="216" frameX="-0" frameY="-0" frameWidth="385" frameHeight="216"/>
+	<SubTexture name="scratch thing 10004" x="1155" y="0" width="385" height="216" frameX="-0" frameY="-0" frameWidth="385" frameHeight="216"/>
+	<SubTexture name="scratch thing 10005" x="1540" y="0" width="385" height="216" frameX="-0" frameY="-0" frameWidth="385" frameHeight="216"/>
+	<SubTexture name="scratch thing 10006" x="1925" y="0" width="385" height="216" frameX="-0" frameY="-0" frameWidth="385" frameHeight="216"/>
+	<SubTexture name="scratch thing 10007" x="2310" y="0" width="385" height="216" frameX="-0" frameY="-0" frameWidth="385" frameHeight="216"/>
+	<SubTexture name="scratch thing 10008" x="2695" y="0" width="385" height="216" frameX="-0" frameY="-0" frameWidth="385" frameHeight="216"/>
+	<SubTexture name="scratch thing 10009" x="3080" y="0" width="385" height="216" frameX="-0" frameY="-0" frameWidth="385" frameHeight="216"/>
+	<SubTexture name="scratch thing 10010" x="3465" y="0" width="385" height="216" frameX="-0" frameY="-0" frameWidth="385" frameHeight="216"/>
+	<SubTexture name="scratch thing 10011" x="3850" y="0" width="385" height="216" frameX="-0" frameY="-0" frameWidth="385" frameHeight="216"/>
+	<SubTexture name="scratch thing 10012" x="4235" y="0" width="385" height="216" frameX="-0" frameY="-0" frameWidth="385" frameHeight="216"/>
+	<SubTexture name="scratch thing 10013" x="0" y="216" width="385" height="216" frameX="-0" frameY="-0" frameWidth="385" frameHeight="216"/>
+	<SubTexture name="scratch thing 10014" x="385" y="216" width="385" height="216" frameX="-0" frameY="-0" frameWidth="385" frameHeight="216"/>
+	<SubTexture name="scratch thing 10015" x="770" y="216" width="385" height="216" frameX="-0" frameY="-0" frameWidth="385" frameHeight="216"/>
+	<SubTexture name="scratch thing 10016" x="1155" y="216" width="385" height="216" frameX="-0" frameY="-0" frameWidth="385" frameHeight="216"/>
+	<SubTexture name="scratch thing 10017" x="1540" y="216" width="385" height="216" frameX="-0" frameY="-0" frameWidth="385" frameHeight="216"/>
+	<SubTexture name="scratch thing 10018" x="1925" y="216" width="385" height="216" frameX="-0" frameY="-0" frameWidth="385" frameHeight="216"/>
+	<SubTexture name="scratch thing 10019" x="2310" y="216" width="385" height="216" frameX="-0" frameY="-0" frameWidth="385" frameHeight="216"/>
+	<SubTexture name="scratch thing 10020" x="2695" y="216" width="385" height="216" frameX="-0" frameY="-0" frameWidth="385" frameHeight="216"/>
+	<SubTexture name="scratch thing 10021" x="3080" y="216" width="385" height="216" frameX="-0" frameY="-0" frameWidth="385" frameHeight="216"/>
+	<SubTexture name="scratch thing 10022" x="3465" y="216" width="385" height="216" frameX="-0" frameY="-0" frameWidth="385" frameHeight="216"/>
+	<SubTexture name="scratch thing 10023" x="3850" y="216" width="385" height="216" frameX="-0" frameY="-0" frameWidth="385" frameHeight="216"/>
+	<SubTexture name="scratch thing 10024" x="4235" y="216" width="385" height="216" frameX="-0" frameY="-0" frameWidth="385" frameHeight="216"/>
+	<SubTexture name="scratch thing 10025" x="0" y="432" width="385" height="216" frameX="-0" frameY="-0" frameWidth="385" frameHeight="216"/>
+	<SubTexture name="scratch thing 10026" x="385" y="432" width="385" height="216" frameX="-0" frameY="-0" frameWidth="385" frameHeight="216"/>
+	<SubTexture name="scratch thing 10027" x="770" y="432" width="385" height="216" frameX="-0" frameY="-0" frameWidth="385" frameHeight="216"/>
+	<SubTexture name="scratch thing 10028" x="1155" y="432" width="385" height="216" frameX="-0" frameY="-0" frameWidth="385" frameHeight="216"/>
+	<SubTexture name="scratch thing 10029" x="1540" y="432" width="385" height="216" frameX="-0" frameY="-0" frameWidth="385" frameHeight="216"/>
+	<SubTexture name="scratch thing 10030" x="1925" y="432" width="385" height="216" frameX="-0" frameY="-0" frameWidth="385" frameHeight="216"/>
+	<SubTexture name="scratch thing 10031" x="2310" y="432" width="385" height="216" frameX="-0" frameY="-0" frameWidth="385" frameHeight="216"/>
+	<SubTexture name="scratch thing 10032" x="2695" y="432" width="385" height="216" frameX="-0" frameY="-0" frameWidth="385" frameHeight="216"/>
+	<SubTexture name="scratch thing 10033" x="3080" y="432" width="385" height="216" frameX="-0" frameY="-0" frameWidth="385" frameHeight="216"/>
+	<SubTexture name="scratch thing 10034" x="3465" y="432" width="385" height="216" frameX="-0" frameY="-0" frameWidth="385" frameHeight="216"/>
+	<SubTexture name="scratch thing 10035" x="3850" y="432" width="385" height="216" frameX="-0" frameY="-0" frameWidth="385" frameHeight="216"/>
+	<SubTexture name="scratch thing 10036" x="3850" y="432" width="385" height="216" frameX="-0" frameY="-0" frameWidth="385" frameHeight="216"/>
+	<SubTexture name="scratch thing 10037" x="4235" y="432" width="385" height="216" frameX="-0" frameY="-0" frameWidth="385" frameHeight="216"/>
 </TextureAtlas>
