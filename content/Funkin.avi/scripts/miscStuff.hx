@@ -6,7 +6,6 @@ public var isCartoon:Bool = false;
 public var globalGradient:FlxSprite;
 public var scratch:FlxSprite;
 
-public var camBars:FlxCamera;
 public var camVideo:FlxCamera;
 
 function onMoveCamera(char)
@@ -21,11 +20,7 @@ function onLoad()
 {
     camVideo = new FlxCamera();
 	camVideo.bgColor = 0x0;
-    FlxG.cameras.insert(camVideo, FlxG.cameras.list.indexOf(PlayState.camHUD) - 1, false);
-    
-    camBars = new FlxCamera();
-	camBars.bgColor = 0x0;
-    FlxG.cameras.insert(camBars, FlxG.cameras.list.indexOf(PlayState.camHUD) - 1, false);
+    FlxG.cameras.insert(camVideo, FlxG.cameras.list.indexOf(PlayState.camBars) - 1, false);
 }
 
 function onCreatePost()
