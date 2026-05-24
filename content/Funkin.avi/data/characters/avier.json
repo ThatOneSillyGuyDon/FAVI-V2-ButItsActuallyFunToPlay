@@ -1,124 +1,125 @@
 {
 	"animations": [
 		{
+			"loop": false,
+			"flipY": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 8,
-			"flipX": false,
-			"flipY": false,
 			"anim": "idle",
-			"loop": false,
-			"name": "idle"
+			"fps": 8,
+			"name": "idle",
+			"indices": [],
+			"flipX": false
 		},
 		{
+			"loop": false,
+			"flipY": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 8,
-			"flipX": false,
-			"flipY": false,
 			"anim": "singDOWN",
-			"loop": false,
-			"name": "down"
+			"fps": 8,
+			"name": "down",
+			"indices": [],
+			"flipX": false
 		},
 		{
+			"loop": false,
+			"flipY": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 8,
-			"flipX": false,
-			"flipY": false,
 			"anim": "singLEFT",
-			"loop": false,
-			"name": "left"
+			"fps": 8,
+			"name": "left",
+			"indices": [],
+			"flipX": false
 		},
 		{
+			"loop": false,
+			"flipY": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 8,
-			"flipX": false,
-			"flipY": false,
 			"anim": "singRIGHT",
-			"loop": false,
-			"name": "right"
+			"fps": 8,
+			"name": "right",
+			"indices": [],
+			"flipX": false
 		},
 		{
+			"loop": false,
+			"flipY": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 8,
-			"flipX": false,
-			"flipY": false,
 			"anim": "singUP",
-			"loop": false,
-			"name": "up"
+			"fps": 8,
+			"name": "up",
+			"indices": [],
+			"flipX": false
 		},
 		{
+			"loop": false,
+			"flipY": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 8,
-			"flipX": false,
-			"flipY": false,
 			"anim": "singUP-whistle",
-			"loop": false,
-			"name": "whistleUp"
+			"fps": 8,
+			"name": "whistleUp",
+			"indices": [],
+			"flipX": false
 		},
 		{
+			"loop": false,
+			"flipY": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 8,
-			"flipX": false,
-			"flipY": false,
 			"anim": "singRIGHT-whistle",
-			"loop": false,
-			"name": "whistleRight"
+			"fps": 8,
+			"name": "whistleRight",
+			"indices": [],
+			"flipX": false
 		},
 		{
+			"loop": false,
+			"flipY": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 8,
-			"flipX": false,
-			"flipY": false,
 			"anim": "singLEFT-whistle",
-			"loop": false,
-			"name": "whistleLeft"
+			"fps": 8,
+			"name": "whistleLeft",
+			"indices": [],
+			"flipX": false
 		},
 		{
+			"loop": false,
+			"flipY": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 8,
-			"flipX": false,
-			"flipY": false,
 			"anim": "singDOWN-whistle",
-			"loop": false,
-			"name": "whistleDown"
+			"fps": 8,
+			"name": "whistleDown",
+			"indices": [],
+			"flipX": false
 		}
 	],
 	"no_antialiasing": false,
+	"ghosts_enabled": false,
 	"image": "characters/avier",
 	"position": [
 		-200,
@@ -138,6 +139,7 @@
 		41
 	],
 	"gameover_loop_sound": null,
+	"icon_count": 3,
 	"sing_duration": 6.1,
 	"scale": 1,
 	"_editor_isPlayer": false

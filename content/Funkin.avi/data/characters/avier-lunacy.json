@@ -93,6 +93,11 @@
 				0,
 				0
 			],
+			"flipY": false,
+			"loop": false,
+			"fps": 8,
+			"anim": "transition",
+			"flipX": false,
 			"indices": [
 				8,
 				9,
@@ -112,15 +117,11 @@
 				23,
 				24
 			],
-			"fps": 8,
-			"flipX": false,
-			"flipY": false,
-			"anim": "transition",
-			"loop": false,
 			"name": "transition"
 		}
 	],
 	"no_antialiasing": false,
+	"ghosts_enabled": false,
 	"image": "characters/avier-lunacy",
 	"position": [
 		-200,
@@ -130,7 +131,7 @@
 	"gameover_intial_sound": null,
 	"scalableOffsets": true,
 	"gameover_confirm_sound": null,
-	"healthicon": "avier",
+	"healthicon": "lunaavier",
 	"gameover_character": null,
 	"vslice_sustains": false,
 	"flip_x": false,
@@ -140,6 +141,7 @@
 		41
 	],
 	"gameover_loop_sound": null,
+	"icon_count": 3,
 	"sing_duration": 6.1,
 	"scale": 1,
 	"_editor_isPlayer": false

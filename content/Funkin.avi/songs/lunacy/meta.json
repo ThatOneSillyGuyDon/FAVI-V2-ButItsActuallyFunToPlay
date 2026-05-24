@@ -1,8 +1,13 @@
 {
-	"freeplayIcon": "face",
+	"charters": [],
+	"coders": [],
+	"freeplayIcon": "lunaavier",
 	"difficulties": [
 		"Hard"
 	],
+	"composers": [],
 	"displayName": "Lunacy",
-	"freeplayColor": "0xFF382F38"
+	"freeplayColor": "0xFFD8D8D8",
+	"freeplayIconFrames": 3,
+	"artists": []
 }

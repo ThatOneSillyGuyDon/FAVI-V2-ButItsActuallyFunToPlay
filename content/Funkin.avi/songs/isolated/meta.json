@@ -1,8 +1,13 @@
 {
-	"freeplayIcon": "face",
+	"charters": [],
+	"coders": [],
+	"freeplayIcon": "avier",
 	"difficulties": [
 		"Hard"
 	],
+	"composers": [],
 	"displayName": "Isolated",
-	"freeplayColor": "0xFF382F38"
+	"freeplayColor": "0xFFD8D8D8",
+	"freeplayIconFrames": 3,
+	"artists": []
 }

@@ -1,0 +1,18 @@
+A series of customizers and event types that
+changes the camera behavior!
+
+Value 1: Name of event you want
+Value 2: Controls the event
+
+StartHidden - makes the song start off hidden no matter where you place the event!
+ChangeValue - Value Name, Value Input
+TweenValue - Value Name, Value Input, Duration, Ease type
+Shake - Intensity, Duration, Game or HUD
+Fade - R, G, B, Duration, Fade In Bool Toggle
+Flash - R, G, B, Duration, Alpha, Blend Bool Toggle
+Change Pos - X Pos, Y Pos
+TweenPos: X Pos, Y Pos, Duration, Ease type
+SnapPos: X Pos, Y Pos
+
+(Please refer to documentation or code that comes with this for
+valid value names for "TweenValue" & "ChangeValue")

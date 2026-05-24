@@ -96,12 +96,12 @@
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 12,
-			"flipX": false,
 			"flipY": false,
-			"anim": "singDOWN",
 			"loop": false,
+			"fps": 12,
+			"anim": "singDOWN",
+			"flipX": false,
+			"indices": [],
 			"name": "down"
 		},
 		{
@@ -109,12 +109,12 @@
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 12,
-			"flipX": false,
 			"flipY": false,
-			"anim": "singLEFT",
 			"loop": false,
+			"fps": 12,
+			"anim": "singLEFT",
+			"flipX": false,
+			"indices": [],
 			"name": "left"
 		},
 		{
@@ -122,12 +122,12 @@
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 12,
-			"flipX": false,
 			"flipY": false,
-			"anim": "singRIGHT",
 			"loop": false,
+			"fps": 12,
+			"anim": "singRIGHT",
+			"flipX": false,
+			"indices": [],
 			"name": "right"
 		},
 		{
@@ -135,16 +135,17 @@
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 12,
-			"flipX": false,
 			"flipY": false,
-			"anim": "singUP",
 			"loop": false,
+			"fps": 12,
+			"anim": "singUP",
+			"flipX": false,
+			"indices": [],
 			"name": "up"
 		}
 	],
 	"no_antialiasing": false,
+	"ghosts_enabled": false,
 	"image": "characters/evilrett-lunacy",
 	"position": [
 		-130,
@@ -154,7 +155,7 @@
 	"gameover_intial_sound": null,
 	"scalableOffsets": true,
 	"gameover_confirm_sound": null,
-	"healthicon": "evilrett",
+	"healthicon": "evilcy",
 	"gameover_character": null,
 	"vslice_sustains": false,
 	"flip_x": true,
@@ -164,6 +165,7 @@
 		20
 	],
 	"gameover_loop_sound": null,
+	"icon_count": 3,
 	"sing_duration": 6.1,
 	"scale": 1,
 	"_editor_isPlayer": true

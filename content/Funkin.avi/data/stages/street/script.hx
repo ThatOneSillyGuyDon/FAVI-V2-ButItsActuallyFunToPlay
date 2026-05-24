@@ -1,5 +1,6 @@
 import flixel.effects.particles.FlxEmitter.FlxEmitterMode;
 import flixel.effects.particles.FlxParticle;
+import openfl.filters.ShaderFilter;
 
 var overlay;
 var street;
@@ -11,8 +12,17 @@ var ashEmitter:FlxEmitter;
 var weedGrp:FlxTypedGroup;
 var path = "stages/abandonedStreet/";
 
+var chromZoomShader:FlxRuntimeShader = newShader('aberration');
+var chromNormalShader:FlxRuntimeShader = newShader('aberrationDefault');
+var dramaticCamMovement:FlxRuntimeShader = newShader('cameraMovement');
+var monitorFilter:FlxRuntimeShader = newShader('monitorFilter');
+
+var shaderAnim:Float = 0;
+
 function onLoad()
 {
+	isCartoon = true;
+	
 	if (PlayState.SONG.song == 'Lunacy') addCharacterToList('evilrett-lunacy', 0);
 	
 	overlay = new FlxSprite().loadGraphic(Paths.image(path + 'i_forgor'));
@@ -44,6 +54,8 @@ function onLoad()
 
 function onCreatePost()
 {
+	cameraSpeed *= 2;
+	
 	for (obj in [bg, street, cables])
 		obj.scale.set(2.3, 2.3);
 		
@@ -70,6 +82,50 @@ function onCreatePost()
 	
 	for (i in [weedGrp, dustEmitter, ashEmitter])
 		add(i);
+
+	if (ClientPrefs.shaders)
+	{
+		switch (PlayState.SONG.song)
+		{
+			case 'Isolated', 'Lunacy':
+				if (!ClientPrefs.lowQuality)
+				{
+					camGame.filters = [
+						new ShaderFilter(dramaticCamMovement),
+						new ShaderFilter(monitorFilter),
+						new ShaderFilter(chromZoomShader),
+						new ShaderFilter(chromNormalShader)
+					];
+					camHUD.filters = [new ShaderFilter(chromNormalShader)];
+				}
+				else
+				{
+					camGame.filters = [
+						new ShaderFilter(monitorFilter),
+						new ShaderFilter(chromNormalShader)
+					];
+					camHUD.filters = [new ShaderFilter(chromNormalShader)];
+				}
+		}
+	}
+}
+
+function onUpdate(elapsed)
+{
+	shaderAnim = Conductor.songPosition / 1000;
+		
+	switch (PlayState.SONG.song)
+	{
+		case 'Isolated', 'Lunacy':
+			if (ClientPrefs.shaders)
+			{
+				chromZoomShader.setFloat('aberration', 0.0001);
+				chromZoomShader.setFloat('effectTime', 0.0001);
+				chromNormalShader.setFloat('rOffset', 0.0001 / 45);
+				chromNormalShader.setFloat('bOffset', -0.0001 / 45);
+				dramaticCamMovement.setFloat('time', shaderAnim);
+			}
+	}
 }
 
 function onSongStart()
@@ -140,18 +196,24 @@ function summonWeedMakerLmfao()
 	});
 }
 
-function whistleNotes(targetGroup:FlxSpriteGroup)
+function opponentNoteHit(note)
 {
-	var path:String = 'favi/ui/bdaynotes';
+	if (dad.animSuffix == "-whistle" && !note.isSustainNote)
+		whistleNotes();
+}
+
+function whistleNotes()
+{
+	var path:String = 'UI/bdaynotes';
 	var particleNote:FlxSprite = new FlxSprite().loadGraphic(Paths.image('$path/note_${FlxG.random.int(1, 3)}'));
 	particleNote.setGraphicSize(Std.int(particleNote.width * 0.5));
 	particleNote.updateHitbox();
 	particleNote.angle = FlxG.random.float(-15, 18);
 	particleNote.setColorTransform(-1, -1, -1, 1, 128, 128, 128, 0);
-	particleNote.x = targetGroup.x - 175;
-	particleNote.y = targetGroup.y + 375;
+	particleNote.x = dadGroup.x + 450;
+	particleNote.y = dadGroup.y + 500;
 	particleNote.alpha = 0.0001;
-	particleNote.velocity.x -= targetGroup.y - 475;
+	particleNote.velocity.x -= dadGroup.y - 475;
 	FlxTween.tween(particleNote, {alpha: 1}, .5, {ease: FlxEase.sineInOut});
 	
 	FlxTween.tween(particleNote, {y: particleNote.y - 70}, FlxG.random.float(0.5, 2), {ease: FlxEase.sineInOut, type: 4});
@@ -164,5 +226,5 @@ function whistleNotes(targetGroup:FlxSpriteGroup)
 				particleNote.destroy();
 			}
 		});
-	dadGroup.insert(particleNote, 0);
+	dadGroup.insert(0, particleNote);
 }

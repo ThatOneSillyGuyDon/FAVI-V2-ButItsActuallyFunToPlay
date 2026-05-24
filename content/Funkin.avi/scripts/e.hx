@@ -7,8 +7,26 @@ using StringTools;
 public var shittyTwns:Array<FlxTween> = [];
 var camTwn:Array<FlxTween> = [];
 
+var flashSprite:FlxSprite;
+var flashSpeed:Float = 0.0;
+
 // once again, stolen from vs imposter legacy, i'm too lazy to figure ts out
 public function nullBlank(val) return val.length == 0 || val.trim() == '';
+
+function onCreatePost()
+{
+	flashSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.WHITE);
+	flashSprite.scale.set(3, 3);
+	flashSprite.screenCenter();
+	flashSprite.alpha = 0.001;
+	flashSprite.cameras = [camBars];
+	add(flashSprite);
+}
+
+function onUpdate(elapsed)
+{
+	flashSprite.alpha = FlxMath.lerp(0, flashSprite.alpha, Math.exp(-elapsed * flashSpeed));
+}
 
 function onEventPush(event:EventNote)
 {
@@ -207,7 +225,9 @@ function onEvent(eventName, value1, value2)
 						case "addhudzoom": camHUD.zoom += Std.parseFloat(triggerInfo[1]);
 						case "defaultcamzoom": defaultCamZoom = Std.parseFloat(triggerInfo[1]);
 						case "alpha": camGame.alpha = Std.parseFloat(triggerInfo[1]);
-						case "cameraspeed": cameraSpeed = Std.parseFloat(triggerInfo[1]);
+						case "cameraspeed": 
+							cameraSpeed = Std.parseFloat(triggerInfo[1]);
+							cameraSpeed *= 2;
 						case "hudalpha": camHUD.alpha = Std.parseFloat(triggerInfo[1]);
 						case "angle": camGame.angle = Std.parseFloat(triggerInfo[1]);
 						case "hudangle": camHUD.angle = Std.parseFloat(triggerInfo[1]);
@@ -220,6 +240,27 @@ function onEvent(eventName, value1, value2)
 					if (triggerInfo[2] == "hud") camHUD.shake(Std.parseFloat(triggerInfo[0]),
 						Std.parseFloat(triggerInfo[1])); else camGame.shake(Std.parseFloat(triggerInfo[0]), Std.parseFloat(triggerInfo[1]));
 						
+				case "flash":
+					if (ClientPrefs.flashing)
+					{
+						if (triggerInfo[0] == null) triggerInfo[0] = "255";
+						if (triggerInfo[1] == null) triggerInfo[1] = "255";
+						if (triggerInfo[2] == null) triggerInfo[2] = "255";
+						if (triggerInfo[3] == null) triggerInfo[3] = "1";
+						if (triggerInfo[4] == null) triggerInfo[4] = "1";
+						if (triggerInfo[5] == null) triggerInfo[5] = "false";
+			
+						var boolShit:Bool = false;
+			
+						if (triggerInfo[5].toLowerCase().trim() == "true")
+							boolShit = true;
+			
+						flashSprite.color = FlxColor.fromRGB(Std.parseInt(triggerInfo[0]), Std.parseInt(triggerInfo[1]), Std.parseInt(triggerInfo[2]));
+						flashSpeed = Std.parseFloat(triggerInfo[3]);
+						flashSprite.alpha = Std.parseFloat(triggerInfo[4]);
+						flashSprite.blend = (boolShit ? BlendMode.ADD : BlendMode.NORMAL);
+					}
+
 				case "fade":
 					var boolShit = false;
 					if (triggerInfo[0] == null) triggerInfo[0] = "0";
@@ -274,7 +315,7 @@ function onEvent(eventName, value1, value2)
 							if (triggerInfo[0] == null) triggerInfo[0] = "0";
 							if (triggerInfo[1] == null) triggerInfo[1] = "0";
 							
-							snapCamFollowToPos(Std.parseFloat(triggerInfo[0]), Std.parseFloat(triggerInfo[1]));
+							snapCamToPos(Std.parseFloat(triggerInfo[0]), Std.parseFloat(triggerInfo[1]), true);
 						}
 					}
 			}
