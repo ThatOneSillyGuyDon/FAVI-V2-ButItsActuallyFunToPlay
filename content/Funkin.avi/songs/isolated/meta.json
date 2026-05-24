@@ -1,13 +1,13 @@
 {
-	"charters": [],
-	"coders": [],
+	"charters": ["Purg"],
+	"coders": ["ThatOneSillyGuy", "Goober"],
 	"freeplayIcon": "avier",
 	"difficulties": [
 		"Hard"
 	],
-	"composers": [],
+	"composers": ["obscurity"],
 	"displayName": "Isolated",
 	"freeplayColor": "0xFFD8D8D8",
 	"freeplayIconFrames": 3,
-	"artists": []
+	"artists": ["Domingo", "Moe"]
 }
