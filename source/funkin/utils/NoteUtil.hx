@@ -472,9 +472,9 @@ class NoteUtil
 		if (ClientPrefs.quants && quant != 0)
 		{
 			if (skin.quantColors != null)
-				colors = skin.quantColors[quants.indexOf(quant)];
+				arr = skin.quantColors[quants.indexOf(quant)];
 			else
-				colors = quantDefaultColors[quants.indexOf(quant)];
+				arr = quantDefaultColors[quants.indexOf(quant)];
 		}
 		
 		return colorToArray(arr);
