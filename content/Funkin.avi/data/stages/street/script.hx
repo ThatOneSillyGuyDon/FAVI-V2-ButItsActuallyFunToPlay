@@ -228,9 +228,10 @@ function whistleNotes()
 	particleNote.y = dadGroup.y + 500;
 	particleNote.alpha = 0.0001;
 	particleNote.velocity.x -= dadGroup.y - 475;
+	particleNote.acceleration.x = FlxG.random.int(-160, -250);
 	FlxTween.tween(particleNote, {alpha: 1}, .5, {ease: FlxEase.sineInOut});
 	
-	FlxTween.tween(particleNote, {y: particleNote.y - 70}, FlxG.random.float(0.5, 2), {ease: FlxEase.sineInOut, type: 4});
+	FlxTween.tween(particleNote, {y: particleNote.y - FlxG.random.int(70, 130)}, FlxG.random.float(0.5, 2), {ease: FlxEase.sineInOut, type: 4});
 	
 	FlxTween.tween(particleNote, {alpha: 0.0001}, 1,
 		{
