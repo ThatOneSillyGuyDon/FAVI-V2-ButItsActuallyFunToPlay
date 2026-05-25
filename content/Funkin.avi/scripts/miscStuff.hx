@@ -8,6 +8,8 @@ public var scratch:FlxSprite;
 
 public var camVideo:FlxCamera;
 
+public var foregroundStuff:FlxTypedGroup;
+
 function onMoveCamera(char)
 {
     if (!PlayState.SONG.notes[curSection].mustHitSection)
@@ -21,6 +23,8 @@ function onLoad()
     camVideo = new FlxCamera();
 	camVideo.bgColor = 0x0;
     FlxG.cameras.insert(camVideo, FlxG.cameras.list.indexOf(PlayState.camBars) - 1, false);
+
+	foregroundStuff = new FlxTypedGroup();
 }
 
 function onCreatePost()
@@ -49,6 +53,14 @@ function onCreatePost()
 		scratch.cameras = [camOther];
 		add(scratch);
 	}
+
+	for (grp in [gfGroup, dadGroup, boyfriendGroup]) // fixes layering issue with the bg flash overlaying the characters
+	{
+		remove(grp);
+		add(grp);
+	}
+
+	add(foregroundStuff);
 }
 
 function onUpdate(elapsed)

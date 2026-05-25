@@ -4,6 +4,8 @@ import flixel.system.FlxAssets.FlxSoundAsset;
 
 import openfl.display.Bitmap;
 
+import openfl.Lib;
+
 import flixel.FlxG;
 import flixel.system.ui.FlxSoundTray;
 
@@ -18,7 +20,7 @@ import funkin.utils.MathUtil;
  */
 class FunkinSoundTray extends FlxSoundTray
 {
-	var graphicScale:Float = 0.30;
+	var graphicScale:Float = 0.5;
 	var lerpYPos:Float = 0;
 	var alphaTarget:Float = 0;
 	
@@ -44,8 +46,8 @@ class FunkinSoundTray extends FlxSoundTray
 		var backingBar:Bitmap = new Bitmap(FunkinAssets.getBitmapData(Paths.getPath('images/soundtray/bars_10.png')));
 		backingBar.x = 9;
 		backingBar.y = 5;
-		backingBar.scaleX = graphicScale;
-		backingBar.scaleY = graphicScale;
+		backingBar.scaleX = graphicScale - .05;
+		backingBar.scaleY = graphicScale - .05;
 		backingBar.smoothing = ClientPrefs.globalAntialiasing;
 		addChild(backingBar);
 		backingBar.alpha = 0.4;
@@ -61,8 +63,8 @@ class FunkinSoundTray extends FlxSoundTray
 			var bar:Bitmap = new Bitmap(FunkinAssets.getBitmapData(Paths.getPath('images/soundtray/bars_$i.png')));
 			bar.x = 9;
 			bar.y = 5;
-			bar.scaleX = graphicScale;
-			bar.scaleY = graphicScale;
+			bar.scaleX = graphicScale - .05;
+			bar.scaleY = graphicScale - .05;
 			bar.smoothing = ClientPrefs.globalAntialiasing;
 			addChild(bar);
 			_bars.push(bar);
@@ -74,6 +76,8 @@ class FunkinSoundTray extends FlxSoundTray
 		volumeUpSound = 'soundtray/Volup';
 		volumeDownSound = 'soundtray/Voldown';
 		volumeMaxSound = 'soundtray/VolMAX';
+
+		silent = true;
 	}
 	
 	override public function update(MS:Float):Void
@@ -89,7 +93,7 @@ class FunkinSoundTray extends FlxSoundTray
 		}
 		else if (y >= -height)
 		{
-			lerpYPos = -height - 10;
+			lerpYPos = -height;
 			alphaTarget = 0;
 		}
 		
@@ -135,7 +139,7 @@ class FunkinSoundTray extends FlxSoundTray
 	function showFunkinBar(up:Bool = false)
 	{
 		_timer = 1;
-		lerpYPos = 10;
+		lerpYPos = 0;
 		visible = true;
 		active = true;
 		var globalVolume:Int = Math.round(FlxG.sound.volume * 10);
@@ -158,6 +162,15 @@ class FunkinSoundTray extends FlxSoundTray
 			_bars[i].visible = i < globalVolume;
 			
 		checkAntialiasing();
+	}
+
+	override function screenCenter() {
+		super.screenCenter();
+
+		scaleX = _defaultScale;
+		scaleY = _defaultScale;
+
+		x = (0.45 * (Lib.current.stage.stageWidth - _minWidth * _defaultScale) - FlxG.game.x);
 	}
 	
 	#if (flixel > "6.0.0")

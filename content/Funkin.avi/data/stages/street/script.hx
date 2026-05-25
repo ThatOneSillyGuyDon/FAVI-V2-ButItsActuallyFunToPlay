@@ -59,8 +59,6 @@ function onLoad()
 
 function onCreatePost()
 {
-	cameraSpeed *= 2;
-	
 	for (obj in [bg, street, cables])
 		obj.scale.set(2.3, 2.3);
 		
@@ -86,7 +84,7 @@ function onCreatePost()
 	ashEmitter.launchAngle.set(0, 280);
 	
 	for (i in [weedGrp, dustEmitter, ashEmitter])
-		add(i);
+		foregroundStuff.add(i);
 
 	if (ClientPrefs.shaders)
 	{
