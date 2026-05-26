@@ -1,0 +1,13 @@
+{
+	"charters": ["Dreupy"],
+	"coders": ["ThatOneSillyGuy", "Goober"],
+	"freeplayIcon": "avier",
+	"difficulties": [
+		"Hard"
+	],
+	"composers": ["FR3SHMoure"],
+	"displayName": "Delusional",
+	"freeplayColor": "0xFFD8D8D8",
+	"freeplayIconFrames": 3,
+	"artists": ["Domingo", "Moe"]
+}

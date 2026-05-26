@@ -8,22 +8,22 @@ var street;
 var bg;
 var cables;
 var tumbleWeed;
+var rain;
 var dustEmitter:FlxEmitter;
 var ashEmitter:FlxEmitter;
 var weedGrp:FlxTypedGroup;
 var path = "stages/abandonedStreet/";
-
+var rainShader:FlxRuntimeShader = newShader('rain');
 var chromZoomShader:FlxRuntimeShader = newShader('aberration');
 var chromNormalShader:FlxRuntimeShader = newShader('aberrationDefault');
 var dramaticCamMovement:FlxRuntimeShader = newShader('cameraMovement');
 var monitorFilter:FlxRuntimeShader = newShader('monitorFilter');
-
 var shaderAnim:Float = 0;
+var rainTime:Float = 0;
+var toggle = false;
 
 function onLoad()
 {
-	isCartoon = true;
-	
 	if (PlayState.SONG.song == 'Lunacy')
 	{
 		addCharacterToList('evilrett-lunacy', 0);
@@ -39,21 +39,32 @@ function onLoad()
 	street = new FlxSprite().loadGraphic(Paths.image(path + 'street'));
 	weedGrp = new FlxTypedGroup();
 	cables = new FlxSprite().loadGraphic(Paths.image(path + 'cables'));
-	dustEmitter = new FlxEmitter().loadParticles(Paths.image(path + 'dustParticle'), 500, 16, true);
 	
-	ashEmitter = new FlxEmitter();
-	
-	for (i in 0...100)
+	if (!ClientPrefs.lowQuality)
 	{
-		var blackParticle = new FlxParticle();
-		blackParticle.frames = Paths.getSparrowAtlas(path + 'ashParticle');
-		blackParticle.animation.addByPrefix('idle', 'ashParticle idle', 5, true);
-		blackParticle.animation.play('idle');
-		blackParticle.exists = false;
-		ashEmitter.add(blackParticle);
+		dustEmitter = new FlxEmitter().loadParticles(Paths.image(path + 'dustParticle'), 500, 16, true);
+		ashEmitter = new FlxEmitter();
+		
+		for (i in 0...100)
+		{
+			var blackParticle = new FlxParticle();
+			blackParticle.frames = Paths.getSparrowAtlas(path + 'ashParticle');
+			blackParticle.animation.addByPrefix('idle', 'ashParticle idle', 5, true);
+			blackParticle.animation.play('idle');
+			blackParticle.exists = false;
+			ashEmitter.add(blackParticle);
+		}
 	}
 	
-	for (i in [overlay, bg, street, cables])
+	if (!ClientPrefs.shaders && PlayState.SONG.song == 'Lunacy')
+	{
+		rain = new FlxSprite();
+		rain.frames = Paths.getSparrowAtlas(path + 'rain');
+		rain.animation.addByPrefix('Rain', 'Rain', 24, true);
+		rain.animation.play('Rain');
+	}
+	
+	for (i in [overlay, bg, street])
 		add(i);
 }
 
@@ -67,67 +78,86 @@ function onCreatePost()
 	cables.scrollFactor.set(2.5, 1.9);
 	bg.scrollFactor.set(0.3, 0.3);
 	
-	for (emitter in [dustEmitter, ashEmitter])
+	add(weedGrp);
+	if (!ClientPrefs.lowQuality)
 	{
-		emitter.launchMode = FlxEmitterMode.SQUARE;
-		emitter.velocity.set(-50, -200, 50, -600, -90, 0, 90, -600);
-		emitter.scale.set(4, 4, 4, 4, 0, 0, 0, 0);
-		emitter.drag.set(0, 0, 0, 0, 5, 5, 10, 10);
-		emitter.width = 4787.45;
-		emitter.alpha.set(1, 0.3);
-		emitter.lifespan.set(1.9, 4.9);
-		emitter.start(false, FlxG.random.float(.0521, .1060), 1000000);
-		emitter.setPosition(-1680, 2050);
+		for (emitter in [dustEmitter, ashEmitter])
+		{
+			emitter.launchMode = FlxEmitterMode.SQUARE;
+			emitter.velocity.set(-50, -200, 50, -600, -90, 0, 90, -600);
+			emitter.scale.set(4, 4, 4, 4, 0, 0, 0, 0);
+			emitter.drag.set(0, 0, 0, 0, 5, 5, 10, 10);
+			emitter.width = 4787.45;
+			emitter.alpha.set(1, 0.3);
+			emitter.lifespan.set(1.9, 4.9);
+			emitter.start(false, FlxG.random.float(.0521, .1060), 1000000);
+			emitter.setPosition(-1680, 2050);
+		}
+		ashEmitter.angle.set(290, 0);
+		ashEmitter.launchAngle.set(0, 280);
+		add(dustEmitter);
+		add(ashEmitter);
+	}
+	add(cables);
+	
+	if (!ClientPrefs.shaders && PlayState.SONG.song == 'Lunacy')
+	{
+		rain.blend = 0;
+		rain.alpha = 0.001;
+		add(rain);
 	}
 	
-	ashEmitter.angle.set(290, 0);
-	ashEmitter.launchAngle.set(0, 280);
-	
-	for (i in [weedGrp, dustEmitter, ashEmitter])
-		foregroundStuff.add(i);
-
 	if (ClientPrefs.shaders)
 	{
-		switch (PlayState.SONG.song)
+		rainShader.setFloatArray('uScreenResolution', [FlxG.width, FlxG.height]);
+		rainShader.setFloat('uTime', 0);
+		rainShader.setFloat('uScale', FlxG.height / 200);
+		rainShader.setFloatArray('rainColor', [0.034, 0.0078, 0.0445]);
+		rainShader.setFloat('uIntensity', rainIntensity);
+		
+		if (!ClientPrefs.lowQuality)
 		{
-			case 'Isolated', 'Lunacy':
-				if (!ClientPrefs.lowQuality)
-				{
-					camGame.filters = [
-						new ShaderFilter(dramaticCamMovement),
-						new ShaderFilter(monitorFilter),
-						new ShaderFilter(chromZoomShader),
-						new ShaderFilter(chromNormalShader)
-					];
-					camHUD.filters = [new ShaderFilter(chromNormalShader)];
-				}
-				else
-				{
-					camGame.filters = [
-						new ShaderFilter(monitorFilter),
-						new ShaderFilter(chromNormalShader)
-					];
-					camHUD.filters = [new ShaderFilter(chromNormalShader)];
-				}
+			camGame.filters = [
+				new ShaderFilter(dramaticCamMovement),
+				new ShaderFilter(monitorFilter),
+				new ShaderFilter(chromZoomShader),
+				new ShaderFilter(chromNormalShader),
+				new ShaderFilter(rainShader)
+			];
+			camHUD.filters = [new ShaderFilter(chromNormalShader)];
+		}
+		else
+		{
+			camGame.filters = [
+				new ShaderFilter(monitorFilter),
+				new ShaderFilter(chromNormalShader),
+				new ShaderFilter(rainShader)
+			];
+			camHUD.filters = [new ShaderFilter(chromNormalShader)];
 		}
 	}
 }
 
 function onUpdate(elapsed)
 {
-	shaderAnim = Conductor.songPosition / 1000;
-		
-	switch (PlayState.SONG.song)
+	if (ClientPrefs.shaders)
 	{
-		case 'Isolated', 'Lunacy':
-			if (ClientPrefs.shaders)
-			{
-				chromZoomShader.setFloat('aberration', 0.0001);
-				chromZoomShader.setFloat('effectTime', 0.0001);
-				chromNormalShader.setFloat('rOffset', 0.0001 / 45);
-				chromNormalShader.setFloat('bOffset', -0.0001 / 45);
-				dramaticCamMovement.setFloat('time', shaderAnim);
-			}
+		shaderAnim = Conductor.songPosition / 1000;
+		
+		rainTime += elapsed;
+		
+		rainShader.setFloatArray('uCameraBounds', [
+			camGame.scroll.x + camGame.viewMarginX, camGame.scroll.y + camGame.viewMarginY, camGame.scroll.x + camGame.viewMarginX + camGame.width, camGame.scroll.y + camGame.viewMarginY +
+			camGame.height
+		]);
+		rainShader.setFloat('uTime', rainTime);
+		rainShader.setFloat('uIntensity', rainIntensity);
+		
+		chromZoomShader.setFloat('aberration', 0.0001);
+		chromZoomShader.setFloat('effectTime', 0.0001);
+		chromNormalShader.setFloat('rOffset', 0.0001 / 45);
+		chromNormalShader.setFloat('bOffset', -0.0001 / 45);
+		dramaticCamMovement.setFloat('time', shaderAnim);
 	}
 }
 
@@ -161,6 +191,9 @@ function onSongStart()
 			changeCharacter('evilrett-lunacy', 0);
 		});
 		modManager.queueFuncOnce(480 * 4, (s, s2) -> {
+			camBars.flash(FlxColor.BLACK, 2);
+			if (ClientPrefs.shaders) rainIntensity = .12;
+			else rain.alpha = 0.35;
 			changeCharacter('avier-lunaEnd', 1);
 			dad.idleSuffix = '';
 		});
@@ -172,7 +205,23 @@ function onSongStart()
 	}
 }
 
-function onBeatHit() if (!ClientPrefs.lowQuality && tumbleWeed == null) summonWeedMakerLmfao();
+function onBeatHit() if (!ClientPrefs.lowQuality && tumbleWeed == null && FlxG.random.bool(3)) summonWeedMakerLmfao();
+
+function lunacyRain()
+{
+	toggle = !toggle;
+	
+	if (toggle)
+	{
+		if (ClientPrefs.shaders) FlxTween.tween(game, {rainIntensity: .12}, 0.2, {ease: FlxEase.expoOut});
+		else FlxTween.tween(rain, {alpha: .35}, 0.2, {ease: FlxEase.expoOut});
+	}
+	else
+	{
+		if (ClientPrefs.shaders) FlxTween.tween(game, {rainIntensity: 0}, 0.2, {ease: FlxEase.expoOut});
+		else FlxTween.tween(rain, {alpha: .001}, 0.2, {ease: FlxEase.expoOut});
+	}
+}
 
 function summonWeedMakerLmfao()
 {
@@ -208,10 +257,15 @@ function summonWeedMakerLmfao()
 	});
 }
 
-function opponentNoteHit(note)
+function opponentNoteHit(note) if (dad.animSuffix == "-whistle" && !note.isSustainNote) whistleNotes();
+
+function onEvent(eventName, value1, valuw2)
 {
-	if (dad.animSuffix == "-whistle" && !note.isSustainNote)
-		whistleNotes();
+	switch (eventName)
+	{
+		case 'Lunacy Rain':
+			lunacyRain();
+	}
 }
 
 function whistleNotes()

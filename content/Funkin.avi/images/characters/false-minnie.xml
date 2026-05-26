@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="BedroomMinnie.png">
+<SubTexture name="BedroomMinnie idle0000" x="0" y="1008" width="932" height="933" frameX="-184" frameY="-127" frameWidth="1280" frameHeight="1060" />
+<SubTexture name="BedroomMinnie idle0001" x="932" y="2836" width="932" height="882" frameX="-184" frameY="-140" frameWidth="1280" frameHeight="1060" />
+<SubTexture name="BedroomMinnie idle0002" x="0" y="2836" width="932" height="888" frameX="-184" frameY="-134" frameWidth="1280" frameHeight="1060" />
+<SubTexture name="BedroomMinnie idle0003" x="1934" y="1941" width="927" height="892" frameX="-184" frameY="-130" frameWidth="1280" frameHeight="1060" />
+<SubTexture name="BedroomMinnie idle0004" x="2804" y="895" width="930" height="894" frameX="-184" frameY="-128" frameWidth="1280" frameHeight="1060" />
+<SubTexture name="BedroomMinnie idle0005" x="2804" y="0" width="932" height="895" frameX="-184" frameY="-127" frameWidth="1280" frameHeight="1060" />
+<SubTexture name="BedroomMinnie up0000" x="1864" y="0" width="940" height="973" frameX="-184" frameY="-49" frameWidth="1280" frameHeight="1060" />
+<SubTexture name="BedroomMinnie up0001" x="0" y="0" width="932" height="1008" frameX="-184" frameY="-14" frameWidth="1280" frameHeight="1060" />
+<SubTexture name="BedroomMinnie up0002" x="932" y="0" width="932" height="1008" frameX="-184" frameY="-14" frameWidth="1280" frameHeight="1060" />
+<SubTexture name="BedroomMinnie right0000" x="964" y="1941" width="970" height="893" frameX="-184" frameY="-129" frameWidth="1280" frameHeight="1060" />
+<SubTexture name="BedroomMinnie right0001" x="0" y="1941" width="964" height="895" frameX="-184" frameY="-127" frameWidth="1280" frameHeight="1060" />
+<SubTexture name="BedroomMinnie right0002" x="0" y="1941" width="964" height="895" frameX="-184" frameY="-127" frameWidth="1280" frameHeight="1060" />
+<SubTexture name="BedroomMinnie down0000" x="2802" y="2836" width="927" height="819" frameX="-184" frameY="-203" frameWidth="1280" frameHeight="1060" />
+<SubTexture name="BedroomMinnie down0001" x="1864" y="2836" width="938" height="834" frameX="-184" frameY="-188" frameWidth="1280" frameHeight="1060" />
+<SubTexture name="BedroomMinnie down0002" x="1864" y="2836" width="938" height="834" frameX="-184" frameY="-188" frameWidth="1280" frameHeight="1060" />
+<SubTexture name="BedroomMinnie left0000" x="1815" y="1008" width="853" height="897" frameX="-184" frameY="-125" frameWidth="1280" frameHeight="1060" />
+<SubTexture name="BedroomMinnie left0001" x="932" y="1008" width="883" height="931" frameX="-184" frameY="-91" frameWidth="1280" frameHeight="1060" />
+<SubTexture name="BedroomMinnie left0002" x="932" y="1008" width="883" height="931" frameX="-184" frameY="-91" frameWidth="1280" frameHeight="1060" />
+</TextureAtlas>

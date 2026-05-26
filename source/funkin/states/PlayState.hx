@@ -282,6 +282,11 @@ class PlayState extends MusicBeatState
 	var camFollow:FlxObject;
 	
 	/**
+	 * Used for the rain shader in the scripts, shut up.
+	 */
+	public var rainIntensity:Float = 0;
+	
+	/**
 	 * Previous cameras target. used in story mode for a more seamless transition
 	 */
 	static var prevCamFollow:Null<FlxObject> = null;

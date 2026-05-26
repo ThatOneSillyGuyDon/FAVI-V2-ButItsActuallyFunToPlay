@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="mick-isolated-new.png">
+<SubTexture name="down0000" x="2803" y="2315" width="457" height="506" frameX="-150" frameY="-177" frameWidth="825" frameHeight="700" />
+<SubTexture name="down0001" x="2347" y="2315" width="456" height="511" frameX="-150" frameY="-173" frameWidth="825" frameHeight="700" />
+<SubTexture name="down0002" x="1431" y="2315" width="458" height="515" frameX="-148" frameY="-169" frameWidth="825" frameHeight="700" />
+<SubTexture name="down0003" x="1889" y="2315" width="458" height="515" frameX="-148" frameY="-169" frameWidth="825" frameHeight="700" />
+<SubTexture name="idle0000" x="921" y="1778" width="410" height="529" frameX="-164" frameY="-156" frameWidth="825" frameHeight="700" />
+<SubTexture name="idle0001" x="2785" y="1050" width="414" height="520" frameX="-163" frameY="-163" frameWidth="825" frameHeight="700" />
+<SubTexture name="idle0002" x="478" y="2315" width="420" height="517" frameX="-158" frameY="-166" frameWidth="825" frameHeight="700" />
+<SubTexture name="idle0003" x="2785" y="1570" width="414" height="520" frameX="-163" frameY="-164" frameWidth="825" frameHeight="700" />
+<SubTexture name="idle0004" x="2785" y="526" width="411" height="524" frameX="-164" frameY="-160" frameWidth="825" frameHeight="700" />
+<SubTexture name="idle0005" x="2374" y="0" width="411" height="527" frameX="-164" frameY="-158" frameWidth="825" frameHeight="700" />
+<SubTexture name="idle0006" x="1741" y="1778" width="410" height="528" frameX="-164" frameY="-157" frameWidth="825" frameHeight="700" />
+<SubTexture name="idle0007" x="1331" y="1778" width="410" height="529" frameX="-164" frameY="-156" frameWidth="825" frameHeight="700" />
+<SubTexture name="left0000" x="1907" y="1076" width="455" height="537" frameX="-188" frameY="-147" frameWidth="825" frameHeight="700" />
+<SubTexture name="left0001" x="873" y="1235" width="447" height="541" frameX="-208" frameY="-143" frameWidth="825" frameHeight="700" />
+<SubTexture name="left0002" x="436" y="1235" width="437" height="542" frameX="-218" frameY="-142" frameWidth="825" frameHeight="700" />
+<SubTexture name="left0003" x="0" y="1235" width="436" height="543" frameX="-218" frameY="-141" frameWidth="825" frameHeight="700" />
+<SubTexture name="right0000" x="1320" y="1235" width="493" height="541" frameX="-146" frameY="-155" frameWidth="825" frameHeight="700" />
+<SubTexture name="right0001" x="1907" y="0" width="467" height="538" frameX="-165" frameY="-155" frameWidth="825" frameHeight="700" />
+<SubTexture name="right0002" x="0" y="1778" width="460" height="537" frameX="-170" frameY="-156" frameWidth="825" frameHeight="700" />
+<SubTexture name="right0003" x="460" y="1778" width="461" height="537" frameX="-170" frameY="-156" frameWidth="825" frameHeight="700" />
+<SubTexture name="up0000" x="1255" y="0" width="306" height="560" frameX="-246" frameY="-110" frameWidth="825" frameHeight="700" />
+<SubTexture name="up0001" x="0" y="669" width="336" height="566" frameX="-220" frameY="-121" frameWidth="825" frameHeight="700" />
+<SubTexture name="up0002" x="336" y="669" width="345" height="562" frameX="-213" frameY="-124" frameWidth="825" frameHeight="700" />
+<SubTexture name="up0003" x="681" y="669" width="346" height="562" frameX="-213" frameY="-124" frameWidth="825" frameHeight="700" />
+<SubTexture name="whistleDown0000" x="898" y="2315" width="533" height="516" frameX="-107" frameY="-178" frameWidth="825" frameHeight="700" />
+<SubTexture name="whistleDown0001" x="0" y="0" width="525" height="669" frameX="-119" frameY="-25" frameWidth="825" frameHeight="700" />
+<SubTexture name="whistleLeft0000" x="1907" y="538" width="371" height="538" frameX="-170" frameY="-154" frameWidth="825" frameHeight="700" />
+<SubTexture name="whistleLeft0001" x="1561" y="0" width="346" height="547" frameX="-196" frameY="-144" frameWidth="825" frameHeight="700" />
+<SubTexture name="whistleRight0000" x="0" y="2315" width="478" height="522" frameX="-173" frameY="-170" frameWidth="825" frameHeight="700" />
+<SubTexture name="whistleRight0001" x="2785" y="0" width="475" height="526" frameX="-173" frameY="-166" frameWidth="825" frameHeight="700" />
+<SubTexture name="whistleUp0000" x="525" y="0" width="350" height="591" frameX="-223" frameY="-90" frameWidth="825" frameHeight="700" />
+<SubTexture name="whistleUp0001" x="875" y="0" width="380" height="578" frameX="-205" frameY="-101" frameWidth="825" frameHeight="700" />
+</TextureAtlas>

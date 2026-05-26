@@ -1,7 +1,9 @@
 {
 	"songs": [
+		["Devilish Deal", "face", [165, 165, 165]],
 		["Isolated", "face", [165, 165, 165]],
-		["Lunacy", "face", [165, 165, 165]]
+		["Lunacy", "face", [165, 165, 165]],
+		["Delusional", "face", [165, 165, 165]]
 	],
 
 	"weekCharacters": [

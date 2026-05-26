@@ -1,26 +1,32 @@
 import funkin.utils.MathUtil;
 
 var cameraOnDad = false;
-
+var stageList = ['street', 'forest', 'alleyway', 'muckney', 'war']; // script decided to be a dick, so here's the workaround
 public var isCartoon:Bool = false;
 public var globalGradient:FlxSprite;
 public var scratch:FlxSprite;
-
 public var camVideo:FlxCamera;
 
 public var foregroundStuff:FlxTypedGroup;
+public function numericForInterval(start, end, interval, func)
+{
+	var index = start;
+	while (index < end)
+	{
+		func(index);
+		index += interval;
+	}
+}
 
 function onMoveCamera(char)
 {
-    if (!PlayState.SONG.notes[curSection].mustHitSection)
-        cameraOnDad = true;
-    else
-        cameraOnDad = false;
+	if (!PlayState.SONG.notes[curSection].mustHitSection) cameraOnDad = true;
+	else cameraOnDad = false;
 }
 
 function onLoad()
 {
-    camVideo = new FlxCamera();
+	camVideo = new FlxCamera();
 	camVideo.bgColor = 0x0;
     FlxG.cameras.insert(camVideo, FlxG.cameras.list.indexOf(PlayState.camBars) - 1, false);
 
@@ -29,6 +35,9 @@ function onLoad()
 
 function onCreatePost()
 {
+	for (i in stageList)
+		if (PlayState.SONG.stage == stageList[i]) isCartoon = true;
+		
 	if (playerStrums._skin.data.arrowRGBQuant != null) playerStrums.quants = false;
 	
 	if (opponentStrums._skin.data.arrowRGBQuant != null) opponentStrums.quants = false;
@@ -37,7 +46,7 @@ function onCreatePost()
 	{
 		globalGradient = new FlxSprite().loadGraphic(Paths.image('UI/filters/gradient'));
 		globalGradient.screenCenter();
-		globalGradient.setGraphicSize(Std.int(globalGradient.width * 0.68));
+		globalGradient.setGraphicSize(Std.int(globalGradient.width * 4));
 		globalGradient.cameras = [camOther];
 		globalGradient.alpha = 0;
 		add(globalGradient);
