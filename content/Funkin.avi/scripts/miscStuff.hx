@@ -6,8 +6,10 @@ public var isCartoon:Bool = false;
 public var globalGradient:FlxSprite;
 public var scratch:FlxSprite;
 public var camVideo:FlxCamera;
+public var healthDrain:Float = 0;
+public var healthLimit:Float = 0;
+public var healthLerp:Float = 1;
 
-public var foregroundStuff:FlxTypedGroup;
 public function numericForInterval(start, end, interval, func)
 {
 	var index = start;
@@ -28,9 +30,7 @@ function onLoad()
 {
 	camVideo = new FlxCamera();
 	camVideo.bgColor = 0x0;
-    FlxG.cameras.insert(camVideo, FlxG.cameras.list.indexOf(PlayState.camBars) - 1, false);
-
-	foregroundStuff = new FlxTypedGroup();
+	FlxG.cameras.insert(camVideo, FlxG.cameras.list.indexOf(PlayState.camBars) - 1, false);
 }
 
 function onCreatePost()
@@ -62,15 +62,15 @@ function onCreatePost()
 		scratch.cameras = [camOther];
 		add(scratch);
 	}
-
-	for (grp in [gfGroup, dadGroup, boyfriendGroup]) // fixes layering issue with the bg flash overlaying the characters
-	{
-		remove(grp);
-		add(grp);
-	}
-
-	add(foregroundStuff);
+	
+	healthBar.valueFunction = function() {
+		return healthLerp;
+	};
+	healthGain = 0.28;
+	healthLoss = 1.2;
 }
+
+function opponentNoteHit(note) if (health >= healthLimit && ClientPrefs.mechanics) health -= healthDrain;
 
 function onUpdate(elapsed)
 {
@@ -88,6 +88,8 @@ function onUpdate(elapsed)
 				angleOffset -= 1.45;
 		}
 	}
+	
+	healthLerp = FlxMath.lerp(healthLerp, health, .2 / (ClientPrefs.framerate / 60));
 	
 	if (!inCutscene)
 	{

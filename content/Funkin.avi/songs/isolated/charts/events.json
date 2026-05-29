@@ -406,8 +406,8 @@
 				[
 					[
 						"Camera Event",
-						"ChangePos",
-						"100,300"
+						"Change Pos",
+						"-100,375"
 					],
 					[
 						"Camera Event",
@@ -932,7 +932,7 @@
 					[
 						"Camera Event",
 						"TweenPos",
-						"100,300,1,backInOut"
+						"-100,375,1,backInOut"
 					],
 					[
 						"Camera Event",

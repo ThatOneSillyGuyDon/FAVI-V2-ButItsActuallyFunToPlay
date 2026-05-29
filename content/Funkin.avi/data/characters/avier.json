@@ -1,121 +1,121 @@
 {
 	"animations": [
 		{
-			"loop": false,
-			"flipY": false,
 			"offsets": [
 				0,
 				0
 			],
+			"flipY": false,
+			"loop": false,
+			"fps": 8,
 			"anim": "idle",
-			"fps": 8,
-			"name": "idle",
+			"flipX": false,
 			"indices": [],
-			"flipX": false
+			"name": "idle"
 		},
 		{
-			"loop": false,
-			"flipY": false,
 			"offsets": [
 				0,
 				0
 			],
+			"flipY": false,
+			"loop": false,
+			"fps": 8,
 			"anim": "singDOWN",
-			"fps": 8,
-			"name": "down",
+			"flipX": false,
 			"indices": [],
-			"flipX": false
+			"name": "down"
 		},
 		{
-			"loop": false,
-			"flipY": false,
 			"offsets": [
 				0,
 				0
 			],
+			"flipY": false,
+			"loop": false,
+			"fps": 8,
 			"anim": "singLEFT",
-			"fps": 8,
-			"name": "left",
+			"flipX": false,
 			"indices": [],
-			"flipX": false
+			"name": "left"
 		},
 		{
-			"loop": false,
-			"flipY": false,
 			"offsets": [
 				0,
 				0
 			],
+			"flipY": false,
+			"loop": false,
+			"fps": 8,
 			"anim": "singRIGHT",
-			"fps": 8,
-			"name": "right",
+			"flipX": false,
 			"indices": [],
-			"flipX": false
+			"name": "right"
 		},
 		{
-			"loop": false,
-			"flipY": false,
 			"offsets": [
 				0,
 				0
 			],
+			"flipY": false,
+			"loop": false,
+			"fps": 8,
 			"anim": "singUP",
-			"fps": 8,
-			"name": "up",
+			"flipX": false,
 			"indices": [],
-			"flipX": false
+			"name": "up"
 		},
 		{
-			"loop": false,
-			"flipY": false,
 			"offsets": [
 				0,
 				0
 			],
+			"flipY": false,
+			"loop": false,
+			"fps": 8,
 			"anim": "singUP-whistle",
-			"fps": 8,
-			"name": "whistleUp",
+			"flipX": false,
 			"indices": [],
-			"flipX": false
+			"name": "whistleUp"
 		},
 		{
-			"loop": false,
-			"flipY": false,
 			"offsets": [
 				0,
 				0
 			],
+			"flipY": false,
+			"loop": false,
+			"fps": 8,
 			"anim": "singRIGHT-whistle",
-			"fps": 8,
-			"name": "whistleRight",
+			"flipX": false,
 			"indices": [],
-			"flipX": false
+			"name": "whistleRight"
 		},
 		{
-			"loop": false,
-			"flipY": false,
 			"offsets": [
 				0,
 				0
 			],
+			"flipY": false,
+			"loop": false,
+			"fps": 8,
 			"anim": "singLEFT-whistle",
-			"fps": 8,
-			"name": "whistleLeft",
+			"flipX": false,
 			"indices": [],
-			"flipX": false
+			"name": "whistleLeft"
 		},
 		{
-			"loop": false,
-			"flipY": false,
 			"offsets": [
 				0,
 				0
 			],
-			"anim": "singDOWN-whistle",
+			"flipY": false,
+			"loop": false,
 			"fps": 8,
-			"name": "whistleDown",
+			"anim": "singDOWN-whistle",
+			"flipX": false,
 			"indices": [],
-			"flipX": false
+			"name": "whistleDown"
 		}
 	],
 	"no_antialiasing": false,
@@ -133,7 +133,7 @@
 	"gameover_character": null,
 	"vslice_sustains": false,
 	"flip_x": false,
-	"healthbar_colour": -2565928,
+	"healthbar_colour": -1,
 	"camera_position": [
 		193,
 		41

@@ -135,6 +135,11 @@
 				0,
 				0
 			],
+			"flipY": false,
+			"loop": false,
+			"fps": 8,
+			"anim": "endingAnim",
+			"flipX": false,
 			"indices": [
 				0,
 				1,
@@ -159,11 +164,6 @@
 				15,
 				15
 			],
-			"fps": 8,
-			"flipX": false,
-			"flipY": false,
-			"anim": "endingAnim",
-			"loop": false,
 			"name": "altUp"
 		}
 	],
@@ -182,7 +182,7 @@
 	"gameover_character": null,
 	"vslice_sustains": false,
 	"flip_x": true,
-	"healthbar_colour": -855310,
+	"healthbar_colour": -6909037,
 	"camera_position": [
 		110,
 		20

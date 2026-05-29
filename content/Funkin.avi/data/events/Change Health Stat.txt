@@ -1,0 +1,7 @@
+Controls the Health variables in use
+Value 1: Stat you want to edit
+Value 2: Value input
+
+Gain: Health Gain Stat             Loss: Health Loss Stat
+Drain: Opponent Drain Stat       Health: Sets Health Stat
+Limit: Limiter Stat On Health Drain

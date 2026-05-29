@@ -1,93 +1,93 @@
 {
 	"animations": [
 		{
+			"loop": false,
+			"flipY": false,
 			"offsets": [
 				1,
 				-109
 			],
-			"indices": [],
-			"fps": 15,
-			"flipX": false,
-			"flipY": false,
 			"anim": "singDOWN",
-			"loop": false,
-			"name": "Mickey note down"
+			"fps": 15,
+			"name": "Mickey note down",
+			"indices": [],
+			"flipX": false
 		},
 		{
+			"loop": false,
+			"flipY": false,
 			"offsets": [
 				35,
 				0
 			],
-			"indices": [],
-			"fps": 15,
-			"flipX": false,
-			"flipY": false,
 			"anim": "singLEFT",
-			"loop": false,
-			"name": "Mickey note left"
+			"fps": 15,
+			"name": "Mickey note left",
+			"indices": [],
+			"flipX": false
 		},
 		{
+			"loop": false,
+			"flipY": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 15,
-			"flipX": false,
-			"flipY": false,
 			"anim": "idle",
-			"loop": false,
-			"name": "Mickey idle"
+			"fps": 15,
+			"name": "Mickey idle",
+			"indices": [],
+			"flipX": false
 		},
 		{
+			"loop": false,
+			"flipY": false,
 			"offsets": [
 				1,
 				5
 			],
-			"indices": [],
-			"fps": 15,
-			"flipX": false,
-			"flipY": false,
 			"anim": "singRIGHT",
-			"loop": false,
-			"name": "Mickey note right"
+			"fps": 15,
+			"name": "Mickey note right",
+			"indices": [],
+			"flipX": false
 		},
 		{
+			"loop": false,
+			"flipY": false,
 			"offsets": [
 				32,
 				91
 			],
-			"indices": [],
-			"fps": 15,
-			"flipX": false,
-			"flipY": false,
 			"anim": "singUP",
-			"loop": false,
-			"name": "Mickey note up"
+			"fps": 15,
+			"name": "Mickey note up",
+			"indices": [],
+			"flipX": false
 		}
 	],
 	"no_antialiasing": false,
+	"ghosts_enabled": false,
 	"image": "characters/avier-lunaEnd",
 	"position": [
 		-30,
 		210
 	],
 	"dance_every": 2,
-	"ghosts_enabled": false,
 	"gameover_intial_sound": null,
 	"scalableOffsets": true,
 	"gameover_confirm_sound": null,
 	"healthicon": "lunaavier",
 	"gameover_character": null,
-	"icon_count": 3,
 	"vslice_sustains": false,
 	"flip_x": false,
-	"healthbar_colour": -2565928,
+	"healthbar_colour": -5526613,
 	"camera_position": [
 		163,
 		-59
 	],
 	"gameover_loop_sound": null,
+	"icon_count": 3,
 	"sing_duration": 6.1,
 	"scale": 1,
 	"_editor_isPlayer": false

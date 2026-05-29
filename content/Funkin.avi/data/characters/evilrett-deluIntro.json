@@ -1,0 +1,94 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"flipY": false,
+			"loop": false,
+			"fps": 15,
+			"anim": "idle",
+			"flipX": false,
+			"indices": [],
+			"name": "Bf idle"
+		},
+		{
+			"offsets": [
+				167,
+				1
+			],
+			"flipY": false,
+			"loop": false,
+			"fps": 18,
+			"anim": "singLEFT",
+			"flipX": false,
+			"indices": [],
+			"name": "Bf note left"
+		},
+		{
+			"offsets": [
+				6,
+				-88
+			],
+			"flipY": false,
+			"loop": false,
+			"fps": 18,
+			"anim": "singDOWN",
+			"flipX": false,
+			"indices": [],
+			"name": "Bf note down"
+		},
+		{
+			"offsets": [
+				-4,
+				11
+			],
+			"flipY": false,
+			"loop": false,
+			"fps": 18,
+			"anim": "singRIGHT",
+			"flipX": false,
+			"indices": [],
+			"name": "Bf note right"
+		},
+		{
+			"offsets": [
+				-2,
+				58
+			],
+			"flipY": false,
+			"loop": false,
+			"fps": 18,
+			"anim": "singUP",
+			"flipX": false,
+			"indices": [],
+			"name": "Bf note up"
+		}
+	],
+	"no_antialiasing": false,
+	"ghosts_enabled": false,
+	"image": "characters/evilrett-deluIntro",
+	"position": [
+		80,
+		300
+	],
+	"dance_every": 2,
+	"gameover_intial_sound": null,
+	"scalableOffsets": true,
+	"gameover_confirm_sound": null,
+	"healthicon": "evilpredelu",
+	"gameover_character": null,
+	"vslice_sustains": false,
+	"flip_x": true,
+	"healthbar_colour": -11317682,
+	"camera_position": [
+		219,
+		-70
+	],
+	"gameover_loop_sound": null,
+	"icon_count": 3,
+	"sing_duration": 6.1,
+	"scale": 0.85,
+	"_editor_isPlayer": true
+}
