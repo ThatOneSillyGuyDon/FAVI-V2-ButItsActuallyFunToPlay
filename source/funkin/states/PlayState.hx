@@ -1946,7 +1946,7 @@ class PlayState extends MusicBeatState
 		
 		if (ClientPrefs.underlayType == 'Screen Dim' && screenDim != null)
 		{
-			screenDim.scale.set(FlxG.width * camHUD.zoom, FlxG.height * camHUD.zoom);
+			screenDim.scale.set(screenDim.camera.width / screenDim.camera.zoom, screenDim.camera.height / screenDim.camera.zoom);
 			screenDim.updateHitbox();
 			screenDim.screenCenter();
 		}

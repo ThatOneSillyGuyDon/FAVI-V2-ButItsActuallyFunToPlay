@@ -66,6 +66,8 @@ class OptionsState extends MusicBeatState
 		bg.screenCenter();
 		add(bg);
 		
+		scriptGroup.set('bg', bg);
+		
 		grpOptions = new FlxTypedGroup<Alphabet>();
 		add(grpOptions);
 		
