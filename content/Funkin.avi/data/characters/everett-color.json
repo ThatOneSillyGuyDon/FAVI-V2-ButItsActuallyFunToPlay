@@ -1,0 +1,94 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
+			"fps": 18,
+			"flipX": false,
+			"flipY": false,
+			"anim": "idle",
+			"loop": false,
+			"name": "BF idle"
+		},
+		{
+			"offsets": [
+				12,
+				-32
+			],
+			"indices": [],
+			"fps": 18,
+			"flipX": false,
+			"flipY": false,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "BF note down"
+		},
+		{
+			"offsets": [
+				32,
+				1
+			],
+			"indices": [],
+			"fps": 18,
+			"flipX": false,
+			"flipY": false,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "BF note left"
+		},
+		{
+			"offsets": [
+				-40,
+				2
+			],
+			"indices": [],
+			"fps": 18,
+			"flipX": false,
+			"flipY": false,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "BF note right"
+		},
+		{
+			"offsets": [
+				-33,
+				39
+			],
+			"indices": [],
+			"fps": 18,
+			"flipX": false,
+			"flipY": false,
+			"anim": "singUP",
+			"loop": false,
+			"name": "BF note up"
+		}
+	],
+	"no_antialiasing": false,
+	"ghosts_enabled": false,
+	"image": "characters/everett-color",
+	"position": [
+		40,
+		350
+	],
+	"dance_every": 2,
+	"gameover_intial_sound": null,
+	"scalableOffsets": true,
+	"gameover_confirm_sound": null,
+	"healthicon": "everettmodern",
+	"gameover_character": null,
+	"vslice_sustains": false,
+	"flip_x": true,
+	"healthbar_colour": -14903297,
+	"camera_position": [
+		129,
+		-31
+	],
+	"gameover_loop_sound": null,
+	"icon_count": 3,
+	"sing_duration": 6.1,
+	"scale": 0.9,
+	"_editor_isPlayer": true
+}

@@ -1,0 +1,55 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"flipY": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "danceLeft",
+			"fps": 20,
+			"name": "Lilith Dancing left",
+			"indices": [],
+			"flipX": false
+		},
+		{
+			"loop": false,
+			"flipY": false,
+			"offsets": [
+				-8,
+				13
+			],
+			"anim": "danceRight",
+			"fps": 20,
+			"name": "Lilith Dancing right",
+			"indices": [],
+			"flipX": false
+		}
+	],
+	"no_antialiasing": false,
+	"ghosts_enabled": false,
+	"image": "characters/lilith",
+	"position": [
+		240,
+		30
+	],
+	"dance_every": 1,
+	"gameover_intial_sound": null,
+	"scalableOffsets": true,
+	"gameover_confirm_sound": null,
+	"healthicon": "gf",
+	"gameover_character": null,
+	"vslice_sustains": false,
+	"flip_x": false,
+	"healthbar_colour": -855310,
+	"camera_position": [
+		-322,
+		-66
+	],
+	"gameover_loop_sound": null,
+	"icon_count": 2,
+	"sing_duration": 6.1,
+	"scale": 1,
+	"_editor_isPlayer": false
+}

@@ -1,0 +1,13 @@
+{
+	"charters": [],
+	"coders": ["ThatOneSillyGuy", "Goober"],
+	"freeplayIcon": "goofy",
+	"difficulties": [
+		"Hard"
+	],
+	"composers": ["JBlitz"],
+	"displayName": "Hunted",
+	"freeplayColor": "0xFFD8D8D8",
+	"freeplayIconFrames": 3,
+	"artists": []
+}

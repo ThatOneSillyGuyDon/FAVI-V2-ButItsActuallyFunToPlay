@@ -1,8 +1,12 @@
 {
     "tabs": [
         {
-            "title": "Funkin.avi",
+            "title": "Funkin.avi: Main Story",
             "fromWeeks": ["episode1"]
+        },
+	{
+            "title": "Funkin.avi: Freeplay",
+            "fromWeeks": ["freeplayContent"]
         }
     ]
 }

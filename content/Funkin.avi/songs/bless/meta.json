@@ -1,0 +1,13 @@
+{
+	"charters": [],
+	"coders": ["ThatOneSillyGuy", "Goober"],
+	"freeplayIcon": "noise",
+	"difficulties": [
+		"Hard"
+	],
+	"composers": ["Unknown"],
+	"displayName": "Bless",
+	"freeplayColor": "0xFFD8D8D8",
+	"freeplayIconFrames": 3,
+	"artists": []
+}
