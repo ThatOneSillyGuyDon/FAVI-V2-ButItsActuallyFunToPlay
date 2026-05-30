@@ -1,0 +1,13 @@
+{
+	"charters": ["ThatOneSillyGuy"],
+	"coders": ["ThatOneSillyGuy", "Goober"],
+	"freeplayIcon": "mal2",
+	"difficulties": [
+		"Hard"
+	],
+	"composers": ["obscurity"],
+	"displayName": "Malfunction",
+	"freeplayColor": "0xFFD8D8D8",
+	"freeplayIconFrames": 3,
+	"artists": []
+}

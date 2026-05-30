@@ -225,7 +225,9 @@ function onEvent(eventName, value1, value2)
 						case "addhudzoom": camHUD.zoom += Std.parseFloat(triggerInfo[1]);
 						case "defaultcamzoom": defaultCamZoom = Std.parseFloat(triggerInfo[1]);
 						case "alpha": camGame.alpha = Std.parseFloat(triggerInfo[1]);
-						case "cameraspeed": cameraSpeed = Std.parseFloat(triggerInfo[1]);
+						case "cameraspeed": 
+							cameraSpeed = Std.parseFloat(triggerInfo[1]);
+							cameraSpeed *= 2;
 						case "hudalpha": camHUD.alpha = Std.parseFloat(triggerInfo[1]);
 						case "angle": camGame.angle = Std.parseFloat(triggerInfo[1]);
 						case "hudangle": camHUD.angle = Std.parseFloat(triggerInfo[1]);

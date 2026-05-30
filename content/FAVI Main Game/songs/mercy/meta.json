@@ -1,0 +1,13 @@
+{
+	"charters": ["ThatOneSillyGuy"],
+	"coders": ["ThatOneSillyGuy", "Goober"],
+	"freeplayIcon": "walt",
+	"difficulties": [
+		"Hard"
+	],
+	"composers": [],
+	"displayName": "Mercy",
+	"freeplayColor": "0xFFD8D8D8",
+	"freeplayIconFrames": 3,
+	"artists": []
+}

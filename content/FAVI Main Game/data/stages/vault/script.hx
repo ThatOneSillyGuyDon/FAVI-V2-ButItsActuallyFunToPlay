@@ -143,3 +143,14 @@ function onCreatePost()
 	dad.blend = 0;
 	iconP2.blend = 0;
 }
+
+function makeColorShader(_brightness, _hue, _contrast, _saturation)
+{
+	var shader = newShader('adjustColor');
+	shader.setFloat('brightness', _brightness);
+	shader.setFloat('hue', _hue);
+	shader.setFloat('contrast', _contrast);
+	shader.setFloat('saturation', _saturation);
+	
+	return shader;
+}

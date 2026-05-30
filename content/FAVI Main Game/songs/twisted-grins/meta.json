@@ -1,0 +1,13 @@
+{
+	"charters": ["Purg"],
+	"coders": ["ThatOneSillyGuy", "Goober"],
+	"freeplayIcon": "smile",
+	"difficulties": [
+		"Hard"
+	],
+	"composers": ["PualTheUntruest"],
+	"displayName": "Twisted Grins",
+	"freeplayColor": "0xFFD8D8D8",
+	"freeplayIconFrames": 3,
+	"artists": []
+}
