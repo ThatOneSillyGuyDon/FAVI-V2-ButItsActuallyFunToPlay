@@ -1,0 +1,9 @@
+{
+    "name": "Funkin.avi",
+    "description": "bruh who tf cares, no one will see this",
+    "global": true,
+
+    "windowTitle": "Funkin.avi",
+    "iconFile": "UI/icon64",
+    "defaultTransition": "fade"
+}
