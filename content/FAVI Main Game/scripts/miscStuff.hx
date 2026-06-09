@@ -1,7 +1,6 @@
 import funkin.utils.MathUtil;
 
 var cameraOnDad = false;
-var stageList = ['street', 'forest', 'alleyway', 'muckney', 'war']; // script decided to be a dick, so here's the workaround
 public var isCartoon:Bool = false;
 public var globalGradient:FlxSprite;
 public var scratch:FlxSprite;
@@ -9,6 +8,7 @@ public var camVideo:FlxCamera;
 public var healthDrain:Float = 0;
 public var healthLimit:Float = 0;
 public var healthLerp:Float = 1;
+public var shaderAnim:Float = 0;
 
 public function numericForInterval(start, end, interval, func)
 {
@@ -35,11 +35,13 @@ function onLoad()
 
 function onCreatePost()
 {
-	for (i in stageList)
-		if (PlayState.SONG.stage == stageList[i]) isCartoon = true;
+	switch (PlayState.SONG.stage) 
+	{
+		case 'war', 'office', 'street', 'forest', 'alleyway', 'muckney': //never knew that commas worked in switch cases, neat
+			isCartoon = true;
+	}
 		
 	if (playerStrums._skin.data.arrowRGBQuant != null) playerStrums.quants = false;
-	
 	if (opponentStrums._skin.data.arrowRGBQuant != null) opponentStrums.quants = false;
 	
 	if (!ClientPrefs.lowQuality)
@@ -74,6 +76,8 @@ function opponentNoteHit(note) if (health >= healthLimit && ClientPrefs.mechanic
 
 function onUpdate(elapsed)
 {
+	if (ClientPrefs.shaders) shaderAnim = Conductor.songPosition / 1000;
+
 	var angleOffset = 0;
 	
 	var char = cameraOnDad ? dad : boyfriend;

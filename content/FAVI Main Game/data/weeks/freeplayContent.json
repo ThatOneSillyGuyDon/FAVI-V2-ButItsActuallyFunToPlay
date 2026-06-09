@@ -1,7 +1,9 @@
 {
 	"songs": [
 		["Hunted", "face", [165, 165, 165]],
-		["Bless", "face", [165, 165, 165]]
+		["Bless", "face", [165, 165, 165]],
+		["War Dilemma", "face", [165, 165, 165]],
+		["Twisted Grins", "face", [165, 165, 165]]
 	],
 
 	"weekCharacters": [

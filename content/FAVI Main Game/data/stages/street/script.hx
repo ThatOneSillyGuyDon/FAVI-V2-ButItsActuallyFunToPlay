@@ -262,9 +262,7 @@ function onCreatePost()
 function onUpdate(elapsed)
 {
 	if (ClientPrefs.shaders)
-	{
-		shaderAnim = Conductor.songPosition / 1000;
-		
+	{	
 		rainTime += elapsed;
 		
 		rainShader.setFloatArray('uCameraBounds', [
@@ -529,7 +527,7 @@ function summonWeedMakerLmfao()
 
 function opponentNoteHit(note) if (dad.animSuffix == "-whistle" && !note.isSustainNote) whistleNotes();
 
-function onEvent(eventName, value1, valuw2)
+function onEvent(eventName, value1, value2)
 {
 	switch (eventName)
 	{

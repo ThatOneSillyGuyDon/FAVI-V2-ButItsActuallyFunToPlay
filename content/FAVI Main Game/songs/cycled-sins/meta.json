@@ -1,12 +1,12 @@
 {
-	"charters": ["Purg"],
+	"charters": [],
 	"coders": ["ThatOneSillyGuy", "Goober"],
-	"freeplayIcon": "ethernalg",
+	"freeplayIcon": "relapse",
 	"difficulties": [
 		"Hard"
 	],
-	"composers": ["obscurity"],
-	"displayName": "War Dilemma",
+	"composers": ["Unknown"],
+	"displayName": "Bless",
 	"freeplayColor": "0xFFD8D8D8",
 	"freeplayIconFrames": 3,
 	"artists": []

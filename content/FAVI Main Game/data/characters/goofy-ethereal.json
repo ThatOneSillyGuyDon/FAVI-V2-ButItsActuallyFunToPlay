@@ -1,0 +1,102 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"flipY": false,
+			"loop": false,
+			"fps": 8,
+			"anim": "idle",
+			"flipX": false,
+			"indices": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6
+			],
+			"name": "Idle"
+		},
+		{
+			"offsets": [
+				-2,
+				7
+			],
+			"flipY": false,
+			"loop": false,
+			"fps": 10,
+			"anim": "singDOWN",
+			"flipX": false,
+			"indices": [],
+			"name": "Down"
+		},
+		{
+			"offsets": [
+				-1,
+				6
+			],
+			"flipY": false,
+			"loop": false,
+			"fps": 10,
+			"anim": "singLEFT",
+			"flipX": false,
+			"indices": [],
+			"name": "Left"
+		},
+		{
+			"offsets": [
+				-72,
+				-6
+			],
+			"flipY": false,
+			"loop": false,
+			"fps": 10,
+			"anim": "singRIGHT",
+			"flipX": false,
+			"indices": [],
+			"name": "Right"
+		},
+		{
+			"offsets": [
+				1,
+				4
+			],
+			"flipY": false,
+			"loop": false,
+			"fps": 10,
+			"anim": "singUP",
+			"flipX": false,
+			"indices": [],
+			"name": "Up"
+		}
+	],
+	"no_antialiasing": false,
+	"ghosts_enabled": true,
+	"image": "characters/goofy-ethereal",
+	"position": [
+		-220,
+		-230
+	],
+	"dance_every": 2,
+	"gameover_intial_sound": null,
+	"scalableOffsets": true,
+	"gameover_confirm_sound": null,
+	"healthicon": "ethernalg",
+	"gameover_character": null,
+	"vslice_sustains": true,
+	"flip_x": false,
+	"healthbar_colour": -11197822,
+	"camera_position": [
+		104,
+		-5
+	],
+	"gameover_loop_sound": null,
+	"icon_count": 3,
+	"sing_duration": 6.1,
+	"scale": 0.84,
+	"_editor_isPlayer": false
+}
