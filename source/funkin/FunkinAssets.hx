@@ -157,7 +157,7 @@ class FunkinAssets
 	{
 		if (useCache && cache.currentTrackedGraphics.exists(key))
 		{
-			cache.localTrackedAssets.set(key, true);
+			cache.localTrackedAssets.push(key);
 			return cache.currentTrackedGraphics.get(key);
 		}
 		
@@ -223,7 +223,7 @@ class FunkinAssets
 	{
 		if (useCache && cache.currentTrackedSounds.exists(key))
 		{
-			cache.localTrackedAssets.set(key, true);
+			cache.localTrackedAssets.push(key);
 			return cache.currentTrackedSounds.get(key);
 		}
 		
@@ -261,19 +261,5 @@ class FunkinAssets
 		
 		return Sound.fromAudioBuffer(buffer);
 		#end
-	}
-
-	public static function getCpuCount():Int
-	{
-		#if sys
-		var env:Null<String> = Sys.getEnv("NUMBER_OF_PROCESSORS");
-		if (env != null)
-		{
-			var count:Null<Int> = Std.parseInt(env);
-			if (count != null) return count;
-		}
-		#end
-		
-		return 1; // Fallback
 	}
 }

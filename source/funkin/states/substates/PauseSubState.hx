@@ -114,7 +114,7 @@ class PauseSubState extends MusicBeatSubstate
 			return t;
 		}
 		
-		var levelInfo = createCornerText(PlayState.SONG.song);
+		var levelInfo = createCornerText((PlayState.meta != null) ? PlayState.meta.displayName : PlayState.SONG.song);
 		add(levelInfo);
 		
 		var levelDifficulty = createCornerText(Difficulty.getCurrentDifficultyString());
@@ -318,7 +318,7 @@ class PauseSubState extends MusicBeatSubstate
 			PlayState.seenCutscene = false;
 			FlxG.switchState(() -> PlayState.isStoryMode ? new StoryMenuState() : new FreeplayState());
 			CoolUtil.cancelMusicFadeTween();
-			FunkinSound.playMusic(Paths.music('freakyMenu'), 0);
+			FunkinSound.playMusic(Paths.music('freakyMenu'));
 			PlayState.changedDifficulty = false;
 			PlayState.chartingMode = false;
 		}

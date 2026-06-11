@@ -39,9 +39,9 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 			'Handles what type of information to display in the top left of your screen.\nSimple displays FPS & Memory, and advanced displays the same alongside debug information.\nDisabled disables the counter entirely.',
 			'fpsDisplayType', STRING, 'Simple', ['Simple', 'Advanced', 'Disabled']);
 		addOption(option);
-
-		var option:Option = new Option('VSync Mode: ', 
-			"When enabled, the game attempts to match the framerate with your monitor's refresh rate.", 
+		
+		var option:Option = new Option('VSync Mode: ',
+			"When enabled, the game attempts to match the framerate with your monitor's refresh rate.",
 			'vSyncMode', STRING, 'Off', ['Off', 'On', 'Adaptive']);
 		addOption(option);
 		
@@ -80,7 +80,7 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 	{
 		ClientPrefs.changeFps(ClientPrefs.framerate);
 	}
-
+	
 	function onChangeVSyncMode()
 	{
 		WindowUtil.setVSyncMode(ClientPrefs.vSyncMode);

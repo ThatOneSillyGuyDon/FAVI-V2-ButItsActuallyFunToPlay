@@ -315,6 +315,8 @@ class WindowUtil
 		
 		switch (value)
 		{
+			case "Off":
+				vsyncMode = lime.ui.WindowVSyncMode.OFF;
 			case "On":
 				vsyncMode = lime.ui.WindowVSyncMode.ON;
 			case "Adaptive":
@@ -329,7 +331,7 @@ class WindowUtil
 		// In lime, we can compare this to the original value to get a boolean.
 		if (!res)
 		{
-			trace('Failed to set VSync mode to ' + value);
+			trace('Failed to set VSync mode to $value, returning default');
 			FlxG.stage.application.window.setVSyncMode(lime.ui.WindowVSyncMode.OFF);
 		}
 	}

@@ -475,7 +475,7 @@ typedef CharacterInfo =
 	 * If the character should hold the last frame during a sing pose
 	 */
 	var ?vslice_sustains:Bool;
-
+	
 	/**
 	 * If the character should show a ghost on double notes
 	 */
@@ -485,7 +485,7 @@ typedef CharacterInfo =
 	 * How many beats between the characters `dance`
 	 */
 	var ?dance_every:Int;
-
+	
 	/**
 	 * How many frames your `characters` icon has
 	 */
