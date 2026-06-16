@@ -7,9 +7,14 @@ import funkin.game.shaders.MadnessShaders.NTSCGlitch;
 import openfl.filters.ShaderFilter;
 
 var overlay;
+var stageOverlay;
+var stars1;
+var stars2;
 var street;
 var bg;
+var buildings;
 var cables;
+var cablesbg;
 var tumbleWeed;
 var rain;
 var falseLight;
@@ -90,17 +95,19 @@ function onLoad()
 	}
 	
 	overlay = new FlxSprite().loadGraphic(Paths.image(path + 'i_forgor'));
-	overlay.screenCenter();
-	overlay.setGraphicSize(FlxG.width, FlxG.height);
-	overlay.camera = camOther;
-	
-	bg = new FlxSprite().loadGraphic(Paths.image(path + 'randomColors'));
+	bg = new FlxSprite().loadGraphic(Paths.image(path + 'sky'));
 	street = new FlxSprite().loadGraphic(Paths.image(path + 'street'));
 	weedGrp = new FlxTypedGroup();
-	cables = new FlxSprite().loadGraphic(Paths.image(path + 'cables'));
+	cables = new FlxSprite().loadGraphic(Paths.image(path + 'wires-fg'));
 	
 	if (!ClientPrefs.lowQuality)
 	{
+		stageOverlay = new FlxSprite().loadGraphic(Paths.image(path + 'overlay'));
+		buildings = new FlxSprite().loadGraphic(Paths.image(path + 'bg-buildings'));
+		cablesbg = new FlxSprite().loadGraphic(Paths.image(path + 'wires-bg'));
+		stars1 = new FlxSprite().loadGraphic(Paths.image(path + 'stars1'));
+		stars2 = new FlxSprite().loadGraphic(Paths.image(path + 'stars2'));
+
 		dustEmitter = new FlxEmitter().loadParticles(Paths.image(path + 'dustParticle'), 500, 16, true);
 		ashEmitter = new FlxEmitter();
 		
@@ -134,6 +141,13 @@ function onLoad()
 	add(overlay);
 	if (PlayState.SONG.song == 'Delusional') add(falseLight);
 	add(bg);
+	if (!ClientPrefs.lowQuality)
+	{
+		add(stars1);
+		add(stars2);
+		add(buildings);
+		add(cablesbg);
+	}
 	if (PlayState.SONG.song != 'Isolated') add(fire);
 	add(street);
 	if (PlayState.SONG.song == 'Delusional')
@@ -150,8 +164,13 @@ function onCreatePost()
 		
 	bg.y -= 200;
 	cables.scale.x += 2;
+	cables.y += 400;
 	cables.scrollFactor.set(2.5, 1.9);
 	bg.scrollFactor.set(0.3, 0.3);
+
+	overlay.screenCenter();
+	overlay.setGraphicSize(FlxG.width, FlxG.height);
+	overlay.camera = camOther;
 	
 	if (PlayState.SONG.song != 'Isolated')
 	{
@@ -163,6 +182,20 @@ function onCreatePost()
 	add(weedGrp);
 	if (!ClientPrefs.lowQuality)
 	{
+		for (obj in [buildings, cablesbg, stars1, stars2, stageOverlay])
+			obj.scale.set(2.3, 2.3);
+
+		buildings.scrollFactor.set(0.4, 0.4);
+		cablesbg.scrollFactor.set(0.8, 0.6);
+		stars1.scrollFactor.set(0.2, 0.2);
+		stars2.scrollFactor.set(0.2, 0.2);
+		stageOverlay.scrollFactor.set(0.95, 0.95);
+
+		stars2.alpha = 0.001;
+
+		FlxTween.tween(stars1, {alpha: 0.001}, 2, {ease: FlxEase.sineInOut, type: 4});
+		FlxTween.tween(stars2, {alpha: 1}, 2, {ease: FlxEase.sineInOut, type: 4});
+
 		for (emitter in [dustEmitter, ashEmitter])
 		{
 			emitter.launchMode = FlxEmitterMode.SQUARE;
@@ -173,7 +206,7 @@ function onCreatePost()
 			emitter.alpha.set(1, 0.3);
 			emitter.lifespan.set(1.9, 4.9);
 			emitter.start(false, FlxG.random.float(.0521, .1060), 1000000);
-			emitter.setPosition(-1680, 2050);
+			emitter.setPosition(-1680, 2550);
 		}
 		ashEmitter.angle.set(290, 0);
 		ashEmitter.launchAngle.set(0, 280);
@@ -181,6 +214,15 @@ function onCreatePost()
 		add(ashEmitter);
 	}
 	add(cables);
+
+	if (!ClientPrefs.shaders && PlayState.SONG.song != 'Isolated')
+	{
+		rain.blend = 0;
+		rain.alpha = PlayState.SONG.song == 'Lunacy' ? 0.001 : 0.35;
+		add(rain);
+	}
+
+	if (!ClientPrefs.lowQuality) add(stageOverlay);
 	
 	if (PlayState.SONG.song == 'Delusional')
 	{
@@ -219,13 +261,6 @@ function onCreatePost()
 			});
 			add(video);
 		}
-	}
-	
-	if (!ClientPrefs.shaders)
-	{
-		rain.blend = 0;
-		rain.alpha = PlayState.SONG.song == 'Lunacy' ? 0.001 : 0.35;
-		add(rain);
 	}
 	
 	if (ClientPrefs.shaders)
@@ -493,16 +528,16 @@ function lunacyRain()
 
 function summonWeedMakerLmfao()
 {
-	tumbleWeed = new FlxSprite(1800, 520);
+	tumbleWeed = new FlxSprite(1800, 1020);
 	var velocityX:Float = 0;
-	var bounceVal:Int = 735;
+	var bounceVal:Int = 855;
 	var loopTime:Array<Float> = [];
 	if (FlxG.random.bool(1))
 	{
 		tumbleWeed.loadGraphic(Paths.image(path + 'THELEGENDARYTUMBLEWEED'));
 		tumbleWeed.scale.set(0.6, 0.6);
 		velocityX = -1270;
-		bounceVal = 50;
+		bounceVal = 150;
 		loopTime[0] = 0.5;
 		loopTime[1] = 0.1;
 		loopTime[2] = 4;
