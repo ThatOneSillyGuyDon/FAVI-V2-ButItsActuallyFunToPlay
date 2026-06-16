@@ -1,0 +1,986 @@
+{
+    "song": {
+        "events": [
+			[
+				-5000,
+				[
+					[
+						"Camera Event",
+						"Fade",
+						"0,0,0,0.0001,false"
+					],
+					[
+						"Cinematic Event",
+						"Move",
+						"80,0.0001,linear"
+					],
+					[
+						"Camera Event",
+						"Tween Position",
+						"700,700,0.0001,linear"
+					],
+					[
+						"Set Property",
+						"comboGroup.alpha",
+						"0"
+					],
+					[
+						"Set Property",
+						"uiGroup.alpha",
+						"0"
+					],
+					[
+						"Camera Event",
+						"Change Value",
+						"hudalpha,0"
+					],
+					[
+						"Background Controls",
+						"Darken",
+						"1,0.0001,linear"
+					]
+				]
+			],
+			[
+				0,
+				[
+					[
+						"Set Property",
+						"gfGroup.alpha",
+						"0"
+					],
+					[
+						"Trigger TG shader shi",
+						"Add",
+						""
+					],
+					[
+						"Trigger TG shader shi",
+						"Killlight",
+						""
+					],
+					[
+						"Manage Lyrics",
+						"data",
+						"0, 0, smile"
+					],
+					[
+						"Manage Lyrics",
+						"text data",
+						"0, disneyFreeplayFont.ttf, 30, 255, 255, 255, CENTER, 0, 0, 0, 4"
+					],
+					[
+						"Manage Lyrics",
+						"tween data",
+						"0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0.001"
+					]
+				]
+			],
+			[
+				1500,
+				[
+					[
+						"Manage Lyrics",
+						"move",
+						"0, 0.5, 3, 2, expoOut, expoInOut"
+					]
+				]
+			],
+			[
+				1714.28571428571,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, Give me your smile., 0.03"
+					],
+					[
+						"Camera Event",
+						"Fade",
+						"0,0,0,2.5,true"
+					]
+				]
+			],
+			[
+				5142.85714285714,
+				[
+					[
+						"Camera Event",
+						"Tween Value",
+						"hudalpha,1,3,sineInOut"
+					],
+					[
+						"Show Song Card",
+						"true",
+						"0,1.5,sineInOut"
+					]
+				]
+			],
+			[
+				8571.42857142857,
+				[
+					[
+						"Show Song Card",
+						"false",
+						"0,1.5,sineInOut"
+					]
+				]
+			],
+			[
+				18000,
+				[
+					[
+						"Camera Event",
+						"Set Position",
+						"1250,700"
+					],
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.75"
+					]
+				]
+			],
+			[
+				18857.1428571429,
+				[
+					[
+						"Camera Event",
+						"Tween Position",
+						"1750,900,5,expoInOut"
+					],
+					[
+						"Camera Event",
+						"Tween Value",
+						"zoom,0.95,5,expoInOut"
+					]
+				]
+			],
+			[
+				32571.4285714286,
+				[
+					[
+						"Camera Event",
+						"Tween Position",
+						"700,700,1,expoOut"
+					]
+				]
+			],
+			[
+				33214.2857142857,
+				[
+					[
+						"Camera Event",
+						"Fade",
+						"0,0,0,2.3,false"
+					]
+				]
+			],
+			[
+				36000,
+				[
+					[
+						"Camera Event",
+						"Fade",
+						"0,0,0,6.04,true"
+					],
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,0.55"
+					]
+				]
+			],
+			[
+				39000,
+				[
+					[
+						"Camera Event",
+						"Tween Position",
+						"1750,900,0.001,linear"
+					]
+				]
+			],
+			[
+				42000,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,0.65"
+					]
+				]
+			],
+			[
+				44997.65625,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,0.75"
+					]
+				]
+			],
+			[
+				45000,
+				[
+					[
+						"Camera Event",
+						"Tween Position",
+						"700,700,0.001,linear"
+					]
+				]
+			],
+			[
+				46500,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,0.85"
+					]
+				]
+			],
+			[
+				47062.5,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,0.95"
+					]
+				]
+			],
+			[
+				47625,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,1.05"
+					],
+					[
+						"Trigger TG shader shi",
+						"remove",
+						""
+					]
+				]
+			],
+			[
+				48000,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,0.75"
+					],
+					[
+						"Set Property",
+						"isCameraOnForcedPos",
+						"false"
+					],
+					[
+						"Camera Event",
+						"Flash",
+						"255,255,255,1,1,true"
+					],
+					[
+						"Background Controls",
+						"Darken",
+						"0,0.0001,linear"
+					],
+					[
+						"Cinematic Event",
+						"Move",
+						"0,1.3,expoOut"
+					],
+					[
+						"Set Property",
+						"uiGroup.alpha",
+						"1"
+					],
+					[
+						"Set Property",
+						"comboGroup.alpha",
+						"1"
+					],
+					[
+						"Set Property",
+						"gfGroup.alpha",
+						"1"
+					],
+					[
+						"Trigger TG shader shi",
+						"AddLight",
+						""
+					],
+					[
+						"Change Scroll Speed",
+						"1.2",
+						"0"
+					]
+				]
+			],
+			[
+				61500,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0,   , 0.001"
+					]
+				]
+			],
+			[
+				72000,
+				[
+					[
+						"Change Scroll Speed",
+						"1.4",
+						"1"
+					]
+				]
+			],
+			[
+				95062.5,
+				[
+					[
+						"Camera Event",
+						"Tween Value",
+						"alpha,0,1,linear"
+					]
+				]
+			],
+			[
+				96000,
+				[
+					[
+						"Camera Event",
+						"Tween Value",
+						"hudalpha,0,1,sineInOut"
+					]
+				]
+			],
+			[
+				96214.2857142857,
+				[
+					[
+						"Manage Lyrics",
+						"move",
+						"0, 0.5, 5, 0.8, expoOut, expoOut"
+					]
+				]
+			],
+			[
+				97178.5714285714,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"alpha,0"
+					]
+				]
+			],
+			[
+				97500,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, Keep it down you RUNT!, 0.04"
+					]
+				]
+			],
+			[
+				97714.2857142857,
+				[
+					[
+						"Change Scroll Speed",
+						"1",
+						"0"
+					]
+				]
+			],
+			[
+				98035.7142857143,
+				[
+					[
+						"Trigger TG shader shi",
+						"KillLight",
+						""
+					]
+				]
+			],
+			[
+				98571.4285714286,
+				[
+					[
+						"Set Property",
+						"cameraSpeed",
+						"0.5"
+					],
+					[
+						"Camera Event",
+						"Change Pos",
+						"700,700"
+					]
+				]
+			],
+			[
+				99427,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"alpha,1"
+					]
+				]
+			],
+			[
+				99428.5714285714,
+				[
+					[
+						"Set Property",
+						"uiGroup.alpha",
+						"0"
+					],
+					[
+						"Set Property",
+						"comboGroup.alpha",
+						"0"
+					],
+					[
+						"Camera Event",
+						"Fade",
+						"0,0,0,0.0001,true"
+					],
+					[
+						"Camera Event",
+						"Flash",
+						"255,255,255,2,1,true"
+					],
+					[
+						"Camera Event",
+						"Change Value",
+						"hudalpha,1"
+					]
+				]
+			],
+			[
+				99429,
+				[
+					[
+						"Camera Event",
+						"Fade",
+						"0,0,0,0.0001,true"
+					],
+					[
+						"Background Controls",
+						"Darken",
+						"1,0.0001,linear"
+					],
+					[
+						"Trigger TG shader shi",
+						"Add",
+						""
+					],
+					[
+						"Cinematic Event",
+						"Move",
+						"80,1,expoOut"
+					],
+					[
+						"Set Property",
+						"gfGroup.alpha",
+						"0"
+					]
+				]
+			],
+			[
+				113142.857142857,
+				[
+					[
+						"Camera Event",
+						"Tween Position",
+						"1750,900,5,expoInOut"
+					],
+					[
+						"Camera Event",
+						"Tween Value",
+						"zoom,0.75,5,expoInOut"
+					]
+				]
+			],
+			[
+				126857.142857143,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,0.85"
+					]
+				]
+			],
+			[
+				127714.285714286,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,0.9"
+					]
+				]
+			],
+			[
+				128035.714285714,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,0.95"
+					]
+				]
+			],
+			[
+				128357.142857143,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,1"
+					]
+				]
+			],
+			[
+				128464.285714286,
+				[
+					[
+						"Set Property",
+						"cameraSpeed",
+						"100"
+					]
+				]
+			],
+			[
+				128571.428571428,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.75"
+					]
+				]
+			],
+			[
+				128571.428571428,
+				[
+					[
+						"Camera Event",
+						"Change Pos",
+						"700,700"
+					]
+				]
+			],
+			[
+				131571.428571428,
+				[
+					[
+						"Camera Event",
+						"Change Pos",
+						"1750,900"
+					]
+				]
+			],
+			[
+				133821.428571428,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0,   , 0.001"
+					]
+				]
+			],
+			[
+				134571.428571428,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,0.8"
+					]
+				]
+			],
+			[
+				137571.428571428,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,0.85"
+					]
+				]
+			],
+			[
+				137571.428571428,
+				[
+					[
+						"Camera Event",
+						"Change Pos",
+						"700,700"
+					]
+				]
+			],
+			[
+				139071.428571428,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,0.9"
+					]
+				]
+			],
+			[
+				139633.928571428,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,0.95"
+					]
+				]
+			],
+			[
+				140196.428571428,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,1"
+					],
+					[
+						"Set Property",
+						"dad.shader",
+						"null"
+					]
+				]
+			],
+			[
+				140566.741071428,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,0.75"
+					]
+				]
+			],
+			[
+				140572,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,0.75"
+					],
+					[
+						"Set Property",
+						"isCameraOnForcedPos",
+						"false"
+					],
+					[
+						"Camera Event",
+						"Flash",
+						"255,255,255,1,1,true"
+					],
+					[
+						"Background Controls",
+						"Darken",
+						"0,0.0001,linear"
+					],
+					[
+						"Cinematic Event",
+						"Move",
+						"0,1.3,expoOut"
+					],
+					[
+						"Set Property",
+						"uiGroup.alpha",
+						"1"
+					],
+					[
+						"Set Property",
+						"comboGroup.alpha",
+						"1"
+					],
+					[
+						"Set Property",
+						"gfGroup.alpha",
+						"1"
+					],
+					[
+						"Trigger TG shader shi",
+						"AddLight",
+						""
+					],
+					[
+						"Set Property",
+						"boyfriend.shader",
+						"null"
+					],
+					[
+						"Set Property",
+						"isCameraOnForcedPos",
+						"false"
+					],
+					[
+						"Set Property",
+						"cameraSpeed",
+						"2.5"
+					],
+					[
+						"Change Scroll Speed",
+						"1.4",
+						"0"
+					]
+				]
+			],
+			[
+				164571.428571428,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,0.85"
+					]
+				]
+			],
+			[
+				164946.428571428,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,0.95"
+					]
+				]
+			],
+			[
+				165321.428571428,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,1.05"
+					]
+				]
+			],
+			[
+				165696.428571428,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,1.15"
+					]
+				]
+			],
+			[
+				166071.428571428,
+				[
+					[
+						"Change Scroll Speed",
+						"1",
+						"0"
+					],
+					[
+						"Camera Event",
+						"Change Value",
+						"staticzoom,0.75"
+					]
+				]
+			],
+			[
+				190071.428571428,
+				[
+					[
+						"Camera Event",
+						"Fade",
+						"255,255,255,2,true"
+					],
+					[
+						"Background Controls",
+						"Darken",
+						"1,0.0001,linear"
+					],
+					[
+						"Set Property",
+						"gfGroup.alpha",
+						"0"
+					],
+					[
+						"Trigger TG shader shi",
+						"Add",
+						""
+					],
+					[
+						"Trigger TG shader shi",
+						"KillLight",
+						""
+					],
+					[
+						"Cinematic Event",
+						"Move",
+						"600,0.0001,linear"
+					],
+					[
+						"Camera Event",
+						"Change Pos",
+						"700,700"
+					],
+					[
+						"Camera Event",
+						"Change Value",
+						"hudalpha,0"
+					],
+					[
+						"Camera Event",
+						"Change Value",
+						"alpha,0"
+					]
+				]
+			],
+			[
+				193540.178571428,
+				[
+					[
+						"Set Property",
+						"uiGroup.alpha",
+						"0"
+					],
+					[
+						"Set Property",
+						"comboGroup.alpha",
+						"0"
+					],
+					[
+						"Camera Event",
+						"Change Value",
+						"alpha,1"
+					],
+					[
+						"Set Property",
+						"cameraSpeed",
+						"100"
+					]
+				]
+			],
+			[
+				194571.428571428,
+				[
+					[
+						"Cinematic Event",
+						"Move",
+						"80,6,expoOut"
+					]
+				]
+			],
+			[
+				198696.428571428,
+				[
+					[
+						"Manage Lyrics",
+						"move",
+						"0, 0.5, 8, 1, expoOut, quartInOut"
+					]
+				]
+			],
+			[
+				198977.678571428,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, You think you've won?, 0.05"
+					]
+				]
+			],
+			[
+				202352.678571428,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, No., 0.08"
+					]
+				]
+			],
+			[
+				203566.741071428,
+				[
+					[
+						"Manage Lyrics",
+						"smile",
+						"YOU HAVE ALREADY LOST!,disneyFreeplayFont.ttf,30,4,sineInOut,0.1"
+					]
+				]
+			],
+			[
+				203571.428571428,
+				[
+					[
+						"Camera Event",
+						"Change Pos",
+						"1250,900"
+					],
+					[
+						"Cinematic Event",
+						"Move",
+						"0,1.3,expoOut"
+					],
+					[
+						"Background Controls",
+						"Darken",
+						"0,0.0001,linear"
+					],
+					[
+						"Camera Event",
+						"Flash",
+						"255,255,255,1.3,1,true"
+					],
+					[
+						"Trigger TG shader shi",
+						"Remove",
+						""
+					],
+					[
+						"Trigger TG shader shi",
+						"AddLight",
+						""
+					],
+					[
+						"Manage Lyrics",
+						"text",
+						"0, You have already LOST!, 0.02"
+					],
+					[
+						"Manage Lyrics",
+						"text data",
+						"0, disneyFreeplayFont.ttf, 30, 255, 126, 117, CENTER, 46, 0, 0, 4"
+					]
+				]
+			],
+			[
+				207321.428571428,
+				[
+					[
+						"Camera Event",
+						"Fade",
+						"0,0,0,2,false"
+					]
+				]
+			]
+		]
+    }
+}

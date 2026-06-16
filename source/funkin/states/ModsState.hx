@@ -92,9 +92,11 @@ class ModsState extends MusicBeatState
 		add(new FlxSprite(685, 645).loadGraphic(Paths.image("menus/mods/menuborder2")));
 		
 		changeDir(0);
+
+		super.create();
 	}
 	
-	override public function update(elapsed)
+	override public function update(elapsed:Float)
 	{
 		if (controls.UI_UP_P)
 		{
@@ -128,6 +130,8 @@ class ModsState extends MusicBeatState
 				new MainMenuState();
 			});
 		}
+
+		super.update(elapsed);
 	}
 	
 	function changeDir(change:Int = 0)

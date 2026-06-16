@@ -195,16 +195,34 @@ class ChartEditorState extends haxe.ui.backend.flixel.UIState
 			'Change Scroll Speed',
 			"Value 1: Scroll Speed Multiplier (1 is default)\nValue 2: Time it takes to change fully in seconds."
 		],
-		['Set Property', "Value 1: Variable name\nValue 2: New value"],
-		['HUD Fade', "Fades the HUD camera\n\nValue 1: Alpha\nValue 2: Duration"],
-		['Camera Fade', "Fades the game camera\n\nValue 1: Alpha\nValue 2: Duration"],
-		['Camera Flash', "Value 1: Color, Alpha (Optional)\nValue 2: Fade duration"],
+		[
+			'Set Property',
+			"Value 1: Variable name\nValue 2: New value"
+		],
+		[
+			'HUD Fade',
+			"Fades the HUD camera\n\nValue 1: Alpha\nValue 2: Duration"
+		],
+		[
+			'Camera Fade',
+			"Fades the game camera\n\nValue 1: Alpha\nValue 2: Duration"
+		],
+		[
+			'Camera Flash',
+			"Value 1: Color, Alpha (Optional)\nValue 2: Fade duration"
+		],
 		[
 			'Camera Zoom',
 			"Changes the Camera Zoom.\n\nValue 1: Zoom Multiplier (1 is default)\n\nIn case you want a tween, use Value 2 like this:\n\n\"3, elasticOut\"\n(Duration, Ease Type)"
 		],
-		['Set Cam Zoom', "Value 1: Zoom"],
-		['Set Cam Pos', "Value 1: X\nValue 2: Y"],
+		[
+			'Set Cam Zoom',
+			"Value 1: Zoom"
+		],
+		[
+			'Set Cam Pos',
+			"Value 1: X\nValue 2: Y"
+		],
 		[
 			"Mult SV",
 			"Changes the notes' scroll velocity via multiplication.\nValue 1: Multiplier"

@@ -409,7 +409,7 @@ class CharacterEditorState extends UIState // MUST EXTEND UI STATE needed for ac
 		uiElements.characterDialogBox.danceEveryStepper.onChange = (ui) -> {
 			character.danceEveryNumBeats = ui.value.toInt();
 		}
-
+		
 		uiElements.characterDialogBox.iconFrameStepper.onChange = (ui) -> {
 			character.iconFrames = ui.value.toInt();
 			healthIcon.frameCount = ui.value.toInt();
@@ -425,7 +425,7 @@ class CharacterEditorState extends UIState // MUST EXTEND UI STATE needed for ac
 		uiElements.characterDialogBox.vSliceSusCheckbox.onChange = (ui) -> {
 			character.vSliceSustains = ui.value.toBool();
 		}
-
+		
 		uiElements.characterDialogBox.ghostEnabledCheckbox.onChange = (ui) -> {
 			character.ghostsEnabled = ui.value.toBool();
 		}

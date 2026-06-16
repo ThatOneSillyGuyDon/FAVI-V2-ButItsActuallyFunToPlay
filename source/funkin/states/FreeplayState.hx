@@ -11,6 +11,7 @@ import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.tweens.FlxTween;
+import flixel.util.FlxStringUtil;
 
 import funkin.backend.Difficulty;
 import funkin.Mods;
@@ -273,7 +274,7 @@ class FreeplayState extends MusicBeatState
 			ratingSplit[1] += '0';
 		}
 		
-		scoreText.text = 'PERSONAL BEST: ' + lerpScore + ' (' + ratingSplit.join('.') + '%)';
+		scoreText.text = 'PERSONAL BEST: ' + FlxStringUtil.formatMoney(lerpScore, false) + ' (' + ratingSplit.join('.') + '%)';
 		positionHighscore();
 		
 		var shiftMult:Int = 1;
@@ -410,8 +411,6 @@ class FreeplayState extends MusicBeatState
 				super.update(FlxG.elapsed);
 				return;
 			}
-			
-			trace('CURRENT WEEK: ' + WeekData.getWeekFileName());
 			
 			FlxTween.cancelTweensOf(bg, ['color']);
 			

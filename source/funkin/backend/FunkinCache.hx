@@ -1,4 +1,4 @@
-﻿package funkin.backend;
+package funkin.backend;
 
 import haxe.ds.IntMap;
 
@@ -16,7 +16,7 @@ class CacheMap<T>
 	public function new() {}
 	
 	public var cache:Map<String, T> = [];
-	public var permanentKeys:Map<String, Bool> = new Map<String, Bool>();
+	public var permanentKeys:Array<String> = [];
 	
 	public function get(key:String):Null<T> return cache.get(key);
 	
@@ -33,7 +33,7 @@ class CacheMap<T>
 	 */
 	public function addPermanentKey(key:String)
 	{
-		if (!permanentKeys.exists(key)) permanentKeys.set(key, true);
+		if (!permanentKeys.contains(key)) permanentKeys.push(key);
 	}
 }
 
@@ -49,18 +49,32 @@ class FunkinCache
 	 */
 	public function clearStoredMemory() // maybe rename
 	{
+		// @:privateAccess
+		// for (key in FlxG.bitmap._cache.keys())
+		// {
+		// 	// ok this is dumb fix this later
+		// 	if (!currentTrackedGraphics.exists(key)
+		// 		&& !key.startsWith('pixels')
+		// 		&& !key.contains('editors/notification_neutral.png')
+		// 		&& !key.contains('editors/notification_success.png')
+		// 		&& !key.contains('editors/notification_warn.png')) // for haxeui is a bit hacky will do for now //find out hwo to avoid haxeui nicer or just do a different caching method //rewrite soonish ok.
+		// 	{
+		// 		disposeGraphic(FlxG.bitmap.get(key));
+		// 	}
+		// }
+		
 		Paths.tempAtlasFramesCache.clear();
 		
 		// clear all sounds that are cached
 		for (key in currentTrackedSounds.keys())
 		{
-			if (!localTrackedAssets.exists(key) && !currentTrackedSounds.permanentKeys.exists(key))
+			if (!localTrackedAssets.contains(key) && !currentTrackedSounds.permanentKeys.contains(key))
 			{
 				removeFromCache(key);
 			}
 		}
 		// flags everything to be cleared out next unused memory clear
-		localTrackedAssets.clear();
+		localTrackedAssets.resize(0);
 		openfl.Assets.cache.clear("songs");
 	}
 	
@@ -71,7 +85,7 @@ class FunkinCache
 	{
 		for (key in currentTrackedGraphics.keys())
 		{
-			if (!localTrackedAssets.exists(key) && !currentTrackedGraphics.permanentKeys.exists(key))
+			if (!localTrackedAssets.contains(key) && !currentTrackedGraphics.permanentKeys.contains(key))
 			{
 				removeFromCache(key);
 			}
@@ -89,7 +103,7 @@ class FunkinCache
 	
 	public final currentTrackedSounds:CacheMap<Sound> = new CacheMap();
 	
-	public final localTrackedAssets:Map<String, Bool> = new Map<String, Bool>();
+	public final localTrackedAssets:Array<String> = [];
 	
 	/**
 	 * Removes a asset from the cache
@@ -155,7 +169,7 @@ class FunkinCache
 		newGraphic.persist = true;
 		newGraphic.destroyOnNoUse = false;
 		
-		localTrackedAssets.set(key, true);
+		localTrackedAssets.push(key);
 		currentTrackedGraphics.set(key, newGraphic);
 		return newGraphic;
 	}
@@ -164,7 +178,7 @@ class FunkinCache
 	{
 		currentTrackedSounds.set(key, sound);
 		
-		localTrackedAssets.set(key, true);
+		localTrackedAssets.push(key);
 		
 		return sound;
 	}

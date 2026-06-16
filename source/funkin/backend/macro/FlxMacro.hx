@@ -139,8 +139,8 @@ class FlxMacro
 					}),
 				pos: Context.currentPos(),
 			});
-
-			fields.push(
+			
+		fields.push(
 			{
 				name: "shake",
 				access: [haxe.macro.Expr.Access.APublic],

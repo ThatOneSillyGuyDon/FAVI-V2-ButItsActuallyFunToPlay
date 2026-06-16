@@ -113,9 +113,11 @@ class Character extends Bopper
 	public var ghostAlpha:Float = 0.6;
 	
 	/**
-	 * Last hit row index
+	 * The hit time of the last note in milliseconds.
+	 * 
+	 * Only used for double note ghosts.
 	 */
-	public var mostRecentRow:Int = 0; // for ghost anims n shit
+	public var lastHitTime:Float = -1000;
 	
 	// Used on Character Editor
 	public var isPlayerInEditor:Null<Bool> = null;
@@ -143,7 +145,7 @@ class Character extends Bopper
 	 *	If enabled, the character's singing animation will stop at the last frame while holding a sustain note
 	 */
 	public var vSliceSustains = false;
-
+	
 	/**
 	 *	Decides how many frames the icon hase
 	 */
@@ -198,7 +200,7 @@ class Character extends Bopper
 		this.antialiasing = !noAntialiasing && ClientPrefs.globalAntialiasing;
 		
 		this.danceEveryNumBeats = json.dance_every ?? 2;
-
+		
 		this.iconFrames = json.icon_count ?? 2;
 		
 		this.gameoverCharacter = json.gameover_character;
@@ -295,6 +297,7 @@ class Character extends Bopper
 			dance(forceDance);
 			finishAnim();
 		}
+		
 		if (getAnimName().startsWith('sing') || holding) holdTimer += elapsed;
 		
 		if (!holding && holdTimer >= Conductor.stepCrotchet * 0.001 * singDuration)
