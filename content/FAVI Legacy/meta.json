@@ -1,0 +1,5 @@
+{
+    "name": "FAVI Legacy",
+    "global": true,
+    "defaultTransition": "swipe"
+}

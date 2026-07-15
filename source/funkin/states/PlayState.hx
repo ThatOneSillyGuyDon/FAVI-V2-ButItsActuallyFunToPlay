@@ -391,6 +391,7 @@ class PlayState extends MusicBeatState
 	public var startingSong:Bool = false;
 	
 	var updateTime:Bool = true;
+	public var allowBaseTimer:Bool = true;
 	
 	public static var changedDifficulty:Bool = false;
 	public static var chartingMode:Bool = false;
@@ -2578,6 +2579,7 @@ class PlayState extends MusicBeatState
 	public function finishSong(?ignoreNoteOffset:Bool = false):Void
 	{
 		updateTime = false;
+		allowBaseTimer = false;
 		
 		audio.volume = 0;
 		audio.stop();
@@ -2623,6 +2625,7 @@ class PlayState extends MusicBeatState
 		camZooming = false;
 		inCutscene = false;
 		updateTime = false;
+		allowBaseTimer = false;
 		
 		deathCounter = 0;
 		seenCutscene = false;

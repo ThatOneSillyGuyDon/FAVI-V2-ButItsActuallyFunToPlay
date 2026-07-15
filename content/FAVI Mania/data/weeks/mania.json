@@ -1,0 +1,29 @@
+{
+	"songs": [
+		["Alone", "face", [165, 165, 165]],
+		["Am I Real", "face", [165, 165, 165]],
+		["Mistful Wind", "face", [165, 165, 165]],
+		["Distant Stars", "face", [165, 165, 165]],
+		["Somber Night", "face", [165, 165, 165]],
+		["Your Final Bow", "face", [165, 165, 165]],
+		["Simple Life", "face", [165, 165, 165]],
+		["Rotten Petals", "face", [165, 165, 165]],
+		["Seeking Freedom", "face", [165, 165, 165]],
+		["Curtain Call", "face", [165, 165, 165]]
+	],
+
+	"weekCharacters": [
+		"",
+		"bf",
+		"gf"
+	],
+	"weekBackground": "stage",
+
+	"storyName": "",
+	"weekBefore": "tutorial",
+	"weekName": "Episode 1",
+	"startUnlocked": true,
+
+	"hideStoryMode": false,
+	"hideFreeplay": false
+}

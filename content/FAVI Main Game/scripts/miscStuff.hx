@@ -1,6 +1,7 @@
 import funkin.utils.MathUtil;
 
 var cameraOnDad = false;
+public var canRotateCam = true;
 public var isCartoon:Bool = false;
 public var globalGradient:FlxSprite;
 public var scratch:FlxSprite;
@@ -74,24 +75,29 @@ function onCreatePost()
 
 function opponentNoteHit(note) if (health >= healthLimit && ClientPrefs.mechanics) health -= healthDrain;
 
+var angleOffset:Float;
+var char:Character;
 function onUpdate(elapsed)
 {
 	if (ClientPrefs.shaders) shaderAnim = Conductor.songPosition / 1000;
 
-	var angleOffset = 0;
-	
-	var char = cameraOnDad ? dad : boyfriend;
-	
-	if (char.animation.curAnim != null && !isCameraOnForcedPos && ClientPrefs.camFollowsCharacters)
+	if (canRotateCam)
 	{
-		switch (char.animation.curAnim.name.substring(4))
+		angleOffset = 0;
+	
+		char = cameraOnDad ? dad : boyfriend;
+	
+		if (char.animation.curAnim != null && !isCameraOnForcedPos && ClientPrefs.camFollowsCharacters)
 		{
-			case 'RIGHT', 'RIGHT-alt':
-				angleOffset += 1.3;
-			case 'LEFT', 'LEFT-alt':
-				angleOffset -= 1.45;
+			switch (char.animation.curAnim.name.substring(4))
+			{
+				case 'RIGHT', 'RIGHT-alt':
+					angleOffset += 1.3;
+				case 'LEFT', 'LEFT-alt':
+					angleOffset -= 1.45;
+			}
 		}
-	}
+	}	
 	
 	healthLerp = FlxMath.lerp(healthLerp, health, .2 / (ClientPrefs.framerate / 60));
 	

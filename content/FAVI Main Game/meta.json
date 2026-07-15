@@ -1,9 +1,5 @@
 {
-    "name": "Funkin.avi",
-    "description": "bruh who tf cares, no one will see this",
+    "name": "FAVI Main Game",
     "global": true,
-
-    "windowTitle": "Funkin.avi",
-    "iconFile": "UI/icon64",
-    "defaultTransition": "fade"
+    "defaultTransition": "swipe"
 }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Free texture packer v0.6.7 http://free-tex-packer.com
+-->
+<TextureAtlas imagePath="Lil.png" width="1195" height="3093">
+  <SubTexture name="lilith0007.png" x="0" y="0"  width="424" height="619" frameX="-173" frameY="-61" frameWidth="720" frameHeight="720"/>
+  <SubTexture name="lilith0005.png" x="0" y="619"  width="409" height="619" frameX="-173" frameY="-61" frameWidth="720" frameHeight="720"/>
+  <SubTexture name="lilith0001.png" x="0" y="1238"  width="399" height="619" frameX="-173" frameY="-61" frameWidth="720" frameHeight="720"/>
+  <SubTexture name="lilith0003.png" x="0" y="1857"  width="397" height="619" frameX="-173" frameY="-61" frameWidth="720" frameHeight="720"/>
+  <SubTexture name="lilith0008.png" x="0" y="2476"  width="454" height="617" frameX="-174" frameY="-64" frameWidth="720" frameHeight="720"/>
+  <SubTexture name="lilith0004.png" x="397" y="1857"  width="414" height="617" frameX="-174" frameY="-64" frameWidth="720" frameHeight="720"/>
+  <SubTexture name="lilith0006.png" x="399" y="1238"  width="406" height="617" frameX="-174" frameY="-64" frameWidth="720" frameHeight="720"/>
+  <SubTexture name="lilith0002.png" x="805" y="1238"  width="390" height="617" frameX="-174" frameY="-64" frameWidth="720" frameHeight="720"/>
+</TextureAtlas>

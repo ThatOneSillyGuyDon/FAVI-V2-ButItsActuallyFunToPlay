@@ -265,7 +265,7 @@ class PsychHUD extends BaseHUD
 		updateIconsScale(elapsed);
 		updateIconsAnimation();
 		
-		if (!parent.startingSong && !parent.paused && parent.updateTime && !parent.endingSong)
+		if (!parent.startingSong && !parent.paused && parent.updateTime && parent.allowBaseTimer && !parent.endingSong)
 		{
 			var curTime:Float = Math.max(0, Conductor.songPosition - ClientPrefs.noteOffset);
 			parent.songPercent = (curTime / parent.songLength);

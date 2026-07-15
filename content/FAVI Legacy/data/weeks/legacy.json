@@ -1,0 +1,29 @@
+{
+	"songs": [
+		["Isolated Beta", "face", [165, 165, 165]],
+		["Isolated Old", "face", [165, 165, 165]],
+		["Isolated Legacy", "face", [165, 165, 165]],
+		["Lunacy Legacy", "face", [165, 165, 165]],
+		["Delusional Legacy", "face", [165, 165, 165]],
+		["Hunted Legacy", "face", [165, 165, 165]],
+		["Twisted Grins Legacy", "face", [165, 165, 165]],
+		["Cycled Sins Legacy", "face", [165, 165, 165]],
+		["Mercy Legacy", "face", [165, 165, 165]],
+		["Malfunction Legacy", "face", [165, 165, 165]]
+	],
+
+	"weekCharacters": [
+		"",
+		"bf",
+		"gf"
+	],
+	"weekBackground": "stage",
+
+	"storyName": "",
+	"weekBefore": "tutorial",
+	"weekName": "Episode 1",
+	"startUnlocked": true,
+
+	"hideStoryMode": false,
+	"hideFreeplay": false
+}

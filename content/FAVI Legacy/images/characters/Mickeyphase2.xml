@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="Mickeyphase2.png"><SubTexture name="Mickeyphase2 Up0000" x="1943" y="0" width="967" height="1181" frameX="-392" frameY="-219" frameWidth="1500" frameHeight="1400" />
+<SubTexture name="Mickeyphase2 Up0001" x="974" y="0" width="969" height="1184" frameX="-392" frameY="-216" frameWidth="1500" frameHeight="1400" />
+<SubTexture name="Mickeyphase2 Up0002" x="0" y="0" width="974" height="1186" frameX="-389" frameY="-214" frameWidth="1500" frameHeight="1400" />
+<SubTexture name="Mickeyphase2 Up0003" x="0" y="0" width="974" height="1186" frameX="-389" frameY="-214" frameWidth="1500" frameHeight="1400" />
+<SubTexture name="Mickeyphase2 Right0000" x="1826" y="3294" width="1087" height="935" frameX="-404" frameY="-465" frameWidth="1500" frameHeight="1400" />
+<SubTexture name="Mickeyphase2 Right0001" x="4687" y="0" width="1091" height="933" frameX="-404" frameY="-467" frameWidth="1500" frameHeight="1400" />
+<SubTexture name="Mickeyphase2 Right0002" x="2913" y="3294" width="1093" height="934" frameX="-404" frameY="-466" frameWidth="1500" frameHeight="1400" />
+<SubTexture name="Mickeyphase2 Right0003" x="2913" y="3294" width="1093" height="934" frameX="-404" frameY="-466" frameWidth="1500" frameHeight="1400" />
+<SubTexture name="Mickeyphase2 Left0000" x="0" y="3294" width="964" height="1032" frameX="-159" frameY="-368" frameWidth="1500" frameHeight="1400" />
+<SubTexture name="Mickeyphase2 Left0001" x="3729" y="0" width="958" height="1033" frameX="-165" frameY="-367" frameWidth="1500" frameHeight="1400" />
+<SubTexture name="Mickeyphase2 Left0002" x="2410" y="2251" width="961" height="1034" frameX="-162" frameY="-366" frameWidth="1500" frameHeight="1400" />
+<SubTexture name="Mickeyphase2 Left0003" x="2410" y="2251" width="961" height="1034" frameX="-162" frameY="-366" frameWidth="1500" frameHeight="1400" />
+<SubTexture name="Mickeyphase2 Idle0000" x="0" y="2251" width="809" height="1043" frameX="-398" frameY="-355" frameWidth="1500" frameHeight="1400" />
+<SubTexture name="Mickeyphase2 Idle0001" x="809" y="2251" width="802" height="1039" frameX="-403" frameY="-359" frameWidth="1500" frameHeight="1400" />
+<SubTexture name="Mickeyphase2 Idle0002" x="1611" y="2251" width="799" height="1039" frameX="-405" frameY="-360" frameWidth="1500" frameHeight="1400" />
+<SubTexture name="Mickeyphase2 Idle0003" x="2910" y="1057" width="796" height="1046" frameX="-397" frameY="-353" frameWidth="1500" frameHeight="1400" />
+<SubTexture name="Mickeyphase2 Idle0004" x="2910" y="0" width="819" height="1057" frameX="-382" frameY="-343" frameWidth="1500" frameHeight="1400" />
+<SubTexture name="Mickeyphase2 Idle0005" x="0" y="1186" width="816" height="1065" frameX="-379" frameY="-335" frameWidth="1500" frameHeight="1400" />
+<SubTexture name="Mickeyphase2 Idle0006" x="816" y="1186" width="817" height="1065" frameX="-378" frameY="-335" frameWidth="1500" frameHeight="1400" />
+<SubTexture name="Mickeyphase2 Idle0007" x="1633" y="1186" width="818" height="1065" frameX="-378" frameY="-335" frameWidth="1500" frameHeight="1400" />
+<SubTexture name="Mickeyphase2 Down0000" x="3729" y="1033" width="855" height="996" frameX="-353" frameY="-404" frameWidth="1500" frameHeight="1400" />
+<SubTexture name="Mickeyphase2 Down0001" x="3729" y="2029" width="859" height="988" frameX="-350" frameY="-411" frameWidth="1500" frameHeight="1400" />
+<SubTexture name="Mickeyphase2 Down0002" x="964" y="3294" width="862" height="982" frameX="-349" frameY="-417" frameWidth="1500" frameHeight="1400" />
+<SubTexture name="Mickeyphase2 Down0003" x="964" y="3294" width="862" height="982" frameX="-349" frameY="-417" frameWidth="1500" frameHeight="1400" />
+</TextureAtlas>
