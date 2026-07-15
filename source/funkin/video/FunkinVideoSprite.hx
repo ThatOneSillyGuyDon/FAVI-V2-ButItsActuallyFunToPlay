@@ -3,9 +3,13 @@ package funkin.video;
 // sigh rework coming again soon
 import funkin.input.Controls;
 
-#if VIDEOS_ALLOWED
+#if VIDEOS_ALLOWED // By goober, that one guy
 import hxvlc.flixel.FlxVideoSprite;
+#if (hxvlc > "2.2.6")
+import hxvlc.openfl.Location;
+#else
 import hxvlc.util.Location;
+#end
 
 // with hxvlcs improvements this is less needed but still has its values
 
