@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="settings.png">
+<SubTexture name="settings idle0000" x="75" y="0" width="75" height="64" frameX="75" frameY="0" frameWidth="75" frameHeight="64" />
+<SubTexture name="settings hovered0000" x="0" y="0" width="75" height="66" frameX="75" frameY="0" frameWidth="75" frameHeight="66" />
+<SubTexture name="settings selected0000" x="0" y="66" width="75" height="62" frameX="75" frameY="0" frameWidth="75" frameHeight="62" />
+</TextureAtlas>

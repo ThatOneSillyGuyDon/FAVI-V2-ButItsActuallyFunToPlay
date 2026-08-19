@@ -1,1234 +1,6 @@
 {
 	"song": {
 		"player1": "everett-relapse",
-		"gameOverStyle": "Default",
-		"arrowSkin": "Sin",
-		"splashSkin": "Default",
-		"events": [
-			[
-				0,
-				[
-					[
-						"Camera Event",
-						"Change Pos",
-						"200,230"
-					]
-				]
-			],
-			[
-				372.670807453416,
-				[
-					[
-						"Relapse Events",
-						"1",
-						""
-					]
-				]
-			],
-			[
-				5962.73291925466,
-				[
-					[
-						"Camera Event",
-						"Fade",
-						"0,0,0,0.0001,true"
-					]
-				]
-			],
-			[
-				17142.8571428571,
-				[
-					[
-						"Camera Event",
-						"Tween Value",
-						"hudalpha,1,0.8,circInOut"
-					]
-				]
-			],
-			[
-				62608.6956521739,
-				[
-					[
-						"Play Animation",
-						"laughter",
-						"dad"
-					],
-					[
-						"Alt Idle Animation",
-						"dad",
-						"-alt"
-					]
-				]
-			],
-			[
-				62888.198757764,
-				[
-					[
-						"Play Animation",
-						"laughterFast",
-						"dad"
-					]
-				]
-			],
-			[
-				63074.5341614907,
-				[
-					[
-						"Play Animation",
-						"laughterFast",
-						"dad"
-					]
-				]
-			],
-			[
-				63260.8695652174,
-				[
-					[
-						"Play Animation",
-						"laughterFast",
-						"dad"
-					]
-				]
-			],
-			[
-				63447.2049689441,
-				[
-					[
-						"Play Animation",
-						"laughterFast",
-						"dad"
-					]
-				]
-			],
-			[
-				63633.5403726708,
-				[
-					[
-						"Play Animation",
-						"laughterFast",
-						"dad"
-					]
-				]
-			],
-			[
-				63819.8757763975,
-				[
-					[
-						"Play Animation",
-						"laughterFast",
-						"dad"
-					]
-				]
-			],
-			[
-				64006.2111801242,
-				[
-					[
-						"Play Animation",
-						"laughterFast",
-						"dad"
-					]
-				]
-			],
-			[
-				64192.5465838509,
-				[
-					[
-						"Play Animation",
-						"leSpin",
-						"dad"
-					]
-				]
-			],
-			[
-				64844.7204968944,
-				[
-					[
-						"Relapse Gimmick",
-						"0.7,0.3",
-						"false"
-					]
-				]
-			],
-			[
-				65590.0621118012,
-				[
-					[
-						"Alt Idle Animation",
-						"gf",
-						"-alt"
-					],
-					[
-						"Relapse Events",
-						"2",
-						""
-					],
-					[
-						"Camera Event",
-						"Fade",
-						"255,0,0,1,true"
-					],
-					[
-						"Show Song Card",
-						"true",
-						"0,1.5,sineInOut"
-					]
-				]
-			],
-			[
-				67080.7453416149,
-				[
-					[
-						"Relapse Gimmick",
-						"0.35,0.15",
-						"false"
-					],
-					[
-						"Show Song Card",
-						"false",
-						"0,1.5,sineInOut"
-					]
-				]
-			],
-			[
-				70062.1118012422,
-				[
-					[
-						"Relapse Gimmick",
-						"1.4,0.6",
-						"false"
-					]
-				]
-			],
-			[
-				73043.4782608695,
-				[
-					[
-						"Relapse Gimmick",
-						"0.35,0.15",
-						"false"
-					]
-				]
-			],
-			[
-				73788.8198757764,
-				[
-					[
-						"Relapse Gimmick",
-						"0.35,0.15",
-						"false"
-					]
-				]
-			],
-			[
-				76024.8447204969,
-				[
-					[
-						"Relapse Gimmick",
-						"1.4,0.6",
-						"false"
-					]
-				]
-			],
-			[
-				76770.1863354037,
-				[
-					[
-						"Relapse Gimmick",
-						"0.7,0.54",
-						"false"
-					]
-				]
-			],
-			[
-				79751.552795031,
-				[
-					[
-						"Relapse Gimmick",
-						"0.7,0.8",
-						"false"
-					]
-				]
-			],
-			[
-				84968.9440993788,
-				[
-					[
-						"Relapse Gimmick",
-						"0.7,1",
-						"false"
-					]
-				]
-			],
-			[
-				90931.6770186334,
-				[
-					[
-						"Relapse Gimmick",
-						"0.7,1",
-						"false"
-					]
-				]
-			],
-			[
-				92422.3602484471,
-				[
-					[
-						"Relapse Gimmick",
-						"1.4,1.2",
-						"false"
-					]
-				]
-			],
-			[
-				94658.3850931676,
-				[
-					[
-						"Relapse Gimmick",
-						"0.35,0.15",
-						"false"
-					]
-				]
-			],
-			[
-				97639.7515527949,
-				[
-					[
-						"Relapse Gimmick",
-						"1.4,1.2",
-						"false"
-					]
-				]
-			],
-			[
-				100621.118012422,
-				[
-					[
-						"Relapse Gimmick",
-						"0.7,1.5",
-						"false"
-					]
-				]
-			],
-			[
-				102857.142857143,
-				[
-					[
-						"Relapse Gimmick",
-						"1.4,1.2",
-						"false"
-					]
-				]
-			],
-			[
-				109565.217391304,
-				[
-					[
-						"Relapse Gimmick",
-						"0.7,1.5",
-						"false"
-					]
-				]
-			],
-			[
-				112919.254658385,
-				[
-					[
-						"Relapse Gimmick",
-						"0.35,0.15",
-						"false"
-					]
-				]
-			],
-			[
-				128198.757763975,
-				[
-					[
-						"Manage Lyrics",
-						"data",
-						"0, 0, relapse2NEW-pixel"
-					],
-					[
-						"Manage Lyrics",
-						"tweenData",
-						"0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0.001"
-					],
-					[
-						"Manage Lyrics",
-						"text data",
-						"0, idc lol, 25, 255, 255, 255, CENTER, 0, 0, 0, 4"
-					]
-				]
-			],
-			[
-				136397.51552795,
-				[
-					[
-						"Camera Event",
-						"Tween Value",
-						"hudalpha,0,1,linear"
-					]
-				]
-			],
-			[
-				137142.857142857,
-				[
-					[
-						"Play Animation",
-						"sittingDown",
-						"dad"
-					]
-				]
-			],
-			[
-				137701.863354037,
-				[
-					[
-						"Play Animation",
-						"satDown",
-						"dad"
-					],
-					[
-						"Alt Idle Animation",
-						"dad",
-						"-talk"
-					]
-				]
-			],
-			[
-				141987.577639751,
-				[
-					[
-						"Relapse Events",
-						"4",
-						""
-					]
-				]
-			],
-			[
-				142267.080745341,
-				[
-					[
-						"Manage Lyrics",
-						"move",
-						"0, 0.001, 17, 1, linear, expoOut"
-					],
-					[
-						"Manage Lyrics",
-						"text",
-						"0, You, 0.001"
-					]
-				]
-			],
-			[
-				142732.919254658,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, You think, 0.001"
-					]
-				]
-			],
-			[
-				143105.590062112,
-				[
-					[
-						"Relapse Events",
-						"5",
-						""
-					]
-				]
-			],
-			[
-				143105.590062112,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, You think this, 0.001"
-					]
-				]
-			],
-			[
-				143291.925465838,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, You think this is, 0.001"
-					]
-				]
-			],
-			[
-				143571.428571428,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, You think this is some..., 0.001"
-					]
-				]
-			],
-			[
-				143850.931677018,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, ...kind, 0.001"
-					]
-				]
-			],
-			[
-				144037.267080745,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, ...kind of, 0.001"
-					]
-				]
-			],
-			[
-				144596.273291925,
-				[
-					[
-						"Relapse Events",
-						"6",
-						""
-					]
-				]
-			],
-			[
-				144596.273291925,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, ...kind of silly, 0.001"
-					]
-				]
-			],
-			[
-				144968.944099379,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, ...kind of silly little, 0.001"
-					]
-				]
-			],
-			[
-				145341.614906832,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, ...kind of silly little GAME?, 0.001"
-					]
-				]
-			],
-			[
-				146086.956521739,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, ..., 0.001"
-					]
-				]
-			],
-			[
-				146832.298136646,
-				[
-					[
-						"Relapse Events",
-						"7",
-						""
-					]
-				]
-			],
-			[
-				146832.298136646,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, Soon, 0.001"
-					]
-				]
-			],
-			[
-				147391.304347826,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, Soon enough..., 0.001"
-					]
-				]
-			],
-			[
-				148322.981366459,
-				[
-					[
-						"Relapse Events",
-						"8",
-						""
-					]
-				]
-			],
-			[
-				148416.149068323,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, You'll, 0.001"
-					]
-				]
-			],
-			[
-				148602.484472049,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, You'll understand, 0.001"
-					]
-				]
-			],
-			[
-				149068.322981366,
-				[
-					[
-						"Add Camera Zoom",
-						"0.1",
-						"0"
-					],
-					[
-						"Background Controls",
-						"Flash",
-						"1.2,linear,0.32,255,0,0"
-					]
-				]
-			],
-			[
-				149347.826086956,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, You'll understand what, 0.001"
-					]
-				]
-			],
-			[
-				149720.49689441,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, You'll understand what ME..., 0.001"
-					]
-				]
-			],
-			[
-				150465.838509317,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, ...AND, 0.001"
-					]
-				]
-			],
-			[
-				150559.00621118,
-				[
-					[
-						"Relapse Events",
-						"9",
-						""
-					]
-				]
-			],
-			[
-				150559.00621118,
-				[
-					[
-						"Add Camera Zoom",
-						"0.1",
-						"0"
-					],
-					[
-						"Background Controls",
-						"Flash",
-						"1.2,linear,0.32,255,0,0"
-					]
-				]
-			],
-			[
-				150931.677018633,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, ...AND MY, 0.001"
-					]
-				]
-			],
-			[
-				151304.347826087,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, ...AND MY FRIENDS!, 0.001"
-					]
-				]
-			],
-			[
-				152049.689440994,
-				[
-					[
-						"Add Camera Zoom",
-						"0.1",
-						"0"
-					],
-					[
-						"Background Controls",
-						"Flash",
-						"1.2,linear,0.32,255,0,0"
-					]
-				]
-			],
-			[
-				152049.689440994,
-				[
-					[
-						"Relapse Events",
-						"10",
-						""
-					]
-				]
-			],
-			[
-				152049.689440994,
-				[
-					[
-						"Manage Lyrics",
-						"Text",
-						"0, HAVE, 0.001"
-					]
-				]
-			],
-			[
-				152236.02484472,
-				[
-					[
-						"Manage Lyrics",
-						"Text",
-						"0, HAVE TO, 0.001"
-					]
-				]
-			],
-			[
-				152608.695652174,
-				[
-					[
-						"Manage Lyrics",
-						"Text",
-						"0, HAVE TO GO, 0.001"
-					]
-				]
-			],
-			[
-				152981.366459627,
-				[
-					[
-						"Manage Lyrics",
-						"Text",
-						"0, HAVE TO GO THROUGH!, 0.001"
-					]
-				]
-			],
-			[
-				153540.372670807,
-				[
-					[
-						"Add Camera Zoom",
-						"0.1",
-						"0"
-					],
-					[
-						"Background Controls",
-						"Flash",
-						"1.2,linear,0.32,255,0,0"
-					]
-				]
-			],
-			[
-				153913.043478261,
-				[
-					[
-						"Relapse Events",
-						"11",
-						""
-					]
-				]
-			],
-			[
-				154099.378881987,
-				[
-					[
-						"Manage Lyrics",
-						"Text",
-						"0, Sooner, 0.001"
-					]
-				]
-			],
-			[
-				154472.049689441,
-				[
-					[
-						"Manage Lyrics",
-						"Text",
-						"0, Sooner or, 0.001"
-					]
-				]
-			],
-			[
-				154658.385093168,
-				[
-					[
-						"Manage Lyrics",
-						"Text",
-						"0, Sooner or later..., 0.001"
-					]
-				]
-			],
-			[
-				155031.055900621,
-				[
-					[
-						"Add Camera Zoom",
-						"0.1",
-						"0"
-					],
-					[
-						"Background Controls",
-						"Flash",
-						"1.2,linear,0.32,255,0,0"
-					]
-				]
-			],
-			[
-				155403.726708074,
-				[
-					[
-						"Relapse Events",
-						"12",
-						""
-					]
-				]
-			],
-			[
-				155403.726708074,
-				[
-					[
-						"Manage Lyrics",
-						"Text",
-						"0, Your, 0.001"
-					]
-				]
-			],
-			[
-				155776.397515528,
-				[
-					[
-						"Manage Lyrics",
-						"Text",
-						"0, Your DEATH, 0.001"
-					]
-				]
-			],
-			[
-				156149.068322981,
-				[
-					[
-						"Manage Lyrics",
-						"Text",
-						"0, Your DEATH will, 0.001"
-					]
-				]
-			],
-			[
-				156335.403726708,
-				[
-					[
-						"Manage Lyrics",
-						"Text",
-						"0, Your DEATH will be, 0.001"
-					]
-				]
-			],
-			[
-				156521.739130435,
-				[
-					[
-						"Add Camera Zoom",
-						"0.1",
-						"0"
-					],
-					[
-						"Background Controls",
-						"Flash",
-						"1.2,linear,0.32,255,0,0"
-					],
-					[
-						"Manage Lyrics",
-						"text",
-						"0, Your DEATH will be NOTHING, 0.001"
-					]
-				]
-			],
-			[
-				156894.409937888,
-				[
-					[
-						"Relapse Events",
-						"13",
-						""
-					]
-				]
-			],
-			[
-				156894.409937888,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, Your DEATH will be NOTHING BUT..., 0.001"
-					]
-				]
-			],
-			[
-				157267.080745341,
-				[
-					[
-						"Play Animation",
-						"grinning",
-						"dad"
-					]
-				]
-			],
-			[
-				157267.080745341,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, CYCLED, 0.001"
-					]
-				]
-			],
-			[
-				158012.422360248,
-				[
-					[
-						"Add Camera Zoom",
-						"0.1",
-						"0"
-					],
-					[
-						"Background Controls",
-						"Flash",
-						"1.2,linear,0.32,255,0,0"
-					]
-				]
-			],
-			[
-				158012.422360248,
-				[
-					[
-						"Manage Lyrics",
-						"text",
-						"0, CYCLED SINS!, 0.001"
-					]
-				]
-			],
-			[
-				159130.434782609,
-				[
-					[
-						"Play Animation",
-						"dialogueLaugh",
-						"dad"
-					]
-				]
-			],
-			[
-				159503.105590062,
-				[
-					[
-						"Add Camera Zoom",
-						"0.1",
-						"0"
-					],
-					[
-						"Background Controls",
-						"Flash",
-						"1.2,linear,0.32,255,0,0"
-					]
-				]
-			],
-			[
-				159503.105590062,
-				[
-					[
-						"Play Animation",
-						"dialogueLaughFast",
-						"dad"
-					]
-				]
-			],
-			[
-				159689.440993789,
-				[
-					[
-						"Play Animation",
-						"dialogueLaughFast",
-						"dad"
-					]
-				]
-			],
-			[
-				159875.776397515,
-				[
-					[
-						"Play Animation",
-						"dialogueLaughFast",
-						"dad"
-					],
-					[
-						"Alt Idle Animation",
-						"dad",
-						"-alt"
-					],
-					[
-						"Camera Event",
-						"Change Value",
-						"alpha,0"
-					]
-				]
-			],
-			[
-				160993.788819876,
-				[
-					[
-						"Camera Event",
-						"Change Value",
-						"alpha,1"
-					],
-					[
-						"Camera Event",
-						"Tween Value",
-						"hudalpha,1,0.5,sineOut"
-					]
-				]
-			],
-			[
-				163229.813664596,
-				[
-					[
-						"Relapse Gimmick",
-						"0.35,1",
-						"true"
-					]
-				]
-			],
-			[
-				168819.875776397,
-				[
-					[
-						"Relapse Gimmick",
-						"0.7,1",
-						"true"
-					]
-				]
-			],
-			[
-				171428.571428571,
-				[
-					[
-						"Relapse Gimmick",
-						"0.7,0.9",
-						"false"
-					]
-				]
-			],
-			[
-				175527.950310559,
-				[
-					[
-						"Relapse Gimmick",
-						"0.35,1.1",
-						"false"
-					]
-				]
-			],
-			[
-				180372.670807453,
-				[
-					[
-						"Relapse Gimmick",
-						"0.35,1.3",
-						"false"
-					]
-				]
-			],
-			[
-				184099.378881988,
-				[
-					[
-						"Relapse Gimmick",
-						"0.35,1.3",
-						"true"
-					]
-				]
-			],
-			[
-				185590.062111801,
-				[
-					[
-						"Relapse Gimmick",
-						"0.7,0.9",
-						"false"
-					]
-				]
-			],
-			[
-				187453.416149068,
-				[
-					[
-						"Relapse Gimmick",
-						"0.35,1.3",
-						"false"
-					]
-				]
-			],
-			[
-				189316.770186335,
-				[
-					[
-						"Relapse Gimmick",
-						"0.35,1.3",
-						"true"
-					]
-				]
-			],
-			[
-				195279.50310559,
-				[
-					[
-						"Relapse Gimmick",
-						"0.7,1",
-						"true"
-					]
-				]
-			],
-			[
-				201242.236024845,
-				[
-					[
-						"Relapse Gimmick",
-						"0.35,1",
-						"true"
-					]
-				]
-			],
-			[
-				207950.310559006,
-				[
-					[
-						"Play Animation",
-						"sittingDown",
-						"dad"
-					]
-				]
-			],
-			[
-				208509.316770186,
-				[
-					[
-						"Play Animation",
-						"satDown",
-						"dad"
-					],
-					[
-						"Alt Idle Animation",
-						"dad",
-						"-talk"
-					]
-				],
-				null,
-				"No Animation"
-			],
-			[
-				208695.652173913,
-				[
-					[
-						"Relapse Events",
-						"14",
-						""
-					]
-				]
-			],
-			[
-				214658.385093168,
-				[
-					[
-						"Relapse Events",
-						"15",
-						""
-					]
-				]
-			],
-			[
-				220621.118012423,
-				[
-					[
-						"Relapse Events",
-						"16",
-						""
-					]
-				]
-			],
-			[
-				226583.850931677,
-				[
-					[
-						"Relapse Events",
-						"17",
-						""
-					]
-				]
-			],
-			[
-				235527.950310559,
-				[
-					[
-						"Relapse Events",
-						"3",
-						""
-					]
-				]
-			]
-		],
-		"gfVersion": "minnie-relapse",
 		"notes": [
 			{
 				"sectionNotes": [],
@@ -8534,13 +7306,1366 @@
 		],
 		"player2": "relapseNEW",
 		"player3": null,
+		"splashSkin": "Default",
 		"song": "Cycled Sins",
+		"validScore": true,
+		"arrowSkin": "Sin",
+		"speed": 2.8,
+		"events": [
+			[
+				0,
+				[
+					[
+						"Camera Event",
+						"Change Pos",
+						"200,230"
+					]
+				]
+			],
+			[
+				372.670807453416,
+				[
+					[
+						"Relapse Events",
+						"1",
+						""
+					]
+				]
+			],
+			[
+				5962.73291925466,
+				[
+					[
+						"Camera Event",
+						"Fade",
+						"0,0,0,0.0001,true"
+					]
+				]
+			],
+			[
+				17142.8571428571,
+				[
+					[
+						"Camera Event",
+						"Tween Value",
+						"hudalpha,1,0.8,circInOut"
+					]
+				]
+			],
+			[
+				62515.5279503106,
+				[
+					[
+						"Relapse Events",
+						"4",
+						""
+					]
+				]
+			],
+			[
+				62608.6956521739,
+				[
+					[
+						"Play Animation",
+						"laughter",
+						"dad"
+					],
+					[
+						"Alt Idle Animation",
+						"dad",
+						"-alt"
+					]
+				]
+			],
+			[
+				62888.198757764,
+				[
+					[
+						"Play Animation",
+						"laughterFast",
+						"dad"
+					]
+				]
+			],
+			[
+				63074.5341614907,
+				[
+					[
+						"Play Animation",
+						"laughterFast",
+						"dad"
+					]
+				]
+			],
+			[
+				63260.8695652174,
+				[
+					[
+						"Play Animation",
+						"laughterFast",
+						"dad"
+					]
+				]
+			],
+			[
+				63447.2049689441,
+				[
+					[
+						"Play Animation",
+						"laughterFast",
+						"dad"
+					]
+				]
+			],
+			[
+				63633.5403726708,
+				[
+					[
+						"Play Animation",
+						"laughterFast",
+						"dad"
+					]
+				]
+			],
+			[
+				63819.8757763975,
+				[
+					[
+						"Play Animation",
+						"laughterFast",
+						"dad"
+					]
+				]
+			],
+			[
+				64006.2111801242,
+				[
+					[
+						"Play Animation",
+						"laughterFast",
+						"dad"
+					]
+				]
+			],
+			[
+				64192.5465838509,
+				[
+					[
+						"Play Animation",
+						"leSpin",
+						"dad"
+					]
+				]
+			],
+			[
+				64844.7204968944,
+				[
+					[
+						"Relapse Gimmick",
+						"0.7,0.3",
+						"false"
+					]
+				]
+			],
+			[
+				65590.0621118012,
+				[
+					[
+						"Alt Idle Animation",
+						"gf",
+						"-alt"
+					],
+					[
+						"Relapse Events",
+						"2",
+						""
+					],
+					[
+						"Camera Event",
+						"Fade",
+						"255,0,0,2.3,true"
+					],
+					[
+						"Show Song Card",
+						"true",
+						"0,1.5,sineInOut"
+					],
+					[
+						"Relapse Events",
+						"5",
+						""
+					]
+				]
+			],
+			[
+				67080.7453416149,
+				[
+					[
+						"Relapse Gimmick",
+						"0.35,0.15",
+						"false"
+					],
+					[
+						"Show Song Card",
+						"false",
+						"0,1.5,sineInOut"
+					]
+				]
+			],
+			[
+				70062.1118012422,
+				[
+					[
+						"Relapse Gimmick",
+						"1.4,0.6",
+						"false"
+					]
+				]
+			],
+			[
+				73043.4782608695,
+				[
+					[
+						"Relapse Gimmick",
+						"0.35,0.15",
+						"false"
+					]
+				]
+			],
+			[
+				73788.8198757764,
+				[
+					[
+						"Relapse Gimmick",
+						"0.35,0.15",
+						"false"
+					]
+				]
+			],
+			[
+				76024.8447204969,
+				[
+					[
+						"Relapse Gimmick",
+						"1.4,0.6",
+						"false"
+					]
+				]
+			],
+			[
+				76770.1863354037,
+				[
+					[
+						"Relapse Gimmick",
+						"0.7,0.54",
+						"false"
+					]
+				]
+			],
+			[
+				79751.552795031,
+				[
+					[
+						"Relapse Gimmick",
+						"0.7,0.8",
+						"false"
+					]
+				]
+			],
+			[
+				84968.9440993788,
+				[
+					[
+						"Relapse Gimmick",
+						"0.7,1",
+						"false"
+					]
+				]
+			],
+			[
+				90931.6770186334,
+				[
+					[
+						"Relapse Gimmick",
+						"0.7,1",
+						"false"
+					]
+				]
+			],
+			[
+				92422.3602484471,
+				[
+					[
+						"Relapse Gimmick",
+						"1.4,1.2",
+						"false"
+					]
+				]
+			],
+			[
+				94658.3850931676,
+				[
+					[
+						"Relapse Gimmick",
+						"0.35,0.15",
+						"false"
+					]
+				]
+			],
+			[
+				97639.7515527949,
+				[
+					[
+						"Relapse Gimmick",
+						"1.4,1.2",
+						"false"
+					]
+				]
+			],
+			[
+				100621.118012422,
+				[
+					[
+						"Relapse Gimmick",
+						"0.7,1.5",
+						"false"
+					]
+				]
+			],
+			[
+				102857.142857143,
+				[
+					[
+						"Relapse Gimmick",
+						"1.4,1.2",
+						"false"
+					]
+				]
+			],
+			[
+				109565.217391304,
+				[
+					[
+						"Relapse Gimmick",
+						"0.7,1.5",
+						"false"
+					]
+				]
+			],
+			[
+				112919.254658385,
+				[
+					[
+						"Relapse Gimmick",
+						"0.35,0.15",
+						"false"
+					]
+				]
+			],
+			[
+				128198.757763975,
+				[
+					[
+						"Manage Lyrics",
+						"data",
+						"0, 0, relapse2NEW-pixel"
+					],
+					[
+						"Manage Lyrics",
+						"tweenData",
+						"0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0.001"
+					],
+					[
+						"Manage Lyrics",
+						"text data",
+						"0, idc lol, 25, 255, 255, 255, CENTER, 0, 0, 0, 4"
+					]
+				]
+			],
+			[
+				136397.51552795,
+				[
+					[
+						"Camera Event",
+						"Tween Value",
+						"hudalpha,0,1,linear"
+					]
+				]
+			],
+			[
+				137142.857142857,
+				[
+					[
+						"Play Animation",
+						"sittingDown",
+						"dad"
+					]
+				]
+			],
+			[
+				137701.863354037,
+				[
+					[
+						"Play Animation",
+						"satDown",
+						"dad"
+					],
+					[
+						"Alt Idle Animation",
+						"dad",
+						"-talk"
+					]
+				]
+			],
+			[
+				137888.198757764,
+				[
+					[
+						"Camera Event",
+						"tweenvalue",
+						"zoom, 0.7,6,smoothStepInOut"
+					]
+				]
+			],
+			[
+				138260.869565217,
+				[
+					[
+						"Camera Event",
+						"tweenpos",
+						"-400,510,5,smoothStepInOut"
+					]
+				]
+			],
+			[
+				141987.577639751,
+				[
+					[
+						"Relapse Events",
+						"4",
+						""
+					]
+				]
+			],
+			[
+				142267.080745341,
+				[
+					[
+						"Manage Lyrics",
+						"move",
+						"0, 0.001, 17, 1, linear, expoOut"
+					],
+					[
+						"Manage Lyrics",
+						"text",
+						"0, You, 0.001"
+					]
+				]
+			],
+			[
+				142732.919254658,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, You think, 0.001"
+					]
+				]
+			],
+			[
+				143105.590062112,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, You think this, 0.001"
+					]
+				]
+			],
+			[
+				143291.925465838,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, You think this is, 0.001"
+					]
+				]
+			],
+			[
+				143571.428571428,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, You think this is some..., 0.001"
+					]
+				]
+			],
+			[
+				143850.931677018,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, ...kind, 0.001"
+					]
+				]
+			],
+			[
+				144037.267080745,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, ...kind of, 0.001"
+					]
+				]
+			],
+			[
+				144596.273291925,
+				[
+					[
+						"Relapse Events",
+						"6",
+						""
+					]
+				]
+			],
+			[
+				144596.273291925,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, ...kind of silly, 0.001"
+					]
+				]
+			],
+			[
+				144968.944099379,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, ...kind of silly little, 0.001"
+					]
+				]
+			],
+			[
+				145341.614906832,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, ...kind of silly little GAME?, 0.001"
+					]
+				]
+			],
+			[
+				146086.956521739,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, ..., 0.001"
+					]
+				]
+			],
+			[
+				146832.298136646,
+				[
+					[
+						"Relapse Events",
+						"7",
+						""
+					]
+				]
+			],
+			[
+				146832.298136646,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, Soon, 0.001"
+					]
+				]
+			],
+			[
+				147391.304347826,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, Soon enough..., 0.001"
+					]
+				]
+			],
+			[
+				148322.981366459,
+				[
+					[
+						"Relapse Events",
+						"8",
+						""
+					]
+				]
+			],
+			[
+				148416.149068323,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, You'll, 0.001"
+					]
+				]
+			],
+			[
+				148602.484472049,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, You'll understand, 0.001"
+					]
+				]
+			],
+			[
+				149068.322981366,
+				[
+					[
+						"Add Camera Zoom",
+						"0.1",
+						"0"
+					],
+					[
+						"Background Controls",
+						"Flash",
+						"1.2,linear,0.32,255,0,0"
+					]
+				]
+			],
+			[
+				149347.826086956,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, You'll understand what, 0.001"
+					]
+				]
+			],
+			[
+				149720.49689441,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, You'll understand what ME..., 0.001"
+					]
+				]
+			],
+			[
+				150465.838509317,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, ...AND, 0.001"
+					]
+				]
+			],
+			[
+				150559.00621118,
+				[
+					[
+						"Relapse Events",
+						"9",
+						""
+					]
+				]
+			],
+			[
+				150559.00621118,
+				[
+					[
+						"Add Camera Zoom",
+						"0.1",
+						"0"
+					],
+					[
+						"Background Controls",
+						"Flash",
+						"1.2,linear,0.32,255,0,0"
+					]
+				]
+			],
+			[
+				150931.677018633,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, ...AND MY, 0.001"
+					]
+				]
+			],
+			[
+				151304.347826087,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, ...AND MY FRIENDS!, 0.001"
+					]
+				]
+			],
+			[
+				152049.689440994,
+				[
+					[
+						"Add Camera Zoom",
+						"0.1",
+						"0"
+					],
+					[
+						"Background Controls",
+						"Flash",
+						"1.2,linear,0.32,255,0,0"
+					]
+				]
+			],
+			[
+				152049.689440994,
+				[
+					[
+						"Relapse Events",
+						"10",
+						""
+					]
+				]
+			],
+			[
+				152049.689440994,
+				[
+					[
+						"Manage Lyrics",
+						"Text",
+						"0, HAVE, 0.001"
+					]
+				]
+			],
+			[
+				152236.02484472,
+				[
+					[
+						"Manage Lyrics",
+						"Text",
+						"0, HAVE TO, 0.001"
+					]
+				]
+			],
+			[
+				152608.695652174,
+				[
+					[
+						"Manage Lyrics",
+						"Text",
+						"0, HAVE TO GO, 0.001"
+					]
+				]
+			],
+			[
+				152981.366459627,
+				[
+					[
+						"Manage Lyrics",
+						"Text",
+						"0, HAVE TO GO THROUGH!, 0.001"
+					]
+				]
+			],
+			[
+				153540.372670807,
+				[
+					[
+						"Add Camera Zoom",
+						"0.1",
+						"0"
+					],
+					[
+						"Background Controls",
+						"Flash",
+						"1.2,linear,0.32,255,0,0"
+					]
+				]
+			],
+			[
+				153913.043478261,
+				[
+					[
+						"Relapse Events",
+						"11",
+						""
+					]
+				]
+			],
+			[
+				154099.378881987,
+				[
+					[
+						"Manage Lyrics",
+						"Text",
+						"0, Sooner, 0.001"
+					]
+				]
+			],
+			[
+				154472.049689441,
+				[
+					[
+						"Manage Lyrics",
+						"Text",
+						"0, Sooner or, 0.001"
+					]
+				]
+			],
+			[
+				154658.385093168,
+				[
+					[
+						"Manage Lyrics",
+						"Text",
+						"0, Sooner or later..., 0.001"
+					]
+				]
+			],
+			[
+				155031.055900621,
+				[
+					[
+						"Add Camera Zoom",
+						"0.1",
+						"0"
+					],
+					[
+						"Background Controls",
+						"Flash",
+						"1.2,linear,0.32,255,0,0"
+					]
+				]
+			],
+			[
+				155403.726708074,
+				[
+					[
+						"Relapse Events",
+						"12",
+						""
+					]
+				]
+			],
+			[
+				155403.726708074,
+				[
+					[
+						"Manage Lyrics",
+						"Text",
+						"0, Your, 0.001"
+					]
+				]
+			],
+			[
+				155776.397515528,
+				[
+					[
+						"Manage Lyrics",
+						"Text",
+						"0, Your DEATH, 0.001"
+					]
+				]
+			],
+			[
+				156149.068322981,
+				[
+					[
+						"Manage Lyrics",
+						"Text",
+						"0, Your DEATH will, 0.001"
+					]
+				]
+			],
+			[
+				156335.403726708,
+				[
+					[
+						"Manage Lyrics",
+						"Text",
+						"0, Your DEATH will be, 0.001"
+					]
+				]
+			],
+			[
+				156521.739130435,
+				[
+					[
+						"Add Camera Zoom",
+						"0.1",
+						"0"
+					],
+					[
+						"Background Controls",
+						"Flash",
+						"1.2,linear,0.32,255,0,0"
+					],
+					[
+						"Manage Lyrics",
+						"text",
+						"0, Your DEATH will be NOTHING, 0.001"
+					]
+				]
+			],
+			[
+				156894.409937888,
+				[
+					[
+						"Relapse Events",
+						"13",
+						""
+					]
+				]
+			],
+			[
+				156894.409937888,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, Your DEATH will be NOTHING BUT..., 0.001"
+					]
+				]
+			],
+			[
+				157267.080745341,
+				[
+					[
+						"Play Animation",
+						"grinning",
+						"dad"
+					]
+				]
+			],
+			[
+				157267.080745341,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, CYCLED, 0.001"
+					]
+				]
+			],
+			[
+				158012.422360248,
+				[
+					[
+						"Add Camera Zoom",
+						"0.1",
+						"0"
+					],
+					[
+						"Background Controls",
+						"Flash",
+						"1.2,linear,0.32,255,0,0"
+					]
+				]
+			],
+			[
+				158012.422360248,
+				[
+					[
+						"Manage Lyrics",
+						"text",
+						"0, CYCLED SINS!, 0.001"
+					]
+				]
+			],
+			[
+				159130.434782609,
+				[
+					[
+						"Play Animation",
+						"dialogueLaugh",
+						"dad"
+					]
+				]
+			],
+			[
+				159503.105590062,
+				[
+					[
+						"Add Camera Zoom",
+						"0.1",
+						"0"
+					],
+					[
+						"Background Controls",
+						"Flash",
+						"1.2,linear,0.32,255,0,0"
+					]
+				]
+			],
+			[
+				159503.105590062,
+				[
+					[
+						"Play Animation",
+						"dialogueLaughFast",
+						"dad"
+					]
+				]
+			],
+			[
+				159689.440993789,
+				[
+					[
+						"Play Animation",
+						"dialogueLaughFast",
+						"dad"
+					]
+				]
+			],
+			[
+				159875.776397515,
+				[
+					[
+						"Play Animation",
+						"dialogueLaughFast",
+						"dad"
+					],
+					[
+						"Alt Idle Animation",
+						"dad",
+						"-alt"
+					],
+					[
+						"Camera Event",
+						"Change Value",
+						"alpha,0"
+					]
+				]
+			],
+			[
+				159968.944099379,
+				[
+					[
+						"Camera Event",
+						"changepos",
+						"200,230"
+					]
+				]
+			],
+			[
+				160062.111801242,
+				[
+					[
+						"Camera Event",
+						"tweenvalue",
+						"zoom, 0.54, 0.001,lineart"
+					]
+				]
+			],
+			[
+				160993.788819876,
+				[
+					[
+						"Camera Event",
+						"Change Value",
+						"alpha,1"
+					],
+					[
+						"Camera Event",
+						"Tween Value",
+						"hudalpha,1,0.5,sineOut"
+					]
+				]
+			],
+			[
+				163229.813664596,
+				[
+					[
+						"Relapse Gimmick",
+						"0.35,1",
+						"true"
+					]
+				]
+			],
+			[
+				168819.875776397,
+				[
+					[
+						"Relapse Gimmick",
+						"0.7,1",
+						"true"
+					]
+				]
+			],
+			[
+				171428.571428571,
+				[
+					[
+						"Relapse Gimmick",
+						"0.7,0.9",
+						"false"
+					]
+				]
+			],
+			[
+				175527.950310559,
+				[
+					[
+						"Relapse Gimmick",
+						"0.35,1.1",
+						"false"
+					]
+				]
+			],
+			[
+				180372.670807453,
+				[
+					[
+						"Relapse Gimmick",
+						"0.35,1.3",
+						"false"
+					]
+				]
+			],
+			[
+				184099.378881988,
+				[
+					[
+						"Relapse Gimmick",
+						"0.35,1.3",
+						"true"
+					]
+				]
+			],
+			[
+				185590.062111801,
+				[
+					[
+						"Relapse Gimmick",
+						"0.7,0.9",
+						"false"
+					]
+				]
+			],
+			[
+				187453.416149068,
+				[
+					[
+						"Relapse Gimmick",
+						"0.35,1.3",
+						"false"
+					]
+				]
+			],
+			[
+				189316.770186335,
+				[
+					[
+						"Relapse Gimmick",
+						"0.35,1.3",
+						"true"
+					]
+				]
+			],
+			[
+				195279.50310559,
+				[
+					[
+						"Relapse Gimmick",
+						"0.7,1",
+						"true"
+					]
+				]
+			],
+			[
+				201242.236024845,
+				[
+					[
+						"Relapse Gimmick",
+						"0.35,1",
+						"true"
+					]
+				]
+			],
+			[
+				207950.310559006,
+				[
+					[
+						"Play Animation",
+						"sittingDown",
+						"dad"
+					]
+				]
+			],
+			[
+				208509.316770186,
+				[
+					[
+						"Play Animation",
+						"satDown",
+						"dad"
+					],
+					[
+						"Alt Idle Animation",
+						"dad",
+						"-talk"
+					]
+				],
+				null,
+				"No Animation"
+			],
+			[
+				208695.652173913,
+				[
+					[
+						"Relapse Events",
+						"14",
+						""
+					]
+				]
+			],
+			[
+				208695.652173913,
+				[
+					[
+						"Camera Event",
+						"tweenpos",
+						"190,230,6,smoothStepInOut"
+					]
+				]
+			],
+			[
+				214658.385093168,
+				[
+					[
+						"Relapse Events",
+						"15",
+						""
+					]
+				]
+			],
+			[
+				220621.118012423,
+				[
+					[
+						"Relapse Events",
+						"16",
+						""
+					]
+				]
+			],
+			[
+				226583.850931677,
+				[
+					[
+						"Relapse Events",
+						"17",
+						""
+					]
+				]
+			],
+			[
+				235527.950310559,
+				[
+					[
+						"Relapse Events",
+						"3",
+						""
+					]
+				]
+			],
+			[
+				256677.018633541,
+				[
+					[
+						"Camera Event",
+						"tweenvalue",
+						"zoom, 0.7,6,smoothStepInOut"
+					]
+				]
+			],
+			[
+				257888.198757764,
+				[
+					[
+						"Camera Event",
+						"tweenpos",
+						"-400,510,6,smoothStepInOut"
+					]
+				]
+			],
+			[
+				259378.881987578,
+				[
+					[
+						"Relapse Events",
+						"5",
+						""
+					]
+				]
+			],
+			[
+				260869.565217392,
+				[
+					[
+						"Relapse Events",
+						"5",
+						""
+					]
+				]
+			],
+			[
+				262360.248447205,
+				[
+					[
+						"Relapse Events",
+						"5",
+						""
+					]
+				]
+			],
+			[
+				263850.931677019,
+				[
+					[
+						"Relapse Events",
+						"5",
+						""
+					]
+				]
+			],
+			[
+				265341.614906833,
+				[
+					[
+						"Relapse Events",
+						"5",
+						""
+					]
+				]
+			]
+		],
+		"gfVersion": "minnie-relapse",
+		"gameOverStyle": "Default",
 		"voiceSfx1": "Player",
 		"stage": "apartment",
 		"needsVoices": true,
-		"validScore": true,
-		"voiceSfx2": "Opponent",
 		"bpm": 161,
-		"speed": 2.8
+		"voiceSfx2": "Opponent"
 	}
 }

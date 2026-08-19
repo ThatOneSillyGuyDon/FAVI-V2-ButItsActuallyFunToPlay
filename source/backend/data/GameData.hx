@@ -513,7 +513,7 @@ class GameData
 	{
 		switch (PlayState.SONG.song.toLowerCase())
 		{
-			case 'delusional':
+			case 'delusional' | 'delusional-anniversary':
 				episode1FPLock = 'unlocked';
 				devilSong = true;
 				isoSong = true;

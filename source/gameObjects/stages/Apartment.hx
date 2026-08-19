@@ -16,6 +16,7 @@ class Apartment extends BaseStage
 	//OLD CYCLED SINS
 	var bg1:FlxSprite;
 	var bg2:FlxSprite;
+	var void:FlxSprite;
 
 	public var relapseIconLol:HealthIcon;
 
@@ -61,18 +62,35 @@ class Apartment extends BaseStage
 		"ee",
 		"ohhh"
 	];
-
+	var theFireRises:FlxSprite; // OHHHHHH SINISTER MINDS REFRENCE!!! -- (malyplus)
 	var sinsEnd:Bool = false;
-
+	var blackScreen:FlxSprite; // for cool efect trust
+	var staticg:FlxSprite;
 	override function create()
 	{
 		game.defaultCamZoom = PlayState.SONG.song == "Cycled Sins" ? 0.46 : 0.6;
 		game.cameraSpeed = 0.9;
-		PlayState.isGreyscale = true;
+		PlayState.isGreyscale = false; // FIRE
+		game.camGame.pixelPerfectRender = true; // positions of the objects rendered on this camera are rounded
 
 		//Phase 2 shaders
 		glitchBG = new FlxRuntimeShader(Shaders.vignetteGlitch, null, 130);
 
+		if (!ClientPrefs.data.lowQuality && PlayState.SONG.song != "Cycled Sins Legacy"){
+			void = new FlxSprite(0, 50).loadGraphic(Paths.image(PlayState.pathway + 'void'));
+			add(void);
+			void.scale.set(7, 7);
+			void.antialiasing = false;
+
+			theFireRises = new FlxSprite(0,50);
+			theFireRises.frames = Paths.getSparrowAtlas(PlayState.pathway + 'fire');
+			theFireRises.animation.addByPrefix('idle', 'fire idle', 4, true);
+			theFireRises.scale.set(7, 7);
+			theFireRises.antialiasing = false;
+			theFireRises.animation.play('idle');
+			theFireRises.visible = false;
+			add(theFireRises);
+		}
 		bg1 = new FlxSprite(0, 50);
 		if (PlayState.SONG.song == "Cycled Sins Legacy") 
 		{
@@ -80,7 +98,7 @@ class Apartment extends BaseStage
 			bg1.animation.addByPrefix('idle', 'Bg bg', 10, true);
 		}
 		else
-			bg1.loadGraphic(Paths.image(PlayState.pathway + 'relapseBG-nominnie'));
+			bg1.loadGraphic(Paths.image(PlayState.pathway + (ClientPrefs.data.lowQuality ? 'relapseBG-nominnie' : 'frontBG') /*'relapseBG-nominnie'*/)); 
 		bg1.scale.set(7, 7);
 		bg1.antialiasing = false;
 		if (PlayState.SONG.song == "Cycled Sins Legacy") bg1.animation.play('idle');
@@ -91,6 +109,33 @@ class Apartment extends BaseStage
 		bg2.antialiasing = false;
 		bg2.visible = false;
 		add(bg2);
+
+		// optimization? or no idek
+		if (PlayState.SONG.song != "Cycled Sins Legacy"){
+			remove(bg2);
+			bg2 = null;
+		}  
+		blackScreen = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
+		add(blackScreen);
+		blackScreen.scrollFactor.set(0,0);
+		blackScreen.alpha = 0;
+		blackScreen.visible = true;
+		blackScreen.scale.set(4, 4);
+		blackScreen.screenCenter();
+
+		staticg = new FlxSprite(0,50);
+		staticg.frames = Paths.getSparrowAtlas(PlayState.pathway + 'TVstatic');
+		staticg.animation.addByPrefix('idle', 'TVstatic idle', 24, true);
+		staticg.antialiasing = false;
+		staticg.animation.play('idle');
+		staticg.visible = false;
+		staticg.alpha = 0.1;
+		staticg.scale.set(1.1, 1.1);
+		staticg.screenCenter();
+		add(staticg);
+		staticg.cameras = [game.camOther];
+		game.camGame.pixelPerfectRender = true;
+		camGame.pixelPerfectRender = true;
 	}
 
 	override function createPost()
@@ -318,7 +363,7 @@ class Apartment extends BaseStage
 			});
 		});
 	}
-
+	var staticShit:Float = 0.1;
 	// For events
 	override function eventCalled(eventName:String, value1:String, value2:String, flValue1:Null<Float>, flValue2:Null<Float>, strumTime:Float)
 	{
@@ -361,11 +406,26 @@ class Apartment extends BaseStage
 								});
 							}});
 					case 2:
+						if (!ClientPrefs.data.lowQuality) theFireRises.visible = true;
+						blackScreen.visible = false;
+						FlxTween.tween(game.boyfriend, {alpha:1}, 0.001,{ease: FlxEase.sineInOut});
 						FlxTween.tween(game.iconP2, {alpha: 0}, 1, {ease: FlxEase.sineOut});
 						FlxTween.tween(relapseIconLol, {alpha: 1}, 1, {ease: FlxEase.sineOut});
 					case 3:
 						sinsEnd = true;
-
+					case 4:
+						if (blackScreen.visible){
+							blackScreen.alpha = 0;
+							FlxTween.tween(blackScreen, {alpha:1}, 0.4,{ease: FlxEase.sineInOut});
+							FlxTween.tween(game.boyfriend, {alpha:0.3}, 0.4,{ease: FlxEase.sineInOut});
+						}
+					case 5:
+						if (!staticg.visible){
+							staticg.visible = true;
+							return;
+						}
+						staticShit = staticShit + 0.2;
+						staticg.alpha = staticShit;
 					case 18:
 						FlxTween.tween(game, {healthThing: 0.1}, 1, {ease: FlxEase.sineInOut});
 						bg1.visible = false;

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="oswaldHappy.png" width="722" height="241">
+	<SubTexture name="fire idle0000" x="572" y="1" width="149" height="239" frameX="-0" frameY="-0" frameWidth="459" frameHeight="239"/>
+	<SubTexture name="fire idle0001" x="398" y="1" width="173" height="239" frameX="-0" frameY="-0" frameWidth="459" frameHeight="239"/>
+	<SubTexture name="fire idle0002" x="1" y="1" width="221" height="239" frameX="-0" frameY="-0" frameWidth="459" frameHeight="239"/>
+	<SubTexture name="fire idle0003" x="223" y="1" width="174" height="239" frameX="-0" frameY="-0" frameWidth="459" frameHeight="239"/>
+</TextureAtlas>

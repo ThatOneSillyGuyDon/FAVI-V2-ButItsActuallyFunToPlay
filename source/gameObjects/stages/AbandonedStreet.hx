@@ -147,7 +147,7 @@ class AbandonedStreet extends BaseStage
 		floor.active = false;
 		add(floor);	
 		
-		if (!ClientPrefs.data.lowQuality && PlayState.SONG.song == "Delusional")
+		if (!ClientPrefs.data.lowQuality && PlayState.SONG.song == "Delusional" || PlayState.SONG.song == 'delusional-anniversary')
 		{
 			lightning = new FlxSprite(-25, -175);
 			lightning.frames = Paths.getSparrowAtlas(PlayState.pathway + "lightning");
@@ -159,7 +159,7 @@ class AbandonedStreet extends BaseStage
 			add(lightning);
 		}
 
-		if (PlayState.SONG.song == "Delusional")
+		if (PlayState.SONG.song == "Delusional" || PlayState.SONG.song == 'delusional-anniversary')
 		{
 			memoryMickey = new Character(575, 50, "Mickey-Bedroom", true);
 			memoryMickey.alpha = 0.0001;
@@ -271,7 +271,7 @@ class AbandonedStreet extends BaseStage
 				rain.alpha = 0.0001;
 				rain.animation.play('drippin');
 
-				if (PlayState.SONG.song == "Delusional")
+				if (PlayState.SONG.song == "Delusional" || PlayState.SONG.song == 'delusional-anniversary')
 				{
 					heavyRain = new FlxSprite(-550, -900);
 					heavyRain.frames = Paths.getSparrowAtlas(PlayState.pathway + 'heavyRain');
@@ -283,7 +283,7 @@ class AbandonedStreet extends BaseStage
 				}
 			}
 		}
-		if (PlayState.SONG.song == "Delusional"){
+		if (PlayState.SONG.song == "Delusional" || PlayState.SONG.song == 'delusional-anniversary'){
 			blackBG = new FlxSprite().makeGraphic(3200,2000, FlxColor.BLACK);
 			add(blackBG);
 			blackBG.alpha=0.001;

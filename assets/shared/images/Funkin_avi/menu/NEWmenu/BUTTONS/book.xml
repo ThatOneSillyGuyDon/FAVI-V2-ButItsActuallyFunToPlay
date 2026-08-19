@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="book.png">
+<SubTexture name="idle0000" x="409" y="0" width="391" height="404" frameX="0" frameY="0" frameWidth="391" frameHeight="404" />
+<SubTexture name="hovered0000" x="0" y="0" width="409" height="422" frameX="9.5" frameY="9" frameWidth="409" frameHeight="422" />
+</TextureAtlas>

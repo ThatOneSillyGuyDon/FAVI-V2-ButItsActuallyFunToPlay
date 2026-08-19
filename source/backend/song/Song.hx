@@ -243,7 +243,7 @@ class Song
 		switch (PlayState.SONG.song)
 		{
 			case "Devilish Deal" | "Lunacy" | "Hunted" | "War Dilemma" | "Twisted Grins" | "Isolated" | "The Wretched Tilezones (Simple Life)": charter = "Purg";
-			case "Delusional" | "Cycled Sins" | "Birthday" | "Cycled Sins Legacy" | "Twisted Grins Legacy" | "Scrapped" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "Mistful Wind": charter = "Dreupy";
+			case "Delusional", "delusional-anniversary" | "Cycled Sins" | "Birthday" | "Cycled Sins Legacy" | "Twisted Grins Legacy" | "Scrapped" | "Ship the Fart Yay Hooray <3 (Distant Stars)" | "Mistful Wind": charter = "Dreupy";
 			case "Curtain Call": charter = "Dreupy [Ft. ThatOneSillyGuy]";
 			case "Lunacy Legacy": charter = "obscurity.";
 			case "Malfunction" | "Mercy" | "Mercy Legacy" | "Isolated Old" | "Isolated Legacy" | "Isolated Beta" | "Malfunction Legacy" | "Laugh Track" | "Rotten Petals" | "Ahh the Scary (Somber Night)" | "Whimsical Bar Blues" | "Am I Real?" | "Seeking Freedom" | "Alone": charter = "ThatOneSillyGuy";
