@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="heavyRain.png" width="2238" height="2081">
+	<SubTexture name="Rain full0000" x="1360" y="0" width="737" height="486" frameX="-163" frameY="-27" frameWidth="927" frameHeight="605"/>
+	<SubTexture name="Rain full0001" x="1260" y="777" width="498" height="776" rotated="true" frameX="-141" frameY="-57" frameWidth="927" frameHeight="605"/>
+	<SubTexture name="Rain full0002" x="1758" y="486" width="452" height="691" rotated="true" frameX="-202" frameY="-93" frameWidth="927" frameHeight="605"/>
+	<SubTexture name="Rain full0003" x="0" y="1546" width="724" height="529" frameX="-170" frameY="-26" frameWidth="927" frameHeight="605"/>
+	<SubTexture name="Rain full0004" x="854" y="0" width="506" height="777" rotated="true" frameX="-147" frameY="-16" frameWidth="927" frameHeight="605"/>
+	<SubTexture name="Rain full0005" x="0" y="0" width="854" height="567" frameX="-1" frameY="-2" frameWidth="927" frameHeight="605"/>
+	<SubTexture name="Rain full0006" x="1525" y="1553" width="713" height="528" frameX="-119" frameY="-32" frameWidth="927" frameHeight="605"/>
+	<SubTexture name="Rain full0007" x="0" y="567" width="756" height="535" frameX="-92" frameY="-67" frameWidth="927" frameHeight="605"/>
+	<SubTexture name="Rain full0008" x="756" y="777" width="504" height="769" rotated="true" frameX="-56" frameY="-26" frameWidth="927" frameHeight="605"/>
+	<SubTexture name="Rain full0009" x="724" y="1553" width="801" height="471" frameX="-24" frameY="-57" frameWidth="927" frameHeight="605"/>
+</TextureAtlas>
