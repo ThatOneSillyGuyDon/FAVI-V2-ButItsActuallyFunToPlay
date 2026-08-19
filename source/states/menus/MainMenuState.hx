@@ -380,6 +380,12 @@ class MainMenuState extends MusicBeatState
 					MusicBeatState.switchState(new FreeplayState());
 				}
 			}
+			if (FlxG.keys.justPressed.FOUR)
+			{
+				//goingToBrainrot = true;
+				MusicBeatState.switchState(new AskQuestionToThatGuy());
+				//FlxG.sound.music.fadeOut(0.5);
+			}	
 			if (FlxG.keys.justPressed.SEVEN)
 			{
 				if (Main.debug)

@@ -163,8 +163,7 @@ class AskQuestionToThatGuy extends MusicBeatState
     }
 
     override function update(elapsed:Float) {
-        super.update(elapsed);
-
+    
         if (controls.BACK && !typing)
         {
             FlxG.sound.play(Paths.sound('cancelMenu'));
@@ -179,6 +178,8 @@ class AskQuestionToThatGuy extends MusicBeatState
         {
             askQuestion(box.text);
         }
+
+        super.update(elapsed);
 
         var lerpVal:Float = CoolUtil.boundTo(elapsed * 2.4, 0, 1);
 		camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x, lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal));
@@ -202,6 +203,16 @@ class AskQuestionToThatGuy extends MusicBeatState
                         case 'who are you', 'who', 'what are you':
                             finalText = "JaySun T. Mouse is the name! Even though I'm not exactly a Mouse… or a T… or a JaySun. You know what, just think of me as… a breeze of thin air… whatever that is. But if you want more info on me, I'd watch Orseofkorse. Who's Orseofkorse? … I donno.";
                             finalAnimation = "talk";
+                        case 'where am i':
+                            finalText = "pure void.";
+                            finalAnimation = "talk";
+                        case 'how many potatos can you shove up your ass':
+                            finalText = "90.";
+                            finalAnimation = "talk";          
+                        case "who is avier":
+                            finalText = "Avier is Mickey Mouse.";
+                            finalAnimation = "talk";
+
                     }
     
                     jaysun.visible = false;
