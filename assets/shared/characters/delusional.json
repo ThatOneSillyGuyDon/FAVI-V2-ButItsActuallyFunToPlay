@@ -1587,15 +1587,10 @@
 						""
 					],
 					[
-						"Camera Event",
-						"Change Value",
-						"staticzoom, 0.82"
-					]
-				]
-			],
-			[
-				157336.609336609,
-				[
+						"Background Controls",
+						"Darken",
+						"1, 0.001, linear"
+					],
 					[
 						"Camera Event",
 						"Change Value",
@@ -1604,11 +1599,11 @@
 				]
 			],
 			[
-				158215.397215397,
+				158245.7002457,
 				[
 					[
 						"Camera Event",
-						"fade",
+						"Fade",
 						"0,0,0,0.0001,true"
 					]
 				]

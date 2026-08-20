@@ -299,7 +299,7 @@ class AbandonedStreet extends BaseStage
 			blackBG.scrollFactor.set(0,0);
 			blackBG.screenCenter();
 
-			tree = new FlxSprite(400,-100);
+			tree = new FlxSprite(0,0);
 			tree.frames = Paths.getSparrowAtlas(PlayState.pathway+'delusional/tree');
 			add(tree);
 			tree.animation.addByPrefix('idle', 'frame', 5, true);
@@ -307,7 +307,9 @@ class AbandonedStreet extends BaseStage
 			tree.antialiasing = ClientPrefs.data.antialiasing;
 			tree.alpha = 0.0001;
 			tree.animation.play('idle');
-			
+			tree.screenCenter();
+			tree.y += 280;
+			tree.x += 210;
 
 		}
 
@@ -1005,7 +1007,7 @@ class AbandonedStreet extends BaseStage
 						}
 					case 50: // doing ts cause lazy
 						FlxTween.tween(boyfriend, {alpha: 0.001}, 11, {ease: FlxEase.cubeInOut});
-						FlxTween.tween(tree, {alpha: 0.001}, 11,{ease:FlxEase.cubeIn});
+						FlxTween.tween(tree, {alpha: 0.001}, 8,{ease:FlxEase.cubeInOut});
 
 					case 53:
 						dad.alpha = 1; 

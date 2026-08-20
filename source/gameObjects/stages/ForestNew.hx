@@ -32,18 +32,6 @@ class ForestNew extends BaseStage
 		game.defaultCamZoom = 0.65;
 		PlayState.isGreyscale = true;
 
-		if(!ClientPrefs.data.lowQuality)
-		{
-			goofyBG = new FlxSprite(-600, -450).loadGraphic(Paths.image(PlayState.pathway + 'actualNew/sky'));
-			goofyBG.scrollFactor.set(0.7, 0.7);
-			goofyBG.screenCenter();
-			add(goofyBG);
-		}
-
-		otherBack = new FlxSprite(-600, -450).loadGraphic(Paths.image(PlayState.pathway + 'actualNew/bushes'));
-		otherBack.scale.set(1.3, 1.2);
-		add(otherBack);
-
 		treesBack = new FlxSprite(-600, -450).loadGraphic(Paths.image(PlayState.pathway + 'actualNew/treesBG'));
 		treesBack.scrollFactor.set(1, 0.8);
 		add(treesBack);
@@ -57,6 +45,18 @@ class ForestNew extends BaseStage
 			treesFront = new FlxSprite(-600, -450).loadGraphic(Paths.image(PlayState.pathway + 'actualNew/treesFG'));
 			treesFront.scrollFactor.set(1.2, 1.2);
 		}
+
+		for (item in [treesBack,goofyStreet,treesFront]){
+			item.scale.set(1.25,1.25);
+		}
+
+		var bgShi:FlxSprite = new FlxSprite().makeGraphic(1280,720,FlxColor.BLACK);
+		add(bgShi);
+		bgShi.cameras = [camOther];
+		FlxTween.tween(bgShi, {alpha:0},6, {startDelay:2.5, onComplete: function(_:FlxTween){
+			remove(bgShi);
+		}});
+
 	}
 	
 	override function createPost()
@@ -77,9 +77,9 @@ class ForestNew extends BaseStage
 		}
 		add(treesFront);
 
-		game.dad.setPosition(-110, -15); // goofy ahh goofy offsets - malyplus
-		game.boyfriend.setPosition(480, -220);
-		game.gf.setPosition(170, -70);
+		game.dad.setPosition(-110, 70); // goofy ahh goofy offsets - malyplus
+		game.boyfriend.setPosition(480, -155);
+		game.gf.setPosition(170, 15);
 	}
 
 	override function update(elapsed:Float)
@@ -121,12 +121,11 @@ class ForestNew extends BaseStage
 								camGame.setFilters([new ShaderFilter(redVignette), new ShaderFilter(monitorFilter)]);
 							}
 
-							if(!ClientPrefs.data.lowQuality && goofyBG != null && treesFront != null)
+							if(!ClientPrefs.data.lowQuality && treesFront != null)
 							{
-								goofyBG.shader = wobblyBG;
+								//goofyBG.shader = wobblyBG;
 								goofyStreet.shader = wobblyBG;
 								treesBack.shader = wobblyBG;
-								otherBack.shader = wobblyBG;
 								treesFront.shader = wobblyBG;
 							}
 						}
@@ -147,12 +146,11 @@ class ForestNew extends BaseStage
 							}
 						}
 
-						if(!ClientPrefs.data.lowQuality && treesFront != null && goofyBG != null)
+						if(!ClientPrefs.data.lowQuality && treesFront != null)
 						{
-							goofyBG.shader = null;
+							//goofyBG.shader = null;
 							goofyStreet.shader = null;
 							treesBack.shader = null;
-							otherBack.shader = null;
 							treesFront.shader = null;
 						}
 				}
