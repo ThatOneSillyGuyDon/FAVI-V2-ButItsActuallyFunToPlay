@@ -51,7 +51,7 @@ class Init extends FlxState
 		#end
 
         FlxG.mouse.visible = true;
-        FlxG.mouse.useSystemCursor = false;
+        //FlxG.mouse.useSystemCursor = false;
 
         #if windows
         backend.windows.CppAPI.darkMode();
@@ -87,7 +87,7 @@ class Init extends FlxState
 		#end
         
         FlxG.autoPause = ClientPrefs.data.autoPause;
-        FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
+        //FlxG.mouse.load(Paths.image('favi/ui/Cursor').bitmap);
 		FlxG.mouse.visible = true;
 
         var curState = Main.initialState;
