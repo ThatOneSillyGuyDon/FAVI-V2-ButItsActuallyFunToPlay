@@ -39,14 +39,14 @@ import states.editors.CharacterEditorState;
 import flixel.addons.display.FlxRuntimeShader;
 import openfl.filters.ShaderFilter;
 #end
-
+/*
 #if VIDEOS_ALLOWED
 #if (hxCodec >= "3.0.0") import hxcodec.flixel.FlxVideo as VideoHandler;
 #elseif (hxCodec >= "2.6.1") import hxcodec.VideoHandler as VideoHandler;
 #elseif (hxCodec == "2.6.0") import VideoHandler;
 #else import vlc.MP4Handler as VideoHandler; #end
 #end
-
+*/
 import gameObjects.ui.notes.Note.EventNote;
 import gameObjects.*;
 
@@ -1390,7 +1390,7 @@ class PlayState extends MusicBeatState
 		char.x += char.positionArray[0];
 		char.y += char.positionArray[1];
 	}
-
+	/*
 	public function startVideo(name:String)
 	{
 		#if VIDEOS_ALLOWED
@@ -1433,7 +1433,7 @@ class PlayState extends MusicBeatState
 		return;
 		#end
 	}
-
+	*/
 	function startAndEnd()
 	{
 		if(endingSong)
