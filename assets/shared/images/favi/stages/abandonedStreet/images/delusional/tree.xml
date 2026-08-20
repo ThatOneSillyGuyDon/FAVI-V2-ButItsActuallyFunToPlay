@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="oswaldHappy.png" width="1283" height="479">
+	<SubTexture name="frame0000" x="1" y="1" width="640" height="477" frameX="-0" frameY="-0" frameWidth="640" frameHeight="480"/>
+	<SubTexture name="frame0001" x="642" y="1" width="640" height="477" frameX="-0" frameY="-0" frameWidth="640" frameHeight="480"/>
+</TextureAtlas>

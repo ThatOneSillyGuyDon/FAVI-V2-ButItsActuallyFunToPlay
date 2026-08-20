@@ -212,7 +212,25 @@ class AskQuestionToThatGuy extends MusicBeatState
                         case "who is avier":
                             finalText = "Avier is Mickey Mouse.";
                             finalAnimation = "talk";
+                        case "Why all the bugs?", 'why all bugs', 'why all bugs?','why':
+                            finalText = "These little buggers are like family to me. One minute I was all alone in this little room, next think I know i had little mouse bugs crawling out my hair. Needless to say I was pretty freaked out when that happened, but I soon grew accustomed to them. They are basically my only friends. And don't even think about squishing them, if you do, ill have to kick ya... nothin personal... well, actually it is personal.";
+                            finalAnimation = 'talk';
+                        case "Rap battle?", 'rap battle', 'rap battle?':
+                            finalText = "Sorry, I don't sing, Squirt. My voice is like playinga violin with a butterknife, it ain't pretty";
+                            finalAnimation = "talk";
+                        case "why are you here", 'Why Are You Here', 'place':
+                            finalText = "Oh, this place? Its a little place I like to call 'NOWHERE'. Think of this place as a Limbo of some sorts. Its not like your dead or alive, Squirt.";
+                            finalAnimation = "talk";
 
+                        case "Who Created you", 'who created you', 'Who Created You':
+                            finalText = "I don't exactly know my origins, all I know is that I appeared one day and thats that. Im like thin Air, kid. I don't matter in the slightest... but that hasn't stopped me so far! Hahaha!!!";
+                            finalAnimation = "talk";                    
+                        case "everette":
+                            finalText = "Ooohhh... that guy. Yeah, that guy is quite literally Satan in carnet. I have no clue why he chose that vessel... I guess he just likes to sing. If you ask me, his disguise doesn't fool anyone... maybe expect for a certain mouse. Heh.";
+                            finalAnimation = "talk";       
+                        case "why do you look like mickey":
+                            finalText = "Look kid, you seem to ask a lot of questions. But this one? Its rather offensive. What if i came to your place and asked why you look like you? It ain't funny when the rat is on the otherside of the mousetrap, now is it?... I admire the mouse, that is all there is.";
+                            finalAnimation = "talk";                      
                     }
     
                     jaysun.visible = false;

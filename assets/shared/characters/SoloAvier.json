@@ -2,47 +2,47 @@
 	"animations": [
 		{
 			"offsets": [
-				401,
-				-20
+				-201,
+				-330
 			],
-			"loop": true,
+			"indices": [],
 			"fps": 6,
 			"anim": "idle",
-			"indices": [],
-			"name": "SoloAvier idle"
+			"loop": true,
+			"name": "idle"
 		},
 		{
 			"offsets": [
-				401,
-				-23
+				-201,
+				-330
 			],
+			"indices": [
+				1,
+				0
+			],
+			"fps": 6,
+			"anim": "singRIGHT",
 			"loop": false,
+			"name": "left"
+		},
+		{
+			"offsets": [
+				-201,
+				-330
+			],
+			"indices": [
+				1,
+				0
+			],
 			"fps": 6,
 			"anim": "singDOWN",
-			"indices": [
-				1,
-				0
-			],
-			"name": "SoloAvier down"
-		},
-		{
-			"offsets": [
-				420,
-				-31
-			],
 			"loop": false,
-			"fps": 6,
-			"anim": "singUP",
-			"indices": [
-				1,
-				0
-			],
-			"name": "SoloAvier up"
+			"name": "down"
 		},
 		{
 			"offsets": [
-				399,
-				-2
+				-201,
+				-330
 			],
 			"indices": [
 				1,
@@ -52,21 +52,77 @@
 			"fps": 5,
 			"anim": "singLEFT",
 			"loop": false,
-			"name": "SoloAvier right"
+			"name": "right"
 		},
 		{
 			"offsets": [
-				431,
-				-21
+				-201,
+				-330
 			],
 			"indices": [
 				1,
 				0
 			],
 			"fps": 6,
-			"anim": "singRIGHT",
+			"anim": "singUP",
 			"loop": false,
-			"name": "SoloAvier left"
+			"name": "up"
+		},
+		{
+			"offsets": [
+				-201,
+				-330
+			],
+			"indices": [
+				1,
+				0
+			],
+			"fps": 6,
+			"anim": "singRIGHT-alt",
+			"loop": false,
+			"name": "_left-alt"
+		},
+		{
+			"offsets": [
+				-201,
+				-330
+			],
+			"indices": [
+				1,
+				0
+			],
+			"fps": 6,
+			"anim": "singUP-alt",
+			"loop": false,
+			"name": "_up-alt"
+		},
+		{
+			"offsets": [
+				-201,
+				-330
+			],
+			"indices": [
+				1,
+				0
+			],
+			"fps": 6,
+			"anim": "singLEFT-alt",
+			"loop": false,
+			"name": "_right-alt"
+		},
+		{
+			"offsets": [
+				-201,
+				-330
+			],
+			"indices": [
+				1,
+				0
+			],
+			"fps": 6,
+			"anim": "singDOWN-alt",
+			"loop": false,
+			"name": "_down-alt"
 		}
 	],
 	"vocals_file": "",
@@ -84,10 +140,10 @@
 		136
 	],
 	"camera_position": [
-		480,
-		0
+		180,
+		190
 	],
 	"sing_duration": 6.1,
-	"scale": 1.2,
+	"scale": 1.8,
 	"_editor_isPlayer": true
 }

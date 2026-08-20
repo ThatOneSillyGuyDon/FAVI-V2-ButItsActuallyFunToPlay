@@ -1,13 +1,25 @@
-<?xml version='1.0' encoding='utf-8'?>
-<TextureAtlas imagePath="SoloAvier.png">
-<SubTexture name="SoloAvier right0000" x="741" y="486" width="376" height="419" frameX="-691" frameY="-323" frameWidth="1686" frameHeight="1080" />
-<SubTexture name="SoloAvier right0001" x="462" y="0" width="343" height="455" frameX="-736" frameY="-302" frameWidth="1686" frameHeight="1080" />
-<SubTexture name="SoloAvier left0000" x="373" y="486" width="368" height="431" frameX="-562" frameY="-301" frameWidth="1686" frameHeight="1080" />
-<SubTexture name="SoloAvier left0001" x="0" y="486" width="373" height="432" frameX="-543" frameY="-299" frameWidth="1686" frameHeight="1080" />
-<SubTexture name="SoloAvier up0000" x="805" y="0" width="494" height="450" frameX="-550" frameY="-278" frameWidth="1686" frameHeight="1080" />
-<SubTexture name="SoloAvier up0001" x="0" y="0" width="462" height="486" frameX="-563" frameY="-255" frameWidth="1686" frameHeight="1080" />
-<SubTexture name="SoloAvier down0000" x="804" y="918" width="457" height="332" frameX="-539" frameY="-395" frameWidth="1686" frameHeight="1080" />
-<SubTexture name="SoloAvier down0001" x="1299" y="0" width="444" height="318" frameX="-541" frameY="-413" frameWidth="1686" frameHeight="1080" />
-<SubTexture name="SoloAvier idle0000" x="0" y="918" width="402" height="380" frameX="-631" frameY="-352" frameWidth="1686" frameHeight="1080" />
-<SubTexture name="SoloAvier idle0001" x="402" y="918" width="402" height="380" frameX="-631" frameY="-352" frameWidth="1686" frameHeight="1080" />
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="hopelessMickbutWOKE..png">
+	<!-- Created using the Spritesheet and XML generator -->
+	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
+	<SubTexture name="idle0000" x="1197" y="0" width="163" height="263" frameX="-209" frameY="-213" frameWidth="640" frameHeight="640"/>
+	<SubTexture name="idle0001" x="1197" y="263" width="163" height="263" frameX="-209" frameY="-212" frameWidth="640" frameHeight="640"/>
+	<SubTexture name="up0000" x="1197" y="526" width="157" height="271" frameX="-210" frameY="-207" frameWidth="640" frameHeight="640"/>
+	<SubTexture name="up0001" x="1028" y="531" width="165" height="269" frameX="-204" frameY="-210" frameWidth="640" frameHeight="640"/>
+	<SubTexture name="left0000" x="1028" y="266" width="168" height="265" frameX="-208" frameY="-209" frameWidth="640" frameHeight="640"/>
+	<SubTexture name="left0001" x="1028" y="0" width="169" height="266" frameX="-209" frameY="-209" frameWidth="640" frameHeight="640"/>
+	<SubTexture name="right0000" x="647" y="264" width="209" height="264" frameX="-220" frameY="-213" frameWidth="640" frameHeight="640"/>
+	<SubTexture name="right0001" x="647" y="0" width="209" height="264" frameX="-217" frameY="-214" frameWidth="640" frameHeight="640"/>
+	<SubTexture name="down0000" x="374" y="667" width="189" height="234" frameX="-196" frameY="-240" frameWidth="640" frameHeight="640"/>
+	<SubTexture name="down0001" x="0" y="932" width="183" height="237" frameX="-199" frameY="-238" frameWidth="640" frameHeight="640"/>
+	<SubTexture name="_idle-alt00000" x="856" y="308" width="171" height="306" frameX="-207" frameY="-168" frameWidth="640" frameHeight="640"/>
+	<SubTexture name="_idle-alt00001" x="856" y="0" width="172" height="308" frameX="-206" frameY="-167" frameWidth="640" frameHeight="640"/>
+	<SubTexture name="_up-alt0000" x="0" y="333" width="239" height="334" frameX="-191" frameY="-136" frameWidth="640" frameHeight="640"/>
+	<SubTexture name="_up-alt0001" x="0" y="0" width="245" height="333" frameX="-189" frameY="-138" frameWidth="640" frameHeight="640"/>
+	<SubTexture name="_left-alt0000" x="245" y="304" width="201" height="304" frameX="-145" frameY="-172" frameWidth="640" frameHeight="640"/>
+	<SubTexture name="_left-alt0001" x="245" y="0" width="203" height="304" frameX="-148" frameY="-173" frameWidth="640" frameHeight="640"/>
+	<SubTexture name="_right-alt0000" x="448" y="305" width="195" height="304" frameX="-239" frameY="-171" frameWidth="640" frameHeight="640"/>
+	<SubTexture name="_right-alt0001" x="448" y="0" width="199" height="305" frameX="-231" frameY="-170" frameWidth="640" frameHeight="640"/>
+	<SubTexture name="_down-alt0000" x="186" y="667" width="188" height="256" frameX="-210" frameY="-206" frameWidth="640" frameHeight="640"/>
+	<SubTexture name="_down-alt0001" x="0" y="667" width="186" height="265" frameX="-210" frameY="-199" frameWidth="640" frameHeight="640"/>
 </TextureAtlas>
