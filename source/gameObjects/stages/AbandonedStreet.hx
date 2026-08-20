@@ -110,7 +110,7 @@ class AbandonedStreet extends BaseStage
 		colorsOrSmthElse.scrollFactor.set(0.9, 0.9);
 		colorsOrSmthElse.active = false;
 		add(colorsOrSmthElse);
-
+		
 		if (PlayState.SONG.song == 'Delusional')
 		{	
 			fakeLightOfHope = new FlxSprite(-990, 1600).loadGraphic(Paths.image(PlayState.pathway + 'delusional/falseHope'));
@@ -123,6 +123,11 @@ class AbandonedStreet extends BaseStage
 			add(fakeLightOfHope);
 		}
 
+		// Heh some stuff port from Nightmare Vision to Psych :fire: --(MalyPlus)
+		// also holy long line
+		bg = new FlxSprite(-160,-210).loadGraphic(Paths.image(PlayState.pathway+'street-bg'));
+		add(bg);
+		
 		if (!ClientPrefs.data.lowQuality && PlayState.SONG.song != "Isolated")
 		{
 			fireThing = new FlxSprite(0, -80);
@@ -140,10 +145,6 @@ class AbandonedStreet extends BaseStage
 			mickeySpirit.alpha = 0.0001;
 			add(mickeySpirit);
 		}
-		// Heh some stuff port from Nightmare Vision to Psych :fire: --(MalyPlus)
-		// also holy long line
-		bg = new FlxSprite(-160,-210).loadGraphic(Paths.image(PlayState.pathway+'street-bg'));
-		add(bg);
 		
 		floor = new FlxSprite(-160, -210).loadGraphic(Paths.image(PlayState.pathway + 'street'));
 		add(floor);	
@@ -298,15 +299,16 @@ class AbandonedStreet extends BaseStage
 			blackBG.scrollFactor.set(0,0);
 			blackBG.screenCenter();
 
-			tree = new FlxSprite(600,-100);
+			tree = new FlxSprite(400,-100);
 			tree.frames = Paths.getSparrowAtlas(PlayState.pathway+'delusional/tree');
+			add(tree);
 			tree.animation.addByPrefix('idle', 'frame', 5, true);
 			tree.scale.set(1.8, 1.8);
 			tree.antialiasing = ClientPrefs.data.antialiasing;
 			tree.alpha = 0.0001;
 			tree.animation.play('idle');
 			
-			add(tree);
+
 		}
 
 		if (isStoryMode && !seenCutscene)
@@ -997,22 +999,23 @@ class AbandonedStreet extends BaseStage
 
 						} 
 						else {
-							tree.alpha = 0;
+							//tree.alpha = 0;
 
 							blackBG.alpha =0;
 						}
 					case 50: // doing ts cause lazy
 						FlxTween.tween(boyfriend, {alpha: 0.001}, 11, {ease: FlxEase.cubeInOut});
+						FlxTween.tween(tree, {alpha: 0.001}, 11,{ease:FlxEase.cubeIn});
 
 					case 53:
 						dad.alpha = 1; 
 						blackBG.alpha = 0;
-						tree.alpha = 0;
+						//tree.alpha = 0;
 
 					case 13:
 						dad.alpha = 1;
 						blackBG.alpha = 0;
-						tree.alpha = 0;
+						//tree.alpha = 0;
 
 						game.chromEffect = 0.1;
 						game.boundValue = 0.45;
