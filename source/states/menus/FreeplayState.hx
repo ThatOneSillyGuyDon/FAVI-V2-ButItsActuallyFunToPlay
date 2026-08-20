@@ -214,7 +214,7 @@ class FreeplayState extends MusicBeatState
         super.update(elapsed);
 
         if(songs[curSelected].songName == "Don't Cross!")
-			iconArray[4].shake(4, 30, 0.1);
+			iconArray[3].shake(4, 30, 0.1);
 
         lerpScore = Math.floor(FlxMath.lerp(intendedScore, lerpScore, Math.exp(-elapsed * 24)));
 		lerpRating = FlxMath.lerp(intendedRating, lerpRating, Math.exp(-elapsed * 12));
