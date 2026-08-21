@@ -80,8 +80,6 @@ class ForestNew extends BaseStage
 		game.dad.setPosition(-110, 70); // goofy ahh goofy offsets - malyplus
 		game.boyfriend.setPosition(630, -155);
 		game.gf.setPosition(320, 15);
-
-		
 	}
 
 	override function update(elapsed:Float)
