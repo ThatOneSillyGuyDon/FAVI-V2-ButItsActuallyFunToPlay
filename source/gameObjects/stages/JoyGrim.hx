@@ -11,9 +11,9 @@ class JoyGrim extends BaseStage
 		PlayState.isGreyscale = false;
 
 		// you may wonder why i did like that.. simple, PATHS IMAGES DIDNT WANT TO LOAD CORRECTLY ! 
-		var clubhouse:FlxSprite = new FlxSprite(-770, -650).loadGraphic('assets/shared/images/favi/stages/clubhouse/images/clubhouse.png');
+		var clubhouse:FlxSprite = new FlxSprite(-770, -650).loadGraphic(Paths.image('favi/stages/clubhouse/images/clubhouse'));
+		clubhouse.scale.set(1.4, 1.4);
 		add(clubhouse);
-		clubhouse.scale.set(1.4,1.4);
 	}
 
 	override function update(elapsed:Float)
