@@ -44,7 +44,8 @@ class AskQuestionToThatGuy extends MusicBeatState
         "Rap battle?", 'rap battle', 'rap battle?',"why are you here", 'Why Are You Here', 'place',"Who Created you", 'who created you', 'Who Created You',
         "everette",
         "why do you look like mickey",
-        'fuck you'
+        'fuck you',
+        'hi'
     ];
 
     var answers:Array<String> = [
@@ -242,7 +243,10 @@ class AskQuestionToThatGuy extends MusicBeatState
                             finalAnimation = "talk";      
                         case 'fuck you':
                             finalText = '...';
-                            finalAnimation = 'talk';                
+                            finalAnimation = 'talk';     
+                        case 'hi':
+                            finalText = 'yellow!';
+                            finalAnimation = 'talk';           
                     }
     
                     jaysun.visible = false;

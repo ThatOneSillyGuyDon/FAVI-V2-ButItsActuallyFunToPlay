@@ -1,80 +1,71 @@
 {
 	"animations": [
 		{
-			"offsets": [
-				118,
-				-92
-			],
 			"loop": false,
-			"fps": 1,
+			"offsets": [0, 0],
 			"anim": "idle",
-			"indices": [],
-			"name": "lot Idle"
-		},
-		{
-			"loop": false,
-			"offsets": [
-				112,
-				-86
-			],
-			"anim": "singUP",
-			"fps": 10,
-			"name": "lot up",
+			"fps": 24,
+			"name": "idle",
 			"indices": []
 		},
 		{
 			"loop": false,
-			"offsets": [
-				119,
-				-91
-			],
-			"anim": "singDOWN",
-			"fps": 10,
-			"name": "lot down",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				120,
-				-90
-			],
+			"offsets": [0, 0],
 			"anim": "singLEFT",
-			"fps": 10,
-			"name": "lot left",
-			"indices": []
+			"fps": 15,
+			"name": "left",
+			"indices": [1, 0]
 		},
 		{
 			"loop": false,
-			"offsets": [
-				96,
-				-97
-			],
+			"offsets": [0, 0],
+			"anim": "singDOWN",
+			"fps": 15,
+			"name": "down",
+			"indices": [1, 0]
+		},
+		{
+			"loop": false,
+			"offsets": [0, 0],
+			"anim": "singUP",
+			"fps": 15,
+			"name": "up",
+			"indices": [1, 0]
+		},
+		{
+			"loop": false,
+			"offsets": [0, 0],
 			"anim": "singRIGHT",
-			"fps": 10,
-			"name": "lot right",
-			"indices": []
+			"fps": 15,
+			"name": "right",
+			"indices": [1, 0]
+		},
+		{
+			"offsets": [0, 0],
+			"loop": true,
+			"fps": 5,
+			"anim": "idle-dance",
+			"indices": [],
+			"name": "dance"
+		},
+		{
+			"offsets": [1, 0],
+			"indices": [8, 8, 8, 8, 8, 8, 7, 7, 7, 7, 7, 6, 6, 6, 6, 6, 6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 3, 3, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+			"fps": 15,
+			"anim": "transform",
+			"loop": false,
+			"name": "transform"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/lot",
-	"position": [
-		0,
-		0
-	],
+	"position": [0, 0],
 	"healthicon": "lot1",
 	"flip_x": false,
-	"healthbar_colors": [
-		175,
-		102,
-		206
-	],
-	"camera_position": [
-		0,
-		0
-	],
-	"sing_duration": 6.1,
-	"scale": 1.1,
+	"healthbar_colors": [161, 161, 161],
+	"camera_position": [0, 0],
+	"sing_duration": 4,
+	"scale": 1,
 	"_editor_isPlayer": false
 }

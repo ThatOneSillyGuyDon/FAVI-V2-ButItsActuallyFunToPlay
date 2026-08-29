@@ -39,14 +39,7 @@ import states.editors.CharacterEditorState;
 import flixel.addons.display.FlxRuntimeShader;
 import openfl.filters.ShaderFilter;
 #end
-/*
-#if VIDEOS_ALLOWED
-#if (hxCodec >= "3.0.0") import hxcodec.flixel.FlxVideo as VideoHandler;
-#elseif (hxCodec >= "2.6.1") import hxcodec.VideoHandler as VideoHandler;
-#elseif (hxCodec == "2.6.0") import VideoHandler;
-#else import vlc.MP4Handler as VideoHandler; #end
-#end
-*/
+
 import gameObjects.ui.notes.Note.EventNote;
 import gameObjects.*;
 
@@ -59,7 +52,7 @@ import crowplexus.iris.Iris;
 import crowplexus.hscript.Expr.Error as IrisError;
 import crowplexus.hscript.Printer;
 #end
-
+//import gameObject.stages.Joygrims;
 enum CinematicControls
 {
 	MOVE;
@@ -611,6 +604,7 @@ class PlayState extends MusicBeatState
 		switch (curStage)
 		{
 			case 'stage': new StageWeek1(); //Week 1
+			case 'JoyGrim':new JoyGrim();
 			case 'alleyway' | 'ddStage': new DDStage(); //Devilish Deal
 			case 'abandonedStreet': new AbandonedStreet(); //Isolated, Lunacy, and Delusional
 			case 'forestNew': new ForestNew(); //Hunted
@@ -625,6 +619,7 @@ class PlayState extends MusicBeatState
 			case 'clubhouse': new Clubhouse(); //Birthday
 			case 'staticVoid': new StaticVoid(); //RS lmao
 			case 'menuSongs': new MenuSongs(); //Menu Songs
+			//case 'joygrims': new Joygrims();
 			//Legacy is A S S
 			case 'theLoop': new TheLoop(); //Episode 1 legacy songs
 			case 'forestOld': new ForestOld(); //Hunted Legacy
