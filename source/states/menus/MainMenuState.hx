@@ -103,7 +103,8 @@ class MainMenuState extends MusicBeatState
 		"women.",
 		"men.",
 		"Blame Goober for making me delusional",
-		"Fun fact: away3d is a library that makes our mod work, deleting it would result on us not being to compile no more" // change if needed.
+		"Fun fact: away3d is a library that makes our mod work, deleting it would result on us not being to compile no more", // change if needed.
+		"Hi guys. I'm inside on your windows application. - Dreupy "
 	];
 
 	override function create()
