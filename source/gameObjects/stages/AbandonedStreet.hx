@@ -1256,11 +1256,12 @@ class AbandonedStreet extends BaseStage
 					case 61: 
 						g_++;
 						var fuckassBlastMemoryFuckYou:FlxSprite = new FlxSprite(0,200).loadGraphic(Paths.image(PlayState.pathway + value2));
+						fuckassBlastMemoryFuckYou.cameras = [camHUD];
 						add(fuckassBlastMemoryFuckYou);
-						fuckassBlastMemoryFuckYou.scale.set(0.6,0.6);
+						fuckassBlastMemoryFuckYou.scale.set(0.45,0.45);
 						fuckassBlastMemoryFuckYou.updateHitbox();
-						if (g_ % 2 == 0)fuckassBlastMemoryFuckYou.x += 900;
-						else fuckassBlastMemoryFuckYou.x -= 200;
+						if (g_ % 2 == 0)fuckassBlastMemoryFuckYou.x += 840;
+						else fuckassBlastMemoryFuckYou.x -= 180;
 						fuckassBlastMemoryFuckYou.y -= 140;
 						FlxTween.tween(fuckassBlastMemoryFuckYou, {alpha: 0}, 4, {ease:FlxEase.sineInOut, onComplete: function(_:FlxTween){
 							fuckassBlastMemoryFuckYou.destroy();
@@ -1275,7 +1276,7 @@ class AbandonedStreet extends BaseStage
 						var fuckassBlastMemoryFuckYou:FlxSprite = new FlxSprite(200,200).loadGraphic(Paths.image(PlayState.pathway + "AHHH_FUCK_YOU_MINNIE"));
 						add(fuckassBlastMemoryFuckYou);
 						fuckassBlastMemoryFuckYou.alpha = 0.001;
-						fuckassBlastMemoryFuckYou.scale.set(0.6,0.6);
+						fuckassBlastMemoryFuckYou.scale.set(0.45,0.45);
 						fuckassBlastMemoryFuckYou.updateHitbox();
 						fuckassBlastMemoryFuckYou.y -= 140;
 						FlxTween.tween(fuckassBlastMemoryFuckYou, {alpha: 1}, 4, {ease:FlxEase.sineInOut, onComplete: function(_:FlxTween){
