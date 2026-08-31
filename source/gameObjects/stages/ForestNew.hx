@@ -12,6 +12,7 @@ class ForestNew extends BaseStage
 	var treesBack:FlxSprite;
 	var otherBack:FlxSprite;
 	var goofyBG:FlxSprite;
+	var donald:FlxSprite;
 
 	public var shaderAnim:Float = 0;
 	public static var redVignette:FlxRuntimeShader = new FlxRuntimeShader(Shaders.redFromAngryBirds, null, 120);
@@ -42,11 +43,12 @@ class ForestNew extends BaseStage
 
 		if(!ClientPrefs.data.lowQuality)
 		{
+			donald = new FlxSprite(-456,187).loadGraphic(Paths.image(PlayState.pathway+'actualNew/donald'));
 			treesFront = new FlxSprite(-600, -450).loadGraphic(Paths.image(PlayState.pathway + 'actualNew/treesFG'));
 			treesFront.scrollFactor.set(1.2, 1.2);
 		}
 
-		for (item in [treesBack,goofyStreet,treesFront]){
+		for (item in [treesBack,goofyStreet,treesFront,donald]){
 			item.scale.set(1.25,1.25);
 		}
 

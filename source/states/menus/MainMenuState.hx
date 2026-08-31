@@ -105,7 +105,9 @@ class MainMenuState extends MusicBeatState
 		"Blame Goober for making me delusional",
 		"Fun fact: away3d is a library that makes our mod work, deleting it would result on us not being to compile no more", // change if needed.
 		"Hi guys. I'm inside on your windows application. - Dreupy ",
-		"Ya'll ever think squidward puts his own nose in his mouth just to see what it feels like?"
+		"Ya'll ever think squidward puts his own nose in his mouth just to see what it feels like?",
+		"I'm Also Inside your windows application - MalyPlus",
+		"Look behind you"
 	];
 
 	override function create()
@@ -133,7 +135,10 @@ class MainMenuState extends MusicBeatState
 			{
 				Sys.exit(0);
 			});
+		} else if (openfl.Lib.application.window.title.contains('Look behind you')){ // prob ppl will ignore this but it'd be funny if someone did look behind themselves :fire: --(MalyPlus)
+			new flixel.util.FlxTimer().start(5, function(e) {openfl.Lib.application.window.title = "Funkin.avi - haha made you look behind you..";});
 		}
+		
 
 		//debugKeys = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_1'));
 		/*transIn = FlxTransitionableState.defaultTransIn;

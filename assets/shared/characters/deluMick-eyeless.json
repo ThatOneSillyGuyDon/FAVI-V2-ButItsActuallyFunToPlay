@@ -1,14 +1,13 @@
 {
 	"animations": [
 		{
-			"loop": true,
 			"offsets": [
 				-88,
 				-29
 			],
-			"anim": "idle-loop",
+			"loop": true,
 			"fps": 20,
-			"name": "Mickey idle dance",
+			"anim": "idle-loop",
 			"indices": [
 				10,
 				11,
@@ -16,81 +15,84 @@
 				13,
 				14,
 				15
-			]
+			],
+			"name": "Mickey idle dance"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				174,
 				-92
 			],
-			"anim": "singLEFT",
+			"loop": false,
 			"fps": 20,
-			"name": "Mickey left",
-			"indices": []
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "Mickey left"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-184,
 				-46
 			],
-			"anim": "singUP",
+			"loop": false,
 			"fps": 20,
-			"name": "Mickey up",
-			"indices": []
+			"anim": "singUP",
+			"indices": [],
+			"name": "Mickey up"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-20,
 				-434
 			],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 20,
-			"name": "Mickey right",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Mickey right"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-87,
 				-30
 			],
-			"anim": "idle",
+			"loop": false,
 			"fps": 20,
-			"name": "Mickey idle dance",
-			"indices": []
+			"anim": "idle",
+			"indices": [],
+			"name": "Mickey idle dance"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				20,
 				-250
 			],
-			"anim": "singDOWN",
+			"loop": false,
 			"fps": 20,
-			"name": "Mickey down",
-			"indices": []
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "Mickey down"
 		}
 	],
+	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/NEW_DELU_EYELESS",
 	"position": [
 		-450,
 		-280
 	],
-	"healthicon": "deluavier",
+	"healthicon": "eyeless",
 	"flip_x": false,
 	"healthbar_colors": [
-		61,
-		61,
-		61
+		15,
+		20,
+		15
 	],
 	"camera_position": [
 		110,
 		150
 	],
 	"sing_duration": 6.1,
-	"scale": 1
+	"scale": 1,
+	"_editor_isPlayer": false
 }
