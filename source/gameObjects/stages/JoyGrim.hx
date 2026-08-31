@@ -4,10 +4,9 @@ class JoyGrim extends BaseStage
 {
 	public var offsetTwn:FlxTween;
 	var clubhouse:FlxSprite;
-	override function create()
-	{
+	override function create() {
 		game.defaultCamZoom = 0.75;
-		game.cameraSpeed = 1.2;
+		game.cameraSpeed = 1.8;
 		PlayState.isGreyscale = false;
 
 		// you may wonder why i did like that.. simple, PATHS IMAGES DIDNT WANT TO LOAD CORRECTLY ! 
@@ -16,8 +15,7 @@ class JoyGrim extends BaseStage
 		add(clubhouse);
 	}
 
-	override function update(elapsed:Float)
-	{
+	override function update(elapsed:Float) {
 		game.dad.setPosition(-140, 20);
 		game.boyfriend.setPosition(650, -260);
 		game.gf.setPosition(280, -410);
@@ -27,11 +25,10 @@ class JoyGrim extends BaseStage
 
 	override function createPost() {
 		game.camBars.fade(FlxColor.BLACK, 0.0001);
-		game.camHUD.alpha = 0;
 
 	}
-	// so like the event where the background goes insane right? i ate it.
-	
+
+	// so like the event where the background goes insane right? i ate it.	
 	override function eventCalled(eventName:String, value1:String, value2:String, flValue1:Null<Float>, flValue2:Null<Float>, strumTime:Float){
 		// so you may wonder why im not going to make an eventName instead?
 		// simple, im fucking lazy + the mod aint going to use this function anyway
