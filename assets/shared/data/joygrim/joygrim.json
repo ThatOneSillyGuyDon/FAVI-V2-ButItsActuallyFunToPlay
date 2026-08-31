@@ -3,6 +3,31 @@
 		"player1": "everretBFfinal",
 		"events": [
 			[
+				4263.33333333333,
+				[
+					[
+						"Set Property",
+						"camHUD.alpha",
+						"1"
+					],
+					[
+						"Camera Event",
+						"flash",
+						"255,255,255,1,0,true"
+					]
+				]
+			],
+			[
+				4266.66666666667,
+				[
+					[
+						"Camera Event",
+						"Fade",
+						"0,0,0,0.001,true"
+					]
+				]
+			],
+			[
 				53333.3333333333,
 				[
 					[
@@ -63,6 +88,46 @@
 				]
 			],
 			[
+				62799.9999999999,
+				[
+					[
+						"Set Property",
+						"camGame.alpha",
+						"0"
+					]
+				]
+			],
+			[
+				63133.3333333333,
+				[
+					[
+						"Camera Event",
+						"snappos",
+						"695,250"
+					]
+				]
+			],
+			[
+				63199.9999999999,
+				[
+					[
+						"Set Property",
+						"defaultCamZoom",
+						"0.75"
+					]
+				]
+			],
+			[
+				63933.3333333333,
+				[
+					[
+						"Set Property",
+						"camGame.alpha",
+						"1"
+					]
+				]
+			],
+			[
 				63999.9999999999,
 				[
 					[
@@ -73,12 +138,32 @@
 				]
 			],
 			[
+				63999.9999999999,
+				[
+					[
+						"Camera Event",
+						"flash",
+						"255,255,255,1,0,false"
+					]
+				]
+			],
+			[
 				98133.3333333334,
 				[
 					[
 						"Alt Idle Animation",
 						"dad",
 						""
+					]
+				]
+			],
+			[
+				98133.3333333334,
+				[
+					[
+						"Set Property",
+						"isCameraOnForcedPos",
+						"false"
 					]
 				]
 			],
@@ -273,6 +358,16 @@
 				]
 			],
 			[
+				129066.666666667,
+				[
+					[
+						"",
+						"yofuck",
+						""
+					]
+				]
+			],
+			[
 				129600,
 				[
 					[
@@ -293,12 +388,42 @@
 				]
 			],
 			[
+				132000,
+				[
+					[
+						"",
+						"evilShi",
+						""
+					]
+				]
+			],
+			[
 				132108.333333334,
 				[
 					[
 						"Camera Event",
 						"fade",
 						"0,0,0,0.001,1,false"
+					]
+				]
+			],
+			[
+				132265,
+				[
+					[
+						"Set Property",
+						"camHUD.alpha",
+						"0"
+					]
+				]
+			],
+			[
+				132266.666666667,
+				[
+					[
+						"",
+						"yoMute",
+						""
 					]
 				]
 			]
@@ -5329,9 +5454,9 @@
 			}
 		],
 		"song": "Joygrim",
-		"stage": "JoyGrim",
 		"validScore": true,
 		"needsVoices": true,
+		"stage": "JoyGrim",
 		"speed": 2.9,
 		"bpm": 225,
 		"format": "psych_legacy_convert"
