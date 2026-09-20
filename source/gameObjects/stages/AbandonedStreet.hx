@@ -1260,6 +1260,7 @@ class AbandonedStreet extends BaseStage
 						add(fuckassBlastMemoryFuckYou);
 						fuckassBlastMemoryFuckYou.scale.set(0.45,0.45);
 						fuckassBlastMemoryFuckYou.updateHitbox();
+						fuckassBlastMemoryFuckYou.alpha = 0.7;
 						if (g_ % 2 == 0)fuckassBlastMemoryFuckYou.x += 840;
 						else fuckassBlastMemoryFuckYou.x -= 180;
 						fuckassBlastMemoryFuckYou.y -= 140;
